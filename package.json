@@ -1,0 +1,71 @@
+{
+  "name": "streamvi-sdk",
+  "version": "1.0.1",
+  "description": "Library for working with the StreamVi API (https://dev.streamvi.io)",
+  "keywords": [
+    "streamvi",
+    "api",
+    "sdk",
+    "typescript",
+    "nodejs",
+    "rest"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StreamVi/streamvi-sdk.git"
+  },
+  "author": "StreamVi <info@streamvi.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StreamVi/streamvi-sdk/issues"
+  },
+  "homepage": "https://dev.streamvi.io",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "example": "ts-node example/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen-process": "rimraf ./src/generated/api2 && openapi-generator-cli generate -g typescript-axios -i ./temp/backend_v2.json -o ./src/generated/api2",
+    "gen:api-prod": "node ./scripts/openapi-fetcher.mjs napi.streamvi.io && npm run gen-process && node ./scripts/process-api.js",
+    "build": "rimraf dist && tsc",
+    "build:docs": "typedoc --out docs src",
+    "lint": "eslint \"src/**/*.ts\"",
+    "prepare": "husky install && npm run build",
+    "prepublishOnly": "npm run lint",
+    "type-check": "tsc --noEmit",
+    "prettier": "prettier --check \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "passport": "^0.7.0",
+    "passport-streamvi": "^1.0.6"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.17.22",
+    "@types/express-session": "^1.18.1",
+    "@types/node": "^20.10.0",
+    "@types/passport": "^1.0.17",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.0.1",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.25.3",
+    "typescript": "^5.2.2",
+    "prettier": "^3.2.5",
+    "husky": "^8.0.3"
+  }
+}
