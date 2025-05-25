@@ -25,10 +25,6 @@ STREAMVI_CLIENT_ID=your_client_id
 STREAMVI_CLIENT_SECRET=your_client_secret
 CALLBACK_URL=http://localhost:3000/auth/streamvi/callback
 PORT=3000
-
-# Optional for Swagger API access
-SWAGGER_USER=your_swagger_user
-SWAGGER_PASS=your_swagger_password
 ```
 
 ## API Client Generation
@@ -75,59 +71,45 @@ npm run format
 
 ## Usage
 
-### Basic authorization example
+### Пример запуска сервера для авторизации через StreamVi
 
 ```bash
 npm start
 ```
 
-Open http://localhost:3000 and click "Login with StreamVi"
+Откройте http://localhost:3000 и выполните вход через StreamVi.
 
-### Using the API client
+### Пример получения информации о проекте через SDK
 
 ```typescript
-import { StreamViApiExample } from './src/example-api-usage';
+import { StreamViSdkConfig } from './src/streamvi-sdk-config';
+import { UserProjectApi, SiteUserProjectControllerGetProjectInfo1VEnum, SiteUserProjectControllerGetProjectInfo1LanguageEnum } from './src/generated/api2';
 
-// Create a client without a token (for public methods)
-const api = new StreamViApiExample();
-
-// Create a client with an access token
-const apiWithAuth = new StreamViApiExample('https://napi.streamvi.io', 'your_access_token');
-
-// Get user profile
-try {
-  const profile = await apiWithAuth.getUserProfile();
-  console.log('Profile:', profile);
-} catch (error) {
-  console.error('Error:', error);
-}
-
-// Refresh token
-try {
-  const newTokens = await apiWithAuth.refreshToken('your_refresh_token');
-  console.log('New tokens:', newTokens);
-} catch (error) {
-  console.error('Token refresh error:', error);
+async function getProjectInfo(accessToken: string, projectId: number) {
+  const sdkConfig = new StreamViSdkConfig({ accessToken });
+  const userProjectApi = new UserProjectApi(sdkConfig.configuration);
+  const response = await userProjectApi.siteUserProjectControllerGetProjectInfo1(
+    SiteUserProjectControllerGetProjectInfo1VEnum._1,
+    SiteUserProjectControllerGetProjectInfo1LanguageEnum.Ru,
+    projectId
+  );
+  return response.data;
 }
 ```
 
-### Using the generated API via StreamViSdkConfig
+### Использование сгенерированных API-клиентов
 
 ```typescript
 import { StreamViSdkConfig } from './src/streamvi-sdk-config';
 import { UserApi, AuthApi } from './src/generated/api2';
 
-// Create SDK configuration
 const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-
-// Create API clients
 const userApi = new UserApi(sdkConfig.configuration);
 const authApi = new AuthApi(sdkConfig.configuration);
 
-// Call API methods
 const profile = await userApi.siteUserControllerGetProfile1(
-  '3', // API version
-  'ru' // language
+  '3', // версия API
+  'ru' // язык
 );
 ```
 
