@@ -1,4 +1,4 @@
-import { Configuration } from './generated/api2';
+import { Configuration } from './generated/api2/configuration';
 
 export class StreamViSdkConfig {
   private _accessToken: string;

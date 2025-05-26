@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_En]
+**language** | **string** | Current language | [default to LanguageEnum_en]
 **project_id** | **number** | Project id | [default to undefined]
 **record** | **boolean** | Record status | [default to undefined]
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** | Level of notify. Default is info | [default to TypeEnum_Info]
-**title** | **string** | Title of notify | [optional] [default to undefined]
+**type** | **string** | Level of notify. Default is info | [default to TypeEnum_info]
 **text** | **string** | Text of notify | [default to undefined]
+**title** | **string** | Title of notify | [optional] [default to undefined]
 **actions** | [**Array&lt;InternalNotifyTypeAction&gt;**](InternalNotifyTypeAction.md) | Array of texts | [optional] [default to undefined]
 
 ## Example
@@ -17,8 +17,8 @@ import { SiteScreenNotifyUserResponse } from './api';
 
 const instance: SiteScreenNotifyUserResponse = {
     type,
-    title,
     text,
+    title,
     actions,
 };
 ```

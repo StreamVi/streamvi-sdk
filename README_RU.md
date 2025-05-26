@@ -6,8 +6,6 @@
 
 - ✅ Авторизация через StreamVi OAuth2
 - ✅ Автоматическая генерация TypeScript API клиента
-- ✅ Типизированные интерфейсы для всех методов API
-- ✅ Поддержка refresh token
 - ✅ Готовые примеры использования
 
 ## Установка
@@ -25,48 +23,6 @@ STREAMVI_CLIENT_ID=ваш_client_id
 STREAMVI_CLIENT_SECRET=ваш_client_secret
 CALLBACK_URL=http://localhost:3000/auth/streamvi/callback
 PORT=3000
-```
-
-## Генерация API-клиента
-
-### Автоматическая генерация с production-сервера
-
-```bash
-npm run gen:api-prod
-```
-
-Эта команда:
-1. Скачивает OpenAPI спецификацию с `napi.streamvi.io`
-2. Генерирует TypeScript клиент в `src/generated/api2/`
-3. Обновляет экспорты в `src/index.ts`
-
-### Ручная генерация (если у вас есть локальный файл спецификации)
-
-```bash
-# Поместите OpenAPI спецификацию в temp/backend_v2.json
-npm run gen-process
-```
-
-## Генерация документации
-
-Для генерации документации используйте:
-
-```
-npm run build:docs
-```
-
-## Форматирование кода
-
-Проверить форматирование:
-
-```
-npm run prettier
-```
-
-Автоформатирование:
-
-```
-npm run format
 ```
 
 ## Использование
@@ -213,4 +169,46 @@ MIT
 - [TranscodersApi](src/generated/api2/docs/TranscodersApi.md)
 - [TransactionsApi](src/generated/api2/docs/TransactionsApi.md)
 - [UserApi](src/generated/api2/docs/UserApi.md)
-- [UserProjectApi](src/generated/api2/docs/UserProjectApi.md) 
+- [UserProjectApi](src/generated/api2/docs/UserProjectApi.md)
+
+## Генерация API-клиента
+
+### Автоматическая генерация с production-сервера
+
+```bash
+npm run gen:api-prod
+```
+
+Эта команда:
+1. Скачивает OpenAPI спецификацию с `napi.streamvi.io`
+2. Генерирует TypeScript клиент в `src/generated/api2/`
+3. Обновляет экспорты в `src/index.ts`
+
+### Ручная генерация (если у вас есть локальный файл спецификации)
+
+```bash
+# Поместите OpenAPI спецификацию в temp/backend_v2.json
+npm run gen-process
+```
+
+## Генерация документации
+
+Для генерации документации используйте:
+
+```
+npm run build:docs
+```
+
+## Форматирование кода
+
+Проверить форматирование:
+
+```
+npm run prettier
+```
+
+Автоформатирование:
+
+```
+npm run format
+``` 

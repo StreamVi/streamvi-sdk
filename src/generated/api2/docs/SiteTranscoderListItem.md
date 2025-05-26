@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **id** | **number** | Id | [default to undefined]
 **name** | **string** | Name | [default to undefined]
 **createdAt** | **string** | createdAt | [default to undefined]
+**status** | **string** | Status | [default to undefined]
+**videoCodec** | **string** | Video codec | [default to undefined]
+**channels** | [**Array&lt;SiteTranscoderChannelItem&gt;**](SiteTranscoderChannelItem.md) | B-Frames | [default to undefined]
 **fps** | **number** | fps | [optional] [default to undefined]
 **vBitrate** | **number** | video bitrate | [optional] [default to undefined]
 **aBitrate** | **number** | audio bitrate | [optional] [default to undefined]
@@ -15,9 +18,6 @@ Name | Type | Description | Notes
 **height** | **number** | height | [optional] [default to undefined]
 **rotation** | **number** | rotation | [optional] [default to undefined]
 **bFrames** | **number** | B-Frames | [optional] [default to undefined]
-**status** | **string** | Status | [default to undefined]
-**videoCodec** | **string** | Video codec | [default to undefined]
-**channels** | [**Array&lt;SiteTranscoderChannelItem&gt;**](SiteTranscoderChannelItem.md) | B-Frames | [default to undefined]
 
 ## Example
 
@@ -28,6 +28,9 @@ const instance: SiteTranscoderListItem = {
     id,
     name,
     createdAt,
+    status,
+    videoCodec,
+    channels,
     fps,
     vBitrate,
     aBitrate,
@@ -35,9 +38,6 @@ const instance: SiteTranscoderListItem = {
     height,
     rotation,
     bFrames,
-    status,
-    videoCodec,
-    channels,
 };
 ```
 

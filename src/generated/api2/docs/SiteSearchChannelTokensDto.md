@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **string** | Status of tokens | [default to StatusEnum_Unused]
+**status** | **string** | Status of tokens | [default to StatusEnum_unused]
 
 ## Example
 

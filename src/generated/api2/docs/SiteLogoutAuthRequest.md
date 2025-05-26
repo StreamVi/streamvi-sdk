@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**app** | **string** | App oauth | [default to AppEnum_Site]
+**app** | **string** | App oauth | [default to AppEnum_site]
 **refresh** | **string** | Refresh token | [default to undefined]
 
 ## Example

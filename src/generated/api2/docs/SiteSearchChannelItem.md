@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | name | [default to undefined]
 **id** | **string** | name | [default to undefined]
-**transcoderId** | **number** | Transcoder id | [optional] [default to undefined]
 **group_id** | **number** | group_id | [default to undefined]
 **type** | **string** | type | [default to undefined]
 **photo_default** | **string** | photo_default | [default to undefined]
@@ -26,8 +25,9 @@ Name | Type | Description | Notes
 **rtmp** | [**SiteSearchChannelRtmpDto**](SiteSearchChannelRtmpDto.md) | rtmp | [default to undefined]
 **credentials** | [**Array&lt;SiteSearchChannelCredentialsDto&gt;**](SiteSearchChannelCredentialsDto.md) | credentials | [default to undefined]
 **tokens** | [**SiteSearchChannelCredentialDto**](SiteSearchChannelCredentialDto.md) | Tokens | [default to undefined]
-**live_users** | [**Array&lt;SiteSearchChannelLiveUserDto&gt;**](SiteSearchChannelLiveUserDto.md) | live_users | [optional] [default to undefined]
 **platform** | [**SiteSearchChannelPlatformDto**](SiteSearchChannelPlatformDto.md) | Platform | [default to undefined]
+**transcoderId** | **number** | Transcoder id | [optional] [default to undefined]
+**live_users** | [**Array&lt;SiteSearchChannelLiveUserDto&gt;**](SiteSearchChannelLiveUserDto.md) | live_users | [optional] [default to undefined]
 
 ## Example
 
@@ -37,7 +37,6 @@ import { SiteSearchChannelItem } from './api';
 const instance: SiteSearchChannelItem = {
     name,
     id,
-    transcoderId,
     group_id,
     type,
     photo_default,
@@ -56,8 +55,9 @@ const instance: SiteSearchChannelItem = {
     rtmp,
     credentials,
     tokens,
-    live_users,
     platform,
+    transcoderId,
+    live_users,
 };
 ```
 

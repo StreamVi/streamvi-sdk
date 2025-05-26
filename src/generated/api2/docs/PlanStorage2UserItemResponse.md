@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **period** | **string** | Period | [default to undefined]
 **period_uuid** | **string** | Period uuid | [default to undefined]
 **status** | **string** | Status | [default to undefined]
-**prolongation** | **number** | Prolongation | [optional] [default to undefined]
 **money_flow_uuid** | **string** | Money flow uuid | [default to undefined]
+**prolongation** | **number** | Prolongation | [optional] [default to undefined]
 
 ## Example
 
@@ -32,8 +32,8 @@ const instance: PlanStorage2UserItemResponse = {
     period,
     period_uuid,
     status,
-    prolongation,
     money_flow_uuid,
+    prolongation,
 };
 ```
 

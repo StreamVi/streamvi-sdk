@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**restream_data** | [**Array&lt;MethodProjectLiveStatusInfoRestreamData&gt;**](MethodProjectLiveStatusInfoRestreamData.md) | Restream data | [optional] [default to undefined]
 **connect_id** | **number** |  | [default to undefined]
 **connect_id_v2** | **string** |  | [default to undefined]
 **fps** | **number** |  | [default to undefined]
@@ -17,6 +16,7 @@ Name | Type | Description | Notes
 **full_bitrate** | **number** |  | [default to undefined]
 **status** | **string** |  | [default to undefined]
 **restrims** | **number** |  | [default to undefined]
+**restream_data** | [**Array&lt;MethodProjectLiveStatusInfoRestreamData&gt;**](MethodProjectLiveStatusInfoRestreamData.md) | Restream data | [optional] [default to undefined]
 
 ## Example
 
@@ -24,7 +24,6 @@ Name | Type | Description | Notes
 import { MethodProjectLiveStatusInfo } from './api';
 
 const instance: MethodProjectLiveStatusInfo = {
-    restream_data,
     connect_id,
     connect_id_v2,
     fps,
@@ -36,6 +35,7 @@ const instance: MethodProjectLiveStatusInfo = {
     full_bitrate,
     status,
     restrims,
+    restream_data,
 };
 ```
 

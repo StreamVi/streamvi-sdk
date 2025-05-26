@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **restreamId** | **number** |  | [default to undefined]
 **userId** | **number** |  | [default to undefined]
-**video** | **string** |  | [optional] [default to undefined]
 **name** | **string** |  | [default to undefined]
 **photo** | **string** |  | [default to undefined]
+**video** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -19,9 +19,9 @@ import { SiteSearchChannelLiveUserDto } from './api';
 const instance: SiteSearchChannelLiveUserDto = {
     restreamId,
     userId,
-    video,
     name,
     photo,
+    video,
 };
 ```
 

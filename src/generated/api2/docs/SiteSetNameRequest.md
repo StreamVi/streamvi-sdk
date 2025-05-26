@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_En]
+**language** | **string** | Current language | [default to LanguageEnum_en]
 **project_id** | **number** | Project id | [default to undefined]
 **channel_id** | **number** | Channel id | [default to undefined]
 **name** | **string** |  | [default to 'Channel name']

@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_En]
+**language** | **string** | Current language | [default to LanguageEnum_en]
 **code** | **string** | Auth code for exchange of token | [default to undefined]
 **userAgent** | **string** | userAgent | [default to undefined]
+**app** | **string** | App oauth | [default to AppEnum_site]
 **fingerprint** | **string** | Fingerprint | [optional] [default to '']
-**app** | **string** | App oauth | [default to AppEnum_Site]
 
 ## Example
 
@@ -22,8 +22,8 @@ const instance: SiteAuthExchangeRequest = {
     language,
     code,
     userAgent,
-    fingerprint,
     app,
+    fingerprint,
 };
 ```
 

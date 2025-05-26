@@ -6,8 +6,6 @@ Test project for authorization via passport-streamvi and working with the Stream
 
 - ✅ Authorization via StreamVi OAuth2
 - ✅ Automatic TypeScript API client generation
-- ✅ Typed interfaces for all API methods
-- ✅ Refresh token support
 - ✅ Ready-to-use usage examples
 
 ## Installation
@@ -25,48 +23,6 @@ STREAMVI_CLIENT_ID=your_client_id
 STREAMVI_CLIENT_SECRET=your_client_secret
 CALLBACK_URL=http://localhost:3000/auth/streamvi/callback
 PORT=3000
-```
-
-## API Client Generation
-
-### Automatic generation from production server
-
-```bash
-npm run gen:api-prod
-```
-
-This command:
-1. Downloads the OpenAPI specification from `napi.streamvi.io`
-2. Generates a TypeScript client in `src/generated/api2/`
-3. Updates exports in `src/index.ts`
-
-### Manual generation (if you have a local specification file)
-
-```bash
-# Place the OpenAPI specification file in temp/backend_v2.json
-npm run gen-process
-```
-
-## Documentation Generation
-
-To generate documentation, use:
-
-```
-npm run build:docs
-```
-
-## Code Formatting
-
-To check formatting:
-
-```
-npm run prettier
-```
-
-To auto-format:
-
-```
-npm run format
 ```
 
 ## Usage
@@ -214,3 +170,47 @@ Detailed documentation for each generated API class is available at the links be
 - [TransactionsApi](src/generated/api2/docs/TransactionsApi.md)
 - [UserApi](src/generated/api2/docs/UserApi.md)
 - [UserProjectApi](src/generated/api2/docs/UserProjectApi.md) 
+
+
+
+## API Client Generation
+
+### Automatic generation from production server
+
+```bash
+npm run gen:api-prod
+```
+
+This command:
+1. Downloads the OpenAPI specification from `napi.streamvi.io`
+2. Generates a TypeScript client in `src/generated/api2/`
+3. Updates exports in `src/index.ts`
+
+### Manual generation (if you have a local specification file)
+
+```bash
+# Place the OpenAPI specification file in temp/backend_v2.json
+npm run gen-process
+```
+
+## Documentation Generation
+
+To generate documentation, use:
+
+```
+npm run build:docs
+```
+
+## Code Formatting
+
+To check formatting:
+
+```
+npm run prettier
+```
+
+To auto-format:
+
+```
+npm run format
+```

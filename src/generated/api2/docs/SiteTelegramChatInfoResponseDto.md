@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**domain** | **string** |  | [optional] [default to undefined]
 **image** | **string** |  | [default to undefined]
+**domain** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -18,8 +18,8 @@ import { SiteTelegramChatInfoResponseDto } from './api';
 const instance: SiteTelegramChatInfoResponseDto = {
     id,
     name,
-    domain,
     image,
+    domain,
 };
 ```
 

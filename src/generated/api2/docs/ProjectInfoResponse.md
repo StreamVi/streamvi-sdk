@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_En]
+**language** | **string** | Current language | [default to LanguageEnum_en]
 **data** | [**ProjectInfoDataResponse**](ProjectInfoDataResponse.md) | Project info | [default to undefined]
 **restream** | [**ProjectInfoRestreamResponse**](ProjectInfoRestreamResponse.md) | Restream tariff | [default to undefined]
 **transcoding** | [**ProjectInfoTranscodingResponse**](ProjectInfoTranscodingResponse.md) | Transcoding tariff | [default to undefined]

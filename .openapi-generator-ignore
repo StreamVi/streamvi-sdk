@@ -1,0 +1,18 @@
+# Игнорируем файлы, которые могут вызывать дублирование
+**/.openapi-generator-ignore
+**/.openapi-generator/
+**/README.md
+**/package.json
+**/tsconfig.json
+**/git_push.sh
+
+# Игнорируем тестовые файлы
+**/*test*
+**/*spec*
+
+# Игнорируем документацию
+**/docs/
+
+# Игнорируем конфигурационные файлы
+**/.gitignore
+**/.npmignore 

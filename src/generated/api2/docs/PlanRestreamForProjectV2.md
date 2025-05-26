@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**before** | [**PlanRestreamBeforeItem**](PlanRestreamBeforeItem.md) | Before tariff restream | [optional] [default to undefined]
 **current** | [**PlanRestreamCurrentItem**](PlanRestreamCurrentItem.md) | Current tariff restream | [default to undefined]
+**before** | [**PlanRestreamBeforeItem**](PlanRestreamBeforeItem.md) | Before tariff restream | [optional] [default to undefined]
 **next** | [**PlanRestreamNextItem**](PlanRestreamNextItem.md) | Next tariff restream | [optional] [default to undefined]
 
 ## Example
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { PlanRestreamForProjectV2 } from './api';
 
 const instance: PlanRestreamForProjectV2 = {
-    before,
     current,
+    before,
     next,
 };
 ```

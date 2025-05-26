@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **date_create** | **string** | Date create | [default to undefined]
 **icon** | **object** | Page icon | [default to undefined]
 **title** | **string** | Subject | [default to undefined]
-**language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
-**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
+**language** | **string** | Language for indexing | [default to LanguageEnum_russian]
+**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_ru]
 **text** | **string** | Text | [default to undefined]
 **alt_languages** | **Array&lt;string&gt;** | Alternative language (Array of Language ISO) | [default to undefined]
 

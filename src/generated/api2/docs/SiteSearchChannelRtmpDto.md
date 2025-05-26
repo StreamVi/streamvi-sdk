@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [default to undefined]
+**domain** | **string** |  | [default to undefined]
+**protocol** | **string** |  | [default to undefined]
 **path** | **string** |  | [optional] [default to undefined]
 **port** | **number** |  | [optional] [default to undefined]
 **query** | **string** |  | [optional] [default to undefined]
-**domain** | **string** |  | [default to undefined]
-**protocol** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -19,11 +19,11 @@ import { SiteSearchChannelRtmpDto } from './api';
 
 const instance: SiteSearchChannelRtmpDto = {
     name,
+    domain,
+    protocol,
     path,
     port,
     query,
-    domain,
-    protocol,
 };
 ```
 

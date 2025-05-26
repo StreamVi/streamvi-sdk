@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **date_update** | **string** | Date of last update | [default to undefined]
 **date_publish** | **string** | Date of publish for sort | [default to undefined]
 **tags** | **Array&lt;object&gt;** | Tags | [default to undefined]
-**language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
+**language** | **string** | Language for indexing | [default to LanguageEnum_russian]
 **language_iso** | **string** | Language ISO | [default to 'russian']
 **title** | **string** | Subject | [default to undefined]
 **image** | **string** | Url of main image | [default to undefined]

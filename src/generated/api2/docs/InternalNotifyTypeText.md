@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
-**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
+**language** | **string** | Language for indexing | [default to LanguageEnum_russian]
+**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_ru]
 **title** | **string** | Title value | [default to '']
 **text** | **string** | Text value | [default to '']
 

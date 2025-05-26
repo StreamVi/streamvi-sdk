@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Error name | [default to undefined]
 **msg** | **string** | Error message | [default to undefined]
-**validator_error** | [**Array&lt;ValidationErrorDto&gt;**](ValidationErrorDto.md) | Validator error array if name&#x3D;\&quot;I18nValidationException\&quot; | [optional] [default to undefined]
 **_options** | **object** | Options | [default to undefined]
 **data** | **object** | Custom object for error | [default to undefined]
+**validator_error** | [**Array&lt;ValidationErrorDto&gt;**](ValidationErrorDto.md) | Validator error array if name&#x3D;\&quot;I18nValidationException\&quot; | [optional] [default to undefined]
 
 ## Example
 
@@ -19,9 +19,9 @@ import { ErrorData } from './api';
 const instance: ErrorData = {
     name,
     msg,
-    validator_error,
     _options,
     data,
+    validator_error,
 };
 ```
 

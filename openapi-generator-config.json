@@ -1,0 +1,24 @@
+{
+  "generatorName": "typescript-axios",
+  "additionalProperties": {
+    "useSingleRequestParameter": true,
+    "enumType": "string-literal",
+    "withSeparateModelsAndApi": true,
+    "modelPackage": "models",
+    "apiPackage": "api",
+    "withoutPrefixEnums": true,
+    "stringEnums": true,
+    "ensureUniqueParams": true,
+    "sortModelPropertiesByRequiredFlag": true,
+    "sortParamsByRequiredFlag": true,
+    "enumPropertyNaming": "original",
+    "paramNaming": "camelCase",
+    "supportsES6": true,
+    "nullSafeAdditionalProps": true
+  },
+  "globalProperties": {
+    "models": "",
+    "apis": "",
+    "supportingFiles": ""
+  }
+} 
