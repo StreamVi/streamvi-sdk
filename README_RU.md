@@ -7,6 +7,7 @@
 - ✅ Авторизация через StreamVi OAuth2
 - ✅ Автоматическая генерация TypeScript API клиента
 - ✅ Готовые примеры использования
+- ✅ Модульная структура Express приложения
 
 ## Установка
 
@@ -27,10 +28,10 @@ PORT=3000
 
 ## Использование
 
-### Пример запуска сервера для авторизации через StreamVi
+### Запуск примера сервера для авторизации через StreamVi
 
 ```bash
-npm start
+npm run example
 ```
 
 Откройте http://localhost:3000 и выполните вход через StreamVi.
@@ -39,35 +40,21 @@ npm start
 
 ```typescript
 import { StreamViSdkConfig } from './src/streamvi-sdk-config';
-import { UserProjectApi, SiteUserProjectControllerGetProjectInfo1VEnum, SiteUserProjectControllerGetProjectInfo1LanguageEnum } from './src/generated/api2';
+import { UserProjectApi, getProjectInfo1LanguageEnum } from './src/generated/api2/api/user-project-api';
 
-async function getProjectInfo(accessToken: string, projectId: number) {
+async function getProjectInfo(accessToken: string, projectId: number, language: getProjectInfo1LanguageEnum = getProjectInfo1LanguageEnum.ru) {
   const sdkConfig = new StreamViSdkConfig({ accessToken });
   const userProjectApi = new UserProjectApi(sdkConfig.configuration);
-  const response = await userProjectApi.siteUserProjectControllerGetProjectInfo1(
-    SiteUserProjectControllerGetProjectInfo1VEnum._1,
-    SiteUserProjectControllerGetProjectInfo1LanguageEnum.Ru,
-    projectId
-  );
+
+  const response = await userProjectApi.getProjectInfo1({
+    language: language,
+    projectId: projectId
+  });
   return response.data;
 }
 ```
 
-### Использование сгенерированных API-клиентов
 
-```typescript
-import { StreamViSdkConfig } from './src/streamvi-sdk-config';
-import { UserApi, AuthApi } from './src/generated/api2';
-
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const userApi = new UserApi(sdkConfig.configuration);
-const authApi = new AuthApi(sdkConfig.configuration);
-
-const profile = await userApi.siteUserControllerGetProfile1(
-  '3', // версия API
-  'ru' // язык
-);
-```
 
 ## Доступные API
 
@@ -87,7 +74,7 @@ const profile = await userApi.siteUserControllerGetProfile1(
 
 ## Скрипты
 
-- `npm start` — запуск сервера для разработки
+- `npm run example` — запуск примера сервера с авторизацией
 - `npm run build` — сборка проекта
 - `npm run gen:api-prod` — генерация API с production-сервера
 - `npm run gen-process` — генерация API из локального файла
@@ -102,9 +89,41 @@ src/
 ├── scripts/
 │   ├── openapi-fetcher.mjs  # Скрипт для загрузки OpenAPI спецификации
 │   └── process-api.js       # Скрипт пост-обработки
-├── index.ts            # Главный файл с примером авторизации
-└── example-api-usage.ts # Пример использования API
+└── streamvi-sdk-config.ts   # Конфигурация SDK
+
+example/
+├── server.ts           # Основной файл сервера
+├── config/
+│   ├── passport.ts     # Конфигурация Passport.js
+│   └── session.ts      # Конфигурация сессий
+├── routes/
+│   └── index.ts        # Маршруты приложения
+└── helpers/            # Вспомогательные функции
 ```
+
+## Пример приложения
+
+В папке `example/` находится полноценное Express приложение, демонстрирующее:
+
+- Авторизацию через StreamVi OAuth2
+- Получение информации о проекте
+- Обработку ошибок авторизации
+- Управление сессиями пользователей
+
+### Структура примера
+
+- **server.ts** — основной файл сервера с настройкой middleware
+- **config/passport.ts** — конфигурация стратегии авторизации StreamVi
+- **config/session.ts** — настройки сессий Express
+- **routes/index.ts** — маршруты для авторизации и отображения данных
+
+### Функциональность примера
+
+1. **Главная страница** (`/`) — отображает информацию о проекте или предлагает авторизацию
+2. **Авторизация** (`/auth/streamvi`) — перенаправляет на StreamVi для авторизации
+3. **Callback** (`/auth/streamvi/callback`) — обрабатывает результат авторизации
+4. **Выход** (`/logout`) — очищает сессию пользователя
+5. **Обработка ошибок** (`/login`) — отображает ошибки авторизации
 
 ## Разработка
 
