@@ -77,7 +77,7 @@ async function getProjectInfo(accessToken: string, projectId: number, language: 
 - `npm run example` — запуск примера сервера с авторизацией
 - `npm run build` — сборка проекта
 - `npm run gen:api-prod` — генерация API с production-сервера
-- `npm run gen-process` — генерация API из локального файла
+- `npm run gen-process` — генерация API из файла temp/backend_v2.json
 - `npm run lint` — проверка кода
 
 ## Структура проекта
