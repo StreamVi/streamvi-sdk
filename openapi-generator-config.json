@@ -14,7 +14,10 @@
     "enumPropertyNaming": "original",
     "paramNaming": "camelCase",
     "supportsES6": true,
-    "nullSafeAdditionalProps": true
+    "nullSafeAdditionalProps": true,
+    "enumNameSuffix": "Enum",
+    "enumUnknownDefaultCase": false,
+    "removeEnumValuePrefix": false
   },
   "globalProperties": {
     "models": "",
