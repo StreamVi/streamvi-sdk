@@ -1,13 +1,14 @@
 # StreamVi SDK
 
-Тестовый проект для авторизации через passport-streamvi и работы с API StreamVi.
+Библиотека для работы с API StreamVi вместе с примером авторизации через OAuth с помощью библиотеки [passport-streamvi](https://www.npmjs.com/package/passport-streamvi).
+
+Документация по API методам доступна на: [https://dev.streamvi.io](https://dev.streamvi.io)
 
 ## Возможности
 
 - ✅ Авторизация через StreamVi OAuth2
 - ✅ Автоматическая генерация TypeScript API клиента
 - ✅ Готовые примеры использования
-- ✅ Модульная структура Express приложения
 
 ## Установка
 

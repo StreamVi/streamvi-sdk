@@ -1,23 +1,24 @@
 # StreamVi SDK
 
-Тестовый проект для авторизации через passport-streamvi и работы с API StreamVi.
+Library for working with StreamVi API along with OAuth authorization example using [passport-streamvi](https://www.npmjs.com/package/passport-streamvi) library.
 
-## Возможности
+API methods documentation is available at: [https://dev.streamvi.io](https://dev.streamvi.io)
 
-- ✅ Авторизация через StreamVi OAuth2
-- ✅ Автоматическая генерация TypeScript API клиента
-- ✅ Готовые примеры использования
-- ✅ Модульная структура Express приложения
+## Features
 
-## Установка
+- ✅ Authorization via StreamVi OAuth2
+- ✅ Automatic TypeScript API client generation
+- ✅ Ready-to-use examples
+
+## Installation
 
 ```bash
 npm install
 ```
 
-## Конфигурация
+## Configuration
 
-Создайте файл `.env` в корне проекта:
+Create a `.env` file in the project root:
 
 ```env
 STREAMVI_CLIENT_ID=your_client_id
@@ -26,17 +27,17 @@ CALLBACK_URL=http://localhost:3000/auth/streamvi/callback
 PORT=3000
 ```
 
-## Использование
+## Usage
 
-### Запуск примера сервера для авторизации через StreamVi
+### Running example server for StreamVi authorization
 
 ```bash
 npm run example
 ```
 
-Откройте http://localhost:3000 и выполните вход через StreamVi.
+Open http://localhost:3000 and login via StreamVi.
 
-### Пример получения информации о проекте через SDK
+### Example of getting project information via SDK
 
 ```typescript
 import { StreamViSdkConfig } from './src/streamvi-sdk-config';
@@ -53,8 +54,6 @@ async function getProjectInfo(accessToken: string, projectId: number, language: 
   return response.data;
 }
 ```
-
-
 
 ## Available APIs
 
@@ -74,56 +73,56 @@ The full list is available in `src/generated/api2/api.ts`
 
 ## Scripts
 
-- `npm run example` - запуск примера сервера с авторизацией
-- `npm run build` - сборка проекта
-- `npm run gen:api-prod` - генерация API с продакшн сервера
-- `npm run gen-process` - генерация API из файла temp/backend_v2.json
-- `npm run lint` - проверка кода
+- `npm run example` - run example server with authorization
+- `npm run build` - build the project
+- `npm run gen:api-prod` - generate API from production server
+- `npm run gen-process` - generate API from temp/backend_v2.json file
+- `npm run lint` - code check
 
-## Структура проекта
+## Project Structure
 
 ```
 src/
 ├── generated/
-│   └── api2/           # Сгенерированный API клиент
+│   └── api2/           # Generated API client
 ├── scripts/
-│   ├── openapi-fetcher.mjs  # Скрипт получения OpenAPI спецификации
-│   └── process-api.js       # Скрипт постобработки
-└── streamvi-sdk-config.ts   # Конфигурация SDK
+│   ├── openapi-fetcher.mjs  # OpenAPI specification fetch script
+│   └── process-api.js       # Post-processing script
+└── streamvi-sdk-config.ts   # SDK configuration
 
 example/
-├── server.ts           # Основной файл сервера
+├── server.ts           # Main server file
 ├── config/
-│   ├── passport.ts     # Конфигурация Passport.js
-│   └── session.ts      # Конфигурация сессий
+│   ├── passport.ts     # Passport.js configuration
+│   └── session.ts      # Session configuration
 ├── routes/
-│   └── index.ts        # Маршруты приложения
-└── helpers/            # Вспомогательные функции
+│   └── index.ts        # Application routes
+└── helpers/            # Helper functions
 ```
 
-## Пример приложения
+## Example Application
 
-В папке `example/` находится полноценное Express приложение, демонстрирующее:
+The `example/` folder contains a complete Express application demonstrating:
 
-- Авторизацию через StreamVi OAuth2
-- Получение информации о проекте
-- Обработку ошибок авторизации
-- Управление сессиями пользователей
+- Authorization via StreamVi OAuth2
+- Getting project information
+- Authorization error handling
+- User session management
 
-### Структура примера
+### Example Structure
 
-- **server.ts** - основной файл сервера с настройкой middleware
-- **config/passport.ts** - конфигурация стратегии авторизации StreamVi
-- **config/session.ts** - настройки сессий Express
-- **routes/index.ts** - маршруты для авторизации и отображения данных
+- **server.ts** - main server file with middleware setup
+- **config/passport.ts** - StreamVi authorization strategy configuration
+- **config/session.ts** - Express session settings
+- **routes/index.ts** - routes for authorization and data display
 
-### Функциональность примера
+### Example Functionality
 
-1. **Главная страница** (`/`) - отображает информацию о проекте или предлагает авторизацию
-2. **Авторизация** (`/auth/streamvi`) - перенаправляет на StreamVi для авторизации
-3. **Callback** (`/auth/streamvi/callback`) - обрабатывает результат авторизации
-4. **Выход** (`/logout`) - очищает сессию пользователя
-5. **Обработка ошибок** (`/login`) - отображает ошибки авторизации
+1. **Home page** (`/`) - displays project information or offers authorization
+2. **Authorization** (`/auth/streamvi`) - redirects to StreamVi for authorization
+3. **Callback** (`/auth/streamvi/callback`) - handles authorization result
+4. **Logout** (`/logout`) - clears user session
+5. **Error handling** (`/login`) - displays authorization errors
 
 ## Development
 
