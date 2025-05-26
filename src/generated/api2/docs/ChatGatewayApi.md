@@ -16,34 +16,29 @@ All URIs are relative to *http://localhost*
 ### Example
 
 ```typescript
-import {
-    ChatGatewayApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { ChatGatewayApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new ChatGatewayApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new ChatGatewayApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let key: string; //Key (default to undefined)
 let broadcastId: number; //broadcast id (default to undefined)
 let eventId: string; //Event id (default to undefined)
 
-const { status, data } = await apiInstance.methodChatGatewayControllerDelete(
-    v,
+const { status, data } = await apiInstance.methodChatGatewayControllerDelete({
     language,
     key,
     broadcastId,
     eventId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **key** | [**string**] | Key | defaults to undefined|
 | **broadcastId** | [**number**] | broadcast id | defaults to undefined|
@@ -79,34 +74,29 @@ No authorization required
 ### Example
 
 ```typescript
-import {
-    ChatGatewayApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { ChatGatewayApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new ChatGatewayApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new ChatGatewayApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let key: string; //Key (default to undefined)
 let broadcastId: number; //broadcast id (default to undefined)
 let eventId: string; //Event id (default to undefined)
 
-const { status, data } = await apiInstance.methodChatGatewayControllerGetMessage(
-    v,
+const { status, data } = await apiInstance.methodChatGatewayControllerGetMessage({
     language,
     key,
     broadcastId,
     eventId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **key** | [**string**] | Key | defaults to undefined|
 | **broadcastId** | [**number**] | broadcast id | defaults to undefined|
@@ -142,32 +132,27 @@ No authorization required
 ### Example
 
 ```typescript
-import {
-    ChatGatewayApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { ChatGatewayApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new ChatGatewayApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new ChatGatewayApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let key: string; //Key (default to undefined)
 let broadcastId: number; //broadcast id (default to undefined)
 
-const { status, data } = await apiInstance.methodChatGatewayControllerHistory(
-    v,
+const { status, data } = await apiInstance.methodChatGatewayControllerHistory({
     language,
     key,
     broadcastId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **key** | [**string**] | Key | defaults to undefined|
 | **broadcastId** | [**number**] | broadcast id | defaults to undefined|
@@ -202,28 +187,24 @@ No authorization required
 ### Example
 
 ```typescript
-import {
-    ChatGatewayApi,
-    Configuration,
-    MethodChatSendMessageRequestDto
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { ChatGatewayApi
+    MethodChatSendMessageRequestDto } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new ChatGatewayApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new ChatGatewayApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let key: string; //Key (default to undefined)
 let broadcastId: number; // (default to undefined)
 let methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto; //
 
-const { status, data } = await apiInstance.methodChatGatewayControllerSend(
-    v,
+const { status, data } = await apiInstance.methodChatGatewayControllerSend({
     language,
     key,
     broadcastId,
     methodChatSendMessageRequestDto
-);
+  });
 ```
 
 ### Parameters
@@ -231,7 +212,6 @@ const { status, data } = await apiInstance.methodChatGatewayControllerSend(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **methodChatSendMessageRequestDto** | **MethodChatSendMessageRequestDto**|  | |
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **key** | [**string**] | Key | defaults to undefined|
 | **broadcastId** | [**number**] |  | defaults to undefined|

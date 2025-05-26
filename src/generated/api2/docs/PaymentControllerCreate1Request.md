@@ -1,4 +1,4 @@
-# PaymentControllerCreate1Request
+# create1Request
 
 
 ## Properties
@@ -22,9 +22,9 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PaymentControllerCreate1Request } from './api';
+import { create1Request } from './api';
 
-const instance: PaymentControllerCreate1Request = {
+const instance: create1Request = {
     v,
     language,
     project_id,

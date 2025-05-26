@@ -13,15 +13,13 @@ All URIs are relative to *http://localhost*
 ### Example
 
 ```typescript
-import {
-    ProjectApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { ProjectApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new ProjectApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new ProjectApi(sdkConfig.configuration);
 
-const { status, data } = await apiInstance.methodControllerLiveStatus();
+const { status, data } = await apiInstance.methodControllerLiveStatus({});
 ```
 
 ### Parameters

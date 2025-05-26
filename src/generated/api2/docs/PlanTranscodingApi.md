@@ -4,50 +4,45 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**sitePlanTranscodingControllerBuy1**](#siteplantranscodingcontrollerbuy1) | **POST** /method/plan_transcoding | Buy transcoder tariff|
-|[**sitePlanTranscodingControllerCancel1**](#siteplantranscodingcontrollercancel1) | **DELETE** /method/plan_transcoding | Remove after tariff|
-|[**sitePlanTranscodingControllerCheck1**](#siteplantranscodingcontrollercheck1) | **GET** /method/plan_transcoding/check | Check transcoding tariff before buy|
-|[**sitePlanTranscodingControllerGetDiscount1**](#siteplantranscodingcontrollergetdiscount1) | **GET** /method/plan_transcoding/get_discount | Get discount transcoding|
-|[**sitePlanTranscodingControllerList1**](#siteplantranscodingcontrollerlist1) | **GET** /method/plan_transcoding/list | Get list of transcoding tariffs|
-|[**sitePlanTranscodingControllerTariff1**](#siteplantranscodingcontrollertariff1) | **GET** /method/plan_transcoding | Get tariff for project|
+|[**buy1**](#buy1) | **POST** /method/plan_transcoding | Buy transcoder tariff|
+|[**cancel1**](#cancel1) | **DELETE** /method/plan_transcoding | Remove after tariff|
+|[**check1**](#check1) | **GET** /method/plan_transcoding/check | Check transcoding tariff before buy|
+|[**getDiscount1**](#getdiscount1) | **GET** /method/plan_transcoding/get_discount | Get discount transcoding|
+|[**list1**](#list1) | **GET** /method/plan_transcoding/list | Get list of transcoding tariffs|
+|[**tariff1**](#tariff1) | **GET** /method/plan_transcoding | Get tariff for project|
 
-# **sitePlanTranscodingControllerBuy1**
-> SuccessResponse sitePlanTranscodingControllerBuy1()
+# **buy1**
+> SuccessResponse buy1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanTranscodingApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanTranscodingApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanTranscodingApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanTranscodingApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let period: 'month' | 'year'; //Period (default to undefined)
 let planTranscodingId: number; //Transcoding plan id (default to undefined)
 let count: number; //Count flow (optional) (default to undefined)
 
-const { status, data } = await apiInstance.sitePlanTranscodingControllerBuy1(
-    v,
+const { status, data } = await apiInstance.buy1({
     language,
     projectId,
     period,
     planTranscodingId,
     count
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **period** | [**&#39;month&#39; | &#39;year&#39;**]**Array<&#39;month&#39; &#124; &#39;year&#39;>** | Period | defaults to undefined|
@@ -77,37 +72,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sitePlanTranscodingControllerCancel1**
-> SuccessResponse sitePlanTranscodingControllerCancel1()
+# **cancel1**
+> SuccessResponse cancel1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanTranscodingApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanTranscodingApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanTranscodingApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanTranscodingApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 
-const { status, data } = await apiInstance.sitePlanTranscodingControllerCancel1(
-    v,
+const { status, data } = await apiInstance.cancel1({
     language,
     projectId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 
@@ -134,37 +124,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sitePlanTranscodingControllerCheck1**
-> PlanTranscodingCheckResponse sitePlanTranscodingControllerCheck1()
+# **check1**
+> PlanTranscodingCheckResponse check1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanTranscodingApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanTranscodingApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanTranscodingApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanTranscodingApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 
-const { status, data } = await apiInstance.sitePlanTranscodingControllerCheck1(
-    v,
+const { status, data } = await apiInstance.check1({
     language,
     projectId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 
@@ -191,35 +176,30 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sitePlanTranscodingControllerGetDiscount1**
-> PlanTranscodingDiscountResponse sitePlanTranscodingControllerGetDiscount1()
+# **getDiscount1**
+> PlanTranscodingDiscountResponse getDiscount1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanTranscodingApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanTranscodingApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanTranscodingApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanTranscodingApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 
-const { status, data } = await apiInstance.sitePlanTranscodingControllerGetDiscount1(
-    v,
+const { status, data } = await apiInstance.getDiscount1({
     language
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 
 
@@ -245,35 +225,30 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sitePlanTranscodingControllerList1**
-> PlanTranscodingResponseDto sitePlanTranscodingControllerList1()
+# **list1**
+> PlanTranscodingResponseDto list1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanTranscodingApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanTranscodingApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanTranscodingApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanTranscodingApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 
-const { status, data } = await apiInstance.sitePlanTranscodingControllerList1(
-    v,
+const { status, data } = await apiInstance.list1({
     language
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 
 
@@ -299,37 +274,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sitePlanTranscodingControllerTariff1**
-> PlanTranscodingForProject sitePlanTranscodingControllerTariff1()
+# **tariff1**
+> PlanTranscodingForProject tariff1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanTranscodingApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanTranscodingApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanTranscodingApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanTranscodingApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 
-const { status, data } = await apiInstance.sitePlanTranscodingControllerTariff1(
-    v,
+const { status, data } = await apiInstance.tariff1({
     language,
     projectId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 

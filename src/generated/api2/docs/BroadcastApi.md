@@ -14,32 +14,27 @@ All URIs are relative to *http://localhost*
 ### Example
 
 ```typescript
-import {
-    BroadcastApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { BroadcastApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new BroadcastApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new BroadcastApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let broadcastId: number; //broadcast id (default to undefined)
 let key: string; //Chat token (default to undefined)
 
-const { status, data } = await apiInstance.methodBroadcastControllerRestreams(
-    v,
+const { status, data } = await apiInstance.methodBroadcastControllerRestreams({
     language,
     broadcastId,
     key
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **broadcastId** | [**number**] | broadcast id | defaults to undefined|
 | **key** | [**string**] | Chat token | defaults to undefined|
@@ -73,30 +68,25 @@ No authorization required
 ### Example
 
 ```typescript
-import {
-    BroadcastApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { BroadcastApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new BroadcastApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new BroadcastApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let key: string; // (default to undefined)
 
-const { status, data } = await apiInstance.methodBroadcastControllerTokenChannel(
-    v,
+const { status, data } = await apiInstance.methodBroadcastControllerTokenChannel({
     language,
     key
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **key** | [**string**] |  | defaults to undefined|
 

@@ -4,24 +4,21 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**siteMoneyFlowControllerList1**](#sitemoneyflowcontrollerlist1) | **GET** /method/money_flow/list | Transaction list for frontend|
+|[**list1**](#list1) | **GET** /method/money_flow/list | Transaction list for frontend|
 
-# **siteMoneyFlowControllerList1**
-> PaginatedResponseOfMoneyFlowResponse siteMoneyFlowControllerList1()
+# **list1**
+> PaginatedResponseOfMoneyFlowResponse list1()
 
 
 ### Example
 
 ```typescript
-import {
-    MoneyFlowApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { MoneyFlowApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new MoneyFlowApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new MoneyFlowApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let limit: number; //Number of results (optional) (default to 20)
@@ -31,8 +28,7 @@ let dateTo: string; //Date to (optional) (default to undefined)
 let type: string; //Filter code transaction. example 1 or 1,2,3 (optional) (default to '')
 let balanceType: string; //Filter code transaction. example 1 or 1,2,3 (optional) (default to '')
 
-const { status, data } = await apiInstance.siteMoneyFlowControllerList1(
-    v,
+const { status, data } = await apiInstance.list1({
     language,
     projectId,
     limit,
@@ -41,14 +37,13 @@ const { status, data } = await apiInstance.siteMoneyFlowControllerList1(
     dateTo,
     type,
     balanceType
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **limit** | [**number**] | Number of results | (optional) defaults to 20|

@@ -4,50 +4,45 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**sitePlanStorageControllerBuy1**](#siteplanstoragecontrollerbuy1) | **POST** /method/plan_storage | Buy storage tariff|
-|[**sitePlanStorageControllerCancel1**](#siteplanstoragecontrollercancel1) | **DELETE** /method/plan_storage | Remove next tariff|
-|[**sitePlanStorageControllerCheck1**](#siteplanstoragecontrollercheck1) | **GET** /method/plan_storage/check | Check storage tariff before buy|
-|[**sitePlanStorageControllerGetDiscount1**](#siteplanstoragecontrollergetdiscount1) | **GET** /method/plan_storage/get_discount | Get discount of storage|
-|[**sitePlanStorageControllerList1**](#siteplanstoragecontrollerlist1) | **GET** /method/plan_storage/list | Get info for storage tariff|
-|[**sitePlanStorageControllerTariff1**](#siteplanstoragecontrollertariff1) | **GET** /method/plan_storage | Get tariff for project|
+|[**buy1**](#buy1) | **POST** /method/plan_storage | Buy storage tariff|
+|[**cancel1**](#cancel1) | **DELETE** /method/plan_storage | Remove next tariff|
+|[**check1**](#check1) | **GET** /method/plan_storage/check | Check storage tariff before buy|
+|[**getDiscount1**](#getdiscount1) | **GET** /method/plan_storage/get_discount | Get discount of storage|
+|[**list1**](#list1) | **GET** /method/plan_storage/list | Get info for storage tariff|
+|[**tariff1**](#tariff1) | **GET** /method/plan_storage | Get tariff for project|
 
-# **sitePlanStorageControllerBuy1**
-> SuccessResponse sitePlanStorageControllerBuy1()
+# **buy1**
+> SuccessResponse buy1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanStorageApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanStorageApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanStorageApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanStorageApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let period: 'month' | 'year'; //Period (default to undefined)
 let planStorageId: number; //Storage plan id (default to undefined)
 let size: number; //Size (optional) (default to undefined)
 
-const { status, data } = await apiInstance.sitePlanStorageControllerBuy1(
-    v,
+const { status, data } = await apiInstance.buy1({
     language,
     projectId,
     period,
     planStorageId,
     size
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **period** | [**&#39;month&#39; | &#39;year&#39;**]**Array<&#39;month&#39; &#124; &#39;year&#39;>** | Period | defaults to undefined|
@@ -77,37 +72,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sitePlanStorageControllerCancel1**
-> SuccessResponse sitePlanStorageControllerCancel1()
+# **cancel1**
+> SuccessResponse cancel1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanStorageApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanStorageApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanStorageApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanStorageApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 
-const { status, data } = await apiInstance.sitePlanStorageControllerCancel1(
-    v,
+const { status, data } = await apiInstance.cancel1({
     language,
     projectId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 
@@ -134,37 +124,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sitePlanStorageControllerCheck1**
-> PlanStorageCheckResponse sitePlanStorageControllerCheck1()
+# **check1**
+> PlanStorageCheckResponse check1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanStorageApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanStorageApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanStorageApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanStorageApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 
-const { status, data } = await apiInstance.sitePlanStorageControllerCheck1(
-    v,
+const { status, data } = await apiInstance.check1({
     language,
     projectId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 
@@ -191,35 +176,30 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sitePlanStorageControllerGetDiscount1**
-> PlanStorageDiscountResponse sitePlanStorageControllerGetDiscount1()
+# **getDiscount1**
+> PlanStorageDiscountResponse getDiscount1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanStorageApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanStorageApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanStorageApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanStorageApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 
-const { status, data } = await apiInstance.sitePlanStorageControllerGetDiscount1(
-    v,
+const { status, data } = await apiInstance.getDiscount1({
     language
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 
 
@@ -245,35 +225,30 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sitePlanStorageControllerList1**
-> PlanStorageResponseDto sitePlanStorageControllerList1()
+# **list1**
+> PlanStorageResponseDto list1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanStorageApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanStorageApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanStorageApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanStorageApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 
-const { status, data } = await apiInstance.sitePlanStorageControllerList1(
-    v,
+const { status, data } = await apiInstance.list1({
     language
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 
 
@@ -299,37 +274,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sitePlanStorageControllerTariff1**
-> PlanStorageForProject sitePlanStorageControllerTariff1()
+# **tariff1**
+> PlanStorageForProject tariff1()
 
 
 ### Example
 
 ```typescript
-import {
-    PlanStorageApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PlanStorageApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PlanStorageApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PlanStorageApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 
-const { status, data } = await apiInstance.sitePlanStorageControllerTariff1(
-    v,
+const { status, data } = await apiInstance.tariff1({
     language,
     projectId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 

@@ -35,7 +35,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "gen-process": "rimraf ./src/generated/api2 && openapi-generator-cli generate -i ./temp/backend_v2.json -o ./src/generated/api2 -c ./openapi-generator-config.json && node ./scripts/postprocess-api.js",
     "gen:api-prod": "node ./scripts/openapi-fetcher.mjs napi.streamvi.io && npm run gen-process && node ./scripts/process-api.js",
-    "update-docs": "node ./scripts/update-all-docs.js",
     "build": "rimraf dist && tsc",
     "build:docs": "typedoc --out docs src",
     "lint": "eslint \"src/**/*.ts\"",

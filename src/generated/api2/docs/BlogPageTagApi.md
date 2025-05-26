@@ -4,43 +4,38 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**siteBlogPageTagControllerList1**](#siteblogpagetagcontrollerlist1) | **GET** /method/blog/tag/list | Get list of blog pages|
+|[**list1**](#list1) | **GET** /method/blog/tag/list | Get list of blog pages|
 
-# **siteBlogPageTagControllerList1**
-> PaginatedResponseOfSiteBlogPageTagResponse siteBlogPageTagControllerList1()
+# **list1**
+> PaginatedResponseOfSiteBlogPageTagResponse list1()
 
 
 ### Example
 
 ```typescript
-import {
-    BlogPageTagApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { BlogPageTagApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new BlogPageTagApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new BlogPageTagApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let s: string; //String for search (optional) (default to '')
 let limit: number; //Number of results (optional) (default to 20)
 let offset: number; //Page offset number (optional) (default to 0)
 
-const { status, data } = await apiInstance.siteBlogPageTagControllerList1(
-    v,
+const { status, data } = await apiInstance.list1({
     language,
     s,
     limit,
     offset
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **s** | [**string**] | String for search | (optional) defaults to ''|
 | **limit** | [**number**] | Number of results | (optional) defaults to 20|

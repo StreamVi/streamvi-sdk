@@ -4,41 +4,36 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**paySystemControllerCreateChallenge1**](#paysystemcontrollercreatechallenge1) | **GET** /method/pay-system/payoneer/create | |
-|[**paySystemControllerCreateUnitpay1**](#paysystemcontrollercreateunitpay1) | **GET** /method/pay-system/unitpay/create | |
-|[**paySystemControllerList1**](#paysystemcontrollerlist1) | **GET** /method/pay-system/list | Load available pay systems|
+|[**createChallenge1**](#createchallenge1) | **GET** /method/pay-system/payoneer/create | |
+|[**createUnitpay1**](#createunitpay1) | **GET** /method/pay-system/unitpay/create | |
+|[**list1**](#list1) | **GET** /method/pay-system/list | Load available pay systems|
 
-# **paySystemControllerCreateChallenge1**
-> SuccessResponse paySystemControllerCreateChallenge1()
+# **createChallenge1**
+> SuccessResponse createChallenge1()
 
 
 ### Example
 
 ```typescript
-import {
-    PaySystemApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PaySystemApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PaySystemApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PaySystemApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let paymentId: number; //Payment id (default to undefined)
 
-const { status, data } = await apiInstance.paySystemControllerCreateChallenge1(
-    v,
+const { status, data } = await apiInstance.createChallenge1({
     language,
     paymentId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 
@@ -64,37 +59,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **paySystemControllerCreateUnitpay1**
-> SuccessResponse paySystemControllerCreateUnitpay1()
+# **createUnitpay1**
+> SuccessResponse createUnitpay1()
 
 
 ### Example
 
 ```typescript
-import {
-    PaySystemApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PaySystemApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PaySystemApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PaySystemApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let paymentId: number; //Payment id (default to undefined)
 
-const { status, data } = await apiInstance.paySystemControllerCreateUnitpay1(
-    v,
+const { status, data } = await apiInstance.createUnitpay1({
     language,
     paymentId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 
@@ -120,22 +110,20 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **paySystemControllerList1**
-> ListOfPaySystemListResponse paySystemControllerList1()
+# **list1**
+> ListOfPaySystemListResponse list1()
 
 
 ### Example
 
 ```typescript
-import {
-    PaySystemApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PaySystemApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PaySystemApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PaySystemApi(sdkConfig.configuration);
 
-const { status, data } = await apiInstance.paySystemControllerList1();
+const { status, data } = await apiInstance.list1({});
 ```
 
 ### Parameters

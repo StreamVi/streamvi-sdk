@@ -4,24 +4,22 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**pullServersControllerGetPullServers1**](#pullserverscontrollergetpullservers1) | **GET** /method/pull-servers/list | Get pull servers|
+|[**getPullServers1**](#getpullservers1) | **GET** /method/pull-servers/list | Get pull servers|
 
-# **pullServersControllerGetPullServers1**
-> PullServerListResponse pullServersControllerGetPullServers1()
+# **getPullServers1**
+> PullServerListResponse getPullServers1()
 
 
 ### Example
 
 ```typescript
-import {
-    PullServersApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PullServersApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PullServersApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PullServersApi(sdkConfig.configuration);
 
-const { status, data } = await apiInstance.pullServersControllerGetPullServers1();
+const { status, data } = await apiInstance.getPullServers1({});
 ```
 
 ### Parameters

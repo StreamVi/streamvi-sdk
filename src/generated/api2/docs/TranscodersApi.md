@@ -4,33 +4,31 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**transcodersControllerAdd1**](#transcoderscontrolleradd1) | **POST** /method/transcoder/add | Transcoder create|
-|[**transcodersControllerDelete1**](#transcoderscontrollerdelete1) | **POST** /method/transcoder/delete | Transcoder delete|
-|[**transcodersControllerList1**](#transcoderscontrollerlist1) | **GET** /method/transcoder/list | List of transcoder|
-|[**transcodersControllerStop1**](#transcoderscontrollerstop1) | **POST** /method/transcoder/stop | Transcoder stop|
-|[**transcodersControllerUpdate1**](#transcoderscontrollerupdate1) | **POST** /method/transcoder/update | Transcoder update|
+|[**add1**](#add1) | **POST** /method/transcoder/add | Transcoder create|
+|[**delete1**](#delete1) | **POST** /method/transcoder/delete | Transcoder delete|
+|[**list1**](#list1) | **GET** /method/transcoder/list | List of transcoder|
+|[**stop1**](#stop1) | **POST** /method/transcoder/stop | Transcoder stop|
+|[**update1**](#update1) | **POST** /method/transcoder/update | Transcoder update|
 
-# **transcodersControllerAdd1**
-> number transcodersControllerAdd1(siteTranscoderCreateDto)
+# **add1**
+> number add1(siteTranscoderCreateDto)
 
 
 ### Example
 
 ```typescript
-import {
-    TranscodersApi,
-    Configuration,
-    SiteTranscoderCreateDto
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { TranscodersApi
+    SiteTranscoderCreateDto } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new TranscodersApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new TranscodersApi(sdkConfig.configuration);
 
 let siteTranscoderCreateDto: SiteTranscoderCreateDto; //
 
-const { status, data } = await apiInstance.transcodersControllerAdd1(
+const { status, data } = await apiInstance.add1({
     siteTranscoderCreateDto
-);
+  });
 ```
 
 ### Parameters
@@ -62,27 +60,25 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **transcodersControllerDelete1**
-> SuccessResponse transcodersControllerDelete1(siteTranscoderItemDto)
+# **delete1**
+> SuccessResponse delete1(siteTranscoderItemDto)
 
 
 ### Example
 
 ```typescript
-import {
-    TranscodersApi,
-    Configuration,
-    SiteTranscoderItemDto
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { TranscodersApi
+    SiteTranscoderItemDto } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new TranscodersApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new TranscodersApi(sdkConfig.configuration);
 
 let siteTranscoderItemDto: SiteTranscoderItemDto; //
 
-const { status, data } = await apiInstance.transcodersControllerDelete1(
+const { status, data } = await apiInstance.delete1({
     siteTranscoderItemDto
-);
+  });
 ```
 
 ### Parameters
@@ -114,37 +110,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **transcodersControllerList1**
-> SiteTranscoderListResponse transcodersControllerList1()
+# **list1**
+> SiteTranscoderListResponse list1()
 
 
 ### Example
 
 ```typescript
-import {
-    TranscodersApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { TranscodersApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new TranscodersApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new TranscodersApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 
-const { status, data } = await apiInstance.transcodersControllerList1(
-    v,
+const { status, data } = await apiInstance.list1({
     language,
     projectId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 
@@ -171,27 +162,25 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **transcodersControllerStop1**
-> SuccessResponse transcodersControllerStop1(siteTranscoderItemDto)
+# **stop1**
+> SuccessResponse stop1(siteTranscoderItemDto)
 
 
 ### Example
 
 ```typescript
-import {
-    TranscodersApi,
-    Configuration,
-    SiteTranscoderItemDto
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { TranscodersApi
+    SiteTranscoderItemDto } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new TranscodersApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new TranscodersApi(sdkConfig.configuration);
 
 let siteTranscoderItemDto: SiteTranscoderItemDto; //
 
-const { status, data } = await apiInstance.transcodersControllerStop1(
+const { status, data } = await apiInstance.stop1({
     siteTranscoderItemDto
-);
+  });
 ```
 
 ### Parameters
@@ -223,27 +212,25 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **transcodersControllerUpdate1**
-> SuccessResponse transcodersControllerUpdate1(siteTranscoderUpdateDto)
+# **update1**
+> SuccessResponse update1(siteTranscoderUpdateDto)
 
 
 ### Example
 
 ```typescript
-import {
-    TranscodersApi,
-    Configuration,
-    SiteTranscoderUpdateDto
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { TranscodersApi
+    SiteTranscoderUpdateDto } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new TranscodersApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new TranscodersApi(sdkConfig.configuration);
 
 let siteTranscoderUpdateDto: SiteTranscoderUpdateDto; //
 
-const { status, data } = await apiInstance.transcodersControllerUpdate1(
+const { status, data } = await apiInstance.update1({
     siteTranscoderUpdateDto
-);
+  });
 ```
 
 ### Parameters

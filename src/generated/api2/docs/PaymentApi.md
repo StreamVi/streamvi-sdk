@@ -4,43 +4,38 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**paymentControllerCreate1**](#paymentcontrollercreate1) | **POST** /method/payment | Create payment item for pay system|
-|[**paymentControllerGetStatus1**](#paymentcontrollergetstatus1) | **GET** /method/payment | |
-|[**paymentControllerList1**](#paymentcontrollerlist1) | **GET** /method/payment/list | |
+|[**create1**](#create1) | **POST** /method/payment | Create payment item for pay system|
+|[**getStatus1**](#getstatus1) | **GET** /method/payment | |
+|[**list1**](#list1) | **GET** /method/payment/list | |
 
-# **paymentControllerCreate1**
-> PaymentCreateResponse paymentControllerCreate1(paymentControllerCreate1Request)
+# **create1**
+> PaymentCreateResponse create1(create1Request)
 
 
 ### Example
 
 ```typescript
-import {
-    PaymentApi,
-    Configuration,
-    PaymentControllerCreate1Request
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PaymentApi
+    create1Request } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PaymentApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PaymentApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let paymentControllerCreate1Request: PaymentControllerCreate1Request; //
+let create1Request: create1Request; //
 
-const { status, data } = await apiInstance.paymentControllerCreate1(
-    v,
+const { status, data } = await apiInstance.create1({
     language,
-    paymentControllerCreate1Request
-);
+    create1Request
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **paymentControllerCreate1Request** | **PaymentControllerCreate1Request**|  | |
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
+| **create1Request** | **create1Request**|  | |
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 
 
@@ -65,39 +60,34 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **paymentControllerGetStatus1**
-> PaymentStatusResponse paymentControllerGetStatus1()
+# **getStatus1**
+> PaymentStatusResponse getStatus1()
 
 
 ### Example
 
 ```typescript
-import {
-    PaymentApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PaymentApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PaymentApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PaymentApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let payId: number; //Pay order id (default to undefined)
 let projectId: number; //Project id (default to undefined)
 
-const { status, data } = await apiInstance.paymentControllerGetStatus1(
-    v,
+const { status, data } = await apiInstance.getStatus1({
     language,
     payId,
     projectId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **payId** | [**number**] | Pay order id | defaults to undefined|
 | **projectId** | [**number**] | Project id | defaults to undefined|
@@ -124,39 +114,34 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **paymentControllerList1**
-> paymentControllerList1()
+# **list1**
+> list1()
 
 
 ### Example
 
 ```typescript
-import {
-    PaymentApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { PaymentApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new PaymentApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new PaymentApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let pageSize: number; //Number of results (optional) (default to 20)
 let page: number; //Page number (optional) (default to 1)
 
-const { status, data } = await apiInstance.paymentControllerList1(
-    v,
+const { status, data } = await apiInstance.list1({
     language,
     pageSize,
     page
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **pageSize** | [**number**] | Number of results | (optional) defaults to 20|
 | **page** | [**number**] | Page number | (optional) defaults to 1|

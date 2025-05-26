@@ -4,24 +4,21 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**siteTransactionsControllerList1**](#sitetransactionscontrollerlist1) | **GET** /method/transactions/list | Transaction list for frontend|
+|[**list1**](#list1) | **GET** /method/transactions/list | Transaction list for frontend|
 
-# **siteTransactionsControllerList1**
-> PaginatedResponseOfTransactionResponse siteTransactionsControllerList1()
+# **list1**
+> PaginatedResponseOfTransactionResponse list1()
 
 
 ### Example
 
 ```typescript
-import {
-    TransactionsApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { TransactionsApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new TransactionsApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new TransactionsApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let limit: number; //Number of results (optional) (default to 20)
@@ -30,8 +27,7 @@ let dateFrom: string; //Date from (optional) (default to undefined)
 let dateTo: string; //Date to (optional) (default to undefined)
 let code: string; //Filter code transaction. example 1 or 1,2,3 (optional) (default to '')
 
-const { status, data } = await apiInstance.siteTransactionsControllerList1(
-    v,
+const { status, data } = await apiInstance.list1({
     language,
     projectId,
     limit,
@@ -39,14 +35,13 @@ const { status, data } = await apiInstance.siteTransactionsControllerList1(
     dateFrom,
     dateTo,
     code
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **limit** | [**number**] | Number of results | (optional) defaults to 20|

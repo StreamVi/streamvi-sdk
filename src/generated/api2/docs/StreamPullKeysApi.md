@@ -4,45 +4,40 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**streamPullKeysSiteControllerCheck1**](#streampullkeyssitecontrollercheck1) | **GET** /method/stream-pull-keys/check | Check key|
-|[**streamPullKeysSiteControllerCreate1**](#streampullkeyssitecontrollercreate1) | **POST** /method/stream-pull-keys | Create key|
-|[**streamPullKeysSiteControllerGet1**](#streampullkeyssitecontrollerget1) | **GET** /method/stream-pull-keys | List keys|
-|[**streamPullKeysSiteControllerRemove1**](#streampullkeyssitecontrollerremove1) | **DELETE** /method/stream-pull-keys | Delete key|
-|[**streamPullKeysSiteControllerUpdate1**](#streampullkeyssitecontrollerupdate1) | **PUT** /method/stream-pull-keys | Update key|
+|[**check1**](#check1) | **GET** /method/stream-pull-keys/check | Check key|
+|[**create1**](#create1) | **POST** /method/stream-pull-keys | Create key|
+|[**get1**](#get1) | **GET** /method/stream-pull-keys | List keys|
+|[**remove1**](#remove1) | **DELETE** /method/stream-pull-keys | Delete key|
+|[**update1**](#update1) | **PUT** /method/stream-pull-keys | Update key|
 
-# **streamPullKeysSiteControllerCheck1**
-> CheckPullKeyResponse streamPullKeysSiteControllerCheck1()
+# **check1**
+> CheckPullKeyResponse check1()
 
 
 ### Example
 
 ```typescript
-import {
-    StreamPullKeysApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { StreamPullKeysApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new StreamPullKeysApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new StreamPullKeysApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let key: string; //Key (default to undefined)
 
-const { status, data } = await apiInstance.streamPullKeysSiteControllerCheck1(
-    v,
+const { status, data } = await apiInstance.check1({
     language,
     projectId,
     key
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **key** | [**string**] | Key | defaults to undefined|
@@ -70,27 +65,25 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **streamPullKeysSiteControllerCreate1**
-> CreatePullKeyResponse streamPullKeysSiteControllerCreate1(createPullKeyRequest)
+# **create1**
+> CreatePullKeyResponse create1(createPullKeyRequest)
 
 
 ### Example
 
 ```typescript
-import {
-    StreamPullKeysApi,
-    Configuration,
-    CreatePullKeyRequest
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { StreamPullKeysApi
+    CreatePullKeyRequest } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new StreamPullKeysApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new StreamPullKeysApi(sdkConfig.configuration);
 
 let createPullKeyRequest: CreatePullKeyRequest; //
 
-const { status, data } = await apiInstance.streamPullKeysSiteControllerCreate1(
+const { status, data } = await apiInstance.create1({
     createPullKeyRequest
-);
+  });
 ```
 
 ### Parameters
@@ -122,37 +115,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **streamPullKeysSiteControllerGet1**
-> PullKeyListResponse streamPullKeysSiteControllerGet1()
+# **get1**
+> PullKeyListResponse get1()
 
 
 ### Example
 
 ```typescript
-import {
-    StreamPullKeysApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { StreamPullKeysApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new StreamPullKeysApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new StreamPullKeysApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 
-const { status, data } = await apiInstance.streamPullKeysSiteControllerGet1(
-    v,
+const { status, data } = await apiInstance.get1({
     language,
     projectId
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 
@@ -179,39 +167,34 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **streamPullKeysSiteControllerRemove1**
-> SuccessResponse streamPullKeysSiteControllerRemove1()
+# **remove1**
+> SuccessResponse remove1()
 
 
 ### Example
 
 ```typescript
-import {
-    StreamPullKeysApi,
-    Configuration
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { StreamPullKeysApi } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new StreamPullKeysApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new StreamPullKeysApi(sdkConfig.configuration);
 
-let v: '1' | '2' | '3'; //Version (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let key: string; //Key (default to undefined)
 
-const { status, data } = await apiInstance.streamPullKeysSiteControllerRemove1(
-    v,
+const { status, data } = await apiInstance.remove1({
     language,
     projectId,
     key
-);
+  });
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **key** | [**string**] | Key | defaults to undefined|
@@ -239,27 +222,25 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **streamPullKeysSiteControllerUpdate1**
-> SuccessResponse streamPullKeysSiteControllerUpdate1(updatePullKeyRequest)
+# **update1**
+> SuccessResponse update1(updatePullKeyRequest)
 
 
 ### Example
 
 ```typescript
-import {
-    StreamPullKeysApi,
-    Configuration,
-    UpdatePullKeyRequest
-} from './api';
+import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
+import { StreamPullKeysApi
+    UpdatePullKeyRequest } from './api';
 
-const configuration = new Configuration();
-const apiInstance = new StreamPullKeysApi(configuration);
+const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
+const apiInstance = new StreamPullKeysApi(sdkConfig.configuration);
 
 let updatePullKeyRequest: UpdatePullKeyRequest; //
 
-const { status, data } = await apiInstance.streamPullKeysSiteControllerUpdate1(
+const { status, data } = await apiInstance.update1({
     updatePullKeyRequest
-);
+  });
 ```
 
 ### Parameters
