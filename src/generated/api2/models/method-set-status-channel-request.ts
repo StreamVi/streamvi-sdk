@@ -25,7 +25,13 @@ export interface MethodSetStatusChannelRequest {
      * @type {string}
      * @memberof MethodSetStatusChannelRequest
      */
-    'v': VEnum;
+    'v': MethodSetStatusChannelRequestVEnum;
+    /**
+     * Current language
+     * @type {string}
+     * @memberof MethodSetStatusChannelRequest
+     */
+    'language'?: MethodSetStatusChannelRequestLanguageEnum;
     /**
      * Channel id
      * @type {number}
@@ -38,29 +44,19 @@ export interface MethodSetStatusChannelRequest {
      * @memberof MethodSetStatusChannelRequest
      */
     'status': boolean;
-    /**
-     * Current language
-     * @type {string}
-     * @memberof MethodSetStatusChannelRequest
-     */
-    'language'?: LanguageEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const MethodSetStatusChannelRequestVEnum = {
+    _1: '1'
+} as const;
+
+export type MethodSetStatusChannelRequestVEnum = typeof MethodSetStatusChannelRequestVEnum[keyof typeof MethodSetStatusChannelRequestVEnum];
+export const MethodSetStatusChannelRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type MethodSetStatusChannelRequestLanguageEnum = typeof MethodSetStatusChannelRequestLanguageEnum[keyof typeof MethodSetStatusChannelRequestLanguageEnum];
 
 

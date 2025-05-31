@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CheckPullKeyResponse } from './api';
+import { CheckPullKeyResponse } from 'streamvi-api-client';
 
 const instance: CheckPullKeyResponse = {
     transport,

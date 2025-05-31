@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **string** | Status of tokens | [default to StatusEnum_unused]
+**status** | **string** | Status of tokens | [default to StatusEnum_Unused]
 
 ## Example
 
 ```typescript
-import { SiteSearchChannelTokensDto } from './api';
+import { SiteSearchChannelTokensDto } from 'streamvi-api-client';
 
 const instance: SiteSearchChannelTokensDto = {
     status,

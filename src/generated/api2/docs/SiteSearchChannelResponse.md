@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;SiteSearchChannelItem&gt;**](SiteSearchChannelItem.md) | Array of items | [default to undefined]
-**platforms** | [**Array&lt;SiteSearchChannelPlatformsDto&gt;**](SiteSearchChannelPlatformsDto.md) |  | [default to undefined]
+**results** | [**Array&lt;SearchChannelItem&gt;**](SearchChannelItem.md) | Array of items | [default to undefined]
+**platforms** | [**Array&lt;SearchChannelPlatformsDto&gt;**](SearchChannelPlatformsDto.md) |  | [default to undefined]
 **limit** | **number** |  | [default to undefined]
 **offset** | **number** |  | [default to undefined]
 **total** | **number** |  | [default to undefined]
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SiteSearchChannelResponse } from './api';
+import { SiteSearchChannelResponse } from 'streamvi-api-client';
 
 const instance: SiteSearchChannelResponse = {
     results,

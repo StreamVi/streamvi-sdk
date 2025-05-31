@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -31,27 +31,25 @@ import type { SitePromoCheckResponse } from '../models';
  * PromoApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const PromoApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Apply code
-         * @param {apply1VEnum} v Version
-         * @param {apply1LanguageEnum} language Current language
+         * @param {PromoApplyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} code Code
+         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apply1: async (v: apply1VEnum, language: apply1LanguageEnum, projectId: number, code: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('apply1', 'v', v)
+        promoApplyV1: async (language: PromoApplyV1LanguageEnum, projectId: number, code: number, v?: PromoApplyV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('apply1', 'language', language)
+            assertParamExists('promoApplyV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('apply1', 'projectId', projectId)
+            assertParamExists('promoApplyV1', 'projectId', projectId)
             // verify required parameter 'code' is not null or undefined
-            assertParamExists('apply1', 'code', code)
+            assertParamExists('promoApplyV1', 'code', code)
             const localVarPath = `/method/promo/apply`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -66,6 +64,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -94,22 +94,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Check code
-         * @param {check1VEnum} v Version
-         * @param {check1LanguageEnum} language Current language
+         * @param {PromoCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} code Code
+         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check1: async (v: check1VEnum, language: check1LanguageEnum, projectId: number, code: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('check1', 'v', v)
+        promoCheckV1: async (language: PromoCheckV1LanguageEnum, projectId: number, code: number, v?: PromoCheckV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('check1', 'language', language)
+            assertParamExists('promoCheckV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('check1', 'projectId', projectId)
+            assertParamExists('promoCheckV1', 'projectId', projectId)
             // verify required parameter 'code' is not null or undefined
-            assertParamExists('check1', 'code', code)
+            assertParamExists('promoCheckV1', 'code', code)
             const localVarPath = `/method/promo/check`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -124,6 +122,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -156,39 +156,39 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * PromoApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const PromoApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = PromoApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Apply code
-         * @param {apply1VEnum} v Version
-         * @param {apply1LanguageEnum} language Current language
+         * @param {PromoApplyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} code Code
+         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apply1(v: apply1VEnum, language: apply1LanguageEnum, projectId: number, code: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePromoApplyResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apply1(v, language, projectId, code, options);
+        async promoApplyV1(language: PromoApplyV1LanguageEnum, projectId: number, code: number, v?: PromoApplyV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePromoApplyResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.promoApplyV1(language, projectId, code, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PromoApi.apply1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PromoApi.promoApplyV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Check code
-         * @param {check1VEnum} v Version
-         * @param {check1LanguageEnum} language Current language
+         * @param {PromoCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} code Code
+         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async check1(v: check1VEnum, language: check1LanguageEnum, projectId: number, code: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePromoCheckResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.check1(v, language, projectId, code, options);
+        async promoCheckV1(language: PromoCheckV1LanguageEnum, projectId: number, code: number, v?: PromoCheckV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePromoCheckResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.promoCheckV1(language, projectId, code, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PromoApi.check1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PromoApi.promoCheckV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -198,104 +198,128 @@ export const fp = function(configuration?: Configuration) {
  * PromoApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const PromoApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = PromoApiFp(configuration)
     return {
         /**
          * 
          * @summary Apply code
-         * @param {apply1Request} requestParameters Request parameters.
+         * @param {PromoApiPromoApplyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apply1(requestParameters: apply1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoApplyResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: apply1VEnum = requestParameters.v || apply1VEnum._1;
-            return localVarFp.apply1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.code, options).then((request) => request(axios, basePath));
+        promoApplyV1(requestParameters: PromoApiPromoApplyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoApplyResponse> {
+            return localVarFp.promoApplyV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Check code
-         * @param {check1Request} requestParameters Request parameters.
+         * @param {PromoApiPromoCheckV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check1(requestParameters: check1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoCheckResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: check1VEnum = requestParameters.v || check1VEnum._1;
-            return localVarFp.check1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.code, options).then((request) => request(axios, basePath));
+        promoCheckV1(requestParameters: PromoApiPromoCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoCheckResponse> {
+            return localVarFp.promoCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for apply1 operation in PromoApi.
+ * PromoApi - interface
  * @export
- * @interface apply1Request
+ * @interface PromoApi
  */
-export interface apply1Request {
+export interface PromoApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof apply1
+     * 
+     * @summary Apply code
+     * @param {PromoApiPromoApplyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PromoApiInterface
      */
-    readonly v?: apply1VEnum
+    promoApplyV1(requestParameters: PromoApiPromoApplyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoApplyResponse>;
 
     /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof apply1
+     * 
+     * @summary Check code
+     * @param {PromoApiPromoCheckV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PromoApiInterface
      */
-    readonly language: apply1LanguageEnum
+    promoCheckV1(requestParameters: PromoApiPromoCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoCheckResponse>;
 
-    /**
-     * Project id
-     * @type {number}
-     * @memberof apply1
-     */
-    readonly projectId: number
-
-    /**
-     * Code
-     * @type {number}
-     * @memberof apply1
-     */
-    readonly code: number
 }
 
 /**
- * Request parameters for check1 operation in PromoApi.
+ * Request parameters for promoApplyV1 operation in PromoApi.
  * @export
- * @interface check1Request
+ * @interface PromoApiPromoApplyV1Request
  */
-export interface check1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof check1
-     */
-    readonly v?: check1VEnum
-
+export interface PromoApiPromoApplyV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof check1
+     * @memberof PromoApiPromoApplyV1
      */
-    readonly language: check1LanguageEnum
+    readonly language: PromoApplyV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof check1
+     * @memberof PromoApiPromoApplyV1
      */
     readonly projectId: number
 
     /**
      * Code
      * @type {number}
-     * @memberof check1
+     * @memberof PromoApiPromoApplyV1
      */
     readonly code: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PromoApiPromoApplyV1
+     */
+    readonly v?: PromoApplyV1VEnum
+}
+
+/**
+ * Request parameters for promoCheckV1 operation in PromoApi.
+ * @export
+ * @interface PromoApiPromoCheckV1Request
+ */
+export interface PromoApiPromoCheckV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PromoApiPromoCheckV1
+     */
+    readonly language: PromoCheckV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof PromoApiPromoCheckV1
+     */
+    readonly projectId: number
+
+    /**
+     * Code
+     * @type {number}
+     * @memberof PromoApiPromoCheckV1
+     */
+    readonly code: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PromoApiPromoCheckV1
+     */
+    readonly v?: PromoCheckV1VEnum
 }
 
 /**
@@ -304,69 +328,65 @@ export interface check1Request {
  * @class PromoApi
  * @extends {BaseAPI}
  */
-export class PromoApi extends BaseAPI {
+export class PromoApi extends BaseAPI implements PromoApiInterface {
     /**
      * 
      * @summary Apply code
-     * @param {apply1Request} requestParameters Request parameters.
+     * @param {PromoApiPromoApplyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PromoApi
      */
-    public apply1(requestParameters: apply1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: apply1VEnum = requestParameters.v || apply1VEnum._1;
-        return fp(this.configuration).apply1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
+    public promoApplyV1(requestParameters: PromoApiPromoApplyV1Request, options?: RawAxiosRequestConfig) {
+        return PromoApiFp(this.configuration).promoApplyV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Check code
-     * @param {check1Request} requestParameters Request parameters.
+     * @param {PromoApiPromoCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PromoApi
      */
-    public check1(requestParameters: check1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: check1VEnum = requestParameters.v || check1VEnum._1;
-        return fp(this.configuration).check1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
+    public promoCheckV1(requestParameters: PromoApiPromoCheckV1Request, options?: RawAxiosRequestConfig) {
+        return PromoApiFp(this.configuration).promoCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum apply1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PromoApplyV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PromoApplyV1LanguageEnum = typeof PromoApplyV1LanguageEnum[keyof typeof PromoApplyV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum apply1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PromoApplyV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PromoApplyV1VEnum = typeof PromoApplyV1VEnum[keyof typeof PromoApplyV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum check1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PromoCheckV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PromoCheckV1LanguageEnum = typeof PromoCheckV1LanguageEnum[keyof typeof PromoCheckV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum check1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PromoCheckV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PromoCheckV1VEnum = typeof PromoCheckV1VEnum[keyof typeof PromoCheckV1VEnum];

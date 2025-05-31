@@ -43,7 +43,7 @@ export interface SiteSearchChannelPlatformDto {
      * @type {string}
      * @memberof SiteSearchChannelPlatformDto
      */
-    'extension': ExtensionEnum;
+    'extension': SiteSearchChannelPlatformDtoExtensionEnum;
     /**
      * Is edit name
      * @type {number}
@@ -52,13 +52,11 @@ export interface SiteSearchChannelPlatformDto {
     'edit_name': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ExtensionEnum {
-    png = 'png',
-    svg = 'svg'
-}
+export const SiteSearchChannelPlatformDtoExtensionEnum = {
+    Png: 'png',
+    Svg: 'svg'
+} as const;
+
+export type SiteSearchChannelPlatformDtoExtensionEnum = typeof SiteSearchChannelPlatformDtoExtensionEnum[keyof typeof SiteSearchChannelPlatformDtoExtensionEnum];
 
 

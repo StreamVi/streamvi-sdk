@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -35,24 +35,22 @@ import type { SuccessResponse } from '../models';
  * NotifyUserApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const NotifyUserApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Delete mobile token from user
-         * @param {delMobileToken1VEnum} v Version
-         * @param {delMobileToken1LanguageEnum} language Current language
+         * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Current language
          * @param {string} token Token in mobile app
+         * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delMobileToken1: async (v: delMobileToken1VEnum, language: delMobileToken1LanguageEnum, token: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('delMobileToken1', 'v', v)
+        notifyUserDelMobileTokenV1: async (language: NotifyUserDelMobileTokenV1LanguageEnum, token: string, v?: NotifyUserDelMobileTokenV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('delMobileToken1', 'language', language)
+            assertParamExists('notifyUserDelMobileTokenV1', 'language', language)
             // verify required parameter 'token' is not null or undefined
-            assertParamExists('delMobileToken1', 'token', token)
+            assertParamExists('notifyUserDelMobileTokenV1', 'token', token)
             const localVarPath = `/method/notify_user/del_mobile_token`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -67,6 +65,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -90,64 +90,18 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get user notify settings
-         * @param {get1VEnum} v Version
-         * @param {number} projectId Project id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        get1: async (v: get1VEnum, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('get1', 'v', v)
-            // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('get1', 'projectId', projectId)
-            const localVarPath = `/method/notify_user/setting`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-
-            if (projectId !== undefined) {
-                localVarQueryParameter['project_id'] = projectId;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary Get user screen notify
-         * @param {getScreen1VEnum} v Version
-         * @param {getScreen1LanguageEnum} language Current language
+         * @param {NotifyUserGetScreenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getScreen1: async (v: getScreen1VEnum, language: getScreen1LanguageEnum, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('getScreen1', 'v', v)
+        notifyUserGetScreenV1: async (language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('getScreen1', 'language', language)
+            assertParamExists('notifyUserGetScreenV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('getScreen1', 'projectId', projectId)
+            assertParamExists('notifyUserGetScreenV1', 'projectId', projectId)
             const localVarPath = `/method/notify_user/screen`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -162,6 +116,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -185,17 +141,59 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Remove user screen notify
-         * @param {removeScreen1VEnum} v Version
+         * @summary Get user notify settings
          * @param {number} projectId Project id
+         * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removeScreen1: async (v: removeScreen1VEnum, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('removeScreen1', 'v', v)
+        notifyUserGetV1: async (projectId: number, v?: NotifyUserGetV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('removeScreen1', 'projectId', projectId)
+            assertParamExists('notifyUserGetV1', 'projectId', projectId)
+            const localVarPath = `/method/notify_user/setting`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Remove user screen notify
+         * @param {number} projectId Project id
+         * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notifyUserRemoveScreenV1: async (projectId: number, v?: NotifyUserRemoveScreenV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('notifyUserRemoveScreenV1', 'projectId', projectId)
             const localVarPath = `/method/notify_user/screen`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -210,6 +208,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (projectId !== undefined) {
@@ -230,16 +230,14 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Set user notify settings
-         * @param {set1VEnum} v Version
          * @param {SiteSetNotifyUserRequest} siteSetNotifyUserRequest Set user notify settings
+         * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        set1: async (v: set1VEnum, siteSetNotifyUserRequest: SiteSetNotifyUserRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('set1', 'v', v)
+        notifyUserSetV1: async (siteSetNotifyUserRequest: SiteSetNotifyUserRequest, v?: NotifyUserSetV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteSetNotifyUserRequest' is not null or undefined
-            assertParamExists('set1', 'siteSetNotifyUserRequest', siteSetNotifyUserRequest)
+            assertParamExists('notifyUserSetV1', 'siteSetNotifyUserRequest', siteSetNotifyUserRequest)
             const localVarPath = `/method/notify_user/setting`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -254,6 +252,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
 
@@ -277,79 +277,79 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * NotifyUserApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const NotifyUserApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = NotifyUserApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Delete mobile token from user
-         * @param {delMobileToken1VEnum} v Version
-         * @param {delMobileToken1LanguageEnum} language Current language
+         * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Current language
          * @param {string} token Token in mobile app
+         * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async delMobileToken1(v: delMobileToken1VEnum, language: delMobileToken1LanguageEnum, token: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delMobileToken1(v, language, token, options);
+        async notifyUserDelMobileTokenV1(language: NotifyUserDelMobileTokenV1LanguageEnum, token: string, v?: NotifyUserDelMobileTokenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserDelMobileTokenV1(language, token, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.delMobileToken1']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary Get user notify settings
-         * @param {get1VEnum} v Version
-         * @param {number} projectId Project id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async get1(v: get1VEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteNotifyUserResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.get1(v, projectId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.get1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.notifyUserDelMobileTokenV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get user screen notify
-         * @param {getScreen1VEnum} v Version
-         * @param {getScreen1LanguageEnum} language Current language
+         * @param {NotifyUserGetScreenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getScreen1(v: getScreen1VEnum, language: getScreen1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteScreenNotifyUserResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getScreen1(v, language, projectId, options);
+        async notifyUserGetScreenV1(language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteScreenNotifyUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserGetScreenV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.getScreen1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.notifyUserGetScreenV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get user notify settings
+         * @param {number} projectId Project id
+         * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async notifyUserGetV1(projectId: number, v?: NotifyUserGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteNotifyUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserGetV1(projectId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.notifyUserGetV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Remove user screen notify
-         * @param {removeScreen1VEnum} v Version
          * @param {number} projectId Project id
+         * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async removeScreen1(v: removeScreen1VEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.removeScreen1(v, projectId, options);
+        async notifyUserRemoveScreenV1(projectId: number, v?: NotifyUserRemoveScreenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserRemoveScreenV1(projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.removeScreen1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.notifyUserRemoveScreenV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Set user notify settings
-         * @param {set1VEnum} v Version
          * @param {SiteSetNotifyUserRequest} siteSetNotifyUserRequest Set user notify settings
+         * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async set1(v: set1VEnum, siteSetNotifyUserRequest: SiteSetNotifyUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.set1(v, siteSetNotifyUserRequest, options);
+        async notifyUserSetV1(siteSetNotifyUserRequest: SiteSetNotifyUserRequest, v?: NotifyUserSetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserSetV1(siteSetNotifyUserRequest, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.set1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.notifyUserSetV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -359,189 +359,237 @@ export const fp = function(configuration?: Configuration) {
  * NotifyUserApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const NotifyUserApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = NotifyUserApiFp(configuration)
     return {
         /**
          * 
          * @summary Delete mobile token from user
-         * @param {delMobileToken1Request} requestParameters Request parameters.
+         * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delMobileToken1(requestParameters: delMobileToken1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: delMobileToken1VEnum = requestParameters.v || delMobileToken1VEnum._1;
-            return localVarFp.delMobileToken1(actualV, requestParameters.language, requestParameters.token, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Get user notify settings
-         * @param {get1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteNotifyUserResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: get1VEnum = requestParameters.v || get1VEnum._1;
-            return localVarFp.get1(actualV, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.notifyUserDelMobileTokenV1(requestParameters.language, requestParameters.token, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get user screen notify
-         * @param {getScreen1Request} requestParameters Request parameters.
+         * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getScreen1(requestParameters: getScreen1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: getScreen1VEnum = requestParameters.v || getScreen1VEnum._1;
-            return localVarFp.getScreen1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse> {
+            return localVarFp.notifyUserGetScreenV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get user notify settings
+         * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteNotifyUserResponse> {
+            return localVarFp.notifyUserGetV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Remove user screen notify
-         * @param {removeScreen1Request} requestParameters Request parameters.
+         * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removeScreen1(requestParameters: removeScreen1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: removeScreen1VEnum = requestParameters.v || removeScreen1VEnum._1;
-            return localVarFp.removeScreen1(actualV, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.notifyUserRemoveScreenV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Set user notify settings
-         * @param {set1Request} requestParameters Request parameters.
+         * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        set1(requestParameters: set1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: set1VEnum = requestParameters.v || set1VEnum._1;
-            return localVarFp.set1(actualV, requestParameters.siteSetNotifyUserRequest, options).then((request) => request(axios, basePath));
+        notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.notifyUserSetV1(requestParameters.siteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for delMobileToken1 operation in NotifyUserApi.
+ * NotifyUserApi - interface
  * @export
- * @interface delMobileToken1Request
+ * @interface NotifyUserApi
  */
-export interface delMobileToken1Request {
+export interface NotifyUserApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof delMobileToken1
+     * 
+     * @summary Delete mobile token from user
+     * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApiInterface
      */
-    readonly v?: delMobileToken1VEnum
+    notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
+    /**
+     * 
+     * @summary Get user screen notify
+     * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApiInterface
+     */
+    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse>;
+
+    /**
+     * 
+     * @summary Get user notify settings
+     * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApiInterface
+     */
+    notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteNotifyUserResponse>;
+
+    /**
+     * 
+     * @summary Remove user screen notify
+     * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApiInterface
+     */
+    notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Set user notify settings
+     * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApiInterface
+     */
+    notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+}
+
+/**
+ * Request parameters for notifyUserDelMobileTokenV1 operation in NotifyUserApi.
+ * @export
+ * @interface NotifyUserApiNotifyUserDelMobileTokenV1Request
+ */
+export interface NotifyUserApiNotifyUserDelMobileTokenV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof delMobileToken1
+     * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
-    readonly language: delMobileToken1LanguageEnum
+    readonly language: NotifyUserDelMobileTokenV1LanguageEnum
 
     /**
      * Token in mobile app
      * @type {string}
-     * @memberof delMobileToken1
+     * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
     readonly token: string
-}
-
-/**
- * Request parameters for get1 operation in NotifyUserApi.
- * @export
- * @interface get1Request
- */
-export interface get1Request {
-    /**
-     * Version
-     * @type {'1'}
-     * @memberof get1
-     */
-    readonly v?: get1VEnum
 
     /**
-     * Project id
-     * @type {number}
-     * @memberof get1
-     */
-    readonly projectId: number
-}
-
-/**
- * Request parameters for getScreen1 operation in NotifyUserApi.
- * @export
- * @interface getScreen1Request
- */
-export interface getScreen1Request {
-    /**
-     * Version
+     * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
-     * @memberof getScreen1
+     * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
-    readonly v?: getScreen1VEnum
+    readonly v?: NotifyUserDelMobileTokenV1VEnum
+}
 
+/**
+ * Request parameters for notifyUserGetScreenV1 operation in NotifyUserApi.
+ * @export
+ * @interface NotifyUserApiNotifyUserGetScreenV1Request
+ */
+export interface NotifyUserApiNotifyUserGetScreenV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getScreen1
+     * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
-    readonly language: getScreen1LanguageEnum
+    readonly language: NotifyUserGetScreenV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof getScreen1
+     * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
     readonly projectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof NotifyUserApiNotifyUserGetScreenV1
+     */
+    readonly v?: NotifyUserGetScreenV1VEnum
 }
 
 /**
- * Request parameters for removeScreen1 operation in NotifyUserApi.
+ * Request parameters for notifyUserGetV1 operation in NotifyUserApi.
  * @export
- * @interface removeScreen1Request
+ * @interface NotifyUserApiNotifyUserGetV1Request
  */
-export interface removeScreen1Request {
-    /**
-     * Version
-     * @type {'1'}
-     * @memberof removeScreen1
-     */
-    readonly v?: removeScreen1VEnum
-
+export interface NotifyUserApiNotifyUserGetV1Request {
     /**
      * Project id
      * @type {number}
-     * @memberof removeScreen1
+     * @memberof NotifyUserApiNotifyUserGetV1
      */
     readonly projectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof NotifyUserApiNotifyUserGetV1
+     */
+    readonly v?: NotifyUserGetV1VEnum
 }
 
 /**
- * Request parameters for set1 operation in NotifyUserApi.
+ * Request parameters for notifyUserRemoveScreenV1 operation in NotifyUserApi.
  * @export
- * @interface set1Request
+ * @interface NotifyUserApiNotifyUserRemoveScreenV1Request
  */
-export interface set1Request {
+export interface NotifyUserApiNotifyUserRemoveScreenV1Request {
     /**
-     * Version
-     * @type {'1'}
-     * @memberof set1
+     * Project id
+     * @type {number}
+     * @memberof NotifyUserApiNotifyUserRemoveScreenV1
      */
-    readonly v?: set1VEnum
+    readonly projectId: number
 
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof NotifyUserApiNotifyUserRemoveScreenV1
+     */
+    readonly v?: NotifyUserRemoveScreenV1VEnum
+}
+
+/**
+ * Request parameters for notifyUserSetV1 operation in NotifyUserApi.
+ * @export
+ * @interface NotifyUserApiNotifyUserSetV1Request
+ */
+export interface NotifyUserApiNotifyUserSetV1Request {
     /**
      * Set user notify settings
      * @type {SiteSetNotifyUserRequest}
-     * @memberof set1
+     * @memberof NotifyUserApiNotifyUserSetV1
      */
     readonly siteSetNotifyUserRequest: SiteSetNotifyUserRequest
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof NotifyUserApiNotifyUserSetV1
+     */
+    readonly v?: NotifyUserSetV1VEnum
 }
 
 /**
@@ -550,132 +598,122 @@ export interface set1Request {
  * @class NotifyUserApi
  * @extends {BaseAPI}
  */
-export class NotifyUserApi extends BaseAPI {
+export class NotifyUserApi extends BaseAPI implements NotifyUserApiInterface {
     /**
      * 
      * @summary Delete mobile token from user
-     * @param {delMobileToken1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    public delMobileToken1(requestParameters: delMobileToken1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: delMobileToken1VEnum = requestParameters.v || delMobileToken1VEnum._1;
-        return fp(this.configuration).delMobileToken1(actualV, requestParameters.language, requestParameters.token, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Get user notify settings
-     * @param {get1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof NotifyUserApi
-     */
-    public get1(requestParameters: get1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: get1VEnum = requestParameters.v || get1VEnum._1;
-        return fp(this.configuration).get1(actualV, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    public notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig) {
+        return NotifyUserApiFp(this.configuration).notifyUserDelMobileTokenV1(requestParameters.language, requestParameters.token, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get user screen notify
-     * @param {getScreen1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    public getScreen1(requestParameters: getScreen1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: getScreen1VEnum = requestParameters.v || getScreen1VEnum._1;
-        return fp(this.configuration).getScreen1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    public notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig) {
+        return NotifyUserApiFp(this.configuration).notifyUserGetScreenV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get user notify settings
+     * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApi
+     */
+    public notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig) {
+        return NotifyUserApiFp(this.configuration).notifyUserGetV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Remove user screen notify
-     * @param {removeScreen1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    public removeScreen1(requestParameters: removeScreen1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: removeScreen1VEnum = requestParameters.v || removeScreen1VEnum._1;
-        return fp(this.configuration).removeScreen1(actualV, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    public notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig) {
+        return NotifyUserApiFp(this.configuration).notifyUserRemoveScreenV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Set user notify settings
-     * @param {set1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    public set1(requestParameters: set1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: set1VEnum = requestParameters.v || set1VEnum._1;
-        return fp(this.configuration).set1(actualV, requestParameters.siteSetNotifyUserRequest, options).then((request) => request(this.axios, this.basePath));
+    public notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig) {
+        return NotifyUserApiFp(this.configuration).notifyUserSetV1(requestParameters.siteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum delMobileToken1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const NotifyUserDelMobileTokenV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type NotifyUserDelMobileTokenV1LanguageEnum = typeof NotifyUserDelMobileTokenV1LanguageEnum[keyof typeof NotifyUserDelMobileTokenV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum delMobileToken1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const NotifyUserDelMobileTokenV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type NotifyUserDelMobileTokenV1VEnum = typeof NotifyUserDelMobileTokenV1VEnum[keyof typeof NotifyUserDelMobileTokenV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum get1VEnum {
-    _1 = '1'
-}
+ * @export
+ */
+export const NotifyUserGetScreenV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type NotifyUserGetScreenV1LanguageEnum = typeof NotifyUserGetScreenV1LanguageEnum[keyof typeof NotifyUserGetScreenV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getScreen1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const NotifyUserGetScreenV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type NotifyUserGetScreenV1VEnum = typeof NotifyUserGetScreenV1VEnum[keyof typeof NotifyUserGetScreenV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getScreen1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const NotifyUserGetV1VEnum = {
+    _1: '1'
+} as const;
+export type NotifyUserGetV1VEnum = typeof NotifyUserGetV1VEnum[keyof typeof NotifyUserGetV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum removeScreen1VEnum {
-    _1 = '1'
-}
+ * @export
+ */
+export const NotifyUserRemoveScreenV1VEnum = {
+    _1: '1'
+} as const;
+export type NotifyUserRemoveScreenV1VEnum = typeof NotifyUserRemoveScreenV1VEnum[keyof typeof NotifyUserRemoveScreenV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum set1VEnum {
-    _1 = '1'
-}
+ * @export
+ */
+export const NotifyUserSetV1VEnum = {
+    _1: '1'
+} as const;
+export type NotifyUserSetV1VEnum = typeof NotifyUserSetV1VEnum[keyof typeof NotifyUserSetV1VEnum];

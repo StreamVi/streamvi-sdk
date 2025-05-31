@@ -27,12 +27,6 @@ export interface PlanRestreamCurrentItem {
      */
     'id': number;
     /**
-     * Date end tariff
-     * @type {string}
-     * @memberof PlanRestreamCurrentItem
-     */
-    'date_end': string;
-    /**
      * Max channels
      * @type {number}
      * @memberof PlanRestreamCurrentItem
@@ -44,5 +38,11 @@ export interface PlanRestreamCurrentItem {
      * @memberof PlanRestreamCurrentItem
      */
     'bitrate_max'?: number;
+    /**
+     * Date end tariff
+     * @type {string}
+     * @memberof PlanRestreamCurrentItem
+     */
+    'date_end': string;
 }
 

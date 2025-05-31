@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SiteGetPolicyStructureDto } from './api';
+import { SiteGetPolicyStructureDto } from 'streamvi-api-client';
 
 const instance: SiteGetPolicyStructureDto = {
     results,

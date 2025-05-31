@@ -51,6 +51,12 @@ export interface SiteSearchChannelItem {
      */
     'id': string;
     /**
+     * Transcoder id
+     * @type {number}
+     * @memberof SiteSearchChannelItem
+     */
+    'transcoderId'?: number;
+    /**
      * group_id
      * @type {number}
      * @memberof SiteSearchChannelItem
@@ -91,7 +97,7 @@ export interface SiteSearchChannelItem {
      * @type {string}
      * @memberof SiteSearchChannelItem
      */
-    'status': StatusEnum;
+    'status': SiteSearchChannelItemStatusEnum;
     /**
      * user_id
      * @type {number}
@@ -159,36 +165,28 @@ export interface SiteSearchChannelItem {
      */
     'tokens': SiteSearchChannelCredentialDto;
     /**
-     * Platform
-     * @type {SiteSearchChannelPlatformDto}
-     * @memberof SiteSearchChannelItem
-     */
-    'platform': SiteSearchChannelPlatformDto;
-    /**
-     * Transcoder id
-     * @type {number}
-     * @memberof SiteSearchChannelItem
-     */
-    'transcoderId'?: number;
-    /**
      * live_users
      * @type {Array<SiteSearchChannelLiveUserDto>}
      * @memberof SiteSearchChannelItem
      */
     'live_users'?: Array<SiteSearchChannelLiveUserDto>;
+    /**
+     * Platform
+     * @type {SiteSearchChannelPlatformDto}
+     * @memberof SiteSearchChannelItem
+     */
+    'platform': SiteSearchChannelPlatformDto;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    init = 'init',
-    pending = 'pending',
-    error = 'error',
-    live = 'live',
-    offline = 'offline',
-    busy = 'busy'
-}
+export const SiteSearchChannelItemStatusEnum = {
+    Init: 'init',
+    Pending: 'pending',
+    Error: 'error',
+    Live: 'live',
+    Offline: 'offline',
+    Busy: 'busy'
+} as const;
+
+export type SiteSearchChannelItemStatusEnum = typeof SiteSearchChannelItemStatusEnum[keyof typeof SiteSearchChannelItemStatusEnum];
 
 

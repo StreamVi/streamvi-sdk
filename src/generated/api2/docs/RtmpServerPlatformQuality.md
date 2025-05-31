@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { RtmpServerPlatformQuality } from './api';
+import { RtmpServerPlatformQuality } from 'streamvi-api-client';
 
 const instance: RtmpServerPlatformQuality = {
     id,

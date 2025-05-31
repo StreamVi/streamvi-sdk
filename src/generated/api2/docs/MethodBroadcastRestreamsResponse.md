@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MethodBroadcastRestreamsResponse } from './api';
+import { MethodBroadcastRestreamsResponse } from 'streamvi-api-client';
 
 const instance: MethodBroadcastRestreamsResponse = {
     results,

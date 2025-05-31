@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**money_flow_id** | **number** | id | [default to undefined]
+**moneyFlowId** | **number** | id | [default to undefined]
 **amount** | **number** | Amount | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
 **date** | **string** | Date | [default to undefined]
@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MoneyFlowResponse } from './api';
+import { MoneyFlowResponse } from 'streamvi-api-client';
 
 const instance: MoneyFlowResponse = {
-    money_flow_id,
+    moneyFlowId,
     amount,
     currency,
     date,

@@ -6,23 +6,23 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**restream_id** | **number** |  | [default to undefined]
+**eventId** | **string** |  | [optional] [default to undefined]
+**restreamId** | **number** |  | [default to undefined]
 **platform** | **string** |  | [default to undefined]
-**created_at** | **string** |  | [default to undefined]
-**event_id** | **string** |  | [optional] [default to undefined]
+**createdAt** | **string** |  | [default to undefined]
 **error** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { MessageRestreamResponseDto } from './api';
+import { MessageRestreamResponseDto } from 'streamvi-api-client';
 
 const instance: MessageRestreamResponseDto = {
     id,
-    restream_id,
+    eventId,
+    restreamId,
     platform,
-    created_at,
-    event_id,
+    createdAt,
     error,
 };
 ```

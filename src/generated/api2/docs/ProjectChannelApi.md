@@ -4,37 +4,41 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**changeAccess1**](#changeaccess1) | **POST** /method/channel/access/change | Change access for project in channel|
-|[**del1**](#del1) | **POST** /method/channel/access/del | Remove access for project in channel|
-|[**list1**](#list1) | **GET** /method/channel/access/list | Project channel list|
-|[**transferOwner1**](#transferowner1) | **POST** /method/channel/access/transfer_owner | Transfer owner for project in channel|
+|[**projectChannelChangeAccessV1**](#projectchannelchangeaccessv1) | **POST** /method/channel/access/change | Change access for project in channel|
+|[**projectChannelDelV1**](#projectchanneldelv1) | **POST** /method/channel/access/del | Remove access for project in channel|
+|[**projectChannelListV1**](#projectchannellistv1) | **GET** /method/channel/access/list | Project channel list|
+|[**projectChannelTransferOwnerV1**](#projectchanneltransferownerv1) | **POST** /method/channel/access/transfer_owner | Transfer owner for project in channel|
 
-# **changeAccess1**
-> SuccessResponse changeAccess1()
+# **projectChannelChangeAccessV1**
+> SuccessResponse projectChannelChangeAccessV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ProjectChannelApi } from './api';
+import {
+    ProjectChannelApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ProjectChannelApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ProjectChannelApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
 let toProjectId: number; //Target project id (default to undefined)
 let accessType: 0 | 1 | 1 | 2; //Access type (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.changeAccess1({
+const { status, data } = await apiInstance.projectChannelChangeAccessV1(
     language,
     projectId,
     channelId,
     toProjectId,
-    accessType
-  });
+    accessType,
+    v
+);
 ```
 
 ### Parameters
@@ -46,6 +50,7 @@ const { status, data } = await apiInstance.changeAccess1({
 | **channelId** | [**number**] | Channel id | defaults to undefined|
 | **toProjectId** | [**number**] | Target project id | defaults to undefined|
 | **accessType** | [**0 | 1 | 1 | 2**]**Array<0 &#124; 1 &#124; 1 &#124; 2>** | Access type | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -70,30 +75,34 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **del1**
-> SuccessResponse del1()
+# **projectChannelDelV1**
+> SuccessResponse projectChannelDelV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ProjectChannelApi } from './api';
+import {
+    ProjectChannelApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ProjectChannelApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ProjectChannelApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
 let targetProjectId: number; //Target project id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.del1({
+const { status, data } = await apiInstance.projectChannelDelV1(
     language,
     projectId,
     channelId,
-    targetProjectId
-  });
+    targetProjectId,
+    v
+);
 ```
 
 ### Parameters
@@ -104,6 +113,7 @@ const { status, data } = await apiInstance.del1({
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
 | **targetProjectId** | [**number**] | Target project id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -128,28 +138,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list1**
-> ListOfProjectChannelResponse list1()
+# **projectChannelListV1**
+> ListOfProjectChannelResponse projectChannelListV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ProjectChannelApi } from './api';
+import {
+    ProjectChannelApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ProjectChannelApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ProjectChannelApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.list1({
+const { status, data } = await apiInstance.projectChannelListV1(
     language,
     projectId,
-    channelId
-  });
+    channelId,
+    v
+);
 ```
 
 ### Parameters
@@ -159,6 +173,7 @@ const { status, data } = await apiInstance.list1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -183,30 +198,34 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **transferOwner1**
-> SuccessResponse transferOwner1()
+# **projectChannelTransferOwnerV1**
+> SuccessResponse projectChannelTransferOwnerV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ProjectChannelApi } from './api';
+import {
+    ProjectChannelApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ProjectChannelApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ProjectChannelApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
 let toProjectId: number; //Target project id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.transferOwner1({
+const { status, data } = await apiInstance.projectChannelTransferOwnerV1(
     language,
     projectId,
     channelId,
-    toProjectId
-  });
+    toProjectId,
+    v
+);
 ```
 
 ### Parameters
@@ -217,6 +236,7 @@ const { status, data } = await apiInstance.transferOwner1({
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
 | **toProjectId** | [**number**] | Target project id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

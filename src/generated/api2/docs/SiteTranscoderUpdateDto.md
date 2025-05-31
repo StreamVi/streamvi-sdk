@@ -6,10 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_en]
-**project_id** | **number** | Project id | [default to undefined]
-**transcoder_id** | **number** | Transcoder id | [default to undefined]
-**videoCodecId** | **number** | Video codec id | [default to undefined]
+**language** | **string** | Current language | [default to LanguageEnum_En]
+**projectId** | **number** | Project id | [default to undefined]
+**transcoderId** | **number** | Transcoder id | [default to undefined]
 **width** | **number** | Width | [optional] [default to undefined]
 **height** | **number** | Height | [optional] [default to undefined]
 **fps** | **number** | Fps | [optional] [default to undefined]
@@ -19,18 +18,18 @@ Name | Type | Description | Notes
 **rotation** | **number** | Rotation | [optional] [default to undefined]
 **bFrames** | **number** | Rotation | [optional] [default to undefined]
 **channelIds** | **number** | ChannelIds | [optional] [default to undefined]
+**videoCodecId** | **number** | Video codec id | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteTranscoderUpdateDto } from './api';
+import { SiteTranscoderUpdateDto } from 'streamvi-api-client';
 
 const instance: SiteTranscoderUpdateDto = {
     v,
     language,
-    project_id,
-    transcoder_id,
-    videoCodecId,
+    projectId,
+    transcoderId,
     width,
     height,
     fps,
@@ -40,6 +39,7 @@ const instance: SiteTranscoderUpdateDto = {
     rotation,
     bFrames,
     channelIds,
+    videoCodecId,
 };
 ```
 

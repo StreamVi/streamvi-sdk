@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -40,12 +40,6 @@ import type { SiteSetTranscoderRequest } from '../models';
 // @ts-ignore
 import type { SiteSetUrlRequest } from '../models';
 // @ts-ignore
-import type { SiteTelegramChatPostsItem } from '../models';
-// @ts-ignore
-import type { SiteTelegramChatPostsResponseDto } from '../models';
-// @ts-ignore
-import type { SiteTelegramSetSettingsRequestDto } from '../models';
-// @ts-ignore
 import type { SiteUpdateChatTelegramRequest } from '../models';
 // @ts-ignore
 import type { SiteUpdateOptionsOkRequest } from '../models';
@@ -62,34 +56,38 @@ import type { SiteUpdateOptionsYoutubeRequest } from '../models';
 // @ts-ignore
 import type { SuccessResponse } from '../models';
 // @ts-ignore
+import type { TelegramChatPostsItem } from '../models';
+// @ts-ignore
+import type { TelegramChatPostsResponseDto } from '../models';
+// @ts-ignore
 import type { TelegramInitConnectResponseDto } from '../models';
+// @ts-ignore
+import type { TelegramSetSettingsRequestDto } from '../models';
 // @ts-ignore
 import type { TelegramSettingsResponseDto } from '../models';
 /**
  * ChannelSettingsApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Get telegram settings
-         * @param {getTelegramSetting1VEnum} v Version
-         * @param {getTelegramSetting1LanguageEnum} language Current language
+         * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTelegramSetting1: async (v: getTelegramSetting1VEnum, language: getTelegramSetting1LanguageEnum, projectId: number, channelId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('getTelegramSetting1', 'v', v)
+        channelChatGetTelegramSettingV1: async (language: ChannelChatGetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatGetTelegramSettingV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('getTelegramSetting1', 'language', language)
+            assertParamExists('channelChatGetTelegramSettingV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('getTelegramSetting1', 'projectId', projectId)
+            assertParamExists('channelChatGetTelegramSettingV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('getTelegramSetting1', 'channelId', channelId)
+            assertParamExists('channelChatGetTelegramSettingV1', 'channelId', channelId)
             const localVarPath = `/method/channel_settings/chat/telegram/setting`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -104,6 +102,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -132,22 +132,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get code for connected chat
-         * @param {initTelegramChatConnect1VEnum} v Version
-         * @param {initTelegramChatConnect1LanguageEnum} language Current language
+         * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        initTelegramChatConnect1: async (v: initTelegramChatConnect1VEnum, language: initTelegramChatConnect1LanguageEnum, projectId: number, channelId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('initTelegramChatConnect1', 'v', v)
+        channelChatInitTelegramChatConnectV1: async (language: ChannelChatInitTelegramChatConnectV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatInitTelegramChatConnectV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('initTelegramChatConnect1', 'language', language)
+            assertParamExists('channelChatInitTelegramChatConnectV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('initTelegramChatConnect1', 'projectId', projectId)
+            assertParamExists('channelChatInitTelegramChatConnectV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('initTelegramChatConnect1', 'channelId', channelId)
+            assertParamExists('channelChatInitTelegramChatConnectV1', 'channelId', channelId)
             const localVarPath = `/method/channel_settings/chat/telegram/init`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -162,6 +160,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -190,22 +190,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Disconnect telegram chat
-         * @param {removeTelegramChat1VEnum} v Version
-         * @param {removeTelegramChat1LanguageEnum} language Current language
+         * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removeTelegramChat1: async (v: removeTelegramChat1VEnum, language: removeTelegramChat1LanguageEnum, projectId: number, channelId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('removeTelegramChat1', 'v', v)
+        channelChatRemoveTelegramChatV1: async (language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('removeTelegramChat1', 'language', language)
+            assertParamExists('channelChatRemoveTelegramChatV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('removeTelegramChat1', 'projectId', projectId)
+            assertParamExists('channelChatRemoveTelegramChatV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('removeTelegramChat1', 'channelId', channelId)
+            assertParamExists('channelChatRemoveTelegramChatV1', 'channelId', channelId)
             const localVarPath = `/method/channel_settings/chat/telegram/disconnect`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -220,6 +218,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -248,25 +248,23 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Set telegram settings
-         * @param {setTelegramSetting1VEnum} v Version
-         * @param {setTelegramSetting1LanguageEnum} language Current language
+         * @param {ChannelChatSetTelegramSettingV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {SiteTelegramSetSettingsRequestDto} siteTelegramSetSettingsRequestDto 
+         * @param {TelegramSetSettingsRequestDto} telegramSetSettingsRequestDto 
+         * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setTelegramSetting1: async (v: setTelegramSetting1VEnum, language: setTelegramSetting1LanguageEnum, projectId: number, channelId: number, siteTelegramSetSettingsRequestDto: SiteTelegramSetSettingsRequestDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('setTelegramSetting1', 'v', v)
+        channelChatSetTelegramSettingV1: async (language: ChannelChatSetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto, v?: ChannelChatSetTelegramSettingV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('setTelegramSetting1', 'language', language)
+            assertParamExists('channelChatSetTelegramSettingV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('setTelegramSetting1', 'projectId', projectId)
+            assertParamExists('channelChatSetTelegramSettingV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('setTelegramSetting1', 'channelId', channelId)
-            // verify required parameter 'siteTelegramSetSettingsRequestDto' is not null or undefined
-            assertParamExists('setTelegramSetting1', 'siteTelegramSetSettingsRequestDto', siteTelegramSetSettingsRequestDto)
+            assertParamExists('channelChatSetTelegramSettingV1', 'channelId', channelId)
+            // verify required parameter 'telegramSetSettingsRequestDto' is not null or undefined
+            assertParamExists('channelChatSetTelegramSettingV1', 'telegramSetSettingsRequestDto', telegramSetSettingsRequestDto)
             const localVarPath = `/method/channel_settings/chat/telegram/setting`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -281,6 +279,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -302,7 +302,7 @@ export const axiosParamCreator = function (configuration?: Configuration) {
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(siteTelegramSetSettingsRequestDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(telegramSetSettingsRequestDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -312,22 +312,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get telegram post list
-         * @param {telegramPosts1VEnum} v Version
-         * @param {telegramPosts1LanguageEnum} language Current language
+         * @param {ChannelChatTelegramPostsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegramPosts1: async (v: telegramPosts1VEnum, language: telegramPosts1LanguageEnum, projectId: number, channelId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('telegramPosts1', 'v', v)
+        channelChatTelegramPostsV1: async (language: ChannelChatTelegramPostsV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatTelegramPostsV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('telegramPosts1', 'language', language)
+            assertParamExists('channelChatTelegramPostsV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('telegramPosts1', 'projectId', projectId)
+            assertParamExists('channelChatTelegramPostsV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('telegramPosts1', 'channelId', channelId)
+            assertParamExists('channelChatTelegramPostsV1', 'channelId', channelId)
             const localVarPath = `/method/channel_settings/chat/telegram/posts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -342,6 +340,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -374,9 +374,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTelegram1: async (siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelChatUpdateOptionsTelegramV1: async (siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateChatTelegramRequest' is not null or undefined
-            assertParamExists('updateOptionsTelegram1', 'siteUpdateChatTelegramRequest', siteUpdateChatTelegramRequest)
+            assertParamExists('channelChatUpdateOptionsTelegramV1', 'siteUpdateChatTelegramRequest', siteUpdateChatTelegramRequest)
             const localVarPath = `/method/channel_settings/chat/setTelegram`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -406,22 +406,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get planned list
-         * @param {getPlanned1VEnum} v Version
-         * @param {getPlanned1LanguageEnum} language Current language
+         * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlanned1: async (v: getPlanned1VEnum, language: getPlanned1LanguageEnum, projectId: number, channelId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('getPlanned1', 'v', v)
+        channelOptionsGetPlannedV1: async (language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('getPlanned1', 'language', language)
+            assertParamExists('channelOptionsGetPlannedV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('getPlanned1', 'projectId', projectId)
+            assertParamExists('channelOptionsGetPlannedV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('getPlanned1', 'channelId', channelId)
+            assertParamExists('channelOptionsGetPlannedV1', 'channelId', channelId)
             const localVarPath = `/method/channel_settings/options/getPlanned`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -436,6 +434,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -464,22 +464,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get playlists from the platform
-         * @param {getPlayList1VEnum} v Version
-         * @param {getPlayList1LanguageEnum} language Current language
+         * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlayList1: async (v: getPlayList1VEnum, language: getPlayList1LanguageEnum, projectId: number, channelId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('getPlayList1', 'v', v)
+        channelOptionsGetPlayListV1: async (language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('getPlayList1', 'language', language)
+            assertParamExists('channelOptionsGetPlayListV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('getPlayList1', 'projectId', projectId)
+            assertParamExists('channelOptionsGetPlayListV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('getPlayList1', 'channelId', channelId)
+            assertParamExists('channelOptionsGetPlayListV1', 'channelId', channelId)
             const localVarPath = `/method/channel_settings/options/getPlaylist`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -494,6 +492,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -526,9 +526,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsOk1: async (siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsOkV1: async (siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsOkRequest' is not null or undefined
-            assertParamExists('updateOptionsOk1', 'siteUpdateOptionsOkRequest', siteUpdateOptionsOkRequest)
+            assertParamExists('channelOptionsUpdateOptionsOkV1', 'siteUpdateOptionsOkRequest', siteUpdateOptionsOkRequest)
             const localVarPath = `/method/channel_settings/options/setOk`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -562,9 +562,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTrovo1: async (siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsTrovoV1: async (siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsTrovoRequest' is not null or undefined
-            assertParamExists('updateOptionsTrovo1', 'siteUpdateOptionsTrovoRequest', siteUpdateOptionsTrovoRequest)
+            assertParamExists('channelOptionsUpdateOptionsTrovoV1', 'siteUpdateOptionsTrovoRequest', siteUpdateOptionsTrovoRequest)
             const localVarPath = `/method/channel_settings/options/setTrovo`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -598,9 +598,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTwitch1: async (siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsTwitchV1: async (siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsTwitchRequest' is not null or undefined
-            assertParamExists('updateOptionsTwitch1', 'siteUpdateOptionsTwitchRequest', siteUpdateOptionsTwitchRequest)
+            assertParamExists('channelOptionsUpdateOptionsTwitchV1', 'siteUpdateOptionsTwitchRequest', siteUpdateOptionsTwitchRequest)
             const localVarPath = `/method/channel_settings/options/setTwitch`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -634,9 +634,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsVk1: async (siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsVkV1: async (siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsVkRequest' is not null or undefined
-            assertParamExists('updateOptionsVk1', 'siteUpdateOptionsVkRequest', siteUpdateOptionsVkRequest)
+            assertParamExists('channelOptionsUpdateOptionsVkV1', 'siteUpdateOptionsVkRequest', siteUpdateOptionsVkRequest)
             const localVarPath = `/method/channel_settings/options/setVk`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -670,9 +670,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsVkVideoLive1: async (siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsVkVideoLiveV1: async (siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsVkVideoLiveRequest' is not null or undefined
-            assertParamExists('updateOptionsVkVideoLive1', 'siteUpdateOptionsVkVideoLiveRequest', siteUpdateOptionsVkVideoLiveRequest)
+            assertParamExists('channelOptionsUpdateOptionsVkVideoLiveV1', 'siteUpdateOptionsVkVideoLiveRequest', siteUpdateOptionsVkVideoLiveRequest)
             const localVarPath = `/method/channel_settings/options/setVkVideoLive`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -706,9 +706,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsYoutube1: async (siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsYoutubeV1: async (siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsYoutubeRequest' is not null or undefined
-            assertParamExists('updateOptionsYoutube1', 'siteUpdateOptionsYoutubeRequest', siteUpdateOptionsYoutubeRequest)
+            assertParamExists('channelOptionsUpdateOptionsYoutubeV1', 'siteUpdateOptionsYoutubeRequest', siteUpdateOptionsYoutubeRequest)
             const localVarPath = `/method/channel_settings/options/setYoutube`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -742,9 +742,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePlanned1: async (siteSetPlannedRequest: SiteSetPlannedRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdatePlannedV1: async (siteSetPlannedRequest: SiteSetPlannedRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteSetPlannedRequest' is not null or undefined
-            assertParamExists('updatePlanned1', 'siteSetPlannedRequest', siteSetPlannedRequest)
+            assertParamExists('channelOptionsUpdatePlannedV1', 'siteSetPlannedRequest', siteSetPlannedRequest)
             const localVarPath = `/method/channel_settings/options/setPlanned`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -777,7 +777,7 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStatus1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingGetStatusV1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/method/channel_settings/getStatus`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -808,9 +808,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setName1: async (siteSetNameRequest: SiteSetNameRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingSetNameV1: async (siteSetNameRequest: SiteSetNameRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteSetNameRequest' is not null or undefined
-            assertParamExists('setName1', 'siteSetNameRequest', siteSetNameRequest)
+            assertParamExists('channelSettingSetNameV1', 'siteSetNameRequest', siteSetNameRequest)
             const localVarPath = `/method/channel_settings/setName`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -844,9 +844,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRtmp1: async (siteSetUrlRequest: SiteSetUrlRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingUpdateRtmpV1: async (siteSetUrlRequest: SiteSetUrlRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteSetUrlRequest' is not null or undefined
-            assertParamExists('updateRtmp1', 'siteSetUrlRequest', siteSetUrlRequest)
+            assertParamExists('channelSettingUpdateRtmpV1', 'siteSetUrlRequest', siteSetUrlRequest)
             const localVarPath = `/method/channel_settings/setRtmp`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -876,25 +876,23 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get status platform
-         * @param {updateToken1VEnum} v Version
-         * @param {updateToken1LanguageEnum} language Current language
+         * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {updateToken1RoleEnum} role Token role
+         * @param {ChannelSettingUpdateTokenV1RoleEnum} role Token role
+         * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateToken1: async (v: updateToken1VEnum, language: updateToken1LanguageEnum, projectId: number, channelId: number, role: updateToken1RoleEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('updateToken1', 'v', v)
+        channelSettingUpdateTokenV1: async (language: ChannelSettingUpdateTokenV1LanguageEnum, projectId: number, channelId: number, role: ChannelSettingUpdateTokenV1RoleEnum, v?: ChannelSettingUpdateTokenV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('updateToken1', 'language', language)
+            assertParamExists('channelSettingUpdateTokenV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('updateToken1', 'projectId', projectId)
+            assertParamExists('channelSettingUpdateTokenV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('updateToken1', 'channelId', channelId)
+            assertParamExists('channelSettingUpdateTokenV1', 'channelId', channelId)
             // verify required parameter 'role' is not null or undefined
-            assertParamExists('updateToken1', 'role', role)
+            assertParamExists('channelSettingUpdateTokenV1', 'role', role)
             const localVarPath = `/method/channel_settings/update-token`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -909,6 +907,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -945,9 +945,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTranscoder1: async (siteSetTranscoderRequest: SiteSetTranscoderRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingUpdateTranscoderV1: async (siteSetTranscoderRequest: SiteSetTranscoderRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteSetTranscoderRequest' is not null or undefined
-            assertParamExists('updateTranscoder1', 'siteSetTranscoderRequest', siteSetTranscoderRequest)
+            assertParamExists('channelSettingUpdateTranscoderV1', 'siteSetTranscoderRequest', siteSetTranscoderRequest)
             const localVarPath = `/method/channel_settings/setTranscoder`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -977,25 +977,23 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get telegram post by filter
-         * @param {TelegramGetPostByFilterVEnum} v Version
-         * @param {TelegramGetPostByFilterLanguageEnum} language Current language
+         * @param {TelegramGetPostByFilterV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} filterMode 
+         * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegramGetPostByFilter: async (v: TelegramGetPostByFilterVEnum, language: TelegramGetPostByFilterLanguageEnum, projectId: number, channelId: number, filterMode: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('telegramGetPostByFilter', 'v', v)
+        telegramGetPostByFilterV1: async (language: TelegramGetPostByFilterV1LanguageEnum, projectId: number, channelId: number, filterMode: number, v?: TelegramGetPostByFilterV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('telegramGetPostByFilter', 'language', language)
+            assertParamExists('telegramGetPostByFilterV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('telegramGetPostByFilter', 'projectId', projectId)
+            assertParamExists('telegramGetPostByFilterV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('telegramGetPostByFilter', 'channelId', channelId)
+            assertParamExists('telegramGetPostByFilterV1', 'channelId', channelId)
             // verify required parameter 'filterMode' is not null or undefined
-            assertParamExists('telegramGetPostByFilter', 'filterMode', filterMode)
+            assertParamExists('telegramGetPostByFilterV1', 'filterMode', filterMode)
             const localVarPath = `/method/channel_settings/chat/telegram/posts/get-by-filter`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1010,6 +1008,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -1046,88 +1046,88 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * ChannelSettingsApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const ChannelSettingsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ChannelSettingsApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Get telegram settings
-         * @param {getTelegramSetting1VEnum} v Version
-         * @param {getTelegramSetting1LanguageEnum} language Current language
+         * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTelegramSetting1(v: getTelegramSetting1VEnum, language: getTelegramSetting1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramSettingsResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getTelegramSetting1(v, language, projectId, channelId, options);
+        async channelChatGetTelegramSettingV1(language: ChannelChatGetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatGetTelegramSettingV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramSettingsResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatGetTelegramSettingV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.getTelegramSetting1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatGetTelegramSettingV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get code for connected chat
-         * @param {initTelegramChatConnect1VEnum} v Version
-         * @param {initTelegramChatConnect1LanguageEnum} language Current language
+         * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async initTelegramChatConnect1(v: initTelegramChatConnect1VEnum, language: initTelegramChatConnect1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramInitConnectResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.initTelegramChatConnect1(v, language, projectId, channelId, options);
+        async channelChatInitTelegramChatConnectV1(language: ChannelChatInitTelegramChatConnectV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatInitTelegramChatConnectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramInitConnectResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatInitTelegramChatConnectV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.initTelegramChatConnect1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatInitTelegramChatConnectV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Disconnect telegram chat
-         * @param {removeTelegramChat1VEnum} v Version
-         * @param {removeTelegramChat1LanguageEnum} language Current language
+         * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async removeTelegramChat1(v: removeTelegramChat1VEnum, language: removeTelegramChat1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.removeTelegramChat1(v, language, projectId, channelId, options);
+        async channelChatRemoveTelegramChatV1(language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatRemoveTelegramChatV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.removeTelegramChat1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatRemoveTelegramChatV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Set telegram settings
-         * @param {setTelegramSetting1VEnum} v Version
-         * @param {setTelegramSetting1LanguageEnum} language Current language
+         * @param {ChannelChatSetTelegramSettingV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {SiteTelegramSetSettingsRequestDto} siteTelegramSetSettingsRequestDto 
+         * @param {TelegramSetSettingsRequestDto} telegramSetSettingsRequestDto 
+         * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setTelegramSetting1(v: setTelegramSetting1VEnum, language: setTelegramSetting1LanguageEnum, projectId: number, channelId: number, siteTelegramSetSettingsRequestDto: SiteTelegramSetSettingsRequestDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.setTelegramSetting1(v, language, projectId, channelId, siteTelegramSetSettingsRequestDto, options);
+        async channelChatSetTelegramSettingV1(language: ChannelChatSetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto, v?: ChannelChatSetTelegramSettingV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatSetTelegramSettingV1(language, projectId, channelId, telegramSetSettingsRequestDto, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.setTelegramSetting1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatSetTelegramSettingV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get telegram post list
-         * @param {telegramPosts1VEnum} v Version
-         * @param {telegramPosts1LanguageEnum} language Current language
+         * @param {ChannelChatTelegramPostsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async telegramPosts1(v: telegramPosts1VEnum, language: telegramPosts1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTelegramChatPostsResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.telegramPosts1(v, language, projectId, channelId, options);
+        async channelChatTelegramPostsV1(language: ChannelChatTelegramPostsV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatTelegramPostsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramChatPostsResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatTelegramPostsV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.telegramPosts1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatTelegramPostsV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1137,42 +1137,42 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsTelegram1(siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsTelegram1(siteUpdateChatTelegramRequest, options);
+        async channelChatUpdateOptionsTelegramV1(siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatUpdateOptionsTelegramV1(siteUpdateChatTelegramRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updateOptionsTelegram1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatUpdateOptionsTelegramV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get planned list
-         * @param {getPlanned1VEnum} v Version
-         * @param {getPlanned1LanguageEnum} language Current language
+         * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPlanned1(v: getPlanned1VEnum, language: getPlanned1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfSitePlannedResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlanned1(v, language, projectId, channelId, options);
+        async channelOptionsGetPlannedV1(language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfSitePlannedResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsGetPlannedV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.getPlanned1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsGetPlannedV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get playlists from the platform
-         * @param {getPlayList1VEnum} v Version
-         * @param {getPlayList1LanguageEnum} language Current language
+         * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPlayList1(v: getPlayList1VEnum, language: getPlayList1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPlaylistItemResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayList1(v, language, projectId, channelId, options);
+        async channelOptionsGetPlayListV1(language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPlaylistItemResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsGetPlayListV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.getPlayList1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsGetPlayListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1182,10 +1182,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsOk1(siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsOk1(siteUpdateOptionsOkRequest, options);
+        async channelOptionsUpdateOptionsOkV1(siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsOkV1(siteUpdateOptionsOkRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updateOptionsOk1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsOkV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1195,10 +1195,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsTrovo1(siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsTrovo1(siteUpdateOptionsTrovoRequest, options);
+        async channelOptionsUpdateOptionsTrovoV1(siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsTrovoV1(siteUpdateOptionsTrovoRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updateOptionsTrovo1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsTrovoV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1208,10 +1208,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsTwitch1(siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsTwitch1(siteUpdateOptionsTwitchRequest, options);
+        async channelOptionsUpdateOptionsTwitchV1(siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsTwitchV1(siteUpdateOptionsTwitchRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updateOptionsTwitch1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsTwitchV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1221,10 +1221,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsVk1(siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsVk1(siteUpdateOptionsVkRequest, options);
+        async channelOptionsUpdateOptionsVkV1(siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsVkV1(siteUpdateOptionsVkRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updateOptionsVk1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsVkV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1234,10 +1234,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsVkVideoLive1(siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsVkVideoLive1(siteUpdateOptionsVkVideoLiveRequest, options);
+        async channelOptionsUpdateOptionsVkVideoLiveV1(siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsVkVideoLiveV1(siteUpdateOptionsVkVideoLiveRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updateOptionsVkVideoLive1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsVkVideoLiveV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1247,10 +1247,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsYoutube1(siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsYoutube1(siteUpdateOptionsYoutubeRequest, options);
+        async channelOptionsUpdateOptionsYoutubeV1(siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsYoutubeV1(siteUpdateOptionsYoutubeRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updateOptionsYoutube1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsYoutubeV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1260,10 +1260,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updatePlanned1(siteSetPlannedRequest: SiteSetPlannedRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlannedResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updatePlanned1(siteSetPlannedRequest, options);
+        async channelOptionsUpdatePlannedV1(siteSetPlannedRequest: SiteSetPlannedRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlannedResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdatePlannedV1(siteSetPlannedRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updatePlanned1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdatePlannedV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1272,10 +1272,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStatus1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChannelStatusResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStatus1(options);
+        async channelSettingGetStatusV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChannelStatusResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingGetStatusV1(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.getStatus1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingGetStatusV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1285,10 +1285,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setName1(siteSetNameRequest: SiteSetNameRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.setName1(siteSetNameRequest, options);
+        async channelSettingSetNameV1(siteSetNameRequest: SiteSetNameRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingSetNameV1(siteSetNameRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.setName1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingSetNameV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1298,27 +1298,27 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateRtmp1(siteSetUrlRequest: SiteSetUrlRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateRtmp1(siteSetUrlRequest, options);
+        async channelSettingUpdateRtmpV1(siteSetUrlRequest: SiteSetUrlRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateRtmpV1(siteSetUrlRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updateRtmp1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingUpdateRtmpV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get status platform
-         * @param {updateToken1VEnum} v Version
-         * @param {updateToken1LanguageEnum} language Current language
+         * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {updateToken1RoleEnum} role Token role
+         * @param {ChannelSettingUpdateTokenV1RoleEnum} role Token role
+         * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateToken1(v: updateToken1VEnum, language: updateToken1LanguageEnum, projectId: number, channelId: number, role: updateToken1RoleEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateToken1(v, language, projectId, channelId, role, options);
+        async channelSettingUpdateTokenV1(language: ChannelSettingUpdateTokenV1LanguageEnum, projectId: number, channelId: number, role: ChannelSettingUpdateTokenV1RoleEnum, v?: ChannelSettingUpdateTokenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateTokenV1(language, projectId, channelId, role, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updateToken1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingUpdateTokenV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1328,27 +1328,27 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateTranscoder1(siteSetTranscoderRequest: SiteSetTranscoderRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateTranscoder1(siteSetTranscoderRequest, options);
+        async channelSettingUpdateTranscoderV1(siteSetTranscoderRequest: SiteSetTranscoderRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateTranscoderV1(siteSetTranscoderRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.updateTranscoder1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingUpdateTranscoderV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get telegram post by filter
-         * @param {TelegramGetPostByFilterVEnum} v Version
-         * @param {TelegramGetPostByFilterLanguageEnum} language Current language
+         * @param {TelegramGetPostByFilterV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} filterMode 
+         * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async telegramGetPostByFilter(v: TelegramGetPostByFilterVEnum, language: TelegramGetPostByFilterLanguageEnum, projectId: number, channelId: number, filterMode: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTelegramChatPostsItem>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.telegramGetPostByFilter(v, language, projectId, channelId, filterMode, options);
+        async telegramGetPostByFilterV1(language: TelegramGetPostByFilterV1LanguageEnum, projectId: number, channelId: number, filterMode: number, v?: TelegramGetPostByFilterV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramChatPostsItem>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.telegramGetPostByFilterV1(language, projectId, channelId, filterMode, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.telegramGetPostByFilter']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.telegramGetPostByFilterV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -1358,172 +1358,158 @@ export const fp = function(configuration?: Configuration) {
  * ChannelSettingsApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const ChannelSettingsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ChannelSettingsApiFp(configuration)
     return {
         /**
          * 
          * @summary Get telegram settings
-         * @param {getTelegramSetting1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTelegramSetting1(requestParameters: getTelegramSetting1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramSettingsResponseDto> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: getTelegramSetting1VEnum = requestParameters.v || getTelegramSetting1VEnum._1;
-            return localVarFp.getTelegramSetting1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramSettingsResponseDto> {
+            return localVarFp.channelChatGetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get code for connected chat
-         * @param {initTelegramChatConnect1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        initTelegramChatConnect1(requestParameters: initTelegramChatConnect1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramInitConnectResponseDto> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: initTelegramChatConnect1VEnum = requestParameters.v || initTelegramChatConnect1VEnum._1;
-            return localVarFp.initTelegramChatConnect1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramInitConnectResponseDto> {
+            return localVarFp.channelChatInitTelegramChatConnectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Disconnect telegram chat
-         * @param {removeTelegramChat1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removeTelegramChat1(requestParameters: removeTelegramChat1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: removeTelegramChat1VEnum = requestParameters.v || removeTelegramChat1VEnum._1;
-            return localVarFp.removeTelegramChat1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Set telegram settings
-         * @param {setTelegramSetting1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setTelegramSetting1(requestParameters: setTelegramSetting1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: setTelegramSetting1VEnum = requestParameters.v || setTelegramSetting1VEnum._1;
-            return localVarFp.setTelegramSetting1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.siteTelegramSetSettingsRequestDto, options).then((request) => request(axios, basePath));
+        channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelChatSetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.telegramSetSettingsRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get telegram post list
-         * @param {telegramPosts1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegramPosts1(requestParameters: telegramPosts1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTelegramChatPostsResponseDto> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: telegramPosts1VEnum = requestParameters.v || telegramPosts1VEnum._1;
-            return localVarFp.telegramPosts1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsResponseDto> {
+            return localVarFp.channelChatTelegramPostsV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Optional settings for telegram
-         * @param {updateOptionsTelegram1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTelegram1(requestParameters: updateOptionsTelegram1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.updateOptionsTelegram1(requestParameters.siteUpdateChatTelegramRequest, options).then((request) => request(axios, basePath));
+        channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelChatUpdateOptionsTelegramV1(requestParameters.siteUpdateChatTelegramRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get planned list
-         * @param {getPlanned1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlanned1(requestParameters: getPlanned1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfSitePlannedResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: getPlanned1VEnum = requestParameters.v || getPlanned1VEnum._1;
-            return localVarFp.getPlanned1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfSitePlannedResponse> {
+            return localVarFp.channelOptionsGetPlannedV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get playlists from the platform
-         * @param {getPlayList1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlayList1(requestParameters: getPlayList1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPlaylistItemResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: getPlayList1VEnum = requestParameters.v || getPlayList1VEnum._1;
-            return localVarFp.getPlayList1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPlaylistItemResponse> {
+            return localVarFp.channelOptionsGetPlayListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Optional settings for ok. Depends on the tariff.
-         * @param {updateOptionsOk1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsOk1(requestParameters: updateOptionsOk1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.updateOptionsOk1(requestParameters.siteUpdateOptionsOkRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelOptionsUpdateOptionsOkV1(requestParameters.siteUpdateOptionsOkRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Optional settings for trovo. Depends on the tariff.
-         * @param {updateOptionsTrovo1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTrovo1(requestParameters: updateOptionsTrovo1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.updateOptionsTrovo1(requestParameters.siteUpdateOptionsTrovoRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelOptionsUpdateOptionsTrovoV1(requestParameters.siteUpdateOptionsTrovoRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Optional settings for twitch. Depends on the tariff.
-         * @param {updateOptionsTwitch1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTwitch1(requestParameters: updateOptionsTwitch1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.updateOptionsTwitch1(requestParameters.siteUpdateOptionsTwitchRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelOptionsUpdateOptionsTwitchV1(requestParameters.siteUpdateOptionsTwitchRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Optional settings for vk. Depends on the tariff.
-         * @param {updateOptionsVk1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsVk1(requestParameters: updateOptionsVk1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.updateOptionsVk1(requestParameters.siteUpdateOptionsVkRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelOptionsUpdateOptionsVkV1(requestParameters.siteUpdateOptionsVkRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Optional settings for vk video live. Depends on the tariff.
-         * @param {updateOptionsVkVideoLive1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsVkVideoLive1(requestParameters: updateOptionsVkVideoLive1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.updateOptionsVkVideoLive1(requestParameters.siteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters.siteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Optional settings for youtube. Depends on the tariff.
-         * @param {updateOptionsYoutube1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsYoutube1(requestParameters: updateOptionsYoutube1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.updateOptionsYoutube1(requestParameters.siteUpdateOptionsYoutubeRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelOptionsUpdateOptionsYoutubeV1(requestParameters.siteUpdateOptionsYoutubeRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Set planned id. Depends on the tariff.
-         * @param {updatePlanned1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePlanned1(requestParameters: updatePlanned1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlannedResponse> {
-            return localVarFp.updatePlanned1(requestParameters.siteSetPlannedRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlannedResponse> {
+            return localVarFp.channelOptionsUpdatePlannedV1(requestParameters.siteSetPlannedRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1531,552 +1517,767 @@ export const factory = function (configuration?: Configuration, basePath?: strin
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStatus1(options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse> {
-            return localVarFp.getStatus1(options).then((request) => request(axios, basePath));
+        channelSettingGetStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse> {
+            return localVarFp.channelSettingGetStatusV1(options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Set name from custom channel. Global settings.
-         * @param {setName1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setName1(requestParameters: setName1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.setName1(requestParameters.siteSetNameRequest, options).then((request) => request(axios, basePath));
+        channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelSettingSetNameV1(requestParameters.siteSetNameRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Set rtmp url from channel. Global settings.
-         * @param {updateRtmp1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRtmp1(requestParameters: updateRtmp1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.updateRtmp1(requestParameters.siteSetUrlRequest, options).then((request) => request(axios, basePath));
+        channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelSettingUpdateRtmpV1(requestParameters.siteSetUrlRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get status platform
-         * @param {updateToken1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateToken1(requestParameters: updateToken1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: updateToken1VEnum = requestParameters.v || updateToken1VEnum._1;
-            return localVarFp.updateToken1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.role, options).then((request) => request(axios, basePath));
+        channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.channelSettingUpdateTokenV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.role, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Set transcoder from channel. Personal settings.
-         * @param {updateTranscoder1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTranscoder1(requestParameters: updateTranscoder1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.updateTranscoder1(requestParameters.siteSetTranscoderRequest, options).then((request) => request(axios, basePath));
+        channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelSettingUpdateTranscoderV1(requestParameters.siteSetTranscoderRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get telegram post by filter
-         * @param {telegramGetPostByFilterRequest} requestParameters Request parameters.
+         * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegramGetPostByFilter(requestParameters: telegramGetPostByFilterRequest, options?: RawAxiosRequestConfig): AxiosPromise<SiteTelegramChatPostsItem> {
-            return localVarFp.telegramGetPostByFilter(requestParameters.v, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.filterMode, options).then((request) => request(axios, basePath));
+        telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsItem> {
+            return localVarFp.telegramGetPostByFilterV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.filterMode, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for getTelegramSetting1 operation in ChannelSettingsApi.
+ * ChannelSettingsApi - interface
  * @export
- * @interface getTelegramSetting1Request
+ * @interface ChannelSettingsApi
  */
-export interface getTelegramSetting1Request {
+export interface ChannelSettingsApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getTelegramSetting1
+     * 
+     * @summary Get telegram settings
+     * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
      */
-    readonly v?: getTelegramSetting1VEnum
+    channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramSettingsResponseDto>;
 
     /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof getTelegramSetting1
+     * 
+     * @summary Get code for connected chat
+     * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
      */
-    readonly language: getTelegramSetting1LanguageEnum
+    channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramInitConnectResponseDto>;
 
     /**
-     * Project id
-     * @type {number}
-     * @memberof getTelegramSetting1
+     * 
+     * @summary Disconnect telegram chat
+     * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
      */
-    readonly projectId: number
+    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * Channel id
-     * @type {number}
-     * @memberof getTelegramSetting1
+     * 
+     * @summary Set telegram settings
+     * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
      */
-    readonly channelId: number
+    channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Get telegram post list
+     * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsResponseDto>;
+
+    /**
+     * 
+     * @summary Optional settings for telegram
+     * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Get planned list
+     * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfSitePlannedResponse>;
+
+    /**
+     * 
+     * @summary Get playlists from the platform
+     * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPlaylistItemResponse>;
+
+    /**
+     * 
+     * @summary Optional settings for ok. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Optional settings for trovo. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Optional settings for twitch. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Optional settings for vk. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Optional settings for vk video live. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Optional settings for youtube. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Set planned id. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlannedResponse>;
+
+    /**
+     * 
+     * @summary Get status platform
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingGetStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
+
+    /**
+     * 
+     * @summary Set name from custom channel. Global settings.
+     * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Set rtmp url from channel. Global settings.
+     * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Get status platform
+     * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Set transcoder from channel. Personal settings.
+     * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Get telegram post by filter
+     * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsItem>;
+
 }
 
 /**
- * Request parameters for initTelegramChatConnect1 operation in ChannelSettingsApi.
+ * Request parameters for channelChatGetTelegramSettingV1 operation in ChannelSettingsApi.
  * @export
- * @interface initTelegramChatConnect1Request
+ * @interface ChannelSettingsApiChannelChatGetTelegramSettingV1Request
  */
-export interface initTelegramChatConnect1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof initTelegramChatConnect1
-     */
-    readonly v?: initTelegramChatConnect1VEnum
-
+export interface ChannelSettingsApiChannelChatGetTelegramSettingV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof initTelegramChatConnect1
+     * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
-    readonly language: initTelegramChatConnect1LanguageEnum
+    readonly language: ChannelChatGetTelegramSettingV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof initTelegramChatConnect1
+     * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof initTelegramChatConnect1
+     * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
     readonly channelId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
+     */
+    readonly v?: ChannelChatGetTelegramSettingV1VEnum
 }
 
 /**
- * Request parameters for removeTelegramChat1 operation in ChannelSettingsApi.
+ * Request parameters for channelChatInitTelegramChatConnectV1 operation in ChannelSettingsApi.
  * @export
- * @interface removeTelegramChat1Request
+ * @interface ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request
  */
-export interface removeTelegramChat1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof removeTelegramChat1
-     */
-    readonly v?: removeTelegramChat1VEnum
-
+export interface ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof removeTelegramChat1
+     * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
-    readonly language: removeTelegramChat1LanguageEnum
+    readonly language: ChannelChatInitTelegramChatConnectV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof removeTelegramChat1
+     * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof removeTelegramChat1
+     * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
     readonly channelId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
+     */
+    readonly v?: ChannelChatInitTelegramChatConnectV1VEnum
 }
 
 /**
- * Request parameters for setTelegramSetting1 operation in ChannelSettingsApi.
+ * Request parameters for channelChatRemoveTelegramChatV1 operation in ChannelSettingsApi.
  * @export
- * @interface setTelegramSetting1Request
+ * @interface ChannelSettingsApiChannelChatRemoveTelegramChatV1Request
  */
-export interface setTelegramSetting1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof setTelegramSetting1
-     */
-    readonly v?: setTelegramSetting1VEnum
-
+export interface ChannelSettingsApiChannelChatRemoveTelegramChatV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof setTelegramSetting1
+     * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
-    readonly language: setTelegramSetting1LanguageEnum
+    readonly language: ChannelChatRemoveTelegramChatV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof setTelegramSetting1
+     * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof setTelegramSetting1
+     * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
+     */
+    readonly channelId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
+     */
+    readonly v?: ChannelChatRemoveTelegramChatV1VEnum
+}
+
+/**
+ * Request parameters for channelChatSetTelegramSettingV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelChatSetTelegramSettingV1Request
+ */
+export interface ChannelSettingsApiChannelChatSetTelegramSettingV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
+     */
+    readonly language: ChannelChatSetTelegramSettingV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
+     */
+    readonly projectId: number
+
+    /**
+     * Channel id
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
     readonly channelId: number
 
     /**
      * 
-     * @type {SiteTelegramSetSettingsRequestDto}
-     * @memberof setTelegramSetting1
+     * @type {TelegramSetSettingsRequestDto}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
-    readonly siteTelegramSetSettingsRequestDto: SiteTelegramSetSettingsRequestDto
+    readonly telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
+     */
+    readonly v?: ChannelChatSetTelegramSettingV1VEnum
 }
 
 /**
- * Request parameters for telegramPosts1 operation in ChannelSettingsApi.
+ * Request parameters for channelChatTelegramPostsV1 operation in ChannelSettingsApi.
  * @export
- * @interface telegramPosts1Request
+ * @interface ChannelSettingsApiChannelChatTelegramPostsV1Request
  */
-export interface telegramPosts1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof telegramPosts1
-     */
-    readonly v?: telegramPosts1VEnum
-
+export interface ChannelSettingsApiChannelChatTelegramPostsV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof telegramPosts1
+     * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
-    readonly language: telegramPosts1LanguageEnum
+    readonly language: ChannelChatTelegramPostsV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof telegramPosts1
+     * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof telegramPosts1
+     * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
     readonly channelId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
+     */
+    readonly v?: ChannelChatTelegramPostsV1VEnum
 }
 
 /**
- * Request parameters for updateOptionsTelegram1 operation in ChannelSettingsApi.
+ * Request parameters for channelChatUpdateOptionsTelegramV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsTelegram1Request
+ * @interface ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request
  */
-export interface updateOptionsTelegram1Request {
+export interface ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request {
     /**
      * 
      * @type {SiteUpdateChatTelegramRequest}
-     * @memberof updateOptionsTelegram1
+     * @memberof ChannelSettingsApiChannelChatUpdateOptionsTelegramV1
      */
     readonly siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest
 }
 
 /**
- * Request parameters for getPlanned1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsGetPlannedV1 operation in ChannelSettingsApi.
  * @export
- * @interface getPlanned1Request
+ * @interface ChannelSettingsApiChannelOptionsGetPlannedV1Request
  */
-export interface getPlanned1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getPlanned1
-     */
-    readonly v?: getPlanned1VEnum
-
+export interface ChannelSettingsApiChannelOptionsGetPlannedV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getPlanned1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
-    readonly language: getPlanned1LanguageEnum
+    readonly language: ChannelOptionsGetPlannedV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof getPlanned1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof getPlanned1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
     readonly channelId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
+     */
+    readonly v?: ChannelOptionsGetPlannedV1VEnum
 }
 
 /**
- * Request parameters for getPlayList1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsGetPlayListV1 operation in ChannelSettingsApi.
  * @export
- * @interface getPlayList1Request
+ * @interface ChannelSettingsApiChannelOptionsGetPlayListV1Request
  */
-export interface getPlayList1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getPlayList1
-     */
-    readonly v?: getPlayList1VEnum
-
+export interface ChannelSettingsApiChannelOptionsGetPlayListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getPlayList1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
-    readonly language: getPlayList1LanguageEnum
+    readonly language: ChannelOptionsGetPlayListV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof getPlayList1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof getPlayList1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
     readonly channelId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
+     */
+    readonly v?: ChannelOptionsGetPlayListV1VEnum
 }
 
 /**
- * Request parameters for updateOptionsOk1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsOkV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsOk1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request
  */
-export interface updateOptionsOk1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request {
     /**
      * 
      * @type {SiteUpdateOptionsOkRequest}
-     * @memberof updateOptionsOk1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsOkV1
      */
     readonly siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest
 }
 
 /**
- * Request parameters for updateOptionsTrovo1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsTrovoV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsTrovo1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request
  */
-export interface updateOptionsTrovo1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request {
     /**
      * 
      * @type {SiteUpdateOptionsTrovoRequest}
-     * @memberof updateOptionsTrovo1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1
      */
     readonly siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest
 }
 
 /**
- * Request parameters for updateOptionsTwitch1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsTwitchV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsTwitch1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request
  */
-export interface updateOptionsTwitch1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request {
     /**
      * 
      * @type {SiteUpdateOptionsTwitchRequest}
-     * @memberof updateOptionsTwitch1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1
      */
     readonly siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest
 }
 
 /**
- * Request parameters for updateOptionsVk1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsVkV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsVk1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request
  */
-export interface updateOptionsVk1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request {
     /**
      * 
      * @type {SiteUpdateOptionsVkRequest}
-     * @memberof updateOptionsVk1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsVkV1
      */
     readonly siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest
 }
 
 /**
- * Request parameters for updateOptionsVkVideoLive1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsVkVideoLiveV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsVkVideoLive1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request
  */
-export interface updateOptionsVkVideoLive1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request {
     /**
      * 
      * @type {SiteUpdateOptionsVkVideoLiveRequest}
-     * @memberof updateOptionsVkVideoLive1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1
      */
     readonly siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest
 }
 
 /**
- * Request parameters for updateOptionsYoutube1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsYoutubeV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsYoutube1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request
  */
-export interface updateOptionsYoutube1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request {
     /**
      * 
      * @type {SiteUpdateOptionsYoutubeRequest}
-     * @memberof updateOptionsYoutube1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1
      */
     readonly siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest
 }
 
 /**
- * Request parameters for updatePlanned1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdatePlannedV1 operation in ChannelSettingsApi.
  * @export
- * @interface updatePlanned1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdatePlannedV1Request
  */
-export interface updatePlanned1Request {
+export interface ChannelSettingsApiChannelOptionsUpdatePlannedV1Request {
     /**
      * 
      * @type {SiteSetPlannedRequest}
-     * @memberof updatePlanned1
+     * @memberof ChannelSettingsApiChannelOptionsUpdatePlannedV1
      */
     readonly siteSetPlannedRequest: SiteSetPlannedRequest
 }
 
 /**
- * Request parameters for setName1 operation in ChannelSettingsApi.
+ * Request parameters for channelSettingSetNameV1 operation in ChannelSettingsApi.
  * @export
- * @interface setName1Request
+ * @interface ChannelSettingsApiChannelSettingSetNameV1Request
  */
-export interface setName1Request {
+export interface ChannelSettingsApiChannelSettingSetNameV1Request {
     /**
      * 
      * @type {SiteSetNameRequest}
-     * @memberof setName1
+     * @memberof ChannelSettingsApiChannelSettingSetNameV1
      */
     readonly siteSetNameRequest: SiteSetNameRequest
 }
 
 /**
- * Request parameters for updateRtmp1 operation in ChannelSettingsApi.
+ * Request parameters for channelSettingUpdateRtmpV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateRtmp1Request
+ * @interface ChannelSettingsApiChannelSettingUpdateRtmpV1Request
  */
-export interface updateRtmp1Request {
+export interface ChannelSettingsApiChannelSettingUpdateRtmpV1Request {
     /**
      * 
      * @type {SiteSetUrlRequest}
-     * @memberof updateRtmp1
+     * @memberof ChannelSettingsApiChannelSettingUpdateRtmpV1
      */
     readonly siteSetUrlRequest: SiteSetUrlRequest
 }
 
 /**
- * Request parameters for updateToken1 operation in ChannelSettingsApi.
+ * Request parameters for channelSettingUpdateTokenV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateToken1Request
+ * @interface ChannelSettingsApiChannelSettingUpdateTokenV1Request
  */
-export interface updateToken1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof updateToken1
-     */
-    readonly v?: updateToken1VEnum
-
+export interface ChannelSettingsApiChannelSettingUpdateTokenV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof updateToken1
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly language: updateToken1LanguageEnum
+    readonly language: ChannelSettingUpdateTokenV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof updateToken1
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof updateToken1
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
     readonly channelId: number
 
     /**
      * Token role
      * @type {'account' | 'group'}
-     * @memberof updateToken1
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly role: updateToken1RoleEnum
+    readonly role: ChannelSettingUpdateTokenV1RoleEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
+     */
+    readonly v?: ChannelSettingUpdateTokenV1VEnum
 }
 
 /**
- * Request parameters for updateTranscoder1 operation in ChannelSettingsApi.
+ * Request parameters for channelSettingUpdateTranscoderV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateTranscoder1Request
+ * @interface ChannelSettingsApiChannelSettingUpdateTranscoderV1Request
  */
-export interface updateTranscoder1Request {
+export interface ChannelSettingsApiChannelSettingUpdateTranscoderV1Request {
     /**
      * 
      * @type {SiteSetTranscoderRequest}
-     * @memberof updateTranscoder1
+     * @memberof ChannelSettingsApiChannelSettingUpdateTranscoderV1
      */
     readonly siteSetTranscoderRequest: SiteSetTranscoderRequest
 }
 
 /**
- * Request parameters for telegramGetPostByFilter operation in ChannelSettingsApi.
+ * Request parameters for telegramGetPostByFilterV1 operation in ChannelSettingsApi.
  * @export
- * @interface telegramGetPostByFilterRequest
+ * @interface ChannelSettingsApiTelegramGetPostByFilterV1Request
  */
-export interface telegramGetPostByFilterRequest {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof telegramGetPostByFilter
-     */
-    readonly v: TelegramGetPostByFilterVEnum
-
+export interface ChannelSettingsApiTelegramGetPostByFilterV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof telegramGetPostByFilter
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
-    readonly language: TelegramGetPostByFilterLanguageEnum
+    readonly language: TelegramGetPostByFilterV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof telegramGetPostByFilter
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof telegramGetPostByFilter
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
     readonly channelId: number
 
     /**
      * 
      * @type {number}
-     * @memberof telegramGetPostByFilter
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
     readonly filterMode: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
+     */
+    readonly v?: TelegramGetPostByFilterV1VEnum
 }
 
 /**
@@ -2085,199 +2286,185 @@ export interface telegramGetPostByFilterRequest {
  * @class ChannelSettingsApi
  * @extends {BaseAPI}
  */
-export class ChannelSettingsApi extends BaseAPI {
+export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInterface {
     /**
      * 
      * @summary Get telegram settings
-     * @param {getTelegramSetting1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public getTelegramSetting1(requestParameters: getTelegramSetting1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: getTelegramSetting1VEnum = requestParameters.v || getTelegramSetting1VEnum._1;
-        return fp(this.configuration).getTelegramSetting1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    public channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelChatGetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get code for connected chat
-     * @param {initTelegramChatConnect1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public initTelegramChatConnect1(requestParameters: initTelegramChatConnect1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: initTelegramChatConnect1VEnum = requestParameters.v || initTelegramChatConnect1VEnum._1;
-        return fp(this.configuration).initTelegramChatConnect1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    public channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelChatInitTelegramChatConnectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Disconnect telegram chat
-     * @param {removeTelegramChat1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public removeTelegramChat1(requestParameters: removeTelegramChat1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: removeTelegramChat1VEnum = requestParameters.v || removeTelegramChat1VEnum._1;
-        return fp(this.configuration).removeTelegramChat1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    public channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Set telegram settings
-     * @param {setTelegramSetting1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public setTelegramSetting1(requestParameters: setTelegramSetting1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: setTelegramSetting1VEnum = requestParameters.v || setTelegramSetting1VEnum._1;
-        return fp(this.configuration).setTelegramSetting1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.siteTelegramSetSettingsRequestDto, options).then((request) => request(this.axios, this.basePath));
+    public channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelChatSetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.telegramSetSettingsRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get telegram post list
-     * @param {telegramPosts1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public telegramPosts1(requestParameters: telegramPosts1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: telegramPosts1VEnum = requestParameters.v || telegramPosts1VEnum._1;
-        return fp(this.configuration).telegramPosts1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    public channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelChatTelegramPostsV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Optional settings for telegram
-     * @param {updateOptionsTelegram1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updateOptionsTelegram1(requestParameters: updateOptionsTelegram1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).updateOptionsTelegram1(requestParameters.siteUpdateChatTelegramRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelChatUpdateOptionsTelegramV1(requestParameters.siteUpdateChatTelegramRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get planned list
-     * @param {getPlanned1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public getPlanned1(requestParameters: getPlanned1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: getPlanned1VEnum = requestParameters.v || getPlanned1VEnum._1;
-        return fp(this.configuration).getPlanned1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    public channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsGetPlannedV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get playlists from the platform
-     * @param {getPlayList1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public getPlayList1(requestParameters: getPlayList1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: getPlayList1VEnum = requestParameters.v || getPlayList1VEnum._1;
-        return fp(this.configuration).getPlayList1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    public channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsGetPlayListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Optional settings for ok. Depends on the tariff.
-     * @param {updateOptionsOk1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updateOptionsOk1(requestParameters: updateOptionsOk1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).updateOptionsOk1(requestParameters.siteUpdateOptionsOkRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsOkV1(requestParameters.siteUpdateOptionsOkRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Optional settings for trovo. Depends on the tariff.
-     * @param {updateOptionsTrovo1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updateOptionsTrovo1(requestParameters: updateOptionsTrovo1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).updateOptionsTrovo1(requestParameters.siteUpdateOptionsTrovoRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsTrovoV1(requestParameters.siteUpdateOptionsTrovoRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Optional settings for twitch. Depends on the tariff.
-     * @param {updateOptionsTwitch1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updateOptionsTwitch1(requestParameters: updateOptionsTwitch1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).updateOptionsTwitch1(requestParameters.siteUpdateOptionsTwitchRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsTwitchV1(requestParameters.siteUpdateOptionsTwitchRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Optional settings for vk. Depends on the tariff.
-     * @param {updateOptionsVk1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updateOptionsVk1(requestParameters: updateOptionsVk1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).updateOptionsVk1(requestParameters.siteUpdateOptionsVkRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsVkV1(requestParameters.siteUpdateOptionsVkRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Optional settings for vk video live. Depends on the tariff.
-     * @param {updateOptionsVkVideoLive1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updateOptionsVkVideoLive1(requestParameters: updateOptionsVkVideoLive1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).updateOptionsVkVideoLive1(requestParameters.siteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters.siteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Optional settings for youtube. Depends on the tariff.
-     * @param {updateOptionsYoutube1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updateOptionsYoutube1(requestParameters: updateOptionsYoutube1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).updateOptionsYoutube1(requestParameters.siteUpdateOptionsYoutubeRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsYoutubeV1(requestParameters.siteUpdateOptionsYoutubeRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Set planned id. Depends on the tariff.
-     * @param {updatePlanned1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updatePlanned1(requestParameters: updatePlanned1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).updatePlanned1(requestParameters.siteSetPlannedRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdatePlannedV1(requestParameters.siteSetPlannedRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2287,240 +2474,238 @@ export class ChannelSettingsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public getStatus1(options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).getStatus1(options).then((request) => request(this.axios, this.basePath));
+    public channelSettingGetStatusV1(options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelSettingGetStatusV1(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Set name from custom channel. Global settings.
-     * @param {setName1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public setName1(requestParameters: setName1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).setName1(requestParameters.siteSetNameRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelSettingSetNameV1(requestParameters.siteSetNameRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Set rtmp url from channel. Global settings.
-     * @param {updateRtmp1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updateRtmp1(requestParameters: updateRtmp1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).updateRtmp1(requestParameters.siteSetUrlRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateRtmpV1(requestParameters.siteSetUrlRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get status platform
-     * @param {updateToken1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updateToken1(requestParameters: updateToken1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: updateToken1VEnum = requestParameters.v || updateToken1VEnum._1;
-        return fp(this.configuration).updateToken1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.role, options).then((request) => request(this.axios, this.basePath));
+    public channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateTokenV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.role, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Set transcoder from channel. Personal settings.
-     * @param {updateTranscoder1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public updateTranscoder1(requestParameters: updateTranscoder1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).updateTranscoder1(requestParameters.siteSetTranscoderRequest, options).then((request) => request(this.axios, this.basePath));
+    public channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateTranscoderV1(requestParameters.siteSetTranscoderRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get telegram post by filter
-     * @param {telegramGetPostByFilterRequest} requestParameters Request parameters.
+     * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public telegramGetPostByFilter(requestParameters: telegramGetPostByFilterRequest, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).telegramGetPostByFilter(requestParameters.v, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.filterMode, options).then((request) => request(this.axios, this.basePath));
+    public telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).telegramGetPostByFilterV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.filterMode, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getTelegramSetting1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ChannelChatGetTelegramSettingV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelChatGetTelegramSettingV1LanguageEnum = typeof ChannelChatGetTelegramSettingV1LanguageEnum[keyof typeof ChannelChatGetTelegramSettingV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getTelegramSetting1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ChannelChatGetTelegramSettingV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ChannelChatGetTelegramSettingV1VEnum = typeof ChannelChatGetTelegramSettingV1VEnum[keyof typeof ChannelChatGetTelegramSettingV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum initTelegramChatConnect1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ChannelChatInitTelegramChatConnectV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelChatInitTelegramChatConnectV1LanguageEnum = typeof ChannelChatInitTelegramChatConnectV1LanguageEnum[keyof typeof ChannelChatInitTelegramChatConnectV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum initTelegramChatConnect1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ChannelChatInitTelegramChatConnectV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ChannelChatInitTelegramChatConnectV1VEnum = typeof ChannelChatInitTelegramChatConnectV1VEnum[keyof typeof ChannelChatInitTelegramChatConnectV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum removeTelegramChat1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ChannelChatRemoveTelegramChatV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelChatRemoveTelegramChatV1LanguageEnum = typeof ChannelChatRemoveTelegramChatV1LanguageEnum[keyof typeof ChannelChatRemoveTelegramChatV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum removeTelegramChat1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ChannelChatRemoveTelegramChatV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ChannelChatRemoveTelegramChatV1VEnum = typeof ChannelChatRemoveTelegramChatV1VEnum[keyof typeof ChannelChatRemoveTelegramChatV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum setTelegramSetting1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ChannelChatSetTelegramSettingV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelChatSetTelegramSettingV1LanguageEnum = typeof ChannelChatSetTelegramSettingV1LanguageEnum[keyof typeof ChannelChatSetTelegramSettingV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum setTelegramSetting1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ChannelChatSetTelegramSettingV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ChannelChatSetTelegramSettingV1VEnum = typeof ChannelChatSetTelegramSettingV1VEnum[keyof typeof ChannelChatSetTelegramSettingV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum telegramPosts1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ChannelChatTelegramPostsV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelChatTelegramPostsV1LanguageEnum = typeof ChannelChatTelegramPostsV1LanguageEnum[keyof typeof ChannelChatTelegramPostsV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum telegramPosts1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ChannelChatTelegramPostsV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ChannelChatTelegramPostsV1VEnum = typeof ChannelChatTelegramPostsV1VEnum[keyof typeof ChannelChatTelegramPostsV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getPlanned1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ChannelOptionsGetPlannedV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelOptionsGetPlannedV1LanguageEnum = typeof ChannelOptionsGetPlannedV1LanguageEnum[keyof typeof ChannelOptionsGetPlannedV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getPlanned1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ChannelOptionsGetPlannedV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ChannelOptionsGetPlannedV1VEnum = typeof ChannelOptionsGetPlannedV1VEnum[keyof typeof ChannelOptionsGetPlannedV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getPlayList1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ChannelOptionsGetPlayListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelOptionsGetPlayListV1LanguageEnum = typeof ChannelOptionsGetPlayListV1LanguageEnum[keyof typeof ChannelOptionsGetPlayListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getPlayList1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ChannelOptionsGetPlayListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ChannelOptionsGetPlayListV1VEnum = typeof ChannelOptionsGetPlayListV1VEnum[keyof typeof ChannelOptionsGetPlayListV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum updateToken1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ChannelSettingUpdateTokenV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelSettingUpdateTokenV1LanguageEnum = typeof ChannelSettingUpdateTokenV1LanguageEnum[keyof typeof ChannelSettingUpdateTokenV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum updateToken1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ChannelSettingUpdateTokenV1RoleEnum = {
+    Account: 'account',
+    Group: 'group'
+} as const;
+export type ChannelSettingUpdateTokenV1RoleEnum = typeof ChannelSettingUpdateTokenV1RoleEnum[keyof typeof ChannelSettingUpdateTokenV1RoleEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum updateToken1RoleEnum {
-    account = 'account',
-    group = 'group'
-}
+ * @export
+ */
+export const ChannelSettingUpdateTokenV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ChannelSettingUpdateTokenV1VEnum = typeof ChannelSettingUpdateTokenV1VEnum[keyof typeof ChannelSettingUpdateTokenV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum TelegramGetPostByFilterVEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const TelegramGetPostByFilterV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type TelegramGetPostByFilterV1LanguageEnum = typeof TelegramGetPostByFilterV1LanguageEnum[keyof typeof TelegramGetPostByFilterV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum TelegramGetPostByFilterLanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const TelegramGetPostByFilterV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type TelegramGetPostByFilterV1VEnum = typeof TelegramGetPostByFilterV1VEnum[keyof typeof TelegramGetPostByFilterV1VEnum];

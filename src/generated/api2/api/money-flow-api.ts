@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -29,14 +29,14 @@ import type { PaginatedResponseOfMoneyFlowResponse } from '../models';
  * MoneyFlowApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const MoneyFlowApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Transaction list for frontend
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {MoneyFlowListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
@@ -46,13 +46,11 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v: list1VEnum, language: list1LanguageEnum, projectId: number, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('list1', 'v', v)
+        moneyFlowListV1: async (language: MoneyFlowListV1LanguageEnum, projectId: number, v?: MoneyFlowListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('list1', 'language', language)
+            assertParamExists('moneyFlowListV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('list1', 'projectId', projectId)
+            assertParamExists('moneyFlowListV1', 'projectId', projectId)
             const localVarPath = `/method/money_flow/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -67,6 +65,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -123,15 +123,15 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * MoneyFlowApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const MoneyFlowApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = MoneyFlowApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Transaction list for frontend
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {MoneyFlowListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
@@ -141,10 +141,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v: list1VEnum, language: list1LanguageEnum, projectId: number, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfMoneyFlowResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, projectId, limit, offset, dateFrom, dateTo, type, balanceType, options);
+        async moneyFlowListV1(language: MoneyFlowListV1LanguageEnum, projectId: number, v?: MoneyFlowListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfMoneyFlowResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.moneyFlowListV1(language, projectId, v, limit, offset, dateFrom, dateTo, type, balanceType, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['MoneyFlowApi.list1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['MoneyFlowApi.moneyFlowListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -154,90 +154,106 @@ export const fp = function(configuration?: Configuration) {
  * MoneyFlowApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const MoneyFlowApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = MoneyFlowApiFp(configuration)
     return {
         /**
          * 
          * @summary Transaction list for frontend
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {MoneyFlowApiMoneyFlowListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.type, requestParameters.balanceType, options).then((request) => request(axios, basePath));
+        moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse> {
+            return localVarFp.moneyFlowListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.type, requestParameters.balanceType, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for list1 operation in MoneyFlowApi.
+ * MoneyFlowApi - interface
  * @export
- * @interface list1Request
+ * @interface MoneyFlowApi
  */
-export interface list1Request {
+export interface MoneyFlowApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
+     * 
+     * @summary Transaction list for frontend
+     * @param {MoneyFlowApiMoneyFlowListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoneyFlowApiInterface
      */
-    readonly v?: list1VEnum
+    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse>;
 
+}
+
+/**
+ * Request parameters for moneyFlowListV1 operation in MoneyFlowApi.
+ * @export
+ * @interface MoneyFlowApiMoneyFlowListV1Request
+ */
+export interface MoneyFlowApiMoneyFlowListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
-    readonly language: list1LanguageEnum
+    readonly language: MoneyFlowListV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly projectId: number
 
     /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof MoneyFlowApiMoneyFlowListV1
+     */
+    readonly v?: MoneyFlowListV1VEnum
+
+    /**
      * Number of results
      * @type {number}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly limit?: number
 
     /**
      * Page offset number
      * @type {number}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly offset?: number
 
     /**
      * Date from
      * @type {string}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly dateFrom?: string
 
     /**
      * Date to
      * @type {string}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly dateTo?: string
 
     /**
      * Filter code transaction. example 1 or 1,2,3
      * @type {string}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly type?: string
 
     /**
      * Filter code transaction. example 1 or 1,2,3
      * @type {string}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly balanceType?: string
 }
@@ -248,37 +264,35 @@ export interface list1Request {
  * @class MoneyFlowApi
  * @extends {BaseAPI}
  */
-export class MoneyFlowApi extends BaseAPI {
+export class MoneyFlowApi extends BaseAPI implements MoneyFlowApiInterface {
     /**
      * 
      * @summary Transaction list for frontend
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {MoneyFlowApiMoneyFlowListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MoneyFlowApi
      */
-    public list1(requestParameters: list1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-        return fp(this.configuration).list1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.type, requestParameters.balanceType, options).then((request) => request(this.axios, this.basePath));
+    public moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig) {
+        return MoneyFlowApiFp(this.configuration).moneyFlowListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.type, requestParameters.balanceType, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const MoneyFlowListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type MoneyFlowListV1LanguageEnum = typeof MoneyFlowListV1LanguageEnum[keyof typeof MoneyFlowListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const MoneyFlowListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type MoneyFlowListV1VEnum = typeof MoneyFlowListV1VEnum[keyof typeof MoneyFlowListV1VEnum];

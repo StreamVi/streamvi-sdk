@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -29,24 +29,22 @@ import type { SiteTotalInfoReferralsResponse } from '../models';
  * ReferralsApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const ReferralsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Total info
-         * @param {totalInfo1VEnum} v Version
-         * @param {totalInfo1LanguageEnum} language Current language
+         * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        totalInfo1: async (v: totalInfo1VEnum, language: totalInfo1LanguageEnum, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('totalInfo1', 'v', v)
+        referralsTotalInfoV1: async (language: ReferralsTotalInfoV1LanguageEnum, projectId: number, v?: ReferralsTotalInfoV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('totalInfo1', 'language', language)
+            assertParamExists('referralsTotalInfoV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('totalInfo1', 'projectId', projectId)
+            assertParamExists('referralsTotalInfoV1', 'projectId', projectId)
             const localVarPath = `/method/referrals/info`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -61,6 +59,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -89,22 +89,22 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * ReferralsApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const ReferralsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ReferralsApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Total info
-         * @param {totalInfo1VEnum} v Version
-         * @param {totalInfo1LanguageEnum} language Current language
+         * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async totalInfo1(v: totalInfo1VEnum, language: totalInfo1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTotalInfoReferralsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.totalInfo1(v, language, projectId, options);
+        async referralsTotalInfoV1(language: ReferralsTotalInfoV1LanguageEnum, projectId: number, v?: ReferralsTotalInfoV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTotalInfoReferralsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.referralsTotalInfoV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ReferralsApi.totalInfo1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ReferralsApi.referralsTotalInfoV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -114,50 +114,66 @@ export const fp = function(configuration?: Configuration) {
  * ReferralsApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const ReferralsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ReferralsApiFp(configuration)
     return {
         /**
          * 
          * @summary Total info
-         * @param {totalInfo1Request} requestParameters Request parameters.
+         * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        totalInfo1(requestParameters: totalInfo1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTotalInfoReferralsResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: totalInfo1VEnum = requestParameters.v || totalInfo1VEnum._1;
-            return localVarFp.totalInfo1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTotalInfoReferralsResponse> {
+            return localVarFp.referralsTotalInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for totalInfo1 operation in ReferralsApi.
+ * ReferralsApi - interface
  * @export
- * @interface totalInfo1Request
+ * @interface ReferralsApi
  */
-export interface totalInfo1Request {
+export interface ReferralsApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof totalInfo1
+     * 
+     * @summary Total info
+     * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ReferralsApiInterface
      */
-    readonly v?: totalInfo1VEnum
+    referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTotalInfoReferralsResponse>;
 
+}
+
+/**
+ * Request parameters for referralsTotalInfoV1 operation in ReferralsApi.
+ * @export
+ * @interface ReferralsApiReferralsTotalInfoV1Request
+ */
+export interface ReferralsApiReferralsTotalInfoV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof totalInfo1
+     * @memberof ReferralsApiReferralsTotalInfoV1
      */
-    readonly language: totalInfo1LanguageEnum
+    readonly language: ReferralsTotalInfoV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof totalInfo1
+     * @memberof ReferralsApiReferralsTotalInfoV1
      */
     readonly projectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ReferralsApiReferralsTotalInfoV1
+     */
+    readonly v?: ReferralsTotalInfoV1VEnum
 }
 
 /**
@@ -166,37 +182,35 @@ export interface totalInfo1Request {
  * @class ReferralsApi
  * @extends {BaseAPI}
  */
-export class ReferralsApi extends BaseAPI {
+export class ReferralsApi extends BaseAPI implements ReferralsApiInterface {
     /**
      * 
      * @summary Total info
-     * @param {totalInfo1Request} requestParameters Request parameters.
+     * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReferralsApi
      */
-    public totalInfo1(requestParameters: totalInfo1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: totalInfo1VEnum = requestParameters.v || totalInfo1VEnum._1;
-        return fp(this.configuration).totalInfo1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    public referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig) {
+        return ReferralsApiFp(this.configuration).referralsTotalInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum totalInfo1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ReferralsTotalInfoV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ReferralsTotalInfoV1LanguageEnum = typeof ReferralsTotalInfoV1LanguageEnum[keyof typeof ReferralsTotalInfoV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum totalInfo1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ReferralsTotalInfoV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ReferralsTotalInfoV1VEnum = typeof ReferralsTotalInfoV1VEnum[keyof typeof ReferralsTotalInfoV1VEnum];

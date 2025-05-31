@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ValidationErrorDto } from './api';
+import { ValidationErrorDto } from 'streamvi-api-client';
 
 const instance: ValidationErrorDto = {
     target,

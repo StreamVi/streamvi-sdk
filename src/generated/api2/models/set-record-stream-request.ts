@@ -25,13 +25,13 @@ export interface SetRecordStreamRequest {
      * @type {string}
      * @memberof SetRecordStreamRequest
      */
-    'v': VEnum;
+    'v': SetRecordStreamRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SetRecordStreamRequest
      */
-    'language': LanguageEnum;
+    'language': SetRecordStreamRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -46,23 +46,19 @@ export interface SetRecordStreamRequest {
     'record': boolean;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const SetRecordStreamRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type SetRecordStreamRequestVEnum = typeof SetRecordStreamRequestVEnum[keyof typeof SetRecordStreamRequestVEnum];
+export const SetRecordStreamRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SetRecordStreamRequestLanguageEnum = typeof SetRecordStreamRequestLanguageEnum[keyof typeof SetRecordStreamRequestLanguageEnum];
 
 

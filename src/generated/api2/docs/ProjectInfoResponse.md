@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_en]
+**language** | **string** | Current language | [default to LanguageEnum_En]
 **data** | [**ProjectInfoDataResponse**](ProjectInfoDataResponse.md) | Project info | [default to undefined]
 **restream** | [**ProjectInfoRestreamResponse**](ProjectInfoRestreamResponse.md) | Restream tariff | [default to undefined]
 **transcoding** | [**ProjectInfoTranscodingResponse**](ProjectInfoTranscodingResponse.md) | Transcoding tariff | [default to undefined]
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ProjectInfoResponse } from './api';
+import { ProjectInfoResponse } from 'streamvi-api-client';
 
 const instance: ProjectInfoResponse = {
     v,

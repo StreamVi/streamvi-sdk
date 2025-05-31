@@ -37,7 +37,7 @@ export interface PlanStorageItem {
      * @type {string}
      * @memberof PlanStorageItem
      */
-    'period': PeriodEnum;
+    'period': PlanStorageItemPeriodEnum;
     /**
      * Date end tariff
      * @type {string}
@@ -46,13 +46,11 @@ export interface PlanStorageItem {
     'date_end': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PeriodEnum {
-    month = 'month',
-    year = 'year'
-}
+export const PlanStorageItemPeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+} as const;
+
+export type PlanStorageItemPeriodEnum = typeof PlanStorageItemPeriodEnum[keyof typeof PlanStorageItemPeriodEnum];
 
 

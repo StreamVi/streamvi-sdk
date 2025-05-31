@@ -4,42 +4,46 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**buy1**](#buy1) | **POST** /method/plan_restream | Buy restream tariff|
-|[**check21**](#check21) | **GET** /method/plan_restream/check | Load data for show card the tariffs v2|
-|[**getDiscount1**](#getdiscount1) | **GET** /method/plan_restream/get_discount | Get discount restream|
-|[**list1**](#list1) | **GET** /method/plan_restream/list | Get list of restream tariffs|
-|[**listProject1**](#listproject1) | **GET** /method/plan_restream/list/project | Get list of restream tariffs for project|
-|[**remove1**](#remove1) | **DELETE** /method/plan_restream | Remove after tariff|
-|[**tariff1**](#tariff1) | **GET** /method/plan_restream | Get tariff for project|
+|[**planRestreamBuyV1**](#planrestreambuyv1) | **POST** /method/plan_restream | Buy restream tariff|
+|[**planRestreamCheck2V1**](#planrestreamcheck2v1) | **GET** /method/plan_restream/check | Load data for show card the tariffs v2|
+|[**planRestreamGetDiscountV1**](#planrestreamgetdiscountv1) | **GET** /method/plan_restream/get_discount | Get discount restream|
+|[**planRestreamListProjectV1**](#planrestreamlistprojectv1) | **GET** /method/plan_restream/list/project | Get list of restream tariffs for project|
+|[**planRestreamListV1**](#planrestreamlistv1) | **GET** /method/plan_restream/list | Get list of restream tariffs|
+|[**planRestreamRemoveV1**](#planrestreamremovev1) | **DELETE** /method/plan_restream | Remove after tariff|
+|[**planRestreamTariffV1**](#planrestreamtariffv1) | **GET** /method/plan_restream | Get tariff for project|
 
-# **buy1**
-> SuccessResponse buy1()
+# **planRestreamBuyV1**
+> SuccessResponse planRestreamBuyV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PlanRestreamApi } from './api';
+import {
+    PlanRestreamApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PlanRestreamApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PlanRestreamApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let period: 'month' | 'year'; //Period (default to undefined)
 let planRestreamId: number; //Restream plan id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let countChannel: number; //Channel count (optional) (default to undefined)
 let bitrate: number; //Bitrate, kbps (optional) (default to undefined)
 
-const { status, data } = await apiInstance.buy1({
+const { status, data } = await apiInstance.planRestreamBuyV1(
     language,
     projectId,
     period,
     planRestreamId,
+    v,
     countChannel,
     bitrate
-  });
+);
 ```
 
 ### Parameters
@@ -50,6 +54,7 @@ const { status, data } = await apiInstance.buy1({
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **period** | [**&#39;month&#39; | &#39;year&#39;**]**Array<&#39;month&#39; &#124; &#39;year&#39;>** | Period | defaults to undefined|
 | **planRestreamId** | [**number**] | Restream plan id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **countChannel** | [**number**] | Channel count | (optional) defaults to undefined|
 | **bitrate** | [**number**] | Bitrate, kbps | (optional) defaults to undefined|
 
@@ -76,36 +81,40 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **check21**
-> PlanRestreamCheckV2Response check21()
+# **planRestreamCheck2V1**
+> PlanRestreamCheckV2Response planRestreamCheck2V1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PlanRestreamApi } from './api';
+import {
+    PlanRestreamApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PlanRestreamApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PlanRestreamApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let period: 'month' | 'year'; //Period (default to undefined)
 let planRestreamId: number; //Restream plan id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let useBalance: number; //Is select balance (optional) (default to undefined)
 let channels: number; //Channels count (optional) (default to undefined)
 let bitrate: number; //Bitrate, kbps (optional) (default to undefined)
 
-const { status, data } = await apiInstance.check21({
+const { status, data } = await apiInstance.planRestreamCheck2V1(
     language,
     projectId,
     period,
     planRestreamId,
+    v,
     useBalance,
     channels,
     bitrate
-  });
+);
 ```
 
 ### Parameters
@@ -116,6 +125,7 @@ const { status, data } = await apiInstance.check21({
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **period** | [**&#39;month&#39; | &#39;year&#39;**]**Array<&#39;month&#39; &#124; &#39;year&#39;>** | Period | defaults to undefined|
 | **planRestreamId** | [**number**] | Restream plan id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **useBalance** | [**number**] | Is select balance | (optional) defaults to undefined|
 | **channels** | [**number**] | Channels count | (optional) defaults to undefined|
 | **bitrate** | [**number**] | Bitrate, kbps | (optional) defaults to undefined|
@@ -143,24 +153,28 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getDiscount1**
-> PlanRestreamDiscountResponse getDiscount1()
+# **planRestreamGetDiscountV1**
+> PlanRestreamDiscountResponse planRestreamGetDiscountV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PlanRestreamApi } from './api';
+import {
+    PlanRestreamApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PlanRestreamApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PlanRestreamApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.getDiscount1({
-    language
-  });
+const { status, data } = await apiInstance.planRestreamGetDiscountV1(
+    language,
+    v
+);
 ```
 
 ### Parameters
@@ -168,6 +182,7 @@ const { status, data } = await apiInstance.getDiscount1({
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -192,75 +207,30 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list1**
-> PlanRestreamResponseDto list1()
+# **planRestreamListProjectV1**
+> PlanRestreamProjectResponseDto planRestreamListProjectV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PlanRestreamApi } from './api';
+import {
+    PlanRestreamApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PlanRestreamApi(sdkConfig.configuration);
-
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-
-const { status, data } = await apiInstance.list1({
-    language
-  });
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-
-
-### Return type
-
-**PlanRestreamResponseDto**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** |  |  -  |
-|**400** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProject1**
-> PlanRestreamProjectResponseDto listProject1()
-
-
-### Example
-
-```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PlanRestreamApi } from './api';
-
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PlanRestreamApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PlanRestreamApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.listProject1({
+const { status, data } = await apiInstance.planRestreamListProjectV1(
     language,
-    projectId
-  });
+    projectId,
+    v
+);
 ```
 
 ### Parameters
@@ -269,6 +239,7 @@ const { status, data } = await apiInstance.listProject1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -293,28 +264,86 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **remove1**
-> SuccessResponse remove1()
+# **planRestreamListV1**
+> PlanRestreamResponseDto planRestreamListV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PlanRestreamApi } from './api';
+import {
+    PlanRestreamApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PlanRestreamApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PlanRestreamApi(configuration);
+
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.planRestreamListV1(
+    language,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+**PlanRestreamResponseDto**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **planRestreamRemoveV1**
+> SuccessResponse planRestreamRemoveV1()
+
+
+### Example
+
+```typescript
+import {
+    PlanRestreamApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new PlanRestreamApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let planRestreamId: number; //Restream plan id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.remove1({
+const { status, data } = await apiInstance.planRestreamRemoveV1(
     language,
     projectId,
-    planRestreamId
-  });
+    planRestreamId,
+    v
+);
 ```
 
 ### Parameters
@@ -324,6 +353,7 @@ const { status, data } = await apiInstance.remove1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **planRestreamId** | [**number**] | Restream plan id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -348,26 +378,30 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **tariff1**
-> PlanRestreamForProject tariff1()
+# **planRestreamTariffV1**
+> PlanRestreamForProject planRestreamTariffV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PlanRestreamApi } from './api';
+import {
+    PlanRestreamApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PlanRestreamApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PlanRestreamApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.tariff1({
+const { status, data } = await apiInstance.planRestreamTariffV1(
     language,
-    projectId
-  });
+    projectId,
+    v
+);
 ```
 
 ### Parameters
@@ -376,6 +410,7 @@ const { status, data } = await apiInstance.tariff1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

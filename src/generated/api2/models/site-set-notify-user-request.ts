@@ -31,45 +31,39 @@ export interface SiteSetNotifyUserRequest {
      * @type {string}
      * @memberof SiteSetNotifyUserRequest
      */
-    'notify_channel': NotifyChannelEnum;
+    'notify_channel': SiteSetNotifyUserRequestNotifyChannelEnum;
     /**
      * Notify category
      * @type {string}
      * @memberof SiteSetNotifyUserRequest
      */
-    'notify_category': NotifyCategoryEnum;
+    'notify_category': SiteSetNotifyUserRequestNotifyCategoryEnum;
     /**
      * Set status
      * @type {string}
      * @memberof SiteSetNotifyUserRequest
      */
-    'status': StatusEnum;
+    'status': SiteSetNotifyUserRequestStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum NotifyChannelEnum {
-    telegram = 'telegram',
-    cabinet = 'cabinet',
-    mobile = 'mobile'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum NotifyCategoryEnum {
-    important = 'important',
-    stream = 'stream'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    enable = 'enable',
-    disable = 'disable'
-}
+export const SiteSetNotifyUserRequestNotifyChannelEnum = {
+    Telegram: 'telegram',
+    Cabinet: 'cabinet',
+    Mobile: 'mobile'
+} as const;
+
+export type SiteSetNotifyUserRequestNotifyChannelEnum = typeof SiteSetNotifyUserRequestNotifyChannelEnum[keyof typeof SiteSetNotifyUserRequestNotifyChannelEnum];
+export const SiteSetNotifyUserRequestNotifyCategoryEnum = {
+    Important: 'important',
+    Stream: 'stream'
+} as const;
+
+export type SiteSetNotifyUserRequestNotifyCategoryEnum = typeof SiteSetNotifyUserRequestNotifyCategoryEnum[keyof typeof SiteSetNotifyUserRequestNotifyCategoryEnum];
+export const SiteSetNotifyUserRequestStatusEnum = {
+    Enable: 'enable',
+    Disable: 'disable'
+} as const;
+
+export type SiteSetNotifyUserRequestStatusEnum = typeof SiteSetNotifyUserRequestStatusEnum[keyof typeof SiteSetNotifyUserRequestStatusEnum];
 
 

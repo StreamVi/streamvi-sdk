@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CategoryItemResponse } from './api';
+import { CategoryItemResponse } from 'streamvi-api-client';
 
 const instance: CategoryItemResponse = {
     id,

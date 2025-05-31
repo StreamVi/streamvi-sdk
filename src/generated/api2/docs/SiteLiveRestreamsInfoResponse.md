@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;SiteLiveRestreamInfoItem&gt;**](SiteLiveRestreamInfoItem.md) | Array of items | [default to undefined]
+**results** | [**Array&lt;LiveRestreamInfoItem&gt;**](LiveRestreamInfoItem.md) | Array of items | [default to undefined]
 **centrifuge** | [**SiteLiveRestreamCentrifugeResponse**](SiteLiveRestreamCentrifugeResponse.md) |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteLiveRestreamsInfoResponse } from './api';
+import { SiteLiveRestreamsInfoResponse } from 'streamvi-api-client';
 
 const instance: SiteLiveRestreamsInfoResponse = {
     results,

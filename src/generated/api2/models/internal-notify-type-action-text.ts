@@ -25,13 +25,13 @@ export interface InternalNotifyTypeActionText {
      * @type {string}
      * @memberof InternalNotifyTypeActionText
      */
-    'language': LanguageEnum;
+    'language': InternalNotifyTypeActionTextLanguageEnum;
     /**
      * Language ISO
      * @type {string}
      * @memberof InternalNotifyTypeActionText
      */
-    'language_iso': LanguageIsoEnum;
+    'language_iso': InternalNotifyTypeActionTextLanguageIsoEnum;
     /**
      * Title value
      * @type {string}
@@ -46,23 +46,19 @@ export interface InternalNotifyTypeActionText {
     'complited_title': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    russian = 'russian',
-    english = 'english',
-    none = 'none'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageIsoEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const InternalNotifyTypeActionTextLanguageEnum = {
+    Russian: 'russian',
+    English: 'english',
+    None: 'none'
+} as const;
+
+export type InternalNotifyTypeActionTextLanguageEnum = typeof InternalNotifyTypeActionTextLanguageEnum[keyof typeof InternalNotifyTypeActionTextLanguageEnum];
+export const InternalNotifyTypeActionTextLanguageIsoEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type InternalNotifyTypeActionTextLanguageIsoEnum = typeof InternalNotifyTypeActionTextLanguageIsoEnum[keyof typeof InternalNotifyTypeActionTextLanguageIsoEnum];
 
 

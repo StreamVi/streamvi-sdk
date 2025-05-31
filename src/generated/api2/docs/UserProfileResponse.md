@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **referralsIncome** | **string** | Referrals income | [default to undefined]
 **scope** | **number** | Scope | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
-**countrie_id** | **number** | Country | [default to undefined]
+**countrieId** | **number** | Country | [default to undefined]
 **language** | **string** | Language | [default to undefined]
 **balance** | **number** | Balance | [default to undefined]
 **lastProjectId** | **number** | Last select project | [default to undefined]
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { UserProfileResponse } from './api';
+import { UserProfileResponse } from 'streamvi-api-client';
 
 const instance: UserProfileResponse = {
     id,
@@ -36,7 +36,7 @@ const instance: UserProfileResponse = {
     referralsIncome,
     scope,
     currency,
-    countrie_id,
+    countrieId,
     language,
     balance,
     lastProjectId,

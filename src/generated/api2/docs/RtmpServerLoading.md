@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { RtmpServerLoading } from './api';
+import { RtmpServerLoading } from 'streamvi-api-client';
 
 const instance: RtmpServerLoading = {
     avg,

@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -33,24 +33,22 @@ import type { SuccessResponse } from '../models';
  * PayoutApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const PayoutApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Create payout
-         * @param {create1VEnum} v Version
-         * @param {create1LanguageEnum} language Current language
+         * @param {PayoutCreateV1LanguageEnum} language Current language
          * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto 
+         * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create1: async (v: create1VEnum, language: create1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('create1', 'v', v)
+        payoutCreateV1: async (language: PayoutCreateV1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, v?: PayoutCreateV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('create1', 'language', language)
+            assertParamExists('payoutCreateV1', 'language', language)
             // verify required parameter 'payoutCreateRequestBodyDto' is not null or undefined
-            assertParamExists('create1', 'payoutCreateRequestBodyDto', payoutCreateRequestBodyDto)
+            assertParamExists('payoutCreateV1', 'payoutCreateRequestBodyDto', payoutCreateRequestBodyDto)
             const localVarPath = `/method/payout/create`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -65,6 +63,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -88,19 +88,17 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get payout data for create
-         * @param {prepare1VEnum} v Version
-         * @param {prepare1LanguageEnum} language Current language
+         * @param {PayoutPrepareV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        prepare1: async (v: prepare1VEnum, language: prepare1LanguageEnum, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('prepare1', 'v', v)
+        payoutPrepareV1: async (language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('prepare1', 'language', language)
+            assertParamExists('payoutPrepareV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('prepare1', 'projectId', projectId)
+            assertParamExists('payoutPrepareV1', 'projectId', projectId)
             const localVarPath = `/method/payout/prepare`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -115,6 +113,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -143,37 +143,37 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * PayoutApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const PayoutApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = PayoutApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Create payout
-         * @param {create1VEnum} v Version
-         * @param {create1LanguageEnum} language Current language
+         * @param {PayoutCreateV1LanguageEnum} language Current language
          * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto 
+         * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async create1(v: create1VEnum, language: create1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create1(v, language, payoutCreateRequestBodyDto, options);
+        async payoutCreateV1(language: PayoutCreateV1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, v?: PayoutCreateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.payoutCreateV1(language, payoutCreateRequestBodyDto, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PayoutApi.create1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PayoutApi.payoutCreateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get payout data for create
-         * @param {prepare1VEnum} v Version
-         * @param {prepare1LanguageEnum} language Current language
+         * @param {PayoutPrepareV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async prepare1(v: prepare1VEnum, language: prepare1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPayoutSystemAccountListItemResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.prepare1(v, language, projectId, options);
+        async payoutPrepareV1(language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPayoutSystemAccountListItemResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.payoutPrepareV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PayoutApi.prepare1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PayoutApi.payoutPrepareV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -183,90 +183,114 @@ export const fp = function(configuration?: Configuration) {
  * PayoutApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const PayoutApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = PayoutApiFp(configuration)
     return {
         /**
          * 
          * @summary Create payout
-         * @param {create1Request} requestParameters Request parameters.
+         * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create1(requestParameters: create1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: create1VEnum = requestParameters.v || create1VEnum._1;
-            return localVarFp.create1(actualV, requestParameters.language, requestParameters.payoutCreateRequestBodyDto, options).then((request) => request(axios, basePath));
+        payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.payoutCreateV1(requestParameters.language, requestParameters.payoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get payout data for create
-         * @param {prepare1Request} requestParameters Request parameters.
+         * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        prepare1(requestParameters: prepare1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: prepare1VEnum = requestParameters.v || prepare1VEnum._1;
-            return localVarFp.prepare1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse> {
+            return localVarFp.payoutPrepareV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for create1 operation in PayoutApi.
+ * PayoutApi - interface
  * @export
- * @interface create1Request
+ * @interface PayoutApi
  */
-export interface create1Request {
+export interface PayoutApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof create1
+     * 
+     * @summary Create payout
+     * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PayoutApiInterface
      */
-    readonly v?: create1VEnum
+    payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
+    /**
+     * 
+     * @summary Get payout data for create
+     * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PayoutApiInterface
+     */
+    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse>;
+
+}
+
+/**
+ * Request parameters for payoutCreateV1 operation in PayoutApi.
+ * @export
+ * @interface PayoutApiPayoutCreateV1Request
+ */
+export interface PayoutApiPayoutCreateV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof create1
+     * @memberof PayoutApiPayoutCreateV1
      */
-    readonly language: create1LanguageEnum
+    readonly language: PayoutCreateV1LanguageEnum
 
     /**
      * 
      * @type {PayoutCreateRequestBodyDto}
-     * @memberof create1
+     * @memberof PayoutApiPayoutCreateV1
      */
     readonly payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PayoutApiPayoutCreateV1
+     */
+    readonly v?: PayoutCreateV1VEnum
 }
 
 /**
- * Request parameters for prepare1 operation in PayoutApi.
+ * Request parameters for payoutPrepareV1 operation in PayoutApi.
  * @export
- * @interface prepare1Request
+ * @interface PayoutApiPayoutPrepareV1Request
  */
-export interface prepare1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof prepare1
-     */
-    readonly v?: prepare1VEnum
-
+export interface PayoutApiPayoutPrepareV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof prepare1
+     * @memberof PayoutApiPayoutPrepareV1
      */
-    readonly language: prepare1LanguageEnum
+    readonly language: PayoutPrepareV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof prepare1
+     * @memberof PayoutApiPayoutPrepareV1
      */
     readonly projectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PayoutApiPayoutPrepareV1
+     */
+    readonly v?: PayoutPrepareV1VEnum
 }
 
 /**
@@ -275,69 +299,65 @@ export interface prepare1Request {
  * @class PayoutApi
  * @extends {BaseAPI}
  */
-export class PayoutApi extends BaseAPI {
+export class PayoutApi extends BaseAPI implements PayoutApiInterface {
     /**
      * 
      * @summary Create payout
-     * @param {create1Request} requestParameters Request parameters.
+     * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayoutApi
      */
-    public create1(requestParameters: create1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: create1VEnum = requestParameters.v || create1VEnum._1;
-        return fp(this.configuration).create1(actualV, requestParameters.language, requestParameters.payoutCreateRequestBodyDto, options).then((request) => request(this.axios, this.basePath));
+    public payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig) {
+        return PayoutApiFp(this.configuration).payoutCreateV1(requestParameters.language, requestParameters.payoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get payout data for create
-     * @param {prepare1Request} requestParameters Request parameters.
+     * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayoutApi
      */
-    public prepare1(requestParameters: prepare1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: prepare1VEnum = requestParameters.v || prepare1VEnum._1;
-        return fp(this.configuration).prepare1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    public payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig) {
+        return PayoutApiFp(this.configuration).payoutPrepareV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum create1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PayoutCreateV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PayoutCreateV1LanguageEnum = typeof PayoutCreateV1LanguageEnum[keyof typeof PayoutCreateV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum create1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PayoutCreateV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PayoutCreateV1VEnum = typeof PayoutCreateV1VEnum[keyof typeof PayoutCreateV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum prepare1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PayoutPrepareV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PayoutPrepareV1LanguageEnum = typeof PayoutPrepareV1LanguageEnum[keyof typeof PayoutPrepareV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum prepare1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PayoutPrepareV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PayoutPrepareV1VEnum = typeof PayoutPrepareV1VEnum[keyof typeof PayoutPrepareV1VEnum];

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { RefreshAuthResponse } from './api';
+import { RefreshAuthResponse } from 'streamvi-api-client';
 
 const instance: RefreshAuthResponse = {
     accessToken,

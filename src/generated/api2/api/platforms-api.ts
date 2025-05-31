@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -33,27 +33,25 @@ import type { SuccessResponse } from '../models';
  * PlatformsApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const PlatformsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Get url for start oauth
-         * @param {addAccount1VEnum} v Version
-         * @param {addAccount1LanguageEnum} language Current language
+         * @param {PlatformsAddAccountV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {addAccount1PlatformEnum} platform Provider oauth
+         * @param {PlatformsAddAccountV1PlatformEnum} platform Provider oauth
+         * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addAccount1: async (v: addAccount1VEnum, language: addAccount1LanguageEnum, projectId: number, platform: addAccount1PlatformEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('addAccount1', 'v', v)
+        platformsAddAccountV1: async (language: PlatformsAddAccountV1LanguageEnum, projectId: number, platform: PlatformsAddAccountV1PlatformEnum, v?: PlatformsAddAccountV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('addAccount1', 'language', language)
+            assertParamExists('platformsAddAccountV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('addAccount1', 'projectId', projectId)
+            assertParamExists('platformsAddAccountV1', 'projectId', projectId)
             // verify required parameter 'platform' is not null or undefined
-            assertParamExists('addAccount1', 'platform', platform)
+            assertParamExists('platformsAddAccountV1', 'platform', platform)
             const localVarPath = `/method/platforms/connect`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -68,6 +66,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -96,20 +96,18 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get category from the platform
-         * @param {getCategory1VEnum} v Version
-         * @param {getCategory1LanguageEnum} language Current language
-         * @param {getCategory1TypeEnum} type Category search bar
+         * @param {PlatformsGetCategoryV1LanguageEnum} language Current language
+         * @param {PlatformsGetCategoryV1TypeEnum} type Category search bar
+         * @param {PlatformsGetCategoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {string} [q] Category search bar
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategory1: async (v: getCategory1VEnum, language: getCategory1LanguageEnum, type: getCategory1TypeEnum, q?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('getCategory1', 'v', v)
+        platformsGetCategoryV1: async (language: PlatformsGetCategoryV1LanguageEnum, type: PlatformsGetCategoryV1TypeEnum, v?: PlatformsGetCategoryV1VEnum, q?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('getCategory1', 'language', language)
+            assertParamExists('platformsGetCategoryV1', 'language', language)
             // verify required parameter 'type' is not null or undefined
-            assertParamExists('getCategory1', 'type', type)
+            assertParamExists('platformsGetCategoryV1', 'type', type)
             const localVarPath = `/method/platforms/category`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -124,6 +122,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -152,22 +152,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get category from the platform
-         * @param {logoutAccount1VEnum} v Version
-         * @param {logoutAccount1LanguageEnum} language Current language
+         * @param {PlatformsLogoutAccountV1LanguageEnum} language Current language
          * @param {string} id Category search bar
-         * @param {logoutAccount1PlatformEnum} platform Provider oauth
+         * @param {PlatformsLogoutAccountV1PlatformEnum} platform Provider oauth
+         * @param {PlatformsLogoutAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logoutAccount1: async (v: logoutAccount1VEnum, language: logoutAccount1LanguageEnum, id: string, platform: logoutAccount1PlatformEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('logoutAccount1', 'v', v)
+        platformsLogoutAccountV1: async (language: PlatformsLogoutAccountV1LanguageEnum, id: string, platform: PlatformsLogoutAccountV1PlatformEnum, v?: PlatformsLogoutAccountV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('logoutAccount1', 'language', language)
+            assertParamExists('platformsLogoutAccountV1', 'language', language)
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('logoutAccount1', 'id', id)
+            assertParamExists('platformsLogoutAccountV1', 'id', id)
             // verify required parameter 'platform' is not null or undefined
-            assertParamExists('logoutAccount1', 'platform', platform)
+            assertParamExists('platformsLogoutAccountV1', 'platform', platform)
             const localVarPath = `/method/platforms/logout`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -182,6 +180,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -210,16 +210,14 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Supported platforms
-         * @param {platformList1VEnum} v Version
-         * @param {platformList1LanguageEnum} language Current language
+         * @param {PlatformsPlatformListV1LanguageEnum} language Current language
+         * @param {PlatformsPlatformListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformList1: async (v: platformList1VEnum, language: platformList1LanguageEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('platformList1', 'v', v)
+        platformsPlatformListV1: async (language: PlatformsPlatformListV1LanguageEnum, v?: PlatformsPlatformListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('platformList1', 'language', language)
+            assertParamExists('platformsPlatformListV1', 'language', language)
             const localVarPath = `/method/platforms/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -234,6 +232,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -258,69 +258,69 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * PlatformsApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const PlatformsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = PlatformsApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Get url for start oauth
-         * @param {addAccount1VEnum} v Version
-         * @param {addAccount1LanguageEnum} language Current language
+         * @param {PlatformsAddAccountV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {addAccount1PlatformEnum} platform Provider oauth
+         * @param {PlatformsAddAccountV1PlatformEnum} platform Provider oauth
+         * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addAccount1(v: addAccount1VEnum, language: addAccount1LanguageEnum, projectId: number, platform: addAccount1PlatformEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.addAccount1(v, language, projectId, platform, options);
+        async platformsAddAccountV1(language: PlatformsAddAccountV1LanguageEnum, projectId: number, platform: PlatformsAddAccountV1PlatformEnum, v?: PlatformsAddAccountV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsAddAccountV1(language, projectId, platform, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlatformsApi.addAccount1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PlatformsApi.platformsAddAccountV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get category from the platform
-         * @param {getCategory1VEnum} v Version
-         * @param {getCategory1LanguageEnum} language Current language
-         * @param {getCategory1TypeEnum} type Category search bar
+         * @param {PlatformsGetCategoryV1LanguageEnum} language Current language
+         * @param {PlatformsGetCategoryV1TypeEnum} type Category search bar
+         * @param {PlatformsGetCategoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {string} [q] Category search bar
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCategory1(v: getCategory1VEnum, language: getCategory1LanguageEnum, type: getCategory1TypeEnum, q?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfCategoryItemResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getCategory1(v, language, type, q, options);
+        async platformsGetCategoryV1(language: PlatformsGetCategoryV1LanguageEnum, type: PlatformsGetCategoryV1TypeEnum, v?: PlatformsGetCategoryV1VEnum, q?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfCategoryItemResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsGetCategoryV1(language, type, v, q, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlatformsApi.getCategory1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PlatformsApi.platformsGetCategoryV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get category from the platform
-         * @param {logoutAccount1VEnum} v Version
-         * @param {logoutAccount1LanguageEnum} language Current language
+         * @param {PlatformsLogoutAccountV1LanguageEnum} language Current language
          * @param {string} id Category search bar
-         * @param {logoutAccount1PlatformEnum} platform Provider oauth
+         * @param {PlatformsLogoutAccountV1PlatformEnum} platform Provider oauth
+         * @param {PlatformsLogoutAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async logoutAccount1(v: logoutAccount1VEnum, language: logoutAccount1LanguageEnum, id: string, platform: logoutAccount1PlatformEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfCategoryItemResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.logoutAccount1(v, language, id, platform, options);
+        async platformsLogoutAccountV1(language: PlatformsLogoutAccountV1LanguageEnum, id: string, platform: PlatformsLogoutAccountV1PlatformEnum, v?: PlatformsLogoutAccountV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfCategoryItemResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsLogoutAccountV1(language, id, platform, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlatformsApi.logoutAccount1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PlatformsApi.platformsLogoutAccountV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Supported platforms
-         * @param {platformList1VEnum} v Version
-         * @param {platformList1LanguageEnum} language Current language
+         * @param {PlatformsPlatformListV1LanguageEnum} language Current language
+         * @param {PlatformsPlatformListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformList1(v: platformList1VEnum, language: platformList1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlatformsSupportedResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformList1(v, language, options);
+        async platformsPlatformListV1(language: PlatformsPlatformListV1LanguageEnum, v?: PlatformsPlatformListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlatformsSupportedResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsPlatformListV1(language, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlatformsApi.platformList1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PlatformsApi.platformsPlatformListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -330,184 +330,224 @@ export const fp = function(configuration?: Configuration) {
  * PlatformsApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const PlatformsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = PlatformsApiFp(configuration)
     return {
         /**
          * 
          * @summary Get url for start oauth
-         * @param {addAccount1Request} requestParameters Request parameters.
+         * @param {PlatformsApiPlatformsAddAccountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addAccount1(requestParameters: addAccount1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: addAccount1VEnum = requestParameters.v || addAccount1VEnum._1;
-            return localVarFp.addAccount1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.platform, options).then((request) => request(axios, basePath));
+        platformsAddAccountV1(requestParameters: PlatformsApiPlatformsAddAccountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.platformsAddAccountV1(requestParameters.language, requestParameters.projectId, requestParameters.platform, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get category from the platform
-         * @param {getCategory1Request} requestParameters Request parameters.
+         * @param {PlatformsApiPlatformsGetCategoryV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategory1(requestParameters: getCategory1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: getCategory1VEnum = requestParameters.v || getCategory1VEnum._1;
-            return localVarFp.getCategory1(actualV, requestParameters.language, requestParameters.type, requestParameters.q, options).then((request) => request(axios, basePath));
+        platformsGetCategoryV1(requestParameters: PlatformsApiPlatformsGetCategoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse> {
+            return localVarFp.platformsGetCategoryV1(requestParameters.language, requestParameters.type, requestParameters.v, requestParameters.q, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get category from the platform
-         * @param {logoutAccount1Request} requestParameters Request parameters.
+         * @param {PlatformsApiPlatformsLogoutAccountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logoutAccount1(requestParameters: logoutAccount1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: logoutAccount1VEnum = requestParameters.v || logoutAccount1VEnum._1;
-            return localVarFp.logoutAccount1(actualV, requestParameters.language, requestParameters.id, requestParameters.platform, options).then((request) => request(axios, basePath));
+        platformsLogoutAccountV1(requestParameters: PlatformsApiPlatformsLogoutAccountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse> {
+            return localVarFp.platformsLogoutAccountV1(requestParameters.language, requestParameters.id, requestParameters.platform, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Supported platforms
-         * @param {platformList1Request} requestParameters Request parameters.
+         * @param {PlatformsApiPlatformsPlatformListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformList1(requestParameters: platformList1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlatformsSupportedResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: platformList1VEnum = requestParameters.v || platformList1VEnum._1;
-            return localVarFp.platformList1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        platformsPlatformListV1(requestParameters: PlatformsApiPlatformsPlatformListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlatformsSupportedResponse> {
+            return localVarFp.platformsPlatformListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for addAccount1 operation in PlatformsApi.
+ * PlatformsApi - interface
  * @export
- * @interface addAccount1Request
+ * @interface PlatformsApi
  */
-export interface addAccount1Request {
+export interface PlatformsApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof addAccount1
+     * 
+     * @summary Get url for start oauth
+     * @param {PlatformsApiPlatformsAddAccountV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApiInterface
      */
-    readonly v?: addAccount1VEnum
+    platformsAddAccountV1(requestParameters: PlatformsApiPlatformsAddAccountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 
+    /**
+     * 
+     * @summary Get category from the platform
+     * @param {PlatformsApiPlatformsGetCategoryV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApiInterface
+     */
+    platformsGetCategoryV1(requestParameters: PlatformsApiPlatformsGetCategoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse>;
+
+    /**
+     * 
+     * @summary Get category from the platform
+     * @param {PlatformsApiPlatformsLogoutAccountV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApiInterface
+     */
+    platformsLogoutAccountV1(requestParameters: PlatformsApiPlatformsLogoutAccountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse>;
+
+    /**
+     * 
+     * @summary Supported platforms
+     * @param {PlatformsApiPlatformsPlatformListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApiInterface
+     */
+    platformsPlatformListV1(requestParameters: PlatformsApiPlatformsPlatformListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlatformsSupportedResponse>;
+
+}
+
+/**
+ * Request parameters for platformsAddAccountV1 operation in PlatformsApi.
+ * @export
+ * @interface PlatformsApiPlatformsAddAccountV1Request
+ */
+export interface PlatformsApiPlatformsAddAccountV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof addAccount1
+     * @memberof PlatformsApiPlatformsAddAccountV1
      */
-    readonly language: addAccount1LanguageEnum
+    readonly language: PlatformsAddAccountV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof addAccount1
+     * @memberof PlatformsApiPlatformsAddAccountV1
      */
     readonly projectId: number
 
     /**
      * Provider oauth
      * @type {'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch'}
-     * @memberof addAccount1
+     * @memberof PlatformsApiPlatformsAddAccountV1
      */
-    readonly platform: addAccount1PlatformEnum
+    readonly platform: PlatformsAddAccountV1PlatformEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlatformsApiPlatformsAddAccountV1
+     */
+    readonly v?: PlatformsAddAccountV1VEnum
 }
 
 /**
- * Request parameters for getCategory1 operation in PlatformsApi.
+ * Request parameters for platformsGetCategoryV1 operation in PlatformsApi.
  * @export
- * @interface getCategory1Request
+ * @interface PlatformsApiPlatformsGetCategoryV1Request
  */
-export interface getCategory1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getCategory1
-     */
-    readonly v?: getCategory1VEnum
-
+export interface PlatformsApiPlatformsGetCategoryV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getCategory1
+     * @memberof PlatformsApiPlatformsGetCategoryV1
      */
-    readonly language: getCategory1LanguageEnum
+    readonly language: PlatformsGetCategoryV1LanguageEnum
 
     /**
      * Category search bar
      * @type {'vk' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'}
-     * @memberof getCategory1
+     * @memberof PlatformsApiPlatformsGetCategoryV1
      */
-    readonly type: getCategory1TypeEnum
+    readonly type: PlatformsGetCategoryV1TypeEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlatformsApiPlatformsGetCategoryV1
+     */
+    readonly v?: PlatformsGetCategoryV1VEnum
 
     /**
      * Category search bar
      * @type {string}
-     * @memberof getCategory1
+     * @memberof PlatformsApiPlatformsGetCategoryV1
      */
     readonly q?: string
 }
 
 /**
- * Request parameters for logoutAccount1 operation in PlatformsApi.
+ * Request parameters for platformsLogoutAccountV1 operation in PlatformsApi.
  * @export
- * @interface logoutAccount1Request
+ * @interface PlatformsApiPlatformsLogoutAccountV1Request
  */
-export interface logoutAccount1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof logoutAccount1
-     */
-    readonly v?: logoutAccount1VEnum
-
+export interface PlatformsApiPlatformsLogoutAccountV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof logoutAccount1
+     * @memberof PlatformsApiPlatformsLogoutAccountV1
      */
-    readonly language: logoutAccount1LanguageEnum
+    readonly language: PlatformsLogoutAccountV1LanguageEnum
 
     /**
      * Category search bar
      * @type {string}
-     * @memberof logoutAccount1
+     * @memberof PlatformsApiPlatformsLogoutAccountV1
      */
     readonly id: string
 
     /**
      * Provider oauth
      * @type {'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch'}
-     * @memberof logoutAccount1
+     * @memberof PlatformsApiPlatformsLogoutAccountV1
      */
-    readonly platform: logoutAccount1PlatformEnum
+    readonly platform: PlatformsLogoutAccountV1PlatformEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlatformsApiPlatformsLogoutAccountV1
+     */
+    readonly v?: PlatformsLogoutAccountV1VEnum
 }
 
 /**
- * Request parameters for platformList1 operation in PlatformsApi.
+ * Request parameters for platformsPlatformListV1 operation in PlatformsApi.
  * @export
- * @interface platformList1Request
+ * @interface PlatformsApiPlatformsPlatformListV1Request
  */
-export interface platformList1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof platformList1
-     */
-    readonly v?: platformList1VEnum
-
+export interface PlatformsApiPlatformsPlatformListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof platformList1
+     * @memberof PlatformsApiPlatformsPlatformListV1
      */
-    readonly language: platformList1LanguageEnum
+    readonly language: PlatformsPlatformListV1LanguageEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlatformsApiPlatformsPlatformListV1
+     */
+    readonly v?: PlatformsPlatformListV1VEnum
 }
 
 /**
@@ -516,168 +556,160 @@ export interface platformList1Request {
  * @class PlatformsApi
  * @extends {BaseAPI}
  */
-export class PlatformsApi extends BaseAPI {
+export class PlatformsApi extends BaseAPI implements PlatformsApiInterface {
     /**
      * 
      * @summary Get url for start oauth
-     * @param {addAccount1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsAddAccountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlatformsApi
      */
-    public addAccount1(requestParameters: addAccount1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: addAccount1VEnum = requestParameters.v || addAccount1VEnum._1;
-        return fp(this.configuration).addAccount1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.platform, options).then((request) => request(this.axios, this.basePath));
+    public platformsAddAccountV1(requestParameters: PlatformsApiPlatformsAddAccountV1Request, options?: RawAxiosRequestConfig) {
+        return PlatformsApiFp(this.configuration).platformsAddAccountV1(requestParameters.language, requestParameters.projectId, requestParameters.platform, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get category from the platform
-     * @param {getCategory1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsGetCategoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlatformsApi
      */
-    public getCategory1(requestParameters: getCategory1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: getCategory1VEnum = requestParameters.v || getCategory1VEnum._1;
-        return fp(this.configuration).getCategory1(actualV, requestParameters.language, requestParameters.type, requestParameters.q, options).then((request) => request(this.axios, this.basePath));
+    public platformsGetCategoryV1(requestParameters: PlatformsApiPlatformsGetCategoryV1Request, options?: RawAxiosRequestConfig) {
+        return PlatformsApiFp(this.configuration).platformsGetCategoryV1(requestParameters.language, requestParameters.type, requestParameters.v, requestParameters.q, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get category from the platform
-     * @param {logoutAccount1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsLogoutAccountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlatformsApi
      */
-    public logoutAccount1(requestParameters: logoutAccount1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: logoutAccount1VEnum = requestParameters.v || logoutAccount1VEnum._1;
-        return fp(this.configuration).logoutAccount1(actualV, requestParameters.language, requestParameters.id, requestParameters.platform, options).then((request) => request(this.axios, this.basePath));
+    public platformsLogoutAccountV1(requestParameters: PlatformsApiPlatformsLogoutAccountV1Request, options?: RawAxiosRequestConfig) {
+        return PlatformsApiFp(this.configuration).platformsLogoutAccountV1(requestParameters.language, requestParameters.id, requestParameters.platform, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Supported platforms
-     * @param {platformList1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsPlatformListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlatformsApi
      */
-    public platformList1(requestParameters: platformList1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: platformList1VEnum = requestParameters.v || platformList1VEnum._1;
-        return fp(this.configuration).platformList1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    public platformsPlatformListV1(requestParameters: PlatformsApiPlatformsPlatformListV1Request, options?: RawAxiosRequestConfig) {
+        return PlatformsApiFp(this.configuration).platformsPlatformListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum addAccount1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PlatformsAddAccountV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlatformsAddAccountV1LanguageEnum = typeof PlatformsAddAccountV1LanguageEnum[keyof typeof PlatformsAddAccountV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum addAccount1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PlatformsAddAccountV1PlatformEnum = {
+    Vk: 'vk',
+    VkId: 'vk-id',
+    Ok: 'ok',
+    Youtube: 'youtube',
+    Trovo: 'trovo',
+    Twitch: 'twitch'
+} as const;
+export type PlatformsAddAccountV1PlatformEnum = typeof PlatformsAddAccountV1PlatformEnum[keyof typeof PlatformsAddAccountV1PlatformEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum addAccount1PlatformEnum {
-    vk = 'vk',
-    vk_id = 'vk-id',
-    ok = 'ok',
-    youtube = 'youtube',
-    trovo = 'trovo',
-    twitch = 'twitch'
-}
+ * @export
+ */
+export const PlatformsAddAccountV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PlatformsAddAccountV1VEnum = typeof PlatformsAddAccountV1VEnum[keyof typeof PlatformsAddAccountV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getCategory1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PlatformsGetCategoryV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlatformsGetCategoryV1LanguageEnum = typeof PlatformsGetCategoryV1LanguageEnum[keyof typeof PlatformsGetCategoryV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getCategory1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PlatformsGetCategoryV1TypeEnum = {
+    Vk: 'vk',
+    Youtube: 'youtube',
+    Trovo: 'trovo',
+    Twitch: 'twitch',
+    Vkvideolive: 'vkvideolive'
+} as const;
+export type PlatformsGetCategoryV1TypeEnum = typeof PlatformsGetCategoryV1TypeEnum[keyof typeof PlatformsGetCategoryV1TypeEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getCategory1TypeEnum {
-    vk = 'vk',
-    youtube = 'youtube',
-    trovo = 'trovo',
-    twitch = 'twitch',
-    vkvideolive = 'vkvideolive'
-}
+ * @export
+ */
+export const PlatformsGetCategoryV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PlatformsGetCategoryV1VEnum = typeof PlatformsGetCategoryV1VEnum[keyof typeof PlatformsGetCategoryV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum logoutAccount1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PlatformsLogoutAccountV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlatformsLogoutAccountV1LanguageEnum = typeof PlatformsLogoutAccountV1LanguageEnum[keyof typeof PlatformsLogoutAccountV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum logoutAccount1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PlatformsLogoutAccountV1PlatformEnum = {
+    Vk: 'vk',
+    VkId: 'vk-id',
+    Ok: 'ok',
+    Youtube: 'youtube',
+    Trovo: 'trovo',
+    Twitch: 'twitch'
+} as const;
+export type PlatformsLogoutAccountV1PlatformEnum = typeof PlatformsLogoutAccountV1PlatformEnum[keyof typeof PlatformsLogoutAccountV1PlatformEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum logoutAccount1PlatformEnum {
-    vk = 'vk',
-    vk_id = 'vk-id',
-    ok = 'ok',
-    youtube = 'youtube',
-    trovo = 'trovo',
-    twitch = 'twitch'
-}
+ * @export
+ */
+export const PlatformsLogoutAccountV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PlatformsLogoutAccountV1VEnum = typeof PlatformsLogoutAccountV1VEnum[keyof typeof PlatformsLogoutAccountV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum platformList1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PlatformsPlatformListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlatformsPlatformListV1LanguageEnum = typeof PlatformsPlatformListV1LanguageEnum[keyof typeof PlatformsPlatformListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum platformList1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PlatformsPlatformListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PlatformsPlatformListV1VEnum = typeof PlatformsPlatformListV1VEnum[keyof typeof PlatformsPlatformListV1VEnum];

@@ -18,35 +18,33 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { SiteGetPolicyStructureDto } from '../models';
+import type { GetPolicyStructureDto } from '../models';
 /**
  * PolicyPageApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const PolicyPageApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Get policy page
-         * @param {getItem1VEnum} v Version
-         * @param {getItem1LanguageEnum} language Current language
-         * @param {getItem1FileNameEnum} fileName Policy file name
+         * @param {PolicyPageGetItemV1LanguageEnum} language Current language
+         * @param {PolicyPageGetItemV1FileNameEnum} fileName Policy file name
+         * @param {PolicyPageGetItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItem1: async (v: getItem1VEnum, language: getItem1LanguageEnum, fileName: getItem1FileNameEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('getItem1', 'v', v)
+        policyPageGetItemV1: async (language: PolicyPageGetItemV1LanguageEnum, fileName: PolicyPageGetItemV1FileNameEnum, v?: PolicyPageGetItemV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('getItem1', 'language', language)
+            assertParamExists('policyPageGetItemV1', 'language', language)
             // verify required parameter 'fileName' is not null or undefined
-            assertParamExists('getItem1', 'fileName', fileName)
+            assertParamExists('policyPageGetItemV1', 'fileName', fileName)
             const localVarPath = `/method/policy/get`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -61,6 +59,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -85,16 +85,14 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get policy structure
-         * @param {getStructure1VEnum} v Version
-         * @param {getStructure1LanguageEnum} language Current language
+         * @param {PolicyPageGetStructureV1LanguageEnum} language Current language
+         * @param {PolicyPageGetStructureV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStructure1: async (v: getStructure1VEnum, language: getStructure1LanguageEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('getStructure1', 'v', v)
+        policyPageGetStructureV1: async (language: PolicyPageGetStructureV1LanguageEnum, v?: PolicyPageGetStructureV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('getStructure1', 'language', language)
+            assertParamExists('policyPageGetStructureV1', 'language', language)
             const localVarPath = `/method/policy/structure`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -109,6 +107,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -133,36 +133,36 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * PolicyPageApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const PolicyPageApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = PolicyPageApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Get policy page
-         * @param {getItem1VEnum} v Version
-         * @param {getItem1LanguageEnum} language Current language
-         * @param {getItem1FileNameEnum} fileName Policy file name
+         * @param {PolicyPageGetItemV1LanguageEnum} language Current language
+         * @param {PolicyPageGetItemV1FileNameEnum} fileName Policy file name
+         * @param {PolicyPageGetItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItem1(v: getItem1VEnum, language: getItem1LanguageEnum, fileName: getItem1FileNameEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getItem1(v, language, fileName, options);
+        async policyPageGetItemV1(language: PolicyPageGetItemV1LanguageEnum, fileName: PolicyPageGetItemV1FileNameEnum, v?: PolicyPageGetItemV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.policyPageGetItemV1(language, fileName, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PolicyPageApi.getItem1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PolicyPageApi.policyPageGetItemV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get policy structure
-         * @param {getStructure1VEnum} v Version
-         * @param {getStructure1LanguageEnum} language Current language
+         * @param {PolicyPageGetStructureV1LanguageEnum} language Current language
+         * @param {PolicyPageGetStructureV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStructure1(v: getStructure1VEnum, language: getStructure1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteGetPolicyStructureDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStructure1(v, language, options);
+        async policyPageGetStructureV1(language: PolicyPageGetStructureV1LanguageEnum, v?: PolicyPageGetStructureV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPolicyStructureDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.policyPageGetStructureV1(language, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PolicyPageApi.getStructure1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PolicyPageApi.policyPageGetStructureV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -172,83 +172,107 @@ export const fp = function(configuration?: Configuration) {
  * PolicyPageApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const PolicyPageApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = PolicyPageApiFp(configuration)
     return {
         /**
          * 
          * @summary Get policy page
-         * @param {getItem1Request} requestParameters Request parameters.
+         * @param {PolicyPageApiPolicyPageGetItemV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItem1(requestParameters: getItem1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: getItem1VEnum = requestParameters.v || getItem1VEnum._1;
-            return localVarFp.getItem1(actualV, requestParameters.language, requestParameters.fileName, options).then((request) => request(axios, basePath));
+        policyPageGetItemV1(requestParameters: PolicyPageApiPolicyPageGetItemV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.policyPageGetItemV1(requestParameters.language, requestParameters.fileName, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get policy structure
-         * @param {getStructure1Request} requestParameters Request parameters.
+         * @param {PolicyPageApiPolicyPageGetStructureV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStructure1(requestParameters: getStructure1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteGetPolicyStructureDto> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: getStructure1VEnum = requestParameters.v || getStructure1VEnum._1;
-            return localVarFp.getStructure1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        policyPageGetStructureV1(requestParameters: PolicyPageApiPolicyPageGetStructureV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetPolicyStructureDto> {
+            return localVarFp.policyPageGetStructureV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for getItem1 operation in PolicyPageApi.
+ * PolicyPageApi - interface
  * @export
- * @interface getItem1Request
+ * @interface PolicyPageApi
  */
-export interface getItem1Request {
+export interface PolicyPageApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getItem1
+     * 
+     * @summary Get policy page
+     * @param {PolicyPageApiPolicyPageGetItemV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PolicyPageApiInterface
      */
-    readonly v?: getItem1VEnum
+    policyPageGetItemV1(requestParameters: PolicyPageApiPolicyPageGetItemV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 
     /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof getItem1
+     * 
+     * @summary Get policy structure
+     * @param {PolicyPageApiPolicyPageGetStructureV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PolicyPageApiInterface
      */
-    readonly language: getItem1LanguageEnum
+    policyPageGetStructureV1(requestParameters: PolicyPageApiPolicyPageGetStructureV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetPolicyStructureDto>;
 
-    /**
-     * Policy file name
-     * @type {'refund-policy' | 'terms-of-use' | 'using-cookie' | 'acceptable-use' | 'privacy-notice'}
-     * @memberof getItem1
-     */
-    readonly fileName: getItem1FileNameEnum
 }
 
 /**
- * Request parameters for getStructure1 operation in PolicyPageApi.
+ * Request parameters for policyPageGetItemV1 operation in PolicyPageApi.
  * @export
- * @interface getStructure1Request
+ * @interface PolicyPageApiPolicyPageGetItemV1Request
  */
-export interface getStructure1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getStructure1
-     */
-    readonly v?: getStructure1VEnum
-
+export interface PolicyPageApiPolicyPageGetItemV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getStructure1
+     * @memberof PolicyPageApiPolicyPageGetItemV1
      */
-    readonly language: getStructure1LanguageEnum
+    readonly language: PolicyPageGetItemV1LanguageEnum
+
+    /**
+     * Policy file name
+     * @type {'refund' | 'terms-of-use' | 'using-cookie' | 'acceptable-use' | 'privacy-notice'}
+     * @memberof PolicyPageApiPolicyPageGetItemV1
+     */
+    readonly fileName: PolicyPageGetItemV1FileNameEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PolicyPageApiPolicyPageGetItemV1
+     */
+    readonly v?: PolicyPageGetItemV1VEnum
+}
+
+/**
+ * Request parameters for policyPageGetStructureV1 operation in PolicyPageApi.
+ * @export
+ * @interface PolicyPageApiPolicyPageGetStructureV1Request
+ */
+export interface PolicyPageApiPolicyPageGetStructureV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PolicyPageApiPolicyPageGetStructureV1
+     */
+    readonly language: PolicyPageGetStructureV1LanguageEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PolicyPageApiPolicyPageGetStructureV1
+     */
+    readonly v?: PolicyPageGetStructureV1VEnum
 }
 
 /**
@@ -257,80 +281,76 @@ export interface getStructure1Request {
  * @class PolicyPageApi
  * @extends {BaseAPI}
  */
-export class PolicyPageApi extends BaseAPI {
+export class PolicyPageApi extends BaseAPI implements PolicyPageApiInterface {
     /**
      * 
      * @summary Get policy page
-     * @param {getItem1Request} requestParameters Request parameters.
+     * @param {PolicyPageApiPolicyPageGetItemV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PolicyPageApi
      */
-    public getItem1(requestParameters: getItem1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: getItem1VEnum = requestParameters.v || getItem1VEnum._1;
-        return fp(this.configuration).getItem1(actualV, requestParameters.language, requestParameters.fileName, options).then((request) => request(this.axios, this.basePath));
+    public policyPageGetItemV1(requestParameters: PolicyPageApiPolicyPageGetItemV1Request, options?: RawAxiosRequestConfig) {
+        return PolicyPageApiFp(this.configuration).policyPageGetItemV1(requestParameters.language, requestParameters.fileName, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get policy structure
-     * @param {getStructure1Request} requestParameters Request parameters.
+     * @param {PolicyPageApiPolicyPageGetStructureV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PolicyPageApi
      */
-    public getStructure1(requestParameters: getStructure1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: getStructure1VEnum = requestParameters.v || getStructure1VEnum._1;
-        return fp(this.configuration).getStructure1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    public policyPageGetStructureV1(requestParameters: PolicyPageApiPolicyPageGetStructureV1Request, options?: RawAxiosRequestConfig) {
+        return PolicyPageApiFp(this.configuration).policyPageGetStructureV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getItem1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PolicyPageGetItemV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PolicyPageGetItemV1LanguageEnum = typeof PolicyPageGetItemV1LanguageEnum[keyof typeof PolicyPageGetItemV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getItem1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PolicyPageGetItemV1FileNameEnum = {
+    Refund: 'refund',
+    TermsOfUse: 'terms-of-use',
+    UsingCookie: 'using-cookie',
+    AcceptableUse: 'acceptable-use',
+    PrivacyNotice: 'privacy-notice'
+} as const;
+export type PolicyPageGetItemV1FileNameEnum = typeof PolicyPageGetItemV1FileNameEnum[keyof typeof PolicyPageGetItemV1FileNameEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getItem1FileNameEnum {
-    refund_policy = 'refund-policy',
-    terms_of_use = 'terms-of-use',
-    using_cookie = 'using-cookie',
-    acceptable_use = 'acceptable-use',
-    privacy_notice = 'privacy-notice'
-}
+ * @export
+ */
+export const PolicyPageGetItemV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PolicyPageGetItemV1VEnum = typeof PolicyPageGetItemV1VEnum[keyof typeof PolicyPageGetItemV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getStructure1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PolicyPageGetStructureV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PolicyPageGetStructureV1LanguageEnum = typeof PolicyPageGetStructureV1LanguageEnum[keyof typeof PolicyPageGetStructureV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getStructure1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PolicyPageGetStructureV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PolicyPageGetStructureV1VEnum = typeof PolicyPageGetStructureV1VEnum[keyof typeof PolicyPageGetStructureV1VEnum];

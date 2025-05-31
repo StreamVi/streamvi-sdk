@@ -4,50 +4,54 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**getTelegramSetting1**](#gettelegramsetting1) | **GET** /method/channel_settings/chat/telegram/setting | Get telegram settings|
-|[**initTelegramChatConnect1**](#inittelegramchatconnect1) | **GET** /method/channel_settings/chat/telegram/init | Get code for connected chat|
-|[**removeTelegramChat1**](#removetelegramchat1) | **GET** /method/channel_settings/chat/telegram/disconnect | Disconnect telegram chat|
-|[**setTelegramSetting1**](#settelegramsetting1) | **POST** /method/channel_settings/chat/telegram/setting | Set telegram settings|
-|[**telegramPosts1**](#telegramposts1) | **GET** /method/channel_settings/chat/telegram/posts | Get telegram post list|
-|[**updateOptionsTelegram1**](#updateoptionstelegram1) | **POST** /method/channel_settings/chat/setTelegram | Optional settings for telegram|
-|[**getPlanned1**](#getplanned1) | **GET** /method/channel_settings/options/getPlanned | Get planned list|
-|[**getPlayList1**](#getplaylist1) | **GET** /method/channel_settings/options/getPlaylist | Get playlists from the platform|
-|[**updateOptionsOk1**](#updateoptionsok1) | **POST** /method/channel_settings/options/setOk | Optional settings for ok. Depends on the tariff.|
-|[**updateOptionsTrovo1**](#updateoptionstrovo1) | **POST** /method/channel_settings/options/setTrovo | Optional settings for trovo. Depends on the tariff.|
-|[**updateOptionsTwitch1**](#updateoptionstwitch1) | **POST** /method/channel_settings/options/setTwitch | Optional settings for twitch. Depends on the tariff.|
-|[**updateOptionsVk1**](#updateoptionsvk1) | **POST** /method/channel_settings/options/setVk | Optional settings for vk. Depends on the tariff.|
-|[**updateOptionsVkVideoLive1**](#updateoptionsvkvideolive1) | **POST** /method/channel_settings/options/setVkVideoLive | Optional settings for vk video live. Depends on the tariff.|
-|[**updateOptionsYoutube1**](#updateoptionsyoutube1) | **POST** /method/channel_settings/options/setYoutube | Optional settings for youtube. Depends on the tariff.|
-|[**updatePlanned1**](#updateplanned1) | **POST** /method/channel_settings/options/setPlanned | Set planned id. Depends on the tariff.|
-|[**getStatus1**](#getstatus1) | **GET** /method/channel_settings/getStatus | Get status platform|
-|[**setName1**](#setname1) | **POST** /method/channel_settings/setName | Set name from custom channel. Global settings.|
-|[**updateRtmp1**](#updatertmp1) | **POST** /method/channel_settings/setRtmp | Set rtmp url from channel. Global settings.|
-|[**updateToken1**](#updatetoken1) | **GET** /method/channel_settings/update-token | Get status platform|
-|[**updateTranscoder1**](#updatetranscoder1) | **POST** /method/channel_settings/setTranscoder | Set transcoder from channel. Personal settings.|
-|[**telegramGetPostByFilter**](#telegramgetpostbyfilter) | **GET** /method/channel_settings/chat/telegram/posts/get-by-filter | Get telegram post by filter|
+|[**channelChatGetTelegramSettingV1**](#channelchatgettelegramsettingv1) | **GET** /method/channel_settings/chat/telegram/setting | Get telegram settings|
+|[**channelChatInitTelegramChatConnectV1**](#channelchatinittelegramchatconnectv1) | **GET** /method/channel_settings/chat/telegram/init | Get code for connected chat|
+|[**channelChatRemoveTelegramChatV1**](#channelchatremovetelegramchatv1) | **GET** /method/channel_settings/chat/telegram/disconnect | Disconnect telegram chat|
+|[**channelChatSetTelegramSettingV1**](#channelchatsettelegramsettingv1) | **POST** /method/channel_settings/chat/telegram/setting | Set telegram settings|
+|[**channelChatTelegramPostsV1**](#channelchattelegrampostsv1) | **GET** /method/channel_settings/chat/telegram/posts | Get telegram post list|
+|[**channelChatUpdateOptionsTelegramV1**](#channelchatupdateoptionstelegramv1) | **POST** /method/channel_settings/chat/setTelegram | Optional settings for telegram|
+|[**channelOptionsGetPlannedV1**](#channeloptionsgetplannedv1) | **GET** /method/channel_settings/options/getPlanned | Get planned list|
+|[**channelOptionsGetPlayListV1**](#channeloptionsgetplaylistv1) | **GET** /method/channel_settings/options/getPlaylist | Get playlists from the platform|
+|[**channelOptionsUpdateOptionsOkV1**](#channeloptionsupdateoptionsokv1) | **POST** /method/channel_settings/options/setOk | Optional settings for ok. Depends on the tariff.|
+|[**channelOptionsUpdateOptionsTrovoV1**](#channeloptionsupdateoptionstrovov1) | **POST** /method/channel_settings/options/setTrovo | Optional settings for trovo. Depends on the tariff.|
+|[**channelOptionsUpdateOptionsTwitchV1**](#channeloptionsupdateoptionstwitchv1) | **POST** /method/channel_settings/options/setTwitch | Optional settings for twitch. Depends on the tariff.|
+|[**channelOptionsUpdateOptionsVkV1**](#channeloptionsupdateoptionsvkv1) | **POST** /method/channel_settings/options/setVk | Optional settings for vk. Depends on the tariff.|
+|[**channelOptionsUpdateOptionsVkVideoLiveV1**](#channeloptionsupdateoptionsvkvideolivev1) | **POST** /method/channel_settings/options/setVkVideoLive | Optional settings for vk video live. Depends on the tariff.|
+|[**channelOptionsUpdateOptionsYoutubeV1**](#channeloptionsupdateoptionsyoutubev1) | **POST** /method/channel_settings/options/setYoutube | Optional settings for youtube. Depends on the tariff.|
+|[**channelOptionsUpdatePlannedV1**](#channeloptionsupdateplannedv1) | **POST** /method/channel_settings/options/setPlanned | Set planned id. Depends on the tariff.|
+|[**channelSettingGetStatusV1**](#channelsettinggetstatusv1) | **GET** /method/channel_settings/getStatus | Get status platform|
+|[**channelSettingSetNameV1**](#channelsettingsetnamev1) | **POST** /method/channel_settings/setName | Set name from custom channel. Global settings.|
+|[**channelSettingUpdateRtmpV1**](#channelsettingupdatertmpv1) | **POST** /method/channel_settings/setRtmp | Set rtmp url from channel. Global settings.|
+|[**channelSettingUpdateTokenV1**](#channelsettingupdatetokenv1) | **GET** /method/channel_settings/update-token | Get status platform|
+|[**channelSettingUpdateTranscoderV1**](#channelsettingupdatetranscoderv1) | **POST** /method/channel_settings/setTranscoder | Set transcoder from channel. Personal settings.|
+|[**telegramGetPostByFilterV1**](#telegramgetpostbyfilterv1) | **GET** /method/channel_settings/chat/telegram/posts/get-by-filter | Get telegram post by filter|
 
-# **getTelegramSetting1**
-> TelegramSettingsResponseDto getTelegramSetting1()
+# **channelChatGetTelegramSettingV1**
+> TelegramSettingsResponseDto channelChatGetTelegramSettingV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.getTelegramSetting1({
+const { status, data } = await apiInstance.channelChatGetTelegramSettingV1(
     language,
     projectId,
-    channelId
-  });
+    channelId,
+    v
+);
 ```
 
 ### Parameters
@@ -57,6 +61,7 @@ const { status, data } = await apiInstance.getTelegramSetting1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -81,28 +86,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **initTelegramChatConnect1**
-> TelegramInitConnectResponseDto initTelegramChatConnect1()
+# **channelChatInitTelegramChatConnectV1**
+> TelegramInitConnectResponseDto channelChatInitTelegramChatConnectV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.initTelegramChatConnect1({
+const { status, data } = await apiInstance.channelChatInitTelegramChatConnectV1(
     language,
     projectId,
-    channelId
-  });
+    channelId,
+    v
+);
 ```
 
 ### Parameters
@@ -112,6 +121,7 @@ const { status, data } = await apiInstance.initTelegramChatConnect1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -136,28 +146,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **removeTelegramChat1**
-> SuccessResponse removeTelegramChat1()
+# **channelChatRemoveTelegramChatV1**
+> SuccessResponse channelChatRemoveTelegramChatV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.removeTelegramChat1({
+const { status, data } = await apiInstance.channelChatRemoveTelegramChatV1(
     language,
     projectId,
-    channelId
-  });
+    channelId,
+    v
+);
 ```
 
 ### Parameters
@@ -167,6 +181,7 @@ const { status, data } = await apiInstance.removeTelegramChat1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -191,41 +206,46 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **setTelegramSetting1**
-> SuccessResponse setTelegramSetting1(siteTelegramSetSettingsRequestDto)
+# **channelChatSetTelegramSettingV1**
+> SuccessResponse channelChatSetTelegramSettingV1(telegramSetSettingsRequestDto)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteTelegramSetSettingsRequestDto } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    TelegramSetSettingsRequestDto
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
-let siteTelegramSetSettingsRequestDto: SiteTelegramSetSettingsRequestDto; //
+let telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto; //
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.setTelegramSetting1({
+const { status, data } = await apiInstance.channelChatSetTelegramSettingV1(
     language,
     projectId,
     channelId,
-    siteTelegramSetSettingsRequestDto
-  });
+    telegramSetSettingsRequestDto,
+    v
+);
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **siteTelegramSetSettingsRequestDto** | **SiteTelegramSetSettingsRequestDto**|  | |
+| **telegramSetSettingsRequestDto** | **TelegramSetSettingsRequestDto**|  | |
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -250,28 +270,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **telegramPosts1**
-> SiteTelegramChatPostsResponseDto telegramPosts1()
+# **channelChatTelegramPostsV1**
+> TelegramChatPostsResponseDto channelChatTelegramPostsV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.telegramPosts1({
+const { status, data } = await apiInstance.channelChatTelegramPostsV1(
     language,
     projectId,
-    channelId
-  });
+    channelId,
+    v
+);
 ```
 
 ### Parameters
@@ -281,11 +305,12 @@ const { status, data } = await apiInstance.telegramPosts1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
 
-**SiteTelegramChatPostsResponseDto**
+**TelegramChatPostsResponseDto**
 
 ### Authorization
 
@@ -305,25 +330,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateOptionsTelegram1**
-> SuccessResponse updateOptionsTelegram1(siteUpdateChatTelegramRequest)
+# **channelChatUpdateOptionsTelegramV1**
+> SuccessResponse channelChatUpdateOptionsTelegramV1(siteUpdateChatTelegramRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteUpdateChatTelegramRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteUpdateChatTelegramRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest; //
 
-const { status, data } = await apiInstance.updateOptionsTelegram1({
+const { status, data } = await apiInstance.channelChatUpdateOptionsTelegramV1(
     siteUpdateChatTelegramRequest
-  });
+);
 ```
 
 ### Parameters
@@ -355,28 +382,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getPlanned1**
-> ListOfSitePlannedResponse getPlanned1()
+# **channelOptionsGetPlannedV1**
+> ListOfSitePlannedResponse channelOptionsGetPlannedV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.getPlanned1({
+const { status, data } = await apiInstance.channelOptionsGetPlannedV1(
     language,
     projectId,
-    channelId
-  });
+    channelId,
+    v
+);
 ```
 
 ### Parameters
@@ -386,6 +417,7 @@ const { status, data } = await apiInstance.getPlanned1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -410,28 +442,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getPlayList1**
-> ListOfPlaylistItemResponse getPlayList1()
+# **channelOptionsGetPlayListV1**
+> ListOfPlaylistItemResponse channelOptionsGetPlayListV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.getPlayList1({
+const { status, data } = await apiInstance.channelOptionsGetPlayListV1(
     language,
     projectId,
-    channelId
-  });
+    channelId,
+    v
+);
 ```
 
 ### Parameters
@@ -441,6 +477,7 @@ const { status, data } = await apiInstance.getPlayList1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -465,25 +502,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateOptionsOk1**
-> SuccessResponse updateOptionsOk1(siteUpdateOptionsOkRequest)
+# **channelOptionsUpdateOptionsOkV1**
+> SuccessResponse channelOptionsUpdateOptionsOkV1(siteUpdateOptionsOkRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteUpdateOptionsOkRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteUpdateOptionsOkRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest; //
 
-const { status, data } = await apiInstance.updateOptionsOk1({
+const { status, data } = await apiInstance.channelOptionsUpdateOptionsOkV1(
     siteUpdateOptionsOkRequest
-  });
+);
 ```
 
 ### Parameters
@@ -515,25 +554,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateOptionsTrovo1**
-> SuccessResponse updateOptionsTrovo1(siteUpdateOptionsTrovoRequest)
+# **channelOptionsUpdateOptionsTrovoV1**
+> SuccessResponse channelOptionsUpdateOptionsTrovoV1(siteUpdateOptionsTrovoRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteUpdateOptionsTrovoRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteUpdateOptionsTrovoRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest; //
 
-const { status, data } = await apiInstance.updateOptionsTrovo1({
+const { status, data } = await apiInstance.channelOptionsUpdateOptionsTrovoV1(
     siteUpdateOptionsTrovoRequest
-  });
+);
 ```
 
 ### Parameters
@@ -565,25 +606,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateOptionsTwitch1**
-> SuccessResponse updateOptionsTwitch1(siteUpdateOptionsTwitchRequest)
+# **channelOptionsUpdateOptionsTwitchV1**
+> SuccessResponse channelOptionsUpdateOptionsTwitchV1(siteUpdateOptionsTwitchRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteUpdateOptionsTwitchRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteUpdateOptionsTwitchRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest; //
 
-const { status, data } = await apiInstance.updateOptionsTwitch1({
+const { status, data } = await apiInstance.channelOptionsUpdateOptionsTwitchV1(
     siteUpdateOptionsTwitchRequest
-  });
+);
 ```
 
 ### Parameters
@@ -615,25 +658,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateOptionsVk1**
-> SuccessResponse updateOptionsVk1(siteUpdateOptionsVkRequest)
+# **channelOptionsUpdateOptionsVkV1**
+> SuccessResponse channelOptionsUpdateOptionsVkV1(siteUpdateOptionsVkRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteUpdateOptionsVkRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteUpdateOptionsVkRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest; //
 
-const { status, data } = await apiInstance.updateOptionsVk1({
+const { status, data } = await apiInstance.channelOptionsUpdateOptionsVkV1(
     siteUpdateOptionsVkRequest
-  });
+);
 ```
 
 ### Parameters
@@ -665,25 +710,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateOptionsVkVideoLive1**
-> SuccessResponse updateOptionsVkVideoLive1(siteUpdateOptionsVkVideoLiveRequest)
+# **channelOptionsUpdateOptionsVkVideoLiveV1**
+> SuccessResponse channelOptionsUpdateOptionsVkVideoLiveV1(siteUpdateOptionsVkVideoLiveRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteUpdateOptionsVkVideoLiveRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteUpdateOptionsVkVideoLiveRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest; //
 
-const { status, data } = await apiInstance.updateOptionsVkVideoLive1({
+const { status, data } = await apiInstance.channelOptionsUpdateOptionsVkVideoLiveV1(
     siteUpdateOptionsVkVideoLiveRequest
-  });
+);
 ```
 
 ### Parameters
@@ -715,25 +762,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateOptionsYoutube1**
-> SuccessResponse updateOptionsYoutube1(siteUpdateOptionsYoutubeRequest)
+# **channelOptionsUpdateOptionsYoutubeV1**
+> SuccessResponse channelOptionsUpdateOptionsYoutubeV1(siteUpdateOptionsYoutubeRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteUpdateOptionsYoutubeRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteUpdateOptionsYoutubeRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest; //
 
-const { status, data } = await apiInstance.updateOptionsYoutube1({
+const { status, data } = await apiInstance.channelOptionsUpdateOptionsYoutubeV1(
     siteUpdateOptionsYoutubeRequest
-  });
+);
 ```
 
 ### Parameters
@@ -765,25 +814,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updatePlanned1**
-> SitePlannedResponse updatePlanned1(siteSetPlannedRequest)
+# **channelOptionsUpdatePlannedV1**
+> SitePlannedResponse channelOptionsUpdatePlannedV1(siteSetPlannedRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteSetPlannedRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteSetPlannedRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteSetPlannedRequest: SiteSetPlannedRequest; //
 
-const { status, data } = await apiInstance.updatePlanned1({
+const { status, data } = await apiInstance.channelOptionsUpdatePlannedV1(
     siteSetPlannedRequest
-  });
+);
 ```
 
 ### Parameters
@@ -815,20 +866,22 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getStatus1**
-> SiteChannelStatusResponse getStatus1()
+# **channelSettingGetStatusV1**
+> SiteChannelStatusResponse channelSettingGetStatusV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
-const { status, data } = await apiInstance.getStatus1({});
+const { status, data } = await apiInstance.channelSettingGetStatusV1();
 ```
 
 ### Parameters
@@ -857,25 +910,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **setName1**
-> SuccessResponse setName1(siteSetNameRequest)
+# **channelSettingSetNameV1**
+> SuccessResponse channelSettingSetNameV1(siteSetNameRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteSetNameRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteSetNameRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteSetNameRequest: SiteSetNameRequest; //
 
-const { status, data } = await apiInstance.setName1({
+const { status, data } = await apiInstance.channelSettingSetNameV1(
     siteSetNameRequest
-  });
+);
 ```
 
 ### Parameters
@@ -907,25 +962,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateRtmp1**
-> SuccessResponse updateRtmp1(siteSetUrlRequest)
+# **channelSettingUpdateRtmpV1**
+> SuccessResponse channelSettingUpdateRtmpV1(siteSetUrlRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteSetUrlRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteSetUrlRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteSetUrlRequest: SiteSetUrlRequest; //
 
-const { status, data } = await apiInstance.updateRtmp1({
+const { status, data } = await apiInstance.channelSettingUpdateRtmpV1(
     siteSetUrlRequest
-  });
+);
 ```
 
 ### Parameters
@@ -957,30 +1014,34 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateToken1**
-> updateToken1()
+# **channelSettingUpdateTokenV1**
+> channelSettingUpdateTokenV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
 let role: 'account' | 'group'; //Token role (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.updateToken1({
+const { status, data } = await apiInstance.channelSettingUpdateTokenV1(
     language,
     projectId,
     channelId,
-    role
-  });
+    role,
+    v
+);
 ```
 
 ### Parameters
@@ -991,6 +1052,7 @@ const { status, data } = await apiInstance.updateToken1({
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
 | **role** | [**&#39;account&#39; | &#39;group&#39;**]**Array<&#39;account&#39; &#124; &#39;group&#39;>** | Token role | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -1015,25 +1077,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateTranscoder1**
-> SuccessResponse updateTranscoder1(siteSetTranscoderRequest)
+# **channelSettingUpdateTranscoderV1**
+> SuccessResponse channelSettingUpdateTranscoderV1(siteSetTranscoderRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi
-    SiteSetTranscoderRequest } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration,
+    SiteSetTranscoderRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let siteSetTranscoderRequest: SiteSetTranscoderRequest; //
 
-const { status, data } = await apiInstance.updateTranscoder1({
+const { status, data } = await apiInstance.channelSettingUpdateTranscoderV1(
     siteSetTranscoderRequest
-  });
+);
 ```
 
 ### Parameters
@@ -1065,30 +1129,34 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **telegramGetPostByFilter**
-> SiteTelegramChatPostsItem telegramGetPostByFilter()
+# **telegramGetPostByFilterV1**
+> TelegramChatPostsItem telegramGetPostByFilterV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ChannelSettingsApi } from './api';
+import {
+    ChannelSettingsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ChannelSettingsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ChannelSettingsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
 let filterMode: number; // (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.telegramGetPostByFilter({
+const { status, data } = await apiInstance.telegramGetPostByFilterV1(
     language,
     projectId,
     channelId,
-    filterMode
-  });
+    filterMode,
+    v
+);
 ```
 
 ### Parameters
@@ -1099,11 +1167,12 @@ const { status, data } = await apiInstance.telegramGetPostByFilter({
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
 | **filterMode** | [**number**] |  | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
 
-**SiteTelegramChatPostsItem**
+**TelegramChatPostsItem**
 
 ### Authorization
 

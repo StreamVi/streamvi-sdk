@@ -5,20 +5,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**project_id** | **number** | Project id | [default to undefined]
-**notify_channel** | **string** | Notify channel | [default to undefined]
-**notify_category** | **string** | Notify category | [default to undefined]
+**projectId** | **number** | Project id | [default to undefined]
+**notifyChannel** | **string** | Notify channel | [default to undefined]
+**notifyCategory** | **string** | Notify category | [default to undefined]
 **status** | **string** | Set status | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteSetNotifyUserRequest } from './api';
+import { SiteSetNotifyUserRequest } from 'streamvi-api-client';
 
 const instance: SiteSetNotifyUserRequest = {
-    project_id,
-    notify_channel,
-    notify_category,
+    projectId,
+    notifyChannel,
+    notifyCategory,
     status,
 };
 ```

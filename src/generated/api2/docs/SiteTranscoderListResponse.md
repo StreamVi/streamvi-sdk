@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;SiteTranscoderListItem&gt;**](SiteTranscoderListItem.md) | Array of items | [default to undefined]
+**results** | [**Array&lt;TranscoderListItem&gt;**](TranscoderListItem.md) | Array of items | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteTranscoderListResponse } from './api';
+import { SiteTranscoderListResponse } from 'streamvi-api-client';
 
 const instance: SiteTranscoderListResponse = {
     results,

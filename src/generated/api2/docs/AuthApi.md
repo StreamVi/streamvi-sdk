@@ -4,34 +4,36 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**authTelegram1**](#authtelegram1) | **GET** /method/auth/auth-telegram | Auth telegram|
-|[**callbackGoogle1**](#callbackgoogle1) | **GET** /method/auth/callback/google | Internal request of auth google|
-|[**callbackVk1**](#callbackvk1) | **GET** /method/auth/callback/vk | Internal request of auth old vk|
-|[**callbackVkId1**](#callbackvkid1) | **GET** /method/auth/callback/vk-id | Internal request of auth new vk|
-|[**code1**](#code1) | **GET** /method/auth/app/code | Get code for auth|
-|[**connect1**](#connect1) | **GET** /method/auth/connect | Connected social account|
-|[**connectResult1**](#connectresult1) | **GET** /method/auth/connect/callback | CallBack for connect social|
-|[**connectTelegram1**](#connecttelegram1) | **POST** /method/auth/connect-telegram | Connect telegram in account|
-|[**disconnect1**](#disconnect1) | **GET** /method/auth/disconnect | Disconnected social account|
-|[**exchange1**](#exchange1) | **POST** /method/auth/app/exchange | Code exchange|
-|[**getAuthUrl1**](#getauthurl1) | **GET** /method/auth/redirect-url | Get url for start oauth|
-|[**getProfile1**](#getprofile1) | **GET** /method/auth/me | Get basic data for auth user|
-|[**guest1**](#guest1) | **GET** /method/auth/guest | Guest request of auth|
-|[**logout1**](#logout1) | **POST** /method/auth/logout | Logout|
-|[**refreshAccess1**](#refreshaccess1) | **POST** /method/auth/refresh-access | Update access token|
+|[**authAuthTelegramV1**](#authauthtelegramv1) | **GET** /method/auth/auth-telegram | Auth telegram|
+|[**authCallbackGoogleV1**](#authcallbackgooglev1) | **GET** /method/auth/callback/google | Internal request of auth google|
+|[**authCallbackVkIdV1**](#authcallbackvkidv1) | **GET** /method/auth/callback/vk-id | Internal request of auth new vk|
+|[**authCallbackVkV1**](#authcallbackvkv1) | **GET** /method/auth/callback/vk | Internal request of auth old vk|
+|[**authCodeV1**](#authcodev1) | **GET** /method/auth/app/code | Get code for auth|
+|[**authConnectResultV1**](#authconnectresultv1) | **GET** /method/auth/connect/callback | CallBack for connect social|
+|[**authConnectTelegramV1**](#authconnecttelegramv1) | **POST** /method/auth/connect-telegram | Connect telegram in account|
+|[**authConnectV1**](#authconnectv1) | **GET** /method/auth/connect | Connected social account|
+|[**authDisconnectV1**](#authdisconnectv1) | **GET** /method/auth/disconnect | Disconnected social account|
+|[**authExchangeV1**](#authexchangev1) | **POST** /method/auth/app/exchange | Code exchange|
+|[**authGetAuthUrlV1**](#authgetauthurlv1) | **GET** /method/auth/redirect-url | Get url for start oauth|
+|[**authGetProfileV1**](#authgetprofilev1) | **GET** /method/auth/me | Get basic data for auth user|
+|[**authGuestV1**](#authguestv1) | **GET** /method/auth/guest | Guest request of auth|
+|[**authLogoutV1**](#authlogoutv1) | **POST** /method/auth/logout | Logout|
+|[**authRefreshAccessV1**](#authrefreshaccessv1) | **POST** /method/auth/refresh-access | Update access token|
 
-# **authTelegram1**
-> authTelegram1()
+# **authAuthTelegramV1**
+> authAuthTelegramV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let authDate: number; //Time auth (default to undefined)
@@ -39,6 +41,7 @@ let id: number; //Telegram userId (default to undefined)
 let firstName: string; //First name (default to undefined)
 let hash: string; //Hash (default to undefined)
 let app: 'site' | 'admin' | 'mobile' | 'desktop'; //App oauth (default to 'site')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let lastName: string; //Last name (optional) (default to undefined)
 let username: string; //Nickname (optional) (default to undefined)
 let photoUrl: string; //Photo (optional) (default to undefined)
@@ -49,13 +52,14 @@ let refId: string; //Referal id (optional) (default to undefined)
 let redirect: string; //Redirect url (optional) (default to undefined)
 let country: string; //Country code (optional) (default to 'ru')
 
-const { status, data } = await apiInstance.authTelegram1({
+const { status, data } = await apiInstance.authAuthTelegramV1(
     language,
     authDate,
     id,
     firstName,
     hash,
     app,
+    v,
     lastName,
     username,
     photoUrl,
@@ -65,7 +69,7 @@ const { status, data } = await apiInstance.authTelegram1({
     refId,
     redirect,
     country
-  });
+);
 ```
 
 ### Parameters
@@ -78,6 +82,7 @@ const { status, data } = await apiInstance.authTelegram1({
 | **firstName** | [**string**] | First name | defaults to undefined|
 | **hash** | [**string**] | Hash | defaults to undefined|
 | **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | App oauth | defaults to 'site'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **lastName** | [**string**] | Last name | (optional) defaults to undefined|
 | **username** | [**string**] | Nickname | (optional) defaults to undefined|
 | **photoUrl** | [**string**] | Photo | (optional) defaults to undefined|
@@ -111,24 +116,26 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **callbackGoogle1**
-> callbackGoogle1()
+# **authCallbackGoogleV1**
+> authCallbackGoogleV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let state: string; // (default to undefined)
 
-const { status, data } = await apiInstance.callbackGoogle1({
+const { status, data } = await apiInstance.authCallbackGoogleV1(
     state
-  });
+);
 ```
 
 ### Parameters
@@ -160,20 +167,73 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **callbackVk1**
-> callbackVk1()
+# **authCallbackVkIdV1**
+> authCallbackVkIdV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
-const { status, data } = await apiInstance.callbackVk1({});
+let state: string; // (default to undefined)
+
+const { status, data } = await apiInstance.authCallbackVkIdV1(
+    state
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **state** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**301** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **authCallbackVkV1**
+> authCallbackVkV1()
+
+
+### Example
+
+```typescript
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
+
+const { status, data } = await apiInstance.authCallbackVkV1();
 ```
 
 ### Parameters
@@ -202,75 +262,30 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **callbackVkId1**
-> callbackVkId1()
+# **authCodeV1**
+> CodeAppAuthResponse authCodeV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
-
-let state: string; // (default to undefined)
-
-const { status, data } = await apiInstance.callbackVkId1({
-    state
-  });
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **state** | [**string**] |  | defaults to undefined|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**301** |  |  -  |
-|**400** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **code1**
-> CodeAppAuthResponse code1()
-
-
-### Example
-
-```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
-
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let app: 'site' | 'admin' | 'mobile' | 'desktop'; //Create auth code for app (default to 'site')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.code1({
+const { status, data } = await apiInstance.authCodeV1(
     language,
-    app
-  });
+    app,
+    v
+);
 ```
 
 ### Parameters
@@ -279,6 +294,7 @@ const { status, data } = await apiInstance.code1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | Create auth code for app | defaults to 'site'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -303,30 +319,145 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **connect1**
-> connect1()
+# **authConnectResultV1**
+> authConnectResultV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
+
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let message: string; //Result message for connect (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.authConnectResultV1(
+    language,
+    message,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **message** | [**string**] | Result message for connect | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **authConnectTelegramV1**
+> SuccessResponse authConnectTelegramV1()
+
+
+### Example
+
+```typescript
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
+
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.authConnectTelegramV1(
+    language,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+**SuccessResponse**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **authConnectV1**
+> authConnectV1()
+
+
+### Example
+
+```typescript
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let provider: 'google' | 'vk' | 'vk-id' | 'telegram'; //Provider oauth (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let app: 'site' | 'admin' | 'mobile' | 'desktop'; //App oauth (optional) (default to 'site')
 let redirect: string; //Redirect url (optional) (default to undefined)
 
-const { status, data } = await apiInstance.connect1({
+const { status, data } = await apiInstance.authConnectV1(
     language,
     provider,
+    v,
     app,
     redirect
-  });
+);
 ```
 
 ### Parameters
@@ -335,6 +466,7 @@ const { status, data } = await apiInstance.connect1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **provider** | [**&#39;google&#39; | &#39;vk&#39; | &#39;vk-id&#39; | &#39;telegram&#39;**]**Array<&#39;google&#39; &#124; &#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;telegram&#39;>** | Provider oauth | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | App oauth | (optional) defaults to 'site'|
 | **redirect** | [**string**] | Redirect url | (optional) defaults to undefined|
 
@@ -361,127 +493,30 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **connectResult1**
-> connectResult1()
+# **authDisconnectV1**
+> SuccessResponse authDisconnectV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
-
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let message: string; //Result message for connect (default to undefined)
-
-const { status, data } = await apiInstance.connectResult1({
-    language,
-    message
-  });
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **message** | [**string**] | Result message for connect | defaults to undefined|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** |  |  -  |
-|**400** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **connectTelegram1**
-> SuccessResponse connectTelegram1()
-
-
-### Example
-
-```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
-
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
-
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-
-const { status, data } = await apiInstance.connectTelegram1({
-    language
-  });
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-
-
-### Return type
-
-**SuccessResponse**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** |  |  -  |
-|**400** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **disconnect1**
-> SuccessResponse disconnect1()
-
-
-### Example
-
-```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
-
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let socialId: number; //Social id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.disconnect1({
+const { status, data } = await apiInstance.authDisconnectV1(
     language,
-    socialId
-  });
+    socialId,
+    v
+);
 ```
 
 ### Parameters
@@ -490,6 +525,7 @@ const { status, data } = await apiInstance.disconnect1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **socialId** | [**number**] | Social id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -514,25 +550,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **exchange1**
-> RefreshAuthResponse exchange1(siteAuthExchangeRequest)
+# **authExchangeV1**
+> RefreshAuthResponse authExchangeV1(siteAuthExchangeRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi
-    SiteAuthExchangeRequest } from './api';
+import {
+    AuthApi,
+    Configuration,
+    SiteAuthExchangeRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let siteAuthExchangeRequest: SiteAuthExchangeRequest; //
 
-const { status, data } = await apiInstance.exchange1({
+const { status, data } = await apiInstance.authExchangeV1(
     siteAuthExchangeRequest
-  });
+);
 ```
 
 ### Parameters
@@ -564,34 +602,38 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getAuthUrl1**
-> getAuthUrl1()
+# **authGetAuthUrlV1**
+> authGetAuthUrlV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let provider: 'google' | 'vk' | 'vk-id' | 'telegram'; //Provider oauth (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let app: 'site' | 'admin' | 'mobile' | 'desktop'; //App oauth (optional) (default to 'site')
 let redirect: string; //Redirect url (optional) (default to undefined)
 let refId: string; //Referal id (optional) (default to undefined)
 let country: string; //Country code (optional) (default to 'ru')
 
-const { status, data } = await apiInstance.getAuthUrl1({
+const { status, data } = await apiInstance.authGetAuthUrlV1(
     language,
     provider,
+    v,
     app,
     redirect,
     refId,
     country
-  });
+);
 ```
 
 ### Parameters
@@ -600,6 +642,7 @@ const { status, data } = await apiInstance.getAuthUrl1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **provider** | [**&#39;google&#39; | &#39;vk&#39; | &#39;vk-id&#39; | &#39;telegram&#39;**]**Array<&#39;google&#39; &#124; &#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;telegram&#39;>** | Provider oauth | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | App oauth | (optional) defaults to 'site'|
 | **redirect** | [**string**] | Redirect url | (optional) defaults to undefined|
 | **refId** | [**string**] | Referal id | (optional) defaults to undefined|
@@ -628,24 +671,28 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getProfile1**
-> getProfile1()
+# **authGetProfileV1**
+> authGetProfileV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.getProfile1({
-    language
-  });
+const { status, data } = await apiInstance.authGetProfileV1(
+    language,
+    v
+);
 ```
 
 ### Parameters
@@ -653,6 +700,7 @@ const { status, data } = await apiInstance.getProfile1({
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -677,24 +725,26 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **guest1**
-> guest1()
+# **authGuestV1**
+> authGuestV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi } from './api';
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let refId: string; // (default to undefined)
 
-const { status, data } = await apiInstance.guest1({
+const { status, data } = await apiInstance.authGuestV1(
     refId
-  });
+);
 ```
 
 ### Parameters
@@ -726,25 +776,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **logout1**
-> SuccessResponse logout1(siteLogoutAuthRequest)
+# **authLogoutV1**
+> SuccessResponse authLogoutV1(siteLogoutAuthRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi
-    SiteLogoutAuthRequest } from './api';
+import {
+    AuthApi,
+    Configuration,
+    SiteLogoutAuthRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let siteLogoutAuthRequest: SiteLogoutAuthRequest; //
 
-const { status, data } = await apiInstance.logout1({
+const { status, data } = await apiInstance.authLogoutV1(
     siteLogoutAuthRequest
-  });
+);
 ```
 
 ### Parameters
@@ -776,27 +828,29 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **refreshAccess1**
-> RefreshAuthResponse refreshAccess1(siteRefreshAuthBodyRequest)
+# **authRefreshAccessV1**
+> RefreshAuthResponse authRefreshAccessV1(siteRefreshAuthBodyRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AuthApi
-    SiteRefreshAuthBodyRequest } from './api';
+import {
+    AuthApi,
+    Configuration,
+    SiteRefreshAuthBodyRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AuthApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
 
 let userAgent: string; // (default to undefined)
 let siteRefreshAuthBodyRequest: SiteRefreshAuthBodyRequest; //
 
-const { status, data } = await apiInstance.refreshAccess1({
+const { status, data } = await apiInstance.authRefreshAccessV1(
     userAgent,
     siteRefreshAuthBodyRequest
-  });
+);
 ```
 
 ### Parameters

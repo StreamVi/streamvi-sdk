@@ -58,7 +58,7 @@ export interface PlanRestreamResponse {
      * @type {string}
      * @memberof PlanRestreamResponse
      */
-    'type': TypeEnum;
+    'type': PlanRestreamResponseTypeEnum;
     /**
      * Price (RUB)
      * @type {number}
@@ -88,13 +88,13 @@ export interface PlanRestreamResponse {
      * @type {string}
      * @memberof PlanRestreamResponse
      */
-    'resolution': ResolutionEnum;
+    'resolution': PlanRestreamResponseResolutionEnum;
     /**
      * Fps
      * @type {string}
      * @memberof PlanRestreamResponse
      */
-    'fps': FpsEnum;
+    'fps': PlanRestreamResponseFpsEnum;
     /**
      * Create project in account
      * @type {boolean}
@@ -163,35 +163,29 @@ export interface PlanRestreamResponse {
     'discount': PlanRestreamDiscountResponse;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TypeEnum {
-    free = 'free',
-    paid_fix = 'paid_fix',
-    paid_flex = 'paid_flex',
-    custom = 'custom'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ResolutionEnum {
-    _720p = '720p',
-    _1080p = '1080p',
-    _2K = '2K',
-    UW = 'UW',
-    _4K = '4K',
-    _8K = '8K'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum FpsEnum {
-    _30 = '30',
-    _60 = '60'
-}
+export const PlanRestreamResponseTypeEnum = {
+    Free: 'free',
+    PaidFix: 'paid_fix',
+    PaidFlex: 'paid_flex',
+    Custom: 'custom'
+} as const;
+
+export type PlanRestreamResponseTypeEnum = typeof PlanRestreamResponseTypeEnum[keyof typeof PlanRestreamResponseTypeEnum];
+export const PlanRestreamResponseResolutionEnum = {
+    _720p: '720p',
+    _1080p: '1080p',
+    _2K: '2K',
+    Uw: 'UW',
+    _4K: '4K',
+    _8K: '8K'
+} as const;
+
+export type PlanRestreamResponseResolutionEnum = typeof PlanRestreamResponseResolutionEnum[keyof typeof PlanRestreamResponseResolutionEnum];
+export const PlanRestreamResponseFpsEnum = {
+    _30: '30',
+    _60: '60'
+} as const;
+
+export type PlanRestreamResponseFpsEnum = typeof PlanRestreamResponseFpsEnum[keyof typeof PlanRestreamResponseFpsEnum];
 
 

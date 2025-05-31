@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -33,24 +33,22 @@ import type { StructureHelpPageResponse } from '../models';
  * HelpPageApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const HelpPageApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Get help page
-         * @param {get1VEnum} v Version
-         * @param {get1LanguageEnum} language Current language
+         * @param {HelpPageGetV1LanguageEnum} language Current language
          * @param {string} url Url of page
+         * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get1: async (v: get1VEnum, language: get1LanguageEnum, url: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('get1', 'v', v)
+        helpPageGetV1: async (language: HelpPageGetV1LanguageEnum, url: string, v?: HelpPageGetV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('get1', 'language', language)
+            assertParamExists('helpPageGetV1', 'language', language)
             // verify required parameter 'url' is not null or undefined
-            assertParamExists('get1', 'url', url)
+            assertParamExists('helpPageGetV1', 'url', url)
             const localVarPath = `/method/help/page/get`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -65,6 +63,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -89,19 +89,17 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get list of help pages
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {HelpPageListV1LanguageEnum} language Current language
+         * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v: list1VEnum, language: list1LanguageEnum, s?: string, limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('list1', 'v', v)
+        helpPageListV1: async (language: HelpPageListV1LanguageEnum, v?: HelpPageListV1VEnum, s?: string, limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('list1', 'language', language)
+            assertParamExists('helpPageListV1', 'language', language)
             const localVarPath = `/method/help/page/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -116,6 +114,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -148,16 +148,14 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get structure of help pages
-         * @param {structure1VEnum} v Version
-         * @param {structure1LanguageEnum} language Current language
+         * @param {HelpPageStructureV1LanguageEnum} language Current language
+         * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        structure1: async (v: structure1VEnum, language: structure1LanguageEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('structure1', 'v', v)
+        helpPageStructureV1: async (language: HelpPageStructureV1LanguageEnum, v?: HelpPageStructureV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('structure1', 'language', language)
+            assertParamExists('helpPageStructureV1', 'language', language)
             const localVarPath = `/method/help/page/structure`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -172,6 +170,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -196,53 +196,53 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * HelpPageApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const HelpPageApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = HelpPageApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Get help page
-         * @param {get1VEnum} v Version
-         * @param {get1LanguageEnum} language Current language
+         * @param {HelpPageGetV1LanguageEnum} language Current language
          * @param {string} url Url of page
+         * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async get1(v: get1VEnum, language: get1LanguageEnum, url: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetHelpPageResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.get1(v, language, url, options);
+        async helpPageGetV1(language: HelpPageGetV1LanguageEnum, url: string, v?: HelpPageGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetHelpPageResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.helpPageGetV1(language, url, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['HelpPageApi.get1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['HelpPageApi.helpPageGetV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get list of help pages
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {HelpPageListV1LanguageEnum} language Current language
+         * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v: list1VEnum, language: list1LanguageEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfHelpPageResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, s, limit, offset, options);
+        async helpPageListV1(language: HelpPageListV1LanguageEnum, v?: HelpPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfHelpPageResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.helpPageListV1(language, v, s, limit, offset, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['HelpPageApi.list1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['HelpPageApi.helpPageListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get structure of help pages
-         * @param {structure1VEnum} v Version
-         * @param {structure1LanguageEnum} language Current language
+         * @param {HelpPageStructureV1LanguageEnum} language Current language
+         * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async structure1(v: structure1VEnum, language: structure1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StructureHelpPageResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.structure1(v, language, options);
+        async helpPageStructureV1(language: HelpPageStructureV1LanguageEnum, v?: HelpPageStructureV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StructureHelpPageResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.helpPageStructureV1(language, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['HelpPageApi.structure1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['HelpPageApi.helpPageStructureV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -252,137 +252,169 @@ export const fp = function(configuration?: Configuration) {
  * HelpPageApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const HelpPageApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = HelpPageApiFp(configuration)
     return {
         /**
          * 
          * @summary Get help page
-         * @param {get1Request} requestParameters Request parameters.
+         * @param {HelpPageApiHelpPageGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetHelpPageResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: get1VEnum = requestParameters.v || get1VEnum._1;
-            return localVarFp.get1(actualV, requestParameters.language, requestParameters.url, options).then((request) => request(axios, basePath));
+        helpPageGetV1(requestParameters: HelpPageApiHelpPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetHelpPageResponse> {
+            return localVarFp.helpPageGetV1(requestParameters.language, requestParameters.url, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get list of help pages
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {HelpPageApiHelpPageListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfHelpPageResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+        helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfHelpPageResponse> {
+            return localVarFp.helpPageListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get structure of help pages
-         * @param {structure1Request} requestParameters Request parameters.
+         * @param {HelpPageApiHelpPageStructureV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        structure1(requestParameters: structure1Request, options?: RawAxiosRequestConfig): AxiosPromise<StructureHelpPageResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: structure1VEnum = requestParameters.v || structure1VEnum._1;
-            return localVarFp.structure1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        helpPageStructureV1(requestParameters: HelpPageApiHelpPageStructureV1Request, options?: RawAxiosRequestConfig): AxiosPromise<StructureHelpPageResponse> {
+            return localVarFp.helpPageStructureV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for get1 operation in HelpPageApi.
+ * HelpPageApi - interface
  * @export
- * @interface get1Request
+ * @interface HelpPageApi
  */
-export interface get1Request {
+export interface HelpPageApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof get1
+     * 
+     * @summary Get help page
+     * @param {HelpPageApiHelpPageGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HelpPageApiInterface
      */
-    readonly v?: get1VEnum
+    helpPageGetV1(requestParameters: HelpPageApiHelpPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetHelpPageResponse>;
 
+    /**
+     * 
+     * @summary Get list of help pages
+     * @param {HelpPageApiHelpPageListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HelpPageApiInterface
+     */
+    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfHelpPageResponse>;
+
+    /**
+     * 
+     * @summary Get structure of help pages
+     * @param {HelpPageApiHelpPageStructureV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HelpPageApiInterface
+     */
+    helpPageStructureV1(requestParameters: HelpPageApiHelpPageStructureV1Request, options?: RawAxiosRequestConfig): AxiosPromise<StructureHelpPageResponse>;
+
+}
+
+/**
+ * Request parameters for helpPageGetV1 operation in HelpPageApi.
+ * @export
+ * @interface HelpPageApiHelpPageGetV1Request
+ */
+export interface HelpPageApiHelpPageGetV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof get1
+     * @memberof HelpPageApiHelpPageGetV1
      */
-    readonly language: get1LanguageEnum
+    readonly language: HelpPageGetV1LanguageEnum
 
     /**
      * Url of page
      * @type {string}
-     * @memberof get1
+     * @memberof HelpPageApiHelpPageGetV1
      */
     readonly url: string
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof HelpPageApiHelpPageGetV1
+     */
+    readonly v?: HelpPageGetV1VEnum
 }
 
 /**
- * Request parameters for list1 operation in HelpPageApi.
+ * Request parameters for helpPageListV1 operation in HelpPageApi.
  * @export
- * @interface list1Request
+ * @interface HelpPageApiHelpPageListV1Request
  */
-export interface list1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
-     */
-    readonly v?: list1VEnum
-
+export interface HelpPageApiHelpPageListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof HelpPageApiHelpPageListV1
      */
-    readonly language: list1LanguageEnum
+    readonly language: HelpPageListV1LanguageEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof HelpPageApiHelpPageListV1
+     */
+    readonly v?: HelpPageListV1VEnum
 
     /**
      * String for search
      * @type {string}
-     * @memberof list1
+     * @memberof HelpPageApiHelpPageListV1
      */
     readonly s?: string
 
     /**
      * Number of results
      * @type {number}
-     * @memberof list1
+     * @memberof HelpPageApiHelpPageListV1
      */
     readonly limit?: number
 
     /**
      * Page offset number
      * @type {number}
-     * @memberof list1
+     * @memberof HelpPageApiHelpPageListV1
      */
     readonly offset?: number
 }
 
 /**
- * Request parameters for structure1 operation in HelpPageApi.
+ * Request parameters for helpPageStructureV1 operation in HelpPageApi.
  * @export
- * @interface structure1Request
+ * @interface HelpPageApiHelpPageStructureV1Request
  */
-export interface structure1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof structure1
-     */
-    readonly v?: structure1VEnum
-
+export interface HelpPageApiHelpPageStructureV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof structure1
+     * @memberof HelpPageApiHelpPageStructureV1
      */
-    readonly language: structure1LanguageEnum
+    readonly language: HelpPageStructureV1LanguageEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof HelpPageApiHelpPageStructureV1
+     */
+    readonly v?: HelpPageStructureV1VEnum
 }
 
 /**
@@ -391,101 +423,95 @@ export interface structure1Request {
  * @class HelpPageApi
  * @extends {BaseAPI}
  */
-export class HelpPageApi extends BaseAPI {
+export class HelpPageApi extends BaseAPI implements HelpPageApiInterface {
     /**
      * 
      * @summary Get help page
-     * @param {get1Request} requestParameters Request parameters.
+     * @param {HelpPageApiHelpPageGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HelpPageApi
      */
-    public get1(requestParameters: get1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: get1VEnum = requestParameters.v || get1VEnum._1;
-        return fp(this.configuration).get1(actualV, requestParameters.language, requestParameters.url, options).then((request) => request(this.axios, this.basePath));
+    public helpPageGetV1(requestParameters: HelpPageApiHelpPageGetV1Request, options?: RawAxiosRequestConfig) {
+        return HelpPageApiFp(this.configuration).helpPageGetV1(requestParameters.language, requestParameters.url, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get list of help pages
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {HelpPageApiHelpPageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HelpPageApi
      */
-    public list1(requestParameters: list1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-        return fp(this.configuration).list1(actualV, requestParameters.language, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+    public helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig) {
+        return HelpPageApiFp(this.configuration).helpPageListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get structure of help pages
-     * @param {structure1Request} requestParameters Request parameters.
+     * @param {HelpPageApiHelpPageStructureV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HelpPageApi
      */
-    public structure1(requestParameters: structure1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: structure1VEnum = requestParameters.v || structure1VEnum._1;
-        return fp(this.configuration).structure1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    public helpPageStructureV1(requestParameters: HelpPageApiHelpPageStructureV1Request, options?: RawAxiosRequestConfig) {
+        return HelpPageApiFp(this.configuration).helpPageStructureV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum get1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const HelpPageGetV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type HelpPageGetV1LanguageEnum = typeof HelpPageGetV1LanguageEnum[keyof typeof HelpPageGetV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum get1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const HelpPageGetV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type HelpPageGetV1VEnum = typeof HelpPageGetV1VEnum[keyof typeof HelpPageGetV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const HelpPageListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type HelpPageListV1LanguageEnum = typeof HelpPageListV1LanguageEnum[keyof typeof HelpPageListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const HelpPageListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type HelpPageListV1VEnum = typeof HelpPageListV1VEnum[keyof typeof HelpPageListV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum structure1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const HelpPageStructureV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type HelpPageStructureV1LanguageEnum = typeof HelpPageStructureV1LanguageEnum[keyof typeof HelpPageStructureV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum structure1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const HelpPageStructureV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type HelpPageStructureV1VEnum = typeof HelpPageStructureV1VEnum[keyof typeof HelpPageStructureV1VEnum];

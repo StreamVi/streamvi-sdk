@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access_token** | **string** | Access token | [default to undefined]
-**broadcast_id** | **number** | Broadcast Id | [default to undefined]
+**accessToken** | **string** | Access token | [default to undefined]
+**broadcastId** | **number** | Broadcast Id | [default to undefined]
 
 ## Example
 
 ```typescript
-import { MethodCurrentBroadcastResponse } from './api';
+import { MethodCurrentBroadcastResponse } from 'streamvi-api-client';
 
 const instance: MethodCurrentBroadcastResponse = {
-    access_token,
-    broadcast_id,
+    accessToken,
+    broadcastId,
 };
 ```
 

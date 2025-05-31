@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**task_id** | **number** |  | [default to undefined]
-**video_id** | **number** |  | [default to undefined]
+**taskId** | **number** |  | [default to undefined]
+**videoId** | **number** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **duration** | **number** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { MethodProjectLiveStatusVideo } from './api';
+import { MethodProjectLiveStatusVideo } from 'streamvi-api-client';
 
 const instance: MethodProjectLiveStatusVideo = {
-    task_id,
-    video_id,
+    taskId,
+    videoId,
     name,
     duration,
 };

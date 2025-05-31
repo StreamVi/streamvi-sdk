@@ -42,24 +42,6 @@ export interface SiteTranscoderListItem {
      */
     'createdAt': string;
     /**
-     * Status
-     * @type {string}
-     * @memberof SiteTranscoderListItem
-     */
-    'status': StatusEnum;
-    /**
-     * Video codec
-     * @type {string}
-     * @memberof SiteTranscoderListItem
-     */
-    'videoCodec': VideoCodecEnum;
-    /**
-     * B-Frames
-     * @type {Array<SiteTranscoderChannelItem>}
-     * @memberof SiteTranscoderListItem
-     */
-    'channels': Array<SiteTranscoderChannelItem>;
-    /**
      * fps
      * @type {number}
      * @memberof SiteTranscoderListItem
@@ -101,23 +83,37 @@ export interface SiteTranscoderListItem {
      * @memberof SiteTranscoderListItem
      */
     'bFrames'?: number;
+    /**
+     * Status
+     * @type {string}
+     * @memberof SiteTranscoderListItem
+     */
+    'status': SiteTranscoderListItemStatusEnum;
+    /**
+     * Video codec
+     * @type {string}
+     * @memberof SiteTranscoderListItem
+     */
+    'videoCodec': SiteTranscoderListItemVideoCodecEnum;
+    /**
+     * B-Frames
+     * @type {Array<SiteTranscoderChannelItem>}
+     * @memberof SiteTranscoderListItem
+     */
+    'channels': Array<SiteTranscoderChannelItem>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    active = 'active',
-    inactive = 'inactive'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VideoCodecEnum {
-    h264 = 'h264',
-    hevc = 'hevc'
-}
+export const SiteTranscoderListItemStatusEnum = {
+    Active: 'active',
+    Inactive: 'inactive'
+} as const;
+
+export type SiteTranscoderListItemStatusEnum = typeof SiteTranscoderListItemStatusEnum[keyof typeof SiteTranscoderListItemStatusEnum];
+export const SiteTranscoderListItemVideoCodecEnum = {
+    H264: 'h264',
+    Hevc: 'hevc'
+} as const;
+
+export type SiteTranscoderListItemVideoCodecEnum = typeof SiteTranscoderListItemVideoCodecEnum[keyof typeof SiteTranscoderListItemVideoCodecEnum];
 
 

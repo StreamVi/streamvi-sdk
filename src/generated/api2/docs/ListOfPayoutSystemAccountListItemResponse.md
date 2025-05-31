@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ListOfPayoutSystemAccountListItemResponse } from './api';
+import { ListOfPayoutSystemAccountListItemResponse } from 'streamvi-api-client';
 
 const instance: ListOfPayoutSystemAccountListItemResponse = {
     results,

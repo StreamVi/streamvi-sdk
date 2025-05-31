@@ -8,18 +8,18 @@ Name | Type | Description | Notes
 **id** | **number** | Plan restream id | [default to undefined]
 **size** | **number** | Size | [default to undefined]
 **period** | **string** | Period | [default to undefined]
-**date_end** | **string** | Date end tariff | [default to undefined]
+**dateEnd** | **string** | Date end tariff | [default to undefined]
 
 ## Example
 
 ```typescript
-import { PlanStorageItem } from './api';
+import { PlanStorageItem } from 'streamvi-api-client';
 
 const instance: PlanStorageItem = {
     id,
     size,
     period,
-    date_end,
+    dateEnd,
 };
 ```
 

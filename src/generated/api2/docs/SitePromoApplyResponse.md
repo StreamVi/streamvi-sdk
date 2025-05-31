@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SitePromoApplyResponse } from './api';
+import { SitePromoApplyResponse } from 'streamvi-api-client';
 
 const instance: SitePromoApplyResponse = {
     result,

@@ -6,9 +6,8 @@
 
 ## Возможности
 
-- ✅ Авторизация через StreamVi OAuth2
-- ✅ Автоматическая генерация TypeScript API клиента
-- ✅ Готовые примеры использования
+- ✅ SDK библиотека StreamVi для TypeScript/JavaScript
+- ✅ Готовые примеры использования с авторизацией OAuth2
 
 ## Установка
 
@@ -41,13 +40,13 @@ npm run example
 
 ```typescript
 import { StreamViSdkConfig } from './src/streamvi-sdk-config';
-import { UserProjectApi, getProjectInfo1LanguageEnum } from './src/generated/api2/api/user-project-api';
+import { UserProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from './src/generated/api2/api/user-project-api';
 
-async function getProjectInfo(accessToken: string, projectId: number, language: getProjectInfo1LanguageEnum = getProjectInfo1LanguageEnum.ru) {
+async function getProjectInfo(accessToken: string, projectId: number, language: UserProjectGetProjectInfoV1LanguageEnum = UserProjectGetProjectInfoV1LanguageEnum.Ru) {
   const sdkConfig = new StreamViSdkConfig({ accessToken });
   const userProjectApi = new UserProjectApi(sdkConfig.configuration);
 
-  const response = await userProjectApi.getProjectInfo1({
+  const response = await userProjectApi.userProjectGetProjectInfoV1({
     language: language,
     projectId: projectId
   });
@@ -55,7 +54,23 @@ async function getProjectInfo(accessToken: string, projectId: number, language: 
 }
 ```
 
+### Пример использования PaySetting API с версией 3
 
+```typescript
+import { StreamViSdkConfig } from './src/streamvi-sdk-config';
+import { PaySettingApi, PaySettingGetSettingV3LanguageEnum } from './src/generated/api2/api/pay-setting-api';
+
+async function getPaySettings(accessToken: string, projectId: number, language: PaySettingGetSettingV3LanguageEnum = PaySettingGetSettingV3LanguageEnum.Ru) {
+  const sdkConfig = new StreamViSdkConfig({ accessToken });
+  const paySettingApi = new PaySettingApi(sdkConfig.configuration);
+
+  const response = await paySettingApi.paySettingGetSettingV3({
+    language: language,
+    projectId: projectId
+  });
+  return response.data;
+}
+```
 
 ## Доступные API
 
@@ -101,15 +116,7 @@ async function getProjectInfo(accessToken: string, projectId: number, language: 
 - [UserApi](src/generated/api2/docs/UserApi.md)
 - [UserProjectApi](src/generated/api2/docs/UserProjectApi.md)
 
-Полный список доступен в `src/generated/api2/api.ts`
-
-## Скрипты
-
-- `npm run example` — запуск примера сервера с авторизацией
-- `npm run build` — сборка проекта
-- `npm run gen:api-prod` — генерация API с production-сервера
-- `npm run gen-process` — генерация API из файла temp/backend_v2.json
-- `npm run lint` — проверка кода
+Список также доступен в `src/generated/api2/api.ts`
 
 ## Структура проекта
 
@@ -117,10 +124,8 @@ async function getProjectInfo(accessToken: string, projectId: number, language: 
 src/
 ├── generated/
 │   └── api2/           # Сгенерированный API-клиент
-├── scripts/
-│   ├── openapi-fetcher.mjs  # Скрипт для загрузки OpenAPI спецификации
-│   └── process-api.js       # Скрипт пост-обработки
-└── streamvi-sdk-config.ts   # Конфигурация SDK
+├── scripts/            # Скрипты генерации API
+└── streamvi-sdk-config.ts      # Конфигурация SDK
 
 example/
 ├── server.ts           # Основной файл сервера
@@ -140,25 +145,51 @@ example/
 - Получение информации о проекте
 - Обработку ошибок авторизации
 - Управление сессиями пользователей
+- Правильное отображение ошибок и обратную связь с пользователем
 
 ### Структура примера
 
-- **server.ts** — основной файл сервера с настройкой middleware
-- **config/passport.ts** — конфигурация стратегии авторизации StreamVi
-- **config/session.ts** — настройки сессий Express
-- **routes/index.ts** — маршруты для авторизации и отображения данных
+- **server.ts** — основной файл сервера с настройкой middleware и валидацией окружения
+- **config/passport.ts** — конфигурация стратегии авторизации StreamVi с правильной обработкой ошибок
+- **config/session.ts** — настройки сессий Express с учетом безопасности
+- **routes/index.ts** — маршруты для авторизации, отображения данных и комплексной обработки ошибок
 
 ### Функциональность примера
 
-1. **Главная страница** (`/`) — отображает информацию о проекте или предлагает авторизацию
+1. **Главная страница** (`/`) — отображает информацию о проекте с аватаром и деталями, или предлагает авторизацию
 2. **Авторизация** (`/auth/streamvi`) — перенаправляет на StreamVi для авторизации
-3. **Callback** (`/auth/streamvi/callback`) — обрабатывает результат авторизации
-4. **Выход** (`/logout`) — очищает сессию пользователя
-5. **Обработка ошибок** (`/login`) — отображает ошибки авторизации
+3. **Callback** (`/auth/streamvi/callback`) — обрабатывает результат авторизации с детальной обработкой ошибок
+4. **Выход** (`/logout`) — очищает сессию пользователя и перенаправляет на главную
+5. **Обработка ошибок** (`/login`) — отображает ошибки авторизации с подробной информацией
+6. **Управление сессиями** — безопасно хранит токены доступа и ID проектов
 
-## Разработка
+### Поток авторизации
 
-### Обновление API
+Пример демонстрирует полный поток OAuth2:
+
+1. Пользователь посещает главную страницу
+2. Если не авторизован, видит кнопку входа
+3. Нажатие на вход перенаправляет на OAuth2 endpoint StreamVi
+4. После авторизации StreamVi перенаправляет обратно с кодом авторизации
+5. Обработчик callback обменивает код на токен доступа
+6. Токен доступа и ID проекта сохраняются в сессии
+7. Пользователь перенаправляется на главную страницу с информацией о проекте
+
+### Обработка ошибок
+
+Пример включает комплексную обработку ошибок:
+
+- **Валидация окружения** — проверяет наличие необходимых переменных окружения при запуске
+- **Ошибки авторизации** — отображает подробные сообщения об ошибках от StreamVi
+- **Ошибки API** — показывает ошибки ответов API с полным контекстом
+- **Ошибки сессий** — обрабатывает уничтожение и пересоздание сессий
+- **Сетевые ошибки** — корректная обработка проблем с сетью
+
+## Генерация API-клиента
+
+API-клиент автоматически генерируется из OpenAPI спецификации StreamVi со встроенной коррекцией ошибок и оптимизацией.
+
+### Обновление API-клиента
 
 Чтобы обновить API-клиент после изменений на сервере:
 
@@ -167,37 +198,20 @@ npm run gen:api-prod
 npm run build
 ```
 
-### Добавление новых методов
+Эта команда скачивает последнюю спецификацию API и генерирует оптимизированный TypeScript клиент.
 
-1. Обновите API на сервере
-2. Перегенерируйте клиент: `npm run gen:api-prod`
-3. Новые методы появятся в соответствующих классах API
+> **Для разработчиков библиотеки**: См. [README_DEVELOPMENT.md](README_DEVELOPMENT.md) для подробной информации о процессе генерации, коррекции ошибок и рабочих процессах разработки.
+
+## Скрипты
+
+- `npm run example` — запуск примера сервера с авторизацией
+- `npm run build` — сборка проекта
+- `npm run gen:api-prod` — генерация API с production-сервера
+- `npm run lint` — проверка кода
 
 ## Лицензия
 
 MIT
-
-
-
-## Генерация API-клиента
-
-### Автоматическая генерация с production-сервера
-
-```bash
-npm run gen:api-prod
-```
-
-Эта команда:
-1. Скачивает OpenAPI спецификацию с `napi.streamvi.io`
-2. Генерирует TypeScript клиент в `src/generated/api2/`
-3. Обновляет экспорты в `src/index.ts`
-
-### Ручная генерация (если у вас есть локальный файл спецификации)
-
-```bash
-# Поместите OpenAPI спецификацию в temp/backend_v2.json
-npm run gen-process
-```
 
 ## Генерация документации
 

@@ -34,13 +34,13 @@ export interface SiteBlogPageTagResponse {
      * @type {string}
      * @memberof SiteBlogPageTagResponse
      */
-    'language': LanguageEnum;
+    'language': SiteBlogPageTagResponseLanguageEnum;
     /**
      * Language ISO
      * @type {string}
      * @memberof SiteBlogPageTagResponse
      */
-    'language_iso': LanguageIsoEnum;
+    'language_iso': SiteBlogPageTagResponseLanguageIsoEnum;
     /**
      * Title
      * @type {string}
@@ -55,23 +55,19 @@ export interface SiteBlogPageTagResponse {
     'count_use': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    russian = 'russian',
-    english = 'english',
-    none = 'none'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageIsoEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const SiteBlogPageTagResponseLanguageEnum = {
+    Russian: 'russian',
+    English: 'english',
+    None: 'none'
+} as const;
+
+export type SiteBlogPageTagResponseLanguageEnum = typeof SiteBlogPageTagResponseLanguageEnum[keyof typeof SiteBlogPageTagResponseLanguageEnum];
+export const SiteBlogPageTagResponseLanguageIsoEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SiteBlogPageTagResponseLanguageIsoEnum = typeof SiteBlogPageTagResponseLanguageIsoEnum[keyof typeof SiteBlogPageTagResponseLanguageIsoEnum];
 
 

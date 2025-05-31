@@ -6,27 +6,27 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_en]
-**project_id** | **number** | Project id | [default to undefined]
-**countrie_id** | **number** | Countrie id | [default to undefined]
-**pay_system_id** | **number** | Pay system id | [default to undefined]
+**language** | **string** | Current language | [default to LanguageEnum_En]
+**projectId** | **number** | Project id | [default to undefined]
+**countrieId** | **number** | Countrie id | [default to undefined]
+**organizationId** | **number** | Organization | [optional] [default to undefined]
+**paySystemId** | **number** | Pay system id | [default to undefined]
 **email** | **string** | E-mail | [default to undefined]
-**organization_id** | **number** | Organization | [optional] [default to undefined]
 **description** | **string** | Additional information about the payment | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { PaySettingBodyDto } from './api';
+import { PaySettingBodyDto } from 'streamvi-api-client';
 
 const instance: PaySettingBodyDto = {
     v,
     language,
-    project_id,
-    countrie_id,
-    pay_system_id,
+    projectId,
+    countrieId,
+    organizationId,
+    paySystemId,
     email,
-    organization_id,
     description,
 };
 ```

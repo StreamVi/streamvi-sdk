@@ -6,13 +6,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** |  | [default to undefined]
-**user_id** | **number** |  | [default to undefined]
-**payout_id** | **number** |  | [default to undefined]
+**userId** | **number** |  | [default to undefined]
+**payoutId** | **number** |  | [default to undefined]
 **type** | **string** |  | [default to undefined]
 **sum** | **string** |  | [default to undefined]
 **description** | **string** |  | [default to undefined]
 **code** | **object** |  | [default to undefined]
-**referral_id** | **number** |  | [default to undefined]
+**referralId** | **number** |  | [default to undefined]
 **date** | **string** |  | [default to undefined]
 **paymentId** | **number** |  | [default to undefined]
 **payoutId** | **number** |  | [default to undefined]
@@ -20,17 +20,17 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TransactionResponse } from './api';
+import { TransactionResponse } from 'streamvi-api-client';
 
 const instance: TransactionResponse = {
     id,
-    user_id,
-    payout_id,
+    userId,
+    payoutId,
     type,
     sum,
     description,
     code,
-    referral_id,
+    referralId,
     date,
     paymentId,
     payoutId,

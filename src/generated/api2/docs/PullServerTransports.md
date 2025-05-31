@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PullServerTransports } from './api';
+import { PullServerTransports } from 'streamvi-api-client';
 
 const instance: PullServerTransports = {
     rtmp,

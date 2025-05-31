@@ -28,7 +28,7 @@ export interface RtmpServerGraphResponse {
      * @type {string}
      * @memberof RtmpServerGraphResponse
      */
-    'type': TypeEnum;
+    'type': RtmpServerGraphResponseTypeEnum;
     /**
      * Time line for graph [timestamp]
      * @type {Array<number>}
@@ -43,16 +43,14 @@ export interface RtmpServerGraphResponse {
     'countries': Array<TCountryChartData>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TypeEnum {
-    performance = 'performance',
-    network = 'network',
-    cpu = 'cpu',
-    ram = 'ram',
-    deliveredPackages = 'deliveredPackages'
-}
+export const RtmpServerGraphResponseTypeEnum = {
+    Performance: 'performance',
+    Network: 'network',
+    Cpu: 'cpu',
+    Ram: 'ram',
+    DeliveredPackages: 'deliveredPackages'
+} as const;
+
+export type RtmpServerGraphResponseTypeEnum = typeof RtmpServerGraphResponseTypeEnum[keyof typeof RtmpServerGraphResponseTypeEnum];
 
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { NotifyUserChannels } from './api';
+import { NotifyUserChannels } from 'streamvi-api-client';
 
 const instance: NotifyUserChannels = {
     cabinet,

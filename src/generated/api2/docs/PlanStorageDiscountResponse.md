@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlanStorageDiscountResponse } from './api';
+import { PlanStorageDiscountResponse } from 'streamvi-api-client';
 
 const instance: PlanStorageDiscountResponse = {
     month,

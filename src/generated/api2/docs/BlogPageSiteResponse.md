@@ -5,39 +5,39 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_id** | [**BlogPageSiteResponseId**](BlogPageSiteResponseId.md) |  | [default to undefined]
+**id** | [**BlogPageSiteResponseId**](BlogPageSiteResponseId.md) |  | [default to undefined]
 **url** | **string** | Url of page | [default to undefined]
 **status** | **string** | Page status | [default to StatusEnum_Backlog]
-**date_update** | **string** | Date of last update | [default to undefined]
-**date_publish** | **string** | Date of publish for sort | [default to undefined]
+**dateUpdate** | **string** | Date of last update | [default to undefined]
+**datePublish** | **string** | Date of publish for sort | [default to undefined]
 **tags** | **Array&lt;object&gt;** | Tags | [default to undefined]
-**language** | **string** | Language for indexing | [default to LanguageEnum_russian]
-**language_iso** | **string** | Language ISO | [default to 'russian']
+**language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
+**languageIso** | **string** | Language ISO | [default to 'russian']
 **title** | **string** | Subject | [default to undefined]
 **image** | **string** | Url of main image | [default to undefined]
-**short_text** | **string** | Short text | [default to undefined]
+**shortText** | **string** | Short text | [default to undefined]
 **text** | **string** | Text | [default to undefined]
-**alt_languages** | **Array&lt;string&gt;** | Alternative language (Array of Language ISO) | [default to undefined]
+**altLanguages** | **Array&lt;string&gt;** | Alternative language (Array of Language ISO) | [default to undefined]
 
 ## Example
 
 ```typescript
-import { BlogPageSiteResponse } from './api';
+import { BlogPageSiteResponse } from 'streamvi-api-client';
 
 const instance: BlogPageSiteResponse = {
-    _id,
+    id,
     url,
     status,
-    date_update,
-    date_publish,
+    dateUpdate,
+    datePublish,
     tags,
     language,
-    language_iso,
+    languageIso,
     title,
     image,
-    short_text,
+    shortText,
     text,
-    alt_languages,
+    altLanguages,
 };
 ```
 

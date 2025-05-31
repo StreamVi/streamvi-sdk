@@ -6,20 +6,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Plan restream id | [default to undefined]
-**date_end** | **string** | Date end tariff | [default to undefined]
-**channel_max** | **number** | Max channels | [optional] [default to undefined]
-**bitrate_max** | **number** | Max bitrate | [optional] [default to undefined]
+**channelMax** | **number** | Max channels | [optional] [default to undefined]
+**bitrateMax** | **number** | Max bitrate | [optional] [default to undefined]
+**dateEnd** | **string** | Date end tariff | [default to undefined]
 
 ## Example
 
 ```typescript
-import { PlanRestreamBeforeItem } from './api';
+import { PlanRestreamBeforeItem } from 'streamvi-api-client';
 
 const instance: PlanRestreamBeforeItem = {
     id,
-    date_end,
-    channel_max,
-    bitrate_max,
+    channelMax,
+    bitrateMax,
+    dateEnd,
 };
 ```
 

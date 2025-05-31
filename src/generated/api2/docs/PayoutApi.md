@@ -4,30 +4,34 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**create1**](#create1) | **POST** /method/payout/create | Create payout|
-|[**prepare1**](#prepare1) | **GET** /method/payout/prepare | Get payout data for create|
+|[**payoutCreateV1**](#payoutcreatev1) | **POST** /method/payout/create | Create payout|
+|[**payoutPrepareV1**](#payoutpreparev1) | **GET** /method/payout/prepare | Get payout data for create|
 
-# **create1**
-> SuccessResponse create1(payoutCreateRequestBodyDto)
+# **payoutCreateV1**
+> SuccessResponse payoutCreateV1(payoutCreateRequestBodyDto)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PayoutApi
-    PayoutCreateRequestBodyDto } from './api';
+import {
+    PayoutApi,
+    Configuration,
+    PayoutCreateRequestBodyDto
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PayoutApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PayoutApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto; //
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.create1({
+const { status, data } = await apiInstance.payoutCreateV1(
     language,
-    payoutCreateRequestBodyDto
-  });
+    payoutCreateRequestBodyDto,
+    v
+);
 ```
 
 ### Parameters
@@ -36,6 +40,7 @@ const { status, data } = await apiInstance.create1({
 |------------- | ------------- | ------------- | -------------|
 | **payoutCreateRequestBodyDto** | **PayoutCreateRequestBodyDto**|  | |
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -60,26 +65,30 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **prepare1**
-> ListOfPayoutSystemAccountListItemResponse prepare1()
+# **payoutPrepareV1**
+> ListOfPayoutSystemAccountListItemResponse payoutPrepareV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PayoutApi } from './api';
+import {
+    PayoutApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PayoutApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PayoutApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.prepare1({
+const { status, data } = await apiInstance.payoutPrepareV1(
     language,
-    projectId
-  });
+    projectId,
+    v
+);
 ```
 
 ### Parameters
@@ -88,6 +97,7 @@ const { status, data } = await apiInstance.prepare1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

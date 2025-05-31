@@ -4,28 +4,32 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**cabinet1**](#cabinet1) | **GET** /method/release-app | Get current version app|
+|[**releaseAppCabinetV1**](#releaseappcabinetv1) | **GET** /method/release-app | Get current version app|
 
-# **cabinet1**
-> GetVersionAppResponse cabinet1()
+# **releaseAppCabinetV1**
+> GetVersionAppResponse releaseAppCabinetV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ReleaseApi } from './api';
+import {
+    ReleaseApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ReleaseApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ReleaseApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let app: 'cabinet'; //Apps (optional) (default to 'cabinet')
 
-const { status, data } = await apiInstance.cabinet1({
+const { status, data } = await apiInstance.releaseAppCabinetV1(
     language,
+    v,
     app
-  });
+);
 ```
 
 ### Parameters
@@ -33,6 +37,7 @@ const { status, data } = await apiInstance.cabinet1({
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **app** | [**&#39;cabinet&#39;**]**Array<&#39;cabinet&#39;>** | Apps | (optional) defaults to 'cabinet'|
 
 

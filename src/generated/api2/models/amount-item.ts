@@ -31,16 +31,14 @@ export interface AmountItem {
      * @type {string}
      * @memberof AmountItem
      */
-    'currency': CurrencyEnum;
+    'currency': AmountItemCurrencyEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CurrencyEnum {
-    rub = 'rub',
-    usd = 'usd'
-}
+export const AmountItemCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+} as const;
+
+export type AmountItemCurrencyEnum = typeof AmountItemCurrencyEnum[keyof typeof AmountItemCurrencyEnum];
 
 

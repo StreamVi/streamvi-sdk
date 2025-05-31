@@ -5,35 +5,35 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**plan_storage2user_id** | **number** | Plan storage2user id | [default to undefined]
-**plan_storage_id** | **number** | Plan storage id | [default to undefined]
+**planStorage2userId** | **number** | Plan storage2user id | [default to undefined]
+**planStorageId** | **number** | Plan storage id | [default to undefined]
 **size** | **number** | Size | [default to undefined]
-**date_start** | **string** | Date start tariff | [default to undefined]
-**date_end** | **string** | Date end tariff | [default to undefined]
-**date_create** | **string** | Date create tariff | [default to undefined]
+**dateStart** | **string** | Date start tariff | [default to undefined]
+**dateEnd** | **string** | Date end tariff | [default to undefined]
+**dateCreate** | **string** | Date create tariff | [default to undefined]
 **period** | **string** | Period | [default to undefined]
-**period_uuid** | **string** | Period uuid | [default to undefined]
+**periodUuid** | **string** | Period uuid | [default to undefined]
 **status** | **string** | Status | [default to undefined]
-**money_flow_uuid** | **string** | Money flow uuid | [default to undefined]
 **prolongation** | **number** | Prolongation | [optional] [default to undefined]
+**moneyFlowUuid** | **string** | Money flow uuid | [default to undefined]
 
 ## Example
 
 ```typescript
-import { PlanStorage2UserItemResponse } from './api';
+import { PlanStorage2UserItemResponse } from 'streamvi-api-client';
 
 const instance: PlanStorage2UserItemResponse = {
-    plan_storage2user_id,
-    plan_storage_id,
+    planStorage2userId,
+    planStorageId,
     size,
-    date_start,
-    date_end,
-    date_create,
+    dateStart,
+    dateEnd,
+    dateCreate,
     period,
-    period_uuid,
+    periodUuid,
     status,
-    money_flow_uuid,
     prolongation,
+    moneyFlowUuid,
 };
 ```
 

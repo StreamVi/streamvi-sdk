@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**restream_id** | **number** | Restream Id | [default to undefined]
-**channel_id** | **number** | Channel Id | [default to undefined]
+**restreamId** | **number** | Restream Id | [default to undefined]
+**channelId** | **number** | Channel Id | [default to undefined]
 **name** | **string** | Platform name | [default to undefined]
 **image** | **string** | Platform image | [default to undefined]
 **platform** | **string** | Platform type | [default to undefined]
@@ -15,11 +15,11 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MethodBroadcastRestreamItemResponse } from './api';
+import { MethodBroadcastRestreamItemResponse } from 'streamvi-api-client';
 
 const instance: MethodBroadcastRestreamItemResponse = {
-    restream_id,
-    channel_id,
+    restreamId,
+    channelId,
     name,
     image,
     platform,

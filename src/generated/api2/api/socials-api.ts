@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -27,7 +27,7 @@ import type { ErrorResponse } from '../models';
  * SocialsApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const SocialsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
@@ -35,7 +35,7 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getList1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        socialsGetListV1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/method/socials/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -66,8 +66,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * SocialsApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const SocialsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = SocialsApiAxiosParamCreator(configuration)
     return {
         /**
          * 
@@ -75,10 +75,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getList1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getList1(options);
+        async socialsGetListV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.socialsGetListV1(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SocialsApi.getList1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SocialsApi.socialsGetListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -88,8 +88,8 @@ export const fp = function(configuration?: Configuration) {
  * SocialsApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const SocialsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = SocialsApiFp(configuration)
     return {
         /**
          * 
@@ -97,11 +97,28 @@ export const factory = function (configuration?: Configuration, basePath?: strin
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getList1(options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.getList1(options).then((request) => request(axios, basePath));
+        socialsGetListV1(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.socialsGetListV1(options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * SocialsApi - interface
+ * @export
+ * @interface SocialsApi
+ */
+export interface SocialsApiInterface {
+    /**
+     * 
+     * @summary Social list for user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SocialsApiInterface
+     */
+    socialsGetListV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+}
 
 /**
  * SocialsApi - object-oriented interface
@@ -109,7 +126,7 @@ export const factory = function (configuration?: Configuration, basePath?: strin
  * @class SocialsApi
  * @extends {BaseAPI}
  */
-export class SocialsApi extends BaseAPI {
+export class SocialsApi extends BaseAPI implements SocialsApiInterface {
     /**
      * 
      * @summary Social list for user
@@ -117,8 +134,8 @@ export class SocialsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SocialsApi
      */
-    public getList1(options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).getList1(options).then((request) => request(this.axios, this.basePath));
+    public socialsGetListV1(options?: RawAxiosRequestConfig) {
+        return SocialsApiFp(this.configuration).socialsGetListV1(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

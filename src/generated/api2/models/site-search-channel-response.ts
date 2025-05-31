@@ -15,10 +15,10 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { SiteSearchChannelItem } from './site-search-channel-item';
+import type { SearchChannelItem } from './search-channel-item';
 // May contain unused imports in some cases
 // @ts-ignore
-import type { SiteSearchChannelPlatformsDto } from './site-search-channel-platforms-dto';
+import type { SearchChannelPlatformsDto } from './search-channel-platforms-dto';
 
 /**
  * 
@@ -28,16 +28,16 @@ import type { SiteSearchChannelPlatformsDto } from './site-search-channel-platfo
 export interface SiteSearchChannelResponse {
     /**
      * Array of items
-     * @type {Array<SiteSearchChannelItem>}
+     * @type {Array<SearchChannelItem>}
      * @memberof SiteSearchChannelResponse
      */
-    'results': Array<SiteSearchChannelItem>;
+    'results': Array<SearchChannelItem>;
     /**
      * 
-     * @type {Array<SiteSearchChannelPlatformsDto>}
+     * @type {Array<SearchChannelPlatformsDto>}
      * @memberof SiteSearchChannelResponse
      */
-    'platforms': Array<SiteSearchChannelPlatformsDto>;
+    'platforms': Array<SearchChannelPlatformsDto>;
     /**
      * 
      * @type {number}

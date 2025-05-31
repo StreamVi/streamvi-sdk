@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { RtmpServerStateResponse } from './api';
+import { RtmpServerStateResponse } from 'streamvi-api-client';
 
 const instance: RtmpServerStateResponse = {
     results,

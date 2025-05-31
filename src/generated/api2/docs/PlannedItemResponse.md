@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlannedItemResponse } from './api';
+import { PlannedItemResponse } from 'streamvi-api-client';
 
 const instance: PlannedItemResponse = {
     id,

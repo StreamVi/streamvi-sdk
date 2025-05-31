@@ -37,13 +37,13 @@ export interface PaymentStatusResponse {
      * @type {string}
      * @memberof PaymentStatusResponse
      */
-    'currency': CurrencyEnum;
+    'currency': PaymentStatusResponseCurrencyEnum;
     /**
      * Period
      * @type {string}
      * @memberof PaymentStatusResponse
      */
-    'plan_period': PlanPeriodEnum;
+    'plan_period': PaymentStatusResponsePlanPeriodEnum;
     /**
      * Status
      * @type {string}
@@ -64,21 +64,17 @@ export interface PaymentStatusResponse {
     'title'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CurrencyEnum {
-    rub = 'rub',
-    usd = 'usd'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PlanPeriodEnum {
-    month = 'month',
-    year = 'year'
-}
+export const PaymentStatusResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+} as const;
+
+export type PaymentStatusResponseCurrencyEnum = typeof PaymentStatusResponseCurrencyEnum[keyof typeof PaymentStatusResponseCurrencyEnum];
+export const PaymentStatusResponsePlanPeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+} as const;
+
+export type PaymentStatusResponsePlanPeriodEnum = typeof PaymentStatusResponsePlanPeriodEnum[keyof typeof PaymentStatusResponsePlanPeriodEnum];
 
 

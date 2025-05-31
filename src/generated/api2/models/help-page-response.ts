@@ -52,7 +52,7 @@ export interface HelpPageResponse {
      * @type {string}
      * @memberof HelpPageResponse
      */
-    'status': StatusEnum;
+    'status': HelpPageResponseStatusEnum;
     /**
      * Date last update
      * @type {string}
@@ -82,13 +82,13 @@ export interface HelpPageResponse {
      * @type {string}
      * @memberof HelpPageResponse
      */
-    'language': LanguageEnum;
+    'language': HelpPageResponseLanguageEnum;
     /**
      * Language ISO
      * @type {string}
      * @memberof HelpPageResponse
      */
-    'language_iso': LanguageIsoEnum;
+    'language_iso': HelpPageResponseLanguageIsoEnum;
     /**
      * Text
      * @type {string}
@@ -100,47 +100,39 @@ export interface HelpPageResponse {
      * @type {Array<string>}
      * @memberof HelpPageResponse
      */
-    'alt_languages': Array<AltLanguagesEnum>;
+    'alt_languages': Array<HelpPageResponseAltLanguagesEnum>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    None = 'None',
-    Backlog = 'Backlog',
-    Drafting = 'Drafting',
-    Reviewing = 'Reviewing',
-    Done = 'Done',
-    Published = 'Published'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    russian = 'russian',
-    english = 'english',
-    none = 'none'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageIsoEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum AltLanguagesEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const HelpPageResponseStatusEnum = {
+    None: 'None',
+    Backlog: 'Backlog',
+    Drafting: 'Drafting',
+    Reviewing: 'Reviewing',
+    Done: 'Done',
+    Published: 'Published'
+} as const;
+
+export type HelpPageResponseStatusEnum = typeof HelpPageResponseStatusEnum[keyof typeof HelpPageResponseStatusEnum];
+export const HelpPageResponseLanguageEnum = {
+    Russian: 'russian',
+    English: 'english',
+    None: 'none'
+} as const;
+
+export type HelpPageResponseLanguageEnum = typeof HelpPageResponseLanguageEnum[keyof typeof HelpPageResponseLanguageEnum];
+export const HelpPageResponseLanguageIsoEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type HelpPageResponseLanguageIsoEnum = typeof HelpPageResponseLanguageIsoEnum[keyof typeof HelpPageResponseLanguageIsoEnum];
+export const HelpPageResponseAltLanguagesEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type HelpPageResponseAltLanguagesEnum = typeof HelpPageResponseAltLanguagesEnum[keyof typeof HelpPageResponseAltLanguagesEnum];
 
 

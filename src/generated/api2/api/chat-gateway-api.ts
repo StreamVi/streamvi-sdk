@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -35,30 +35,28 @@ import type { SuccessResponse } from '../models';
  * ChatGatewayApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Remove message
-         * @param {deleteVEnum} v Version
-         * @param {deleteLanguageEnum} language Current language
+         * @param {MethodChatGatewayDeleteV1LanguageEnum} language Current language
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
+         * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete: async (v: deleteVEnum, language: deleteLanguageEnum, key: string, broadcastId: number, eventId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('delete', 'v', v)
+        methodChatGatewayDeleteV1: async (language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('delete', 'language', language)
+            assertParamExists('methodChatGatewayDeleteV1', 'language', language)
             // verify required parameter 'key' is not null or undefined
-            assertParamExists('delete', 'key', key)
+            assertParamExists('methodChatGatewayDeleteV1', 'key', key)
             // verify required parameter 'broadcastId' is not null or undefined
-            assertParamExists('delete', 'broadcastId', broadcastId)
+            assertParamExists('methodChatGatewayDeleteV1', 'broadcastId', broadcastId)
             // verify required parameter 'eventId' is not null or undefined
-            assertParamExists('delete', 'eventId', eventId)
+            assertParamExists('methodChatGatewayDeleteV1', 'eventId', eventId)
             const localVarPath = `/method/chat/messages/delete`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -73,6 +71,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -105,25 +105,23 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get one message
-         * @param {getMessageVEnum} v Version
-         * @param {getMessageLanguageEnum} language Current language
+         * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Current language
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
+         * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessage: async (v: getMessageVEnum, language: getMessageLanguageEnum, key: string, broadcastId: number, eventId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('getMessage', 'v', v)
+        methodChatGatewayGetMessageV1: async (language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('getMessage', 'language', language)
+            assertParamExists('methodChatGatewayGetMessageV1', 'language', language)
             // verify required parameter 'key' is not null or undefined
-            assertParamExists('getMessage', 'key', key)
+            assertParamExists('methodChatGatewayGetMessageV1', 'key', key)
             // verify required parameter 'broadcastId' is not null or undefined
-            assertParamExists('getMessage', 'broadcastId', broadcastId)
+            assertParamExists('methodChatGatewayGetMessageV1', 'broadcastId', broadcastId)
             // verify required parameter 'eventId' is not null or undefined
-            assertParamExists('getMessage', 'eventId', eventId)
+            assertParamExists('methodChatGatewayGetMessageV1', 'eventId', eventId)
             const localVarPath = `/method/chat/messages/message`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -138,6 +136,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -170,22 +170,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary List history message
-         * @param {historyVEnum} v Version
-         * @param {historyLanguageEnum} language Current language
+         * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
+         * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        history: async (v: historyVEnum, language: historyLanguageEnum, key: string, broadcastId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('history', 'v', v)
+        methodChatGatewayHistoryV1: async (language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('history', 'language', language)
+            assertParamExists('methodChatGatewayHistoryV1', 'language', language)
             // verify required parameter 'key' is not null or undefined
-            assertParamExists('history', 'key', key)
+            assertParamExists('methodChatGatewayHistoryV1', 'key', key)
             // verify required parameter 'broadcastId' is not null or undefined
-            assertParamExists('history', 'broadcastId', broadcastId)
+            assertParamExists('methodChatGatewayHistoryV1', 'broadcastId', broadcastId)
             const localVarPath = `/method/chat/messages`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -200,6 +198,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -228,25 +228,23 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Send message
-         * @param {sendVEnum} v Version
-         * @param {sendLanguageEnum} language Current language
+         * @param {MethodChatGatewaySendV1LanguageEnum} language Current language
          * @param {string} key Key
          * @param {number} broadcastId 
          * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto 
+         * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        send: async (v: sendVEnum, language: sendLanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('send', 'v', v)
+        methodChatGatewaySendV1: async (language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('send', 'language', language)
+            assertParamExists('methodChatGatewaySendV1', 'language', language)
             // verify required parameter 'key' is not null or undefined
-            assertParamExists('send', 'key', key)
+            assertParamExists('methodChatGatewaySendV1', 'key', key)
             // verify required parameter 'broadcastId' is not null or undefined
-            assertParamExists('send', 'broadcastId', broadcastId)
+            assertParamExists('methodChatGatewaySendV1', 'broadcastId', broadcastId)
             // verify required parameter 'methodChatSendMessageRequestDto' is not null or undefined
-            assertParamExists('send', 'methodChatSendMessageRequestDto', methodChatSendMessageRequestDto)
+            assertParamExists('methodChatGatewaySendV1', 'methodChatSendMessageRequestDto', methodChatSendMessageRequestDto)
             const localVarPath = `/method/chat/messages`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -261,6 +259,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -296,74 +296,74 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * ChatGatewayApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const ChatGatewayApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ChatGatewayApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Remove message
-         * @param {deleteVEnum} v Version
-         * @param {deleteLanguageEnum} language Current language
+         * @param {MethodChatGatewayDeleteV1LanguageEnum} language Current language
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
+         * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async delete(v: deleteVEnum, language: deleteLanguageEnum, key: string, broadcastId: number, eventId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete(v, language, key, broadcastId, eventId, options);
+        async methodChatGatewayDeleteV1(language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewayDeleteV1(language, key, broadcastId, eventId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.delete']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.methodChatGatewayDeleteV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get one message
-         * @param {getMessageVEnum} v Version
-         * @param {getMessageLanguageEnum} language Current language
+         * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Current language
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
+         * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMessage(v: getMessageVEnum, language: getMessageLanguageEnum, key: string, broadcastId: number, eventId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getMessage(v, language, key, broadcastId, eventId, options);
+        async methodChatGatewayGetMessageV1(language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewayGetMessageV1(language, key, broadcastId, eventId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.getMessage']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.methodChatGatewayGetMessageV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary List history message
-         * @param {historyVEnum} v Version
-         * @param {historyLanguageEnum} language Current language
+         * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
+         * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async history(v: historyVEnum, language: historyLanguageEnum, key: string, broadcastId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodChatHistoryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.history(v, language, key, broadcastId, options);
+        async methodChatGatewayHistoryV1(language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodChatHistoryResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewayHistoryV1(language, key, broadcastId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.history']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.methodChatGatewayHistoryV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Send message
-         * @param {sendVEnum} v Version
-         * @param {sendLanguageEnum} language Current language
+         * @param {MethodChatGatewaySendV1LanguageEnum} language Current language
          * @param {string} key Key
          * @param {number} broadcastId 
          * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto 
+         * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async send(v: sendVEnum, language: sendLanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.send(v, language, key, broadcastId, methodChatSendMessageRequestDto, options);
+        async methodChatGatewaySendV1(language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewaySendV1(language, key, broadcastId, methodChatSendMessageRequestDto, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.send']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.methodChatGatewaySendV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -373,211 +373,259 @@ export const fp = function(configuration?: Configuration) {
  * ChatGatewayApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const ChatGatewayApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ChatGatewayApiFp(configuration)
     return {
         /**
          * 
          * @summary Remove message
-         * @param {deleteRequest} requestParameters Request parameters.
+         * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete(requestParameters: deleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.delete(requestParameters.v, requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, options).then((request) => request(axios, basePath));
+        methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get one message
-         * @param {getMessageRequest} requestParameters Request parameters.
+         * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMessage(requestParameters: getMessageRequest, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto> {
-            return localVarFp.getMessage(requestParameters.v, requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, options).then((request) => request(axios, basePath));
+        methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto> {
+            return localVarFp.methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary List history message
-         * @param {historyRequest} requestParameters Request parameters.
+         * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        history(requestParameters: historyRequest, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse> {
-            return localVarFp.history(requestParameters.v, requestParameters.language, requestParameters.key, requestParameters.broadcastId, options).then((request) => request(axios, basePath));
+        methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse> {
+            return localVarFp.methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Send message
-         * @param {sendRequest} requestParameters Request parameters.
+         * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        send(requestParameters: sendRequest, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto> {
-            return localVarFp.send(requestParameters.v, requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.methodChatSendMessageRequestDto, options).then((request) => request(axios, basePath));
+        methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto> {
+            return localVarFp.methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.methodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for delete operation in ChatGatewayApi.
+ * ChatGatewayApi - interface
  * @export
- * @interface deleteRequest
+ * @interface ChatGatewayApi
  */
-export interface deleteRequest {
+export interface ChatGatewayApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof delete
+     * 
+     * @summary Remove message
+     * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatGatewayApiInterface
      */
-    readonly v: deleteVEnum
+    methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
+    /**
+     * 
+     * @summary Get one message
+     * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatGatewayApiInterface
+     */
+    methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
+
+    /**
+     * 
+     * @summary List history message
+     * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatGatewayApiInterface
+     */
+    methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse>;
+
+    /**
+     * 
+     * @summary Send message
+     * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatGatewayApiInterface
+     */
+    methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
+
+}
+
+/**
+ * Request parameters for methodChatGatewayDeleteV1 operation in ChatGatewayApi.
+ * @export
+ * @interface ChatGatewayApiMethodChatGatewayDeleteV1Request
+ */
+export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof delete
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly language: deleteLanguageEnum
+    readonly language: MethodChatGatewayDeleteV1LanguageEnum
 
     /**
      * Key
      * @type {string}
-     * @memberof delete
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
     readonly key: string
 
     /**
      * broadcast id
      * @type {number}
-     * @memberof delete
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
     readonly broadcastId: number
 
     /**
      * Event id
      * @type {string}
-     * @memberof delete
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
     readonly eventId: string
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
+     */
+    readonly v?: MethodChatGatewayDeleteV1VEnum
 }
 
 /**
- * Request parameters for getMessage operation in ChatGatewayApi.
+ * Request parameters for methodChatGatewayGetMessageV1 operation in ChatGatewayApi.
  * @export
- * @interface getMessageRequest
+ * @interface ChatGatewayApiMethodChatGatewayGetMessageV1Request
  */
-export interface getMessageRequest {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getMessage
-     */
-    readonly v: getMessageVEnum
-
+export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getMessage
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly language: getMessageLanguageEnum
+    readonly language: MethodChatGatewayGetMessageV1LanguageEnum
 
     /**
      * Key
      * @type {string}
-     * @memberof getMessage
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
     readonly key: string
 
     /**
      * broadcast id
      * @type {number}
-     * @memberof getMessage
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
     readonly broadcastId: number
 
     /**
      * Event id
      * @type {string}
-     * @memberof getMessage
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
     readonly eventId: string
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
+     */
+    readonly v?: MethodChatGatewayGetMessageV1VEnum
 }
 
 /**
- * Request parameters for history operation in ChatGatewayApi.
+ * Request parameters for methodChatGatewayHistoryV1 operation in ChatGatewayApi.
  * @export
- * @interface historyRequest
+ * @interface ChatGatewayApiMethodChatGatewayHistoryV1Request
  */
-export interface historyRequest {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof history
-     */
-    readonly v: historyVEnum
-
+export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof history
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly language: historyLanguageEnum
+    readonly language: MethodChatGatewayHistoryV1LanguageEnum
 
     /**
      * Key
      * @type {string}
-     * @memberof history
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
     readonly key: string
 
     /**
      * broadcast id
      * @type {number}
-     * @memberof history
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
     readonly broadcastId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
+     */
+    readonly v?: MethodChatGatewayHistoryV1VEnum
 }
 
 /**
- * Request parameters for send operation in ChatGatewayApi.
+ * Request parameters for methodChatGatewaySendV1 operation in ChatGatewayApi.
  * @export
- * @interface sendRequest
+ * @interface ChatGatewayApiMethodChatGatewaySendV1Request
  */
-export interface sendRequest {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof send
-     */
-    readonly v: sendVEnum
-
+export interface ChatGatewayApiMethodChatGatewaySendV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof send
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly language: sendLanguageEnum
+    readonly language: MethodChatGatewaySendV1LanguageEnum
 
     /**
      * Key
      * @type {string}
-     * @memberof send
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
     readonly key: string
 
     /**
      * 
      * @type {number}
-     * @memberof send
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
     readonly broadcastId: number
 
     /**
      * 
      * @type {MethodChatSendMessageRequestDto}
-     * @memberof send
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
     readonly methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
+     */
+    readonly v?: MethodChatGatewaySendV1VEnum
 }
 
 /**
@@ -586,125 +634,125 @@ export interface sendRequest {
  * @class ChatGatewayApi
  * @extends {BaseAPI}
  */
-export class ChatGatewayApi extends BaseAPI {
+export class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
     /**
      * 
      * @summary Remove message
-     * @param {deleteRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    public delete(requestParameters: deleteRequest, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).delete(requestParameters.v, requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, options).then((request) => request(this.axios, this.basePath));
+    public methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig) {
+        return ChatGatewayApiFp(this.configuration).methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get one message
-     * @param {getMessageRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    public getMessage(requestParameters: getMessageRequest, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).getMessage(requestParameters.v, requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, options).then((request) => request(this.axios, this.basePath));
+    public methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig) {
+        return ChatGatewayApiFp(this.configuration).methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary List history message
-     * @param {historyRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    public history(requestParameters: historyRequest, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).history(requestParameters.v, requestParameters.language, requestParameters.key, requestParameters.broadcastId, options).then((request) => request(this.axios, this.basePath));
+    public methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig) {
+        return ChatGatewayApiFp(this.configuration).methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Send message
-     * @param {sendRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    public send(requestParameters: sendRequest, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).send(requestParameters.v, requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.methodChatSendMessageRequestDto, options).then((request) => request(this.axios, this.basePath));
+    public methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig) {
+        return ChatGatewayApiFp(this.configuration).methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.methodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum deleteVEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const MethodChatGatewayDeleteV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type MethodChatGatewayDeleteV1LanguageEnum = typeof MethodChatGatewayDeleteV1LanguageEnum[keyof typeof MethodChatGatewayDeleteV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum deleteLanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const MethodChatGatewayDeleteV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type MethodChatGatewayDeleteV1VEnum = typeof MethodChatGatewayDeleteV1VEnum[keyof typeof MethodChatGatewayDeleteV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getMessageVEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const MethodChatGatewayGetMessageV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type MethodChatGatewayGetMessageV1LanguageEnum = typeof MethodChatGatewayGetMessageV1LanguageEnum[keyof typeof MethodChatGatewayGetMessageV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getMessageLanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const MethodChatGatewayGetMessageV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type MethodChatGatewayGetMessageV1VEnum = typeof MethodChatGatewayGetMessageV1VEnum[keyof typeof MethodChatGatewayGetMessageV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum historyVEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const MethodChatGatewayHistoryV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type MethodChatGatewayHistoryV1LanguageEnum = typeof MethodChatGatewayHistoryV1LanguageEnum[keyof typeof MethodChatGatewayHistoryV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum historyLanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const MethodChatGatewayHistoryV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type MethodChatGatewayHistoryV1VEnum = typeof MethodChatGatewayHistoryV1VEnum[keyof typeof MethodChatGatewayHistoryV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum sendVEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const MethodChatGatewaySendV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type MethodChatGatewaySendV1LanguageEnum = typeof MethodChatGatewaySendV1LanguageEnum[keyof typeof MethodChatGatewaySendV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum sendLanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const MethodChatGatewaySendV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type MethodChatGatewaySendV1VEnum = typeof MethodChatGatewaySendV1VEnum[keyof typeof MethodChatGatewaySendV1VEnum];

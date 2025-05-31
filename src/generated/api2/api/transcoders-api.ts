@@ -18,37 +18,37 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { SiteTranscoderCreateDto } from '../models';
-// @ts-ignore
-import type { SiteTranscoderItemDto } from '../models';
-// @ts-ignore
 import type { SiteTranscoderListResponse } from '../models';
 // @ts-ignore
-import type { SiteTranscoderUpdateDto } from '../models';
-// @ts-ignore
 import type { SuccessResponse } from '../models';
+// @ts-ignore
+import type { TranscoderCreateDto } from '../models';
+// @ts-ignore
+import type { TranscoderItemDto } from '../models';
+// @ts-ignore
+import type { TranscoderUpdateDto } from '../models';
 /**
  * TranscodersApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const TranscodersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Transcoder create
-         * @param {SiteTranscoderCreateDto} siteTranscoderCreateDto 
+         * @param {TranscoderCreateDto} transcoderCreateDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        add1: async (siteTranscoderCreateDto: SiteTranscoderCreateDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'siteTranscoderCreateDto' is not null or undefined
-            assertParamExists('add1', 'siteTranscoderCreateDto', siteTranscoderCreateDto)
+        transcodersAddV1: async (transcoderCreateDto: TranscoderCreateDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'transcoderCreateDto' is not null or undefined
+            assertParamExists('transcodersAddV1', 'transcoderCreateDto', transcoderCreateDto)
             const localVarPath = `/method/transcoder/add`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -68,7 +68,7 @@ export const axiosParamCreator = function (configuration?: Configuration) {
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(siteTranscoderCreateDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(transcoderCreateDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -78,13 +78,13 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Transcoder delete
-         * @param {SiteTranscoderItemDto} siteTranscoderItemDto 
+         * @param {TranscoderItemDto} transcoderItemDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete1: async (siteTranscoderItemDto: SiteTranscoderItemDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'siteTranscoderItemDto' is not null or undefined
-            assertParamExists('delete1', 'siteTranscoderItemDto', siteTranscoderItemDto)
+        transcodersDeleteV1: async (transcoderItemDto: TranscoderItemDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'transcoderItemDto' is not null or undefined
+            assertParamExists('transcodersDeleteV1', 'transcoderItemDto', transcoderItemDto)
             const localVarPath = `/method/transcoder/delete`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -104,7 +104,7 @@ export const axiosParamCreator = function (configuration?: Configuration) {
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(siteTranscoderItemDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(transcoderItemDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -114,19 +114,17 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary List of transcoder
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {TranscodersListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v: list1VEnum, language: list1LanguageEnum, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('list1', 'v', v)
+        transcodersListV1: async (language: TranscodersListV1LanguageEnum, projectId: number, v?: TranscodersListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('list1', 'language', language)
+            assertParamExists('transcodersListV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('list1', 'projectId', projectId)
+            assertParamExists('transcodersListV1', 'projectId', projectId)
             const localVarPath = `/method/transcoder/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -141,6 +139,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -165,13 +165,13 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Transcoder stop
-         * @param {SiteTranscoderItemDto} siteTranscoderItemDto 
+         * @param {TranscoderItemDto} transcoderItemDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        stop1: async (siteTranscoderItemDto: SiteTranscoderItemDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'siteTranscoderItemDto' is not null or undefined
-            assertParamExists('stop1', 'siteTranscoderItemDto', siteTranscoderItemDto)
+        transcodersStopV1: async (transcoderItemDto: TranscoderItemDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'transcoderItemDto' is not null or undefined
+            assertParamExists('transcodersStopV1', 'transcoderItemDto', transcoderItemDto)
             const localVarPath = `/method/transcoder/stop`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -191,7 +191,7 @@ export const axiosParamCreator = function (configuration?: Configuration) {
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(siteTranscoderItemDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(transcoderItemDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -201,13 +201,13 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Transcoder update
-         * @param {SiteTranscoderUpdateDto} siteTranscoderUpdateDto 
+         * @param {TranscoderUpdateDto} transcoderUpdateDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update1: async (siteTranscoderUpdateDto: SiteTranscoderUpdateDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'siteTranscoderUpdateDto' is not null or undefined
-            assertParamExists('update1', 'siteTranscoderUpdateDto', siteTranscoderUpdateDto)
+        transcodersUpdateV1: async (transcoderUpdateDto: TranscoderUpdateDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'transcoderUpdateDto' is not null or undefined
+            assertParamExists('transcodersUpdateV1', 'transcoderUpdateDto', transcoderUpdateDto)
             const localVarPath = `/method/transcoder/update`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -227,7 +227,7 @@ export const axiosParamCreator = function (configuration?: Configuration) {
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(siteTranscoderUpdateDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(transcoderUpdateDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -241,74 +241,74 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * TranscodersApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const TranscodersApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = TranscodersApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Transcoder create
-         * @param {SiteTranscoderCreateDto} siteTranscoderCreateDto 
+         * @param {TranscoderCreateDto} transcoderCreateDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async add1(siteTranscoderCreateDto: SiteTranscoderCreateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.add1(siteTranscoderCreateDto, options);
+        async transcodersAddV1(transcoderCreateDto: TranscoderCreateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersAddV1(transcoderCreateDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.add1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.transcodersAddV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Transcoder delete
-         * @param {SiteTranscoderItemDto} siteTranscoderItemDto 
+         * @param {TranscoderItemDto} transcoderItemDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async delete1(siteTranscoderItemDto: SiteTranscoderItemDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete1(siteTranscoderItemDto, options);
+        async transcodersDeleteV1(transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersDeleteV1(transcoderItemDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.delete1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.transcodersDeleteV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary List of transcoder
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {TranscodersListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v: list1VEnum, language: list1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTranscoderListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, projectId, options);
+        async transcodersListV1(language: TranscodersListV1LanguageEnum, projectId: number, v?: TranscodersListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTranscoderListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersListV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.list1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.transcodersListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Transcoder stop
-         * @param {SiteTranscoderItemDto} siteTranscoderItemDto 
+         * @param {TranscoderItemDto} transcoderItemDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async stop1(siteTranscoderItemDto: SiteTranscoderItemDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.stop1(siteTranscoderItemDto, options);
+        async transcodersStopV1(transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersStopV1(transcoderItemDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.stop1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.transcodersStopV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Transcoder update
-         * @param {SiteTranscoderUpdateDto} siteTranscoderUpdateDto 
+         * @param {TranscoderUpdateDto} transcoderUpdateDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async update1(siteTranscoderUpdateDto: SiteTranscoderUpdateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update1(siteTranscoderUpdateDto, options);
+        async transcodersUpdateV1(transcoderUpdateDto: TranscoderUpdateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersUpdateV1(transcoderUpdateDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.update1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.transcodersUpdateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -318,146 +318,202 @@ export const fp = function(configuration?: Configuration) {
  * TranscodersApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const TranscodersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = TranscodersApiFp(configuration)
     return {
         /**
          * 
          * @summary Transcoder create
-         * @param {add1Request} requestParameters Request parameters.
+         * @param {TranscodersApiTranscodersAddV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        add1(requestParameters: add1Request, options?: RawAxiosRequestConfig): AxiosPromise<number> {
-            return localVarFp.add1(requestParameters.siteTranscoderCreateDto, options).then((request) => request(axios, basePath));
+        transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig): AxiosPromise<number> {
+            return localVarFp.transcodersAddV1(requestParameters.transcoderCreateDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Transcoder delete
-         * @param {delete1Request} requestParameters Request parameters.
+         * @param {TranscodersApiTranscodersDeleteV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete1(requestParameters: delete1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.delete1(requestParameters.siteTranscoderItemDto, options).then((request) => request(axios, basePath));
+        transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.transcodersDeleteV1(requestParameters.transcoderItemDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary List of transcoder
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {TranscodersApiTranscodersListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTranscoderListResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTranscoderListResponse> {
+            return localVarFp.transcodersListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Transcoder stop
-         * @param {stop1Request} requestParameters Request parameters.
+         * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        stop1(requestParameters: stop1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.stop1(requestParameters.siteTranscoderItemDto, options).then((request) => request(axios, basePath));
+        transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.transcodersStopV1(requestParameters.transcoderItemDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Transcoder update
-         * @param {update1Request} requestParameters Request parameters.
+         * @param {TranscodersApiTranscodersUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update1(requestParameters: update1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.update1(requestParameters.siteTranscoderUpdateDto, options).then((request) => request(axios, basePath));
+        transcodersUpdateV1(requestParameters: TranscodersApiTranscodersUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.transcodersUpdateV1(requestParameters.transcoderUpdateDto, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for add1 operation in TranscodersApi.
+ * TranscodersApi - interface
  * @export
- * @interface add1Request
+ * @interface TranscodersApi
  */
-export interface add1Request {
+export interface TranscodersApiInterface {
     /**
      * 
-     * @type {SiteTranscoderCreateDto}
-     * @memberof add1
+     * @summary Transcoder create
+     * @param {TranscodersApiTranscodersAddV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TranscodersApiInterface
      */
-    readonly siteTranscoderCreateDto: SiteTranscoderCreateDto
+    transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig): AxiosPromise<number>;
+
+    /**
+     * 
+     * @summary Transcoder delete
+     * @param {TranscodersApiTranscodersDeleteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TranscodersApiInterface
+     */
+    transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary List of transcoder
+     * @param {TranscodersApiTranscodersListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TranscodersApiInterface
+     */
+    transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTranscoderListResponse>;
+
+    /**
+     * 
+     * @summary Transcoder stop
+     * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TranscodersApiInterface
+     */
+    transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Transcoder update
+     * @param {TranscodersApiTranscodersUpdateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TranscodersApiInterface
+     */
+    transcodersUpdateV1(requestParameters: TranscodersApiTranscodersUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
 }
 
 /**
- * Request parameters for delete1 operation in TranscodersApi.
+ * Request parameters for transcodersAddV1 operation in TranscodersApi.
  * @export
- * @interface delete1Request
+ * @interface TranscodersApiTranscodersAddV1Request
  */
-export interface delete1Request {
+export interface TranscodersApiTranscodersAddV1Request {
     /**
      * 
-     * @type {SiteTranscoderItemDto}
-     * @memberof delete1
+     * @type {TranscoderCreateDto}
+     * @memberof TranscodersApiTranscodersAddV1
      */
-    readonly siteTranscoderItemDto: SiteTranscoderItemDto
+    readonly transcoderCreateDto: TranscoderCreateDto
 }
 
 /**
- * Request parameters for list1 operation in TranscodersApi.
+ * Request parameters for transcodersDeleteV1 operation in TranscodersApi.
  * @export
- * @interface list1Request
+ * @interface TranscodersApiTranscodersDeleteV1Request
  */
-export interface list1Request {
+export interface TranscodersApiTranscodersDeleteV1Request {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
+     * 
+     * @type {TranscoderItemDto}
+     * @memberof TranscodersApiTranscodersDeleteV1
      */
-    readonly v?: list1VEnum
+    readonly transcoderItemDto: TranscoderItemDto
+}
 
+/**
+ * Request parameters for transcodersListV1 operation in TranscodersApi.
+ * @export
+ * @interface TranscodersApiTranscodersListV1Request
+ */
+export interface TranscodersApiTranscodersListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof TranscodersApiTranscodersListV1
      */
-    readonly language: list1LanguageEnum
+    readonly language: TranscodersListV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof list1
+     * @memberof TranscodersApiTranscodersListV1
      */
     readonly projectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof TranscodersApiTranscodersListV1
+     */
+    readonly v?: TranscodersListV1VEnum
 }
 
 /**
- * Request parameters for stop1 operation in TranscodersApi.
+ * Request parameters for transcodersStopV1 operation in TranscodersApi.
  * @export
- * @interface stop1Request
+ * @interface TranscodersApiTranscodersStopV1Request
  */
-export interface stop1Request {
+export interface TranscodersApiTranscodersStopV1Request {
     /**
      * 
-     * @type {SiteTranscoderItemDto}
-     * @memberof stop1
+     * @type {TranscoderItemDto}
+     * @memberof TranscodersApiTranscodersStopV1
      */
-    readonly siteTranscoderItemDto: SiteTranscoderItemDto
+    readonly transcoderItemDto: TranscoderItemDto
 }
 
 /**
- * Request parameters for update1 operation in TranscodersApi.
+ * Request parameters for transcodersUpdateV1 operation in TranscodersApi.
  * @export
- * @interface update1Request
+ * @interface TranscodersApiTranscodersUpdateV1Request
  */
-export interface update1Request {
+export interface TranscodersApiTranscodersUpdateV1Request {
     /**
      * 
-     * @type {SiteTranscoderUpdateDto}
-     * @memberof update1
+     * @type {TranscoderUpdateDto}
+     * @memberof TranscodersApiTranscodersUpdateV1
      */
-    readonly siteTranscoderUpdateDto: SiteTranscoderUpdateDto
+    readonly transcoderUpdateDto: TranscoderUpdateDto
 }
 
 /**
@@ -466,85 +522,83 @@ export interface update1Request {
  * @class TranscodersApi
  * @extends {BaseAPI}
  */
-export class TranscodersApi extends BaseAPI {
+export class TranscodersApi extends BaseAPI implements TranscodersApiInterface {
     /**
      * 
      * @summary Transcoder create
-     * @param {add1Request} requestParameters Request parameters.
+     * @param {TranscodersApiTranscodersAddV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    public add1(requestParameters: add1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).add1(requestParameters.siteTranscoderCreateDto, options).then((request) => request(this.axios, this.basePath));
+    public transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig) {
+        return TranscodersApiFp(this.configuration).transcodersAddV1(requestParameters.transcoderCreateDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Transcoder delete
-     * @param {delete1Request} requestParameters Request parameters.
+     * @param {TranscodersApiTranscodersDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    public delete1(requestParameters: delete1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).delete1(requestParameters.siteTranscoderItemDto, options).then((request) => request(this.axios, this.basePath));
+    public transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig) {
+        return TranscodersApiFp(this.configuration).transcodersDeleteV1(requestParameters.transcoderItemDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary List of transcoder
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {TranscodersApiTranscodersListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    public list1(requestParameters: list1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-        return fp(this.configuration).list1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    public transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig) {
+        return TranscodersApiFp(this.configuration).transcodersListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Transcoder stop
-     * @param {stop1Request} requestParameters Request parameters.
+     * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    public stop1(requestParameters: stop1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).stop1(requestParameters.siteTranscoderItemDto, options).then((request) => request(this.axios, this.basePath));
+    public transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig) {
+        return TranscodersApiFp(this.configuration).transcodersStopV1(requestParameters.transcoderItemDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Transcoder update
-     * @param {update1Request} requestParameters Request parameters.
+     * @param {TranscodersApiTranscodersUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    public update1(requestParameters: update1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).update1(requestParameters.siteTranscoderUpdateDto, options).then((request) => request(this.axios, this.basePath));
+    public transcodersUpdateV1(requestParameters: TranscodersApiTranscodersUpdateV1Request, options?: RawAxiosRequestConfig) {
+        return TranscodersApiFp(this.configuration).transcodersUpdateV1(requestParameters.transcoderUpdateDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const TranscodersListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type TranscodersListV1LanguageEnum = typeof TranscodersListV1LanguageEnum[keyof typeof TranscodersListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const TranscodersListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type TranscodersListV1VEnum = typeof TranscodersListV1VEnum[keyof typeof TranscodersListV1VEnum];

@@ -25,19 +25,17 @@ export interface SiteGetPolicyStructure {
      * @type {string}
      * @memberof SiteGetPolicyStructure
      */
-    'results': ResultsEnum;
+    'results': SiteGetPolicyStructureResultsEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ResultsEnum {
-    refund_policy = 'refund-policy',
-    terms_of_use = 'terms-of-use',
-    using_cookie = 'using-cookie',
-    acceptable_use = 'acceptable-use',
-    privacy_notice = 'privacy-notice'
-}
+export const SiteGetPolicyStructureResultsEnum = {
+    RefundPolicy: 'refund-policy',
+    TermsOfUse: 'terms-of-use',
+    UsingCookie: 'using-cookie',
+    AcceptableUse: 'acceptable-use',
+    PrivacyNotice: 'privacy-notice'
+} as const;
+
+export type SiteGetPolicyStructureResultsEnum = typeof SiteGetPolicyStructureResultsEnum[keyof typeof SiteGetPolicyStructureResultsEnum];
 
 

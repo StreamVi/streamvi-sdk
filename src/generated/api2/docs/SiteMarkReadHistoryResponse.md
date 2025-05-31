@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SiteMarkReadHistoryResponse } from './api';
+import { SiteMarkReadHistoryResponse } from 'streamvi-api-client';
 
 const instance: SiteMarkReadHistoryResponse = {
     count,

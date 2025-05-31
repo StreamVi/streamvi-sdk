@@ -28,19 +28,19 @@ export interface SiteScreenNotifyUserResponse {
      * @type {string}
      * @memberof SiteScreenNotifyUserResponse
      */
-    'type': TypeEnum;
-    /**
-     * Text of notify
-     * @type {string}
-     * @memberof SiteScreenNotifyUserResponse
-     */
-    'text': string;
+    'type': SiteScreenNotifyUserResponseTypeEnum;
     /**
      * Title of notify
      * @type {string}
      * @memberof SiteScreenNotifyUserResponse
      */
     'title'?: string;
+    /**
+     * Text of notify
+     * @type {string}
+     * @memberof SiteScreenNotifyUserResponse
+     */
+    'text': string;
     /**
      * Array of texts
      * @type {Array<InternalNotifyTypeAction>}
@@ -49,15 +49,13 @@ export interface SiteScreenNotifyUserResponse {
     'actions'?: Array<InternalNotifyTypeAction>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TypeEnum {
-    debug = 'debug',
-    info = 'info',
-    warning = 'warning',
-    error = 'error'
-}
+export const SiteScreenNotifyUserResponseTypeEnum = {
+    Debug: 'debug',
+    Info: 'info',
+    Warning: 'warning',
+    Error: 'error'
+} as const;
+
+export type SiteScreenNotifyUserResponseTypeEnum = typeof SiteScreenNotifyUserResponseTypeEnum[keyof typeof SiteScreenNotifyUserResponseTypeEnum];
 
 

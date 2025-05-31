@@ -25,13 +25,13 @@ export interface PaySettingBodyDto {
      * @type {string}
      * @memberof PaySettingBodyDto
      */
-    'v': VEnum;
+    'v': PaySettingBodyDtoVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof PaySettingBodyDto
      */
-    'language': LanguageEnum;
+    'language': PaySettingBodyDtoLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -45,6 +45,12 @@ export interface PaySettingBodyDto {
      */
     'countrie_id': number;
     /**
+     * Organization
+     * @type {number}
+     * @memberof PaySettingBodyDto
+     */
+    'organization_id'?: number | null;
+    /**
      * Pay system id
      * @type {number}
      * @memberof PaySettingBodyDto
@@ -57,12 +63,6 @@ export interface PaySettingBodyDto {
      */
     'email': string;
     /**
-     * Organization
-     * @type {number}
-     * @memberof PaySettingBodyDto
-     */
-    'organization_id'?: number | null;
-    /**
      * Additional information about the payment
      * @type {string}
      * @memberof PaySettingBodyDto
@@ -70,23 +70,19 @@ export interface PaySettingBodyDto {
     'description'?: string | null;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const PaySettingBodyDtoVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type PaySettingBodyDtoVEnum = typeof PaySettingBodyDtoVEnum[keyof typeof PaySettingBodyDtoVEnum];
+export const PaySettingBodyDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type PaySettingBodyDtoLanguageEnum = typeof PaySettingBodyDtoLanguageEnum[keyof typeof PaySettingBodyDtoLanguageEnum];
 
 

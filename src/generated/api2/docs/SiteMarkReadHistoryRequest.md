@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**notify_history_ids** | **Array&lt;string&gt;** | Id of page in mongodb | [default to undefined]
+**notifyHistoryIds** | **Array&lt;string&gt;** | Id of page in mongodb | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteMarkReadHistoryRequest } from './api';
+import { SiteMarkReadHistoryRequest } from 'streamvi-api-client';
 
 const instance: SiteMarkReadHistoryRequest = {
-    notify_history_ids,
+    notifyHistoryIds,
 };
 ```
 

@@ -25,17 +25,15 @@ export interface ProjectInfoAccessResponse {
      * @type {number}
      * @memberof ProjectInfoAccessResponse
      */
-    'access_type': AccessTypeEnum;
+    'access_type': ProjectInfoAccessResponseAccessTypeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum AccessTypeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1,
-    NUMBER_2 = 2
-}
+export const ProjectInfoAccessResponseAccessTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2
+} as const;
+
+export type ProjectInfoAccessResponseAccessTypeEnum = typeof ProjectInfoAccessResponseAccessTypeEnum[keyof typeof ProjectInfoAccessResponseAccessTypeEnum];
 
 

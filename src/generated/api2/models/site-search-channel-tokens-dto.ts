@@ -25,18 +25,16 @@ export interface SiteSearchChannelTokensDto {
      * @type {string}
      * @memberof SiteSearchChannelTokensDto
      */
-    'status': StatusEnum;
+    'status': SiteSearchChannelTokensDtoStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    unused = 'unused',
-    invalid = 'invalid',
-    deprecated = 'deprecated',
-    valid = 'valid'
-}
+export const SiteSearchChannelTokensDtoStatusEnum = {
+    Unused: 'unused',
+    Invalid: 'invalid',
+    Deprecated: 'deprecated',
+    Valid: 'valid'
+} as const;
+
+export type SiteSearchChannelTokensDtoStatusEnum = typeof SiteSearchChannelTokensDtoStatusEnum[keyof typeof SiteSearchChannelTokensDtoStatusEnum];
 
 

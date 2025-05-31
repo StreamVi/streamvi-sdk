@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MoneyFlowBalanceTypeValuesResponse } from './api';
+import { MoneyFlowBalanceTypeValuesResponse } from 'streamvi-api-client';
 
 const instance: MoneyFlowBalanceTypeValuesResponse = {
     bonus,

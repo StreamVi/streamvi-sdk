@@ -4,76 +4,30 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**get1**](#get1) | **GET** /method/notify_history/get | Get my NotifyHistory item by id|
-|[**getListMy1**](#getlistmy1) | **GET** /method/notify_history/list | Get list of my notifications|
-|[**getStatusMy1**](#getstatusmy1) | **GET** /method/notify_history/get_status | Get my status unread message for user|
-|[**markOfRead1**](#markofread1) | **PUT** /method/notify_history/read | Set notification in cabinet as read|
-|[**runAction1**](#runaction1) | **POST** /method/notify_history/run_action | Run action in my notify item|
-|[**setAllCabinetRead1**](#setallcabinetread1) | **POST** /method/notify_history/set_all_cabinet_read | Set all notification in cabinet as read|
+|[**notifyHistoryGetListMyV1**](#notifyhistorygetlistmyv1) | **GET** /method/notify_history/list | Get list of my notifications|
+|[**notifyHistoryGetStatusMyV1**](#notifyhistorygetstatusmyv1) | **GET** /method/notify_history/get_status | Get my status unread message for user|
+|[**notifyHistoryGetV1**](#notifyhistorygetv1) | **GET** /method/notify_history/get | Get my NotifyHistory item by id|
+|[**notifyHistoryMarkOfReadV1**](#notifyhistorymarkofreadv1) | **PUT** /method/notify_history/read | Set notification in cabinet as read|
+|[**notifyHistoryRunActionV1**](#notifyhistoryrunactionv1) | **POST** /method/notify_history/run_action | Run action in my notify item|
+|[**notifyHistorySetAllCabinetReadV1**](#notifyhistorysetallcabinetreadv1) | **POST** /method/notify_history/set_all_cabinet_read | Set all notification in cabinet as read|
 
-# **get1**
-> NotifyHistorySiteResponse get1()
-
-
-### Example
-
-```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { NotifyHistoryApi } from './api';
-
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new NotifyHistoryApi(sdkConfig.configuration);
-
-let id: string; //Id of page in mongodb (default to undefined)
-
-const { status, data } = await apiInstance.get1({
-    id
-  });
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **id** | [**string**] | Id of page in mongodb | defaults to undefined|
-
-
-### Return type
-
-**NotifyHistorySiteResponse**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** |  |  -  |
-|**400** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getListMy1**
-> PaginatedResponseOfNotifyHistorySiteResponse getListMy1()
+# **notifyHistoryGetListMyV1**
+> PaginatedResponseOfNotifyHistorySiteResponse notifyHistoryGetListMyV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { NotifyHistoryApi } from './api';
+import {
+    NotifyHistoryApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new NotifyHistoryApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new NotifyHistoryApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let limit: number; //Number of results (optional) (default to 20)
 let offset: number; //Page offset number (optional) (default to 0)
 let projectId: number; //Project id (optional) (default to undefined)
@@ -83,8 +37,9 @@ let dateFrom: string; //Date from (optional) (default to undefined)
 let dateTo: string; //Date to (optional) (default to undefined)
 let statusRead: 'unread' | 'read'; //Status read (optional) (default to undefined)
 
-const { status, data } = await apiInstance.getListMy1({
+const { status, data } = await apiInstance.notifyHistoryGetListMyV1(
     language,
+    v,
     limit,
     offset,
     projectId,
@@ -93,7 +48,7 @@ const { status, data } = await apiInstance.getListMy1({
     dateFrom,
     dateTo,
     statusRead
-  });
+);
 ```
 
 ### Parameters
@@ -101,6 +56,7 @@ const { status, data } = await apiInstance.getListMy1({
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **limit** | [**number**] | Number of results | (optional) defaults to 20|
 | **offset** | [**number**] | Page offset number | (optional) defaults to 0|
 | **projectId** | [**number**] | Project id | (optional) defaults to undefined|
@@ -133,24 +89,28 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getStatusMy1**
-> NotifyHistoryStatusUserResponse getStatusMy1()
+# **notifyHistoryGetStatusMyV1**
+> NotifyHistoryStatusUserResponse notifyHistoryGetStatusMyV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { NotifyHistoryApi } from './api';
+import {
+    NotifyHistoryApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new NotifyHistoryApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new NotifyHistoryApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.getStatusMy1({
-    language
-  });
+const { status, data } = await apiInstance.notifyHistoryGetStatusMyV1(
+    language,
+    v
+);
 ```
 
 ### Parameters
@@ -158,6 +118,7 @@ const { status, data } = await apiInstance.getStatusMy1({
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -182,90 +143,36 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **markOfRead1**
-> SiteMarkReadHistoryResponse markOfRead1(siteMarkReadHistoryRequest)
+# **notifyHistoryGetV1**
+> NotifyHistorySiteResponse notifyHistoryGetV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { NotifyHistoryApi
-    SiteMarkReadHistoryRequest } from './api';
+import {
+    NotifyHistoryApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new NotifyHistoryApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new NotifyHistoryApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest; //
+let id: string; //Id of page in mongodb (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.markOfRead1({
-    language,
-    siteMarkReadHistoryRequest
-  });
+const { status, data } = await apiInstance.notifyHistoryGetV1(
+    id,
+    v
+);
 ```
 
 ### Parameters
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **siteMarkReadHistoryRequest** | **SiteMarkReadHistoryRequest**|  | |
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-
-
-### Return type
-
-**SiteMarkReadHistoryResponse**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** |  |  -  |
-|**400** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **runAction1**
-> NotifyHistorySiteResponse runAction1()
-
-
-### Example
-
-```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { NotifyHistoryApi } from './api';
-
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new NotifyHistoryApi(sdkConfig.configuration);
-
-let notifyHistoryId: string; //Id of page in mongodb (default to undefined)
-let actionName: string; //Action name (default to undefined)
-let groupId: string; //Group id (default to undefined)
-
-const { status, data } = await apiInstance.runAction1({
-    notifyHistoryId,
-    actionName,
-    groupId
-  });
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **notifyHistoryId** | [**string**] | Id of page in mongodb | defaults to undefined|
-| **actionName** | [**string**] | Action name | defaults to undefined|
-| **groupId** | [**string**] | Group id | defaults to undefined|
+| **id** | [**string**] | Id of page in mongodb | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -290,20 +197,140 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **setAllCabinetRead1**
-> SuccessResponse setAllCabinetRead1()
+# **notifyHistoryMarkOfReadV1**
+> SiteMarkReadHistoryResponse notifyHistoryMarkOfReadV1(siteMarkReadHistoryRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { NotifyHistoryApi } from './api';
+import {
+    NotifyHistoryApi,
+    Configuration,
+    SiteMarkReadHistoryRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new NotifyHistoryApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new NotifyHistoryApi(configuration);
 
-const { status, data } = await apiInstance.setAllCabinetRead1({});
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest; //
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.notifyHistoryMarkOfReadV1(
+    language,
+    siteMarkReadHistoryRequest,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **siteMarkReadHistoryRequest** | **SiteMarkReadHistoryRequest**|  | |
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+**SiteMarkReadHistoryResponse**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **notifyHistoryRunActionV1**
+> NotifyHistorySiteResponse notifyHistoryRunActionV1()
+
+
+### Example
+
+```typescript
+import {
+    NotifyHistoryApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new NotifyHistoryApi(configuration);
+
+let notifyHistoryId: string; //Id of page in mongodb (default to undefined)
+let actionName: string; //Action name (default to undefined)
+let groupId: string; //Group id (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.notifyHistoryRunActionV1(
+    notifyHistoryId,
+    actionName,
+    groupId,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **notifyHistoryId** | [**string**] | Id of page in mongodb | defaults to undefined|
+| **actionName** | [**string**] | Action name | defaults to undefined|
+| **groupId** | [**string**] | Group id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+**NotifyHistorySiteResponse**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **notifyHistorySetAllCabinetReadV1**
+> SuccessResponse notifyHistorySetAllCabinetReadV1()
+
+
+### Example
+
+```typescript
+import {
+    NotifyHistoryApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new NotifyHistoryApi(configuration);
+
+const { status, data } = await apiInstance.notifyHistorySetAllCabinetReadV1();
 ```
 
 ### Parameters

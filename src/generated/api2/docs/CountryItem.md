@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CountryItem } from './api';
+import { CountryItem } from 'streamvi-api-client';
 
 const instance: CountryItem = {
     name,

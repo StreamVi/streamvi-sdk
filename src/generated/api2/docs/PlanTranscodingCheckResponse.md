@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlanTranscodingCheckResponse } from './api';
+import { PlanTranscodingCheckResponse } from 'streamvi-api-client';
 
 const instance: PlanTranscodingCheckResponse = {
     amount,

@@ -34,13 +34,13 @@ export interface ChannelTrovoInfoDto {
      * @type {string}
      * @memberof ChannelTrovoInfoDto
      */
-    'lang'?: LangEnum;
+    'lang'?: ChannelTrovoInfoDtoLangEnum;
     /**
      * 
      * @type {string}
      * @memberof ChannelTrovoInfoDto
      */
-    'audience'?: AudienceEnum;
+    'audience'?: ChannelTrovoInfoDtoAudienceEnum;
     /**
      * 
      * @type {ChannelCategoryInfoDto}
@@ -49,22 +49,18 @@ export interface ChannelTrovoInfoDto {
     'category'?: ChannelCategoryInfoDto;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LangEnum {
-    ru = 'ru',
-    en = 'en'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum AudienceEnum {
-    CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY = 'CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY',
-    CHANNEL_AUDIENCE_TYPE_TEEN = 'CHANNEL_AUDIENCE_TYPE_TEEN',
-    CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS = 'CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS'
-}
+export const ChannelTrovoInfoDtoLangEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+
+export type ChannelTrovoInfoDtoLangEnum = typeof ChannelTrovoInfoDtoLangEnum[keyof typeof ChannelTrovoInfoDtoLangEnum];
+export const ChannelTrovoInfoDtoAudienceEnum = {
+    ChannelAudienceTypeFamilyfriendly: 'CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY',
+    ChannelAudienceTypeTeen: 'CHANNEL_AUDIENCE_TYPE_TEEN',
+    ChannelAudienceTypeEighteenplus: 'CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS'
+} as const;
+
+export type ChannelTrovoInfoDtoAudienceEnum = typeof ChannelTrovoInfoDtoAudienceEnum[keyof typeof ChannelTrovoInfoDtoAudienceEnum];
 
 

@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;SitePlatformsSupportedItem&gt;**](SitePlatformsSupportedItem.md) | Array of items | [default to undefined]
+**results** | [**Array&lt;PlatformsSupportedItem&gt;**](PlatformsSupportedItem.md) | Array of items | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SitePlatformsSupportedResponse } from './api';
+import { SitePlatformsSupportedResponse } from 'streamvi-api-client';
 
 const instance: SitePlatformsSupportedResponse = {
     results,

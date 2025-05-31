@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SiteSearchChannelCredentialsDto } from './api';
+import { SiteSearchChannelCredentialsDto } from 'streamvi-api-client';
 
 const instance: SiteSearchChannelCredentialsDto = {
     cid,

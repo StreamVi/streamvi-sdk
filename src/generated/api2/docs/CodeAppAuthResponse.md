@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CodeAppAuthResponse } from './api';
+import { CodeAppAuthResponse } from 'streamvi-api-client';
 
 const instance: CodeAppAuthResponse = {
     code,

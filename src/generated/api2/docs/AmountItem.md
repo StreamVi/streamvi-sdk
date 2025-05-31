@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AmountItem } from './api';
+import { AmountItem } from 'streamvi-api-client';
 
 const instance: AmountItem = {
     amount,

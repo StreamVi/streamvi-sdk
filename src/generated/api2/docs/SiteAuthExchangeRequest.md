@@ -6,24 +6,24 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_en]
+**language** | **string** | Current language | [default to LanguageEnum_En]
 **code** | **string** | Auth code for exchange of token | [default to undefined]
 **userAgent** | **string** | userAgent | [default to undefined]
-**app** | **string** | App oauth | [default to AppEnum_site]
 **fingerprint** | **string** | Fingerprint | [optional] [default to '']
+**app** | **string** | App oauth | [default to AppEnum_Site]
 
 ## Example
 
 ```typescript
-import { SiteAuthExchangeRequest } from './api';
+import { SiteAuthExchangeRequest } from 'streamvi-api-client';
 
 const instance: SiteAuthExchangeRequest = {
     v,
     language,
     code,
     userAgent,
-    app,
     fingerprint,
+    app,
 };
 ```
 

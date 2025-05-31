@@ -4,22 +4,24 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**methodControllerLiveStatus**](#methodcontrollerlivestatus) | **GET** /method/project/live-status | Get live status|
+|[**methodLiveStatusV1**](#methodlivestatusv1) | **GET** /method/project/live-status | Get live status|
 
-# **methodControllerLiveStatus**
-> MethodProjectLiveStatusResponse methodControllerLiveStatus()
+# **methodLiveStatusV1**
+> MethodProjectLiveStatusResponse methodLiveStatusV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ProjectApi } from './api';
+import {
+    ProjectApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ProjectApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ProjectApi(configuration);
 
-const { status, data } = await apiInstance.methodControllerLiveStatus({});
+const { status, data } = await apiInstance.methodLiveStatusV1();
 ```
 
 ### Parameters

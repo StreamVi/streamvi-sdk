@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MethodChatHistoryResponse } from './api';
+import { MethodChatHistoryResponse } from 'streamvi-api-client';
 
 const instance: MethodChatHistoryResponse = {
     total,

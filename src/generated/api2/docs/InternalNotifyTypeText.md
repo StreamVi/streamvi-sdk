@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**language** | **string** | Language for indexing | [default to LanguageEnum_russian]
-**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_ru]
+**language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
+**languageIso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
 **title** | **string** | Title value | [default to '']
 **text** | **string** | Text value | [default to '']
 
 ## Example
 
 ```typescript
-import { InternalNotifyTypeText } from './api';
+import { InternalNotifyTypeText } from 'streamvi-api-client';
 
 const instance: InternalNotifyTypeText = {
     language,
-    language_iso,
+    languageIso,
     title,
     text,
 };

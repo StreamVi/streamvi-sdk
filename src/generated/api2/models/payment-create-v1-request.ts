@@ -27,9 +27,9 @@ import type { PaymentCreateRequestTopUpBodyDto } from './payment-create-request-
 import type { PaymentCreateRequestTranscoderBodyDto } from './payment-create-request-transcoder-body-dto';
 
 /**
- * @type PaymentControllerCreate1Request
+ * @type PaymentCreateV1Request
  * @export
  */
-export type PaymentControllerCreate1Request = PaymentCreateRequestRestreamBodyDto | PaymentCreateRequestStorageBodyDto | PaymentCreateRequestTopUpBodyDto | PaymentCreateRequestTranscoderBodyDto;
+export type PaymentCreateV1Request = PaymentCreateRequestRestreamBodyDto | PaymentCreateRequestStorageBodyDto | PaymentCreateRequestTopUpBodyDto | PaymentCreateRequestTranscoderBodyDto;
 
 

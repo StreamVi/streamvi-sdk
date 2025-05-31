@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **number** | User id | [default to undefined]
+**userId** | **number** | User id | [default to undefined]
 **channels** | [**NotifyUserChannels**](NotifyUserChannels.md) | Channels | [default to undefined]
 **relation** | [**NotifyUserRelation**](NotifyUserRelation.md) | Relation | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteNotifyUserResponse } from './api';
+import { SiteNotifyUserResponse } from 'streamvi-api-client';
 
 const instance: SiteNotifyUserResponse = {
-    user_id,
+    userId,
     channels,
     relation,
 };

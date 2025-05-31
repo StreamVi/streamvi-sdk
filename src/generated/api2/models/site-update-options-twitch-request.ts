@@ -25,13 +25,13 @@ export interface SiteUpdateOptionsTwitchRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateOptionsTwitchRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateOptionsTwitchRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -67,7 +67,7 @@ export interface SiteUpdateOptionsTwitchRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'lang': LangEnum;
+    'lang': SiteUpdateOptionsTwitchRequestLangEnum;
     /**
      * 
      * @type {Set<string>}
@@ -82,31 +82,25 @@ export interface SiteUpdateOptionsTwitchRequest {
     'domain': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LangEnum {
-    ru = 'ru',
-    en = 'en'
-}
+export const SiteUpdateOptionsTwitchRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type SiteUpdateOptionsTwitchRequestVEnum = typeof SiteUpdateOptionsTwitchRequestVEnum[keyof typeof SiteUpdateOptionsTwitchRequestVEnum];
+export const SiteUpdateOptionsTwitchRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SiteUpdateOptionsTwitchRequestLanguageEnum = typeof SiteUpdateOptionsTwitchRequestLanguageEnum[keyof typeof SiteUpdateOptionsTwitchRequestLanguageEnum];
+export const SiteUpdateOptionsTwitchRequestLangEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+
+export type SiteUpdateOptionsTwitchRequestLangEnum = typeof SiteUpdateOptionsTwitchRequestLangEnum[keyof typeof SiteUpdateOptionsTwitchRequestLangEnum];
 
 

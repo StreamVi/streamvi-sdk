@@ -4,32 +4,36 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**checkCountry1**](#checkcountry1) | **GET** /method/pay-setting/check-country | Check country after update user|
-|[**getSettingV31**](#getsettingv31) | **GET** /method/pay-setting | Get pay settings for profile v3|
-|[**setSetting1**](#setsetting1) | **POST** /method/pay-setting | Set pay settings for profile|
+|[**paySettingCheckCountryV1**](#paysettingcheckcountryv1) | **GET** /method/pay-setting/check-country | Check country after update user|
+|[**paySettingGetSettingV3**](#paysettinggetsettingv3) | **GET** /method/pay-setting | Get pay settings for profile v3|
+|[**paySettingSetSettingV1**](#paysettingsetsettingv1) | **POST** /method/pay-setting | Set pay settings for profile|
 
-# **checkCountry1**
-> PayCheckCountryResponse checkCountry1()
+# **paySettingCheckCountryV1**
+> PayCheckCountryResponse paySettingCheckCountryV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PaySettingApi } from './api';
+import {
+    PaySettingApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PaySettingApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PaySettingApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let countryId: number; //country id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.checkCountry1({
+const { status, data } = await apiInstance.paySettingCheckCountryV1(
     language,
     projectId,
-    countryId
-  });
+    countryId,
+    v
+);
 ```
 
 ### Parameters
@@ -39,6 +43,7 @@ const { status, data } = await apiInstance.checkCountry1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **countryId** | [**number**] | country id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -63,26 +68,30 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getSettingV31**
-> GetPaySettingResponseV3 getSettingV31()
+# **paySettingGetSettingV3**
+> GetPaySettingResponseV3 paySettingGetSettingV3()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PaySettingApi } from './api';
+import {
+    PaySettingApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PaySettingApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PaySettingApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 3 based on method version, can be overridden) (optional) (default to '3')
 
-const { status, data } = await apiInstance.getSettingV31({
+const { status, data } = await apiInstance.paySettingGetSettingV3(
     language,
-    projectId
-  });
+    projectId,
+    v
+);
 ```
 
 ### Parameters
@@ -91,6 +100,7 @@ const { status, data } = await apiInstance.getSettingV31({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 3 based on method version, can be overridden) | (optional) defaults to '3'|
 
 
 ### Return type
@@ -115,25 +125,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **setSetting1**
-> setSetting1(paySettingBodyDto)
+# **paySettingSetSettingV1**
+> paySettingSetSettingV1(paySettingBodyDto)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PaySettingApi
-    PaySettingBodyDto } from './api';
+import {
+    PaySettingApi,
+    Configuration,
+    PaySettingBodyDto
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PaySettingApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PaySettingApi(configuration);
 
 let paySettingBodyDto: PaySettingBodyDto; //
 
-const { status, data } = await apiInstance.setSetting1({
+const { status, data } = await apiInstance.paySettingSetSettingV1(
     paySettingBodyDto
-  });
+);
 ```
 
 ### Parameters

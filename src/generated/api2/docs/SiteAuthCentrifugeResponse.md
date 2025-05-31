@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access_token** | **string** | Access token | [default to undefined]
+**accessToken** | **string** | Access token | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteAuthCentrifugeResponse } from './api';
+import { SiteAuthCentrifugeResponse } from 'streamvi-api-client';
 
 const instance: SiteAuthCentrifugeResponse = {
-    access_token,
+    accessToken,
 };
 ```
 

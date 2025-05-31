@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -29,7 +29,7 @@ import type { PullServerListResponse } from '../models';
  * PullServersApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const PullServersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
@@ -37,7 +37,7 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPullServers1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        pullServersGetPullServersV1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/method/pull-servers/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -68,8 +68,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * PullServersApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const PullServersApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = PullServersApiAxiosParamCreator(configuration)
     return {
         /**
          * 
@@ -77,10 +77,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPullServers1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PullServerListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPullServers1(options);
+        async pullServersGetPullServersV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PullServerListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.pullServersGetPullServersV1(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PullServersApi.getPullServers1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PullServersApi.pullServersGetPullServersV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -90,8 +90,8 @@ export const fp = function(configuration?: Configuration) {
  * PullServersApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const PullServersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = PullServersApiFp(configuration)
     return {
         /**
          * 
@@ -99,11 +99,28 @@ export const factory = function (configuration?: Configuration, basePath?: strin
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPullServers1(options?: RawAxiosRequestConfig): AxiosPromise<PullServerListResponse> {
-            return localVarFp.getPullServers1(options).then((request) => request(axios, basePath));
+        pullServersGetPullServersV1(options?: RawAxiosRequestConfig): AxiosPromise<PullServerListResponse> {
+            return localVarFp.pullServersGetPullServersV1(options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * PullServersApi - interface
+ * @export
+ * @interface PullServersApi
+ */
+export interface PullServersApiInterface {
+    /**
+     * 
+     * @summary Get pull servers
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PullServersApiInterface
+     */
+    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): AxiosPromise<PullServerListResponse>;
+
+}
 
 /**
  * PullServersApi - object-oriented interface
@@ -111,7 +128,7 @@ export const factory = function (configuration?: Configuration, basePath?: strin
  * @class PullServersApi
  * @extends {BaseAPI}
  */
-export class PullServersApi extends BaseAPI {
+export class PullServersApi extends BaseAPI implements PullServersApiInterface {
     /**
      * 
      * @summary Get pull servers
@@ -119,8 +136,8 @@ export class PullServersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PullServersApi
      */
-    public getPullServers1(options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).getPullServers1(options).then((request) => request(this.axios, this.basePath));
+    public pullServersGetPullServersV1(options?: RawAxiosRequestConfig) {
+        return PullServersApiFp(this.configuration).pullServersGetPullServersV1(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

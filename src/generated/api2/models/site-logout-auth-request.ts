@@ -25,7 +25,7 @@ export interface SiteLogoutAuthRequest {
      * @type {string}
      * @memberof SiteLogoutAuthRequest
      */
-    'app': AppEnum;
+    'app': SiteLogoutAuthRequestAppEnum;
     /**
      * Refresh token
      * @type {string}
@@ -34,15 +34,13 @@ export interface SiteLogoutAuthRequest {
     'refresh': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum AppEnum {
-    site = 'site',
-    admin = 'admin',
-    mobile = 'mobile',
-    desktop = 'desktop'
-}
+export const SiteLogoutAuthRequestAppEnum = {
+    Site: 'site',
+    Admin: 'admin',
+    Mobile: 'mobile',
+    Desktop: 'desktop'
+} as const;
+
+export type SiteLogoutAuthRequestAppEnum = typeof SiteLogoutAuthRequestAppEnum[keyof typeof SiteLogoutAuthRequestAppEnum];
 
 

@@ -37,7 +37,7 @@ export interface PullKeyItemResponse {
      * @type {string}
      * @memberof PullKeyItemResponse
      */
-    'transport': TransportEnum;
+    'transport': PullKeyItemResponseTransportEnum;
     /**
      * Name
      * @type {string}
@@ -55,26 +55,22 @@ export interface PullKeyItemResponse {
      * @type {string}
      * @memberof PullKeyItemResponse
      */
-    'status': StatusEnum;
+    'status': PullKeyItemResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TransportEnum {
-    rtmp = 'rtmp',
-    srt = 'srt',
-    hls = 'hls'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    active = 'active',
-    inactive = 'inactive',
-    error = 'error'
-}
+export const PullKeyItemResponseTransportEnum = {
+    Rtmp: 'rtmp',
+    Srt: 'srt',
+    Hls: 'hls'
+} as const;
+
+export type PullKeyItemResponseTransportEnum = typeof PullKeyItemResponseTransportEnum[keyof typeof PullKeyItemResponseTransportEnum];
+export const PullKeyItemResponseStatusEnum = {
+    Active: 'active',
+    Inactive: 'inactive',
+    Error: 'error'
+} as const;
+
+export type PullKeyItemResponseStatusEnum = typeof PullKeyItemResponseStatusEnum[keyof typeof PullKeyItemResponseStatusEnum];
 
 

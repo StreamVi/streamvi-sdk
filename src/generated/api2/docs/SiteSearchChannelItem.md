@@ -7,14 +7,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | name | [default to undefined]
 **id** | **string** | name | [default to undefined]
-**group_id** | **number** | group_id | [default to undefined]
+**transcoderId** | **number** | Transcoder id | [optional] [default to undefined]
+**groupId** | **number** | group_id | [default to undefined]
 **type** | **string** | type | [default to undefined]
-**photo_default** | **string** | photo_default | [default to undefined]
+**photoDefault** | **string** | photo_default | [default to undefined]
 **sell** | **boolean** | sell | [default to undefined]
 **price** | **number** | price | [default to undefined]
 **live** | **boolean** | live | [default to undefined]
 **status** | **string** | status | [default to undefined]
-**user_id** | **number** | user_id | [default to undefined]
+**userId** | **number** | user_id | [default to undefined]
 **active** | **boolean** | active | [default to undefined]
 **guestsNum** | **number** | guestsNum | [default to undefined]
 **guestRights** | **number** | guestRights | [default to undefined]
@@ -25,26 +26,26 @@ Name | Type | Description | Notes
 **rtmp** | [**SiteSearchChannelRtmpDto**](SiteSearchChannelRtmpDto.md) | rtmp | [default to undefined]
 **credentials** | [**Array&lt;SiteSearchChannelCredentialsDto&gt;**](SiteSearchChannelCredentialsDto.md) | credentials | [default to undefined]
 **tokens** | [**SiteSearchChannelCredentialDto**](SiteSearchChannelCredentialDto.md) | Tokens | [default to undefined]
+**liveUsers** | [**Array&lt;SiteSearchChannelLiveUserDto&gt;**](SiteSearchChannelLiveUserDto.md) | live_users | [optional] [default to undefined]
 **platform** | [**SiteSearchChannelPlatformDto**](SiteSearchChannelPlatformDto.md) | Platform | [default to undefined]
-**transcoderId** | **number** | Transcoder id | [optional] [default to undefined]
-**live_users** | [**Array&lt;SiteSearchChannelLiveUserDto&gt;**](SiteSearchChannelLiveUserDto.md) | live_users | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteSearchChannelItem } from './api';
+import { SiteSearchChannelItem } from 'streamvi-api-client';
 
 const instance: SiteSearchChannelItem = {
     name,
     id,
-    group_id,
+    transcoderId,
+    groupId,
     type,
-    photo_default,
+    photoDefault,
     sell,
     price,
     live,
     status,
-    user_id,
+    userId,
     active,
     guestsNum,
     guestRights,
@@ -55,9 +56,8 @@ const instance: SiteSearchChannelItem = {
     rtmp,
     credentials,
     tokens,
+    liveUsers,
     platform,
-    transcoderId,
-    live_users,
 };
 ```
 

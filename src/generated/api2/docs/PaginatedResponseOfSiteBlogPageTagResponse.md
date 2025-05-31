@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PaginatedResponseOfSiteBlogPageTagResponse } from './api';
+import { PaginatedResponseOfSiteBlogPageTagResponse } from 'streamvi-api-client';
 
 const instance: PaginatedResponseOfSiteBlogPageTagResponse = {
     total,

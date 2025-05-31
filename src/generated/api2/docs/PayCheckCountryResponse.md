@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PayCheckCountryResponse } from './api';
+import { PayCheckCountryResponse } from 'streamvi-api-client';
 
 const instance: PayCheckCountryResponse = {
     confirm,

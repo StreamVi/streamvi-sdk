@@ -25,13 +25,13 @@ export interface InternalNotifyTypeText {
      * @type {string}
      * @memberof InternalNotifyTypeText
      */
-    'language': LanguageEnum;
+    'language': InternalNotifyTypeTextLanguageEnum;
     /**
      * Language ISO
      * @type {string}
      * @memberof InternalNotifyTypeText
      */
-    'language_iso': LanguageIsoEnum;
+    'language_iso': InternalNotifyTypeTextLanguageIsoEnum;
     /**
      * Title value
      * @type {string}
@@ -46,23 +46,19 @@ export interface InternalNotifyTypeText {
     'text': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    russian = 'russian',
-    english = 'english',
-    none = 'none'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageIsoEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const InternalNotifyTypeTextLanguageEnum = {
+    Russian: 'russian',
+    English: 'english',
+    None: 'none'
+} as const;
+
+export type InternalNotifyTypeTextLanguageEnum = typeof InternalNotifyTypeTextLanguageEnum[keyof typeof InternalNotifyTypeTextLanguageEnum];
+export const InternalNotifyTypeTextLanguageIsoEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type InternalNotifyTypeTextLanguageIsoEnum = typeof InternalNotifyTypeTextLanguageIsoEnum[keyof typeof InternalNotifyTypeTextLanguageIsoEnum];
 
 

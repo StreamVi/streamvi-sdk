@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MethodChatSendMessageRequestDto } from './api';
+import { MethodChatSendMessageRequestDto } from 'streamvi-api-client';
 
 const instance: MethodChatSendMessageRequestDto = {
     id,

@@ -5,21 +5,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**language** | **string** | Language for indexing | [default to LanguageEnum_russian]
-**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_ru]
+**language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
+**languageIso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
 **title** | **string** | Title value | [default to '']
-**complited_title** | **string** | Title of complited value | [default to '']
+**complitedTitle** | **string** | Title of complited value | [default to '']
 
 ## Example
 
 ```typescript
-import { InternalNotifyTypeActionText } from './api';
+import { InternalNotifyTypeActionText } from 'streamvi-api-client';
 
 const instance: InternalNotifyTypeActionText = {
     language,
-    language_iso,
+    languageIso,
     title,
-    complited_title,
+    complitedTitle,
 };
 ```
 

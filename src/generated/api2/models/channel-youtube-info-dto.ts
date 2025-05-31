@@ -43,7 +43,7 @@ export interface ChannelYoutubeInfoDto {
      * @type {string}
      * @memberof ChannelYoutubeInfoDto
      */
-    'lang'?: LangEnum;
+    'lang'?: ChannelYoutubeInfoDtoLangEnum;
     /**
      * 
      * @type {Array<string>}
@@ -67,19 +67,19 @@ export interface ChannelYoutubeInfoDto {
      * @type {string}
      * @memberof ChannelYoutubeInfoDto
      */
-    'privacyVideo'?: PrivacyVideoEnum;
+    'privacyVideo'?: ChannelYoutubeInfoDtoPrivacyVideoEnum;
     /**
      * 
      * @type {string}
      * @memberof ChannelYoutubeInfoDto
      */
-    'latency'?: LatencyEnum;
+    'latency'?: ChannelYoutubeInfoDtoLatencyEnum;
     /**
      * 
      * @type {string}
      * @memberof ChannelYoutubeInfoDto
      */
-    'audience'?: AudienceEnum;
+    'audience'?: ChannelYoutubeInfoDtoAudienceEnum;
     /**
      * 
      * @type {string}
@@ -88,39 +88,31 @@ export interface ChannelYoutubeInfoDto {
     'image'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LangEnum {
-    ru = 'ru',
-    en = 'en'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PrivacyVideoEnum {
-    private = 'private',
-    public = 'public',
-    unlisted = 'unlisted'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LatencyEnum {
-    normal = 'normal',
-    low = 'low',
-    ultraLow = 'ultraLow'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum AudienceEnum {
-    mark_for_kids = 'mark_for_kids',
-    mark_for_nokids = 'mark_for_nokids'
-}
+export const ChannelYoutubeInfoDtoLangEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+
+export type ChannelYoutubeInfoDtoLangEnum = typeof ChannelYoutubeInfoDtoLangEnum[keyof typeof ChannelYoutubeInfoDtoLangEnum];
+export const ChannelYoutubeInfoDtoPrivacyVideoEnum = {
+    Private: 'private',
+    Public: 'public',
+    Unlisted: 'unlisted'
+} as const;
+
+export type ChannelYoutubeInfoDtoPrivacyVideoEnum = typeof ChannelYoutubeInfoDtoPrivacyVideoEnum[keyof typeof ChannelYoutubeInfoDtoPrivacyVideoEnum];
+export const ChannelYoutubeInfoDtoLatencyEnum = {
+    Normal: 'normal',
+    Low: 'low',
+    UltraLow: 'ultraLow'
+} as const;
+
+export type ChannelYoutubeInfoDtoLatencyEnum = typeof ChannelYoutubeInfoDtoLatencyEnum[keyof typeof ChannelYoutubeInfoDtoLatencyEnum];
+export const ChannelYoutubeInfoDtoAudienceEnum = {
+    MarkForKids: 'mark_for_kids',
+    MarkForNokids: 'mark_for_nokids'
+} as const;
+
+export type ChannelYoutubeInfoDtoAudienceEnum = typeof ChannelYoutubeInfoDtoAudienceEnum[keyof typeof ChannelYoutubeInfoDtoAudienceEnum];
 
 

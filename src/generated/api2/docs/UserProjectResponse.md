@@ -6,24 +6,24 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Primary key | [default to undefined]
-**user_id** | **number** | User id | [default to undefined]
-**project_id** | **number** | Project id | [default to undefined]
-**access_type** | **number** | Access type | [default to undefined]
+**userId** | **number** | User id | [default to undefined]
+**projectId** | **number** | Project id | [default to undefined]
+**accessType** | **number** | Access type | [default to undefined]
 **project** | [**UserProject2ProjectResponse**](UserProject2ProjectResponse.md) | Project data | [default to undefined]
-**member_count** | **number** | Members count | [default to undefined]
+**memberCount** | **number** | Members count | [default to undefined]
 
 ## Example
 
 ```typescript
-import { UserProjectResponse } from './api';
+import { UserProjectResponse } from 'streamvi-api-client';
 
 const instance: UserProjectResponse = {
     id,
-    user_id,
-    project_id,
-    access_type,
+    userId,
+    projectId,
+    accessType,
     project,
-    member_count,
+    memberCount,
 };
 ```
 

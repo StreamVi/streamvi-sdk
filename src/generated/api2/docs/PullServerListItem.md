@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PullServerListItem } from './api';
+import { PullServerListItem } from 'streamvi-api-client';
 
 const instance: PullServerListItem = {
     city,

@@ -25,13 +25,13 @@ export interface PaymentCreateRequestTopUpBodyDto {
      * @type {string}
      * @memberof PaymentCreateRequestTopUpBodyDto
      */
-    'v': VEnum;
+    'v': PaymentCreateRequestTopUpBodyDtoVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof PaymentCreateRequestTopUpBodyDto
      */
-    'language': LanguageEnum;
+    'language': PaymentCreateRequestTopUpBodyDtoLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -43,7 +43,7 @@ export interface PaymentCreateRequestTopUpBodyDto {
      * @type {string}
      * @memberof PaymentCreateRequestTopUpBodyDto
      */
-    'type': TypeEnum;
+    'type': PaymentCreateRequestTopUpBodyDtoTypeEnum;
     /**
      * Amount
      * @type {number}
@@ -52,33 +52,27 @@ export interface PaymentCreateRequestTopUpBodyDto {
     'amount': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TypeEnum {
-    restream = 'restream',
-    transcoding = 'transcoding',
-    storage = 'storage',
-    topup = 'topup'
-}
+export const PaymentCreateRequestTopUpBodyDtoVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type PaymentCreateRequestTopUpBodyDtoVEnum = typeof PaymentCreateRequestTopUpBodyDtoVEnum[keyof typeof PaymentCreateRequestTopUpBodyDtoVEnum];
+export const PaymentCreateRequestTopUpBodyDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type PaymentCreateRequestTopUpBodyDtoLanguageEnum = typeof PaymentCreateRequestTopUpBodyDtoLanguageEnum[keyof typeof PaymentCreateRequestTopUpBodyDtoLanguageEnum];
+export const PaymentCreateRequestTopUpBodyDtoTypeEnum = {
+    Restream: 'restream',
+    Transcoding: 'transcoding',
+    Storage: 'storage',
+    Topup: 'topup'
+} as const;
+
+export type PaymentCreateRequestTopUpBodyDtoTypeEnum = typeof PaymentCreateRequestTopUpBodyDtoTypeEnum[keyof typeof PaymentCreateRequestTopUpBodyDtoTypeEnum];
 
 

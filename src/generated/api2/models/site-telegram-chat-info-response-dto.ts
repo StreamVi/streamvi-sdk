@@ -37,12 +37,12 @@ export interface SiteTelegramChatInfoResponseDto {
      * @type {string}
      * @memberof SiteTelegramChatInfoResponseDto
      */
-    'image': string;
+    'domain'?: string;
     /**
      * 
      * @type {string}
      * @memberof SiteTelegramChatInfoResponseDto
      */
-    'domain'?: string;
+    'image': string;
 }
 

@@ -7,22 +7,22 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Primary key | [default to undefined]
 **action** | **string** | Action | [default to undefined]
-**project_id** | **number** | Project id | [default to undefined]
-**user_id** | **number** | User id | [default to undefined]
-**group_id** | **number** | Group id | [default to undefined]
-**date** | **string** | Date | [optional] [default to 2025-05-23T15:48:46.903Z]
+**projectId** | **number** | Project id | [default to undefined]
+**userId** | **number** | User id | [default to undefined]
+**groupId** | **number** | Group id | [default to undefined]
+**date** | **string** | Date | [optional] [default to 2025-05-29T14:53:17.407Z]
 
 ## Example
 
 ```typescript
-import { ProjectHistoryResponse } from './api';
+import { ProjectHistoryResponse } from 'streamvi-api-client';
 
 const instance: ProjectHistoryResponse = {
     id,
     action,
-    project_id,
-    user_id,
-    group_id,
+    projectId,
+    userId,
+    groupId,
     date,
 };
 ```

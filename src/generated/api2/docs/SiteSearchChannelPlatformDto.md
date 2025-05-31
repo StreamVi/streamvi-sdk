@@ -9,19 +9,19 @@ Name | Type | Description | Notes
 **type** | **string** | Type platform | [default to undefined]
 **url** | **string** | Url | [default to undefined]
 **extension** | **string** | extension | [default to undefined]
-**edit_name** | **number** | Is edit name | [default to undefined]
+**editName** | **number** | Is edit name | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteSearchChannelPlatformDto } from './api';
+import { SiteSearchChannelPlatformDto } from 'streamvi-api-client';
 
 const instance: SiteSearchChannelPlatformDto = {
     title,
     type,
     url,
     extension,
-    edit_name,
+    editName,
 };
 ```
 

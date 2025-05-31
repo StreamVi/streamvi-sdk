@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -31,33 +31,31 @@ import type { SuccessResponse } from '../models';
  * ProjectChannelApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const ProjectChannelApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Change access for project in channel
-         * @param {changeAccess1VEnum} v Version
-         * @param {changeAccess1LanguageEnum} language Current language
+         * @param {ProjectChannelChangeAccessV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} toProjectId Target project id
-         * @param {changeAccess1AccessTypeEnum} accessType Access type
+         * @param {ProjectChannelChangeAccessV1AccessTypeEnum} accessType Access type
+         * @param {ProjectChannelChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        changeAccess1: async (v: changeAccess1VEnum, language: changeAccess1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: changeAccess1AccessTypeEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('changeAccess1', 'v', v)
+        projectChannelChangeAccessV1: async (language: ProjectChannelChangeAccessV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: ProjectChannelChangeAccessV1AccessTypeEnum, v?: ProjectChannelChangeAccessV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('changeAccess1', 'language', language)
+            assertParamExists('projectChannelChangeAccessV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('changeAccess1', 'projectId', projectId)
+            assertParamExists('projectChannelChangeAccessV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('changeAccess1', 'channelId', channelId)
+            assertParamExists('projectChannelChangeAccessV1', 'channelId', channelId)
             // verify required parameter 'toProjectId' is not null or undefined
-            assertParamExists('changeAccess1', 'toProjectId', toProjectId)
+            assertParamExists('projectChannelChangeAccessV1', 'toProjectId', toProjectId)
             // verify required parameter 'accessType' is not null or undefined
-            assertParamExists('changeAccess1', 'accessType', accessType)
+            assertParamExists('projectChannelChangeAccessV1', 'accessType', accessType)
             const localVarPath = `/method/channel/access/change`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -72,6 +70,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -108,25 +108,23 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Remove access for project in channel
-         * @param {del1VEnum} v Version
-         * @param {del1LanguageEnum} language Current language
+         * @param {ProjectChannelDelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} targetProjectId Target project id
+         * @param {ProjectChannelDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        del1: async (v: del1VEnum, language: del1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('del1', 'v', v)
+        projectChannelDelV1: async (language: ProjectChannelDelV1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, v?: ProjectChannelDelV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('del1', 'language', language)
+            assertParamExists('projectChannelDelV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('del1', 'projectId', projectId)
+            assertParamExists('projectChannelDelV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('del1', 'channelId', channelId)
+            assertParamExists('projectChannelDelV1', 'channelId', channelId)
             // verify required parameter 'targetProjectId' is not null or undefined
-            assertParamExists('del1', 'targetProjectId', targetProjectId)
+            assertParamExists('projectChannelDelV1', 'targetProjectId', targetProjectId)
             const localVarPath = `/method/channel/access/del`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -141,6 +139,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -173,22 +173,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Project channel list
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {ProjectChannelListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ProjectChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v: list1VEnum, language: list1LanguageEnum, projectId: number, channelId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('list1', 'v', v)
+        projectChannelListV1: async (language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('list1', 'language', language)
+            assertParamExists('projectChannelListV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('list1', 'projectId', projectId)
+            assertParamExists('projectChannelListV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('list1', 'channelId', channelId)
+            assertParamExists('projectChannelListV1', 'channelId', channelId)
             const localVarPath = `/method/channel/access/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -203,6 +201,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -231,25 +231,23 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Transfer owner for project in channel
-         * @param {transferOwner1VEnum} v Version
-         * @param {transferOwner1LanguageEnum} language Current language
+         * @param {ProjectChannelTransferOwnerV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} toProjectId Target project id
+         * @param {ProjectChannelTransferOwnerV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transferOwner1: async (v: transferOwner1VEnum, language: transferOwner1LanguageEnum, projectId: number, channelId: number, toProjectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('transferOwner1', 'v', v)
+        projectChannelTransferOwnerV1: async (language: ProjectChannelTransferOwnerV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, v?: ProjectChannelTransferOwnerV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('transferOwner1', 'language', language)
+            assertParamExists('projectChannelTransferOwnerV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('transferOwner1', 'projectId', projectId)
+            assertParamExists('projectChannelTransferOwnerV1', 'projectId', projectId)
             // verify required parameter 'channelId' is not null or undefined
-            assertParamExists('transferOwner1', 'channelId', channelId)
+            assertParamExists('projectChannelTransferOwnerV1', 'channelId', channelId)
             // verify required parameter 'toProjectId' is not null or undefined
-            assertParamExists('transferOwner1', 'toProjectId', toProjectId)
+            assertParamExists('projectChannelTransferOwnerV1', 'toProjectId', toProjectId)
             const localVarPath = `/method/channel/access/transfer_owner`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -264,6 +262,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -300,75 +300,75 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * ProjectChannelApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const ProjectChannelApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ProjectChannelApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Change access for project in channel
-         * @param {changeAccess1VEnum} v Version
-         * @param {changeAccess1LanguageEnum} language Current language
+         * @param {ProjectChannelChangeAccessV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} toProjectId Target project id
-         * @param {changeAccess1AccessTypeEnum} accessType Access type
+         * @param {ProjectChannelChangeAccessV1AccessTypeEnum} accessType Access type
+         * @param {ProjectChannelChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async changeAccess1(v: changeAccess1VEnum, language: changeAccess1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: changeAccess1AccessTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.changeAccess1(v, language, projectId, channelId, toProjectId, accessType, options);
+        async projectChannelChangeAccessV1(language: ProjectChannelChangeAccessV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: ProjectChannelChangeAccessV1AccessTypeEnum, v?: ProjectChannelChangeAccessV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelChangeAccessV1(language, projectId, channelId, toProjectId, accessType, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.changeAccess1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.projectChannelChangeAccessV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Remove access for project in channel
-         * @param {del1VEnum} v Version
-         * @param {del1LanguageEnum} language Current language
+         * @param {ProjectChannelDelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} targetProjectId Target project id
+         * @param {ProjectChannelDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async del1(v: del1VEnum, language: del1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.del1(v, language, projectId, channelId, targetProjectId, options);
+        async projectChannelDelV1(language: ProjectChannelDelV1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, v?: ProjectChannelDelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelDelV1(language, projectId, channelId, targetProjectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.del1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.projectChannelDelV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Project channel list
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {ProjectChannelListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ProjectChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v: list1VEnum, language: list1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfProjectChannelResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, projectId, channelId, options);
+        async projectChannelListV1(language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfProjectChannelResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelListV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.list1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.projectChannelListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Transfer owner for project in channel
-         * @param {transferOwner1VEnum} v Version
-         * @param {transferOwner1LanguageEnum} language Current language
+         * @param {ProjectChannelTransferOwnerV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} toProjectId Target project id
+         * @param {ProjectChannelTransferOwnerV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async transferOwner1(v: transferOwner1VEnum, language: transferOwner1LanguageEnum, projectId: number, channelId: number, toProjectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.transferOwner1(v, language, projectId, channelId, toProjectId, options);
+        async projectChannelTransferOwnerV1(language: ProjectChannelTransferOwnerV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, v?: ProjectChannelTransferOwnerV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelTransferOwnerV1(language, projectId, channelId, toProjectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.transferOwner1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.projectChannelTransferOwnerV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -378,226 +378,266 @@ export const fp = function(configuration?: Configuration) {
  * ProjectChannelApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const ProjectChannelApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ProjectChannelApiFp(configuration)
     return {
         /**
          * 
          * @summary Change access for project in channel
-         * @param {changeAccess1Request} requestParameters Request parameters.
+         * @param {ProjectChannelApiProjectChannelChangeAccessV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        changeAccess1(requestParameters: changeAccess1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: changeAccess1VEnum = requestParameters.v || changeAccess1VEnum._1;
-            return localVarFp.changeAccess1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.accessType, options).then((request) => request(axios, basePath));
+        projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.projectChannelChangeAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.accessType, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Remove access for project in channel
-         * @param {del1Request} requestParameters Request parameters.
+         * @param {ProjectChannelApiProjectChannelDelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        del1(requestParameters: del1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: del1VEnum = requestParameters.v || del1VEnum._1;
-            return localVarFp.del1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.targetProjectId, options).then((request) => request(axios, basePath));
+        projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.projectChannelDelV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.targetProjectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Project channel list
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {ProjectChannelApiProjectChannelListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse> {
+            return localVarFp.projectChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Transfer owner for project in channel
-         * @param {transferOwner1Request} requestParameters Request parameters.
+         * @param {ProjectChannelApiProjectChannelTransferOwnerV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transferOwner1(requestParameters: transferOwner1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: transferOwner1VEnum = requestParameters.v || transferOwner1VEnum._1;
-            return localVarFp.transferOwner1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, options).then((request) => request(axios, basePath));
+        projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.projectChannelTransferOwnerV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for changeAccess1 operation in ProjectChannelApi.
+ * ProjectChannelApi - interface
  * @export
- * @interface changeAccess1Request
+ * @interface ProjectChannelApi
  */
-export interface changeAccess1Request {
+export interface ProjectChannelApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof changeAccess1
+     * 
+     * @summary Change access for project in channel
+     * @param {ProjectChannelApiProjectChannelChangeAccessV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelApiInterface
      */
-    readonly v?: changeAccess1VEnum
+    projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
+    /**
+     * 
+     * @summary Remove access for project in channel
+     * @param {ProjectChannelApiProjectChannelDelV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelApiInterface
+     */
+    projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Project channel list
+     * @param {ProjectChannelApiProjectChannelListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelApiInterface
+     */
+    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse>;
+
+    /**
+     * 
+     * @summary Transfer owner for project in channel
+     * @param {ProjectChannelApiProjectChannelTransferOwnerV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelApiInterface
+     */
+    projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+}
+
+/**
+ * Request parameters for projectChannelChangeAccessV1 operation in ProjectChannelApi.
+ * @export
+ * @interface ProjectChannelApiProjectChannelChangeAccessV1Request
+ */
+export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof changeAccess1
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly language: changeAccess1LanguageEnum
+    readonly language: ProjectChannelChangeAccessV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof changeAccess1
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof changeAccess1
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
     readonly channelId: number
 
     /**
      * Target project id
      * @type {number}
-     * @memberof changeAccess1
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
     readonly toProjectId: number
 
     /**
      * Access type
      * @type {0 | 1 | 1 | 2}
-     * @memberof changeAccess1
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly accessType: changeAccess1AccessTypeEnum
+    readonly accessType: ProjectChannelChangeAccessV1AccessTypeEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
+     */
+    readonly v?: ProjectChannelChangeAccessV1VEnum
 }
 
 /**
- * Request parameters for del1 operation in ProjectChannelApi.
+ * Request parameters for projectChannelDelV1 operation in ProjectChannelApi.
  * @export
- * @interface del1Request
+ * @interface ProjectChannelApiProjectChannelDelV1Request
  */
-export interface del1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof del1
-     */
-    readonly v?: del1VEnum
-
+export interface ProjectChannelApiProjectChannelDelV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof del1
+     * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly language: del1LanguageEnum
+    readonly language: ProjectChannelDelV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof del1
+     * @memberof ProjectChannelApiProjectChannelDelV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof del1
+     * @memberof ProjectChannelApiProjectChannelDelV1
      */
     readonly channelId: number
 
     /**
      * Target project id
      * @type {number}
-     * @memberof del1
+     * @memberof ProjectChannelApiProjectChannelDelV1
      */
     readonly targetProjectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelApiProjectChannelDelV1
+     */
+    readonly v?: ProjectChannelDelV1VEnum
 }
 
 /**
- * Request parameters for list1 operation in ProjectChannelApi.
+ * Request parameters for projectChannelListV1 operation in ProjectChannelApi.
  * @export
- * @interface list1Request
+ * @interface ProjectChannelApiProjectChannelListV1Request
  */
-export interface list1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
-     */
-    readonly v?: list1VEnum
-
+export interface ProjectChannelApiProjectChannelListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof ProjectChannelApiProjectChannelListV1
      */
-    readonly language: list1LanguageEnum
+    readonly language: ProjectChannelListV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof list1
+     * @memberof ProjectChannelApiProjectChannelListV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof list1
+     * @memberof ProjectChannelApiProjectChannelListV1
      */
     readonly channelId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelApiProjectChannelListV1
+     */
+    readonly v?: ProjectChannelListV1VEnum
 }
 
 /**
- * Request parameters for transferOwner1 operation in ProjectChannelApi.
+ * Request parameters for projectChannelTransferOwnerV1 operation in ProjectChannelApi.
  * @export
- * @interface transferOwner1Request
+ * @interface ProjectChannelApiProjectChannelTransferOwnerV1Request
  */
-export interface transferOwner1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof transferOwner1
-     */
-    readonly v?: transferOwner1VEnum
-
+export interface ProjectChannelApiProjectChannelTransferOwnerV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof transferOwner1
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly language: transferOwner1LanguageEnum
+    readonly language: ProjectChannelTransferOwnerV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof transferOwner1
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
     readonly projectId: number
 
     /**
      * Channel id
      * @type {number}
-     * @memberof transferOwner1
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
     readonly channelId: number
 
     /**
      * Target project id
      * @type {number}
-     * @memberof transferOwner1
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
     readonly toProjectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
+     */
+    readonly v?: ProjectChannelTransferOwnerV1VEnum
 }
 
 /**
@@ -606,143 +646,135 @@ export interface transferOwner1Request {
  * @class ProjectChannelApi
  * @extends {BaseAPI}
  */
-export class ProjectChannelApi extends BaseAPI {
+export class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInterface {
     /**
      * 
      * @summary Change access for project in channel
-     * @param {changeAccess1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    public changeAccess1(requestParameters: changeAccess1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: changeAccess1VEnum = requestParameters.v || changeAccess1VEnum._1;
-        return fp(this.configuration).changeAccess1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.accessType, options).then((request) => request(this.axios, this.basePath));
+    public projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig) {
+        return ProjectChannelApiFp(this.configuration).projectChannelChangeAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.accessType, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Remove access for project in channel
-     * @param {del1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelDelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    public del1(requestParameters: del1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: del1VEnum = requestParameters.v || del1VEnum._1;
-        return fp(this.configuration).del1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.targetProjectId, options).then((request) => request(this.axios, this.basePath));
+    public projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig) {
+        return ProjectChannelApiFp(this.configuration).projectChannelDelV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.targetProjectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Project channel list
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    public list1(requestParameters: list1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-        return fp(this.configuration).list1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    public projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig) {
+        return ProjectChannelApiFp(this.configuration).projectChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Transfer owner for project in channel
-     * @param {transferOwner1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelTransferOwnerV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    public transferOwner1(requestParameters: transferOwner1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: transferOwner1VEnum = requestParameters.v || transferOwner1VEnum._1;
-        return fp(this.configuration).transferOwner1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, options).then((request) => request(this.axios, this.basePath));
+    public projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig) {
+        return ProjectChannelApiFp(this.configuration).projectChannelTransferOwnerV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum changeAccess1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ProjectChannelChangeAccessV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ProjectChannelChangeAccessV1LanguageEnum = typeof ProjectChannelChangeAccessV1LanguageEnum[keyof typeof ProjectChannelChangeAccessV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum changeAccess1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ProjectChannelChangeAccessV1AccessTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_12: 1,
+    NUMBER_2: 2
+} as const;
+export type ProjectChannelChangeAccessV1AccessTypeEnum = typeof ProjectChannelChangeAccessV1AccessTypeEnum[keyof typeof ProjectChannelChangeAccessV1AccessTypeEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum changeAccess1AccessTypeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1,
-    NUMBER_12 = 1,
-    NUMBER_2 = 2
-}
+ * @export
+ */
+export const ProjectChannelChangeAccessV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ProjectChannelChangeAccessV1VEnum = typeof ProjectChannelChangeAccessV1VEnum[keyof typeof ProjectChannelChangeAccessV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum del1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ProjectChannelDelV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ProjectChannelDelV1LanguageEnum = typeof ProjectChannelDelV1LanguageEnum[keyof typeof ProjectChannelDelV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum del1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ProjectChannelDelV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ProjectChannelDelV1VEnum = typeof ProjectChannelDelV1VEnum[keyof typeof ProjectChannelDelV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ProjectChannelListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ProjectChannelListV1LanguageEnum = typeof ProjectChannelListV1LanguageEnum[keyof typeof ProjectChannelListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ProjectChannelListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ProjectChannelListV1VEnum = typeof ProjectChannelListV1VEnum[keyof typeof ProjectChannelListV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum transferOwner1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ProjectChannelTransferOwnerV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ProjectChannelTransferOwnerV1LanguageEnum = typeof ProjectChannelTransferOwnerV1LanguageEnum[keyof typeof ProjectChannelTransferOwnerV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum transferOwner1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ProjectChannelTransferOwnerV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ProjectChannelTransferOwnerV1VEnum = typeof ProjectChannelTransferOwnerV1VEnum[keyof typeof ProjectChannelTransferOwnerV1VEnum];

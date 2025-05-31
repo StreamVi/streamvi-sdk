@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlanRestreamProjectResponseDto } from './api';
+import { PlanRestreamProjectResponseDto } from 'streamvi-api-client';
 
 const instance: PlanRestreamProjectResponseDto = {
     results,

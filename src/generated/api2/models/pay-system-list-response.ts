@@ -49,7 +49,7 @@ export interface PaySystemListResponse {
      * @type {string}
      * @memberof PaySystemListResponse
      */
-    'currency': CurrencyEnum;
+    'currency': PaySystemListResponseCurrencyEnum;
     /**
      * The possibility of annual replenishment
      * @type {number}
@@ -76,13 +76,11 @@ export interface PaySystemListResponse {
     'description': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CurrencyEnum {
-    rub = 'rub',
-    usd = 'usd'
-}
+export const PaySystemListResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+} as const;
+
+export type PaySystemListResponseCurrencyEnum = typeof PaySystemListResponseCurrencyEnum[keyof typeof PaySystemListResponseCurrencyEnum];
 
 

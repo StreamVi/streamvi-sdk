@@ -31,7 +31,7 @@ export interface ProjectHistoryResponse {
      * @type {string}
      * @memberof ProjectHistoryResponse
      */
-    'action': ActionEnum;
+    'action': ProjectHistoryResponseActionEnum;
     /**
      * Project id
      * @type {number}
@@ -58,25 +58,23 @@ export interface ProjectHistoryResponse {
     'date'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ActionEnum {
-    project_channel_invite_add = 'project_channel_invite_add',
-    project_channel_invite_del = 'project_channel_invite_del',
-    project_channel_invite_accept = 'project_channel_invite_accept',
-    project_channel_invite_decline = 'project_channel_invite_decline',
-    user_project_invite_add = 'user_project_invite_add',
-    user_project_invite_del = 'user_project_invite_del',
-    user_project_invite_accept = 'user_project_invite_accept',
-    user_project_invite_decline = 'user_project_invite_decline',
-    user_project_add = 'user_project_add',
-    user_project_del = 'user_project_del',
-    user_project_change = 'user_project_change',
-    project_channel_add = 'project_channel_add',
-    project_channel_del = 'project_channel_del',
-    project_channel_change = 'project_channel_change'
-}
+export const ProjectHistoryResponseActionEnum = {
+    ProjectChannelInviteAdd: 'project_channel_invite_add',
+    ProjectChannelInviteDel: 'project_channel_invite_del',
+    ProjectChannelInviteAccept: 'project_channel_invite_accept',
+    ProjectChannelInviteDecline: 'project_channel_invite_decline',
+    UserProjectInviteAdd: 'user_project_invite_add',
+    UserProjectInviteDel: 'user_project_invite_del',
+    UserProjectInviteAccept: 'user_project_invite_accept',
+    UserProjectInviteDecline: 'user_project_invite_decline',
+    UserProjectAdd: 'user_project_add',
+    UserProjectDel: 'user_project_del',
+    UserProjectChange: 'user_project_change',
+    ProjectChannelAdd: 'project_channel_add',
+    ProjectChannelDel: 'project_channel_del',
+    ProjectChannelChange: 'project_channel_change'
+} as const;
+
+export type ProjectHistoryResponseActionEnum = typeof ProjectHistoryResponseActionEnum[keyof typeof ProjectHistoryResponseActionEnum];
 
 

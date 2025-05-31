@@ -6,17 +6,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_en]
-**project_id** | **number** | Project id | [default to undefined]
-**channel_id** | **number** | Channel id | [default to undefined]
+**language** | **string** | Current language | [default to LanguageEnum_En]
+**projectId** | **number** | Project id | [default to undefined]
+**channelId** | **number** | Channel id | [default to undefined]
 **title** | **string** |  | [default to 'title']
 **description** | **string** |  | [default to 'description']
-**category_id** | **string** | category id | [default to '498482']
-**category_name** | **string** | category name | [default to 'name']
-**playlist_id** | **string** | playlist id | [default to undefined]
+**categoryId** | **string** | category id | [default to '498482']
+**categoryName** | **string** | category name | [default to 'name']
+**playlistId** | **string** | playlist id | [default to undefined]
 **audience** | **string** |  | [default to 'Audience']
 **latency** | **string** |  | [default to 'Latency']
-**privacy_video** | **string** |  | [default to 'privacy video']
+**privacyVideo** | **string** |  | [default to 'privacy video']
 **image** | **string** |  | [default to 'image url link or base64']
 **lang** | **string** |  | [default to 'Lang']
 **tags** | **Set&lt;string&gt;** |  | [default to undefined]
@@ -24,21 +24,21 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SiteUpdateOptionsYoutubeRequest } from './api';
+import { SiteUpdateOptionsYoutubeRequest } from 'streamvi-api-client';
 
 const instance: SiteUpdateOptionsYoutubeRequest = {
     v,
     language,
-    project_id,
-    channel_id,
+    projectId,
+    channelId,
     title,
     description,
-    category_id,
-    category_name,
-    playlist_id,
+    categoryId,
+    categoryName,
+    playlistId,
     audience,
     latency,
-    privacy_video,
+    privacyVideo,
     image,
     lang,
     tags,

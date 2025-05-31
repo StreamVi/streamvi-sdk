@@ -3,7 +3,7 @@ import passport from 'passport';
 import type { Request } from 'express';
 import session from 'express-session';
 import { StreamViSdkConfig } from '../../src/streamvi-sdk-config';
-import { UserProjectApi, getProjectInfo1LanguageEnum } from '../../src/generated/api2/api/user-project-api';
+import { UserProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from '../../src/generated/api2/api/user-project-api';
 
 interface SessionData {
   accessToken?: string;
@@ -13,11 +13,11 @@ interface SessionRequest extends Request {
   session: SessionData & session.Session;
 }
 
-async function getProjectInfo(accessToken: string, projectId: number, language: getProjectInfo1LanguageEnum = getProjectInfo1LanguageEnum.ru) {
+async function getProjectInfo(accessToken: string, projectId: number, language: UserProjectGetProjectInfoV1LanguageEnum = UserProjectGetProjectInfoV1LanguageEnum.Ru) {
   const sdkConfig = new StreamViSdkConfig({ accessToken });
   const userProjectApi = new UserProjectApi(sdkConfig.configuration);
 
-  const response = await userProjectApi.getProjectInfo1({
+  const response = await userProjectApi.userProjectGetProjectInfoV1({
     language: language,
     projectId: projectId
   });

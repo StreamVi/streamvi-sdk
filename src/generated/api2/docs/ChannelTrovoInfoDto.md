@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ChannelTrovoInfoDto } from './api';
+import { ChannelTrovoInfoDto } from 'streamvi-api-client';
 
 const instance: ChannelTrovoInfoDto = {
     title,

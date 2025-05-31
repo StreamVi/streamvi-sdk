@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlanRestreamFeatureItemV2Value } from './api';
+import { PlanRestreamFeatureItemV2Value } from 'streamvi-api-client';
 
 const instance: PlanRestreamFeatureItemV2Value = {
 };

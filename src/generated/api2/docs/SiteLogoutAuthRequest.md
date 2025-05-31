@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**app** | **string** | App oauth | [default to AppEnum_site]
+**app** | **string** | App oauth | [default to AppEnum_Site]
 **refresh** | **string** | Refresh token | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteLogoutAuthRequest } from './api';
+import { SiteLogoutAuthRequest } from 'streamvi-api-client';
 
 const instance: SiteLogoutAuthRequest = {
     app,

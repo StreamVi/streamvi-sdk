@@ -5,29 +5,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **number** | User id | [default to undefined]
-**project_id** | **number** | Project id | [default to undefined]
+**userId** | **number** | User id | [default to undefined]
+**projectId** | **number** | Project id | [default to undefined]
 **name** | **string** | Имя | [default to undefined]
 **fename** | **string** | Фамилия | [default to undefined]
-**photo_50** | **string** | Аватарка | [default to undefined]
+**photo50** | **string** | Аватарка | [default to undefined]
 **type** | **number** | Тип 0 - личный проект, 1 - командный проект | [default to undefined]
-**external_id** | **string** | External id | [default to undefined]
-**access_type** | **number** | Access type | [default to undefined]
+**externalId** | **string** | External id | [default to undefined]
+**accessType** | **number** | Access type | [default to undefined]
 
 ## Example
 
 ```typescript
-import { UserProject2ProjectResponse } from './api';
+import { UserProject2ProjectResponse } from 'streamvi-api-client';
 
 const instance: UserProject2ProjectResponse = {
-    user_id,
-    project_id,
+    userId,
+    projectId,
     name,
     fename,
-    photo_50,
+    photo50,
     type,
-    external_id,
-    access_type,
+    externalId,
+    accessType,
 };
 ```
 

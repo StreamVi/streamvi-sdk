@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**channel_id** | **number** | Unique id | [default to undefined]
+**channelId** | **number** | Unique id | [default to undefined]
 **name** | **string** | First name | [default to undefined]
-**photo_50** | **string** | Link to avatar 50*50px | [default to undefined]
+**photo50** | **string** | Link to avatar 50*50px | [default to undefined]
 
 ## Example
 
 ```typescript
-import { ProjectChannelInviteChannelLinkResponse } from './api';
+import { ProjectChannelInviteChannelLinkResponse } from 'streamvi-api-client';
 
 const instance: ProjectChannelInviteChannelLinkResponse = {
-    channel_id,
+    channelId,
     name,
-    photo_50,
+    photo50,
 };
 ```
 

@@ -25,13 +25,13 @@ export interface PayoutCreateRequestBodyDto {
      * @type {string}
      * @memberof PayoutCreateRequestBodyDto
      */
-    'v': VEnum;
+    'v': PayoutCreateRequestBodyDtoVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof PayoutCreateRequestBodyDto
      */
-    'language': LanguageEnum;
+    'language': PayoutCreateRequestBodyDtoLanguageEnum;
     /**
      * Payout system account
      * @type {number}
@@ -58,23 +58,19 @@ export interface PayoutCreateRequestBodyDto {
     'wallet_value': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const PayoutCreateRequestBodyDtoVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type PayoutCreateRequestBodyDtoVEnum = typeof PayoutCreateRequestBodyDtoVEnum[keyof typeof PayoutCreateRequestBodyDtoVEnum];
+export const PayoutCreateRequestBodyDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type PayoutCreateRequestBodyDtoLanguageEnum = typeof PayoutCreateRequestBodyDtoLanguageEnum[keyof typeof PayoutCreateRequestBodyDtoLanguageEnum];
 
 

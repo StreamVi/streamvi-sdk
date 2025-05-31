@@ -4,29 +4,33 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**getItem1**](#getitem1) | **GET** /method/policy/get | Get policy page|
-|[**getStructure1**](#getstructure1) | **GET** /method/policy/structure | Get policy structure|
+|[**policyPageGetItemV1**](#policypagegetitemv1) | **GET** /method/policy/get | Get policy page|
+|[**policyPageGetStructureV1**](#policypagegetstructurev1) | **GET** /method/policy/structure | Get policy structure|
 
-# **getItem1**
-> getItem1()
+# **policyPageGetItemV1**
+> policyPageGetItemV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PolicyPageApi } from './api';
+import {
+    PolicyPageApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PolicyPageApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PolicyPageApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let fileName: 'refund-policy' | 'terms-of-use' | 'using-cookie' | 'acceptable-use' | 'privacy-notice'; //Policy file name (default to undefined)
+let fileName: 'refund' | 'terms-of-use' | 'using-cookie' | 'acceptable-use' | 'privacy-notice'; //Policy file name (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.getItem1({
+const { status, data } = await apiInstance.policyPageGetItemV1(
     language,
-    fileName
-  });
+    fileName,
+    v
+);
 ```
 
 ### Parameters
@@ -34,7 +38,8 @@ const { status, data } = await apiInstance.getItem1({
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **fileName** | [**&#39;refund-policy&#39; | &#39;terms-of-use&#39; | &#39;using-cookie&#39; | &#39;acceptable-use&#39; | &#39;privacy-notice&#39;**]**Array<&#39;refund-policy&#39; &#124; &#39;terms-of-use&#39; &#124; &#39;using-cookie&#39; &#124; &#39;acceptable-use&#39; &#124; &#39;privacy-notice&#39;>** | Policy file name | defaults to undefined|
+| **fileName** | [**&#39;refund&#39; | &#39;terms-of-use&#39; | &#39;using-cookie&#39; | &#39;acceptable-use&#39; | &#39;privacy-notice&#39;**]**Array<&#39;refund&#39; &#124; &#39;terms-of-use&#39; &#124; &#39;using-cookie&#39; &#124; &#39;acceptable-use&#39; &#124; &#39;privacy-notice&#39;>** | Policy file name | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -59,24 +64,28 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getStructure1**
-> SiteGetPolicyStructureDto getStructure1()
+# **policyPageGetStructureV1**
+> GetPolicyStructureDto policyPageGetStructureV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { PolicyPageApi } from './api';
+import {
+    PolicyPageApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new PolicyPageApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new PolicyPageApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.getStructure1({
-    language
-  });
+const { status, data } = await apiInstance.policyPageGetStructureV1(
+    language,
+    v
+);
 ```
 
 ### Parameters
@@ -84,11 +93,12 @@ const { status, data } = await apiInstance.getStructure1({
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
 
-**SiteGetPolicyStructureDto**
+**GetPolicyStructureDto**
 
 ### Authorization
 

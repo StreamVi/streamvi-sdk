@@ -28,7 +28,7 @@ export interface InternalNotifyTypeAction {
      * @type {string}
      * @memberof InternalNotifyTypeAction
      */
-    'name': NameEnum;
+    'name': InternalNotifyTypeActionNameEnum;
     /**
      * Action value
      * @type {string}
@@ -40,7 +40,7 @@ export interface InternalNotifyTypeAction {
      * @type {string}
      * @memberof InternalNotifyTypeAction
      */
-    'type': TypeEnum;
+    'type': InternalNotifyTypeActionTypeEnum;
     /**
      * text
      * @type {Array<InternalNotifyTypeActionText>}
@@ -64,41 +64,35 @@ export interface InternalNotifyTypeAction {
      * @type {string}
      * @memberof InternalNotifyTypeAction
      */
-    'group_type': GroupTypeEnum;
+    'group_type': InternalNotifyTypeActionGroupTypeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum NameEnum {
-    external_link = 'external_link',
-    cabinet_link = 'cabinet_link',
-    landing_link = 'landing_link',
-    link = 'link',
-    accept = 'accept',
-    decline = 'decline',
-    accept_1 = 'accept_1',
-    accept_2 = 'accept_2',
-    accept_3 = 'accept_3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TypeEnum {
-    primary = 'primary',
-    secondary = 'secondary',
-    link = 'link'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum GroupTypeEnum {
-    toggle = 'toggle',
-    select = 'select',
-    default = 'default'
-}
+export const InternalNotifyTypeActionNameEnum = {
+    ExternalLink: 'external_link',
+    CabinetLink: 'cabinet_link',
+    LandingLink: 'landing_link',
+    Link: 'link',
+    Accept: 'accept',
+    Decline: 'decline',
+    Accept1: 'accept_1',
+    Accept2: 'accept_2',
+    Accept3: 'accept_3'
+} as const;
+
+export type InternalNotifyTypeActionNameEnum = typeof InternalNotifyTypeActionNameEnum[keyof typeof InternalNotifyTypeActionNameEnum];
+export const InternalNotifyTypeActionTypeEnum = {
+    Primary: 'primary',
+    Secondary: 'secondary',
+    Link: 'link'
+} as const;
+
+export type InternalNotifyTypeActionTypeEnum = typeof InternalNotifyTypeActionTypeEnum[keyof typeof InternalNotifyTypeActionTypeEnum];
+export const InternalNotifyTypeActionGroupTypeEnum = {
+    Toggle: 'toggle',
+    Select: 'select',
+    Default: 'default'
+} as const;
+
+export type InternalNotifyTypeActionGroupTypeEnum = typeof InternalNotifyTypeActionGroupTypeEnum[keyof typeof InternalNotifyTypeActionGroupTypeEnum];
 
 

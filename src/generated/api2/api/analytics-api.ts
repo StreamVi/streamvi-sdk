@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -27,27 +27,25 @@ import type { ErrorResponse } from '../models';
  * AnalyticsApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const AnalyticsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Bitrate for stream
-         * @param {streamBitrate1VEnum} v Version
-         * @param {streamBitrate1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
+         * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamBitrate1: async (v: streamBitrate1VEnum, language: streamBitrate1LanguageEnum, projectId: number, streamId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('streamBitrate1', 'v', v)
+        analyticsTsStreamBitrateV1: async (language: AnalyticsTsStreamBitrateV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamBitrateV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('streamBitrate1', 'language', language)
+            assertParamExists('analyticsTsStreamBitrateV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('streamBitrate1', 'projectId', projectId)
+            assertParamExists('analyticsTsStreamBitrateV1', 'projectId', projectId)
             // verify required parameter 'streamId' is not null or undefined
-            assertParamExists('streamBitrate1', 'streamId', streamId)
+            assertParamExists('analyticsTsStreamBitrateV1', 'streamId', streamId)
             const localVarPath = `/method/analytics/stream/graph/bitrate`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -62,6 +60,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -90,22 +90,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Events for stream
-         * @param {streamEvents1VEnum} v Version
-         * @param {streamEvents1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
+         * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamEvents1: async (v: streamEvents1VEnum, language: streamEvents1LanguageEnum, projectId: number, streamId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('streamEvents1', 'v', v)
+        analyticsTsStreamEventsV1: async (language: AnalyticsTsStreamEventsV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamEventsV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('streamEvents1', 'language', language)
+            assertParamExists('analyticsTsStreamEventsV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('streamEvents1', 'projectId', projectId)
+            assertParamExists('analyticsTsStreamEventsV1', 'projectId', projectId)
             // verify required parameter 'streamId' is not null or undefined
-            assertParamExists('streamEvents1', 'streamId', streamId)
+            assertParamExists('analyticsTsStreamEventsV1', 'streamId', streamId)
             const localVarPath = `/method/analytics/stream/events`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -120,6 +118,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -148,22 +148,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Viewers for stream
-         * @param {streamViewers1VEnum} v Version
-         * @param {streamViewers1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
+         * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamViewers1: async (v: streamViewers1VEnum, language: streamViewers1LanguageEnum, projectId: number, streamId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('streamViewers1', 'v', v)
+        analyticsTsStreamViewersV1: async (language: AnalyticsTsStreamViewersV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamViewersV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('streamViewers1', 'language', language)
+            assertParamExists('analyticsTsStreamViewersV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('streamViewers1', 'projectId', projectId)
+            assertParamExists('analyticsTsStreamViewersV1', 'projectId', projectId)
             // verify required parameter 'streamId' is not null or undefined
-            assertParamExists('streamViewers1', 'streamId', streamId)
+            assertParamExists('analyticsTsStreamViewersV1', 'streamId', streamId)
             const localVarPath = `/method/analytics/stream/graph/viewers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -178,6 +176,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -210,55 +210,55 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * AnalyticsApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const AnalyticsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = AnalyticsApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Bitrate for stream
-         * @param {streamBitrate1VEnum} v Version
-         * @param {streamBitrate1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
+         * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamBitrate1(v: streamBitrate1VEnum, language: streamBitrate1LanguageEnum, projectId: number, streamId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamBitrate1(v, language, projectId, streamId, options);
+        async analyticsTsStreamBitrateV1(language: AnalyticsTsStreamBitrateV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamBitrateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsStreamBitrateV1(language, projectId, streamId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.streamBitrate1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.analyticsTsStreamBitrateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Events for stream
-         * @param {streamEvents1VEnum} v Version
-         * @param {streamEvents1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
+         * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamEvents1(v: streamEvents1VEnum, language: streamEvents1LanguageEnum, projectId: number, streamId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamEvents1(v, language, projectId, streamId, options);
+        async analyticsTsStreamEventsV1(language: AnalyticsTsStreamEventsV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamEventsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsStreamEventsV1(language, projectId, streamId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.streamEvents1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.analyticsTsStreamEventsV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Viewers for stream
-         * @param {streamViewers1VEnum} v Version
-         * @param {streamViewers1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
+         * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamViewers1(v: streamViewers1VEnum, language: streamViewers1LanguageEnum, projectId: number, streamId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamViewers1(v, language, projectId, streamId, options);
+        async analyticsTsStreamViewersV1(language: AnalyticsTsStreamViewersV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamViewersV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsStreamViewersV1(language, projectId, streamId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.streamViewers1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.analyticsTsStreamViewersV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -268,151 +268,183 @@ export const fp = function(configuration?: Configuration) {
  * AnalyticsApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const AnalyticsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = AnalyticsApiFp(configuration)
     return {
         /**
          * 
          * @summary Bitrate for stream
-         * @param {streamBitrate1Request} requestParameters Request parameters.
+         * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamBitrate1(requestParameters: streamBitrate1Request, options?: RawAxiosRequestConfig): AxiosPromise<object> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: streamBitrate1VEnum = requestParameters.v || streamBitrate1VEnum._1;
-            return localVarFp.streamBitrate1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.streamId, options).then((request) => request(axios, basePath));
+        analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Events for stream
-         * @param {streamEvents1Request} requestParameters Request parameters.
+         * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamEvents1(requestParameters: streamEvents1Request, options?: RawAxiosRequestConfig): AxiosPromise<object> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: streamEvents1VEnum = requestParameters.v || streamEvents1VEnum._1;
-            return localVarFp.streamEvents1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.streamId, options).then((request) => request(axios, basePath));
+        analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.analyticsTsStreamEventsV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Viewers for stream
-         * @param {streamViewers1Request} requestParameters Request parameters.
+         * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamViewers1(requestParameters: streamViewers1Request, options?: RawAxiosRequestConfig): AxiosPromise<object> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: streamViewers1VEnum = requestParameters.v || streamViewers1VEnum._1;
-            return localVarFp.streamViewers1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.streamId, options).then((request) => request(axios, basePath));
+        analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.analyticsTsStreamViewersV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for streamBitrate1 operation in AnalyticsApi.
+ * AnalyticsApi - interface
  * @export
- * @interface streamBitrate1Request
+ * @interface AnalyticsApi
  */
-export interface streamBitrate1Request {
+export interface AnalyticsApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof streamBitrate1
+     * 
+     * @summary Bitrate for stream
+     * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AnalyticsApiInterface
      */
-    readonly v?: streamBitrate1VEnum
+    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
 
     /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof streamBitrate1
+     * 
+     * @summary Events for stream
+     * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AnalyticsApiInterface
      */
-    readonly language: streamBitrate1LanguageEnum
+    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
 
     /**
-     * Project id
-     * @type {number}
-     * @memberof streamBitrate1
+     * 
+     * @summary Viewers for stream
+     * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AnalyticsApiInterface
      */
-    readonly projectId: number
+    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
 
-    /**
-     * stream id
-     * @type {number}
-     * @memberof streamBitrate1
-     */
-    readonly streamId: number
 }
 
 /**
- * Request parameters for streamEvents1 operation in AnalyticsApi.
+ * Request parameters for analyticsTsStreamBitrateV1 operation in AnalyticsApi.
  * @export
- * @interface streamEvents1Request
+ * @interface AnalyticsApiAnalyticsTsStreamBitrateV1Request
  */
-export interface streamEvents1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof streamEvents1
-     */
-    readonly v?: streamEvents1VEnum
-
+export interface AnalyticsApiAnalyticsTsStreamBitrateV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof streamEvents1
+     * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
-    readonly language: streamEvents1LanguageEnum
+    readonly language: AnalyticsTsStreamBitrateV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof streamEvents1
+     * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
     readonly projectId: number
 
     /**
      * stream id
      * @type {number}
-     * @memberof streamEvents1
+     * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
     readonly streamId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
+     */
+    readonly v?: AnalyticsTsStreamBitrateV1VEnum
 }
 
 /**
- * Request parameters for streamViewers1 operation in AnalyticsApi.
+ * Request parameters for analyticsTsStreamEventsV1 operation in AnalyticsApi.
  * @export
- * @interface streamViewers1Request
+ * @interface AnalyticsApiAnalyticsTsStreamEventsV1Request
  */
-export interface streamViewers1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof streamViewers1
-     */
-    readonly v?: streamViewers1VEnum
-
+export interface AnalyticsApiAnalyticsTsStreamEventsV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof streamViewers1
+     * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
-    readonly language: streamViewers1LanguageEnum
+    readonly language: AnalyticsTsStreamEventsV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof streamViewers1
+     * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
     readonly projectId: number
 
     /**
      * stream id
      * @type {number}
-     * @memberof streamViewers1
+     * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
     readonly streamId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
+     */
+    readonly v?: AnalyticsTsStreamEventsV1VEnum
+}
+
+/**
+ * Request parameters for analyticsTsStreamViewersV1 operation in AnalyticsApi.
+ * @export
+ * @interface AnalyticsApiAnalyticsTsStreamViewersV1Request
+ */
+export interface AnalyticsApiAnalyticsTsStreamViewersV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
+     */
+    readonly language: AnalyticsTsStreamViewersV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
+     */
+    readonly projectId: number
+
+    /**
+     * stream id
+     * @type {number}
+     * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
+     */
+    readonly streamId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
+     */
+    readonly v?: AnalyticsTsStreamViewersV1VEnum
 }
 
 /**
@@ -421,101 +453,95 @@ export interface streamViewers1Request {
  * @class AnalyticsApi
  * @extends {BaseAPI}
  */
-export class AnalyticsApi extends BaseAPI {
+export class AnalyticsApi extends BaseAPI implements AnalyticsApiInterface {
     /**
      * 
      * @summary Bitrate for stream
-     * @param {streamBitrate1Request} requestParameters Request parameters.
+     * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    public streamBitrate1(requestParameters: streamBitrate1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: streamBitrate1VEnum = requestParameters.v || streamBitrate1VEnum._1;
-        return fp(this.configuration).streamBitrate1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.streamId, options).then((request) => request(this.axios, this.basePath));
+    public analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig) {
+        return AnalyticsApiFp(this.configuration).analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Events for stream
-     * @param {streamEvents1Request} requestParameters Request parameters.
+     * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    public streamEvents1(requestParameters: streamEvents1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: streamEvents1VEnum = requestParameters.v || streamEvents1VEnum._1;
-        return fp(this.configuration).streamEvents1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.streamId, options).then((request) => request(this.axios, this.basePath));
+    public analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig) {
+        return AnalyticsApiFp(this.configuration).analyticsTsStreamEventsV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Viewers for stream
-     * @param {streamViewers1Request} requestParameters Request parameters.
+     * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    public streamViewers1(requestParameters: streamViewers1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: streamViewers1VEnum = requestParameters.v || streamViewers1VEnum._1;
-        return fp(this.configuration).streamViewers1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.streamId, options).then((request) => request(this.axios, this.basePath));
+    public analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig) {
+        return AnalyticsApiFp(this.configuration).analyticsTsStreamViewersV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum streamBitrate1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const AnalyticsTsStreamBitrateV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type AnalyticsTsStreamBitrateV1LanguageEnum = typeof AnalyticsTsStreamBitrateV1LanguageEnum[keyof typeof AnalyticsTsStreamBitrateV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum streamBitrate1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const AnalyticsTsStreamBitrateV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type AnalyticsTsStreamBitrateV1VEnum = typeof AnalyticsTsStreamBitrateV1VEnum[keyof typeof AnalyticsTsStreamBitrateV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum streamEvents1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const AnalyticsTsStreamEventsV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type AnalyticsTsStreamEventsV1LanguageEnum = typeof AnalyticsTsStreamEventsV1LanguageEnum[keyof typeof AnalyticsTsStreamEventsV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum streamEvents1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const AnalyticsTsStreamEventsV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type AnalyticsTsStreamEventsV1VEnum = typeof AnalyticsTsStreamEventsV1VEnum[keyof typeof AnalyticsTsStreamEventsV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum streamViewers1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const AnalyticsTsStreamViewersV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type AnalyticsTsStreamViewersV1LanguageEnum = typeof AnalyticsTsStreamViewersV1LanguageEnum[keyof typeof AnalyticsTsStreamViewersV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum streamViewers1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const AnalyticsTsStreamViewersV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type AnalyticsTsStreamViewersV1VEnum = typeof AnalyticsTsStreamViewersV1VEnum[keyof typeof AnalyticsTsStreamViewersV1VEnum];

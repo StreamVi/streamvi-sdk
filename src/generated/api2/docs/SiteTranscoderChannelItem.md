@@ -5,30 +5,30 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**group_id** | **number** |  | [default to undefined]
+**groupId** | **number** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **type** | **string** |  | [default to undefined]
 **active** | **boolean** |  | [default to undefined]
-**photo_default** | **string** |  | [default to undefined]
+**photoDefault** | **string** |  | [default to undefined]
 **live** | **number** |  | [default to undefined]
 **status** | **string** |  | [default to undefined]
-**user_id** | **number** |  | [default to undefined]
+**userId** | **number** |  | [default to undefined]
 **transcoderId** | **number** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteTranscoderChannelItem } from './api';
+import { SiteTranscoderChannelItem } from 'streamvi-api-client';
 
 const instance: SiteTranscoderChannelItem = {
-    group_id,
+    groupId,
     name,
     type,
     active,
-    photo_default,
+    photoDefault,
     live,
     status,
-    user_id,
+    userId,
     transcoderId,
 };
 ```

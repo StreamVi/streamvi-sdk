@@ -52,7 +52,7 @@ export interface NotifyHistorySiteResponse {
      * @type {string}
      * @memberof NotifyHistorySiteResponse
      */
-    'channel': ChannelEnum;
+    'channel': NotifyHistorySiteResponseChannelEnum;
     /**
      * Array of texts
      * @type {Array<InternalNotifyTypeText>}
@@ -70,25 +70,21 @@ export interface NotifyHistorySiteResponse {
      * @type {string}
      * @memberof NotifyHistorySiteResponse
      */
-    'category': CategoryEnum;
+    'category': NotifyHistorySiteResponseCategoryEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ChannelEnum {
-    telegram = 'telegram',
-    cabinet = 'cabinet',
-    mobile = 'mobile'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CategoryEnum {
-    important = 'important',
-    stream = 'stream'
-}
+export const NotifyHistorySiteResponseChannelEnum = {
+    Telegram: 'telegram',
+    Cabinet: 'cabinet',
+    Mobile: 'mobile'
+} as const;
+
+export type NotifyHistorySiteResponseChannelEnum = typeof NotifyHistorySiteResponseChannelEnum[keyof typeof NotifyHistorySiteResponseChannelEnum];
+export const NotifyHistorySiteResponseCategoryEnum = {
+    Important: 'important',
+    Stream: 'stream'
+} as const;
+
+export type NotifyHistorySiteResponseCategoryEnum = typeof NotifyHistorySiteResponseCategoryEnum[keyof typeof NotifyHistorySiteResponseCategoryEnum];
 
 

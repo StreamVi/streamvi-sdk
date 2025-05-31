@@ -31,7 +31,7 @@ export interface PaySettingResponseV3 {
      * @type {string}
      * @memberof PaySettingResponseV3
      */
-    'currency': CurrencyEnum;
+    'currency': PaySettingResponseV3CurrencyEnum;
     /**
      * Country
      * @type {number}
@@ -100,13 +100,11 @@ export interface PaySettingResponseV3 {
     'description'?: string | null;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CurrencyEnum {
-    rub = 'rub',
-    usd = 'usd'
-}
+export const PaySettingResponseV3CurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+} as const;
+
+export type PaySettingResponseV3CurrencyEnum = typeof PaySettingResponseV3CurrencyEnum[keyof typeof PaySettingResponseV3CurrencyEnum];
 
 

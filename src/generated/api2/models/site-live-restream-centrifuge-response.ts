@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { SiteLiveRestreamCentrifugeItemV2 } from './site-live-restream-centrifuge-item-v2';
+import type { LiveRestreamCentrifugeItemV2 } from './live-restream-centrifuge-item-v2';
 
 /**
  * 
@@ -25,15 +25,15 @@ import type { SiteLiveRestreamCentrifugeItemV2 } from './site-live-restream-cent
 export interface SiteLiveRestreamCentrifugeResponse {
     /**
      * Event for restream update url
-     * @type {SiteLiveRestreamCentrifugeItemV2}
+     * @type {LiveRestreamCentrifugeItemV2}
      * @memberof SiteLiveRestreamCentrifugeResponse
      */
-    'update_url_channel': SiteLiveRestreamCentrifugeItemV2;
+    'update_url_channel': LiveRestreamCentrifugeItemV2;
     /**
      * Event for restream update viewers
-     * @type {SiteLiveRestreamCentrifugeItemV2}
+     * @type {LiveRestreamCentrifugeItemV2}
      * @memberof SiteLiveRestreamCentrifugeResponse
      */
-    'update_stats_channel': SiteLiveRestreamCentrifugeItemV2;
+    'update_stats_channel': LiveRestreamCentrifugeItemV2;
 }
 

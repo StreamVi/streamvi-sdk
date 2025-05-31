@@ -6,20 +6,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_en]
-**project_id** | **number** | Project id | [default to undefined]
-**transcoder_id** | **number** | Transcoder id | [default to undefined]
+**language** | **string** | Current language | [default to LanguageEnum_En]
+**projectId** | **number** | Project id | [default to undefined]
+**transcoderId** | **number** | Transcoder id | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteTranscoderItemDto } from './api';
+import { SiteTranscoderItemDto } from 'streamvi-api-client';
 
 const instance: SiteTranscoderItemDto = {
     v,
     language,
-    project_id,
-    transcoder_id,
+    projectId,
+    transcoderId,
 };
 ```
 

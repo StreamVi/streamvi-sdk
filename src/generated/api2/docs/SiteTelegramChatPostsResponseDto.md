@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SiteTelegramChatPostsResponseDto } from './api';
+import { SiteTelegramChatPostsResponseDto } from 'streamvi-api-client';
 
 const instance: SiteTelegramChatPostsResponseDto = {
     results,

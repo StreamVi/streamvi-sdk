@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -39,27 +39,25 @@ import type { UpdatePullKeyRequest } from '../models';
  * StreamPullKeysApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const StreamPullKeysApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Check key
-         * @param {check1VEnum} v Version
-         * @param {check1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} key Key
+         * @param {StreamPullKeysSiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check1: async (v: check1VEnum, language: check1LanguageEnum, projectId: number, key: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('check1', 'v', v)
+        streamPullKeysSiteCheckV1: async (language: StreamPullKeysSiteCheckV1LanguageEnum, projectId: number, key: string, v?: StreamPullKeysSiteCheckV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('check1', 'language', language)
+            assertParamExists('streamPullKeysSiteCheckV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('check1', 'projectId', projectId)
+            assertParamExists('streamPullKeysSiteCheckV1', 'projectId', projectId)
             // verify required parameter 'key' is not null or undefined
-            assertParamExists('check1', 'key', key)
+            assertParamExists('streamPullKeysSiteCheckV1', 'key', key)
             const localVarPath = `/method/stream-pull-keys/check`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -74,6 +72,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -106,9 +106,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create1: async (createPullKeyRequest: CreatePullKeyRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        streamPullKeysSiteCreateV1: async (createPullKeyRequest: CreatePullKeyRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'createPullKeyRequest' is not null or undefined
-            assertParamExists('create1', 'createPullKeyRequest', createPullKeyRequest)
+            assertParamExists('streamPullKeysSiteCreateV1', 'createPullKeyRequest', createPullKeyRequest)
             const localVarPath = `/method/stream-pull-keys`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -138,19 +138,17 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary List keys
-         * @param {get1VEnum} v Version
-         * @param {get1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteGetV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {StreamPullKeysSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get1: async (v: get1VEnum, language: get1LanguageEnum, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('get1', 'v', v)
+        streamPullKeysSiteGetV1: async (language: StreamPullKeysSiteGetV1LanguageEnum, projectId: number, v?: StreamPullKeysSiteGetV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('get1', 'language', language)
+            assertParamExists('streamPullKeysSiteGetV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('get1', 'projectId', projectId)
+            assertParamExists('streamPullKeysSiteGetV1', 'projectId', projectId)
             const localVarPath = `/method/stream-pull-keys`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -165,6 +163,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -189,22 +189,20 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Delete key
-         * @param {remove1VEnum} v Version
-         * @param {remove1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteRemoveV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} key Key
+         * @param {StreamPullKeysSiteRemoveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        remove1: async (v: remove1VEnum, language: remove1LanguageEnum, projectId: number, key: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('remove1', 'v', v)
+        streamPullKeysSiteRemoveV1: async (language: StreamPullKeysSiteRemoveV1LanguageEnum, projectId: number, key: string, v?: StreamPullKeysSiteRemoveV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('remove1', 'language', language)
+            assertParamExists('streamPullKeysSiteRemoveV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('remove1', 'projectId', projectId)
+            assertParamExists('streamPullKeysSiteRemoveV1', 'projectId', projectId)
             // verify required parameter 'key' is not null or undefined
-            assertParamExists('remove1', 'key', key)
+            assertParamExists('streamPullKeysSiteRemoveV1', 'key', key)
             const localVarPath = `/method/stream-pull-keys`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -219,6 +217,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -251,9 +251,9 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update1: async (updatePullKeyRequest: UpdatePullKeyRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        streamPullKeysSiteUpdateV1: async (updatePullKeyRequest: UpdatePullKeyRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'updatePullKeyRequest' is not null or undefined
-            assertParamExists('update1', 'updatePullKeyRequest', updatePullKeyRequest)
+            assertParamExists('streamPullKeysSiteUpdateV1', 'updatePullKeyRequest', updatePullKeyRequest)
             const localVarPath = `/method/stream-pull-keys`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -287,23 +287,23 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * StreamPullKeysApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const StreamPullKeysApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = StreamPullKeysApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Check key
-         * @param {check1VEnum} v Version
-         * @param {check1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} key Key
+         * @param {StreamPullKeysSiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async check1(v: check1VEnum, language: check1LanguageEnum, projectId: number, key: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CheckPullKeyResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.check1(v, language, projectId, key, options);
+        async streamPullKeysSiteCheckV1(language: StreamPullKeysSiteCheckV1LanguageEnum, projectId: number, key: string, v?: StreamPullKeysSiteCheckV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CheckPullKeyResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteCheckV1(language, projectId, key, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['StreamPullKeysApi.check1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['StreamPullKeysApi.streamPullKeysSiteCheckV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -313,41 +313,41 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async create1(createPullKeyRequest: CreatePullKeyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreatePullKeyResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create1(createPullKeyRequest, options);
+        async streamPullKeysSiteCreateV1(createPullKeyRequest: CreatePullKeyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreatePullKeyResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteCreateV1(createPullKeyRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['StreamPullKeysApi.create1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['StreamPullKeysApi.streamPullKeysSiteCreateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary List keys
-         * @param {get1VEnum} v Version
-         * @param {get1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteGetV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {StreamPullKeysSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async get1(v: get1VEnum, language: get1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PullKeyListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.get1(v, language, projectId, options);
+        async streamPullKeysSiteGetV1(language: StreamPullKeysSiteGetV1LanguageEnum, projectId: number, v?: StreamPullKeysSiteGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PullKeyListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteGetV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['StreamPullKeysApi.get1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['StreamPullKeysApi.streamPullKeysSiteGetV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Delete key
-         * @param {remove1VEnum} v Version
-         * @param {remove1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteRemoveV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} key Key
+         * @param {StreamPullKeysSiteRemoveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async remove1(v: remove1VEnum, language: remove1LanguageEnum, projectId: number, key: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.remove1(v, language, projectId, key, options);
+        async streamPullKeysSiteRemoveV1(language: StreamPullKeysSiteRemoveV1LanguageEnum, projectId: number, key: string, v?: StreamPullKeysSiteRemoveV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteRemoveV1(language, projectId, key, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['StreamPullKeysApi.remove1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['StreamPullKeysApi.streamPullKeysSiteRemoveV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -357,10 +357,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async update1(updatePullKeyRequest: UpdatePullKeyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update1(updatePullKeyRequest, options);
+        async streamPullKeysSiteUpdateV1(updatePullKeyRequest: UpdatePullKeyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteUpdateV1(updatePullKeyRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['StreamPullKeysApi.update1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['StreamPullKeysApi.streamPullKeysSiteUpdateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -370,190 +370,242 @@ export const fp = function(configuration?: Configuration) {
  * StreamPullKeysApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const StreamPullKeysApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = StreamPullKeysApiFp(configuration)
     return {
         /**
          * 
          * @summary Check key
-         * @param {check1Request} requestParameters Request parameters.
+         * @param {StreamPullKeysApiStreamPullKeysSiteCheckV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check1(requestParameters: check1Request, options?: RawAxiosRequestConfig): AxiosPromise<CheckPullKeyResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: check1VEnum = requestParameters.v || check1VEnum._1;
-            return localVarFp.check1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.key, options).then((request) => request(axios, basePath));
+        streamPullKeysSiteCheckV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CheckPullKeyResponse> {
+            return localVarFp.streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create key
-         * @param {create1Request} requestParameters Request parameters.
+         * @param {StreamPullKeysApiStreamPullKeysSiteCreateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create1(requestParameters: create1Request, options?: RawAxiosRequestConfig): AxiosPromise<CreatePullKeyResponse> {
-            return localVarFp.create1(requestParameters.createPullKeyRequest, options).then((request) => request(axios, basePath));
+        streamPullKeysSiteCreateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CreatePullKeyResponse> {
+            return localVarFp.streamPullKeysSiteCreateV1(requestParameters.createPullKeyRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary List keys
-         * @param {get1Request} requestParameters Request parameters.
+         * @param {StreamPullKeysApiStreamPullKeysSiteGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): AxiosPromise<PullKeyListResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: get1VEnum = requestParameters.v || get1VEnum._1;
-            return localVarFp.get1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        streamPullKeysSiteGetV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PullKeyListResponse> {
+            return localVarFp.streamPullKeysSiteGetV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Delete key
-         * @param {remove1Request} requestParameters Request parameters.
+         * @param {StreamPullKeysApiStreamPullKeysSiteRemoveV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        remove1(requestParameters: remove1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: remove1VEnum = requestParameters.v || remove1VEnum._1;
-            return localVarFp.remove1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.key, options).then((request) => request(axios, basePath));
+        streamPullKeysSiteRemoveV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteRemoveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Update key
-         * @param {update1Request} requestParameters Request parameters.
+         * @param {StreamPullKeysApiStreamPullKeysSiteUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update1(requestParameters: update1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.update1(requestParameters.updatePullKeyRequest, options).then((request) => request(axios, basePath));
+        streamPullKeysSiteUpdateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.streamPullKeysSiteUpdateV1(requestParameters.updatePullKeyRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for check1 operation in StreamPullKeysApi.
+ * StreamPullKeysApi - interface
  * @export
- * @interface check1Request
+ * @interface StreamPullKeysApi
  */
-export interface check1Request {
+export interface StreamPullKeysApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof check1
+     * 
+     * @summary Check key
+     * @param {StreamPullKeysApiStreamPullKeysSiteCheckV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamPullKeysApiInterface
      */
-    readonly v?: check1VEnum
+    streamPullKeysSiteCheckV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CheckPullKeyResponse>;
 
+    /**
+     * 
+     * @summary Create key
+     * @param {StreamPullKeysApiStreamPullKeysSiteCreateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamPullKeysApiInterface
+     */
+    streamPullKeysSiteCreateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CreatePullKeyResponse>;
+
+    /**
+     * 
+     * @summary List keys
+     * @param {StreamPullKeysApiStreamPullKeysSiteGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamPullKeysApiInterface
+     */
+    streamPullKeysSiteGetV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PullKeyListResponse>;
+
+    /**
+     * 
+     * @summary Delete key
+     * @param {StreamPullKeysApiStreamPullKeysSiteRemoveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamPullKeysApiInterface
+     */
+    streamPullKeysSiteRemoveV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteRemoveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Update key
+     * @param {StreamPullKeysApiStreamPullKeysSiteUpdateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamPullKeysApiInterface
+     */
+    streamPullKeysSiteUpdateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+}
+
+/**
+ * Request parameters for streamPullKeysSiteCheckV1 operation in StreamPullKeysApi.
+ * @export
+ * @interface StreamPullKeysApiStreamPullKeysSiteCheckV1Request
+ */
+export interface StreamPullKeysApiStreamPullKeysSiteCheckV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof check1
+     * @memberof StreamPullKeysApiStreamPullKeysSiteCheckV1
      */
-    readonly language: check1LanguageEnum
+    readonly language: StreamPullKeysSiteCheckV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof check1
+     * @memberof StreamPullKeysApiStreamPullKeysSiteCheckV1
      */
     readonly projectId: number
 
     /**
      * Key
      * @type {string}
-     * @memberof check1
+     * @memberof StreamPullKeysApiStreamPullKeysSiteCheckV1
      */
     readonly key: string
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof StreamPullKeysApiStreamPullKeysSiteCheckV1
+     */
+    readonly v?: StreamPullKeysSiteCheckV1VEnum
 }
 
 /**
- * Request parameters for create1 operation in StreamPullKeysApi.
+ * Request parameters for streamPullKeysSiteCreateV1 operation in StreamPullKeysApi.
  * @export
- * @interface create1Request
+ * @interface StreamPullKeysApiStreamPullKeysSiteCreateV1Request
  */
-export interface create1Request {
+export interface StreamPullKeysApiStreamPullKeysSiteCreateV1Request {
     /**
      * 
      * @type {CreatePullKeyRequest}
-     * @memberof create1
+     * @memberof StreamPullKeysApiStreamPullKeysSiteCreateV1
      */
     readonly createPullKeyRequest: CreatePullKeyRequest
 }
 
 /**
- * Request parameters for get1 operation in StreamPullKeysApi.
+ * Request parameters for streamPullKeysSiteGetV1 operation in StreamPullKeysApi.
  * @export
- * @interface get1Request
+ * @interface StreamPullKeysApiStreamPullKeysSiteGetV1Request
  */
-export interface get1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof get1
-     */
-    readonly v?: get1VEnum
-
+export interface StreamPullKeysApiStreamPullKeysSiteGetV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof get1
+     * @memberof StreamPullKeysApiStreamPullKeysSiteGetV1
      */
-    readonly language: get1LanguageEnum
+    readonly language: StreamPullKeysSiteGetV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof get1
+     * @memberof StreamPullKeysApiStreamPullKeysSiteGetV1
      */
     readonly projectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof StreamPullKeysApiStreamPullKeysSiteGetV1
+     */
+    readonly v?: StreamPullKeysSiteGetV1VEnum
 }
 
 /**
- * Request parameters for remove1 operation in StreamPullKeysApi.
+ * Request parameters for streamPullKeysSiteRemoveV1 operation in StreamPullKeysApi.
  * @export
- * @interface remove1Request
+ * @interface StreamPullKeysApiStreamPullKeysSiteRemoveV1Request
  */
-export interface remove1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof remove1
-     */
-    readonly v?: remove1VEnum
-
+export interface StreamPullKeysApiStreamPullKeysSiteRemoveV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof remove1
+     * @memberof StreamPullKeysApiStreamPullKeysSiteRemoveV1
      */
-    readonly language: remove1LanguageEnum
+    readonly language: StreamPullKeysSiteRemoveV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof remove1
+     * @memberof StreamPullKeysApiStreamPullKeysSiteRemoveV1
      */
     readonly projectId: number
 
     /**
      * Key
      * @type {string}
-     * @memberof remove1
+     * @memberof StreamPullKeysApiStreamPullKeysSiteRemoveV1
      */
     readonly key: string
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof StreamPullKeysApiStreamPullKeysSiteRemoveV1
+     */
+    readonly v?: StreamPullKeysSiteRemoveV1VEnum
 }
 
 /**
- * Request parameters for update1 operation in StreamPullKeysApi.
+ * Request parameters for streamPullKeysSiteUpdateV1 operation in StreamPullKeysApi.
  * @export
- * @interface update1Request
+ * @interface StreamPullKeysApiStreamPullKeysSiteUpdateV1Request
  */
-export interface update1Request {
+export interface StreamPullKeysApiStreamPullKeysSiteUpdateV1Request {
     /**
      * 
      * @type {UpdatePullKeyRequest}
-     * @memberof update1
+     * @memberof StreamPullKeysApiStreamPullKeysSiteUpdateV1
      */
     readonly updatePullKeyRequest: UpdatePullKeyRequest
 }
@@ -564,125 +616,119 @@ export interface update1Request {
  * @class StreamPullKeysApi
  * @extends {BaseAPI}
  */
-export class StreamPullKeysApi extends BaseAPI {
+export class StreamPullKeysApi extends BaseAPI implements StreamPullKeysApiInterface {
     /**
      * 
      * @summary Check key
-     * @param {check1Request} requestParameters Request parameters.
+     * @param {StreamPullKeysApiStreamPullKeysSiteCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StreamPullKeysApi
      */
-    public check1(requestParameters: check1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: check1VEnum = requestParameters.v || check1VEnum._1;
-        return fp(this.configuration).check1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.key, options).then((request) => request(this.axios, this.basePath));
+    public streamPullKeysSiteCheckV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCheckV1Request, options?: RawAxiosRequestConfig) {
+        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create key
-     * @param {create1Request} requestParameters Request parameters.
+     * @param {StreamPullKeysApiStreamPullKeysSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StreamPullKeysApi
      */
-    public create1(requestParameters: create1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).create1(requestParameters.createPullKeyRequest, options).then((request) => request(this.axios, this.basePath));
+    public streamPullKeysSiteCreateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCreateV1Request, options?: RawAxiosRequestConfig) {
+        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteCreateV1(requestParameters.createPullKeyRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary List keys
-     * @param {get1Request} requestParameters Request parameters.
+     * @param {StreamPullKeysApiStreamPullKeysSiteGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StreamPullKeysApi
      */
-    public get1(requestParameters: get1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: get1VEnum = requestParameters.v || get1VEnum._1;
-        return fp(this.configuration).get1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    public streamPullKeysSiteGetV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteGetV1Request, options?: RawAxiosRequestConfig) {
+        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteGetV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Delete key
-     * @param {remove1Request} requestParameters Request parameters.
+     * @param {StreamPullKeysApiStreamPullKeysSiteRemoveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StreamPullKeysApi
      */
-    public remove1(requestParameters: remove1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: remove1VEnum = requestParameters.v || remove1VEnum._1;
-        return fp(this.configuration).remove1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.key, options).then((request) => request(this.axios, this.basePath));
+    public streamPullKeysSiteRemoveV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteRemoveV1Request, options?: RawAxiosRequestConfig) {
+        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Update key
-     * @param {update1Request} requestParameters Request parameters.
+     * @param {StreamPullKeysApiStreamPullKeysSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StreamPullKeysApi
      */
-    public update1(requestParameters: update1Request, options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).update1(requestParameters.updatePullKeyRequest, options).then((request) => request(this.axios, this.basePath));
+    public streamPullKeysSiteUpdateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteUpdateV1Request, options?: RawAxiosRequestConfig) {
+        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteUpdateV1(requestParameters.updatePullKeyRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum check1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const StreamPullKeysSiteCheckV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type StreamPullKeysSiteCheckV1LanguageEnum = typeof StreamPullKeysSiteCheckV1LanguageEnum[keyof typeof StreamPullKeysSiteCheckV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum check1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const StreamPullKeysSiteCheckV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type StreamPullKeysSiteCheckV1VEnum = typeof StreamPullKeysSiteCheckV1VEnum[keyof typeof StreamPullKeysSiteCheckV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum get1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const StreamPullKeysSiteGetV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type StreamPullKeysSiteGetV1LanguageEnum = typeof StreamPullKeysSiteGetV1LanguageEnum[keyof typeof StreamPullKeysSiteGetV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum get1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const StreamPullKeysSiteGetV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type StreamPullKeysSiteGetV1VEnum = typeof StreamPullKeysSiteGetV1VEnum[keyof typeof StreamPullKeysSiteGetV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum remove1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const StreamPullKeysSiteRemoveV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type StreamPullKeysSiteRemoveV1LanguageEnum = typeof StreamPullKeysSiteRemoveV1LanguageEnum[keyof typeof StreamPullKeysSiteRemoveV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum remove1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const StreamPullKeysSiteRemoveV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type StreamPullKeysSiteRemoveV1VEnum = typeof StreamPullKeysSiteRemoveV1VEnum[keyof typeof StreamPullKeysSiteRemoveV1VEnum];

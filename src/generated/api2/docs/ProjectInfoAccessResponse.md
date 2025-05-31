@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access_type** | **number** | Access type | [default to undefined]
+**accessType** | **number** | Access type | [default to undefined]
 
 ## Example
 
 ```typescript
-import { ProjectInfoAccessResponse } from './api';
+import { ProjectInfoAccessResponse } from 'streamvi-api-client';
 
 const instance: ProjectInfoAccessResponse = {
-    access_type,
+    accessType,
 };
 ```
 

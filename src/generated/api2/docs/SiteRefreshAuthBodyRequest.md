@@ -6,15 +6,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_en]
-**app** | **string** | App oauth | [default to AppEnum_site]
+**language** | **string** | Current language | [default to LanguageEnum_En]
+**app** | **string** | App oauth | [default to AppEnum_Site]
 **refresh** | **string** | Refresh token | [default to undefined]
 **fingerprint** | **string** | Fingerprint | [optional] [default to '']
 
 ## Example
 
 ```typescript
-import { SiteRefreshAuthBodyRequest } from './api';
+import { SiteRefreshAuthBodyRequest } from 'streamvi-api-client';
 
 const instance: SiteRefreshAuthBodyRequest = {
     v,

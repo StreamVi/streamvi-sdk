@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -29,7 +29,7 @@ import type { MethodProjectLiveStatusResponse } from '../models';
  * ProjectApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const ProjectApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
@@ -37,7 +37,7 @@ export const axiosParamCreator = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        liveStatus: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        methodLiveStatusV1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/method/project/live-status`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -51,7 +51,7 @@ export const axiosParamCreator = function (configuration?: Configuration) {
             const localVarQueryParameter = {} as any;
 
             // authentication X-API-KEY required
-            await keyToObject(localVarHeaderParameter, "X-API-KEY", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-KEY", configuration)
 
 
     
@@ -71,8 +71,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * ProjectApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const ProjectApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ProjectApiAxiosParamCreator(configuration)
     return {
         /**
          * 
@@ -80,10 +80,10 @@ export const fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async liveStatus(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodProjectLiveStatusResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.liveStatus(options);
+        async methodLiveStatusV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodProjectLiveStatusResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodLiveStatusV1(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProjectApi.liveStatus']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ProjectApi.methodLiveStatusV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -93,8 +93,8 @@ export const fp = function(configuration?: Configuration) {
  * ProjectApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const ProjectApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ProjectApiFp(configuration)
     return {
         /**
          * 
@@ -102,11 +102,28 @@ export const factory = function (configuration?: Configuration, basePath?: strin
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        liveStatus(options?: RawAxiosRequestConfig): AxiosPromise<MethodProjectLiveStatusResponse> {
-            return localVarFp.liveStatus(options).then((request) => request(axios, basePath));
+        methodLiveStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<MethodProjectLiveStatusResponse> {
+            return localVarFp.methodLiveStatusV1(options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * ProjectApi - interface
+ * @export
+ * @interface ProjectApi
+ */
+export interface ProjectApiInterface {
+    /**
+     * 
+     * @summary Get live status
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApiInterface
+     */
+    methodLiveStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<MethodProjectLiveStatusResponse>;
+
+}
 
 /**
  * ProjectApi - object-oriented interface
@@ -114,7 +131,7 @@ export const factory = function (configuration?: Configuration, basePath?: strin
  * @class ProjectApi
  * @extends {BaseAPI}
  */
-export class ProjectApi extends BaseAPI {
+export class ProjectApi extends BaseAPI implements ProjectApiInterface {
     /**
      * 
      * @summary Get live status
@@ -122,8 +139,8 @@ export class ProjectApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    public liveStatus(options?: RawAxiosRequestConfig) {
-        return fp(this.configuration).liveStatus(options).then((request) => request(this.axios, this.basePath));
+    public methodLiveStatusV1(options?: RawAxiosRequestConfig) {
+        return ProjectApiFp(this.configuration).methodLiveStatusV1(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { SitePlatformsSupportedItem } from './site-platforms-supported-item';
+import type { PlatformsSupportedItem } from './platforms-supported-item';
 
 /**
  * 
@@ -25,9 +25,9 @@ import type { SitePlatformsSupportedItem } from './site-platforms-supported-item
 export interface SitePlatformsSupportedResponse {
     /**
      * Array of items
-     * @type {Array<SitePlatformsSupportedItem>}
+     * @type {Array<PlatformsSupportedItem>}
      * @memberof SitePlatformsSupportedResponse
      */
-    'results': Array<SitePlatformsSupportedItem>;
+    'results': Array<PlatformsSupportedItem>;
 }
 

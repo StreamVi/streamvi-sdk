@@ -5,21 +5,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payment_id** | **number** | Payment Id | [default to undefined]
-**pay_name** | **string** | Pay system name | [default to undefined]
-**pay_id** | **string** | Pay system id | [optional] [default to undefined]
-**pay_key** | **string** | Pay system key | [optional] [default to undefined]
+**paymentId** | **number** | Payment Id | [default to undefined]
+**payName** | **string** | Pay system name | [default to undefined]
+**payId** | **string** | Pay system id | [optional] [default to undefined]
+**payKey** | **string** | Pay system key | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { PaymentCreateResponse } from './api';
+import { PaymentCreateResponse } from 'streamvi-api-client';
 
 const instance: PaymentCreateResponse = {
-    payment_id,
-    pay_name,
-    pay_id,
-    pay_key,
+    paymentId,
+    payName,
+    payId,
+    payKey,
 };
 ```
 

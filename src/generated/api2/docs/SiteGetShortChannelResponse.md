@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;SiteGetShortChannelItem&gt;**](SiteGetShortChannelItem.md) | Array of items | [default to undefined]
+**results** | [**Array&lt;GetShortChannelItem&gt;**](GetShortChannelItem.md) | Array of items | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteGetShortChannelResponse } from './api';
+import { SiteGetShortChannelResponse } from 'streamvi-api-client';
 
 const instance: SiteGetShortChannelResponse = {
     results,

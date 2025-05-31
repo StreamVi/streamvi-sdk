@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlaylistItemResponse } from './api';
+import { PlaylistItemResponse } from 'streamvi-api-client';
 
 const instance: PlaylistItemResponse = {
     id,

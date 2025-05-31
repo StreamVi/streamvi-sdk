@@ -40,7 +40,7 @@ export interface BlogPageSiteResponse {
      * @type {string}
      * @memberof BlogPageSiteResponse
      */
-    'status': StatusEnum;
+    'status': BlogPageSiteResponseStatusEnum;
     /**
      * Date of last update
      * @type {string}
@@ -64,13 +64,13 @@ export interface BlogPageSiteResponse {
      * @type {string}
      * @memberof BlogPageSiteResponse
      */
-    'language': LanguageEnum;
+    'language': BlogPageSiteResponseLanguageEnum;
     /**
      * Language ISO
      * @type {string}
      * @memberof BlogPageSiteResponse
      */
-    'language_iso': LanguageIsoEnum;
+    'language_iso': BlogPageSiteResponseLanguageIsoEnum;
     /**
      * Subject
      * @type {string}
@@ -100,47 +100,39 @@ export interface BlogPageSiteResponse {
      * @type {Array<string>}
      * @memberof BlogPageSiteResponse
      */
-    'alt_languages': Array<AltLanguagesEnum>;
+    'alt_languages': Array<BlogPageSiteResponseAltLanguagesEnum>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    None = 'None',
-    Backlog = 'Backlog',
-    Drafting = 'Drafting',
-    Reviewing = 'Reviewing',
-    Done = 'Done',
-    Published = 'Published'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    russian = 'russian',
-    english = 'english',
-    none = 'none'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageIsoEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum AltLanguagesEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const BlogPageSiteResponseStatusEnum = {
+    None: 'None',
+    Backlog: 'Backlog',
+    Drafting: 'Drafting',
+    Reviewing: 'Reviewing',
+    Done: 'Done',
+    Published: 'Published'
+} as const;
+
+export type BlogPageSiteResponseStatusEnum = typeof BlogPageSiteResponseStatusEnum[keyof typeof BlogPageSiteResponseStatusEnum];
+export const BlogPageSiteResponseLanguageEnum = {
+    Russian: 'russian',
+    English: 'english',
+    None: 'none'
+} as const;
+
+export type BlogPageSiteResponseLanguageEnum = typeof BlogPageSiteResponseLanguageEnum[keyof typeof BlogPageSiteResponseLanguageEnum];
+export const BlogPageSiteResponseLanguageIsoEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type BlogPageSiteResponseLanguageIsoEnum = typeof BlogPageSiteResponseLanguageIsoEnum[keyof typeof BlogPageSiteResponseLanguageIsoEnum];
+export const BlogPageSiteResponseAltLanguagesEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type BlogPageSiteResponseAltLanguagesEnum = typeof BlogPageSiteResponseAltLanguagesEnum[keyof typeof BlogPageSiteResponseAltLanguagesEnum];
 
 

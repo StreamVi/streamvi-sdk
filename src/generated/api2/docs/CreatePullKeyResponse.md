@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CreatePullKeyResponse } from './api';
+import { CreatePullKeyResponse } from 'streamvi-api-client';
 
 const instance: CreatePullKeyResponse = {
     id,

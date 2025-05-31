@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payment_id** | **number** | Payment Id | [default to undefined]
+**paymentId** | **number** | Payment Id | [default to undefined]
 **amount** | **number** | Amount | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
-**plan_period** | **string** | Period | [default to undefined]
+**planPeriod** | **string** | Period | [default to undefined]
 **status** | **string** | Status | [default to undefined]
 **type** | **string** | Tariff type | [default to undefined]
 **title** | **string** | Tariff title | [optional] [default to undefined]
@@ -16,13 +16,13 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PaymentStatusResponse } from './api';
+import { PaymentStatusResponse } from 'streamvi-api-client';
 
 const instance: PaymentStatusResponse = {
-    payment_id,
+    paymentId,
     amount,
     currency,
-    plan_period,
+    planPeriod,
     status,
     type,
     title,

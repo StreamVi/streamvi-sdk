@@ -5,29 +5,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**event_id** | **string** |  | [default to undefined]
+**eventId** | **string** |  | [default to undefined]
 **restreams** | [**Array&lt;MessageRestreamResponseDto&gt;**](MessageRestreamResponseDto.md) |  | [default to undefined]
 **entities** | **Array&lt;object&gt;** |  | [default to undefined]
 **text** | **string** |  | [default to undefined]
 **sender** | **object** |  | [default to undefined]
-**created_at** | **string** |  | [default to undefined]
-**broadcast_id** | **number** |  | [default to undefined]
-**is_outgoing** | **boolean** |  | [default to undefined]
+**createdAt** | **string** |  | [default to undefined]
+**broadcastId** | **number** |  | [default to undefined]
+**isOutgoing** | **boolean** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { MessageResponseDto } from './api';
+import { MessageResponseDto } from 'streamvi-api-client';
 
 const instance: MessageResponseDto = {
-    event_id,
+    eventId,
     restreams,
     entities,
     text,
     sender,
-    created_at,
-    broadcast_id,
-    is_outgoing,
+    createdAt,
+    broadcastId,
+    isOutgoing,
 };
 ```
 

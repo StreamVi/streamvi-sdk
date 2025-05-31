@@ -4,32 +4,36 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**streamBitrate1**](#streambitrate1) | **GET** /method/analytics/stream/graph/bitrate | Bitrate for stream|
-|[**streamEvents1**](#streamevents1) | **GET** /method/analytics/stream/events | Events for stream|
-|[**streamViewers1**](#streamviewers1) | **GET** /method/analytics/stream/graph/viewers | Viewers for stream|
+|[**analyticsTsStreamBitrateV1**](#analyticstsstreambitratev1) | **GET** /method/analytics/stream/graph/bitrate | Bitrate for stream|
+|[**analyticsTsStreamEventsV1**](#analyticstsstreameventsv1) | **GET** /method/analytics/stream/events | Events for stream|
+|[**analyticsTsStreamViewersV1**](#analyticstsstreamviewersv1) | **GET** /method/analytics/stream/graph/viewers | Viewers for stream|
 
-# **streamBitrate1**
-> object streamBitrate1()
+# **analyticsTsStreamBitrateV1**
+> object analyticsTsStreamBitrateV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AnalyticsApi } from './api';
+import {
+    AnalyticsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AnalyticsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AnalyticsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let streamId: number; //stream id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.streamBitrate1({
+const { status, data } = await apiInstance.analyticsTsStreamBitrateV1(
     language,
     projectId,
-    streamId
-  });
+    streamId,
+    v
+);
 ```
 
 ### Parameters
@@ -39,6 +43,7 @@ const { status, data } = await apiInstance.streamBitrate1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **streamId** | [**number**] | stream id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -63,28 +68,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **streamEvents1**
-> object streamEvents1()
+# **analyticsTsStreamEventsV1**
+> object analyticsTsStreamEventsV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AnalyticsApi } from './api';
+import {
+    AnalyticsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AnalyticsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AnalyticsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let streamId: number; //stream id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.streamEvents1({
+const { status, data } = await apiInstance.analyticsTsStreamEventsV1(
     language,
     projectId,
-    streamId
-  });
+    streamId,
+    v
+);
 ```
 
 ### Parameters
@@ -94,6 +103,7 @@ const { status, data } = await apiInstance.streamEvents1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **streamId** | [**number**] | stream id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -118,28 +128,32 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **streamViewers1**
-> object streamViewers1()
+# **analyticsTsStreamViewersV1**
+> object analyticsTsStreamViewersV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { AnalyticsApi } from './api';
+import {
+    AnalyticsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new AnalyticsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new AnalyticsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let streamId: number; //stream id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.streamViewers1({
+const { status, data } = await apiInstance.analyticsTsStreamViewersV1(
     language,
     projectId,
-    streamId
-  });
+    streamId,
+    v
+);
 ```
 
 ### Parameters
@@ -149,6 +163,7 @@ const { status, data } = await apiInstance.streamViewers1({
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **streamId** | [**number**] | stream id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

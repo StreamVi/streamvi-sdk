@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ProjectInfoTranscodingResponse } from './api';
+import { ProjectInfoTranscodingResponse } from 'streamvi-api-client';
 
 const instance: ProjectInfoTranscodingResponse = {
     plan2user,

@@ -25,13 +25,13 @@ export interface SiteSetTranscoderRequest {
      * @type {string}
      * @memberof SiteSetTranscoderRequest
      */
-    'v': VEnum;
+    'v': SiteSetTranscoderRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteSetTranscoderRequest
      */
-    'language': LanguageEnum;
+    'language': SiteSetTranscoderRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -52,23 +52,19 @@ export interface SiteSetTranscoderRequest {
     'transcoder_id'?: number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const SiteSetTranscoderRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type SiteSetTranscoderRequestVEnum = typeof SiteSetTranscoderRequestVEnum[keyof typeof SiteSetTranscoderRequestVEnum];
+export const SiteSetTranscoderRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SiteSetTranscoderRequestLanguageEnum = typeof SiteSetTranscoderRequestLanguageEnum[keyof typeof SiteSetTranscoderRequestLanguageEnum];
 
 

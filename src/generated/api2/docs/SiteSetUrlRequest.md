@@ -6,21 +6,21 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**language** | **string** | Current language | [default to LanguageEnum_en]
-**project_id** | **number** | Project id | [default to undefined]
-**channel_id** | **number** | Channel id | [default to undefined]
+**language** | **string** | Current language | [default to LanguageEnum_En]
+**projectId** | **number** | Project id | [default to undefined]
+**channelId** | **number** | Channel id | [default to undefined]
 **url** | **string** |  | [default to 'Rtmp link']
 
 ## Example
 
 ```typescript
-import { SiteSetUrlRequest } from './api';
+import { SiteSetUrlRequest } from 'streamvi-api-client';
 
 const instance: SiteSetUrlRequest = {
     v,
     language,
-    project_id,
-    channel_id,
+    projectId,
+    channelId,
     url,
 };
 ```

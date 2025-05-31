@@ -1,5 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
 /* tslint:disable */
 /* eslint-disable */
 /**

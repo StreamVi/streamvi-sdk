@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -29,30 +29,28 @@ import type { PaginatedResponseOfProjectHistoryResponse } from '../models';
  * ProjectHistoryApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const ProjectHistoryApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Get project history of actions
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {ProjectHistoryListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {ProjectHistoryListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
-         * @param {list1ActionEnum} [action] Action
+         * @param {ProjectHistoryListV1ActionEnum} [action] Action
          * @param {number} [groupId] Group id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v: list1VEnum, language: list1LanguageEnum, projectId: number, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, action?: list1ActionEnum, groupId?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('list1', 'v', v)
+        projectHistoryListV1: async (language: ProjectHistoryListV1LanguageEnum, projectId: number, v?: ProjectHistoryListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, action?: ProjectHistoryListV1ActionEnum, groupId?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('list1', 'language', language)
+            assertParamExists('projectHistoryListV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('list1', 'projectId', projectId)
+            assertParamExists('projectHistoryListV1', 'projectId', projectId)
             const localVarPath = `/method/project_history/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -67,6 +65,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -123,28 +123,28 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * ProjectHistoryApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const ProjectHistoryApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ProjectHistoryApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Get project history of actions
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {ProjectHistoryListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {ProjectHistoryListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
-         * @param {list1ActionEnum} [action] Action
+         * @param {ProjectHistoryListV1ActionEnum} [action] Action
          * @param {number} [groupId] Group id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v: list1VEnum, language: list1LanguageEnum, projectId: number, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, action?: list1ActionEnum, groupId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfProjectHistoryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, projectId, limit, offset, dateFrom, dateTo, action, groupId, options);
+        async projectHistoryListV1(language: ProjectHistoryListV1LanguageEnum, projectId: number, v?: ProjectHistoryListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, action?: ProjectHistoryListV1ActionEnum, groupId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfProjectHistoryResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.projectHistoryListV1(language, projectId, v, limit, offset, dateFrom, dateTo, action, groupId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProjectHistoryApi.list1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ProjectHistoryApi.projectHistoryListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -154,90 +154,106 @@ export const fp = function(configuration?: Configuration) {
  * ProjectHistoryApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const ProjectHistoryApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ProjectHistoryApiFp(configuration)
     return {
         /**
          * 
          * @summary Get project history of actions
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {ProjectHistoryApiProjectHistoryListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfProjectHistoryResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.action, requestParameters.groupId, options).then((request) => request(axios, basePath));
+        projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfProjectHistoryResponse> {
+            return localVarFp.projectHistoryListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.action, requestParameters.groupId, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for list1 operation in ProjectHistoryApi.
+ * ProjectHistoryApi - interface
  * @export
- * @interface list1Request
+ * @interface ProjectHistoryApi
  */
-export interface list1Request {
+export interface ProjectHistoryApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
+     * 
+     * @summary Get project history of actions
+     * @param {ProjectHistoryApiProjectHistoryListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectHistoryApiInterface
      */
-    readonly v?: list1VEnum
+    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfProjectHistoryResponse>;
 
+}
+
+/**
+ * Request parameters for projectHistoryListV1 operation in ProjectHistoryApi.
+ * @export
+ * @interface ProjectHistoryApiProjectHistoryListV1Request
+ */
+export interface ProjectHistoryApiProjectHistoryListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly language: list1LanguageEnum
+    readonly language: ProjectHistoryListV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof list1
+     * @memberof ProjectHistoryApiProjectHistoryListV1
      */
     readonly projectId: number
 
     /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectHistoryApiProjectHistoryListV1
+     */
+    readonly v?: ProjectHistoryListV1VEnum
+
+    /**
      * Number of results
      * @type {number}
-     * @memberof list1
+     * @memberof ProjectHistoryApiProjectHistoryListV1
      */
     readonly limit?: number
 
     /**
      * Page offset number
      * @type {number}
-     * @memberof list1
+     * @memberof ProjectHistoryApiProjectHistoryListV1
      */
     readonly offset?: number
 
     /**
      * Date from
      * @type {string}
-     * @memberof list1
+     * @memberof ProjectHistoryApiProjectHistoryListV1
      */
     readonly dateFrom?: string
 
     /**
      * Date to
      * @type {string}
-     * @memberof list1
+     * @memberof ProjectHistoryApiProjectHistoryListV1
      */
     readonly dateTo?: string
 
     /**
      * Action
      * @type {'project_channel_invite_add' | 'project_channel_invite_del' | 'project_channel_invite_accept' | 'project_channel_invite_decline' | 'user_project_invite_add' | 'user_project_invite_del' | 'user_project_invite_accept' | 'user_project_invite_decline' | 'user_project_add' | 'user_project_del' | 'user_project_change' | 'project_channel_add' | 'project_channel_del' | 'project_channel_change'}
-     * @memberof list1
+     * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly action?: list1ActionEnum
+    readonly action?: ProjectHistoryListV1ActionEnum
 
     /**
      * Group id
      * @type {number}
-     * @memberof list1
+     * @memberof ProjectHistoryApiProjectHistoryListV1
      */
     readonly groupId?: number
 }
@@ -248,57 +264,55 @@ export interface list1Request {
  * @class ProjectHistoryApi
  * @extends {BaseAPI}
  */
-export class ProjectHistoryApi extends BaseAPI {
+export class ProjectHistoryApi extends BaseAPI implements ProjectHistoryApiInterface {
     /**
      * 
      * @summary Get project history of actions
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {ProjectHistoryApiProjectHistoryListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectHistoryApi
      */
-    public list1(requestParameters: list1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-        return fp(this.configuration).list1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.action, requestParameters.groupId, options).then((request) => request(this.axios, this.basePath));
+    public projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig) {
+        return ProjectHistoryApiFp(this.configuration).projectHistoryListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.action, requestParameters.groupId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const ProjectHistoryListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ProjectHistoryListV1LanguageEnum = typeof ProjectHistoryListV1LanguageEnum[keyof typeof ProjectHistoryListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const ProjectHistoryListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type ProjectHistoryListV1VEnum = typeof ProjectHistoryListV1VEnum[keyof typeof ProjectHistoryListV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1ActionEnum {
-    project_channel_invite_add = 'project_channel_invite_add',
-    project_channel_invite_del = 'project_channel_invite_del',
-    project_channel_invite_accept = 'project_channel_invite_accept',
-    project_channel_invite_decline = 'project_channel_invite_decline',
-    user_project_invite_add = 'user_project_invite_add',
-    user_project_invite_del = 'user_project_invite_del',
-    user_project_invite_accept = 'user_project_invite_accept',
-    user_project_invite_decline = 'user_project_invite_decline',
-    user_project_add = 'user_project_add',
-    user_project_del = 'user_project_del',
-    user_project_change = 'user_project_change',
-    project_channel_add = 'project_channel_add',
-    project_channel_del = 'project_channel_del',
-    project_channel_change = 'project_channel_change'
-}
+ * @export
+ */
+export const ProjectHistoryListV1ActionEnum = {
+    ProjectChannelInviteAdd: 'project_channel_invite_add',
+    ProjectChannelInviteDel: 'project_channel_invite_del',
+    ProjectChannelInviteAccept: 'project_channel_invite_accept',
+    ProjectChannelInviteDecline: 'project_channel_invite_decline',
+    UserProjectInviteAdd: 'user_project_invite_add',
+    UserProjectInviteDel: 'user_project_invite_del',
+    UserProjectInviteAccept: 'user_project_invite_accept',
+    UserProjectInviteDecline: 'user_project_invite_decline',
+    UserProjectAdd: 'user_project_add',
+    UserProjectDel: 'user_project_del',
+    UserProjectChange: 'user_project_change',
+    ProjectChannelAdd: 'project_channel_add',
+    ProjectChannelDel: 'project_channel_del',
+    ProjectChannelChange: 'project_channel_change'
+} as const;
+export type ProjectHistoryListV1ActionEnum = typeof ProjectHistoryListV1ActionEnum[keyof typeof ProjectHistoryListV1ActionEnum];

@@ -43,7 +43,7 @@ export interface RtmpServerPlatformQuality {
      * @type {string}
      * @memberof RtmpServerPlatformQuality
      */
-    'status': StatusEnum;
+    'status': RtmpServerPlatformQualityStatusEnum;
     /**
      * Reconnect
      * @type {number}
@@ -52,14 +52,12 @@ export interface RtmpServerPlatformQuality {
     'reconnect': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    good = 'good',
-    problem = 'problem',
-    bad = 'bad'
-}
+export const RtmpServerPlatformQualityStatusEnum = {
+    Good: 'good',
+    Problem: 'problem',
+    Bad: 'bad'
+} as const;
+
+export type RtmpServerPlatformQualityStatusEnum = typeof RtmpServerPlatformQualityStatusEnum[keyof typeof RtmpServerPlatformQualityStatusEnum];
 
 

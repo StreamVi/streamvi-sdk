@@ -43,7 +43,7 @@ export interface UserProjectGetResponse {
      * @type {number}
      * @memberof UserProjectGetResponse
      */
-    'type': TypeEnum;
+    'type': UserProjectGetResponseTypeEnum;
     /**
      * External id
      * @type {string}
@@ -85,24 +85,20 @@ export interface UserProjectGetResponse {
      * @type {string}
      * @memberof UserProjectGetResponse
      */
-    'currency': CurrencyEnum;
+    'currency': UserProjectGetResponseCurrencyEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TypeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CurrencyEnum {
-    rub = 'rub',
-    usd = 'usd'
-}
+export const UserProjectGetResponseTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1
+} as const;
+
+export type UserProjectGetResponseTypeEnum = typeof UserProjectGetResponseTypeEnum[keyof typeof UserProjectGetResponseTypeEnum];
+export const UserProjectGetResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+} as const;
+
+export type UserProjectGetResponseCurrencyEnum = typeof UserProjectGetResponseCurrencyEnum[keyof typeof UserProjectGetResponseCurrencyEnum];
 
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SiteLiveRestreamCentrifugeItemV2 } from './api';
+import { SiteLiveRestreamCentrifugeItemV2 } from 'streamvi-api-client';
 
 const instance: SiteLiveRestreamCentrifugeItemV2 = {
     token,

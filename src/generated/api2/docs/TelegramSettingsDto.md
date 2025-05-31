@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filter_mode** | **number** | Filter | [default to undefined]
-**chat** | [**SiteTelegramChatInfoResponseDto**](SiteTelegramChatInfoResponseDto.md) | Chat info | [default to undefined]
-**post** | [**SiteTelegramChatPostsItem**](SiteTelegramChatPostsItem.md) | Post | [optional] [default to undefined]
+**filterMode** | **number** | Filter | [default to undefined]
+**chat** | [**TelegramChatInfoResponseDto**](TelegramChatInfoResponseDto.md) | Chat info | [default to undefined]
+**post** | [**TelegramChatPostsItem**](TelegramChatPostsItem.md) | Post | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { TelegramSettingsDto } from './api';
+import { TelegramSettingsDto } from 'streamvi-api-client';
 
 const instance: TelegramSettingsDto = {
-    filter_mode,
+    filterMode,
     chat,
     post,
 };

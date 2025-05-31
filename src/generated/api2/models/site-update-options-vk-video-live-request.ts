@@ -25,13 +25,13 @@ export interface SiteUpdateOptionsVkVideoLiveRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateOptionsVkVideoLiveRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateOptionsVkVideoLiveRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -64,23 +64,19 @@ export interface SiteUpdateOptionsVkVideoLiveRequest {
     'category_name': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const SiteUpdateOptionsVkVideoLiveRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type SiteUpdateOptionsVkVideoLiveRequestVEnum = typeof SiteUpdateOptionsVkVideoLiveRequestVEnum[keyof typeof SiteUpdateOptionsVkVideoLiveRequestVEnum];
+export const SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = typeof SiteUpdateOptionsVkVideoLiveRequestLanguageEnum[keyof typeof SiteUpdateOptionsVkVideoLiveRequestLanguageEnum];
 
 

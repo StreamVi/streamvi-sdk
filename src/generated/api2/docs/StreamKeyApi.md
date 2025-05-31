@@ -4,29 +4,33 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**key1**](#key1) | **GET** /method/stream-keys | Get stream credentials|
-|[**updateRecord1**](#updaterecord1) | **POST** /method/stream-keys/record | Update record|
+|[**streamKeysKeyV1**](#streamkeyskeyv1) | **GET** /method/stream-keys | Get stream credentials|
+|[**streamKeysUpdateRecordV1**](#streamkeysupdaterecordv1) | **POST** /method/stream-keys/record | Update record|
 
-# **key1**
-> GetStreamKeyResponse key1()
+# **streamKeysKeyV1**
+> GetStreamKeyResponse streamKeysKeyV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { StreamKeyApi } from './api';
+import {
+    StreamKeyApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new StreamKeyApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new StreamKeyApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.key1({
+const { status, data } = await apiInstance.streamKeysKeyV1(
     language,
-    projectId
-  });
+    projectId,
+    v
+);
 ```
 
 ### Parameters
@@ -35,6 +39,7 @@ const { status, data } = await apiInstance.key1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -59,25 +64,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateRecord1**
-> SuccessResponse updateRecord1(setRecordStreamRequest)
+# **streamKeysUpdateRecordV1**
+> SuccessResponse streamKeysUpdateRecordV1(setRecordStreamRequest)
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { StreamKeyApi
-    SetRecordStreamRequest } from './api';
+import {
+    StreamKeyApi,
+    Configuration,
+    SetRecordStreamRequest
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new StreamKeyApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new StreamKeyApi(configuration);
 
 let setRecordStreamRequest: SetRecordStreamRequest; //
 
-const { status, data } = await apiInstance.updateRecord1({
+const { status, data } = await apiInstance.streamKeysUpdateRecordV1(
     setRecordStreamRequest
-  });
+);
 ```
 
 ### Parameters

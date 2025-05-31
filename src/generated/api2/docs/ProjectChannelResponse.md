@@ -6,21 +6,21 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Primary key | [default to undefined]
-**project_id** | **number** | User id | [default to undefined]
-**channel_id** | **number** | Channel id | [default to undefined]
-**owner_id** | **number** | Owner id | [default to undefined]
+**projectId** | **number** | User id | [default to undefined]
+**channelId** | **number** | Channel id | [default to undefined]
+**ownerId** | **number** | Owner id | [default to undefined]
 **usageType** | **number** | usageType | [default to undefined]
 
 ## Example
 
 ```typescript
-import { ProjectChannelResponse } from './api';
+import { ProjectChannelResponse } from 'streamvi-api-client';
 
 const instance: ProjectChannelResponse = {
     id,
-    project_id,
-    channel_id,
-    owner_id,
+    projectId,
+    channelId,
+    ownerId,
     usageType,
 };
 ```

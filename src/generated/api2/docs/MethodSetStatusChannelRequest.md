@@ -6,20 +6,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
-**channel_id** | **number** | Channel id | [default to undefined]
+**language** | **string** | Current language | [optional] [default to LanguageEnum_En]
+**channelId** | **number** | Channel id | [default to undefined]
 **status** | **boolean** | Status channel status | [default to undefined]
-**language** | **string** | Current language | [optional] [default to LanguageEnum_en]
 
 ## Example
 
 ```typescript
-import { MethodSetStatusChannelRequest } from './api';
+import { MethodSetStatusChannelRequest } from 'streamvi-api-client';
 
 const instance: MethodSetStatusChannelRequest = {
     v,
-    channel_id,
-    status,
     language,
+    channelId,
+    status,
 };
 ```
 

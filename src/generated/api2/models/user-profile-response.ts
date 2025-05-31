@@ -25,7 +25,7 @@ export interface UserProfileResponse {
      * @type {number}
      * @memberof UserProfileResponse
      */
-    'id': IdEnum;
+    'id': UserProfileResponseIdEnum;
     /**
      * Type profile
      * @type {number}
@@ -79,7 +79,7 @@ export interface UserProfileResponse {
      * @type {string}
      * @memberof UserProfileResponse
      */
-    'currency': CurrencyEnum;
+    'currency': UserProfileResponseCurrencyEnum;
     /**
      * Country
      * @type {number}
@@ -91,7 +91,7 @@ export interface UserProfileResponse {
      * @type {string}
      * @memberof UserProfileResponse
      */
-    'language': LanguageEnum;
+    'language': UserProfileResponseLanguageEnum;
     /**
      * Balance
      * @type {number}
@@ -106,30 +106,24 @@ export interface UserProfileResponse {
     'lastProjectId': number | null;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum IdEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CurrencyEnum {
-    rub = 'rub',
-    usd = 'usd'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const UserProfileResponseIdEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1
+} as const;
+
+export type UserProfileResponseIdEnum = typeof UserProfileResponseIdEnum[keyof typeof UserProfileResponseIdEnum];
+export const UserProfileResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+} as const;
+
+export type UserProfileResponseCurrencyEnum = typeof UserProfileResponseCurrencyEnum[keyof typeof UserProfileResponseCurrencyEnum];
+export const UserProfileResponseLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type UserProfileResponseLanguageEnum = typeof UserProfileResponseLanguageEnum[keyof typeof UserProfileResponseLanguageEnum];
 
 

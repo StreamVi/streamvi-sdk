@@ -7,21 +7,21 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **restreamId** | **number** |  | [default to undefined]
 **userId** | **number** |  | [default to undefined]
+**video** | **string** |  | [optional] [default to undefined]
 **name** | **string** |  | [default to undefined]
 **photo** | **string** |  | [default to undefined]
-**video** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteSearchChannelLiveUserDto } from './api';
+import { SiteSearchChannelLiveUserDto } from 'streamvi-api-client';
 
 const instance: SiteSearchChannelLiveUserDto = {
     restreamId,
     userId,
+    video,
     name,
     photo,
-    video,
 };
 ```
 

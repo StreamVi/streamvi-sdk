@@ -61,7 +61,7 @@ export interface StructureHelpPageConnectionsItemFinal {
      * @type {string}
      * @memberof StructureHelpPageConnectionsItemFinal
      */
-    'status': StatusEnum;
+    'status': StructureHelpPageConnectionsItemFinalStatusEnum;
     /**
      * Subject
      * @type {Array<StructureHelpPageConnectionsItemLang>}
@@ -82,17 +82,15 @@ export interface StructureHelpPageConnectionsItemFinal {
     'priority': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    None = 'None',
-    Backlog = 'Backlog',
-    Drafting = 'Drafting',
-    Reviewing = 'Reviewing',
-    Done = 'Done',
-    Published = 'Published'
-}
+export const StructureHelpPageConnectionsItemFinalStatusEnum = {
+    None: 'None',
+    Backlog: 'Backlog',
+    Drafting: 'Drafting',
+    Reviewing: 'Reviewing',
+    Done: 'Done',
+    Published: 'Published'
+} as const;
+
+export type StructureHelpPageConnectionsItemFinalStatusEnum = typeof StructureHelpPageConnectionsItemFinalStatusEnum[keyof typeof StructureHelpPageConnectionsItemFinalStatusEnum];
 
 

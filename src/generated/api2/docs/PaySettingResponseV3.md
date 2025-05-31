@@ -5,38 +5,38 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**project_id** | **number** | Project id | [default to undefined]
+**projectId** | **number** | Project id | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
-**countrie_id** | **number** | Country | [default to undefined]
-**organization_id** | **number** | Organiztion | [default to undefined]
-**pay_system_id** | **number** | Pay system id | [default to undefined]
+**countrieId** | **number** | Country | [default to undefined]
+**organizationId** | **number** | Organiztion | [default to undefined]
+**paySystemId** | **number** | Pay system id | [default to undefined]
 **email** | **string** | E-mail | [default to undefined]
 **street** | **string** | Street | [optional] [default to undefined]
-**house_number** | **string** | House number | [optional] [default to undefined]
+**houseNumber** | **string** | House number | [optional] [default to undefined]
 **zip** | **string** | Postal code | [optional] [default to undefined]
 **city** | **string** | City | [optional] [default to undefined]
 **state** | **string** | State ot region | [optional] [default to undefined]
-**company_name** | **string** | Company name | [optional] [default to undefined]
+**companyName** | **string** | Company name | [optional] [default to undefined]
 **description** | **string** | Additional information about the payment | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { PaySettingResponseV3 } from './api';
+import { PaySettingResponseV3 } from 'streamvi-api-client';
 
 const instance: PaySettingResponseV3 = {
-    project_id,
+    projectId,
     currency,
-    countrie_id,
-    organization_id,
-    pay_system_id,
+    countrieId,
+    organizationId,
+    paySystemId,
     email,
     street,
-    house_number,
+    houseNumber,
     zip,
     city,
     state,
-    company_name,
+    companyName,
     description,
 };
 ```

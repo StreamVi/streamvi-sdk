@@ -61,7 +61,7 @@ export interface ProjectInfoDataResponse {
      * @type {number}
      * @memberof ProjectInfoDataResponse
      */
-    'type': TypeEnum;
+    'type': ProjectInfoDataResponseTypeEnum;
     /**
      * Bonus balance
      * @type {number}
@@ -85,7 +85,7 @@ export interface ProjectInfoDataResponse {
      * @type {number}
      * @memberof ProjectInfoDataResponse
      */
-    'currency': CurrencyEnum | null;
+    'currency': ProjectInfoDataResponseCurrencyEnum | null;
     /**
      * Country id
      * @type {number}
@@ -94,19 +94,15 @@ export interface ProjectInfoDataResponse {
     'country_id': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TypeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CurrencyEnum {
-}
+export const ProjectInfoDataResponseTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1
+} as const;
+
+export type ProjectInfoDataResponseTypeEnum = typeof ProjectInfoDataResponseTypeEnum[keyof typeof ProjectInfoDataResponseTypeEnum];
+export const ProjectInfoDataResponseCurrencyEnum = {
+} as const;
+
+export type ProjectInfoDataResponseCurrencyEnum = typeof ProjectInfoDataResponseCurrencyEnum[keyof typeof ProjectInfoDataResponseCurrencyEnum];
 
 

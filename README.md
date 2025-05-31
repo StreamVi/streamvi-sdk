@@ -6,9 +6,8 @@ API methods documentation is available at: [https://dev.streamvi.io](https://dev
 
 ## Features
 
-- ✅ Authorization via StreamVi OAuth2
-- ✅ Automatic TypeScript API client generation
-- ✅ Ready-to-use examples
+- ✅ StreamVi SDK library for TypeScript/JavaScript
+- ✅ Ready-to-use examples with OAuth2 authorization
 
 ## Installation
 
@@ -41,13 +40,31 @@ Open http://localhost:3000 and login via StreamVi.
 
 ```typescript
 import { StreamViSdkConfig } from './src/streamvi-sdk-config';
-import { UserProjectApi, getProjectInfo1LanguageEnum } from './src/generated/api2/api/user-project-api';
+import { UserProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from './src/generated/api2/api/user-project-api';
 
-async function getProjectInfo(accessToken: string, projectId: number, language: getProjectInfo1LanguageEnum = getProjectInfo1LanguageEnum.ru) {
+async function getProjectInfo(accessToken: string, projectId: number, language: UserProjectGetProjectInfoV1LanguageEnum = UserProjectGetProjectInfoV1LanguageEnum.Ru) {
   const sdkConfig = new StreamViSdkConfig({ accessToken });
   const userProjectApi = new UserProjectApi(sdkConfig.configuration);
 
-  const response = await userProjectApi.getProjectInfo1({
+  const response = await userProjectApi.userProjectGetProjectInfoV1({
+    language: language,
+    projectId: projectId
+  });
+  return response.data;
+}
+```
+
+### Example of using PaySetting API with version 3
+
+```typescript
+import { StreamViSdkConfig } from './src/streamvi-sdk-config';
+import { PaySettingApi, PaySettingGetSettingV3LanguageEnum } from './src/generated/api2/api/pay-setting-api';
+
+async function getPaySettings(accessToken: string, projectId: number, language: PaySettingGetSettingV3LanguageEnum = PaySettingGetSettingV3LanguageEnum.Ru) {
+  const sdkConfig = new StreamViSdkConfig({ accessToken });
+  const paySettingApi = new PaySettingApi(sdkConfig.configuration);
+
+  const response = await paySettingApi.paySettingGetSettingV3({
     language: language,
     projectId: projectId
   });
@@ -101,24 +118,14 @@ After generation, the following API clients are available:
 
 The full list is available in `src/generated/api2/api.ts`
 
-## Scripts
-
-- `npm run example` - run example server with authorization
-- `npm run build` - build the project
-- `npm run gen:api-prod` - generate API from production server
-- `npm run gen-process` - generate API from temp/backend_v2.json file
-- `npm run lint` - code check
-
 ## Project Structure
 
 ```
 src/
 ├── generated/
 │   └── api2/           # Generated API client
-├── scripts/
-│   ├── openapi-fetcher.mjs  # OpenAPI specification fetch script
-│   └── process-api.js       # Post-processing script
-└── streamvi-sdk-config.ts   # SDK configuration
+├── scripts/            # API generation scripts
+└── streamvi-sdk-config.ts      # SDK configuration
 
 example/
 ├── server.ts           # Main server file
@@ -138,25 +145,51 @@ The `example/` folder contains a complete Express application demonstrating:
 - Getting project information
 - Authorization error handling
 - User session management
+- Proper error display and user feedback
 
 ### Example Structure
 
-- **server.ts** - main server file with middleware setup
-- **config/passport.ts** - StreamVi authorization strategy configuration
-- **config/session.ts** - Express session settings
-- **routes/index.ts** - routes for authorization and data display
+- **server.ts** - main server file with middleware setup and environment validation
+- **config/passport.ts** - StreamVi authorization strategy configuration with proper error handling
+- **config/session.ts** - Express session settings with security considerations
+- **routes/index.ts** - routes for authorization, data display, and comprehensive error handling
 
 ### Example Functionality
 
-1. **Home page** (`/`) - displays project information or offers authorization
+1. **Home page** (`/`) - displays project information with avatar and details, or offers authorization
 2. **Authorization** (`/auth/streamvi`) - redirects to StreamVi for authorization
-3. **Callback** (`/auth/streamvi/callback`) - handles authorization result
-4. **Logout** (`/logout`) - clears user session
-5. **Error handling** (`/login`) - displays authorization errors
+3. **Callback** (`/auth/streamvi/callback`) - handles authorization result with detailed error processing
+4. **Logout** (`/logout`) - clears user session and redirects to home
+5. **Error handling** (`/login`) - displays authorization errors with detailed information
+6. **Session management** - stores access tokens and project IDs securely
 
-## Development
+### Authorization Flow
 
-### API Update
+The example demonstrates a complete OAuth2 flow:
+
+1. User visits the home page
+2. If not authorized, they see a login button
+3. Clicking login redirects to StreamVi OAuth2 endpoint
+4. After authorization, StreamVi redirects back with authorization code
+5. The callback handler exchanges the code for access token
+6. Access token and project ID are stored in session
+7. User is redirected to home page showing project information
+
+### Error Handling
+
+The example includes comprehensive error handling:
+
+- **Environment validation** - checks for required environment variables on startup
+- **Authorization errors** - displays detailed error messages from StreamVi
+- **API errors** - shows API response errors with full context
+- **Session errors** - handles session destruction and recreation
+- **Network errors** - graceful handling of network issues
+
+## API Client Generation
+
+The API client is automatically generated from the StreamVi OpenAPI specification with built-in error correction and optimization.
+
+### Update API client
 
 To update the API client after server changes:
 
@@ -165,35 +198,20 @@ npm run gen:api-prod
 npm run build
 ```
 
-### Adding new methods
+This command downloads the latest API specification and generates an optimized TypeScript client.
 
-1. Update the API on the server
-2. Regenerate the client: `npm run gen:api-prod`
-3. New methods will be available in the corresponding API classes
+> **For library developers**: See [README_DEVELOPMENT_EN.md](README_DEVELOPMENT_EN.md) for detailed information about the generation process, error correction, and development workflows.
+
+## Scripts
+
+- `npm run example` - run example server with authorization
+- `npm run build` - build the project
+- `npm run gen:api-prod` - generate API from production server
+- `npm run lint` - code check
 
 ## License
 
 MIT
-
-## API Client Generation
-
-### Automatic generation from production server
-
-```bash
-npm run gen:api-prod
-```
-
-This command:
-1. Downloads the OpenAPI specification from `napi.streamvi.io`
-2. Generates a TypeScript client in `src/generated/api2/`
-3. Updates exports in `src/index.ts`
-
-### Manual generation (if you have a local specification file)
-
-```bash
-# Place the OpenAPI specification file in temp/backend_v2.json
-npm run gen-process
-```
 
 ## Documentation Generation
 

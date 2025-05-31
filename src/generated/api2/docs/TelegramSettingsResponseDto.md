@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TelegramSettingsResponseDto } from './api';
+import { TelegramSettingsResponseDto } from 'streamvi-api-client';
 
 const instance: TelegramSettingsResponseDto = {
     connected,

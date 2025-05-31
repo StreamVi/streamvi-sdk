@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ListOfUserProject2ProjectResponse } from './api';
+import { ListOfUserProject2ProjectResponse } from 'streamvi-api-client';
 
 const instance: ListOfUserProject2ProjectResponse = {
     results,

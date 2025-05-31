@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TelegramInitConnectResponseDto } from './api';
+import { TelegramInitConnectResponseDto } from 'streamvi-api-client';
 
 const instance: TelegramInitConnectResponseDto = {
     code,

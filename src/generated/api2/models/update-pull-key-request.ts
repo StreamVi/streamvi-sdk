@@ -25,13 +25,13 @@ export interface UpdatePullKeyRequest {
      * @type {string}
      * @memberof UpdatePullKeyRequest
      */
-    'v': VEnum;
+    'v': UpdatePullKeyRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof UpdatePullKeyRequest
      */
-    'language': LanguageEnum;
+    'language': UpdatePullKeyRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -52,23 +52,19 @@ export interface UpdatePullKeyRequest {
     'region': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const UpdatePullKeyRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type UpdatePullKeyRequestVEnum = typeof UpdatePullKeyRequestVEnum[keyof typeof UpdatePullKeyRequestVEnum];
+export const UpdatePullKeyRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type UpdatePullKeyRequestLanguageEnum = typeof UpdatePullKeyRequestLanguageEnum[keyof typeof UpdatePullKeyRequestLanguageEnum];
 
 

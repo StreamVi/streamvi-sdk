@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { SiteTranscoderListItem } from './site-transcoder-list-item';
+import type { TranscoderListItem } from './transcoder-list-item';
 
 /**
  * 
@@ -25,9 +25,9 @@ import type { SiteTranscoderListItem } from './site-transcoder-list-item';
 export interface SiteTranscoderListResponse {
     /**
      * Array of items
-     * @type {Array<SiteTranscoderListItem>}
+     * @type {Array<TranscoderListItem>}
      * @memberof SiteTranscoderListResponse
      */
-    'results': Array<SiteTranscoderListItem>;
+    'results': Array<TranscoderListItem>;
 }
 

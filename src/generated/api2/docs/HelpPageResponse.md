@@ -5,39 +5,39 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_id** | [**BlogPageSiteResponseId**](BlogPageSiteResponseId.md) |  | [default to undefined]
+**id** | [**BlogPageSiteResponseId**](BlogPageSiteResponseId.md) |  | [default to undefined]
 **url** | **string** | url | [default to undefined]
-**url_inherit** | **string** | Generated url from root path | [default to undefined]
-**notion_parent_id** | **string** | Notion parent id | [default to undefined]
+**urlInherit** | **string** | Generated url from root path | [default to undefined]
+**notionParentId** | **string** | Notion parent id | [default to undefined]
 **status** | **string** | Page status | [default to StatusEnum_Backlog]
-**date_update** | **string** | Date last update | [default to undefined]
-**date_create** | **string** | Date create | [default to undefined]
+**dateUpdate** | **string** | Date last update | [default to undefined]
+**dateCreate** | **string** | Date create | [default to undefined]
 **icon** | **object** | Page icon | [default to undefined]
 **title** | **string** | Subject | [default to undefined]
-**language** | **string** | Language for indexing | [default to LanguageEnum_russian]
-**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_ru]
+**language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
+**languageIso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
 **text** | **string** | Text | [default to undefined]
-**alt_languages** | **Array&lt;string&gt;** | Alternative language (Array of Language ISO) | [default to undefined]
+**altLanguages** | **Array&lt;string&gt;** | Alternative language (Array of Language ISO) | [default to undefined]
 
 ## Example
 
 ```typescript
-import { HelpPageResponse } from './api';
+import { HelpPageResponse } from 'streamvi-api-client';
 
 const instance: HelpPageResponse = {
-    _id,
+    id,
     url,
-    url_inherit,
-    notion_parent_id,
+    urlInherit,
+    notionParentId,
     status,
-    date_update,
-    date_create,
+    dateUpdate,
+    dateCreate,
     icon,
     title,
     language,
-    language_iso,
+    languageIso,
     text,
-    alt_languages,
+    altLanguages,
 };
 ```
 

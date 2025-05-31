@@ -4,23 +4,26 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**list1**](#list1) | **GET** /method/money_flow/list | Transaction list for frontend|
+|[**moneyFlowListV1**](#moneyflowlistv1) | **GET** /method/money_flow/list | Transaction list for frontend|
 
-# **list1**
-> PaginatedResponseOfMoneyFlowResponse list1()
+# **moneyFlowListV1**
+> PaginatedResponseOfMoneyFlowResponse moneyFlowListV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { MoneyFlowApi } from './api';
+import {
+    MoneyFlowApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new MoneyFlowApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new MoneyFlowApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let limit: number; //Number of results (optional) (default to 20)
 let offset: number; //Page offset number (optional) (default to 0)
 let dateFrom: string; //Date from (optional) (default to undefined)
@@ -28,16 +31,17 @@ let dateTo: string; //Date to (optional) (default to undefined)
 let type: string; //Filter code transaction. example 1 or 1,2,3 (optional) (default to '')
 let balanceType: string; //Filter code transaction. example 1 or 1,2,3 (optional) (default to '')
 
-const { status, data } = await apiInstance.list1({
+const { status, data } = await apiInstance.moneyFlowListV1(
     language,
     projectId,
+    v,
     limit,
     offset,
     dateFrom,
     dateTo,
     type,
     balanceType
-  });
+);
 ```
 
 ### Parameters
@@ -46,6 +50,7 @@ const { status, data } = await apiInstance.list1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **limit** | [**number**] | Number of results | (optional) defaults to 20|
 | **offset** | [**number**] | Page offset number | (optional) defaults to 0|
 | **dateFrom** | [**string**] | Date from | (optional) defaults to undefined|

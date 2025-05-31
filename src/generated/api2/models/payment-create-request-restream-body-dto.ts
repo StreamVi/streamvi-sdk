@@ -25,13 +25,13 @@ export interface PaymentCreateRequestRestreamBodyDto {
      * @type {string}
      * @memberof PaymentCreateRequestRestreamBodyDto
      */
-    'v': VEnum;
+    'v': PaymentCreateRequestRestreamBodyDtoVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof PaymentCreateRequestRestreamBodyDto
      */
-    'language': LanguageEnum;
+    'language': PaymentCreateRequestRestreamBodyDtoLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -43,7 +43,7 @@ export interface PaymentCreateRequestRestreamBodyDto {
      * @type {string}
      * @memberof PaymentCreateRequestRestreamBodyDto
      */
-    'type': TypeEnum;
+    'type': PaymentCreateRequestRestreamBodyDtoTypeEnum;
     /**
      * Amount
      * @type {number}
@@ -55,7 +55,7 @@ export interface PaymentCreateRequestRestreamBodyDto {
      * @type {string}
      * @memberof PaymentCreateRequestRestreamBodyDto
      */
-    'plan_period': PlanPeriodEnum;
+    'plan_period': PaymentCreateRequestRestreamBodyDtoPlanPeriodEnum;
     /**
      * Restream plan id
      * @type {number}
@@ -76,41 +76,33 @@ export interface PaymentCreateRequestRestreamBodyDto {
     'plan_restream_bitrate': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TypeEnum {
-    restream = 'restream',
-    transcoding = 'transcoding',
-    storage = 'storage',
-    topup = 'topup'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PlanPeriodEnum {
-    month = 'month',
-    year = 'year'
-}
+export const PaymentCreateRequestRestreamBodyDtoVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type PaymentCreateRequestRestreamBodyDtoVEnum = typeof PaymentCreateRequestRestreamBodyDtoVEnum[keyof typeof PaymentCreateRequestRestreamBodyDtoVEnum];
+export const PaymentCreateRequestRestreamBodyDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type PaymentCreateRequestRestreamBodyDtoLanguageEnum = typeof PaymentCreateRequestRestreamBodyDtoLanguageEnum[keyof typeof PaymentCreateRequestRestreamBodyDtoLanguageEnum];
+export const PaymentCreateRequestRestreamBodyDtoTypeEnum = {
+    Restream: 'restream',
+    Transcoding: 'transcoding',
+    Storage: 'storage',
+    Topup: 'topup'
+} as const;
+
+export type PaymentCreateRequestRestreamBodyDtoTypeEnum = typeof PaymentCreateRequestRestreamBodyDtoTypeEnum[keyof typeof PaymentCreateRequestRestreamBodyDtoTypeEnum];
+export const PaymentCreateRequestRestreamBodyDtoPlanPeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+} as const;
+
+export type PaymentCreateRequestRestreamBodyDtoPlanPeriodEnum = typeof PaymentCreateRequestRestreamBodyDtoPlanPeriodEnum[keyof typeof PaymentCreateRequestRestreamBodyDtoPlanPeriodEnum];
 
 

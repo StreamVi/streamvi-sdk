@@ -25,13 +25,13 @@ export interface SiteUpdateOptionsYoutubeRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateOptionsYoutubeRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateOptionsYoutubeRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -79,19 +79,19 @@ export interface SiteUpdateOptionsYoutubeRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'audience': AudienceEnum;
+    'audience': SiteUpdateOptionsYoutubeRequestAudienceEnum;
     /**
      * 
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'latency': LatencyEnum;
+    'latency': SiteUpdateOptionsYoutubeRequestLatencyEnum;
     /**
      * 
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'privacy_video': PrivacyVideoEnum;
+    'privacy_video': SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum;
     /**
      * 
      * @type {string}
@@ -103,7 +103,7 @@ export interface SiteUpdateOptionsYoutubeRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'lang': LangEnum;
+    'lang': SiteUpdateOptionsYoutubeRequestLangEnum;
     /**
      * 
      * @type {Set<string>}
@@ -112,57 +112,45 @@ export interface SiteUpdateOptionsYoutubeRequest {
     'tags': Set<string>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum AudienceEnum {
-    mark_for_kids = 'mark_for_kids',
-    mark_for_nokids = 'mark_for_nokids'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LatencyEnum {
-    normal = 'normal',
-    low = 'low',
-    ultraLow = 'ultraLow'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PrivacyVideoEnum {
-    private = 'private',
-    public = 'public',
-    unlisted = 'unlisted'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LangEnum {
-    ru = 'ru',
-    en = 'en'
-}
+export const SiteUpdateOptionsYoutubeRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type SiteUpdateOptionsYoutubeRequestVEnum = typeof SiteUpdateOptionsYoutubeRequestVEnum[keyof typeof SiteUpdateOptionsYoutubeRequestVEnum];
+export const SiteUpdateOptionsYoutubeRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SiteUpdateOptionsYoutubeRequestLanguageEnum = typeof SiteUpdateOptionsYoutubeRequestLanguageEnum[keyof typeof SiteUpdateOptionsYoutubeRequestLanguageEnum];
+export const SiteUpdateOptionsYoutubeRequestAudienceEnum = {
+    MarkForKids: 'mark_for_kids',
+    MarkForNokids: 'mark_for_nokids'
+} as const;
+
+export type SiteUpdateOptionsYoutubeRequestAudienceEnum = typeof SiteUpdateOptionsYoutubeRequestAudienceEnum[keyof typeof SiteUpdateOptionsYoutubeRequestAudienceEnum];
+export const SiteUpdateOptionsYoutubeRequestLatencyEnum = {
+    Normal: 'normal',
+    Low: 'low',
+    UltraLow: 'ultraLow'
+} as const;
+
+export type SiteUpdateOptionsYoutubeRequestLatencyEnum = typeof SiteUpdateOptionsYoutubeRequestLatencyEnum[keyof typeof SiteUpdateOptionsYoutubeRequestLatencyEnum];
+export const SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum = {
+    Private: 'private',
+    Public: 'public',
+    Unlisted: 'unlisted'
+} as const;
+
+export type SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum = typeof SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum[keyof typeof SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum];
+export const SiteUpdateOptionsYoutubeRequestLangEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+
+export type SiteUpdateOptionsYoutubeRequestLangEnum = typeof SiteUpdateOptionsYoutubeRequestLangEnum[keyof typeof SiteUpdateOptionsYoutubeRequestLangEnum];
 
 

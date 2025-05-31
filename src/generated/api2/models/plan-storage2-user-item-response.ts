@@ -61,7 +61,7 @@ export interface PlanStorage2UserItemResponse {
      * @type {string}
      * @memberof PlanStorage2UserItemResponse
      */
-    'period': PeriodEnum | null;
+    'period': PlanStorage2UserItemResponsePeriodEnum | null;
     /**
      * Period uuid
      * @type {string}
@@ -75,26 +75,24 @@ export interface PlanStorage2UserItemResponse {
      */
     'status': string;
     /**
-     * Money flow uuid
-     * @type {string}
-     * @memberof PlanStorage2UserItemResponse
-     */
-    'money_flow_uuid': string;
-    /**
      * Prolongation
      * @type {number}
      * @memberof PlanStorage2UserItemResponse
      */
     'prolongation'?: number;
+    /**
+     * Money flow uuid
+     * @type {string}
+     * @memberof PlanStorage2UserItemResponse
+     */
+    'money_flow_uuid': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PeriodEnum {
-    month = 'month',
-    year = 'year'
-}
+export const PlanStorage2UserItemResponsePeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+} as const;
+
+export type PlanStorage2UserItemResponsePeriodEnum = typeof PlanStorage2UserItemResponsePeriodEnum[keyof typeof PlanStorage2UserItemResponsePeriodEnum];
 
 

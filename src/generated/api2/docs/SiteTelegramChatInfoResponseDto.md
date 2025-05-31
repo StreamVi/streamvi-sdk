@@ -7,19 +7,19 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**image** | **string** |  | [default to undefined]
 **domain** | **string** |  | [optional] [default to undefined]
+**image** | **string** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteTelegramChatInfoResponseDto } from './api';
+import { SiteTelegramChatInfoResponseDto } from 'streamvi-api-client';
 
 const instance: SiteTelegramChatInfoResponseDto = {
     id,
     name,
-    image,
     domain,
+    image,
 };
 ```
 

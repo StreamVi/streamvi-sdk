@@ -37,6 +37,12 @@ export interface SiteSearchChannelLiveUserDto {
      * @type {string}
      * @memberof SiteSearchChannelLiveUserDto
      */
+    'video'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof SiteSearchChannelLiveUserDto
+     */
     'name': string;
     /**
      * 
@@ -44,11 +50,5 @@ export interface SiteSearchChannelLiveUserDto {
      * @memberof SiteSearchChannelLiveUserDto
      */
     'photo': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SiteSearchChannelLiveUserDto
-     */
-    'video'?: string | null;
 }
 

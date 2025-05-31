@@ -5,21 +5,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**channel_id** | **number** | channel_id | [default to undefined]
+**channelId** | **number** | channel_id | [default to undefined]
 **type** | **string** | type | [default to undefined]
 **name** | **string** | name | [default to undefined]
-**photo_default** | **string** | photo_default | [default to undefined]
+**photoDefault** | **string** | photo_default | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteGetShortChannelItem } from './api';
+import { SiteGetShortChannelItem } from 'streamvi-api-client';
 
 const instance: SiteGetShortChannelItem = {
-    channel_id,
+    channelId,
     type,
     name,
-    photo_default,
+    photoDefault,
 };
 ```
 

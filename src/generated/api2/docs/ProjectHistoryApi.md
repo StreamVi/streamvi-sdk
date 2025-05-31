@@ -4,23 +4,26 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**list1**](#list1) | **GET** /method/project_history/list | Get project history of actions|
+|[**projectHistoryListV1**](#projecthistorylistv1) | **GET** /method/project_history/list | Get project history of actions|
 
-# **list1**
-> PaginatedResponseOfProjectHistoryResponse list1()
+# **projectHistoryListV1**
+> PaginatedResponseOfProjectHistoryResponse projectHistoryListV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ProjectHistoryApi } from './api';
+import {
+    ProjectHistoryApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ProjectHistoryApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ProjectHistoryApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let limit: number; //Number of results (optional) (default to 20)
 let offset: number; //Page offset number (optional) (default to 0)
 let dateFrom: string; //Date from (optional) (default to undefined)
@@ -28,16 +31,17 @@ let dateTo: string; //Date to (optional) (default to undefined)
 let action: 'project_channel_invite_add' | 'project_channel_invite_del' | 'project_channel_invite_accept' | 'project_channel_invite_decline' | 'user_project_invite_add' | 'user_project_invite_del' | 'user_project_invite_accept' | 'user_project_invite_decline' | 'user_project_add' | 'user_project_del' | 'user_project_change' | 'project_channel_add' | 'project_channel_del' | 'project_channel_change'; //Action (optional) (default to undefined)
 let groupId: number; //Group id (optional) (default to undefined)
 
-const { status, data } = await apiInstance.list1({
+const { status, data } = await apiInstance.projectHistoryListV1(
     language,
     projectId,
+    v,
     limit,
     offset,
     dateFrom,
     dateTo,
     action,
     groupId
-  });
+);
 ```
 
 ### Parameters
@@ -46,6 +50,7 @@ const { status, data } = await apiInstance.list1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **limit** | [**number**] | Number of results | (optional) defaults to 20|
 | **offset** | [**number**] | Page offset number | (optional) defaults to 0|
 | **dateFrom** | [**string**] | Date from | (optional) defaults to undefined|

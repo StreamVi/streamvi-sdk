@@ -25,13 +25,13 @@ export interface CheckPullKeyResponse {
      * @type {string}
      * @memberof CheckPullKeyResponse
      */
-    'transport': TransportEnum;
+    'transport': CheckPullKeyResponseTransportEnum;
     /**
      * Pull status
      * @type {string}
      * @memberof CheckPullKeyResponse
      */
-    'status': StatusEnum;
+    'status': CheckPullKeyResponseStatusEnum;
     /**
      * Key
      * @type {string}
@@ -40,23 +40,19 @@ export interface CheckPullKeyResponse {
     'key': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum TransportEnum {
-    rtmp = 'rtmp',
-    srt = 'srt',
-    hls = 'hls'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    active = 'active',
-    inactive = 'inactive',
-    error = 'error'
-}
+export const CheckPullKeyResponseTransportEnum = {
+    Rtmp: 'rtmp',
+    Srt: 'srt',
+    Hls: 'hls'
+} as const;
+
+export type CheckPullKeyResponseTransportEnum = typeof CheckPullKeyResponseTransportEnum[keyof typeof CheckPullKeyResponseTransportEnum];
+export const CheckPullKeyResponseStatusEnum = {
+    Active: 'active',
+    Inactive: 'inactive',
+    Error: 'error'
+} as const;
+
+export type CheckPullKeyResponseStatusEnum = typeof CheckPullKeyResponseStatusEnum[keyof typeof CheckPullKeyResponseStatusEnum];
 
 

@@ -64,7 +64,7 @@ export interface StructureHelpPageItemResponse2 {
      * @type {string}
      * @memberof StructureHelpPageItemResponse2
      */
-    'status': StatusEnum;
+    'status': StructureHelpPageItemResponse2StatusEnum;
     /**
      * Subject
      * @type {Array<StructureHelpPageConnectionsItemLang>}
@@ -91,17 +91,15 @@ export interface StructureHelpPageItemResponse2 {
     'connections': Array<StructureHelpPageItemResponse3>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum StatusEnum {
-    None = 'None',
-    Backlog = 'Backlog',
-    Drafting = 'Drafting',
-    Reviewing = 'Reviewing',
-    Done = 'Done',
-    Published = 'Published'
-}
+export const StructureHelpPageItemResponse2StatusEnum = {
+    None: 'None',
+    Backlog: 'Backlog',
+    Drafting: 'Drafting',
+    Reviewing: 'Reviewing',
+    Done: 'Done',
+    Published: 'Published'
+} as const;
+
+export type StructureHelpPageItemResponse2StatusEnum = typeof StructureHelpPageItemResponse2StatusEnum[keyof typeof StructureHelpPageItemResponse2StatusEnum];
 
 

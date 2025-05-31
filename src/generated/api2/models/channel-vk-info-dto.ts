@@ -49,13 +49,13 @@ export interface ChannelVkInfoDto {
      * @type {string}
      * @memberof ChannelVkInfoDto
      */
-    'privacyVideo'?: PrivacyVideoEnum;
+    'privacyVideo'?: ChannelVkInfoDtoPrivacyVideoEnum;
     /**
      * 
      * @type {string}
      * @memberof ChannelVkInfoDto
      */
-    'privacyComments'?: PrivacyCommentsEnum;
+    'privacyComments'?: ChannelVkInfoDtoPrivacyCommentsEnum;
     /**
      * 
      * @type {ChannelPlayListInfoDto}
@@ -70,26 +70,22 @@ export interface ChannelVkInfoDto {
     'category'?: ChannelVkCategoryInfoDto;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PrivacyVideoEnum {
-    all = 'all',
-    members = 'members',
-    editors = 'editors',
-    by_link = 'by_link',
-    donut = 'donut'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PrivacyCommentsEnum {
-    all = 'all',
-    members = 'members',
-    editors = 'editors',
-    nobody = 'nobody'
-}
+export const ChannelVkInfoDtoPrivacyVideoEnum = {
+    All: 'all',
+    Members: 'members',
+    Editors: 'editors',
+    ByLink: 'by_link',
+    Donut: 'donut'
+} as const;
+
+export type ChannelVkInfoDtoPrivacyVideoEnum = typeof ChannelVkInfoDtoPrivacyVideoEnum[keyof typeof ChannelVkInfoDtoPrivacyVideoEnum];
+export const ChannelVkInfoDtoPrivacyCommentsEnum = {
+    All: 'all',
+    Members: 'members',
+    Editors: 'editors',
+    Nobody: 'nobody'
+} as const;
+
+export type ChannelVkInfoDtoPrivacyCommentsEnum = typeof ChannelVkInfoDtoPrivacyCommentsEnum[keyof typeof ChannelVkInfoDtoPrivacyCommentsEnum];
 
 

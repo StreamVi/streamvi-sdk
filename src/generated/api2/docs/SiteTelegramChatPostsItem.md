@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message_id** | **number** | message_id | [default to undefined]
+**messageId** | **number** | message_id | [default to undefined]
 **text** | **string** | text | [default to undefined]
 **attachments** | **object** | attachments | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteTelegramChatPostsItem } from './api';
+import { SiteTelegramChatPostsItem } from 'streamvi-api-client';
 
 const instance: SiteTelegramChatPostsItem = {
-    message_id,
+    messageId,
     text,
     attachments,
 };

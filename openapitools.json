@@ -8,12 +8,17 @@
         "generatorName": "typescript-axios",
         "inputSpec": "./temp/backend_v2.json",
         "output": "./src/generated/api2",
+        "skipValidateSpec": true,
         "additionalProperties": {
           "npmName": "streamvi-api-client",
           "npmVersion": "1.0.0",
           "supportsES6": true,
           "withInterfaces": true,
-          "modelPropertyNaming": "camelCase"
+          "modelPropertyNaming": "camelCase",
+          "withSeparateModelsAndApi": true,
+          "apiPackage": "api",
+          "modelPackage": "models",
+          "useSingleRequestParameter": true
         }
       }
     }

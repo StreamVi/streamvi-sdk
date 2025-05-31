@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count_unread** | **number** | Count unread | [default to undefined]
+**countUnread** | **number** | Count unread | [default to undefined]
 
 ## Example
 
 ```typescript
-import { NotifyHistoryStatusUserResponse } from './api';
+import { NotifyHistoryStatusUserResponse } from 'streamvi-api-client';
 
 const instance: NotifyHistoryStatusUserResponse = {
-    count_unread,
+    countUnread,
 };
 ```
 

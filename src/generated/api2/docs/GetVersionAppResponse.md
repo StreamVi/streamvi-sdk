@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetVersionAppResponse } from './api';
+import { GetVersionAppResponse } from 'streamvi-api-client';
 
 const instance: GetVersionAppResponse = {
     name,

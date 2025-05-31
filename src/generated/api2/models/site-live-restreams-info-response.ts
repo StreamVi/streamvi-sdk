@@ -15,10 +15,10 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { SiteLiveRestreamCentrifugeResponse } from './site-live-restream-centrifuge-response';
+import type { LiveRestreamInfoItem } from './live-restream-info-item';
 // May contain unused imports in some cases
 // @ts-ignore
-import type { SiteLiveRestreamInfoItem } from './site-live-restream-info-item';
+import type { SiteLiveRestreamCentrifugeResponse } from './site-live-restream-centrifuge-response';
 
 /**
  * 
@@ -28,10 +28,10 @@ import type { SiteLiveRestreamInfoItem } from './site-live-restream-info-item';
 export interface SiteLiveRestreamsInfoResponse {
     /**
      * Array of items
-     * @type {Array<SiteLiveRestreamInfoItem>}
+     * @type {Array<LiveRestreamInfoItem>}
      * @memberof SiteLiveRestreamsInfoResponse
      */
-    'results': Array<SiteLiveRestreamInfoItem>;
+    'results': Array<LiveRestreamInfoItem>;
     /**
      * 
      * @type {SiteLiveRestreamCentrifugeResponse}

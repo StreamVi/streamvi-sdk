@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { StructureHelpPageResponse } from './api';
+import { StructureHelpPageResponse } from 'streamvi-api-client';
 
 const instance: StructureHelpPageResponse = {
     success,

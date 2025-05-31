@@ -17,7 +17,8 @@
     "nullSafeAdditionalProps": true,
     "enumNameSuffix": "Enum",
     "enumUnknownDefaultCase": false,
-    "removeEnumValuePrefix": false
+    "removeEnumValuePrefix": false,
+    "removeOperationIdPrefix": true
   },
   "globalProperties": {
     "models": "",

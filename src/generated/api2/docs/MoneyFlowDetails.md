@@ -6,16 +6,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **string** | Title | [default to undefined]
-**date_end** | **string** | Date | [default to undefined]
+**dateEnd** | **string** | Date | [default to undefined]
 
 ## Example
 
 ```typescript
-import { MoneyFlowDetails } from './api';
+import { MoneyFlowDetails } from 'streamvi-api-client';
 
 const instance: MoneyFlowDetails = {
     title,
-    date_end,
+    dateEnd,
 };
 ```
 

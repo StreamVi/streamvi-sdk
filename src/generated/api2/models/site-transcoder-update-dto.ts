@@ -25,13 +25,13 @@ export interface SiteTranscoderUpdateDto {
      * @type {string}
      * @memberof SiteTranscoderUpdateDto
      */
-    'v': VEnum;
+    'v': SiteTranscoderUpdateDtoVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteTranscoderUpdateDto
      */
-    'language': LanguageEnum;
+    'language': SiteTranscoderUpdateDtoLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -44,12 +44,6 @@ export interface SiteTranscoderUpdateDto {
      * @memberof SiteTranscoderUpdateDto
      */
     'transcoder_id': number;
-    /**
-     * Video codec id
-     * @type {number}
-     * @memberof SiteTranscoderUpdateDto
-     */
-    'videoCodecId': number;
     /**
      * Width
      * @type {number}
@@ -104,25 +98,27 @@ export interface SiteTranscoderUpdateDto {
      * @memberof SiteTranscoderUpdateDto
      */
     'channelIds'?: number;
+    /**
+     * Video codec id
+     * @type {number}
+     * @memberof SiteTranscoderUpdateDto
+     */
+    'videoCodecId': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const SiteTranscoderUpdateDtoVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type SiteTranscoderUpdateDtoVEnum = typeof SiteTranscoderUpdateDtoVEnum[keyof typeof SiteTranscoderUpdateDtoVEnum];
+export const SiteTranscoderUpdateDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SiteTranscoderUpdateDtoLanguageEnum = typeof SiteTranscoderUpdateDtoLanguageEnum[keyof typeof SiteTranscoderUpdateDtoLanguageEnum];
 
 

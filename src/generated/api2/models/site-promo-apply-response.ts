@@ -25,16 +25,14 @@ export interface SitePromoApplyResponse {
      * @type {string}
      * @memberof SitePromoApplyResponse
      */
-    'result': ResultEnum;
+    'result': SitePromoApplyResponseResultEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ResultEnum {
-    top_up = 'top_up',
-    tariff = 'tariff'
-}
+export const SitePromoApplyResponseResultEnum = {
+    TopUp: 'top_up',
+    Tariff: 'tariff'
+} as const;
+
+export type SitePromoApplyResponseResultEnum = typeof SitePromoApplyResponseResultEnum[keyof typeof SitePromoApplyResponseResultEnum];
 
 

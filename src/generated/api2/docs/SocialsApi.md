@@ -4,22 +4,24 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**getList1**](#getlist1) | **GET** /method/socials/list | Social list for user|
+|[**socialsGetListV1**](#socialsgetlistv1) | **GET** /method/socials/list | Social list for user|
 
-# **getList1**
-> getList1()
+# **socialsGetListV1**
+> socialsGetListV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { SocialsApi } from './api';
+import {
+    SocialsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new SocialsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new SocialsApi(configuration);
 
-const { status, data } = await apiInstance.getList1({});
+const { status, data } = await apiInstance.socialsGetListV1();
 ```
 
 ### Parameters

@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SiteSearchChannelItemStreamInfo } from './api';
+import { SiteSearchChannelItemStreamInfo } from 'streamvi-api-client';
 
 const instance: SiteSearchChannelItemStreamInfo = {
     title,

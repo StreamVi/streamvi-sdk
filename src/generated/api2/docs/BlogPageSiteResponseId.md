@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BlogPageSiteResponseId } from './api';
+import { BlogPageSiteResponseId } from 'streamvi-api-client';
 
 const instance: BlogPageSiteResponseId = {
     type,

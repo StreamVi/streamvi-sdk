@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, keyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -37,31 +37,29 @@ import type { SuccessResponse } from '../models';
  * PlanStorageApi - axios parameter creator
  * @export
  */
-export const axiosParamCreator = function (configuration?: Configuration) {
+export const PlanStorageApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
          * @summary Buy storage tariff
-         * @param {buy1VEnum} v Version
-         * @param {buy1LanguageEnum} language Current language
+         * @param {PlanStorageBuyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {buy1PeriodEnum} period Period
+         * @param {PlanStorageBuyV1PeriodEnum} period Period
          * @param {number} planStorageId Storage plan id
+         * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [size] Size
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buy1: async (v: buy1VEnum, language: buy1LanguageEnum, projectId: number, period: buy1PeriodEnum, planStorageId: number, size?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('buy1', 'v', v)
+        planStorageBuyV1: async (language: PlanStorageBuyV1LanguageEnum, projectId: number, period: PlanStorageBuyV1PeriodEnum, planStorageId: number, v?: PlanStorageBuyV1VEnum, size?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('buy1', 'language', language)
+            assertParamExists('planStorageBuyV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('buy1', 'projectId', projectId)
+            assertParamExists('planStorageBuyV1', 'projectId', projectId)
             // verify required parameter 'period' is not null or undefined
-            assertParamExists('buy1', 'period', period)
+            assertParamExists('planStorageBuyV1', 'period', period)
             // verify required parameter 'planStorageId' is not null or undefined
-            assertParamExists('buy1', 'planStorageId', planStorageId)
+            assertParamExists('planStorageBuyV1', 'planStorageId', planStorageId)
             const localVarPath = `/method/plan_storage`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -76,6 +74,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -112,19 +112,17 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Remove next tariff
-         * @param {cancel1VEnum} v Version
-         * @param {cancel1LanguageEnum} language Current language
+         * @param {PlanStorageCancelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancel1: async (v: cancel1VEnum, language: cancel1LanguageEnum, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('cancel1', 'v', v)
+        planStorageCancelV1: async (language: PlanStorageCancelV1LanguageEnum, projectId: number, v?: PlanStorageCancelV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('cancel1', 'language', language)
+            assertParamExists('planStorageCancelV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('cancel1', 'projectId', projectId)
+            assertParamExists('planStorageCancelV1', 'projectId', projectId)
             const localVarPath = `/method/plan_storage`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -139,6 +137,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -163,19 +163,17 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Check storage tariff before buy
-         * @param {check1VEnum} v Version
-         * @param {check1LanguageEnum} language Current language
+         * @param {PlanStorageCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check1: async (v: check1VEnum, language: check1LanguageEnum, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('check1', 'v', v)
+        planStorageCheckV1: async (language: PlanStorageCheckV1LanguageEnum, projectId: number, v?: PlanStorageCheckV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('check1', 'language', language)
+            assertParamExists('planStorageCheckV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('check1', 'projectId', projectId)
+            assertParamExists('planStorageCheckV1', 'projectId', projectId)
             const localVarPath = `/method/plan_storage/check`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -190,6 +188,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -214,16 +214,14 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get discount of storage
-         * @param {getDiscount1VEnum} v Version
-         * @param {getDiscount1LanguageEnum} language Current language
+         * @param {PlanStorageGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDiscount1: async (v: getDiscount1VEnum, language: getDiscount1LanguageEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('getDiscount1', 'v', v)
+        planStorageGetDiscountV1: async (language: PlanStorageGetDiscountV1LanguageEnum, v?: PlanStorageGetDiscountV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('getDiscount1', 'language', language)
+            assertParamExists('planStorageGetDiscountV1', 'language', language)
             const localVarPath = `/method/plan_storage/get_discount`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -238,6 +236,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -258,16 +258,14 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get info for storage tariff
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {PlanStorageListV1LanguageEnum} language Current language
+         * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v: list1VEnum, language: list1LanguageEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('list1', 'v', v)
+        planStorageListV1: async (language: PlanStorageListV1LanguageEnum, v?: PlanStorageListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('list1', 'language', language)
+            assertParamExists('planStorageListV1', 'language', language)
             const localVarPath = `/method/plan_storage/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -282,6 +280,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -302,19 +302,17 @@ export const axiosParamCreator = function (configuration?: Configuration) {
         /**
          * 
          * @summary Get tariff for project
-         * @param {tariff1VEnum} v Version
-         * @param {tariff1LanguageEnum} language Current language
+         * @param {PlanStorageTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tariff1: async (v: tariff1VEnum, language: tariff1LanguageEnum, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('tariff1', 'v', v)
+        planStorageTariffV1: async (language: PlanStorageTariffV1LanguageEnum, projectId: number, v?: PlanStorageTariffV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('tariff1', 'language', language)
+            assertParamExists('planStorageTariffV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('tariff1', 'projectId', projectId)
+            assertParamExists('planStorageTariffV1', 'projectId', projectId)
             const localVarPath = `/method/plan_storage`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -329,6 +327,8 @@ export const axiosParamCreator = function (configuration?: Configuration) {
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -357,98 +357,98 @@ export const axiosParamCreator = function (configuration?: Configuration) {
  * PlanStorageApi - functional programming interface
  * @export
  */
-export const fp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = axiosParamCreator(configuration)
+export const PlanStorageApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = PlanStorageApiAxiosParamCreator(configuration)
     return {
         /**
          * 
          * @summary Buy storage tariff
-         * @param {buy1VEnum} v Version
-         * @param {buy1LanguageEnum} language Current language
+         * @param {PlanStorageBuyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {buy1PeriodEnum} period Period
+         * @param {PlanStorageBuyV1PeriodEnum} period Period
          * @param {number} planStorageId Storage plan id
+         * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [size] Size
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async buy1(v: buy1VEnum, language: buy1LanguageEnum, projectId: number, period: buy1PeriodEnum, planStorageId: number, size?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.buy1(v, language, projectId, period, planStorageId, size, options);
+        async planStorageBuyV1(language: PlanStorageBuyV1LanguageEnum, projectId: number, period: PlanStorageBuyV1PeriodEnum, planStorageId: number, v?: PlanStorageBuyV1VEnum, size?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageBuyV1(language, projectId, period, planStorageId, v, size, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.buy1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageBuyV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Remove next tariff
-         * @param {cancel1VEnum} v Version
-         * @param {cancel1LanguageEnum} language Current language
+         * @param {PlanStorageCancelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cancel1(v: cancel1VEnum, language: cancel1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cancel1(v, language, projectId, options);
+        async planStorageCancelV1(language: PlanStorageCancelV1LanguageEnum, projectId: number, v?: PlanStorageCancelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageCancelV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.cancel1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageCancelV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Check storage tariff before buy
-         * @param {check1VEnum} v Version
-         * @param {check1LanguageEnum} language Current language
+         * @param {PlanStorageCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async check1(v: check1VEnum, language: check1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageCheckResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.check1(v, language, projectId, options);
+        async planStorageCheckV1(language: PlanStorageCheckV1LanguageEnum, projectId: number, v?: PlanStorageCheckV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageCheckResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageCheckV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.check1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageCheckV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get discount of storage
-         * @param {getDiscount1VEnum} v Version
-         * @param {getDiscount1LanguageEnum} language Current language
+         * @param {PlanStorageGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDiscount1(v: getDiscount1VEnum, language: getDiscount1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageDiscountResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDiscount1(v, language, options);
+        async planStorageGetDiscountV1(language: PlanStorageGetDiscountV1LanguageEnum, v?: PlanStorageGetDiscountV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageDiscountResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageGetDiscountV1(language, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.getDiscount1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageGetDiscountV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get info for storage tariff
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {PlanStorageListV1LanguageEnum} language Current language
+         * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v: list1VEnum, language: list1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, options);
+        async planStorageListV1(language: PlanStorageListV1LanguageEnum, v?: PlanStorageListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageListV1(language, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.list1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
          * @summary Get tariff for project
-         * @param {tariff1VEnum} v Version
-         * @param {tariff1LanguageEnum} language Current language
+         * @param {PlanStorageTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async tariff1(v: tariff1VEnum, language: tariff1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageForProject>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.tariff1(v, language, projectId, options);
+        async planStorageTariffV1(language: PlanStorageTariffV1LanguageEnum, projectId: number, v?: PlanStorageTariffV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageForProject>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageTariffV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.tariff1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageTariffV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -458,257 +458,313 @@ export const fp = function(configuration?: Configuration) {
  * PlanStorageApi - factory interface
  * @export
  */
-export const factory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = fp(configuration)
+export const PlanStorageApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = PlanStorageApiFp(configuration)
     return {
         /**
          * 
          * @summary Buy storage tariff
-         * @param {buy1Request} requestParameters Request parameters.
+         * @param {PlanStorageApiPlanStorageBuyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buy1(requestParameters: buy1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: buy1VEnum = requestParameters.v || buy1VEnum._1;
-            return localVarFp.buy1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planStorageId, requestParameters.size, options).then((request) => request(axios, basePath));
+        planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.planStorageBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planStorageId, requestParameters.v, requestParameters.size, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Remove next tariff
-         * @param {cancel1Request} requestParameters Request parameters.
+         * @param {PlanStorageApiPlanStorageCancelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancel1(requestParameters: cancel1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: cancel1VEnum = requestParameters.v || cancel1VEnum._1;
-            return localVarFp.cancel1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.planStorageCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Check storage tariff before buy
-         * @param {check1Request} requestParameters Request parameters.
+         * @param {PlanStorageApiPlanStorageCheckV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check1(requestParameters: check1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageCheckResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: check1VEnum = requestParameters.v || check1VEnum._1;
-            return localVarFp.check1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageCheckResponse> {
+            return localVarFp.planStorageCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get discount of storage
-         * @param {getDiscount1Request} requestParameters Request parameters.
+         * @param {PlanStorageApiPlanStorageGetDiscountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDiscount1(requestParameters: getDiscount1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageDiscountResponse> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: getDiscount1VEnum = requestParameters.v || getDiscount1VEnum._1;
-            return localVarFp.getDiscount1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageDiscountResponse> {
+            return localVarFp.planStorageGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get info for storage tariff
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {PlanStorageApiPlanStorageListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageResponseDto> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageResponseDto> {
+            return localVarFp.planStorageListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get tariff for project
-         * @param {tariff1Request} requestParameters Request parameters.
+         * @param {PlanStorageApiPlanStorageTariffV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tariff1(requestParameters: tariff1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageForProject> {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV: tariff1VEnum = requestParameters.v || tariff1VEnum._1;
-            return localVarFp.tariff1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageForProject> {
+            return localVarFp.planStorageTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for buy1 operation in PlanStorageApi.
+ * PlanStorageApi - interface
  * @export
- * @interface buy1Request
+ * @interface PlanStorageApi
  */
-export interface buy1Request {
+export interface PlanStorageApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof buy1
+     * 
+     * @summary Buy storage tariff
+     * @param {PlanStorageApiPlanStorageBuyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
      */
-    readonly v?: buy1VEnum
+    planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
+    /**
+     * 
+     * @summary Remove next tariff
+     * @param {PlanStorageApiPlanStorageCancelV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
+     */
+    planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Check storage tariff before buy
+     * @param {PlanStorageApiPlanStorageCheckV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
+     */
+    planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageCheckResponse>;
+
+    /**
+     * 
+     * @summary Get discount of storage
+     * @param {PlanStorageApiPlanStorageGetDiscountV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
+     */
+    planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageDiscountResponse>;
+
+    /**
+     * 
+     * @summary Get info for storage tariff
+     * @param {PlanStorageApiPlanStorageListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
+     */
+    planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageResponseDto>;
+
+    /**
+     * 
+     * @summary Get tariff for project
+     * @param {PlanStorageApiPlanStorageTariffV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
+     */
+    planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageForProject>;
+
+}
+
+/**
+ * Request parameters for planStorageBuyV1 operation in PlanStorageApi.
+ * @export
+ * @interface PlanStorageApiPlanStorageBuyV1Request
+ */
+export interface PlanStorageApiPlanStorageBuyV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof buy1
+     * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly language: buy1LanguageEnum
+    readonly language: PlanStorageBuyV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof buy1
+     * @memberof PlanStorageApiPlanStorageBuyV1
      */
     readonly projectId: number
 
     /**
      * Period
      * @type {'month' | 'year'}
-     * @memberof buy1
+     * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly period: buy1PeriodEnum
+    readonly period: PlanStorageBuyV1PeriodEnum
 
     /**
      * Storage plan id
      * @type {number}
-     * @memberof buy1
+     * @memberof PlanStorageApiPlanStorageBuyV1
      */
     readonly planStorageId: number
 
     /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageBuyV1
+     */
+    readonly v?: PlanStorageBuyV1VEnum
+
+    /**
      * Size
      * @type {number}
-     * @memberof buy1
+     * @memberof PlanStorageApiPlanStorageBuyV1
      */
     readonly size?: number
 }
 
 /**
- * Request parameters for cancel1 operation in PlanStorageApi.
+ * Request parameters for planStorageCancelV1 operation in PlanStorageApi.
  * @export
- * @interface cancel1Request
+ * @interface PlanStorageApiPlanStorageCancelV1Request
  */
-export interface cancel1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof cancel1
-     */
-    readonly v?: cancel1VEnum
-
+export interface PlanStorageApiPlanStorageCancelV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof cancel1
+     * @memberof PlanStorageApiPlanStorageCancelV1
      */
-    readonly language: cancel1LanguageEnum
+    readonly language: PlanStorageCancelV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof cancel1
+     * @memberof PlanStorageApiPlanStorageCancelV1
      */
     readonly projectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageCancelV1
+     */
+    readonly v?: PlanStorageCancelV1VEnum
 }
 
 /**
- * Request parameters for check1 operation in PlanStorageApi.
+ * Request parameters for planStorageCheckV1 operation in PlanStorageApi.
  * @export
- * @interface check1Request
+ * @interface PlanStorageApiPlanStorageCheckV1Request
  */
-export interface check1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof check1
-     */
-    readonly v?: check1VEnum
-
+export interface PlanStorageApiPlanStorageCheckV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof check1
+     * @memberof PlanStorageApiPlanStorageCheckV1
      */
-    readonly language: check1LanguageEnum
+    readonly language: PlanStorageCheckV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof check1
+     * @memberof PlanStorageApiPlanStorageCheckV1
      */
     readonly projectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageCheckV1
+     */
+    readonly v?: PlanStorageCheckV1VEnum
 }
 
 /**
- * Request parameters for getDiscount1 operation in PlanStorageApi.
+ * Request parameters for planStorageGetDiscountV1 operation in PlanStorageApi.
  * @export
- * @interface getDiscount1Request
+ * @interface PlanStorageApiPlanStorageGetDiscountV1Request
  */
-export interface getDiscount1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getDiscount1
-     */
-    readonly v?: getDiscount1VEnum
-
+export interface PlanStorageApiPlanStorageGetDiscountV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getDiscount1
+     * @memberof PlanStorageApiPlanStorageGetDiscountV1
      */
-    readonly language: getDiscount1LanguageEnum
+    readonly language: PlanStorageGetDiscountV1LanguageEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageGetDiscountV1
+     */
+    readonly v?: PlanStorageGetDiscountV1VEnum
 }
 
 /**
- * Request parameters for list1 operation in PlanStorageApi.
+ * Request parameters for planStorageListV1 operation in PlanStorageApi.
  * @export
- * @interface list1Request
+ * @interface PlanStorageApiPlanStorageListV1Request
  */
-export interface list1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
-     */
-    readonly v?: list1VEnum
-
+export interface PlanStorageApiPlanStorageListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof PlanStorageApiPlanStorageListV1
      */
-    readonly language: list1LanguageEnum
+    readonly language: PlanStorageListV1LanguageEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageListV1
+     */
+    readonly v?: PlanStorageListV1VEnum
 }
 
 /**
- * Request parameters for tariff1 operation in PlanStorageApi.
+ * Request parameters for planStorageTariffV1 operation in PlanStorageApi.
  * @export
- * @interface tariff1Request
+ * @interface PlanStorageApiPlanStorageTariffV1Request
  */
-export interface tariff1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof tariff1
-     */
-    readonly v?: tariff1VEnum
-
+export interface PlanStorageApiPlanStorageTariffV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof tariff1
+     * @memberof PlanStorageApiPlanStorageTariffV1
      */
-    readonly language: tariff1LanguageEnum
+    readonly language: PlanStorageTariffV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof tariff1
+     * @memberof PlanStorageApiPlanStorageTariffV1
      */
     readonly projectId: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageTariffV1
+     */
+    readonly v?: PlanStorageTariffV1VEnum
 }
 
 /**
@@ -717,205 +773,193 @@ export interface tariff1Request {
  * @class PlanStorageApi
  * @extends {BaseAPI}
  */
-export class PlanStorageApi extends BaseAPI {
+export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
     /**
      * 
      * @summary Buy storage tariff
-     * @param {buy1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    public buy1(requestParameters: buy1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: buy1VEnum = requestParameters.v || buy1VEnum._1;
-        return fp(this.configuration).buy1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planStorageId, requestParameters.size, options).then((request) => request(this.axios, this.basePath));
+    public planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig) {
+        return PlanStorageApiFp(this.configuration).planStorageBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planStorageId, requestParameters.v, requestParameters.size, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Remove next tariff
-     * @param {cancel1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    public cancel1(requestParameters: cancel1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: cancel1VEnum = requestParameters.v || cancel1VEnum._1;
-        return fp(this.configuration).cancel1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    public planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig) {
+        return PlanStorageApiFp(this.configuration).planStorageCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Check storage tariff before buy
-     * @param {check1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    public check1(requestParameters: check1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: check1VEnum = requestParameters.v || check1VEnum._1;
-        return fp(this.configuration).check1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    public planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig) {
+        return PlanStorageApiFp(this.configuration).planStorageCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get discount of storage
-     * @param {getDiscount1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    public getDiscount1(requestParameters: getDiscount1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: getDiscount1VEnum = requestParameters.v || getDiscount1VEnum._1;
-        return fp(this.configuration).getDiscount1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    public planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig) {
+        return PlanStorageApiFp(this.configuration).planStorageGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get info for storage tariff
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    public list1(requestParameters: list1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: list1VEnum = requestParameters.v || list1VEnum._1;
-        return fp(this.configuration).list1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    public planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig) {
+        return PlanStorageApiFp(this.configuration).planStorageListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get tariff for project
-     * @param {tariff1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    public tariff1(requestParameters: tariff1Request, options?: RawAxiosRequestConfig) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV: tariff1VEnum = requestParameters.v || tariff1VEnum._1;
-        return fp(this.configuration).tariff1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    public planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig) {
+        return PlanStorageApiFp(this.configuration).planStorageTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
-  * @export
-  * @enum {string}
-  */
-export enum buy1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PlanStorageBuyV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlanStorageBuyV1LanguageEnum = typeof PlanStorageBuyV1LanguageEnum[keyof typeof PlanStorageBuyV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum buy1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PlanStorageBuyV1PeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+} as const;
+export type PlanStorageBuyV1PeriodEnum = typeof PlanStorageBuyV1PeriodEnum[keyof typeof PlanStorageBuyV1PeriodEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum buy1PeriodEnum {
-    month = 'month',
-    year = 'year'
-}
+ * @export
+ */
+export const PlanStorageBuyV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PlanStorageBuyV1VEnum = typeof PlanStorageBuyV1VEnum[keyof typeof PlanStorageBuyV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum cancel1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PlanStorageCancelV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlanStorageCancelV1LanguageEnum = typeof PlanStorageCancelV1LanguageEnum[keyof typeof PlanStorageCancelV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum cancel1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PlanStorageCancelV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PlanStorageCancelV1VEnum = typeof PlanStorageCancelV1VEnum[keyof typeof PlanStorageCancelV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum check1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PlanStorageCheckV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlanStorageCheckV1LanguageEnum = typeof PlanStorageCheckV1LanguageEnum[keyof typeof PlanStorageCheckV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum check1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PlanStorageCheckV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PlanStorageCheckV1VEnum = typeof PlanStorageCheckV1VEnum[keyof typeof PlanStorageCheckV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getDiscount1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PlanStorageGetDiscountV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlanStorageGetDiscountV1LanguageEnum = typeof PlanStorageGetDiscountV1LanguageEnum[keyof typeof PlanStorageGetDiscountV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum getDiscount1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PlanStorageGetDiscountV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PlanStorageGetDiscountV1VEnum = typeof PlanStorageGetDiscountV1VEnum[keyof typeof PlanStorageGetDiscountV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PlanStorageListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlanStorageListV1LanguageEnum = typeof PlanStorageListV1LanguageEnum[keyof typeof PlanStorageListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum list1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PlanStorageListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PlanStorageListV1VEnum = typeof PlanStorageListV1VEnum[keyof typeof PlanStorageListV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum tariff1VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
+ * @export
+ */
+export const PlanStorageTariffV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlanStorageTariffV1LanguageEnum = typeof PlanStorageTariffV1LanguageEnum[keyof typeof PlanStorageTariffV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export enum tariff1LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+ * @export
+ */
+export const PlanStorageTariffV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+export type PlanStorageTariffV1VEnum = typeof PlanStorageTariffV1VEnum[keyof typeof PlanStorageTariffV1VEnum];

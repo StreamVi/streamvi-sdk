@@ -5,20 +5,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** | Level of notify. Default is info | [default to TypeEnum_info]
-**text** | **string** | Text of notify | [default to undefined]
+**type** | **string** | Level of notify. Default is info | [default to TypeEnum_Info]
 **title** | **string** | Title of notify | [optional] [default to undefined]
+**text** | **string** | Text of notify | [default to undefined]
 **actions** | [**Array&lt;InternalNotifyTypeAction&gt;**](InternalNotifyTypeAction.md) | Array of texts | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteScreenNotifyUserResponse } from './api';
+import { SiteScreenNotifyUserResponse } from 'streamvi-api-client';
 
 const instance: SiteScreenNotifyUserResponse = {
     type,
-    text,
     title,
+    text,
     actions,
 };
 ```

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TCityChartData } from './api';
+import { TCityChartData } from 'streamvi-api-client';
 
 const instance: TCityChartData = {
     chartData,

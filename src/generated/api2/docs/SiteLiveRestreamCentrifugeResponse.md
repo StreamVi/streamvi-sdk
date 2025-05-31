@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**update_url_channel** | [**SiteLiveRestreamCentrifugeItemV2**](SiteLiveRestreamCentrifugeItemV2.md) | Event for restream update url | [default to undefined]
-**update_stats_channel** | [**SiteLiveRestreamCentrifugeItemV2**](SiteLiveRestreamCentrifugeItemV2.md) | Event for restream update viewers | [default to undefined]
+**updateUrlChannel** | [**LiveRestreamCentrifugeItemV2**](LiveRestreamCentrifugeItemV2.md) | Event for restream update url | [default to undefined]
+**updateStatsChannel** | [**LiveRestreamCentrifugeItemV2**](LiveRestreamCentrifugeItemV2.md) | Event for restream update viewers | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SiteLiveRestreamCentrifugeResponse } from './api';
+import { SiteLiveRestreamCentrifugeResponse } from 'streamvi-api-client';
 
 const instance: SiteLiveRestreamCentrifugeResponse = {
-    update_url_channel,
-    update_stats_channel,
+    updateUrlChannel,
+    updateStatsChannel,
 };
 ```
 

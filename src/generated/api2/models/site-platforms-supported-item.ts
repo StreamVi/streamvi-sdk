@@ -43,7 +43,7 @@ export interface SitePlatformsSupportedItem {
      * @type {string}
      * @memberof SitePlatformsSupportedItem
      */
-    'extension': ExtensionEnum;
+    'extension': SitePlatformsSupportedItemExtensionEnum;
     /**
      * url
      * @type {string}
@@ -148,13 +148,11 @@ export interface SitePlatformsSupportedItem {
     'like': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ExtensionEnum {
-    png = 'png',
-    svg = 'svg'
-}
+export const SitePlatformsSupportedItemExtensionEnum = {
+    Png: 'png',
+    Svg: 'svg'
+} as const;
+
+export type SitePlatformsSupportedItemExtensionEnum = typeof SitePlatformsSupportedItemExtensionEnum[keyof typeof SitePlatformsSupportedItemExtensionEnum];
 
 

@@ -15,10 +15,10 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { SiteTelegramChatInfoResponseDto } from './site-telegram-chat-info-response-dto';
+import type { TelegramChatInfoResponseDto } from './telegram-chat-info-response-dto';
 // May contain unused imports in some cases
 // @ts-ignore
-import type { SiteTelegramChatPostsItem } from './site-telegram-chat-posts-item';
+import type { TelegramChatPostsItem } from './telegram-chat-posts-item';
 
 /**
  * 
@@ -31,30 +31,28 @@ export interface TelegramSettingsDto {
      * @type {number}
      * @memberof TelegramSettingsDto
      */
-    'filter_mode': FilterModeEnum;
+    'filter_mode': TelegramSettingsDtoFilterModeEnum;
     /**
      * Chat info
-     * @type {SiteTelegramChatInfoResponseDto}
+     * @type {TelegramChatInfoResponseDto}
      * @memberof TelegramSettingsDto
      */
-    'chat': SiteTelegramChatInfoResponseDto;
+    'chat': TelegramChatInfoResponseDto;
     /**
      * Post
-     * @type {SiteTelegramChatPostsItem}
+     * @type {TelegramChatPostsItem}
      * @memberof TelegramSettingsDto
      */
-    'post'?: SiteTelegramChatPostsItem;
+    'post'?: TelegramChatPostsItem;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum FilterModeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1,
-    NUMBER_2 = 2,
-    NUMBER_3 = 3
-}
+export const TelegramSettingsDtoFilterModeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3
+} as const;
+
+export type TelegramSettingsDtoFilterModeEnum = typeof TelegramSettingsDtoFilterModeEnum[keyof typeof TelegramSettingsDtoFilterModeEnum];
 
 

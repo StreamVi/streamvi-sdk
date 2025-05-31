@@ -25,13 +25,13 @@ export interface SiteUpdateOptionsVkRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateOptionsVkRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateOptionsVkRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -91,13 +91,13 @@ export interface SiteUpdateOptionsVkRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'privacy_comments': PrivacyCommentsEnum;
+    'privacy_comments': SiteUpdateOptionsVkRequestPrivacyCommentsEnum;
     /**
      * 
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'privacy_video': PrivacyVideoEnum;
+    'privacy_video': SiteUpdateOptionsVkRequestPrivacyVideoEnum;
     /**
      * Is publish stream on wall
      * @type {boolean}
@@ -106,43 +106,35 @@ export interface SiteUpdateOptionsVkRequest {
     'wall': boolean;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PrivacyCommentsEnum {
-    all = 'all',
-    members = 'members',
-    editors = 'editors',
-    nobody = 'nobody'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PrivacyVideoEnum {
-    all = 'all',
-    members = 'members',
-    editors = 'editors',
-    nobody = 'nobody'
-}
+export const SiteUpdateOptionsVkRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type SiteUpdateOptionsVkRequestVEnum = typeof SiteUpdateOptionsVkRequestVEnum[keyof typeof SiteUpdateOptionsVkRequestVEnum];
+export const SiteUpdateOptionsVkRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SiteUpdateOptionsVkRequestLanguageEnum = typeof SiteUpdateOptionsVkRequestLanguageEnum[keyof typeof SiteUpdateOptionsVkRequestLanguageEnum];
+export const SiteUpdateOptionsVkRequestPrivacyCommentsEnum = {
+    All: 'all',
+    Members: 'members',
+    Editors: 'editors',
+    Nobody: 'nobody'
+} as const;
+
+export type SiteUpdateOptionsVkRequestPrivacyCommentsEnum = typeof SiteUpdateOptionsVkRequestPrivacyCommentsEnum[keyof typeof SiteUpdateOptionsVkRequestPrivacyCommentsEnum];
+export const SiteUpdateOptionsVkRequestPrivacyVideoEnum = {
+    All: 'all',
+    Members: 'members',
+    Editors: 'editors',
+    Nobody: 'nobody'
+} as const;
+
+export type SiteUpdateOptionsVkRequestPrivacyVideoEnum = typeof SiteUpdateOptionsVkRequestPrivacyVideoEnum[keyof typeof SiteUpdateOptionsVkRequestPrivacyVideoEnum];
 
 

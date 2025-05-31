@@ -25,13 +25,13 @@ export interface SiteSetNameRequest {
      * @type {string}
      * @memberof SiteSetNameRequest
      */
-    'v': VEnum;
+    'v': SiteSetNameRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteSetNameRequest
      */
-    'language': LanguageEnum;
+    'language': SiteSetNameRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -52,23 +52,19 @@ export interface SiteSetNameRequest {
     'name': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const SiteSetNameRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type SiteSetNameRequestVEnum = typeof SiteSetNameRequestVEnum[keyof typeof SiteSetNameRequestVEnum];
+export const SiteSetNameRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SiteSetNameRequestLanguageEnum = typeof SiteSetNameRequestLanguageEnum[keyof typeof SiteSetNameRequestLanguageEnum];
 
 

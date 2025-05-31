@@ -34,13 +34,13 @@ export interface BalanceForPayResponse {
      * @type {string}
      * @memberof BalanceForPayResponse
      */
-    'currency': CurrencyEnum;
+    'currency': BalanceForPayResponseCurrencyEnum;
     /**
      * Allowed balances
      * @type {Array<string>}
      * @memberof BalanceForPayResponse
      */
-    'balances_allow': Array<BalancesAllowEnum>;
+    'balances_allow': Array<BalanceForPayResponseBalancesAllowEnum>;
     /**
      * Balances values
      * @type {MoneyFlowBalanceTypeValuesResponse}
@@ -49,22 +49,18 @@ export interface BalanceForPayResponse {
     'balances_values': MoneyFlowBalanceTypeValuesResponse;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CurrencyEnum {
-    rub = 'rub',
-    usd = 'usd'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum BalancesAllowEnum {
-    bonus = 'bonus',
-    payment = 'payment',
-    profit = 'profit'
-}
+export const BalanceForPayResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+} as const;
+
+export type BalanceForPayResponseCurrencyEnum = typeof BalanceForPayResponseCurrencyEnum[keyof typeof BalanceForPayResponseCurrencyEnum];
+export const BalanceForPayResponseBalancesAllowEnum = {
+    Bonus: 'bonus',
+    Payment: 'payment',
+    Profit: 'profit'
+} as const;
+
+export type BalanceForPayResponseBalancesAllowEnum = typeof BalanceForPayResponseBalancesAllowEnum[keyof typeof BalanceForPayResponseBalancesAllowEnum];
 
 

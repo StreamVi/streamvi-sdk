@@ -24,6 +24,12 @@ import type { MethodProjectLiveStatusInfoRestreamData } from './method-project-l
  */
 export interface MethodProjectLiveStatusInfo {
     /**
+     * Restream data
+     * @type {Array<MethodProjectLiveStatusInfoRestreamData>}
+     * @memberof MethodProjectLiveStatusInfo
+     */
+    'restream_data'?: Array<MethodProjectLiveStatusInfoRestreamData>;
+    /**
      * 
      * @type {number}
      * @memberof MethodProjectLiveStatusInfo
@@ -89,11 +95,5 @@ export interface MethodProjectLiveStatusInfo {
      * @memberof MethodProjectLiveStatusInfo
      */
     'restrims': number;
-    /**
-     * Restream data
-     * @type {Array<MethodProjectLiveStatusInfoRestreamData>}
-     * @memberof MethodProjectLiveStatusInfo
-     */
-    'restream_data'?: Array<MethodProjectLiveStatusInfoRestreamData>;
 }
 

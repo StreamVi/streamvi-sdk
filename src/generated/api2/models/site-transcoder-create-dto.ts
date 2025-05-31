@@ -25,31 +25,19 @@ export interface SiteTranscoderCreateDto {
      * @type {string}
      * @memberof SiteTranscoderCreateDto
      */
-    'v': VEnum;
+    'v': SiteTranscoderCreateDtoVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteTranscoderCreateDto
      */
-    'language': LanguageEnum;
+    'language': SiteTranscoderCreateDtoLanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof SiteTranscoderCreateDto
      */
     'project_id': number;
-    /**
-     * Name
-     * @type {string}
-     * @memberof SiteTranscoderCreateDto
-     */
-    'name': string;
-    /**
-     * Video codec id
-     * @type {number}
-     * @memberof SiteTranscoderCreateDto
-     */
-    'videoCodecId': number;
     /**
      * Width
      * @type {number}
@@ -81,6 +69,12 @@ export interface SiteTranscoderCreateDto {
      */
     'aBitrate'?: number;
     /**
+     * Name
+     * @type {string}
+     * @memberof SiteTranscoderCreateDto
+     */
+    'name': string;
+    /**
      * Rotation
      * @type {number}
      * @memberof SiteTranscoderCreateDto
@@ -98,25 +92,27 @@ export interface SiteTranscoderCreateDto {
      * @memberof SiteTranscoderCreateDto
      */
     'channelIds'?: number;
+    /**
+     * Video codec id
+     * @type {number}
+     * @memberof SiteTranscoderCreateDto
+     */
+    'videoCodecId': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
+export const SiteTranscoderCreateDtoVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type SiteTranscoderCreateDtoVEnum = typeof SiteTranscoderCreateDtoVEnum[keyof typeof SiteTranscoderCreateDtoVEnum];
+export const SiteTranscoderCreateDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SiteTranscoderCreateDtoLanguageEnum = typeof SiteTranscoderCreateDtoLanguageEnum[keyof typeof SiteTranscoderCreateDtoLanguageEnum];
 
 

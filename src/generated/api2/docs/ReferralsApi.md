@@ -4,28 +4,32 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**totalInfo1**](#totalinfo1) | **GET** /method/referrals/info | Total info|
+|[**referralsTotalInfoV1**](#referralstotalinfov1) | **GET** /method/referrals/info | Total info|
 
-# **totalInfo1**
-> SiteTotalInfoReferralsResponse totalInfo1()
+# **referralsTotalInfoV1**
+> SiteTotalInfoReferralsResponse referralsTotalInfoV1()
 
 
 ### Example
 
 ```typescript
-import { StreamViSdkConfig } from '../../../streamvi-sdk-config';
-import { ReferralsApi } from './api';
+import {
+    ReferralsApi,
+    Configuration
+} from 'streamvi-api-client';
 
-const sdkConfig = new StreamViSdkConfig({ accessToken: 'your_access_token' });
-const apiInstance = new ReferralsApi(sdkConfig.configuration);
+const configuration = new Configuration();
+const apiInstance = new ReferralsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
+let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
-const { status, data } = await apiInstance.totalInfo1({
+const { status, data } = await apiInstance.referralsTotalInfoV1(
     language,
-    projectId
-  });
+    projectId,
+    v
+);
 ```
 
 ### Parameters
@@ -34,6 +38,7 @@ const { status, data } = await apiInstance.totalInfo1({
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

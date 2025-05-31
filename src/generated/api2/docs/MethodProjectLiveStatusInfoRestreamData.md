@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MethodProjectLiveStatusInfoRestreamData } from './api';
+import { MethodProjectLiveStatusInfoRestreamData } from 'streamvi-api-client';
 
 const instance: MethodProjectLiveStatusInfoRestreamData = {
     id,

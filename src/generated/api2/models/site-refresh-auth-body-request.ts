@@ -25,19 +25,19 @@ export interface SiteRefreshAuthBodyRequest {
      * @type {string}
      * @memberof SiteRefreshAuthBodyRequest
      */
-    'v': VEnum;
+    'v': SiteRefreshAuthBodyRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteRefreshAuthBodyRequest
      */
-    'language': LanguageEnum;
+    'language': SiteRefreshAuthBodyRequestLanguageEnum;
     /**
      * App oauth
      * @type {string}
      * @memberof SiteRefreshAuthBodyRequest
      */
-    'app': AppEnum;
+    'app': SiteRefreshAuthBodyRequestAppEnum;
     /**
      * Refresh token
      * @type {string}
@@ -52,33 +52,27 @@ export interface SiteRefreshAuthBodyRequest {
     'fingerprint'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum VEnum {
-    _1 = '1',
-    _2 = '2',
-    _3 = '3'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum LanguageEnum {
-    ru = 'ru',
-    en = 'en',
-    cn = 'cn'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum AppEnum {
-    site = 'site',
-    admin = 'admin',
-    mobile = 'mobile',
-    desktop = 'desktop'
-}
+export const SiteRefreshAuthBodyRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+} as const;
+
+export type SiteRefreshAuthBodyRequestVEnum = typeof SiteRefreshAuthBodyRequestVEnum[keyof typeof SiteRefreshAuthBodyRequestVEnum];
+export const SiteRefreshAuthBodyRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type SiteRefreshAuthBodyRequestLanguageEnum = typeof SiteRefreshAuthBodyRequestLanguageEnum[keyof typeof SiteRefreshAuthBodyRequestLanguageEnum];
+export const SiteRefreshAuthBodyRequestAppEnum = {
+    Site: 'site',
+    Admin: 'admin',
+    Mobile: 'mobile',
+    Desktop: 'desktop'
+} as const;
+
+export type SiteRefreshAuthBodyRequestAppEnum = typeof SiteRefreshAuthBodyRequestAppEnum[keyof typeof SiteRefreshAuthBodyRequestAppEnum];
 
 

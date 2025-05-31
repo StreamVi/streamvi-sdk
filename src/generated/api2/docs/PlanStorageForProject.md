@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlanStorageForProject } from './api';
+import { PlanStorageForProject } from 'streamvi-api-client';
 
 const instance: PlanStorageForProject = {
     before,
