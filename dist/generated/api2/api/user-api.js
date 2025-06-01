@@ -54,6 +54,9 @@ const UserApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -101,6 +104,9 @@ const UserApiAxiosParamCreator = function (configuration) {
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
             if (v !== undefined) {
                 localVarFormParams.append('v', v);
+            }
+            else {
+                localVarFormParams.append('v', '1');
             }
             if (language !== undefined) {
                 localVarFormParams.append('language', language);

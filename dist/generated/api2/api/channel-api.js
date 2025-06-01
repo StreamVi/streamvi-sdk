@@ -56,6 +56,9 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -103,6 +106,9 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "X-API-KEY", configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;

@@ -87,6 +87,9 @@ const CentrifugeApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '2';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -133,6 +136,9 @@ const CentrifugeApiAxiosParamCreator = function (configuration) {
             }
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
