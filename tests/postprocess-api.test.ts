@@ -322,4 +322,99 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
       expect(result.totalChanges).toBe(1);
     });
   });
+});
+
+describe('processMarkdownFile', () => {
+  it('должен исправлять HTML-сущности в типах параметров', () => {
+    const testContent = `
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **url** | [**string**] | Url of page | defaults to undefined|
+`;
+
+    const expectedContent = `
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **url** | **string** | Url of page | defaults to undefined|
+`;
+
+    // Создаем временный файл
+    const tempFile = path.join(__dirname, 'temp-markdown-test.md');
+    fs.writeFileSync(tempFile, testContent);
+
+    try {
+      const result = processMarkdownFile(tempFile);
+      const actualContent = fs.readFileSync(tempFile, 'utf8');
+      
+      expect(result.totalChanges).toBeGreaterThan(0);
+      expect(actualContent).toContain("**'ru' | 'en' | 'cn'**");
+      expect(actualContent).toContain("**string**");
+      expect(actualContent).not.toContain("&#39;");
+      expect(actualContent).not.toContain("&#124;");
+      expect(actualContent).not.toContain("[**string**]");
+    } finally {
+      // Удаляем временный файл
+      if (fs.existsSync(tempFile)) {
+        fs.unlinkSync(tempFile);
+      }
+    }
+  });
+
+  it('должен исправлять дублирование типов в таблицах параметров', () => {
+    const testContent = `
+| **v** | [**'1' | '2' | '3'**]**Array<'1' | '2' | '3'>** | Version | optional |
+`;
+
+    const expectedPattern = /\*\*'1' \| '2' \| '3'\*\*/;
+
+    // Создаем временный файл
+    const tempFile = path.join(__dirname, 'temp-markdown-duplicate-test.md');
+    fs.writeFileSync(tempFile, testContent);
+
+    try {
+      const result = processMarkdownFile(tempFile);
+      const actualContent = fs.readFileSync(tempFile, 'utf8');
+      
+      expect(result.totalChanges).toBeGreaterThan(0);
+      expect(actualContent).toMatch(expectedPattern);
+      expect(actualContent).not.toContain("Array<");
+    } finally {
+      // Удаляем временный файл
+      if (fs.existsSync(tempFile)) {
+        fs.unlinkSync(tempFile);
+      }
+    }
+  });
+
+  it('не должен изменять файлы без проблем форматирования', () => {
+    const testContent = `
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **url** | **string** | Url of page | defaults to undefined|
+`;
+
+    // Создаем временный файл
+    const tempFile = path.join(__dirname, 'temp-markdown-clean-test.md');
+    fs.writeFileSync(tempFile, testContent);
+
+    try {
+      const result = processMarkdownFile(tempFile);
+      
+      expect(result.totalChanges).toBe(0);
+    } finally {
+      // Удаляем временный файл
+      if (fs.existsSync(tempFile)) {
+        fs.unlinkSync(tempFile);
+      }
+    }
+  });
 }); 
