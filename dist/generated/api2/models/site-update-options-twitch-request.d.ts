@@ -20,13 +20,13 @@ export interface SiteUpdateOptionsTwitchRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateOptionsTwitchRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateOptionsTwitchRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -62,7 +62,7 @@ export interface SiteUpdateOptionsTwitchRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'lang': LangEnum;
+    'lang': SiteUpdateOptionsTwitchRequestLangEnum;
     /**
      *
      * @type {Set<string>}
@@ -76,30 +76,21 @@ export interface SiteUpdateOptionsTwitchRequest {
      */
     'domain': string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LangEnum {
-    ru = "ru",
-    en = "en"
-}
+export declare const SiteUpdateOptionsTwitchRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteUpdateOptionsTwitchRequestVEnum = typeof SiteUpdateOptionsTwitchRequestVEnum[keyof typeof SiteUpdateOptionsTwitchRequestVEnum];
+export declare const SiteUpdateOptionsTwitchRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteUpdateOptionsTwitchRequestLanguageEnum = typeof SiteUpdateOptionsTwitchRequestLanguageEnum[keyof typeof SiteUpdateOptionsTwitchRequestLanguageEnum];
+export declare const SiteUpdateOptionsTwitchRequestLangEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SiteUpdateOptionsTwitchRequestLangEnum = typeof SiteUpdateOptionsTwitchRequestLangEnum[keyof typeof SiteUpdateOptionsTwitchRequestLangEnum];
 //# sourceMappingURL=site-update-options-twitch-request.d.ts.map

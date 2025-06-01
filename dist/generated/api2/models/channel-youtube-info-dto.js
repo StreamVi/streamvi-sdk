@@ -13,42 +13,22 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AudienceEnum = exports.LatencyEnum = exports.PrivacyVideoEnum = exports.LangEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var LangEnum;
-(function (LangEnum) {
-    LangEnum["ru"] = "ru";
-    LangEnum["en"] = "en";
-})(LangEnum || (exports.LangEnum = LangEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var PrivacyVideoEnum;
-(function (PrivacyVideoEnum) {
-    PrivacyVideoEnum["private"] = "private";
-    PrivacyVideoEnum["public"] = "public";
-    PrivacyVideoEnum["unlisted"] = "unlisted";
-})(PrivacyVideoEnum || (exports.PrivacyVideoEnum = PrivacyVideoEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LatencyEnum;
-(function (LatencyEnum) {
-    LatencyEnum["normal"] = "normal";
-    LatencyEnum["low"] = "low";
-    LatencyEnum["ultraLow"] = "ultraLow";
-})(LatencyEnum || (exports.LatencyEnum = LatencyEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var AudienceEnum;
-(function (AudienceEnum) {
-    AudienceEnum["mark_for_kids"] = "mark_for_kids";
-    AudienceEnum["mark_for_nokids"] = "mark_for_nokids";
-})(AudienceEnum || (exports.AudienceEnum = AudienceEnum = {}));
+exports.ChannelYoutubeInfoDtoAudienceEnum = exports.ChannelYoutubeInfoDtoLatencyEnum = exports.ChannelYoutubeInfoDtoPrivacyVideoEnum = exports.ChannelYoutubeInfoDtoLangEnum = void 0;
+exports.ChannelYoutubeInfoDtoLangEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+exports.ChannelYoutubeInfoDtoPrivacyVideoEnum = {
+    Private: 'private',
+    Public: 'public',
+    Unlisted: 'unlisted'
+};
+exports.ChannelYoutubeInfoDtoLatencyEnum = {
+    Normal: 'normal',
+    Low: 'low',
+    UltraLow: 'ultraLow'
+};
+exports.ChannelYoutubeInfoDtoAudienceEnum = {
+    MarkForKids: 'mark_for_kids',
+    MarkForNokids: 'mark_for_nokids'
+};

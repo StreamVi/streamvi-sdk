@@ -19,17 +19,17 @@ import type { SuccessResponse } from '../models';
  * StreamKeyApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const StreamKeyApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Get stream credentials
-     * @param {key1VEnum} v Version
-     * @param {key1LanguageEnum} language Current language
+     * @param {StreamKeysKeyV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    key1: (v: key1VEnum, language: key1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    streamKeysKeyV1: (language: StreamKeysKeyV1LanguageEnum, projectId: number, v?: StreamKeysKeyV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update record
@@ -37,23 +37,23 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateRecord1: (setRecordStreamRequest: SetRecordStreamRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    streamKeysUpdateRecordV1: (setRecordStreamRequest: SetRecordStreamRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * StreamKeyApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const StreamKeyApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get stream credentials
-     * @param {key1VEnum} v Version
-     * @param {key1LanguageEnum} language Current language
+     * @param {StreamKeysKeyV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    key1(v: key1VEnum, language: key1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetStreamKeyResponse>>;
+    streamKeysKeyV1(language: StreamKeysKeyV1LanguageEnum, projectId: number, v?: StreamKeysKeyV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetStreamKeyResponse>>;
     /**
      *
      * @summary Update record
@@ -61,65 +61,90 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateRecord1(setRecordStreamRequest: SetRecordStreamRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    streamKeysUpdateRecordV1(setRecordStreamRequest: SetRecordStreamRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * StreamKeyApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const StreamKeyApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get stream credentials
-     * @param {key1Request} requestParameters Request parameters.
+     * @param {StreamKeyApiStreamKeysKeyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    key1(requestParameters: key1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetStreamKeyResponse>;
+    streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetStreamKeyResponse>;
     /**
      *
      * @summary Update record
-     * @param {updateRecord1Request} requestParameters Request parameters.
+     * @param {StreamKeyApiStreamKeysUpdateRecordV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateRecord1(requestParameters: updateRecord1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    streamKeysUpdateRecordV1(requestParameters: StreamKeyApiStreamKeysUpdateRecordV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 };
 /**
- * Request parameters for key1 operation in StreamKeyApi.
+ * StreamKeyApi - interface
  * @export
- * @interface key1Request
+ * @interface StreamKeyApi
  */
-export interface key1Request {
+export interface StreamKeyApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof key1
+     *
+     * @summary Get stream credentials
+     * @param {StreamKeyApiStreamKeysKeyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamKeyApiInterface
      */
-    readonly v?: key1VEnum;
+    streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetStreamKeyResponse>;
+    /**
+     *
+     * @summary Update record
+     * @param {StreamKeyApiStreamKeysUpdateRecordV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamKeyApiInterface
+     */
+    streamKeysUpdateRecordV1(requestParameters: StreamKeyApiStreamKeysUpdateRecordV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+}
+/**
+ * Request parameters for streamKeysKeyV1 operation in StreamKeyApi.
+ * @export
+ * @interface StreamKeyApiStreamKeysKeyV1Request
+ */
+export interface StreamKeyApiStreamKeysKeyV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof key1
+     * @memberof StreamKeyApiStreamKeysKeyV1
      */
-    readonly language: key1LanguageEnum;
+    readonly language: StreamKeysKeyV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof key1
+     * @memberof StreamKeyApiStreamKeysKeyV1
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof StreamKeyApiStreamKeysKeyV1
+     */
+    readonly v?: StreamKeysKeyV1VEnum;
 }
 /**
- * Request parameters for updateRecord1 operation in StreamKeyApi.
+ * Request parameters for streamKeysUpdateRecordV1 operation in StreamKeyApi.
  * @export
- * @interface updateRecord1Request
+ * @interface StreamKeyApiStreamKeysUpdateRecordV1Request
  */
-export interface updateRecord1Request {
+export interface StreamKeyApiStreamKeysUpdateRecordV1Request {
     /**
      *
      * @type {SetRecordStreamRequest}
-     * @memberof updateRecord1
+     * @memberof StreamKeyApiStreamKeysUpdateRecordV1
      */
     readonly setRecordStreamRequest: SetRecordStreamRequest;
 }
@@ -129,42 +154,42 @@ export interface updateRecord1Request {
  * @class StreamKeyApi
  * @extends {BaseAPI}
  */
-export declare class StreamKeyApi extends BaseAPI {
+export declare class StreamKeyApi extends BaseAPI implements StreamKeyApiInterface {
     /**
      *
      * @summary Get stream credentials
-     * @param {key1Request} requestParameters Request parameters.
+     * @param {StreamKeyApiStreamKeysKeyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StreamKeyApi
      */
-    key1(requestParameters: key1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetStreamKeyResponse, any>>;
+    streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetStreamKeyResponse, any>>;
     /**
      *
      * @summary Update record
-     * @param {updateRecord1Request} requestParameters Request parameters.
+     * @param {StreamKeyApiStreamKeysUpdateRecordV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StreamKeyApi
      */
-    updateRecord1(requestParameters: updateRecord1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    streamKeysUpdateRecordV1(requestParameters: StreamKeyApiStreamKeysUpdateRecordV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum key1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const StreamKeysKeyV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type StreamKeysKeyV1LanguageEnum = typeof StreamKeysKeyV1LanguageEnum[keyof typeof StreamKeysKeyV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum key1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const StreamKeysKeyV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type StreamKeysKeyV1VEnum = typeof StreamKeysKeyV1VEnum[keyof typeof StreamKeysKeyV1VEnum];
 //# sourceMappingURL=stream-key-api.d.ts.map

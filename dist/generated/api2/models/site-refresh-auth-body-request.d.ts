@@ -20,19 +20,19 @@ export interface SiteRefreshAuthBodyRequest {
      * @type {string}
      * @memberof SiteRefreshAuthBodyRequest
      */
-    'v': VEnum;
+    'v': SiteRefreshAuthBodyRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteRefreshAuthBodyRequest
      */
-    'language': LanguageEnum;
+    'language': SiteRefreshAuthBodyRequestLanguageEnum;
     /**
      * App oauth
      * @type {string}
      * @memberof SiteRefreshAuthBodyRequest
      */
-    'app': AppEnum;
+    'app': SiteRefreshAuthBodyRequestAppEnum;
     /**
      * Refresh token
      * @type {string}
@@ -46,32 +46,23 @@ export interface SiteRefreshAuthBodyRequest {
      */
     'fingerprint'?: string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum AppEnum {
-    site = "site",
-    admin = "admin",
-    mobile = "mobile",
-    desktop = "desktop"
-}
+export declare const SiteRefreshAuthBodyRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteRefreshAuthBodyRequestVEnum = typeof SiteRefreshAuthBodyRequestVEnum[keyof typeof SiteRefreshAuthBodyRequestVEnum];
+export declare const SiteRefreshAuthBodyRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteRefreshAuthBodyRequestLanguageEnum = typeof SiteRefreshAuthBodyRequestLanguageEnum[keyof typeof SiteRefreshAuthBodyRequestLanguageEnum];
+export declare const SiteRefreshAuthBodyRequestAppEnum: {
+    readonly Site: "site";
+    readonly Admin: "admin";
+    readonly Mobile: "mobile";
+    readonly Desktop: "desktop";
+};
+export type SiteRefreshAuthBodyRequestAppEnum = typeof SiteRefreshAuthBodyRequestAppEnum[keyof typeof SiteRefreshAuthBodyRequestAppEnum];
 //# sourceMappingURL=site-refresh-auth-body-request.d.ts.map

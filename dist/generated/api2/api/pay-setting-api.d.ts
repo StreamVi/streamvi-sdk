@@ -19,28 +19,28 @@ import type { PaySettingBodyDto } from '../models';
  * PaySettingApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const PaySettingApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Check country after update user
-     * @param {checkCountry1VEnum} v Version
-     * @param {checkCountry1LanguageEnum} language Current language
+     * @param {PaySettingCheckCountryV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} countryId country id
+     * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    checkCountry1: (v: checkCountry1VEnum, language: checkCountry1LanguageEnum, projectId: number, countryId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySettingCheckCountryV1: (language: PaySettingCheckCountryV1LanguageEnum, projectId: number, countryId: number, v?: PaySettingCheckCountryV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get pay settings for profile v3
-     * @param {getSettingV31VEnum} v Version
-     * @param {getSettingV31LanguageEnum} language Current language
+     * @param {PaySettingGetSettingV3LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSettingV31: (v: getSettingV31VEnum, language: getSettingV31LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySettingGetSettingV3: (language: PaySettingGetSettingV3LanguageEnum, projectId: number, v?: PaySettingGetSettingV3VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Set pay settings for profile
@@ -48,34 +48,34 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setSetting1: (paySettingBodyDto: PaySettingBodyDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySettingSetSettingV1: (paySettingBodyDto: PaySettingBodyDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PaySettingApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const PaySettingApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Check country after update user
-     * @param {checkCountry1VEnum} v Version
-     * @param {checkCountry1LanguageEnum} language Current language
+     * @param {PaySettingCheckCountryV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} countryId country id
+     * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    checkCountry1(v: checkCountry1VEnum, language: checkCountry1LanguageEnum, projectId: number, countryId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayCheckCountryResponse>>;
+    paySettingCheckCountryV1(language: PaySettingCheckCountryV1LanguageEnum, projectId: number, countryId: number, v?: PaySettingCheckCountryV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayCheckCountryResponse>>;
     /**
      *
      * @summary Get pay settings for profile v3
-     * @param {getSettingV31VEnum} v Version
-     * @param {getSettingV31LanguageEnum} language Current language
+     * @param {PaySettingGetSettingV3LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSettingV31(v: getSettingV31VEnum, language: getSettingV31LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPaySettingResponseV3>>;
+    paySettingGetSettingV3(language: PaySettingGetSettingV3LanguageEnum, projectId: number, v?: PaySettingGetSettingV3VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPaySettingResponseV3>>;
     /**
      *
      * @summary Set pay settings for profile
@@ -83,104 +83,138 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setSetting1(paySettingBodyDto: PaySettingBodyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    paySettingSetSettingV1(paySettingBodyDto: PaySettingBodyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * PaySettingApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const PaySettingApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Check country after update user
-     * @param {checkCountry1Request} requestParameters Request parameters.
+     * @param {PaySettingApiPaySettingCheckCountryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    checkCountry1(requestParameters: checkCountry1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayCheckCountryResponse>;
+    paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayCheckCountryResponse>;
     /**
      *
      * @summary Get pay settings for profile v3
-     * @param {getSettingV31Request} requestParameters Request parameters.
+     * @param {PaySettingApiPaySettingGetSettingV3Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSettingV31(requestParameters: getSettingV31Request, options?: RawAxiosRequestConfig): AxiosPromise<GetPaySettingResponseV3>;
+    paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): AxiosPromise<GetPaySettingResponseV3>;
     /**
      *
      * @summary Set pay settings for profile
-     * @param {setSetting1Request} requestParameters Request parameters.
+     * @param {PaySettingApiPaySettingSetSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setSetting1(requestParameters: setSetting1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 };
 /**
- * Request parameters for checkCountry1 operation in PaySettingApi.
+ * PaySettingApi - interface
  * @export
- * @interface checkCountry1Request
+ * @interface PaySettingApi
  */
-export interface checkCountry1Request {
+export interface PaySettingApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof checkCountry1
+     *
+     * @summary Check country after update user
+     * @param {PaySettingApiPaySettingCheckCountryV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySettingApiInterface
      */
-    readonly v?: checkCountry1VEnum;
+    paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayCheckCountryResponse>;
+    /**
+     *
+     * @summary Get pay settings for profile v3
+     * @param {PaySettingApiPaySettingGetSettingV3Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySettingApiInterface
+     */
+    paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): AxiosPromise<GetPaySettingResponseV3>;
+    /**
+     *
+     * @summary Set pay settings for profile
+     * @param {PaySettingApiPaySettingSetSettingV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySettingApiInterface
+     */
+    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+}
+/**
+ * Request parameters for paySettingCheckCountryV1 operation in PaySettingApi.
+ * @export
+ * @interface PaySettingApiPaySettingCheckCountryV1Request
+ */
+export interface PaySettingApiPaySettingCheckCountryV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof checkCountry1
+     * @memberof PaySettingApiPaySettingCheckCountryV1
      */
-    readonly language: checkCountry1LanguageEnum;
+    readonly language: PaySettingCheckCountryV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof checkCountry1
+     * @memberof PaySettingApiPaySettingCheckCountryV1
      */
     readonly projectId: number;
     /**
      * country id
      * @type {number}
-     * @memberof checkCountry1
+     * @memberof PaySettingApiPaySettingCheckCountryV1
      */
     readonly countryId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PaySettingApiPaySettingCheckCountryV1
+     */
+    readonly v?: PaySettingCheckCountryV1VEnum;
 }
 /**
- * Request parameters for getSettingV31 operation in PaySettingApi.
+ * Request parameters for paySettingGetSettingV3 operation in PaySettingApi.
  * @export
- * @interface getSettingV31Request
+ * @interface PaySettingApiPaySettingGetSettingV3Request
  */
-export interface getSettingV31Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getSettingV31
-     */
-    readonly v?: getSettingV31VEnum;
+export interface PaySettingApiPaySettingGetSettingV3Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getSettingV31
+     * @memberof PaySettingApiPaySettingGetSettingV3
      */
-    readonly language: getSettingV31LanguageEnum;
+    readonly language: PaySettingGetSettingV3LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof getSettingV31
+     * @memberof PaySettingApiPaySettingGetSettingV3
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 3 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PaySettingApiPaySettingGetSettingV3
+     */
+    readonly v?: PaySettingGetSettingV3VEnum;
 }
 /**
- * Request parameters for setSetting1 operation in PaySettingApi.
+ * Request parameters for paySettingSetSettingV1 operation in PaySettingApi.
  * @export
- * @interface setSetting1Request
+ * @interface PaySettingApiPaySettingSetSettingV1Request
  */
-export interface setSetting1Request {
+export interface PaySettingApiPaySettingSetSettingV1Request {
     /**
      *
      * @type {PaySettingBodyDto}
-     * @memberof setSetting1
+     * @memberof PaySettingApiPaySettingSetSettingV1
      */
     readonly paySettingBodyDto: PaySettingBodyDto;
 }
@@ -190,69 +224,69 @@ export interface setSetting1Request {
  * @class PaySettingApi
  * @extends {BaseAPI}
  */
-export declare class PaySettingApi extends BaseAPI {
+export declare class PaySettingApi extends BaseAPI implements PaySettingApiInterface {
     /**
      *
      * @summary Check country after update user
-     * @param {checkCountry1Request} requestParameters Request parameters.
+     * @param {PaySettingApiPaySettingCheckCountryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    checkCountry1(requestParameters: checkCountry1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayCheckCountryResponse, any>>;
+    paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayCheckCountryResponse, any>>;
     /**
      *
      * @summary Get pay settings for profile v3
-     * @param {getSettingV31Request} requestParameters Request parameters.
+     * @param {PaySettingApiPaySettingGetSettingV3Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    getSettingV31(requestParameters: getSettingV31Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPaySettingResponseV3, any>>;
+    paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPaySettingResponseV3, any>>;
     /**
      *
      * @summary Set pay settings for profile
-     * @param {setSetting1Request} requestParameters Request parameters.
+     * @param {PaySettingApiPaySettingSetSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    setSetting1(requestParameters: setSetting1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum checkCountry1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PaySettingCheckCountryV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PaySettingCheckCountryV1LanguageEnum = typeof PaySettingCheckCountryV1LanguageEnum[keyof typeof PaySettingCheckCountryV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum checkCountry1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PaySettingCheckCountryV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PaySettingCheckCountryV1VEnum = typeof PaySettingCheckCountryV1VEnum[keyof typeof PaySettingCheckCountryV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getSettingV31VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PaySettingGetSettingV3LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PaySettingGetSettingV3LanguageEnum = typeof PaySettingGetSettingV3LanguageEnum[keyof typeof PaySettingGetSettingV3LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getSettingV31LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PaySettingGetSettingV3VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PaySettingGetSettingV3VEnum = typeof PaySettingGetSettingV3VEnum[keyof typeof PaySettingGetSettingV3VEnum];
 //# sourceMappingURL=pay-setting-api.d.ts.map

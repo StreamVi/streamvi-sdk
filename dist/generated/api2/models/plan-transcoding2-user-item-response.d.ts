@@ -50,7 +50,7 @@ export interface PlanTranscoding2UserItemResponse {
      * @type {string}
      * @memberof PlanTranscoding2UserItemResponse
      */
-    'period': PeriodEnum | null;
+    'period': PlanTranscoding2UserItemResponsePeriodEnum | null;
     /**
      * Period uuid
      * @type {string}
@@ -70,12 +70,9 @@ export interface PlanTranscoding2UserItemResponse {
      */
     'prolongation'?: number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum PeriodEnum {
-    month = "month",
-    year = "year"
-}
+export declare const PlanTranscoding2UserItemResponsePeriodEnum: {
+    readonly Month: "month";
+    readonly Year: "year";
+};
+export type PlanTranscoding2UserItemResponsePeriodEnum = typeof PlanTranscoding2UserItemResponsePeriodEnum[keyof typeof PlanTranscoding2UserItemResponsePeriodEnum];
 //# sourceMappingURL=plan-transcoding2-user-item-response.d.ts.map

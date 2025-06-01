@@ -13,46 +13,26 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrivacyVideoEnum = exports.PrivacyCommentsEnum = exports.LanguageEnum = exports.VEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var VEnum;
-(function (VEnum) {
-    VEnum["_1"] = "1";
-    VEnum["_2"] = "2";
-    VEnum["_3"] = "3";
-})(VEnum || (exports.VEnum = VEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageEnum;
-(function (LanguageEnum) {
-    LanguageEnum["ru"] = "ru";
-    LanguageEnum["en"] = "en";
-    LanguageEnum["cn"] = "cn";
-})(LanguageEnum || (exports.LanguageEnum = LanguageEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var PrivacyCommentsEnum;
-(function (PrivacyCommentsEnum) {
-    PrivacyCommentsEnum["all"] = "all";
-    PrivacyCommentsEnum["members"] = "members";
-    PrivacyCommentsEnum["editors"] = "editors";
-    PrivacyCommentsEnum["nobody"] = "nobody";
-})(PrivacyCommentsEnum || (exports.PrivacyCommentsEnum = PrivacyCommentsEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var PrivacyVideoEnum;
-(function (PrivacyVideoEnum) {
-    PrivacyVideoEnum["all"] = "all";
-    PrivacyVideoEnum["members"] = "members";
-    PrivacyVideoEnum["editors"] = "editors";
-    PrivacyVideoEnum["nobody"] = "nobody";
-})(PrivacyVideoEnum || (exports.PrivacyVideoEnum = PrivacyVideoEnum = {}));
+exports.SiteUpdateOptionsVkRequestPrivacyVideoEnum = exports.SiteUpdateOptionsVkRequestPrivacyCommentsEnum = exports.SiteUpdateOptionsVkRequestLanguageEnum = exports.SiteUpdateOptionsVkRequestVEnum = void 0;
+exports.SiteUpdateOptionsVkRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
+exports.SiteUpdateOptionsVkRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+exports.SiteUpdateOptionsVkRequestPrivacyCommentsEnum = {
+    All: 'all',
+    Members: 'members',
+    Editors: 'editors',
+    Nobody: 'nobody'
+};
+exports.SiteUpdateOptionsVkRequestPrivacyVideoEnum = {
+    All: 'all',
+    Members: 'members',
+    Editors: 'editors',
+    Nobody: 'nobody'
+};

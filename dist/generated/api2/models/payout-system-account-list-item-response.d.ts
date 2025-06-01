@@ -44,7 +44,7 @@ export interface PayoutSystemAccountListItemResponse {
      * @type {string}
      * @memberof PayoutSystemAccountListItemResponse
      */
-    'commission_type': CommissionTypeEnum;
+    'commission_type': PayoutSystemAccountListItemResponseCommissionTypeEnum;
     /**
      * Title
      * @type {string}
@@ -62,7 +62,7 @@ export interface PayoutSystemAccountListItemResponse {
      * @type {string}
      * @memberof PayoutSystemAccountListItemResponse
      */
-    'currency': CurrencyEnum;
+    'currency': PayoutSystemAccountListItemResponseCurrencyEnum;
     /**
      * Minimum amount
      * @type {number}
@@ -76,20 +76,14 @@ export interface PayoutSystemAccountListItemResponse {
      */
     'max_amount': number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum CommissionTypeEnum {
-    percent = "percent",
-    fix = "fix"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum CurrencyEnum {
-    rub = "rub",
-    usd = "usd"
-}
+export declare const PayoutSystemAccountListItemResponseCommissionTypeEnum: {
+    readonly Percent: "percent";
+    readonly Fix: "fix";
+};
+export type PayoutSystemAccountListItemResponseCommissionTypeEnum = typeof PayoutSystemAccountListItemResponseCommissionTypeEnum[keyof typeof PayoutSystemAccountListItemResponseCommissionTypeEnum];
+export declare const PayoutSystemAccountListItemResponseCurrencyEnum: {
+    readonly Rub: "rub";
+    readonly Usd: "usd";
+};
+export type PayoutSystemAccountListItemResponseCurrencyEnum = typeof PayoutSystemAccountListItemResponseCurrencyEnum[keyof typeof PayoutSystemAccountListItemResponseCurrencyEnum];
 //# sourceMappingURL=payout-system-account-list-item-response.d.ts.map

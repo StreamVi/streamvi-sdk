@@ -26,43 +26,34 @@ export interface SiteSetNotifyUserRequest {
      * @type {string}
      * @memberof SiteSetNotifyUserRequest
      */
-    'notify_channel': NotifyChannelEnum;
+    'notify_channel': SiteSetNotifyUserRequestNotifyChannelEnum;
     /**
      * Notify category
      * @type {string}
      * @memberof SiteSetNotifyUserRequest
      */
-    'notify_category': NotifyCategoryEnum;
+    'notify_category': SiteSetNotifyUserRequestNotifyCategoryEnum;
     /**
      * Set status
      * @type {string}
      * @memberof SiteSetNotifyUserRequest
      */
-    'status': StatusEnum;
+    'status': SiteSetNotifyUserRequestStatusEnum;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum NotifyChannelEnum {
-    telegram = "telegram",
-    cabinet = "cabinet",
-    mobile = "mobile"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum NotifyCategoryEnum {
-    important = "important",
-    stream = "stream"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum StatusEnum {
-    enable = "enable",
-    disable = "disable"
-}
+export declare const SiteSetNotifyUserRequestNotifyChannelEnum: {
+    readonly Telegram: "telegram";
+    readonly Cabinet: "cabinet";
+    readonly Mobile: "mobile";
+};
+export type SiteSetNotifyUserRequestNotifyChannelEnum = typeof SiteSetNotifyUserRequestNotifyChannelEnum[keyof typeof SiteSetNotifyUserRequestNotifyChannelEnum];
+export declare const SiteSetNotifyUserRequestNotifyCategoryEnum: {
+    readonly Important: "important";
+    readonly Stream: "stream";
+};
+export type SiteSetNotifyUserRequestNotifyCategoryEnum = typeof SiteSetNotifyUserRequestNotifyCategoryEnum[keyof typeof SiteSetNotifyUserRequestNotifyCategoryEnum];
+export declare const SiteSetNotifyUserRequestStatusEnum: {
+    readonly Enable: "enable";
+    readonly Disable: "disable";
+};
+export type SiteSetNotifyUserRequestStatusEnum = typeof SiteSetNotifyUserRequestStatusEnum[keyof typeof SiteSetNotifyUserRequestStatusEnum];
 //# sourceMappingURL=site-set-notify-user-request.d.ts.map

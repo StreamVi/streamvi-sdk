@@ -17,86 +17,102 @@ import type { PaginatedResponseOfSiteBlogPageTagResponse } from '../models';
  * BlogPageTagApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const BlogPageTagApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Get list of blog pages
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {BlogPageTagListV1LanguageEnum} language Current language
+     * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {string} [s] String for search
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1: (v: list1VEnum, language: list1LanguageEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    blogPageTagListV1: (language: BlogPageTagListV1LanguageEnum, v?: BlogPageTagListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BlogPageTagApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const BlogPageTagApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get list of blog pages
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {BlogPageTagListV1LanguageEnum} language Current language
+     * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {string} [s] String for search
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(v: list1VEnum, language: list1LanguageEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse>>;
+    blogPageTagListV1(language: BlogPageTagListV1LanguageEnum, v?: BlogPageTagListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse>>;
 };
 /**
  * BlogPageTagApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const BlogPageTagApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get list of blog pages
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse>;
+    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse>;
 };
 /**
- * Request parameters for list1 operation in BlogPageTagApi.
+ * BlogPageTagApi - interface
  * @export
- * @interface list1Request
+ * @interface BlogPageTagApi
  */
-export interface list1Request {
+export interface BlogPageTagApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
+     *
+     * @summary Get list of blog pages
+     * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlogPageTagApiInterface
      */
-    readonly v?: list1VEnum;
+    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse>;
+}
+/**
+ * Request parameters for blogPageTagListV1 operation in BlogPageTagApi.
+ * @export
+ * @interface BlogPageTagApiBlogPageTagListV1Request
+ */
+export interface BlogPageTagApiBlogPageTagListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof BlogPageTagApiBlogPageTagListV1
      */
-    readonly language: list1LanguageEnum;
+    readonly language: BlogPageTagListV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof BlogPageTagApiBlogPageTagListV1
+     */
+    readonly v?: BlogPageTagListV1VEnum;
     /**
      * String for search
      * @type {string}
-     * @memberof list1
+     * @memberof BlogPageTagApiBlogPageTagListV1
      */
     readonly s?: string;
     /**
      * Number of results
      * @type {number}
-     * @memberof list1
+     * @memberof BlogPageTagApiBlogPageTagListV1
      */
     readonly limit?: number;
     /**
      * Page offset number
      * @type {number}
-     * @memberof list1
+     * @memberof BlogPageTagApiBlogPageTagListV1
      */
     readonly offset?: number;
 }
@@ -106,33 +122,33 @@ export interface list1Request {
  * @class BlogPageTagApi
  * @extends {BaseAPI}
  */
-export declare class BlogPageTagApi extends BaseAPI {
+export declare class BlogPageTagApi extends BaseAPI implements BlogPageTagApiInterface {
     /**
      *
      * @summary Get list of blog pages
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BlogPageTagApi
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const BlogPageTagListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BlogPageTagListV1LanguageEnum = typeof BlogPageTagListV1LanguageEnum[keyof typeof BlogPageTagListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const BlogPageTagListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type BlogPageTagListV1VEnum = typeof BlogPageTagListV1VEnum[keyof typeof BlogPageTagListV1VEnum];
 //# sourceMappingURL=blog-page-tag-api.d.ts.map

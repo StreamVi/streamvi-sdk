@@ -17,80 +17,96 @@ import type { SiteLiveRestreamsInfoResponse } from '../models';
  * LiveApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const LiveApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary View live info
-     * @param {restreams1VEnum} v Version
-     * @param {restreams1LanguageEnum} language Current language
+     * @param {ControllersRestreamsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} broadcastId Broadcast id
+     * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    restreams1: (v: restreams1VEnum, language: restreams1LanguageEnum, projectId: number, broadcastId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    controllersRestreamsV1: (language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * LiveApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const LiveApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary View live info
-     * @param {restreams1VEnum} v Version
-     * @param {restreams1LanguageEnum} language Current language
+     * @param {ControllersRestreamsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} broadcastId Broadcast id
+     * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    restreams1(v: restreams1VEnum, language: restreams1LanguageEnum, projectId: number, broadcastId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteLiveRestreamsInfoResponse>>;
+    controllersRestreamsV1(language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteLiveRestreamsInfoResponse>>;
 };
 /**
  * LiveApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const LiveApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary View live info
-     * @param {restreams1Request} requestParameters Request parameters.
+     * @param {LiveApiControllersRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    restreams1(requestParameters: restreams1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteLiveRestreamsInfoResponse>;
+    controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteLiveRestreamsInfoResponse>;
 };
 /**
- * Request parameters for restreams1 operation in LiveApi.
+ * LiveApi - interface
  * @export
- * @interface restreams1Request
+ * @interface LiveApi
  */
-export interface restreams1Request {
+export interface LiveApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof restreams1
+     *
+     * @summary View live info
+     * @param {LiveApiControllersRestreamsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LiveApiInterface
      */
-    readonly v?: restreams1VEnum;
+    controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteLiveRestreamsInfoResponse>;
+}
+/**
+ * Request parameters for controllersRestreamsV1 operation in LiveApi.
+ * @export
+ * @interface LiveApiControllersRestreamsV1Request
+ */
+export interface LiveApiControllersRestreamsV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof restreams1
+     * @memberof LiveApiControllersRestreamsV1
      */
-    readonly language: restreams1LanguageEnum;
+    readonly language: ControllersRestreamsV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof restreams1
+     * @memberof LiveApiControllersRestreamsV1
      */
     readonly projectId: number;
     /**
      * Broadcast id
      * @type {number}
-     * @memberof restreams1
+     * @memberof LiveApiControllersRestreamsV1
      */
     readonly broadcastId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof LiveApiControllersRestreamsV1
+     */
+    readonly v?: ControllersRestreamsV1VEnum;
 }
 /**
  * LiveApi - object-oriented interface
@@ -98,33 +114,33 @@ export interface restreams1Request {
  * @class LiveApi
  * @extends {BaseAPI}
  */
-export declare class LiveApi extends BaseAPI {
+export declare class LiveApi extends BaseAPI implements LiveApiInterface {
     /**
      *
      * @summary View live info
-     * @param {restreams1Request} requestParameters Request parameters.
+     * @param {LiveApiControllersRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LiveApi
      */
-    restreams1(requestParameters: restreams1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteLiveRestreamsInfoResponse, any>>;
+    controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteLiveRestreamsInfoResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum restreams1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ControllersRestreamsV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ControllersRestreamsV1LanguageEnum = typeof ControllersRestreamsV1LanguageEnum[keyof typeof ControllersRestreamsV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum restreams1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ControllersRestreamsV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ControllersRestreamsV1VEnum = typeof ControllersRestreamsV1VEnum[keyof typeof ControllersRestreamsV1VEnum];
 //# sourceMappingURL=live-api.d.ts.map

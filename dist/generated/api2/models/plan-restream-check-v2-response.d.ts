@@ -34,30 +34,6 @@ export interface PlanRestreamCheckV2Response {
      */
     'balance': number;
     /**
-     * Name for button
-     * @type {string}
-     * @memberof PlanRestreamCheckV2Response
-     */
-    'button_name': string;
-    /**
-     * Currency
-     * @type {string}
-     * @memberof PlanRestreamCheckV2Response
-     */
-    'currency': CurrencyEnum;
-    /**
-     * Status for plan
-     * @type {string}
-     * @memberof PlanRestreamCheckV2Response
-     */
-    'choose_status': ChooseStatusEnum;
-    /**
-     * Status for plan
-     * @type {string}
-     * @memberof PlanRestreamCheckV2Response
-     */
-    'status': StatusEnum;
-    /**
      * Sum for pay
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
@@ -106,6 +82,30 @@ export interface PlanRestreamCheckV2Response {
      */
     'notification_date'?: string;
     /**
+     * Name for button
+     * @type {string}
+     * @memberof PlanRestreamCheckV2Response
+     */
+    'button_name': string;
+    /**
+     * Currency
+     * @type {string}
+     * @memberof PlanRestreamCheckV2Response
+     */
+    'currency': PlanRestreamCheckV2ResponseCurrencyEnum;
+    /**
+     * Status for plan
+     * @type {string}
+     * @memberof PlanRestreamCheckV2Response
+     */
+    'choose_status': PlanRestreamCheckV2ResponseChooseStatusEnum;
+    /**
+     * Status for plan
+     * @type {string}
+     * @memberof PlanRestreamCheckV2Response
+     */
+    'status': PlanRestreamCheckV2ResponseStatusEnum;
+    /**
      * Current channels
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
@@ -118,34 +118,25 @@ export interface PlanRestreamCheckV2Response {
      */
     'bitrate'?: number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum CurrencyEnum {
-    rub = "rub",
-    usd = "usd"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum ChooseStatusEnum {
-    new = "new",
-    prolongate = "prolongate",
-    upgrade = "upgrade",
-    downgrade = "downgrade"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum StatusEnum {
-    new = "new",
-    current = "current",
-    current_upgrade = "current_upgrade",
-    current_downgrade = "current_downgrade",
-    upgrade = "upgrade",
-    downgrade = "downgrade"
-}
+export declare const PlanRestreamCheckV2ResponseCurrencyEnum: {
+    readonly Rub: "rub";
+    readonly Usd: "usd";
+};
+export type PlanRestreamCheckV2ResponseCurrencyEnum = typeof PlanRestreamCheckV2ResponseCurrencyEnum[keyof typeof PlanRestreamCheckV2ResponseCurrencyEnum];
+export declare const PlanRestreamCheckV2ResponseChooseStatusEnum: {
+    readonly New: "new";
+    readonly Prolongate: "prolongate";
+    readonly Upgrade: "upgrade";
+    readonly Downgrade: "downgrade";
+};
+export type PlanRestreamCheckV2ResponseChooseStatusEnum = typeof PlanRestreamCheckV2ResponseChooseStatusEnum[keyof typeof PlanRestreamCheckV2ResponseChooseStatusEnum];
+export declare const PlanRestreamCheckV2ResponseStatusEnum: {
+    readonly New: "new";
+    readonly Current: "current";
+    readonly CurrentUpgrade: "current_upgrade";
+    readonly CurrentDowngrade: "current_downgrade";
+    readonly Upgrade: "upgrade";
+    readonly Downgrade: "downgrade";
+};
+export type PlanRestreamCheckV2ResponseStatusEnum = typeof PlanRestreamCheckV2ResponseStatusEnum[keyof typeof PlanRestreamCheckV2ResponseStatusEnum];
 //# sourceMappingURL=plan-restream-check-v2-response.d.ts.map

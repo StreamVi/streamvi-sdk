@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.check1LanguageEnum = exports.check1VEnum = exports.apply1LanguageEnum = exports.apply1VEnum = exports.PromoApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.PromoCheckV1VEnum = exports.PromoCheckV1LanguageEnum = exports.PromoApplyV1VEnum = exports.PromoApplyV1LanguageEnum = exports.PromoApi = exports.PromoApiFactory = exports.PromoApiFp = exports.PromoApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,27 +27,25 @@ const base_1 = require("../base");
  * PromoApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const PromoApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Apply code
-         * @param {apply1VEnum} v Version
-         * @param {apply1LanguageEnum} language Current language
+         * @param {PromoApplyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} code Code
+         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apply1: async (v, language, projectId, code, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('apply1', 'v', v);
+        promoApplyV1: async (language, projectId, code, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('apply1', 'language', language);
+            (0, common_1.assertParamExists)('promoApplyV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('apply1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('promoApplyV1', 'projectId', projectId);
             // verify required parameter 'code' is not null or undefined
-            (0, common_1.assertParamExists)('apply1', 'code', code);
+            (0, common_1.assertParamExists)('promoApplyV1', 'code', code);
             const localVarPath = `/method/promo/apply`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -81,22 +79,20 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Check code
-         * @param {check1VEnum} v Version
-         * @param {check1LanguageEnum} language Current language
+         * @param {PromoCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} code Code
+         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check1: async (v, language, projectId, code, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('check1', 'v', v);
+        promoCheckV1: async (language, projectId, code, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('check1', 'language', language);
+            (0, common_1.assertParamExists)('promoCheckV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('check1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('promoCheckV1', 'projectId', projectId);
             // verify required parameter 'code' is not null or undefined
-            (0, common_1.assertParamExists)('check1', 'code', code);
+            (0, common_1.assertParamExists)('promoCheckV1', 'code', code);
             const localVarPath = `/method/promo/check`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -129,85 +125,81 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.PromoApiAxiosParamCreator = PromoApiAxiosParamCreator;
 /**
  * PromoApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const PromoApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.PromoApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Apply code
-         * @param {apply1VEnum} v Version
-         * @param {apply1LanguageEnum} language Current language
+         * @param {PromoApplyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} code Code
+         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apply1(v, language, projectId, code, options) {
+        async promoApplyV1(language, projectId, code, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apply1(v, language, projectId, code, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.promoApplyV1(language, projectId, code, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PromoApi.apply1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PromoApi.promoApplyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Check code
-         * @param {check1VEnum} v Version
-         * @param {check1LanguageEnum} language Current language
+         * @param {PromoCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} code Code
+         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async check1(v, language, projectId, code, options) {
+        async promoCheckV1(language, projectId, code, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.check1(v, language, projectId, code, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.promoCheckV1(language, projectId, code, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PromoApi.check1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PromoApi.promoCheckV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.PromoApiFp = PromoApiFp;
 /**
  * PromoApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const PromoApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.PromoApiFp)(configuration);
     return {
         /**
          *
          * @summary Apply code
-         * @param {apply1Request} requestParameters Request parameters.
+         * @param {PromoApiPromoApplyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apply1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || apply1VEnum._1;
-            return localVarFp.apply1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.code, options).then((request) => request(axios, basePath));
+        promoApplyV1(requestParameters, options) {
+            return localVarFp.promoApplyV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Check code
-         * @param {check1Request} requestParameters Request parameters.
+         * @param {PromoApiPromoCheckV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || check1VEnum._1;
-            return localVarFp.check1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.code, options).then((request) => request(axios, basePath));
+        promoCheckV1(requestParameters, options) {
+            return localVarFp.promoCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.PromoApiFactory = PromoApiFactory;
 /**
  * PromoApi - object-oriented interface
  * @export
@@ -218,68 +210,56 @@ class PromoApi extends base_1.BaseAPI {
     /**
      *
      * @summary Apply code
-     * @param {apply1Request} requestParameters Request parameters.
+     * @param {PromoApiPromoApplyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PromoApi
      */
-    apply1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || apply1VEnum._1;
-        return (0, exports.fp)(this.configuration).apply1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
+    promoApplyV1(requestParameters, options) {
+        return (0, exports.PromoApiFp)(this.configuration).promoApplyV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Check code
-     * @param {check1Request} requestParameters Request parameters.
+     * @param {PromoApiPromoCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PromoApi
      */
-    check1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || check1VEnum._1;
-        return (0, exports.fp)(this.configuration).check1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
+    promoCheckV1(requestParameters, options) {
+        return (0, exports.PromoApiFp)(this.configuration).promoCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PromoApi = PromoApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var apply1VEnum;
-(function (apply1VEnum) {
-    apply1VEnum["_1"] = "1";
-    apply1VEnum["_2"] = "2";
-    apply1VEnum["_3"] = "3";
-})(apply1VEnum || (exports.apply1VEnum = apply1VEnum = {}));
+ * @export
+ */
+exports.PromoApplyV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var apply1LanguageEnum;
-(function (apply1LanguageEnum) {
-    apply1LanguageEnum["ru"] = "ru";
-    apply1LanguageEnum["en"] = "en";
-    apply1LanguageEnum["cn"] = "cn";
-})(apply1LanguageEnum || (exports.apply1LanguageEnum = apply1LanguageEnum = {}));
+ * @export
+ */
+exports.PromoApplyV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var check1VEnum;
-(function (check1VEnum) {
-    check1VEnum["_1"] = "1";
-    check1VEnum["_2"] = "2";
-    check1VEnum["_3"] = "3";
-})(check1VEnum || (exports.check1VEnum = check1VEnum = {}));
+ * @export
+ */
+exports.PromoCheckV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var check1LanguageEnum;
-(function (check1LanguageEnum) {
-    check1LanguageEnum["ru"] = "ru";
-    check1LanguageEnum["en"] = "en";
-    check1LanguageEnum["cn"] = "cn";
-})(check1LanguageEnum || (exports.check1LanguageEnum = check1LanguageEnum = {}));
+ * @export
+ */
+exports.PromoCheckV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

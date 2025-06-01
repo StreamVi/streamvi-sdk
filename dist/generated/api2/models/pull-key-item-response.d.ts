@@ -32,7 +32,7 @@ export interface PullKeyItemResponse {
      * @type {string}
      * @memberof PullKeyItemResponse
      */
-    'transport': TransportEnum;
+    'transport': PullKeyItemResponseTransportEnum;
     /**
      * Name
      * @type {string}
@@ -50,24 +50,18 @@ export interface PullKeyItemResponse {
      * @type {string}
      * @memberof PullKeyItemResponse
      */
-    'status': StatusEnum;
+    'status': PullKeyItemResponseStatusEnum;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TransportEnum {
-    rtmp = "rtmp",
-    srt = "srt",
-    hls = "hls"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum StatusEnum {
-    active = "active",
-    inactive = "inactive",
-    error = "error"
-}
+export declare const PullKeyItemResponseTransportEnum: {
+    readonly Rtmp: "rtmp";
+    readonly Srt: "srt";
+    readonly Hls: "hls";
+};
+export type PullKeyItemResponseTransportEnum = typeof PullKeyItemResponseTransportEnum[keyof typeof PullKeyItemResponseTransportEnum];
+export declare const PullKeyItemResponseStatusEnum: {
+    readonly Active: "active";
+    readonly Inactive: "inactive";
+    readonly Error: "error";
+};
+export type PullKeyItemResponseStatusEnum = typeof PullKeyItemResponseStatusEnum[keyof typeof PullKeyItemResponseStatusEnum];
 //# sourceMappingURL=pull-key-item-response.d.ts.map

@@ -50,7 +50,7 @@ export interface PlanRestream2UserItemResponse {
      * @type {string}
      * @memberof PlanRestream2UserItemResponse
      */
-    'period': PeriodEnum | null;
+    'period': PlanRestream2UserItemResponsePeriodEnum | null;
     /**
      * Money flow uuid
      * @type {string}
@@ -76,12 +76,9 @@ export interface PlanRestream2UserItemResponse {
      */
     'prolongation': number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum PeriodEnum {
-    month = "month",
-    year = "year"
-}
+export declare const PlanRestream2UserItemResponsePeriodEnum: {
+    readonly Month: "month";
+    readonly Year: "year";
+};
+export type PlanRestream2UserItemResponsePeriodEnum = typeof PlanRestream2UserItemResponsePeriodEnum[keyof typeof PlanRestream2UserItemResponsePeriodEnum];
 //# sourceMappingURL=plan-restream2-user-item-response.d.ts.map

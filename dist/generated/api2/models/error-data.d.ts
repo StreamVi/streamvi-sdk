@@ -29,6 +29,12 @@ export interface ErrorData {
      */
     'msg': string;
     /**
+     * Validator error array if name=\"I18nValidationException\"
+     * @type {Array<ValidationErrorDto>}
+     * @memberof ErrorData
+     */
+    'validator_error'?: Array<ValidationErrorDto>;
+    /**
      * Options
      * @type {object}
      * @memberof ErrorData
@@ -40,11 +46,5 @@ export interface ErrorData {
      * @memberof ErrorData
      */
     'data': object;
-    /**
-     * Validator error array if name=\"I18nValidationException\"
-     * @type {Array<ValidationErrorDto>}
-     * @memberof ErrorData
-     */
-    'validator_error'?: Array<ValidationErrorDto>;
 }
 //# sourceMappingURL=error-data.d.ts.map

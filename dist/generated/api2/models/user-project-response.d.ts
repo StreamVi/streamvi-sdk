@@ -39,7 +39,7 @@ export interface UserProjectResponse {
      * @type {number}
      * @memberof UserProjectResponse
      */
-    'access_type': AccessTypeEnum;
+    'access_type': UserProjectResponseAccessTypeEnum;
     /**
      * Project data
      * @type {UserProject2ProjectResponse}
@@ -53,13 +53,10 @@ export interface UserProjectResponse {
      */
     'member_count': number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum AccessTypeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1,
-    NUMBER_2 = 2
-}
+export declare const UserProjectResponseAccessTypeEnum: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+    readonly NUMBER_2: 2;
+};
+export type UserProjectResponseAccessTypeEnum = typeof UserProjectResponseAccessTypeEnum[keyof typeof UserProjectResponseAccessTypeEnum];
 //# sourceMappingURL=user-project-response.d.ts.map

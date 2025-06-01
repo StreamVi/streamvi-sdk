@@ -13,13 +13,8 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CurrencyEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var CurrencyEnum;
-(function (CurrencyEnum) {
-    CurrencyEnum["rub"] = "rub";
-    CurrencyEnum["usd"] = "usd";
-})(CurrencyEnum || (exports.CurrencyEnum = CurrencyEnum = {}));
+exports.PaySettingResponseV3CurrencyEnum = void 0;
+exports.PaySettingResponseV3CurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+};

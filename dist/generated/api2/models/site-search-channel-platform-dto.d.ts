@@ -38,7 +38,7 @@ export interface SiteSearchChannelPlatformDto {
      * @type {string}
      * @memberof SiteSearchChannelPlatformDto
      */
-    'extension': ExtensionEnum;
+    'extension': SiteSearchChannelPlatformDtoExtensionEnum;
     /**
      * Is edit name
      * @type {number}
@@ -46,12 +46,9 @@ export interface SiteSearchChannelPlatformDto {
      */
     'edit_name': number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum ExtensionEnum {
-    png = "png",
-    svg = "svg"
-}
+export declare const SiteSearchChannelPlatformDtoExtensionEnum: {
+    readonly Png: "png";
+    readonly Svg: "svg";
+};
+export type SiteSearchChannelPlatformDtoExtensionEnum = typeof SiteSearchChannelPlatformDtoExtensionEnum[keyof typeof SiteSearchChannelPlatformDtoExtensionEnum];
 //# sourceMappingURL=site-search-channel-platform-dto.d.ts.map

@@ -13,40 +13,25 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GroupTypeEnum = exports.TypeEnum = exports.NameEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var NameEnum;
-(function (NameEnum) {
-    NameEnum["external_link"] = "external_link";
-    NameEnum["cabinet_link"] = "cabinet_link";
-    NameEnum["landing_link"] = "landing_link";
-    NameEnum["link"] = "link";
-    NameEnum["accept"] = "accept";
-    NameEnum["decline"] = "decline";
-    NameEnum["accept_1"] = "accept_1";
-    NameEnum["accept_2"] = "accept_2";
-    NameEnum["accept_3"] = "accept_3";
-})(NameEnum || (exports.NameEnum = NameEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum["primary"] = "primary";
-    TypeEnum["secondary"] = "secondary";
-    TypeEnum["link"] = "link";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var GroupTypeEnum;
-(function (GroupTypeEnum) {
-    GroupTypeEnum["toggle"] = "toggle";
-    GroupTypeEnum["select"] = "select";
-    GroupTypeEnum["default"] = "default";
-})(GroupTypeEnum || (exports.GroupTypeEnum = GroupTypeEnum = {}));
+exports.InternalNotifyTypeActionGroupTypeEnum = exports.InternalNotifyTypeActionTypeEnum = exports.InternalNotifyTypeActionNameEnum = void 0;
+exports.InternalNotifyTypeActionNameEnum = {
+    ExternalLink: 'external_link',
+    CabinetLink: 'cabinet_link',
+    LandingLink: 'landing_link',
+    Link: 'link',
+    Accept: 'accept',
+    Decline: 'decline',
+    Accept1: 'accept_1',
+    Accept2: 'accept_2',
+    Accept3: 'accept_3'
+};
+exports.InternalNotifyTypeActionTypeEnum = {
+    Primary: 'primary',
+    Secondary: 'secondary',
+    Link: 'link'
+};
+exports.InternalNotifyTypeActionGroupTypeEnum = {
+    Toggle: 'toggle',
+    Select: 'select',
+    Default: 'default'
+};

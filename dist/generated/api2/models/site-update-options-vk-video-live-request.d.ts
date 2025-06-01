@@ -20,13 +20,13 @@ export interface SiteUpdateOptionsVkVideoLiveRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateOptionsVkVideoLiveRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateOptionsVkVideoLiveRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -58,22 +58,16 @@ export interface SiteUpdateOptionsVkVideoLiveRequest {
      */
     'category_name': string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const SiteUpdateOptionsVkVideoLiveRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteUpdateOptionsVkVideoLiveRequestVEnum = typeof SiteUpdateOptionsVkVideoLiveRequestVEnum[keyof typeof SiteUpdateOptionsVkVideoLiveRequestVEnum];
+export declare const SiteUpdateOptionsVkVideoLiveRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = typeof SiteUpdateOptionsVkVideoLiveRequestLanguageEnum[keyof typeof SiteUpdateOptionsVkVideoLiveRequestLanguageEnum];
 //# sourceMappingURL=site-update-options-vk-video-live-request.d.ts.map

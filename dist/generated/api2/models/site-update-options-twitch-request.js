@@ -13,33 +13,18 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LangEnum = exports.LanguageEnum = exports.VEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var VEnum;
-(function (VEnum) {
-    VEnum["_1"] = "1";
-    VEnum["_2"] = "2";
-    VEnum["_3"] = "3";
-})(VEnum || (exports.VEnum = VEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageEnum;
-(function (LanguageEnum) {
-    LanguageEnum["ru"] = "ru";
-    LanguageEnum["en"] = "en";
-    LanguageEnum["cn"] = "cn";
-})(LanguageEnum || (exports.LanguageEnum = LanguageEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LangEnum;
-(function (LangEnum) {
-    LangEnum["ru"] = "ru";
-    LangEnum["en"] = "en";
-})(LangEnum || (exports.LangEnum = LangEnum = {}));
+exports.SiteUpdateOptionsTwitchRequestLangEnum = exports.SiteUpdateOptionsTwitchRequestLanguageEnum = exports.SiteUpdateOptionsTwitchRequestVEnum = void 0;
+exports.SiteUpdateOptionsTwitchRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
+exports.SiteUpdateOptionsTwitchRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+exports.SiteUpdateOptionsTwitchRequestLangEnum = {
+    Ru: 'ru',
+    En: 'en'
+};

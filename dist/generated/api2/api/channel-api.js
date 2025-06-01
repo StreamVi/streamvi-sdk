@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.shortChannelList1LanguageEnum = exports.shortChannelList1VEnum = exports.searchTypeEnum = exports.searchLanguageEnum = exports.searchVEnum = exports.ChannelApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.MethodSearchV1TypeEnum = exports.MethodSearchV1VEnum = exports.MethodSearchV1LanguageEnum = exports.ChannelShortChannelListV1VEnum = exports.ChannelShortChannelListV1LanguageEnum = exports.ChannelApi = exports.ChannelApiFactory = exports.ChannelApiFp = exports.ChannelApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,15 +27,56 @@ const base_1 = require("../base");
  * ChannelApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const ChannelApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Search channel list
-         * @param {searchVEnum} v Version
-         * @param {searchLanguageEnum} language Current language
+         * @summary Minimal channel list
+         * @param {ChannelShortChannelListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {searchTypeEnum} [type]
+         * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelShortChannelListV1: async (language, projectId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('channelShortChannelListV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('channelShortChannelListV1', 'projectId', projectId);
+            const localVarPath = `/method/channel/short`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Search channel list
+         * @param {MethodSearchV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodSearchV1TypeEnum} [type]
          * @param {string} [platform] platform type
          * @param {string} [name] name
          * @param {number} [limit] Number of results
@@ -43,13 +84,11 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search: async (v, language, projectId, type, platform, name, limit, offset, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('search', 'v', v);
+        methodSearchV1: async (language, projectId, v, type, platform, name, limit, offset, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('search', 'language', language);
+            (0, common_1.assertParamExists)('methodSearchV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('search', 'projectId', projectId);
+            (0, common_1.assertParamExists)('methodSearchV1', 'projectId', projectId);
             const localVarPath = `/method/channel/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -61,7 +100,7 @@ const axiosParamCreator = function (configuration) {
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication X-API-KEY required
-            await (0, common_1.keyToObject)(localVarHeaderParameter, "X-API-KEY", configuration);
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "X-API-KEY", configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -101,9 +140,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setStatus: async (methodSetStatusChannelRequest, options = {}) => {
+        methodSetStatusV1: async (methodSetStatusChannelRequest, options = {}) => {
             // verify required parameter 'methodSetStatusChannelRequest' is not null or undefined
-            (0, common_1.assertParamExists)('setStatus', 'methodSetStatusChannelRequest', methodSetStatusChannelRequest);
+            (0, common_1.assertParamExists)('methodSetStatusV1', 'methodSetStatusChannelRequest', methodSetStatusChannelRequest);
             const localVarPath = `/method/channel/set-status`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -115,7 +154,7 @@ const axiosParamCreator = function (configuration) {
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication X-API-KEY required
-            await (0, common_1.keyToObject)(localVarHeaderParameter, "X-API-KEY", configuration);
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "X-API-KEY", configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -126,66 +165,39 @@ const axiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        /**
-         *
-         * @summary Minimal channel list
-         * @param {shortChannelList1VEnum} v Version
-         * @param {shortChannelList1LanguageEnum} language Current language
-         * @param {number} projectId Project id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shortChannelList1: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('shortChannelList1', 'v', v);
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('shortChannelList1', 'language', language);
-            // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('shortChannelList1', 'projectId', projectId);
-            const localVarPath = `/method/channel/short`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-            if (projectId !== undefined) {
-                localVarQueryParameter['project_id'] = projectId;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.ChannelApiAxiosParamCreator = ChannelApiAxiosParamCreator;
 /**
  * ChannelApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const ChannelApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.ChannelApiAxiosParamCreator)(configuration);
     return {
         /**
          *
-         * @summary Search channel list
-         * @param {searchVEnum} v Version
-         * @param {searchLanguageEnum} language Current language
+         * @summary Minimal channel list
+         * @param {ChannelShortChannelListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {searchTypeEnum} [type]
+         * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelShortChannelListV1(language, projectId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelShortChannelListV1(language, projectId, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelApi.channelShortChannelListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Search channel list
+         * @param {MethodSearchV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodSearchV1TypeEnum} [type]
          * @param {string} [platform] platform type
          * @param {string} [name] name
          * @param {number} [limit] Number of results
@@ -193,11 +205,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search(v, language, projectId, type, platform, name, limit, offset, options) {
+        async methodSearchV1(language, projectId, v, type, platform, name, limit, offset, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.search(v, language, projectId, type, platform, name, limit, offset, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodSearchV1(language, projectId, v, type, platform, name, limit, offset, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelApi.search']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelApi.methodSearchV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -207,74 +219,56 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setStatus(methodSetStatusChannelRequest, options) {
+        async methodSetStatusV1(methodSetStatusChannelRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.setStatus(methodSetStatusChannelRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodSetStatusV1(methodSetStatusChannelRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelApi.setStatus']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Minimal channel list
-         * @param {shortChannelList1VEnum} v Version
-         * @param {shortChannelList1LanguageEnum} language Current language
-         * @param {number} projectId Project id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async shortChannelList1(v, language, projectId, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shortChannelList1(v, language, projectId, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelApi.shortChannelList1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelApi.methodSetStatusV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.ChannelApiFp = ChannelApiFp;
 /**
  * ChannelApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const ChannelApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.ChannelApiFp)(configuration);
     return {
         /**
          *
-         * @summary Search channel list
-         * @param {searchRequest} requestParameters Request parameters.
+         * @summary Minimal channel list
+         * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search(requestParameters, options) {
-            return localVarFp.search(requestParameters.v, requestParameters.language, requestParameters.projectId, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+        channelShortChannelListV1(requestParameters, options) {
+            return localVarFp.channelShortChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Search channel list
+         * @param {ChannelApiMethodSearchV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodSearchV1(requestParameters, options) {
+            return localVarFp.methodSearchV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get live status
-         * @param {setStatusRequest} requestParameters Request parameters.
+         * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setStatus(requestParameters, options) {
-            return localVarFp.setStatus(requestParameters.methodSetStatusChannelRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Minimal channel list
-         * @param {shortChannelList1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shortChannelList1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || shortChannelList1VEnum._1;
-            return localVarFp.shortChannelList1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        methodSetStatusV1(requestParameters, options) {
+            return localVarFp.methodSetStatusV1(requestParameters.methodSetStatusChannelRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.ChannelApiFactory = ChannelApiFactory;
 /**
  * ChannelApi - object-oriented interface
  * @export
@@ -284,89 +278,77 @@ exports.factory = factory;
 class ChannelApi extends base_1.BaseAPI {
     /**
      *
-     * @summary Search channel list
-     * @param {searchRequest} requestParameters Request parameters.
+     * @summary Minimal channel list
+     * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    search(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).search(requestParameters.v, requestParameters.language, requestParameters.projectId, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+    channelShortChannelListV1(requestParameters, options) {
+        return (0, exports.ChannelApiFp)(this.configuration).channelShortChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Search channel list
+     * @param {ChannelApiMethodSearchV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    methodSearchV1(requestParameters, options) {
+        return (0, exports.ChannelApiFp)(this.configuration).methodSearchV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get live status
-     * @param {setStatusRequest} requestParameters Request parameters.
+     * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    setStatus(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).setStatus(requestParameters.methodSetStatusChannelRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Minimal channel list
-     * @param {shortChannelList1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ChannelApi
-     */
-    shortChannelList1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || shortChannelList1VEnum._1;
-        return (0, exports.fp)(this.configuration).shortChannelList1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    methodSetStatusV1(requestParameters, options) {
+        return (0, exports.ChannelApiFp)(this.configuration).methodSetStatusV1(requestParameters.methodSetStatusChannelRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ChannelApi = ChannelApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var searchVEnum;
-(function (searchVEnum) {
-    searchVEnum["_1"] = "1";
-    searchVEnum["_2"] = "2";
-    searchVEnum["_3"] = "3";
-})(searchVEnum || (exports.searchVEnum = searchVEnum = {}));
+ * @export
+ */
+exports.ChannelShortChannelListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var searchLanguageEnum;
-(function (searchLanguageEnum) {
-    searchLanguageEnum["ru"] = "ru";
-    searchLanguageEnum["en"] = "en";
-    searchLanguageEnum["cn"] = "cn";
-})(searchLanguageEnum || (exports.searchLanguageEnum = searchLanguageEnum = {}));
+ * @export
+ */
+exports.ChannelShortChannelListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var searchTypeEnum;
-(function (searchTypeEnum) {
-    searchTypeEnum["all"] = "all";
-    searchTypeEnum["my"] = "my";
-    searchTypeEnum["available"] = "available";
-    searchTypeEnum["active"] = "active";
-})(searchTypeEnum || (exports.searchTypeEnum = searchTypeEnum = {}));
+ * @export
+ */
+exports.MethodSearchV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var shortChannelList1VEnum;
-(function (shortChannelList1VEnum) {
-    shortChannelList1VEnum["_1"] = "1";
-    shortChannelList1VEnum["_2"] = "2";
-    shortChannelList1VEnum["_3"] = "3";
-})(shortChannelList1VEnum || (exports.shortChannelList1VEnum = shortChannelList1VEnum = {}));
+ * @export
+ */
+exports.MethodSearchV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var shortChannelList1LanguageEnum;
-(function (shortChannelList1LanguageEnum) {
-    shortChannelList1LanguageEnum["ru"] = "ru";
-    shortChannelList1LanguageEnum["en"] = "en";
-    shortChannelList1LanguageEnum["cn"] = "cn";
-})(shortChannelList1LanguageEnum || (exports.shortChannelList1LanguageEnum = shortChannelList1LanguageEnum = {}));
+ * @export
+ */
+exports.MethodSearchV1TypeEnum = {
+    All: 'all',
+    My: 'my',
+    Available: 'available',
+    Active: 'active'
+};

@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LiveRestreamInfoItem } from './live-restream-info-item';
 import type { SiteLiveRestreamCentrifugeResponse } from './site-live-restream-centrifuge-response';
-import type { SiteLiveRestreamInfoItem } from './site-live-restream-info-item';
 /**
  *
  * @export
@@ -19,10 +19,10 @@ import type { SiteLiveRestreamInfoItem } from './site-live-restream-info-item';
 export interface SiteLiveRestreamsInfoResponse {
     /**
      * Array of items
-     * @type {Array<SiteLiveRestreamInfoItem>}
+     * @type {Array<LiveRestreamInfoItem>}
      * @memberof SiteLiveRestreamsInfoResponse
      */
-    'results': Array<SiteLiveRestreamInfoItem>;
+    'results': Array<LiveRestreamInfoItem>;
     /**
      *
      * @type {SiteLiveRestreamCentrifugeResponse}

@@ -26,18 +26,6 @@ export interface SiteSearchChannelRtmpDto {
      * @type {string}
      * @memberof SiteSearchChannelRtmpDto
      */
-    'domain': string;
-    /**
-     *
-     * @type {string}
-     * @memberof SiteSearchChannelRtmpDto
-     */
-    'protocol': string;
-    /**
-     *
-     * @type {string}
-     * @memberof SiteSearchChannelRtmpDto
-     */
     'path'?: string | null;
     /**
      *
@@ -51,5 +39,17 @@ export interface SiteSearchChannelRtmpDto {
      * @memberof SiteSearchChannelRtmpDto
      */
     'query'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof SiteSearchChannelRtmpDto
+     */
+    'domain': string;
+    /**
+     *
+     * @type {string}
+     * @memberof SiteSearchChannelRtmpDto
+     */
+    'protocol': string;
 }
 //# sourceMappingURL=site-search-channel-rtmp-dto.d.ts.map

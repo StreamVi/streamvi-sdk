@@ -13,20 +13,9 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CurrencyEnum = exports.TypeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum[TypeEnum["NUMBER_0"] = 0] = "NUMBER_0";
-    TypeEnum[TypeEnum["NUMBER_1"] = 1] = "NUMBER_1";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var CurrencyEnum;
-(function (CurrencyEnum) {
-})(CurrencyEnum || (exports.CurrencyEnum = CurrencyEnum = {}));
+exports.ProjectInfoDataResponseCurrencyEnum = exports.ProjectInfoDataResponseTypeEnum = void 0;
+exports.ProjectInfoDataResponseTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1
+};
+exports.ProjectInfoDataResponseCurrencyEnum = {};

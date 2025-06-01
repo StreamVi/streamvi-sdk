@@ -13,14 +13,9 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TypeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum["string"] = "string";
-    TypeEnum["number"] = "number";
-    TypeEnum["boolean"] = "boolean";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
+exports.PlanRestreamFeatureItemV2TypeEnum = void 0;
+exports.PlanRestreamFeatureItemV2TypeEnum = {
+    String: 'string',
+    Number: 'number',
+    Boolean: 'boolean'
+};

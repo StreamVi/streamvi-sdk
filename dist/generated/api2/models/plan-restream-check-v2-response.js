@@ -13,37 +13,22 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatusEnum = exports.ChooseStatusEnum = exports.CurrencyEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var CurrencyEnum;
-(function (CurrencyEnum) {
-    CurrencyEnum["rub"] = "rub";
-    CurrencyEnum["usd"] = "usd";
-})(CurrencyEnum || (exports.CurrencyEnum = CurrencyEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var ChooseStatusEnum;
-(function (ChooseStatusEnum) {
-    ChooseStatusEnum["new"] = "new";
-    ChooseStatusEnum["prolongate"] = "prolongate";
-    ChooseStatusEnum["upgrade"] = "upgrade";
-    ChooseStatusEnum["downgrade"] = "downgrade";
-})(ChooseStatusEnum || (exports.ChooseStatusEnum = ChooseStatusEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var StatusEnum;
-(function (StatusEnum) {
-    StatusEnum["new"] = "new";
-    StatusEnum["current"] = "current";
-    StatusEnum["current_upgrade"] = "current_upgrade";
-    StatusEnum["current_downgrade"] = "current_downgrade";
-    StatusEnum["upgrade"] = "upgrade";
-    StatusEnum["downgrade"] = "downgrade";
-})(StatusEnum || (exports.StatusEnum = StatusEnum = {}));
+exports.PlanRestreamCheckV2ResponseStatusEnum = exports.PlanRestreamCheckV2ResponseChooseStatusEnum = exports.PlanRestreamCheckV2ResponseCurrencyEnum = void 0;
+exports.PlanRestreamCheckV2ResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+};
+exports.PlanRestreamCheckV2ResponseChooseStatusEnum = {
+    New: 'new',
+    Prolongate: 'prolongate',
+    Upgrade: 'upgrade',
+    Downgrade: 'downgrade'
+};
+exports.PlanRestreamCheckV2ResponseStatusEnum = {
+    New: 'new',
+    Current: 'current',
+    CurrentUpgrade: 'current_upgrade',
+    CurrentDowngrade: 'current_downgrade',
+    Upgrade: 'upgrade',
+    Downgrade: 'downgrade'
+};

@@ -13,13 +13,8 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PeriodEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var PeriodEnum;
-(function (PeriodEnum) {
-    PeriodEnum["month"] = "month";
-    PeriodEnum["year"] = "year";
-})(PeriodEnum || (exports.PeriodEnum = PeriodEnum = {}));
+exports.PlanStorage2UserItemResponsePeriodEnum = void 0;
+exports.PlanStorage2UserItemResponsePeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+};

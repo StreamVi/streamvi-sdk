@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TelegramGetPostByFilterLanguageEnum = exports.TelegramGetPostByFilterVEnum = exports.updateToken1RoleEnum = exports.updateToken1LanguageEnum = exports.updateToken1VEnum = exports.getPlayList1LanguageEnum = exports.getPlayList1VEnum = exports.getPlanned1LanguageEnum = exports.getPlanned1VEnum = exports.telegramPosts1LanguageEnum = exports.telegramPosts1VEnum = exports.setTelegramSetting1LanguageEnum = exports.setTelegramSetting1VEnum = exports.removeTelegramChat1LanguageEnum = exports.removeTelegramChat1VEnum = exports.initTelegramChatConnect1LanguageEnum = exports.initTelegramChatConnect1VEnum = exports.getTelegramSetting1LanguageEnum = exports.getTelegramSetting1VEnum = exports.ChannelSettingsApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.TelegramGetPostByFilterV1VEnum = exports.TelegramGetPostByFilterV1LanguageEnum = exports.ChannelSettingUpdateTokenV1VEnum = exports.ChannelSettingUpdateTokenV1RoleEnum = exports.ChannelSettingUpdateTokenV1LanguageEnum = exports.ChannelOptionsGetPlayListV1VEnum = exports.ChannelOptionsGetPlayListV1LanguageEnum = exports.ChannelOptionsGetPlannedV1VEnum = exports.ChannelOptionsGetPlannedV1LanguageEnum = exports.ChannelChatTelegramPostsV1VEnum = exports.ChannelChatTelegramPostsV1LanguageEnum = exports.ChannelChatSetTelegramSettingV1VEnum = exports.ChannelChatSetTelegramSettingV1LanguageEnum = exports.ChannelChatRemoveTelegramChatV1VEnum = exports.ChannelChatRemoveTelegramChatV1LanguageEnum = exports.ChannelChatInitTelegramChatConnectV1VEnum = exports.ChannelChatInitTelegramChatConnectV1LanguageEnum = exports.ChannelChatGetTelegramSettingV1VEnum = exports.ChannelChatGetTelegramSettingV1LanguageEnum = exports.ChannelSettingsApi = exports.ChannelSettingsApiFactory = exports.ChannelSettingsApiFp = exports.ChannelSettingsApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,27 +27,25 @@ const base_1 = require("../base");
  * ChannelSettingsApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const ChannelSettingsApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Get telegram settings
-         * @param {getTelegramSetting1VEnum} v Version
-         * @param {getTelegramSetting1LanguageEnum} language Current language
+         * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTelegramSetting1: async (v, language, projectId, channelId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getTelegramSetting1', 'v', v);
+        channelChatGetTelegramSettingV1: async (language, projectId, channelId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getTelegramSetting1', 'language', language);
+            (0, common_1.assertParamExists)('channelChatGetTelegramSettingV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('getTelegramSetting1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('channelChatGetTelegramSettingV1', 'projectId', projectId);
             // verify required parameter 'channelId' is not null or undefined
-            (0, common_1.assertParamExists)('getTelegramSetting1', 'channelId', channelId);
+            (0, common_1.assertParamExists)('channelChatGetTelegramSettingV1', 'channelId', channelId);
             const localVarPath = `/method/channel_settings/chat/telegram/setting`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -81,22 +79,20 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get code for connected chat
-         * @param {initTelegramChatConnect1VEnum} v Version
-         * @param {initTelegramChatConnect1LanguageEnum} language Current language
+         * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        initTelegramChatConnect1: async (v, language, projectId, channelId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('initTelegramChatConnect1', 'v', v);
+        channelChatInitTelegramChatConnectV1: async (language, projectId, channelId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('initTelegramChatConnect1', 'language', language);
+            (0, common_1.assertParamExists)('channelChatInitTelegramChatConnectV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('initTelegramChatConnect1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('channelChatInitTelegramChatConnectV1', 'projectId', projectId);
             // verify required parameter 'channelId' is not null or undefined
-            (0, common_1.assertParamExists)('initTelegramChatConnect1', 'channelId', channelId);
+            (0, common_1.assertParamExists)('channelChatInitTelegramChatConnectV1', 'channelId', channelId);
             const localVarPath = `/method/channel_settings/chat/telegram/init`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -130,22 +126,20 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Disconnect telegram chat
-         * @param {removeTelegramChat1VEnum} v Version
-         * @param {removeTelegramChat1LanguageEnum} language Current language
+         * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removeTelegramChat1: async (v, language, projectId, channelId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('removeTelegramChat1', 'v', v);
+        channelChatRemoveTelegramChatV1: async (language, projectId, channelId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('removeTelegramChat1', 'language', language);
+            (0, common_1.assertParamExists)('channelChatRemoveTelegramChatV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('removeTelegramChat1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('channelChatRemoveTelegramChatV1', 'projectId', projectId);
             // verify required parameter 'channelId' is not null or undefined
-            (0, common_1.assertParamExists)('removeTelegramChat1', 'channelId', channelId);
+            (0, common_1.assertParamExists)('channelChatRemoveTelegramChatV1', 'channelId', channelId);
             const localVarPath = `/method/channel_settings/chat/telegram/disconnect`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -179,25 +173,23 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Set telegram settings
-         * @param {setTelegramSetting1VEnum} v Version
-         * @param {setTelegramSetting1LanguageEnum} language Current language
+         * @param {ChannelChatSetTelegramSettingV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {SiteTelegramSetSettingsRequestDto} siteTelegramSetSettingsRequestDto
+         * @param {TelegramSetSettingsRequestDto} telegramSetSettingsRequestDto
+         * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setTelegramSetting1: async (v, language, projectId, channelId, siteTelegramSetSettingsRequestDto, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('setTelegramSetting1', 'v', v);
+        channelChatSetTelegramSettingV1: async (language, projectId, channelId, telegramSetSettingsRequestDto, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('setTelegramSetting1', 'language', language);
+            (0, common_1.assertParamExists)('channelChatSetTelegramSettingV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('setTelegramSetting1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('channelChatSetTelegramSettingV1', 'projectId', projectId);
             // verify required parameter 'channelId' is not null or undefined
-            (0, common_1.assertParamExists)('setTelegramSetting1', 'channelId', channelId);
-            // verify required parameter 'siteTelegramSetSettingsRequestDto' is not null or undefined
-            (0, common_1.assertParamExists)('setTelegramSetting1', 'siteTelegramSetSettingsRequestDto', siteTelegramSetSettingsRequestDto);
+            (0, common_1.assertParamExists)('channelChatSetTelegramSettingV1', 'channelId', channelId);
+            // verify required parameter 'telegramSetSettingsRequestDto' is not null or undefined
+            (0, common_1.assertParamExists)('channelChatSetTelegramSettingV1', 'telegramSetSettingsRequestDto', telegramSetSettingsRequestDto);
             const localVarPath = `/method/channel_settings/chat/telegram/setting`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -224,7 +216,7 @@ const axiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteTelegramSetSettingsRequestDto, localVarRequestOptions, configuration);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(telegramSetSettingsRequestDto, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -233,22 +225,20 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get telegram post list
-         * @param {telegramPosts1VEnum} v Version
-         * @param {telegramPosts1LanguageEnum} language Current language
+         * @param {ChannelChatTelegramPostsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegramPosts1: async (v, language, projectId, channelId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('telegramPosts1', 'v', v);
+        channelChatTelegramPostsV1: async (language, projectId, channelId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('telegramPosts1', 'language', language);
+            (0, common_1.assertParamExists)('channelChatTelegramPostsV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('telegramPosts1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('channelChatTelegramPostsV1', 'projectId', projectId);
             // verify required parameter 'channelId' is not null or undefined
-            (0, common_1.assertParamExists)('telegramPosts1', 'channelId', channelId);
+            (0, common_1.assertParamExists)('channelChatTelegramPostsV1', 'channelId', channelId);
             const localVarPath = `/method/channel_settings/chat/telegram/posts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -286,9 +276,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTelegram1: async (siteUpdateChatTelegramRequest, options = {}) => {
+        channelChatUpdateOptionsTelegramV1: async (siteUpdateChatTelegramRequest, options = {}) => {
             // verify required parameter 'siteUpdateChatTelegramRequest' is not null or undefined
-            (0, common_1.assertParamExists)('updateOptionsTelegram1', 'siteUpdateChatTelegramRequest', siteUpdateChatTelegramRequest);
+            (0, common_1.assertParamExists)('channelChatUpdateOptionsTelegramV1', 'siteUpdateChatTelegramRequest', siteUpdateChatTelegramRequest);
             const localVarPath = `/method/channel_settings/chat/setTelegram`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -312,22 +302,20 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get planned list
-         * @param {getPlanned1VEnum} v Version
-         * @param {getPlanned1LanguageEnum} language Current language
+         * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlanned1: async (v, language, projectId, channelId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getPlanned1', 'v', v);
+        channelOptionsGetPlannedV1: async (language, projectId, channelId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getPlanned1', 'language', language);
+            (0, common_1.assertParamExists)('channelOptionsGetPlannedV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('getPlanned1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('channelOptionsGetPlannedV1', 'projectId', projectId);
             // verify required parameter 'channelId' is not null or undefined
-            (0, common_1.assertParamExists)('getPlanned1', 'channelId', channelId);
+            (0, common_1.assertParamExists)('channelOptionsGetPlannedV1', 'channelId', channelId);
             const localVarPath = `/method/channel_settings/options/getPlanned`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -361,22 +349,20 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get playlists from the platform
-         * @param {getPlayList1VEnum} v Version
-         * @param {getPlayList1LanguageEnum} language Current language
+         * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlayList1: async (v, language, projectId, channelId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getPlayList1', 'v', v);
+        channelOptionsGetPlayListV1: async (language, projectId, channelId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getPlayList1', 'language', language);
+            (0, common_1.assertParamExists)('channelOptionsGetPlayListV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('getPlayList1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('channelOptionsGetPlayListV1', 'projectId', projectId);
             // verify required parameter 'channelId' is not null or undefined
-            (0, common_1.assertParamExists)('getPlayList1', 'channelId', channelId);
+            (0, common_1.assertParamExists)('channelOptionsGetPlayListV1', 'channelId', channelId);
             const localVarPath = `/method/channel_settings/options/getPlaylist`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -414,9 +400,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsOk1: async (siteUpdateOptionsOkRequest, options = {}) => {
+        channelOptionsUpdateOptionsOkV1: async (siteUpdateOptionsOkRequest, options = {}) => {
             // verify required parameter 'siteUpdateOptionsOkRequest' is not null or undefined
-            (0, common_1.assertParamExists)('updateOptionsOk1', 'siteUpdateOptionsOkRequest', siteUpdateOptionsOkRequest);
+            (0, common_1.assertParamExists)('channelOptionsUpdateOptionsOkV1', 'siteUpdateOptionsOkRequest', siteUpdateOptionsOkRequest);
             const localVarPath = `/method/channel_settings/options/setOk`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -444,9 +430,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTrovo1: async (siteUpdateOptionsTrovoRequest, options = {}) => {
+        channelOptionsUpdateOptionsTrovoV1: async (siteUpdateOptionsTrovoRequest, options = {}) => {
             // verify required parameter 'siteUpdateOptionsTrovoRequest' is not null or undefined
-            (0, common_1.assertParamExists)('updateOptionsTrovo1', 'siteUpdateOptionsTrovoRequest', siteUpdateOptionsTrovoRequest);
+            (0, common_1.assertParamExists)('channelOptionsUpdateOptionsTrovoV1', 'siteUpdateOptionsTrovoRequest', siteUpdateOptionsTrovoRequest);
             const localVarPath = `/method/channel_settings/options/setTrovo`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -474,9 +460,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTwitch1: async (siteUpdateOptionsTwitchRequest, options = {}) => {
+        channelOptionsUpdateOptionsTwitchV1: async (siteUpdateOptionsTwitchRequest, options = {}) => {
             // verify required parameter 'siteUpdateOptionsTwitchRequest' is not null or undefined
-            (0, common_1.assertParamExists)('updateOptionsTwitch1', 'siteUpdateOptionsTwitchRequest', siteUpdateOptionsTwitchRequest);
+            (0, common_1.assertParamExists)('channelOptionsUpdateOptionsTwitchV1', 'siteUpdateOptionsTwitchRequest', siteUpdateOptionsTwitchRequest);
             const localVarPath = `/method/channel_settings/options/setTwitch`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -504,9 +490,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsVk1: async (siteUpdateOptionsVkRequest, options = {}) => {
+        channelOptionsUpdateOptionsVkV1: async (siteUpdateOptionsVkRequest, options = {}) => {
             // verify required parameter 'siteUpdateOptionsVkRequest' is not null or undefined
-            (0, common_1.assertParamExists)('updateOptionsVk1', 'siteUpdateOptionsVkRequest', siteUpdateOptionsVkRequest);
+            (0, common_1.assertParamExists)('channelOptionsUpdateOptionsVkV1', 'siteUpdateOptionsVkRequest', siteUpdateOptionsVkRequest);
             const localVarPath = `/method/channel_settings/options/setVk`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -534,9 +520,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsVkVideoLive1: async (siteUpdateOptionsVkVideoLiveRequest, options = {}) => {
+        channelOptionsUpdateOptionsVkVideoLiveV1: async (siteUpdateOptionsVkVideoLiveRequest, options = {}) => {
             // verify required parameter 'siteUpdateOptionsVkVideoLiveRequest' is not null or undefined
-            (0, common_1.assertParamExists)('updateOptionsVkVideoLive1', 'siteUpdateOptionsVkVideoLiveRequest', siteUpdateOptionsVkVideoLiveRequest);
+            (0, common_1.assertParamExists)('channelOptionsUpdateOptionsVkVideoLiveV1', 'siteUpdateOptionsVkVideoLiveRequest', siteUpdateOptionsVkVideoLiveRequest);
             const localVarPath = `/method/channel_settings/options/setVkVideoLive`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -564,9 +550,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsYoutube1: async (siteUpdateOptionsYoutubeRequest, options = {}) => {
+        channelOptionsUpdateOptionsYoutubeV1: async (siteUpdateOptionsYoutubeRequest, options = {}) => {
             // verify required parameter 'siteUpdateOptionsYoutubeRequest' is not null or undefined
-            (0, common_1.assertParamExists)('updateOptionsYoutube1', 'siteUpdateOptionsYoutubeRequest', siteUpdateOptionsYoutubeRequest);
+            (0, common_1.assertParamExists)('channelOptionsUpdateOptionsYoutubeV1', 'siteUpdateOptionsYoutubeRequest', siteUpdateOptionsYoutubeRequest);
             const localVarPath = `/method/channel_settings/options/setYoutube`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -594,9 +580,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePlanned1: async (siteSetPlannedRequest, options = {}) => {
+        channelOptionsUpdatePlannedV1: async (siteSetPlannedRequest, options = {}) => {
             // verify required parameter 'siteSetPlannedRequest' is not null or undefined
-            (0, common_1.assertParamExists)('updatePlanned1', 'siteSetPlannedRequest', siteSetPlannedRequest);
+            (0, common_1.assertParamExists)('channelOptionsUpdatePlannedV1', 'siteSetPlannedRequest', siteSetPlannedRequest);
             const localVarPath = `/method/channel_settings/options/setPlanned`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -623,7 +609,7 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStatus1: async (options = {}) => {
+        channelSettingGetStatusV1: async (options = {}) => {
             const localVarPath = `/method/channel_settings/getStatus`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -649,9 +635,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setName1: async (siteSetNameRequest, options = {}) => {
+        channelSettingSetNameV1: async (siteSetNameRequest, options = {}) => {
             // verify required parameter 'siteSetNameRequest' is not null or undefined
-            (0, common_1.assertParamExists)('setName1', 'siteSetNameRequest', siteSetNameRequest);
+            (0, common_1.assertParamExists)('channelSettingSetNameV1', 'siteSetNameRequest', siteSetNameRequest);
             const localVarPath = `/method/channel_settings/setName`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -679,9 +665,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRtmp1: async (siteSetUrlRequest, options = {}) => {
+        channelSettingUpdateRtmpV1: async (siteSetUrlRequest, options = {}) => {
             // verify required parameter 'siteSetUrlRequest' is not null or undefined
-            (0, common_1.assertParamExists)('updateRtmp1', 'siteSetUrlRequest', siteSetUrlRequest);
+            (0, common_1.assertParamExists)('channelSettingUpdateRtmpV1', 'siteSetUrlRequest', siteSetUrlRequest);
             const localVarPath = `/method/channel_settings/setRtmp`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -705,25 +691,23 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get status platform
-         * @param {updateToken1VEnum} v Version
-         * @param {updateToken1LanguageEnum} language Current language
+         * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {updateToken1RoleEnum} role Token role
+         * @param {ChannelSettingUpdateTokenV1RoleEnum} role Token role
+         * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateToken1: async (v, language, projectId, channelId, role, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('updateToken1', 'v', v);
+        channelSettingUpdateTokenV1: async (language, projectId, channelId, role, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('updateToken1', 'language', language);
+            (0, common_1.assertParamExists)('channelSettingUpdateTokenV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('updateToken1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('channelSettingUpdateTokenV1', 'projectId', projectId);
             // verify required parameter 'channelId' is not null or undefined
-            (0, common_1.assertParamExists)('updateToken1', 'channelId', channelId);
+            (0, common_1.assertParamExists)('channelSettingUpdateTokenV1', 'channelId', channelId);
             // verify required parameter 'role' is not null or undefined
-            (0, common_1.assertParamExists)('updateToken1', 'role', role);
+            (0, common_1.assertParamExists)('channelSettingUpdateTokenV1', 'role', role);
             const localVarPath = `/method/channel_settings/update-token`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -764,9 +748,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTranscoder1: async (siteSetTranscoderRequest, options = {}) => {
+        channelSettingUpdateTranscoderV1: async (siteSetTranscoderRequest, options = {}) => {
             // verify required parameter 'siteSetTranscoderRequest' is not null or undefined
-            (0, common_1.assertParamExists)('updateTranscoder1', 'siteSetTranscoderRequest', siteSetTranscoderRequest);
+            (0, common_1.assertParamExists)('channelSettingUpdateTranscoderV1', 'siteSetTranscoderRequest', siteSetTranscoderRequest);
             const localVarPath = `/method/channel_settings/setTranscoder`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -790,25 +774,23 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get telegram post by filter
-         * @param {TelegramGetPostByFilterVEnum} v Version
-         * @param {TelegramGetPostByFilterLanguageEnum} language Current language
+         * @param {TelegramGetPostByFilterV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} filterMode
+         * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegramGetPostByFilter: async (v, language, projectId, channelId, filterMode, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('telegramGetPostByFilter', 'v', v);
+        telegramGetPostByFilterV1: async (language, projectId, channelId, filterMode, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('telegramGetPostByFilter', 'language', language);
+            (0, common_1.assertParamExists)('telegramGetPostByFilterV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('telegramGetPostByFilter', 'projectId', projectId);
+            (0, common_1.assertParamExists)('telegramGetPostByFilterV1', 'projectId', projectId);
             // verify required parameter 'channelId' is not null or undefined
-            (0, common_1.assertParamExists)('telegramGetPostByFilter', 'channelId', channelId);
+            (0, common_1.assertParamExists)('telegramGetPostByFilterV1', 'channelId', channelId);
             // verify required parameter 'filterMode' is not null or undefined
-            (0, common_1.assertParamExists)('telegramGetPostByFilter', 'filterMode', filterMode);
+            (0, common_1.assertParamExists)('telegramGetPostByFilterV1', 'filterMode', filterMode);
             const localVarPath = `/method/channel_settings/chat/telegram/posts/get-by-filter`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -844,98 +826,98 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.ChannelSettingsApiAxiosParamCreator = ChannelSettingsApiAxiosParamCreator;
 /**
  * ChannelSettingsApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const ChannelSettingsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.ChannelSettingsApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Get telegram settings
-         * @param {getTelegramSetting1VEnum} v Version
-         * @param {getTelegramSetting1LanguageEnum} language Current language
+         * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTelegramSetting1(v, language, projectId, channelId, options) {
+        async channelChatGetTelegramSettingV1(language, projectId, channelId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getTelegramSetting1(v, language, projectId, channelId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatGetTelegramSettingV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.getTelegramSetting1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelChatGetTelegramSettingV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get code for connected chat
-         * @param {initTelegramChatConnect1VEnum} v Version
-         * @param {initTelegramChatConnect1LanguageEnum} language Current language
+         * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async initTelegramChatConnect1(v, language, projectId, channelId, options) {
+        async channelChatInitTelegramChatConnectV1(language, projectId, channelId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.initTelegramChatConnect1(v, language, projectId, channelId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatInitTelegramChatConnectV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.initTelegramChatConnect1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelChatInitTelegramChatConnectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Disconnect telegram chat
-         * @param {removeTelegramChat1VEnum} v Version
-         * @param {removeTelegramChat1LanguageEnum} language Current language
+         * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async removeTelegramChat1(v, language, projectId, channelId, options) {
+        async channelChatRemoveTelegramChatV1(language, projectId, channelId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.removeTelegramChat1(v, language, projectId, channelId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatRemoveTelegramChatV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.removeTelegramChat1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelChatRemoveTelegramChatV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Set telegram settings
-         * @param {setTelegramSetting1VEnum} v Version
-         * @param {setTelegramSetting1LanguageEnum} language Current language
+         * @param {ChannelChatSetTelegramSettingV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {SiteTelegramSetSettingsRequestDto} siteTelegramSetSettingsRequestDto
+         * @param {TelegramSetSettingsRequestDto} telegramSetSettingsRequestDto
+         * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setTelegramSetting1(v, language, projectId, channelId, siteTelegramSetSettingsRequestDto, options) {
+        async channelChatSetTelegramSettingV1(language, projectId, channelId, telegramSetSettingsRequestDto, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.setTelegramSetting1(v, language, projectId, channelId, siteTelegramSetSettingsRequestDto, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatSetTelegramSettingV1(language, projectId, channelId, telegramSetSettingsRequestDto, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.setTelegramSetting1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelChatSetTelegramSettingV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get telegram post list
-         * @param {telegramPosts1VEnum} v Version
-         * @param {telegramPosts1LanguageEnum} language Current language
+         * @param {ChannelChatTelegramPostsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async telegramPosts1(v, language, projectId, channelId, options) {
+        async channelChatTelegramPostsV1(language, projectId, channelId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.telegramPosts1(v, language, projectId, channelId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatTelegramPostsV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.telegramPosts1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelChatTelegramPostsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -945,45 +927,45 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsTelegram1(siteUpdateChatTelegramRequest, options) {
+        async channelChatUpdateOptionsTelegramV1(siteUpdateChatTelegramRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsTelegram1(siteUpdateChatTelegramRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatUpdateOptionsTelegramV1(siteUpdateChatTelegramRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updateOptionsTelegram1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelChatUpdateOptionsTelegramV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get planned list
-         * @param {getPlanned1VEnum} v Version
-         * @param {getPlanned1LanguageEnum} language Current language
+         * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPlanned1(v, language, projectId, channelId, options) {
+        async channelOptionsGetPlannedV1(language, projectId, channelId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlanned1(v, language, projectId, channelId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsGetPlannedV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.getPlanned1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelOptionsGetPlannedV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get playlists from the platform
-         * @param {getPlayList1VEnum} v Version
-         * @param {getPlayList1LanguageEnum} language Current language
+         * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
+         * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPlayList1(v, language, projectId, channelId, options) {
+        async channelOptionsGetPlayListV1(language, projectId, channelId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayList1(v, language, projectId, channelId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsGetPlayListV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.getPlayList1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelOptionsGetPlayListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -993,11 +975,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsOk1(siteUpdateOptionsOkRequest, options) {
+        async channelOptionsUpdateOptionsOkV1(siteUpdateOptionsOkRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsOk1(siteUpdateOptionsOkRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsOkV1(siteUpdateOptionsOkRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updateOptionsOk1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsOkV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1007,11 +989,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsTrovo1(siteUpdateOptionsTrovoRequest, options) {
+        async channelOptionsUpdateOptionsTrovoV1(siteUpdateOptionsTrovoRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsTrovo1(siteUpdateOptionsTrovoRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsTrovoV1(siteUpdateOptionsTrovoRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updateOptionsTrovo1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsTrovoV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1021,11 +1003,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsTwitch1(siteUpdateOptionsTwitchRequest, options) {
+        async channelOptionsUpdateOptionsTwitchV1(siteUpdateOptionsTwitchRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsTwitch1(siteUpdateOptionsTwitchRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsTwitchV1(siteUpdateOptionsTwitchRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updateOptionsTwitch1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsTwitchV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1035,11 +1017,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsVk1(siteUpdateOptionsVkRequest, options) {
+        async channelOptionsUpdateOptionsVkV1(siteUpdateOptionsVkRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsVk1(siteUpdateOptionsVkRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsVkV1(siteUpdateOptionsVkRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updateOptionsVk1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsVkV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1049,11 +1031,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsVkVideoLive1(siteUpdateOptionsVkVideoLiveRequest, options) {
+        async channelOptionsUpdateOptionsVkVideoLiveV1(siteUpdateOptionsVkVideoLiveRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsVkVideoLive1(siteUpdateOptionsVkVideoLiveRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsVkVideoLiveV1(siteUpdateOptionsVkVideoLiveRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updateOptionsVkVideoLive1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsVkVideoLiveV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1063,11 +1045,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOptionsYoutube1(siteUpdateOptionsYoutubeRequest, options) {
+        async channelOptionsUpdateOptionsYoutubeV1(siteUpdateOptionsYoutubeRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOptionsYoutube1(siteUpdateOptionsYoutubeRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsYoutubeV1(siteUpdateOptionsYoutubeRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updateOptionsYoutube1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsYoutubeV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1077,11 +1059,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updatePlanned1(siteSetPlannedRequest, options) {
+        async channelOptionsUpdatePlannedV1(siteSetPlannedRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updatePlanned1(siteSetPlannedRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdatePlannedV1(siteSetPlannedRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updatePlanned1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelOptionsUpdatePlannedV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1090,11 +1072,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStatus1(options) {
+        async channelSettingGetStatusV1(options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStatus1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingGetStatusV1(options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.getStatus1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelSettingGetStatusV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1104,11 +1086,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setName1(siteSetNameRequest, options) {
+        async channelSettingSetNameV1(siteSetNameRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.setName1(siteSetNameRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingSetNameV1(siteSetNameRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.setName1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelSettingSetNameV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1118,29 +1100,29 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateRtmp1(siteSetUrlRequest, options) {
+        async channelSettingUpdateRtmpV1(siteSetUrlRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateRtmp1(siteSetUrlRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateRtmpV1(siteSetUrlRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updateRtmp1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelSettingUpdateRtmpV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get status platform
-         * @param {updateToken1VEnum} v Version
-         * @param {updateToken1LanguageEnum} language Current language
+         * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {updateToken1RoleEnum} role Token role
+         * @param {ChannelSettingUpdateTokenV1RoleEnum} role Token role
+         * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateToken1(v, language, projectId, channelId, role, options) {
+        async channelSettingUpdateTokenV1(language, projectId, channelId, role, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateToken1(v, language, projectId, channelId, role, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateTokenV1(language, projectId, channelId, role, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updateToken1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelSettingUpdateTokenV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1150,204 +1132,190 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateTranscoder1(siteSetTranscoderRequest, options) {
+        async channelSettingUpdateTranscoderV1(siteSetTranscoderRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateTranscoder1(siteSetTranscoderRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateTranscoderV1(siteSetTranscoderRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.updateTranscoder1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelSettingUpdateTranscoderV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get telegram post by filter
-         * @param {TelegramGetPostByFilterVEnum} v Version
-         * @param {TelegramGetPostByFilterLanguageEnum} language Current language
+         * @param {TelegramGetPostByFilterV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} filterMode
+         * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async telegramGetPostByFilter(v, language, projectId, channelId, filterMode, options) {
+        async telegramGetPostByFilterV1(language, projectId, channelId, filterMode, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.telegramGetPostByFilter(v, language, projectId, channelId, filterMode, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.telegramGetPostByFilterV1(language, projectId, channelId, filterMode, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.telegramGetPostByFilter']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.telegramGetPostByFilterV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.ChannelSettingsApiFp = ChannelSettingsApiFp;
 /**
  * ChannelSettingsApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.ChannelSettingsApiFp)(configuration);
     return {
         /**
          *
          * @summary Get telegram settings
-         * @param {getTelegramSetting1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTelegramSetting1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getTelegramSetting1VEnum._1;
-            return localVarFp.getTelegramSetting1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelChatGetTelegramSettingV1(requestParameters, options) {
+            return localVarFp.channelChatGetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get code for connected chat
-         * @param {initTelegramChatConnect1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        initTelegramChatConnect1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || initTelegramChatConnect1VEnum._1;
-            return localVarFp.initTelegramChatConnect1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelChatInitTelegramChatConnectV1(requestParameters, options) {
+            return localVarFp.channelChatInitTelegramChatConnectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Disconnect telegram chat
-         * @param {removeTelegramChat1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removeTelegramChat1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || removeTelegramChat1VEnum._1;
-            return localVarFp.removeTelegramChat1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelChatRemoveTelegramChatV1(requestParameters, options) {
+            return localVarFp.channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Set telegram settings
-         * @param {setTelegramSetting1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setTelegramSetting1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || setTelegramSetting1VEnum._1;
-            return localVarFp.setTelegramSetting1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.siteTelegramSetSettingsRequestDto, options).then((request) => request(axios, basePath));
+        channelChatSetTelegramSettingV1(requestParameters, options) {
+            return localVarFp.channelChatSetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.telegramSetSettingsRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get telegram post list
-         * @param {telegramPosts1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegramPosts1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || telegramPosts1VEnum._1;
-            return localVarFp.telegramPosts1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelChatTelegramPostsV1(requestParameters, options) {
+            return localVarFp.channelChatTelegramPostsV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Optional settings for telegram
-         * @param {updateOptionsTelegram1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTelegram1(requestParameters, options) {
-            return localVarFp.updateOptionsTelegram1(requestParameters.siteUpdateChatTelegramRequest, options).then((request) => request(axios, basePath));
+        channelChatUpdateOptionsTelegramV1(requestParameters, options) {
+            return localVarFp.channelChatUpdateOptionsTelegramV1(requestParameters.siteUpdateChatTelegramRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get planned list
-         * @param {getPlanned1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlanned1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getPlanned1VEnum._1;
-            return localVarFp.getPlanned1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelOptionsGetPlannedV1(requestParameters, options) {
+            return localVarFp.channelOptionsGetPlannedV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get playlists from the platform
-         * @param {getPlayList1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlayList1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getPlayList1VEnum._1;
-            return localVarFp.getPlayList1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(axios, basePath));
+        channelOptionsGetPlayListV1(requestParameters, options) {
+            return localVarFp.channelOptionsGetPlayListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Optional settings for ok. Depends on the tariff.
-         * @param {updateOptionsOk1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsOk1(requestParameters, options) {
-            return localVarFp.updateOptionsOk1(requestParameters.siteUpdateOptionsOkRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsOkV1(requestParameters, options) {
+            return localVarFp.channelOptionsUpdateOptionsOkV1(requestParameters.siteUpdateOptionsOkRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Optional settings for trovo. Depends on the tariff.
-         * @param {updateOptionsTrovo1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTrovo1(requestParameters, options) {
-            return localVarFp.updateOptionsTrovo1(requestParameters.siteUpdateOptionsTrovoRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsTrovoV1(requestParameters, options) {
+            return localVarFp.channelOptionsUpdateOptionsTrovoV1(requestParameters.siteUpdateOptionsTrovoRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Optional settings for twitch. Depends on the tariff.
-         * @param {updateOptionsTwitch1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsTwitch1(requestParameters, options) {
-            return localVarFp.updateOptionsTwitch1(requestParameters.siteUpdateOptionsTwitchRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsTwitchV1(requestParameters, options) {
+            return localVarFp.channelOptionsUpdateOptionsTwitchV1(requestParameters.siteUpdateOptionsTwitchRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Optional settings for vk. Depends on the tariff.
-         * @param {updateOptionsVk1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsVk1(requestParameters, options) {
-            return localVarFp.updateOptionsVk1(requestParameters.siteUpdateOptionsVkRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsVkV1(requestParameters, options) {
+            return localVarFp.channelOptionsUpdateOptionsVkV1(requestParameters.siteUpdateOptionsVkRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Optional settings for vk video live. Depends on the tariff.
-         * @param {updateOptionsVkVideoLive1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsVkVideoLive1(requestParameters, options) {
-            return localVarFp.updateOptionsVkVideoLive1(requestParameters.siteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters, options) {
+            return localVarFp.channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters.siteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Optional settings for youtube. Depends on the tariff.
-         * @param {updateOptionsYoutube1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOptionsYoutube1(requestParameters, options) {
-            return localVarFp.updateOptionsYoutube1(requestParameters.siteUpdateOptionsYoutubeRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdateOptionsYoutubeV1(requestParameters, options) {
+            return localVarFp.channelOptionsUpdateOptionsYoutubeV1(requestParameters.siteUpdateOptionsYoutubeRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Set planned id. Depends on the tariff.
-         * @param {updatePlanned1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePlanned1(requestParameters, options) {
-            return localVarFp.updatePlanned1(requestParameters.siteSetPlannedRequest, options).then((request) => request(axios, basePath));
+        channelOptionsUpdatePlannedV1(requestParameters, options) {
+            return localVarFp.channelOptionsUpdatePlannedV1(requestParameters.siteSetPlannedRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1355,64 +1323,62 @@ const factory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStatus1(options) {
-            return localVarFp.getStatus1(options).then((request) => request(axios, basePath));
+        channelSettingGetStatusV1(options) {
+            return localVarFp.channelSettingGetStatusV1(options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Set name from custom channel. Global settings.
-         * @param {setName1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setName1(requestParameters, options) {
-            return localVarFp.setName1(requestParameters.siteSetNameRequest, options).then((request) => request(axios, basePath));
+        channelSettingSetNameV1(requestParameters, options) {
+            return localVarFp.channelSettingSetNameV1(requestParameters.siteSetNameRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Set rtmp url from channel. Global settings.
-         * @param {updateRtmp1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRtmp1(requestParameters, options) {
-            return localVarFp.updateRtmp1(requestParameters.siteSetUrlRequest, options).then((request) => request(axios, basePath));
+        channelSettingUpdateRtmpV1(requestParameters, options) {
+            return localVarFp.channelSettingUpdateRtmpV1(requestParameters.siteSetUrlRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get status platform
-         * @param {updateToken1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateToken1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || updateToken1VEnum._1;
-            return localVarFp.updateToken1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.role, options).then((request) => request(axios, basePath));
+        channelSettingUpdateTokenV1(requestParameters, options) {
+            return localVarFp.channelSettingUpdateTokenV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.role, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Set transcoder from channel. Personal settings.
-         * @param {updateTranscoder1Request} requestParameters Request parameters.
+         * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTranscoder1(requestParameters, options) {
-            return localVarFp.updateTranscoder1(requestParameters.siteSetTranscoderRequest, options).then((request) => request(axios, basePath));
+        channelSettingUpdateTranscoderV1(requestParameters, options) {
+            return localVarFp.channelSettingUpdateTranscoderV1(requestParameters.siteSetTranscoderRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get telegram post by filter
-         * @param {telegramGetPostByFilterRequest} requestParameters Request parameters.
+         * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegramGetPostByFilter(requestParameters, options) {
-            return localVarFp.telegramGetPostByFilter(requestParameters.v, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.filterMode, options).then((request) => request(axios, basePath));
+        telegramGetPostByFilterV1(requestParameters, options) {
+            return localVarFp.telegramGetPostByFilterV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.filterMode, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.ChannelSettingsApiFactory = ChannelSettingsApiFactory;
 /**
  * ChannelSettingsApi - object-oriented interface
  * @export
@@ -1423,181 +1389,167 @@ class ChannelSettingsApi extends base_1.BaseAPI {
     /**
      *
      * @summary Get telegram settings
-     * @param {getTelegramSetting1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    getTelegramSetting1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getTelegramSetting1VEnum._1;
-        return (0, exports.fp)(this.configuration).getTelegramSetting1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    channelChatGetTelegramSettingV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatGetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get code for connected chat
-     * @param {initTelegramChatConnect1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    initTelegramChatConnect1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || initTelegramChatConnect1VEnum._1;
-        return (0, exports.fp)(this.configuration).initTelegramChatConnect1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    channelChatInitTelegramChatConnectV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatInitTelegramChatConnectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Disconnect telegram chat
-     * @param {removeTelegramChat1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    removeTelegramChat1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || removeTelegramChat1VEnum._1;
-        return (0, exports.fp)(this.configuration).removeTelegramChat1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    channelChatRemoveTelegramChatV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Set telegram settings
-     * @param {setTelegramSetting1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    setTelegramSetting1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || setTelegramSetting1VEnum._1;
-        return (0, exports.fp)(this.configuration).setTelegramSetting1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.siteTelegramSetSettingsRequestDto, options).then((request) => request(this.axios, this.basePath));
+    channelChatSetTelegramSettingV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatSetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.telegramSetSettingsRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get telegram post list
-     * @param {telegramPosts1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    telegramPosts1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || telegramPosts1VEnum._1;
-        return (0, exports.fp)(this.configuration).telegramPosts1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    channelChatTelegramPostsV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatTelegramPostsV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Optional settings for telegram
-     * @param {updateOptionsTelegram1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsTelegram1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).updateOptionsTelegram1(requestParameters.siteUpdateChatTelegramRequest, options).then((request) => request(this.axios, this.basePath));
+    channelChatUpdateOptionsTelegramV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatUpdateOptionsTelegramV1(requestParameters.siteUpdateChatTelegramRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get planned list
-     * @param {getPlanned1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    getPlanned1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getPlanned1VEnum._1;
-        return (0, exports.fp)(this.configuration).getPlanned1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    channelOptionsGetPlannedV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsGetPlannedV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get playlists from the platform
-     * @param {getPlayList1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    getPlayList1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getPlayList1VEnum._1;
-        return (0, exports.fp)(this.configuration).getPlayList1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, options).then((request) => request(this.axios, this.basePath));
+    channelOptionsGetPlayListV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsGetPlayListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Optional settings for ok. Depends on the tariff.
-     * @param {updateOptionsOk1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsOk1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).updateOptionsOk1(requestParameters.siteUpdateOptionsOkRequest, options).then((request) => request(this.axios, this.basePath));
+    channelOptionsUpdateOptionsOkV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsOkV1(requestParameters.siteUpdateOptionsOkRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Optional settings for trovo. Depends on the tariff.
-     * @param {updateOptionsTrovo1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsTrovo1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).updateOptionsTrovo1(requestParameters.siteUpdateOptionsTrovoRequest, options).then((request) => request(this.axios, this.basePath));
+    channelOptionsUpdateOptionsTrovoV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsTrovoV1(requestParameters.siteUpdateOptionsTrovoRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Optional settings for twitch. Depends on the tariff.
-     * @param {updateOptionsTwitch1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsTwitch1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).updateOptionsTwitch1(requestParameters.siteUpdateOptionsTwitchRequest, options).then((request) => request(this.axios, this.basePath));
+    channelOptionsUpdateOptionsTwitchV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsTwitchV1(requestParameters.siteUpdateOptionsTwitchRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Optional settings for vk. Depends on the tariff.
-     * @param {updateOptionsVk1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsVk1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).updateOptionsVk1(requestParameters.siteUpdateOptionsVkRequest, options).then((request) => request(this.axios, this.basePath));
+    channelOptionsUpdateOptionsVkV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsVkV1(requestParameters.siteUpdateOptionsVkRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Optional settings for vk video live. Depends on the tariff.
-     * @param {updateOptionsVkVideoLive1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsVkVideoLive1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).updateOptionsVkVideoLive1(requestParameters.siteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(this.axios, this.basePath));
+    channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters.siteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Optional settings for youtube. Depends on the tariff.
-     * @param {updateOptionsYoutube1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsYoutube1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).updateOptionsYoutube1(requestParameters.siteUpdateOptionsYoutubeRequest, options).then((request) => request(this.axios, this.basePath));
+    channelOptionsUpdateOptionsYoutubeV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsYoutubeV1(requestParameters.siteUpdateOptionsYoutubeRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Set planned id. Depends on the tariff.
-     * @param {updatePlanned1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updatePlanned1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).updatePlanned1(requestParameters.siteSetPlannedRequest, options).then((request) => request(this.axios, this.basePath));
+    channelOptionsUpdatePlannedV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdatePlannedV1(requestParameters.siteSetPlannedRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1606,254 +1558,214 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    getStatus1(options) {
-        return (0, exports.fp)(this.configuration).getStatus1(options).then((request) => request(this.axios, this.basePath));
+    channelSettingGetStatusV1(options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingGetStatusV1(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Set name from custom channel. Global settings.
-     * @param {setName1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    setName1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).setName1(requestParameters.siteSetNameRequest, options).then((request) => request(this.axios, this.basePath));
+    channelSettingSetNameV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingSetNameV1(requestParameters.siteSetNameRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Set rtmp url from channel. Global settings.
-     * @param {updateRtmp1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateRtmp1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).updateRtmp1(requestParameters.siteSetUrlRequest, options).then((request) => request(this.axios, this.basePath));
+    channelSettingUpdateRtmpV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateRtmpV1(requestParameters.siteSetUrlRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get status platform
-     * @param {updateToken1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateToken1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || updateToken1VEnum._1;
-        return (0, exports.fp)(this.configuration).updateToken1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.role, options).then((request) => request(this.axios, this.basePath));
+    channelSettingUpdateTokenV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateTokenV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.role, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Set transcoder from channel. Personal settings.
-     * @param {updateTranscoder1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateTranscoder1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).updateTranscoder1(requestParameters.siteSetTranscoderRequest, options).then((request) => request(this.axios, this.basePath));
+    channelSettingUpdateTranscoderV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateTranscoderV1(requestParameters.siteSetTranscoderRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get telegram post by filter
-     * @param {telegramGetPostByFilterRequest} requestParameters Request parameters.
+     * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    telegramGetPostByFilter(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).telegramGetPostByFilter(requestParameters.v, requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.filterMode, options).then((request) => request(this.axios, this.basePath));
+    telegramGetPostByFilterV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).telegramGetPostByFilterV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.filterMode, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ChannelSettingsApi = ChannelSettingsApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var getTelegramSetting1VEnum;
-(function (getTelegramSetting1VEnum) {
-    getTelegramSetting1VEnum["_1"] = "1";
-    getTelegramSetting1VEnum["_2"] = "2";
-    getTelegramSetting1VEnum["_3"] = "3";
-})(getTelegramSetting1VEnum || (exports.getTelegramSetting1VEnum = getTelegramSetting1VEnum = {}));
+ * @export
+ */
+exports.ChannelChatGetTelegramSettingV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getTelegramSetting1LanguageEnum;
-(function (getTelegramSetting1LanguageEnum) {
-    getTelegramSetting1LanguageEnum["ru"] = "ru";
-    getTelegramSetting1LanguageEnum["en"] = "en";
-    getTelegramSetting1LanguageEnum["cn"] = "cn";
-})(getTelegramSetting1LanguageEnum || (exports.getTelegramSetting1LanguageEnum = getTelegramSetting1LanguageEnum = {}));
+ * @export
+ */
+exports.ChannelChatGetTelegramSettingV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var initTelegramChatConnect1VEnum;
-(function (initTelegramChatConnect1VEnum) {
-    initTelegramChatConnect1VEnum["_1"] = "1";
-    initTelegramChatConnect1VEnum["_2"] = "2";
-    initTelegramChatConnect1VEnum["_3"] = "3";
-})(initTelegramChatConnect1VEnum || (exports.initTelegramChatConnect1VEnum = initTelegramChatConnect1VEnum = {}));
+ * @export
+ */
+exports.ChannelChatInitTelegramChatConnectV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var initTelegramChatConnect1LanguageEnum;
-(function (initTelegramChatConnect1LanguageEnum) {
-    initTelegramChatConnect1LanguageEnum["ru"] = "ru";
-    initTelegramChatConnect1LanguageEnum["en"] = "en";
-    initTelegramChatConnect1LanguageEnum["cn"] = "cn";
-})(initTelegramChatConnect1LanguageEnum || (exports.initTelegramChatConnect1LanguageEnum = initTelegramChatConnect1LanguageEnum = {}));
+ * @export
+ */
+exports.ChannelChatInitTelegramChatConnectV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var removeTelegramChat1VEnum;
-(function (removeTelegramChat1VEnum) {
-    removeTelegramChat1VEnum["_1"] = "1";
-    removeTelegramChat1VEnum["_2"] = "2";
-    removeTelegramChat1VEnum["_3"] = "3";
-})(removeTelegramChat1VEnum || (exports.removeTelegramChat1VEnum = removeTelegramChat1VEnum = {}));
+ * @export
+ */
+exports.ChannelChatRemoveTelegramChatV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var removeTelegramChat1LanguageEnum;
-(function (removeTelegramChat1LanguageEnum) {
-    removeTelegramChat1LanguageEnum["ru"] = "ru";
-    removeTelegramChat1LanguageEnum["en"] = "en";
-    removeTelegramChat1LanguageEnum["cn"] = "cn";
-})(removeTelegramChat1LanguageEnum || (exports.removeTelegramChat1LanguageEnum = removeTelegramChat1LanguageEnum = {}));
+ * @export
+ */
+exports.ChannelChatRemoveTelegramChatV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var setTelegramSetting1VEnum;
-(function (setTelegramSetting1VEnum) {
-    setTelegramSetting1VEnum["_1"] = "1";
-    setTelegramSetting1VEnum["_2"] = "2";
-    setTelegramSetting1VEnum["_3"] = "3";
-})(setTelegramSetting1VEnum || (exports.setTelegramSetting1VEnum = setTelegramSetting1VEnum = {}));
+ * @export
+ */
+exports.ChannelChatSetTelegramSettingV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var setTelegramSetting1LanguageEnum;
-(function (setTelegramSetting1LanguageEnum) {
-    setTelegramSetting1LanguageEnum["ru"] = "ru";
-    setTelegramSetting1LanguageEnum["en"] = "en";
-    setTelegramSetting1LanguageEnum["cn"] = "cn";
-})(setTelegramSetting1LanguageEnum || (exports.setTelegramSetting1LanguageEnum = setTelegramSetting1LanguageEnum = {}));
+ * @export
+ */
+exports.ChannelChatSetTelegramSettingV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var telegramPosts1VEnum;
-(function (telegramPosts1VEnum) {
-    telegramPosts1VEnum["_1"] = "1";
-    telegramPosts1VEnum["_2"] = "2";
-    telegramPosts1VEnum["_3"] = "3";
-})(telegramPosts1VEnum || (exports.telegramPosts1VEnum = telegramPosts1VEnum = {}));
+ * @export
+ */
+exports.ChannelChatTelegramPostsV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var telegramPosts1LanguageEnum;
-(function (telegramPosts1LanguageEnum) {
-    telegramPosts1LanguageEnum["ru"] = "ru";
-    telegramPosts1LanguageEnum["en"] = "en";
-    telegramPosts1LanguageEnum["cn"] = "cn";
-})(telegramPosts1LanguageEnum || (exports.telegramPosts1LanguageEnum = telegramPosts1LanguageEnum = {}));
+ * @export
+ */
+exports.ChannelChatTelegramPostsV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getPlanned1VEnum;
-(function (getPlanned1VEnum) {
-    getPlanned1VEnum["_1"] = "1";
-    getPlanned1VEnum["_2"] = "2";
-    getPlanned1VEnum["_3"] = "3";
-})(getPlanned1VEnum || (exports.getPlanned1VEnum = getPlanned1VEnum = {}));
+ * @export
+ */
+exports.ChannelOptionsGetPlannedV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getPlanned1LanguageEnum;
-(function (getPlanned1LanguageEnum) {
-    getPlanned1LanguageEnum["ru"] = "ru";
-    getPlanned1LanguageEnum["en"] = "en";
-    getPlanned1LanguageEnum["cn"] = "cn";
-})(getPlanned1LanguageEnum || (exports.getPlanned1LanguageEnum = getPlanned1LanguageEnum = {}));
+ * @export
+ */
+exports.ChannelOptionsGetPlannedV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getPlayList1VEnum;
-(function (getPlayList1VEnum) {
-    getPlayList1VEnum["_1"] = "1";
-    getPlayList1VEnum["_2"] = "2";
-    getPlayList1VEnum["_3"] = "3";
-})(getPlayList1VEnum || (exports.getPlayList1VEnum = getPlayList1VEnum = {}));
+ * @export
+ */
+exports.ChannelOptionsGetPlayListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getPlayList1LanguageEnum;
-(function (getPlayList1LanguageEnum) {
-    getPlayList1LanguageEnum["ru"] = "ru";
-    getPlayList1LanguageEnum["en"] = "en";
-    getPlayList1LanguageEnum["cn"] = "cn";
-})(getPlayList1LanguageEnum || (exports.getPlayList1LanguageEnum = getPlayList1LanguageEnum = {}));
+ * @export
+ */
+exports.ChannelOptionsGetPlayListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var updateToken1VEnum;
-(function (updateToken1VEnum) {
-    updateToken1VEnum["_1"] = "1";
-    updateToken1VEnum["_2"] = "2";
-    updateToken1VEnum["_3"] = "3";
-})(updateToken1VEnum || (exports.updateToken1VEnum = updateToken1VEnum = {}));
+ * @export
+ */
+exports.ChannelSettingUpdateTokenV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var updateToken1LanguageEnum;
-(function (updateToken1LanguageEnum) {
-    updateToken1LanguageEnum["ru"] = "ru";
-    updateToken1LanguageEnum["en"] = "en";
-    updateToken1LanguageEnum["cn"] = "cn";
-})(updateToken1LanguageEnum || (exports.updateToken1LanguageEnum = updateToken1LanguageEnum = {}));
+ * @export
+ */
+exports.ChannelSettingUpdateTokenV1RoleEnum = {
+    Account: 'account',
+    Group: 'group'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var updateToken1RoleEnum;
-(function (updateToken1RoleEnum) {
-    updateToken1RoleEnum["account"] = "account";
-    updateToken1RoleEnum["group"] = "group";
-})(updateToken1RoleEnum || (exports.updateToken1RoleEnum = updateToken1RoleEnum = {}));
+ * @export
+ */
+exports.ChannelSettingUpdateTokenV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var TelegramGetPostByFilterVEnum;
-(function (TelegramGetPostByFilterVEnum) {
-    TelegramGetPostByFilterVEnum["_1"] = "1";
-    TelegramGetPostByFilterVEnum["_2"] = "2";
-    TelegramGetPostByFilterVEnum["_3"] = "3";
-})(TelegramGetPostByFilterVEnum || (exports.TelegramGetPostByFilterVEnum = TelegramGetPostByFilterVEnum = {}));
+ * @export
+ */
+exports.TelegramGetPostByFilterV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var TelegramGetPostByFilterLanguageEnum;
-(function (TelegramGetPostByFilterLanguageEnum) {
-    TelegramGetPostByFilterLanguageEnum["ru"] = "ru";
-    TelegramGetPostByFilterLanguageEnum["en"] = "en";
-    TelegramGetPostByFilterLanguageEnum["cn"] = "cn";
-})(TelegramGetPostByFilterLanguageEnum || (exports.TelegramGetPostByFilterLanguageEnum = TelegramGetPostByFilterLanguageEnum = {}));
+ * @export
+ */
+exports.TelegramGetPostByFilterV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

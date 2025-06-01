@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.tokenChannelLanguageEnum = exports.tokenChannelVEnum = exports.restreamsLanguageEnum = exports.restreamsVEnum = exports.BroadcastApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.MethodBroadcastTokenChannelV1VEnum = exports.MethodBroadcastTokenChannelV1LanguageEnum = exports.MethodBroadcastRestreamsV1VEnum = exports.MethodBroadcastRestreamsV1LanguageEnum = exports.BroadcastApi = exports.BroadcastApiFactory = exports.BroadcastApiFp = exports.BroadcastApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,27 +27,25 @@ const base_1 = require("../base");
  * BroadcastApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const BroadcastApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Get restreams
-         * @param {restreamsVEnum} v Version
-         * @param {restreamsLanguageEnum} language Current language
+         * @param {MethodBroadcastRestreamsV1LanguageEnum} language Current language
          * @param {number} broadcastId broadcast id
          * @param {string} key Chat token
+         * @param {MethodBroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        restreams: async (v, language, broadcastId, key, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('restreams', 'v', v);
+        methodBroadcastRestreamsV1: async (language, broadcastId, key, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('restreams', 'language', language);
+            (0, common_1.assertParamExists)('methodBroadcastRestreamsV1', 'language', language);
             // verify required parameter 'broadcastId' is not null or undefined
-            (0, common_1.assertParamExists)('restreams', 'broadcastId', broadcastId);
+            (0, common_1.assertParamExists)('methodBroadcastRestreamsV1', 'broadcastId', broadcastId);
             // verify required parameter 'key' is not null or undefined
-            (0, common_1.assertParamExists)('restreams', 'key', key);
+            (0, common_1.assertParamExists)('methodBroadcastRestreamsV1', 'key', key);
             const localVarPath = `/method/broadcast/restreams`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -81,19 +79,17 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Connect channel, long polling
-         * @param {tokenChannelVEnum} v Version
-         * @param {tokenChannelLanguageEnum} language Current language
+         * @param {MethodBroadcastTokenChannelV1LanguageEnum} language Current language
          * @param {string} key
+         * @param {MethodBroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tokenChannel: async (v, language, key, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('tokenChannel', 'v', v);
+        methodBroadcastTokenChannelV1: async (language, key, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('tokenChannel', 'language', language);
+            (0, common_1.assertParamExists)('methodBroadcastTokenChannelV1', 'language', language);
             // verify required parameter 'key' is not null or undefined
-            (0, common_1.assertParamExists)('tokenChannel', 'key', key);
+            (0, common_1.assertParamExists)('methodBroadcastTokenChannelV1', 'key', key);
             const localVarPath = `/method/broadcast/longpoll`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -123,80 +119,80 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.BroadcastApiAxiosParamCreator = BroadcastApiAxiosParamCreator;
 /**
  * BroadcastApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const BroadcastApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.BroadcastApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Get restreams
-         * @param {restreamsVEnum} v Version
-         * @param {restreamsLanguageEnum} language Current language
+         * @param {MethodBroadcastRestreamsV1LanguageEnum} language Current language
          * @param {number} broadcastId broadcast id
          * @param {string} key Chat token
+         * @param {MethodBroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async restreams(v, language, broadcastId, key, options) {
+        async methodBroadcastRestreamsV1(language, broadcastId, key, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.restreams(v, language, broadcastId, key, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodBroadcastRestreamsV1(language, broadcastId, key, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.restreams']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.methodBroadcastRestreamsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Connect channel, long polling
-         * @param {tokenChannelVEnum} v Version
-         * @param {tokenChannelLanguageEnum} language Current language
+         * @param {MethodBroadcastTokenChannelV1LanguageEnum} language Current language
          * @param {string} key
+         * @param {MethodBroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async tokenChannel(v, language, key, options) {
+        async methodBroadcastTokenChannelV1(language, key, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.tokenChannel(v, language, key, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodBroadcastTokenChannelV1(language, key, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.tokenChannel']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.methodBroadcastTokenChannelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.BroadcastApiFp = BroadcastApiFp;
 /**
  * BroadcastApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const BroadcastApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.BroadcastApiFp)(configuration);
     return {
         /**
          *
          * @summary Get restreams
-         * @param {restreamsRequest} requestParameters Request parameters.
+         * @param {BroadcastApiMethodBroadcastRestreamsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        restreams(requestParameters, options) {
-            return localVarFp.restreams(requestParameters.v, requestParameters.language, requestParameters.broadcastId, requestParameters.key, options).then((request) => request(axios, basePath));
+        methodBroadcastRestreamsV1(requestParameters, options) {
+            return localVarFp.methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcastId, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Connect channel, long polling
-         * @param {tokenChannelRequest} requestParameters Request parameters.
+         * @param {BroadcastApiMethodBroadcastTokenChannelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tokenChannel(requestParameters, options) {
-            return localVarFp.tokenChannel(requestParameters.v, requestParameters.language, requestParameters.key, options).then((request) => request(axios, basePath));
+        methodBroadcastTokenChannelV1(requestParameters, options) {
+            return localVarFp.methodBroadcastTokenChannelV1(requestParameters.language, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.BroadcastApiFactory = BroadcastApiFactory;
 /**
  * BroadcastApi - object-oriented interface
  * @export
@@ -207,64 +203,56 @@ class BroadcastApi extends base_1.BaseAPI {
     /**
      *
      * @summary Get restreams
-     * @param {restreamsRequest} requestParameters Request parameters.
+     * @param {BroadcastApiMethodBroadcastRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    restreams(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).restreams(requestParameters.v, requestParameters.language, requestParameters.broadcastId, requestParameters.key, options).then((request) => request(this.axios, this.basePath));
+    methodBroadcastRestreamsV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcastId, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Connect channel, long polling
-     * @param {tokenChannelRequest} requestParameters Request parameters.
+     * @param {BroadcastApiMethodBroadcastTokenChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    tokenChannel(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).tokenChannel(requestParameters.v, requestParameters.language, requestParameters.key, options).then((request) => request(this.axios, this.basePath));
+    methodBroadcastTokenChannelV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).methodBroadcastTokenChannelV1(requestParameters.language, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.BroadcastApi = BroadcastApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var restreamsVEnum;
-(function (restreamsVEnum) {
-    restreamsVEnum["_1"] = "1";
-    restreamsVEnum["_2"] = "2";
-    restreamsVEnum["_3"] = "3";
-})(restreamsVEnum || (exports.restreamsVEnum = restreamsVEnum = {}));
+ * @export
+ */
+exports.MethodBroadcastRestreamsV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var restreamsLanguageEnum;
-(function (restreamsLanguageEnum) {
-    restreamsLanguageEnum["ru"] = "ru";
-    restreamsLanguageEnum["en"] = "en";
-    restreamsLanguageEnum["cn"] = "cn";
-})(restreamsLanguageEnum || (exports.restreamsLanguageEnum = restreamsLanguageEnum = {}));
+ * @export
+ */
+exports.MethodBroadcastRestreamsV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var tokenChannelVEnum;
-(function (tokenChannelVEnum) {
-    tokenChannelVEnum["_1"] = "1";
-    tokenChannelVEnum["_2"] = "2";
-    tokenChannelVEnum["_3"] = "3";
-})(tokenChannelVEnum || (exports.tokenChannelVEnum = tokenChannelVEnum = {}));
+ * @export
+ */
+exports.MethodBroadcastTokenChannelV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var tokenChannelLanguageEnum;
-(function (tokenChannelLanguageEnum) {
-    tokenChannelLanguageEnum["ru"] = "ru";
-    tokenChannelLanguageEnum["en"] = "en";
-    tokenChannelLanguageEnum["cn"] = "cn";
-})(tokenChannelLanguageEnum || (exports.tokenChannelLanguageEnum = tokenChannelLanguageEnum = {}));
+ * @export
+ */
+exports.MethodBroadcastTokenChannelV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

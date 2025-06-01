@@ -13,23 +13,13 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BalancesAllowEnum = exports.CurrencyEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var CurrencyEnum;
-(function (CurrencyEnum) {
-    CurrencyEnum["rub"] = "rub";
-    CurrencyEnum["usd"] = "usd";
-})(CurrencyEnum || (exports.CurrencyEnum = CurrencyEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var BalancesAllowEnum;
-(function (BalancesAllowEnum) {
-    BalancesAllowEnum["bonus"] = "bonus";
-    BalancesAllowEnum["payment"] = "payment";
-    BalancesAllowEnum["profit"] = "profit";
-})(BalancesAllowEnum || (exports.BalancesAllowEnum = BalancesAllowEnum = {}));
+exports.BalanceForPayResponseBalancesAllowEnum = exports.BalanceForPayResponseCurrencyEnum = void 0;
+exports.BalanceForPayResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+};
+exports.BalanceForPayResponseBalancesAllowEnum = {
+    Bonus: 'bonus',
+    Payment: 'payment',
+    Profit: 'profit'
+};

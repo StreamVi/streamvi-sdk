@@ -13,14 +13,9 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AccessTypeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var AccessTypeEnum;
-(function (AccessTypeEnum) {
-    AccessTypeEnum[AccessTypeEnum["NUMBER_0"] = 0] = "NUMBER_0";
-    AccessTypeEnum[AccessTypeEnum["NUMBER_1"] = 1] = "NUMBER_1";
-    AccessTypeEnum[AccessTypeEnum["NUMBER_2"] = 2] = "NUMBER_2";
-})(AccessTypeEnum || (exports.AccessTypeEnum = AccessTypeEnum = {}));
+exports.UserProjectResponseAccessTypeEnum = void 0;
+exports.UserProjectResponseAccessTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2
+};

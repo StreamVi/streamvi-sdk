@@ -17,13 +17,13 @@ import type { PaginatedResponseOfMoneyFlowResponse } from '../models';
  * MoneyFlowApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const MoneyFlowApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Transaction list for frontend
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {MoneyFlowListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
@@ -33,19 +33,19 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1: (v: list1VEnum, language: list1LanguageEnum, projectId: number, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    moneyFlowListV1: (language: MoneyFlowListV1LanguageEnum, projectId: number, v?: MoneyFlowListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * MoneyFlowApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const MoneyFlowApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Transaction list for frontend
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {MoneyFlowListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
@@ -55,80 +55,96 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(v: list1VEnum, language: list1LanguageEnum, projectId: number, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfMoneyFlowResponse>>;
+    moneyFlowListV1(language: MoneyFlowListV1LanguageEnum, projectId: number, v?: MoneyFlowListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfMoneyFlowResponse>>;
 };
 /**
  * MoneyFlowApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const MoneyFlowApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Transaction list for frontend
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {MoneyFlowApiMoneyFlowListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse>;
+    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse>;
 };
 /**
- * Request parameters for list1 operation in MoneyFlowApi.
+ * MoneyFlowApi - interface
  * @export
- * @interface list1Request
+ * @interface MoneyFlowApi
  */
-export interface list1Request {
+export interface MoneyFlowApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
+     *
+     * @summary Transaction list for frontend
+     * @param {MoneyFlowApiMoneyFlowListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoneyFlowApiInterface
      */
-    readonly v?: list1VEnum;
+    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse>;
+}
+/**
+ * Request parameters for moneyFlowListV1 operation in MoneyFlowApi.
+ * @export
+ * @interface MoneyFlowApiMoneyFlowListV1Request
+ */
+export interface MoneyFlowApiMoneyFlowListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
-    readonly language: list1LanguageEnum;
+    readonly language: MoneyFlowListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly projectId: number;
     /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof MoneyFlowApiMoneyFlowListV1
+     */
+    readonly v?: MoneyFlowListV1VEnum;
+    /**
      * Number of results
      * @type {number}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly limit?: number;
     /**
      * Page offset number
      * @type {number}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly offset?: number;
     /**
      * Date from
      * @type {string}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly dateFrom?: string;
     /**
      * Date to
      * @type {string}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly dateTo?: string;
     /**
      * Filter code transaction. example 1 or 1,2,3
      * @type {string}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly type?: string;
     /**
      * Filter code transaction. example 1 or 1,2,3
      * @type {string}
-     * @memberof list1
+     * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly balanceType?: string;
 }
@@ -138,33 +154,33 @@ export interface list1Request {
  * @class MoneyFlowApi
  * @extends {BaseAPI}
  */
-export declare class MoneyFlowApi extends BaseAPI {
+export declare class MoneyFlowApi extends BaseAPI implements MoneyFlowApiInterface {
     /**
      *
      * @summary Transaction list for frontend
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {MoneyFlowApiMoneyFlowListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MoneyFlowApi
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const MoneyFlowListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MoneyFlowListV1LanguageEnum = typeof MoneyFlowListV1LanguageEnum[keyof typeof MoneyFlowListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const MoneyFlowListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type MoneyFlowListV1VEnum = typeof MoneyFlowListV1VEnum[keyof typeof MoneyFlowListV1VEnum];
 //# sourceMappingURL=money-flow-api.d.ts.map

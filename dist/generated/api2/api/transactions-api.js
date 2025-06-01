@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.list1LanguageEnum = exports.list1VEnum = exports.TransactionsApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.TransactionsListV1VEnum = exports.TransactionsListV1LanguageEnum = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,14 +27,14 @@ const base_1 = require("../base");
  * TransactionsApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const TransactionsApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Transaction list for frontend
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {TransactionsListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
@@ -43,13 +43,11 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v, language, projectId, limit, offset, dateFrom, dateTo, code, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'v', v);
+        transactionsListV1: async (language, projectId, v, limit, offset, dateFrom, dateTo, code, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'language', language);
+            (0, common_1.assertParamExists)('transactionsListV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('transactionsListV1', 'projectId', projectId);
             const localVarPath = `/method/transactions/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -98,20 +96,20 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.TransactionsApiAxiosParamCreator = TransactionsApiAxiosParamCreator;
 /**
  * TransactionsApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const TransactionsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.TransactionsApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Transaction list for frontend
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {TransactionsListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
@@ -120,38 +118,36 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v, language, projectId, limit, offset, dateFrom, dateTo, code, options) {
+        async transactionsListV1(language, projectId, v, limit, offset, dateFrom, dateTo, code, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, projectId, limit, offset, dateFrom, dateTo, code, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transactionsListV1(language, projectId, v, limit, offset, dateFrom, dateTo, code, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TransactionsApi.list1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TransactionsApi.transactionsListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.TransactionsApiFp = TransactionsApiFp;
 /**
  * TransactionsApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const TransactionsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.TransactionsApiFp)(configuration);
     return {
         /**
          *
          * @summary Transaction list for frontend
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.code, options).then((request) => request(axios, basePath));
+        transactionsListV1(requestParameters, options) {
+            return localVarFp.transactionsListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.code, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.TransactionsApiFactory = TransactionsApiFactory;
 /**
  * TransactionsApi - object-oriented interface
  * @export
@@ -162,35 +158,29 @@ class TransactionsApi extends base_1.BaseAPI {
     /**
      *
      * @summary Transaction list for frontend
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    list1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || list1VEnum._1;
-        return (0, exports.fp)(this.configuration).list1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
+    transactionsListV1(requestParameters, options) {
+        return (0, exports.TransactionsApiFp)(this.configuration).transactionsListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.TransactionsApi = TransactionsApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var list1VEnum;
-(function (list1VEnum) {
-    list1VEnum["_1"] = "1";
-    list1VEnum["_2"] = "2";
-    list1VEnum["_3"] = "3";
-})(list1VEnum || (exports.list1VEnum = list1VEnum = {}));
+ * @export
+ */
+exports.TransactionsListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1LanguageEnum;
-(function (list1LanguageEnum) {
-    list1LanguageEnum["ru"] = "ru";
-    list1LanguageEnum["en"] = "en";
-    list1LanguageEnum["cn"] = "cn";
-})(list1LanguageEnum || (exports.list1LanguageEnum = list1LanguageEnum = {}));
+ * @export
+ */
+exports.TransactionsListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

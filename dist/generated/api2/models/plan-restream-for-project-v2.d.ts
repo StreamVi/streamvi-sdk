@@ -19,17 +19,17 @@ import type { PlanRestreamNextItem } from './plan-restream-next-item';
  */
 export interface PlanRestreamForProjectV2 {
     /**
-     * Current tariff restream
-     * @type {PlanRestreamCurrentItem}
-     * @memberof PlanRestreamForProjectV2
-     */
-    'current': PlanRestreamCurrentItem;
-    /**
      * Before tariff restream
      * @type {PlanRestreamBeforeItem}
      * @memberof PlanRestreamForProjectV2
      */
     'before'?: PlanRestreamBeforeItem;
+    /**
+     * Current tariff restream
+     * @type {PlanRestreamCurrentItem}
+     * @memberof PlanRestreamForProjectV2
+     */
+    'current': PlanRestreamCurrentItem;
     /**
      * Next tariff restream
      * @type {PlanRestreamNextItem}

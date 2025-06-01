@@ -20,7 +20,7 @@ export interface SiteTelegramSetSettingsRequestDto {
      * @type {number}
      * @memberof SiteTelegramSetSettingsRequestDto
      */
-    'filter_mode': FilterModeEnum;
+    'filter_mode': SiteTelegramSetSettingsRequestDtoFilterModeEnum;
     /**
      * Message ID
      * @type {number}
@@ -34,14 +34,11 @@ export interface SiteTelegramSetSettingsRequestDto {
      */
     'link'?: string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum FilterModeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1,
-    NUMBER_2 = 2,
-    NUMBER_3 = 3
-}
+export declare const SiteTelegramSetSettingsRequestDtoFilterModeEnum: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+    readonly NUMBER_2: 2;
+    readonly NUMBER_3: 3;
+};
+export type SiteTelegramSetSettingsRequestDtoFilterModeEnum = typeof SiteTelegramSetSettingsRequestDtoFilterModeEnum[keyof typeof SiteTelegramSetSettingsRequestDtoFilterModeEnum];
 //# sourceMappingURL=site-telegram-set-settings-request-dto.d.ts.map

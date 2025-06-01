@@ -20,13 +20,13 @@ export interface PayoutCreateRequestBodyDto {
      * @type {string}
      * @memberof PayoutCreateRequestBodyDto
      */
-    'v': VEnum;
+    'v': PayoutCreateRequestBodyDtoVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof PayoutCreateRequestBodyDto
      */
-    'language': LanguageEnum;
+    'language': PayoutCreateRequestBodyDtoLanguageEnum;
     /**
      * Payout system account
      * @type {number}
@@ -52,22 +52,16 @@ export interface PayoutCreateRequestBodyDto {
      */
     'wallet_value': string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const PayoutCreateRequestBodyDtoVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PayoutCreateRequestBodyDtoVEnum = typeof PayoutCreateRequestBodyDtoVEnum[keyof typeof PayoutCreateRequestBodyDtoVEnum];
+export declare const PayoutCreateRequestBodyDtoLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PayoutCreateRequestBodyDtoLanguageEnum = typeof PayoutCreateRequestBodyDtoLanguageEnum[keyof typeof PayoutCreateRequestBodyDtoLanguageEnum];
 //# sourceMappingURL=payout-create-request-body-dto.d.ts.map

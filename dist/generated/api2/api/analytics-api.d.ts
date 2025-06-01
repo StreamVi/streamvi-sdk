@@ -16,202 +16,236 @@ import { type RequestArgs, BaseAPI } from '../base';
  * AnalyticsApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const AnalyticsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Bitrate for stream
-     * @param {streamBitrate1VEnum} v Version
-     * @param {streamBitrate1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} streamId stream id
+     * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    streamBitrate1: (v: streamBitrate1VEnum, language: streamBitrate1LanguageEnum, projectId: number, streamId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    analyticsTsStreamBitrateV1: (language: AnalyticsTsStreamBitrateV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamBitrateV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Events for stream
-     * @param {streamEvents1VEnum} v Version
-     * @param {streamEvents1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} streamId stream id
+     * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    streamEvents1: (v: streamEvents1VEnum, language: streamEvents1LanguageEnum, projectId: number, streamId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    analyticsTsStreamEventsV1: (language: AnalyticsTsStreamEventsV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamEventsV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Viewers for stream
-     * @param {streamViewers1VEnum} v Version
-     * @param {streamViewers1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} streamId stream id
+     * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    streamViewers1: (v: streamViewers1VEnum, language: streamViewers1LanguageEnum, projectId: number, streamId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    analyticsTsStreamViewersV1: (language: AnalyticsTsStreamViewersV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamViewersV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AnalyticsApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const AnalyticsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Bitrate for stream
-     * @param {streamBitrate1VEnum} v Version
-     * @param {streamBitrate1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} streamId stream id
+     * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    streamBitrate1(v: streamBitrate1VEnum, language: streamBitrate1LanguageEnum, projectId: number, streamId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
+    analyticsTsStreamBitrateV1(language: AnalyticsTsStreamBitrateV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamBitrateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
     /**
      *
      * @summary Events for stream
-     * @param {streamEvents1VEnum} v Version
-     * @param {streamEvents1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} streamId stream id
+     * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    streamEvents1(v: streamEvents1VEnum, language: streamEvents1LanguageEnum, projectId: number, streamId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
+    analyticsTsStreamEventsV1(language: AnalyticsTsStreamEventsV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamEventsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
     /**
      *
      * @summary Viewers for stream
-     * @param {streamViewers1VEnum} v Version
-     * @param {streamViewers1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} streamId stream id
+     * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    streamViewers1(v: streamViewers1VEnum, language: streamViewers1LanguageEnum, projectId: number, streamId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
+    analyticsTsStreamViewersV1(language: AnalyticsTsStreamViewersV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamViewersV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
 };
 /**
  * AnalyticsApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const AnalyticsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Bitrate for stream
-     * @param {streamBitrate1Request} requestParameters Request parameters.
+     * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    streamBitrate1(requestParameters: streamBitrate1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
+    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
      *
      * @summary Events for stream
-     * @param {streamEvents1Request} requestParameters Request parameters.
+     * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    streamEvents1(requestParameters: streamEvents1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
+    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
      *
      * @summary Viewers for stream
-     * @param {streamViewers1Request} requestParameters Request parameters.
+     * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    streamViewers1(requestParameters: streamViewers1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
+    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
 };
 /**
- * Request parameters for streamBitrate1 operation in AnalyticsApi.
+ * AnalyticsApi - interface
  * @export
- * @interface streamBitrate1Request
+ * @interface AnalyticsApi
  */
-export interface streamBitrate1Request {
+export interface AnalyticsApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof streamBitrate1
+     *
+     * @summary Bitrate for stream
+     * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AnalyticsApiInterface
      */
-    readonly v?: streamBitrate1VEnum;
+    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof streamBitrate1
+     *
+     * @summary Events for stream
+     * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AnalyticsApiInterface
      */
-    readonly language: streamBitrate1LanguageEnum;
+    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
-     * Project id
-     * @type {number}
-     * @memberof streamBitrate1
+     *
+     * @summary Viewers for stream
+     * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AnalyticsApiInterface
      */
-    readonly projectId: number;
-    /**
-     * stream id
-     * @type {number}
-     * @memberof streamBitrate1
-     */
-    readonly streamId: number;
+    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
 }
 /**
- * Request parameters for streamEvents1 operation in AnalyticsApi.
+ * Request parameters for analyticsTsStreamBitrateV1 operation in AnalyticsApi.
  * @export
- * @interface streamEvents1Request
+ * @interface AnalyticsApiAnalyticsTsStreamBitrateV1Request
  */
-export interface streamEvents1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof streamEvents1
-     */
-    readonly v?: streamEvents1VEnum;
+export interface AnalyticsApiAnalyticsTsStreamBitrateV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof streamEvents1
+     * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
-    readonly language: streamEvents1LanguageEnum;
+    readonly language: AnalyticsTsStreamBitrateV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof streamEvents1
+     * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
     readonly projectId: number;
     /**
      * stream id
      * @type {number}
-     * @memberof streamEvents1
+     * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
     readonly streamId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
+     */
+    readonly v?: AnalyticsTsStreamBitrateV1VEnum;
 }
 /**
- * Request parameters for streamViewers1 operation in AnalyticsApi.
+ * Request parameters for analyticsTsStreamEventsV1 operation in AnalyticsApi.
  * @export
- * @interface streamViewers1Request
+ * @interface AnalyticsApiAnalyticsTsStreamEventsV1Request
  */
-export interface streamViewers1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof streamViewers1
-     */
-    readonly v?: streamViewers1VEnum;
+export interface AnalyticsApiAnalyticsTsStreamEventsV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof streamViewers1
+     * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
-    readonly language: streamViewers1LanguageEnum;
+    readonly language: AnalyticsTsStreamEventsV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof streamViewers1
+     * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
     readonly projectId: number;
     /**
      * stream id
      * @type {number}
-     * @memberof streamViewers1
+     * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
     readonly streamId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
+     */
+    readonly v?: AnalyticsTsStreamEventsV1VEnum;
+}
+/**
+ * Request parameters for analyticsTsStreamViewersV1 operation in AnalyticsApi.
+ * @export
+ * @interface AnalyticsApiAnalyticsTsStreamViewersV1Request
+ */
+export interface AnalyticsApiAnalyticsTsStreamViewersV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
+     */
+    readonly language: AnalyticsTsStreamViewersV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
+     */
+    readonly projectId: number;
+    /**
+     * stream id
+     * @type {number}
+     * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
+     */
+    readonly streamId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
+     */
+    readonly v?: AnalyticsTsStreamViewersV1VEnum;
 }
 /**
  * AnalyticsApi - object-oriented interface
@@ -219,87 +253,87 @@ export interface streamViewers1Request {
  * @class AnalyticsApi
  * @extends {BaseAPI}
  */
-export declare class AnalyticsApi extends BaseAPI {
+export declare class AnalyticsApi extends BaseAPI implements AnalyticsApiInterface {
     /**
      *
      * @summary Bitrate for stream
-     * @param {streamBitrate1Request} requestParameters Request parameters.
+     * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    streamBitrate1(requestParameters: streamBitrate1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
+    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
     /**
      *
      * @summary Events for stream
-     * @param {streamEvents1Request} requestParameters Request parameters.
+     * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    streamEvents1(requestParameters: streamEvents1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
+    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
     /**
      *
      * @summary Viewers for stream
-     * @param {streamViewers1Request} requestParameters Request parameters.
+     * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    streamViewers1(requestParameters: streamViewers1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
+    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum streamBitrate1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const AnalyticsTsStreamBitrateV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type AnalyticsTsStreamBitrateV1LanguageEnum = typeof AnalyticsTsStreamBitrateV1LanguageEnum[keyof typeof AnalyticsTsStreamBitrateV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum streamBitrate1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const AnalyticsTsStreamBitrateV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type AnalyticsTsStreamBitrateV1VEnum = typeof AnalyticsTsStreamBitrateV1VEnum[keyof typeof AnalyticsTsStreamBitrateV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum streamEvents1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const AnalyticsTsStreamEventsV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type AnalyticsTsStreamEventsV1LanguageEnum = typeof AnalyticsTsStreamEventsV1LanguageEnum[keyof typeof AnalyticsTsStreamEventsV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum streamEvents1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const AnalyticsTsStreamEventsV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type AnalyticsTsStreamEventsV1VEnum = typeof AnalyticsTsStreamEventsV1VEnum[keyof typeof AnalyticsTsStreamEventsV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum streamViewers1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const AnalyticsTsStreamViewersV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type AnalyticsTsStreamViewersV1LanguageEnum = typeof AnalyticsTsStreamViewersV1LanguageEnum[keyof typeof AnalyticsTsStreamViewersV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum streamViewers1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const AnalyticsTsStreamViewersV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type AnalyticsTsStreamViewersV1VEnum = typeof AnalyticsTsStreamViewersV1VEnum[keyof typeof AnalyticsTsStreamViewersV1VEnum];
 //# sourceMappingURL=analytics-api.d.ts.map

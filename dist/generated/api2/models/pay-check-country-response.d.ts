@@ -32,7 +32,7 @@ export interface PayCheckCountryResponse {
      * @type {string}
      * @memberof PayCheckCountryResponse
      */
-    'currency': CurrencyEnum;
+    'currency': PayCheckCountryResponseCurrencyEnum;
     /**
      * Country
      * @type {object}
@@ -46,12 +46,9 @@ export interface PayCheckCountryResponse {
      */
     'balance': object;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum CurrencyEnum {
-    rub = "rub",
-    usd = "usd"
-}
+export declare const PayCheckCountryResponseCurrencyEnum: {
+    readonly Rub: "rub";
+    readonly Usd: "usd";
+};
+export type PayCheckCountryResponseCurrencyEnum = typeof PayCheckCountryResponseCurrencyEnum[keyof typeof PayCheckCountryResponseCurrencyEnum];
 //# sourceMappingURL=pay-check-country-response.d.ts.map

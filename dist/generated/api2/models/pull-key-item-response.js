@@ -13,24 +13,14 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatusEnum = exports.TransportEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var TransportEnum;
-(function (TransportEnum) {
-    TransportEnum["rtmp"] = "rtmp";
-    TransportEnum["srt"] = "srt";
-    TransportEnum["hls"] = "hls";
-})(TransportEnum || (exports.TransportEnum = TransportEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var StatusEnum;
-(function (StatusEnum) {
-    StatusEnum["active"] = "active";
-    StatusEnum["inactive"] = "inactive";
-    StatusEnum["error"] = "error";
-})(StatusEnum || (exports.StatusEnum = StatusEnum = {}));
+exports.PullKeyItemResponseStatusEnum = exports.PullKeyItemResponseTransportEnum = void 0;
+exports.PullKeyItemResponseTransportEnum = {
+    Rtmp: 'rtmp',
+    Srt: 'srt',
+    Hls: 'hls'
+};
+exports.PullKeyItemResponseStatusEnum = {
+    Active: 'active',
+    Inactive: 'inactive',
+    Error: 'error'
+};

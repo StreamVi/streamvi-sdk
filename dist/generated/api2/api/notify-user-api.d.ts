@@ -20,260 +20,312 @@ import type { SuccessResponse } from '../models';
  * NotifyUserApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const NotifyUserApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Delete mobile token from user
-     * @param {delMobileToken1VEnum} v Version
-     * @param {delMobileToken1LanguageEnum} language Current language
+     * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Current language
      * @param {string} token Token in mobile app
+     * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    delMobileToken1: (v: delMobileToken1VEnum, language: delMobileToken1LanguageEnum, token: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Get user notify settings
-     * @param {get1VEnum} v Version
-     * @param {number} projectId Project id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    get1: (v: get1VEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyUserDelMobileTokenV1: (language: NotifyUserDelMobileTokenV1LanguageEnum, token: string, v?: NotifyUserDelMobileTokenV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get user screen notify
-     * @param {getScreen1VEnum} v Version
-     * @param {getScreen1LanguageEnum} language Current language
+     * @param {NotifyUserGetScreenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getScreen1: (v: getScreen1VEnum, language: getScreen1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyUserGetScreenV1: (language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get user notify settings
+     * @param {number} projectId Project id
+     * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyUserGetV1: (projectId: number, v?: NotifyUserGetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Remove user screen notify
-     * @param {removeScreen1VEnum} v Version
      * @param {number} projectId Project id
+     * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    removeScreen1: (v: removeScreen1VEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyUserRemoveScreenV1: (projectId: number, v?: NotifyUserRemoveScreenV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Set user notify settings
-     * @param {set1VEnum} v Version
      * @param {SiteSetNotifyUserRequest} siteSetNotifyUserRequest Set user notify settings
+     * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    set1: (v: set1VEnum, siteSetNotifyUserRequest: SiteSetNotifyUserRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyUserSetV1: (siteSetNotifyUserRequest: SiteSetNotifyUserRequest, v?: NotifyUserSetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * NotifyUserApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const NotifyUserApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Delete mobile token from user
-     * @param {delMobileToken1VEnum} v Version
-     * @param {delMobileToken1LanguageEnum} language Current language
+     * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Current language
      * @param {string} token Token in mobile app
+     * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    delMobileToken1(v: delMobileToken1VEnum, language: delMobileToken1LanguageEnum, token: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
-    /**
-     *
-     * @summary Get user notify settings
-     * @param {get1VEnum} v Version
-     * @param {number} projectId Project id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    get1(v: get1VEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteNotifyUserResponse>>;
+    notifyUserDelMobileTokenV1(language: NotifyUserDelMobileTokenV1LanguageEnum, token: string, v?: NotifyUserDelMobileTokenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Get user screen notify
-     * @param {getScreen1VEnum} v Version
-     * @param {getScreen1LanguageEnum} language Current language
+     * @param {NotifyUserGetScreenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getScreen1(v: getScreen1VEnum, language: getScreen1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteScreenNotifyUserResponse>>;
+    notifyUserGetScreenV1(language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteScreenNotifyUserResponse>>;
+    /**
+     *
+     * @summary Get user notify settings
+     * @param {number} projectId Project id
+     * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyUserGetV1(projectId: number, v?: NotifyUserGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteNotifyUserResponse>>;
     /**
      *
      * @summary Remove user screen notify
-     * @param {removeScreen1VEnum} v Version
      * @param {number} projectId Project id
+     * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    removeScreen1(v: removeScreen1VEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    notifyUserRemoveScreenV1(projectId: number, v?: NotifyUserRemoveScreenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Set user notify settings
-     * @param {set1VEnum} v Version
      * @param {SiteSetNotifyUserRequest} siteSetNotifyUserRequest Set user notify settings
+     * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    set1(v: set1VEnum, siteSetNotifyUserRequest: SiteSetNotifyUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    notifyUserSetV1(siteSetNotifyUserRequest: SiteSetNotifyUserRequest, v?: NotifyUserSetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * NotifyUserApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const NotifyUserApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Delete mobile token from user
-     * @param {delMobileToken1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    delMobileToken1(requestParameters: delMobileToken1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
-    /**
-     *
-     * @summary Get user notify settings
-     * @param {get1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteNotifyUserResponse>;
+    notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get user screen notify
-     * @param {getScreen1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getScreen1(requestParameters: getScreen1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse>;
+    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse>;
+    /**
+     *
+     * @summary Get user notify settings
+     * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteNotifyUserResponse>;
     /**
      *
      * @summary Remove user screen notify
-     * @param {removeScreen1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    removeScreen1(requestParameters: removeScreen1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Set user notify settings
-     * @param {set1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    set1(requestParameters: set1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 };
 /**
- * Request parameters for delMobileToken1 operation in NotifyUserApi.
+ * NotifyUserApi - interface
  * @export
- * @interface delMobileToken1Request
+ * @interface NotifyUserApi
  */
-export interface delMobileToken1Request {
+export interface NotifyUserApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof delMobileToken1
+     *
+     * @summary Delete mobile token from user
+     * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApiInterface
      */
-    readonly v?: delMobileToken1VEnum;
+    notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get user screen notify
+     * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApiInterface
+     */
+    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse>;
+    /**
+     *
+     * @summary Get user notify settings
+     * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApiInterface
+     */
+    notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteNotifyUserResponse>;
+    /**
+     *
+     * @summary Remove user screen notify
+     * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApiInterface
+     */
+    notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Set user notify settings
+     * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApiInterface
+     */
+    notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+}
+/**
+ * Request parameters for notifyUserDelMobileTokenV1 operation in NotifyUserApi.
+ * @export
+ * @interface NotifyUserApiNotifyUserDelMobileTokenV1Request
+ */
+export interface NotifyUserApiNotifyUserDelMobileTokenV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof delMobileToken1
+     * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
-    readonly language: delMobileToken1LanguageEnum;
+    readonly language: NotifyUserDelMobileTokenV1LanguageEnum;
     /**
      * Token in mobile app
      * @type {string}
-     * @memberof delMobileToken1
+     * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
     readonly token: string;
-}
-/**
- * Request parameters for get1 operation in NotifyUserApi.
- * @export
- * @interface get1Request
- */
-export interface get1Request {
     /**
-     * Version
-     * @type {'1'}
-     * @memberof get1
-     */
-    readonly v?: get1VEnum;
-    /**
-     * Project id
-     * @type {number}
-     * @memberof get1
-     */
-    readonly projectId: number;
-}
-/**
- * Request parameters for getScreen1 operation in NotifyUserApi.
- * @export
- * @interface getScreen1Request
- */
-export interface getScreen1Request {
-    /**
-     * Version
+     * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
-     * @memberof getScreen1
+     * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
-    readonly v?: getScreen1VEnum;
+    readonly v?: NotifyUserDelMobileTokenV1VEnum;
+}
+/**
+ * Request parameters for notifyUserGetScreenV1 operation in NotifyUserApi.
+ * @export
+ * @interface NotifyUserApiNotifyUserGetScreenV1Request
+ */
+export interface NotifyUserApiNotifyUserGetScreenV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getScreen1
+     * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
-    readonly language: getScreen1LanguageEnum;
+    readonly language: NotifyUserGetScreenV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof getScreen1
+     * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof NotifyUserApiNotifyUserGetScreenV1
+     */
+    readonly v?: NotifyUserGetScreenV1VEnum;
 }
 /**
- * Request parameters for removeScreen1 operation in NotifyUserApi.
+ * Request parameters for notifyUserGetV1 operation in NotifyUserApi.
  * @export
- * @interface removeScreen1Request
+ * @interface NotifyUserApiNotifyUserGetV1Request
  */
-export interface removeScreen1Request {
-    /**
-     * Version
-     * @type {'1'}
-     * @memberof removeScreen1
-     */
-    readonly v?: removeScreen1VEnum;
+export interface NotifyUserApiNotifyUserGetV1Request {
     /**
      * Project id
      * @type {number}
-     * @memberof removeScreen1
+     * @memberof NotifyUserApiNotifyUserGetV1
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof NotifyUserApiNotifyUserGetV1
+     */
+    readonly v?: NotifyUserGetV1VEnum;
 }
 /**
- * Request parameters for set1 operation in NotifyUserApi.
+ * Request parameters for notifyUserRemoveScreenV1 operation in NotifyUserApi.
  * @export
- * @interface set1Request
+ * @interface NotifyUserApiNotifyUserRemoveScreenV1Request
  */
-export interface set1Request {
+export interface NotifyUserApiNotifyUserRemoveScreenV1Request {
     /**
-     * Version
-     * @type {'1'}
-     * @memberof set1
+     * Project id
+     * @type {number}
+     * @memberof NotifyUserApiNotifyUserRemoveScreenV1
      */
-    readonly v?: set1VEnum;
+    readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof NotifyUserApiNotifyUserRemoveScreenV1
+     */
+    readonly v?: NotifyUserRemoveScreenV1VEnum;
+}
+/**
+ * Request parameters for notifyUserSetV1 operation in NotifyUserApi.
+ * @export
+ * @interface NotifyUserApiNotifyUserSetV1Request
+ */
+export interface NotifyUserApiNotifyUserSetV1Request {
     /**
      * Set user notify settings
      * @type {SiteSetNotifyUserRequest}
-     * @memberof set1
+     * @memberof NotifyUserApiNotifyUserSetV1
      */
     readonly siteSetNotifyUserRequest: SiteSetNotifyUserRequest;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof NotifyUserApiNotifyUserSetV1
+     */
+    readonly v?: NotifyUserSetV1VEnum;
 }
 /**
  * NotifyUserApi - object-oriented interface
@@ -281,108 +333,108 @@ export interface set1Request {
  * @class NotifyUserApi
  * @extends {BaseAPI}
  */
-export declare class NotifyUserApi extends BaseAPI {
+export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInterface {
     /**
      *
      * @summary Delete mobile token from user
-     * @param {delMobileToken1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    delMobileToken1(requestParameters: delMobileToken1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
-    /**
-     *
-     * @summary Get user notify settings
-     * @param {get1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof NotifyUserApi
-     */
-    get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteNotifyUserResponse, any>>;
+    notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Get user screen notify
-     * @param {getScreen1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    getScreen1(requestParameters: getScreen1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteScreenNotifyUserResponse, any>>;
+    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteScreenNotifyUserResponse, any>>;
+    /**
+     *
+     * @summary Get user notify settings
+     * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyUserApi
+     */
+    notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteNotifyUserResponse, any>>;
     /**
      *
      * @summary Remove user screen notify
-     * @param {removeScreen1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    removeScreen1(requestParameters: removeScreen1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Set user notify settings
-     * @param {set1Request} requestParameters Request parameters.
+     * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    set1(requestParameters: set1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum delMobileToken1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const NotifyUserDelMobileTokenV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type NotifyUserDelMobileTokenV1LanguageEnum = typeof NotifyUserDelMobileTokenV1LanguageEnum[keyof typeof NotifyUserDelMobileTokenV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum delMobileToken1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const NotifyUserDelMobileTokenV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type NotifyUserDelMobileTokenV1VEnum = typeof NotifyUserDelMobileTokenV1VEnum[keyof typeof NotifyUserDelMobileTokenV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum get1VEnum {
-    _1 = "1"
-}
+ * @export
+ */
+export declare const NotifyUserGetScreenV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type NotifyUserGetScreenV1LanguageEnum = typeof NotifyUserGetScreenV1LanguageEnum[keyof typeof NotifyUserGetScreenV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getScreen1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const NotifyUserGetScreenV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type NotifyUserGetScreenV1VEnum = typeof NotifyUserGetScreenV1VEnum[keyof typeof NotifyUserGetScreenV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getScreen1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const NotifyUserGetV1VEnum: {
+    readonly _1: "1";
+};
+export type NotifyUserGetV1VEnum = typeof NotifyUserGetV1VEnum[keyof typeof NotifyUserGetV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum removeScreen1VEnum {
-    _1 = "1"
-}
+ * @export
+ */
+export declare const NotifyUserRemoveScreenV1VEnum: {
+    readonly _1: "1";
+};
+export type NotifyUserRemoveScreenV1VEnum = typeof NotifyUserRemoveScreenV1VEnum[keyof typeof NotifyUserRemoveScreenV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum set1VEnum {
-    _1 = "1"
-}
+ * @export
+ */
+export declare const NotifyUserSetV1VEnum: {
+    readonly _1: "1";
+};
+export type NotifyUserSetV1VEnum = typeof NotifyUserSetV1VEnum[keyof typeof NotifyUserSetV1VEnum];
 //# sourceMappingURL=notify-user-api.d.ts.map

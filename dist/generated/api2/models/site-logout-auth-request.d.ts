@@ -20,7 +20,7 @@ export interface SiteLogoutAuthRequest {
      * @type {string}
      * @memberof SiteLogoutAuthRequest
      */
-    'app': AppEnum;
+    'app': SiteLogoutAuthRequestAppEnum;
     /**
      * Refresh token
      * @type {string}
@@ -28,14 +28,11 @@ export interface SiteLogoutAuthRequest {
      */
     'refresh': string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum AppEnum {
-    site = "site",
-    admin = "admin",
-    mobile = "mobile",
-    desktop = "desktop"
-}
+export declare const SiteLogoutAuthRequestAppEnum: {
+    readonly Site: "site";
+    readonly Admin: "admin";
+    readonly Mobile: "mobile";
+    readonly Desktop: "desktop";
+};
+export type SiteLogoutAuthRequestAppEnum = typeof SiteLogoutAuthRequestAppEnum[keyof typeof SiteLogoutAuthRequestAppEnum];
 //# sourceMappingURL=site-logout-auth-request.d.ts.map

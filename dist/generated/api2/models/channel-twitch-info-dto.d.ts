@@ -27,7 +27,7 @@ export interface ChannelTwitchInfoDto {
      * @type {string}
      * @memberof ChannelTwitchInfoDto
      */
-    'lang'?: LangEnum;
+    'lang'?: ChannelTwitchInfoDtoLangEnum;
     /**
      *
      * @type {Array<string>}
@@ -47,12 +47,9 @@ export interface ChannelTwitchInfoDto {
      */
     'domain'?: string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LangEnum {
-    ru = "ru",
-    en = "en"
-}
+export declare const ChannelTwitchInfoDtoLangEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ChannelTwitchInfoDtoLangEnum = typeof ChannelTwitchInfoDtoLangEnum[keyof typeof ChannelTwitchInfoDtoLangEnum];
 //# sourceMappingURL=channel-twitch-info-dto.d.ts.map

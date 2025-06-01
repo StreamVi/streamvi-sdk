@@ -32,12 +32,12 @@ export interface SiteTelegramChatInfoResponseDto {
      * @type {string}
      * @memberof SiteTelegramChatInfoResponseDto
      */
-    'image': string;
+    'domain'?: string;
     /**
      *
      * @type {string}
      * @memberof SiteTelegramChatInfoResponseDto
      */
-    'domain'?: string;
+    'image': string;
 }
 //# sourceMappingURL=site-telegram-chat-info-response-dto.d.ts.map

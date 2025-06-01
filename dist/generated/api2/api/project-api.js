@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProjectApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.ProjectApi = exports.ProjectApiFactory = exports.ProjectApiFp = exports.ProjectApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,7 +27,7 @@ const base_1 = require("../base");
  * ProjectApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const ProjectApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
@@ -35,7 +35,7 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        liveStatus: async (options = {}) => {
+        methodLiveStatusV1: async (options = {}) => {
             const localVarPath = `/method/project/live-status`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -47,7 +47,7 @@ const axiosParamCreator = function (configuration) {
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication X-API-KEY required
-            await (0, common_1.keyToObject)(localVarHeaderParameter, "X-API-KEY", configuration);
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "X-API-KEY", configuration);
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -58,13 +58,13 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.ProjectApiAxiosParamCreator = ProjectApiAxiosParamCreator;
 /**
  * ProjectApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const ProjectApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.ProjectApiAxiosParamCreator)(configuration);
     return {
         /**
          *
@@ -72,22 +72,22 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async liveStatus(options) {
+        async methodLiveStatusV1(options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.liveStatus(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodLiveStatusV1(options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.liveStatus']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.methodLiveStatusV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.ProjectApiFp = ProjectApiFp;
 /**
  * ProjectApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const ProjectApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.ProjectApiFp)(configuration);
     return {
         /**
          *
@@ -95,12 +95,12 @@ const factory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        liveStatus(options) {
-            return localVarFp.liveStatus(options).then((request) => request(axios, basePath));
+        methodLiveStatusV1(options) {
+            return localVarFp.methodLiveStatusV1(options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.ProjectApiFactory = ProjectApiFactory;
 /**
  * ProjectApi - object-oriented interface
  * @export
@@ -115,8 +115,8 @@ class ProjectApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    liveStatus(options) {
-        return (0, exports.fp)(this.configuration).liveStatus(options).then((request) => request(this.axios, this.basePath));
+    methodLiveStatusV1(options) {
+        return (0, exports.ProjectApiFp)(this.configuration).methodLiveStatusV1(options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ProjectApi = ProjectApi;

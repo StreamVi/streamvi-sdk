@@ -13,25 +13,15 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatusEnum = exports.TypeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum["free"] = "free";
-    TypeEnum["paid_fix"] = "paid_fix";
-    TypeEnum["paid_flex"] = "paid_flex";
-    TypeEnum["custom"] = "custom";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var StatusEnum;
-(function (StatusEnum) {
-    StatusEnum["current"] = "current";
-    StatusEnum["upgrade"] = "upgrade";
-    StatusEnum["downgrade"] = "downgrade";
-})(StatusEnum || (exports.StatusEnum = StatusEnum = {}));
+exports.PlanRestreamProjectResponseStatusEnum = exports.PlanRestreamProjectResponseTypeEnum = void 0;
+exports.PlanRestreamProjectResponseTypeEnum = {
+    Free: 'free',
+    PaidFix: 'paid_fix',
+    PaidFlex: 'paid_flex',
+    Custom: 'custom'
+};
+exports.PlanRestreamProjectResponseStatusEnum = {
+    Current: 'current',
+    Upgrade: 'upgrade',
+    Downgrade: 'downgrade'
+};

@@ -13,22 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CurrencyEnum = exports.TypeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum[TypeEnum["NUMBER_0"] = 0] = "NUMBER_0";
-    TypeEnum[TypeEnum["NUMBER_1"] = 1] = "NUMBER_1";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var CurrencyEnum;
-(function (CurrencyEnum) {
-    CurrencyEnum["rub"] = "rub";
-    CurrencyEnum["usd"] = "usd";
-})(CurrencyEnum || (exports.CurrencyEnum = CurrencyEnum = {}));
+exports.UserProjectGetResponseCurrencyEnum = exports.UserProjectGetResponseTypeEnum = void 0;
+exports.UserProjectGetResponseTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1
+};
+exports.UserProjectGetResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+};

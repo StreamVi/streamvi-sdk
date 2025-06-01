@@ -23,6 +23,12 @@ export interface MessageRestreamResponseDto {
     'id': string | null;
     /**
      *
+     * @type {string}
+     * @memberof MessageRestreamResponseDto
+     */
+    'event_id'?: string;
+    /**
+     *
      * @type {number}
      * @memberof MessageRestreamResponseDto
      */
@@ -39,12 +45,6 @@ export interface MessageRestreamResponseDto {
      * @memberof MessageRestreamResponseDto
      */
     'created_at': string;
-    /**
-     *
-     * @type {string}
-     * @memberof MessageRestreamResponseDto
-     */
-    'event_id'?: string;
     /**
      *
      * @type {string}

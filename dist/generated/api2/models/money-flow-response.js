@@ -13,41 +13,31 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TypeEnum = exports.CurrencyEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var CurrencyEnum;
-(function (CurrencyEnum) {
-    CurrencyEnum["rub"] = "rub";
-    CurrencyEnum["usd"] = "usd";
-})(CurrencyEnum || (exports.CurrencyEnum = CurrencyEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum["registration_bonus"] = "registration_bonus";
-    TypeEnum["plan_restream_buy"] = "plan_restream_buy";
-    TypeEnum["plan_transcoding_buy"] = "plan_transcoding_buy";
-    TypeEnum["plan_storage_buy"] = "plan_storage_buy";
-    TypeEnum["channel_story_buy"] = "channel_story_buy";
-    TypeEnum["channel_shop_sell"] = "channel_shop_sell";
-    TypeEnum["referral_profit"] = "referral_profit";
-    TypeEnum["payment"] = "payment";
-    TypeEnum["payment_cancel"] = "payment_cancel";
-    TypeEnum["payout"] = "payout";
-    TypeEnum["payout_cancel"] = "payout_cancel";
-    TypeEnum["refund"] = "refund";
-    TypeEnum["conversion"] = "conversion";
-    TypeEnum["withdrawal"] = "withdrawal";
-    TypeEnum["transferred_of_old_site"] = "transferred_of_old_site";
-    TypeEnum["accrued_admin"] = "accrued_admin";
-    TypeEnum["reduced_admin"] = "reduced_admin";
-    TypeEnum["promo_topup_1"] = "promo_topup_1";
-    TypeEnum["promo_topup_2"] = "promo_topup_2";
-    TypeEnum["promo_create_plan_restream_1"] = "promo_create_plan_restream_1";
-    TypeEnum["promo_create_plan_restream_2"] = "promo_create_plan_restream_2";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
+exports.MoneyFlowResponseTypeEnum = exports.MoneyFlowResponseCurrencyEnum = void 0;
+exports.MoneyFlowResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+};
+exports.MoneyFlowResponseTypeEnum = {
+    RegistrationBonus: 'registration_bonus',
+    PlanRestreamBuy: 'plan_restream_buy',
+    PlanTranscodingBuy: 'plan_transcoding_buy',
+    PlanStorageBuy: 'plan_storage_buy',
+    ChannelStoryBuy: 'channel_story_buy',
+    ChannelShopSell: 'channel_shop_sell',
+    ReferralProfit: 'referral_profit',
+    Payment: 'payment',
+    PaymentCancel: 'payment_cancel',
+    Payout: 'payout',
+    PayoutCancel: 'payout_cancel',
+    Refund: 'refund',
+    Conversion: 'conversion',
+    Withdrawal: 'withdrawal',
+    TransferredOfOldSite: 'transferred_of_old_site',
+    AccruedAdmin: 'accrued_admin',
+    ReducedAdmin: 'reduced_admin',
+    PromoTopup1: 'promo_topup_1',
+    PromoTopup2: 'promo_topup_2',
+    PromoCreatePlanRestream1: 'promo_create_plan_restream_1',
+    PromoCreatePlanRestream2: 'promo_create_plan_restream_2'
+};

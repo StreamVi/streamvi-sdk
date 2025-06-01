@@ -13,22 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CurrencyEnum = exports.CommissionTypeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var CommissionTypeEnum;
-(function (CommissionTypeEnum) {
-    CommissionTypeEnum["percent"] = "percent";
-    CommissionTypeEnum["fix"] = "fix";
-})(CommissionTypeEnum || (exports.CommissionTypeEnum = CommissionTypeEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var CurrencyEnum;
-(function (CurrencyEnum) {
-    CurrencyEnum["rub"] = "rub";
-    CurrencyEnum["usd"] = "usd";
-})(CurrencyEnum || (exports.CurrencyEnum = CurrencyEnum = {}));
+exports.PayoutSystemAccountListItemResponseCurrencyEnum = exports.PayoutSystemAccountListItemResponseCommissionTypeEnum = void 0;
+exports.PayoutSystemAccountListItemResponseCommissionTypeEnum = {
+    Percent: 'percent',
+    Fix: 'fix'
+};
+exports.PayoutSystemAccountListItemResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+};

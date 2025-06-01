@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSettingV31LanguageEnum = exports.getSettingV31VEnum = exports.checkCountry1LanguageEnum = exports.checkCountry1VEnum = exports.PaySettingApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.PaySettingGetSettingV3VEnum = exports.PaySettingGetSettingV3LanguageEnum = exports.PaySettingCheckCountryV1VEnum = exports.PaySettingCheckCountryV1LanguageEnum = exports.PaySettingApi = exports.PaySettingApiFactory = exports.PaySettingApiFp = exports.PaySettingApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,27 +27,25 @@ const base_1 = require("../base");
  * PaySettingApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const PaySettingApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Check country after update user
-         * @param {checkCountry1VEnum} v Version
-         * @param {checkCountry1LanguageEnum} language Current language
+         * @param {PaySettingCheckCountryV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} countryId country id
+         * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        checkCountry1: async (v, language, projectId, countryId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('checkCountry1', 'v', v);
+        paySettingCheckCountryV1: async (language, projectId, countryId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('checkCountry1', 'language', language);
+            (0, common_1.assertParamExists)('paySettingCheckCountryV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('checkCountry1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('paySettingCheckCountryV1', 'projectId', projectId);
             // verify required parameter 'countryId' is not null or undefined
-            (0, common_1.assertParamExists)('checkCountry1', 'countryId', countryId);
+            (0, common_1.assertParamExists)('paySettingCheckCountryV1', 'countryId', countryId);
             const localVarPath = `/method/pay-setting/check-country`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -81,19 +79,17 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get pay settings for profile v3
-         * @param {getSettingV31VEnum} v Version
-         * @param {getSettingV31LanguageEnum} language Current language
+         * @param {PaySettingGetSettingV3LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSettingV31: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getSettingV31', 'v', v);
+        paySettingGetSettingV3: async (language, projectId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getSettingV31', 'language', language);
+            (0, common_1.assertParamExists)('paySettingGetSettingV3', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('getSettingV31', 'projectId', projectId);
+            (0, common_1.assertParamExists)('paySettingGetSettingV3', 'projectId', projectId);
             const localVarPath = `/method/pay-setting`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -128,9 +124,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setSetting1: async (paySettingBodyDto, options = {}) => {
+        paySettingSetSettingV1: async (paySettingBodyDto, options = {}) => {
             // verify required parameter 'paySettingBodyDto' is not null or undefined
-            (0, common_1.assertParamExists)('setSetting1', 'paySettingBodyDto', paySettingBodyDto);
+            (0, common_1.assertParamExists)('paySettingSetSettingV1', 'paySettingBodyDto', paySettingBodyDto);
             const localVarPath = `/method/pay-setting`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -153,45 +149,45 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.PaySettingApiAxiosParamCreator = PaySettingApiAxiosParamCreator;
 /**
  * PaySettingApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const PaySettingApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.PaySettingApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Check country after update user
-         * @param {checkCountry1VEnum} v Version
-         * @param {checkCountry1LanguageEnum} language Current language
+         * @param {PaySettingCheckCountryV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} countryId country id
+         * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async checkCountry1(v, language, projectId, countryId, options) {
+        async paySettingCheckCountryV1(language, projectId, countryId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.checkCountry1(v, language, projectId, countryId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.paySettingCheckCountryV1(language, projectId, countryId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaySettingApi.checkCountry1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaySettingApi.paySettingCheckCountryV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get pay settings for profile v3
-         * @param {getSettingV31VEnum} v Version
-         * @param {getSettingV31LanguageEnum} language Current language
+         * @param {PaySettingGetSettingV3LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSettingV31(v, language, projectId, options) {
+        async paySettingGetSettingV3(language, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getSettingV31(v, language, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.paySettingGetSettingV3(language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaySettingApi.getSettingV31']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaySettingApi.paySettingGetSettingV3']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -201,60 +197,56 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setSetting1(paySettingBodyDto, options) {
+        async paySettingSetSettingV1(paySettingBodyDto, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.setSetting1(paySettingBodyDto, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.paySettingSetSettingV1(paySettingBodyDto, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaySettingApi.setSetting1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaySettingApi.paySettingSetSettingV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.PaySettingApiFp = PaySettingApiFp;
 /**
  * PaySettingApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const PaySettingApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.PaySettingApiFp)(configuration);
     return {
         /**
          *
          * @summary Check country after update user
-         * @param {checkCountry1Request} requestParameters Request parameters.
+         * @param {PaySettingApiPaySettingCheckCountryV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        checkCountry1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || checkCountry1VEnum._1;
-            return localVarFp.checkCountry1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.countryId, options).then((request) => request(axios, basePath));
+        paySettingCheckCountryV1(requestParameters, options) {
+            return localVarFp.paySettingCheckCountryV1(requestParameters.language, requestParameters.projectId, requestParameters.countryId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get pay settings for profile v3
-         * @param {getSettingV31Request} requestParameters Request parameters.
+         * @param {PaySettingApiPaySettingGetSettingV3Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSettingV31(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getSettingV31VEnum._1;
-            return localVarFp.getSettingV31(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        paySettingGetSettingV3(requestParameters, options) {
+            return localVarFp.paySettingGetSettingV3(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Set pay settings for profile
-         * @param {setSetting1Request} requestParameters Request parameters.
+         * @param {PaySettingApiPaySettingSetSettingV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setSetting1(requestParameters, options) {
-            return localVarFp.setSetting1(requestParameters.paySettingBodyDto, options).then((request) => request(axios, basePath));
+        paySettingSetSettingV1(requestParameters, options) {
+            return localVarFp.paySettingSetSettingV1(requestParameters.paySettingBodyDto, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.PaySettingApiFactory = PaySettingApiFactory;
 /**
  * PaySettingApi - object-oriented interface
  * @export
@@ -265,79 +257,67 @@ class PaySettingApi extends base_1.BaseAPI {
     /**
      *
      * @summary Check country after update user
-     * @param {checkCountry1Request} requestParameters Request parameters.
+     * @param {PaySettingApiPaySettingCheckCountryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    checkCountry1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || checkCountry1VEnum._1;
-        return (0, exports.fp)(this.configuration).checkCountry1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.countryId, options).then((request) => request(this.axios, this.basePath));
+    paySettingCheckCountryV1(requestParameters, options) {
+        return (0, exports.PaySettingApiFp)(this.configuration).paySettingCheckCountryV1(requestParameters.language, requestParameters.projectId, requestParameters.countryId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get pay settings for profile v3
-     * @param {getSettingV31Request} requestParameters Request parameters.
+     * @param {PaySettingApiPaySettingGetSettingV3Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    getSettingV31(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getSettingV31VEnum._1;
-        return (0, exports.fp)(this.configuration).getSettingV31(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    paySettingGetSettingV3(requestParameters, options) {
+        return (0, exports.PaySettingApiFp)(this.configuration).paySettingGetSettingV3(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Set pay settings for profile
-     * @param {setSetting1Request} requestParameters Request parameters.
+     * @param {PaySettingApiPaySettingSetSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    setSetting1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).setSetting1(requestParameters.paySettingBodyDto, options).then((request) => request(this.axios, this.basePath));
+    paySettingSetSettingV1(requestParameters, options) {
+        return (0, exports.PaySettingApiFp)(this.configuration).paySettingSetSettingV1(requestParameters.paySettingBodyDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PaySettingApi = PaySettingApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var checkCountry1VEnum;
-(function (checkCountry1VEnum) {
-    checkCountry1VEnum["_1"] = "1";
-    checkCountry1VEnum["_2"] = "2";
-    checkCountry1VEnum["_3"] = "3";
-})(checkCountry1VEnum || (exports.checkCountry1VEnum = checkCountry1VEnum = {}));
+ * @export
+ */
+exports.PaySettingCheckCountryV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var checkCountry1LanguageEnum;
-(function (checkCountry1LanguageEnum) {
-    checkCountry1LanguageEnum["ru"] = "ru";
-    checkCountry1LanguageEnum["en"] = "en";
-    checkCountry1LanguageEnum["cn"] = "cn";
-})(checkCountry1LanguageEnum || (exports.checkCountry1LanguageEnum = checkCountry1LanguageEnum = {}));
+ * @export
+ */
+exports.PaySettingCheckCountryV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getSettingV31VEnum;
-(function (getSettingV31VEnum) {
-    getSettingV31VEnum["_1"] = "1";
-    getSettingV31VEnum["_2"] = "2";
-    getSettingV31VEnum["_3"] = "3";
-})(getSettingV31VEnum || (exports.getSettingV31VEnum = getSettingV31VEnum = {}));
+ * @export
+ */
+exports.PaySettingGetSettingV3LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getSettingV31LanguageEnum;
-(function (getSettingV31LanguageEnum) {
-    getSettingV31LanguageEnum["ru"] = "ru";
-    getSettingV31LanguageEnum["en"] = "en";
-    getSettingV31LanguageEnum["cn"] = "cn";
-})(getSettingV31LanguageEnum || (exports.getSettingV31LanguageEnum = getSettingV31LanguageEnum = {}));
+ * @export
+ */
+exports.PaySettingGetSettingV3VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

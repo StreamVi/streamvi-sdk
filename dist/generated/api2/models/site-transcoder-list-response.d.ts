@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { SiteTranscoderListItem } from './site-transcoder-list-item';
+import type { TranscoderListItem } from './transcoder-list-item';
 /**
  *
  * @export
@@ -18,9 +18,9 @@ import type { SiteTranscoderListItem } from './site-transcoder-list-item';
 export interface SiteTranscoderListResponse {
     /**
      * Array of items
-     * @type {Array<SiteTranscoderListItem>}
+     * @type {Array<TranscoderListItem>}
      * @memberof SiteTranscoderListResponse
      */
-    'results': Array<SiteTranscoderListItem>;
+    'results': Array<TranscoderListItem>;
 }
 //# sourceMappingURL=site-transcoder-list-response.d.ts.map

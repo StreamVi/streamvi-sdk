@@ -13,17 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatusEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var StatusEnum;
-(function (StatusEnum) {
-    StatusEnum["init"] = "init";
-    StatusEnum["pending"] = "pending";
-    StatusEnum["error"] = "error";
-    StatusEnum["live"] = "live";
-    StatusEnum["offline"] = "offline";
-    StatusEnum["busy"] = "busy";
-})(StatusEnum || (exports.StatusEnum = StatusEnum = {}));
+exports.SiteSearchChannelItemStatusEnum = void 0;
+exports.SiteSearchChannelItemStatusEnum = {
+    Init: 'init',
+    Pending: 'pending',
+    Error: 'error',
+    Live: 'live',
+    Offline: 'offline',
+    Busy: 'busy'
+};

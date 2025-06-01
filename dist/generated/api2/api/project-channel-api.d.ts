@@ -18,295 +18,338 @@ import type { SuccessResponse } from '../models';
  * ProjectChannelApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const ProjectChannelApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Change access for project in channel
-     * @param {changeAccess1VEnum} v Version
-     * @param {changeAccess1LanguageEnum} language Current language
+     * @param {ProjectChannelChangeAccessV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {number} toProjectId Target project id
-     * @param {changeAccess1AccessTypeEnum} accessType Access type
+     * @param {ProjectChannelChangeAccessV1AccessTypeEnum} accessType Access type
+     * @param {ProjectChannelChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    changeAccess1: (v: changeAccess1VEnum, language: changeAccess1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: changeAccess1AccessTypeEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelChangeAccessV1: (language: ProjectChannelChangeAccessV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: ProjectChannelChangeAccessV1AccessTypeEnum, v?: ProjectChannelChangeAccessV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Remove access for project in channel
-     * @param {del1VEnum} v Version
-     * @param {del1LanguageEnum} language Current language
+     * @param {ProjectChannelDelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {number} targetProjectId Target project id
+     * @param {ProjectChannelDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    del1: (v: del1VEnum, language: del1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelDelV1: (language: ProjectChannelDelV1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, v?: ProjectChannelDelV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Project channel list
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {ProjectChannelListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ProjectChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1: (v: list1VEnum, language: list1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelListV1: (language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Transfer owner for project in channel
-     * @param {transferOwner1VEnum} v Version
-     * @param {transferOwner1LanguageEnum} language Current language
+     * @param {ProjectChannelTransferOwnerV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {number} toProjectId Target project id
+     * @param {ProjectChannelTransferOwnerV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transferOwner1: (v: transferOwner1VEnum, language: transferOwner1LanguageEnum, projectId: number, channelId: number, toProjectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelTransferOwnerV1: (language: ProjectChannelTransferOwnerV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, v?: ProjectChannelTransferOwnerV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ProjectChannelApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const ProjectChannelApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Change access for project in channel
-     * @param {changeAccess1VEnum} v Version
-     * @param {changeAccess1LanguageEnum} language Current language
+     * @param {ProjectChannelChangeAccessV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {number} toProjectId Target project id
-     * @param {changeAccess1AccessTypeEnum} accessType Access type
+     * @param {ProjectChannelChangeAccessV1AccessTypeEnum} accessType Access type
+     * @param {ProjectChannelChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    changeAccess1(v: changeAccess1VEnum, language: changeAccess1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: changeAccess1AccessTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    projectChannelChangeAccessV1(language: ProjectChannelChangeAccessV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: ProjectChannelChangeAccessV1AccessTypeEnum, v?: ProjectChannelChangeAccessV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Remove access for project in channel
-     * @param {del1VEnum} v Version
-     * @param {del1LanguageEnum} language Current language
+     * @param {ProjectChannelDelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {number} targetProjectId Target project id
+     * @param {ProjectChannelDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    del1(v: del1VEnum, language: del1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    projectChannelDelV1(language: ProjectChannelDelV1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, v?: ProjectChannelDelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Project channel list
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {ProjectChannelListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ProjectChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(v: list1VEnum, language: list1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfProjectChannelResponse>>;
+    projectChannelListV1(language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfProjectChannelResponse>>;
     /**
      *
      * @summary Transfer owner for project in channel
-     * @param {transferOwner1VEnum} v Version
-     * @param {transferOwner1LanguageEnum} language Current language
+     * @param {ProjectChannelTransferOwnerV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {number} toProjectId Target project id
+     * @param {ProjectChannelTransferOwnerV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transferOwner1(v: transferOwner1VEnum, language: transferOwner1LanguageEnum, projectId: number, channelId: number, toProjectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    projectChannelTransferOwnerV1(language: ProjectChannelTransferOwnerV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, v?: ProjectChannelTransferOwnerV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * ProjectChannelApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const ProjectChannelApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Change access for project in channel
-     * @param {changeAccess1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    changeAccess1(requestParameters: changeAccess1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Remove access for project in channel
-     * @param {del1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelDelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    del1(requestParameters: del1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Project channel list
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse>;
+    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse>;
     /**
      *
      * @summary Transfer owner for project in channel
-     * @param {transferOwner1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelTransferOwnerV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transferOwner1(requestParameters: transferOwner1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 };
 /**
- * Request parameters for changeAccess1 operation in ProjectChannelApi.
+ * ProjectChannelApi - interface
  * @export
- * @interface changeAccess1Request
+ * @interface ProjectChannelApi
  */
-export interface changeAccess1Request {
+export interface ProjectChannelApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof changeAccess1
+     *
+     * @summary Change access for project in channel
+     * @param {ProjectChannelApiProjectChannelChangeAccessV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelApiInterface
      */
-    readonly v?: changeAccess1VEnum;
+    projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Remove access for project in channel
+     * @param {ProjectChannelApiProjectChannelDelV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelApiInterface
+     */
+    projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Project channel list
+     * @param {ProjectChannelApiProjectChannelListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelApiInterface
+     */
+    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse>;
+    /**
+     *
+     * @summary Transfer owner for project in channel
+     * @param {ProjectChannelApiProjectChannelTransferOwnerV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelApiInterface
+     */
+    projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+}
+/**
+ * Request parameters for projectChannelChangeAccessV1 operation in ProjectChannelApi.
+ * @export
+ * @interface ProjectChannelApiProjectChannelChangeAccessV1Request
+ */
+export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof changeAccess1
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly language: changeAccess1LanguageEnum;
+    readonly language: ProjectChannelChangeAccessV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof changeAccess1
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof changeAccess1
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
     readonly channelId: number;
     /**
      * Target project id
      * @type {number}
-     * @memberof changeAccess1
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
     readonly toProjectId: number;
     /**
      * Access type
      * @type {0 | 1 | 1 | 2}
-     * @memberof changeAccess1
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly accessType: changeAccess1AccessTypeEnum;
+    readonly accessType: ProjectChannelChangeAccessV1AccessTypeEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
+     */
+    readonly v?: ProjectChannelChangeAccessV1VEnum;
 }
 /**
- * Request parameters for del1 operation in ProjectChannelApi.
+ * Request parameters for projectChannelDelV1 operation in ProjectChannelApi.
  * @export
- * @interface del1Request
+ * @interface ProjectChannelApiProjectChannelDelV1Request
  */
-export interface del1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof del1
-     */
-    readonly v?: del1VEnum;
+export interface ProjectChannelApiProjectChannelDelV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof del1
+     * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly language: del1LanguageEnum;
+    readonly language: ProjectChannelDelV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof del1
+     * @memberof ProjectChannelApiProjectChannelDelV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof del1
+     * @memberof ProjectChannelApiProjectChannelDelV1
      */
     readonly channelId: number;
     /**
      * Target project id
      * @type {number}
-     * @memberof del1
+     * @memberof ProjectChannelApiProjectChannelDelV1
      */
     readonly targetProjectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelApiProjectChannelDelV1
+     */
+    readonly v?: ProjectChannelDelV1VEnum;
 }
 /**
- * Request parameters for list1 operation in ProjectChannelApi.
+ * Request parameters for projectChannelListV1 operation in ProjectChannelApi.
  * @export
- * @interface list1Request
+ * @interface ProjectChannelApiProjectChannelListV1Request
  */
-export interface list1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
-     */
-    readonly v?: list1VEnum;
+export interface ProjectChannelApiProjectChannelListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof ProjectChannelApiProjectChannelListV1
      */
-    readonly language: list1LanguageEnum;
+    readonly language: ProjectChannelListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof list1
+     * @memberof ProjectChannelApiProjectChannelListV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof list1
+     * @memberof ProjectChannelApiProjectChannelListV1
      */
     readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelApiProjectChannelListV1
+     */
+    readonly v?: ProjectChannelListV1VEnum;
 }
 /**
- * Request parameters for transferOwner1 operation in ProjectChannelApi.
+ * Request parameters for projectChannelTransferOwnerV1 operation in ProjectChannelApi.
  * @export
- * @interface transferOwner1Request
+ * @interface ProjectChannelApiProjectChannelTransferOwnerV1Request
  */
-export interface transferOwner1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof transferOwner1
-     */
-    readonly v?: transferOwner1VEnum;
+export interface ProjectChannelApiProjectChannelTransferOwnerV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof transferOwner1
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly language: transferOwner1LanguageEnum;
+    readonly language: ProjectChannelTransferOwnerV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof transferOwner1
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof transferOwner1
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
     readonly channelId: number;
     /**
      * Target project id
      * @type {number}
-     * @memberof transferOwner1
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
     readonly toProjectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
+     */
+    readonly v?: ProjectChannelTransferOwnerV1VEnum;
 }
 /**
  * ProjectChannelApi - object-oriented interface
@@ -314,124 +357,124 @@ export interface transferOwner1Request {
  * @class ProjectChannelApi
  * @extends {BaseAPI}
  */
-export declare class ProjectChannelApi extends BaseAPI {
+export declare class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInterface {
     /**
      *
      * @summary Change access for project in channel
-     * @param {changeAccess1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    changeAccess1(requestParameters: changeAccess1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Remove access for project in channel
-     * @param {del1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelDelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    del1(requestParameters: del1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Project channel list
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
     /**
      *
      * @summary Transfer owner for project in channel
-     * @param {transferOwner1Request} requestParameters Request parameters.
+     * @param {ProjectChannelApiProjectChannelTransferOwnerV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    transferOwner1(requestParameters: transferOwner1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum changeAccess1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelChangeAccessV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelChangeAccessV1LanguageEnum = typeof ProjectChannelChangeAccessV1LanguageEnum[keyof typeof ProjectChannelChangeAccessV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum changeAccess1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelChangeAccessV1AccessTypeEnum: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+    readonly NUMBER_12: 1;
+    readonly NUMBER_2: 2;
+};
+export type ProjectChannelChangeAccessV1AccessTypeEnum = typeof ProjectChannelChangeAccessV1AccessTypeEnum[keyof typeof ProjectChannelChangeAccessV1AccessTypeEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum changeAccess1AccessTypeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1,
-    NUMBER_12 = 1,
-    NUMBER_2 = 2
-}
+ * @export
+ */
+export declare const ProjectChannelChangeAccessV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelChangeAccessV1VEnum = typeof ProjectChannelChangeAccessV1VEnum[keyof typeof ProjectChannelChangeAccessV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum del1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelDelV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelDelV1LanguageEnum = typeof ProjectChannelDelV1LanguageEnum[keyof typeof ProjectChannelDelV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum del1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelDelV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelDelV1VEnum = typeof ProjectChannelDelV1VEnum[keyof typeof ProjectChannelDelV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelListV1LanguageEnum = typeof ProjectChannelListV1LanguageEnum[keyof typeof ProjectChannelListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelListV1VEnum = typeof ProjectChannelListV1VEnum[keyof typeof ProjectChannelListV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum transferOwner1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelTransferOwnerV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelTransferOwnerV1LanguageEnum = typeof ProjectChannelTransferOwnerV1LanguageEnum[keyof typeof ProjectChannelTransferOwnerV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum transferOwner1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelTransferOwnerV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelTransferOwnerV1VEnum = typeof ProjectChannelTransferOwnerV1VEnum[keyof typeof ProjectChannelTransferOwnerV1VEnum];
 //# sourceMappingURL=project-channel-api.d.ts.map

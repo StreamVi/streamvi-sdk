@@ -13,32 +13,17 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LanguageEnum = exports.CurrencyEnum = exports.IdEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var IdEnum;
-(function (IdEnum) {
-    IdEnum[IdEnum["NUMBER_0"] = 0] = "NUMBER_0";
-    IdEnum[IdEnum["NUMBER_1"] = 1] = "NUMBER_1";
-})(IdEnum || (exports.IdEnum = IdEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var CurrencyEnum;
-(function (CurrencyEnum) {
-    CurrencyEnum["rub"] = "rub";
-    CurrencyEnum["usd"] = "usd";
-})(CurrencyEnum || (exports.CurrencyEnum = CurrencyEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageEnum;
-(function (LanguageEnum) {
-    LanguageEnum["ru"] = "ru";
-    LanguageEnum["en"] = "en";
-    LanguageEnum["cn"] = "cn";
-})(LanguageEnum || (exports.LanguageEnum = LanguageEnum = {}));
+exports.UserProfileResponseLanguageEnum = exports.UserProfileResponseCurrencyEnum = exports.UserProfileResponseIdEnum = void 0;
+exports.UserProfileResponseIdEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1
+};
+exports.UserProfileResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+};
+exports.UserProfileResponseLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};

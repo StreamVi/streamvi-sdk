@@ -37,23 +37,47 @@ export interface PlanRestreamProjectResponse {
      */
     'active': boolean;
     /**
+     * Minimum channel count
+     * @type {number}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'count_channel_min'?: number;
+    /**
      * Maximum channel count
      * @type {number}
      * @memberof PlanRestreamProjectResponse
      */
     'count_channel_max': number;
     /**
+     * Step channel
+     * @type {number}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'count_channel_step'?: number;
+    /**
      * Type
      * @type {string}
      * @memberof PlanRestreamProjectResponse
      */
-    'type': TypeEnum;
+    'type': PlanRestreamProjectResponseTypeEnum;
     /**
      * Maximum bitrate, kbps
      * @type {number}
      * @memberof PlanRestreamProjectResponse
      */
     'bitrate_max': number | null;
+    /**
+     * Minimum bitrate, kbps
+     * @type {number}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'bitrate_min'?: number;
+    /**
+     * Step bitrate
+     * @type {number}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'bitrate_step'?: number;
     /**
      * Field for sort
      * @type {number}
@@ -71,7 +95,7 @@ export interface PlanRestreamProjectResponse {
      * @type {string}
      * @memberof PlanRestreamProjectResponse
      */
-    'status': StatusEnum;
+    'status': PlanRestreamProjectResponseStatusEnum;
     /**
      * Features
      * @type {Array<PlanRestreamFeatureItemV2>}
@@ -84,48 +108,18 @@ export interface PlanRestreamProjectResponse {
      * @memberof PlanRestreamProjectResponse
      */
     'own_tariff': PlanRestreamForProjectV2;
-    /**
-     * Minimum channel count
-     * @type {number}
-     * @memberof PlanRestreamProjectResponse
-     */
-    'count_channel_min'?: number;
-    /**
-     * Step channel
-     * @type {number}
-     * @memberof PlanRestreamProjectResponse
-     */
-    'count_channel_step'?: number;
-    /**
-     * Minimum bitrate, kbps
-     * @type {number}
-     * @memberof PlanRestreamProjectResponse
-     */
-    'bitrate_min'?: number;
-    /**
-     * Step bitrate
-     * @type {number}
-     * @memberof PlanRestreamProjectResponse
-     */
-    'bitrate_step'?: number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TypeEnum {
-    free = "free",
-    paid_fix = "paid_fix",
-    paid_flex = "paid_flex",
-    custom = "custom"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum StatusEnum {
-    current = "current",
-    upgrade = "upgrade",
-    downgrade = "downgrade"
-}
+export declare const PlanRestreamProjectResponseTypeEnum: {
+    readonly Free: "free";
+    readonly PaidFix: "paid_fix";
+    readonly PaidFlex: "paid_flex";
+    readonly Custom: "custom";
+};
+export type PlanRestreamProjectResponseTypeEnum = typeof PlanRestreamProjectResponseTypeEnum[keyof typeof PlanRestreamProjectResponseTypeEnum];
+export declare const PlanRestreamProjectResponseStatusEnum: {
+    readonly Current: "current";
+    readonly Upgrade: "upgrade";
+    readonly Downgrade: "downgrade";
+};
+export type PlanRestreamProjectResponseStatusEnum = typeof PlanRestreamProjectResponseStatusEnum[keyof typeof PlanRestreamProjectResponseStatusEnum];
 //# sourceMappingURL=plan-restream-project-response.d.ts.map

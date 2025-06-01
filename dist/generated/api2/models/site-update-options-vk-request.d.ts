@@ -20,13 +20,13 @@ export interface SiteUpdateOptionsVkRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateOptionsVkRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateOptionsVkRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -86,13 +86,13 @@ export interface SiteUpdateOptionsVkRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'privacy_comments': PrivacyCommentsEnum;
+    'privacy_comments': SiteUpdateOptionsVkRequestPrivacyCommentsEnum;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'privacy_video': PrivacyVideoEnum;
+    'privacy_video': SiteUpdateOptionsVkRequestPrivacyVideoEnum;
     /**
      * Is publish stream on wall
      * @type {boolean}
@@ -100,42 +100,30 @@ export interface SiteUpdateOptionsVkRequest {
      */
     'wall': boolean;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum PrivacyCommentsEnum {
-    all = "all",
-    members = "members",
-    editors = "editors",
-    nobody = "nobody"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum PrivacyVideoEnum {
-    all = "all",
-    members = "members",
-    editors = "editors",
-    nobody = "nobody"
-}
+export declare const SiteUpdateOptionsVkRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteUpdateOptionsVkRequestVEnum = typeof SiteUpdateOptionsVkRequestVEnum[keyof typeof SiteUpdateOptionsVkRequestVEnum];
+export declare const SiteUpdateOptionsVkRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteUpdateOptionsVkRequestLanguageEnum = typeof SiteUpdateOptionsVkRequestLanguageEnum[keyof typeof SiteUpdateOptionsVkRequestLanguageEnum];
+export declare const SiteUpdateOptionsVkRequestPrivacyCommentsEnum: {
+    readonly All: "all";
+    readonly Members: "members";
+    readonly Editors: "editors";
+    readonly Nobody: "nobody";
+};
+export type SiteUpdateOptionsVkRequestPrivacyCommentsEnum = typeof SiteUpdateOptionsVkRequestPrivacyCommentsEnum[keyof typeof SiteUpdateOptionsVkRequestPrivacyCommentsEnum];
+export declare const SiteUpdateOptionsVkRequestPrivacyVideoEnum: {
+    readonly All: "all";
+    readonly Members: "members";
+    readonly Editors: "editors";
+    readonly Nobody: "nobody";
+};
+export type SiteUpdateOptionsVkRequestPrivacyVideoEnum = typeof SiteUpdateOptionsVkRequestPrivacyVideoEnum[keyof typeof SiteUpdateOptionsVkRequestPrivacyVideoEnum];
 //# sourceMappingURL=site-update-options-vk-request.d.ts.map

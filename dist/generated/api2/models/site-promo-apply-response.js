@@ -13,13 +13,8 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ResultEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var ResultEnum;
-(function (ResultEnum) {
-    ResultEnum["top_up"] = "top_up";
-    ResultEnum["tariff"] = "tariff";
-})(ResultEnum || (exports.ResultEnum = ResultEnum = {}));
+exports.SitePromoApplyResponseResultEnum = void 0;
+exports.SitePromoApplyResponseResultEnum = {
+    TopUp: 'top_up',
+    Tariff: 'tariff'
+};

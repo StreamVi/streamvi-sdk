@@ -20,13 +20,13 @@ export interface InternalNotifyTypeText {
      * @type {string}
      * @memberof InternalNotifyTypeText
      */
-    'language': LanguageEnum;
+    'language': InternalNotifyTypeTextLanguageEnum;
     /**
      * Language ISO
      * @type {string}
      * @memberof InternalNotifyTypeText
      */
-    'language_iso': LanguageIsoEnum;
+    'language_iso': InternalNotifyTypeTextLanguageIsoEnum;
     /**
      * Title value
      * @type {string}
@@ -40,22 +40,16 @@ export interface InternalNotifyTypeText {
      */
     'text': string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    russian = "russian",
-    english = "english",
-    none = "none"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageIsoEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const InternalNotifyTypeTextLanguageEnum: {
+    readonly Russian: "russian";
+    readonly English: "english";
+    readonly None: "none";
+};
+export type InternalNotifyTypeTextLanguageEnum = typeof InternalNotifyTypeTextLanguageEnum[keyof typeof InternalNotifyTypeTextLanguageEnum];
+export declare const InternalNotifyTypeTextLanguageIsoEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type InternalNotifyTypeTextLanguageIsoEnum = typeof InternalNotifyTypeTextLanguageIsoEnum[keyof typeof InternalNotifyTypeTextLanguageIsoEnum];
 //# sourceMappingURL=internal-notify-type-text.d.ts.map

@@ -13,13 +13,8 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LangEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var LangEnum;
-(function (LangEnum) {
-    LangEnum["ru"] = "ru";
-    LangEnum["en"] = "en";
-})(LangEnum || (exports.LangEnum = LangEnum = {}));
+exports.ChannelTwitchInfoDtoLangEnum = void 0;
+exports.ChannelTwitchInfoDtoLangEnum = {
+    Ru: 'ru',
+    En: 'en'
+};

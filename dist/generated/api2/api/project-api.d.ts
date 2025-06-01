@@ -17,48 +17,63 @@ import type { MethodProjectLiveStatusResponse } from '../models';
  * ProjectApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Get live status
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    liveStatus: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodLiveStatusV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ProjectApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const ProjectApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get live status
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    liveStatus(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodProjectLiveStatusResponse>>;
+    methodLiveStatusV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodProjectLiveStatusResponse>>;
 };
 /**
  * ProjectApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const ProjectApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get live status
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    liveStatus(options?: RawAxiosRequestConfig): AxiosPromise<MethodProjectLiveStatusResponse>;
+    methodLiveStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<MethodProjectLiveStatusResponse>;
 };
+/**
+ * ProjectApi - interface
+ * @export
+ * @interface ProjectApi
+ */
+export interface ProjectApiInterface {
+    /**
+     *
+     * @summary Get live status
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApiInterface
+     */
+    methodLiveStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<MethodProjectLiveStatusResponse>;
+}
 /**
  * ProjectApi - object-oriented interface
  * @export
  * @class ProjectApi
  * @extends {BaseAPI}
  */
-export declare class ProjectApi extends BaseAPI {
+export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
     /**
      *
      * @summary Get live status
@@ -66,6 +81,6 @@ export declare class ProjectApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    liveStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodProjectLiveStatusResponse, any>>;
+    methodLiveStatusV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodProjectLiveStatusResponse, any>>;
 }
 //# sourceMappingURL=project-api.d.ts.map

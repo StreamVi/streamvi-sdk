@@ -20,13 +20,13 @@ export interface SiteUpdateOptionsOkRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsOkRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateOptionsOkRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateOptionsOkRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateOptionsOkRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -52,22 +52,16 @@ export interface SiteUpdateOptionsOkRequest {
      */
     'description': string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const SiteUpdateOptionsOkRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteUpdateOptionsOkRequestVEnum = typeof SiteUpdateOptionsOkRequestVEnum[keyof typeof SiteUpdateOptionsOkRequestVEnum];
+export declare const SiteUpdateOptionsOkRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteUpdateOptionsOkRequestLanguageEnum = typeof SiteUpdateOptionsOkRequestLanguageEnum[keyof typeof SiteUpdateOptionsOkRequestLanguageEnum];
 //# sourceMappingURL=site-update-options-ok-request.d.ts.map

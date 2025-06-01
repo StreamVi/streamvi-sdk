@@ -18,140 +18,171 @@ import type { SuccessResponse } from '../models';
  * PaySystemApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const PaySystemApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @param {createChallenge1VEnum} v Version
-     * @param {createChallenge1LanguageEnum} language Current language
+     * @param {PaySystemCreateChallengeV1LanguageEnum} language Current language
      * @param {number} paymentId Payment id
+     * @param {PaySystemCreateChallengeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createChallenge1: (v: createChallenge1VEnum, language: createChallenge1LanguageEnum, paymentId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySystemCreateChallengeV1: (language: PaySystemCreateChallengeV1LanguageEnum, paymentId: number, v?: PaySystemCreateChallengeV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @param {createUnitpay1VEnum} v Version
-     * @param {createUnitpay1LanguageEnum} language Current language
+     * @param {PaySystemCreateUnitpayV1LanguageEnum} language Current language
      * @param {number} paymentId Payment id
+     * @param {PaySystemCreateUnitpayV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createUnitpay1: (v: createUnitpay1VEnum, language: createUnitpay1LanguageEnum, paymentId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySystemCreateUnitpayV1: (language: PaySystemCreateUnitpayV1LanguageEnum, paymentId: number, v?: PaySystemCreateUnitpayV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Load available pay systems
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySystemListV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PaySystemApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const PaySystemApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @param {createChallenge1VEnum} v Version
-     * @param {createChallenge1LanguageEnum} language Current language
+     * @param {PaySystemCreateChallengeV1LanguageEnum} language Current language
      * @param {number} paymentId Payment id
+     * @param {PaySystemCreateChallengeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createChallenge1(v: createChallenge1VEnum, language: createChallenge1LanguageEnum, paymentId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    paySystemCreateChallengeV1(language: PaySystemCreateChallengeV1LanguageEnum, paymentId: number, v?: PaySystemCreateChallengeV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
-     * @param {createUnitpay1VEnum} v Version
-     * @param {createUnitpay1LanguageEnum} language Current language
+     * @param {PaySystemCreateUnitpayV1LanguageEnum} language Current language
      * @param {number} paymentId Payment id
+     * @param {PaySystemCreateUnitpayV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createUnitpay1(v: createUnitpay1VEnum, language: createUnitpay1LanguageEnum, paymentId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    paySystemCreateUnitpayV1(language: PaySystemCreateUnitpayV1LanguageEnum, paymentId: number, v?: PaySystemCreateUnitpayV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Load available pay systems
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPaySystemListResponse>>;
+    paySystemListV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPaySystemListResponse>>;
 };
 /**
  * PaySystemApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const PaySystemApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @param {createChallenge1Request} requestParameters Request parameters.
+     * @param {PaySystemApiPaySystemCreateChallengeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createChallenge1(requestParameters: createChallenge1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
-     * @param {createUnitpay1Request} requestParameters Request parameters.
+     * @param {PaySystemApiPaySystemCreateUnitpayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createUnitpay1(requestParameters: createUnitpay1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Load available pay systems
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(options?: RawAxiosRequestConfig): AxiosPromise<ListOfPaySystemListResponse>;
+    paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<ListOfPaySystemListResponse>;
 };
 /**
- * Request parameters for createChallenge1 operation in PaySystemApi.
+ * PaySystemApi - interface
  * @export
- * @interface createChallenge1Request
+ * @interface PaySystemApi
  */
-export interface createChallenge1Request {
+export interface PaySystemApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof createChallenge1
+     *
+     * @param {PaySystemApiPaySystemCreateChallengeV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
      */
-    readonly v?: createChallenge1VEnum;
+    paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof createChallenge1
+     *
+     * @param {PaySystemApiPaySystemCreateUnitpayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
      */
-    readonly language: createChallenge1LanguageEnum;
+    paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     * Payment id
-     * @type {number}
-     * @memberof createChallenge1
+     *
+     * @summary Load available pay systems
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
      */
-    readonly paymentId: number;
+    paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<ListOfPaySystemListResponse>;
 }
 /**
- * Request parameters for createUnitpay1 operation in PaySystemApi.
+ * Request parameters for paySystemCreateChallengeV1 operation in PaySystemApi.
  * @export
- * @interface createUnitpay1Request
+ * @interface PaySystemApiPaySystemCreateChallengeV1Request
  */
-export interface createUnitpay1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof createUnitpay1
-     */
-    readonly v?: createUnitpay1VEnum;
+export interface PaySystemApiPaySystemCreateChallengeV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof createUnitpay1
+     * @memberof PaySystemApiPaySystemCreateChallengeV1
      */
-    readonly language: createUnitpay1LanguageEnum;
+    readonly language: PaySystemCreateChallengeV1LanguageEnum;
     /**
      * Payment id
      * @type {number}
-     * @memberof createUnitpay1
+     * @memberof PaySystemApiPaySystemCreateChallengeV1
      */
     readonly paymentId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PaySystemApiPaySystemCreateChallengeV1
+     */
+    readonly v?: PaySystemCreateChallengeV1VEnum;
+}
+/**
+ * Request parameters for paySystemCreateUnitpayV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiPaySystemCreateUnitpayV1Request
+ */
+export interface PaySystemApiPaySystemCreateUnitpayV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PaySystemApiPaySystemCreateUnitpayV1
+     */
+    readonly language: PaySystemCreateUnitpayV1LanguageEnum;
+    /**
+     * Payment id
+     * @type {number}
+     * @memberof PaySystemApiPaySystemCreateUnitpayV1
+     */
+    readonly paymentId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PaySystemApiPaySystemCreateUnitpayV1
+     */
+    readonly v?: PaySystemCreateUnitpayV1VEnum;
 }
 /**
  * PaySystemApi - object-oriented interface
@@ -159,23 +190,23 @@ export interface createUnitpay1Request {
  * @class PaySystemApi
  * @extends {BaseAPI}
  */
-export declare class PaySystemApi extends BaseAPI {
+export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterface {
     /**
      *
-     * @param {createChallenge1Request} requestParameters Request parameters.
+     * @param {PaySystemApiPaySystemCreateChallengeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    createChallenge1(requestParameters: createChallenge1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
-     * @param {createUnitpay1Request} requestParameters Request parameters.
+     * @param {PaySystemApiPaySystemCreateUnitpayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    createUnitpay1(requestParameters: createUnitpay1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Load available pay systems
@@ -183,42 +214,42 @@ export declare class PaySystemApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    list1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    paySystemListV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum createChallenge1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PaySystemCreateChallengeV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PaySystemCreateChallengeV1LanguageEnum = typeof PaySystemCreateChallengeV1LanguageEnum[keyof typeof PaySystemCreateChallengeV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum createChallenge1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PaySystemCreateChallengeV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PaySystemCreateChallengeV1VEnum = typeof PaySystemCreateChallengeV1VEnum[keyof typeof PaySystemCreateChallengeV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum createUnitpay1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PaySystemCreateUnitpayV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PaySystemCreateUnitpayV1LanguageEnum = typeof PaySystemCreateUnitpayV1LanguageEnum[keyof typeof PaySystemCreateUnitpayV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum createUnitpay1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PaySystemCreateUnitpayV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PaySystemCreateUnitpayV1VEnum = typeof PaySystemCreateUnitpayV1VEnum[keyof typeof PaySystemCreateUnitpayV1VEnum];
 //# sourceMappingURL=pay-system-api.d.ts.map

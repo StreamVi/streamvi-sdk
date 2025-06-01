@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.selectProject1LanguageEnum = exports.selectProject1VEnum = exports.listAccess1LanguageEnum = exports.listAccess1VEnum = exports.list1LanguageEnum = exports.list1VEnum = exports.getUser1LanguageEnum = exports.getUser1VEnum = exports.getProjectInfo1LanguageEnum = exports.getProjectInfo1VEnum = exports.getProject1LanguageEnum = exports.getProject1VEnum = exports.del1LanguageEnum = exports.del1VEnum = exports.changeAccess1AccessTypeEnum = exports.changeAccess1LanguageEnum = exports.changeAccess1VEnum = exports.UserProjectApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.UserProjectSelectProjectV1VEnum = exports.UserProjectSelectProjectV1LanguageEnum = exports.UserProjectListV1VEnum = exports.UserProjectListV1LanguageEnum = exports.UserProjectListAccessV1VEnum = exports.UserProjectListAccessV1LanguageEnum = exports.UserProjectGetUserV1VEnum = exports.UserProjectGetUserV1LanguageEnum = exports.UserProjectGetProjectV1VEnum = exports.UserProjectGetProjectV1LanguageEnum = exports.UserProjectGetProjectInfoV1VEnum = exports.UserProjectGetProjectInfoV1LanguageEnum = exports.UserProjectDelV1VEnum = exports.UserProjectDelV1LanguageEnum = exports.UserProjectChangeAccessV1VEnum = exports.UserProjectChangeAccessV1AccessTypeEnum = exports.UserProjectChangeAccessV1LanguageEnum = exports.UserProjectApi = exports.UserProjectApiFactory = exports.UserProjectApiFp = exports.UserProjectApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,30 +27,28 @@ const base_1 = require("../base");
  * UserProjectApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const UserProjectApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Change access user from project
-         * @param {changeAccess1VEnum} v Version
-         * @param {changeAccess1LanguageEnum} language Current language
+         * @param {UserProjectChangeAccessV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} userId User id
-         * @param {changeAccess1AccessTypeEnum} accessType Access type
+         * @param {UserProjectChangeAccessV1AccessTypeEnum} accessType Access type
+         * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        changeAccess1: async (v, language, projectId, userId, accessType, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('changeAccess1', 'v', v);
+        userProjectChangeAccessV1: async (language, projectId, userId, accessType, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('changeAccess1', 'language', language);
+            (0, common_1.assertParamExists)('userProjectChangeAccessV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('changeAccess1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('userProjectChangeAccessV1', 'projectId', projectId);
             // verify required parameter 'userId' is not null or undefined
-            (0, common_1.assertParamExists)('changeAccess1', 'userId', userId);
+            (0, common_1.assertParamExists)('userProjectChangeAccessV1', 'userId', userId);
             // verify required parameter 'accessType' is not null or undefined
-            (0, common_1.assertParamExists)('changeAccess1', 'accessType', accessType);
+            (0, common_1.assertParamExists)('userProjectChangeAccessV1', 'accessType', accessType);
             const localVarPath = `/method/project/user/change_access`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -87,22 +85,20 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Remove user from project
-         * @param {del1VEnum} v Version
-         * @param {del1LanguageEnum} language Current language
+         * @param {UserProjectDelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} userId User id
+         * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        del1: async (v, language, projectId, userId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('del1', 'v', v);
+        userProjectDelV1: async (language, projectId, userId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('del1', 'language', language);
+            (0, common_1.assertParamExists)('userProjectDelV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('del1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('userProjectDelV1', 'projectId', projectId);
             // verify required parameter 'userId' is not null or undefined
-            (0, common_1.assertParamExists)('del1', 'userId', userId);
+            (0, common_1.assertParamExists)('userProjectDelV1', 'userId', userId);
             const localVarPath = `/method/project/user/del`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -135,63 +131,18 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get project by number id
-         * @param {getProject1VEnum} v Version
-         * @param {getProject1LanguageEnum} language Current language
-         * @param {string} projectExternalId Project external id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getProject1: async (v, language, projectExternalId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getProject1', 'v', v);
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getProject1', 'language', language);
-            // verify required parameter 'projectExternalId' is not null or undefined
-            (0, common_1.assertParamExists)('getProject1', 'projectExternalId', projectExternalId);
-            const localVarPath = `/method/project/get_project`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-            if (projectExternalId !== undefined) {
-                localVarQueryParameter['project_external_id'] = projectExternalId;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
          * @summary Get project full info
-         * @param {getProjectInfo1VEnum} v Version
-         * @param {getProjectInfo1LanguageEnum} language Current language
+         * @param {UserProjectGetProjectInfoV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProjectInfo1: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getProjectInfo1', 'v', v);
+        userProjectGetProjectInfoV1: async (language, projectId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getProjectInfo1', 'language', language);
+            (0, common_1.assertParamExists)('userProjectGetProjectInfoV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('getProjectInfo1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('userProjectGetProjectInfoV1', 'projectId', projectId);
             const localVarPath = `/method/project/get_project_info`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -221,20 +172,59 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get user by number id
-         * @param {getUser1VEnum} v Version
-         * @param {getUser1LanguageEnum} language Current language
-         * @param {string} userExternalId User external id
+         * @summary Get project by number id
+         * @param {UserProjectGetProjectV1LanguageEnum} language Current language
+         * @param {string} projectExternalId Project external id
+         * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUser1: async (v, language, userExternalId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getUser1', 'v', v);
+        userProjectGetProjectV1: async (language, projectExternalId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getUser1', 'language', language);
+            (0, common_1.assertParamExists)('userProjectGetProjectV1', 'language', language);
+            // verify required parameter 'projectExternalId' is not null or undefined
+            (0, common_1.assertParamExists)('userProjectGetProjectV1', 'projectExternalId', projectExternalId);
+            const localVarPath = `/method/project/get_project`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectExternalId !== undefined) {
+                localVarQueryParameter['project_external_id'] = projectExternalId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get user by number id
+         * @param {UserProjectGetUserV1LanguageEnum} language Current language
+         * @param {string} userExternalId User external id
+         * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userProjectGetUserV1: async (language, userExternalId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('userProjectGetUserV1', 'language', language);
             // verify required parameter 'userExternalId' is not null or undefined
-            (0, common_1.assertParamExists)('getUser1', 'userExternalId', userExternalId);
+            (0, common_1.assertParamExists)('userProjectGetUserV1', 'userExternalId', userExternalId);
             const localVarPath = `/method/project/get_user`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -264,19 +254,58 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary List of user in project
+         * @param {UserProjectListAccessV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userProjectListAccessV1: async (language, projectId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('userProjectListAccessV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('userProjectListAccessV1', 'projectId', projectId);
+            const localVarPath = `/method/project/user/list`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary List of project for current user
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {UserProjectListV1LanguageEnum} language Current language
+         * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v, language, limit, offset, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'v', v);
+        userProjectListV1: async (language, v, limit, offset, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'language', language);
+            (0, common_1.assertParamExists)('userProjectListV1', 'language', language);
             const localVarPath = `/method/project/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -309,63 +338,18 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary List of user in project
-         * @param {listAccess1VEnum} v Version
-         * @param {listAccess1LanguageEnum} language Current language
-         * @param {number} projectId Project id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        listAccess1: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('listAccess1', 'v', v);
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('listAccess1', 'language', language);
-            // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('listAccess1', 'projectId', projectId);
-            const localVarPath = `/method/project/user/list`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-            if (projectId !== undefined) {
-                localVarQueryParameter['project_id'] = projectId;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
          * @summary Select user for project
-         * @param {selectProject1VEnum} v Version
-         * @param {selectProject1LanguageEnum} language Current language
+         * @param {UserProjectSelectProjectV1LanguageEnum} language Current language
          * @param {number} id Project internal id
+         * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        selectProject1: async (v, language, id, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('selectProject1', 'v', v);
+        userProjectSelectProjectV1: async (language, id, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('selectProject1', 'language', language);
+            (0, common_1.assertParamExists)('userProjectSelectProjectV1', 'language', language);
             // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('selectProject1', 'id', id);
+            (0, common_1.assertParamExists)('userProjectSelectProjectV1', 'id', id);
             const localVarPath = `/method/project/select`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -395,255 +379,239 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.UserProjectApiAxiosParamCreator = UserProjectApiAxiosParamCreator;
 /**
  * UserProjectApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const UserProjectApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.UserProjectApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Change access user from project
-         * @param {changeAccess1VEnum} v Version
-         * @param {changeAccess1LanguageEnum} language Current language
+         * @param {UserProjectChangeAccessV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} userId User id
-         * @param {changeAccess1AccessTypeEnum} accessType Access type
+         * @param {UserProjectChangeAccessV1AccessTypeEnum} accessType Access type
+         * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async changeAccess1(v, language, projectId, userId, accessType, options) {
+        async userProjectChangeAccessV1(language, projectId, userId, accessType, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.changeAccess1(v, language, projectId, userId, accessType, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectChangeAccessV1(language, projectId, userId, accessType, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.changeAccess1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.userProjectChangeAccessV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Remove user from project
-         * @param {del1VEnum} v Version
-         * @param {del1LanguageEnum} language Current language
+         * @param {UserProjectDelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} userId User id
+         * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async del1(v, language, projectId, userId, options) {
+        async userProjectDelV1(language, projectId, userId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.del1(v, language, projectId, userId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectDelV1(language, projectId, userId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.del1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Get project by number id
-         * @param {getProject1VEnum} v Version
-         * @param {getProject1LanguageEnum} language Current language
-         * @param {string} projectExternalId Project external id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getProject1(v, language, projectExternalId, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getProject1(v, language, projectExternalId, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.getProject1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.userProjectDelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get project full info
-         * @param {getProjectInfo1VEnum} v Version
-         * @param {getProjectInfo1LanguageEnum} language Current language
+         * @param {UserProjectGetProjectInfoV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getProjectInfo1(v, language, projectId, options) {
+        async userProjectGetProjectInfoV1(language, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getProjectInfo1(v, language, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectGetProjectInfoV1(language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.getProjectInfo1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.userProjectGetProjectInfoV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get project by number id
+         * @param {UserProjectGetProjectV1LanguageEnum} language Current language
+         * @param {string} projectExternalId Project external id
+         * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userProjectGetProjectV1(language, projectExternalId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectGetProjectV1(language, projectExternalId, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.userProjectGetProjectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get user by number id
-         * @param {getUser1VEnum} v Version
-         * @param {getUser1LanguageEnum} language Current language
+         * @param {UserProjectGetUserV1LanguageEnum} language Current language
          * @param {string} userExternalId User external id
+         * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUser1(v, language, userExternalId, options) {
+        async userProjectGetUserV1(language, userExternalId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUser1(v, language, userExternalId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectGetUserV1(language, userExternalId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.getUser1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.userProjectGetUserV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary List of user in project
+         * @param {UserProjectListAccessV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userProjectListAccessV1(language, projectId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectListAccessV1(language, projectId, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.userProjectListAccessV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary List of project for current user
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {UserProjectListV1LanguageEnum} language Current language
+         * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v, language, limit, offset, options) {
+        async userProjectListV1(language, v, limit, offset, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, limit, offset, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectListV1(language, v, limit, offset, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.list1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary List of user in project
-         * @param {listAccess1VEnum} v Version
-         * @param {listAccess1LanguageEnum} language Current language
-         * @param {number} projectId Project id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async listAccess1(v, language, projectId, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listAccess1(v, language, projectId, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.listAccess1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.userProjectListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Select user for project
-         * @param {selectProject1VEnum} v Version
-         * @param {selectProject1LanguageEnum} language Current language
+         * @param {UserProjectSelectProjectV1LanguageEnum} language Current language
          * @param {number} id Project internal id
+         * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async selectProject1(v, language, id, options) {
+        async userProjectSelectProjectV1(language, id, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.selectProject1(v, language, id, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectSelectProjectV1(language, id, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.selectProject1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserProjectApi.userProjectSelectProjectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.UserProjectApiFp = UserProjectApiFp;
 /**
  * UserProjectApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const UserProjectApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.UserProjectApiFp)(configuration);
     return {
         /**
          *
          * @summary Change access user from project
-         * @param {changeAccess1Request} requestParameters Request parameters.
+         * @param {UserProjectApiUserProjectChangeAccessV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        changeAccess1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || changeAccess1VEnum._1;
-            return localVarFp.changeAccess1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.userId, requestParameters.accessType, options).then((request) => request(axios, basePath));
+        userProjectChangeAccessV1(requestParameters, options) {
+            return localVarFp.userProjectChangeAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.userId, requestParameters.accessType, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Remove user from project
-         * @param {del1Request} requestParameters Request parameters.
+         * @param {UserProjectApiUserProjectDelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        del1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || del1VEnum._1;
-            return localVarFp.del1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.userId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Get project by number id
-         * @param {getProject1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getProject1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getProject1VEnum._1;
-            return localVarFp.getProject1(actualV, requestParameters.language, requestParameters.projectExternalId, options).then((request) => request(axios, basePath));
+        userProjectDelV1(requestParameters, options) {
+            return localVarFp.userProjectDelV1(requestParameters.language, requestParameters.projectId, requestParameters.userId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get project full info
-         * @param {getProjectInfo1Request} requestParameters Request parameters.
+         * @param {UserProjectApiUserProjectGetProjectInfoV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProjectInfo1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getProjectInfo1VEnum._1;
-            return localVarFp.getProjectInfo1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        userProjectGetProjectInfoV1(requestParameters, options) {
+            return localVarFp.userProjectGetProjectInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get project by number id
+         * @param {UserProjectApiUserProjectGetProjectV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userProjectGetProjectV1(requestParameters, options) {
+            return localVarFp.userProjectGetProjectV1(requestParameters.language, requestParameters.projectExternalId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get user by number id
-         * @param {getUser1Request} requestParameters Request parameters.
+         * @param {UserProjectApiUserProjectGetUserV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUser1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getUser1VEnum._1;
-            return localVarFp.getUser1(actualV, requestParameters.language, requestParameters.userExternalId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary List of project for current user
-         * @param {list1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        list1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+        userProjectGetUserV1(requestParameters, options) {
+            return localVarFp.userProjectGetUserV1(requestParameters.language, requestParameters.userExternalId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary List of user in project
-         * @param {listAccess1Request} requestParameters Request parameters.
+         * @param {UserProjectApiUserProjectListAccessV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listAccess1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || listAccess1VEnum._1;
-            return localVarFp.listAccess1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        userProjectListAccessV1(requestParameters, options) {
+            return localVarFp.userProjectListAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary List of project for current user
+         * @param {UserProjectApiUserProjectListV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userProjectListV1(requestParameters, options) {
+            return localVarFp.userProjectListV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Select user for project
-         * @param {selectProject1Request} requestParameters Request parameters.
+         * @param {UserProjectApiUserProjectSelectProjectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        selectProject1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || selectProject1VEnum._1;
-            return localVarFp.selectProject1(actualV, requestParameters.language, requestParameters.id, options).then((request) => request(axios, basePath));
+        userProjectSelectProjectV1(requestParameters, options) {
+            return localVarFp.userProjectSelectProjectV1(requestParameters.language, requestParameters.id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.UserProjectApiFactory = UserProjectApiFactory;
 /**
  * UserProjectApi - object-oriented interface
  * @export
@@ -654,276 +622,226 @@ class UserProjectApi extends base_1.BaseAPI {
     /**
      *
      * @summary Change access user from project
-     * @param {changeAccess1Request} requestParameters Request parameters.
+     * @param {UserProjectApiUserProjectChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserProjectApi
      */
-    changeAccess1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || changeAccess1VEnum._1;
-        return (0, exports.fp)(this.configuration).changeAccess1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.userId, requestParameters.accessType, options).then((request) => request(this.axios, this.basePath));
+    userProjectChangeAccessV1(requestParameters, options) {
+        return (0, exports.UserProjectApiFp)(this.configuration).userProjectChangeAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.userId, requestParameters.accessType, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Remove user from project
-     * @param {del1Request} requestParameters Request parameters.
+     * @param {UserProjectApiUserProjectDelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserProjectApi
      */
-    del1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || del1VEnum._1;
-        return (0, exports.fp)(this.configuration).del1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.userId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Get project by number id
-     * @param {getProject1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UserProjectApi
-     */
-    getProject1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getProject1VEnum._1;
-        return (0, exports.fp)(this.configuration).getProject1(actualV, requestParameters.language, requestParameters.projectExternalId, options).then((request) => request(this.axios, this.basePath));
+    userProjectDelV1(requestParameters, options) {
+        return (0, exports.UserProjectApiFp)(this.configuration).userProjectDelV1(requestParameters.language, requestParameters.projectId, requestParameters.userId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get project full info
-     * @param {getProjectInfo1Request} requestParameters Request parameters.
+     * @param {UserProjectApiUserProjectGetProjectInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserProjectApi
      */
-    getProjectInfo1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getProjectInfo1VEnum._1;
-        return (0, exports.fp)(this.configuration).getProjectInfo1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    userProjectGetProjectInfoV1(requestParameters, options) {
+        return (0, exports.UserProjectApiFp)(this.configuration).userProjectGetProjectInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get project by number id
+     * @param {UserProjectApiUserProjectGetProjectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserProjectApi
+     */
+    userProjectGetProjectV1(requestParameters, options) {
+        return (0, exports.UserProjectApiFp)(this.configuration).userProjectGetProjectV1(requestParameters.language, requestParameters.projectExternalId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get user by number id
-     * @param {getUser1Request} requestParameters Request parameters.
+     * @param {UserProjectApiUserProjectGetUserV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserProjectApi
      */
-    getUser1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getUser1VEnum._1;
-        return (0, exports.fp)(this.configuration).getUser1(actualV, requestParameters.language, requestParameters.userExternalId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary List of project for current user
-     * @param {list1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UserProjectApi
-     */
-    list1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || list1VEnum._1;
-        return (0, exports.fp)(this.configuration).list1(actualV, requestParameters.language, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+    userProjectGetUserV1(requestParameters, options) {
+        return (0, exports.UserProjectApiFp)(this.configuration).userProjectGetUserV1(requestParameters.language, requestParameters.userExternalId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary List of user in project
-     * @param {listAccess1Request} requestParameters Request parameters.
+     * @param {UserProjectApiUserProjectListAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserProjectApi
      */
-    listAccess1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || listAccess1VEnum._1;
-        return (0, exports.fp)(this.configuration).listAccess1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    userProjectListAccessV1(requestParameters, options) {
+        return (0, exports.UserProjectApiFp)(this.configuration).userProjectListAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary List of project for current user
+     * @param {UserProjectApiUserProjectListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserProjectApi
+     */
+    userProjectListV1(requestParameters, options) {
+        return (0, exports.UserProjectApiFp)(this.configuration).userProjectListV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Select user for project
-     * @param {selectProject1Request} requestParameters Request parameters.
+     * @param {UserProjectApiUserProjectSelectProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserProjectApi
      */
-    selectProject1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || selectProject1VEnum._1;
-        return (0, exports.fp)(this.configuration).selectProject1(actualV, requestParameters.language, requestParameters.id, options).then((request) => request(this.axios, this.basePath));
+    userProjectSelectProjectV1(requestParameters, options) {
+        return (0, exports.UserProjectApiFp)(this.configuration).userProjectSelectProjectV1(requestParameters.language, requestParameters.id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.UserProjectApi = UserProjectApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var changeAccess1VEnum;
-(function (changeAccess1VEnum) {
-    changeAccess1VEnum["_1"] = "1";
-    changeAccess1VEnum["_2"] = "2";
-    changeAccess1VEnum["_3"] = "3";
-})(changeAccess1VEnum || (exports.changeAccess1VEnum = changeAccess1VEnum = {}));
+ * @export
+ */
+exports.UserProjectChangeAccessV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var changeAccess1LanguageEnum;
-(function (changeAccess1LanguageEnum) {
-    changeAccess1LanguageEnum["ru"] = "ru";
-    changeAccess1LanguageEnum["en"] = "en";
-    changeAccess1LanguageEnum["cn"] = "cn";
-})(changeAccess1LanguageEnum || (exports.changeAccess1LanguageEnum = changeAccess1LanguageEnum = {}));
+ * @export
+ */
+exports.UserProjectChangeAccessV1AccessTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var changeAccess1AccessTypeEnum;
-(function (changeAccess1AccessTypeEnum) {
-    changeAccess1AccessTypeEnum[changeAccess1AccessTypeEnum["NUMBER_0"] = 0] = "NUMBER_0";
-    changeAccess1AccessTypeEnum[changeAccess1AccessTypeEnum["NUMBER_1"] = 1] = "NUMBER_1";
-    changeAccess1AccessTypeEnum[changeAccess1AccessTypeEnum["NUMBER_2"] = 2] = "NUMBER_2";
-})(changeAccess1AccessTypeEnum || (exports.changeAccess1AccessTypeEnum = changeAccess1AccessTypeEnum = {}));
+ * @export
+ */
+exports.UserProjectChangeAccessV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var del1VEnum;
-(function (del1VEnum) {
-    del1VEnum["_1"] = "1";
-    del1VEnum["_2"] = "2";
-    del1VEnum["_3"] = "3";
-})(del1VEnum || (exports.del1VEnum = del1VEnum = {}));
+ * @export
+ */
+exports.UserProjectDelV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var del1LanguageEnum;
-(function (del1LanguageEnum) {
-    del1LanguageEnum["ru"] = "ru";
-    del1LanguageEnum["en"] = "en";
-    del1LanguageEnum["cn"] = "cn";
-})(del1LanguageEnum || (exports.del1LanguageEnum = del1LanguageEnum = {}));
+ * @export
+ */
+exports.UserProjectDelV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getProject1VEnum;
-(function (getProject1VEnum) {
-    getProject1VEnum["_1"] = "1";
-    getProject1VEnum["_2"] = "2";
-    getProject1VEnum["_3"] = "3";
-})(getProject1VEnum || (exports.getProject1VEnum = getProject1VEnum = {}));
+ * @export
+ */
+exports.UserProjectGetProjectInfoV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getProject1LanguageEnum;
-(function (getProject1LanguageEnum) {
-    getProject1LanguageEnum["ru"] = "ru";
-    getProject1LanguageEnum["en"] = "en";
-    getProject1LanguageEnum["cn"] = "cn";
-})(getProject1LanguageEnum || (exports.getProject1LanguageEnum = getProject1LanguageEnum = {}));
+ * @export
+ */
+exports.UserProjectGetProjectInfoV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getProjectInfo1VEnum;
-(function (getProjectInfo1VEnum) {
-    getProjectInfo1VEnum["_1"] = "1";
-    getProjectInfo1VEnum["_2"] = "2";
-    getProjectInfo1VEnum["_3"] = "3";
-})(getProjectInfo1VEnum || (exports.getProjectInfo1VEnum = getProjectInfo1VEnum = {}));
+ * @export
+ */
+exports.UserProjectGetProjectV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getProjectInfo1LanguageEnum;
-(function (getProjectInfo1LanguageEnum) {
-    getProjectInfo1LanguageEnum["ru"] = "ru";
-    getProjectInfo1LanguageEnum["en"] = "en";
-    getProjectInfo1LanguageEnum["cn"] = "cn";
-})(getProjectInfo1LanguageEnum || (exports.getProjectInfo1LanguageEnum = getProjectInfo1LanguageEnum = {}));
+ * @export
+ */
+exports.UserProjectGetProjectV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getUser1VEnum;
-(function (getUser1VEnum) {
-    getUser1VEnum["_1"] = "1";
-    getUser1VEnum["_2"] = "2";
-    getUser1VEnum["_3"] = "3";
-})(getUser1VEnum || (exports.getUser1VEnum = getUser1VEnum = {}));
+ * @export
+ */
+exports.UserProjectGetUserV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getUser1LanguageEnum;
-(function (getUser1LanguageEnum) {
-    getUser1LanguageEnum["ru"] = "ru";
-    getUser1LanguageEnum["en"] = "en";
-    getUser1LanguageEnum["cn"] = "cn";
-})(getUser1LanguageEnum || (exports.getUser1LanguageEnum = getUser1LanguageEnum = {}));
+ * @export
+ */
+exports.UserProjectGetUserV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1VEnum;
-(function (list1VEnum) {
-    list1VEnum["_1"] = "1";
-    list1VEnum["_2"] = "2";
-    list1VEnum["_3"] = "3";
-})(list1VEnum || (exports.list1VEnum = list1VEnum = {}));
+ * @export
+ */
+exports.UserProjectListAccessV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1LanguageEnum;
-(function (list1LanguageEnum) {
-    list1LanguageEnum["ru"] = "ru";
-    list1LanguageEnum["en"] = "en";
-    list1LanguageEnum["cn"] = "cn";
-})(list1LanguageEnum || (exports.list1LanguageEnum = list1LanguageEnum = {}));
+ * @export
+ */
+exports.UserProjectListAccessV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var listAccess1VEnum;
-(function (listAccess1VEnum) {
-    listAccess1VEnum["_1"] = "1";
-    listAccess1VEnum["_2"] = "2";
-    listAccess1VEnum["_3"] = "3";
-})(listAccess1VEnum || (exports.listAccess1VEnum = listAccess1VEnum = {}));
+ * @export
+ */
+exports.UserProjectListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var listAccess1LanguageEnum;
-(function (listAccess1LanguageEnum) {
-    listAccess1LanguageEnum["ru"] = "ru";
-    listAccess1LanguageEnum["en"] = "en";
-    listAccess1LanguageEnum["cn"] = "cn";
-})(listAccess1LanguageEnum || (exports.listAccess1LanguageEnum = listAccess1LanguageEnum = {}));
+ * @export
+ */
+exports.UserProjectListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var selectProject1VEnum;
-(function (selectProject1VEnum) {
-    selectProject1VEnum["_1"] = "1";
-    selectProject1VEnum["_2"] = "2";
-    selectProject1VEnum["_3"] = "3";
-})(selectProject1VEnum || (exports.selectProject1VEnum = selectProject1VEnum = {}));
+ * @export
+ */
+exports.UserProjectSelectProjectV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var selectProject1LanguageEnum;
-(function (selectProject1LanguageEnum) {
-    selectProject1LanguageEnum["ru"] = "ru";
-    selectProject1LanguageEnum["en"] = "en";
-    selectProject1LanguageEnum["cn"] = "cn";
-})(selectProject1LanguageEnum || (exports.selectProject1LanguageEnum = selectProject1LanguageEnum = {}));
+ * @export
+ */
+exports.UserProjectSelectProjectV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

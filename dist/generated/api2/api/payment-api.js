@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.list1LanguageEnum = exports.list1VEnum = exports.getStatus1LanguageEnum = exports.getStatus1VEnum = exports.create1LanguageEnum = exports.create1VEnum = exports.PaymentApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.PaymentListV1VEnum = exports.PaymentListV1LanguageEnum = exports.PaymentGetStatusV1VEnum = exports.PaymentGetStatusV1LanguageEnum = exports.PaymentCreateV1VEnum = exports.PaymentCreateV1LanguageEnum = exports.PaymentApi = exports.PaymentApiFactory = exports.PaymentApiFp = exports.PaymentApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,24 +27,22 @@ const base_1 = require("../base");
  * PaymentApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const PaymentApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Create payment item for pay system
-         * @param {create1VEnum} v Version
-         * @param {create1LanguageEnum} language Current language
-         * @param {create1Request} create1Request
+         * @param {PaymentCreateV1LanguageEnum} language Current language
+         * @param {PaymentCreateV1Request} paymentCreateV1Request
+         * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create1: async (v, language, create1Request, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('create1', 'v', v);
+        paymentCreateV1: async (language, paymentCreateV1Request, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('create1', 'language', language);
-            // verify required parameter 'create1Request' is not null or undefined
-            (0, common_1.assertParamExists)('create1', 'create1Request', create1Request);
+            (0, common_1.assertParamExists)('paymentCreateV1', 'language', language);
+            // verify required parameter 'paymentCreateV1Request' is not null or undefined
+            (0, common_1.assertParamExists)('paymentCreateV1', 'paymentCreateV1Request', paymentCreateV1Request);
             const localVarPath = `/method/payment`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -65,7 +63,7 @@ const axiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(create1Request, localVarRequestOptions, configuration);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(paymentCreateV1Request, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -73,22 +71,20 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @param {getStatus1VEnum} v Version
-         * @param {getStatus1LanguageEnum} language Current language
+         * @param {PaymentGetStatusV1LanguageEnum} language Current language
          * @param {number} payId Pay order id
          * @param {number} projectId Project id
+         * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStatus1: async (v, language, payId, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getStatus1', 'v', v);
+        paymentGetStatusV1: async (language, payId, projectId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getStatus1', 'language', language);
+            (0, common_1.assertParamExists)('paymentGetStatusV1', 'language', language);
             // verify required parameter 'payId' is not null or undefined
-            (0, common_1.assertParamExists)('getStatus1', 'payId', payId);
+            (0, common_1.assertParamExists)('paymentGetStatusV1', 'payId', payId);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('getStatus1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('paymentGetStatusV1', 'projectId', projectId);
             const localVarPath = `/method/payment`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -121,18 +117,16 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {PaymentListV1LanguageEnum} language Current language
+         * @param {PaymentListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [pageSize] Number of results
          * @param {number} [page] Page number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v, language, pageSize, page, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'v', v);
+        paymentListV1: async (language, v, pageSize, page, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'language', language);
+            (0, common_1.assertParamExists)('paymentListV1', 'language', language);
             const localVarPath = `/method/payment/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -165,109 +159,103 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.PaymentApiAxiosParamCreator = PaymentApiAxiosParamCreator;
 /**
  * PaymentApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const PaymentApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.PaymentApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Create payment item for pay system
-         * @param {create1VEnum} v Version
-         * @param {create1LanguageEnum} language Current language
-         * @param {create1Request} create1Request
+         * @param {PaymentCreateV1LanguageEnum} language Current language
+         * @param {PaymentCreateV1Request} paymentCreateV1Request
+         * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async create1(v, language, create1Request, options) {
+        async paymentCreateV1(language, paymentCreateV1Request, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create1(v, language, create1Request, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.paymentCreateV1(language, paymentCreateV1Request, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaymentApi.create1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaymentApi.paymentCreateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
-         * @param {getStatus1VEnum} v Version
-         * @param {getStatus1LanguageEnum} language Current language
+         * @param {PaymentGetStatusV1LanguageEnum} language Current language
          * @param {number} payId Pay order id
          * @param {number} projectId Project id
+         * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStatus1(v, language, payId, projectId, options) {
+        async paymentGetStatusV1(language, payId, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStatus1(v, language, payId, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.paymentGetStatusV1(language, payId, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaymentApi.getStatus1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaymentApi.paymentGetStatusV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {PaymentListV1LanguageEnum} language Current language
+         * @param {PaymentListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [pageSize] Number of results
          * @param {number} [page] Page number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v, language, pageSize, page, options) {
+        async paymentListV1(language, v, pageSize, page, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, pageSize, page, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.paymentListV1(language, v, pageSize, page, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaymentApi.list1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaymentApi.paymentListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.PaymentApiFp = PaymentApiFp;
 /**
  * PaymentApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const PaymentApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.PaymentApiFp)(configuration);
     return {
         /**
          *
          * @summary Create payment item for pay system
-         * @param {create1Request} requestParameters Request parameters.
+         * @param {PaymentApiPaymentCreateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || create1VEnum._1;
-            return localVarFp.create1(actualV, requestParameters.language, requestParameters.create1Request, options).then((request) => request(axios, basePath));
+        paymentCreateV1(requestParameters, options) {
+            return localVarFp.paymentCreateV1(requestParameters.language, requestParameters.paymentCreateV1Request, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
-         * @param {getStatus1Request} requestParameters Request parameters.
+         * @param {PaymentApiPaymentGetStatusV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStatus1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getStatus1VEnum._1;
-            return localVarFp.getStatus1(actualV, requestParameters.language, requestParameters.payId, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        paymentGetStatusV1(requestParameters, options) {
+            return localVarFp.paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {PaymentApiPaymentListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.pageSize, requestParameters.page, options).then((request) => request(axios, basePath));
+        paymentListV1(requestParameters, options) {
+            return localVarFp.paymentListV1(requestParameters.language, requestParameters.v, requestParameters.pageSize, requestParameters.page, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.PaymentApiFactory = PaymentApiFactory;
 /**
  * PaymentApi - object-oriented interface
  * @export
@@ -278,99 +266,81 @@ class PaymentApi extends base_1.BaseAPI {
     /**
      *
      * @summary Create payment item for pay system
-     * @param {create1Request} requestParameters Request parameters.
+     * @param {PaymentApiPaymentCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    create1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || create1VEnum._1;
-        return (0, exports.fp)(this.configuration).create1(actualV, requestParameters.language, requestParameters.create1Request, options).then((request) => request(this.axios, this.basePath));
+    paymentCreateV1(requestParameters, options) {
+        return (0, exports.PaymentApiFp)(this.configuration).paymentCreateV1(requestParameters.language, requestParameters.paymentCreateV1Request, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
-     * @param {getStatus1Request} requestParameters Request parameters.
+     * @param {PaymentApiPaymentGetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    getStatus1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getStatus1VEnum._1;
-        return (0, exports.fp)(this.configuration).getStatus1(actualV, requestParameters.language, requestParameters.payId, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    paymentGetStatusV1(requestParameters, options) {
+        return (0, exports.PaymentApiFp)(this.configuration).paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {PaymentApiPaymentListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    list1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || list1VEnum._1;
-        return (0, exports.fp)(this.configuration).list1(actualV, requestParameters.language, requestParameters.pageSize, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
+    paymentListV1(requestParameters, options) {
+        return (0, exports.PaymentApiFp)(this.configuration).paymentListV1(requestParameters.language, requestParameters.v, requestParameters.pageSize, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PaymentApi = PaymentApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var create1VEnum;
-(function (create1VEnum) {
-    create1VEnum["_1"] = "1";
-    create1VEnum["_2"] = "2";
-    create1VEnum["_3"] = "3";
-})(create1VEnum || (exports.create1VEnum = create1VEnum = {}));
+ * @export
+ */
+exports.PaymentCreateV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var create1LanguageEnum;
-(function (create1LanguageEnum) {
-    create1LanguageEnum["ru"] = "ru";
-    create1LanguageEnum["en"] = "en";
-    create1LanguageEnum["cn"] = "cn";
-})(create1LanguageEnum || (exports.create1LanguageEnum = create1LanguageEnum = {}));
+ * @export
+ */
+exports.PaymentCreateV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getStatus1VEnum;
-(function (getStatus1VEnum) {
-    getStatus1VEnum["_1"] = "1";
-    getStatus1VEnum["_2"] = "2";
-    getStatus1VEnum["_3"] = "3";
-})(getStatus1VEnum || (exports.getStatus1VEnum = getStatus1VEnum = {}));
+ * @export
+ */
+exports.PaymentGetStatusV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getStatus1LanguageEnum;
-(function (getStatus1LanguageEnum) {
-    getStatus1LanguageEnum["ru"] = "ru";
-    getStatus1LanguageEnum["en"] = "en";
-    getStatus1LanguageEnum["cn"] = "cn";
-})(getStatus1LanguageEnum || (exports.getStatus1LanguageEnum = getStatus1LanguageEnum = {}));
+ * @export
+ */
+exports.PaymentGetStatusV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1VEnum;
-(function (list1VEnum) {
-    list1VEnum["_1"] = "1";
-    list1VEnum["_2"] = "2";
-    list1VEnum["_3"] = "3";
-})(list1VEnum || (exports.list1VEnum = list1VEnum = {}));
+ * @export
+ */
+exports.PaymentListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1LanguageEnum;
-(function (list1LanguageEnum) {
-    list1LanguageEnum["ru"] = "ru";
-    list1LanguageEnum["en"] = "en";
-    list1LanguageEnum["cn"] = "cn";
-})(list1LanguageEnum || (exports.list1LanguageEnum = list1LanguageEnum = {}));
+ * @export
+ */
+exports.PaymentListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

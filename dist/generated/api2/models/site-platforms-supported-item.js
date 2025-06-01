@@ -13,13 +13,8 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ExtensionEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var ExtensionEnum;
-(function (ExtensionEnum) {
-    ExtensionEnum["png"] = "png";
-    ExtensionEnum["svg"] = "svg";
-})(ExtensionEnum || (exports.ExtensionEnum = ExtensionEnum = {}));
+exports.SitePlatformsSupportedItemExtensionEnum = void 0;
+exports.SitePlatformsSupportedItemExtensionEnum = {
+    Png: 'png',
+    Svg: 'svg'
+};

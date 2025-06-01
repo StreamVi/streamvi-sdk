@@ -21,345 +21,406 @@ import type { SuccessResponse } from '../models';
  * PlanTranscodingApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const PlanTranscodingApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Buy transcoder tariff
-     * @param {buy1VEnum} v Version
-     * @param {buy1LanguageEnum} language Current language
+     * @param {PlanTranscodingBuyV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {buy1PeriodEnum} period Period
+     * @param {PlanTranscodingBuyV1PeriodEnum} period Period
      * @param {number} planTranscodingId Transcoding plan id
+     * @param {PlanTranscodingBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number} [count] Count flow
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    buy1: (v: buy1VEnum, language: buy1LanguageEnum, projectId: number, period: buy1PeriodEnum, planTranscodingId: number, count?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planTranscodingBuyV1: (language: PlanTranscodingBuyV1LanguageEnum, projectId: number, period: PlanTranscodingBuyV1PeriodEnum, planTranscodingId: number, v?: PlanTranscodingBuyV1VEnum, count?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Remove after tariff
-     * @param {cancel1VEnum} v Version
-     * @param {cancel1LanguageEnum} language Current language
+     * @param {PlanTranscodingCancelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanTranscodingCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cancel1: (v: cancel1VEnum, language: cancel1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planTranscodingCancelV1: (language: PlanTranscodingCancelV1LanguageEnum, projectId: number, v?: PlanTranscodingCancelV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Check transcoding tariff before buy
-     * @param {check1VEnum} v Version
-     * @param {check1LanguageEnum} language Current language
+     * @param {PlanTranscodingCheckV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanTranscodingCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    check1: (v: check1VEnum, language: check1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planTranscodingCheckV1: (language: PlanTranscodingCheckV1LanguageEnum, projectId: number, v?: PlanTranscodingCheckV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get discount transcoding
-     * @param {getDiscount1VEnum} v Version
-     * @param {getDiscount1LanguageEnum} language Current language
+     * @param {PlanTranscodingGetDiscountV1LanguageEnum} language Current language
+     * @param {PlanTranscodingGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getDiscount1: (v: getDiscount1VEnum, language: getDiscount1LanguageEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planTranscodingGetDiscountV1: (language: PlanTranscodingGetDiscountV1LanguageEnum, v?: PlanTranscodingGetDiscountV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get list of transcoding tariffs
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {PlanTranscodingListV1LanguageEnum} language Current language
+     * @param {PlanTranscodingListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1: (v: list1VEnum, language: list1LanguageEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planTranscodingListV1: (language: PlanTranscodingListV1LanguageEnum, v?: PlanTranscodingListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get tariff for project
-     * @param {tariff1VEnum} v Version
-     * @param {tariff1LanguageEnum} language Current language
+     * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanTranscodingTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tariff1: (v: tariff1VEnum, language: tariff1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planTranscodingTariffV1: (language: PlanTranscodingTariffV1LanguageEnum, projectId: number, v?: PlanTranscodingTariffV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PlanTranscodingApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const PlanTranscodingApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Buy transcoder tariff
-     * @param {buy1VEnum} v Version
-     * @param {buy1LanguageEnum} language Current language
+     * @param {PlanTranscodingBuyV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {buy1PeriodEnum} period Period
+     * @param {PlanTranscodingBuyV1PeriodEnum} period Period
      * @param {number} planTranscodingId Transcoding plan id
+     * @param {PlanTranscodingBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number} [count] Count flow
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    buy1(v: buy1VEnum, language: buy1LanguageEnum, projectId: number, period: buy1PeriodEnum, planTranscodingId: number, count?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    planTranscodingBuyV1(language: PlanTranscodingBuyV1LanguageEnum, projectId: number, period: PlanTranscodingBuyV1PeriodEnum, planTranscodingId: number, v?: PlanTranscodingBuyV1VEnum, count?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Remove after tariff
-     * @param {cancel1VEnum} v Version
-     * @param {cancel1LanguageEnum} language Current language
+     * @param {PlanTranscodingCancelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanTranscodingCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cancel1(v: cancel1VEnum, language: cancel1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    planTranscodingCancelV1(language: PlanTranscodingCancelV1LanguageEnum, projectId: number, v?: PlanTranscodingCancelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Check transcoding tariff before buy
-     * @param {check1VEnum} v Version
-     * @param {check1LanguageEnum} language Current language
+     * @param {PlanTranscodingCheckV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanTranscodingCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    check1(v: check1VEnum, language: check1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanTranscodingCheckResponse>>;
+    planTranscodingCheckV1(language: PlanTranscodingCheckV1LanguageEnum, projectId: number, v?: PlanTranscodingCheckV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanTranscodingCheckResponse>>;
     /**
      *
      * @summary Get discount transcoding
-     * @param {getDiscount1VEnum} v Version
-     * @param {getDiscount1LanguageEnum} language Current language
+     * @param {PlanTranscodingGetDiscountV1LanguageEnum} language Current language
+     * @param {PlanTranscodingGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getDiscount1(v: getDiscount1VEnum, language: getDiscount1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanTranscodingDiscountResponse>>;
+    planTranscodingGetDiscountV1(language: PlanTranscodingGetDiscountV1LanguageEnum, v?: PlanTranscodingGetDiscountV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanTranscodingDiscountResponse>>;
     /**
      *
      * @summary Get list of transcoding tariffs
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {PlanTranscodingListV1LanguageEnum} language Current language
+     * @param {PlanTranscodingListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(v: list1VEnum, language: list1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanTranscodingResponseDto>>;
+    planTranscodingListV1(language: PlanTranscodingListV1LanguageEnum, v?: PlanTranscodingListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanTranscodingResponseDto>>;
     /**
      *
      * @summary Get tariff for project
-     * @param {tariff1VEnum} v Version
-     * @param {tariff1LanguageEnum} language Current language
+     * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanTranscodingTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tariff1(v: tariff1VEnum, language: tariff1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanTranscodingForProject>>;
+    planTranscodingTariffV1(language: PlanTranscodingTariffV1LanguageEnum, projectId: number, v?: PlanTranscodingTariffV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanTranscodingForProject>>;
 };
 /**
  * PlanTranscodingApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const PlanTranscodingApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Buy transcoder tariff
-     * @param {buy1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    buy1(requestParameters: buy1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    planTranscodingBuyV1(requestParameters: PlanTranscodingApiPlanTranscodingBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Remove after tariff
-     * @param {cancel1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cancel1(requestParameters: cancel1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    planTranscodingCancelV1(requestParameters: PlanTranscodingApiPlanTranscodingCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Check transcoding tariff before buy
-     * @param {check1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    check1(requestParameters: check1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingCheckResponse>;
+    planTranscodingCheckV1(requestParameters: PlanTranscodingApiPlanTranscodingCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingCheckResponse>;
     /**
      *
      * @summary Get discount transcoding
-     * @param {getDiscount1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getDiscount1(requestParameters: getDiscount1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingDiscountResponse>;
+    planTranscodingGetDiscountV1(requestParameters: PlanTranscodingApiPlanTranscodingGetDiscountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingDiscountResponse>;
     /**
      *
      * @summary Get list of transcoding tariffs
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingResponseDto>;
+    planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingResponseDto>;
     /**
      *
      * @summary Get tariff for project
-     * @param {tariff1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tariff1(requestParameters: tariff1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingForProject>;
+    planTranscodingTariffV1(requestParameters: PlanTranscodingApiPlanTranscodingTariffV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingForProject>;
 };
 /**
- * Request parameters for buy1 operation in PlanTranscodingApi.
+ * PlanTranscodingApi - interface
  * @export
- * @interface buy1Request
+ * @interface PlanTranscodingApi
  */
-export interface buy1Request {
+export interface PlanTranscodingApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof buy1
+     *
+     * @summary Buy transcoder tariff
+     * @param {PlanTranscodingApiPlanTranscodingBuyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApiInterface
      */
-    readonly v?: buy1VEnum;
+    planTranscodingBuyV1(requestParameters: PlanTranscodingApiPlanTranscodingBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Remove after tariff
+     * @param {PlanTranscodingApiPlanTranscodingCancelV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApiInterface
+     */
+    planTranscodingCancelV1(requestParameters: PlanTranscodingApiPlanTranscodingCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Check transcoding tariff before buy
+     * @param {PlanTranscodingApiPlanTranscodingCheckV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApiInterface
+     */
+    planTranscodingCheckV1(requestParameters: PlanTranscodingApiPlanTranscodingCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingCheckResponse>;
+    /**
+     *
+     * @summary Get discount transcoding
+     * @param {PlanTranscodingApiPlanTranscodingGetDiscountV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApiInterface
+     */
+    planTranscodingGetDiscountV1(requestParameters: PlanTranscodingApiPlanTranscodingGetDiscountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingDiscountResponse>;
+    /**
+     *
+     * @summary Get list of transcoding tariffs
+     * @param {PlanTranscodingApiPlanTranscodingListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApiInterface
+     */
+    planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingResponseDto>;
+    /**
+     *
+     * @summary Get tariff for project
+     * @param {PlanTranscodingApiPlanTranscodingTariffV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApiInterface
+     */
+    planTranscodingTariffV1(requestParameters: PlanTranscodingApiPlanTranscodingTariffV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingForProject>;
+}
+/**
+ * Request parameters for planTranscodingBuyV1 operation in PlanTranscodingApi.
+ * @export
+ * @interface PlanTranscodingApiPlanTranscodingBuyV1Request
+ */
+export interface PlanTranscodingApiPlanTranscodingBuyV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof buy1
+     * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
-    readonly language: buy1LanguageEnum;
+    readonly language: PlanTranscodingBuyV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof buy1
+     * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
     readonly projectId: number;
     /**
      * Period
      * @type {'month' | 'year'}
-     * @memberof buy1
+     * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
-    readonly period: buy1PeriodEnum;
+    readonly period: PlanTranscodingBuyV1PeriodEnum;
     /**
      * Transcoding plan id
      * @type {number}
-     * @memberof buy1
+     * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
     readonly planTranscodingId: number;
     /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanTranscodingApiPlanTranscodingBuyV1
+     */
+    readonly v?: PlanTranscodingBuyV1VEnum;
+    /**
      * Count flow
      * @type {number}
-     * @memberof buy1
+     * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
     readonly count?: number;
 }
 /**
- * Request parameters for cancel1 operation in PlanTranscodingApi.
+ * Request parameters for planTranscodingCancelV1 operation in PlanTranscodingApi.
  * @export
- * @interface cancel1Request
+ * @interface PlanTranscodingApiPlanTranscodingCancelV1Request
  */
-export interface cancel1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof cancel1
-     */
-    readonly v?: cancel1VEnum;
+export interface PlanTranscodingApiPlanTranscodingCancelV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof cancel1
+     * @memberof PlanTranscodingApiPlanTranscodingCancelV1
      */
-    readonly language: cancel1LanguageEnum;
+    readonly language: PlanTranscodingCancelV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof cancel1
+     * @memberof PlanTranscodingApiPlanTranscodingCancelV1
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanTranscodingApiPlanTranscodingCancelV1
+     */
+    readonly v?: PlanTranscodingCancelV1VEnum;
 }
 /**
- * Request parameters for check1 operation in PlanTranscodingApi.
+ * Request parameters for planTranscodingCheckV1 operation in PlanTranscodingApi.
  * @export
- * @interface check1Request
+ * @interface PlanTranscodingApiPlanTranscodingCheckV1Request
  */
-export interface check1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof check1
-     */
-    readonly v?: check1VEnum;
+export interface PlanTranscodingApiPlanTranscodingCheckV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof check1
+     * @memberof PlanTranscodingApiPlanTranscodingCheckV1
      */
-    readonly language: check1LanguageEnum;
+    readonly language: PlanTranscodingCheckV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof check1
+     * @memberof PlanTranscodingApiPlanTranscodingCheckV1
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanTranscodingApiPlanTranscodingCheckV1
+     */
+    readonly v?: PlanTranscodingCheckV1VEnum;
 }
 /**
- * Request parameters for getDiscount1 operation in PlanTranscodingApi.
+ * Request parameters for planTranscodingGetDiscountV1 operation in PlanTranscodingApi.
  * @export
- * @interface getDiscount1Request
+ * @interface PlanTranscodingApiPlanTranscodingGetDiscountV1Request
  */
-export interface getDiscount1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getDiscount1
-     */
-    readonly v?: getDiscount1VEnum;
+export interface PlanTranscodingApiPlanTranscodingGetDiscountV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getDiscount1
+     * @memberof PlanTranscodingApiPlanTranscodingGetDiscountV1
      */
-    readonly language: getDiscount1LanguageEnum;
+    readonly language: PlanTranscodingGetDiscountV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanTranscodingApiPlanTranscodingGetDiscountV1
+     */
+    readonly v?: PlanTranscodingGetDiscountV1VEnum;
 }
 /**
- * Request parameters for list1 operation in PlanTranscodingApi.
+ * Request parameters for planTranscodingListV1 operation in PlanTranscodingApi.
  * @export
- * @interface list1Request
+ * @interface PlanTranscodingApiPlanTranscodingListV1Request
  */
-export interface list1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
-     */
-    readonly v?: list1VEnum;
+export interface PlanTranscodingApiPlanTranscodingListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof PlanTranscodingApiPlanTranscodingListV1
      */
-    readonly language: list1LanguageEnum;
+    readonly language: PlanTranscodingListV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanTranscodingApiPlanTranscodingListV1
+     */
+    readonly v?: PlanTranscodingListV1VEnum;
 }
 /**
- * Request parameters for tariff1 operation in PlanTranscodingApi.
+ * Request parameters for planTranscodingTariffV1 operation in PlanTranscodingApi.
  * @export
- * @interface tariff1Request
+ * @interface PlanTranscodingApiPlanTranscodingTariffV1Request
  */
-export interface tariff1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof tariff1
-     */
-    readonly v?: tariff1VEnum;
+export interface PlanTranscodingApiPlanTranscodingTariffV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof tariff1
+     * @memberof PlanTranscodingApiPlanTranscodingTariffV1
      */
-    readonly language: tariff1LanguageEnum;
+    readonly language: PlanTranscodingTariffV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof tariff1
+     * @memberof PlanTranscodingApiPlanTranscodingTariffV1
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanTranscodingApiPlanTranscodingTariffV1
+     */
+    readonly v?: PlanTranscodingTariffV1VEnum;
 }
 /**
  * PlanTranscodingApi - object-oriented interface
@@ -367,176 +428,176 @@ export interface tariff1Request {
  * @class PlanTranscodingApi
  * @extends {BaseAPI}
  */
-export declare class PlanTranscodingApi extends BaseAPI {
+export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodingApiInterface {
     /**
      *
      * @summary Buy transcoder tariff
-     * @param {buy1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    buy1(requestParameters: buy1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    planTranscodingBuyV1(requestParameters: PlanTranscodingApiPlanTranscodingBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Remove after tariff
-     * @param {cancel1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    cancel1(requestParameters: cancel1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    planTranscodingCancelV1(requestParameters: PlanTranscodingApiPlanTranscodingCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Check transcoding tariff before buy
-     * @param {check1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    check1(requestParameters: check1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingCheckResponse, any>>;
+    planTranscodingCheckV1(requestParameters: PlanTranscodingApiPlanTranscodingCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingCheckResponse, any>>;
     /**
      *
      * @summary Get discount transcoding
-     * @param {getDiscount1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    getDiscount1(requestParameters: getDiscount1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingDiscountResponse, any>>;
+    planTranscodingGetDiscountV1(requestParameters: PlanTranscodingApiPlanTranscodingGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingDiscountResponse, any>>;
     /**
      *
      * @summary Get list of transcoding tariffs
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingResponseDto, any>>;
+    planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingResponseDto, any>>;
     /**
      *
      * @summary Get tariff for project
-     * @param {tariff1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    tariff1(requestParameters: tariff1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingForProject, any>>;
+    planTranscodingTariffV1(requestParameters: PlanTranscodingApiPlanTranscodingTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingForProject, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum buy1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanTranscodingBuyV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanTranscodingBuyV1LanguageEnum = typeof PlanTranscodingBuyV1LanguageEnum[keyof typeof PlanTranscodingBuyV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum buy1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanTranscodingBuyV1PeriodEnum: {
+    readonly Month: "month";
+    readonly Year: "year";
+};
+export type PlanTranscodingBuyV1PeriodEnum = typeof PlanTranscodingBuyV1PeriodEnum[keyof typeof PlanTranscodingBuyV1PeriodEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum buy1PeriodEnum {
-    month = "month",
-    year = "year"
-}
+ * @export
+ */
+export declare const PlanTranscodingBuyV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanTranscodingBuyV1VEnum = typeof PlanTranscodingBuyV1VEnum[keyof typeof PlanTranscodingBuyV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum cancel1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanTranscodingCancelV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanTranscodingCancelV1LanguageEnum = typeof PlanTranscodingCancelV1LanguageEnum[keyof typeof PlanTranscodingCancelV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum cancel1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanTranscodingCancelV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanTranscodingCancelV1VEnum = typeof PlanTranscodingCancelV1VEnum[keyof typeof PlanTranscodingCancelV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum check1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanTranscodingCheckV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanTranscodingCheckV1LanguageEnum = typeof PlanTranscodingCheckV1LanguageEnum[keyof typeof PlanTranscodingCheckV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum check1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanTranscodingCheckV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanTranscodingCheckV1VEnum = typeof PlanTranscodingCheckV1VEnum[keyof typeof PlanTranscodingCheckV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getDiscount1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanTranscodingGetDiscountV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanTranscodingGetDiscountV1LanguageEnum = typeof PlanTranscodingGetDiscountV1LanguageEnum[keyof typeof PlanTranscodingGetDiscountV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getDiscount1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanTranscodingGetDiscountV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanTranscodingGetDiscountV1VEnum = typeof PlanTranscodingGetDiscountV1VEnum[keyof typeof PlanTranscodingGetDiscountV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanTranscodingListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanTranscodingListV1LanguageEnum = typeof PlanTranscodingListV1LanguageEnum[keyof typeof PlanTranscodingListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanTranscodingListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanTranscodingListV1VEnum = typeof PlanTranscodingListV1VEnum[keyof typeof PlanTranscodingListV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum tariff1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanTranscodingTariffV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanTranscodingTariffV1LanguageEnum = typeof PlanTranscodingTariffV1LanguageEnum[keyof typeof PlanTranscodingTariffV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum tariff1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanTranscodingTariffV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanTranscodingTariffV1VEnum = typeof PlanTranscodingTariffV1VEnum[keyof typeof PlanTranscodingTariffV1VEnum];
 //# sourceMappingURL=plan-transcoding-api.d.ts.map

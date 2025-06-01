@@ -20,13 +20,13 @@ export interface SiteSetPlannedRequest {
      * @type {string}
      * @memberof SiteSetPlannedRequest
      */
-    'v': VEnum;
+    'v': SiteSetPlannedRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteSetPlannedRequest
      */
-    'language': LanguageEnum;
+    'language': SiteSetPlannedRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -46,22 +46,16 @@ export interface SiteSetPlannedRequest {
      */
     'id'?: string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const SiteSetPlannedRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteSetPlannedRequestVEnum = typeof SiteSetPlannedRequestVEnum[keyof typeof SiteSetPlannedRequestVEnum];
+export declare const SiteSetPlannedRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteSetPlannedRequestLanguageEnum = typeof SiteSetPlannedRequestLanguageEnum[keyof typeof SiteSetPlannedRequestLanguageEnum];
 //# sourceMappingURL=site-set-planned-request.d.ts.map

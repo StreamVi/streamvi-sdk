@@ -20,13 +20,13 @@ export interface SiteSetTranscoderRequest {
      * @type {string}
      * @memberof SiteSetTranscoderRequest
      */
-    'v': VEnum;
+    'v': SiteSetTranscoderRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteSetTranscoderRequest
      */
-    'language': LanguageEnum;
+    'language': SiteSetTranscoderRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -46,22 +46,16 @@ export interface SiteSetTranscoderRequest {
      */
     'transcoder_id'?: number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const SiteSetTranscoderRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteSetTranscoderRequestVEnum = typeof SiteSetTranscoderRequestVEnum[keyof typeof SiteSetTranscoderRequestVEnum];
+export declare const SiteSetTranscoderRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteSetTranscoderRequestLanguageEnum = typeof SiteSetTranscoderRequestLanguageEnum[keyof typeof SiteSetTranscoderRequestLanguageEnum];
 //# sourceMappingURL=site-set-transcoder-request.d.ts.map

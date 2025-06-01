@@ -13,22 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LanguageEnum = exports.VEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var VEnum;
-(function (VEnum) {
-    VEnum["_1"] = "1";
-})(VEnum || (exports.VEnum = VEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageEnum;
-(function (LanguageEnum) {
-    LanguageEnum["ru"] = "ru";
-    LanguageEnum["en"] = "en";
-    LanguageEnum["cn"] = "cn";
-})(LanguageEnum || (exports.LanguageEnum = LanguageEnum = {}));
+exports.MethodSetStatusChannelRequestLanguageEnum = exports.MethodSetStatusChannelRequestVEnum = void 0;
+exports.MethodSetStatusChannelRequestVEnum = {
+    _1: '1'
+};
+exports.MethodSetStatusChannelRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};

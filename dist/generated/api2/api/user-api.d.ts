@@ -18,181 +18,164 @@ import type { UserProfileResponse } from '../models';
  * UserApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const UserApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Get user profile
-     * @param {getProfile1VEnum} v Version
-     * @param {getProfile1LanguageEnum} language Current language
+     * @param {UserGetProfileV1LanguageEnum} language Current language
+     * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number | null} [projectId] Project id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProfile1: (v: getProfile1VEnum, language: getProfile1LanguageEnum, projectId?: number | null, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Test code only
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    testCode1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Test code exception only
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    testCodeException1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userGetProfileV1: (language: UserGetProfileV1LanguageEnum, v?: UserGetProfileV1VEnum, projectId?: number | null, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update profile
-     * @param {updateProfile1VEnum} v Version
-     * @param {updateProfile1LanguageEnum} language Current language
+     * @param {UserUpdateProfileV1VEnum} v Version
+     * @param {UserUpdateProfileV1LanguageEnum} language Current language
      * @param {string} firstName First name
      * @param {string} lastName Last name
      * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProfile1: (v: updateProfile1VEnum, language: updateProfile1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userUpdateProfileV1: (v: UserUpdateProfileV1VEnum, language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UserApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const UserApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get user profile
-     * @param {getProfile1VEnum} v Version
-     * @param {getProfile1LanguageEnum} language Current language
+     * @param {UserGetProfileV1LanguageEnum} language Current language
+     * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number | null} [projectId] Project id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProfile1(v: getProfile1VEnum, language: getProfile1LanguageEnum, projectId?: number | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>>;
-    /**
-     *
-     * @summary Test code only
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    testCode1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
-    /**
-     *
-     * @summary Test code exception only
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    testCodeException1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    userGetProfileV1(language: UserGetProfileV1LanguageEnum, v?: UserGetProfileV1VEnum, projectId?: number | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>>;
     /**
      *
      * @summary Update profile
-     * @param {updateProfile1VEnum} v Version
-     * @param {updateProfile1LanguageEnum} language Current language
+     * @param {UserUpdateProfileV1VEnum} v Version
+     * @param {UserUpdateProfileV1LanguageEnum} language Current language
      * @param {string} firstName First name
      * @param {string} lastName Last name
      * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProfile1(v: updateProfile1VEnum, language: updateProfile1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    userUpdateProfileV1(v: UserUpdateProfileV1VEnum, language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * UserApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const UserApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get user profile
-     * @param {getProfile1Request} requestParameters Request parameters.
+     * @param {UserApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProfile1(requestParameters: getProfile1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
-    /**
-     *
-     * @summary Test code only
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    testCode1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
-    /**
-     *
-     * @summary Test code exception only
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    testCodeException1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    userGetProfileV1(requestParameters: UserApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
     /**
      *
      * @summary Update profile
-     * @param {updateProfile1Request} requestParameters Request parameters.
+     * @param {UserApiUserUpdateProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProfile1(requestParameters: updateProfile1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    userUpdateProfileV1(requestParameters: UserApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 };
 /**
- * Request parameters for getProfile1 operation in UserApi.
+ * UserApi - interface
  * @export
- * @interface getProfile1Request
+ * @interface UserApi
  */
-export interface getProfile1Request {
+export interface UserApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getProfile1
+     *
+     * @summary Get user profile
+     * @param {UserApiUserGetProfileV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApiInterface
      */
-    readonly v?: getProfile1VEnum;
+    userGetProfileV1(requestParameters: UserApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
+    /**
+     *
+     * @summary Update profile
+     * @param {UserApiUserUpdateProfileV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApiInterface
+     */
+    userUpdateProfileV1(requestParameters: UserApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+}
+/**
+ * Request parameters for userGetProfileV1 operation in UserApi.
+ * @export
+ * @interface UserApiUserGetProfileV1Request
+ */
+export interface UserApiUserGetProfileV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getProfile1
+     * @memberof UserApiUserGetProfileV1
      */
-    readonly language: getProfile1LanguageEnum;
+    readonly language: UserGetProfileV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof UserApiUserGetProfileV1
+     */
+    readonly v?: UserGetProfileV1VEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof getProfile1
+     * @memberof UserApiUserGetProfileV1
      */
     readonly projectId?: number | null;
 }
 /**
- * Request parameters for updateProfile1 operation in UserApi.
+ * Request parameters for userUpdateProfileV1 operation in UserApi.
  * @export
- * @interface updateProfile1Request
+ * @interface UserApiUserUpdateProfileV1Request
  */
-export interface updateProfile1Request {
+export interface UserApiUserUpdateProfileV1Request {
     /**
      * Version
      * @type {string}
-     * @memberof updateProfile1
+     * @memberof UserApiUserUpdateProfileV1
      */
-    readonly v?: updateProfile1VEnum;
+    readonly v: UserUpdateProfileV1VEnum;
     /**
      * Current language
      * @type {string}
-     * @memberof updateProfile1
+     * @memberof UserApiUserUpdateProfileV1
      */
-    readonly language: updateProfile1LanguageEnum;
+    readonly language: UserUpdateProfileV1LanguageEnum;
     /**
      * First name
      * @type {string}
-     * @memberof updateProfile1
+     * @memberof UserApiUserUpdateProfileV1
      */
     readonly firstName: string;
     /**
      * Last name
      * @type {string}
-     * @memberof updateProfile1
+     * @memberof UserApiUserUpdateProfileV1
      */
     readonly lastName: string;
     /**
      * File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @type {File}
-     * @memberof updateProfile1
+     * @memberof UserApiUserUpdateProfileV1
      */
     readonly avatar?: File;
 }
@@ -202,76 +185,60 @@ export interface updateProfile1Request {
  * @class UserApi
  * @extends {BaseAPI}
  */
-export declare class UserApi extends BaseAPI {
+export declare class UserApi extends BaseAPI implements UserApiInterface {
     /**
      *
      * @summary Get user profile
-     * @param {getProfile1Request} requestParameters Request parameters.
+     * @param {UserApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    getProfile1(requestParameters: getProfile1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any>>;
-    /**
-     *
-     * @summary Test code only
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UserApi
-     */
-    testCode1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
-    /**
-     *
-     * @summary Test code exception only
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UserApi
-     */
-    testCodeException1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    userGetProfileV1(requestParameters: UserApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any>>;
     /**
      *
      * @summary Update profile
-     * @param {updateProfile1Request} requestParameters Request parameters.
+     * @param {UserApiUserUpdateProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    updateProfile1(requestParameters: updateProfile1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    userUpdateProfileV1(requestParameters: UserApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getProfile1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const UserGetProfileV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type UserGetProfileV1LanguageEnum = typeof UserGetProfileV1LanguageEnum[keyof typeof UserGetProfileV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getProfile1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const UserGetProfileV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type UserGetProfileV1VEnum = typeof UserGetProfileV1VEnum[keyof typeof UserGetProfileV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum updateProfile1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const UserUpdateProfileV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type UserUpdateProfileV1VEnum = typeof UserUpdateProfileV1VEnum[keyof typeof UserUpdateProfileV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum updateProfile1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const UserUpdateProfileV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type UserUpdateProfileV1LanguageEnum = typeof UserUpdateProfileV1LanguageEnum[keyof typeof UserUpdateProfileV1LanguageEnum];
 //# sourceMappingURL=user-api.d.ts.map

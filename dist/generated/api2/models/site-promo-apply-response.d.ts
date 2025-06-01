@@ -20,14 +20,11 @@ export interface SitePromoApplyResponse {
      * @type {string}
      * @memberof SitePromoApplyResponse
      */
-    'result': ResultEnum;
+    'result': SitePromoApplyResponseResultEnum;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum ResultEnum {
-    top_up = "top_up",
-    tariff = "tariff"
-}
+export declare const SitePromoApplyResponseResultEnum: {
+    readonly TopUp: "top_up";
+    readonly Tariff: "tariff";
+};
+export type SitePromoApplyResponseResultEnum = typeof SitePromoApplyResponseResultEnum[keyof typeof SitePromoApplyResponseResultEnum];
 //# sourceMappingURL=site-promo-apply-response.d.ts.map

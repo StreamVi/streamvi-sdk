@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.cabinet1AppEnum = exports.cabinet1LanguageEnum = exports.cabinet1VEnum = exports.ReleaseApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.ReleaseAppCabinetV1AppEnum = exports.ReleaseAppCabinetV1VEnum = exports.ReleaseAppCabinetV1LanguageEnum = exports.ReleaseApi = exports.ReleaseApiFactory = exports.ReleaseApiFp = exports.ReleaseApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,22 +27,20 @@ const base_1 = require("../base");
  * ReleaseApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const ReleaseApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Get current version app
-         * @param {cabinet1VEnum} v Version
-         * @param {cabinet1LanguageEnum} language Current language
-         * @param {cabinet1AppEnum} [app] Apps
+         * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
+         * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cabinet1: async (v, language, app, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('cabinet1', 'v', v);
+        releaseAppCabinetV1: async (language, v, app, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('cabinet1', 'language', language);
+            (0, common_1.assertParamExists)('releaseAppCabinetV1', 'language', language);
             const localVarPath = `/method/release-app`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -72,55 +70,53 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.ReleaseApiAxiosParamCreator = ReleaseApiAxiosParamCreator;
 /**
  * ReleaseApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const ReleaseApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.ReleaseApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Get current version app
-         * @param {cabinet1VEnum} v Version
-         * @param {cabinet1LanguageEnum} language Current language
-         * @param {cabinet1AppEnum} [app] Apps
+         * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
+         * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cabinet1(v, language, app, options) {
+        async releaseAppCabinetV1(language, v, app, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cabinet1(v, language, app, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.releaseAppCabinetV1(language, v, app, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ReleaseApi.cabinet1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ReleaseApi.releaseAppCabinetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.ReleaseApiFp = ReleaseApiFp;
 /**
  * ReleaseApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const ReleaseApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.ReleaseApiFp)(configuration);
     return {
         /**
          *
          * @summary Get current version app
-         * @param {cabinet1Request} requestParameters Request parameters.
+         * @param {ReleaseApiReleaseAppCabinetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cabinet1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || cabinet1VEnum._1;
-            return localVarFp.cabinet1(actualV, requestParameters.language, requestParameters.app, options).then((request) => request(axios, basePath));
+        releaseAppCabinetV1(requestParameters, options) {
+            return localVarFp.releaseAppCabinetV1(requestParameters.language, requestParameters.v, requestParameters.app, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.ReleaseApiFactory = ReleaseApiFactory;
 /**
  * ReleaseApi - object-oriented interface
  * @export
@@ -131,43 +127,35 @@ class ReleaseApi extends base_1.BaseAPI {
     /**
      *
      * @summary Get current version app
-     * @param {cabinet1Request} requestParameters Request parameters.
+     * @param {ReleaseApiReleaseAppCabinetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReleaseApi
      */
-    cabinet1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || cabinet1VEnum._1;
-        return (0, exports.fp)(this.configuration).cabinet1(actualV, requestParameters.language, requestParameters.app, options).then((request) => request(this.axios, this.basePath));
+    releaseAppCabinetV1(requestParameters, options) {
+        return (0, exports.ReleaseApiFp)(this.configuration).releaseAppCabinetV1(requestParameters.language, requestParameters.v, requestParameters.app, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ReleaseApi = ReleaseApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var cabinet1VEnum;
-(function (cabinet1VEnum) {
-    cabinet1VEnum["_1"] = "1";
-    cabinet1VEnum["_2"] = "2";
-    cabinet1VEnum["_3"] = "3";
-})(cabinet1VEnum || (exports.cabinet1VEnum = cabinet1VEnum = {}));
+ * @export
+ */
+exports.ReleaseAppCabinetV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var cabinet1LanguageEnum;
-(function (cabinet1LanguageEnum) {
-    cabinet1LanguageEnum["ru"] = "ru";
-    cabinet1LanguageEnum["en"] = "en";
-    cabinet1LanguageEnum["cn"] = "cn";
-})(cabinet1LanguageEnum || (exports.cabinet1LanguageEnum = cabinet1LanguageEnum = {}));
+ * @export
+ */
+exports.ReleaseAppCabinetV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var cabinet1AppEnum;
-(function (cabinet1AppEnum) {
-    cabinet1AppEnum["cabinet"] = "cabinet";
-})(cabinet1AppEnum || (exports.cabinet1AppEnum = cabinet1AppEnum = {}));
+ * @export
+ */
+exports.ReleaseAppCabinetV1AppEnum = {
+    Cabinet: 'cabinet'
+};

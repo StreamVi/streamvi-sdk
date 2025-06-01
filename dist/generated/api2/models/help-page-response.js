@@ -13,47 +13,27 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AltLanguagesEnum = exports.LanguageIsoEnum = exports.LanguageEnum = exports.StatusEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var StatusEnum;
-(function (StatusEnum) {
-    StatusEnum["None"] = "None";
-    StatusEnum["Backlog"] = "Backlog";
-    StatusEnum["Drafting"] = "Drafting";
-    StatusEnum["Reviewing"] = "Reviewing";
-    StatusEnum["Done"] = "Done";
-    StatusEnum["Published"] = "Published";
-})(StatusEnum || (exports.StatusEnum = StatusEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageEnum;
-(function (LanguageEnum) {
-    LanguageEnum["russian"] = "russian";
-    LanguageEnum["english"] = "english";
-    LanguageEnum["none"] = "none";
-})(LanguageEnum || (exports.LanguageEnum = LanguageEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageIsoEnum;
-(function (LanguageIsoEnum) {
-    LanguageIsoEnum["ru"] = "ru";
-    LanguageIsoEnum["en"] = "en";
-    LanguageIsoEnum["cn"] = "cn";
-})(LanguageIsoEnum || (exports.LanguageIsoEnum = LanguageIsoEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var AltLanguagesEnum;
-(function (AltLanguagesEnum) {
-    AltLanguagesEnum["ru"] = "ru";
-    AltLanguagesEnum["en"] = "en";
-    AltLanguagesEnum["cn"] = "cn";
-})(AltLanguagesEnum || (exports.AltLanguagesEnum = AltLanguagesEnum = {}));
+exports.HelpPageResponseAltLanguagesEnum = exports.HelpPageResponseLanguageIsoEnum = exports.HelpPageResponseLanguageEnum = exports.HelpPageResponseStatusEnum = void 0;
+exports.HelpPageResponseStatusEnum = {
+    None: 'None',
+    Backlog: 'Backlog',
+    Drafting: 'Drafting',
+    Reviewing: 'Reviewing',
+    Done: 'Done',
+    Published: 'Published'
+};
+exports.HelpPageResponseLanguageEnum = {
+    Russian: 'russian',
+    English: 'english',
+    None: 'none'
+};
+exports.HelpPageResponseLanguageIsoEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+exports.HelpPageResponseAltLanguagesEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};

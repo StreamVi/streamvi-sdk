@@ -35,24 +35,6 @@ export interface SiteTranscoderListItem {
      */
     'createdAt': string;
     /**
-     * Status
-     * @type {string}
-     * @memberof SiteTranscoderListItem
-     */
-    'status': StatusEnum;
-    /**
-     * Video codec
-     * @type {string}
-     * @memberof SiteTranscoderListItem
-     */
-    'videoCodec': VideoCodecEnum;
-    /**
-     * B-Frames
-     * @type {Array<SiteTranscoderChannelItem>}
-     * @memberof SiteTranscoderListItem
-     */
-    'channels': Array<SiteTranscoderChannelItem>;
-    /**
      * fps
      * @type {number}
      * @memberof SiteTranscoderListItem
@@ -94,21 +76,33 @@ export interface SiteTranscoderListItem {
      * @memberof SiteTranscoderListItem
      */
     'bFrames'?: number;
+    /**
+     * Status
+     * @type {string}
+     * @memberof SiteTranscoderListItem
+     */
+    'status': SiteTranscoderListItemStatusEnum;
+    /**
+     * Video codec
+     * @type {string}
+     * @memberof SiteTranscoderListItem
+     */
+    'videoCodec': SiteTranscoderListItemVideoCodecEnum;
+    /**
+     * B-Frames
+     * @type {Array<SiteTranscoderChannelItem>}
+     * @memberof SiteTranscoderListItem
+     */
+    'channels': Array<SiteTranscoderChannelItem>;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum StatusEnum {
-    active = "active",
-    inactive = "inactive"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VideoCodecEnum {
-    h264 = "h264",
-    hevc = "hevc"
-}
+export declare const SiteTranscoderListItemStatusEnum: {
+    readonly Active: "active";
+    readonly Inactive: "inactive";
+};
+export type SiteTranscoderListItemStatusEnum = typeof SiteTranscoderListItemStatusEnum[keyof typeof SiteTranscoderListItemStatusEnum];
+export declare const SiteTranscoderListItemVideoCodecEnum: {
+    readonly H264: "h264";
+    readonly Hevc: "hevc";
+};
+export type SiteTranscoderListItemVideoCodecEnum = typeof SiteTranscoderListItemVideoCodecEnum[keyof typeof SiteTranscoderListItemVideoCodecEnum];
 //# sourceMappingURL=site-transcoder-list-item.d.ts.map

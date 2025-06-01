@@ -13,15 +13,10 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TypeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum["debug"] = "debug";
-    TypeEnum["info"] = "info";
-    TypeEnum["warning"] = "warning";
-    TypeEnum["error"] = "error";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
+exports.SiteScreenNotifyUserResponseTypeEnum = void 0;
+exports.SiteScreenNotifyUserResponseTypeEnum = {
+    Debug: 'debug',
+    Info: 'info',
+    Warning: 'warning',
+    Error: 'error'
+};

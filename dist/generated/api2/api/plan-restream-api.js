@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.tariff1LanguageEnum = exports.tariff1VEnum = exports.remove1LanguageEnum = exports.remove1VEnum = exports.listProject1LanguageEnum = exports.listProject1VEnum = exports.list1LanguageEnum = exports.list1VEnum = exports.getDiscount1LanguageEnum = exports.getDiscount1VEnum = exports.check21PeriodEnum = exports.check21LanguageEnum = exports.check21VEnum = exports.buy1PeriodEnum = exports.buy1LanguageEnum = exports.buy1VEnum = exports.PlanRestreamApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.PlanRestreamTariffV1VEnum = exports.PlanRestreamTariffV1LanguageEnum = exports.PlanRestreamRemoveV1VEnum = exports.PlanRestreamRemoveV1LanguageEnum = exports.PlanRestreamListV1VEnum = exports.PlanRestreamListV1LanguageEnum = exports.PlanRestreamListProjectV1VEnum = exports.PlanRestreamListProjectV1LanguageEnum = exports.PlanRestreamGetDiscountV1VEnum = exports.PlanRestreamGetDiscountV1LanguageEnum = exports.PlanRestreamCheck2V1VEnum = exports.PlanRestreamCheck2V1PeriodEnum = exports.PlanRestreamCheck2V1LanguageEnum = exports.PlanRestreamBuyV1VEnum = exports.PlanRestreamBuyV1PeriodEnum = exports.PlanRestreamBuyV1LanguageEnum = exports.PlanRestreamApi = exports.PlanRestreamApiFactory = exports.PlanRestreamApiFp = exports.PlanRestreamApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,32 +27,30 @@ const base_1 = require("../base");
  * PlanRestreamApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const PlanRestreamApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Buy restream tariff
-         * @param {buy1VEnum} v Version
-         * @param {buy1LanguageEnum} language Current language
+         * @param {PlanRestreamBuyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {buy1PeriodEnum} period Period
+         * @param {PlanRestreamBuyV1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
+         * @param {PlanRestreamBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [countChannel] Channel count
          * @param {number} [bitrate] Bitrate, kbps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buy1: async (v, language, projectId, period, planRestreamId, countChannel, bitrate, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('buy1', 'v', v);
+        planRestreamBuyV1: async (language, projectId, period, planRestreamId, v, countChannel, bitrate, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('buy1', 'language', language);
+            (0, common_1.assertParamExists)('planRestreamBuyV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('buy1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('planRestreamBuyV1', 'projectId', projectId);
             // verify required parameter 'period' is not null or undefined
-            (0, common_1.assertParamExists)('buy1', 'period', period);
+            (0, common_1.assertParamExists)('planRestreamBuyV1', 'period', period);
             // verify required parameter 'planRestreamId' is not null or undefined
-            (0, common_1.assertParamExists)('buy1', 'planRestreamId', planRestreamId);
+            (0, common_1.assertParamExists)('planRestreamBuyV1', 'planRestreamId', planRestreamId);
             const localVarPath = `/method/plan_restream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -95,28 +93,26 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Load data for show card the tariffs v2
-         * @param {check21VEnum} v Version
-         * @param {check21LanguageEnum} language Current language
+         * @param {PlanRestreamCheck2V1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {check21PeriodEnum} period Period
+         * @param {PlanRestreamCheck2V1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
+         * @param {PlanRestreamCheck2V1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [useBalance] Is select balance
          * @param {number} [channels] Channels count
          * @param {number} [bitrate] Bitrate, kbps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check21: async (v, language, projectId, period, planRestreamId, useBalance, channels, bitrate, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('check21', 'v', v);
+        planRestreamCheck2V1: async (language, projectId, period, planRestreamId, v, useBalance, channels, bitrate, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('check21', 'language', language);
+            (0, common_1.assertParamExists)('planRestreamCheck2V1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('check21', 'projectId', projectId);
+            (0, common_1.assertParamExists)('planRestreamCheck2V1', 'projectId', projectId);
             // verify required parameter 'period' is not null or undefined
-            (0, common_1.assertParamExists)('check21', 'period', period);
+            (0, common_1.assertParamExists)('planRestreamCheck2V1', 'period', period);
             // verify required parameter 'planRestreamId' is not null or undefined
-            (0, common_1.assertParamExists)('check21', 'planRestreamId', planRestreamId);
+            (0, common_1.assertParamExists)('planRestreamCheck2V1', 'planRestreamId', planRestreamId);
             const localVarPath = `/method/plan_restream/check`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -162,16 +158,14 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get discount restream
-         * @param {getDiscount1VEnum} v Version
-         * @param {getDiscount1LanguageEnum} language Current language
+         * @param {PlanRestreamGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanRestreamGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDiscount1: async (v, language, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getDiscount1', 'v', v);
+        planRestreamGetDiscountV1: async (language, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getDiscount1', 'language', language);
+            (0, common_1.assertParamExists)('planRestreamGetDiscountV1', 'language', language);
             const localVarPath = `/method/plan_restream/get_discount`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -198,57 +192,18 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get list of restream tariffs
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        list1: async (v, language, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'v', v);
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'language', language);
-            const localVarPath = `/method/plan_restream/list`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
          * @summary Get list of restream tariffs for project
-         * @param {listProject1VEnum} v Version
-         * @param {listProject1LanguageEnum} language Current language
+         * @param {PlanRestreamListProjectV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanRestreamListProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listProject1: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('listProject1', 'v', v);
+        planRestreamListProjectV1: async (language, projectId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('listProject1', 'language', language);
+            (0, common_1.assertParamExists)('planRestreamListProjectV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('listProject1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('planRestreamListProjectV1', 'projectId', projectId);
             const localVarPath = `/method/plan_restream/list/project`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -278,23 +233,56 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Remove after tariff
-         * @param {remove1VEnum} v Version
-         * @param {remove1LanguageEnum} language Current language
-         * @param {number} projectId Project id
-         * @param {number} planRestreamId Restream plan id
+         * @summary Get list of restream tariffs
+         * @param {PlanRestreamListV1LanguageEnum} language Current language
+         * @param {PlanRestreamListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        remove1: async (v, language, projectId, planRestreamId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('remove1', 'v', v);
+        planRestreamListV1: async (language, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('remove1', 'language', language);
+            (0, common_1.assertParamExists)('planRestreamListV1', 'language', language);
+            const localVarPath = `/method/plan_restream/list`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Remove after tariff
+         * @param {PlanRestreamRemoveV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} planRestreamId Restream plan id
+         * @param {PlanRestreamRemoveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        planRestreamRemoveV1: async (language, projectId, planRestreamId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('planRestreamRemoveV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('remove1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('planRestreamRemoveV1', 'projectId', projectId);
             // verify required parameter 'planRestreamId' is not null or undefined
-            (0, common_1.assertParamExists)('remove1', 'planRestreamId', planRestreamId);
+            (0, common_1.assertParamExists)('planRestreamRemoveV1', 'planRestreamId', planRestreamId);
             const localVarPath = `/method/plan_restream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -328,19 +316,17 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get tariff for project
-         * @param {tariff1VEnum} v Version
-         * @param {tariff1LanguageEnum} language Current language
+         * @param {PlanRestreamTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanRestreamTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tariff1: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('tariff1', 'v', v);
+        planRestreamTariffV1: async (language, projectId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('tariff1', 'language', language);
+            (0, common_1.assertParamExists)('planRestreamTariffV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('tariff1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('planRestreamTariffV1', 'projectId', projectId);
             const localVarPath = `/method/plan_restream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -370,231 +356,217 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.PlanRestreamApiAxiosParamCreator = PlanRestreamApiAxiosParamCreator;
 /**
  * PlanRestreamApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const PlanRestreamApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.PlanRestreamApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Buy restream tariff
-         * @param {buy1VEnum} v Version
-         * @param {buy1LanguageEnum} language Current language
+         * @param {PlanRestreamBuyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {buy1PeriodEnum} period Period
+         * @param {PlanRestreamBuyV1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
+         * @param {PlanRestreamBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [countChannel] Channel count
          * @param {number} [bitrate] Bitrate, kbps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async buy1(v, language, projectId, period, planRestreamId, countChannel, bitrate, options) {
+        async planRestreamBuyV1(language, projectId, period, planRestreamId, v, countChannel, bitrate, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.buy1(v, language, projectId, period, planRestreamId, countChannel, bitrate, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamBuyV1(language, projectId, period, planRestreamId, v, countChannel, bitrate, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.buy1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamBuyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Load data for show card the tariffs v2
-         * @param {check21VEnum} v Version
-         * @param {check21LanguageEnum} language Current language
+         * @param {PlanRestreamCheck2V1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {check21PeriodEnum} period Period
+         * @param {PlanRestreamCheck2V1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
+         * @param {PlanRestreamCheck2V1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [useBalance] Is select balance
          * @param {number} [channels] Channels count
          * @param {number} [bitrate] Bitrate, kbps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async check21(v, language, projectId, period, planRestreamId, useBalance, channels, bitrate, options) {
+        async planRestreamCheck2V1(language, projectId, period, planRestreamId, v, useBalance, channels, bitrate, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.check21(v, language, projectId, period, planRestreamId, useBalance, channels, bitrate, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamCheck2V1(language, projectId, period, planRestreamId, v, useBalance, channels, bitrate, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.check21']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamCheck2V1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get discount restream
-         * @param {getDiscount1VEnum} v Version
-         * @param {getDiscount1LanguageEnum} language Current language
+         * @param {PlanRestreamGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanRestreamGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDiscount1(v, language, options) {
+        async planRestreamGetDiscountV1(language, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDiscount1(v, language, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamGetDiscountV1(language, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.getDiscount1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Get list of restream tariffs
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async list1(v, language, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.list1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamGetDiscountV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get list of restream tariffs for project
-         * @param {listProject1VEnum} v Version
-         * @param {listProject1LanguageEnum} language Current language
+         * @param {PlanRestreamListProjectV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanRestreamListProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listProject1(v, language, projectId, options) {
+        async planRestreamListProjectV1(language, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listProject1(v, language, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamListProjectV1(language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.listProject1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamListProjectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get list of restream tariffs
+         * @param {PlanRestreamListV1LanguageEnum} language Current language
+         * @param {PlanRestreamListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async planRestreamListV1(language, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamListV1(language, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Remove after tariff
-         * @param {remove1VEnum} v Version
-         * @param {remove1LanguageEnum} language Current language
+         * @param {PlanRestreamRemoveV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} planRestreamId Restream plan id
+         * @param {PlanRestreamRemoveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async remove1(v, language, projectId, planRestreamId, options) {
+        async planRestreamRemoveV1(language, projectId, planRestreamId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.remove1(v, language, projectId, planRestreamId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamRemoveV1(language, projectId, planRestreamId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.remove1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamRemoveV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get tariff for project
-         * @param {tariff1VEnum} v Version
-         * @param {tariff1LanguageEnum} language Current language
+         * @param {PlanRestreamTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanRestreamTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async tariff1(v, language, projectId, options) {
+        async planRestreamTariffV1(language, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.tariff1(v, language, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamTariffV1(language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.tariff1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamTariffV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.PlanRestreamApiFp = PlanRestreamApiFp;
 /**
  * PlanRestreamApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const PlanRestreamApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.PlanRestreamApiFp)(configuration);
     return {
         /**
          *
          * @summary Buy restream tariff
-         * @param {buy1Request} requestParameters Request parameters.
+         * @param {PlanRestreamApiPlanRestreamBuyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buy1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || buy1VEnum._1;
-            return localVarFp.buy1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.countChannel, requestParameters.bitrate, options).then((request) => request(axios, basePath));
+        planRestreamBuyV1(requestParameters, options) {
+            return localVarFp.planRestreamBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.countChannel, requestParameters.bitrate, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Load data for show card the tariffs v2
-         * @param {check21Request} requestParameters Request parameters.
+         * @param {PlanRestreamApiPlanRestreamCheck2V1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check21(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || check21VEnum._1;
-            return localVarFp.check21(actualV, requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.useBalance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(axios, basePath));
+        planRestreamCheck2V1(requestParameters, options) {
+            return localVarFp.planRestreamCheck2V1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.useBalance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get discount restream
-         * @param {getDiscount1Request} requestParameters Request parameters.
+         * @param {PlanRestreamApiPlanRestreamGetDiscountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDiscount1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getDiscount1VEnum._1;
-            return localVarFp.getDiscount1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Get list of restream tariffs
-         * @param {list1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        list1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        planRestreamGetDiscountV1(requestParameters, options) {
+            return localVarFp.planRestreamGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get list of restream tariffs for project
-         * @param {listProject1Request} requestParameters Request parameters.
+         * @param {PlanRestreamApiPlanRestreamListProjectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listProject1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || listProject1VEnum._1;
-            return localVarFp.listProject1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        planRestreamListProjectV1(requestParameters, options) {
+            return localVarFp.planRestreamListProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get list of restream tariffs
+         * @param {PlanRestreamApiPlanRestreamListV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        planRestreamListV1(requestParameters, options) {
+            return localVarFp.planRestreamListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Remove after tariff
-         * @param {remove1Request} requestParameters Request parameters.
+         * @param {PlanRestreamApiPlanRestreamRemoveV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        remove1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || remove1VEnum._1;
-            return localVarFp.remove1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.planRestreamId, options).then((request) => request(axios, basePath));
+        planRestreamRemoveV1(requestParameters, options) {
+            return localVarFp.planRestreamRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.planRestreamId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get tariff for project
-         * @param {tariff1Request} requestParameters Request parameters.
+         * @param {PlanRestreamApiPlanRestreamTariffV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tariff1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || tariff1VEnum._1;
-            return localVarFp.tariff1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        planRestreamTariffV1(requestParameters, options) {
+            return localVarFp.planRestreamTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.PlanRestreamApiFactory = PlanRestreamApiFactory;
 /**
  * PlanRestreamApi - object-oriented interface
  * @export
@@ -605,251 +577,205 @@ class PlanRestreamApi extends base_1.BaseAPI {
     /**
      *
      * @summary Buy restream tariff
-     * @param {buy1Request} requestParameters Request parameters.
+     * @param {PlanRestreamApiPlanRestreamBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    buy1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || buy1VEnum._1;
-        return (0, exports.fp)(this.configuration).buy1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.countChannel, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
+    planRestreamBuyV1(requestParameters, options) {
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.countChannel, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Load data for show card the tariffs v2
-     * @param {check21Request} requestParameters Request parameters.
+     * @param {PlanRestreamApiPlanRestreamCheck2V1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    check21(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || check21VEnum._1;
-        return (0, exports.fp)(this.configuration).check21(actualV, requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.useBalance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
+    planRestreamCheck2V1(requestParameters, options) {
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamCheck2V1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.useBalance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get discount restream
-     * @param {getDiscount1Request} requestParameters Request parameters.
+     * @param {PlanRestreamApiPlanRestreamGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    getDiscount1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getDiscount1VEnum._1;
-        return (0, exports.fp)(this.configuration).getDiscount1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Get list of restream tariffs
-     * @param {list1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PlanRestreamApi
-     */
-    list1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || list1VEnum._1;
-        return (0, exports.fp)(this.configuration).list1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    planRestreamGetDiscountV1(requestParameters, options) {
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get list of restream tariffs for project
-     * @param {listProject1Request} requestParameters Request parameters.
+     * @param {PlanRestreamApiPlanRestreamListProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    listProject1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || listProject1VEnum._1;
-        return (0, exports.fp)(this.configuration).listProject1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    planRestreamListProjectV1(requestParameters, options) {
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamListProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get list of restream tariffs
+     * @param {PlanRestreamApiPlanRestreamListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanRestreamApi
+     */
+    planRestreamListV1(requestParameters, options) {
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Remove after tariff
-     * @param {remove1Request} requestParameters Request parameters.
+     * @param {PlanRestreamApiPlanRestreamRemoveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    remove1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || remove1VEnum._1;
-        return (0, exports.fp)(this.configuration).remove1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.planRestreamId, options).then((request) => request(this.axios, this.basePath));
+    planRestreamRemoveV1(requestParameters, options) {
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.planRestreamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get tariff for project
-     * @param {tariff1Request} requestParameters Request parameters.
+     * @param {PlanRestreamApiPlanRestreamTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    tariff1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || tariff1VEnum._1;
-        return (0, exports.fp)(this.configuration).tariff1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    planRestreamTariffV1(requestParameters, options) {
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PlanRestreamApi = PlanRestreamApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var buy1VEnum;
-(function (buy1VEnum) {
-    buy1VEnum["_1"] = "1";
-    buy1VEnum["_2"] = "2";
-    buy1VEnum["_3"] = "3";
-})(buy1VEnum || (exports.buy1VEnum = buy1VEnum = {}));
+ * @export
+ */
+exports.PlanRestreamBuyV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var buy1LanguageEnum;
-(function (buy1LanguageEnum) {
-    buy1LanguageEnum["ru"] = "ru";
-    buy1LanguageEnum["en"] = "en";
-    buy1LanguageEnum["cn"] = "cn";
-})(buy1LanguageEnum || (exports.buy1LanguageEnum = buy1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanRestreamBuyV1PeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var buy1PeriodEnum;
-(function (buy1PeriodEnum) {
-    buy1PeriodEnum["month"] = "month";
-    buy1PeriodEnum["year"] = "year";
-})(buy1PeriodEnum || (exports.buy1PeriodEnum = buy1PeriodEnum = {}));
+ * @export
+ */
+exports.PlanRestreamBuyV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var check21VEnum;
-(function (check21VEnum) {
-    check21VEnum["_1"] = "1";
-    check21VEnum["_2"] = "2";
-    check21VEnum["_3"] = "3";
-})(check21VEnum || (exports.check21VEnum = check21VEnum = {}));
+ * @export
+ */
+exports.PlanRestreamCheck2V1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var check21LanguageEnum;
-(function (check21LanguageEnum) {
-    check21LanguageEnum["ru"] = "ru";
-    check21LanguageEnum["en"] = "en";
-    check21LanguageEnum["cn"] = "cn";
-})(check21LanguageEnum || (exports.check21LanguageEnum = check21LanguageEnum = {}));
+ * @export
+ */
+exports.PlanRestreamCheck2V1PeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var check21PeriodEnum;
-(function (check21PeriodEnum) {
-    check21PeriodEnum["month"] = "month";
-    check21PeriodEnum["year"] = "year";
-})(check21PeriodEnum || (exports.check21PeriodEnum = check21PeriodEnum = {}));
+ * @export
+ */
+exports.PlanRestreamCheck2V1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getDiscount1VEnum;
-(function (getDiscount1VEnum) {
-    getDiscount1VEnum["_1"] = "1";
-    getDiscount1VEnum["_2"] = "2";
-    getDiscount1VEnum["_3"] = "3";
-})(getDiscount1VEnum || (exports.getDiscount1VEnum = getDiscount1VEnum = {}));
+ * @export
+ */
+exports.PlanRestreamGetDiscountV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getDiscount1LanguageEnum;
-(function (getDiscount1LanguageEnum) {
-    getDiscount1LanguageEnum["ru"] = "ru";
-    getDiscount1LanguageEnum["en"] = "en";
-    getDiscount1LanguageEnum["cn"] = "cn";
-})(getDiscount1LanguageEnum || (exports.getDiscount1LanguageEnum = getDiscount1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanRestreamGetDiscountV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1VEnum;
-(function (list1VEnum) {
-    list1VEnum["_1"] = "1";
-    list1VEnum["_2"] = "2";
-    list1VEnum["_3"] = "3";
-})(list1VEnum || (exports.list1VEnum = list1VEnum = {}));
+ * @export
+ */
+exports.PlanRestreamListProjectV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1LanguageEnum;
-(function (list1LanguageEnum) {
-    list1LanguageEnum["ru"] = "ru";
-    list1LanguageEnum["en"] = "en";
-    list1LanguageEnum["cn"] = "cn";
-})(list1LanguageEnum || (exports.list1LanguageEnum = list1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanRestreamListProjectV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var listProject1VEnum;
-(function (listProject1VEnum) {
-    listProject1VEnum["_1"] = "1";
-    listProject1VEnum["_2"] = "2";
-    listProject1VEnum["_3"] = "3";
-})(listProject1VEnum || (exports.listProject1VEnum = listProject1VEnum = {}));
+ * @export
+ */
+exports.PlanRestreamListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var listProject1LanguageEnum;
-(function (listProject1LanguageEnum) {
-    listProject1LanguageEnum["ru"] = "ru";
-    listProject1LanguageEnum["en"] = "en";
-    listProject1LanguageEnum["cn"] = "cn";
-})(listProject1LanguageEnum || (exports.listProject1LanguageEnum = listProject1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanRestreamListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var remove1VEnum;
-(function (remove1VEnum) {
-    remove1VEnum["_1"] = "1";
-    remove1VEnum["_2"] = "2";
-    remove1VEnum["_3"] = "3";
-})(remove1VEnum || (exports.remove1VEnum = remove1VEnum = {}));
+ * @export
+ */
+exports.PlanRestreamRemoveV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var remove1LanguageEnum;
-(function (remove1LanguageEnum) {
-    remove1LanguageEnum["ru"] = "ru";
-    remove1LanguageEnum["en"] = "en";
-    remove1LanguageEnum["cn"] = "cn";
-})(remove1LanguageEnum || (exports.remove1LanguageEnum = remove1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanRestreamRemoveV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var tariff1VEnum;
-(function (tariff1VEnum) {
-    tariff1VEnum["_1"] = "1";
-    tariff1VEnum["_2"] = "2";
-    tariff1VEnum["_3"] = "3";
-})(tariff1VEnum || (exports.tariff1VEnum = tariff1VEnum = {}));
+ * @export
+ */
+exports.PlanRestreamTariffV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var tariff1LanguageEnum;
-(function (tariff1LanguageEnum) {
-    tariff1LanguageEnum["ru"] = "ru";
-    tariff1LanguageEnum["en"] = "en";
-    tariff1LanguageEnum["cn"] = "cn";
-})(tariff1LanguageEnum || (exports.tariff1LanguageEnum = tariff1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanRestreamTariffV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

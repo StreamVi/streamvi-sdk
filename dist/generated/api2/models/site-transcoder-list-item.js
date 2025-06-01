@@ -13,22 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VideoCodecEnum = exports.StatusEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var StatusEnum;
-(function (StatusEnum) {
-    StatusEnum["active"] = "active";
-    StatusEnum["inactive"] = "inactive";
-})(StatusEnum || (exports.StatusEnum = StatusEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var VideoCodecEnum;
-(function (VideoCodecEnum) {
-    VideoCodecEnum["h264"] = "h264";
-    VideoCodecEnum["hevc"] = "hevc";
-})(VideoCodecEnum || (exports.VideoCodecEnum = VideoCodecEnum = {}));
+exports.SiteTranscoderListItemVideoCodecEnum = exports.SiteTranscoderListItemStatusEnum = void 0;
+exports.SiteTranscoderListItemStatusEnum = {
+    Active: 'active',
+    Inactive: 'inactive'
+};
+exports.SiteTranscoderListItemVideoCodecEnum = {
+    H264: 'h264',
+    Hevc: 'hevc'
+};

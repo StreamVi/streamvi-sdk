@@ -64,8 +64,6 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {

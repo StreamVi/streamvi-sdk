@@ -17,72 +17,88 @@ import type { GetVersionAppResponse } from '../models';
  * ReleaseApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const ReleaseApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Get current version app
-     * @param {cabinet1VEnum} v Version
-     * @param {cabinet1LanguageEnum} language Current language
-     * @param {cabinet1AppEnum} [app] Apps
+     * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
+     * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cabinet1: (v: cabinet1VEnum, language: cabinet1LanguageEnum, app?: cabinet1AppEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    releaseAppCabinetV1: (language: ReleaseAppCabinetV1LanguageEnum, v?: ReleaseAppCabinetV1VEnum, app?: ReleaseAppCabinetV1AppEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ReleaseApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const ReleaseApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get current version app
-     * @param {cabinet1VEnum} v Version
-     * @param {cabinet1LanguageEnum} language Current language
-     * @param {cabinet1AppEnum} [app] Apps
+     * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
+     * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cabinet1(v: cabinet1VEnum, language: cabinet1LanguageEnum, app?: cabinet1AppEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVersionAppResponse>>;
+    releaseAppCabinetV1(language: ReleaseAppCabinetV1LanguageEnum, v?: ReleaseAppCabinetV1VEnum, app?: ReleaseAppCabinetV1AppEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVersionAppResponse>>;
 };
 /**
  * ReleaseApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const ReleaseApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get current version app
-     * @param {cabinet1Request} requestParameters Request parameters.
+     * @param {ReleaseApiReleaseAppCabinetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cabinet1(requestParameters: cabinet1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetVersionAppResponse>;
+    releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetVersionAppResponse>;
 };
 /**
- * Request parameters for cabinet1 operation in ReleaseApi.
+ * ReleaseApi - interface
  * @export
- * @interface cabinet1Request
+ * @interface ReleaseApi
  */
-export interface cabinet1Request {
+export interface ReleaseApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof cabinet1
+     *
+     * @summary Get current version app
+     * @param {ReleaseApiReleaseAppCabinetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ReleaseApiInterface
      */
-    readonly v?: cabinet1VEnum;
+    releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetVersionAppResponse>;
+}
+/**
+ * Request parameters for releaseAppCabinetV1 operation in ReleaseApi.
+ * @export
+ * @interface ReleaseApiReleaseAppCabinetV1Request
+ */
+export interface ReleaseApiReleaseAppCabinetV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof cabinet1
+     * @memberof ReleaseApiReleaseAppCabinetV1
      */
-    readonly language: cabinet1LanguageEnum;
+    readonly language: ReleaseAppCabinetV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ReleaseApiReleaseAppCabinetV1
+     */
+    readonly v?: ReleaseAppCabinetV1VEnum;
     /**
      * Apps
      * @type {'cabinet'}
-     * @memberof cabinet1
+     * @memberof ReleaseApiReleaseAppCabinetV1
      */
-    readonly app?: cabinet1AppEnum;
+    readonly app?: ReleaseAppCabinetV1AppEnum;
 }
 /**
  * ReleaseApi - object-oriented interface
@@ -90,40 +106,40 @@ export interface cabinet1Request {
  * @class ReleaseApi
  * @extends {BaseAPI}
  */
-export declare class ReleaseApi extends BaseAPI {
+export declare class ReleaseApi extends BaseAPI implements ReleaseApiInterface {
     /**
      *
      * @summary Get current version app
-     * @param {cabinet1Request} requestParameters Request parameters.
+     * @param {ReleaseApiReleaseAppCabinetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReleaseApi
      */
-    cabinet1(requestParameters: cabinet1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetVersionAppResponse, any>>;
+    releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetVersionAppResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum cabinet1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ReleaseAppCabinetV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ReleaseAppCabinetV1LanguageEnum = typeof ReleaseAppCabinetV1LanguageEnum[keyof typeof ReleaseAppCabinetV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum cabinet1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ReleaseAppCabinetV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ReleaseAppCabinetV1VEnum = typeof ReleaseAppCabinetV1VEnum[keyof typeof ReleaseAppCabinetV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum cabinet1AppEnum {
-    cabinet = "cabinet"
-}
+ * @export
+ */
+export declare const ReleaseAppCabinetV1AppEnum: {
+    readonly Cabinet: "cabinet";
+};
+export type ReleaseAppCabinetV1AppEnum = typeof ReleaseAppCabinetV1AppEnum[keyof typeof ReleaseAppCabinetV1AppEnum];
 //# sourceMappingURL=release-api.d.ts.map

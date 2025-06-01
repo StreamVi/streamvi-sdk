@@ -26,14 +26,11 @@ export interface AmountItem {
      * @type {string}
      * @memberof AmountItem
      */
-    'currency': CurrencyEnum;
+    'currency': AmountItemCurrencyEnum;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum CurrencyEnum {
-    rub = "rub",
-    usd = "usd"
-}
+export declare const AmountItemCurrencyEnum: {
+    readonly Rub: "rub";
+    readonly Usd: "usd";
+};
+export type AmountItemCurrencyEnum = typeof AmountItemCurrencyEnum[keyof typeof AmountItemCurrencyEnum];
 //# sourceMappingURL=amount-item.d.ts.map

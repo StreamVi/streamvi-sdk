@@ -13,25 +13,20 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ActionEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var ActionEnum;
-(function (ActionEnum) {
-    ActionEnum["project_channel_invite_add"] = "project_channel_invite_add";
-    ActionEnum["project_channel_invite_del"] = "project_channel_invite_del";
-    ActionEnum["project_channel_invite_accept"] = "project_channel_invite_accept";
-    ActionEnum["project_channel_invite_decline"] = "project_channel_invite_decline";
-    ActionEnum["user_project_invite_add"] = "user_project_invite_add";
-    ActionEnum["user_project_invite_del"] = "user_project_invite_del";
-    ActionEnum["user_project_invite_accept"] = "user_project_invite_accept";
-    ActionEnum["user_project_invite_decline"] = "user_project_invite_decline";
-    ActionEnum["user_project_add"] = "user_project_add";
-    ActionEnum["user_project_del"] = "user_project_del";
-    ActionEnum["user_project_change"] = "user_project_change";
-    ActionEnum["project_channel_add"] = "project_channel_add";
-    ActionEnum["project_channel_del"] = "project_channel_del";
-    ActionEnum["project_channel_change"] = "project_channel_change";
-})(ActionEnum || (exports.ActionEnum = ActionEnum = {}));
+exports.ProjectHistoryResponseActionEnum = void 0;
+exports.ProjectHistoryResponseActionEnum = {
+    ProjectChannelInviteAdd: 'project_channel_invite_add',
+    ProjectChannelInviteDel: 'project_channel_invite_del',
+    ProjectChannelInviteAccept: 'project_channel_invite_accept',
+    ProjectChannelInviteDecline: 'project_channel_invite_decline',
+    UserProjectInviteAdd: 'user_project_invite_add',
+    UserProjectInviteDel: 'user_project_invite_del',
+    UserProjectInviteAccept: 'user_project_invite_accept',
+    UserProjectInviteDecline: 'user_project_invite_decline',
+    UserProjectAdd: 'user_project_add',
+    UserProjectDel: 'user_project_del',
+    UserProjectChange: 'user_project_change',
+    ProjectChannelAdd: 'project_channel_add',
+    ProjectChannelDel: 'project_channel_del',
+    ProjectChannelChange: 'project_channel_change'
+};

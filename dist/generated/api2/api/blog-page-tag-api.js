@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.list1LanguageEnum = exports.list1VEnum = exports.BlogPageTagApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.BlogPageTagListV1VEnum = exports.BlogPageTagListV1LanguageEnum = exports.BlogPageTagApi = exports.BlogPageTagApiFactory = exports.BlogPageTagApiFp = exports.BlogPageTagApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,24 +27,22 @@ const base_1 = require("../base");
  * BlogPageTagApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const BlogPageTagApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Get list of blog pages
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {BlogPageTagListV1LanguageEnum} language Current language
+         * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v, language, s, limit, offset, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'v', v);
+        blogPageTagListV1: async (language, v, s, limit, offset, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'language', language);
+            (0, common_1.assertParamExists)('blogPageTagListV1', 'language', language);
             const localVarPath = `/method/blog/tag/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -80,57 +78,55 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.BlogPageTagApiAxiosParamCreator = BlogPageTagApiAxiosParamCreator;
 /**
  * BlogPageTagApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const BlogPageTagApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.BlogPageTagApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Get list of blog pages
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {BlogPageTagListV1LanguageEnum} language Current language
+         * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v, language, s, limit, offset, options) {
+        async blogPageTagListV1(language, v, s, limit, offset, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, s, limit, offset, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageTagListV1(language, v, s, limit, offset, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BlogPageTagApi.list1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BlogPageTagApi.blogPageTagListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.BlogPageTagApiFp = BlogPageTagApiFp;
 /**
  * BlogPageTagApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const BlogPageTagApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.BlogPageTagApiFp)(configuration);
     return {
         /**
          *
          * @summary Get list of blog pages
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+        blogPageTagListV1(requestParameters, options) {
+            return localVarFp.blogPageTagListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.BlogPageTagApiFactory = BlogPageTagApiFactory;
 /**
  * BlogPageTagApi - object-oriented interface
  * @export
@@ -141,35 +137,29 @@ class BlogPageTagApi extends base_1.BaseAPI {
     /**
      *
      * @summary Get list of blog pages
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BlogPageTagApi
      */
-    list1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || list1VEnum._1;
-        return (0, exports.fp)(this.configuration).list1(actualV, requestParameters.language, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+    blogPageTagListV1(requestParameters, options) {
+        return (0, exports.BlogPageTagApiFp)(this.configuration).blogPageTagListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.BlogPageTagApi = BlogPageTagApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var list1VEnum;
-(function (list1VEnum) {
-    list1VEnum["_1"] = "1";
-    list1VEnum["_2"] = "2";
-    list1VEnum["_3"] = "3";
-})(list1VEnum || (exports.list1VEnum = list1VEnum = {}));
+ * @export
+ */
+exports.BlogPageTagListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1LanguageEnum;
-(function (list1LanguageEnum) {
-    list1LanguageEnum["ru"] = "ru";
-    list1LanguageEnum["en"] = "en";
-    list1LanguageEnum["cn"] = "cn";
-})(list1LanguageEnum || (exports.list1LanguageEnum = list1LanguageEnum = {}));
+ * @export
+ */
+exports.BlogPageTagListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

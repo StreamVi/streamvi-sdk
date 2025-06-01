@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.runAction1VEnum = exports.markOfRead1LanguageEnum = exports.markOfRead1VEnum = exports.getStatusMy1LanguageEnum = exports.getStatusMy1VEnum = exports.getListMy1StatusReadEnum = exports.getListMy1ChannelEnum = exports.getListMy1NameEnum = exports.getListMy1LanguageEnum = exports.getListMy1VEnum = exports.get1VEnum = exports.NotifyHistoryApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.NotifyHistoryRunActionV1VEnum = exports.NotifyHistoryMarkOfReadV1VEnum = exports.NotifyHistoryMarkOfReadV1LanguageEnum = exports.NotifyHistoryGetV1VEnum = exports.NotifyHistoryGetStatusMyV1VEnum = exports.NotifyHistoryGetStatusMyV1LanguageEnum = exports.NotifyHistoryGetListMyV1StatusReadEnum = exports.NotifyHistoryGetListMyV1ChannelEnum = exports.NotifyHistoryGetListMyV1NameEnum = exports.NotifyHistoryGetListMyV1VEnum = exports.NotifyHistoryGetListMyV1LanguageEnum = exports.NotifyHistoryApi = exports.NotifyHistoryApiFactory = exports.NotifyHistoryApiFp = exports.NotifyHistoryApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,66 +27,27 @@ const base_1 = require("../base");
  * NotifyHistoryApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const NotifyHistoryApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Get my NotifyHistory item by id
-         * @param {get1VEnum} v Version
-         * @param {string} id Id of page in mongodb
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        get1: async (v, id, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('get1', 'v', v);
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('get1', 'id', id);
-            const localVarPath = `/method/notify_history/get`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            if (id !== undefined) {
-                localVarQueryParameter['_id'] = id;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
          * @summary Get list of my notifications
-         * @param {getListMy1VEnum} v Version
-         * @param {getListMy1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetListMyV1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {number} [projectId] Project id
-         * @param {getListMy1NameEnum} [name] Name
-         * @param {getListMy1ChannelEnum} [channel] Channel
+         * @param {NotifyHistoryGetListMyV1NameEnum} [name] Name
+         * @param {NotifyHistoryGetListMyV1ChannelEnum} [channel] Channel
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
-         * @param {getListMy1StatusReadEnum} [statusRead] Status read
+         * @param {NotifyHistoryGetListMyV1StatusReadEnum} [statusRead] Status read
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getListMy1: async (v, language, limit, offset, projectId, name, channel, dateFrom, dateTo, statusRead, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getListMy1', 'v', v);
+        notifyHistoryGetListMyV1: async (language, v, limit, offset, projectId, name, channel, dateFrom, dateTo, statusRead, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getListMy1', 'language', language);
+            (0, common_1.assertParamExists)('notifyHistoryGetListMyV1', 'language', language);
             const localVarPath = `/method/notify_history/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -142,16 +103,14 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get my status unread message for user
-         * @param {getStatusMy1VEnum} v Version
-         * @param {getStatusMy1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStatusMy1: async (v, language, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getStatusMy1', 'v', v);
+        notifyHistoryGetStatusMyV1: async (language, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getStatusMy1', 'language', language);
+            (0, common_1.assertParamExists)('notifyHistoryGetStatusMyV1', 'language', language);
             const localVarPath = `/method/notify_history/get_status`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -178,20 +137,53 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Set notification in cabinet as read
-         * @param {markOfRead1VEnum} v Version
-         * @param {markOfRead1LanguageEnum} language Current language
-         * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
+         * @summary Get my NotifyHistory item by id
+         * @param {string} id Id of page in mongodb
+         * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        markOfRead1: async (v, language, siteMarkReadHistoryRequest, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('markOfRead1', 'v', v);
+        notifyHistoryGetV1: async (id, v, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('notifyHistoryGetV1', 'id', id);
+            const localVarPath = `/method/notify_history/get`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (id !== undefined) {
+                localVarQueryParameter['_id'] = id;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Set notification in cabinet as read
+         * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Current language
+         * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
+         * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notifyHistoryMarkOfReadV1: async (language, siteMarkReadHistoryRequest, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('markOfRead1', 'language', language);
+            (0, common_1.assertParamExists)('notifyHistoryMarkOfReadV1', 'language', language);
             // verify required parameter 'siteMarkReadHistoryRequest' is not null or undefined
-            (0, common_1.assertParamExists)('markOfRead1', 'siteMarkReadHistoryRequest', siteMarkReadHistoryRequest);
+            (0, common_1.assertParamExists)('notifyHistoryMarkOfReadV1', 'siteMarkReadHistoryRequest', siteMarkReadHistoryRequest);
             const localVarPath = `/method/notify_history/read`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -221,22 +213,20 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Run action in my notify item
-         * @param {runAction1VEnum} v Version
          * @param {string} notifyHistoryId Id of page in mongodb
          * @param {string} actionName Action name
          * @param {string} groupId Group id
+         * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        runAction1: async (v, notifyHistoryId, actionName, groupId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('runAction1', 'v', v);
+        notifyHistoryRunActionV1: async (notifyHistoryId, actionName, groupId, v, options = {}) => {
             // verify required parameter 'notifyHistoryId' is not null or undefined
-            (0, common_1.assertParamExists)('runAction1', 'notifyHistoryId', notifyHistoryId);
+            (0, common_1.assertParamExists)('notifyHistoryRunActionV1', 'notifyHistoryId', notifyHistoryId);
             // verify required parameter 'actionName' is not null or undefined
-            (0, common_1.assertParamExists)('runAction1', 'actionName', actionName);
+            (0, common_1.assertParamExists)('notifyHistoryRunActionV1', 'actionName', actionName);
             // verify required parameter 'groupId' is not null or undefined
-            (0, common_1.assertParamExists)('runAction1', 'groupId', groupId);
+            (0, common_1.assertParamExists)('notifyHistoryRunActionV1', 'groupId', groupId);
             const localVarPath = `/method/notify_history/run_action`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -273,7 +263,7 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setAllCabinetRead1: async (options = {}) => {
+        notifyHistorySetAllCabinetReadV1: async (options = {}) => {
             const localVarPath = `/method/notify_history/set_all_cabinet_read`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -294,98 +284,98 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.NotifyHistoryApiAxiosParamCreator = NotifyHistoryApiAxiosParamCreator;
 /**
  * NotifyHistoryApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const NotifyHistoryApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.NotifyHistoryApiAxiosParamCreator)(configuration);
     return {
         /**
          *
-         * @summary Get my NotifyHistory item by id
-         * @param {get1VEnum} v Version
-         * @param {string} id Id of page in mongodb
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async get1(v, id, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.get1(v, id, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.get1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
          * @summary Get list of my notifications
-         * @param {getListMy1VEnum} v Version
-         * @param {getListMy1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetListMyV1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {number} [projectId] Project id
-         * @param {getListMy1NameEnum} [name] Name
-         * @param {getListMy1ChannelEnum} [channel] Channel
+         * @param {NotifyHistoryGetListMyV1NameEnum} [name] Name
+         * @param {NotifyHistoryGetListMyV1ChannelEnum} [channel] Channel
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
-         * @param {getListMy1StatusReadEnum} [statusRead] Status read
+         * @param {NotifyHistoryGetListMyV1StatusReadEnum} [statusRead] Status read
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getListMy1(v, language, limit, offset, projectId, name, channel, dateFrom, dateTo, statusRead, options) {
+        async notifyHistoryGetListMyV1(language, v, limit, offset, projectId, name, channel, dateFrom, dateTo, statusRead, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getListMy1(v, language, limit, offset, projectId, name, channel, dateFrom, dateTo, statusRead, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryGetListMyV1(language, v, limit, offset, projectId, name, channel, dateFrom, dateTo, statusRead, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.getListMy1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistoryGetListMyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get my status unread message for user
-         * @param {getStatusMy1VEnum} v Version
-         * @param {getStatusMy1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStatusMy1(v, language, options) {
+        async notifyHistoryGetStatusMyV1(language, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStatusMy1(v, language, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryGetStatusMyV1(language, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.getStatusMy1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistoryGetStatusMyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get my NotifyHistory item by id
+         * @param {string} id Id of page in mongodb
+         * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async notifyHistoryGetV1(id, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryGetV1(id, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistoryGetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Set notification in cabinet as read
-         * @param {markOfRead1VEnum} v Version
-         * @param {markOfRead1LanguageEnum} language Current language
+         * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Current language
          * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
+         * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async markOfRead1(v, language, siteMarkReadHistoryRequest, options) {
+        async notifyHistoryMarkOfReadV1(language, siteMarkReadHistoryRequest, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.markOfRead1(v, language, siteMarkReadHistoryRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryMarkOfReadV1(language, siteMarkReadHistoryRequest, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.markOfRead1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistoryMarkOfReadV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Run action in my notify item
-         * @param {runAction1VEnum} v Version
          * @param {string} notifyHistoryId Id of page in mongodb
          * @param {string} actionName Action name
          * @param {string} groupId Group id
+         * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async runAction1(v, notifyHistoryId, actionName, groupId, options) {
+        async notifyHistoryRunActionV1(notifyHistoryId, actionName, groupId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.runAction1(v, notifyHistoryId, actionName, groupId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryRunActionV1(notifyHistoryId, actionName, groupId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.runAction1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistoryRunActionV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -394,82 +384,72 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setAllCabinetRead1(options) {
+        async notifyHistorySetAllCabinetReadV1(options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.setAllCabinetRead1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistorySetAllCabinetReadV1(options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.setAllCabinetRead1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistorySetAllCabinetReadV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.NotifyHistoryApiFp = NotifyHistoryApiFp;
 /**
  * NotifyHistoryApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const NotifyHistoryApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.NotifyHistoryApiFp)(configuration);
     return {
         /**
          *
-         * @summary Get my NotifyHistory item by id
-         * @param {get1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        get1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || get1VEnum._1;
-            return localVarFp.get1(actualV, requestParameters.id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
          * @summary Get list of my notifications
-         * @param {getListMy1Request} requestParameters Request parameters.
+         * @param {NotifyHistoryApiNotifyHistoryGetListMyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getListMy1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getListMy1VEnum._1;
-            return localVarFp.getListMy1(actualV, requestParameters.language, requestParameters.limit, requestParameters.offset, requestParameters.projectId, requestParameters.name, requestParameters.channel, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.statusRead, options).then((request) => request(axios, basePath));
+        notifyHistoryGetListMyV1(requestParameters, options) {
+            return localVarFp.notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.projectId, requestParameters.name, requestParameters.channel, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.statusRead, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get my status unread message for user
-         * @param {getStatusMy1Request} requestParameters Request parameters.
+         * @param {NotifyHistoryApiNotifyHistoryGetStatusMyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStatusMy1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getStatusMy1VEnum._1;
-            return localVarFp.getStatusMy1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        notifyHistoryGetStatusMyV1(requestParameters, options) {
+            return localVarFp.notifyHistoryGetStatusMyV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get my NotifyHistory item by id
+         * @param {NotifyHistoryApiNotifyHistoryGetV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notifyHistoryGetV1(requestParameters, options) {
+            return localVarFp.notifyHistoryGetV1(requestParameters.id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Set notification in cabinet as read
-         * @param {markOfRead1Request} requestParameters Request parameters.
+         * @param {NotifyHistoryApiNotifyHistoryMarkOfReadV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        markOfRead1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || markOfRead1VEnum._1;
-            return localVarFp.markOfRead1(actualV, requestParameters.language, requestParameters.siteMarkReadHistoryRequest, options).then((request) => request(axios, basePath));
+        notifyHistoryMarkOfReadV1(requestParameters, options) {
+            return localVarFp.notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.siteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Run action in my notify item
-         * @param {runAction1Request} requestParameters Request parameters.
+         * @param {NotifyHistoryApiNotifyHistoryRunActionV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        runAction1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || runAction1VEnum._1;
-            return localVarFp.runAction1(actualV, requestParameters.notifyHistoryId, requestParameters.actionName, requestParameters.groupId, options).then((request) => request(axios, basePath));
+        notifyHistoryRunActionV1(requestParameters, options) {
+            return localVarFp.notifyHistoryRunActionV1(requestParameters.notifyHistoryId, requestParameters.actionName, requestParameters.groupId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -477,12 +457,12 @@ const factory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setAllCabinetRead1(options) {
-            return localVarFp.setAllCabinetRead1(options).then((request) => request(axios, basePath));
+        notifyHistorySetAllCabinetReadV1(options) {
+            return localVarFp.notifyHistorySetAllCabinetReadV1(options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.NotifyHistoryApiFactory = NotifyHistoryApiFactory;
 /**
  * NotifyHistoryApi - object-oriented interface
  * @export
@@ -492,68 +472,58 @@ exports.factory = factory;
 class NotifyHistoryApi extends base_1.BaseAPI {
     /**
      *
-     * @summary Get my NotifyHistory item by id
-     * @param {get1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof NotifyHistoryApi
-     */
-    get1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || get1VEnum._1;
-        return (0, exports.fp)(this.configuration).get1(actualV, requestParameters.id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
      * @summary Get list of my notifications
-     * @param {getListMy1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryGetListMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    getListMy1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getListMy1VEnum._1;
-        return (0, exports.fp)(this.configuration).getListMy1(actualV, requestParameters.language, requestParameters.limit, requestParameters.offset, requestParameters.projectId, requestParameters.name, requestParameters.channel, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.statusRead, options).then((request) => request(this.axios, this.basePath));
+    notifyHistoryGetListMyV1(requestParameters, options) {
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.projectId, requestParameters.name, requestParameters.channel, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.statusRead, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get my status unread message for user
-     * @param {getStatusMy1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryGetStatusMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    getStatusMy1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getStatusMy1VEnum._1;
-        return (0, exports.fp)(this.configuration).getStatusMy1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    notifyHistoryGetStatusMyV1(requestParameters, options) {
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetStatusMyV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get my NotifyHistory item by id
+     * @param {NotifyHistoryApiNotifyHistoryGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApi
+     */
+    notifyHistoryGetV1(requestParameters, options) {
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetV1(requestParameters.id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Set notification in cabinet as read
-     * @param {markOfRead1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryMarkOfReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    markOfRead1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || markOfRead1VEnum._1;
-        return (0, exports.fp)(this.configuration).markOfRead1(actualV, requestParameters.language, requestParameters.siteMarkReadHistoryRequest, options).then((request) => request(this.axios, this.basePath));
+    notifyHistoryMarkOfReadV1(requestParameters, options) {
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.siteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Run action in my notify item
-     * @param {runAction1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryRunActionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    runAction1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || runAction1VEnum._1;
-        return (0, exports.fp)(this.configuration).runAction1(actualV, requestParameters.notifyHistoryId, requestParameters.actionName, requestParameters.groupId, options).then((request) => request(this.axios, this.basePath));
+    notifyHistoryRunActionV1(requestParameters, options) {
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryRunActionV1(requestParameters.notifyHistoryId, requestParameters.actionName, requestParameters.groupId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -562,200 +532,178 @@ class NotifyHistoryApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    setAllCabinetRead1(options) {
-        return (0, exports.fp)(this.configuration).setAllCabinetRead1(options).then((request) => request(this.axios, this.basePath));
+    notifyHistorySetAllCabinetReadV1(options) {
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistorySetAllCabinetReadV1(options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.NotifyHistoryApi = NotifyHistoryApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var get1VEnum;
-(function (get1VEnum) {
-    get1VEnum["_1"] = "1";
-})(get1VEnum || (exports.get1VEnum = get1VEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryGetListMyV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getListMy1VEnum;
-(function (getListMy1VEnum) {
-    getListMy1VEnum["_1"] = "1";
-    getListMy1VEnum["_2"] = "2";
-    getListMy1VEnum["_3"] = "3";
-})(getListMy1VEnum || (exports.getListMy1VEnum = getListMy1VEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryGetListMyV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getListMy1LanguageEnum;
-(function (getListMy1LanguageEnum) {
-    getListMy1LanguageEnum["ru"] = "ru";
-    getListMy1LanguageEnum["en"] = "en";
-    getListMy1LanguageEnum["cn"] = "cn";
-})(getListMy1LanguageEnum || (exports.getListMy1LanguageEnum = getListMy1LanguageEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryGetListMyV1NameEnum = {
+    HighBitrate: 'high_bitrate',
+    RequestAccessChannel: 'request_access_channel',
+    RequestAccessProject: 'request_access_project',
+    PromocodeTest: 'promocode_test',
+    StreamTest: 'stream_test',
+    PlanRestreamExpires: 'plan_restream_expires',
+    PlanRestreamExpired: 'plan_restream_expired',
+    PlanRestreamRenewed: 'plan_restream_renewed',
+    PlanTranscoderExpires: 'plan_transcoder_expires',
+    PlanTranscoderExpired: 'plan_transcoder_expired',
+    PlanTranscoderRenewed: 'plan_transcoder_renewed',
+    PlanStorageExpires: 'plan_storage_expires',
+    PlanStorageExpired: 'plan_storage_expired',
+    PlanStorageRenewed: 'plan_storage_renewed',
+    BroadcastUnsupportedCodec: 'broadcast_unsupported_codec',
+    BroadcastUnsupportedCodecScreen: 'broadcast_unsupported_codec_screen',
+    BroadcastBitrateExceededScreen: 'broadcast_bitrate_exceeded_screen',
+    RtmpConnectOldServerScreen: 'rtmp_connect_old_server_screen',
+    BroadcastNotAudio: 'broadcast_not_audio',
+    BroadcastBitrateExceeded: 'broadcast_bitrate_exceeded',
+    BroadcastStarted: 'broadcast_started',
+    BroadcastStopped: 'broadcast_stopped',
+    RestreamCheckTwitchBitrate1: 'restream_check_twitch_bitrate_1',
+    ApiPauseStart: 'api_pause_start',
+    ApiPauseEnd: 'api_pause_end',
+    ApiWaitEdit: 'api_wait_edit',
+    ApiRestreamStart: 'api_restream_start',
+    ApiRestreamStop: 'api_restream_stop',
+    ApiDropBroadcast: 'api_drop_broadcast',
+    ApiDropBroadcastRemoveCompany: 'api_drop_broadcast_remove_company',
+    ApiDropBroadcastUpdateKey: 'api_drop_broadcast_update_key',
+    PublisherDisconnected: 'publisher_disconnected',
+    PublisherConnected: 'publisher_connected',
+    PublisherInitializing: 'publisher_initializing',
+    PublisherClose: 'publisher_close',
+    BroadcastConnectedStart: 'broadcast_connected_start',
+    BroadcastConnectedEnd: 'broadcast_connected_end',
+    BroadcastConnectingStream: 'broadcast_connecting_stream',
+    BroadcastStartedNewStream: 'broadcast_started_new_stream',
+    BroadcastConnectingLost: 'broadcast_connecting_lost',
+    BroadcastVideoLostStart: 'broadcast_video_lost_start',
+    BroadcastVideoLostEnd: 'broadcast_video_lost_end',
+    BroadcastVideoPauseStart: 'broadcast_video_pause_start',
+    BroadcastVideoPauseEnd: 'broadcast_video_pause_end',
+    BroadcastInitRestream: 'broadcast_init_restream',
+    StartStream: 'start_stream',
+    CreateReader: 'create_reader',
+    StartChannel: 'start_channel',
+    StopChannel: 'stop_channel',
+    StopStreamVideoTimeout: 'stop_stream_video_timeout',
+    StopStreamNoStartVideo: 'stop_stream_no_start_video',
+    StopStream: 'stop_stream',
+    DeleteReader: 'delete_reader',
+    TranscoderStart: 'transcoder_start',
+    TranscoderStop: 'transcoder_stop',
+    StartChannelFailed: 'start_channel_failed',
+    StartChannelSuccess: 'start_channel_success',
+    ApiChannelInitializingStart: 'api_channel_initializing_start',
+    ApiChannelInitializingFailed: 'api_channel_initializing_failed',
+    ApiChannelInitializingSuccess: 'api_channel_initializing_success',
+    ChannelApiUpdateSettingsSuccess: 'channel_api_update_settings_success',
+    ChannelApiUpdateSettingsError: 'channel_api_update_settings_error',
+    ChannelApiUpdatePlaylistSuccess: 'channel_api_update_playlist_success',
+    ChannelApiUpdatePlaylistError: 'channel_api_update_playlist_error',
+    ChannelApiUpdateChatError: 'channel_api_update_chat_error',
+    ChannelApiStreamKeySuccess: 'channel_api_stream_key_success',
+    ChannelApiStreamKeyError: 'channel_api_stream_key_error',
+    ChannelApiAutoStopDisableSuccess: 'channel_api_auto_stop_disable_success',
+    ChannelApiAutoStopDisableError: 'channel_api_auto_stop_disable_error',
+    ChannelApiUnbindingStreamKeyError: 'channel_api_unbinding_stream_key_error',
+    ChannelApiCreateBroadcastSuccess: 'channel_api_create_broadcast_success',
+    ChannelApiCreateBroadcastError: 'channel_api_create_broadcast_error',
+    ChannelApiSetPlannedSuccess: 'channel_api_set_planned_success',
+    ChannelApiSetPlannedError: 'channel_api_set_planned_error',
+    ChannelApiSetThumbnailSuccess: 'channel_api_set_thumbnail_success',
+    ChannelApiSetThumbnailError: 'channel_api_set_thumbnail_error',
+    ChannelTokenError: 'channel_token_error',
+    ChannelApiGroupFailed: 'channel_api_group_failed',
+    NoAudioReader: 'no_audio_reader',
+    RestreamCheckTwitchBitrate2: 'restream_check_twitch_bitrate_2',
+    TranscoderSupportErrorScreen: 'transcoder_support_error_screen',
+    TranscoderTariffEndScreen: 'transcoder_tariff_end_screen',
+    TranscoderCountFlowScreen: 'transcoder_count_flow_screen',
+    TranscoderResolutionScreen: 'transcoder_resolution_screen',
+    StreamKeyBanned: 'stream_key_banned',
+    BroadcastChangeCodec: 'broadcast_change_codec',
+    BroadcastChangeRegion: 'broadcast_change_region',
+    VideoUploadError: 'video_upload_error',
+    StopChannelError: 'stop_channel_error',
+    BroadcastUserActionStop: 'broadcast_user_action_stop'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getListMy1NameEnum;
-(function (getListMy1NameEnum) {
-    getListMy1NameEnum["high_bitrate"] = "high_bitrate";
-    getListMy1NameEnum["request_access_channel"] = "request_access_channel";
-    getListMy1NameEnum["request_access_project"] = "request_access_project";
-    getListMy1NameEnum["promocode_test"] = "promocode_test";
-    getListMy1NameEnum["stream_test"] = "stream_test";
-    getListMy1NameEnum["plan_restream_expires"] = "plan_restream_expires";
-    getListMy1NameEnum["plan_restream_expired"] = "plan_restream_expired";
-    getListMy1NameEnum["plan_restream_renewed"] = "plan_restream_renewed";
-    getListMy1NameEnum["plan_transcoder_expires"] = "plan_transcoder_expires";
-    getListMy1NameEnum["plan_transcoder_expired"] = "plan_transcoder_expired";
-    getListMy1NameEnum["plan_transcoder_renewed"] = "plan_transcoder_renewed";
-    getListMy1NameEnum["plan_storage_expires"] = "plan_storage_expires";
-    getListMy1NameEnum["plan_storage_expired"] = "plan_storage_expired";
-    getListMy1NameEnum["plan_storage_renewed"] = "plan_storage_renewed";
-    getListMy1NameEnum["broadcast_unsupported_codec"] = "broadcast_unsupported_codec";
-    getListMy1NameEnum["broadcast_unsupported_codec_screen"] = "broadcast_unsupported_codec_screen";
-    getListMy1NameEnum["broadcast_bitrate_exceeded_screen"] = "broadcast_bitrate_exceeded_screen";
-    getListMy1NameEnum["rtmp_connect_old_server_screen"] = "rtmp_connect_old_server_screen";
-    getListMy1NameEnum["broadcast_not_audio"] = "broadcast_not_audio";
-    getListMy1NameEnum["broadcast_bitrate_exceeded"] = "broadcast_bitrate_exceeded";
-    getListMy1NameEnum["broadcast_started"] = "broadcast_started";
-    getListMy1NameEnum["broadcast_stopped"] = "broadcast_stopped";
-    getListMy1NameEnum["restream_check_twitch_bitrate_1"] = "restream_check_twitch_bitrate_1";
-    getListMy1NameEnum["api_pause_start"] = "api_pause_start";
-    getListMy1NameEnum["api_pause_end"] = "api_pause_end";
-    getListMy1NameEnum["api_wait_edit"] = "api_wait_edit";
-    getListMy1NameEnum["api_restream_start"] = "api_restream_start";
-    getListMy1NameEnum["api_restream_stop"] = "api_restream_stop";
-    getListMy1NameEnum["api_drop_broadcast"] = "api_drop_broadcast";
-    getListMy1NameEnum["api_drop_broadcast_remove_company"] = "api_drop_broadcast_remove_company";
-    getListMy1NameEnum["api_drop_broadcast_update_key"] = "api_drop_broadcast_update_key";
-    getListMy1NameEnum["publisher_disconnected"] = "publisher_disconnected";
-    getListMy1NameEnum["publisher_connected"] = "publisher_connected";
-    getListMy1NameEnum["publisher_initializing"] = "publisher_initializing";
-    getListMy1NameEnum["publisher_close"] = "publisher_close";
-    getListMy1NameEnum["broadcast_connected_start"] = "broadcast_connected_start";
-    getListMy1NameEnum["broadcast_connected_end"] = "broadcast_connected_end";
-    getListMy1NameEnum["broadcast_connecting_stream"] = "broadcast_connecting_stream";
-    getListMy1NameEnum["broadcast_started_new_stream"] = "broadcast_started_new_stream";
-    getListMy1NameEnum["broadcast_connecting_lost"] = "broadcast_connecting_lost";
-    getListMy1NameEnum["broadcast_video_lost_start"] = "broadcast_video_lost_start";
-    getListMy1NameEnum["broadcast_video_lost_end"] = "broadcast_video_lost_end";
-    getListMy1NameEnum["broadcast_video_pause_start"] = "broadcast_video_pause_start";
-    getListMy1NameEnum["broadcast_video_pause_end"] = "broadcast_video_pause_end";
-    getListMy1NameEnum["broadcast_init_restream"] = "broadcast_init_restream";
-    getListMy1NameEnum["start_stream"] = "start_stream";
-    getListMy1NameEnum["create_reader"] = "create_reader";
-    getListMy1NameEnum["start_channel"] = "start_channel";
-    getListMy1NameEnum["stop_channel"] = "stop_channel";
-    getListMy1NameEnum["stop_stream_video_timeout"] = "stop_stream_video_timeout";
-    getListMy1NameEnum["stop_stream_no_start_video"] = "stop_stream_no_start_video";
-    getListMy1NameEnum["stop_stream"] = "stop_stream";
-    getListMy1NameEnum["delete_reader"] = "delete_reader";
-    getListMy1NameEnum["transcoder_start"] = "transcoder_start";
-    getListMy1NameEnum["transcoder_stop"] = "transcoder_stop";
-    getListMy1NameEnum["start_channel_failed"] = "start_channel_failed";
-    getListMy1NameEnum["start_channel_success"] = "start_channel_success";
-    getListMy1NameEnum["api_channel_initializing_start"] = "api_channel_initializing_start";
-    getListMy1NameEnum["api_channel_initializing_failed"] = "api_channel_initializing_failed";
-    getListMy1NameEnum["api_channel_initializing_success"] = "api_channel_initializing_success";
-    getListMy1NameEnum["channel_api_update_settings_success"] = "channel_api_update_settings_success";
-    getListMy1NameEnum["channel_api_update_settings_error"] = "channel_api_update_settings_error";
-    getListMy1NameEnum["channel_api_update_playlist_success"] = "channel_api_update_playlist_success";
-    getListMy1NameEnum["channel_api_update_playlist_error"] = "channel_api_update_playlist_error";
-    getListMy1NameEnum["channel_api_update_chat_error"] = "channel_api_update_chat_error";
-    getListMy1NameEnum["channel_api_stream_key_success"] = "channel_api_stream_key_success";
-    getListMy1NameEnum["channel_api_stream_key_error"] = "channel_api_stream_key_error";
-    getListMy1NameEnum["channel_api_auto_stop_disable_success"] = "channel_api_auto_stop_disable_success";
-    getListMy1NameEnum["channel_api_auto_stop_disable_error"] = "channel_api_auto_stop_disable_error";
-    getListMy1NameEnum["channel_api_unbinding_stream_key_error"] = "channel_api_unbinding_stream_key_error";
-    getListMy1NameEnum["channel_api_create_broadcast_success"] = "channel_api_create_broadcast_success";
-    getListMy1NameEnum["channel_api_create_broadcast_error"] = "channel_api_create_broadcast_error";
-    getListMy1NameEnum["channel_api_set_planned_success"] = "channel_api_set_planned_success";
-    getListMy1NameEnum["channel_api_set_planned_error"] = "channel_api_set_planned_error";
-    getListMy1NameEnum["channel_api_set_thumbnail_success"] = "channel_api_set_thumbnail_success";
-    getListMy1NameEnum["channel_api_set_thumbnail_error"] = "channel_api_set_thumbnail_error";
-    getListMy1NameEnum["channel_token_error"] = "channel_token_error";
-    getListMy1NameEnum["channel_api_group_failed"] = "channel_api_group_failed";
-    getListMy1NameEnum["no_audio_reader"] = "no_audio_reader";
-    getListMy1NameEnum["restream_check_twitch_bitrate_2"] = "restream_check_twitch_bitrate_2";
-    getListMy1NameEnum["transcoder_support_error_screen"] = "transcoder_support_error_screen";
-    getListMy1NameEnum["transcoder_tariff_end_screen"] = "transcoder_tariff_end_screen";
-    getListMy1NameEnum["transcoder_count_flow_screen"] = "transcoder_count_flow_screen";
-    getListMy1NameEnum["transcoder_resolution_screen"] = "transcoder_resolution_screen";
-    getListMy1NameEnum["stream_key_banned"] = "stream_key_banned";
-    getListMy1NameEnum["broadcast_change_codec"] = "broadcast_change_codec";
-    getListMy1NameEnum["broadcast_change_region"] = "broadcast_change_region";
-    getListMy1NameEnum["video_upload_error"] = "video_upload_error";
-    getListMy1NameEnum["stop_channel_error"] = "stop_channel_error";
-    getListMy1NameEnum["broadcast_user_action_stop"] = "broadcast_user_action_stop";
-})(getListMy1NameEnum || (exports.getListMy1NameEnum = getListMy1NameEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryGetListMyV1ChannelEnum = {
+    Telegram: 'telegram',
+    Cabinet: 'cabinet',
+    Mobile: 'mobile'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getListMy1ChannelEnum;
-(function (getListMy1ChannelEnum) {
-    getListMy1ChannelEnum["telegram"] = "telegram";
-    getListMy1ChannelEnum["cabinet"] = "cabinet";
-    getListMy1ChannelEnum["mobile"] = "mobile";
-})(getListMy1ChannelEnum || (exports.getListMy1ChannelEnum = getListMy1ChannelEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryGetListMyV1StatusReadEnum = {
+    Unread: 'unread',
+    Read: 'read'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getListMy1StatusReadEnum;
-(function (getListMy1StatusReadEnum) {
-    getListMy1StatusReadEnum["unread"] = "unread";
-    getListMy1StatusReadEnum["read"] = "read";
-})(getListMy1StatusReadEnum || (exports.getListMy1StatusReadEnum = getListMy1StatusReadEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryGetStatusMyV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getStatusMy1VEnum;
-(function (getStatusMy1VEnum) {
-    getStatusMy1VEnum["_1"] = "1";
-    getStatusMy1VEnum["_2"] = "2";
-    getStatusMy1VEnum["_3"] = "3";
-})(getStatusMy1VEnum || (exports.getStatusMy1VEnum = getStatusMy1VEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryGetStatusMyV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getStatusMy1LanguageEnum;
-(function (getStatusMy1LanguageEnum) {
-    getStatusMy1LanguageEnum["ru"] = "ru";
-    getStatusMy1LanguageEnum["en"] = "en";
-    getStatusMy1LanguageEnum["cn"] = "cn";
-})(getStatusMy1LanguageEnum || (exports.getStatusMy1LanguageEnum = getStatusMy1LanguageEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryGetV1VEnum = {
+    _1: '1'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var markOfRead1VEnum;
-(function (markOfRead1VEnum) {
-    markOfRead1VEnum["_1"] = "1";
-    markOfRead1VEnum["_2"] = "2";
-    markOfRead1VEnum["_3"] = "3";
-})(markOfRead1VEnum || (exports.markOfRead1VEnum = markOfRead1VEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryMarkOfReadV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var markOfRead1LanguageEnum;
-(function (markOfRead1LanguageEnum) {
-    markOfRead1LanguageEnum["ru"] = "ru";
-    markOfRead1LanguageEnum["en"] = "en";
-    markOfRead1LanguageEnum["cn"] = "cn";
-})(markOfRead1LanguageEnum || (exports.markOfRead1LanguageEnum = markOfRead1LanguageEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryMarkOfReadV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var runAction1VEnum;
-(function (runAction1VEnum) {
-    runAction1VEnum["_1"] = "1";
-})(runAction1VEnum || (exports.runAction1VEnum = runAction1VEnum = {}));
+ * @export
+ */
+exports.NotifyHistoryRunActionV1VEnum = {
+    _1: '1'
+};

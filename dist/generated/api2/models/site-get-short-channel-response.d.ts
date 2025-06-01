@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { SiteGetShortChannelItem } from './site-get-short-channel-item';
+import type { GetShortChannelItem } from './get-short-channel-item';
 /**
  *
  * @export
@@ -18,9 +18,9 @@ import type { SiteGetShortChannelItem } from './site-get-short-channel-item';
 export interface SiteGetShortChannelResponse {
     /**
      * Array of items
-     * @type {Array<SiteGetShortChannelItem>}
+     * @type {Array<GetShortChannelItem>}
      * @memberof SiteGetShortChannelResponse
      */
-    'results': Array<SiteGetShortChannelItem>;
+    'results': Array<GetShortChannelItem>;
 }
 //# sourceMappingURL=site-get-short-channel-response.d.ts.map

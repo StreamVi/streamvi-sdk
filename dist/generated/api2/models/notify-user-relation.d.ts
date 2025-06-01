@@ -20,19 +20,19 @@ export interface NotifyUserRelation {
      * @type {Array<string>}
      * @memberof NotifyUserRelation
      */
-    'cabinet': Array<CabinetEnum>;
+    'cabinet': Array<NotifyUserRelationCabinetEnum>;
     /**
      * Category of user notify in telegram
      * @type {Array<string>}
      * @memberof NotifyUserRelation
      */
-    'telegram': Array<TelegramEnum>;
+    'telegram': Array<NotifyUserRelationTelegramEnum>;
     /**
      * Category of user notify in mobile
      * @type {Array<string>}
      * @memberof NotifyUserRelation
      */
-    'mobile': Array<MobileEnum>;
+    'mobile': Array<NotifyUserRelationMobileEnum>;
     /**
      * Project
      * @type {number}
@@ -40,28 +40,19 @@ export interface NotifyUserRelation {
      */
     'project_id': number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum CabinetEnum {
-    important = "important",
-    stream = "stream"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TelegramEnum {
-    important = "important",
-    stream = "stream"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum MobileEnum {
-    important = "important",
-    stream = "stream"
-}
+export declare const NotifyUserRelationCabinetEnum: {
+    readonly Important: "important";
+    readonly Stream: "stream";
+};
+export type NotifyUserRelationCabinetEnum = typeof NotifyUserRelationCabinetEnum[keyof typeof NotifyUserRelationCabinetEnum];
+export declare const NotifyUserRelationTelegramEnum: {
+    readonly Important: "important";
+    readonly Stream: "stream";
+};
+export type NotifyUserRelationTelegramEnum = typeof NotifyUserRelationTelegramEnum[keyof typeof NotifyUserRelationTelegramEnum];
+export declare const NotifyUserRelationMobileEnum: {
+    readonly Important: "important";
+    readonly Stream: "stream";
+};
+export type NotifyUserRelationMobileEnum = typeof NotifyUserRelationMobileEnum[keyof typeof NotifyUserRelationMobileEnum];
 //# sourceMappingURL=notify-user-relation.d.ts.map

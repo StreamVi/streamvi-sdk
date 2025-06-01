@@ -77,8 +77,6 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -153,8 +151,6 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -221,8 +217,6 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -268,8 +262,6 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -316,8 +308,6 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -366,8 +356,6 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -421,8 +409,6 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {

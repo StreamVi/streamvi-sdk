@@ -13,23 +13,13 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AudienceEnum = exports.LangEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var LangEnum;
-(function (LangEnum) {
-    LangEnum["ru"] = "ru";
-    LangEnum["en"] = "en";
-})(LangEnum || (exports.LangEnum = LangEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var AudienceEnum;
-(function (AudienceEnum) {
-    AudienceEnum["CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY"] = "CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY";
-    AudienceEnum["CHANNEL_AUDIENCE_TYPE_TEEN"] = "CHANNEL_AUDIENCE_TYPE_TEEN";
-    AudienceEnum["CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS"] = "CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS";
-})(AudienceEnum || (exports.AudienceEnum = AudienceEnum = {}));
+exports.ChannelTrovoInfoDtoAudienceEnum = exports.ChannelTrovoInfoDtoLangEnum = void 0;
+exports.ChannelTrovoInfoDtoLangEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+exports.ChannelTrovoInfoDtoAudienceEnum = {
+    ChannelAudienceTypeFamilyfriendly: 'CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY',
+    ChannelAudienceTypeTeen: 'CHANNEL_AUDIENCE_TYPE_TEEN',
+    ChannelAudienceTypeEighteenplus: 'CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS'
+};

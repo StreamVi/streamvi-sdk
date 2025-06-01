@@ -13,31 +13,16 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MobileEnum = exports.TelegramEnum = exports.CabinetEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var CabinetEnum;
-(function (CabinetEnum) {
-    CabinetEnum["important"] = "important";
-    CabinetEnum["stream"] = "stream";
-})(CabinetEnum || (exports.CabinetEnum = CabinetEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var TelegramEnum;
-(function (TelegramEnum) {
-    TelegramEnum["important"] = "important";
-    TelegramEnum["stream"] = "stream";
-})(TelegramEnum || (exports.TelegramEnum = TelegramEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var MobileEnum;
-(function (MobileEnum) {
-    MobileEnum["important"] = "important";
-    MobileEnum["stream"] = "stream";
-})(MobileEnum || (exports.MobileEnum = MobileEnum = {}));
+exports.NotifyUserRelationMobileEnum = exports.NotifyUserRelationTelegramEnum = exports.NotifyUserRelationCabinetEnum = void 0;
+exports.NotifyUserRelationCabinetEnum = {
+    Important: 'important',
+    Stream: 'stream'
+};
+exports.NotifyUserRelationTelegramEnum = {
+    Important: 'important',
+    Stream: 'stream'
+};
+exports.NotifyUserRelationMobileEnum = {
+    Important: 'important',
+    Stream: 'stream'
+};

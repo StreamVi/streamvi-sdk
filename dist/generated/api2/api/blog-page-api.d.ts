@@ -17,139 +17,164 @@ import type { PaginatedResponseOfBlogPageSiteResponse } from '../models';
  * BlogPageApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const BlogPageApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Get blog page
-     * @param {get1VEnum} v Version
-     * @param {get1LanguageEnum} language Current language
+     * @param {BlogPageGetV1LanguageEnum} language Current language
      * @param {string} url Url of page
+     * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    get1: (v: get1VEnum, language: get1LanguageEnum, url: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    blogPageGetV1: (language: BlogPageGetV1LanguageEnum, url: string, v?: BlogPageGetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get list of blog pages
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {BlogPageListV1LanguageEnum} language Current language
+     * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {string} [s] String for search
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1: (v: list1VEnum, language: list1LanguageEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    blogPageListV1: (language: BlogPageListV1LanguageEnum, v?: BlogPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BlogPageApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const BlogPageApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get blog page
-     * @param {get1VEnum} v Version
-     * @param {get1LanguageEnum} language Current language
+     * @param {BlogPageGetV1LanguageEnum} language Current language
      * @param {string} url Url of page
+     * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    get1(v: get1VEnum, language: get1LanguageEnum, url: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>>;
+    blogPageGetV1(language: BlogPageGetV1LanguageEnum, url: string, v?: BlogPageGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>>;
     /**
      *
      * @summary Get list of blog pages
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {BlogPageListV1LanguageEnum} language Current language
+     * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {string} [s] String for search
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(v: list1VEnum, language: list1LanguageEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>>;
+    blogPageListV1(language: BlogPageListV1LanguageEnum, v?: BlogPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>>;
 };
 /**
  * BlogPageApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const BlogPageApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get blog page
-     * @param {get1Request} requestParameters Request parameters.
+     * @param {BlogPageApiBlogPageGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>;
+    blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>;
     /**
      *
      * @summary Get list of blog pages
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {BlogPageApiBlogPageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>;
+    blogPageListV1(requestParameters: BlogPageApiBlogPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>;
 };
 /**
- * Request parameters for get1 operation in BlogPageApi.
+ * BlogPageApi - interface
  * @export
- * @interface get1Request
+ * @interface BlogPageApi
  */
-export interface get1Request {
+export interface BlogPageApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof get1
+     *
+     * @summary Get blog page
+     * @param {BlogPageApiBlogPageGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlogPageApiInterface
      */
-    readonly v?: get1VEnum;
+    blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>;
+    /**
+     *
+     * @summary Get list of blog pages
+     * @param {BlogPageApiBlogPageListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlogPageApiInterface
+     */
+    blogPageListV1(requestParameters: BlogPageApiBlogPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>;
+}
+/**
+ * Request parameters for blogPageGetV1 operation in BlogPageApi.
+ * @export
+ * @interface BlogPageApiBlogPageGetV1Request
+ */
+export interface BlogPageApiBlogPageGetV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof get1
+     * @memberof BlogPageApiBlogPageGetV1
      */
-    readonly language: get1LanguageEnum;
+    readonly language: BlogPageGetV1LanguageEnum;
     /**
      * Url of page
      * @type {string}
-     * @memberof get1
+     * @memberof BlogPageApiBlogPageGetV1
      */
     readonly url: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof BlogPageApiBlogPageGetV1
+     */
+    readonly v?: BlogPageGetV1VEnum;
 }
 /**
- * Request parameters for list1 operation in BlogPageApi.
+ * Request parameters for blogPageListV1 operation in BlogPageApi.
  * @export
- * @interface list1Request
+ * @interface BlogPageApiBlogPageListV1Request
  */
-export interface list1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
-     */
-    readonly v?: list1VEnum;
+export interface BlogPageApiBlogPageListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof BlogPageApiBlogPageListV1
      */
-    readonly language: list1LanguageEnum;
+    readonly language: BlogPageListV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof BlogPageApiBlogPageListV1
+     */
+    readonly v?: BlogPageListV1VEnum;
     /**
      * String for search
      * @type {string}
-     * @memberof list1
+     * @memberof BlogPageApiBlogPageListV1
      */
     readonly s?: string;
     /**
      * Number of results
      * @type {number}
-     * @memberof list1
+     * @memberof BlogPageApiBlogPageListV1
      */
     readonly limit?: number;
     /**
      * Page offset number
      * @type {number}
-     * @memberof list1
+     * @memberof BlogPageApiBlogPageListV1
      */
     readonly offset?: number;
 }
@@ -159,60 +184,60 @@ export interface list1Request {
  * @class BlogPageApi
  * @extends {BaseAPI}
  */
-export declare class BlogPageApi extends BaseAPI {
+export declare class BlogPageApi extends BaseAPI implements BlogPageApiInterface {
     /**
      *
      * @summary Get blog page
-     * @param {get1Request} requestParameters Request parameters.
+     * @param {BlogPageApiBlogPageGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BlogPageApi
      */
-    get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
     /**
      *
      * @summary Get list of blog pages
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {BlogPageApiBlogPageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BlogPageApi
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    blogPageListV1(requestParameters: BlogPageApiBlogPageListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum get1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const BlogPageGetV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BlogPageGetV1LanguageEnum = typeof BlogPageGetV1LanguageEnum[keyof typeof BlogPageGetV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum get1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const BlogPageGetV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type BlogPageGetV1VEnum = typeof BlogPageGetV1VEnum[keyof typeof BlogPageGetV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const BlogPageListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BlogPageListV1LanguageEnum = typeof BlogPageListV1LanguageEnum[keyof typeof BlogPageListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const BlogPageListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type BlogPageListV1VEnum = typeof BlogPageListV1VEnum[keyof typeof BlogPageListV1VEnum];
 //# sourceMappingURL=blog-page-api.d.ts.map

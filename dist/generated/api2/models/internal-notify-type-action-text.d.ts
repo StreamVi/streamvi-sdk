@@ -20,13 +20,13 @@ export interface InternalNotifyTypeActionText {
      * @type {string}
      * @memberof InternalNotifyTypeActionText
      */
-    'language': LanguageEnum;
+    'language': InternalNotifyTypeActionTextLanguageEnum;
     /**
      * Language ISO
      * @type {string}
      * @memberof InternalNotifyTypeActionText
      */
-    'language_iso': LanguageIsoEnum;
+    'language_iso': InternalNotifyTypeActionTextLanguageIsoEnum;
     /**
      * Title value
      * @type {string}
@@ -40,22 +40,16 @@ export interface InternalNotifyTypeActionText {
      */
     'complited_title': string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    russian = "russian",
-    english = "english",
-    none = "none"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageIsoEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const InternalNotifyTypeActionTextLanguageEnum: {
+    readonly Russian: "russian";
+    readonly English: "english";
+    readonly None: "none";
+};
+export type InternalNotifyTypeActionTextLanguageEnum = typeof InternalNotifyTypeActionTextLanguageEnum[keyof typeof InternalNotifyTypeActionTextLanguageEnum];
+export declare const InternalNotifyTypeActionTextLanguageIsoEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type InternalNotifyTypeActionTextLanguageIsoEnum = typeof InternalNotifyTypeActionTextLanguageIsoEnum[keyof typeof InternalNotifyTypeActionTextLanguageIsoEnum];
 //# sourceMappingURL=internal-notify-type-action-text.d.ts.map

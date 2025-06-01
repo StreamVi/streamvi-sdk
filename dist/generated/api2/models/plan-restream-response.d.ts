@@ -51,7 +51,7 @@ export interface PlanRestreamResponse {
      * @type {string}
      * @memberof PlanRestreamResponse
      */
-    'type': TypeEnum;
+    'type': PlanRestreamResponseTypeEnum;
     /**
      * Price (RUB)
      * @type {number}
@@ -81,13 +81,13 @@ export interface PlanRestreamResponse {
      * @type {string}
      * @memberof PlanRestreamResponse
      */
-    'resolution': ResolutionEnum;
+    'resolution': PlanRestreamResponseResolutionEnum;
     /**
      * Fps
      * @type {string}
      * @memberof PlanRestreamResponse
      */
-    'fps': FpsEnum;
+    'fps': PlanRestreamResponseFpsEnum;
     /**
      * Create project in account
      * @type {boolean}
@@ -155,34 +155,25 @@ export interface PlanRestreamResponse {
      */
     'discount': PlanRestreamDiscountResponse;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TypeEnum {
-    free = "free",
-    paid_fix = "paid_fix",
-    paid_flex = "paid_flex",
-    custom = "custom"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum ResolutionEnum {
-    _720p = "720p",
-    _1080p = "1080p",
-    _2K = "2K",
-    UW = "UW",
-    _4K = "4K",
-    _8K = "8K"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum FpsEnum {
-    _30 = "30",
-    _60 = "60"
-}
+export declare const PlanRestreamResponseTypeEnum: {
+    readonly Free: "free";
+    readonly PaidFix: "paid_fix";
+    readonly PaidFlex: "paid_flex";
+    readonly Custom: "custom";
+};
+export type PlanRestreamResponseTypeEnum = typeof PlanRestreamResponseTypeEnum[keyof typeof PlanRestreamResponseTypeEnum];
+export declare const PlanRestreamResponseResolutionEnum: {
+    readonly _720p: "720p";
+    readonly _1080p: "1080p";
+    readonly _2K: "2K";
+    readonly Uw: "UW";
+    readonly _4K: "4K";
+    readonly _8K: "8K";
+};
+export type PlanRestreamResponseResolutionEnum = typeof PlanRestreamResponseResolutionEnum[keyof typeof PlanRestreamResponseResolutionEnum];
+export declare const PlanRestreamResponseFpsEnum: {
+    readonly _30: "30";
+    readonly _60: "60";
+};
+export type PlanRestreamResponseFpsEnum = typeof PlanRestreamResponseFpsEnum[keyof typeof PlanRestreamResponseFpsEnum];
 //# sourceMappingURL=plan-restream-response.d.ts.map

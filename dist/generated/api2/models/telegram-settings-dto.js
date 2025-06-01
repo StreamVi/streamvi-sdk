@@ -13,15 +13,10 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FilterModeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var FilterModeEnum;
-(function (FilterModeEnum) {
-    FilterModeEnum[FilterModeEnum["NUMBER_0"] = 0] = "NUMBER_0";
-    FilterModeEnum[FilterModeEnum["NUMBER_1"] = 1] = "NUMBER_1";
-    FilterModeEnum[FilterModeEnum["NUMBER_2"] = 2] = "NUMBER_2";
-    FilterModeEnum[FilterModeEnum["NUMBER_3"] = 3] = "NUMBER_3";
-})(FilterModeEnum || (exports.FilterModeEnum = FilterModeEnum = {}));
+exports.TelegramSettingsDtoFilterModeEnum = void 0;
+exports.TelegramSettingsDtoFilterModeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3
+};

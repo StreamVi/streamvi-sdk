@@ -20,287 +20,330 @@ import type { SuccessResponse } from '../models';
  * ChatGatewayApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const ChatGatewayApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Remove message
-     * @param {deleteVEnum} v Version
-     * @param {deleteLanguageEnum} language Current language
+     * @param {MethodChatGatewayDeleteV1LanguageEnum} language Current language
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
+     * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    delete: (v: deleteVEnum, language: deleteLanguageEnum, key: string, broadcastId: number, eventId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodChatGatewayDeleteV1: (language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get one message
-     * @param {getMessageVEnum} v Version
-     * @param {getMessageLanguageEnum} language Current language
+     * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Current language
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
+     * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessage: (v: getMessageVEnum, language: getMessageLanguageEnum, key: string, broadcastId: number, eventId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodChatGatewayGetMessageV1: (language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary List history message
-     * @param {historyVEnum} v Version
-     * @param {historyLanguageEnum} language Current language
+     * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
+     * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    history: (v: historyVEnum, language: historyLanguageEnum, key: string, broadcastId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodChatGatewayHistoryV1: (language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Send message
-     * @param {sendVEnum} v Version
-     * @param {sendLanguageEnum} language Current language
+     * @param {MethodChatGatewaySendV1LanguageEnum} language Current language
      * @param {string} key Key
      * @param {number} broadcastId
      * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto
+     * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    send: (v: sendVEnum, language: sendLanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodChatGatewaySendV1: (language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ChatGatewayApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const ChatGatewayApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Remove message
-     * @param {deleteVEnum} v Version
-     * @param {deleteLanguageEnum} language Current language
+     * @param {MethodChatGatewayDeleteV1LanguageEnum} language Current language
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
+     * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    delete(v: deleteVEnum, language: deleteLanguageEnum, key: string, broadcastId: number, eventId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    methodChatGatewayDeleteV1(language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Get one message
-     * @param {getMessageVEnum} v Version
-     * @param {getMessageLanguageEnum} language Current language
+     * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Current language
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
+     * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessage(v: getMessageVEnum, language: getMessageLanguageEnum, key: string, broadcastId: number, eventId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>>;
+    methodChatGatewayGetMessageV1(language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>>;
     /**
      *
      * @summary List history message
-     * @param {historyVEnum} v Version
-     * @param {historyLanguageEnum} language Current language
+     * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
+     * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    history(v: historyVEnum, language: historyLanguageEnum, key: string, broadcastId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodChatHistoryResponse>>;
+    methodChatGatewayHistoryV1(language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodChatHistoryResponse>>;
     /**
      *
      * @summary Send message
-     * @param {sendVEnum} v Version
-     * @param {sendLanguageEnum} language Current language
+     * @param {MethodChatGatewaySendV1LanguageEnum} language Current language
      * @param {string} key Key
      * @param {number} broadcastId
      * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto
+     * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    send(v: sendVEnum, language: sendLanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>>;
+    methodChatGatewaySendV1(language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>>;
 };
 /**
  * ChatGatewayApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const ChatGatewayApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Remove message
-     * @param {deleteRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    delete(requestParameters: deleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get one message
-     * @param {getMessageRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getMessage(requestParameters: getMessageRequest, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
+    methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
     /**
      *
      * @summary List history message
-     * @param {historyRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    history(requestParameters: historyRequest, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse>;
+    methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse>;
     /**
      *
      * @summary Send message
-     * @param {sendRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    send(requestParameters: sendRequest, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
+    methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
 };
 /**
- * Request parameters for delete operation in ChatGatewayApi.
+ * ChatGatewayApi - interface
  * @export
- * @interface deleteRequest
+ * @interface ChatGatewayApi
  */
-export interface deleteRequest {
+export interface ChatGatewayApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof delete
+     *
+     * @summary Remove message
+     * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatGatewayApiInterface
      */
-    readonly v: deleteVEnum;
+    methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get one message
+     * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatGatewayApiInterface
+     */
+    methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
+    /**
+     *
+     * @summary List history message
+     * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatGatewayApiInterface
+     */
+    methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse>;
+    /**
+     *
+     * @summary Send message
+     * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatGatewayApiInterface
+     */
+    methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
+}
+/**
+ * Request parameters for methodChatGatewayDeleteV1 operation in ChatGatewayApi.
+ * @export
+ * @interface ChatGatewayApiMethodChatGatewayDeleteV1Request
+ */
+export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof delete
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly language: deleteLanguageEnum;
+    readonly language: MethodChatGatewayDeleteV1LanguageEnum;
     /**
      * Key
      * @type {string}
-     * @memberof delete
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
     readonly key: string;
     /**
      * broadcast id
      * @type {number}
-     * @memberof delete
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
     readonly broadcastId: number;
     /**
      * Event id
      * @type {string}
-     * @memberof delete
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
     readonly eventId: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
+     */
+    readonly v?: MethodChatGatewayDeleteV1VEnum;
 }
 /**
- * Request parameters for getMessage operation in ChatGatewayApi.
+ * Request parameters for methodChatGatewayGetMessageV1 operation in ChatGatewayApi.
  * @export
- * @interface getMessageRequest
+ * @interface ChatGatewayApiMethodChatGatewayGetMessageV1Request
  */
-export interface getMessageRequest {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getMessage
-     */
-    readonly v: getMessageVEnum;
+export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getMessage
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly language: getMessageLanguageEnum;
+    readonly language: MethodChatGatewayGetMessageV1LanguageEnum;
     /**
      * Key
      * @type {string}
-     * @memberof getMessage
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
     readonly key: string;
     /**
      * broadcast id
      * @type {number}
-     * @memberof getMessage
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
     readonly broadcastId: number;
     /**
      * Event id
      * @type {string}
-     * @memberof getMessage
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
     readonly eventId: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
+     */
+    readonly v?: MethodChatGatewayGetMessageV1VEnum;
 }
 /**
- * Request parameters for history operation in ChatGatewayApi.
+ * Request parameters for methodChatGatewayHistoryV1 operation in ChatGatewayApi.
  * @export
- * @interface historyRequest
+ * @interface ChatGatewayApiMethodChatGatewayHistoryV1Request
  */
-export interface historyRequest {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof history
-     */
-    readonly v: historyVEnum;
+export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof history
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly language: historyLanguageEnum;
+    readonly language: MethodChatGatewayHistoryV1LanguageEnum;
     /**
      * Key
      * @type {string}
-     * @memberof history
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
     readonly key: string;
     /**
      * broadcast id
      * @type {number}
-     * @memberof history
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
     readonly broadcastId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
+     */
+    readonly v?: MethodChatGatewayHistoryV1VEnum;
 }
 /**
- * Request parameters for send operation in ChatGatewayApi.
+ * Request parameters for methodChatGatewaySendV1 operation in ChatGatewayApi.
  * @export
- * @interface sendRequest
+ * @interface ChatGatewayApiMethodChatGatewaySendV1Request
  */
-export interface sendRequest {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof send
-     */
-    readonly v: sendVEnum;
+export interface ChatGatewayApiMethodChatGatewaySendV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof send
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly language: sendLanguageEnum;
+    readonly language: MethodChatGatewaySendV1LanguageEnum;
     /**
      * Key
      * @type {string}
-     * @memberof send
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
     readonly key: string;
     /**
      *
      * @type {number}
-     * @memberof send
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
     readonly broadcastId: number;
     /**
      *
      * @type {MethodChatSendMessageRequestDto}
-     * @memberof send
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
     readonly methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
+     */
+    readonly v?: MethodChatGatewaySendV1VEnum;
 }
 /**
  * ChatGatewayApi - object-oriented interface
@@ -308,114 +351,114 @@ export interface sendRequest {
  * @class ChatGatewayApi
  * @extends {BaseAPI}
  */
-export declare class ChatGatewayApi extends BaseAPI {
+export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
     /**
      *
      * @summary Remove message
-     * @param {deleteRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    delete(requestParameters: deleteRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Get one message
-     * @param {getMessageRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    getMessage(requestParameters: getMessageRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any>>;
+    methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any>>;
     /**
      *
      * @summary List history message
-     * @param {historyRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    history(requestParameters: historyRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodChatHistoryResponse, any>>;
+    methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodChatHistoryResponse, any>>;
     /**
      *
      * @summary Send message
-     * @param {sendRequest} requestParameters Request parameters.
+     * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    send(requestParameters: sendRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any>>;
+    methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum deleteVEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const MethodChatGatewayDeleteV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodChatGatewayDeleteV1LanguageEnum = typeof MethodChatGatewayDeleteV1LanguageEnum[keyof typeof MethodChatGatewayDeleteV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum deleteLanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const MethodChatGatewayDeleteV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type MethodChatGatewayDeleteV1VEnum = typeof MethodChatGatewayDeleteV1VEnum[keyof typeof MethodChatGatewayDeleteV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getMessageVEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const MethodChatGatewayGetMessageV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodChatGatewayGetMessageV1LanguageEnum = typeof MethodChatGatewayGetMessageV1LanguageEnum[keyof typeof MethodChatGatewayGetMessageV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getMessageLanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const MethodChatGatewayGetMessageV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type MethodChatGatewayGetMessageV1VEnum = typeof MethodChatGatewayGetMessageV1VEnum[keyof typeof MethodChatGatewayGetMessageV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum historyVEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const MethodChatGatewayHistoryV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodChatGatewayHistoryV1LanguageEnum = typeof MethodChatGatewayHistoryV1LanguageEnum[keyof typeof MethodChatGatewayHistoryV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum historyLanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const MethodChatGatewayHistoryV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type MethodChatGatewayHistoryV1VEnum = typeof MethodChatGatewayHistoryV1VEnum[keyof typeof MethodChatGatewayHistoryV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum sendVEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const MethodChatGatewaySendV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodChatGatewaySendV1LanguageEnum = typeof MethodChatGatewaySendV1LanguageEnum[keyof typeof MethodChatGatewaySendV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum sendLanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const MethodChatGatewaySendV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type MethodChatGatewaySendV1VEnum = typeof MethodChatGatewaySendV1VEnum[keyof typeof MethodChatGatewaySendV1VEnum];
 //# sourceMappingURL=chat-gateway-api.d.ts.map

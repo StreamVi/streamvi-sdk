@@ -20,13 +20,13 @@ export interface PaymentCreateRequestTopUpBodyDto {
      * @type {string}
      * @memberof PaymentCreateRequestTopUpBodyDto
      */
-    'v': VEnum;
+    'v': PaymentCreateRequestTopUpBodyDtoVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof PaymentCreateRequestTopUpBodyDto
      */
-    'language': LanguageEnum;
+    'language': PaymentCreateRequestTopUpBodyDtoLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -38,7 +38,7 @@ export interface PaymentCreateRequestTopUpBodyDto {
      * @type {string}
      * @memberof PaymentCreateRequestTopUpBodyDto
      */
-    'type': TypeEnum;
+    'type': PaymentCreateRequestTopUpBodyDtoTypeEnum;
     /**
      * Amount
      * @type {number}
@@ -46,32 +46,23 @@ export interface PaymentCreateRequestTopUpBodyDto {
      */
     'amount': number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TypeEnum {
-    restream = "restream",
-    transcoding = "transcoding",
-    storage = "storage",
-    topup = "topup"
-}
+export declare const PaymentCreateRequestTopUpBodyDtoVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PaymentCreateRequestTopUpBodyDtoVEnum = typeof PaymentCreateRequestTopUpBodyDtoVEnum[keyof typeof PaymentCreateRequestTopUpBodyDtoVEnum];
+export declare const PaymentCreateRequestTopUpBodyDtoLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PaymentCreateRequestTopUpBodyDtoLanguageEnum = typeof PaymentCreateRequestTopUpBodyDtoLanguageEnum[keyof typeof PaymentCreateRequestTopUpBodyDtoLanguageEnum];
+export declare const PaymentCreateRequestTopUpBodyDtoTypeEnum: {
+    readonly Restream: "restream";
+    readonly Transcoding: "transcoding";
+    readonly Storage: "storage";
+    readonly Topup: "topup";
+};
+export type PaymentCreateRequestTopUpBodyDtoTypeEnum = typeof PaymentCreateRequestTopUpBodyDtoTypeEnum[keyof typeof PaymentCreateRequestTopUpBodyDtoTypeEnum];
 //# sourceMappingURL=payment-create-request-top-up-body-dto.d.ts.map

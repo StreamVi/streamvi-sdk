@@ -20,14 +20,24 @@ import type { SuccessResponse } from '../models';
  * ChannelApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const ChannelApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Minimal channel list
+     * @param {ChannelShortChannelListV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    channelShortChannelListV1: (language: ChannelShortChannelListV1LanguageEnum, projectId: number, v?: ChannelShortChannelListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Search channel list
-     * @param {searchVEnum} v Version
-     * @param {searchLanguageEnum} language Current language
+     * @param {MethodSearchV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {searchTypeEnum} [type]
+     * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodSearchV1TypeEnum} [type]
      * @param {string} [platform] platform type
      * @param {string} [name] name
      * @param {number} [limit] Number of results
@@ -35,7 +45,7 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search: (v: searchVEnum, language: searchLanguageEnum, projectId: number, type?: searchTypeEnum, platform?: string, name?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodSearchV1: (language: MethodSearchV1LanguageEnum, projectId: number, v?: MethodSearchV1VEnum, type?: MethodSearchV1TypeEnum, platform?: string, name?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get live status
@@ -43,30 +53,30 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setStatus: (methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Minimal channel list
-     * @param {shortChannelList1VEnum} v Version
-     * @param {shortChannelList1LanguageEnum} language Current language
-     * @param {number} projectId Project id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    shortChannelList1: (v: shortChannelList1VEnum, language: shortChannelList1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodSetStatusV1: (methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ChannelApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const ChannelApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Minimal channel list
+     * @param {ChannelShortChannelListV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    channelShortChannelListV1(language: ChannelShortChannelListV1LanguageEnum, projectId: number, v?: ChannelShortChannelListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteGetShortChannelResponse>>;
     /**
      *
      * @summary Search channel list
-     * @param {searchVEnum} v Version
-     * @param {searchLanguageEnum} language Current language
+     * @param {MethodSearchV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {searchTypeEnum} [type]
+     * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodSearchV1TypeEnum} [type]
      * @param {string} [platform] platform type
      * @param {string} [name] name
      * @param {number} [limit] Number of results
@@ -74,7 +84,7 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search(v: searchVEnum, language: searchLanguageEnum, projectId: number, type?: searchTypeEnum, platform?: string, name?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSearchChannelResponse>>;
+    methodSearchV1(language: MethodSearchV1LanguageEnum, projectId: number, v?: MethodSearchV1VEnum, type?: MethodSearchV1TypeEnum, platform?: string, name?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSearchChannelResponse>>;
     /**
      *
      * @summary Get live status
@@ -82,140 +92,164 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setStatus(methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
-    /**
-     *
-     * @summary Minimal channel list
-     * @param {shortChannelList1VEnum} v Version
-     * @param {shortChannelList1LanguageEnum} language Current language
-     * @param {number} projectId Project id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    shortChannelList1(v: shortChannelList1VEnum, language: shortChannelList1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteGetShortChannelResponse>>;
+    methodSetStatusV1(methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * ChannelApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
-    /**
-     *
-     * @summary Search channel list
-     * @param {searchRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    search(requestParameters: searchRequest, options?: RawAxiosRequestConfig): AxiosPromise<SiteSearchChannelResponse>;
-    /**
-     *
-     * @summary Get live status
-     * @param {setStatusRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    setStatus(requestParameters: setStatusRequest, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+export declare const ChannelApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Minimal channel list
-     * @param {shortChannelList1Request} requestParameters Request parameters.
+     * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    shortChannelList1(requestParameters: shortChannelList1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteGetShortChannelResponse>;
+    channelShortChannelListV1(requestParameters: ChannelApiChannelShortChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteGetShortChannelResponse>;
+    /**
+     *
+     * @summary Search channel list
+     * @param {ChannelApiMethodSearchV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodSearchV1(requestParameters: ChannelApiMethodSearchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSearchChannelResponse>;
+    /**
+     *
+     * @summary Get live status
+     * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodSetStatusV1(requestParameters: ChannelApiMethodSetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 };
 /**
- * Request parameters for search operation in ChannelApi.
+ * ChannelApi - interface
  * @export
- * @interface searchRequest
+ * @interface ChannelApi
  */
-export interface searchRequest {
+export interface ChannelApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof search
+     *
+     * @summary Minimal channel list
+     * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
      */
-    readonly v: searchVEnum;
+    channelShortChannelListV1(requestParameters: ChannelApiChannelShortChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteGetShortChannelResponse>;
+    /**
+     *
+     * @summary Search channel list
+     * @param {ChannelApiMethodSearchV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    methodSearchV1(requestParameters: ChannelApiMethodSearchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSearchChannelResponse>;
+    /**
+     *
+     * @summary Get live status
+     * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    methodSetStatusV1(requestParameters: ChannelApiMethodSetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+}
+/**
+ * Request parameters for channelShortChannelListV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiChannelShortChannelListV1Request
+ */
+export interface ChannelApiChannelShortChannelListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof search
+     * @memberof ChannelApiChannelShortChannelListV1
      */
-    readonly language: searchLanguageEnum;
+    readonly language: ChannelShortChannelListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof search
+     * @memberof ChannelApiChannelShortChannelListV1
      */
     readonly projectId: number;
     /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelApiChannelShortChannelListV1
+     */
+    readonly v?: ChannelShortChannelListV1VEnum;
+}
+/**
+ * Request parameters for methodSearchV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiMethodSearchV1Request
+ */
+export interface ChannelApiMethodSearchV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ChannelApiMethodSearchV1
+     */
+    readonly language: MethodSearchV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ChannelApiMethodSearchV1
+     */
+    readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelApiMethodSearchV1
+     */
+    readonly v?: MethodSearchV1VEnum;
+    /**
      *
      * @type {'all' | 'my' | 'available' | 'active'}
-     * @memberof search
+     * @memberof ChannelApiMethodSearchV1
      */
-    readonly type?: searchTypeEnum;
+    readonly type?: MethodSearchV1TypeEnum;
     /**
      * platform type
      * @type {string}
-     * @memberof search
+     * @memberof ChannelApiMethodSearchV1
      */
     readonly platform?: string;
     /**
      * name
      * @type {string}
-     * @memberof search
+     * @memberof ChannelApiMethodSearchV1
      */
     readonly name?: string;
     /**
      * Number of results
      * @type {number}
-     * @memberof search
+     * @memberof ChannelApiMethodSearchV1
      */
     readonly limit?: number;
     /**
      * Page offset number
      * @type {number}
-     * @memberof search
+     * @memberof ChannelApiMethodSearchV1
      */
     readonly offset?: number;
 }
 /**
- * Request parameters for setStatus operation in ChannelApi.
+ * Request parameters for methodSetStatusV1 operation in ChannelApi.
  * @export
- * @interface setStatusRequest
+ * @interface ChannelApiMethodSetStatusV1Request
  */
-export interface setStatusRequest {
+export interface ChannelApiMethodSetStatusV1Request {
     /**
      *
      * @type {MethodSetStatusChannelRequest}
-     * @memberof setStatus
+     * @memberof ChannelApiMethodSetStatusV1
      */
     readonly methodSetStatusChannelRequest: MethodSetStatusChannelRequest;
-}
-/**
- * Request parameters for shortChannelList1 operation in ChannelApi.
- * @export
- * @interface shortChannelList1Request
- */
-export interface shortChannelList1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof shortChannelList1
-     */
-    readonly v?: shortChannelList1VEnum;
-    /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof shortChannelList1
-     */
-    readonly language: shortChannelList1LanguageEnum;
-    /**
-     * Project id
-     * @type {number}
-     * @memberof shortChannelList1
-     */
-    readonly projectId: number;
 }
 /**
  * ChannelApi - object-oriented interface
@@ -223,79 +257,79 @@ export interface shortChannelList1Request {
  * @class ChannelApi
  * @extends {BaseAPI}
  */
-export declare class ChannelApi extends BaseAPI {
-    /**
-     *
-     * @summary Search channel list
-     * @param {searchRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ChannelApi
-     */
-    search(requestParameters: searchRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteSearchChannelResponse, any>>;
-    /**
-     *
-     * @summary Get live status
-     * @param {setStatusRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ChannelApi
-     */
-    setStatus(requestParameters: setStatusRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
     /**
      *
      * @summary Minimal channel list
-     * @param {shortChannelList1Request} requestParameters Request parameters.
+     * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    shortChannelList1(requestParameters: shortChannelList1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteGetShortChannelResponse, any>>;
+    channelShortChannelListV1(requestParameters: ChannelApiChannelShortChannelListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteGetShortChannelResponse, any>>;
+    /**
+     *
+     * @summary Search channel list
+     * @param {ChannelApiMethodSearchV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    methodSearchV1(requestParameters: ChannelApiMethodSearchV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteSearchChannelResponse, any>>;
+    /**
+     *
+     * @summary Get live status
+     * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    methodSetStatusV1(requestParameters: ChannelApiMethodSetStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum searchVEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ChannelShortChannelListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ChannelShortChannelListV1LanguageEnum = typeof ChannelShortChannelListV1LanguageEnum[keyof typeof ChannelShortChannelListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum searchLanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ChannelShortChannelListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ChannelShortChannelListV1VEnum = typeof ChannelShortChannelListV1VEnum[keyof typeof ChannelShortChannelListV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum searchTypeEnum {
-    all = "all",
-    my = "my",
-    available = "available",
-    active = "active"
-}
+ * @export
+ */
+export declare const MethodSearchV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodSearchV1LanguageEnum = typeof MethodSearchV1LanguageEnum[keyof typeof MethodSearchV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum shortChannelList1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const MethodSearchV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type MethodSearchV1VEnum = typeof MethodSearchV1VEnum[keyof typeof MethodSearchV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum shortChannelList1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const MethodSearchV1TypeEnum: {
+    readonly All: "all";
+    readonly My: "my";
+    readonly Available: "available";
+    readonly Active: "active";
+};
+export type MethodSearchV1TypeEnum = typeof MethodSearchV1TypeEnum[keyof typeof MethodSearchV1TypeEnum];
 //# sourceMappingURL=channel-api.d.ts.map

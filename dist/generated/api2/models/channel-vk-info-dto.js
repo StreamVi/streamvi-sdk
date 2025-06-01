@@ -13,27 +13,17 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrivacyCommentsEnum = exports.PrivacyVideoEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var PrivacyVideoEnum;
-(function (PrivacyVideoEnum) {
-    PrivacyVideoEnum["all"] = "all";
-    PrivacyVideoEnum["members"] = "members";
-    PrivacyVideoEnum["editors"] = "editors";
-    PrivacyVideoEnum["by_link"] = "by_link";
-    PrivacyVideoEnum["donut"] = "donut";
-})(PrivacyVideoEnum || (exports.PrivacyVideoEnum = PrivacyVideoEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var PrivacyCommentsEnum;
-(function (PrivacyCommentsEnum) {
-    PrivacyCommentsEnum["all"] = "all";
-    PrivacyCommentsEnum["members"] = "members";
-    PrivacyCommentsEnum["editors"] = "editors";
-    PrivacyCommentsEnum["nobody"] = "nobody";
-})(PrivacyCommentsEnum || (exports.PrivacyCommentsEnum = PrivacyCommentsEnum = {}));
+exports.ChannelVkInfoDtoPrivacyCommentsEnum = exports.ChannelVkInfoDtoPrivacyVideoEnum = void 0;
+exports.ChannelVkInfoDtoPrivacyVideoEnum = {
+    All: 'all',
+    Members: 'members',
+    Editors: 'editors',
+    ByLink: 'by_link',
+    Donut: 'donut'
+};
+exports.ChannelVkInfoDtoPrivacyCommentsEnum = {
+    All: 'all',
+    Members: 'members',
+    Editors: 'editors',
+    Nobody: 'nobody'
+};

@@ -20,722 +20,828 @@ import type { SuccessResponse } from '../models';
  * ProjectChannelInviteApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const ProjectChannelInviteApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Accept channel invitation for selected project
-     * @param {acceptForProject1VEnum} v Version
-     * @param {acceptForProject1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteAcceptForProjectV1LanguageEnum} language Current language
      * @param {number} projectId The project to which you want to add a channel
      * @param {number} channelId Channel id
+     * @param {ProjectChannelInviteAcceptForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptForProject1: (v: acceptForProject1VEnum, language: acceptForProject1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelInviteAcceptForProjectV1: (language: ProjectChannelInviteAcceptForProjectV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelInviteAcceptForProjectV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Accept channel invitation using a secret link
-     * @param {acceptForSecret1VEnum} v Version
-     * @param {acceptForSecret1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteAcceptForSecretV1LanguageEnum} language Current language
      * @param {number} projectId The project to which you want to add a channel
      * @param {number} channelId Channel id
      * @param {string} secret Secret
+     * @param {ProjectChannelInviteAcceptForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptForSecret1: (v: acceptForSecret1VEnum, language: acceptForSecret1LanguageEnum, projectId: number, channelId: number, secret: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelInviteAcceptForSecretV1: (language: ProjectChannelInviteAcceptForSecretV1LanguageEnum, projectId: number, channelId: number, secret: string, v?: ProjectChannelInviteAcceptForSecretV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Add channel invite item for another user by email
-     * @param {addByEmail1VEnum} v Version
-     * @param {addByEmail1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteAddByEmailV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {string} email Email
-     * @param {addByEmail1AccessTypeEnum} accessType Access type
+     * @param {ProjectChannelInviteAddByEmailV1AccessTypeEnum} accessType Access type
+     * @param {ProjectChannelInviteAddByEmailV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addByEmail1: (v: addByEmail1VEnum, language: addByEmail1LanguageEnum, projectId: number, channelId: number, email: string, accessType: addByEmail1AccessTypeEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelInviteAddByEmailV1: (language: ProjectChannelInviteAddByEmailV1LanguageEnum, projectId: number, channelId: number, email: string, accessType: ProjectChannelInviteAddByEmailV1AccessTypeEnum, v?: ProjectChannelInviteAddByEmailV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Add channel invite item for another user by id
-     * @param {addById1VEnum} v Version
-     * @param {addById1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteAddByIdV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {addById1AccessTypeEnum} accessType Access type
+     * @param {ProjectChannelInviteAddByIdV1AccessTypeEnum} accessType Access type
      * @param {string} toProjectExternalId Project for get access by external id
+     * @param {ProjectChannelInviteAddByIdV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addById1: (v: addById1VEnum, language: addById1LanguageEnum, projectId: number, channelId: number, accessType: addById1AccessTypeEnum, toProjectExternalId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelInviteAddByIdV1: (language: ProjectChannelInviteAddByIdV1LanguageEnum, projectId: number, channelId: number, accessType: ProjectChannelInviteAddByIdV1AccessTypeEnum, toProjectExternalId: string, v?: ProjectChannelInviteAddByIdV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Decline channel invitation for selected project
-     * @param {declineForProject1VEnum} v Version
-     * @param {declineForProject1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteDeclineForProjectV1LanguageEnum} language Current language
      * @param {number} projectId Channel id
      * @param {number} channelId Channel id
+     * @param {ProjectChannelInviteDeclineForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    declineForProject1: (v: declineForProject1VEnum, language: declineForProject1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelInviteDeclineForProjectV1: (language: ProjectChannelInviteDeclineForProjectV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelInviteDeclineForProjectV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Decline channel invitation using a secret link
-     * @param {declineForSecret1VEnum} v Version
-     * @param {declineForSecret1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteDeclineForSecretV1LanguageEnum} language Current language
      * @param {number} projectId The project to which you want to add a channel
      * @param {number} channelId Channel id
      * @param {string} secret Secret
+     * @param {ProjectChannelInviteDeclineForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    declineForSecret1: (v: declineForSecret1VEnum, language: declineForSecret1LanguageEnum, projectId: number, channelId: number, secret: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelInviteDeclineForSecretV1: (language: ProjectChannelInviteDeclineForSecretV1LanguageEnum, projectId: number, channelId: number, secret: string, v?: ProjectChannelInviteDeclineForSecretV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Del channel invite item for my channel for another user
-     * @param {del1VEnum} v Version
-     * @param {del1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteDelV1LanguageEnum} language Current language
      * @param {number} id Unique id
+     * @param {ProjectChannelInviteDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    del1: (v: del1VEnum, language: del1LanguageEnum, id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Get channel invite item for my channel for another user
-     * @param {get1VEnum} v Version
-     * @param {get1LanguageEnum} language Current language
-     * @param {number} id Channel request id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    get1: (v: get1VEnum, language: get1LanguageEnum, id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelInviteDelV1: (language: ProjectChannelInviteDelV1LanguageEnum, id: number, v?: ProjectChannelInviteDelV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get invitation for channel
-     * @param {getForProject1VEnum} v Version
-     * @param {getForProject1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteGetForProjectV1LanguageEnum} language Current language
      * @param {number} projectId Current project id
      * @param {number} channelId Channel id
+     * @param {ProjectChannelInviteGetForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getForProject1: (v: getForProject1VEnum, language: getForProject1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelInviteGetForProjectV1: (language: ProjectChannelInviteGetForProjectV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelInviteGetForProjectV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get channel invitation using a secret link
-     * @param {getForSecret1VEnum} v Version
-     * @param {getForSecret1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteGetForSecretV1LanguageEnum} language Current language
      * @param {number} channelId Channel id
      * @param {string} secret Secret
+     * @param {ProjectChannelInviteGetForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getForSecret1: (v: getForSecret1VEnum, language: getForSecret1LanguageEnum, channelId: number, secret: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelInviteGetForSecretV1: (language: ProjectChannelInviteGetForSecretV1LanguageEnum, channelId: number, secret: string, v?: ProjectChannelInviteGetForSecretV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get channel invite item for my channel for another user
+     * @param {ProjectChannelInviteGetV1LanguageEnum} language Current language
+     * @param {number} id Channel request id
+     * @param {ProjectChannelInviteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    projectChannelInviteGetV1: (language: ProjectChannelInviteGetV1LanguageEnum, id: number, v?: ProjectChannelInviteGetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary List of invites for channel in project
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ProjectChannelInviteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1: (v: list1VEnum, language: list1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectChannelInviteListV1: (language: ProjectChannelInviteListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelInviteListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ProjectChannelInviteApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const ProjectChannelInviteApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Accept channel invitation for selected project
-     * @param {acceptForProject1VEnum} v Version
-     * @param {acceptForProject1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteAcceptForProjectV1LanguageEnum} language Current language
      * @param {number} projectId The project to which you want to add a channel
      * @param {number} channelId Channel id
+     * @param {ProjectChannelInviteAcceptForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptForProject1(v: acceptForProject1VEnum, language: acceptForProject1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    projectChannelInviteAcceptForProjectV1(language: ProjectChannelInviteAcceptForProjectV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelInviteAcceptForProjectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Accept channel invitation using a secret link
-     * @param {acceptForSecret1VEnum} v Version
-     * @param {acceptForSecret1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteAcceptForSecretV1LanguageEnum} language Current language
      * @param {number} projectId The project to which you want to add a channel
      * @param {number} channelId Channel id
      * @param {string} secret Secret
+     * @param {ProjectChannelInviteAcceptForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptForSecret1(v: acceptForSecret1VEnum, language: acceptForSecret1LanguageEnum, projectId: number, channelId: number, secret: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    projectChannelInviteAcceptForSecretV1(language: ProjectChannelInviteAcceptForSecretV1LanguageEnum, projectId: number, channelId: number, secret: string, v?: ProjectChannelInviteAcceptForSecretV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Add channel invite item for another user by email
-     * @param {addByEmail1VEnum} v Version
-     * @param {addByEmail1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteAddByEmailV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {string} email Email
-     * @param {addByEmail1AccessTypeEnum} accessType Access type
+     * @param {ProjectChannelInviteAddByEmailV1AccessTypeEnum} accessType Access type
+     * @param {ProjectChannelInviteAddByEmailV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addByEmail1(v: addByEmail1VEnum, language: addByEmail1LanguageEnum, projectId: number, channelId: number, email: string, accessType: addByEmail1AccessTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelInviteResponse>>;
+    projectChannelInviteAddByEmailV1(language: ProjectChannelInviteAddByEmailV1LanguageEnum, projectId: number, channelId: number, email: string, accessType: ProjectChannelInviteAddByEmailV1AccessTypeEnum, v?: ProjectChannelInviteAddByEmailV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelInviteResponse>>;
     /**
      *
      * @summary Add channel invite item for another user by id
-     * @param {addById1VEnum} v Version
-     * @param {addById1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteAddByIdV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {addById1AccessTypeEnum} accessType Access type
+     * @param {ProjectChannelInviteAddByIdV1AccessTypeEnum} accessType Access type
      * @param {string} toProjectExternalId Project for get access by external id
+     * @param {ProjectChannelInviteAddByIdV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addById1(v: addById1VEnum, language: addById1LanguageEnum, projectId: number, channelId: number, accessType: addById1AccessTypeEnum, toProjectExternalId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelInviteResponse>>;
+    projectChannelInviteAddByIdV1(language: ProjectChannelInviteAddByIdV1LanguageEnum, projectId: number, channelId: number, accessType: ProjectChannelInviteAddByIdV1AccessTypeEnum, toProjectExternalId: string, v?: ProjectChannelInviteAddByIdV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelInviteResponse>>;
     /**
      *
      * @summary Decline channel invitation for selected project
-     * @param {declineForProject1VEnum} v Version
-     * @param {declineForProject1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteDeclineForProjectV1LanguageEnum} language Current language
      * @param {number} projectId Channel id
      * @param {number} channelId Channel id
+     * @param {ProjectChannelInviteDeclineForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    declineForProject1(v: declineForProject1VEnum, language: declineForProject1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    projectChannelInviteDeclineForProjectV1(language: ProjectChannelInviteDeclineForProjectV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelInviteDeclineForProjectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Decline channel invitation using a secret link
-     * @param {declineForSecret1VEnum} v Version
-     * @param {declineForSecret1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteDeclineForSecretV1LanguageEnum} language Current language
      * @param {number} projectId The project to which you want to add a channel
      * @param {number} channelId Channel id
      * @param {string} secret Secret
+     * @param {ProjectChannelInviteDeclineForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    declineForSecret1(v: declineForSecret1VEnum, language: declineForSecret1LanguageEnum, projectId: number, channelId: number, secret: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    projectChannelInviteDeclineForSecretV1(language: ProjectChannelInviteDeclineForSecretV1LanguageEnum, projectId: number, channelId: number, secret: string, v?: ProjectChannelInviteDeclineForSecretV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Del channel invite item for my channel for another user
-     * @param {del1VEnum} v Version
-     * @param {del1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteDelV1LanguageEnum} language Current language
      * @param {number} id Unique id
+     * @param {ProjectChannelInviteDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    del1(v: del1VEnum, language: del1LanguageEnum, id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
-    /**
-     *
-     * @summary Get channel invite item for my channel for another user
-     * @param {get1VEnum} v Version
-     * @param {get1LanguageEnum} language Current language
-     * @param {number} id Channel request id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    get1(v: get1VEnum, language: get1LanguageEnum, id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    projectChannelInviteDelV1(language: ProjectChannelInviteDelV1LanguageEnum, id: number, v?: ProjectChannelInviteDelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Get invitation for channel
-     * @param {getForProject1VEnum} v Version
-     * @param {getForProject1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteGetForProjectV1LanguageEnum} language Current language
      * @param {number} projectId Current project id
      * @param {number} channelId Channel id
+     * @param {ProjectChannelInviteGetForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getForProject1(v: getForProject1VEnum, language: getForProject1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelInviteLinkResponse>>;
+    projectChannelInviteGetForProjectV1(language: ProjectChannelInviteGetForProjectV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelInviteGetForProjectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelInviteLinkResponse>>;
     /**
      *
      * @summary Get channel invitation using a secret link
-     * @param {getForSecret1VEnum} v Version
-     * @param {getForSecret1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteGetForSecretV1LanguageEnum} language Current language
      * @param {number} channelId Channel id
      * @param {string} secret Secret
+     * @param {ProjectChannelInviteGetForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getForSecret1(v: getForSecret1VEnum, language: getForSecret1LanguageEnum, channelId: number, secret: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelInviteLinkResponse>>;
+    projectChannelInviteGetForSecretV1(language: ProjectChannelInviteGetForSecretV1LanguageEnum, channelId: number, secret: string, v?: ProjectChannelInviteGetForSecretV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelInviteLinkResponse>>;
+    /**
+     *
+     * @summary Get channel invite item for my channel for another user
+     * @param {ProjectChannelInviteGetV1LanguageEnum} language Current language
+     * @param {number} id Channel request id
+     * @param {ProjectChannelInviteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    projectChannelInviteGetV1(language: ProjectChannelInviteGetV1LanguageEnum, id: number, v?: ProjectChannelInviteGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary List of invites for channel in project
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {ProjectChannelInviteListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ProjectChannelInviteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(v: list1VEnum, language: list1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfProjectChannelInviteResponse>>;
+    projectChannelInviteListV1(language: ProjectChannelInviteListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelInviteListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfProjectChannelInviteResponse>>;
 };
 /**
  * ProjectChannelInviteApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const ProjectChannelInviteApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Accept channel invitation for selected project
-     * @param {acceptForProject1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptForProject1(requestParameters: acceptForProject1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    projectChannelInviteAcceptForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Accept channel invitation using a secret link
-     * @param {acceptForSecret1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptForSecret1(requestParameters: acceptForSecret1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    projectChannelInviteAcceptForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Add channel invite item for another user by email
-     * @param {addByEmail1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addByEmail1(requestParameters: addByEmail1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteResponse>;
+    projectChannelInviteAddByEmailV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteResponse>;
     /**
      *
      * @summary Add channel invite item for another user by id
-     * @param {addById1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addById1(requestParameters: addById1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteResponse>;
+    projectChannelInviteAddByIdV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteResponse>;
     /**
      *
      * @summary Decline channel invitation for selected project
-     * @param {declineForProject1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    declineForProject1(requestParameters: declineForProject1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    projectChannelInviteDeclineForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Decline channel invitation using a secret link
-     * @param {declineForSecret1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    declineForSecret1(requestParameters: declineForSecret1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    projectChannelInviteDeclineForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Del channel invite item for my channel for another user
-     * @param {del1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteDelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    del1(requestParameters: del1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
-    /**
-     *
-     * @summary Get channel invite item for my channel for another user
-     * @param {get1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    projectChannelInviteDelV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get invitation for channel
-     * @param {getForProject1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getForProject1(requestParameters: getForProject1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteLinkResponse>;
+    projectChannelInviteGetForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteLinkResponse>;
     /**
      *
      * @summary Get channel invitation using a secret link
-     * @param {getForSecret1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getForSecret1(requestParameters: getForSecret1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteLinkResponse>;
+    projectChannelInviteGetForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteLinkResponse>;
+    /**
+     *
+     * @summary Get channel invite item for my channel for another user
+     * @param {ProjectChannelInviteApiProjectChannelInviteGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    projectChannelInviteGetV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary List of invites for channel in project
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelInviteResponse>;
+    projectChannelInviteListV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelInviteResponse>;
 };
 /**
- * Request parameters for acceptForProject1 operation in ProjectChannelInviteApi.
+ * ProjectChannelInviteApi - interface
  * @export
- * @interface acceptForProject1Request
+ * @interface ProjectChannelInviteApi
  */
-export interface acceptForProject1Request {
+export interface ProjectChannelInviteApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof acceptForProject1
+     *
+     * @summary Accept channel invitation for selected project
+     * @param {ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
      */
-    readonly v?: acceptForProject1VEnum;
+    projectChannelInviteAcceptForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof acceptForProject1
+     *
+     * @summary Accept channel invitation using a secret link
+     * @param {ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
      */
-    readonly language: acceptForProject1LanguageEnum;
+    projectChannelInviteAcceptForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     * The project to which you want to add a channel
-     * @type {number}
-     * @memberof acceptForProject1
+     *
+     * @summary Add channel invite item for another user by email
+     * @param {ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
      */
-    readonly projectId: number;
+    projectChannelInviteAddByEmailV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteResponse>;
     /**
-     * Channel id
-     * @type {number}
-     * @memberof acceptForProject1
+     *
+     * @summary Add channel invite item for another user by id
+     * @param {ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
      */
-    readonly channelId: number;
+    projectChannelInviteAddByIdV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteResponse>;
+    /**
+     *
+     * @summary Decline channel invitation for selected project
+     * @param {ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
+     */
+    projectChannelInviteDeclineForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Decline channel invitation using a secret link
+     * @param {ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
+     */
+    projectChannelInviteDeclineForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Del channel invite item for my channel for another user
+     * @param {ProjectChannelInviteApiProjectChannelInviteDelV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
+     */
+    projectChannelInviteDelV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get invitation for channel
+     * @param {ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
+     */
+    projectChannelInviteGetForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteLinkResponse>;
+    /**
+     *
+     * @summary Get channel invitation using a secret link
+     * @param {ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
+     */
+    projectChannelInviteGetForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteLinkResponse>;
+    /**
+     *
+     * @summary Get channel invite item for my channel for another user
+     * @param {ProjectChannelInviteApiProjectChannelInviteGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
+     */
+    projectChannelInviteGetV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary List of invites for channel in project
+     * @param {ProjectChannelInviteApiProjectChannelInviteListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApiInterface
+     */
+    projectChannelInviteListV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelInviteResponse>;
 }
 /**
- * Request parameters for acceptForSecret1 operation in ProjectChannelInviteApi.
+ * Request parameters for projectChannelInviteAcceptForProjectV1 operation in ProjectChannelInviteApi.
  * @export
- * @interface acceptForSecret1Request
+ * @interface ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request
  */
-export interface acceptForSecret1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof acceptForSecret1
-     */
-    readonly v?: acceptForSecret1VEnum;
+export interface ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof acceptForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1
      */
-    readonly language: acceptForSecret1LanguageEnum;
+    readonly language: ProjectChannelInviteAcceptForProjectV1LanguageEnum;
     /**
      * The project to which you want to add a channel
      * @type {number}
-     * @memberof acceptForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof acceptForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1
+     */
+    readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1
+     */
+    readonly v?: ProjectChannelInviteAcceptForProjectV1VEnum;
+}
+/**
+ * Request parameters for projectChannelInviteAcceptForSecretV1 operation in ProjectChannelInviteApi.
+ * @export
+ * @interface ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request
+ */
+export interface ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1
+     */
+    readonly language: ProjectChannelInviteAcceptForSecretV1LanguageEnum;
+    /**
+     * The project to which you want to add a channel
+     * @type {number}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1
+     */
+    readonly projectId: number;
+    /**
+     * Channel id
+     * @type {number}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1
      */
     readonly channelId: number;
     /**
      * Secret
      * @type {string}
-     * @memberof acceptForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1
      */
     readonly secret: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1
+     */
+    readonly v?: ProjectChannelInviteAcceptForSecretV1VEnum;
 }
 /**
- * Request parameters for addByEmail1 operation in ProjectChannelInviteApi.
+ * Request parameters for projectChannelInviteAddByEmailV1 operation in ProjectChannelInviteApi.
  * @export
- * @interface addByEmail1Request
+ * @interface ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request
  */
-export interface addByEmail1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof addByEmail1
-     */
-    readonly v?: addByEmail1VEnum;
+export interface ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof addByEmail1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
-    readonly language: addByEmail1LanguageEnum;
+    readonly language: ProjectChannelInviteAddByEmailV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof addByEmail1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof addByEmail1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
     readonly channelId: number;
     /**
      * Email
      * @type {string}
-     * @memberof addByEmail1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
     readonly email: string;
     /**
      * Access type
      * @type {0 | 1 | 1 | 2}
-     * @memberof addByEmail1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
-    readonly accessType: addByEmail1AccessTypeEnum;
+    readonly accessType: ProjectChannelInviteAddByEmailV1AccessTypeEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
+     */
+    readonly v?: ProjectChannelInviteAddByEmailV1VEnum;
 }
 /**
- * Request parameters for addById1 operation in ProjectChannelInviteApi.
+ * Request parameters for projectChannelInviteAddByIdV1 operation in ProjectChannelInviteApi.
  * @export
- * @interface addById1Request
+ * @interface ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request
  */
-export interface addById1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof addById1
-     */
-    readonly v?: addById1VEnum;
+export interface ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof addById1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
-    readonly language: addById1LanguageEnum;
+    readonly language: ProjectChannelInviteAddByIdV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof addById1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof addById1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
     readonly channelId: number;
     /**
      * Access type
      * @type {0 | 1 | 1 | 2}
-     * @memberof addById1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
-    readonly accessType: addById1AccessTypeEnum;
+    readonly accessType: ProjectChannelInviteAddByIdV1AccessTypeEnum;
     /**
      * Project for get access by external id
      * @type {string}
-     * @memberof addById1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
     readonly toProjectExternalId: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
+     */
+    readonly v?: ProjectChannelInviteAddByIdV1VEnum;
 }
 /**
- * Request parameters for declineForProject1 operation in ProjectChannelInviteApi.
+ * Request parameters for projectChannelInviteDeclineForProjectV1 operation in ProjectChannelInviteApi.
  * @export
- * @interface declineForProject1Request
+ * @interface ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request
  */
-export interface declineForProject1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof declineForProject1
-     */
-    readonly v?: declineForProject1VEnum;
+export interface ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof declineForProject1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1
      */
-    readonly language: declineForProject1LanguageEnum;
+    readonly language: ProjectChannelInviteDeclineForProjectV1LanguageEnum;
     /**
      * Channel id
      * @type {number}
-     * @memberof declineForProject1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof declineForProject1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1
      */
     readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1
+     */
+    readonly v?: ProjectChannelInviteDeclineForProjectV1VEnum;
 }
 /**
- * Request parameters for declineForSecret1 operation in ProjectChannelInviteApi.
+ * Request parameters for projectChannelInviteDeclineForSecretV1 operation in ProjectChannelInviteApi.
  * @export
- * @interface declineForSecret1Request
+ * @interface ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request
  */
-export interface declineForSecret1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof declineForSecret1
-     */
-    readonly v?: declineForSecret1VEnum;
+export interface ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof declineForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1
      */
-    readonly language: declineForSecret1LanguageEnum;
+    readonly language: ProjectChannelInviteDeclineForSecretV1LanguageEnum;
     /**
      * The project to which you want to add a channel
      * @type {number}
-     * @memberof declineForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof declineForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1
      */
     readonly channelId: number;
     /**
      * Secret
      * @type {string}
-     * @memberof declineForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1
      */
     readonly secret: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1
+     */
+    readonly v?: ProjectChannelInviteDeclineForSecretV1VEnum;
 }
 /**
- * Request parameters for del1 operation in ProjectChannelInviteApi.
+ * Request parameters for projectChannelInviteDelV1 operation in ProjectChannelInviteApi.
  * @export
- * @interface del1Request
+ * @interface ProjectChannelInviteApiProjectChannelInviteDelV1Request
  */
-export interface del1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof del1
-     */
-    readonly v?: del1VEnum;
+export interface ProjectChannelInviteApiProjectChannelInviteDelV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof del1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDelV1
      */
-    readonly language: del1LanguageEnum;
+    readonly language: ProjectChannelInviteDelV1LanguageEnum;
     /**
      * Unique id
      * @type {number}
-     * @memberof del1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDelV1
      */
     readonly id: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteDelV1
+     */
+    readonly v?: ProjectChannelInviteDelV1VEnum;
 }
 /**
- * Request parameters for get1 operation in ProjectChannelInviteApi.
+ * Request parameters for projectChannelInviteGetForProjectV1 operation in ProjectChannelInviteApi.
  * @export
- * @interface get1Request
+ * @interface ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request
  */
-export interface get1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof get1
-     */
-    readonly v?: get1VEnum;
+export interface ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof get1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetForProjectV1
      */
-    readonly language: get1LanguageEnum;
-    /**
-     * Channel request id
-     * @type {number}
-     * @memberof get1
-     */
-    readonly id: number;
-}
-/**
- * Request parameters for getForProject1 operation in ProjectChannelInviteApi.
- * @export
- * @interface getForProject1Request
- */
-export interface getForProject1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getForProject1
-     */
-    readonly v?: getForProject1VEnum;
-    /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof getForProject1
-     */
-    readonly language: getForProject1LanguageEnum;
+    readonly language: ProjectChannelInviteGetForProjectV1LanguageEnum;
     /**
      * Current project id
      * @type {number}
-     * @memberof getForProject1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetForProjectV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof getForProject1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetForProjectV1
      */
     readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetForProjectV1
+     */
+    readonly v?: ProjectChannelInviteGetForProjectV1VEnum;
 }
 /**
- * Request parameters for getForSecret1 operation in ProjectChannelInviteApi.
+ * Request parameters for projectChannelInviteGetForSecretV1 operation in ProjectChannelInviteApi.
  * @export
- * @interface getForSecret1Request
+ * @interface ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request
  */
-export interface getForSecret1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getForSecret1
-     */
-    readonly v?: getForSecret1VEnum;
+export interface ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetForSecretV1
      */
-    readonly language: getForSecret1LanguageEnum;
+    readonly language: ProjectChannelInviteGetForSecretV1LanguageEnum;
     /**
      * Channel id
      * @type {number}
-     * @memberof getForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetForSecretV1
      */
     readonly channelId: number;
     /**
      * Secret
      * @type {string}
-     * @memberof getForSecret1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetForSecretV1
      */
     readonly secret: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetForSecretV1
+     */
+    readonly v?: ProjectChannelInviteGetForSecretV1VEnum;
 }
 /**
- * Request parameters for list1 operation in ProjectChannelInviteApi.
+ * Request parameters for projectChannelInviteGetV1 operation in ProjectChannelInviteApi.
  * @export
- * @interface list1Request
+ * @interface ProjectChannelInviteApiProjectChannelInviteGetV1Request
  */
-export interface list1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
-     */
-    readonly v?: list1VEnum;
+export interface ProjectChannelInviteApiProjectChannelInviteGetV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetV1
      */
-    readonly language: list1LanguageEnum;
+    readonly language: ProjectChannelInviteGetV1LanguageEnum;
+    /**
+     * Channel request id
+     * @type {number}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetV1
+     */
+    readonly id: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteGetV1
+     */
+    readonly v?: ProjectChannelInviteGetV1VEnum;
+}
+/**
+ * Request parameters for projectChannelInviteListV1 operation in ProjectChannelInviteApi.
+ * @export
+ * @interface ProjectChannelInviteApiProjectChannelInviteListV1Request
+ */
+export interface ProjectChannelInviteApiProjectChannelInviteListV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteListV1
+     */
+    readonly language: ProjectChannelInviteListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof list1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteListV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof list1
+     * @memberof ProjectChannelInviteApiProjectChannelInviteListV1
      */
     readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ProjectChannelInviteApiProjectChannelInviteListV1
+     */
+    readonly v?: ProjectChannelInviteListV1VEnum;
 }
 /**
  * ProjectChannelInviteApi - object-oriented interface
@@ -743,323 +849,323 @@ export interface list1Request {
  * @class ProjectChannelInviteApi
  * @extends {BaseAPI}
  */
-export declare class ProjectChannelInviteApi extends BaseAPI {
+export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectChannelInviteApiInterface {
     /**
      *
      * @summary Accept channel invitation for selected project
-     * @param {acceptForProject1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    acceptForProject1(requestParameters: acceptForProject1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelInviteAcceptForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Accept channel invitation using a secret link
-     * @param {acceptForSecret1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    acceptForSecret1(requestParameters: acceptForSecret1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelInviteAcceptForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Add channel invite item for another user by email
-     * @param {addByEmail1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    addByEmail1(requestParameters: addByEmail1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteResponse, any>>;
+    projectChannelInviteAddByEmailV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteResponse, any>>;
     /**
      *
      * @summary Add channel invite item for another user by id
-     * @param {addById1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    addById1(requestParameters: addById1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteResponse, any>>;
+    projectChannelInviteAddByIdV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteResponse, any>>;
     /**
      *
      * @summary Decline channel invitation for selected project
-     * @param {declineForProject1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    declineForProject1(requestParameters: declineForProject1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelInviteDeclineForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Decline channel invitation using a secret link
-     * @param {declineForSecret1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    declineForSecret1(requestParameters: declineForSecret1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelInviteDeclineForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Del channel invite item for my channel for another user
-     * @param {del1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteDelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    del1(requestParameters: del1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
-    /**
-     *
-     * @summary Get channel invite item for my channel for another user
-     * @param {get1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectChannelInviteApi
-     */
-    get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelInviteDelV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Get invitation for channel
-     * @param {getForProject1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    getForProject1(requestParameters: getForProject1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteLinkResponse, any>>;
+    projectChannelInviteGetForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteLinkResponse, any>>;
     /**
      *
      * @summary Get channel invitation using a secret link
-     * @param {getForSecret1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    getForSecret1(requestParameters: getForSecret1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteLinkResponse, any>>;
+    projectChannelInviteGetForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteLinkResponse, any>>;
+    /**
+     *
+     * @summary Get channel invite item for my channel for another user
+     * @param {ProjectChannelInviteApiProjectChannelInviteGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectChannelInviteApi
+     */
+    projectChannelInviteGetV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary List of invites for channel in project
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {ProjectChannelInviteApiProjectChannelInviteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    projectChannelInviteListV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum acceptForProject1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteAcceptForProjectV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteAcceptForProjectV1LanguageEnum = typeof ProjectChannelInviteAcceptForProjectV1LanguageEnum[keyof typeof ProjectChannelInviteAcceptForProjectV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum acceptForProject1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteAcceptForProjectV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteAcceptForProjectV1VEnum = typeof ProjectChannelInviteAcceptForProjectV1VEnum[keyof typeof ProjectChannelInviteAcceptForProjectV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum acceptForSecret1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteAcceptForSecretV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteAcceptForSecretV1LanguageEnum = typeof ProjectChannelInviteAcceptForSecretV1LanguageEnum[keyof typeof ProjectChannelInviteAcceptForSecretV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum acceptForSecret1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteAcceptForSecretV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteAcceptForSecretV1VEnum = typeof ProjectChannelInviteAcceptForSecretV1VEnum[keyof typeof ProjectChannelInviteAcceptForSecretV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum addByEmail1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteAddByEmailV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteAddByEmailV1LanguageEnum = typeof ProjectChannelInviteAddByEmailV1LanguageEnum[keyof typeof ProjectChannelInviteAddByEmailV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum addByEmail1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteAddByEmailV1AccessTypeEnum: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+    readonly NUMBER_12: 1;
+    readonly NUMBER_2: 2;
+};
+export type ProjectChannelInviteAddByEmailV1AccessTypeEnum = typeof ProjectChannelInviteAddByEmailV1AccessTypeEnum[keyof typeof ProjectChannelInviteAddByEmailV1AccessTypeEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum addByEmail1AccessTypeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1,
-    NUMBER_12 = 1,
-    NUMBER_2 = 2
-}
+ * @export
+ */
+export declare const ProjectChannelInviteAddByEmailV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteAddByEmailV1VEnum = typeof ProjectChannelInviteAddByEmailV1VEnum[keyof typeof ProjectChannelInviteAddByEmailV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum addById1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteAddByIdV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteAddByIdV1LanguageEnum = typeof ProjectChannelInviteAddByIdV1LanguageEnum[keyof typeof ProjectChannelInviteAddByIdV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum addById1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteAddByIdV1AccessTypeEnum: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+    readonly NUMBER_12: 1;
+    readonly NUMBER_2: 2;
+};
+export type ProjectChannelInviteAddByIdV1AccessTypeEnum = typeof ProjectChannelInviteAddByIdV1AccessTypeEnum[keyof typeof ProjectChannelInviteAddByIdV1AccessTypeEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum addById1AccessTypeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1,
-    NUMBER_12 = 1,
-    NUMBER_2 = 2
-}
+ * @export
+ */
+export declare const ProjectChannelInviteAddByIdV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteAddByIdV1VEnum = typeof ProjectChannelInviteAddByIdV1VEnum[keyof typeof ProjectChannelInviteAddByIdV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum declineForProject1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteDeclineForProjectV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteDeclineForProjectV1LanguageEnum = typeof ProjectChannelInviteDeclineForProjectV1LanguageEnum[keyof typeof ProjectChannelInviteDeclineForProjectV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum declineForProject1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteDeclineForProjectV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteDeclineForProjectV1VEnum = typeof ProjectChannelInviteDeclineForProjectV1VEnum[keyof typeof ProjectChannelInviteDeclineForProjectV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum declineForSecret1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteDeclineForSecretV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteDeclineForSecretV1LanguageEnum = typeof ProjectChannelInviteDeclineForSecretV1LanguageEnum[keyof typeof ProjectChannelInviteDeclineForSecretV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum declineForSecret1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteDeclineForSecretV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteDeclineForSecretV1VEnum = typeof ProjectChannelInviteDeclineForSecretV1VEnum[keyof typeof ProjectChannelInviteDeclineForSecretV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum del1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteDelV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteDelV1LanguageEnum = typeof ProjectChannelInviteDelV1LanguageEnum[keyof typeof ProjectChannelInviteDelV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum del1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteDelV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteDelV1VEnum = typeof ProjectChannelInviteDelV1VEnum[keyof typeof ProjectChannelInviteDelV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum get1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteGetForProjectV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteGetForProjectV1LanguageEnum = typeof ProjectChannelInviteGetForProjectV1LanguageEnum[keyof typeof ProjectChannelInviteGetForProjectV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum get1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteGetForProjectV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteGetForProjectV1VEnum = typeof ProjectChannelInviteGetForProjectV1VEnum[keyof typeof ProjectChannelInviteGetForProjectV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getForProject1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteGetForSecretV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteGetForSecretV1LanguageEnum = typeof ProjectChannelInviteGetForSecretV1LanguageEnum[keyof typeof ProjectChannelInviteGetForSecretV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getForProject1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteGetForSecretV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteGetForSecretV1VEnum = typeof ProjectChannelInviteGetForSecretV1VEnum[keyof typeof ProjectChannelInviteGetForSecretV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getForSecret1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteGetV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteGetV1LanguageEnum = typeof ProjectChannelInviteGetV1LanguageEnum[keyof typeof ProjectChannelInviteGetV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getForSecret1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteGetV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteGetV1VEnum = typeof ProjectChannelInviteGetV1VEnum[keyof typeof ProjectChannelInviteGetV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectChannelInviteListV1LanguageEnum = typeof ProjectChannelInviteListV1LanguageEnum[keyof typeof ProjectChannelInviteListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ProjectChannelInviteListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectChannelInviteListV1VEnum = typeof ProjectChannelInviteListV1VEnum[keyof typeof ProjectChannelInviteListV1VEnum];
 //# sourceMappingURL=project-channel-invite-api.d.ts.map

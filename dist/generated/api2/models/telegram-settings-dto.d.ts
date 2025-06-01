@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { SiteTelegramChatInfoResponseDto } from './site-telegram-chat-info-response-dto';
-import type { SiteTelegramChatPostsItem } from './site-telegram-chat-posts-item';
+import type { TelegramChatInfoResponseDto } from './telegram-chat-info-response-dto';
+import type { TelegramChatPostsItem } from './telegram-chat-posts-item';
 /**
  *
  * @export
@@ -22,28 +22,25 @@ export interface TelegramSettingsDto {
      * @type {number}
      * @memberof TelegramSettingsDto
      */
-    'filter_mode': FilterModeEnum;
+    'filter_mode': TelegramSettingsDtoFilterModeEnum;
     /**
      * Chat info
-     * @type {SiteTelegramChatInfoResponseDto}
+     * @type {TelegramChatInfoResponseDto}
      * @memberof TelegramSettingsDto
      */
-    'chat': SiteTelegramChatInfoResponseDto;
+    'chat': TelegramChatInfoResponseDto;
     /**
      * Post
-     * @type {SiteTelegramChatPostsItem}
+     * @type {TelegramChatPostsItem}
      * @memberof TelegramSettingsDto
      */
-    'post'?: SiteTelegramChatPostsItem;
+    'post'?: TelegramChatPostsItem;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum FilterModeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1,
-    NUMBER_2 = 2,
-    NUMBER_3 = 3
-}
+export declare const TelegramSettingsDtoFilterModeEnum: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+    readonly NUMBER_2: 2;
+    readonly NUMBER_3: 3;
+};
+export type TelegramSettingsDtoFilterModeEnum = typeof TelegramSettingsDtoFilterModeEnum[keyof typeof TelegramSettingsDtoFilterModeEnum];
 //# sourceMappingURL=telegram-settings-dto.d.ts.map

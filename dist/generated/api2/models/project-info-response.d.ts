@@ -25,13 +25,13 @@ export interface ProjectInfoResponse {
      * @type {string}
      * @memberof ProjectInfoResponse
      */
-    'v': VEnum;
+    'v': ProjectInfoResponseVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof ProjectInfoResponse
      */
-    'language': LanguageEnum;
+    'language': ProjectInfoResponseLanguageEnum;
     /**
      * Project info
      * @type {ProjectInfoDataResponse}
@@ -63,22 +63,16 @@ export interface ProjectInfoResponse {
      */
     'access': ProjectInfoAccessResponse;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const ProjectInfoResponseVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ProjectInfoResponseVEnum = typeof ProjectInfoResponseVEnum[keyof typeof ProjectInfoResponseVEnum];
+export declare const ProjectInfoResponseLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ProjectInfoResponseLanguageEnum = typeof ProjectInfoResponseLanguageEnum[keyof typeof ProjectInfoResponseLanguageEnum];
 //# sourceMappingURL=project-info-response.d.ts.map

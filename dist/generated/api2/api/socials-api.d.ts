@@ -16,48 +16,63 @@ import { type RequestArgs, BaseAPI } from '../base';
  * SocialsApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const SocialsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Social list for user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getList1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    socialsGetListV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * SocialsApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const SocialsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Social list for user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getList1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    socialsGetListV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * SocialsApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const SocialsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Social list for user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getList1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    socialsGetListV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
 };
+/**
+ * SocialsApi - interface
+ * @export
+ * @interface SocialsApi
+ */
+export interface SocialsApiInterface {
+    /**
+     *
+     * @summary Social list for user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SocialsApiInterface
+     */
+    socialsGetListV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+}
 /**
  * SocialsApi - object-oriented interface
  * @export
  * @class SocialsApi
  * @extends {BaseAPI}
  */
-export declare class SocialsApi extends BaseAPI {
+export declare class SocialsApi extends BaseAPI implements SocialsApiInterface {
     /**
      *
      * @summary Social list for user
@@ -65,6 +80,6 @@ export declare class SocialsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SocialsApi
      */
-    getList1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    socialsGetListV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 //# sourceMappingURL=socials-api.d.ts.map

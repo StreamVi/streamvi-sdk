@@ -17,13 +17,13 @@ import type { PaginatedResponseOfTransactionResponse } from '../models';
  * TransactionsApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const TransactionsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Transaction list for frontend
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {TransactionsListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
@@ -32,19 +32,19 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1: (v: list1VEnum, language: list1LanguageEnum, projectId: number, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    transactionsListV1: (language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * TransactionsApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const TransactionsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Transaction list for frontend
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {TransactionsListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
@@ -53,74 +53,90 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(v: list1VEnum, language: list1LanguageEnum, projectId: number, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfTransactionResponse>>;
+    transactionsListV1(language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfTransactionResponse>>;
 };
 /**
  * TransactionsApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const TransactionsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Transaction list for frontend
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfTransactionResponse>;
+    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfTransactionResponse>;
 };
 /**
- * Request parameters for list1 operation in TransactionsApi.
+ * TransactionsApi - interface
  * @export
- * @interface list1Request
+ * @interface TransactionsApi
  */
-export interface list1Request {
+export interface TransactionsApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
+     *
+     * @summary Transaction list for frontend
+     * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransactionsApiInterface
      */
-    readonly v?: list1VEnum;
+    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfTransactionResponse>;
+}
+/**
+ * Request parameters for transactionsListV1 operation in TransactionsApi.
+ * @export
+ * @interface TransactionsApiTransactionsListV1Request
+ */
+export interface TransactionsApiTransactionsListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof TransactionsApiTransactionsListV1
      */
-    readonly language: list1LanguageEnum;
+    readonly language: TransactionsListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof list1
+     * @memberof TransactionsApiTransactionsListV1
      */
     readonly projectId: number;
     /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof TransactionsApiTransactionsListV1
+     */
+    readonly v?: TransactionsListV1VEnum;
+    /**
      * Number of results
      * @type {number}
-     * @memberof list1
+     * @memberof TransactionsApiTransactionsListV1
      */
     readonly limit?: number;
     /**
      * Page offset number
      * @type {number}
-     * @memberof list1
+     * @memberof TransactionsApiTransactionsListV1
      */
     readonly offset?: number;
     /**
      * Date from
      * @type {string}
-     * @memberof list1
+     * @memberof TransactionsApiTransactionsListV1
      */
     readonly dateFrom?: string;
     /**
      * Date to
      * @type {string}
-     * @memberof list1
+     * @memberof TransactionsApiTransactionsListV1
      */
     readonly dateTo?: string;
     /**
      * Filter code transaction. example 1 or 1,2,3
      * @type {string}
-     * @memberof list1
+     * @memberof TransactionsApiTransactionsListV1
      */
     readonly code?: string;
 }
@@ -130,33 +146,33 @@ export interface list1Request {
  * @class TransactionsApi
  * @extends {BaseAPI}
  */
-export declare class TransactionsApi extends BaseAPI {
+export declare class TransactionsApi extends BaseAPI implements TransactionsApiInterface {
     /**
      *
      * @summary Transaction list for frontend
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const TransactionsListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type TransactionsListV1LanguageEnum = typeof TransactionsListV1LanguageEnum[keyof typeof TransactionsListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const TransactionsListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type TransactionsListV1VEnum = typeof TransactionsListV1VEnum[keyof typeof TransactionsListV1VEnum];
 //# sourceMappingURL=transactions-api.d.ts.map

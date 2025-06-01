@@ -13,22 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PlanPeriodEnum = exports.CurrencyEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var CurrencyEnum;
-(function (CurrencyEnum) {
-    CurrencyEnum["rub"] = "rub";
-    CurrencyEnum["usd"] = "usd";
-})(CurrencyEnum || (exports.CurrencyEnum = CurrencyEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var PlanPeriodEnum;
-(function (PlanPeriodEnum) {
-    PlanPeriodEnum["month"] = "month";
-    PlanPeriodEnum["year"] = "year";
-})(PlanPeriodEnum || (exports.PlanPeriodEnum = PlanPeriodEnum = {}));
+exports.PaymentStatusResponsePlanPeriodEnum = exports.PaymentStatusResponseCurrencyEnum = void 0;
+exports.PaymentStatusResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+};
+exports.PaymentStatusResponsePlanPeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+};

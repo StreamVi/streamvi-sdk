@@ -13,37 +13,22 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FpsEnum = exports.ResolutionEnum = exports.TypeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum["free"] = "free";
-    TypeEnum["paid_fix"] = "paid_fix";
-    TypeEnum["paid_flex"] = "paid_flex";
-    TypeEnum["custom"] = "custom";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var ResolutionEnum;
-(function (ResolutionEnum) {
-    ResolutionEnum["_720p"] = "720p";
-    ResolutionEnum["_1080p"] = "1080p";
-    ResolutionEnum["_2K"] = "2K";
-    ResolutionEnum["UW"] = "UW";
-    ResolutionEnum["_4K"] = "4K";
-    ResolutionEnum["_8K"] = "8K";
-})(ResolutionEnum || (exports.ResolutionEnum = ResolutionEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var FpsEnum;
-(function (FpsEnum) {
-    FpsEnum["_30"] = "30";
-    FpsEnum["_60"] = "60";
-})(FpsEnum || (exports.FpsEnum = FpsEnum = {}));
+exports.PlanRestreamResponseFpsEnum = exports.PlanRestreamResponseResolutionEnum = exports.PlanRestreamResponseTypeEnum = void 0;
+exports.PlanRestreamResponseTypeEnum = {
+    Free: 'free',
+    PaidFix: 'paid_fix',
+    PaidFlex: 'paid_flex',
+    Custom: 'custom'
+};
+exports.PlanRestreamResponseResolutionEnum = {
+    _720p: '720p',
+    _1080p: '1080p',
+    _2K: '2K',
+    Uw: 'UW',
+    _4K: '4K',
+    _8K: '8K'
+};
+exports.PlanRestreamResponseFpsEnum = {
+    _30: '30',
+    _60: '60'
+};

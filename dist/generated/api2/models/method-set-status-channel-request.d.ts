@@ -20,7 +20,13 @@ export interface MethodSetStatusChannelRequest {
      * @type {string}
      * @memberof MethodSetStatusChannelRequest
      */
-    'v': VEnum;
+    'v': MethodSetStatusChannelRequestVEnum;
+    /**
+     * Current language
+     * @type {string}
+     * @memberof MethodSetStatusChannelRequest
+     */
+    'language'?: MethodSetStatusChannelRequestLanguageEnum;
     /**
      * Channel id
      * @type {number}
@@ -33,27 +39,15 @@ export interface MethodSetStatusChannelRequest {
      * @memberof MethodSetStatusChannelRequest
      */
     'status': boolean;
-    /**
-     * Current language
-     * @type {string}
-     * @memberof MethodSetStatusChannelRequest
-     */
-    'language'?: LanguageEnum;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const MethodSetStatusChannelRequestVEnum: {
+    readonly _1: "1";
+};
+export type MethodSetStatusChannelRequestVEnum = typeof MethodSetStatusChannelRequestVEnum[keyof typeof MethodSetStatusChannelRequestVEnum];
+export declare const MethodSetStatusChannelRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodSetStatusChannelRequestLanguageEnum = typeof MethodSetStatusChannelRequestLanguageEnum[keyof typeof MethodSetStatusChannelRequestLanguageEnum];
 //# sourceMappingURL=method-set-status-channel-request.d.ts.map

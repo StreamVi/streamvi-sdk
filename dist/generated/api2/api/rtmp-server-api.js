@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.state1IntervalEnum = exports.state1LanguageEnum = exports.state1VEnum = exports.list1IntervalEnum = exports.list1LanguageEnum = exports.list1VEnum = exports.graph1TypeEnum = exports.graph1IntervalEnum = exports.graph1LanguageEnum = exports.graph1VEnum = exports.listLocationsUnauthorizedLanguageEnum = exports.listLocationsUnauthorizedVEnum = exports.RtmpServerApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.RtmpServerStateV1VEnum = exports.RtmpServerStateV1IntervalEnum = exports.RtmpServerStateV1LanguageEnum = exports.RtmpServerListV1VEnum = exports.RtmpServerListV1IntervalEnum = exports.RtmpServerListV1LanguageEnum = exports.RtmpServerGraphV1VEnum = exports.RtmpServerGraphV1TypeEnum = exports.RtmpServerGraphV1IntervalEnum = exports.RtmpServerGraphV1LanguageEnum = exports.MethodRtmpServerListLocationsUnauthorizedV1VEnum = exports.MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum = exports.RtmpServerApi = exports.RtmpServerApiFactory = exports.RtmpServerApiFp = exports.RtmpServerApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,21 +27,19 @@ const base_1 = require("../base");
  * RtmpServerApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const RtmpServerApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Rtmp locations server list example for unauthorized
-         * @param {listLocationsUnauthorizedVEnum} v Version
-         * @param {listLocationsUnauthorizedLanguageEnum} language Current language
+         * @param {MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum} language Current language
+         * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listLocationsUnauthorized: async (v, language, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('listLocationsUnauthorized', 'v', v);
+        methodRtmpServerListLocationsUnauthorizedV1: async (language, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('listLocationsUnauthorized', 'language', language);
+            (0, common_1.assertParamExists)('methodRtmpServerListLocationsUnauthorizedV1', 'language', language);
             const localVarPath = `/method/rtmp_server/list_locations_unauthorized`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -69,22 +67,20 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Graph of rtmp servers
-         * @param {graph1VEnum} v Version
-         * @param {graph1LanguageEnum} language Current language
-         * @param {graph1IntervalEnum} interval Interval state in hours
-         * @param {graph1TypeEnum} type Type graph
+         * @param {RtmpServerGraphV1LanguageEnum} language Current language
+         * @param {RtmpServerGraphV1IntervalEnum} interval Interval state in hours
+         * @param {RtmpServerGraphV1TypeEnum} type Type graph
+         * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        graph1: async (v, language, interval, type, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('graph1', 'v', v);
+        rtmpServerGraphV1: async (language, interval, type, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('graph1', 'language', language);
+            (0, common_1.assertParamExists)('rtmpServerGraphV1', 'language', language);
             // verify required parameter 'interval' is not null or undefined
-            (0, common_1.assertParamExists)('graph1', 'interval', interval);
+            (0, common_1.assertParamExists)('rtmpServerGraphV1', 'interval', interval);
             // verify required parameter 'type' is not null or undefined
-            (0, common_1.assertParamExists)('graph1', 'type', type);
+            (0, common_1.assertParamExists)('rtmpServerGraphV1', 'type', type);
             const localVarPath = `/method/rtmp_server/graph`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -118,22 +114,20 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary List rtmp servers
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {RtmpServerListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {list1IntervalEnum} interval Interval state in hours
+         * @param {RtmpServerListV1IntervalEnum} interval Interval state in hours
+         * @param {RtmpServerListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v, language, projectId, interval, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'v', v);
+        rtmpServerListV1: async (language, projectId, interval, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'language', language);
+            (0, common_1.assertParamExists)('rtmpServerListV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('rtmpServerListV1', 'projectId', projectId);
             // verify required parameter 'interval' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'interval', interval);
+            (0, common_1.assertParamExists)('rtmpServerListV1', 'interval', interval);
             const localVarPath = `/method/rtmp_server/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -167,19 +161,17 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary State of rtmp servers
-         * @param {state1VEnum} v Version
-         * @param {state1LanguageEnum} language Current language
-         * @param {state1IntervalEnum} interval Interval state in hours
+         * @param {RtmpServerStateV1LanguageEnum} language Current language
+         * @param {RtmpServerStateV1IntervalEnum} interval Interval state in hours
+         * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        state1: async (v, language, interval, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('state1', 'v', v);
+        rtmpServerStateV1: async (language, interval, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('state1', 'language', language);
+            (0, common_1.assertParamExists)('rtmpServerStateV1', 'language', language);
             // verify required parameter 'interval' is not null or undefined
-            (0, common_1.assertParamExists)('state1', 'interval', interval);
+            (0, common_1.assertParamExists)('rtmpServerStateV1', 'interval', interval);
             const localVarPath = `/method/rtmp_server/state`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -213,7 +205,7 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        up1: async (options = {}) => {
+        rtmpServerUpV1: async (options = {}) => {
             const localVarPath = `/method/rtmp_server/up`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -234,77 +226,77 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.RtmpServerApiAxiosParamCreator = RtmpServerApiAxiosParamCreator;
 /**
  * RtmpServerApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const RtmpServerApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.RtmpServerApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Rtmp locations server list example for unauthorized
-         * @param {listLocationsUnauthorizedVEnum} v Version
-         * @param {listLocationsUnauthorizedLanguageEnum} language Current language
+         * @param {MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum} language Current language
+         * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listLocationsUnauthorized(v, language, options) {
+        async methodRtmpServerListLocationsUnauthorizedV1(language, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listLocationsUnauthorized(v, language, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodRtmpServerListLocationsUnauthorizedV1(language, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.listLocationsUnauthorized']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.methodRtmpServerListLocationsUnauthorizedV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Graph of rtmp servers
-         * @param {graph1VEnum} v Version
-         * @param {graph1LanguageEnum} language Current language
-         * @param {graph1IntervalEnum} interval Interval state in hours
-         * @param {graph1TypeEnum} type Type graph
+         * @param {RtmpServerGraphV1LanguageEnum} language Current language
+         * @param {RtmpServerGraphV1IntervalEnum} interval Interval state in hours
+         * @param {RtmpServerGraphV1TypeEnum} type Type graph
+         * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async graph1(v, language, interval, type, options) {
+        async rtmpServerGraphV1(language, interval, type, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.graph1(v, language, interval, type, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerGraphV1(language, interval, type, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.graph1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.rtmpServerGraphV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary List rtmp servers
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {RtmpServerListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {list1IntervalEnum} interval Interval state in hours
+         * @param {RtmpServerListV1IntervalEnum} interval Interval state in hours
+         * @param {RtmpServerListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v, language, projectId, interval, options) {
+        async rtmpServerListV1(language, projectId, interval, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, projectId, interval, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerListV1(language, projectId, interval, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.list1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.rtmpServerListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary State of rtmp servers
-         * @param {state1VEnum} v Version
-         * @param {state1LanguageEnum} language Current language
-         * @param {state1IntervalEnum} interval Interval state in hours
+         * @param {RtmpServerStateV1LanguageEnum} language Current language
+         * @param {RtmpServerStateV1IntervalEnum} interval Interval state in hours
+         * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async state1(v, language, interval, options) {
+        async rtmpServerStateV1(language, interval, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.state1(v, language, interval, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerStateV1(language, interval, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.state1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.rtmpServerStateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -313,68 +305,62 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async up1(options) {
+        async rtmpServerUpV1(options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.up1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerUpV1(options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.up1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.rtmpServerUpV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.RtmpServerApiFp = RtmpServerApiFp;
 /**
  * RtmpServerApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const RtmpServerApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.RtmpServerApiFp)(configuration);
     return {
         /**
          *
          * @summary Rtmp locations server list example for unauthorized
-         * @param {listLocationsUnauthorizedRequest} requestParameters Request parameters.
+         * @param {RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listLocationsUnauthorized(requestParameters, options) {
-            return localVarFp.listLocationsUnauthorized(requestParameters.v, requestParameters.language, options).then((request) => request(axios, basePath));
+        methodRtmpServerListLocationsUnauthorizedV1(requestParameters, options) {
+            return localVarFp.methodRtmpServerListLocationsUnauthorizedV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Graph of rtmp servers
-         * @param {graph1Request} requestParameters Request parameters.
+         * @param {RtmpServerApiRtmpServerGraphV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        graph1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || graph1VEnum._1;
-            return localVarFp.graph1(actualV, requestParameters.language, requestParameters.interval, requestParameters.type, options).then((request) => request(axios, basePath));
+        rtmpServerGraphV1(requestParameters, options) {
+            return localVarFp.rtmpServerGraphV1(requestParameters.language, requestParameters.interval, requestParameters.type, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary List rtmp servers
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {RtmpServerApiRtmpServerListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.interval, options).then((request) => request(axios, basePath));
+        rtmpServerListV1(requestParameters, options) {
+            return localVarFp.rtmpServerListV1(requestParameters.language, requestParameters.projectId, requestParameters.interval, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary State of rtmp servers
-         * @param {state1Request} requestParameters Request parameters.
+         * @param {RtmpServerApiRtmpServerStateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        state1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || state1VEnum._1;
-            return localVarFp.state1(actualV, requestParameters.language, requestParameters.interval, options).then((request) => request(axios, basePath));
+        rtmpServerStateV1(requestParameters, options) {
+            return localVarFp.rtmpServerStateV1(requestParameters.language, requestParameters.interval, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -382,12 +368,12 @@ const factory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        up1(options) {
-            return localVarFp.up1(options).then((request) => request(axios, basePath));
+        rtmpServerUpV1(options) {
+            return localVarFp.rtmpServerUpV1(options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.RtmpServerApiFactory = RtmpServerApiFactory;
 /**
  * RtmpServerApi - object-oriented interface
  * @export
@@ -398,52 +384,46 @@ class RtmpServerApi extends base_1.BaseAPI {
     /**
      *
      * @summary Rtmp locations server list example for unauthorized
-     * @param {listLocationsUnauthorizedRequest} requestParameters Request parameters.
+     * @param {RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    listLocationsUnauthorized(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).listLocationsUnauthorized(requestParameters.v, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    methodRtmpServerListLocationsUnauthorizedV1(requestParameters, options) {
+        return (0, exports.RtmpServerApiFp)(this.configuration).methodRtmpServerListLocationsUnauthorizedV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Graph of rtmp servers
-     * @param {graph1Request} requestParameters Request parameters.
+     * @param {RtmpServerApiRtmpServerGraphV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    graph1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || graph1VEnum._1;
-        return (0, exports.fp)(this.configuration).graph1(actualV, requestParameters.language, requestParameters.interval, requestParameters.type, options).then((request) => request(this.axios, this.basePath));
+    rtmpServerGraphV1(requestParameters, options) {
+        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerGraphV1(requestParameters.language, requestParameters.interval, requestParameters.type, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary List rtmp servers
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {RtmpServerApiRtmpServerListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    list1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || list1VEnum._1;
-        return (0, exports.fp)(this.configuration).list1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.interval, options).then((request) => request(this.axios, this.basePath));
+    rtmpServerListV1(requestParameters, options) {
+        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerListV1(requestParameters.language, requestParameters.projectId, requestParameters.interval, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary State of rtmp servers
-     * @param {state1Request} requestParameters Request parameters.
+     * @param {RtmpServerApiRtmpServerStateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    state1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || state1VEnum._1;
-        return (0, exports.fp)(this.configuration).state1(actualV, requestParameters.language, requestParameters.interval, options).then((request) => request(this.axios, this.basePath));
+    rtmpServerStateV1(requestParameters, options) {
+        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerStateV1(requestParameters.language, requestParameters.interval, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -452,136 +432,112 @@ class RtmpServerApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    up1(options) {
-        return (0, exports.fp)(this.configuration).up1(options).then((request) => request(this.axios, this.basePath));
+    rtmpServerUpV1(options) {
+        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerUpV1(options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.RtmpServerApi = RtmpServerApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var listLocationsUnauthorizedVEnum;
-(function (listLocationsUnauthorizedVEnum) {
-    listLocationsUnauthorizedVEnum["_1"] = "1";
-    listLocationsUnauthorizedVEnum["_2"] = "2";
-    listLocationsUnauthorizedVEnum["_3"] = "3";
-})(listLocationsUnauthorizedVEnum || (exports.listLocationsUnauthorizedVEnum = listLocationsUnauthorizedVEnum = {}));
+ * @export
+ */
+exports.MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var listLocationsUnauthorizedLanguageEnum;
-(function (listLocationsUnauthorizedLanguageEnum) {
-    listLocationsUnauthorizedLanguageEnum["ru"] = "ru";
-    listLocationsUnauthorizedLanguageEnum["en"] = "en";
-    listLocationsUnauthorizedLanguageEnum["cn"] = "cn";
-})(listLocationsUnauthorizedLanguageEnum || (exports.listLocationsUnauthorizedLanguageEnum = listLocationsUnauthorizedLanguageEnum = {}));
+ * @export
+ */
+exports.MethodRtmpServerListLocationsUnauthorizedV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var graph1VEnum;
-(function (graph1VEnum) {
-    graph1VEnum["_1"] = "1";
-    graph1VEnum["_2"] = "2";
-    graph1VEnum["_3"] = "3";
-})(graph1VEnum || (exports.graph1VEnum = graph1VEnum = {}));
+ * @export
+ */
+exports.RtmpServerGraphV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var graph1LanguageEnum;
-(function (graph1LanguageEnum) {
-    graph1LanguageEnum["ru"] = "ru";
-    graph1LanguageEnum["en"] = "en";
-    graph1LanguageEnum["cn"] = "cn";
-})(graph1LanguageEnum || (exports.graph1LanguageEnum = graph1LanguageEnum = {}));
+ * @export
+ */
+exports.RtmpServerGraphV1IntervalEnum = {
+    NUMBER_1: 1,
+    NUMBER_3: 3,
+    NUMBER_6: 6,
+    NUMBER_12: 12,
+    NUMBER_24: 24
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var graph1IntervalEnum;
-(function (graph1IntervalEnum) {
-    graph1IntervalEnum[graph1IntervalEnum["NUMBER_1"] = 1] = "NUMBER_1";
-    graph1IntervalEnum[graph1IntervalEnum["NUMBER_3"] = 3] = "NUMBER_3";
-    graph1IntervalEnum[graph1IntervalEnum["NUMBER_6"] = 6] = "NUMBER_6";
-    graph1IntervalEnum[graph1IntervalEnum["NUMBER_12"] = 12] = "NUMBER_12";
-    graph1IntervalEnum[graph1IntervalEnum["NUMBER_24"] = 24] = "NUMBER_24";
-})(graph1IntervalEnum || (exports.graph1IntervalEnum = graph1IntervalEnum = {}));
+ * @export
+ */
+exports.RtmpServerGraphV1TypeEnum = {
+    Performance: 'performance',
+    Network: 'network',
+    Cpu: 'cpu',
+    Ram: 'ram',
+    DeliveredPackages: 'deliveredPackages'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var graph1TypeEnum;
-(function (graph1TypeEnum) {
-    graph1TypeEnum["performance"] = "performance";
-    graph1TypeEnum["network"] = "network";
-    graph1TypeEnum["cpu"] = "cpu";
-    graph1TypeEnum["ram"] = "ram";
-    graph1TypeEnum["deliveredPackages"] = "deliveredPackages";
-})(graph1TypeEnum || (exports.graph1TypeEnum = graph1TypeEnum = {}));
+ * @export
+ */
+exports.RtmpServerGraphV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1VEnum;
-(function (list1VEnum) {
-    list1VEnum["_1"] = "1";
-    list1VEnum["_2"] = "2";
-    list1VEnum["_3"] = "3";
-})(list1VEnum || (exports.list1VEnum = list1VEnum = {}));
+ * @export
+ */
+exports.RtmpServerListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1LanguageEnum;
-(function (list1LanguageEnum) {
-    list1LanguageEnum["ru"] = "ru";
-    list1LanguageEnum["en"] = "en";
-    list1LanguageEnum["cn"] = "cn";
-})(list1LanguageEnum || (exports.list1LanguageEnum = list1LanguageEnum = {}));
+ * @export
+ */
+exports.RtmpServerListV1IntervalEnum = {
+    NUMBER_1: 1,
+    NUMBER_3: 3,
+    NUMBER_6: 6,
+    NUMBER_12: 12,
+    NUMBER_24: 24
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1IntervalEnum;
-(function (list1IntervalEnum) {
-    list1IntervalEnum[list1IntervalEnum["NUMBER_1"] = 1] = "NUMBER_1";
-    list1IntervalEnum[list1IntervalEnum["NUMBER_3"] = 3] = "NUMBER_3";
-    list1IntervalEnum[list1IntervalEnum["NUMBER_6"] = 6] = "NUMBER_6";
-    list1IntervalEnum[list1IntervalEnum["NUMBER_12"] = 12] = "NUMBER_12";
-    list1IntervalEnum[list1IntervalEnum["NUMBER_24"] = 24] = "NUMBER_24";
-})(list1IntervalEnum || (exports.list1IntervalEnum = list1IntervalEnum = {}));
+ * @export
+ */
+exports.RtmpServerListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var state1VEnum;
-(function (state1VEnum) {
-    state1VEnum["_1"] = "1";
-    state1VEnum["_2"] = "2";
-    state1VEnum["_3"] = "3";
-})(state1VEnum || (exports.state1VEnum = state1VEnum = {}));
+ * @export
+ */
+exports.RtmpServerStateV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var state1LanguageEnum;
-(function (state1LanguageEnum) {
-    state1LanguageEnum["ru"] = "ru";
-    state1LanguageEnum["en"] = "en";
-    state1LanguageEnum["cn"] = "cn";
-})(state1LanguageEnum || (exports.state1LanguageEnum = state1LanguageEnum = {}));
+ * @export
+ */
+exports.RtmpServerStateV1IntervalEnum = {
+    NUMBER_1: 1,
+    NUMBER_3: 3,
+    NUMBER_6: 6,
+    NUMBER_12: 12,
+    NUMBER_24: 24
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var state1IntervalEnum;
-(function (state1IntervalEnum) {
-    state1IntervalEnum[state1IntervalEnum["NUMBER_1"] = 1] = "NUMBER_1";
-    state1IntervalEnum[state1IntervalEnum["NUMBER_3"] = 3] = "NUMBER_3";
-    state1IntervalEnum[state1IntervalEnum["NUMBER_6"] = 6] = "NUMBER_6";
-    state1IntervalEnum[state1IntervalEnum["NUMBER_12"] = 12] = "NUMBER_12";
-    state1IntervalEnum[state1IntervalEnum["NUMBER_24"] = 24] = "NUMBER_24";
-})(state1IntervalEnum || (exports.state1IntervalEnum = state1IntervalEnum = {}));
+ * @export
+ */
+exports.RtmpServerStateV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

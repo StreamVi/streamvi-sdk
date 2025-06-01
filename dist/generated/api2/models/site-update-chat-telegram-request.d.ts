@@ -20,13 +20,13 @@ export interface SiteUpdateChatTelegramRequest {
      * @type {string}
      * @memberof SiteUpdateChatTelegramRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateChatTelegramRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateChatTelegramRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateChatTelegramRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -58,22 +58,16 @@ export interface SiteUpdateChatTelegramRequest {
      */
     'messageId'?: number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const SiteUpdateChatTelegramRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteUpdateChatTelegramRequestVEnum = typeof SiteUpdateChatTelegramRequestVEnum[keyof typeof SiteUpdateChatTelegramRequestVEnum];
+export declare const SiteUpdateChatTelegramRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteUpdateChatTelegramRequestLanguageEnum = typeof SiteUpdateChatTelegramRequestLanguageEnum[keyof typeof SiteUpdateChatTelegramRequestLanguageEnum];
 //# sourceMappingURL=site-update-chat-telegram-request.d.ts.map

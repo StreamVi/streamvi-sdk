@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.list1LanguageEnum = exports.list1VEnum = exports.get1LanguageEnum = exports.get1VEnum = exports.BlogPageApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.BlogPageListV1VEnum = exports.BlogPageListV1LanguageEnum = exports.BlogPageGetV1VEnum = exports.BlogPageGetV1LanguageEnum = exports.BlogPageApi = exports.BlogPageApiFactory = exports.BlogPageApiFp = exports.BlogPageApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,24 +27,22 @@ const base_1 = require("../base");
  * BlogPageApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const BlogPageApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Get blog page
-         * @param {get1VEnum} v Version
-         * @param {get1LanguageEnum} language Current language
+         * @param {BlogPageGetV1LanguageEnum} language Current language
          * @param {string} url Url of page
+         * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get1: async (v, language, url, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('get1', 'v', v);
+        blogPageGetV1: async (language, url, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('get1', 'language', language);
+            (0, common_1.assertParamExists)('blogPageGetV1', 'language', language);
             // verify required parameter 'url' is not null or undefined
-            (0, common_1.assertParamExists)('get1', 'url', url);
+            (0, common_1.assertParamExists)('blogPageGetV1', 'url', url);
             const localVarPath = `/method/blog/page/get`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -75,19 +73,17 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get list of blog pages
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {BlogPageListV1LanguageEnum} language Current language
+         * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v, language, s, limit, offset, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'v', v);
+        blogPageListV1: async (language, v, s, limit, offset, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'language', language);
+            (0, common_1.assertParamExists)('blogPageListV1', 'language', language);
             const localVarPath = `/method/blog/page/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -123,85 +119,81 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.BlogPageApiAxiosParamCreator = BlogPageApiAxiosParamCreator;
 /**
  * BlogPageApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const BlogPageApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.BlogPageApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Get blog page
-         * @param {get1VEnum} v Version
-         * @param {get1LanguageEnum} language Current language
+         * @param {BlogPageGetV1LanguageEnum} language Current language
          * @param {string} url Url of page
+         * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async get1(v, language, url, options) {
+        async blogPageGetV1(language, url, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.get1(v, language, url, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageGetV1(language, url, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BlogPageApi.get1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BlogPageApi.blogPageGetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get list of blog pages
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {BlogPageListV1LanguageEnum} language Current language
+         * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v, language, s, limit, offset, options) {
+        async blogPageListV1(language, v, s, limit, offset, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, s, limit, offset, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageListV1(language, v, s, limit, offset, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BlogPageApi.list1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BlogPageApi.blogPageListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.BlogPageApiFp = BlogPageApiFp;
 /**
  * BlogPageApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const BlogPageApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.BlogPageApiFp)(configuration);
     return {
         /**
          *
          * @summary Get blog page
-         * @param {get1Request} requestParameters Request parameters.
+         * @param {BlogPageApiBlogPageGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || get1VEnum._1;
-            return localVarFp.get1(actualV, requestParameters.language, requestParameters.url, options).then((request) => request(axios, basePath));
+        blogPageGetV1(requestParameters, options) {
+            return localVarFp.blogPageGetV1(requestParameters.language, requestParameters.url, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get list of blog pages
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {BlogPageApiBlogPageListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+        blogPageListV1(requestParameters, options) {
+            return localVarFp.blogPageListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.BlogPageApiFactory = BlogPageApiFactory;
 /**
  * BlogPageApi - object-oriented interface
  * @export
@@ -212,68 +204,56 @@ class BlogPageApi extends base_1.BaseAPI {
     /**
      *
      * @summary Get blog page
-     * @param {get1Request} requestParameters Request parameters.
+     * @param {BlogPageApiBlogPageGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BlogPageApi
      */
-    get1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || get1VEnum._1;
-        return (0, exports.fp)(this.configuration).get1(actualV, requestParameters.language, requestParameters.url, options).then((request) => request(this.axios, this.basePath));
+    blogPageGetV1(requestParameters, options) {
+        return (0, exports.BlogPageApiFp)(this.configuration).blogPageGetV1(requestParameters.language, requestParameters.url, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get list of blog pages
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {BlogPageApiBlogPageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BlogPageApi
      */
-    list1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || list1VEnum._1;
-        return (0, exports.fp)(this.configuration).list1(actualV, requestParameters.language, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+    blogPageListV1(requestParameters, options) {
+        return (0, exports.BlogPageApiFp)(this.configuration).blogPageListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.BlogPageApi = BlogPageApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var get1VEnum;
-(function (get1VEnum) {
-    get1VEnum["_1"] = "1";
-    get1VEnum["_2"] = "2";
-    get1VEnum["_3"] = "3";
-})(get1VEnum || (exports.get1VEnum = get1VEnum = {}));
+ * @export
+ */
+exports.BlogPageGetV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var get1LanguageEnum;
-(function (get1LanguageEnum) {
-    get1LanguageEnum["ru"] = "ru";
-    get1LanguageEnum["en"] = "en";
-    get1LanguageEnum["cn"] = "cn";
-})(get1LanguageEnum || (exports.get1LanguageEnum = get1LanguageEnum = {}));
+ * @export
+ */
+exports.BlogPageGetV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1VEnum;
-(function (list1VEnum) {
-    list1VEnum["_1"] = "1";
-    list1VEnum["_2"] = "2";
-    list1VEnum["_3"] = "3";
-})(list1VEnum || (exports.list1VEnum = list1VEnum = {}));
+ * @export
+ */
+exports.BlogPageListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1LanguageEnum;
-(function (list1LanguageEnum) {
-    list1LanguageEnum["ru"] = "ru";
-    list1LanguageEnum["en"] = "en";
-    list1LanguageEnum["cn"] = "cn";
-})(list1LanguageEnum || (exports.list1LanguageEnum = list1LanguageEnum = {}));
+ * @export
+ */
+exports.BlogPageListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

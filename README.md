@@ -19,7 +19,7 @@ npm install
 
 Create a `.env` file in the project root:
 
-```env
+```bash
 STREAMVI_CLIENT_ID=your_client_id
 STREAMVI_CLIENT_SECRET=your_client_secret
 CALLBACK_URL=http://localhost:3000/auth/streamvi/callback

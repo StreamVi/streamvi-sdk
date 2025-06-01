@@ -13,23 +13,13 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CategoryEnum = exports.ChannelEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var ChannelEnum;
-(function (ChannelEnum) {
-    ChannelEnum["telegram"] = "telegram";
-    ChannelEnum["cabinet"] = "cabinet";
-    ChannelEnum["mobile"] = "mobile";
-})(ChannelEnum || (exports.ChannelEnum = ChannelEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var CategoryEnum;
-(function (CategoryEnum) {
-    CategoryEnum["important"] = "important";
-    CategoryEnum["stream"] = "stream";
-})(CategoryEnum || (exports.CategoryEnum = CategoryEnum = {}));
+exports.NotifyHistorySiteResponseCategoryEnum = exports.NotifyHistorySiteResponseChannelEnum = void 0;
+exports.NotifyHistorySiteResponseChannelEnum = {
+    Telegram: 'telegram',
+    Cabinet: 'cabinet',
+    Mobile: 'mobile'
+};
+exports.NotifyHistorySiteResponseCategoryEnum = {
+    Important: 'important',
+    Stream: 'stream'
+};

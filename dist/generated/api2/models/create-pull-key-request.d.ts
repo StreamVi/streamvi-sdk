@@ -20,13 +20,13 @@ export interface CreatePullKeyRequest {
      * @type {string}
      * @memberof CreatePullKeyRequest
      */
-    'v': VEnum;
+    'v': CreatePullKeyRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof CreatePullKeyRequest
      */
-    'language': LanguageEnum;
+    'language': CreatePullKeyRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -38,7 +38,7 @@ export interface CreatePullKeyRequest {
      * @type {string}
      * @memberof CreatePullKeyRequest
      */
-    'transport': TransportEnum;
+    'transport': CreatePullKeyRequestTransportEnum;
     /**
      * Name
      * @type {string}
@@ -46,31 +46,22 @@ export interface CreatePullKeyRequest {
      */
     'name'?: string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TransportEnum {
-    rtmp = "rtmp",
-    srt = "srt",
-    hls = "hls"
-}
+export declare const CreatePullKeyRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type CreatePullKeyRequestVEnum = typeof CreatePullKeyRequestVEnum[keyof typeof CreatePullKeyRequestVEnum];
+export declare const CreatePullKeyRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type CreatePullKeyRequestLanguageEnum = typeof CreatePullKeyRequestLanguageEnum[keyof typeof CreatePullKeyRequestLanguageEnum];
+export declare const CreatePullKeyRequestTransportEnum: {
+    readonly Rtmp: "rtmp";
+    readonly Srt: "srt";
+    readonly Hls: "hls";
+};
+export type CreatePullKeyRequestTransportEnum = typeof CreatePullKeyRequestTransportEnum[keyof typeof CreatePullKeyRequestTransportEnum];
 //# sourceMappingURL=create-pull-key-request.d.ts.map

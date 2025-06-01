@@ -13,23 +13,13 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AccessTypeEnum = exports.TypeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum[TypeEnum["NUMBER_0"] = 0] = "NUMBER_0";
-    TypeEnum[TypeEnum["NUMBER_1"] = 1] = "NUMBER_1";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var AccessTypeEnum;
-(function (AccessTypeEnum) {
-    AccessTypeEnum[AccessTypeEnum["NUMBER_0"] = 0] = "NUMBER_0";
-    AccessTypeEnum[AccessTypeEnum["NUMBER_1"] = 1] = "NUMBER_1";
-    AccessTypeEnum[AccessTypeEnum["NUMBER_2"] = 2] = "NUMBER_2";
-})(AccessTypeEnum || (exports.AccessTypeEnum = AccessTypeEnum = {}));
+exports.UserProject2ProjectResponseAccessTypeEnum = exports.UserProject2ProjectResponseTypeEnum = void 0;
+exports.UserProject2ProjectResponseTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1
+};
+exports.UserProject2ProjectResponseAccessTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2
+};

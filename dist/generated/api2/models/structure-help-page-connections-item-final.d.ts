@@ -52,7 +52,7 @@ export interface StructureHelpPageConnectionsItemFinal {
      * @type {string}
      * @memberof StructureHelpPageConnectionsItemFinal
      */
-    'status': StatusEnum;
+    'status': StructureHelpPageConnectionsItemFinalStatusEnum;
     /**
      * Subject
      * @type {Array<StructureHelpPageConnectionsItemLang>}
@@ -72,16 +72,13 @@ export interface StructureHelpPageConnectionsItemFinal {
      */
     'priority': number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum StatusEnum {
-    None = "None",
-    Backlog = "Backlog",
-    Drafting = "Drafting",
-    Reviewing = "Reviewing",
-    Done = "Done",
-    Published = "Published"
-}
+export declare const StructureHelpPageConnectionsItemFinalStatusEnum: {
+    readonly None: "None";
+    readonly Backlog: "Backlog";
+    readonly Drafting: "Drafting";
+    readonly Reviewing: "Reviewing";
+    readonly Done: "Done";
+    readonly Published: "Published";
+};
+export type StructureHelpPageConnectionsItemFinalStatusEnum = typeof StructureHelpPageConnectionsItemFinalStatusEnum[keyof typeof StructureHelpPageConnectionsItemFinalStatusEnum];
 //# sourceMappingURL=structure-help-page-connections-item-final.d.ts.map

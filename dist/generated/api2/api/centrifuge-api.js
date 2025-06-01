@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.project1LanguageEnum = exports.project1VEnum = exports.GetTokenBroadcastLanguageEnum = exports.GetTokenBroadcastVEnum = exports.CentrifugeApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.GetTokenBroadcastV1VEnum = exports.GetTokenBroadcastV1LanguageEnum = exports.CentrifugeProjectV1VEnum = exports.CentrifugeProjectV1LanguageEnum = exports.CentrifugeApi = exports.CentrifugeApiFactory = exports.CentrifugeApiFp = exports.CentrifugeApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,27 +27,97 @@ const base_1 = require("../base");
  * CentrifugeApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const CentrifugeApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
-         * @summary Auth token for broadcast
-         * @param {number} broadcastId
-         * @param {GetTokenBroadcastVEnum} v Version
-         * @param {GetTokenBroadcastLanguageEnum} language Current language
+         *
+         * @summary Auth centrifuge
          * @param {number} projectId Project id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTokenBroadcast: async (broadcastId, v, language, projectId, options = {}) => {
-            // verify required parameter 'broadcastId' is not null or undefined
-            (0, common_1.assertParamExists)('getTokenBroadcast', 'broadcastId', broadcastId);
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getTokenBroadcast', 'v', v);
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getTokenBroadcast', 'language', language);
+        centrifugeAuthV2: async (projectId, options = {}) => {
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('getTokenBroadcast', 'projectId', projectId);
+            (0, common_1.assertParamExists)('centrifugeAuthV2', 'projectId', projectId);
+            const localVarPath = `/method/centrifuge`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
+         * @summary Auth token for project
+         * @param {CentrifugeProjectV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        centrifugeProjectV1: async (language, projectId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('centrifugeProjectV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('centrifugeProjectV1', 'projectId', projectId);
+            const localVarPath = `/method/centrifuge/auth/project`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
+         * @summary Auth token for broadcast
+         * @param {number} broadcastId
+         * @param {GetTokenBroadcastV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTokenBroadcastV1: async (broadcastId, language, projectId, v, options = {}) => {
+            // verify required parameter 'broadcastId' is not null or undefined
+            (0, common_1.assertParamExists)('getTokenBroadcastV1', 'broadcastId', broadcastId);
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('getTokenBroadcastV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('getTokenBroadcastV1', 'projectId', projectId);
             const localVarPath = `/method/centrifuge/token/broadcast`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -78,182 +148,106 @@ const axiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        /**
-         *
-         * @summary Auth centrifuge
-         * @param {number} projectId Project id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authV21: async (projectId, options = {}) => {
-            // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('authV21', 'projectId', projectId);
-            const localVarPath = `/method/centrifuge`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (projectId !== undefined) {
-                localVarQueryParameter['project_id'] = projectId;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
-         * @summary Auth token for project
-         * @param {project1VEnum} v Version
-         * @param {project1LanguageEnum} language Current language
-         * @param {number} projectId Project id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        project1: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('project1', 'v', v);
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('project1', 'language', language);
-            // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('project1', 'projectId', projectId);
-            const localVarPath = `/method/centrifuge/auth/project`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-            if (projectId !== undefined) {
-                localVarQueryParameter['project_id'] = projectId;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.CentrifugeApiAxiosParamCreator = CentrifugeApiAxiosParamCreator;
 /**
  * CentrifugeApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const CentrifugeApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.CentrifugeApiAxiosParamCreator)(configuration);
     return {
+        /**
+         *
+         * @summary Auth centrifuge
+         * @param {number} projectId Project id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async centrifugeAuthV2(projectId, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.centrifugeAuthV2(projectId, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['CentrifugeApi.centrifugeAuthV2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
+         * @summary Auth token for project
+         * @param {CentrifugeProjectV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async centrifugeProjectV1(language, projectId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.centrifugeProjectV1(language, projectId, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['CentrifugeApi.centrifugeProjectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
         /**
          *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
          * @summary Auth token for broadcast
          * @param {number} broadcastId
-         * @param {GetTokenBroadcastVEnum} v Version
-         * @param {GetTokenBroadcastLanguageEnum} language Current language
+         * @param {GetTokenBroadcastV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTokenBroadcast(broadcastId, v, language, projectId, options) {
+        async getTokenBroadcastV1(broadcastId, language, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getTokenBroadcast(broadcastId, v, language, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTokenBroadcastV1(broadcastId, language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['CentrifugeApi.getTokenBroadcast']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Auth centrifuge
-         * @param {number} projectId Project id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authV21(projectId, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authV21(projectId, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['CentrifugeApi.authV21']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
-         * @summary Auth token for project
-         * @param {project1VEnum} v Version
-         * @param {project1LanguageEnum} language Current language
-         * @param {number} projectId Project id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async project1(v, language, projectId, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.project1(v, language, projectId, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['CentrifugeApi.project1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['CentrifugeApi.getTokenBroadcastV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.CentrifugeApiFp = CentrifugeApiFp;
 /**
  * CentrifugeApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const CentrifugeApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.CentrifugeApiFp)(configuration);
     return {
-        /**
-         *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
-         * @summary Auth token for broadcast
-         * @param {getTokenBroadcastRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getTokenBroadcast(requestParameters, options) {
-            return localVarFp.getTokenBroadcast(requestParameters.broadcastId, requestParameters.v, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
-        },
         /**
          *
          * @summary Auth centrifuge
-         * @param {authV21Request} requestParameters Request parameters.
+         * @param {CentrifugeApiCentrifugeAuthV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authV21(requestParameters, options) {
-            return localVarFp.authV21(requestParameters.projectId, options).then((request) => request(axios, basePath));
+        centrifugeAuthV2(requestParameters, options) {
+            return localVarFp.centrifugeAuthV2(requestParameters.projectId, options).then((request) => request(axios, basePath));
         },
         /**
          *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
          * @summary Auth token for project
-         * @param {project1Request} requestParameters Request parameters.
+         * @param {CentrifugeApiCentrifugeProjectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        project1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || project1VEnum._1;
-            return localVarFp.project1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        centrifugeProjectV1(requestParameters, options) {
+            return localVarFp.centrifugeProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
+         * @summary Auth token for broadcast
+         * @param {CentrifugeApiGetTokenBroadcastV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTokenBroadcastV1(requestParameters, options) {
+            return localVarFp.getTokenBroadcastV1(requestParameters.broadcastId, requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.CentrifugeApiFactory = CentrifugeApiFactory;
 /**
  * CentrifugeApi - object-oriented interface
  * @export
@@ -262,79 +256,69 @@ exports.factory = factory;
  */
 class CentrifugeApi extends base_1.BaseAPI {
     /**
-     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
-     * @summary Auth token for broadcast
-     * @param {getTokenBroadcastRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CentrifugeApi
-     */
-    getTokenBroadcast(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).getTokenBroadcast(requestParameters.broadcastId, requestParameters.v, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      *
      * @summary Auth centrifuge
-     * @param {authV21Request} requestParameters Request parameters.
+     * @param {CentrifugeApiCentrifugeAuthV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
-    authV21(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).authV21(requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    centrifugeAuthV2(requestParameters, options) {
+        return (0, exports.CentrifugeApiFp)(this.configuration).centrifugeAuthV2(requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
      * @summary Auth token for project
-     * @param {project1Request} requestParameters Request parameters.
+     * @param {CentrifugeApiCentrifugeProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
-    project1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || project1VEnum._1;
-        return (0, exports.fp)(this.configuration).project1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    centrifugeProjectV1(requestParameters, options) {
+        return (0, exports.CentrifugeApiFp)(this.configuration).centrifugeProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
+     * @summary Auth token for broadcast
+     * @param {CentrifugeApiGetTokenBroadcastV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApi
+     */
+    getTokenBroadcastV1(requestParameters, options) {
+        return (0, exports.CentrifugeApiFp)(this.configuration).getTokenBroadcastV1(requestParameters.broadcastId, requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.CentrifugeApi = CentrifugeApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var GetTokenBroadcastVEnum;
-(function (GetTokenBroadcastVEnum) {
-    GetTokenBroadcastVEnum["_1"] = "1";
-    GetTokenBroadcastVEnum["_2"] = "2";
-    GetTokenBroadcastVEnum["_3"] = "3";
-})(GetTokenBroadcastVEnum || (exports.GetTokenBroadcastVEnum = GetTokenBroadcastVEnum = {}));
+ * @export
+ */
+exports.CentrifugeProjectV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var GetTokenBroadcastLanguageEnum;
-(function (GetTokenBroadcastLanguageEnum) {
-    GetTokenBroadcastLanguageEnum["ru"] = "ru";
-    GetTokenBroadcastLanguageEnum["en"] = "en";
-    GetTokenBroadcastLanguageEnum["cn"] = "cn";
-})(GetTokenBroadcastLanguageEnum || (exports.GetTokenBroadcastLanguageEnum = GetTokenBroadcastLanguageEnum = {}));
+ * @export
+ */
+exports.CentrifugeProjectV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var project1VEnum;
-(function (project1VEnum) {
-    project1VEnum["_1"] = "1";
-    project1VEnum["_2"] = "2";
-    project1VEnum["_3"] = "3";
-})(project1VEnum || (exports.project1VEnum = project1VEnum = {}));
+ * @export
+ */
+exports.GetTokenBroadcastV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var project1LanguageEnum;
-(function (project1LanguageEnum) {
-    project1LanguageEnum["ru"] = "ru";
-    project1LanguageEnum["en"] = "en";
-    project1LanguageEnum["cn"] = "cn";
-})(project1LanguageEnum || (exports.project1LanguageEnum = project1LanguageEnum = {}));
+ * @export
+ */
+exports.GetTokenBroadcastV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

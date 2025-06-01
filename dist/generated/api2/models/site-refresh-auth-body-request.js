@@ -13,35 +13,20 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppEnum = exports.LanguageEnum = exports.VEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var VEnum;
-(function (VEnum) {
-    VEnum["_1"] = "1";
-    VEnum["_2"] = "2";
-    VEnum["_3"] = "3";
-})(VEnum || (exports.VEnum = VEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageEnum;
-(function (LanguageEnum) {
-    LanguageEnum["ru"] = "ru";
-    LanguageEnum["en"] = "en";
-    LanguageEnum["cn"] = "cn";
-})(LanguageEnum || (exports.LanguageEnum = LanguageEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var AppEnum;
-(function (AppEnum) {
-    AppEnum["site"] = "site";
-    AppEnum["admin"] = "admin";
-    AppEnum["mobile"] = "mobile";
-    AppEnum["desktop"] = "desktop";
-})(AppEnum || (exports.AppEnum = AppEnum = {}));
+exports.SiteRefreshAuthBodyRequestAppEnum = exports.SiteRefreshAuthBodyRequestLanguageEnum = exports.SiteRefreshAuthBodyRequestVEnum = void 0;
+exports.SiteRefreshAuthBodyRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
+exports.SiteRefreshAuthBodyRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+exports.SiteRefreshAuthBodyRequestAppEnum = {
+    Site: 'site',
+    Admin: 'admin',
+    Mobile: 'mobile',
+    Desktop: 'desktop'
+};

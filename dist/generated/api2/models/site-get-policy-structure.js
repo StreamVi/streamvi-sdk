@@ -13,16 +13,11 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ResultsEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var ResultsEnum;
-(function (ResultsEnum) {
-    ResultsEnum["refund_policy"] = "refund-policy";
-    ResultsEnum["terms_of_use"] = "terms-of-use";
-    ResultsEnum["using_cookie"] = "using-cookie";
-    ResultsEnum["acceptable_use"] = "acceptable-use";
-    ResultsEnum["privacy_notice"] = "privacy-notice";
-})(ResultsEnum || (exports.ResultsEnum = ResultsEnum = {}));
+exports.SiteGetPolicyStructureResultsEnum = void 0;
+exports.SiteGetPolicyStructureResultsEnum = {
+    RefundPolicy: 'refund-policy',
+    TermsOfUse: 'terms-of-use',
+    UsingCookie: 'using-cookie',
+    AcceptableUse: 'acceptable-use',
+    PrivacyNotice: 'privacy-notice'
+};

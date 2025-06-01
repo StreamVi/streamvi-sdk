@@ -22,353 +22,413 @@ import type { SuccessResponse } from '../models';
  * NotifyHistoryApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
-    /**
-     *
-     * @summary Get my NotifyHistory item by id
-     * @param {get1VEnum} v Version
-     * @param {string} id Id of page in mongodb
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    get1: (v: get1VEnum, id: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+export declare const NotifyHistoryApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Get list of my notifications
-     * @param {getListMy1VEnum} v Version
-     * @param {getListMy1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetListMyV1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {number} [projectId] Project id
-     * @param {getListMy1NameEnum} [name] Name
-     * @param {getListMy1ChannelEnum} [channel] Channel
+     * @param {NotifyHistoryGetListMyV1NameEnum} [name] Name
+     * @param {NotifyHistoryGetListMyV1ChannelEnum} [channel] Channel
      * @param {string} [dateFrom] Date from
      * @param {string} [dateTo] Date to
-     * @param {getListMy1StatusReadEnum} [statusRead] Status read
+     * @param {NotifyHistoryGetListMyV1StatusReadEnum} [statusRead] Status read
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getListMy1: (v: getListMy1VEnum, language: getListMy1LanguageEnum, limit?: number, offset?: number, projectId?: number, name?: getListMy1NameEnum, channel?: getListMy1ChannelEnum, dateFrom?: string, dateTo?: string, statusRead?: getListMy1StatusReadEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistoryGetListMyV1: (language: NotifyHistoryGetListMyV1LanguageEnum, v?: NotifyHistoryGetListMyV1VEnum, limit?: number, offset?: number, projectId?: number, name?: NotifyHistoryGetListMyV1NameEnum, channel?: NotifyHistoryGetListMyV1ChannelEnum, dateFrom?: string, dateTo?: string, statusRead?: NotifyHistoryGetListMyV1StatusReadEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get my status unread message for user
-     * @param {getStatusMy1VEnum} v Version
-     * @param {getStatusMy1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getStatusMy1: (v: getStatusMy1VEnum, language: getStatusMy1LanguageEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistoryGetStatusMyV1: (language: NotifyHistoryGetStatusMyV1LanguageEnum, v?: NotifyHistoryGetStatusMyV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get my NotifyHistory item by id
+     * @param {string} id Id of page in mongodb
+     * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyHistoryGetV1: (id: string, v?: NotifyHistoryGetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Set notification in cabinet as read
-     * @param {markOfRead1VEnum} v Version
-     * @param {markOfRead1LanguageEnum} language Current language
+     * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Current language
      * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
+     * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    markOfRead1: (v: markOfRead1VEnum, language: markOfRead1LanguageEnum, siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistoryMarkOfReadV1: (language: NotifyHistoryMarkOfReadV1LanguageEnum, siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest, v?: NotifyHistoryMarkOfReadV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Run action in my notify item
-     * @param {runAction1VEnum} v Version
      * @param {string} notifyHistoryId Id of page in mongodb
      * @param {string} actionName Action name
      * @param {string} groupId Group id
+     * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    runAction1: (v: runAction1VEnum, notifyHistoryId: string, actionName: string, groupId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistoryRunActionV1: (notifyHistoryId: string, actionName: string, groupId: string, v?: NotifyHistoryRunActionV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Set all notification in cabinet as read
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setAllCabinetRead1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistorySetAllCabinetReadV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * NotifyHistoryApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
-    /**
-     *
-     * @summary Get my NotifyHistory item by id
-     * @param {get1VEnum} v Version
-     * @param {string} id Id of page in mongodb
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    get1(v: get1VEnum, id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistorySiteResponse>>;
+export declare const NotifyHistoryApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get list of my notifications
-     * @param {getListMy1VEnum} v Version
-     * @param {getListMy1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetListMyV1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {number} [projectId] Project id
-     * @param {getListMy1NameEnum} [name] Name
-     * @param {getListMy1ChannelEnum} [channel] Channel
+     * @param {NotifyHistoryGetListMyV1NameEnum} [name] Name
+     * @param {NotifyHistoryGetListMyV1ChannelEnum} [channel] Channel
      * @param {string} [dateFrom] Date from
      * @param {string} [dateTo] Date to
-     * @param {getListMy1StatusReadEnum} [statusRead] Status read
+     * @param {NotifyHistoryGetListMyV1StatusReadEnum} [statusRead] Status read
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getListMy1(v: getListMy1VEnum, language: getListMy1LanguageEnum, limit?: number, offset?: number, projectId?: number, name?: getListMy1NameEnum, channel?: getListMy1ChannelEnum, dateFrom?: string, dateTo?: string, statusRead?: getListMy1StatusReadEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfNotifyHistorySiteResponse>>;
+    notifyHistoryGetListMyV1(language: NotifyHistoryGetListMyV1LanguageEnum, v?: NotifyHistoryGetListMyV1VEnum, limit?: number, offset?: number, projectId?: number, name?: NotifyHistoryGetListMyV1NameEnum, channel?: NotifyHistoryGetListMyV1ChannelEnum, dateFrom?: string, dateTo?: string, statusRead?: NotifyHistoryGetListMyV1StatusReadEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfNotifyHistorySiteResponse>>;
     /**
      *
      * @summary Get my status unread message for user
-     * @param {getStatusMy1VEnum} v Version
-     * @param {getStatusMy1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getStatusMy1(v: getStatusMy1VEnum, language: getStatusMy1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistoryStatusUserResponse>>;
+    notifyHistoryGetStatusMyV1(language: NotifyHistoryGetStatusMyV1LanguageEnum, v?: NotifyHistoryGetStatusMyV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistoryStatusUserResponse>>;
+    /**
+     *
+     * @summary Get my NotifyHistory item by id
+     * @param {string} id Id of page in mongodb
+     * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyHistoryGetV1(id: string, v?: NotifyHistoryGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistorySiteResponse>>;
     /**
      *
      * @summary Set notification in cabinet as read
-     * @param {markOfRead1VEnum} v Version
-     * @param {markOfRead1LanguageEnum} language Current language
+     * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Current language
      * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
+     * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    markOfRead1(v: markOfRead1VEnum, language: markOfRead1LanguageEnum, siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteMarkReadHistoryResponse>>;
+    notifyHistoryMarkOfReadV1(language: NotifyHistoryMarkOfReadV1LanguageEnum, siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest, v?: NotifyHistoryMarkOfReadV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteMarkReadHistoryResponse>>;
     /**
      *
      * @summary Run action in my notify item
-     * @param {runAction1VEnum} v Version
      * @param {string} notifyHistoryId Id of page in mongodb
      * @param {string} actionName Action name
      * @param {string} groupId Group id
+     * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    runAction1(v: runAction1VEnum, notifyHistoryId: string, actionName: string, groupId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistorySiteResponse>>;
+    notifyHistoryRunActionV1(notifyHistoryId: string, actionName: string, groupId: string, v?: NotifyHistoryRunActionV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistorySiteResponse>>;
     /**
      *
      * @summary Set all notification in cabinet as read
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setAllCabinetRead1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    notifyHistorySetAllCabinetReadV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * NotifyHistoryApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
-    /**
-     *
-     * @summary Get my NotifyHistory item by id
-     * @param {get1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse>;
+export declare const NotifyHistoryApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get list of my notifications
-     * @param {getListMy1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryGetListMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getListMy1(requestParameters: getListMy1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfNotifyHistorySiteResponse>;
+    notifyHistoryGetListMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetListMyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfNotifyHistorySiteResponse>;
     /**
      *
      * @summary Get my status unread message for user
-     * @param {getStatusMy1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryGetStatusMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getStatusMy1(requestParameters: getStatusMy1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistoryStatusUserResponse>;
+    notifyHistoryGetStatusMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetStatusMyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistoryStatusUserResponse>;
+    /**
+     *
+     * @summary Get my NotifyHistory item by id
+     * @param {NotifyHistoryApiNotifyHistoryGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse>;
     /**
      *
      * @summary Set notification in cabinet as read
-     * @param {markOfRead1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryMarkOfReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    markOfRead1(requestParameters: markOfRead1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteMarkReadHistoryResponse>;
+    notifyHistoryMarkOfReadV1(requestParameters: NotifyHistoryApiNotifyHistoryMarkOfReadV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteMarkReadHistoryResponse>;
     /**
      *
      * @summary Run action in my notify item
-     * @param {runAction1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryRunActionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    runAction1(requestParameters: runAction1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse>;
+    notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse>;
     /**
      *
      * @summary Set all notification in cabinet as read
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setAllCabinetRead1(options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    notifyHistorySetAllCabinetReadV1(options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 };
 /**
- * Request parameters for get1 operation in NotifyHistoryApi.
+ * NotifyHistoryApi - interface
  * @export
- * @interface get1Request
+ * @interface NotifyHistoryApi
  */
-export interface get1Request {
+export interface NotifyHistoryApiInterface {
     /**
-     * Version
-     * @type {'1'}
-     * @memberof get1
+     *
+     * @summary Get list of my notifications
+     * @param {NotifyHistoryApiNotifyHistoryGetListMyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApiInterface
      */
-    readonly v?: get1VEnum;
+    notifyHistoryGetListMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetListMyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfNotifyHistorySiteResponse>;
     /**
-     * Id of page in mongodb
-     * @type {string}
-     * @memberof get1
+     *
+     * @summary Get my status unread message for user
+     * @param {NotifyHistoryApiNotifyHistoryGetStatusMyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApiInterface
      */
-    readonly id: string;
+    notifyHistoryGetStatusMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetStatusMyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistoryStatusUserResponse>;
+    /**
+     *
+     * @summary Get my NotifyHistory item by id
+     * @param {NotifyHistoryApiNotifyHistoryGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApiInterface
+     */
+    notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse>;
+    /**
+     *
+     * @summary Set notification in cabinet as read
+     * @param {NotifyHistoryApiNotifyHistoryMarkOfReadV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApiInterface
+     */
+    notifyHistoryMarkOfReadV1(requestParameters: NotifyHistoryApiNotifyHistoryMarkOfReadV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteMarkReadHistoryResponse>;
+    /**
+     *
+     * @summary Run action in my notify item
+     * @param {NotifyHistoryApiNotifyHistoryRunActionV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApiInterface
+     */
+    notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse>;
+    /**
+     *
+     * @summary Set all notification in cabinet as read
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApiInterface
+     */
+    notifyHistorySetAllCabinetReadV1(options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 }
 /**
- * Request parameters for getListMy1 operation in NotifyHistoryApi.
+ * Request parameters for notifyHistoryGetListMyV1 operation in NotifyHistoryApi.
  * @export
- * @interface getListMy1Request
+ * @interface NotifyHistoryApiNotifyHistoryGetListMyV1Request
  */
-export interface getListMy1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getListMy1
-     */
-    readonly v?: getListMy1VEnum;
+export interface NotifyHistoryApiNotifyHistoryGetListMyV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getListMy1
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly language: getListMy1LanguageEnum;
+    readonly language: NotifyHistoryGetListMyV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
+     */
+    readonly v?: NotifyHistoryGetListMyV1VEnum;
     /**
      * Number of results
      * @type {number}
-     * @memberof getListMy1
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
     readonly limit?: number;
     /**
      * Page offset number
      * @type {number}
-     * @memberof getListMy1
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
     readonly offset?: number;
     /**
      * Project id
      * @type {number}
-     * @memberof getListMy1
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
     readonly projectId?: number;
     /**
      * Name
      * @type {'high_bitrate' | 'request_access_channel' | 'request_access_project' | 'promocode_test' | 'stream_test' | 'plan_restream_expires' | 'plan_restream_expired' | 'plan_restream_renewed' | 'plan_transcoder_expires' | 'plan_transcoder_expired' | 'plan_transcoder_renewed' | 'plan_storage_expires' | 'plan_storage_expired' | 'plan_storage_renewed' | 'broadcast_unsupported_codec' | 'broadcast_unsupported_codec_screen' | 'broadcast_bitrate_exceeded_screen' | 'rtmp_connect_old_server_screen' | 'broadcast_not_audio' | 'broadcast_bitrate_exceeded' | 'broadcast_started' | 'broadcast_stopped' | 'restream_check_twitch_bitrate_1' | 'api_pause_start' | 'api_pause_end' | 'api_wait_edit' | 'api_restream_start' | 'api_restream_stop' | 'api_drop_broadcast' | 'api_drop_broadcast_remove_company' | 'api_drop_broadcast_update_key' | 'publisher_disconnected' | 'publisher_connected' | 'publisher_initializing' | 'publisher_close' | 'broadcast_connected_start' | 'broadcast_connected_end' | 'broadcast_connecting_stream' | 'broadcast_started_new_stream' | 'broadcast_connecting_lost' | 'broadcast_video_lost_start' | 'broadcast_video_lost_end' | 'broadcast_video_pause_start' | 'broadcast_video_pause_end' | 'broadcast_init_restream' | 'start_stream' | 'create_reader' | 'start_channel' | 'stop_channel' | 'stop_stream_video_timeout' | 'stop_stream_no_start_video' | 'stop_stream' | 'delete_reader' | 'transcoder_start' | 'transcoder_stop' | 'start_channel_failed' | 'start_channel_success' | 'api_channel_initializing_start' | 'api_channel_initializing_failed' | 'api_channel_initializing_success' | 'channel_api_update_settings_success' | 'channel_api_update_settings_error' | 'channel_api_update_playlist_success' | 'channel_api_update_playlist_error' | 'channel_api_update_chat_error' | 'channel_api_stream_key_success' | 'channel_api_stream_key_error' | 'channel_api_auto_stop_disable_success' | 'channel_api_auto_stop_disable_error' | 'channel_api_unbinding_stream_key_error' | 'channel_api_create_broadcast_success' | 'channel_api_create_broadcast_error' | 'channel_api_set_planned_success' | 'channel_api_set_planned_error' | 'channel_api_set_thumbnail_success' | 'channel_api_set_thumbnail_error' | 'channel_token_error' | 'channel_api_group_failed' | 'no_audio_reader' | 'restream_check_twitch_bitrate_2' | 'transcoder_support_error_screen' | 'transcoder_tariff_end_screen' | 'transcoder_count_flow_screen' | 'transcoder_resolution_screen' | 'stream_key_banned' | 'broadcast_change_codec' | 'broadcast_change_region' | 'video_upload_error' | 'stop_channel_error' | 'broadcast_user_action_stop'}
-     * @memberof getListMy1
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly name?: getListMy1NameEnum;
+    readonly name?: NotifyHistoryGetListMyV1NameEnum;
     /**
      * Channel
      * @type {'telegram' | 'cabinet' | 'mobile'}
-     * @memberof getListMy1
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly channel?: getListMy1ChannelEnum;
+    readonly channel?: NotifyHistoryGetListMyV1ChannelEnum;
     /**
      * Date from
      * @type {string}
-     * @memberof getListMy1
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
     readonly dateFrom?: string;
     /**
      * Date to
      * @type {string}
-     * @memberof getListMy1
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
     readonly dateTo?: string;
     /**
      * Status read
      * @type {'unread' | 'read'}
-     * @memberof getListMy1
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly statusRead?: getListMy1StatusReadEnum;
+    readonly statusRead?: NotifyHistoryGetListMyV1StatusReadEnum;
 }
 /**
- * Request parameters for getStatusMy1 operation in NotifyHistoryApi.
+ * Request parameters for notifyHistoryGetStatusMyV1 operation in NotifyHistoryApi.
  * @export
- * @interface getStatusMy1Request
+ * @interface NotifyHistoryApiNotifyHistoryGetStatusMyV1Request
  */
-export interface getStatusMy1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getStatusMy1
-     */
-    readonly v?: getStatusMy1VEnum;
+export interface NotifyHistoryApiNotifyHistoryGetStatusMyV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getStatusMy1
+     * @memberof NotifyHistoryApiNotifyHistoryGetStatusMyV1
      */
-    readonly language: getStatusMy1LanguageEnum;
-}
-/**
- * Request parameters for markOfRead1 operation in NotifyHistoryApi.
- * @export
- * @interface markOfRead1Request
- */
-export interface markOfRead1Request {
+    readonly language: NotifyHistoryGetStatusMyV1LanguageEnum;
     /**
-     * Version
+     * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
-     * @memberof markOfRead1
+     * @memberof NotifyHistoryApiNotifyHistoryGetStatusMyV1
      */
-    readonly v?: markOfRead1VEnum;
-    /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof markOfRead1
-     */
-    readonly language: markOfRead1LanguageEnum;
-    /**
-     *
-     * @type {SiteMarkReadHistoryRequest}
-     * @memberof markOfRead1
-     */
-    readonly siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest;
+    readonly v?: NotifyHistoryGetStatusMyV1VEnum;
 }
 /**
- * Request parameters for runAction1 operation in NotifyHistoryApi.
+ * Request parameters for notifyHistoryGetV1 operation in NotifyHistoryApi.
  * @export
- * @interface runAction1Request
+ * @interface NotifyHistoryApiNotifyHistoryGetV1Request
  */
-export interface runAction1Request {
-    /**
-     * Version
-     * @type {'1'}
-     * @memberof runAction1
-     */
-    readonly v?: runAction1VEnum;
+export interface NotifyHistoryApiNotifyHistoryGetV1Request {
     /**
      * Id of page in mongodb
      * @type {string}
-     * @memberof runAction1
+     * @memberof NotifyHistoryApiNotifyHistoryGetV1
+     */
+    readonly id: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof NotifyHistoryApiNotifyHistoryGetV1
+     */
+    readonly v?: NotifyHistoryGetV1VEnum;
+}
+/**
+ * Request parameters for notifyHistoryMarkOfReadV1 operation in NotifyHistoryApi.
+ * @export
+ * @interface NotifyHistoryApiNotifyHistoryMarkOfReadV1Request
+ */
+export interface NotifyHistoryApiNotifyHistoryMarkOfReadV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof NotifyHistoryApiNotifyHistoryMarkOfReadV1
+     */
+    readonly language: NotifyHistoryMarkOfReadV1LanguageEnum;
+    /**
+     *
+     * @type {SiteMarkReadHistoryRequest}
+     * @memberof NotifyHistoryApiNotifyHistoryMarkOfReadV1
+     */
+    readonly siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof NotifyHistoryApiNotifyHistoryMarkOfReadV1
+     */
+    readonly v?: NotifyHistoryMarkOfReadV1VEnum;
+}
+/**
+ * Request parameters for notifyHistoryRunActionV1 operation in NotifyHistoryApi.
+ * @export
+ * @interface NotifyHistoryApiNotifyHistoryRunActionV1Request
+ */
+export interface NotifyHistoryApiNotifyHistoryRunActionV1Request {
+    /**
+     * Id of page in mongodb
+     * @type {string}
+     * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
     readonly notifyHistoryId: string;
     /**
      * Action name
      * @type {string}
-     * @memberof runAction1
+     * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
     readonly actionName: string;
     /**
      * Group id
      * @type {string}
-     * @memberof runAction1
+     * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
     readonly groupId: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
+     */
+    readonly v?: NotifyHistoryRunActionV1VEnum;
 }
 /**
  * NotifyHistoryApi - object-oriented interface
@@ -376,52 +436,52 @@ export interface runAction1Request {
  * @class NotifyHistoryApi
  * @extends {BaseAPI}
  */
-export declare class NotifyHistoryApi extends BaseAPI {
-    /**
-     *
-     * @summary Get my NotifyHistory item by id
-     * @param {get1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof NotifyHistoryApi
-     */
-    get1(requestParameters: get1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistorySiteResponse, any>>;
+export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryApiInterface {
     /**
      *
      * @summary Get list of my notifications
-     * @param {getListMy1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryGetListMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    getListMy1(requestParameters: getListMy1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    notifyHistoryGetListMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetListMyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
     /**
      *
      * @summary Get my status unread message for user
-     * @param {getStatusMy1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryGetStatusMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    getStatusMy1(requestParameters: getStatusMy1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistoryStatusUserResponse, any>>;
+    notifyHistoryGetStatusMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetStatusMyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistoryStatusUserResponse, any>>;
+    /**
+     *
+     * @summary Get my NotifyHistory item by id
+     * @param {NotifyHistoryApiNotifyHistoryGetV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApi
+     */
+    notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistorySiteResponse, any>>;
     /**
      *
      * @summary Set notification in cabinet as read
-     * @param {markOfRead1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryMarkOfReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    markOfRead1(requestParameters: markOfRead1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteMarkReadHistoryResponse, any>>;
+    notifyHistoryMarkOfReadV1(requestParameters: NotifyHistoryApiNotifyHistoryMarkOfReadV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteMarkReadHistoryResponse, any>>;
     /**
      *
      * @summary Run action in my notify item
-     * @param {runAction1Request} requestParameters Request parameters.
+     * @param {NotifyHistoryApiNotifyHistoryRunActionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    runAction1(requestParameters: runAction1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistorySiteResponse, any>>;
+    notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistorySiteResponse, any>>;
     /**
      *
      * @summary Set all notification in cabinet as read
@@ -429,187 +489,187 @@ export declare class NotifyHistoryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    setAllCabinetRead1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    notifyHistorySetAllCabinetReadV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum get1VEnum {
-    _1 = "1"
-}
+ * @export
+ */
+export declare const NotifyHistoryGetListMyV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type NotifyHistoryGetListMyV1LanguageEnum = typeof NotifyHistoryGetListMyV1LanguageEnum[keyof typeof NotifyHistoryGetListMyV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getListMy1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const NotifyHistoryGetListMyV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type NotifyHistoryGetListMyV1VEnum = typeof NotifyHistoryGetListMyV1VEnum[keyof typeof NotifyHistoryGetListMyV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getListMy1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const NotifyHistoryGetListMyV1NameEnum: {
+    readonly HighBitrate: "high_bitrate";
+    readonly RequestAccessChannel: "request_access_channel";
+    readonly RequestAccessProject: "request_access_project";
+    readonly PromocodeTest: "promocode_test";
+    readonly StreamTest: "stream_test";
+    readonly PlanRestreamExpires: "plan_restream_expires";
+    readonly PlanRestreamExpired: "plan_restream_expired";
+    readonly PlanRestreamRenewed: "plan_restream_renewed";
+    readonly PlanTranscoderExpires: "plan_transcoder_expires";
+    readonly PlanTranscoderExpired: "plan_transcoder_expired";
+    readonly PlanTranscoderRenewed: "plan_transcoder_renewed";
+    readonly PlanStorageExpires: "plan_storage_expires";
+    readonly PlanStorageExpired: "plan_storage_expired";
+    readonly PlanStorageRenewed: "plan_storage_renewed";
+    readonly BroadcastUnsupportedCodec: "broadcast_unsupported_codec";
+    readonly BroadcastUnsupportedCodecScreen: "broadcast_unsupported_codec_screen";
+    readonly BroadcastBitrateExceededScreen: "broadcast_bitrate_exceeded_screen";
+    readonly RtmpConnectOldServerScreen: "rtmp_connect_old_server_screen";
+    readonly BroadcastNotAudio: "broadcast_not_audio";
+    readonly BroadcastBitrateExceeded: "broadcast_bitrate_exceeded";
+    readonly BroadcastStarted: "broadcast_started";
+    readonly BroadcastStopped: "broadcast_stopped";
+    readonly RestreamCheckTwitchBitrate1: "restream_check_twitch_bitrate_1";
+    readonly ApiPauseStart: "api_pause_start";
+    readonly ApiPauseEnd: "api_pause_end";
+    readonly ApiWaitEdit: "api_wait_edit";
+    readonly ApiRestreamStart: "api_restream_start";
+    readonly ApiRestreamStop: "api_restream_stop";
+    readonly ApiDropBroadcast: "api_drop_broadcast";
+    readonly ApiDropBroadcastRemoveCompany: "api_drop_broadcast_remove_company";
+    readonly ApiDropBroadcastUpdateKey: "api_drop_broadcast_update_key";
+    readonly PublisherDisconnected: "publisher_disconnected";
+    readonly PublisherConnected: "publisher_connected";
+    readonly PublisherInitializing: "publisher_initializing";
+    readonly PublisherClose: "publisher_close";
+    readonly BroadcastConnectedStart: "broadcast_connected_start";
+    readonly BroadcastConnectedEnd: "broadcast_connected_end";
+    readonly BroadcastConnectingStream: "broadcast_connecting_stream";
+    readonly BroadcastStartedNewStream: "broadcast_started_new_stream";
+    readonly BroadcastConnectingLost: "broadcast_connecting_lost";
+    readonly BroadcastVideoLostStart: "broadcast_video_lost_start";
+    readonly BroadcastVideoLostEnd: "broadcast_video_lost_end";
+    readonly BroadcastVideoPauseStart: "broadcast_video_pause_start";
+    readonly BroadcastVideoPauseEnd: "broadcast_video_pause_end";
+    readonly BroadcastInitRestream: "broadcast_init_restream";
+    readonly StartStream: "start_stream";
+    readonly CreateReader: "create_reader";
+    readonly StartChannel: "start_channel";
+    readonly StopChannel: "stop_channel";
+    readonly StopStreamVideoTimeout: "stop_stream_video_timeout";
+    readonly StopStreamNoStartVideo: "stop_stream_no_start_video";
+    readonly StopStream: "stop_stream";
+    readonly DeleteReader: "delete_reader";
+    readonly TranscoderStart: "transcoder_start";
+    readonly TranscoderStop: "transcoder_stop";
+    readonly StartChannelFailed: "start_channel_failed";
+    readonly StartChannelSuccess: "start_channel_success";
+    readonly ApiChannelInitializingStart: "api_channel_initializing_start";
+    readonly ApiChannelInitializingFailed: "api_channel_initializing_failed";
+    readonly ApiChannelInitializingSuccess: "api_channel_initializing_success";
+    readonly ChannelApiUpdateSettingsSuccess: "channel_api_update_settings_success";
+    readonly ChannelApiUpdateSettingsError: "channel_api_update_settings_error";
+    readonly ChannelApiUpdatePlaylistSuccess: "channel_api_update_playlist_success";
+    readonly ChannelApiUpdatePlaylistError: "channel_api_update_playlist_error";
+    readonly ChannelApiUpdateChatError: "channel_api_update_chat_error";
+    readonly ChannelApiStreamKeySuccess: "channel_api_stream_key_success";
+    readonly ChannelApiStreamKeyError: "channel_api_stream_key_error";
+    readonly ChannelApiAutoStopDisableSuccess: "channel_api_auto_stop_disable_success";
+    readonly ChannelApiAutoStopDisableError: "channel_api_auto_stop_disable_error";
+    readonly ChannelApiUnbindingStreamKeyError: "channel_api_unbinding_stream_key_error";
+    readonly ChannelApiCreateBroadcastSuccess: "channel_api_create_broadcast_success";
+    readonly ChannelApiCreateBroadcastError: "channel_api_create_broadcast_error";
+    readonly ChannelApiSetPlannedSuccess: "channel_api_set_planned_success";
+    readonly ChannelApiSetPlannedError: "channel_api_set_planned_error";
+    readonly ChannelApiSetThumbnailSuccess: "channel_api_set_thumbnail_success";
+    readonly ChannelApiSetThumbnailError: "channel_api_set_thumbnail_error";
+    readonly ChannelTokenError: "channel_token_error";
+    readonly ChannelApiGroupFailed: "channel_api_group_failed";
+    readonly NoAudioReader: "no_audio_reader";
+    readonly RestreamCheckTwitchBitrate2: "restream_check_twitch_bitrate_2";
+    readonly TranscoderSupportErrorScreen: "transcoder_support_error_screen";
+    readonly TranscoderTariffEndScreen: "transcoder_tariff_end_screen";
+    readonly TranscoderCountFlowScreen: "transcoder_count_flow_screen";
+    readonly TranscoderResolutionScreen: "transcoder_resolution_screen";
+    readonly StreamKeyBanned: "stream_key_banned";
+    readonly BroadcastChangeCodec: "broadcast_change_codec";
+    readonly BroadcastChangeRegion: "broadcast_change_region";
+    readonly VideoUploadError: "video_upload_error";
+    readonly StopChannelError: "stop_channel_error";
+    readonly BroadcastUserActionStop: "broadcast_user_action_stop";
+};
+export type NotifyHistoryGetListMyV1NameEnum = typeof NotifyHistoryGetListMyV1NameEnum[keyof typeof NotifyHistoryGetListMyV1NameEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getListMy1NameEnum {
-    high_bitrate = "high_bitrate",
-    request_access_channel = "request_access_channel",
-    request_access_project = "request_access_project",
-    promocode_test = "promocode_test",
-    stream_test = "stream_test",
-    plan_restream_expires = "plan_restream_expires",
-    plan_restream_expired = "plan_restream_expired",
-    plan_restream_renewed = "plan_restream_renewed",
-    plan_transcoder_expires = "plan_transcoder_expires",
-    plan_transcoder_expired = "plan_transcoder_expired",
-    plan_transcoder_renewed = "plan_transcoder_renewed",
-    plan_storage_expires = "plan_storage_expires",
-    plan_storage_expired = "plan_storage_expired",
-    plan_storage_renewed = "plan_storage_renewed",
-    broadcast_unsupported_codec = "broadcast_unsupported_codec",
-    broadcast_unsupported_codec_screen = "broadcast_unsupported_codec_screen",
-    broadcast_bitrate_exceeded_screen = "broadcast_bitrate_exceeded_screen",
-    rtmp_connect_old_server_screen = "rtmp_connect_old_server_screen",
-    broadcast_not_audio = "broadcast_not_audio",
-    broadcast_bitrate_exceeded = "broadcast_bitrate_exceeded",
-    broadcast_started = "broadcast_started",
-    broadcast_stopped = "broadcast_stopped",
-    restream_check_twitch_bitrate_1 = "restream_check_twitch_bitrate_1",
-    api_pause_start = "api_pause_start",
-    api_pause_end = "api_pause_end",
-    api_wait_edit = "api_wait_edit",
-    api_restream_start = "api_restream_start",
-    api_restream_stop = "api_restream_stop",
-    api_drop_broadcast = "api_drop_broadcast",
-    api_drop_broadcast_remove_company = "api_drop_broadcast_remove_company",
-    api_drop_broadcast_update_key = "api_drop_broadcast_update_key",
-    publisher_disconnected = "publisher_disconnected",
-    publisher_connected = "publisher_connected",
-    publisher_initializing = "publisher_initializing",
-    publisher_close = "publisher_close",
-    broadcast_connected_start = "broadcast_connected_start",
-    broadcast_connected_end = "broadcast_connected_end",
-    broadcast_connecting_stream = "broadcast_connecting_stream",
-    broadcast_started_new_stream = "broadcast_started_new_stream",
-    broadcast_connecting_lost = "broadcast_connecting_lost",
-    broadcast_video_lost_start = "broadcast_video_lost_start",
-    broadcast_video_lost_end = "broadcast_video_lost_end",
-    broadcast_video_pause_start = "broadcast_video_pause_start",
-    broadcast_video_pause_end = "broadcast_video_pause_end",
-    broadcast_init_restream = "broadcast_init_restream",
-    start_stream = "start_stream",
-    create_reader = "create_reader",
-    start_channel = "start_channel",
-    stop_channel = "stop_channel",
-    stop_stream_video_timeout = "stop_stream_video_timeout",
-    stop_stream_no_start_video = "stop_stream_no_start_video",
-    stop_stream = "stop_stream",
-    delete_reader = "delete_reader",
-    transcoder_start = "transcoder_start",
-    transcoder_stop = "transcoder_stop",
-    start_channel_failed = "start_channel_failed",
-    start_channel_success = "start_channel_success",
-    api_channel_initializing_start = "api_channel_initializing_start",
-    api_channel_initializing_failed = "api_channel_initializing_failed",
-    api_channel_initializing_success = "api_channel_initializing_success",
-    channel_api_update_settings_success = "channel_api_update_settings_success",
-    channel_api_update_settings_error = "channel_api_update_settings_error",
-    channel_api_update_playlist_success = "channel_api_update_playlist_success",
-    channel_api_update_playlist_error = "channel_api_update_playlist_error",
-    channel_api_update_chat_error = "channel_api_update_chat_error",
-    channel_api_stream_key_success = "channel_api_stream_key_success",
-    channel_api_stream_key_error = "channel_api_stream_key_error",
-    channel_api_auto_stop_disable_success = "channel_api_auto_stop_disable_success",
-    channel_api_auto_stop_disable_error = "channel_api_auto_stop_disable_error",
-    channel_api_unbinding_stream_key_error = "channel_api_unbinding_stream_key_error",
-    channel_api_create_broadcast_success = "channel_api_create_broadcast_success",
-    channel_api_create_broadcast_error = "channel_api_create_broadcast_error",
-    channel_api_set_planned_success = "channel_api_set_planned_success",
-    channel_api_set_planned_error = "channel_api_set_planned_error",
-    channel_api_set_thumbnail_success = "channel_api_set_thumbnail_success",
-    channel_api_set_thumbnail_error = "channel_api_set_thumbnail_error",
-    channel_token_error = "channel_token_error",
-    channel_api_group_failed = "channel_api_group_failed",
-    no_audio_reader = "no_audio_reader",
-    restream_check_twitch_bitrate_2 = "restream_check_twitch_bitrate_2",
-    transcoder_support_error_screen = "transcoder_support_error_screen",
-    transcoder_tariff_end_screen = "transcoder_tariff_end_screen",
-    transcoder_count_flow_screen = "transcoder_count_flow_screen",
-    transcoder_resolution_screen = "transcoder_resolution_screen",
-    stream_key_banned = "stream_key_banned",
-    broadcast_change_codec = "broadcast_change_codec",
-    broadcast_change_region = "broadcast_change_region",
-    video_upload_error = "video_upload_error",
-    stop_channel_error = "stop_channel_error",
-    broadcast_user_action_stop = "broadcast_user_action_stop"
-}
+ * @export
+ */
+export declare const NotifyHistoryGetListMyV1ChannelEnum: {
+    readonly Telegram: "telegram";
+    readonly Cabinet: "cabinet";
+    readonly Mobile: "mobile";
+};
+export type NotifyHistoryGetListMyV1ChannelEnum = typeof NotifyHistoryGetListMyV1ChannelEnum[keyof typeof NotifyHistoryGetListMyV1ChannelEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getListMy1ChannelEnum {
-    telegram = "telegram",
-    cabinet = "cabinet",
-    mobile = "mobile"
-}
+ * @export
+ */
+export declare const NotifyHistoryGetListMyV1StatusReadEnum: {
+    readonly Unread: "unread";
+    readonly Read: "read";
+};
+export type NotifyHistoryGetListMyV1StatusReadEnum = typeof NotifyHistoryGetListMyV1StatusReadEnum[keyof typeof NotifyHistoryGetListMyV1StatusReadEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getListMy1StatusReadEnum {
-    unread = "unread",
-    read = "read"
-}
+ * @export
+ */
+export declare const NotifyHistoryGetStatusMyV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type NotifyHistoryGetStatusMyV1LanguageEnum = typeof NotifyHistoryGetStatusMyV1LanguageEnum[keyof typeof NotifyHistoryGetStatusMyV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getStatusMy1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const NotifyHistoryGetStatusMyV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type NotifyHistoryGetStatusMyV1VEnum = typeof NotifyHistoryGetStatusMyV1VEnum[keyof typeof NotifyHistoryGetStatusMyV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getStatusMy1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const NotifyHistoryGetV1VEnum: {
+    readonly _1: "1";
+};
+export type NotifyHistoryGetV1VEnum = typeof NotifyHistoryGetV1VEnum[keyof typeof NotifyHistoryGetV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum markOfRead1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const NotifyHistoryMarkOfReadV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type NotifyHistoryMarkOfReadV1LanguageEnum = typeof NotifyHistoryMarkOfReadV1LanguageEnum[keyof typeof NotifyHistoryMarkOfReadV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum markOfRead1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const NotifyHistoryMarkOfReadV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type NotifyHistoryMarkOfReadV1VEnum = typeof NotifyHistoryMarkOfReadV1VEnum[keyof typeof NotifyHistoryMarkOfReadV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum runAction1VEnum {
-    _1 = "1"
-}
+ * @export
+ */
+export declare const NotifyHistoryRunActionV1VEnum: {
+    readonly _1: "1";
+};
+export type NotifyHistoryRunActionV1VEnum = typeof NotifyHistoryRunActionV1VEnum[keyof typeof NotifyHistoryRunActionV1VEnum];
 //# sourceMappingURL=notify-history-api.d.ts.map

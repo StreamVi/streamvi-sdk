@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PullServersApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.PullServersApi = exports.PullServersApiFactory = exports.PullServersApiFp = exports.PullServersApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,7 +27,7 @@ const base_1 = require("../base");
  * PullServersApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const PullServersApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
@@ -35,7 +35,7 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPullServers1: async (options = {}) => {
+        pullServersGetPullServersV1: async (options = {}) => {
             const localVarPath = `/method/pull-servers/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -56,13 +56,13 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.PullServersApiAxiosParamCreator = PullServersApiAxiosParamCreator;
 /**
  * PullServersApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const PullServersApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.PullServersApiAxiosParamCreator)(configuration);
     return {
         /**
          *
@@ -70,22 +70,22 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPullServers1(options) {
+        async pullServersGetPullServersV1(options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPullServers1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.pullServersGetPullServersV1(options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PullServersApi.getPullServers1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PullServersApi.pullServersGetPullServersV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.PullServersApiFp = PullServersApiFp;
 /**
  * PullServersApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const PullServersApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.PullServersApiFp)(configuration);
     return {
         /**
          *
@@ -93,12 +93,12 @@ const factory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPullServers1(options) {
-            return localVarFp.getPullServers1(options).then((request) => request(axios, basePath));
+        pullServersGetPullServersV1(options) {
+            return localVarFp.pullServersGetPullServersV1(options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.PullServersApiFactory = PullServersApiFactory;
 /**
  * PullServersApi - object-oriented interface
  * @export
@@ -113,8 +113,8 @@ class PullServersApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof PullServersApi
      */
-    getPullServers1(options) {
-        return (0, exports.fp)(this.configuration).getPullServers1(options).then((request) => request(this.axios, this.basePath));
+    pullServersGetPullServersV1(options) {
+        return (0, exports.PullServersApiFp)(this.configuration).pullServersGetPullServersV1(options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PullServersApi = PullServersApi;

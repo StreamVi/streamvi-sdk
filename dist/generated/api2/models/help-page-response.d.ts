@@ -45,7 +45,7 @@ export interface HelpPageResponse {
      * @type {string}
      * @memberof HelpPageResponse
      */
-    'status': StatusEnum;
+    'status': HelpPageResponseStatusEnum;
     /**
      * Date last update
      * @type {string}
@@ -75,13 +75,13 @@ export interface HelpPageResponse {
      * @type {string}
      * @memberof HelpPageResponse
      */
-    'language': LanguageEnum;
+    'language': HelpPageResponseLanguageEnum;
     /**
      * Language ISO
      * @type {string}
      * @memberof HelpPageResponse
      */
-    'language_iso': LanguageIsoEnum;
+    'language_iso': HelpPageResponseLanguageIsoEnum;
     /**
      * Text
      * @type {string}
@@ -93,45 +93,33 @@ export interface HelpPageResponse {
      * @type {Array<string>}
      * @memberof HelpPageResponse
      */
-    'alt_languages': Array<AltLanguagesEnum>;
+    'alt_languages': Array<HelpPageResponseAltLanguagesEnum>;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum StatusEnum {
-    None = "None",
-    Backlog = "Backlog",
-    Drafting = "Drafting",
-    Reviewing = "Reviewing",
-    Done = "Done",
-    Published = "Published"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    russian = "russian",
-    english = "english",
-    none = "none"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageIsoEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum AltLanguagesEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const HelpPageResponseStatusEnum: {
+    readonly None: "None";
+    readonly Backlog: "Backlog";
+    readonly Drafting: "Drafting";
+    readonly Reviewing: "Reviewing";
+    readonly Done: "Done";
+    readonly Published: "Published";
+};
+export type HelpPageResponseStatusEnum = typeof HelpPageResponseStatusEnum[keyof typeof HelpPageResponseStatusEnum];
+export declare const HelpPageResponseLanguageEnum: {
+    readonly Russian: "russian";
+    readonly English: "english";
+    readonly None: "none";
+};
+export type HelpPageResponseLanguageEnum = typeof HelpPageResponseLanguageEnum[keyof typeof HelpPageResponseLanguageEnum];
+export declare const HelpPageResponseLanguageIsoEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type HelpPageResponseLanguageIsoEnum = typeof HelpPageResponseLanguageIsoEnum[keyof typeof HelpPageResponseLanguageIsoEnum];
+export declare const HelpPageResponseAltLanguagesEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type HelpPageResponseAltLanguagesEnum = typeof HelpPageResponseAltLanguagesEnum[keyof typeof HelpPageResponseAltLanguagesEnum];
 //# sourceMappingURL=help-page-response.d.ts.map

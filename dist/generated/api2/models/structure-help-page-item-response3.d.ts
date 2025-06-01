@@ -53,7 +53,7 @@ export interface StructureHelpPageItemResponse3 {
      * @type {string}
      * @memberof StructureHelpPageItemResponse3
      */
-    'status': StatusEnum;
+    'status': StructureHelpPageItemResponse3StatusEnum;
     /**
      * Subject
      * @type {Array<StructureHelpPageConnectionsItemLang>}
@@ -79,16 +79,13 @@ export interface StructureHelpPageItemResponse3 {
      */
     'connections': Array<StructureHelpPageConnectionsItemFinal>;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum StatusEnum {
-    None = "None",
-    Backlog = "Backlog",
-    Drafting = "Drafting",
-    Reviewing = "Reviewing",
-    Done = "Done",
-    Published = "Published"
-}
+export declare const StructureHelpPageItemResponse3StatusEnum: {
+    readonly None: "None";
+    readonly Backlog: "Backlog";
+    readonly Drafting: "Drafting";
+    readonly Reviewing: "Reviewing";
+    readonly Done: "Done";
+    readonly Published: "Published";
+};
+export type StructureHelpPageItemResponse3StatusEnum = typeof StructureHelpPageItemResponse3StatusEnum[keyof typeof StructureHelpPageItemResponse3StatusEnum];
 //# sourceMappingURL=structure-help-page-item-response3.d.ts.map

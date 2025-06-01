@@ -44,7 +44,7 @@ export interface PaySystemListResponse {
      * @type {string}
      * @memberof PaySystemListResponse
      */
-    'currency': CurrencyEnum;
+    'currency': PaySystemListResponseCurrencyEnum;
     /**
      * The possibility of annual replenishment
      * @type {number}
@@ -70,12 +70,9 @@ export interface PaySystemListResponse {
      */
     'description': string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum CurrencyEnum {
-    rub = "rub",
-    usd = "usd"
-}
+export declare const PaySystemListResponseCurrencyEnum: {
+    readonly Rub: "rub";
+    readonly Usd: "usd";
+};
+export type PaySystemListResponseCurrencyEnum = typeof PaySystemListResponseCurrencyEnum[keyof typeof PaySystemListResponseCurrencyEnum];
 //# sourceMappingURL=pay-system-list-response.d.ts.map

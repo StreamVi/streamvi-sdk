@@ -21,13 +21,7 @@ export interface SiteScreenNotifyUserResponse {
      * @type {string}
      * @memberof SiteScreenNotifyUserResponse
      */
-    'type': TypeEnum;
-    /**
-     * Text of notify
-     * @type {string}
-     * @memberof SiteScreenNotifyUserResponse
-     */
-    'text': string;
+    'type': SiteScreenNotifyUserResponseTypeEnum;
     /**
      * Title of notify
      * @type {string}
@@ -35,20 +29,23 @@ export interface SiteScreenNotifyUserResponse {
      */
     'title'?: string;
     /**
+     * Text of notify
+     * @type {string}
+     * @memberof SiteScreenNotifyUserResponse
+     */
+    'text': string;
+    /**
      * Array of texts
      * @type {Array<InternalNotifyTypeAction>}
      * @memberof SiteScreenNotifyUserResponse
      */
     'actions'?: Array<InternalNotifyTypeAction>;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TypeEnum {
-    debug = "debug",
-    info = "info",
-    warning = "warning",
-    error = "error"
-}
+export declare const SiteScreenNotifyUserResponseTypeEnum: {
+    readonly Debug: "debug";
+    readonly Info: "info";
+    readonly Warning: "warning";
+    readonly Error: "error";
+};
+export type SiteScreenNotifyUserResponseTypeEnum = typeof SiteScreenNotifyUserResponseTypeEnum[keyof typeof SiteScreenNotifyUserResponseTypeEnum];
 //# sourceMappingURL=site-screen-notify-user-response.d.ts.map

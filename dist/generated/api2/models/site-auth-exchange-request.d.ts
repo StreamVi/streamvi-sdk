@@ -20,13 +20,13 @@ export interface SiteAuthExchangeRequest {
      * @type {string}
      * @memberof SiteAuthExchangeRequest
      */
-    'v': VEnum;
+    'v': SiteAuthExchangeRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteAuthExchangeRequest
      */
-    'language': LanguageEnum;
+    'language': SiteAuthExchangeRequestLanguageEnum;
     /**
      * Auth code for exchange of token
      * @type {string}
@@ -40,44 +40,35 @@ export interface SiteAuthExchangeRequest {
      */
     'userAgent': string;
     /**
-     * App oauth
-     * @type {string}
-     * @memberof SiteAuthExchangeRequest
-     */
-    'app': AppEnum;
-    /**
      * Fingerprint
      * @type {string}
      * @memberof SiteAuthExchangeRequest
      */
     'fingerprint'?: string;
+    /**
+     * App oauth
+     * @type {string}
+     * @memberof SiteAuthExchangeRequest
+     */
+    'app': SiteAuthExchangeRequestAppEnum;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum AppEnum {
-    site = "site",
-    admin = "admin",
-    mobile = "mobile",
-    desktop = "desktop"
-}
+export declare const SiteAuthExchangeRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteAuthExchangeRequestVEnum = typeof SiteAuthExchangeRequestVEnum[keyof typeof SiteAuthExchangeRequestVEnum];
+export declare const SiteAuthExchangeRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteAuthExchangeRequestLanguageEnum = typeof SiteAuthExchangeRequestLanguageEnum[keyof typeof SiteAuthExchangeRequestLanguageEnum];
+export declare const SiteAuthExchangeRequestAppEnum: {
+    readonly Site: "site";
+    readonly Admin: "admin";
+    readonly Mobile: "mobile";
+    readonly Desktop: "desktop";
+};
+export type SiteAuthExchangeRequestAppEnum = typeof SiteAuthExchangeRequestAppEnum[keyof typeof SiteAuthExchangeRequestAppEnum];
 //# sourceMappingURL=site-auth-exchange-request.d.ts.map

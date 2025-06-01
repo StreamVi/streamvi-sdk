@@ -17,48 +17,63 @@ import type { PullServerListResponse } from '../models';
  * PullServersApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const PullServersApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Get pull servers
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPullServers1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    pullServersGetPullServersV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PullServersApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const PullServersApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get pull servers
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPullServers1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PullServerListResponse>>;
+    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PullServerListResponse>>;
 };
 /**
  * PullServersApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const PullServersApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get pull servers
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPullServers1(options?: RawAxiosRequestConfig): AxiosPromise<PullServerListResponse>;
+    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): AxiosPromise<PullServerListResponse>;
 };
+/**
+ * PullServersApi - interface
+ * @export
+ * @interface PullServersApi
+ */
+export interface PullServersApiInterface {
+    /**
+     *
+     * @summary Get pull servers
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PullServersApiInterface
+     */
+    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): AxiosPromise<PullServerListResponse>;
+}
 /**
  * PullServersApi - object-oriented interface
  * @export
  * @class PullServersApi
  * @extends {BaseAPI}
  */
-export declare class PullServersApi extends BaseAPI {
+export declare class PullServersApi extends BaseAPI implements PullServersApiInterface {
     /**
      *
      * @summary Get pull servers
@@ -66,6 +81,6 @@ export declare class PullServersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PullServersApi
      */
-    getPullServers1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PullServerListResponse, any>>;
+    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PullServerListResponse, any>>;
 }
 //# sourceMappingURL=pull-servers-api.d.ts.map

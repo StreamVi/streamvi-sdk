@@ -33,7 +33,7 @@ export interface MoneyFlowResponse {
      * @type {string}
      * @memberof MoneyFlowResponse
      */
-    'currency': CurrencyEnum | null;
+    'currency': MoneyFlowResponseCurrencyEnum | null;
     /**
      * Date
      * @type {string}
@@ -45,7 +45,7 @@ export interface MoneyFlowResponse {
      * @type {string}
      * @memberof MoneyFlowResponse
      */
-    'type': TypeEnum;
+    'type': MoneyFlowResponseTypeEnum;
     /**
      * Current balance before transaction
      * @type {number}
@@ -59,39 +59,33 @@ export interface MoneyFlowResponse {
      */
     'details': MoneyFlowDetails | null;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum CurrencyEnum {
-    rub = "rub",
-    usd = "usd"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TypeEnum {
-    registration_bonus = "registration_bonus",
-    plan_restream_buy = "plan_restream_buy",
-    plan_transcoding_buy = "plan_transcoding_buy",
-    plan_storage_buy = "plan_storage_buy",
-    channel_story_buy = "channel_story_buy",
-    channel_shop_sell = "channel_shop_sell",
-    referral_profit = "referral_profit",
-    payment = "payment",
-    payment_cancel = "payment_cancel",
-    payout = "payout",
-    payout_cancel = "payout_cancel",
-    refund = "refund",
-    conversion = "conversion",
-    withdrawal = "withdrawal",
-    transferred_of_old_site = "transferred_of_old_site",
-    accrued_admin = "accrued_admin",
-    reduced_admin = "reduced_admin",
-    promo_topup_1 = "promo_topup_1",
-    promo_topup_2 = "promo_topup_2",
-    promo_create_plan_restream_1 = "promo_create_plan_restream_1",
-    promo_create_plan_restream_2 = "promo_create_plan_restream_2"
-}
+export declare const MoneyFlowResponseCurrencyEnum: {
+    readonly Rub: "rub";
+    readonly Usd: "usd";
+};
+export type MoneyFlowResponseCurrencyEnum = typeof MoneyFlowResponseCurrencyEnum[keyof typeof MoneyFlowResponseCurrencyEnum];
+export declare const MoneyFlowResponseTypeEnum: {
+    readonly RegistrationBonus: "registration_bonus";
+    readonly PlanRestreamBuy: "plan_restream_buy";
+    readonly PlanTranscodingBuy: "plan_transcoding_buy";
+    readonly PlanStorageBuy: "plan_storage_buy";
+    readonly ChannelStoryBuy: "channel_story_buy";
+    readonly ChannelShopSell: "channel_shop_sell";
+    readonly ReferralProfit: "referral_profit";
+    readonly Payment: "payment";
+    readonly PaymentCancel: "payment_cancel";
+    readonly Payout: "payout";
+    readonly PayoutCancel: "payout_cancel";
+    readonly Refund: "refund";
+    readonly Conversion: "conversion";
+    readonly Withdrawal: "withdrawal";
+    readonly TransferredOfOldSite: "transferred_of_old_site";
+    readonly AccruedAdmin: "accrued_admin";
+    readonly ReducedAdmin: "reduced_admin";
+    readonly PromoTopup1: "promo_topup_1";
+    readonly PromoTopup2: "promo_topup_2";
+    readonly PromoCreatePlanRestream1: "promo_create_plan_restream_1";
+    readonly PromoCreatePlanRestream2: "promo_create_plan_restream_2";
+};
+export type MoneyFlowResponseTypeEnum = typeof MoneyFlowResponseTypeEnum[keyof typeof MoneyFlowResponseTypeEnum];
 //# sourceMappingURL=money-flow-response.d.ts.map

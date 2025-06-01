@@ -13,14 +13,9 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ServerStatusEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var ServerStatusEnum;
-(function (ServerStatusEnum) {
-    ServerStatusEnum["good"] = "good";
-    ServerStatusEnum["problem"] = "problem";
-    ServerStatusEnum["bad"] = "bad";
-})(ServerStatusEnum || (exports.ServerStatusEnum = ServerStatusEnum = {}));
+exports.RtmpServerListItemServerStatusEnum = void 0;
+exports.RtmpServerListItemServerStatusEnum = {
+    Good: 'good',
+    Problem: 'problem',
+    Bad: 'bad'
+};

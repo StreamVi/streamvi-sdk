@@ -1,0 +1,21 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs",
+  "name": "StreamVi SDK",
+  "readme": "README.md",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeExternals": true,
+  "hideGenerator": false,
+  "sort": ["source-order"],
+  "theme": "default",
+  "navigationLinks": {
+    "GitHub": "https://github.com/StreamVi/streamvi-sdk",
+    "API Documentation": "https://dev.streamvi.io"
+  },
+  "sidebarLinks": {
+    "StreamVi API": "https://dev.streamvi.io",
+    "GitHub Repository": "https://github.com/StreamVi/streamvi-sdk"
+  }
+} 

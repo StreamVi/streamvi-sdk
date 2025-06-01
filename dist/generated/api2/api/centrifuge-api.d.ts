@@ -17,18 +17,7 @@ import type { SiteAuthCentrifugeResponse } from '../models';
  * CentrifugeApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
-    /**
-     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
-     * @summary Auth token for broadcast
-     * @param {number} broadcastId
-     * @param {GetTokenBroadcastVEnum} v Version
-     * @param {GetTokenBroadcastLanguageEnum} language Current language
-     * @param {number} projectId Project id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getTokenBroadcast: (broadcastId: number, v: GetTokenBroadcastVEnum, language: GetTokenBroadcastLanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+export declare const CentrifugeApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Auth centrifuge
@@ -36,34 +25,34 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authV21: (projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    centrifugeAuthV2: (projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
      * @summary Auth token for project
-     * @param {project1VEnum} v Version
-     * @param {project1LanguageEnum} language Current language
+     * @param {CentrifugeProjectV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    project1: (v: project1VEnum, language: project1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    centrifugeProjectV1: (language: CentrifugeProjectV1LanguageEnum, projectId: number, v?: CentrifugeProjectV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
+     * @summary Auth token for broadcast
+     * @param {number} broadcastId
+     * @param {GetTokenBroadcastV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTokenBroadcastV1: (broadcastId: number, language: GetTokenBroadcastV1LanguageEnum, projectId: number, v?: GetTokenBroadcastV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * CentrifugeApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
-    /**
-     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
-     * @summary Auth token for broadcast
-     * @param {number} broadcastId
-     * @param {GetTokenBroadcastVEnum} v Version
-     * @param {GetTokenBroadcastLanguageEnum} language Current language
-     * @param {number} projectId Project id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getTokenBroadcast(broadcastId: number, v: GetTokenBroadcastVEnum, language: GetTokenBroadcastLanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
+export declare const CentrifugeApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Auth centrifuge
@@ -71,116 +60,161 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authV21(projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
+    centrifugeAuthV2(projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
     /**
      *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
      * @summary Auth token for project
-     * @param {project1VEnum} v Version
-     * @param {project1LanguageEnum} language Current language
+     * @param {CentrifugeProjectV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    project1(v: project1VEnum, language: project1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
+    centrifugeProjectV1(language: CentrifugeProjectV1LanguageEnum, projectId: number, v?: CentrifugeProjectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
+    /**
+     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
+     * @summary Auth token for broadcast
+     * @param {number} broadcastId
+     * @param {GetTokenBroadcastV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTokenBroadcastV1(broadcastId: number, language: GetTokenBroadcastV1LanguageEnum, projectId: number, v?: GetTokenBroadcastV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
 };
 /**
  * CentrifugeApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
-    /**
-     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
-     * @summary Auth token for broadcast
-     * @param {getTokenBroadcastRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getTokenBroadcast(requestParameters: getTokenBroadcastRequest, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
+export declare const CentrifugeApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Auth centrifuge
-     * @param {authV21Request} requestParameters Request parameters.
+     * @param {CentrifugeApiCentrifugeAuthV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authV21(requestParameters: authV21Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
+    centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
     /**
      *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
      * @summary Auth token for project
-     * @param {project1Request} requestParameters Request parameters.
+     * @param {CentrifugeApiCentrifugeProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    project1(requestParameters: project1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
+    centrifugeProjectV1(requestParameters: CentrifugeApiCentrifugeProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
+    /**
+     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
+     * @summary Auth token for broadcast
+     * @param {CentrifugeApiGetTokenBroadcastV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTokenBroadcastV1(requestParameters: CentrifugeApiGetTokenBroadcastV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
 };
 /**
- * Request parameters for getTokenBroadcast operation in CentrifugeApi.
+ * CentrifugeApi - interface
  * @export
- * @interface getTokenBroadcastRequest
+ * @interface CentrifugeApi
  */
-export interface getTokenBroadcastRequest {
+export interface CentrifugeApiInterface {
+    /**
+     *
+     * @summary Auth centrifuge
+     * @param {CentrifugeApiCentrifugeAuthV2Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApiInterface
+     */
+    centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
+    /**
+     *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
+     * @summary Auth token for project
+     * @param {CentrifugeApiCentrifugeProjectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApiInterface
+     */
+    centrifugeProjectV1(requestParameters: CentrifugeApiCentrifugeProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
+    /**
+     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
+     * @summary Auth token for broadcast
+     * @param {CentrifugeApiGetTokenBroadcastV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApiInterface
+     */
+    getTokenBroadcastV1(requestParameters: CentrifugeApiGetTokenBroadcastV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
+}
+/**
+ * Request parameters for centrifugeAuthV2 operation in CentrifugeApi.
+ * @export
+ * @interface CentrifugeApiCentrifugeAuthV2Request
+ */
+export interface CentrifugeApiCentrifugeAuthV2Request {
+    /**
+     * Project id
+     * @type {number}
+     * @memberof CentrifugeApiCentrifugeAuthV2
+     */
+    readonly projectId: number;
+}
+/**
+ * Request parameters for centrifugeProjectV1 operation in CentrifugeApi.
+ * @export
+ * @interface CentrifugeApiCentrifugeProjectV1Request
+ */
+export interface CentrifugeApiCentrifugeProjectV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof CentrifugeApiCentrifugeProjectV1
+     */
+    readonly language: CentrifugeProjectV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof CentrifugeApiCentrifugeProjectV1
+     */
+    readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof CentrifugeApiCentrifugeProjectV1
+     */
+    readonly v?: CentrifugeProjectV1VEnum;
+}
+/**
+ * Request parameters for getTokenBroadcastV1 operation in CentrifugeApi.
+ * @export
+ * @interface CentrifugeApiGetTokenBroadcastV1Request
+ */
+export interface CentrifugeApiGetTokenBroadcastV1Request {
     /**
      *
      * @type {number}
-     * @memberof getTokenBroadcast
+     * @memberof CentrifugeApiGetTokenBroadcastV1
      */
     readonly broadcastId: number;
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getTokenBroadcast
-     */
-    readonly v: GetTokenBroadcastVEnum;
-    /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getTokenBroadcast
+     * @memberof CentrifugeApiGetTokenBroadcastV1
      */
-    readonly language: GetTokenBroadcastLanguageEnum;
+    readonly language: GetTokenBroadcastV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof getTokenBroadcast
+     * @memberof CentrifugeApiGetTokenBroadcastV1
      */
     readonly projectId: number;
-}
-/**
- * Request parameters for authV21 operation in CentrifugeApi.
- * @export
- * @interface authV21Request
- */
-export interface authV21Request {
     /**
-     * Project id
-     * @type {number}
-     * @memberof authV21
-     */
-    readonly projectId: number;
-}
-/**
- * Request parameters for project1 operation in CentrifugeApi.
- * @export
- * @interface project1Request
- */
-export interface project1Request {
-    /**
-     * Version
+     * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
-     * @memberof project1
+     * @memberof CentrifugeApiGetTokenBroadcastV1
      */
-    readonly v?: project1VEnum;
-    /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof project1
-     */
-    readonly language: project1LanguageEnum;
-    /**
-     * Project id
-     * @type {number}
-     * @memberof project1
-     */
-    readonly projectId: number;
+    readonly v?: GetTokenBroadcastV1VEnum;
 }
 /**
  * CentrifugeApi - object-oriented interface
@@ -188,69 +222,69 @@ export interface project1Request {
  * @class CentrifugeApi
  * @extends {BaseAPI}
  */
-export declare class CentrifugeApi extends BaseAPI {
-    /**
-     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
-     * @summary Auth token for broadcast
-     * @param {getTokenBroadcastRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CentrifugeApi
-     */
-    getTokenBroadcast(requestParameters: getTokenBroadcastRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any>>;
+export declare class CentrifugeApi extends BaseAPI implements CentrifugeApiInterface {
     /**
      *
      * @summary Auth centrifuge
-     * @param {authV21Request} requestParameters Request parameters.
+     * @param {CentrifugeApiCentrifugeAuthV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
-    authV21(requestParameters: authV21Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any>>;
+    centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any>>;
     /**
      *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
      * @summary Auth token for project
-     * @param {project1Request} requestParameters Request parameters.
+     * @param {CentrifugeApiCentrifugeProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
-    project1(requestParameters: project1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any>>;
+    centrifugeProjectV1(requestParameters: CentrifugeApiCentrifugeProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any>>;
+    /**
+     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
+     * @summary Auth token for broadcast
+     * @param {CentrifugeApiGetTokenBroadcastV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApi
+     */
+    getTokenBroadcastV1(requestParameters: CentrifugeApiGetTokenBroadcastV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum GetTokenBroadcastVEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const CentrifugeProjectV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type CentrifugeProjectV1LanguageEnum = typeof CentrifugeProjectV1LanguageEnum[keyof typeof CentrifugeProjectV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum GetTokenBroadcastLanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const CentrifugeProjectV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type CentrifugeProjectV1VEnum = typeof CentrifugeProjectV1VEnum[keyof typeof CentrifugeProjectV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum project1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const GetTokenBroadcastV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type GetTokenBroadcastV1LanguageEnum = typeof GetTokenBroadcastV1LanguageEnum[keyof typeof GetTokenBroadcastV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum project1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const GetTokenBroadcastV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type GetTokenBroadcastV1VEnum = typeof GetTokenBroadcastV1VEnum[keyof typeof GetTokenBroadcastV1VEnum];
 //# sourceMappingURL=centrifuge-api.d.ts.map

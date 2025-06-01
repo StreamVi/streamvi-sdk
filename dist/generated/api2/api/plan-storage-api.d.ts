@@ -21,345 +21,406 @@ import type { SuccessResponse } from '../models';
  * PlanStorageApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const PlanStorageApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Buy storage tariff
-     * @param {buy1VEnum} v Version
-     * @param {buy1LanguageEnum} language Current language
+     * @param {PlanStorageBuyV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {buy1PeriodEnum} period Period
+     * @param {PlanStorageBuyV1PeriodEnum} period Period
      * @param {number} planStorageId Storage plan id
+     * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number} [size] Size
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    buy1: (v: buy1VEnum, language: buy1LanguageEnum, projectId: number, period: buy1PeriodEnum, planStorageId: number, size?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planStorageBuyV1: (language: PlanStorageBuyV1LanguageEnum, projectId: number, period: PlanStorageBuyV1PeriodEnum, planStorageId: number, v?: PlanStorageBuyV1VEnum, size?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Remove next tariff
-     * @param {cancel1VEnum} v Version
-     * @param {cancel1LanguageEnum} language Current language
+     * @param {PlanStorageCancelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cancel1: (v: cancel1VEnum, language: cancel1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planStorageCancelV1: (language: PlanStorageCancelV1LanguageEnum, projectId: number, v?: PlanStorageCancelV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Check storage tariff before buy
-     * @param {check1VEnum} v Version
-     * @param {check1LanguageEnum} language Current language
+     * @param {PlanStorageCheckV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    check1: (v: check1VEnum, language: check1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planStorageCheckV1: (language: PlanStorageCheckV1LanguageEnum, projectId: number, v?: PlanStorageCheckV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get discount of storage
-     * @param {getDiscount1VEnum} v Version
-     * @param {getDiscount1LanguageEnum} language Current language
+     * @param {PlanStorageGetDiscountV1LanguageEnum} language Current language
+     * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getDiscount1: (v: getDiscount1VEnum, language: getDiscount1LanguageEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planStorageGetDiscountV1: (language: PlanStorageGetDiscountV1LanguageEnum, v?: PlanStorageGetDiscountV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get info for storage tariff
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {PlanStorageListV1LanguageEnum} language Current language
+     * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1: (v: list1VEnum, language: list1LanguageEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planStorageListV1: (language: PlanStorageListV1LanguageEnum, v?: PlanStorageListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get tariff for project
-     * @param {tariff1VEnum} v Version
-     * @param {tariff1LanguageEnum} language Current language
+     * @param {PlanStorageTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tariff1: (v: tariff1VEnum, language: tariff1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    planStorageTariffV1: (language: PlanStorageTariffV1LanguageEnum, projectId: number, v?: PlanStorageTariffV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PlanStorageApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const PlanStorageApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Buy storage tariff
-     * @param {buy1VEnum} v Version
-     * @param {buy1LanguageEnum} language Current language
+     * @param {PlanStorageBuyV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {buy1PeriodEnum} period Period
+     * @param {PlanStorageBuyV1PeriodEnum} period Period
      * @param {number} planStorageId Storage plan id
+     * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {number} [size] Size
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    buy1(v: buy1VEnum, language: buy1LanguageEnum, projectId: number, period: buy1PeriodEnum, planStorageId: number, size?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    planStorageBuyV1(language: PlanStorageBuyV1LanguageEnum, projectId: number, period: PlanStorageBuyV1PeriodEnum, planStorageId: number, v?: PlanStorageBuyV1VEnum, size?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Remove next tariff
-     * @param {cancel1VEnum} v Version
-     * @param {cancel1LanguageEnum} language Current language
+     * @param {PlanStorageCancelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cancel1(v: cancel1VEnum, language: cancel1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    planStorageCancelV1(language: PlanStorageCancelV1LanguageEnum, projectId: number, v?: PlanStorageCancelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Check storage tariff before buy
-     * @param {check1VEnum} v Version
-     * @param {check1LanguageEnum} language Current language
+     * @param {PlanStorageCheckV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    check1(v: check1VEnum, language: check1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageCheckResponse>>;
+    planStorageCheckV1(language: PlanStorageCheckV1LanguageEnum, projectId: number, v?: PlanStorageCheckV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageCheckResponse>>;
     /**
      *
      * @summary Get discount of storage
-     * @param {getDiscount1VEnum} v Version
-     * @param {getDiscount1LanguageEnum} language Current language
+     * @param {PlanStorageGetDiscountV1LanguageEnum} language Current language
+     * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getDiscount1(v: getDiscount1VEnum, language: getDiscount1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageDiscountResponse>>;
+    planStorageGetDiscountV1(language: PlanStorageGetDiscountV1LanguageEnum, v?: PlanStorageGetDiscountV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageDiscountResponse>>;
     /**
      *
      * @summary Get info for storage tariff
-     * @param {list1VEnum} v Version
-     * @param {list1LanguageEnum} language Current language
+     * @param {PlanStorageListV1LanguageEnum} language Current language
+     * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(v: list1VEnum, language: list1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageResponseDto>>;
+    planStorageListV1(language: PlanStorageListV1LanguageEnum, v?: PlanStorageListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageResponseDto>>;
     /**
      *
      * @summary Get tariff for project
-     * @param {tariff1VEnum} v Version
-     * @param {tariff1LanguageEnum} language Current language
+     * @param {PlanStorageTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tariff1(v: tariff1VEnum, language: tariff1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageForProject>>;
+    planStorageTariffV1(language: PlanStorageTariffV1LanguageEnum, projectId: number, v?: PlanStorageTariffV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageForProject>>;
 };
 /**
  * PlanStorageApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const PlanStorageApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Buy storage tariff
-     * @param {buy1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    buy1(requestParameters: buy1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Remove next tariff
-     * @param {cancel1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cancel1(requestParameters: cancel1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Check storage tariff before buy
-     * @param {check1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    check1(requestParameters: check1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageCheckResponse>;
+    planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageCheckResponse>;
     /**
      *
      * @summary Get discount of storage
-     * @param {getDiscount1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getDiscount1(requestParameters: getDiscount1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageDiscountResponse>;
+    planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageDiscountResponse>;
     /**
      *
      * @summary Get info for storage tariff
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageResponseDto>;
+    planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageResponseDto>;
     /**
      *
      * @summary Get tariff for project
-     * @param {tariff1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tariff1(requestParameters: tariff1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageForProject>;
+    planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageForProject>;
 };
 /**
- * Request parameters for buy1 operation in PlanStorageApi.
+ * PlanStorageApi - interface
  * @export
- * @interface buy1Request
+ * @interface PlanStorageApi
  */
-export interface buy1Request {
+export interface PlanStorageApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof buy1
+     *
+     * @summary Buy storage tariff
+     * @param {PlanStorageApiPlanStorageBuyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
      */
-    readonly v?: buy1VEnum;
+    planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Remove next tariff
+     * @param {PlanStorageApiPlanStorageCancelV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
+     */
+    planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Check storage tariff before buy
+     * @param {PlanStorageApiPlanStorageCheckV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
+     */
+    planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageCheckResponse>;
+    /**
+     *
+     * @summary Get discount of storage
+     * @param {PlanStorageApiPlanStorageGetDiscountV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
+     */
+    planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageDiscountResponse>;
+    /**
+     *
+     * @summary Get info for storage tariff
+     * @param {PlanStorageApiPlanStorageListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
+     */
+    planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageResponseDto>;
+    /**
+     *
+     * @summary Get tariff for project
+     * @param {PlanStorageApiPlanStorageTariffV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApiInterface
+     */
+    planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageForProject>;
+}
+/**
+ * Request parameters for planStorageBuyV1 operation in PlanStorageApi.
+ * @export
+ * @interface PlanStorageApiPlanStorageBuyV1Request
+ */
+export interface PlanStorageApiPlanStorageBuyV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof buy1
+     * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly language: buy1LanguageEnum;
+    readonly language: PlanStorageBuyV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof buy1
+     * @memberof PlanStorageApiPlanStorageBuyV1
      */
     readonly projectId: number;
     /**
      * Period
      * @type {'month' | 'year'}
-     * @memberof buy1
+     * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly period: buy1PeriodEnum;
+    readonly period: PlanStorageBuyV1PeriodEnum;
     /**
      * Storage plan id
      * @type {number}
-     * @memberof buy1
+     * @memberof PlanStorageApiPlanStorageBuyV1
      */
     readonly planStorageId: number;
     /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageBuyV1
+     */
+    readonly v?: PlanStorageBuyV1VEnum;
+    /**
      * Size
      * @type {number}
-     * @memberof buy1
+     * @memberof PlanStorageApiPlanStorageBuyV1
      */
     readonly size?: number;
 }
 /**
- * Request parameters for cancel1 operation in PlanStorageApi.
+ * Request parameters for planStorageCancelV1 operation in PlanStorageApi.
  * @export
- * @interface cancel1Request
+ * @interface PlanStorageApiPlanStorageCancelV1Request
  */
-export interface cancel1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof cancel1
-     */
-    readonly v?: cancel1VEnum;
+export interface PlanStorageApiPlanStorageCancelV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof cancel1
+     * @memberof PlanStorageApiPlanStorageCancelV1
      */
-    readonly language: cancel1LanguageEnum;
+    readonly language: PlanStorageCancelV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof cancel1
+     * @memberof PlanStorageApiPlanStorageCancelV1
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageCancelV1
+     */
+    readonly v?: PlanStorageCancelV1VEnum;
 }
 /**
- * Request parameters for check1 operation in PlanStorageApi.
+ * Request parameters for planStorageCheckV1 operation in PlanStorageApi.
  * @export
- * @interface check1Request
+ * @interface PlanStorageApiPlanStorageCheckV1Request
  */
-export interface check1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof check1
-     */
-    readonly v?: check1VEnum;
+export interface PlanStorageApiPlanStorageCheckV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof check1
+     * @memberof PlanStorageApiPlanStorageCheckV1
      */
-    readonly language: check1LanguageEnum;
+    readonly language: PlanStorageCheckV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof check1
+     * @memberof PlanStorageApiPlanStorageCheckV1
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageCheckV1
+     */
+    readonly v?: PlanStorageCheckV1VEnum;
 }
 /**
- * Request parameters for getDiscount1 operation in PlanStorageApi.
+ * Request parameters for planStorageGetDiscountV1 operation in PlanStorageApi.
  * @export
- * @interface getDiscount1Request
+ * @interface PlanStorageApiPlanStorageGetDiscountV1Request
  */
-export interface getDiscount1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getDiscount1
-     */
-    readonly v?: getDiscount1VEnum;
+export interface PlanStorageApiPlanStorageGetDiscountV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getDiscount1
+     * @memberof PlanStorageApiPlanStorageGetDiscountV1
      */
-    readonly language: getDiscount1LanguageEnum;
+    readonly language: PlanStorageGetDiscountV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageGetDiscountV1
+     */
+    readonly v?: PlanStorageGetDiscountV1VEnum;
 }
 /**
- * Request parameters for list1 operation in PlanStorageApi.
+ * Request parameters for planStorageListV1 operation in PlanStorageApi.
  * @export
- * @interface list1Request
+ * @interface PlanStorageApiPlanStorageListV1Request
  */
-export interface list1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof list1
-     */
-    readonly v?: list1VEnum;
+export interface PlanStorageApiPlanStorageListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof list1
+     * @memberof PlanStorageApiPlanStorageListV1
      */
-    readonly language: list1LanguageEnum;
+    readonly language: PlanStorageListV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageListV1
+     */
+    readonly v?: PlanStorageListV1VEnum;
 }
 /**
- * Request parameters for tariff1 operation in PlanStorageApi.
+ * Request parameters for planStorageTariffV1 operation in PlanStorageApi.
  * @export
- * @interface tariff1Request
+ * @interface PlanStorageApiPlanStorageTariffV1Request
  */
-export interface tariff1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof tariff1
-     */
-    readonly v?: tariff1VEnum;
+export interface PlanStorageApiPlanStorageTariffV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof tariff1
+     * @memberof PlanStorageApiPlanStorageTariffV1
      */
-    readonly language: tariff1LanguageEnum;
+    readonly language: PlanStorageTariffV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof tariff1
+     * @memberof PlanStorageApiPlanStorageTariffV1
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlanStorageApiPlanStorageTariffV1
+     */
+    readonly v?: PlanStorageTariffV1VEnum;
 }
 /**
  * PlanStorageApi - object-oriented interface
@@ -367,176 +428,176 @@ export interface tariff1Request {
  * @class PlanStorageApi
  * @extends {BaseAPI}
  */
-export declare class PlanStorageApi extends BaseAPI {
+export declare class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
     /**
      *
      * @summary Buy storage tariff
-     * @param {buy1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    buy1(requestParameters: buy1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Remove next tariff
-     * @param {cancel1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    cancel1(requestParameters: cancel1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Check storage tariff before buy
-     * @param {check1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    check1(requestParameters: check1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageCheckResponse, any>>;
+    planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageCheckResponse, any>>;
     /**
      *
      * @summary Get discount of storage
-     * @param {getDiscount1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    getDiscount1(requestParameters: getDiscount1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageDiscountResponse, any>>;
+    planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageDiscountResponse, any>>;
     /**
      *
      * @summary Get info for storage tariff
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    list1(requestParameters: list1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageResponseDto, any>>;
+    planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageResponseDto, any>>;
     /**
      *
      * @summary Get tariff for project
-     * @param {tariff1Request} requestParameters Request parameters.
+     * @param {PlanStorageApiPlanStorageTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    tariff1(requestParameters: tariff1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageForProject, any>>;
+    planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageForProject, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum buy1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanStorageBuyV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanStorageBuyV1LanguageEnum = typeof PlanStorageBuyV1LanguageEnum[keyof typeof PlanStorageBuyV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum buy1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanStorageBuyV1PeriodEnum: {
+    readonly Month: "month";
+    readonly Year: "year";
+};
+export type PlanStorageBuyV1PeriodEnum = typeof PlanStorageBuyV1PeriodEnum[keyof typeof PlanStorageBuyV1PeriodEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum buy1PeriodEnum {
-    month = "month",
-    year = "year"
-}
+ * @export
+ */
+export declare const PlanStorageBuyV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanStorageBuyV1VEnum = typeof PlanStorageBuyV1VEnum[keyof typeof PlanStorageBuyV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum cancel1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanStorageCancelV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanStorageCancelV1LanguageEnum = typeof PlanStorageCancelV1LanguageEnum[keyof typeof PlanStorageCancelV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum cancel1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanStorageCancelV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanStorageCancelV1VEnum = typeof PlanStorageCancelV1VEnum[keyof typeof PlanStorageCancelV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum check1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanStorageCheckV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanStorageCheckV1LanguageEnum = typeof PlanStorageCheckV1LanguageEnum[keyof typeof PlanStorageCheckV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum check1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanStorageCheckV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanStorageCheckV1VEnum = typeof PlanStorageCheckV1VEnum[keyof typeof PlanStorageCheckV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getDiscount1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanStorageGetDiscountV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanStorageGetDiscountV1LanguageEnum = typeof PlanStorageGetDiscountV1LanguageEnum[keyof typeof PlanStorageGetDiscountV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getDiscount1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanStorageGetDiscountV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanStorageGetDiscountV1VEnum = typeof PlanStorageGetDiscountV1VEnum[keyof typeof PlanStorageGetDiscountV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanStorageListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanStorageListV1LanguageEnum = typeof PlanStorageListV1LanguageEnum[keyof typeof PlanStorageListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum list1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanStorageListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanStorageListV1VEnum = typeof PlanStorageListV1VEnum[keyof typeof PlanStorageListV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum tariff1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlanStorageTariffV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanStorageTariffV1LanguageEnum = typeof PlanStorageTariffV1LanguageEnum[keyof typeof PlanStorageTariffV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum tariff1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlanStorageTariffV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlanStorageTariffV1VEnum = typeof PlanStorageTariffV1VEnum[keyof typeof PlanStorageTariffV1VEnum];
 //# sourceMappingURL=plan-storage-api.d.ts.map

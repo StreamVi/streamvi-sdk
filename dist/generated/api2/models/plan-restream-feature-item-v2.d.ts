@@ -27,7 +27,7 @@ export interface PlanRestreamFeatureItemV2 {
      * @type {string}
      * @memberof PlanRestreamFeatureItemV2
      */
-    'type': TypeEnum;
+    'type': PlanRestreamFeatureItemV2TypeEnum;
     /**
      *
      * @type {PlanRestreamFeatureItemV2Value}
@@ -47,13 +47,10 @@ export interface PlanRestreamFeatureItemV2 {
      */
     'unit'?: string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TypeEnum {
-    string = "string",
-    number = "number",
-    boolean = "boolean"
-}
+export declare const PlanRestreamFeatureItemV2TypeEnum: {
+    readonly String: "string";
+    readonly Number: "number";
+    readonly Boolean: "boolean";
+};
+export type PlanRestreamFeatureItemV2TypeEnum = typeof PlanRestreamFeatureItemV2TypeEnum[keyof typeof PlanRestreamFeatureItemV2TypeEnum];
 //# sourceMappingURL=plan-restream-feature-item-v2.d.ts.map

@@ -20,31 +20,19 @@ export interface SiteTranscoderCreateDto {
      * @type {string}
      * @memberof SiteTranscoderCreateDto
      */
-    'v': VEnum;
+    'v': SiteTranscoderCreateDtoVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteTranscoderCreateDto
      */
-    'language': LanguageEnum;
+    'language': SiteTranscoderCreateDtoLanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof SiteTranscoderCreateDto
      */
     'project_id': number;
-    /**
-     * Name
-     * @type {string}
-     * @memberof SiteTranscoderCreateDto
-     */
-    'name': string;
-    /**
-     * Video codec id
-     * @type {number}
-     * @memberof SiteTranscoderCreateDto
-     */
-    'videoCodecId': number;
     /**
      * Width
      * @type {number}
@@ -76,6 +64,12 @@ export interface SiteTranscoderCreateDto {
      */
     'aBitrate'?: number;
     /**
+     * Name
+     * @type {string}
+     * @memberof SiteTranscoderCreateDto
+     */
+    'name': string;
+    /**
      * Rotation
      * @type {number}
      * @memberof SiteTranscoderCreateDto
@@ -93,23 +87,23 @@ export interface SiteTranscoderCreateDto {
      * @memberof SiteTranscoderCreateDto
      */
     'channelIds'?: number;
+    /**
+     * Video codec id
+     * @type {number}
+     * @memberof SiteTranscoderCreateDto
+     */
+    'videoCodecId': number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const SiteTranscoderCreateDtoVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteTranscoderCreateDtoVEnum = typeof SiteTranscoderCreateDtoVEnum[keyof typeof SiteTranscoderCreateDtoVEnum];
+export declare const SiteTranscoderCreateDtoLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteTranscoderCreateDtoLanguageEnum = typeof SiteTranscoderCreateDtoLanguageEnum[keyof typeof SiteTranscoderCreateDtoLanguageEnum];
 //# sourceMappingURL=site-transcoder-create-dto.d.ts.map

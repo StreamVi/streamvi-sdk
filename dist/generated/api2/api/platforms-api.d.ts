@@ -18,247 +18,290 @@ import type { SitePlatformsSupportedResponse } from '../models';
  * PlatformsApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const PlatformsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Get url for start oauth
-     * @param {addAccount1VEnum} v Version
-     * @param {addAccount1LanguageEnum} language Current language
+     * @param {PlatformsAddAccountV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {addAccount1PlatformEnum} platform Provider oauth
+     * @param {PlatformsAddAccountV1PlatformEnum} platform Provider oauth
+     * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addAccount1: (v: addAccount1VEnum, language: addAccount1LanguageEnum, projectId: number, platform: addAccount1PlatformEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    platformsAddAccountV1: (language: PlatformsAddAccountV1LanguageEnum, projectId: number, platform: PlatformsAddAccountV1PlatformEnum, v?: PlatformsAddAccountV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get category from the platform
-     * @param {getCategory1VEnum} v Version
-     * @param {getCategory1LanguageEnum} language Current language
-     * @param {getCategory1TypeEnum} type Category search bar
+     * @param {PlatformsGetCategoryV1LanguageEnum} language Current language
+     * @param {PlatformsGetCategoryV1TypeEnum} type Category search bar
+     * @param {PlatformsGetCategoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {string} [q] Category search bar
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCategory1: (v: getCategory1VEnum, language: getCategory1LanguageEnum, type: getCategory1TypeEnum, q?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    platformsGetCategoryV1: (language: PlatformsGetCategoryV1LanguageEnum, type: PlatformsGetCategoryV1TypeEnum, v?: PlatformsGetCategoryV1VEnum, q?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get category from the platform
-     * @param {logoutAccount1VEnum} v Version
-     * @param {logoutAccount1LanguageEnum} language Current language
+     * @param {PlatformsLogoutAccountV1LanguageEnum} language Current language
      * @param {string} id Category search bar
-     * @param {logoutAccount1PlatformEnum} platform Provider oauth
+     * @param {PlatformsLogoutAccountV1PlatformEnum} platform Provider oauth
+     * @param {PlatformsLogoutAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    logoutAccount1: (v: logoutAccount1VEnum, language: logoutAccount1LanguageEnum, id: string, platform: logoutAccount1PlatformEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    platformsLogoutAccountV1: (language: PlatformsLogoutAccountV1LanguageEnum, id: string, platform: PlatformsLogoutAccountV1PlatformEnum, v?: PlatformsLogoutAccountV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Supported platforms
-     * @param {platformList1VEnum} v Version
-     * @param {platformList1LanguageEnum} language Current language
+     * @param {PlatformsPlatformListV1LanguageEnum} language Current language
+     * @param {PlatformsPlatformListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    platformList1: (v: platformList1VEnum, language: platformList1LanguageEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    platformsPlatformListV1: (language: PlatformsPlatformListV1LanguageEnum, v?: PlatformsPlatformListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PlatformsApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const PlatformsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get url for start oauth
-     * @param {addAccount1VEnum} v Version
-     * @param {addAccount1LanguageEnum} language Current language
+     * @param {PlatformsAddAccountV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {addAccount1PlatformEnum} platform Provider oauth
+     * @param {PlatformsAddAccountV1PlatformEnum} platform Provider oauth
+     * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addAccount1(v: addAccount1VEnum, language: addAccount1LanguageEnum, projectId: number, platform: addAccount1PlatformEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    platformsAddAccountV1(language: PlatformsAddAccountV1LanguageEnum, projectId: number, platform: PlatformsAddAccountV1PlatformEnum, v?: PlatformsAddAccountV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Get category from the platform
-     * @param {getCategory1VEnum} v Version
-     * @param {getCategory1LanguageEnum} language Current language
-     * @param {getCategory1TypeEnum} type Category search bar
+     * @param {PlatformsGetCategoryV1LanguageEnum} language Current language
+     * @param {PlatformsGetCategoryV1TypeEnum} type Category search bar
+     * @param {PlatformsGetCategoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {string} [q] Category search bar
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCategory1(v: getCategory1VEnum, language: getCategory1LanguageEnum, type: getCategory1TypeEnum, q?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfCategoryItemResponse>>;
+    platformsGetCategoryV1(language: PlatformsGetCategoryV1LanguageEnum, type: PlatformsGetCategoryV1TypeEnum, v?: PlatformsGetCategoryV1VEnum, q?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfCategoryItemResponse>>;
     /**
      *
      * @summary Get category from the platform
-     * @param {logoutAccount1VEnum} v Version
-     * @param {logoutAccount1LanguageEnum} language Current language
+     * @param {PlatformsLogoutAccountV1LanguageEnum} language Current language
      * @param {string} id Category search bar
-     * @param {logoutAccount1PlatformEnum} platform Provider oauth
+     * @param {PlatformsLogoutAccountV1PlatformEnum} platform Provider oauth
+     * @param {PlatformsLogoutAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    logoutAccount1(v: logoutAccount1VEnum, language: logoutAccount1LanguageEnum, id: string, platform: logoutAccount1PlatformEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfCategoryItemResponse>>;
+    platformsLogoutAccountV1(language: PlatformsLogoutAccountV1LanguageEnum, id: string, platform: PlatformsLogoutAccountV1PlatformEnum, v?: PlatformsLogoutAccountV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfCategoryItemResponse>>;
     /**
      *
      * @summary Supported platforms
-     * @param {platformList1VEnum} v Version
-     * @param {platformList1LanguageEnum} language Current language
+     * @param {PlatformsPlatformListV1LanguageEnum} language Current language
+     * @param {PlatformsPlatformListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    platformList1(v: platformList1VEnum, language: platformList1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlatformsSupportedResponse>>;
+    platformsPlatformListV1(language: PlatformsPlatformListV1LanguageEnum, v?: PlatformsPlatformListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlatformsSupportedResponse>>;
 };
 /**
  * PlatformsApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const PlatformsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get url for start oauth
-     * @param {addAccount1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsAddAccountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addAccount1(requestParameters: addAccount1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    platformsAddAccountV1(requestParameters: PlatformsApiPlatformsAddAccountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
      *
      * @summary Get category from the platform
-     * @param {getCategory1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsGetCategoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCategory1(requestParameters: getCategory1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse>;
+    platformsGetCategoryV1(requestParameters: PlatformsApiPlatformsGetCategoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse>;
     /**
      *
      * @summary Get category from the platform
-     * @param {logoutAccount1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsLogoutAccountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    logoutAccount1(requestParameters: logoutAccount1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse>;
+    platformsLogoutAccountV1(requestParameters: PlatformsApiPlatformsLogoutAccountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse>;
     /**
      *
      * @summary Supported platforms
-     * @param {platformList1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsPlatformListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    platformList1(requestParameters: platformList1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlatformsSupportedResponse>;
+    platformsPlatformListV1(requestParameters: PlatformsApiPlatformsPlatformListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlatformsSupportedResponse>;
 };
 /**
- * Request parameters for addAccount1 operation in PlatformsApi.
+ * PlatformsApi - interface
  * @export
- * @interface addAccount1Request
+ * @interface PlatformsApi
  */
-export interface addAccount1Request {
+export interface PlatformsApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof addAccount1
+     *
+     * @summary Get url for start oauth
+     * @param {PlatformsApiPlatformsAddAccountV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApiInterface
      */
-    readonly v?: addAccount1VEnum;
+    platformsAddAccountV1(requestParameters: PlatformsApiPlatformsAddAccountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     *
+     * @summary Get category from the platform
+     * @param {PlatformsApiPlatformsGetCategoryV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApiInterface
+     */
+    platformsGetCategoryV1(requestParameters: PlatformsApiPlatformsGetCategoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse>;
+    /**
+     *
+     * @summary Get category from the platform
+     * @param {PlatformsApiPlatformsLogoutAccountV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApiInterface
+     */
+    platformsLogoutAccountV1(requestParameters: PlatformsApiPlatformsLogoutAccountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfCategoryItemResponse>;
+    /**
+     *
+     * @summary Supported platforms
+     * @param {PlatformsApiPlatformsPlatformListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApiInterface
+     */
+    platformsPlatformListV1(requestParameters: PlatformsApiPlatformsPlatformListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlatformsSupportedResponse>;
+}
+/**
+ * Request parameters for platformsAddAccountV1 operation in PlatformsApi.
+ * @export
+ * @interface PlatformsApiPlatformsAddAccountV1Request
+ */
+export interface PlatformsApiPlatformsAddAccountV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof addAccount1
+     * @memberof PlatformsApiPlatformsAddAccountV1
      */
-    readonly language: addAccount1LanguageEnum;
+    readonly language: PlatformsAddAccountV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof addAccount1
+     * @memberof PlatformsApiPlatformsAddAccountV1
      */
     readonly projectId: number;
     /**
      * Provider oauth
      * @type {'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch'}
-     * @memberof addAccount1
+     * @memberof PlatformsApiPlatformsAddAccountV1
      */
-    readonly platform: addAccount1PlatformEnum;
+    readonly platform: PlatformsAddAccountV1PlatformEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlatformsApiPlatformsAddAccountV1
+     */
+    readonly v?: PlatformsAddAccountV1VEnum;
 }
 /**
- * Request parameters for getCategory1 operation in PlatformsApi.
+ * Request parameters for platformsGetCategoryV1 operation in PlatformsApi.
  * @export
- * @interface getCategory1Request
+ * @interface PlatformsApiPlatformsGetCategoryV1Request
  */
-export interface getCategory1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getCategory1
-     */
-    readonly v?: getCategory1VEnum;
+export interface PlatformsApiPlatformsGetCategoryV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getCategory1
+     * @memberof PlatformsApiPlatformsGetCategoryV1
      */
-    readonly language: getCategory1LanguageEnum;
+    readonly language: PlatformsGetCategoryV1LanguageEnum;
     /**
      * Category search bar
      * @type {'vk' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'}
-     * @memberof getCategory1
+     * @memberof PlatformsApiPlatformsGetCategoryV1
      */
-    readonly type: getCategory1TypeEnum;
+    readonly type: PlatformsGetCategoryV1TypeEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlatformsApiPlatformsGetCategoryV1
+     */
+    readonly v?: PlatformsGetCategoryV1VEnum;
     /**
      * Category search bar
      * @type {string}
-     * @memberof getCategory1
+     * @memberof PlatformsApiPlatformsGetCategoryV1
      */
     readonly q?: string;
 }
 /**
- * Request parameters for logoutAccount1 operation in PlatformsApi.
+ * Request parameters for platformsLogoutAccountV1 operation in PlatformsApi.
  * @export
- * @interface logoutAccount1Request
+ * @interface PlatformsApiPlatformsLogoutAccountV1Request
  */
-export interface logoutAccount1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof logoutAccount1
-     */
-    readonly v?: logoutAccount1VEnum;
+export interface PlatformsApiPlatformsLogoutAccountV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof logoutAccount1
+     * @memberof PlatformsApiPlatformsLogoutAccountV1
      */
-    readonly language: logoutAccount1LanguageEnum;
+    readonly language: PlatformsLogoutAccountV1LanguageEnum;
     /**
      * Category search bar
      * @type {string}
-     * @memberof logoutAccount1
+     * @memberof PlatformsApiPlatformsLogoutAccountV1
      */
     readonly id: string;
     /**
      * Provider oauth
      * @type {'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch'}
-     * @memberof logoutAccount1
+     * @memberof PlatformsApiPlatformsLogoutAccountV1
      */
-    readonly platform: logoutAccount1PlatformEnum;
+    readonly platform: PlatformsLogoutAccountV1PlatformEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlatformsApiPlatformsLogoutAccountV1
+     */
+    readonly v?: PlatformsLogoutAccountV1VEnum;
 }
 /**
- * Request parameters for platformList1 operation in PlatformsApi.
+ * Request parameters for platformsPlatformListV1 operation in PlatformsApi.
  * @export
- * @interface platformList1Request
+ * @interface PlatformsApiPlatformsPlatformListV1Request
  */
-export interface platformList1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof platformList1
-     */
-    readonly v?: platformList1VEnum;
+export interface PlatformsApiPlatformsPlatformListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof platformList1
+     * @memberof PlatformsApiPlatformsPlatformListV1
      */
-    readonly language: platformList1LanguageEnum;
+    readonly language: PlatformsPlatformListV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PlatformsApiPlatformsPlatformListV1
+     */
+    readonly v?: PlatformsPlatformListV1VEnum;
 }
 /**
  * PlatformsApi - object-oriented interface
@@ -266,149 +309,149 @@ export interface platformList1Request {
  * @class PlatformsApi
  * @extends {BaseAPI}
  */
-export declare class PlatformsApi extends BaseAPI {
+export declare class PlatformsApi extends BaseAPI implements PlatformsApiInterface {
     /**
      *
      * @summary Get url for start oauth
-     * @param {addAccount1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsAddAccountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlatformsApi
      */
-    addAccount1(requestParameters: addAccount1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    platformsAddAccountV1(requestParameters: PlatformsApiPlatformsAddAccountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Get category from the platform
-     * @param {getCategory1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsGetCategoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlatformsApi
      */
-    getCategory1(requestParameters: getCategory1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    platformsGetCategoryV1(requestParameters: PlatformsApiPlatformsGetCategoryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
     /**
      *
      * @summary Get category from the platform
-     * @param {logoutAccount1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsLogoutAccountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlatformsApi
      */
-    logoutAccount1(requestParameters: logoutAccount1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    platformsLogoutAccountV1(requestParameters: PlatformsApiPlatformsLogoutAccountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
     /**
      *
      * @summary Supported platforms
-     * @param {platformList1Request} requestParameters Request parameters.
+     * @param {PlatformsApiPlatformsPlatformListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlatformsApi
      */
-    platformList1(requestParameters: platformList1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePlatformsSupportedResponse, any>>;
+    platformsPlatformListV1(requestParameters: PlatformsApiPlatformsPlatformListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePlatformsSupportedResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum addAccount1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlatformsAddAccountV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlatformsAddAccountV1LanguageEnum = typeof PlatformsAddAccountV1LanguageEnum[keyof typeof PlatformsAddAccountV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum addAccount1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlatformsAddAccountV1PlatformEnum: {
+    readonly Vk: "vk";
+    readonly VkId: "vk-id";
+    readonly Ok: "ok";
+    readonly Youtube: "youtube";
+    readonly Trovo: "trovo";
+    readonly Twitch: "twitch";
+};
+export type PlatformsAddAccountV1PlatformEnum = typeof PlatformsAddAccountV1PlatformEnum[keyof typeof PlatformsAddAccountV1PlatformEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum addAccount1PlatformEnum {
-    vk = "vk",
-    vk_id = "vk-id",
-    ok = "ok",
-    youtube = "youtube",
-    trovo = "trovo",
-    twitch = "twitch"
-}
+ * @export
+ */
+export declare const PlatformsAddAccountV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlatformsAddAccountV1VEnum = typeof PlatformsAddAccountV1VEnum[keyof typeof PlatformsAddAccountV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getCategory1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlatformsGetCategoryV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlatformsGetCategoryV1LanguageEnum = typeof PlatformsGetCategoryV1LanguageEnum[keyof typeof PlatformsGetCategoryV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getCategory1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlatformsGetCategoryV1TypeEnum: {
+    readonly Vk: "vk";
+    readonly Youtube: "youtube";
+    readonly Trovo: "trovo";
+    readonly Twitch: "twitch";
+    readonly Vkvideolive: "vkvideolive";
+};
+export type PlatformsGetCategoryV1TypeEnum = typeof PlatformsGetCategoryV1TypeEnum[keyof typeof PlatformsGetCategoryV1TypeEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getCategory1TypeEnum {
-    vk = "vk",
-    youtube = "youtube",
-    trovo = "trovo",
-    twitch = "twitch",
-    vkvideolive = "vkvideolive"
-}
+ * @export
+ */
+export declare const PlatformsGetCategoryV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlatformsGetCategoryV1VEnum = typeof PlatformsGetCategoryV1VEnum[keyof typeof PlatformsGetCategoryV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum logoutAccount1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlatformsLogoutAccountV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlatformsLogoutAccountV1LanguageEnum = typeof PlatformsLogoutAccountV1LanguageEnum[keyof typeof PlatformsLogoutAccountV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum logoutAccount1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlatformsLogoutAccountV1PlatformEnum: {
+    readonly Vk: "vk";
+    readonly VkId: "vk-id";
+    readonly Ok: "ok";
+    readonly Youtube: "youtube";
+    readonly Trovo: "trovo";
+    readonly Twitch: "twitch";
+};
+export type PlatformsLogoutAccountV1PlatformEnum = typeof PlatformsLogoutAccountV1PlatformEnum[keyof typeof PlatformsLogoutAccountV1PlatformEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum logoutAccount1PlatformEnum {
-    vk = "vk",
-    vk_id = "vk-id",
-    ok = "ok",
-    youtube = "youtube",
-    trovo = "trovo",
-    twitch = "twitch"
-}
+ * @export
+ */
+export declare const PlatformsLogoutAccountV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlatformsLogoutAccountV1VEnum = typeof PlatformsLogoutAccountV1VEnum[keyof typeof PlatformsLogoutAccountV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum platformList1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PlatformsPlatformListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlatformsPlatformListV1LanguageEnum = typeof PlatformsPlatformListV1LanguageEnum[keyof typeof PlatformsPlatformListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum platformList1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PlatformsPlatformListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PlatformsPlatformListV1VEnum = typeof PlatformsPlatformListV1VEnum[keyof typeof PlatformsPlatformListV1VEnum];
 //# sourceMappingURL=platforms-api.d.ts.map

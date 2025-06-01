@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.totalInfo1LanguageEnum = exports.totalInfo1VEnum = exports.ReferralsApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.ReferralsTotalInfoV1VEnum = exports.ReferralsTotalInfoV1LanguageEnum = exports.ReferralsApi = exports.ReferralsApiFactory = exports.ReferralsApiFp = exports.ReferralsApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,24 +27,22 @@ const base_1 = require("../base");
  * ReferralsApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const ReferralsApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Total info
-         * @param {totalInfo1VEnum} v Version
-         * @param {totalInfo1LanguageEnum} language Current language
+         * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        totalInfo1: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('totalInfo1', 'v', v);
+        referralsTotalInfoV1: async (language, projectId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('totalInfo1', 'language', language);
+            (0, common_1.assertParamExists)('referralsTotalInfoV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('totalInfo1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('referralsTotalInfoV1', 'projectId', projectId);
             const localVarPath = `/method/referrals/info`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -74,55 +72,53 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.ReferralsApiAxiosParamCreator = ReferralsApiAxiosParamCreator;
 /**
  * ReferralsApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const ReferralsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.ReferralsApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Total info
-         * @param {totalInfo1VEnum} v Version
-         * @param {totalInfo1LanguageEnum} language Current language
+         * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async totalInfo1(v, language, projectId, options) {
+        async referralsTotalInfoV1(language, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.totalInfo1(v, language, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.referralsTotalInfoV1(language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ReferralsApi.totalInfo1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ReferralsApi.referralsTotalInfoV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.ReferralsApiFp = ReferralsApiFp;
 /**
  * ReferralsApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const ReferralsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.ReferralsApiFp)(configuration);
     return {
         /**
          *
          * @summary Total info
-         * @param {totalInfo1Request} requestParameters Request parameters.
+         * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        totalInfo1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || totalInfo1VEnum._1;
-            return localVarFp.totalInfo1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        referralsTotalInfoV1(requestParameters, options) {
+            return localVarFp.referralsTotalInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.ReferralsApiFactory = ReferralsApiFactory;
 /**
  * ReferralsApi - object-oriented interface
  * @export
@@ -133,35 +129,29 @@ class ReferralsApi extends base_1.BaseAPI {
     /**
      *
      * @summary Total info
-     * @param {totalInfo1Request} requestParameters Request parameters.
+     * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReferralsApi
      */
-    totalInfo1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || totalInfo1VEnum._1;
-        return (0, exports.fp)(this.configuration).totalInfo1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    referralsTotalInfoV1(requestParameters, options) {
+        return (0, exports.ReferralsApiFp)(this.configuration).referralsTotalInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ReferralsApi = ReferralsApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var totalInfo1VEnum;
-(function (totalInfo1VEnum) {
-    totalInfo1VEnum["_1"] = "1";
-    totalInfo1VEnum["_2"] = "2";
-    totalInfo1VEnum["_3"] = "3";
-})(totalInfo1VEnum || (exports.totalInfo1VEnum = totalInfo1VEnum = {}));
+ * @export
+ */
+exports.ReferralsTotalInfoV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var totalInfo1LanguageEnum;
-(function (totalInfo1LanguageEnum) {
-    totalInfo1LanguageEnum["ru"] = "ru";
-    totalInfo1LanguageEnum["en"] = "en";
-    totalInfo1LanguageEnum["cn"] = "cn";
-})(totalInfo1LanguageEnum || (exports.totalInfo1LanguageEnum = totalInfo1LanguageEnum = {}));
+ * @export
+ */
+exports.ReferralsTotalInfoV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

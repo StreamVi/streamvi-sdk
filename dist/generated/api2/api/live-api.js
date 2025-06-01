@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.restreams1LanguageEnum = exports.restreams1VEnum = exports.LiveApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.ControllersRestreamsV1VEnum = exports.ControllersRestreamsV1LanguageEnum = exports.LiveApi = exports.LiveApiFactory = exports.LiveApiFp = exports.LiveApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,27 +27,25 @@ const base_1 = require("../base");
  * LiveApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const LiveApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary View live info
-         * @param {restreams1VEnum} v Version
-         * @param {restreams1LanguageEnum} language Current language
+         * @param {ControllersRestreamsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
+         * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        restreams1: async (v, language, projectId, broadcastId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('restreams1', 'v', v);
+        controllersRestreamsV1: async (language, projectId, broadcastId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('restreams1', 'language', language);
+            (0, common_1.assertParamExists)('controllersRestreamsV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('restreams1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('controllersRestreamsV1', 'projectId', projectId);
             // verify required parameter 'broadcastId' is not null or undefined
-            (0, common_1.assertParamExists)('restreams1', 'broadcastId', broadcastId);
+            (0, common_1.assertParamExists)('controllersRestreamsV1', 'broadcastId', broadcastId);
             const localVarPath = `/method/live/restreams`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -80,56 +78,54 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.LiveApiAxiosParamCreator = LiveApiAxiosParamCreator;
 /**
  * LiveApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const LiveApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.LiveApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary View live info
-         * @param {restreams1VEnum} v Version
-         * @param {restreams1LanguageEnum} language Current language
+         * @param {ControllersRestreamsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
+         * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async restreams1(v, language, projectId, broadcastId, options) {
+        async controllersRestreamsV1(language, projectId, broadcastId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.restreams1(v, language, projectId, broadcastId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.controllersRestreamsV1(language, projectId, broadcastId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['LiveApi.restreams1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['LiveApi.controllersRestreamsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.LiveApiFp = LiveApiFp;
 /**
  * LiveApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const LiveApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.LiveApiFp)(configuration);
     return {
         /**
          *
          * @summary View live info
-         * @param {restreams1Request} requestParameters Request parameters.
+         * @param {LiveApiControllersRestreamsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        restreams1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || restreams1VEnum._1;
-            return localVarFp.restreams1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.broadcastId, options).then((request) => request(axios, basePath));
+        controllersRestreamsV1(requestParameters, options) {
+            return localVarFp.controllersRestreamsV1(requestParameters.language, requestParameters.projectId, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.LiveApiFactory = LiveApiFactory;
 /**
  * LiveApi - object-oriented interface
  * @export
@@ -140,35 +136,29 @@ class LiveApi extends base_1.BaseAPI {
     /**
      *
      * @summary View live info
-     * @param {restreams1Request} requestParameters Request parameters.
+     * @param {LiveApiControllersRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LiveApi
      */
-    restreams1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || restreams1VEnum._1;
-        return (0, exports.fp)(this.configuration).restreams1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.broadcastId, options).then((request) => request(this.axios, this.basePath));
+    controllersRestreamsV1(requestParameters, options) {
+        return (0, exports.LiveApiFp)(this.configuration).controllersRestreamsV1(requestParameters.language, requestParameters.projectId, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.LiveApi = LiveApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var restreams1VEnum;
-(function (restreams1VEnum) {
-    restreams1VEnum["_1"] = "1";
-    restreams1VEnum["_2"] = "2";
-    restreams1VEnum["_3"] = "3";
-})(restreams1VEnum || (exports.restreams1VEnum = restreams1VEnum = {}));
+ * @export
+ */
+exports.ControllersRestreamsV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var restreams1LanguageEnum;
-(function (restreams1LanguageEnum) {
-    restreams1LanguageEnum["ru"] = "ru";
-    restreams1LanguageEnum["en"] = "en";
-    restreams1LanguageEnum["cn"] = "cn";
-})(restreams1LanguageEnum || (exports.restreams1LanguageEnum = restreams1LanguageEnum = {}));
+ * @export
+ */
+exports.ControllersRestreamsV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

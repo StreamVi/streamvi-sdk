@@ -19,125 +19,150 @@ import type { SuccessResponse } from '../models';
  * PayoutApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const PayoutApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Create payout
-     * @param {create1VEnum} v Version
-     * @param {create1LanguageEnum} language Current language
+     * @param {PayoutCreateV1LanguageEnum} language Current language
      * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto
+     * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    create1: (v: create1VEnum, language: create1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    payoutCreateV1: (language: PayoutCreateV1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, v?: PayoutCreateV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get payout data for create
-     * @param {prepare1VEnum} v Version
-     * @param {prepare1LanguageEnum} language Current language
+     * @param {PayoutPrepareV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    prepare1: (v: prepare1VEnum, language: prepare1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    payoutPrepareV1: (language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PayoutApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const PayoutApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Create payout
-     * @param {create1VEnum} v Version
-     * @param {create1LanguageEnum} language Current language
+     * @param {PayoutCreateV1LanguageEnum} language Current language
      * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto
+     * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    create1(v: create1VEnum, language: create1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    payoutCreateV1(language: PayoutCreateV1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, v?: PayoutCreateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Get payout data for create
-     * @param {prepare1VEnum} v Version
-     * @param {prepare1LanguageEnum} language Current language
+     * @param {PayoutPrepareV1LanguageEnum} language Current language
      * @param {number} projectId Project id
+     * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    prepare1(v: prepare1VEnum, language: prepare1LanguageEnum, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPayoutSystemAccountListItemResponse>>;
+    payoutPrepareV1(language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPayoutSystemAccountListItemResponse>>;
 };
 /**
  * PayoutApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const PayoutApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Create payout
-     * @param {create1Request} requestParameters Request parameters.
+     * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    create1(requestParameters: create1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get payout data for create
-     * @param {prepare1Request} requestParameters Request parameters.
+     * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    prepare1(requestParameters: prepare1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse>;
+    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse>;
 };
 /**
- * Request parameters for create1 operation in PayoutApi.
+ * PayoutApi - interface
  * @export
- * @interface create1Request
+ * @interface PayoutApi
  */
-export interface create1Request {
+export interface PayoutApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof create1
+     *
+     * @summary Create payout
+     * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PayoutApiInterface
      */
-    readonly v?: create1VEnum;
+    payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get payout data for create
+     * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PayoutApiInterface
+     */
+    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse>;
+}
+/**
+ * Request parameters for payoutCreateV1 operation in PayoutApi.
+ * @export
+ * @interface PayoutApiPayoutCreateV1Request
+ */
+export interface PayoutApiPayoutCreateV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof create1
+     * @memberof PayoutApiPayoutCreateV1
      */
-    readonly language: create1LanguageEnum;
+    readonly language: PayoutCreateV1LanguageEnum;
     /**
      *
      * @type {PayoutCreateRequestBodyDto}
-     * @memberof create1
+     * @memberof PayoutApiPayoutCreateV1
      */
     readonly payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PayoutApiPayoutCreateV1
+     */
+    readonly v?: PayoutCreateV1VEnum;
 }
 /**
- * Request parameters for prepare1 operation in PayoutApi.
+ * Request parameters for payoutPrepareV1 operation in PayoutApi.
  * @export
- * @interface prepare1Request
+ * @interface PayoutApiPayoutPrepareV1Request
  */
-export interface prepare1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof prepare1
-     */
-    readonly v?: prepare1VEnum;
+export interface PayoutApiPayoutPrepareV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof prepare1
+     * @memberof PayoutApiPayoutPrepareV1
      */
-    readonly language: prepare1LanguageEnum;
+    readonly language: PayoutPrepareV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof prepare1
+     * @memberof PayoutApiPayoutPrepareV1
      */
     readonly projectId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof PayoutApiPayoutPrepareV1
+     */
+    readonly v?: PayoutPrepareV1VEnum;
 }
 /**
  * PayoutApi - object-oriented interface
@@ -145,60 +170,60 @@ export interface prepare1Request {
  * @class PayoutApi
  * @extends {BaseAPI}
  */
-export declare class PayoutApi extends BaseAPI {
+export declare class PayoutApi extends BaseAPI implements PayoutApiInterface {
     /**
      *
      * @summary Create payout
-     * @param {create1Request} requestParameters Request parameters.
+     * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayoutApi
      */
-    create1(requestParameters: create1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Get payout data for create
-     * @param {prepare1Request} requestParameters Request parameters.
+     * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayoutApi
      */
-    prepare1(requestParameters: prepare1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum create1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PayoutCreateV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PayoutCreateV1LanguageEnum = typeof PayoutCreateV1LanguageEnum[keyof typeof PayoutCreateV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum create1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PayoutCreateV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PayoutCreateV1VEnum = typeof PayoutCreateV1VEnum[keyof typeof PayoutCreateV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum prepare1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const PayoutPrepareV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PayoutPrepareV1LanguageEnum = typeof PayoutPrepareV1LanguageEnum[keyof typeof PayoutPrepareV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum prepare1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const PayoutPrepareV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PayoutPrepareV1VEnum = typeof PayoutPrepareV1VEnum[keyof typeof PayoutPrepareV1VEnum];
 //# sourceMappingURL=payout-api.d.ts.map

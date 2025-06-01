@@ -20,13 +20,13 @@ export interface SiteUpdateOptionsYoutubeRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateOptionsYoutubeRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateOptionsYoutubeRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -74,19 +74,19 @@ export interface SiteUpdateOptionsYoutubeRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'audience': AudienceEnum;
+    'audience': SiteUpdateOptionsYoutubeRequestAudienceEnum;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'latency': LatencyEnum;
+    'latency': SiteUpdateOptionsYoutubeRequestLatencyEnum;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'privacy_video': PrivacyVideoEnum;
+    'privacy_video': SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum;
     /**
      *
      * @type {string}
@@ -98,7 +98,7 @@ export interface SiteUpdateOptionsYoutubeRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'lang': LangEnum;
+    'lang': SiteUpdateOptionsYoutubeRequestLangEnum;
     /**
      *
      * @type {Set<string>}
@@ -106,56 +106,38 @@ export interface SiteUpdateOptionsYoutubeRequest {
      */
     'tags': Set<string>;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum AudienceEnum {
-    mark_for_kids = "mark_for_kids",
-    mark_for_nokids = "mark_for_nokids"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LatencyEnum {
-    normal = "normal",
-    low = "low",
-    ultraLow = "ultraLow"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum PrivacyVideoEnum {
-    private = "private",
-    public = "public",
-    unlisted = "unlisted"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LangEnum {
-    ru = "ru",
-    en = "en"
-}
+export declare const SiteUpdateOptionsYoutubeRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteUpdateOptionsYoutubeRequestVEnum = typeof SiteUpdateOptionsYoutubeRequestVEnum[keyof typeof SiteUpdateOptionsYoutubeRequestVEnum];
+export declare const SiteUpdateOptionsYoutubeRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteUpdateOptionsYoutubeRequestLanguageEnum = typeof SiteUpdateOptionsYoutubeRequestLanguageEnum[keyof typeof SiteUpdateOptionsYoutubeRequestLanguageEnum];
+export declare const SiteUpdateOptionsYoutubeRequestAudienceEnum: {
+    readonly MarkForKids: "mark_for_kids";
+    readonly MarkForNokids: "mark_for_nokids";
+};
+export type SiteUpdateOptionsYoutubeRequestAudienceEnum = typeof SiteUpdateOptionsYoutubeRequestAudienceEnum[keyof typeof SiteUpdateOptionsYoutubeRequestAudienceEnum];
+export declare const SiteUpdateOptionsYoutubeRequestLatencyEnum: {
+    readonly Normal: "normal";
+    readonly Low: "low";
+    readonly UltraLow: "ultraLow";
+};
+export type SiteUpdateOptionsYoutubeRequestLatencyEnum = typeof SiteUpdateOptionsYoutubeRequestLatencyEnum[keyof typeof SiteUpdateOptionsYoutubeRequestLatencyEnum];
+export declare const SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum: {
+    readonly Private: "private";
+    readonly Public: "public";
+    readonly Unlisted: "unlisted";
+};
+export type SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum = typeof SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum[keyof typeof SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum];
+export declare const SiteUpdateOptionsYoutubeRequestLangEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SiteUpdateOptionsYoutubeRequestLangEnum = typeof SiteUpdateOptionsYoutubeRequestLangEnum[keyof typeof SiteUpdateOptionsYoutubeRequestLangEnum];
 //# sourceMappingURL=site-update-options-youtube-request.d.ts.map

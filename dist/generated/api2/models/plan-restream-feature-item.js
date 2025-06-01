@@ -13,22 +13,17 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NameEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var NameEnum;
-(function (NameEnum) {
-    NameEnum["count_channel_max"] = "count_channel_max";
-    NameEnum["bitrate_max"] = "bitrate_max";
-    NameEnum["resolution"] = "resolution";
-    NameEnum["create_projects"] = "create_projects";
-    NameEnum["chat"] = "chat";
-    NameEnum["video"] = "video";
-    NameEnum["video_storage"] = "video_storage";
-    NameEnum["change_subject"] = "change_subject";
-    NameEnum["background_chat"] = "background_chat";
-    NameEnum["dedicated_server"] = "dedicated_server";
-    NameEnum["personal_manager"] = "personal_manager";
-})(NameEnum || (exports.NameEnum = NameEnum = {}));
+exports.PlanRestreamFeatureItemNameEnum = void 0;
+exports.PlanRestreamFeatureItemNameEnum = {
+    CountChannelMax: 'count_channel_max',
+    BitrateMax: 'bitrate_max',
+    Resolution: 'resolution',
+    CreateProjects: 'create_projects',
+    Chat: 'chat',
+    Video: 'video',
+    VideoStorage: 'video_storage',
+    ChangeSubject: 'change_subject',
+    BackgroundChat: 'background_chat',
+    DedicatedServer: 'dedicated_server',
+    PersonalManager: 'personal_manager'
+};

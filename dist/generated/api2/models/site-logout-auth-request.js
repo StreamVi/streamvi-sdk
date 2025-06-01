@@ -13,15 +13,10 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var AppEnum;
-(function (AppEnum) {
-    AppEnum["site"] = "site";
-    AppEnum["admin"] = "admin";
-    AppEnum["mobile"] = "mobile";
-    AppEnum["desktop"] = "desktop";
-})(AppEnum || (exports.AppEnum = AppEnum = {}));
+exports.SiteLogoutAuthRequestAppEnum = void 0;
+exports.SiteLogoutAuthRequestAppEnum = {
+    Site: 'site',
+    Admin: 'admin',
+    Mobile: 'mobile',
+    Desktop: 'desktop'
+};

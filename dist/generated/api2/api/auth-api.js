@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getProfile1LanguageEnum = exports.getProfile1VEnum = exports.getAuthUrl1AppEnum = exports.getAuthUrl1ProviderEnum = exports.getAuthUrl1LanguageEnum = exports.getAuthUrl1VEnum = exports.disconnect1LanguageEnum = exports.disconnect1VEnum = exports.connectTelegram1LanguageEnum = exports.connectTelegram1VEnum = exports.connectResult1LanguageEnum = exports.connectResult1VEnum = exports.connect1AppEnum = exports.connect1ProviderEnum = exports.connect1LanguageEnum = exports.connect1VEnum = exports.code1AppEnum = exports.code1LanguageEnum = exports.code1VEnum = exports.authTelegram1AppEnum = exports.authTelegram1LanguageEnum = exports.authTelegram1VEnum = exports.AuthApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.AuthGetProfileV1VEnum = exports.AuthGetProfileV1LanguageEnum = exports.AuthGetAuthUrlV1AppEnum = exports.AuthGetAuthUrlV1VEnum = exports.AuthGetAuthUrlV1ProviderEnum = exports.AuthGetAuthUrlV1LanguageEnum = exports.AuthDisconnectV1VEnum = exports.AuthDisconnectV1LanguageEnum = exports.AuthConnectV1AppEnum = exports.AuthConnectV1VEnum = exports.AuthConnectV1ProviderEnum = exports.AuthConnectV1LanguageEnum = exports.AuthConnectTelegramV1VEnum = exports.AuthConnectTelegramV1LanguageEnum = exports.AuthConnectResultV1VEnum = exports.AuthConnectResultV1LanguageEnum = exports.AuthCodeV1VEnum = exports.AuthCodeV1AppEnum = exports.AuthCodeV1LanguageEnum = exports.AuthAuthTelegramV1VEnum = exports.AuthAuthTelegramV1AppEnum = exports.AuthAuthTelegramV1LanguageEnum = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,18 +27,18 @@ const base_1 = require("../base");
  * AuthApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const AuthApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Auth telegram
-         * @param {authTelegram1VEnum} v Version
-         * @param {authTelegram1LanguageEnum} language Current language
+         * @param {AuthAuthTelegramV1LanguageEnum} language Current language
          * @param {number} authDate Time auth
          * @param {number} id Telegram userId
          * @param {string} firstName First name
          * @param {string} hash Hash
-         * @param {authTelegram1AppEnum} app App oauth
+         * @param {AuthAuthTelegramV1AppEnum} app App oauth
+         * @param {AuthAuthTelegramV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {string} [lastName] Last name
          * @param {string} [username] Nickname
          * @param {string} [photoUrl] Photo
@@ -51,21 +51,19 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authTelegram1: async (v, language, authDate, id, firstName, hash, app, lastName, username, photoUrl, languageCode, isPremium, addedToAttachmentMenu, refId, redirect, country, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('authTelegram1', 'v', v);
+        authAuthTelegramV1: async (language, authDate, id, firstName, hash, app, v, lastName, username, photoUrl, languageCode, isPremium, addedToAttachmentMenu, refId, redirect, country, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('authTelegram1', 'language', language);
+            (0, common_1.assertParamExists)('authAuthTelegramV1', 'language', language);
             // verify required parameter 'authDate' is not null or undefined
-            (0, common_1.assertParamExists)('authTelegram1', 'authDate', authDate);
+            (0, common_1.assertParamExists)('authAuthTelegramV1', 'authDate', authDate);
             // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('authTelegram1', 'id', id);
+            (0, common_1.assertParamExists)('authAuthTelegramV1', 'id', id);
             // verify required parameter 'firstName' is not null or undefined
-            (0, common_1.assertParamExists)('authTelegram1', 'firstName', firstName);
+            (0, common_1.assertParamExists)('authAuthTelegramV1', 'firstName', firstName);
             // verify required parameter 'hash' is not null or undefined
-            (0, common_1.assertParamExists)('authTelegram1', 'hash', hash);
+            (0, common_1.assertParamExists)('authAuthTelegramV1', 'hash', hash);
             // verify required parameter 'app' is not null or undefined
-            (0, common_1.assertParamExists)('authTelegram1', 'app', app);
+            (0, common_1.assertParamExists)('authAuthTelegramV1', 'app', app);
             const localVarPath = `/method/auth/auth-telegram`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -139,10 +137,41 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callbackGoogle1: async (state, options = {}) => {
+        authCallbackGoogleV1: async (state, options = {}) => {
             // verify required parameter 'state' is not null or undefined
-            (0, common_1.assertParamExists)('callbackGoogle1', 'state', state);
+            (0, common_1.assertParamExists)('authCallbackGoogleV1', 'state', state);
             const localVarPath = `/method/auth/callback/google`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (state !== undefined) {
+                localVarQueryParameter['state'] = state;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Internal request of auth new vk
+         * @param {string} state
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authCallbackVkIdV1: async (state, options = {}) => {
+            // verify required parameter 'state' is not null or undefined
+            (0, common_1.assertParamExists)('authCallbackVkIdV1', 'state', state);
+            const localVarPath = `/method/auth/callback/vk-id`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -169,7 +198,7 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callbackVk1: async (options = {}) => {
+        authCallbackVkV1: async (options = {}) => {
             const localVarPath = `/method/auth/callback/vk`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -190,51 +219,18 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Internal request of auth new vk
-         * @param {string} state
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        callbackVkId1: async (state, options = {}) => {
-            // verify required parameter 'state' is not null or undefined
-            (0, common_1.assertParamExists)('callbackVkId1', 'state', state);
-            const localVarPath = `/method/auth/callback/vk-id`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (state !== undefined) {
-                localVarQueryParameter['state'] = state;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
          * @summary Get code for auth
-         * @param {code1VEnum} v Version
-         * @param {code1LanguageEnum} language Current language
-         * @param {code1AppEnum} app Create auth code for app
+         * @param {AuthCodeV1LanguageEnum} language Current language
+         * @param {AuthCodeV1AppEnum} app Create auth code for app
+         * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        code1: async (v, language, app, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('code1', 'v', v);
+        authCodeV1: async (language, app, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('code1', 'language', language);
+            (0, common_1.assertParamExists)('authCodeV1', 'language', language);
             // verify required parameter 'app' is not null or undefined
-            (0, common_1.assertParamExists)('code1', 'app', app);
+            (0, common_1.assertParamExists)('authCodeV1', 'app', app);
             const localVarPath = `/method/auth/app/code`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -264,22 +260,96 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary CallBack for connect social
+         * @param {AuthConnectResultV1LanguageEnum} language Current language
+         * @param {string} message Result message for connect
+         * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authConnectResultV1: async (language, message, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('authConnectResultV1', 'language', language);
+            // verify required parameter 'message' is not null or undefined
+            (0, common_1.assertParamExists)('authConnectResultV1', 'message', message);
+            const localVarPath = `/method/auth/connect/callback`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (message !== undefined) {
+                localVarQueryParameter['message'] = message;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Connect telegram in account
+         * @param {AuthConnectTelegramV1LanguageEnum} language Current language
+         * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authConnectTelegramV1: async (language, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('authConnectTelegramV1', 'language', language);
+            const localVarPath = `/method/auth/connect-telegram`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Connected social account
-         * @param {connect1VEnum} v Version
-         * @param {connect1LanguageEnum} language Current language
-         * @param {connect1ProviderEnum} provider Provider oauth
-         * @param {connect1AppEnum} [app] App oauth
+         * @param {AuthConnectV1LanguageEnum} language Current language
+         * @param {AuthConnectV1ProviderEnum} provider Provider oauth
+         * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthConnectV1AppEnum} [app] App oauth
          * @param {string} [redirect] Redirect url
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        connect1: async (v, language, provider, app, redirect, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('connect1', 'v', v);
+        authConnectV1: async (language, provider, v, app, redirect, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('connect1', 'language', language);
+            (0, common_1.assertParamExists)('authConnectV1', 'language', language);
             // verify required parameter 'provider' is not null or undefined
-            (0, common_1.assertParamExists)('connect1', 'provider', provider);
+            (0, common_1.assertParamExists)('authConnectV1', 'provider', provider);
             const localVarPath = `/method/auth/connect`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -315,100 +385,18 @@ const axiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary CallBack for connect social
-         * @param {connectResult1VEnum} v Version
-         * @param {connectResult1LanguageEnum} language Current language
-         * @param {string} message Result message for connect
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        connectResult1: async (v, language, message, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('connectResult1', 'v', v);
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('connectResult1', 'language', language);
-            // verify required parameter 'message' is not null or undefined
-            (0, common_1.assertParamExists)('connectResult1', 'message', message);
-            const localVarPath = `/method/auth/connect/callback`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-            if (message !== undefined) {
-                localVarQueryParameter['message'] = message;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @summary Connect telegram in account
-         * @param {connectTelegram1VEnum} v Version
-         * @param {connectTelegram1LanguageEnum} language Current language
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        connectTelegram1: async (v, language, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('connectTelegram1', 'v', v);
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('connectTelegram1', 'language', language);
-            const localVarPath = `/method/auth/connect-telegram`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
          * @summary Disconnected social account
-         * @param {disconnect1VEnum} v Version
-         * @param {disconnect1LanguageEnum} language Current language
+         * @param {AuthDisconnectV1LanguageEnum} language Current language
          * @param {number} socialId Social id
+         * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        disconnect1: async (v, language, socialId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('disconnect1', 'v', v);
+        authDisconnectV1: async (language, socialId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('disconnect1', 'language', language);
+            (0, common_1.assertParamExists)('authDisconnectV1', 'language', language);
             // verify required parameter 'socialId' is not null or undefined
-            (0, common_1.assertParamExists)('disconnect1', 'socialId', socialId);
+            (0, common_1.assertParamExists)('authDisconnectV1', 'socialId', socialId);
             const localVarPath = `/method/auth/disconnect`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -443,9 +431,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exchange1: async (siteAuthExchangeRequest, options = {}) => {
+        authExchangeV1: async (siteAuthExchangeRequest, options = {}) => {
             // verify required parameter 'siteAuthExchangeRequest' is not null or undefined
-            (0, common_1.assertParamExists)('exchange1', 'siteAuthExchangeRequest', siteAuthExchangeRequest);
+            (0, common_1.assertParamExists)('authExchangeV1', 'siteAuthExchangeRequest', siteAuthExchangeRequest);
             const localVarPath = `/method/auth/app/exchange`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -469,23 +457,21 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get url for start oauth
-         * @param {getAuthUrl1VEnum} v Version
-         * @param {getAuthUrl1LanguageEnum} language Current language
-         * @param {getAuthUrl1ProviderEnum} provider Provider oauth
-         * @param {getAuthUrl1AppEnum} [app] App oauth
+         * @param {AuthGetAuthUrlV1LanguageEnum} language Current language
+         * @param {AuthGetAuthUrlV1ProviderEnum} provider Provider oauth
+         * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthGetAuthUrlV1AppEnum} [app] App oauth
          * @param {string} [redirect] Redirect url
          * @param {string} [refId] Referal id
          * @param {string} [country] Country code
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAuthUrl1: async (v, language, provider, app, redirect, refId, country, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getAuthUrl1', 'v', v);
+        authGetAuthUrlV1: async (language, provider, v, app, redirect, refId, country, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getAuthUrl1', 'language', language);
+            (0, common_1.assertParamExists)('authGetAuthUrlV1', 'language', language);
             // verify required parameter 'provider' is not null or undefined
-            (0, common_1.assertParamExists)('getAuthUrl1', 'provider', provider);
+            (0, common_1.assertParamExists)('authGetAuthUrlV1', 'provider', provider);
             const localVarPath = `/method/auth/redirect-url`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -528,16 +514,14 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get basic data for auth user
-         * @param {getProfile1VEnum} v Version
-         * @param {getProfile1LanguageEnum} language Current language
+         * @param {AuthGetProfileV1LanguageEnum} language Current language
+         * @param {AuthGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProfile1: async (v, language, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getProfile1', 'v', v);
+        authGetProfileV1: async (language, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getProfile1', 'language', language);
+            (0, common_1.assertParamExists)('authGetProfileV1', 'language', language);
             const localVarPath = `/method/auth/me`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -569,9 +553,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        guest1: async (refId, options = {}) => {
+        authGuestV1: async (refId, options = {}) => {
             // verify required parameter 'refId' is not null or undefined
-            (0, common_1.assertParamExists)('guest1', 'refId', refId);
+            (0, common_1.assertParamExists)('authGuestV1', 'refId', refId);
             const localVarPath = `/method/auth/guest`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -600,9 +584,9 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logout1: async (siteLogoutAuthRequest, options = {}) => {
+        authLogoutV1: async (siteLogoutAuthRequest, options = {}) => {
             // verify required parameter 'siteLogoutAuthRequest' is not null or undefined
-            (0, common_1.assertParamExists)('logout1', 'siteLogoutAuthRequest', siteLogoutAuthRequest);
+            (0, common_1.assertParamExists)('authLogoutV1', 'siteLogoutAuthRequest', siteLogoutAuthRequest);
             const localVarPath = `/method/auth/logout`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -631,11 +615,11 @@ const axiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refreshAccess1: async (userAgent, siteRefreshAuthBodyRequest, options = {}) => {
+        authRefreshAccessV1: async (userAgent, siteRefreshAuthBodyRequest, options = {}) => {
             // verify required parameter 'userAgent' is not null or undefined
-            (0, common_1.assertParamExists)('refreshAccess1', 'userAgent', userAgent);
+            (0, common_1.assertParamExists)('authRefreshAccessV1', 'userAgent', userAgent);
             // verify required parameter 'siteRefreshAuthBodyRequest' is not null or undefined
-            (0, common_1.assertParamExists)('refreshAccess1', 'siteRefreshAuthBodyRequest', siteRefreshAuthBodyRequest);
+            (0, common_1.assertParamExists)('authRefreshAccessV1', 'siteRefreshAuthBodyRequest', siteRefreshAuthBodyRequest);
             const localVarPath = `/method/auth/refresh-access`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -661,24 +645,24 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.AuthApiAxiosParamCreator = AuthApiAxiosParamCreator;
 /**
  * AuthApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const AuthApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.AuthApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Auth telegram
-         * @param {authTelegram1VEnum} v Version
-         * @param {authTelegram1LanguageEnum} language Current language
+         * @param {AuthAuthTelegramV1LanguageEnum} language Current language
          * @param {number} authDate Time auth
          * @param {number} id Telegram userId
          * @param {string} firstName First name
          * @param {string} hash Hash
-         * @param {authTelegram1AppEnum} app App oauth
+         * @param {AuthAuthTelegramV1AppEnum} app App oauth
+         * @param {AuthAuthTelegramV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {string} [lastName] Last name
          * @param {string} [username] Nickname
          * @param {string} [photoUrl] Photo
@@ -691,11 +675,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authTelegram1(v, language, authDate, id, firstName, hash, app, lastName, username, photoUrl, languageCode, isPremium, addedToAttachmentMenu, refId, redirect, country, options) {
+        async authAuthTelegramV1(language, authDate, id, firstName, hash, app, v, lastName, username, photoUrl, languageCode, isPremium, addedToAttachmentMenu, refId, redirect, country, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authTelegram1(v, language, authDate, id, firstName, hash, app, lastName, username, photoUrl, languageCode, isPremium, addedToAttachmentMenu, refId, redirect, country, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authAuthTelegramV1(language, authDate, id, firstName, hash, app, v, lastName, username, photoUrl, languageCode, isPremium, addedToAttachmentMenu, refId, redirect, country, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authTelegram1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authAuthTelegramV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -705,24 +689,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callbackGoogle1(state, options) {
+        async authCallbackGoogleV1(state, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callbackGoogle1(state, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authCallbackGoogleV1(state, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.callbackGoogle1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Internal request of auth old vk
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async callbackVk1(options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callbackVk1(options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.callbackVk1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authCallbackGoogleV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -732,92 +703,105 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callbackVkId1(state, options) {
+        async authCallbackVkIdV1(state, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callbackVkId1(state, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authCallbackVkIdV1(state, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.callbackVkId1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authCallbackVkIdV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Internal request of auth old vk
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authCallbackVkV1(options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authCallbackVkV1(options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authCallbackVkV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get code for auth
-         * @param {code1VEnum} v Version
-         * @param {code1LanguageEnum} language Current language
-         * @param {code1AppEnum} app Create auth code for app
+         * @param {AuthCodeV1LanguageEnum} language Current language
+         * @param {AuthCodeV1AppEnum} app Create auth code for app
+         * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async code1(v, language, app, options) {
+        async authCodeV1(language, app, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.code1(v, language, app, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authCodeV1(language, app, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.code1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Connected social account
-         * @param {connect1VEnum} v Version
-         * @param {connect1LanguageEnum} language Current language
-         * @param {connect1ProviderEnum} provider Provider oauth
-         * @param {connect1AppEnum} [app] App oauth
-         * @param {string} [redirect] Redirect url
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async connect1(v, language, provider, app, redirect, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.connect1(v, language, provider, app, redirect, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.connect1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authCodeV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary CallBack for connect social
-         * @param {connectResult1VEnum} v Version
-         * @param {connectResult1LanguageEnum} language Current language
+         * @param {AuthConnectResultV1LanguageEnum} language Current language
          * @param {string} message Result message for connect
+         * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async connectResult1(v, language, message, options) {
+        async authConnectResultV1(language, message, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.connectResult1(v, language, message, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authConnectResultV1(language, message, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.connectResult1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authConnectResultV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Connect telegram in account
-         * @param {connectTelegram1VEnum} v Version
-         * @param {connectTelegram1LanguageEnum} language Current language
+         * @param {AuthConnectTelegramV1LanguageEnum} language Current language
+         * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async connectTelegram1(v, language, options) {
+        async authConnectTelegramV1(language, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.connectTelegram1(v, language, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authConnectTelegramV1(language, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.connectTelegram1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authConnectTelegramV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Connected social account
+         * @param {AuthConnectV1LanguageEnum} language Current language
+         * @param {AuthConnectV1ProviderEnum} provider Provider oauth
+         * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthConnectV1AppEnum} [app] App oauth
+         * @param {string} [redirect] Redirect url
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authConnectV1(language, provider, v, app, redirect, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authConnectV1(language, provider, v, app, redirect, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authConnectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Disconnected social account
-         * @param {disconnect1VEnum} v Version
-         * @param {disconnect1LanguageEnum} language Current language
+         * @param {AuthDisconnectV1LanguageEnum} language Current language
          * @param {number} socialId Social id
+         * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async disconnect1(v, language, socialId, options) {
+        async authDisconnectV1(language, socialId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.disconnect1(v, language, socialId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authDisconnectV1(language, socialId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.disconnect1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authDisconnectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -827,46 +811,46 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async exchange1(siteAuthExchangeRequest, options) {
+        async authExchangeV1(siteAuthExchangeRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.exchange1(siteAuthExchangeRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authExchangeV1(siteAuthExchangeRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.exchange1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authExchangeV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get url for start oauth
-         * @param {getAuthUrl1VEnum} v Version
-         * @param {getAuthUrl1LanguageEnum} language Current language
-         * @param {getAuthUrl1ProviderEnum} provider Provider oauth
-         * @param {getAuthUrl1AppEnum} [app] App oauth
+         * @param {AuthGetAuthUrlV1LanguageEnum} language Current language
+         * @param {AuthGetAuthUrlV1ProviderEnum} provider Provider oauth
+         * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthGetAuthUrlV1AppEnum} [app] App oauth
          * @param {string} [redirect] Redirect url
          * @param {string} [refId] Referal id
          * @param {string} [country] Country code
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAuthUrl1(v, language, provider, app, redirect, refId, country, options) {
+        async authGetAuthUrlV1(language, provider, v, app, redirect, refId, country, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAuthUrl1(v, language, provider, app, redirect, refId, country, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authGetAuthUrlV1(language, provider, v, app, redirect, refId, country, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.getAuthUrl1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authGetAuthUrlV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get basic data for auth user
-         * @param {getProfile1VEnum} v Version
-         * @param {getProfile1LanguageEnum} language Current language
+         * @param {AuthGetProfileV1LanguageEnum} language Current language
+         * @param {AuthGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getProfile1(v, language, options) {
+        async authGetProfileV1(language, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getProfile1(v, language, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authGetProfileV1(language, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.getProfile1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authGetProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -876,11 +860,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async guest1(refId, options) {
+        async authGuestV1(refId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.guest1(refId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authGuestV1(refId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.guest1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authGuestV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -890,11 +874,11 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async logout1(siteLogoutAuthRequest, options) {
+        async authLogoutV1(siteLogoutAuthRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.logout1(siteLogoutAuthRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authLogoutV1(siteLogoutAuthRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.logout1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authLogoutV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -905,44 +889,52 @@ const fp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async refreshAccess1(userAgent, siteRefreshAuthBodyRequest, options) {
+        async authRefreshAccessV1(userAgent, siteRefreshAuthBodyRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.refreshAccess1(userAgent, siteRefreshAuthBodyRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authRefreshAccessV1(userAgent, siteRefreshAuthBodyRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.refreshAccess1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authRefreshAccessV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.AuthApiFp = AuthApiFp;
 /**
  * AuthApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const AuthApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.AuthApiFp)(configuration);
     return {
         /**
          *
          * @summary Auth telegram
-         * @param {authTelegram1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthAuthTelegramV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authTelegram1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || authTelegram1VEnum._1;
-            return localVarFp.authTelegram1(actualV, requestParameters.language, requestParameters.authDate, requestParameters.id, requestParameters.firstName, requestParameters.hash, requestParameters.app, requestParameters.lastName, requestParameters.username, requestParameters.photoUrl, requestParameters.languageCode, requestParameters.isPremium, requestParameters.addedToAttachmentMenu, requestParameters.refId, requestParameters.redirect, requestParameters.country, options).then((request) => request(axios, basePath));
+        authAuthTelegramV1(requestParameters, options) {
+            return localVarFp.authAuthTelegramV1(requestParameters.language, requestParameters.authDate, requestParameters.id, requestParameters.firstName, requestParameters.hash, requestParameters.app, requestParameters.v, requestParameters.lastName, requestParameters.username, requestParameters.photoUrl, requestParameters.languageCode, requestParameters.isPremium, requestParameters.addedToAttachmentMenu, requestParameters.refId, requestParameters.redirect, requestParameters.country, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Internal request of auth google
-         * @param {callbackGoogle1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthCallbackGoogleV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callbackGoogle1(requestParameters, options) {
-            return localVarFp.callbackGoogle1(requestParameters.state, options).then((request) => request(axios, basePath));
+        authCallbackGoogleV1(requestParameters, options) {
+            return localVarFp.authCallbackGoogleV1(requestParameters.state, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Internal request of auth new vk
+         * @param {AuthApiAuthCallbackVkIdV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authCallbackVkIdV1(requestParameters, options) {
+            return localVarFp.authCallbackVkIdV1(requestParameters.state, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -950,146 +942,122 @@ const factory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callbackVk1(options) {
-            return localVarFp.callbackVk1(options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Internal request of auth new vk
-         * @param {callbackVkId1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        callbackVkId1(requestParameters, options) {
-            return localVarFp.callbackVkId1(requestParameters.state, options).then((request) => request(axios, basePath));
+        authCallbackVkV1(options) {
+            return localVarFp.authCallbackVkV1(options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get code for auth
-         * @param {code1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthCodeV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        code1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || code1VEnum._1;
-            return localVarFp.code1(actualV, requestParameters.language, requestParameters.app, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Connected social account
-         * @param {connect1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        connect1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || connect1VEnum._1;
-            return localVarFp.connect1(actualV, requestParameters.language, requestParameters.provider, requestParameters.app, requestParameters.redirect, options).then((request) => request(axios, basePath));
+        authCodeV1(requestParameters, options) {
+            return localVarFp.authCodeV1(requestParameters.language, requestParameters.app, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary CallBack for connect social
-         * @param {connectResult1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthConnectResultV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        connectResult1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || connectResult1VEnum._1;
-            return localVarFp.connectResult1(actualV, requestParameters.language, requestParameters.message, options).then((request) => request(axios, basePath));
+        authConnectResultV1(requestParameters, options) {
+            return localVarFp.authConnectResultV1(requestParameters.language, requestParameters.message, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Connect telegram in account
-         * @param {connectTelegram1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthConnectTelegramV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        connectTelegram1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || connectTelegram1VEnum._1;
-            return localVarFp.connectTelegram1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        authConnectTelegramV1(requestParameters, options) {
+            return localVarFp.authConnectTelegramV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Connected social account
+         * @param {AuthApiAuthConnectV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authConnectV1(requestParameters, options) {
+            return localVarFp.authConnectV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Disconnected social account
-         * @param {disconnect1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthDisconnectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        disconnect1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || disconnect1VEnum._1;
-            return localVarFp.disconnect1(actualV, requestParameters.language, requestParameters.socialId, options).then((request) => request(axios, basePath));
+        authDisconnectV1(requestParameters, options) {
+            return localVarFp.authDisconnectV1(requestParameters.language, requestParameters.socialId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Code exchange
-         * @param {exchange1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthExchangeV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exchange1(requestParameters, options) {
-            return localVarFp.exchange1(requestParameters.siteAuthExchangeRequest, options).then((request) => request(axios, basePath));
+        authExchangeV1(requestParameters, options) {
+            return localVarFp.authExchangeV1(requestParameters.siteAuthExchangeRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get url for start oauth
-         * @param {getAuthUrl1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthGetAuthUrlV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAuthUrl1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getAuthUrl1VEnum._1;
-            return localVarFp.getAuthUrl1(actualV, requestParameters.language, requestParameters.provider, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, options).then((request) => request(axios, basePath));
+        authGetAuthUrlV1(requestParameters, options) {
+            return localVarFp.authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get basic data for auth user
-         * @param {getProfile1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthGetProfileV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProfile1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getProfile1VEnum._1;
-            return localVarFp.getProfile1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        authGetProfileV1(requestParameters, options) {
+            return localVarFp.authGetProfileV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Guest request of auth
-         * @param {guest1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthGuestV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        guest1(requestParameters, options) {
-            return localVarFp.guest1(requestParameters.refId, options).then((request) => request(axios, basePath));
+        authGuestV1(requestParameters, options) {
+            return localVarFp.authGuestV1(requestParameters.refId, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Logout
-         * @param {logout1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthLogoutV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logout1(requestParameters, options) {
-            return localVarFp.logout1(requestParameters.siteLogoutAuthRequest, options).then((request) => request(axios, basePath));
+        authLogoutV1(requestParameters, options) {
+            return localVarFp.authLogoutV1(requestParameters.siteLogoutAuthRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Update access token
-         * @param {refreshAccess1Request} requestParameters Request parameters.
+         * @param {AuthApiAuthRefreshAccessV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refreshAccess1(requestParameters, options) {
-            return localVarFp.refreshAccess1(requestParameters.userAgent, requestParameters.siteRefreshAuthBodyRequest, options).then((request) => request(axios, basePath));
+        authRefreshAccessV1(requestParameters, options) {
+            return localVarFp.authRefreshAccessV1(requestParameters.userAgent, requestParameters.siteRefreshAuthBodyRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.AuthApiFactory = AuthApiFactory;
 /**
  * AuthApi - object-oriented interface
  * @export
@@ -1100,26 +1068,35 @@ class AuthApi extends base_1.BaseAPI {
     /**
      *
      * @summary Auth telegram
-     * @param {authTelegram1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthAuthTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authTelegram1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || authTelegram1VEnum._1;
-        return (0, exports.fp)(this.configuration).authTelegram1(actualV, requestParameters.language, requestParameters.authDate, requestParameters.id, requestParameters.firstName, requestParameters.hash, requestParameters.app, requestParameters.lastName, requestParameters.username, requestParameters.photoUrl, requestParameters.languageCode, requestParameters.isPremium, requestParameters.addedToAttachmentMenu, requestParameters.refId, requestParameters.redirect, requestParameters.country, options).then((request) => request(this.axios, this.basePath));
+    authAuthTelegramV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authAuthTelegramV1(requestParameters.language, requestParameters.authDate, requestParameters.id, requestParameters.firstName, requestParameters.hash, requestParameters.app, requestParameters.v, requestParameters.lastName, requestParameters.username, requestParameters.photoUrl, requestParameters.languageCode, requestParameters.isPremium, requestParameters.addedToAttachmentMenu, requestParameters.refId, requestParameters.redirect, requestParameters.country, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Internal request of auth google
-     * @param {callbackGoogle1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthCallbackGoogleV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    callbackGoogle1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).callbackGoogle1(requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+    authCallbackGoogleV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authCallbackGoogleV1(requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Internal request of auth new vk
+     * @param {AuthApiAuthCallbackVkIdV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    authCallbackVkIdV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authCallbackVkIdV1(requestParameters.state, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1128,380 +1105,311 @@ class AuthApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    callbackVk1(options) {
-        return (0, exports.fp)(this.configuration).callbackVk1(options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Internal request of auth new vk
-     * @param {callbackVkId1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    callbackVkId1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).callbackVkId1(requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+    authCallbackVkV1(options) {
+        return (0, exports.AuthApiFp)(this.configuration).authCallbackVkV1(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get code for auth
-     * @param {code1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthCodeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    code1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || code1VEnum._1;
-        return (0, exports.fp)(this.configuration).code1(actualV, requestParameters.language, requestParameters.app, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Connected social account
-     * @param {connect1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    connect1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || connect1VEnum._1;
-        return (0, exports.fp)(this.configuration).connect1(actualV, requestParameters.language, requestParameters.provider, requestParameters.app, requestParameters.redirect, options).then((request) => request(this.axios, this.basePath));
+    authCodeV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authCodeV1(requestParameters.language, requestParameters.app, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary CallBack for connect social
-     * @param {connectResult1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthConnectResultV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    connectResult1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || connectResult1VEnum._1;
-        return (0, exports.fp)(this.configuration).connectResult1(actualV, requestParameters.language, requestParameters.message, options).then((request) => request(this.axios, this.basePath));
+    authConnectResultV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authConnectResultV1(requestParameters.language, requestParameters.message, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Connect telegram in account
-     * @param {connectTelegram1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthConnectTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    connectTelegram1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || connectTelegram1VEnum._1;
-        return (0, exports.fp)(this.configuration).connectTelegram1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    authConnectTelegramV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authConnectTelegramV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Connected social account
+     * @param {AuthApiAuthConnectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    authConnectV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authConnectV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Disconnected social account
-     * @param {disconnect1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthDisconnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    disconnect1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || disconnect1VEnum._1;
-        return (0, exports.fp)(this.configuration).disconnect1(actualV, requestParameters.language, requestParameters.socialId, options).then((request) => request(this.axios, this.basePath));
+    authDisconnectV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authDisconnectV1(requestParameters.language, requestParameters.socialId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Code exchange
-     * @param {exchange1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthExchangeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    exchange1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).exchange1(requestParameters.siteAuthExchangeRequest, options).then((request) => request(this.axios, this.basePath));
+    authExchangeV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authExchangeV1(requestParameters.siteAuthExchangeRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get url for start oauth
-     * @param {getAuthUrl1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthGetAuthUrlV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    getAuthUrl1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getAuthUrl1VEnum._1;
-        return (0, exports.fp)(this.configuration).getAuthUrl1(actualV, requestParameters.language, requestParameters.provider, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, options).then((request) => request(this.axios, this.basePath));
+    authGetAuthUrlV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get basic data for auth user
-     * @param {getProfile1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    getProfile1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getProfile1VEnum._1;
-        return (0, exports.fp)(this.configuration).getProfile1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    authGetProfileV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authGetProfileV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Guest request of auth
-     * @param {guest1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthGuestV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    guest1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).guest1(requestParameters.refId, options).then((request) => request(this.axios, this.basePath));
+    authGuestV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authGuestV1(requestParameters.refId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Logout
-     * @param {logout1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthLogoutV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    logout1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).logout1(requestParameters.siteLogoutAuthRequest, options).then((request) => request(this.axios, this.basePath));
+    authLogoutV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authLogoutV1(requestParameters.siteLogoutAuthRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Update access token
-     * @param {refreshAccess1Request} requestParameters Request parameters.
+     * @param {AuthApiAuthRefreshAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    refreshAccess1(requestParameters, options) {
-        return (0, exports.fp)(this.configuration).refreshAccess1(requestParameters.userAgent, requestParameters.siteRefreshAuthBodyRequest, options).then((request) => request(this.axios, this.basePath));
+    authRefreshAccessV1(requestParameters, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authRefreshAccessV1(requestParameters.userAgent, requestParameters.siteRefreshAuthBodyRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.AuthApi = AuthApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var authTelegram1VEnum;
-(function (authTelegram1VEnum) {
-    authTelegram1VEnum["_1"] = "1";
-    authTelegram1VEnum["_2"] = "2";
-    authTelegram1VEnum["_3"] = "3";
-})(authTelegram1VEnum || (exports.authTelegram1VEnum = authTelegram1VEnum = {}));
+ * @export
+ */
+exports.AuthAuthTelegramV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var authTelegram1LanguageEnum;
-(function (authTelegram1LanguageEnum) {
-    authTelegram1LanguageEnum["ru"] = "ru";
-    authTelegram1LanguageEnum["en"] = "en";
-    authTelegram1LanguageEnum["cn"] = "cn";
-})(authTelegram1LanguageEnum || (exports.authTelegram1LanguageEnum = authTelegram1LanguageEnum = {}));
+ * @export
+ */
+exports.AuthAuthTelegramV1AppEnum = {
+    Site: 'site',
+    Admin: 'admin',
+    Mobile: 'mobile',
+    Desktop: 'desktop'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var authTelegram1AppEnum;
-(function (authTelegram1AppEnum) {
-    authTelegram1AppEnum["site"] = "site";
-    authTelegram1AppEnum["admin"] = "admin";
-    authTelegram1AppEnum["mobile"] = "mobile";
-    authTelegram1AppEnum["desktop"] = "desktop";
-})(authTelegram1AppEnum || (exports.authTelegram1AppEnum = authTelegram1AppEnum = {}));
+ * @export
+ */
+exports.AuthAuthTelegramV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var code1VEnum;
-(function (code1VEnum) {
-    code1VEnum["_1"] = "1";
-    code1VEnum["_2"] = "2";
-    code1VEnum["_3"] = "3";
-})(code1VEnum || (exports.code1VEnum = code1VEnum = {}));
+ * @export
+ */
+exports.AuthCodeV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var code1LanguageEnum;
-(function (code1LanguageEnum) {
-    code1LanguageEnum["ru"] = "ru";
-    code1LanguageEnum["en"] = "en";
-    code1LanguageEnum["cn"] = "cn";
-})(code1LanguageEnum || (exports.code1LanguageEnum = code1LanguageEnum = {}));
+ * @export
+ */
+exports.AuthCodeV1AppEnum = {
+    Site: 'site',
+    Admin: 'admin',
+    Mobile: 'mobile',
+    Desktop: 'desktop'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var code1AppEnum;
-(function (code1AppEnum) {
-    code1AppEnum["site"] = "site";
-    code1AppEnum["admin"] = "admin";
-    code1AppEnum["mobile"] = "mobile";
-    code1AppEnum["desktop"] = "desktop";
-})(code1AppEnum || (exports.code1AppEnum = code1AppEnum = {}));
+ * @export
+ */
+exports.AuthCodeV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var connect1VEnum;
-(function (connect1VEnum) {
-    connect1VEnum["_1"] = "1";
-    connect1VEnum["_2"] = "2";
-    connect1VEnum["_3"] = "3";
-})(connect1VEnum || (exports.connect1VEnum = connect1VEnum = {}));
+ * @export
+ */
+exports.AuthConnectResultV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var connect1LanguageEnum;
-(function (connect1LanguageEnum) {
-    connect1LanguageEnum["ru"] = "ru";
-    connect1LanguageEnum["en"] = "en";
-    connect1LanguageEnum["cn"] = "cn";
-})(connect1LanguageEnum || (exports.connect1LanguageEnum = connect1LanguageEnum = {}));
+ * @export
+ */
+exports.AuthConnectResultV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var connect1ProviderEnum;
-(function (connect1ProviderEnum) {
-    connect1ProviderEnum["google"] = "google";
-    connect1ProviderEnum["vk"] = "vk";
-    connect1ProviderEnum["vk_id"] = "vk-id";
-    connect1ProviderEnum["telegram"] = "telegram";
-})(connect1ProviderEnum || (exports.connect1ProviderEnum = connect1ProviderEnum = {}));
+ * @export
+ */
+exports.AuthConnectTelegramV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var connect1AppEnum;
-(function (connect1AppEnum) {
-    connect1AppEnum["site"] = "site";
-    connect1AppEnum["admin"] = "admin";
-    connect1AppEnum["mobile"] = "mobile";
-    connect1AppEnum["desktop"] = "desktop";
-})(connect1AppEnum || (exports.connect1AppEnum = connect1AppEnum = {}));
+ * @export
+ */
+exports.AuthConnectTelegramV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var connectResult1VEnum;
-(function (connectResult1VEnum) {
-    connectResult1VEnum["_1"] = "1";
-    connectResult1VEnum["_2"] = "2";
-    connectResult1VEnum["_3"] = "3";
-})(connectResult1VEnum || (exports.connectResult1VEnum = connectResult1VEnum = {}));
+ * @export
+ */
+exports.AuthConnectV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var connectResult1LanguageEnum;
-(function (connectResult1LanguageEnum) {
-    connectResult1LanguageEnum["ru"] = "ru";
-    connectResult1LanguageEnum["en"] = "en";
-    connectResult1LanguageEnum["cn"] = "cn";
-})(connectResult1LanguageEnum || (exports.connectResult1LanguageEnum = connectResult1LanguageEnum = {}));
+ * @export
+ */
+exports.AuthConnectV1ProviderEnum = {
+    Google: 'google',
+    Vk: 'vk',
+    VkId: 'vk-id',
+    Telegram: 'telegram'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var connectTelegram1VEnum;
-(function (connectTelegram1VEnum) {
-    connectTelegram1VEnum["_1"] = "1";
-    connectTelegram1VEnum["_2"] = "2";
-    connectTelegram1VEnum["_3"] = "3";
-})(connectTelegram1VEnum || (exports.connectTelegram1VEnum = connectTelegram1VEnum = {}));
+ * @export
+ */
+exports.AuthConnectV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var connectTelegram1LanguageEnum;
-(function (connectTelegram1LanguageEnum) {
-    connectTelegram1LanguageEnum["ru"] = "ru";
-    connectTelegram1LanguageEnum["en"] = "en";
-    connectTelegram1LanguageEnum["cn"] = "cn";
-})(connectTelegram1LanguageEnum || (exports.connectTelegram1LanguageEnum = connectTelegram1LanguageEnum = {}));
+ * @export
+ */
+exports.AuthConnectV1AppEnum = {
+    Site: 'site',
+    Admin: 'admin',
+    Mobile: 'mobile',
+    Desktop: 'desktop'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var disconnect1VEnum;
-(function (disconnect1VEnum) {
-    disconnect1VEnum["_1"] = "1";
-    disconnect1VEnum["_2"] = "2";
-    disconnect1VEnum["_3"] = "3";
-})(disconnect1VEnum || (exports.disconnect1VEnum = disconnect1VEnum = {}));
+ * @export
+ */
+exports.AuthDisconnectV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var disconnect1LanguageEnum;
-(function (disconnect1LanguageEnum) {
-    disconnect1LanguageEnum["ru"] = "ru";
-    disconnect1LanguageEnum["en"] = "en";
-    disconnect1LanguageEnum["cn"] = "cn";
-})(disconnect1LanguageEnum || (exports.disconnect1LanguageEnum = disconnect1LanguageEnum = {}));
+ * @export
+ */
+exports.AuthDisconnectV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getAuthUrl1VEnum;
-(function (getAuthUrl1VEnum) {
-    getAuthUrl1VEnum["_1"] = "1";
-    getAuthUrl1VEnum["_2"] = "2";
-    getAuthUrl1VEnum["_3"] = "3";
-})(getAuthUrl1VEnum || (exports.getAuthUrl1VEnum = getAuthUrl1VEnum = {}));
+ * @export
+ */
+exports.AuthGetAuthUrlV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getAuthUrl1LanguageEnum;
-(function (getAuthUrl1LanguageEnum) {
-    getAuthUrl1LanguageEnum["ru"] = "ru";
-    getAuthUrl1LanguageEnum["en"] = "en";
-    getAuthUrl1LanguageEnum["cn"] = "cn";
-})(getAuthUrl1LanguageEnum || (exports.getAuthUrl1LanguageEnum = getAuthUrl1LanguageEnum = {}));
+ * @export
+ */
+exports.AuthGetAuthUrlV1ProviderEnum = {
+    Google: 'google',
+    Vk: 'vk',
+    VkId: 'vk-id',
+    Telegram: 'telegram'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getAuthUrl1ProviderEnum;
-(function (getAuthUrl1ProviderEnum) {
-    getAuthUrl1ProviderEnum["google"] = "google";
-    getAuthUrl1ProviderEnum["vk"] = "vk";
-    getAuthUrl1ProviderEnum["vk_id"] = "vk-id";
-    getAuthUrl1ProviderEnum["telegram"] = "telegram";
-})(getAuthUrl1ProviderEnum || (exports.getAuthUrl1ProviderEnum = getAuthUrl1ProviderEnum = {}));
+ * @export
+ */
+exports.AuthGetAuthUrlV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getAuthUrl1AppEnum;
-(function (getAuthUrl1AppEnum) {
-    getAuthUrl1AppEnum["site"] = "site";
-    getAuthUrl1AppEnum["admin"] = "admin";
-    getAuthUrl1AppEnum["mobile"] = "mobile";
-    getAuthUrl1AppEnum["desktop"] = "desktop";
-})(getAuthUrl1AppEnum || (exports.getAuthUrl1AppEnum = getAuthUrl1AppEnum = {}));
+ * @export
+ */
+exports.AuthGetAuthUrlV1AppEnum = {
+    Site: 'site',
+    Admin: 'admin',
+    Mobile: 'mobile',
+    Desktop: 'desktop'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getProfile1VEnum;
-(function (getProfile1VEnum) {
-    getProfile1VEnum["_1"] = "1";
-    getProfile1VEnum["_2"] = "2";
-    getProfile1VEnum["_3"] = "3";
-})(getProfile1VEnum || (exports.getProfile1VEnum = getProfile1VEnum = {}));
+ * @export
+ */
+exports.AuthGetProfileV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getProfile1LanguageEnum;
-(function (getProfile1LanguageEnum) {
-    getProfile1LanguageEnum["ru"] = "ru";
-    getProfile1LanguageEnum["en"] = "en";
-    getProfile1LanguageEnum["cn"] = "cn";
-})(getProfile1LanguageEnum || (exports.getProfile1LanguageEnum = getProfile1LanguageEnum = {}));
+ * @export
+ */
+exports.AuthGetProfileV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

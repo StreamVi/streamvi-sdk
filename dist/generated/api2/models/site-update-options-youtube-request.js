@@ -13,62 +13,32 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LangEnum = exports.PrivacyVideoEnum = exports.LatencyEnum = exports.AudienceEnum = exports.LanguageEnum = exports.VEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var VEnum;
-(function (VEnum) {
-    VEnum["_1"] = "1";
-    VEnum["_2"] = "2";
-    VEnum["_3"] = "3";
-})(VEnum || (exports.VEnum = VEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageEnum;
-(function (LanguageEnum) {
-    LanguageEnum["ru"] = "ru";
-    LanguageEnum["en"] = "en";
-    LanguageEnum["cn"] = "cn";
-})(LanguageEnum || (exports.LanguageEnum = LanguageEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var AudienceEnum;
-(function (AudienceEnum) {
-    AudienceEnum["mark_for_kids"] = "mark_for_kids";
-    AudienceEnum["mark_for_nokids"] = "mark_for_nokids";
-})(AudienceEnum || (exports.AudienceEnum = AudienceEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LatencyEnum;
-(function (LatencyEnum) {
-    LatencyEnum["normal"] = "normal";
-    LatencyEnum["low"] = "low";
-    LatencyEnum["ultraLow"] = "ultraLow";
-})(LatencyEnum || (exports.LatencyEnum = LatencyEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var PrivacyVideoEnum;
-(function (PrivacyVideoEnum) {
-    PrivacyVideoEnum["private"] = "private";
-    PrivacyVideoEnum["public"] = "public";
-    PrivacyVideoEnum["unlisted"] = "unlisted";
-})(PrivacyVideoEnum || (exports.PrivacyVideoEnum = PrivacyVideoEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LangEnum;
-(function (LangEnum) {
-    LangEnum["ru"] = "ru";
-    LangEnum["en"] = "en";
-})(LangEnum || (exports.LangEnum = LangEnum = {}));
+exports.SiteUpdateOptionsYoutubeRequestLangEnum = exports.SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum = exports.SiteUpdateOptionsYoutubeRequestLatencyEnum = exports.SiteUpdateOptionsYoutubeRequestAudienceEnum = exports.SiteUpdateOptionsYoutubeRequestLanguageEnum = exports.SiteUpdateOptionsYoutubeRequestVEnum = void 0;
+exports.SiteUpdateOptionsYoutubeRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
+exports.SiteUpdateOptionsYoutubeRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+exports.SiteUpdateOptionsYoutubeRequestAudienceEnum = {
+    MarkForKids: 'mark_for_kids',
+    MarkForNokids: 'mark_for_nokids'
+};
+exports.SiteUpdateOptionsYoutubeRequestLatencyEnum = {
+    Normal: 'normal',
+    Low: 'low',
+    UltraLow: 'ultraLow'
+};
+exports.SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum = {
+    Private: 'private',
+    Public: 'public',
+    Unlisted: 'unlisted'
+};
+exports.SiteUpdateOptionsYoutubeRequestLangEnum = {
+    Ru: 'ru',
+    En: 'en'
+};

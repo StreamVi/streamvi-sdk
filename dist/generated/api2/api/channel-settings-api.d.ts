@@ -20,9 +20,6 @@ import type { SiteSetNameRequest } from '../models';
 import type { SiteSetPlannedRequest } from '../models';
 import type { SiteSetTranscoderRequest } from '../models';
 import type { SiteSetUrlRequest } from '../models';
-import type { SiteTelegramChatPostsItem } from '../models';
-import type { SiteTelegramChatPostsResponseDto } from '../models';
-import type { SiteTelegramSetSettingsRequestDto } from '../models';
 import type { SiteUpdateChatTelegramRequest } from '../models';
 import type { SiteUpdateOptionsOkRequest } from '../models';
 import type { SiteUpdateOptionsTrovoRequest } from '../models';
@@ -31,69 +28,72 @@ import type { SiteUpdateOptionsVkRequest } from '../models';
 import type { SiteUpdateOptionsVkVideoLiveRequest } from '../models';
 import type { SiteUpdateOptionsYoutubeRequest } from '../models';
 import type { SuccessResponse } from '../models';
+import type { TelegramChatPostsItem } from '../models';
+import type { TelegramChatPostsResponseDto } from '../models';
 import type { TelegramInitConnectResponseDto } from '../models';
+import type { TelegramSetSettingsRequestDto } from '../models';
 import type { TelegramSettingsResponseDto } from '../models';
 /**
  * ChannelSettingsApi - axios parameter creator
  * @export
  */
-export declare const axiosParamCreator: (configuration?: Configuration) => {
+export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
      * @summary Get telegram settings
-     * @param {getTelegramSetting1VEnum} v Version
-     * @param {getTelegramSetting1LanguageEnum} language Current language
+     * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getTelegramSetting1: (v: getTelegramSetting1VEnum, language: getTelegramSetting1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelChatGetTelegramSettingV1: (language: ChannelChatGetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatGetTelegramSettingV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get code for connected chat
-     * @param {initTelegramChatConnect1VEnum} v Version
-     * @param {initTelegramChatConnect1LanguageEnum} language Current language
+     * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    initTelegramChatConnect1: (v: initTelegramChatConnect1VEnum, language: initTelegramChatConnect1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelChatInitTelegramChatConnectV1: (language: ChannelChatInitTelegramChatConnectV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatInitTelegramChatConnectV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Disconnect telegram chat
-     * @param {removeTelegramChat1VEnum} v Version
-     * @param {removeTelegramChat1LanguageEnum} language Current language
+     * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    removeTelegramChat1: (v: removeTelegramChat1VEnum, language: removeTelegramChat1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelChatRemoveTelegramChatV1: (language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Set telegram settings
-     * @param {setTelegramSetting1VEnum} v Version
-     * @param {setTelegramSetting1LanguageEnum} language Current language
+     * @param {ChannelChatSetTelegramSettingV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {SiteTelegramSetSettingsRequestDto} siteTelegramSetSettingsRequestDto
+     * @param {TelegramSetSettingsRequestDto} telegramSetSettingsRequestDto
+     * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setTelegramSetting1: (v: setTelegramSetting1VEnum, language: setTelegramSetting1LanguageEnum, projectId: number, channelId: number, siteTelegramSetSettingsRequestDto: SiteTelegramSetSettingsRequestDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelChatSetTelegramSettingV1: (language: ChannelChatSetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto, v?: ChannelChatSetTelegramSettingV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get telegram post list
-     * @param {telegramPosts1VEnum} v Version
-     * @param {telegramPosts1LanguageEnum} language Current language
+     * @param {ChannelChatTelegramPostsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    telegramPosts1: (v: telegramPosts1VEnum, language: telegramPosts1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelChatTelegramPostsV1: (language: ChannelChatTelegramPostsV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatTelegramPostsV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Optional settings for telegram
@@ -101,29 +101,29 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsTelegram1: (siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelChatUpdateOptionsTelegramV1: (siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get planned list
-     * @param {getPlanned1VEnum} v Version
-     * @param {getPlanned1LanguageEnum} language Current language
+     * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPlanned1: (v: getPlanned1VEnum, language: getPlanned1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelOptionsGetPlannedV1: (language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get playlists from the platform
-     * @param {getPlayList1VEnum} v Version
-     * @param {getPlayList1LanguageEnum} language Current language
+     * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPlayList1: (v: getPlayList1VEnum, language: getPlayList1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelOptionsGetPlayListV1: (language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Optional settings for ok. Depends on the tariff.
@@ -131,7 +131,7 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsOk1: (siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelOptionsUpdateOptionsOkV1: (siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Optional settings for trovo. Depends on the tariff.
@@ -139,7 +139,7 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsTrovo1: (siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelOptionsUpdateOptionsTrovoV1: (siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Optional settings for twitch. Depends on the tariff.
@@ -147,7 +147,7 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsTwitch1: (siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelOptionsUpdateOptionsTwitchV1: (siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Optional settings for vk. Depends on the tariff.
@@ -155,7 +155,7 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsVk1: (siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelOptionsUpdateOptionsVkV1: (siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Optional settings for vk video live. Depends on the tariff.
@@ -163,7 +163,7 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsVkVideoLive1: (siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelOptionsUpdateOptionsVkVideoLiveV1: (siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Optional settings for youtube. Depends on the tariff.
@@ -171,7 +171,7 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsYoutube1: (siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelOptionsUpdateOptionsYoutubeV1: (siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Set planned id. Depends on the tariff.
@@ -179,14 +179,14 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updatePlanned1: (siteSetPlannedRequest: SiteSetPlannedRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelOptionsUpdatePlannedV1: (siteSetPlannedRequest: SiteSetPlannedRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get status platform
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getStatus1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelSettingGetStatusV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Set name from custom channel. Global settings.
@@ -194,7 +194,7 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setName1: (siteSetNameRequest: SiteSetNameRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelSettingSetNameV1: (siteSetNameRequest: SiteSetNameRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Set rtmp url from channel. Global settings.
@@ -202,19 +202,19 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateRtmp1: (siteSetUrlRequest: SiteSetUrlRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelSettingUpdateRtmpV1: (siteSetUrlRequest: SiteSetUrlRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get status platform
-     * @param {updateToken1VEnum} v Version
-     * @param {updateToken1LanguageEnum} language Current language
+     * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {updateToken1RoleEnum} role Token role
+     * @param {ChannelSettingUpdateTokenV1RoleEnum} role Token role
+     * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateToken1: (v: updateToken1VEnum, language: updateToken1LanguageEnum, projectId: number, channelId: number, role: updateToken1RoleEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelSettingUpdateTokenV1: (language: ChannelSettingUpdateTokenV1LanguageEnum, projectId: number, channelId: number, role: ChannelSettingUpdateTokenV1RoleEnum, v?: ChannelSettingUpdateTokenV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Set transcoder from channel. Personal settings.
@@ -222,81 +222,81 @@ export declare const axiosParamCreator: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateTranscoder1: (siteSetTranscoderRequest: SiteSetTranscoderRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelSettingUpdateTranscoderV1: (siteSetTranscoderRequest: SiteSetTranscoderRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get telegram post by filter
-     * @param {TelegramGetPostByFilterVEnum} v Version
-     * @param {TelegramGetPostByFilterLanguageEnum} language Current language
+     * @param {TelegramGetPostByFilterV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {number} filterMode
+     * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    telegramGetPostByFilter: (v: TelegramGetPostByFilterVEnum, language: TelegramGetPostByFilterLanguageEnum, projectId: number, channelId: number, filterMode: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    telegramGetPostByFilterV1: (language: TelegramGetPostByFilterV1LanguageEnum, projectId: number, channelId: number, filterMode: number, v?: TelegramGetPostByFilterV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ChannelSettingsApi - functional programming interface
  * @export
  */
-export declare const fp: (configuration?: Configuration) => {
+export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get telegram settings
-     * @param {getTelegramSetting1VEnum} v Version
-     * @param {getTelegramSetting1LanguageEnum} language Current language
+     * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getTelegramSetting1(v: getTelegramSetting1VEnum, language: getTelegramSetting1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramSettingsResponseDto>>;
+    channelChatGetTelegramSettingV1(language: ChannelChatGetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatGetTelegramSettingV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramSettingsResponseDto>>;
     /**
      *
      * @summary Get code for connected chat
-     * @param {initTelegramChatConnect1VEnum} v Version
-     * @param {initTelegramChatConnect1LanguageEnum} language Current language
+     * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    initTelegramChatConnect1(v: initTelegramChatConnect1VEnum, language: initTelegramChatConnect1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramInitConnectResponseDto>>;
+    channelChatInitTelegramChatConnectV1(language: ChannelChatInitTelegramChatConnectV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatInitTelegramChatConnectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramInitConnectResponseDto>>;
     /**
      *
      * @summary Disconnect telegram chat
-     * @param {removeTelegramChat1VEnum} v Version
-     * @param {removeTelegramChat1LanguageEnum} language Current language
+     * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    removeTelegramChat1(v: removeTelegramChat1VEnum, language: removeTelegramChat1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelChatRemoveTelegramChatV1(language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Set telegram settings
-     * @param {setTelegramSetting1VEnum} v Version
-     * @param {setTelegramSetting1LanguageEnum} language Current language
+     * @param {ChannelChatSetTelegramSettingV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {SiteTelegramSetSettingsRequestDto} siteTelegramSetSettingsRequestDto
+     * @param {TelegramSetSettingsRequestDto} telegramSetSettingsRequestDto
+     * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setTelegramSetting1(v: setTelegramSetting1VEnum, language: setTelegramSetting1LanguageEnum, projectId: number, channelId: number, siteTelegramSetSettingsRequestDto: SiteTelegramSetSettingsRequestDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelChatSetTelegramSettingV1(language: ChannelChatSetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto, v?: ChannelChatSetTelegramSettingV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Get telegram post list
-     * @param {telegramPosts1VEnum} v Version
-     * @param {telegramPosts1LanguageEnum} language Current language
+     * @param {ChannelChatTelegramPostsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    telegramPosts1(v: telegramPosts1VEnum, language: telegramPosts1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTelegramChatPostsResponseDto>>;
+    channelChatTelegramPostsV1(language: ChannelChatTelegramPostsV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatTelegramPostsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramChatPostsResponseDto>>;
     /**
      *
      * @summary Optional settings for telegram
@@ -304,29 +304,29 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsTelegram1(siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelChatUpdateOptionsTelegramV1(siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Get planned list
-     * @param {getPlanned1VEnum} v Version
-     * @param {getPlanned1LanguageEnum} language Current language
+     * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPlanned1(v: getPlanned1VEnum, language: getPlanned1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfSitePlannedResponse>>;
+    channelOptionsGetPlannedV1(language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfSitePlannedResponse>>;
     /**
      *
      * @summary Get playlists from the platform
-     * @param {getPlayList1VEnum} v Version
-     * @param {getPlayList1LanguageEnum} language Current language
+     * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
+     * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPlayList1(v: getPlayList1VEnum, language: getPlayList1LanguageEnum, projectId: number, channelId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPlaylistItemResponse>>;
+    channelOptionsGetPlayListV1(language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPlaylistItemResponse>>;
     /**
      *
      * @summary Optional settings for ok. Depends on the tariff.
@@ -334,7 +334,7 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsOk1(siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelOptionsUpdateOptionsOkV1(siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Optional settings for trovo. Depends on the tariff.
@@ -342,7 +342,7 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsTrovo1(siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelOptionsUpdateOptionsTrovoV1(siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Optional settings for twitch. Depends on the tariff.
@@ -350,7 +350,7 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsTwitch1(siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelOptionsUpdateOptionsTwitchV1(siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Optional settings for vk. Depends on the tariff.
@@ -358,7 +358,7 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsVk1(siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelOptionsUpdateOptionsVkV1(siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Optional settings for vk video live. Depends on the tariff.
@@ -366,7 +366,7 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsVkVideoLive1(siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelOptionsUpdateOptionsVkVideoLiveV1(siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Optional settings for youtube. Depends on the tariff.
@@ -374,7 +374,7 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsYoutube1(siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelOptionsUpdateOptionsYoutubeV1(siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Set planned id. Depends on the tariff.
@@ -382,14 +382,14 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updatePlanned1(siteSetPlannedRequest: SiteSetPlannedRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlannedResponse>>;
+    channelOptionsUpdatePlannedV1(siteSetPlannedRequest: SiteSetPlannedRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlannedResponse>>;
     /**
      *
      * @summary Get status platform
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getStatus1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChannelStatusResponse>>;
+    channelSettingGetStatusV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChannelStatusResponse>>;
     /**
      *
      * @summary Set name from custom channel. Global settings.
@@ -397,7 +397,7 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setName1(siteSetNameRequest: SiteSetNameRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelSettingSetNameV1(siteSetNameRequest: SiteSetNameRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Set rtmp url from channel. Global settings.
@@ -405,19 +405,19 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateRtmp1(siteSetUrlRequest: SiteSetUrlRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelSettingUpdateRtmpV1(siteSetUrlRequest: SiteSetUrlRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Get status platform
-     * @param {updateToken1VEnum} v Version
-     * @param {updateToken1LanguageEnum} language Current language
+     * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {updateToken1RoleEnum} role Token role
+     * @param {ChannelSettingUpdateTokenV1RoleEnum} role Token role
+     * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateToken1(v: updateToken1VEnum, language: updateToken1LanguageEnum, projectId: number, channelId: number, role: updateToken1RoleEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    channelSettingUpdateTokenV1(language: ChannelSettingUpdateTokenV1LanguageEnum, projectId: number, channelId: number, role: ChannelSettingUpdateTokenV1RoleEnum, v?: ChannelSettingUpdateTokenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Set transcoder from channel. Personal settings.
@@ -425,632 +425,827 @@ export declare const fp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateTranscoder1(siteSetTranscoderRequest: SiteSetTranscoderRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelSettingUpdateTranscoderV1(siteSetTranscoderRequest: SiteSetTranscoderRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Get telegram post by filter
-     * @param {TelegramGetPostByFilterVEnum} v Version
-     * @param {TelegramGetPostByFilterLanguageEnum} language Current language
+     * @param {TelegramGetPostByFilterV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {number} filterMode
+     * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    telegramGetPostByFilter(v: TelegramGetPostByFilterVEnum, language: TelegramGetPostByFilterLanguageEnum, projectId: number, channelId: number, filterMode: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTelegramChatPostsItem>>;
+    telegramGetPostByFilterV1(language: TelegramGetPostByFilterV1LanguageEnum, projectId: number, channelId: number, filterMode: number, v?: TelegramGetPostByFilterV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramChatPostsItem>>;
 };
 /**
  * ChannelSettingsApi - factory interface
  * @export
  */
-export declare const factory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const ChannelSettingsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get telegram settings
-     * @param {getTelegramSetting1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getTelegramSetting1(requestParameters: getTelegramSetting1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramSettingsResponseDto>;
+    channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramSettingsResponseDto>;
     /**
      *
      * @summary Get code for connected chat
-     * @param {initTelegramChatConnect1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    initTelegramChatConnect1(requestParameters: initTelegramChatConnect1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramInitConnectResponseDto>;
+    channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramInitConnectResponseDto>;
     /**
      *
      * @summary Disconnect telegram chat
-     * @param {removeTelegramChat1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    removeTelegramChat1(requestParameters: removeTelegramChat1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Set telegram settings
-     * @param {setTelegramSetting1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setTelegramSetting1(requestParameters: setTelegramSetting1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get telegram post list
-     * @param {telegramPosts1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    telegramPosts1(requestParameters: telegramPosts1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTelegramChatPostsResponseDto>;
+    channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsResponseDto>;
     /**
      *
      * @summary Optional settings for telegram
-     * @param {updateOptionsTelegram1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsTelegram1(requestParameters: updateOptionsTelegram1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get planned list
-     * @param {getPlanned1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPlanned1(requestParameters: getPlanned1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfSitePlannedResponse>;
+    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfSitePlannedResponse>;
     /**
      *
      * @summary Get playlists from the platform
-     * @param {getPlayList1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPlayList1(requestParameters: getPlayList1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPlaylistItemResponse>;
+    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPlaylistItemResponse>;
     /**
      *
      * @summary Optional settings for ok. Depends on the tariff.
-     * @param {updateOptionsOk1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsOk1(requestParameters: updateOptionsOk1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Optional settings for trovo. Depends on the tariff.
-     * @param {updateOptionsTrovo1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsTrovo1(requestParameters: updateOptionsTrovo1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Optional settings for twitch. Depends on the tariff.
-     * @param {updateOptionsTwitch1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsTwitch1(requestParameters: updateOptionsTwitch1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Optional settings for vk. Depends on the tariff.
-     * @param {updateOptionsVk1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsVk1(requestParameters: updateOptionsVk1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Optional settings for vk video live. Depends on the tariff.
-     * @param {updateOptionsVkVideoLive1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsVkVideoLive1(requestParameters: updateOptionsVkVideoLive1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Optional settings for youtube. Depends on the tariff.
-     * @param {updateOptionsYoutube1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateOptionsYoutube1(requestParameters: updateOptionsYoutube1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Set planned id. Depends on the tariff.
-     * @param {updatePlanned1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updatePlanned1(requestParameters: updatePlanned1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlannedResponse>;
+    channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlannedResponse>;
     /**
      *
      * @summary Get status platform
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getStatus1(options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
+    channelSettingGetStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
     /**
      *
      * @summary Set name from custom channel. Global settings.
-     * @param {setName1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setName1(requestParameters: setName1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Set rtmp url from channel. Global settings.
-     * @param {updateRtmp1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateRtmp1(requestParameters: updateRtmp1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get status platform
-     * @param {updateToken1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateToken1(requestParameters: updateToken1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
      *
      * @summary Set transcoder from channel. Personal settings.
-     * @param {updateTranscoder1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateTranscoder1(requestParameters: updateTranscoder1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get telegram post by filter
-     * @param {telegramGetPostByFilterRequest} requestParameters Request parameters.
+     * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    telegramGetPostByFilter(requestParameters: telegramGetPostByFilterRequest, options?: RawAxiosRequestConfig): AxiosPromise<SiteTelegramChatPostsItem>;
+    telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsItem>;
 };
 /**
- * Request parameters for getTelegramSetting1 operation in ChannelSettingsApi.
+ * ChannelSettingsApi - interface
  * @export
- * @interface getTelegramSetting1Request
+ * @interface ChannelSettingsApi
  */
-export interface getTelegramSetting1Request {
+export interface ChannelSettingsApiInterface {
     /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getTelegramSetting1
+     *
+     * @summary Get telegram settings
+     * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
      */
-    readonly v?: getTelegramSetting1VEnum;
+    channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramSettingsResponseDto>;
     /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof getTelegramSetting1
+     *
+     * @summary Get code for connected chat
+     * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
      */
-    readonly language: getTelegramSetting1LanguageEnum;
+    channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramInitConnectResponseDto>;
     /**
-     * Project id
-     * @type {number}
-     * @memberof getTelegramSetting1
+     *
+     * @summary Disconnect telegram chat
+     * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
      */
-    readonly projectId: number;
+    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     * Channel id
-     * @type {number}
-     * @memberof getTelegramSetting1
+     *
+     * @summary Set telegram settings
+     * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
      */
-    readonly channelId: number;
+    channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get telegram post list
+     * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsResponseDto>;
+    /**
+     *
+     * @summary Optional settings for telegram
+     * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get planned list
+     * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfSitePlannedResponse>;
+    /**
+     *
+     * @summary Get playlists from the platform
+     * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPlaylistItemResponse>;
+    /**
+     *
+     * @summary Optional settings for ok. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Optional settings for trovo. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Optional settings for twitch. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Optional settings for vk. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Optional settings for vk video live. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Optional settings for youtube. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Set planned id. Depends on the tariff.
+     * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlannedResponse>;
+    /**
+     *
+     * @summary Get status platform
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingGetStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
+    /**
+     *
+     * @summary Set name from custom channel. Global settings.
+     * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Set rtmp url from channel. Global settings.
+     * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get status platform
+     * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     *
+     * @summary Set transcoder from channel. Personal settings.
+     * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get telegram post by filter
+     * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsItem>;
 }
 /**
- * Request parameters for initTelegramChatConnect1 operation in ChannelSettingsApi.
+ * Request parameters for channelChatGetTelegramSettingV1 operation in ChannelSettingsApi.
  * @export
- * @interface initTelegramChatConnect1Request
+ * @interface ChannelSettingsApiChannelChatGetTelegramSettingV1Request
  */
-export interface initTelegramChatConnect1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof initTelegramChatConnect1
-     */
-    readonly v?: initTelegramChatConnect1VEnum;
+export interface ChannelSettingsApiChannelChatGetTelegramSettingV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof initTelegramChatConnect1
+     * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
-    readonly language: initTelegramChatConnect1LanguageEnum;
+    readonly language: ChannelChatGetTelegramSettingV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof initTelegramChatConnect1
+     * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof initTelegramChatConnect1
+     * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
     readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
+     */
+    readonly v?: ChannelChatGetTelegramSettingV1VEnum;
 }
 /**
- * Request parameters for removeTelegramChat1 operation in ChannelSettingsApi.
+ * Request parameters for channelChatInitTelegramChatConnectV1 operation in ChannelSettingsApi.
  * @export
- * @interface removeTelegramChat1Request
+ * @interface ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request
  */
-export interface removeTelegramChat1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof removeTelegramChat1
-     */
-    readonly v?: removeTelegramChat1VEnum;
+export interface ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof removeTelegramChat1
+     * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
-    readonly language: removeTelegramChat1LanguageEnum;
+    readonly language: ChannelChatInitTelegramChatConnectV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof removeTelegramChat1
+     * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof removeTelegramChat1
+     * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
     readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
+     */
+    readonly v?: ChannelChatInitTelegramChatConnectV1VEnum;
 }
 /**
- * Request parameters for setTelegramSetting1 operation in ChannelSettingsApi.
+ * Request parameters for channelChatRemoveTelegramChatV1 operation in ChannelSettingsApi.
  * @export
- * @interface setTelegramSetting1Request
+ * @interface ChannelSettingsApiChannelChatRemoveTelegramChatV1Request
  */
-export interface setTelegramSetting1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof setTelegramSetting1
-     */
-    readonly v?: setTelegramSetting1VEnum;
+export interface ChannelSettingsApiChannelChatRemoveTelegramChatV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof setTelegramSetting1
+     * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
-    readonly language: setTelegramSetting1LanguageEnum;
+    readonly language: ChannelChatRemoveTelegramChatV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof setTelegramSetting1
+     * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof setTelegramSetting1
+     * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
+     */
+    readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
+     */
+    readonly v?: ChannelChatRemoveTelegramChatV1VEnum;
+}
+/**
+ * Request parameters for channelChatSetTelegramSettingV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelChatSetTelegramSettingV1Request
+ */
+export interface ChannelSettingsApiChannelChatSetTelegramSettingV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
+     */
+    readonly language: ChannelChatSetTelegramSettingV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
+     */
+    readonly projectId: number;
+    /**
+     * Channel id
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
     readonly channelId: number;
     /**
      *
-     * @type {SiteTelegramSetSettingsRequestDto}
-     * @memberof setTelegramSetting1
+     * @type {TelegramSetSettingsRequestDto}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
-    readonly siteTelegramSetSettingsRequestDto: SiteTelegramSetSettingsRequestDto;
+    readonly telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
+     */
+    readonly v?: ChannelChatSetTelegramSettingV1VEnum;
 }
 /**
- * Request parameters for telegramPosts1 operation in ChannelSettingsApi.
+ * Request parameters for channelChatTelegramPostsV1 operation in ChannelSettingsApi.
  * @export
- * @interface telegramPosts1Request
+ * @interface ChannelSettingsApiChannelChatTelegramPostsV1Request
  */
-export interface telegramPosts1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof telegramPosts1
-     */
-    readonly v?: telegramPosts1VEnum;
+export interface ChannelSettingsApiChannelChatTelegramPostsV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof telegramPosts1
+     * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
-    readonly language: telegramPosts1LanguageEnum;
+    readonly language: ChannelChatTelegramPostsV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof telegramPosts1
+     * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof telegramPosts1
+     * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
     readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
+     */
+    readonly v?: ChannelChatTelegramPostsV1VEnum;
 }
 /**
- * Request parameters for updateOptionsTelegram1 operation in ChannelSettingsApi.
+ * Request parameters for channelChatUpdateOptionsTelegramV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsTelegram1Request
+ * @interface ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request
  */
-export interface updateOptionsTelegram1Request {
+export interface ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request {
     /**
      *
      * @type {SiteUpdateChatTelegramRequest}
-     * @memberof updateOptionsTelegram1
+     * @memberof ChannelSettingsApiChannelChatUpdateOptionsTelegramV1
      */
     readonly siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest;
 }
 /**
- * Request parameters for getPlanned1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsGetPlannedV1 operation in ChannelSettingsApi.
  * @export
- * @interface getPlanned1Request
+ * @interface ChannelSettingsApiChannelOptionsGetPlannedV1Request
  */
-export interface getPlanned1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getPlanned1
-     */
-    readonly v?: getPlanned1VEnum;
+export interface ChannelSettingsApiChannelOptionsGetPlannedV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getPlanned1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
-    readonly language: getPlanned1LanguageEnum;
+    readonly language: ChannelOptionsGetPlannedV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof getPlanned1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof getPlanned1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
     readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
+     */
+    readonly v?: ChannelOptionsGetPlannedV1VEnum;
 }
 /**
- * Request parameters for getPlayList1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsGetPlayListV1 operation in ChannelSettingsApi.
  * @export
- * @interface getPlayList1Request
+ * @interface ChannelSettingsApiChannelOptionsGetPlayListV1Request
  */
-export interface getPlayList1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof getPlayList1
-     */
-    readonly v?: getPlayList1VEnum;
+export interface ChannelSettingsApiChannelOptionsGetPlayListV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof getPlayList1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
-    readonly language: getPlayList1LanguageEnum;
+    readonly language: ChannelOptionsGetPlayListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof getPlayList1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof getPlayList1
+     * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
     readonly channelId: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
+     */
+    readonly v?: ChannelOptionsGetPlayListV1VEnum;
 }
 /**
- * Request parameters for updateOptionsOk1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsOkV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsOk1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request
  */
-export interface updateOptionsOk1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request {
     /**
      *
      * @type {SiteUpdateOptionsOkRequest}
-     * @memberof updateOptionsOk1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsOkV1
      */
     readonly siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest;
 }
 /**
- * Request parameters for updateOptionsTrovo1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsTrovoV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsTrovo1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request
  */
-export interface updateOptionsTrovo1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request {
     /**
      *
      * @type {SiteUpdateOptionsTrovoRequest}
-     * @memberof updateOptionsTrovo1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1
      */
     readonly siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest;
 }
 /**
- * Request parameters for updateOptionsTwitch1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsTwitchV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsTwitch1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request
  */
-export interface updateOptionsTwitch1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request {
     /**
      *
      * @type {SiteUpdateOptionsTwitchRequest}
-     * @memberof updateOptionsTwitch1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1
      */
     readonly siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest;
 }
 /**
- * Request parameters for updateOptionsVk1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsVkV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsVk1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request
  */
-export interface updateOptionsVk1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request {
     /**
      *
      * @type {SiteUpdateOptionsVkRequest}
-     * @memberof updateOptionsVk1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsVkV1
      */
     readonly siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest;
 }
 /**
- * Request parameters for updateOptionsVkVideoLive1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsVkVideoLiveV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsVkVideoLive1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request
  */
-export interface updateOptionsVkVideoLive1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request {
     /**
      *
      * @type {SiteUpdateOptionsVkVideoLiveRequest}
-     * @memberof updateOptionsVkVideoLive1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1
      */
     readonly siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest;
 }
 /**
- * Request parameters for updateOptionsYoutube1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdateOptionsYoutubeV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateOptionsYoutube1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request
  */
-export interface updateOptionsYoutube1Request {
+export interface ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request {
     /**
      *
      * @type {SiteUpdateOptionsYoutubeRequest}
-     * @memberof updateOptionsYoutube1
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1
      */
     readonly siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest;
 }
 /**
- * Request parameters for updatePlanned1 operation in ChannelSettingsApi.
+ * Request parameters for channelOptionsUpdatePlannedV1 operation in ChannelSettingsApi.
  * @export
- * @interface updatePlanned1Request
+ * @interface ChannelSettingsApiChannelOptionsUpdatePlannedV1Request
  */
-export interface updatePlanned1Request {
+export interface ChannelSettingsApiChannelOptionsUpdatePlannedV1Request {
     /**
      *
      * @type {SiteSetPlannedRequest}
-     * @memberof updatePlanned1
+     * @memberof ChannelSettingsApiChannelOptionsUpdatePlannedV1
      */
     readonly siteSetPlannedRequest: SiteSetPlannedRequest;
 }
 /**
- * Request parameters for setName1 operation in ChannelSettingsApi.
+ * Request parameters for channelSettingSetNameV1 operation in ChannelSettingsApi.
  * @export
- * @interface setName1Request
+ * @interface ChannelSettingsApiChannelSettingSetNameV1Request
  */
-export interface setName1Request {
+export interface ChannelSettingsApiChannelSettingSetNameV1Request {
     /**
      *
      * @type {SiteSetNameRequest}
-     * @memberof setName1
+     * @memberof ChannelSettingsApiChannelSettingSetNameV1
      */
     readonly siteSetNameRequest: SiteSetNameRequest;
 }
 /**
- * Request parameters for updateRtmp1 operation in ChannelSettingsApi.
+ * Request parameters for channelSettingUpdateRtmpV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateRtmp1Request
+ * @interface ChannelSettingsApiChannelSettingUpdateRtmpV1Request
  */
-export interface updateRtmp1Request {
+export interface ChannelSettingsApiChannelSettingUpdateRtmpV1Request {
     /**
      *
      * @type {SiteSetUrlRequest}
-     * @memberof updateRtmp1
+     * @memberof ChannelSettingsApiChannelSettingUpdateRtmpV1
      */
     readonly siteSetUrlRequest: SiteSetUrlRequest;
 }
 /**
- * Request parameters for updateToken1 operation in ChannelSettingsApi.
+ * Request parameters for channelSettingUpdateTokenV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateToken1Request
+ * @interface ChannelSettingsApiChannelSettingUpdateTokenV1Request
  */
-export interface updateToken1Request {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof updateToken1
-     */
-    readonly v?: updateToken1VEnum;
+export interface ChannelSettingsApiChannelSettingUpdateTokenV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof updateToken1
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly language: updateToken1LanguageEnum;
+    readonly language: ChannelSettingUpdateTokenV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof updateToken1
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof updateToken1
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
     readonly channelId: number;
     /**
      * Token role
      * @type {'account' | 'group'}
-     * @memberof updateToken1
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly role: updateToken1RoleEnum;
+    readonly role: ChannelSettingUpdateTokenV1RoleEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
+     */
+    readonly v?: ChannelSettingUpdateTokenV1VEnum;
 }
 /**
- * Request parameters for updateTranscoder1 operation in ChannelSettingsApi.
+ * Request parameters for channelSettingUpdateTranscoderV1 operation in ChannelSettingsApi.
  * @export
- * @interface updateTranscoder1Request
+ * @interface ChannelSettingsApiChannelSettingUpdateTranscoderV1Request
  */
-export interface updateTranscoder1Request {
+export interface ChannelSettingsApiChannelSettingUpdateTranscoderV1Request {
     /**
      *
      * @type {SiteSetTranscoderRequest}
-     * @memberof updateTranscoder1
+     * @memberof ChannelSettingsApiChannelSettingUpdateTranscoderV1
      */
     readonly siteSetTranscoderRequest: SiteSetTranscoderRequest;
 }
 /**
- * Request parameters for telegramGetPostByFilter operation in ChannelSettingsApi.
+ * Request parameters for telegramGetPostByFilterV1 operation in ChannelSettingsApi.
  * @export
- * @interface telegramGetPostByFilterRequest
+ * @interface ChannelSettingsApiTelegramGetPostByFilterV1Request
  */
-export interface telegramGetPostByFilterRequest {
-    /**
-     * Version
-     * @type {'1' | '2' | '3'}
-     * @memberof telegramGetPostByFilter
-     */
-    readonly v: TelegramGetPostByFilterVEnum;
+export interface ChannelSettingsApiTelegramGetPostByFilterV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof telegramGetPostByFilter
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
-    readonly language: TelegramGetPostByFilterLanguageEnum;
+    readonly language: TelegramGetPostByFilterV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof telegramGetPostByFilter
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
     readonly projectId: number;
     /**
      * Channel id
      * @type {number}
-     * @memberof telegramGetPostByFilter
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
     readonly channelId: number;
     /**
      *
      * @type {number}
-     * @memberof telegramGetPostByFilter
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
     readonly filterMode: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1' | '2' | '3'}
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
+     */
+    readonly v?: TelegramGetPostByFilterV1VEnum;
 }
 /**
  * ChannelSettingsApi - object-oriented interface
@@ -1058,142 +1253,142 @@ export interface telegramGetPostByFilterRequest {
  * @class ChannelSettingsApi
  * @extends {BaseAPI}
  */
-export declare class ChannelSettingsApi extends BaseAPI {
+export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInterface {
     /**
      *
      * @summary Get telegram settings
-     * @param {getTelegramSetting1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    getTelegramSetting1(requestParameters: getTelegramSetting1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramSettingsResponseDto, any>>;
+    channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramSettingsResponseDto, any>>;
     /**
      *
      * @summary Get code for connected chat
-     * @param {initTelegramChatConnect1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    initTelegramChatConnect1(requestParameters: initTelegramChatConnect1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramInitConnectResponseDto, any>>;
+    channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramInitConnectResponseDto, any>>;
     /**
      *
      * @summary Disconnect telegram chat
-     * @param {removeTelegramChat1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    removeTelegramChat1(requestParameters: removeTelegramChat1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Set telegram settings
-     * @param {setTelegramSetting1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    setTelegramSetting1(requestParameters: setTelegramSetting1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Get telegram post list
-     * @param {telegramPosts1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    telegramPosts1(requestParameters: telegramPosts1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTelegramChatPostsResponseDto, any>>;
+    channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramChatPostsResponseDto, any>>;
     /**
      *
      * @summary Optional settings for telegram
-     * @param {updateOptionsTelegram1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsTelegram1(requestParameters: updateOptionsTelegram1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Get planned list
-     * @param {getPlanned1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    getPlanned1(requestParameters: getPlanned1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
     /**
      *
      * @summary Get playlists from the platform
-     * @param {getPlayList1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    getPlayList1(requestParameters: getPlayList1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
     /**
      *
      * @summary Optional settings for ok. Depends on the tariff.
-     * @param {updateOptionsOk1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsOk1(requestParameters: updateOptionsOk1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Optional settings for trovo. Depends on the tariff.
-     * @param {updateOptionsTrovo1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsTrovo1(requestParameters: updateOptionsTrovo1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Optional settings for twitch. Depends on the tariff.
-     * @param {updateOptionsTwitch1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsTwitch1(requestParameters: updateOptionsTwitch1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Optional settings for vk. Depends on the tariff.
-     * @param {updateOptionsVk1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsVk1(requestParameters: updateOptionsVk1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Optional settings for vk video live. Depends on the tariff.
-     * @param {updateOptionsVkVideoLive1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsVkVideoLive1(requestParameters: updateOptionsVkVideoLive1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Optional settings for youtube. Depends on the tariff.
-     * @param {updateOptionsYoutube1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateOptionsYoutube1(requestParameters: updateOptionsYoutube1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Set planned id. Depends on the tariff.
-     * @param {updatePlanned1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updatePlanned1(requestParameters: updatePlanned1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePlannedResponse, any>>;
+    channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePlannedResponse, any>>;
     /**
      *
      * @summary Get status platform
@@ -1201,221 +1396,221 @@ export declare class ChannelSettingsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    getStatus1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteChannelStatusResponse, any>>;
+    channelSettingGetStatusV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteChannelStatusResponse, any>>;
     /**
      *
      * @summary Set name from custom channel. Global settings.
-     * @param {setName1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    setName1(requestParameters: setName1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Set rtmp url from channel. Global settings.
-     * @param {updateRtmp1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateRtmp1(requestParameters: updateRtmp1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Get status platform
-     * @param {updateToken1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateToken1(requestParameters: updateToken1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Set transcoder from channel. Personal settings.
-     * @param {updateTranscoder1Request} requestParameters Request parameters.
+     * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    updateTranscoder1(requestParameters: updateTranscoder1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
     /**
      *
      * @summary Get telegram post by filter
-     * @param {telegramGetPostByFilterRequest} requestParameters Request parameters.
+     * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    telegramGetPostByFilter(requestParameters: telegramGetPostByFilterRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTelegramChatPostsItem, any>>;
+    telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramChatPostsItem, any>>;
 }
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getTelegramSetting1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ChannelChatGetTelegramSettingV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ChannelChatGetTelegramSettingV1LanguageEnum = typeof ChannelChatGetTelegramSettingV1LanguageEnum[keyof typeof ChannelChatGetTelegramSettingV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getTelegramSetting1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ChannelChatGetTelegramSettingV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ChannelChatGetTelegramSettingV1VEnum = typeof ChannelChatGetTelegramSettingV1VEnum[keyof typeof ChannelChatGetTelegramSettingV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum initTelegramChatConnect1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ChannelChatInitTelegramChatConnectV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ChannelChatInitTelegramChatConnectV1LanguageEnum = typeof ChannelChatInitTelegramChatConnectV1LanguageEnum[keyof typeof ChannelChatInitTelegramChatConnectV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum initTelegramChatConnect1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ChannelChatInitTelegramChatConnectV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ChannelChatInitTelegramChatConnectV1VEnum = typeof ChannelChatInitTelegramChatConnectV1VEnum[keyof typeof ChannelChatInitTelegramChatConnectV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum removeTelegramChat1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ChannelChatRemoveTelegramChatV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ChannelChatRemoveTelegramChatV1LanguageEnum = typeof ChannelChatRemoveTelegramChatV1LanguageEnum[keyof typeof ChannelChatRemoveTelegramChatV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum removeTelegramChat1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ChannelChatRemoveTelegramChatV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ChannelChatRemoveTelegramChatV1VEnum = typeof ChannelChatRemoveTelegramChatV1VEnum[keyof typeof ChannelChatRemoveTelegramChatV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum setTelegramSetting1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ChannelChatSetTelegramSettingV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ChannelChatSetTelegramSettingV1LanguageEnum = typeof ChannelChatSetTelegramSettingV1LanguageEnum[keyof typeof ChannelChatSetTelegramSettingV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum setTelegramSetting1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ChannelChatSetTelegramSettingV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ChannelChatSetTelegramSettingV1VEnum = typeof ChannelChatSetTelegramSettingV1VEnum[keyof typeof ChannelChatSetTelegramSettingV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum telegramPosts1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ChannelChatTelegramPostsV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ChannelChatTelegramPostsV1LanguageEnum = typeof ChannelChatTelegramPostsV1LanguageEnum[keyof typeof ChannelChatTelegramPostsV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum telegramPosts1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ChannelChatTelegramPostsV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ChannelChatTelegramPostsV1VEnum = typeof ChannelChatTelegramPostsV1VEnum[keyof typeof ChannelChatTelegramPostsV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getPlanned1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ChannelOptionsGetPlannedV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ChannelOptionsGetPlannedV1LanguageEnum = typeof ChannelOptionsGetPlannedV1LanguageEnum[keyof typeof ChannelOptionsGetPlannedV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getPlanned1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ChannelOptionsGetPlannedV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ChannelOptionsGetPlannedV1VEnum = typeof ChannelOptionsGetPlannedV1VEnum[keyof typeof ChannelOptionsGetPlannedV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getPlayList1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ChannelOptionsGetPlayListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ChannelOptionsGetPlayListV1LanguageEnum = typeof ChannelOptionsGetPlayListV1LanguageEnum[keyof typeof ChannelOptionsGetPlayListV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum getPlayList1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ChannelOptionsGetPlayListV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ChannelOptionsGetPlayListV1VEnum = typeof ChannelOptionsGetPlayListV1VEnum[keyof typeof ChannelOptionsGetPlayListV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum updateToken1VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const ChannelSettingUpdateTokenV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ChannelSettingUpdateTokenV1LanguageEnum = typeof ChannelSettingUpdateTokenV1LanguageEnum[keyof typeof ChannelSettingUpdateTokenV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum updateToken1LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const ChannelSettingUpdateTokenV1RoleEnum: {
+    readonly Account: "account";
+    readonly Group: "group";
+};
+export type ChannelSettingUpdateTokenV1RoleEnum = typeof ChannelSettingUpdateTokenV1RoleEnum[keyof typeof ChannelSettingUpdateTokenV1RoleEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum updateToken1RoleEnum {
-    account = "account",
-    group = "group"
-}
+ * @export
+ */
+export declare const ChannelSettingUpdateTokenV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type ChannelSettingUpdateTokenV1VEnum = typeof ChannelSettingUpdateTokenV1VEnum[keyof typeof ChannelSettingUpdateTokenV1VEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum TelegramGetPostByFilterVEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
+ * @export
+ */
+export declare const TelegramGetPostByFilterV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type TelegramGetPostByFilterV1LanguageEnum = typeof TelegramGetPostByFilterV1LanguageEnum[keyof typeof TelegramGetPostByFilterV1LanguageEnum];
 /**
-  * @export
-  * @enum {string}
-  */
-export declare enum TelegramGetPostByFilterLanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+ * @export
+ */
+export declare const TelegramGetPostByFilterV1VEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type TelegramGetPostByFilterV1VEnum = typeof TelegramGetPostByFilterV1VEnum[keyof typeof TelegramGetPostByFilterV1VEnum];
 //# sourceMappingURL=channel-settings-api.d.ts.map

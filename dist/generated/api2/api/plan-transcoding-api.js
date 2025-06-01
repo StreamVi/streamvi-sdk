@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.tariff1LanguageEnum = exports.tariff1VEnum = exports.list1LanguageEnum = exports.list1VEnum = exports.getDiscount1LanguageEnum = exports.getDiscount1VEnum = exports.check1LanguageEnum = exports.check1VEnum = exports.cancel1LanguageEnum = exports.cancel1VEnum = exports.buy1PeriodEnum = exports.buy1LanguageEnum = exports.buy1VEnum = exports.PlanTranscodingApi = exports.factory = exports.fp = exports.axiosParamCreator = void 0;
+exports.PlanTranscodingTariffV1VEnum = exports.PlanTranscodingTariffV1LanguageEnum = exports.PlanTranscodingListV1VEnum = exports.PlanTranscodingListV1LanguageEnum = exports.PlanTranscodingGetDiscountV1VEnum = exports.PlanTranscodingGetDiscountV1LanguageEnum = exports.PlanTranscodingCheckV1VEnum = exports.PlanTranscodingCheckV1LanguageEnum = exports.PlanTranscodingCancelV1VEnum = exports.PlanTranscodingCancelV1LanguageEnum = exports.PlanTranscodingBuyV1VEnum = exports.PlanTranscodingBuyV1PeriodEnum = exports.PlanTranscodingBuyV1LanguageEnum = exports.PlanTranscodingApi = exports.PlanTranscodingApiFactory = exports.PlanTranscodingApiFp = exports.PlanTranscodingApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -27,31 +27,29 @@ const base_1 = require("../base");
  * PlanTranscodingApi - axios parameter creator
  * @export
  */
-const axiosParamCreator = function (configuration) {
+const PlanTranscodingApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
          * @summary Buy transcoder tariff
-         * @param {buy1VEnum} v Version
-         * @param {buy1LanguageEnum} language Current language
+         * @param {PlanTranscodingBuyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {buy1PeriodEnum} period Period
+         * @param {PlanTranscodingBuyV1PeriodEnum} period Period
          * @param {number} planTranscodingId Transcoding plan id
+         * @param {PlanTranscodingBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [count] Count flow
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buy1: async (v, language, projectId, period, planTranscodingId, count, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('buy1', 'v', v);
+        planTranscodingBuyV1: async (language, projectId, period, planTranscodingId, v, count, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('buy1', 'language', language);
+            (0, common_1.assertParamExists)('planTranscodingBuyV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('buy1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('planTranscodingBuyV1', 'projectId', projectId);
             // verify required parameter 'period' is not null or undefined
-            (0, common_1.assertParamExists)('buy1', 'period', period);
+            (0, common_1.assertParamExists)('planTranscodingBuyV1', 'period', period);
             // verify required parameter 'planTranscodingId' is not null or undefined
-            (0, common_1.assertParamExists)('buy1', 'planTranscodingId', planTranscodingId);
+            (0, common_1.assertParamExists)('planTranscodingBuyV1', 'planTranscodingId', planTranscodingId);
             const localVarPath = `/method/plan_transcoding`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -91,19 +89,17 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Remove after tariff
-         * @param {cancel1VEnum} v Version
-         * @param {cancel1LanguageEnum} language Current language
+         * @param {PlanTranscodingCancelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanTranscodingCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancel1: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('cancel1', 'v', v);
+        planTranscodingCancelV1: async (language, projectId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('cancel1', 'language', language);
+            (0, common_1.assertParamExists)('planTranscodingCancelV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('cancel1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('planTranscodingCancelV1', 'projectId', projectId);
             const localVarPath = `/method/plan_transcoding`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -134,19 +130,17 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Check transcoding tariff before buy
-         * @param {check1VEnum} v Version
-         * @param {check1LanguageEnum} language Current language
+         * @param {PlanTranscodingCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanTranscodingCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check1: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('check1', 'v', v);
+        planTranscodingCheckV1: async (language, projectId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('check1', 'language', language);
+            (0, common_1.assertParamExists)('planTranscodingCheckV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('check1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('planTranscodingCheckV1', 'projectId', projectId);
             const localVarPath = `/method/plan_transcoding/check`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -177,16 +171,14 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get discount transcoding
-         * @param {getDiscount1VEnum} v Version
-         * @param {getDiscount1LanguageEnum} language Current language
+         * @param {PlanTranscodingGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanTranscodingGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDiscount1: async (v, language, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('getDiscount1', 'v', v);
+        planTranscodingGetDiscountV1: async (language, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('getDiscount1', 'language', language);
+            (0, common_1.assertParamExists)('planTranscodingGetDiscountV1', 'language', language);
             const localVarPath = `/method/plan_transcoding/get_discount`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -214,16 +206,14 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get list of transcoding tariffs
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {PlanTranscodingListV1LanguageEnum} language Current language
+         * @param {PlanTranscodingListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1: async (v, language, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'v', v);
+        planTranscodingListV1: async (language, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('list1', 'language', language);
+            (0, common_1.assertParamExists)('planTranscodingListV1', 'language', language);
             const localVarPath = `/method/plan_transcoding/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -251,19 +241,17 @@ const axiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get tariff for project
-         * @param {tariff1VEnum} v Version
-         * @param {tariff1LanguageEnum} language Current language
+         * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanTranscodingTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tariff1: async (v, language, projectId, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('tariff1', 'v', v);
+        planTranscodingTariffV1: async (language, projectId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('tariff1', 'language', language);
+            (0, common_1.assertParamExists)('planTranscodingTariffV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
-            (0, common_1.assertParamExists)('tariff1', 'projectId', projectId);
+            (0, common_1.assertParamExists)('planTranscodingTariffV1', 'projectId', projectId);
             const localVarPath = `/method/plan_transcoding`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -293,196 +281,184 @@ const axiosParamCreator = function (configuration) {
         },
     };
 };
-exports.axiosParamCreator = axiosParamCreator;
+exports.PlanTranscodingApiAxiosParamCreator = PlanTranscodingApiAxiosParamCreator;
 /**
  * PlanTranscodingApi - functional programming interface
  * @export
  */
-const fp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.axiosParamCreator)(configuration);
+const PlanTranscodingApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.PlanTranscodingApiAxiosParamCreator)(configuration);
     return {
         /**
          *
          * @summary Buy transcoder tariff
-         * @param {buy1VEnum} v Version
-         * @param {buy1LanguageEnum} language Current language
+         * @param {PlanTranscodingBuyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {buy1PeriodEnum} period Period
+         * @param {PlanTranscodingBuyV1PeriodEnum} period Period
          * @param {number} planTranscodingId Transcoding plan id
+         * @param {PlanTranscodingBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number} [count] Count flow
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async buy1(v, language, projectId, period, planTranscodingId, count, options) {
+        async planTranscodingBuyV1(language, projectId, period, planTranscodingId, v, count, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.buy1(v, language, projectId, period, planTranscodingId, count, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingBuyV1(language, projectId, period, planTranscodingId, v, count, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.buy1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingBuyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Remove after tariff
-         * @param {cancel1VEnum} v Version
-         * @param {cancel1LanguageEnum} language Current language
+         * @param {PlanTranscodingCancelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanTranscodingCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cancel1(v, language, projectId, options) {
+        async planTranscodingCancelV1(language, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cancel1(v, language, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingCancelV1(language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.cancel1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingCancelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Check transcoding tariff before buy
-         * @param {check1VEnum} v Version
-         * @param {check1LanguageEnum} language Current language
+         * @param {PlanTranscodingCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanTranscodingCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async check1(v, language, projectId, options) {
+        async planTranscodingCheckV1(language, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.check1(v, language, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingCheckV1(language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.check1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingCheckV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get discount transcoding
-         * @param {getDiscount1VEnum} v Version
-         * @param {getDiscount1LanguageEnum} language Current language
+         * @param {PlanTranscodingGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanTranscodingGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDiscount1(v, language, options) {
+        async planTranscodingGetDiscountV1(language, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDiscount1(v, language, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingGetDiscountV1(language, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.getDiscount1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingGetDiscountV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get list of transcoding tariffs
-         * @param {list1VEnum} v Version
-         * @param {list1LanguageEnum} language Current language
+         * @param {PlanTranscodingListV1LanguageEnum} language Current language
+         * @param {PlanTranscodingListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list1(v, language, options) {
+        async planTranscodingListV1(language, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list1(v, language, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingListV1(language, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.list1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Get tariff for project
-         * @param {tariff1VEnum} v Version
-         * @param {tariff1LanguageEnum} language Current language
+         * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
+         * @param {PlanTranscodingTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async tariff1(v, language, projectId, options) {
+        async planTranscodingTariffV1(language, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.tariff1(v, language, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingTariffV1(language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.tariff1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingTariffV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.fp = fp;
+exports.PlanTranscodingApiFp = PlanTranscodingApiFp;
 /**
  * PlanTranscodingApi - factory interface
  * @export
  */
-const factory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.fp)(configuration);
+const PlanTranscodingApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.PlanTranscodingApiFp)(configuration);
     return {
         /**
          *
          * @summary Buy transcoder tariff
-         * @param {buy1Request} requestParameters Request parameters.
+         * @param {PlanTranscodingApiPlanTranscodingBuyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buy1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || buy1VEnum._1;
-            return localVarFp.buy1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planTranscodingId, requestParameters.count, options).then((request) => request(axios, basePath));
+        planTranscodingBuyV1(requestParameters, options) {
+            return localVarFp.planTranscodingBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planTranscodingId, requestParameters.v, requestParameters.count, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Remove after tariff
-         * @param {cancel1Request} requestParameters Request parameters.
+         * @param {PlanTranscodingApiPlanTranscodingCancelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancel1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || cancel1VEnum._1;
-            return localVarFp.cancel1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        planTranscodingCancelV1(requestParameters, options) {
+            return localVarFp.planTranscodingCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Check transcoding tariff before buy
-         * @param {check1Request} requestParameters Request parameters.
+         * @param {PlanTranscodingApiPlanTranscodingCheckV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || check1VEnum._1;
-            return localVarFp.check1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        planTranscodingCheckV1(requestParameters, options) {
+            return localVarFp.planTranscodingCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get discount transcoding
-         * @param {getDiscount1Request} requestParameters Request parameters.
+         * @param {PlanTranscodingApiPlanTranscodingGetDiscountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDiscount1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || getDiscount1VEnum._1;
-            return localVarFp.getDiscount1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        planTranscodingGetDiscountV1(requestParameters, options) {
+            return localVarFp.planTranscodingGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get list of transcoding tariffs
-         * @param {list1Request} requestParameters Request parameters.
+         * @param {PlanTranscodingApiPlanTranscodingListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || list1VEnum._1;
-            return localVarFp.list1(actualV, requestParameters.language, options).then((request) => request(axios, basePath));
+        planTranscodingListV1(requestParameters, options) {
+            return localVarFp.planTranscodingListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Get tariff for project
-         * @param {tariff1Request} requestParameters Request parameters.
+         * @param {PlanTranscodingApiPlanTranscodingTariffV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tariff1(requestParameters, options) {
-            // Автоматически устанавливаем версию из названия метода если не передана
-            const actualV = requestParameters.v || tariff1VEnum._1;
-            return localVarFp.tariff1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        planTranscodingTariffV1(requestParameters, options) {
+            return localVarFp.planTranscodingTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.factory = factory;
+exports.PlanTranscodingApiFactory = PlanTranscodingApiFactory;
 /**
  * PlanTranscodingApi - object-oriented interface
  * @export
@@ -493,209 +469,171 @@ class PlanTranscodingApi extends base_1.BaseAPI {
     /**
      *
      * @summary Buy transcoder tariff
-     * @param {buy1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    buy1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || buy1VEnum._1;
-        return (0, exports.fp)(this.configuration).buy1(actualV, requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planTranscodingId, requestParameters.count, options).then((request) => request(this.axios, this.basePath));
+    planTranscodingBuyV1(requestParameters, options) {
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planTranscodingId, requestParameters.v, requestParameters.count, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Remove after tariff
-     * @param {cancel1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    cancel1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || cancel1VEnum._1;
-        return (0, exports.fp)(this.configuration).cancel1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    planTranscodingCancelV1(requestParameters, options) {
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Check transcoding tariff before buy
-     * @param {check1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    check1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || check1VEnum._1;
-        return (0, exports.fp)(this.configuration).check1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    planTranscodingCheckV1(requestParameters, options) {
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get discount transcoding
-     * @param {getDiscount1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    getDiscount1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || getDiscount1VEnum._1;
-        return (0, exports.fp)(this.configuration).getDiscount1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    planTranscodingGetDiscountV1(requestParameters, options) {
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get list of transcoding tariffs
-     * @param {list1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    list1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || list1VEnum._1;
-        return (0, exports.fp)(this.configuration).list1(actualV, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    planTranscodingListV1(requestParameters, options) {
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Get tariff for project
-     * @param {tariff1Request} requestParameters Request parameters.
+     * @param {PlanTranscodingApiPlanTranscodingTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    tariff1(requestParameters, options) {
-        // Автоматически устанавливаем версию из названия метода если не передана
-        const actualV = requestParameters.v || tariff1VEnum._1;
-        return (0, exports.fp)(this.configuration).tariff1(actualV, requestParameters.language, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    planTranscodingTariffV1(requestParameters, options) {
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PlanTranscodingApi = PlanTranscodingApi;
 /**
-  * @export
-  * @enum {string}
-  */
-var buy1VEnum;
-(function (buy1VEnum) {
-    buy1VEnum["_1"] = "1";
-    buy1VEnum["_2"] = "2";
-    buy1VEnum["_3"] = "3";
-})(buy1VEnum || (exports.buy1VEnum = buy1VEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingBuyV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var buy1LanguageEnum;
-(function (buy1LanguageEnum) {
-    buy1LanguageEnum["ru"] = "ru";
-    buy1LanguageEnum["en"] = "en";
-    buy1LanguageEnum["cn"] = "cn";
-})(buy1LanguageEnum || (exports.buy1LanguageEnum = buy1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingBuyV1PeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var buy1PeriodEnum;
-(function (buy1PeriodEnum) {
-    buy1PeriodEnum["month"] = "month";
-    buy1PeriodEnum["year"] = "year";
-})(buy1PeriodEnum || (exports.buy1PeriodEnum = buy1PeriodEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingBuyV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var cancel1VEnum;
-(function (cancel1VEnum) {
-    cancel1VEnum["_1"] = "1";
-    cancel1VEnum["_2"] = "2";
-    cancel1VEnum["_3"] = "3";
-})(cancel1VEnum || (exports.cancel1VEnum = cancel1VEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingCancelV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var cancel1LanguageEnum;
-(function (cancel1LanguageEnum) {
-    cancel1LanguageEnum["ru"] = "ru";
-    cancel1LanguageEnum["en"] = "en";
-    cancel1LanguageEnum["cn"] = "cn";
-})(cancel1LanguageEnum || (exports.cancel1LanguageEnum = cancel1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingCancelV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var check1VEnum;
-(function (check1VEnum) {
-    check1VEnum["_1"] = "1";
-    check1VEnum["_2"] = "2";
-    check1VEnum["_3"] = "3";
-})(check1VEnum || (exports.check1VEnum = check1VEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingCheckV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var check1LanguageEnum;
-(function (check1LanguageEnum) {
-    check1LanguageEnum["ru"] = "ru";
-    check1LanguageEnum["en"] = "en";
-    check1LanguageEnum["cn"] = "cn";
-})(check1LanguageEnum || (exports.check1LanguageEnum = check1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingCheckV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getDiscount1VEnum;
-(function (getDiscount1VEnum) {
-    getDiscount1VEnum["_1"] = "1";
-    getDiscount1VEnum["_2"] = "2";
-    getDiscount1VEnum["_3"] = "3";
-})(getDiscount1VEnum || (exports.getDiscount1VEnum = getDiscount1VEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingGetDiscountV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var getDiscount1LanguageEnum;
-(function (getDiscount1LanguageEnum) {
-    getDiscount1LanguageEnum["ru"] = "ru";
-    getDiscount1LanguageEnum["en"] = "en";
-    getDiscount1LanguageEnum["cn"] = "cn";
-})(getDiscount1LanguageEnum || (exports.getDiscount1LanguageEnum = getDiscount1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingGetDiscountV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1VEnum;
-(function (list1VEnum) {
-    list1VEnum["_1"] = "1";
-    list1VEnum["_2"] = "2";
-    list1VEnum["_3"] = "3";
-})(list1VEnum || (exports.list1VEnum = list1VEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var list1LanguageEnum;
-(function (list1LanguageEnum) {
-    list1LanguageEnum["ru"] = "ru";
-    list1LanguageEnum["en"] = "en";
-    list1LanguageEnum["cn"] = "cn";
-})(list1LanguageEnum || (exports.list1LanguageEnum = list1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingListV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var tariff1VEnum;
-(function (tariff1VEnum) {
-    tariff1VEnum["_1"] = "1";
-    tariff1VEnum["_2"] = "2";
-    tariff1VEnum["_3"] = "3";
-})(tariff1VEnum || (exports.tariff1VEnum = tariff1VEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingTariffV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
 /**
-  * @export
-  * @enum {string}
-  */
-var tariff1LanguageEnum;
-(function (tariff1LanguageEnum) {
-    tariff1LanguageEnum["ru"] = "ru";
-    tariff1LanguageEnum["en"] = "en";
-    tariff1LanguageEnum["cn"] = "cn";
-})(tariff1LanguageEnum || (exports.tariff1LanguageEnum = tariff1LanguageEnum = {}));
+ * @export
+ */
+exports.PlanTranscodingTariffV1VEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};

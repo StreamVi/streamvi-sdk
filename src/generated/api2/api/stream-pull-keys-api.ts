@@ -72,8 +72,6 @@ export const StreamPullKeysApiAxiosParamCreator = function (configuration?: Conf
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -163,8 +161,6 @@ export const StreamPullKeysApiAxiosParamCreator = function (configuration?: Conf
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -217,8 +213,6 @@ export const StreamPullKeysApiAxiosParamCreator = function (configuration?: Conf
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {

@@ -13,17 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatusEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var StatusEnum;
-(function (StatusEnum) {
-    StatusEnum["None"] = "None";
-    StatusEnum["Backlog"] = "Backlog";
-    StatusEnum["Drafting"] = "Drafting";
-    StatusEnum["Reviewing"] = "Reviewing";
-    StatusEnum["Done"] = "Done";
-    StatusEnum["Published"] = "Published";
-})(StatusEnum || (exports.StatusEnum = StatusEnum = {}));
+exports.StructureHelpPageConnectionsItemFinalStatusEnum = void 0;
+exports.StructureHelpPageConnectionsItemFinalStatusEnum = {
+    None: 'None',
+    Backlog: 'Backlog',
+    Drafting: 'Drafting',
+    Reviewing: 'Reviewing',
+    Done: 'Done',
+    Published: 'Published'
+};

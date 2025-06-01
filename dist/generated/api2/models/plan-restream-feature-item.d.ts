@@ -20,7 +20,7 @@ export interface PlanRestreamFeatureItem {
      * @type {string}
      * @memberof PlanRestreamFeatureItem
      */
-    'name': NameEnum;
+    'name': PlanRestreamFeatureItemNameEnum;
     /**
      * Unit
      * @type {string}
@@ -28,21 +28,18 @@ export interface PlanRestreamFeatureItem {
      */
     'unit'?: string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum NameEnum {
-    count_channel_max = "count_channel_max",
-    bitrate_max = "bitrate_max",
-    resolution = "resolution",
-    create_projects = "create_projects",
-    chat = "chat",
-    video = "video",
-    video_storage = "video_storage",
-    change_subject = "change_subject",
-    background_chat = "background_chat",
-    dedicated_server = "dedicated_server",
-    personal_manager = "personal_manager"
-}
+export declare const PlanRestreamFeatureItemNameEnum: {
+    readonly CountChannelMax: "count_channel_max";
+    readonly BitrateMax: "bitrate_max";
+    readonly Resolution: "resolution";
+    readonly CreateProjects: "create_projects";
+    readonly Chat: "chat";
+    readonly Video: "video";
+    readonly VideoStorage: "video_storage";
+    readonly ChangeSubject: "change_subject";
+    readonly BackgroundChat: "background_chat";
+    readonly DedicatedServer: "dedicated_server";
+    readonly PersonalManager: "personal_manager";
+};
+export type PlanRestreamFeatureItemNameEnum = typeof PlanRestreamFeatureItemNameEnum[keyof typeof PlanRestreamFeatureItemNameEnum];
 //# sourceMappingURL=plan-restream-feature-item.d.ts.map

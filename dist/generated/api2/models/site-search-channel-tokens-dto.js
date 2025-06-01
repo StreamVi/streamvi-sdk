@@ -13,15 +13,10 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatusEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var StatusEnum;
-(function (StatusEnum) {
-    StatusEnum["unused"] = "unused";
-    StatusEnum["invalid"] = "invalid";
-    StatusEnum["deprecated"] = "deprecated";
-    StatusEnum["valid"] = "valid";
-})(StatusEnum || (exports.StatusEnum = StatusEnum = {}));
+exports.SiteSearchChannelTokensDtoStatusEnum = void 0;
+exports.SiteSearchChannelTokensDtoStatusEnum = {
+    Unused: 'unused',
+    Invalid: 'invalid',
+    Deprecated: 'deprecated',
+    Valid: 'valid'
+};

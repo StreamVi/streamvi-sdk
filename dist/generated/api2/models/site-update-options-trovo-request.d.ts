@@ -20,13 +20,13 @@ export interface SiteUpdateOptionsTrovoRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
-    'v': VEnum;
+    'v': SiteUpdateOptionsTrovoRequestVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
-    'language': LanguageEnum;
+    'language': SiteUpdateOptionsTrovoRequestLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -62,48 +62,36 @@ export interface SiteUpdateOptionsTrovoRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
-    'audience': AudienceEnum;
+    'audience': SiteUpdateOptionsTrovoRequestAudienceEnum;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
-    'lang': LangEnum;
+    'lang': SiteUpdateOptionsTrovoRequestLangEnum;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum AudienceEnum {
-    CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY = "CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY",
-    CHANNEL_AUDIENCE_TYPE_TEEN = "CHANNEL_AUDIENCE_TYPE_TEEN",
-    CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS = "CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LangEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const SiteUpdateOptionsTrovoRequestVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type SiteUpdateOptionsTrovoRequestVEnum = typeof SiteUpdateOptionsTrovoRequestVEnum[keyof typeof SiteUpdateOptionsTrovoRequestVEnum];
+export declare const SiteUpdateOptionsTrovoRequestLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteUpdateOptionsTrovoRequestLanguageEnum = typeof SiteUpdateOptionsTrovoRequestLanguageEnum[keyof typeof SiteUpdateOptionsTrovoRequestLanguageEnum];
+export declare const SiteUpdateOptionsTrovoRequestAudienceEnum: {
+    readonly ChannelAudienceTypeFamilyfriendly: "CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY";
+    readonly ChannelAudienceTypeTeen: "CHANNEL_AUDIENCE_TYPE_TEEN";
+    readonly ChannelAudienceTypeEighteenplus: "CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS";
+};
+export type SiteUpdateOptionsTrovoRequestAudienceEnum = typeof SiteUpdateOptionsTrovoRequestAudienceEnum[keyof typeof SiteUpdateOptionsTrovoRequestAudienceEnum];
+export declare const SiteUpdateOptionsTrovoRequestLangEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SiteUpdateOptionsTrovoRequestLangEnum = typeof SiteUpdateOptionsTrovoRequestLangEnum[keyof typeof SiteUpdateOptionsTrovoRequestLangEnum];
 //# sourceMappingURL=site-update-options-trovo-request.d.ts.map

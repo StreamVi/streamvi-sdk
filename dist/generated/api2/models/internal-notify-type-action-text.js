@@ -13,24 +13,14 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LanguageIsoEnum = exports.LanguageEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageEnum;
-(function (LanguageEnum) {
-    LanguageEnum["russian"] = "russian";
-    LanguageEnum["english"] = "english";
-    LanguageEnum["none"] = "none";
-})(LanguageEnum || (exports.LanguageEnum = LanguageEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageIsoEnum;
-(function (LanguageIsoEnum) {
-    LanguageIsoEnum["ru"] = "ru";
-    LanguageIsoEnum["en"] = "en";
-    LanguageIsoEnum["cn"] = "cn";
-})(LanguageIsoEnum || (exports.LanguageIsoEnum = LanguageIsoEnum = {}));
+exports.InternalNotifyTypeActionTextLanguageIsoEnum = exports.InternalNotifyTypeActionTextLanguageEnum = void 0;
+exports.InternalNotifyTypeActionTextLanguageEnum = {
+    Russian: 'russian',
+    English: 'english',
+    None: 'none'
+};
+exports.InternalNotifyTypeActionTextLanguageIsoEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};

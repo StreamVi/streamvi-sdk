@@ -13,32 +13,17 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatusEnum = exports.NotifyCategoryEnum = exports.NotifyChannelEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var NotifyChannelEnum;
-(function (NotifyChannelEnum) {
-    NotifyChannelEnum["telegram"] = "telegram";
-    NotifyChannelEnum["cabinet"] = "cabinet";
-    NotifyChannelEnum["mobile"] = "mobile";
-})(NotifyChannelEnum || (exports.NotifyChannelEnum = NotifyChannelEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var NotifyCategoryEnum;
-(function (NotifyCategoryEnum) {
-    NotifyCategoryEnum["important"] = "important";
-    NotifyCategoryEnum["stream"] = "stream";
-})(NotifyCategoryEnum || (exports.NotifyCategoryEnum = NotifyCategoryEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var StatusEnum;
-(function (StatusEnum) {
-    StatusEnum["enable"] = "enable";
-    StatusEnum["disable"] = "disable";
-})(StatusEnum || (exports.StatusEnum = StatusEnum = {}));
+exports.SiteSetNotifyUserRequestStatusEnum = exports.SiteSetNotifyUserRequestNotifyCategoryEnum = exports.SiteSetNotifyUserRequestNotifyChannelEnum = void 0;
+exports.SiteSetNotifyUserRequestNotifyChannelEnum = {
+    Telegram: 'telegram',
+    Cabinet: 'cabinet',
+    Mobile: 'mobile'
+};
+exports.SiteSetNotifyUserRequestNotifyCategoryEnum = {
+    Important: 'important',
+    Stream: 'stream'
+};
+exports.SiteSetNotifyUserRequestStatusEnum = {
+    Enable: 'enable',
+    Disable: 'disable'
+};

@@ -13,44 +13,24 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PlanPeriodEnum = exports.TypeEnum = exports.LanguageEnum = exports.VEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var VEnum;
-(function (VEnum) {
-    VEnum["_1"] = "1";
-    VEnum["_2"] = "2";
-    VEnum["_3"] = "3";
-})(VEnum || (exports.VEnum = VEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageEnum;
-(function (LanguageEnum) {
-    LanguageEnum["ru"] = "ru";
-    LanguageEnum["en"] = "en";
-    LanguageEnum["cn"] = "cn";
-})(LanguageEnum || (exports.LanguageEnum = LanguageEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum["restream"] = "restream";
-    TypeEnum["transcoding"] = "transcoding";
-    TypeEnum["storage"] = "storage";
-    TypeEnum["topup"] = "topup";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var PlanPeriodEnum;
-(function (PlanPeriodEnum) {
-    PlanPeriodEnum["month"] = "month";
-    PlanPeriodEnum["year"] = "year";
-})(PlanPeriodEnum || (exports.PlanPeriodEnum = PlanPeriodEnum = {}));
+exports.PaymentCreateRequestRestreamBodyDtoPlanPeriodEnum = exports.PaymentCreateRequestRestreamBodyDtoTypeEnum = exports.PaymentCreateRequestRestreamBodyDtoLanguageEnum = exports.PaymentCreateRequestRestreamBodyDtoVEnum = void 0;
+exports.PaymentCreateRequestRestreamBodyDtoVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
+exports.PaymentCreateRequestRestreamBodyDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+exports.PaymentCreateRequestRestreamBodyDtoTypeEnum = {
+    Restream: 'restream',
+    Transcoding: 'transcoding',
+    Storage: 'storage',
+    Topup: 'topup'
+};
+exports.PaymentCreateRequestRestreamBodyDtoPlanPeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+};

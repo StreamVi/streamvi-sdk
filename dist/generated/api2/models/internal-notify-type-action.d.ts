@@ -21,7 +21,7 @@ export interface InternalNotifyTypeAction {
      * @type {string}
      * @memberof InternalNotifyTypeAction
      */
-    'name': NameEnum;
+    'name': InternalNotifyTypeActionNameEnum;
     /**
      * Action value
      * @type {string}
@@ -33,7 +33,7 @@ export interface InternalNotifyTypeAction {
      * @type {string}
      * @memberof InternalNotifyTypeAction
      */
-    'type': TypeEnum;
+    'type': InternalNotifyTypeActionTypeEnum;
     /**
      * text
      * @type {Array<InternalNotifyTypeActionText>}
@@ -57,39 +57,30 @@ export interface InternalNotifyTypeAction {
      * @type {string}
      * @memberof InternalNotifyTypeAction
      */
-    'group_type': GroupTypeEnum;
+    'group_type': InternalNotifyTypeActionGroupTypeEnum;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum NameEnum {
-    external_link = "external_link",
-    cabinet_link = "cabinet_link",
-    landing_link = "landing_link",
-    link = "link",
-    accept = "accept",
-    decline = "decline",
-    accept_1 = "accept_1",
-    accept_2 = "accept_2",
-    accept_3 = "accept_3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TypeEnum {
-    primary = "primary",
-    secondary = "secondary",
-    link = "link"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum GroupTypeEnum {
-    toggle = "toggle",
-    select = "select",
-    default = "default"
-}
+export declare const InternalNotifyTypeActionNameEnum: {
+    readonly ExternalLink: "external_link";
+    readonly CabinetLink: "cabinet_link";
+    readonly LandingLink: "landing_link";
+    readonly Link: "link";
+    readonly Accept: "accept";
+    readonly Decline: "decline";
+    readonly Accept1: "accept_1";
+    readonly Accept2: "accept_2";
+    readonly Accept3: "accept_3";
+};
+export type InternalNotifyTypeActionNameEnum = typeof InternalNotifyTypeActionNameEnum[keyof typeof InternalNotifyTypeActionNameEnum];
+export declare const InternalNotifyTypeActionTypeEnum: {
+    readonly Primary: "primary";
+    readonly Secondary: "secondary";
+    readonly Link: "link";
+};
+export type InternalNotifyTypeActionTypeEnum = typeof InternalNotifyTypeActionTypeEnum[keyof typeof InternalNotifyTypeActionTypeEnum];
+export declare const InternalNotifyTypeActionGroupTypeEnum: {
+    readonly Toggle: "toggle";
+    readonly Select: "select";
+    readonly Default: "default";
+};
+export type InternalNotifyTypeActionGroupTypeEnum = typeof InternalNotifyTypeActionGroupTypeEnum[keyof typeof InternalNotifyTypeActionGroupTypeEnum];
 //# sourceMappingURL=internal-notify-type-action.d.ts.map

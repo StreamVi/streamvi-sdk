@@ -71,7 +71,7 @@ export interface RtmpServerStateItem {
      * @type {string}
      * @memberof RtmpServerStateItem
      */
-    'serverStatus': ServerStatusEnum;
+    'serverStatus': RtmpServerStateItemServerStatusEnum;
     /**
      * Quality array
      * @type {Array<RtmpServerPlatformQuality>}
@@ -79,13 +79,10 @@ export interface RtmpServerStateItem {
      */
     'platforms': Array<RtmpServerPlatformQuality>;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum ServerStatusEnum {
-    good = "good",
-    problem = "problem",
-    bad = "bad"
-}
+export declare const RtmpServerStateItemServerStatusEnum: {
+    readonly Good: "good";
+    readonly Problem: "problem";
+    readonly Bad: "bad";
+};
+export type RtmpServerStateItemServerStatusEnum = typeof RtmpServerStateItemServerStatusEnum[keyof typeof RtmpServerStateItemServerStatusEnum];
 //# sourceMappingURL=rtmp-server-state-item.d.ts.map

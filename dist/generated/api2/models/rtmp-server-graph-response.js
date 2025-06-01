@@ -13,16 +13,11 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TypeEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum["performance"] = "performance";
-    TypeEnum["network"] = "network";
-    TypeEnum["cpu"] = "cpu";
-    TypeEnum["ram"] = "ram";
-    TypeEnum["deliveredPackages"] = "deliveredPackages";
-})(TypeEnum || (exports.TypeEnum = TypeEnum = {}));
+exports.RtmpServerGraphResponseTypeEnum = void 0;
+exports.RtmpServerGraphResponseTypeEnum = {
+    Performance: 'performance',
+    Network: 'network',
+    Cpu: 'cpu',
+    Ram: 'ram',
+    DeliveredPackages: 'deliveredPackages'
+};

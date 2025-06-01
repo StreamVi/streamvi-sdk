@@ -20,13 +20,13 @@ export interface PaymentCreateRequestTranscoderBodyDto {
      * @type {string}
      * @memberof PaymentCreateRequestTranscoderBodyDto
      */
-    'v': VEnum;
+    'v': PaymentCreateRequestTranscoderBodyDtoVEnum;
     /**
      * Current language
      * @type {string}
      * @memberof PaymentCreateRequestTranscoderBodyDto
      */
-    'language': LanguageEnum;
+    'language': PaymentCreateRequestTranscoderBodyDtoLanguageEnum;
     /**
      * Project id
      * @type {number}
@@ -38,7 +38,7 @@ export interface PaymentCreateRequestTranscoderBodyDto {
      * @type {string}
      * @memberof PaymentCreateRequestTranscoderBodyDto
      */
-    'type': TypeEnum;
+    'type': PaymentCreateRequestTranscoderBodyDtoTypeEnum;
     /**
      * Amount
      * @type {number}
@@ -50,7 +50,7 @@ export interface PaymentCreateRequestTranscoderBodyDto {
      * @type {string}
      * @memberof PaymentCreateRequestTranscoderBodyDto
      */
-    'plan_period': PlanPeriodEnum;
+    'plan_period': PaymentCreateRequestTranscoderBodyDtoPlanPeriodEnum;
     /**
      * Transcoding plan id
      * @type {number}
@@ -64,40 +64,28 @@ export interface PaymentCreateRequestTranscoderBodyDto {
      */
     'plan_transcoding_count_flow': number;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum VEnum {
-    _1 = "1",
-    _2 = "2",
-    _3 = "3"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TypeEnum {
-    restream = "restream",
-    transcoding = "transcoding",
-    storage = "storage",
-    topup = "topup"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum PlanPeriodEnum {
-    month = "month",
-    year = "year"
-}
+export declare const PaymentCreateRequestTranscoderBodyDtoVEnum: {
+    readonly _1: "1";
+    readonly _2: "2";
+    readonly _3: "3";
+};
+export type PaymentCreateRequestTranscoderBodyDtoVEnum = typeof PaymentCreateRequestTranscoderBodyDtoVEnum[keyof typeof PaymentCreateRequestTranscoderBodyDtoVEnum];
+export declare const PaymentCreateRequestTranscoderBodyDtoLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PaymentCreateRequestTranscoderBodyDtoLanguageEnum = typeof PaymentCreateRequestTranscoderBodyDtoLanguageEnum[keyof typeof PaymentCreateRequestTranscoderBodyDtoLanguageEnum];
+export declare const PaymentCreateRequestTranscoderBodyDtoTypeEnum: {
+    readonly Restream: "restream";
+    readonly Transcoding: "transcoding";
+    readonly Storage: "storage";
+    readonly Topup: "topup";
+};
+export type PaymentCreateRequestTranscoderBodyDtoTypeEnum = typeof PaymentCreateRequestTranscoderBodyDtoTypeEnum[keyof typeof PaymentCreateRequestTranscoderBodyDtoTypeEnum];
+export declare const PaymentCreateRequestTranscoderBodyDtoPlanPeriodEnum: {
+    readonly Month: "month";
+    readonly Year: "year";
+};
+export type PaymentCreateRequestTranscoderBodyDtoPlanPeriodEnum = typeof PaymentCreateRequestTranscoderBodyDtoPlanPeriodEnum[keyof typeof PaymentCreateRequestTranscoderBodyDtoPlanPeriodEnum];
 //# sourceMappingURL=payment-create-request-transcoder-body-dto.d.ts.map

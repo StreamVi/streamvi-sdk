@@ -13,44 +13,24 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LangEnum = exports.AudienceEnum = exports.LanguageEnum = exports.VEnum = void 0;
-/**
-    * @export
-    * @enum {string}
-    */
-var VEnum;
-(function (VEnum) {
-    VEnum["_1"] = "1";
-    VEnum["_2"] = "2";
-    VEnum["_3"] = "3";
-})(VEnum || (exports.VEnum = VEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LanguageEnum;
-(function (LanguageEnum) {
-    LanguageEnum["ru"] = "ru";
-    LanguageEnum["en"] = "en";
-    LanguageEnum["cn"] = "cn";
-})(LanguageEnum || (exports.LanguageEnum = LanguageEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var AudienceEnum;
-(function (AudienceEnum) {
-    AudienceEnum["CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY"] = "CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY";
-    AudienceEnum["CHANNEL_AUDIENCE_TYPE_TEEN"] = "CHANNEL_AUDIENCE_TYPE_TEEN";
-    AudienceEnum["CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS"] = "CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS";
-})(AudienceEnum || (exports.AudienceEnum = AudienceEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var LangEnum;
-(function (LangEnum) {
-    LangEnum["ru"] = "ru";
-    LangEnum["en"] = "en";
-    LangEnum["cn"] = "cn";
-})(LangEnum || (exports.LangEnum = LangEnum = {}));
+exports.SiteUpdateOptionsTrovoRequestLangEnum = exports.SiteUpdateOptionsTrovoRequestAudienceEnum = exports.SiteUpdateOptionsTrovoRequestLanguageEnum = exports.SiteUpdateOptionsTrovoRequestVEnum = void 0;
+exports.SiteUpdateOptionsTrovoRequestVEnum = {
+    _1: '1',
+    _2: '2',
+    _3: '3'
+};
+exports.SiteUpdateOptionsTrovoRequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+exports.SiteUpdateOptionsTrovoRequestAudienceEnum = {
+    ChannelAudienceTypeFamilyfriendly: 'CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY',
+    ChannelAudienceTypeTeen: 'CHANNEL_AUDIENCE_TYPE_TEEN',
+    ChannelAudienceTypeEighteenplus: 'CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS'
+};
+exports.SiteUpdateOptionsTrovoRequestLangEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};

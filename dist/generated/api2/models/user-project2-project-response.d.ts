@@ -50,7 +50,7 @@ export interface UserProject2ProjectResponse {
      * @type {number}
      * @memberof UserProject2ProjectResponse
      */
-    'type': TypeEnum;
+    'type': UserProject2ProjectResponseTypeEnum;
     /**
      * External id
      * @type {string}
@@ -62,23 +62,17 @@ export interface UserProject2ProjectResponse {
      * @type {number}
      * @memberof UserProject2ProjectResponse
      */
-    'access_type': AccessTypeEnum;
+    'access_type': UserProject2ProjectResponseAccessTypeEnum;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum TypeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum AccessTypeEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1,
-    NUMBER_2 = 2
-}
+export declare const UserProject2ProjectResponseTypeEnum: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+};
+export type UserProject2ProjectResponseTypeEnum = typeof UserProject2ProjectResponseTypeEnum[keyof typeof UserProject2ProjectResponseTypeEnum];
+export declare const UserProject2ProjectResponseAccessTypeEnum: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+    readonly NUMBER_2: 2;
+};
+export type UserProject2ProjectResponseAccessTypeEnum = typeof UserProject2ProjectResponseAccessTypeEnum[keyof typeof UserProject2ProjectResponseAccessTypeEnum];
 //# sourceMappingURL=user-project2-project-response.d.ts.map

@@ -20,13 +20,13 @@ export interface StructureHelpPageConnectionsItemLang {
      * @type {string}
      * @memberof StructureHelpPageConnectionsItemLang
      */
-    'language': LanguageEnum;
+    'language': StructureHelpPageConnectionsItemLangLanguageEnum;
     /**
      * Short language name
      * @type {string}
      * @memberof StructureHelpPageConnectionsItemLang
      */
-    'language_iso': LanguageIsoEnum;
+    'language_iso': StructureHelpPageConnectionsItemLangLanguageIsoEnum;
     /**
      * Help menu article title
      * @type {string}
@@ -34,22 +34,16 @@ export interface StructureHelpPageConnectionsItemLang {
      */
     'value': string;
 }
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageEnum {
-    russian = "russian",
-    english = "english",
-    none = "none"
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export declare enum LanguageIsoEnum {
-    ru = "ru",
-    en = "en",
-    cn = "cn"
-}
+export declare const StructureHelpPageConnectionsItemLangLanguageEnum: {
+    readonly Russian: "russian";
+    readonly English: "english";
+    readonly None: "none";
+};
+export type StructureHelpPageConnectionsItemLangLanguageEnum = typeof StructureHelpPageConnectionsItemLangLanguageEnum[keyof typeof StructureHelpPageConnectionsItemLangLanguageEnum];
+export declare const StructureHelpPageConnectionsItemLangLanguageIsoEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type StructureHelpPageConnectionsItemLangLanguageIsoEnum = typeof StructureHelpPageConnectionsItemLangLanguageIsoEnum[keyof typeof StructureHelpPageConnectionsItemLangLanguageIsoEnum];
 //# sourceMappingURL=structure-help-page-connections-item-lang.d.ts.map
