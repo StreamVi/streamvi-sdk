@@ -326,6 +326,8 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
 
 describe('processMarkdownFile', () => {
   it('должен исправлять HTML-сущности в типах параметров', () => {
+    const postprocessApi = require('../scripts/postprocess-api.js');
+    const { processMarkdownFile } = postprocessApi;
     const testContent = `
 ### Parameters
 
@@ -367,6 +369,9 @@ describe('processMarkdownFile', () => {
   });
 
   it('должен исправлять дублирование типов в таблицах параметров', () => {
+    const postprocessApi = require('../scripts/postprocess-api.js');
+    const { processMarkdownFile } = postprocessApi;
+    
     const testContent = `
 | **v** | [**'1' | '2' | '3'**]**Array<'1' | '2' | '3'>** | Version | optional |
 `;
@@ -393,6 +398,9 @@ describe('processMarkdownFile', () => {
   });
 
   it('не должен изменять файлы без проблем форматирования', () => {
+    const postprocessApi = require('../scripts/postprocess-api.js');
+    const { processMarkdownFile } = postprocessApi;
+    
     const testContent = `
 ### Parameters
 

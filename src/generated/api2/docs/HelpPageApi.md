@@ -38,9 +38,9 @@ const { status, data } = await apiInstance.helpPageGetV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru'  \|  'en' \| 'cn'** | Current language | defaults to 'en'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **url** | **string** | Url of page | defaults to undefined|
-| **v** | **'1'  \|  '2' \| '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
