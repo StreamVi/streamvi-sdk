@@ -4,9 +4,9 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**paySystemCreateChallengeV1**](#paysystemcreatechallengev1) | **GET** /method/pay-system/payoneer/create | |
-|[**paySystemCreateUnitpayV1**](#paysystemcreateunitpayv1) | **GET** /method/pay-system/unitpay/create | |
-|[**paySystemListV1**](#paysystemlistv1) | **GET** /method/pay-system/list | Load available pay systems|
+|**paySystemCreateChallengeV1**(#paysystemcreatechallengev1) | **GET** /method/pay-system/payoneer/create | |
+|**paySystemCreateUnitpayV1**(#paysystemcreateunitpayv1) | **GET** /method/pay-system/unitpay/create | |
+|**paySystemListV1**(#paysystemlistv1) | **GET** /method/pay-system/list | Load available pay systems|
 
 # **paySystemCreateChallengeV1**
 > SuccessResponse paySystemCreateChallengeV1()
@@ -38,9 +38,9 @@ const { status, data } = await apiInstance.paySystemCreateChallengeV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **paymentId** | [**number**] | Payment id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **paymentId** | **number** | Payment id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -94,9 +94,9 @@ const { status, data } = await apiInstance.paySystemCreateUnitpayV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **paymentId** | [**number**] | Payment id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **paymentId** | **number** | Payment id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

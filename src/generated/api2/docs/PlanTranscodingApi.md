@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**planTranscodingBuyV1**](#plantranscodingbuyv1) | **POST** /method/plan_transcoding | Buy transcoder tariff|
-|[**planTranscodingCancelV1**](#plantranscodingcancelv1) | **DELETE** /method/plan_transcoding | Remove after tariff|
-|[**planTranscodingCheckV1**](#plantranscodingcheckv1) | **GET** /method/plan_transcoding/check | Check transcoding tariff before buy|
-|[**planTranscodingGetDiscountV1**](#plantranscodinggetdiscountv1) | **GET** /method/plan_transcoding/get_discount | Get discount transcoding|
-|[**planTranscodingListV1**](#plantranscodinglistv1) | **GET** /method/plan_transcoding/list | Get list of transcoding tariffs|
-|[**planTranscodingTariffV1**](#plantranscodingtariffv1) | **GET** /method/plan_transcoding | Get tariff for project|
+|**planTranscodingBuyV1**(#plantranscodingbuyv1) | **POST** /method/plan_transcoding | Buy transcoder tariff|
+|**planTranscodingCancelV1**(#plantranscodingcancelv1) | **DELETE** /method/plan_transcoding | Remove after tariff|
+|**planTranscodingCheckV1**(#plantranscodingcheckv1) | **GET** /method/plan_transcoding/check | Check transcoding tariff before buy|
+|**planTranscodingGetDiscountV1**(#plantranscodinggetdiscountv1) | **GET** /method/plan_transcoding/get_discount | Get discount transcoding|
+|**planTranscodingListV1**(#plantranscodinglistv1) | **GET** /method/plan_transcoding/list | Get list of transcoding tariffs|
+|**planTranscodingTariffV1**(#plantranscodingtariffv1) | **GET** /method/plan_transcoding | Get tariff for project|
 
 # **planTranscodingBuyV1**
 > SuccessResponse planTranscodingBuyV1()
@@ -47,12 +47,12 @@ const { status, data } = await apiInstance.planTranscodingBuyV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **period** | [**&#39;month&#39; | &#39;year&#39;**]**Array<&#39;month&#39; &#124; &#39;year&#39;>** | Period | defaults to undefined|
-| **planTranscodingId** | [**number**] | Transcoding plan id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **count** | [**number**] | Count flow | (optional) defaults to undefined|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **period** | **'month' | 'year'** | Period | defaults to undefined|
+| **planTranscodingId** | **number** | Transcoding plan id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **count** | **number** | Count flow | (optional) defaults to undefined|
 
 
 ### Return type
@@ -107,9 +107,9 @@ const { status, data } = await apiInstance.planTranscodingCancelV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -164,9 +164,9 @@ const { status, data } = await apiInstance.planTranscodingCheckV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -219,8 +219,8 @@ const { status, data } = await apiInstance.planTranscodingGetDiscountV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -273,8 +273,8 @@ const { status, data } = await apiInstance.planTranscodingListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -329,9 +329,9 @@ const { status, data } = await apiInstance.planTranscodingTariffV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

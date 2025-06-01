@@ -74,6 +74,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -135,6 +137,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -184,6 +188,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -230,6 +236,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -272,6 +280,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -317,6 +327,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {

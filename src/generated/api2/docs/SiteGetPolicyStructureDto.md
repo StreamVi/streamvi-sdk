@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;SiteGetPolicyStructure&gt;**](SiteGetPolicyStructure.md) | Array of policy pages | [default to undefined]
+**results** | **Array&lt;SiteGetPolicyStructure&gt;**(SiteGetPolicyStructure.md) | Array of policy pages | [default to undefined]
 
 ## Example
 

@@ -4,10 +4,10 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**projectChannelChangeAccessV1**](#projectchannelchangeaccessv1) | **POST** /method/channel/access/change | Change access for project in channel|
-|[**projectChannelDelV1**](#projectchanneldelv1) | **POST** /method/channel/access/del | Remove access for project in channel|
-|[**projectChannelListV1**](#projectchannellistv1) | **GET** /method/channel/access/list | Project channel list|
-|[**projectChannelTransferOwnerV1**](#projectchanneltransferownerv1) | **POST** /method/channel/access/transfer_owner | Transfer owner for project in channel|
+|**projectChannelChangeAccessV1**(#projectchannelchangeaccessv1) | **POST** /method/channel/access/change | Change access for project in channel|
+|**projectChannelDelV1**(#projectchanneldelv1) | **POST** /method/channel/access/del | Remove access for project in channel|
+|**projectChannelListV1**(#projectchannellistv1) | **GET** /method/channel/access/list | Project channel list|
+|**projectChannelTransferOwnerV1**(#projectchanneltransferownerv1) | **POST** /method/channel/access/transfer_owner | Transfer owner for project in channel|
 
 # **projectChannelChangeAccessV1**
 > SuccessResponse projectChannelChangeAccessV1()
@@ -45,12 +45,12 @@ const { status, data } = await apiInstance.projectChannelChangeAccessV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **toProjectId** | [**number**] | Target project id | defaults to undefined|
-| **accessType** | [**0 | 1 | 1 | 2**]**Array<0 &#124; 1 &#124; 1 &#124; 2>** | Access type | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **toProjectId** | **number** | Target project id | defaults to undefined|
+| **accessType** | **0 | 1 | 1 | 2** | Access type | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -109,11 +109,11 @@ const { status, data } = await apiInstance.projectChannelDelV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **targetProjectId** | [**number**] | Target project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **targetProjectId** | **number** | Target project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -170,10 +170,10 @@ const { status, data } = await apiInstance.projectChannelListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -232,11 +232,11 @@ const { status, data } = await apiInstance.projectChannelTransferOwnerV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **toProjectId** | [**number**] | Target project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **toProjectId** | **number** | Target project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

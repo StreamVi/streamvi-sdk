@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **balance** | **number** | Balance | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
 **balancesAllow** | **Array&lt;string&gt;** | Allowed balances | [default to undefined]
-**balancesValues** | [**MoneyFlowBalanceTypeValuesResponse**](MoneyFlowBalanceTypeValuesResponse.md) | Balances values | [default to undefined]
+**balancesValues** | **MoneyFlowBalanceTypeValuesResponse**(MoneyFlowBalanceTypeValuesResponse.md) | Balances values | [default to undefined]
 
 ## Example
 

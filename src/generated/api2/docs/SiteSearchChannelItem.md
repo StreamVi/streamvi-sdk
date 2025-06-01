@@ -22,12 +22,12 @@ Name | Type | Description | Notes
 **usageType** | **number** | usageType | [default to undefined]
 **companyRole** | **number** | companyRole | [default to undefined]
 **threads** | **number** | threads | [default to undefined]
-**streamInfo** | [**SiteSearchChannelItemStreamInfo**](SiteSearchChannelItemStreamInfo.md) |  | [default to undefined]
-**rtmp** | [**SiteSearchChannelRtmpDto**](SiteSearchChannelRtmpDto.md) | rtmp | [default to undefined]
-**credentials** | [**Array&lt;SiteSearchChannelCredentialsDto&gt;**](SiteSearchChannelCredentialsDto.md) | credentials | [default to undefined]
-**tokens** | [**SiteSearchChannelCredentialDto**](SiteSearchChannelCredentialDto.md) | Tokens | [default to undefined]
-**liveUsers** | [**Array&lt;SiteSearchChannelLiveUserDto&gt;**](SiteSearchChannelLiveUserDto.md) | live_users | [optional] [default to undefined]
-**platform** | [**SiteSearchChannelPlatformDto**](SiteSearchChannelPlatformDto.md) | Platform | [default to undefined]
+**streamInfo** | **SiteSearchChannelItemStreamInfo**(SiteSearchChannelItemStreamInfo.md) |  | [default to undefined]
+**rtmp** | **SiteSearchChannelRtmpDto**(SiteSearchChannelRtmpDto.md) | rtmp | [default to undefined]
+**credentials** | **Array&lt;SiteSearchChannelCredentialsDto&gt;**(SiteSearchChannelCredentialsDto.md) | credentials | [default to undefined]
+**tokens** | **SiteSearchChannelCredentialDto**(SiteSearchChannelCredentialDto.md) | Tokens | [default to undefined]
+**liveUsers** | **Array&lt;SiteSearchChannelLiveUserDto&gt;**(SiteSearchChannelLiveUserDto.md) | live_users | [optional] [default to undefined]
+**platform** | **SiteSearchChannelPlatformDto**(SiteSearchChannelPlatformDto.md) | Platform | [default to undefined]
 
 ## Example
 

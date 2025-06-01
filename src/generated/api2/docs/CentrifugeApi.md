@@ -4,9 +4,9 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**centrifugeAuthV2**](#centrifugeauthv2) | **GET** /method/centrifuge | Auth centrifuge|
-|[**centrifugeProjectV1**](#centrifugeprojectv1) | **GET** /method/centrifuge/auth/project | Auth token for project|
-|[**getTokenBroadcastV1**](#gettokenbroadcastv1) | **GET** /method/centrifuge/token/broadcast | Auth token for broadcast|
+|**centrifugeAuthV2**(#centrifugeauthv2) | **GET** /method/centrifuge | Auth centrifuge|
+|**centrifugeProjectV1**(#centrifugeprojectv1) | **GET** /method/centrifuge/auth/project | Auth token for project|
+|**getTokenBroadcastV1**(#gettokenbroadcastv1) | **GET** /method/centrifuge/token/broadcast | Auth token for broadcast|
 
 # **centrifugeAuthV2**
 > SiteAuthCentrifugeResponse centrifugeAuthV2()
@@ -34,7 +34,7 @@ const { status, data } = await apiInstance.centrifugeAuthV2(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] | Project id | defaults to undefined|
+| **projectId** | **number** | Project id | defaults to undefined|
 
 
 ### Return type
@@ -90,9 +90,9 @@ const { status, data } = await apiInstance.centrifugeProjectV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -150,10 +150,10 @@ const { status, data } = await apiInstance.getTokenBroadcastV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **broadcastId** | [**number**] |  | defaults to undefined|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **broadcastId** | **number** |  | defaults to undefined|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

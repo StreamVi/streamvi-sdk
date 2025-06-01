@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**plan2user** | [**PlanTranscoding2UserItemResponse**](PlanTranscoding2UserItemResponse.md) | Plan transcoding to user | [default to undefined]
-**data** | [**PlanTranscodingResponse**](PlanTranscodingResponse.md) | Plan transcoding data | [default to undefined]
+**plan2user** | **PlanTranscoding2UserItemResponse**(PlanTranscoding2UserItemResponse.md) | Plan transcoding to user | [default to undefined]
+**data** | **PlanTranscodingResponse**(PlanTranscodingResponse.md) | Plan transcoding data | [default to undefined]
 
 ## Example
 

@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **filterMode** | **number** | Filter | [default to undefined]
-**chat** | [**TelegramChatInfoResponseDto**](TelegramChatInfoResponseDto.md) | Chat info | [default to undefined]
-**post** | [**TelegramChatPostsItem**](TelegramChatPostsItem.md) | Post | [optional] [default to undefined]
+**chat** | **TelegramChatInfoResponseDto**(TelegramChatInfoResponseDto.md) | Chat info | [default to undefined]
+**post** | **TelegramChatPostsItem**(TelegramChatPostsItem.md) | Post | [optional] [default to undefined]
 
 ## Example
 

@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **personalManager** | **number** | Personal manager | [default to undefined]
 **pullLinkLimit** | **number** | pull links | [default to undefined]
 **index** | **number** | Field for sort | [default to undefined]
-**discount** | [**PlanRestreamDiscountResponse**](PlanRestreamDiscountResponse.md) | Discount | [default to undefined]
+**discount** | **PlanRestreamDiscountResponse**(PlanRestreamDiscountResponse.md) | Discount | [default to undefined]
 
 ## Example
 

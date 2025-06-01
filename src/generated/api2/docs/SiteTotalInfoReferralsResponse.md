@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profit** | [**Array&lt;AmountItem&gt;**](AmountItem.md) | Amount of referrals | [default to undefined]
+**profit** | **Array&lt;AmountItem&gt;**(AmountItem.md) | Amount of referrals | [default to undefined]
 **members** | **number** | Members of referral | [default to undefined]
 
 ## Example

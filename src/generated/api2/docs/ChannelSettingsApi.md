@@ -4,27 +4,27 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**channelChatGetTelegramSettingV1**](#channelchatgettelegramsettingv1) | **GET** /method/channel_settings/chat/telegram/setting | Get telegram settings|
-|[**channelChatInitTelegramChatConnectV1**](#channelchatinittelegramchatconnectv1) | **GET** /method/channel_settings/chat/telegram/init | Get code for connected chat|
-|[**channelChatRemoveTelegramChatV1**](#channelchatremovetelegramchatv1) | **GET** /method/channel_settings/chat/telegram/disconnect | Disconnect telegram chat|
-|[**channelChatSetTelegramSettingV1**](#channelchatsettelegramsettingv1) | **POST** /method/channel_settings/chat/telegram/setting | Set telegram settings|
-|[**channelChatTelegramPostsV1**](#channelchattelegrampostsv1) | **GET** /method/channel_settings/chat/telegram/posts | Get telegram post list|
-|[**channelChatUpdateOptionsTelegramV1**](#channelchatupdateoptionstelegramv1) | **POST** /method/channel_settings/chat/setTelegram | Optional settings for telegram|
-|[**channelOptionsGetPlannedV1**](#channeloptionsgetplannedv1) | **GET** /method/channel_settings/options/getPlanned | Get planned list|
-|[**channelOptionsGetPlayListV1**](#channeloptionsgetplaylistv1) | **GET** /method/channel_settings/options/getPlaylist | Get playlists from the platform|
-|[**channelOptionsUpdateOptionsOkV1**](#channeloptionsupdateoptionsokv1) | **POST** /method/channel_settings/options/setOk | Optional settings for ok. Depends on the tariff.|
-|[**channelOptionsUpdateOptionsTrovoV1**](#channeloptionsupdateoptionstrovov1) | **POST** /method/channel_settings/options/setTrovo | Optional settings for trovo. Depends on the tariff.|
-|[**channelOptionsUpdateOptionsTwitchV1**](#channeloptionsupdateoptionstwitchv1) | **POST** /method/channel_settings/options/setTwitch | Optional settings for twitch. Depends on the tariff.|
-|[**channelOptionsUpdateOptionsVkV1**](#channeloptionsupdateoptionsvkv1) | **POST** /method/channel_settings/options/setVk | Optional settings for vk. Depends on the tariff.|
-|[**channelOptionsUpdateOptionsVkVideoLiveV1**](#channeloptionsupdateoptionsvkvideolivev1) | **POST** /method/channel_settings/options/setVkVideoLive | Optional settings for vk video live. Depends on the tariff.|
-|[**channelOptionsUpdateOptionsYoutubeV1**](#channeloptionsupdateoptionsyoutubev1) | **POST** /method/channel_settings/options/setYoutube | Optional settings for youtube. Depends on the tariff.|
-|[**channelOptionsUpdatePlannedV1**](#channeloptionsupdateplannedv1) | **POST** /method/channel_settings/options/setPlanned | Set planned id. Depends on the tariff.|
-|[**channelSettingGetStatusV1**](#channelsettinggetstatusv1) | **GET** /method/channel_settings/getStatus | Get status platform|
-|[**channelSettingSetNameV1**](#channelsettingsetnamev1) | **POST** /method/channel_settings/setName | Set name from custom channel. Global settings.|
-|[**channelSettingUpdateRtmpV1**](#channelsettingupdatertmpv1) | **POST** /method/channel_settings/setRtmp | Set rtmp url from channel. Global settings.|
-|[**channelSettingUpdateTokenV1**](#channelsettingupdatetokenv1) | **GET** /method/channel_settings/update-token | Get status platform|
-|[**channelSettingUpdateTranscoderV1**](#channelsettingupdatetranscoderv1) | **POST** /method/channel_settings/setTranscoder | Set transcoder from channel. Personal settings.|
-|[**telegramGetPostByFilterV1**](#telegramgetpostbyfilterv1) | **GET** /method/channel_settings/chat/telegram/posts/get-by-filter | Get telegram post by filter|
+|**channelChatGetTelegramSettingV1**(#channelchatgettelegramsettingv1) | **GET** /method/channel_settings/chat/telegram/setting | Get telegram settings|
+|**channelChatInitTelegramChatConnectV1**(#channelchatinittelegramchatconnectv1) | **GET** /method/channel_settings/chat/telegram/init | Get code for connected chat|
+|**channelChatRemoveTelegramChatV1**(#channelchatremovetelegramchatv1) | **GET** /method/channel_settings/chat/telegram/disconnect | Disconnect telegram chat|
+|**channelChatSetTelegramSettingV1**(#channelchatsettelegramsettingv1) | **POST** /method/channel_settings/chat/telegram/setting | Set telegram settings|
+|**channelChatTelegramPostsV1**(#channelchattelegrampostsv1) | **GET** /method/channel_settings/chat/telegram/posts | Get telegram post list|
+|**channelChatUpdateOptionsTelegramV1**(#channelchatupdateoptionstelegramv1) | **POST** /method/channel_settings/chat/setTelegram | Optional settings for telegram|
+|**channelOptionsGetPlannedV1**(#channeloptionsgetplannedv1) | **GET** /method/channel_settings/options/getPlanned | Get planned list|
+|**channelOptionsGetPlayListV1**(#channeloptionsgetplaylistv1) | **GET** /method/channel_settings/options/getPlaylist | Get playlists from the platform|
+|**channelOptionsUpdateOptionsOkV1**(#channeloptionsupdateoptionsokv1) | **POST** /method/channel_settings/options/setOk | Optional settings for ok. Depends on the tariff.|
+|**channelOptionsUpdateOptionsTrovoV1**(#channeloptionsupdateoptionstrovov1) | **POST** /method/channel_settings/options/setTrovo | Optional settings for trovo. Depends on the tariff.|
+|**channelOptionsUpdateOptionsTwitchV1**(#channeloptionsupdateoptionstwitchv1) | **POST** /method/channel_settings/options/setTwitch | Optional settings for twitch. Depends on the tariff.|
+|**channelOptionsUpdateOptionsVkV1**(#channeloptionsupdateoptionsvkv1) | **POST** /method/channel_settings/options/setVk | Optional settings for vk. Depends on the tariff.|
+|**channelOptionsUpdateOptionsVkVideoLiveV1**(#channeloptionsupdateoptionsvkvideolivev1) | **POST** /method/channel_settings/options/setVkVideoLive | Optional settings for vk video live. Depends on the tariff.|
+|**channelOptionsUpdateOptionsYoutubeV1**(#channeloptionsupdateoptionsyoutubev1) | **POST** /method/channel_settings/options/setYoutube | Optional settings for youtube. Depends on the tariff.|
+|**channelOptionsUpdatePlannedV1**(#channeloptionsupdateplannedv1) | **POST** /method/channel_settings/options/setPlanned | Set planned id. Depends on the tariff.|
+|**channelSettingGetStatusV1**(#channelsettinggetstatusv1) | **GET** /method/channel_settings/getStatus | Get status platform|
+|**channelSettingSetNameV1**(#channelsettingsetnamev1) | **POST** /method/channel_settings/setName | Set name from custom channel. Global settings.|
+|**channelSettingUpdateRtmpV1**(#channelsettingupdatertmpv1) | **POST** /method/channel_settings/setRtmp | Set rtmp url from channel. Global settings.|
+|**channelSettingUpdateTokenV1**(#channelsettingupdatetokenv1) | **GET** /method/channel_settings/update-token | Get status platform|
+|**channelSettingUpdateTranscoderV1**(#channelsettingupdatetranscoderv1) | **POST** /method/channel_settings/setTranscoder | Set transcoder from channel. Personal settings.|
+|**telegramGetPostByFilterV1**(#telegramgetpostbyfilterv1) | **GET** /method/channel_settings/chat/telegram/posts/get-by-filter | Get telegram post by filter|
 
 # **channelChatGetTelegramSettingV1**
 > TelegramSettingsResponseDto channelChatGetTelegramSettingV1()
@@ -58,10 +58,10 @@ const { status, data } = await apiInstance.channelChatGetTelegramSettingV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -118,10 +118,10 @@ const { status, data } = await apiInstance.channelChatInitTelegramChatConnectV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -178,10 +178,10 @@ const { status, data } = await apiInstance.channelChatRemoveTelegramChatV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -242,10 +242,10 @@ const { status, data } = await apiInstance.channelChatSetTelegramSettingV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **telegramSetSettingsRequestDto** | **TelegramSetSettingsRequestDto**|  | |
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -302,10 +302,10 @@ const { status, data } = await apiInstance.channelChatTelegramPostsV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -414,10 +414,10 @@ const { status, data } = await apiInstance.channelOptionsGetPlannedV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -474,10 +474,10 @@ const { status, data } = await apiInstance.channelOptionsGetPlayListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -1048,11 +1048,11 @@ const { status, data } = await apiInstance.channelSettingUpdateTokenV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **role** | [**&#39;account&#39; | &#39;group&#39;**]**Array<&#39;account&#39; &#124; &#39;group&#39;>** | Token role | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **role** | **'account' | 'group'** | Token role | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -1163,11 +1163,11 @@ const { status, data } = await apiInstance.telegramGetPostByFilterV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
-| **filterMode** | [**number**] |  | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **channelId** | **number** | Channel id | defaults to undefined|
+| **filterMode** | **number** |  | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

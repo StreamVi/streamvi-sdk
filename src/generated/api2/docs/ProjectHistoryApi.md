@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**projectHistoryListV1**](#projecthistorylistv1) | **GET** /method/project_history/list | Get project history of actions|
+|**projectHistoryListV1**(#projecthistorylistv1) | **GET** /method/project_history/list | Get project history of actions|
 
 # **projectHistoryListV1**
 > PaginatedResponseOfProjectHistoryResponse projectHistoryListV1()
@@ -48,15 +48,15 @@ const { status, data } = await apiInstance.projectHistoryListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **limit** | [**number**] | Number of results | (optional) defaults to 20|
-| **offset** | [**number**] | Page offset number | (optional) defaults to 0|
-| **dateFrom** | [**string**] | Date from | (optional) defaults to undefined|
-| **dateTo** | [**string**] | Date to | (optional) defaults to undefined|
-| **action** | [**&#39;project_channel_invite_add&#39; | &#39;project_channel_invite_del&#39; | &#39;project_channel_invite_accept&#39; | &#39;project_channel_invite_decline&#39; | &#39;user_project_invite_add&#39; | &#39;user_project_invite_del&#39; | &#39;user_project_invite_accept&#39; | &#39;user_project_invite_decline&#39; | &#39;user_project_add&#39; | &#39;user_project_del&#39; | &#39;user_project_change&#39; | &#39;project_channel_add&#39; | &#39;project_channel_del&#39; | &#39;project_channel_change&#39;**]**Array<&#39;project_channel_invite_add&#39; &#124; &#39;project_channel_invite_del&#39; &#124; &#39;project_channel_invite_accept&#39; &#124; &#39;project_channel_invite_decline&#39; &#124; &#39;user_project_invite_add&#39; &#124; &#39;user_project_invite_del&#39; &#124; &#39;user_project_invite_accept&#39; &#124; &#39;user_project_invite_decline&#39; &#124; &#39;user_project_add&#39; &#124; &#39;user_project_del&#39; &#124; &#39;user_project_change&#39; &#124; &#39;project_channel_add&#39; &#124; &#39;project_channel_del&#39; &#124; &#39;project_channel_change&#39;>** | Action | (optional) defaults to undefined|
-| **groupId** | [**number**] | Group id | (optional) defaults to undefined|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **limit** | **number** | Number of results | (optional) defaults to 20|
+| **offset** | **number** | Page offset number | (optional) defaults to 0|
+| **dateFrom** | **string** | Date from | (optional) defaults to undefined|
+| **dateTo** | **string** | Date to | (optional) defaults to undefined|
+| **action** | **'project_channel_invite_add' | 'project_channel_invite_del' | 'project_channel_invite_accept' | 'project_channel_invite_decline' | 'user_project_invite_add' | 'user_project_invite_del' | 'user_project_invite_accept' | 'user_project_invite_decline' | 'user_project_add' | 'user_project_del' | 'user_project_change' | 'project_channel_add' | 'project_channel_del' | 'project_channel_change'** | Action | (optional) defaults to undefined|
+| **groupId** | **number** | Group id | (optional) defaults to undefined|
 
 
 ### Return type

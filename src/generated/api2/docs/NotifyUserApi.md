@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**notifyUserDelMobileTokenV1**](#notifyuserdelmobiletokenv1) | **POST** /method/notify_user/del_mobile_token | Delete mobile token from user|
-|[**notifyUserGetScreenV1**](#notifyusergetscreenv1) | **GET** /method/notify_user/screen | Get user screen notify|
-|[**notifyUserGetV1**](#notifyusergetv1) | **GET** /method/notify_user/setting | Get user notify settings|
-|[**notifyUserRemoveScreenV1**](#notifyuserremovescreenv1) | **POST** /method/notify_user/screen | Remove user screen notify|
-|[**notifyUserSetV1**](#notifyusersetv1) | **POST** /method/notify_user/setting | Set user notify settings|
+|**notifyUserDelMobileTokenV1**(#notifyuserdelmobiletokenv1) | **POST** /method/notify_user/del_mobile_token | Delete mobile token from user|
+|**notifyUserGetScreenV1**(#notifyusergetscreenv1) | **GET** /method/notify_user/screen | Get user screen notify|
+|**notifyUserGetV1**(#notifyusergetv1) | **GET** /method/notify_user/setting | Get user notify settings|
+|**notifyUserRemoveScreenV1**(#notifyuserremovescreenv1) | **POST** /method/notify_user/screen | Remove user screen notify|
+|**notifyUserSetV1**(#notifyusersetv1) | **POST** /method/notify_user/setting | Set user notify settings|
 
 # **notifyUserDelMobileTokenV1**
 > SuccessResponse notifyUserDelMobileTokenV1()
@@ -40,9 +40,9 @@ const { status, data } = await apiInstance.notifyUserDelMobileTokenV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **token** | [**string**] | Token in mobile app | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **token** | **string** | Token in mobile app | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -97,9 +97,9 @@ const { status, data } = await apiInstance.notifyUserGetScreenV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -152,8 +152,8 @@ const { status, data } = await apiInstance.notifyUserGetV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -206,8 +206,8 @@ const { status, data } = await apiInstance.notifyUserRemoveScreenV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -262,7 +262,7 @@ const { status, data } = await apiInstance.notifyUserSetV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **siteSetNotifyUserRequest** | **SiteSetNotifyUserRequest**| Set user notify settings | |
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

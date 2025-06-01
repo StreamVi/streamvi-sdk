@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **bFrames** | **number** | B-Frames | [optional] [default to undefined]
 **status** | **string** | Status | [default to undefined]
 **videoCodec** | **string** | Video codec | [default to undefined]
-**channels** | [**Array&lt;SiteTranscoderChannelItem&gt;**](SiteTranscoderChannelItem.md) | B-Frames | [default to undefined]
+**channels** | **Array&lt;SiteTranscoderChannelItem&gt;**(SiteTranscoderChannelItem.md) | B-Frames | [default to undefined]
 
 ## Example
 

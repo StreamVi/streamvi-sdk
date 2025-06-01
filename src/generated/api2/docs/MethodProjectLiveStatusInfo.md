@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**restreamData** | [**Array&lt;MethodProjectLiveStatusInfoRestreamData&gt;**](MethodProjectLiveStatusInfoRestreamData.md) | Restream data | [optional] [default to undefined]
+**restreamData** | **Array&lt;MethodProjectLiveStatusInfoRestreamData&gt;**(MethodProjectLiveStatusInfoRestreamData.md) | Restream data | [optional] [default to undefined]
 **connectId** | **number** |  | [default to undefined]
 **connectIdV2** | **string** |  | [default to undefined]
 **fps** | **number** |  | [default to undefined]

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **dateCreate** | **string** | Date create | [default to undefined]
 **actions** | **object** | Actions | [default to undefined]
 **channel** | **string** | Channel | [default to undefined]
-**text** | [**Array&lt;InternalNotifyTypeText&gt;**](InternalNotifyTypeText.md) | Array of texts | [default to undefined]
+**text** | **Array&lt;InternalNotifyTypeText&gt;**(InternalNotifyTypeText.md) | Array of texts | [default to undefined]
 **statusRead** | **boolean** | Status read | [default to undefined]
 **category** | **string** | Category of user notify | [default to undefined]
 

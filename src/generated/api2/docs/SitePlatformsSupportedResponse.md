@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;PlatformsSupportedItem&gt;**](PlatformsSupportedItem.md) | Array of items | [default to undefined]
+**results** | **Array&lt;PlatformsSupportedItem&gt;**(PlatformsSupportedItem.md) | Array of items | [default to undefined]
 
 ## Example
 

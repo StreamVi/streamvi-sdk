@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **priceUsd** | **number** | Price per gb (USD) | [default to undefined]
 **step** | **number** | Step increase in gb | [default to undefined]
 **active** | **boolean** | Is active | [default to undefined]
-**discount** | [**PlanStorageDiscountResponse**](PlanStorageDiscountResponse.md) | Discount | [default to undefined]
+**discount** | **PlanStorageDiscountResponse**(PlanStorageDiscountResponse.md) | Discount | [default to undefined]
 
 ## Example
 

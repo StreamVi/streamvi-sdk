@@ -65,6 +65,8 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -122,6 +124,8 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {

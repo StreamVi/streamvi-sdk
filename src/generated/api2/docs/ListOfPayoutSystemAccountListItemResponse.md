@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;PayoutSystemAccountListItemResponse&gt;**](PayoutSystemAccountListItemResponse.md) |  | [default to undefined]
+**results** | **Array&lt;PayoutSystemAccountListItemResponse&gt;**(PayoutSystemAccountListItemResponse.md) |  | [default to undefined]
 
 ## Example
 

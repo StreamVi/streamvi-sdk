@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;TelegramChatPostsItem&gt;**](TelegramChatPostsItem.md) | Array of items | [default to undefined]
+**results** | **Array&lt;TelegramChatPostsItem&gt;**(TelegramChatPostsItem.md) | Array of items | [default to undefined]
 
 ## Example
 

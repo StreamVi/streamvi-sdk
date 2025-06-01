@@ -4,9 +4,9 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**paymentCreateV1**](#paymentcreatev1) | **POST** /method/payment | Create payment item for pay system|
-|[**paymentGetStatusV1**](#paymentgetstatusv1) | **GET** /method/payment | |
-|[**paymentListV1**](#paymentlistv1) | **GET** /method/payment/list | |
+|**paymentCreateV1**(#paymentcreatev1) | **POST** /method/payment | Create payment item for pay system|
+|**paymentGetStatusV1**(#paymentgetstatusv1) | **GET** /method/payment | |
+|**paymentListV1**(#paymentlistv1) | **GET** /method/payment/list | |
 
 # **paymentCreateV1**
 > PaymentCreateResponse paymentCreateV1(paymentCreateV1Request)
@@ -40,8 +40,8 @@ const { status, data } = await apiInstance.paymentCreateV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **paymentCreateV1Request** | **PaymentCreateV1Request**|  | |
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -97,10 +97,10 @@ const { status, data } = await apiInstance.paymentGetStatusV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **payId** | [**number**] | Pay order id | defaults to undefined|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **payId** | **number** | Pay order id | defaults to undefined|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -156,10 +156,10 @@ const { status, data } = await apiInstance.paymentListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **pageSize** | [**number**] | Number of results | (optional) defaults to 20|
-| **page** | [**number**] | Page number | (optional) defaults to 1|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **pageSize** | **number** | Number of results | (optional) defaults to 20|
+| **page** | **number** | Page number | (optional) defaults to 1|
 
 
 ### Return type

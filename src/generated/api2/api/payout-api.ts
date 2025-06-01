@@ -63,6 +63,8 @@ export const PayoutApiAxiosParamCreator = function (configuration?: Configuratio
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -111,6 +113,8 @@ export const PayoutApiAxiosParamCreator = function (configuration?: Configuratio
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {

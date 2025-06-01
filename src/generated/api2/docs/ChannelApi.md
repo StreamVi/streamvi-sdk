@@ -4,9 +4,9 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**channelShortChannelListV1**](#channelshortchannellistv1) | **GET** /method/channel/short | Minimal channel list|
-|[**methodSearchV1**](#methodsearchv1) | **GET** /method/channel/search | Search channel list|
-|[**methodSetStatusV1**](#methodsetstatusv1) | **POST** /method/channel/set-status | Get live status|
+|**channelShortChannelListV1**(#channelshortchannellistv1) | **GET** /method/channel/short | Minimal channel list|
+|**methodSearchV1**(#methodsearchv1) | **GET** /method/channel/search | Search channel list|
+|**methodSetStatusV1**(#methodsetstatusv1) | **POST** /method/channel/set-status | Get live status|
 
 # **channelShortChannelListV1**
 > SiteGetShortChannelResponse channelShortChannelListV1()
@@ -38,9 +38,9 @@ const { status, data } = await apiInstance.channelShortChannelListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -105,14 +105,14 @@ const { status, data } = await apiInstance.methodSearchV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **type** | [**&#39;all&#39; | &#39;my&#39; | &#39;available&#39; | &#39;active&#39;**]**Array<&#39;all&#39; &#124; &#39;my&#39; &#124; &#39;available&#39; &#124; &#39;active&#39;>** |  | (optional) defaults to undefined|
-| **platform** | [**string**] | platform type | (optional) defaults to undefined|
-| **name** | [**string**] | name | (optional) defaults to undefined|
-| **limit** | [**number**] | Number of results | (optional) defaults to 30|
-| **offset** | [**number**] | Page offset number | (optional) defaults to 0|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **type** | **'all' | 'my' | 'available' | 'active'** |  | (optional) defaults to undefined|
+| **platform** | **string** | platform type | (optional) defaults to undefined|
+| **name** | **string** | name | (optional) defaults to undefined|
+| **limit** | **number** | Number of results | (optional) defaults to 30|
+| **offset** | **number** | Page offset number | (optional) defaults to 0|
 
 
 ### Return type

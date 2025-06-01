@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;RtmpServerLocationResponse&gt;**](RtmpServerLocationResponse.md) |  | [default to undefined]
+**results** | **Array&lt;RtmpServerLocationResponse&gt;**(RtmpServerLocationResponse.md) |  | [default to undefined]
 
 ## Example
 

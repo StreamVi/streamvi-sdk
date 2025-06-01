@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **string** | id | [default to undefined]
 **name** | **string** | name | [default to undefined]
 **image** | **string** | image | [optional] [default to undefined]
-**subList** | [**Array&lt;CategorySubListItemResponse&gt;**](CategorySubListItemResponse.md) | sublist | [optional] [default to undefined]
+**subList** | **Array&lt;CategorySubListItemResponse&gt;**(CategorySubListItemResponse.md) | sublist | [optional] [default to undefined]
 
 ## Example
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Name | [default to undefined]
 **type** | **string** | Type variable | [default to undefined]
-**value** | [**PlanRestreamFeatureItemV2Value**](PlanRestreamFeatureItemV2Value.md) |  | [default to undefined]
+**value** | **PlanRestreamFeatureItemV2Value**(PlanRestreamFeatureItemV2Value.md) |  | [default to undefined]
 **index** | **number** | Field for sort | [default to undefined]
 **unit** | **string** | Unit | [optional] [default to undefined]
 

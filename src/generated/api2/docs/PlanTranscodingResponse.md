@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **active** | **boolean** | Active | [default to undefined]
 **index** | **number** | Field for sort | [default to undefined]
 **space** | **number** | Free spaces slot | [default to undefined]
-**discount** | [**PlanTranscodingDiscountResponse**](PlanTranscodingDiscountResponse.md) | Discount | [default to undefined]
+**discount** | **PlanTranscodingDiscountResponse**(PlanTranscodingDiscountResponse.md) | Discount | [default to undefined]
 
 ## Example
 

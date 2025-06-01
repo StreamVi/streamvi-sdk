@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **email** | **string** | Email | [default to undefined]
 **reject** | **boolean** | If rejected then true | [default to undefined]
 **fromUserId** | **number** | The user who granted access | [default to undefined]
-**channel** | [**ProjectChannelInviteChannelLinkResponse**](ProjectChannelInviteChannelLinkResponse.md) | Project info | [optional] [default to undefined]
+**channel** | **ProjectChannelInviteChannelLinkResponse**(ProjectChannelInviteChannelLinkResponse.md) | Project info | [optional] [default to undefined]
 
 ## Example
 

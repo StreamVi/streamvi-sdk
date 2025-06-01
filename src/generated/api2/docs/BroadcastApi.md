@@ -4,8 +4,8 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**methodBroadcastRestreamsV1**](#methodbroadcastrestreamsv1) | **GET** /method/broadcast/restreams | Get restreams|
-|[**methodBroadcastTokenChannelV1**](#methodbroadcasttokenchannelv1) | **GET** /method/broadcast/longpoll | Connect channel, long polling|
+|**methodBroadcastRestreamsV1**(#methodbroadcastrestreamsv1) | **GET** /method/broadcast/restreams | Get restreams|
+|**methodBroadcastTokenChannelV1**(#methodbroadcasttokenchannelv1) | **GET** /method/broadcast/longpoll | Connect channel, long polling|
 
 # **methodBroadcastRestreamsV1**
 > MethodBroadcastRestreamsResponse methodBroadcastRestreamsV1()
@@ -39,10 +39,10 @@ const { status, data } = await apiInstance.methodBroadcastRestreamsV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **broadcastId** | [**number**] | broadcast id | defaults to undefined|
-| **key** | [**string**] | Chat token | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **broadcastId** | **number** | broadcast id | defaults to undefined|
+| **key** | **string** | Chat token | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -96,9 +96,9 @@ const { status, data } = await apiInstance.methodBroadcastTokenChannelV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **key** | [**string**] |  | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **key** | **string** |  | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

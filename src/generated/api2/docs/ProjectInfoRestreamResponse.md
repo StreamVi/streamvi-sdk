@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**plan2user** | [**PlanRestream2UserItemResponse**](PlanRestream2UserItemResponse.md) | Plan restream to user | [default to undefined]
-**data** | [**PlanRestreamResponse**](PlanRestreamResponse.md) | Plan restream data | [default to undefined]
+**plan2user** | **PlanRestream2UserItemResponse**(PlanRestream2UserItemResponse.md) | Plan restream to user | [default to undefined]
+**data** | **PlanRestreamResponse**(PlanRestreamResponse.md) | Plan restream data | [default to undefined]
 
 ## Example
 

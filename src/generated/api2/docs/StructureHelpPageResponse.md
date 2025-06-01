@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **boolean** | Response execution success | [default to true]
-**result** | [**Array&lt;StructureHelpPageItemResponse&gt;**](StructureHelpPageItemResponse.md) | Structure of help page | [default to undefined]
+**result** | **Array&lt;StructureHelpPageItemResponse&gt;**(StructureHelpPageItemResponse.md) | Structure of help page | [default to undefined]
 
 ## Example
 

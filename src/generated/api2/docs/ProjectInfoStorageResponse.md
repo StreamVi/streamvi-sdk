@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**plan2user** | [**PlanStorage2UserItemResponse**](PlanStorage2UserItemResponse.md) | Plan storage to user | [default to undefined]
-**data** | [**PlanTranscodingResponse**](PlanTranscodingResponse.md) | Plan storage data | [default to undefined]
+**plan2user** | **PlanStorage2UserItemResponse**(PlanStorage2UserItemResponse.md) | Plan storage to user | [default to undefined]
+**data** | **PlanTranscodingResponse**(PlanTranscodingResponse.md) | Plan storage data | [default to undefined]
 
 ## Example
 

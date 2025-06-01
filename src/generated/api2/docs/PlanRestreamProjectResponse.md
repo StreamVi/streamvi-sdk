@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 **bitrateMin** | **number** | Minimum bitrate, kbps | [optional] [default to undefined]
 **bitrateStep** | **number** | Step bitrate | [optional] [default to undefined]
 **index** | **number** | Field for sort | [default to undefined]
-**price** | [**PlanRestreamPrice**](PlanRestreamPrice.md) | Price | [default to undefined]
+**price** | **PlanRestreamPrice**(PlanRestreamPrice.md) | Price | [default to undefined]
 **status** | **string** | Status | [default to undefined]
-**feature** | [**Array&lt;PlanRestreamFeatureItemV2&gt;**](PlanRestreamFeatureItemV2.md) | Features | [default to undefined]
-**ownTariff** | [**PlanRestreamForProjectV2**](PlanRestreamForProjectV2.md) | Tariff project | [default to undefined]
+**feature** | **Array&lt;PlanRestreamFeatureItemV2&gt;**(PlanRestreamFeatureItemV2.md) | Features | [default to undefined]
+**ownTariff** | **PlanRestreamForProjectV2**(PlanRestreamForProjectV2.md) | Tariff project | [default to undefined]
 
 ## Example
 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;PlaylistItemResponse&gt;**](PlaylistItemResponse.md) |  | [default to undefined]
+**results** | **Array&lt;PlaylistItemResponse&gt;**(PlaylistItemResponse.md) |  | [default to undefined]
 
 ## Example
 

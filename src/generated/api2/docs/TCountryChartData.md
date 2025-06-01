@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **countryName** | **string** | countryName | [default to undefined]
-**cities** | [**Array&lt;TCityChartData&gt;**](TCityChartData.md) | Array of cities data | [default to undefined]
+**cities** | **Array&lt;TCityChartData&gt;**(TCityChartData.md) | Array of cities data | [default to undefined]
 
 ## Example
 

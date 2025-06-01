@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**methodLiveStatusV1**](#methodlivestatusv1) | **GET** /method/project/live-status | Get live status|
+|**methodLiveStatusV1**(#methodlivestatusv1) | **GET** /method/project/live-status | Get live status|
 
 # **methodLiveStatusV1**
 > MethodProjectLiveStatusResponse methodLiveStatusV1()

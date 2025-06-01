@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error** | [**ErrorData**](ErrorData.md) | Object with description of error | [default to undefined]
+**error** | **ErrorData**(ErrorData.md) | Object with description of error | [default to undefined]
 
 ## Example
 

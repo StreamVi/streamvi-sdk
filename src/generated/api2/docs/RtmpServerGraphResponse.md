@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** | Type of graph to display | [default to undefined]
 **timeLine** | **Array&lt;number&gt;** | Time line for graph [timestamp] | [default to undefined]
-**countries** | [**Array&lt;TCountryChartData&gt;**](TCountryChartData.md) |  | [default to undefined]
+**countries** | **Array&lt;TCountryChartData&gt;**(TCountryChartData.md) |  | [default to undefined]
 
 ## Example
 

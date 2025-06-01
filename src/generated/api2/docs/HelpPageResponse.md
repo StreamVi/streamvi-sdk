@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**BlogPageSiteResponseId**](BlogPageSiteResponseId.md) |  | [default to undefined]
+**id** | **BlogPageSiteResponseId**(BlogPageSiteResponseId.md) |  | [default to undefined]
 **url** | **string** | url | [default to undefined]
 **urlInherit** | **string** | Generated url from root path | [default to undefined]
 **notionParentId** | **string** | Notion parent id | [default to undefined]

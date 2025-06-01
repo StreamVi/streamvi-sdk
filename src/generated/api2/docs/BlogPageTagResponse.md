@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**BlogPageResponseId**](BlogPageResponseId.md) |  | [default to undefined]
+**id** | **BlogPageResponseId**(BlogPageResponseId.md) |  | [default to undefined]
 **language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
 **languageIso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
 **title** | **string** | Title | [default to undefined]

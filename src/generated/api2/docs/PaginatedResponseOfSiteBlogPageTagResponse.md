@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **total** | **number** |  | [default to undefined]
 **limit** | **number** |  | [default to undefined]
 **offset** | **number** |  | [default to undefined]
-**results** | [**Array&lt;SiteBlogPageTagResponse&gt;**](SiteBlogPageTagResponse.md) |  | [default to undefined]
+**results** | **Array&lt;SiteBlogPageTagResponse&gt;**(SiteBlogPageTagResponse.md) |  | [default to undefined]
 
 ## Example
 

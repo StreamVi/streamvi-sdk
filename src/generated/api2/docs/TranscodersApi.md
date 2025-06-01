@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**transcodersAddV1**](#transcodersaddv1) | **POST** /method/transcoder/add | Transcoder create|
-|[**transcodersDeleteV1**](#transcodersdeletev1) | **POST** /method/transcoder/delete | Transcoder delete|
-|[**transcodersListV1**](#transcoderslistv1) | **GET** /method/transcoder/list | List of transcoder|
-|[**transcodersStopV1**](#transcodersstopv1) | **POST** /method/transcoder/stop | Transcoder stop|
-|[**transcodersUpdateV1**](#transcodersupdatev1) | **POST** /method/transcoder/update | Transcoder update|
+|**transcodersAddV1**(#transcodersaddv1) | **POST** /method/transcoder/add | Transcoder create|
+|**transcodersDeleteV1**(#transcodersdeletev1) | **POST** /method/transcoder/delete | Transcoder delete|
+|**transcodersListV1**(#transcoderslistv1) | **GET** /method/transcoder/list | List of transcoder|
+|**transcodersStopV1**(#transcodersstopv1) | **POST** /method/transcoder/stop | Transcoder stop|
+|**transcodersUpdateV1**(#transcodersupdatev1) | **POST** /method/transcoder/update | Transcoder update|
 
 # **transcodersAddV1**
 > number transcodersAddV1(transcoderCreateDto)
@@ -144,9 +144,9 @@ const { status, data } = await apiInstance.transcodersListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

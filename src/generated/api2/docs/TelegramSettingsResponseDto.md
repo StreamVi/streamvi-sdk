@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **connected** | **boolean** | Status connected | [default to undefined]
-**data** | [**TelegramSettingsDto**](TelegramSettingsDto.md) | Payload settings for telegram | [default to undefined]
+**data** | **TelegramSettingsDto**(TelegramSettingsDto.md) | Payload settings for telegram | [default to undefined]
 
 ## Example
 

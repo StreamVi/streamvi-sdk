@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **boolean** | Response execution success | [default to true]
-**result** | [**HelpPageResponse**](HelpPageResponse.md) | Page data | [default to undefined]
+**result** | **HelpPageResponse**(HelpPageResponse.md) | Page data | [default to undefined]
 
 ## Example
 

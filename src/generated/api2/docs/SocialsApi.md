@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**socialsGetListV1**](#socialsgetlistv1) | **GET** /method/socials/list | Social list for user|
+|**socialsGetListV1**(#socialsgetlistv1) | **GET** /method/socials/list | Social list for user|
 
 # **socialsGetListV1**
 > socialsGetListV1()

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **eventId** | **string** |  | [default to undefined]
-**restreams** | [**Array&lt;MessageRestreamResponseDto&gt;**](MessageRestreamResponseDto.md) |  | [default to undefined]
+**restreams** | **Array&lt;MessageRestreamResponseDto&gt;**(MessageRestreamResponseDto.md) |  | [default to undefined]
 **entities** | **Array&lt;object&gt;** |  | [default to undefined]
 **text** | **string** |  | [default to undefined]
 **sender** | **object** |  | [default to undefined]

@@ -4,8 +4,8 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**userGetProfileV1**](#usergetprofilev1) | **GET** /method/users/profile | Get user profile|
-|[**userUpdateProfileV1**](#userupdateprofilev1) | **POST** /method/users/profile | Update profile|
+|**userGetProfileV1**(#usergetprofilev1) | **GET** /method/users/profile | Get user profile|
+|**userUpdateProfileV1**(#userupdateprofilev1) | **POST** /method/users/profile | Update profile|
 
 # **userGetProfileV1**
 > UserProfileResponse userGetProfileV1()
@@ -37,9 +37,9 @@ const { status, data } = await apiInstance.userGetProfileV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **projectId** | [**number**] | Project id | (optional) defaults to undefined|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **projectId** | **number** | Project id | (optional) defaults to undefined|
 
 
 ### Return type
@@ -98,11 +98,11 @@ const { status, data } = await apiInstance.userUpdateProfileV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**string**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version | defaults to undefined|
-| **language** | [**string**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **firstName** | [**string**] | First name | defaults to undefined|
-| **lastName** | [**string**] | Last name | defaults to undefined|
-| **avatar** | [**File**] | File for avatar upload max size 2MB, format: jpeg, jpg, png | (optional) defaults to undefined|
+| **v** | **string** | Version | defaults to undefined|
+| **language** | **string** | Current language | defaults to 'en'|
+| **firstName** | **string** | First name | defaults to undefined|
+| **lastName** | **string** | Last name | defaults to undefined|
+| **avatar** | **File** | File for avatar upload max size 2MB, format: jpeg, jpg, png | (optional) defaults to undefined|
 
 
 ### Return type

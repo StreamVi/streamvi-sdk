@@ -4,8 +4,8 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**blogPageGetV1**](#blogpagegetv1) | **GET** /method/blog/page/get | Get blog page|
-|[**blogPageListV1**](#blogpagelistv1) | **GET** /method/blog/page/list | Get list of blog pages|
+|**blogPageGetV1**(#blogpagegetv1) | **GET** /method/blog/page/get | Get blog page|
+|**blogPageListV1**(#blogpagelistv1) | **GET** /method/blog/page/list | Get list of blog pages|
 
 # **blogPageGetV1**
 > PaginatedResponseOfBlogPageSiteResponse blogPageGetV1()
@@ -37,9 +37,9 @@ const { status, data } = await apiInstance.blogPageGetV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **url** | [**string**] | Url of page | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **url** | **string** | Url of page | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -98,11 +98,11 @@ const { status, data } = await apiInstance.blogPageListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **s** | [**string**] | String for search | (optional) defaults to ''|
-| **limit** | [**number**] | Number of results | (optional) defaults to 20|
-| **offset** | [**number**] | Page offset number | (optional) defaults to 0|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **s** | **string** | String for search | (optional) defaults to ''|
+| **limit** | **number** | Number of results | (optional) defaults to 20|
+| **offset** | **number** | Page offset number | (optional) defaults to 0|
 
 
 ### Return type

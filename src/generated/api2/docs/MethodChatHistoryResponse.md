@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | **number** |  | [default to undefined]
-**items** | [**Array&lt;MessageResponseDto&gt;**](MessageResponseDto.md) |  | [default to undefined]
+**items** | **Array&lt;MessageResponseDto&gt;**(MessageResponseDto.md) |  | [default to undefined]
 
 ## Example
 

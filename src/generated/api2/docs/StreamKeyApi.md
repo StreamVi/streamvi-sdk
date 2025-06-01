@@ -4,8 +4,8 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**streamKeysKeyV1**](#streamkeyskeyv1) | **GET** /method/stream-keys | Get stream credentials|
-|[**streamKeysUpdateRecordV1**](#streamkeysupdaterecordv1) | **POST** /method/stream-keys/record | Update record|
+|**streamKeysKeyV1**(#streamkeyskeyv1) | **GET** /method/stream-keys | Get stream credentials|
+|**streamKeysUpdateRecordV1**(#streamkeysupdaterecordv1) | **POST** /method/stream-keys/record | Update record|
 
 # **streamKeysKeyV1**
 > GetStreamKeyResponse streamKeysKeyV1()
@@ -37,9 +37,9 @@ const { status, data } = await apiInstance.streamKeysKeyV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

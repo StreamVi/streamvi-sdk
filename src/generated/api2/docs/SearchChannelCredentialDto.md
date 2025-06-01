@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account** | [**SearchChannelTokensDto**](SearchChannelTokensDto.md) | Account status of credentials | [default to undefined]
-**group** | [**SearchChannelTokensDto**](SearchChannelTokensDto.md) | Groups status of credentials | [default to undefined]
+**account** | **SearchChannelTokensDto**(SearchChannelTokensDto.md) | Account status of credentials | [default to undefined]
+**group** | **SearchChannelTokensDto**(SearchChannelTokensDto.md) | Groups status of credentials | [default to undefined]
 
 ## Example
 

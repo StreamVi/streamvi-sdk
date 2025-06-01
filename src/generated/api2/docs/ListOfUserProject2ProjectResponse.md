@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;UserProject2ProjectResponse&gt;**](UserProject2ProjectResponse.md) |  | [default to undefined]
+**results** | **Array&lt;UserProject2ProjectResponse&gt;**(UserProject2ProjectResponse.md) |  | [default to undefined]
 
 ## Example
 

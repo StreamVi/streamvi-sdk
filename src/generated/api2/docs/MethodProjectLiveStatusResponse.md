@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **resolution** | **string** | Stream resolution | [optional] [default to undefined]
 **broadcastId** | **number** | Broadcast id | [optional] [default to undefined]
 **action** | **string** | Action | [optional] [default to undefined]
-**info** | [**MethodProjectLiveStatusInfo**](MethodProjectLiveStatusInfo.md) | Stream info | [optional] [default to undefined]
-**video** | [**MethodProjectLiveStatusVideo**](MethodProjectLiveStatusVideo.md) | Video info | [optional] [default to undefined]
+**info** | **MethodProjectLiveStatusInfo**(MethodProjectLiveStatusInfo.md) | Stream info | [optional] [default to undefined]
+**video** | **MethodProjectLiveStatusVideo**(MethodProjectLiveStatusVideo.md) | Video info | [optional] [default to undefined]
 
 ## Example
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**before** | [**PlanRestreamItem**](PlanRestreamItem.md) | Before tariff restream | [default to undefined]
-**current** | [**PlanRestreamItem**](PlanRestreamItem.md) | Current tariff restream | [default to undefined]
-**next** | [**PlanRestreamItem**](PlanRestreamItem.md) | Next tariff restream | [default to undefined]
+**before** | **PlanRestreamItem**(PlanRestreamItem.md) | Before tariff restream | [default to undefined]
+**current** | **PlanRestreamItem**(PlanRestreamItem.md) | Current tariff restream | [default to undefined]
+**next** | **PlanRestreamItem**(PlanRestreamItem.md) | Next tariff restream | [default to undefined]
 
 ## Example
 

@@ -4,21 +4,21 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**authAuthTelegramV1**](#authauthtelegramv1) | **GET** /method/auth/auth-telegram | Auth telegram|
-|[**authCallbackGoogleV1**](#authcallbackgooglev1) | **GET** /method/auth/callback/google | Internal request of auth google|
-|[**authCallbackVkIdV1**](#authcallbackvkidv1) | **GET** /method/auth/callback/vk-id | Internal request of auth new vk|
-|[**authCallbackVkV1**](#authcallbackvkv1) | **GET** /method/auth/callback/vk | Internal request of auth old vk|
-|[**authCodeV1**](#authcodev1) | **GET** /method/auth/app/code | Get code for auth|
-|[**authConnectResultV1**](#authconnectresultv1) | **GET** /method/auth/connect/callback | CallBack for connect social|
-|[**authConnectTelegramV1**](#authconnecttelegramv1) | **POST** /method/auth/connect-telegram | Connect telegram in account|
-|[**authConnectV1**](#authconnectv1) | **GET** /method/auth/connect | Connected social account|
-|[**authDisconnectV1**](#authdisconnectv1) | **GET** /method/auth/disconnect | Disconnected social account|
-|[**authExchangeV1**](#authexchangev1) | **POST** /method/auth/app/exchange | Code exchange|
-|[**authGetAuthUrlV1**](#authgetauthurlv1) | **GET** /method/auth/redirect-url | Get url for start oauth|
-|[**authGetProfileV1**](#authgetprofilev1) | **GET** /method/auth/me | Get basic data for auth user|
-|[**authGuestV1**](#authguestv1) | **GET** /method/auth/guest | Guest request of auth|
-|[**authLogoutV1**](#authlogoutv1) | **POST** /method/auth/logout | Logout|
-|[**authRefreshAccessV1**](#authrefreshaccessv1) | **POST** /method/auth/refresh-access | Update access token|
+|**authAuthTelegramV1**(#authauthtelegramv1) | **GET** /method/auth/auth-telegram | Auth telegram|
+|**authCallbackGoogleV1**(#authcallbackgooglev1) | **GET** /method/auth/callback/google | Internal request of auth google|
+|**authCallbackVkIdV1**(#authcallbackvkidv1) | **GET** /method/auth/callback/vk-id | Internal request of auth new vk|
+|**authCallbackVkV1**(#authcallbackvkv1) | **GET** /method/auth/callback/vk | Internal request of auth old vk|
+|**authCodeV1**(#authcodev1) | **GET** /method/auth/app/code | Get code for auth|
+|**authConnectResultV1**(#authconnectresultv1) | **GET** /method/auth/connect/callback | CallBack for connect social|
+|**authConnectTelegramV1**(#authconnecttelegramv1) | **POST** /method/auth/connect-telegram | Connect telegram in account|
+|**authConnectV1**(#authconnectv1) | **GET** /method/auth/connect | Connected social account|
+|**authDisconnectV1**(#authdisconnectv1) | **GET** /method/auth/disconnect | Disconnected social account|
+|**authExchangeV1**(#authexchangev1) | **POST** /method/auth/app/exchange | Code exchange|
+|**authGetAuthUrlV1**(#authgetauthurlv1) | **GET** /method/auth/redirect-url | Get url for start oauth|
+|**authGetProfileV1**(#authgetprofilev1) | **GET** /method/auth/me | Get basic data for auth user|
+|**authGuestV1**(#authguestv1) | **GET** /method/auth/guest | Guest request of auth|
+|**authLogoutV1**(#authlogoutv1) | **POST** /method/auth/logout | Logout|
+|**authRefreshAccessV1**(#authrefreshaccessv1) | **POST** /method/auth/refresh-access | Update access token|
 
 # **authAuthTelegramV1**
 > authAuthTelegramV1()
@@ -76,22 +76,22 @@ const { status, data } = await apiInstance.authAuthTelegramV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **authDate** | [**number**] | Time auth | defaults to undefined|
-| **id** | [**number**] | Telegram userId | defaults to undefined|
-| **firstName** | [**string**] | First name | defaults to undefined|
-| **hash** | [**string**] | Hash | defaults to undefined|
-| **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | App oauth | defaults to 'site'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **lastName** | [**string**] | Last name | (optional) defaults to undefined|
-| **username** | [**string**] | Nickname | (optional) defaults to undefined|
-| **photoUrl** | [**string**] | Photo | (optional) defaults to undefined|
-| **languageCode** | [**string**] | IETF language tag of the user\&#39;s language | (optional) defaults to undefined|
-| **isPremium** | [**boolean**] | True, if this user is a Telegram Premium user | (optional) defaults to undefined|
-| **addedToAttachmentMenu** | [**boolean**] | True, if this user added the bot to the attachment menu | (optional) defaults to undefined|
-| **refId** | [**string**] | Referal id | (optional) defaults to undefined|
-| **redirect** | [**string**] | Redirect url | (optional) defaults to undefined|
-| **country** | [**string**] | Country code | (optional) defaults to 'ru'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **authDate** | **number** | Time auth | defaults to undefined|
+| **id** | **number** | Telegram userId | defaults to undefined|
+| **firstName** | **string** | First name | defaults to undefined|
+| **hash** | **string** | Hash | defaults to undefined|
+| **app** | **'site' | 'admin' | 'mobile' | 'desktop'** | App oauth | defaults to 'site'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **lastName** | **string** | Last name | (optional) defaults to undefined|
+| **username** | **string** | Nickname | (optional) defaults to undefined|
+| **photoUrl** | **string** | Photo | (optional) defaults to undefined|
+| **languageCode** | **string** | IETF language tag of the user\'s language | (optional) defaults to undefined|
+| **isPremium** | **boolean** | True, if this user is a Telegram Premium user | (optional) defaults to undefined|
+| **addedToAttachmentMenu** | **boolean** | True, if this user added the bot to the attachment menu | (optional) defaults to undefined|
+| **refId** | **string** | Referal id | (optional) defaults to undefined|
+| **redirect** | **string** | Redirect url | (optional) defaults to undefined|
+| **country** | **string** | Country code | (optional) defaults to 'ru'|
 
 
 ### Return type
@@ -142,7 +142,7 @@ const { status, data } = await apiInstance.authCallbackGoogleV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **state** | [**string**] |  | defaults to undefined|
+| **state** | **string** |  | defaults to undefined|
 
 
 ### Return type
@@ -193,7 +193,7 @@ const { status, data } = await apiInstance.authCallbackVkIdV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **state** | [**string**] |  | defaults to undefined|
+| **state** | **string** |  | defaults to undefined|
 
 
 ### Return type
@@ -292,9 +292,9 @@ const { status, data } = await apiInstance.authCodeV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | Create auth code for app | defaults to 'site'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **app** | **'site' | 'admin' | 'mobile' | 'desktop'** | Create auth code for app | defaults to 'site'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -349,9 +349,9 @@ const { status, data } = await apiInstance.authConnectResultV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **message** | [**string**] | Result message for connect | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **message** | **string** | Result message for connect | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -404,8 +404,8 @@ const { status, data } = await apiInstance.authConnectTelegramV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -464,11 +464,11 @@ const { status, data } = await apiInstance.authConnectV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **provider** | [**&#39;google&#39; | &#39;vk&#39; | &#39;vk-id&#39; | &#39;telegram&#39;**]**Array<&#39;google&#39; &#124; &#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;telegram&#39;>** | Provider oauth | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | App oauth | (optional) defaults to 'site'|
-| **redirect** | [**string**] | Redirect url | (optional) defaults to undefined|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **provider** | **'google' | 'vk' | 'vk-id' | 'telegram'** | Provider oauth | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **app** | **'site' | 'admin' | 'mobile' | 'desktop'** | App oauth | (optional) defaults to 'site'|
+| **redirect** | **string** | Redirect url | (optional) defaults to undefined|
 
 
 ### Return type
@@ -523,9 +523,9 @@ const { status, data } = await apiInstance.authDisconnectV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **socialId** | [**number**] | Social id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **socialId** | **number** | Social id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -640,13 +640,13 @@ const { status, data } = await apiInstance.authGetAuthUrlV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **provider** | [**&#39;google&#39; | &#39;vk&#39; | &#39;vk-id&#39; | &#39;telegram&#39;**]**Array<&#39;google&#39; &#124; &#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;telegram&#39;>** | Provider oauth | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | App oauth | (optional) defaults to 'site'|
-| **redirect** | [**string**] | Redirect url | (optional) defaults to undefined|
-| **refId** | [**string**] | Referal id | (optional) defaults to undefined|
-| **country** | [**string**] | Country code | (optional) defaults to 'ru'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **provider** | **'google' | 'vk' | 'vk-id' | 'telegram'** | Provider oauth | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **app** | **'site' | 'admin' | 'mobile' | 'desktop'** | App oauth | (optional) defaults to 'site'|
+| **redirect** | **string** | Redirect url | (optional) defaults to undefined|
+| **refId** | **string** | Referal id | (optional) defaults to undefined|
+| **country** | **string** | Country code | (optional) defaults to 'ru'|
 
 
 ### Return type
@@ -699,8 +699,8 @@ const { status, data } = await apiInstance.authGetProfileV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -751,7 +751,7 @@ const { status, data } = await apiInstance.authGuestV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **refId** | [**string**] |  | defaults to undefined|
+| **refId** | **string** |  | defaults to undefined|
 
 
 ### Return type
@@ -858,7 +858,7 @@ const { status, data } = await apiInstance.authRefreshAccessV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **siteRefreshAuthBodyRequest** | **SiteRefreshAuthBodyRequest**|  | |
-| **userAgent** | [**string**] |  | defaults to undefined|
+| **userAgent** | **string** |  | defaults to undefined|
 
 
 ### Return type

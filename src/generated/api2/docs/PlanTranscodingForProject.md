@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**before** | [**PlanTranscodingItem**](PlanTranscodingItem.md) | Before tariff transcoding | [default to undefined]
-**current** | [**PlanTranscodingItem**](PlanTranscodingItem.md) | Current tariff transcoding | [default to undefined]
-**next** | [**PlanTranscodingItem**](PlanTranscodingItem.md) | Next tariff transcoding | [default to undefined]
+**before** | **PlanTranscodingItem**(PlanTranscodingItem.md) | Before tariff transcoding | [default to undefined]
+**current** | **PlanTranscodingItem**(PlanTranscodingItem.md) | Current tariff transcoding | [default to undefined]
+**next** | **PlanTranscodingItem**(PlanTranscodingItem.md) | Next tariff transcoding | [default to undefined]
 
 ## Example
 

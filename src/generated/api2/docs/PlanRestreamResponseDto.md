@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;PlanRestreamResponse&gt;**](PlanRestreamResponse.md) | Array of items | [default to undefined]
-**feature** | [**PlanRestreamFeatureListResponse**](PlanRestreamFeatureListResponse.md) | Features | [default to undefined]
+**results** | **Array&lt;PlanRestreamResponse&gt;**(PlanRestreamResponse.md) | Array of items | [default to undefined]
+**feature** | **PlanRestreamFeatureListResponse**(PlanRestreamFeatureListResponse.md) | Features | [default to undefined]
 
 ## Example
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **userId** | **number** | User id | [default to undefined]
 **projectId** | **number** | Project id | [default to undefined]
 **accessType** | **number** | Access type | [default to undefined]
-**project** | [**UserProject2ProjectResponse**](UserProject2ProjectResponse.md) | Project data | [default to undefined]
+**project** | **UserProject2ProjectResponse**(UserProject2ProjectResponse.md) | Project data | [default to undefined]
 **memberCount** | **number** | Members count | [default to undefined]
 
 ## Example

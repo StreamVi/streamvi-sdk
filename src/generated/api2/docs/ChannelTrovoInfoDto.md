@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **title** | **string** | Title of the channel | [default to undefined]
 **lang** | **string** |  | [optional] [default to undefined]
 **audience** | **string** |  | [optional] [default to undefined]
-**category** | [**ChannelCategoryInfoDto**](ChannelCategoryInfoDto.md) |  | [optional] [default to undefined]
+**category** | **ChannelCategoryInfoDto**(ChannelCategoryInfoDto.md) |  | [optional] [default to undefined]
 
 ## Example
 

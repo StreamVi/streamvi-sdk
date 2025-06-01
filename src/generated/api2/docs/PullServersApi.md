@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**pullServersGetPullServersV1**](#pullserversgetpullserversv1) | **GET** /method/pull-servers/list | Get pull servers|
+|**pullServersGetPullServersV1**(#pullserversgetpullserversv1) | **GET** /method/pull-servers/list | Get pull servers|
 
 # **pullServersGetPullServersV1**
 > PullServerListResponse pullServersGetPullServersV1()

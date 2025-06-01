@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;LiveRestreamInfoItem&gt;**](LiveRestreamInfoItem.md) | Array of items | [default to undefined]
-**centrifuge** | [**SiteLiveRestreamCentrifugeResponse**](SiteLiveRestreamCentrifugeResponse.md) |  | [default to undefined]
+**results** | **Array&lt;LiveRestreamInfoItem&gt;**(LiveRestreamInfoItem.md) | Array of items | [default to undefined]
+**centrifuge** | **SiteLiveRestreamCentrifugeResponse**(SiteLiveRestreamCentrifugeResponse.md) |  | [default to undefined]
 
 ## Example
 

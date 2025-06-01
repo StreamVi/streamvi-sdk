@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**BlogPageSiteResponseId**](BlogPageSiteResponseId.md) |  | [default to undefined]
+**id** | **BlogPageSiteResponseId**(BlogPageSiteResponseId.md) |  | [default to undefined]
 **url** | **string** | Url of page | [default to undefined]
 **status** | **string** | Page status | [default to StatusEnum_Backlog]
 **dateUpdate** | **string** | Date of last update | [default to undefined]

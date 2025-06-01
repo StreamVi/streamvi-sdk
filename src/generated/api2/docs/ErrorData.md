@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Error name | [default to undefined]
 **msg** | **string** | Error message | [default to undefined]
-**validatorError** | [**Array&lt;ValidationErrorDto&gt;**](ValidationErrorDto.md) | Validator error array if name&#x3D;\&quot;I18nValidationException\&quot; | [optional] [default to undefined]
+**validatorError** | **Array&lt;ValidationErrorDto&gt;**(ValidationErrorDto.md) | Validator error array if name&#x3D;\&quot;I18nValidationException\&quot; | [optional] [default to undefined]
 **_options** | **object** | Options | [default to undefined]
 **data** | **object** | Custom object for error | [default to undefined]
 

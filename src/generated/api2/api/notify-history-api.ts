@@ -74,6 +74,8 @@ export const NotifyHistoryApiAxiosParamCreator = function (configuration?: Confi
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -152,6 +154,8 @@ export const NotifyHistoryApiAxiosParamCreator = function (configuration?: Confi
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -194,6 +198,8 @@ export const NotifyHistoryApiAxiosParamCreator = function (configuration?: Confi
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (id !== undefined) {
@@ -239,6 +245,8 @@ export const NotifyHistoryApiAxiosParamCreator = function (configuration?: Confi
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -290,6 +298,8 @@ export const NotifyHistoryApiAxiosParamCreator = function (configuration?: Confi
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (notifyHistoryId !== undefined) {

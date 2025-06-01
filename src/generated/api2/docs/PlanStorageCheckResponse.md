@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | **number** | Amount | [default to 0]
-**balance** | [**BalanceForPayResponse**](BalanceForPayResponse.md) | Balance for pay object | [default to undefined]
-**refund** | [**PlanRefund**](PlanRefund.md) | Refund for rate | [default to undefined]
+**balance** | **BalanceForPayResponse**(BalanceForPayResponse.md) | Balance for pay object | [default to undefined]
+**refund** | **PlanRefund**(PlanRefund.md) | Refund for rate | [default to undefined]
 
 ## Example
 

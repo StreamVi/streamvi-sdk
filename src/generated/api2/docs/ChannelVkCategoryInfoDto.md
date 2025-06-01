@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**secondary** | [**ChannelCategoryInfoDto**](ChannelCategoryInfoDto.md) |  | [optional] [default to undefined]
+**secondary** | **ChannelCategoryInfoDto**(ChannelCategoryInfoDto.md) |  | [optional] [default to undefined]
 
 ## Example
 

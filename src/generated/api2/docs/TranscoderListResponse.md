@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;TranscoderListItem&gt;**](TranscoderListItem.md) | Array of items | [default to undefined]
+**results** | **Array&lt;TranscoderListItem&gt;**(TranscoderListItem.md) | Array of items | [default to undefined]
 
 ## Example
 

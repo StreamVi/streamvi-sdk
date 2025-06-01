@@ -64,6 +64,8 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -120,6 +122,8 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {

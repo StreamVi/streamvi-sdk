@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;PaySystemListResponse&gt;**](PaySystemListResponse.md) |  | [default to undefined]
+**results** | **Array&lt;PaySystemListResponse&gt;**(PaySystemListResponse.md) |  | [default to undefined]
 
 ## Example
 

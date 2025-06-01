@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**result** | [**PaySettingResponseV3**](PaySettingResponseV3.md) | Pay settings data data | [default to undefined]
+**result** | **PaySettingResponseV3**(PaySettingResponseV3.md) | Pay settings data data | [default to undefined]
 
 ## Example
 

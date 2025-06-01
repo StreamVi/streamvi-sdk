@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**data** | [**ProjectInfoDataResponse**](ProjectInfoDataResponse.md) | Project info | [default to undefined]
-**restream** | [**ProjectInfoRestreamResponse**](ProjectInfoRestreamResponse.md) | Restream tariff | [default to undefined]
-**transcoding** | [**ProjectInfoTranscodingResponse**](ProjectInfoTranscodingResponse.md) | Transcoding tariff | [default to undefined]
-**storage** | [**ProjectInfoStorageResponse**](ProjectInfoStorageResponse.md) | Storage tariff | [default to undefined]
-**access** | [**ProjectInfoAccessResponse**](ProjectInfoAccessResponse.md) | Project info access | [default to undefined]
+**data** | **ProjectInfoDataResponse**(ProjectInfoDataResponse.md) | Project info | [default to undefined]
+**restream** | **ProjectInfoRestreamResponse**(ProjectInfoRestreamResponse.md) | Restream tariff | [default to undefined]
+**transcoding** | **ProjectInfoTranscodingResponse**(ProjectInfoTranscodingResponse.md) | Transcoding tariff | [default to undefined]
+**storage** | **ProjectInfoStorageResponse**(ProjectInfoStorageResponse.md) | Storage tariff | [default to undefined]
+**access** | **ProjectInfoAccessResponse**(ProjectInfoAccessResponse.md) | Project info access | [default to undefined]
 
 ## Example
 

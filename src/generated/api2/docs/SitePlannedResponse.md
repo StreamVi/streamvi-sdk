@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**planned** | [**PlannedItemResponse**](PlannedItemResponse.md) | Planned item | [optional] [default to undefined]
+**planned** | **PlannedItemResponse**(PlannedItemResponse.md) | Planned item | [optional] [default to undefined]
 
 ## Example
 

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **wall** | **boolean** |  | [optional] [default to undefined]
 **privacyVideo** | **string** |  | [optional] [default to undefined]
 **privacyComments** | **string** |  | [optional] [default to undefined]
-**playlist** | [**ChannelPlayListInfoDto**](ChannelPlayListInfoDto.md) |  | [optional] [default to undefined]
-**category** | [**ChannelVkCategoryInfoDto**](ChannelVkCategoryInfoDto.md) |  | [optional] [default to undefined]
+**playlist** | **ChannelPlayListInfoDto**(ChannelPlayListInfoDto.md) |  | [optional] [default to undefined]
+**category** | **ChannelVkCategoryInfoDto**(ChannelVkCategoryInfoDto.md) |  | [optional] [default to undefined]
 
 ## Example
 

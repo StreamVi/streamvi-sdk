@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**Array&lt;SitePlannedResponse&gt;**](SitePlannedResponse.md) |  | [default to undefined]
+**results** | **Array&lt;SitePlannedResponse&gt;**(SitePlannedResponse.md) |  | [default to undefined]
 
 ## Example
 

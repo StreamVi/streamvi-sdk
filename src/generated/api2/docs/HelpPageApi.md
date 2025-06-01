@@ -4,9 +4,9 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**helpPageGetV1**](#helppagegetv1) | **GET** /method/help/page/get | Get help page|
-|[**helpPageListV1**](#helppagelistv1) | **GET** /method/help/page/search | Get list of help pages|
-|[**helpPageStructureV1**](#helppagestructurev1) | **GET** /method/help/page/structure | Get structure of help pages|
+|**helpPageGetV1**(#helppagegetv1) | **GET** /method/help/page/get | Get help page|
+|**helpPageListV1**(#helppagelistv1) | **GET** /method/help/page/search | Get list of help pages|
+|**helpPageStructureV1**(#helppagestructurev1) | **GET** /method/help/page/structure | Get structure of help pages|
 
 # **helpPageGetV1**
 > GetHelpPageResponse helpPageGetV1()
@@ -38,9 +38,9 @@ const { status, data } = await apiInstance.helpPageGetV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **url** | [**string**] | Url of page | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru'  \|  'en' \| 'cn'** | Current language | defaults to 'en'|
+| **url** | **string** | Url of page | defaults to undefined|
+| **v** | **'1'  \|  '2' \| '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -99,11 +99,11 @@ const { status, data } = await apiInstance.helpPageListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **s** | [**string**] | String for search | (optional) defaults to ''|
-| **limit** | [**number**] | Number of results | (optional) defaults to 20|
-| **offset** | [**number**] | Page offset number | (optional) defaults to 0|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **s** | **string** | String for search | (optional) defaults to ''|
+| **limit** | **number** | Number of results | (optional) defaults to 20|
+| **offset** | **number** | Page offset number | (optional) defaults to 0|
 
 
 ### Return type
@@ -156,8 +156,8 @@ const { status, data } = await apiInstance.helpPageStructureV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

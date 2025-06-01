@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**planRestreamBuyV1**](#planrestreambuyv1) | **POST** /method/plan_restream | Buy restream tariff|
-|[**planRestreamCheck2V1**](#planrestreamcheck2v1) | **GET** /method/plan_restream/check | Load data for show card the tariffs v2|
-|[**planRestreamGetDiscountV1**](#planrestreamgetdiscountv1) | **GET** /method/plan_restream/get_discount | Get discount restream|
-|[**planRestreamListProjectV1**](#planrestreamlistprojectv1) | **GET** /method/plan_restream/list/project | Get list of restream tariffs for project|
-|[**planRestreamListV1**](#planrestreamlistv1) | **GET** /method/plan_restream/list | Get list of restream tariffs|
-|[**planRestreamRemoveV1**](#planrestreamremovev1) | **DELETE** /method/plan_restream | Remove after tariff|
-|[**planRestreamTariffV1**](#planrestreamtariffv1) | **GET** /method/plan_restream | Get tariff for project|
+|**planRestreamBuyV1**(#planrestreambuyv1) | **POST** /method/plan_restream | Buy restream tariff|
+|**planRestreamCheck2V1**(#planrestreamcheck2v1) | **GET** /method/plan_restream/check | Load data for show card the tariffs v2|
+|**planRestreamGetDiscountV1**(#planrestreamgetdiscountv1) | **GET** /method/plan_restream/get_discount | Get discount restream|
+|**planRestreamListProjectV1**(#planrestreamlistprojectv1) | **GET** /method/plan_restream/list/project | Get list of restream tariffs for project|
+|**planRestreamListV1**(#planrestreamlistv1) | **GET** /method/plan_restream/list | Get list of restream tariffs|
+|**planRestreamRemoveV1**(#planrestreamremovev1) | **DELETE** /method/plan_restream | Remove after tariff|
+|**planRestreamTariffV1**(#planrestreamtariffv1) | **GET** /method/plan_restream | Get tariff for project|
 
 # **planRestreamBuyV1**
 > SuccessResponse planRestreamBuyV1()
@@ -50,13 +50,13 @@ const { status, data } = await apiInstance.planRestreamBuyV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **period** | [**&#39;month&#39; | &#39;year&#39;**]**Array<&#39;month&#39; &#124; &#39;year&#39;>** | Period | defaults to undefined|
-| **planRestreamId** | [**number**] | Restream plan id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **countChannel** | [**number**] | Channel count | (optional) defaults to undefined|
-| **bitrate** | [**number**] | Bitrate, kbps | (optional) defaults to undefined|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **period** | **'month' | 'year'** | Period | defaults to undefined|
+| **planRestreamId** | **number** | Restream plan id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **countChannel** | **number** | Channel count | (optional) defaults to undefined|
+| **bitrate** | **number** | Bitrate, kbps | (optional) defaults to undefined|
 
 
 ### Return type
@@ -121,14 +121,14 @@ const { status, data } = await apiInstance.planRestreamCheck2V1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **period** | [**&#39;month&#39; | &#39;year&#39;**]**Array<&#39;month&#39; &#124; &#39;year&#39;>** | Period | defaults to undefined|
-| **planRestreamId** | [**number**] | Restream plan id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **useBalance** | [**number**] | Is select balance | (optional) defaults to undefined|
-| **channels** | [**number**] | Channels count | (optional) defaults to undefined|
-| **bitrate** | [**number**] | Bitrate, kbps | (optional) defaults to undefined|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **period** | **'month' | 'year'** | Period | defaults to undefined|
+| **planRestreamId** | **number** | Restream plan id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **useBalance** | **number** | Is select balance | (optional) defaults to undefined|
+| **channels** | **number** | Channels count | (optional) defaults to undefined|
+| **bitrate** | **number** | Bitrate, kbps | (optional) defaults to undefined|
 
 
 ### Return type
@@ -181,8 +181,8 @@ const { status, data } = await apiInstance.planRestreamGetDiscountV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -237,9 +237,9 @@ const { status, data } = await apiInstance.planRestreamListProjectV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -292,8 +292,8 @@ const { status, data } = await apiInstance.planRestreamListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -350,10 +350,10 @@ const { status, data } = await apiInstance.planRestreamRemoveV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **planRestreamId** | [**number**] | Restream plan id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **planRestreamId** | **number** | Restream plan id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -408,9 +408,9 @@ const { status, data } = await apiInstance.planRestreamTariffV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39; | &#39;2&#39; | &#39;3&#39;**]**Array<&#39;1&#39; &#124; &#39;2&#39; &#124; &#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
+| **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
