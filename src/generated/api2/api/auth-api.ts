@@ -1049,7 +1049,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         authAuthTelegramV1(requestParameters: AuthApiAuthAuthTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.authAuthTelegramV1(requestParameters.language, requestParameters.authDate, requestParameters.id, requestParameters.firstName, requestParameters.hash, requestParameters.app, requestParameters.v, requestParameters.lastName, requestParameters.username, requestParameters.photoUrl, requestParameters.languageCode, requestParameters.isPremium, requestParameters.addedToAttachmentMenu, requestParameters.refId, requestParameters.redirect, requestParameters.country, options).then((request) => request(axios, basePath));
+            return localVarFp.authAuthTelegramV1(requestParameters.language, requestParameters.auth_date, requestParameters.id, requestParameters.first_name, requestParameters.hash, requestParameters.app, requestParameters.v, requestParameters.last_name, requestParameters.username, requestParameters.photo_url, requestParameters.language_code, requestParameters.is_premium, requestParameters.added_to_attachment_menu, requestParameters.refId, requestParameters.redirect, requestParameters.country, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1128,7 +1128,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         authDisconnectV1(requestParameters: AuthApiAuthDisconnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.authDisconnectV1(requestParameters.language, requestParameters.socialId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.authDisconnectV1(requestParameters.language, requestParameters.social_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1138,7 +1138,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         authExchangeV1(requestParameters: AuthApiAuthExchangeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RefreshAuthResponse> {
-            return localVarFp.authExchangeV1(requestParameters.siteAuthExchangeRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.authExchangeV1(requestParameters.SiteAuthExchangeRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1178,7 +1178,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         authLogoutV1(requestParameters: AuthApiAuthLogoutV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.authLogoutV1(requestParameters.siteLogoutAuthRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.authLogoutV1(requestParameters.SiteLogoutAuthRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1188,7 +1188,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         authRefreshAccessV1(requestParameters: AuthApiAuthRefreshAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RefreshAuthResponse> {
-            return localVarFp.authRefreshAccessV1(requestParameters.userAgent, requestParameters.siteRefreshAuthBodyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.authRefreshAccessV1(requestParameters.User-Agent, requestParameters.SiteRefreshAuthBodyRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1368,7 +1368,7 @@ export interface AuthApiAuthAuthTelegramV1Request {
      * @type {number}
      * @memberof AuthApiAuthAuthTelegramV1
      */
-    readonly authDate: number
+    readonly auth_date: number
 
     /**
      * Telegram userId
@@ -1382,7 +1382,7 @@ export interface AuthApiAuthAuthTelegramV1Request {
      * @type {string}
      * @memberof AuthApiAuthAuthTelegramV1
      */
-    readonly firstName: string
+    readonly first_name: string
 
     /**
      * Hash
@@ -1410,7 +1410,7 @@ export interface AuthApiAuthAuthTelegramV1Request {
      * @type {string}
      * @memberof AuthApiAuthAuthTelegramV1
      */
-    readonly lastName?: string
+    readonly last_name?: string
 
     /**
      * Nickname
@@ -1424,28 +1424,28 @@ export interface AuthApiAuthAuthTelegramV1Request {
      * @type {string}
      * @memberof AuthApiAuthAuthTelegramV1
      */
-    readonly photoUrl?: string
+    readonly photo_url?: string
 
     /**
      * IETF language tag of the user\&#39;s language
      * @type {string}
      * @memberof AuthApiAuthAuthTelegramV1
      */
-    readonly languageCode?: string
+    readonly language_code?: string
 
     /**
      * True, if this user is a Telegram Premium user
      * @type {boolean}
      * @memberof AuthApiAuthAuthTelegramV1
      */
-    readonly isPremium?: boolean
+    readonly is_premium?: boolean
 
     /**
      * True, if this user added the bot to the attachment menu
      * @type {boolean}
      * @memberof AuthApiAuthAuthTelegramV1
      */
-    readonly addedToAttachmentMenu?: boolean
+    readonly added_to_attachment_menu?: boolean
 
     /**
      * Referal id
@@ -1634,7 +1634,7 @@ export interface AuthApiAuthDisconnectV1Request {
      * @type {number}
      * @memberof AuthApiAuthDisconnectV1
      */
-    readonly socialId: number
+    readonly social_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -1655,7 +1655,7 @@ export interface AuthApiAuthExchangeV1Request {
      * @type {SiteAuthExchangeRequest}
      * @memberof AuthApiAuthExchangeV1
      */
-    readonly siteAuthExchangeRequest: SiteAuthExchangeRequest
+    readonly SiteAuthExchangeRequest: SiteAuthExchangeRequest
 }
 
 /**
@@ -1760,7 +1760,7 @@ export interface AuthApiAuthLogoutV1Request {
      * @type {SiteLogoutAuthRequest}
      * @memberof AuthApiAuthLogoutV1
      */
-    readonly siteLogoutAuthRequest: SiteLogoutAuthRequest
+    readonly SiteLogoutAuthRequest: SiteLogoutAuthRequest
 }
 
 /**
@@ -1774,14 +1774,14 @@ export interface AuthApiAuthRefreshAccessV1Request {
      * @type {string}
      * @memberof AuthApiAuthRefreshAccessV1
      */
-    readonly userAgent: string
+    readonly User-Agent: string
 
     /**
      * 
      * @type {SiteRefreshAuthBodyRequest}
      * @memberof AuthApiAuthRefreshAccessV1
      */
-    readonly siteRefreshAuthBodyRequest: SiteRefreshAuthBodyRequest
+    readonly SiteRefreshAuthBodyRequest: SiteRefreshAuthBodyRequest
 }
 
 /**
@@ -1800,7 +1800,7 @@ export class AuthApi extends BaseAPI implements AuthApiInterface {
      * @memberof AuthApi
      */
     public authAuthTelegramV1(requestParameters: AuthApiAuthAuthTelegramV1Request, options?: RawAxiosRequestConfig) {
-        return AuthApiFp(this.configuration).authAuthTelegramV1(requestParameters.language, requestParameters.authDate, requestParameters.id, requestParameters.firstName, requestParameters.hash, requestParameters.app, requestParameters.v, requestParameters.lastName, requestParameters.username, requestParameters.photoUrl, requestParameters.languageCode, requestParameters.isPremium, requestParameters.addedToAttachmentMenu, requestParameters.refId, requestParameters.redirect, requestParameters.country, options).then((request) => request(this.axios, this.basePath));
+        return AuthApiFp(this.configuration).authAuthTelegramV1(requestParameters.language, requestParameters.auth_date, requestParameters.id, requestParameters.first_name, requestParameters.hash, requestParameters.app, requestParameters.v, requestParameters.last_name, requestParameters.username, requestParameters.photo_url, requestParameters.language_code, requestParameters.is_premium, requestParameters.added_to_attachment_menu, requestParameters.refId, requestParameters.redirect, requestParameters.country, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1895,7 +1895,7 @@ export class AuthApi extends BaseAPI implements AuthApiInterface {
      * @memberof AuthApi
      */
     public authDisconnectV1(requestParameters: AuthApiAuthDisconnectV1Request, options?: RawAxiosRequestConfig) {
-        return AuthApiFp(this.configuration).authDisconnectV1(requestParameters.language, requestParameters.socialId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return AuthApiFp(this.configuration).authDisconnectV1(requestParameters.language, requestParameters.social_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1907,7 +1907,7 @@ export class AuthApi extends BaseAPI implements AuthApiInterface {
      * @memberof AuthApi
      */
     public authExchangeV1(requestParameters: AuthApiAuthExchangeV1Request, options?: RawAxiosRequestConfig) {
-        return AuthApiFp(this.configuration).authExchangeV1(requestParameters.siteAuthExchangeRequest, options).then((request) => request(this.axios, this.basePath));
+        return AuthApiFp(this.configuration).authExchangeV1(requestParameters.SiteAuthExchangeRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1955,7 +1955,7 @@ export class AuthApi extends BaseAPI implements AuthApiInterface {
      * @memberof AuthApi
      */
     public authLogoutV1(requestParameters: AuthApiAuthLogoutV1Request, options?: RawAxiosRequestConfig) {
-        return AuthApiFp(this.configuration).authLogoutV1(requestParameters.siteLogoutAuthRequest, options).then((request) => request(this.axios, this.basePath));
+        return AuthApiFp(this.configuration).authLogoutV1(requestParameters.SiteLogoutAuthRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1967,7 +1967,7 @@ export class AuthApi extends BaseAPI implements AuthApiInterface {
      * @memberof AuthApi
      */
     public authRefreshAccessV1(requestParameters: AuthApiAuthRefreshAccessV1Request, options?: RawAxiosRequestConfig) {
-        return AuthApiFp(this.configuration).authRefreshAccessV1(requestParameters.userAgent, requestParameters.siteRefreshAuthBodyRequest, options).then((request) => request(this.axios, this.basePath));
+        return AuthApiFp(this.configuration).authRefreshAccessV1(requestParameters.User-Agent, requestParameters.SiteRefreshAuthBodyRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

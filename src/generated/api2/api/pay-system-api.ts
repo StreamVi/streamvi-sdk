@@ -228,7 +228,7 @@ export const PaySystemApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.paySystemCreateChallengeV1(requestParameters.language, requestParameters.paymentId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paySystemCreateChallengeV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -237,7 +237,7 @@ export const PaySystemApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.paySystemCreateUnitpayV1(requestParameters.language, requestParameters.paymentId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paySystemCreateUnitpayV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -304,7 +304,7 @@ export interface PaySystemApiPaySystemCreateChallengeV1Request {
      * @type {number}
      * @memberof PaySystemApiPaySystemCreateChallengeV1
      */
-    readonly paymentId: number
+    readonly payment_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -332,7 +332,7 @@ export interface PaySystemApiPaySystemCreateUnitpayV1Request {
      * @type {number}
      * @memberof PaySystemApiPaySystemCreateUnitpayV1
      */
-    readonly paymentId: number
+    readonly payment_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -357,7 +357,7 @@ export class PaySystemApi extends BaseAPI implements PaySystemApiInterface {
      * @memberof PaySystemApi
      */
     public paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig) {
-        return PaySystemApiFp(this.configuration).paySystemCreateChallengeV1(requestParameters.language, requestParameters.paymentId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PaySystemApiFp(this.configuration).paySystemCreateChallengeV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -368,7 +368,7 @@ export class PaySystemApi extends BaseAPI implements PaySystemApiInterface {
      * @memberof PaySystemApi
      */
     public paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig) {
-        return PaySystemApiFp(this.configuration).paySystemCreateUnitpayV1(requestParameters.language, requestParameters.paymentId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PaySystemApiFp(this.configuration).paySystemCreateUnitpayV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -6,7 +6,26 @@ describe('SDK Generation Integration Tests', () => {
   const tempDir = path.join(__dirname, '../temp-test');
   const testApiDir = path.join(tempDir, 'api');
   
+  // Функция-помощник для безопасного создания файлов
+  const writeTestFile = (filePath: string, content: string) => {
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(filePath, content);
+  };
+  
   beforeAll(() => {
+    if (!fs.existsSync(tempDir)) {
+      fs.mkdirSync(tempDir, { recursive: true });
+    }
+    if (!fs.existsSync(testApiDir)) {
+      fs.mkdirSync(testApiDir, { recursive: true });
+    }
+  });
+
+  beforeEach(() => {
+    // Убеждаемся, что директории существуют перед каждым тестом
     if (!fs.existsSync(tempDir)) {
       fs.mkdirSync(tempDir, { recursive: true });
     }
@@ -17,8 +36,12 @@ describe('SDK Generation Integration Tests', () => {
 
   afterAll(() => {
     // Очищаем временные файлы
-    if (fs.existsSync(tempDir)) {
-      fs.rmSync(tempDir, { recursive: true, force: true });
+    try {
+      if (fs.existsSync(tempDir)) {
+        fs.rmSync(tempDir, { recursive: true, force: true });
+      }
+    } catch (error: any) {
+      console.warn(`Не удалось удалить временную директорию ${tempDir}:`, error?.message || error);
     }
   });
 
@@ -98,7 +121,10 @@ describe('SDK Generation Integration Tests', () => {
 
       // 2. Сохраняем тестовую спецификацию
       const specFile = path.join(tempDir, 'test-spec.json');
-      fs.writeFileSync(specFile, JSON.stringify(testSpec, null, 2));
+      writeTestFile(specFile, JSON.stringify(testSpec, null, 2));
+      
+      // Убеждаемся, что файл создан
+      expect(fs.existsSync(specFile)).toBe(true);
 
       // 3. Тестируем предобработку
       const cleanOpenApiSpec = require('../scripts/clean-openapi-spec.js');
@@ -163,8 +189,8 @@ export const SettingsApi = function(configuration?: Configuration, basePath?: st
       const apiFile1Path = path.join(testApiDir, 'user-api.ts');
       const apiFile2Path = path.join(testApiDir, 'settings-api.ts');
       
-      fs.writeFileSync(apiFile1Path, testApiFile1);
-      fs.writeFileSync(apiFile2Path, testApiFile2);
+      writeTestFile(apiFile1Path, testApiFile1);
+      writeTestFile(apiFile2Path, testApiFile2);
 
       // 5. Тестируем постобработку
       const postprocessApi = require('../scripts/postprocess-api.js');
@@ -241,7 +267,10 @@ export const MixedApi = function(configuration?: Configuration, basePath?: strin
 };`;
 
       const testFile = path.join(testApiDir, 'mixed-versions-api.ts');
-      fs.writeFileSync(testFile, mixedVersionsApi);
+      writeTestFile(testFile, mixedVersionsApi);
+      
+      // Убеждаемся, что файл создан
+      expect(fs.existsSync(testFile)).toBe(true);
 
       const postprocessApi = require('../scripts/postprocess-api.js');
       const result = postprocessApi.processApiFile(testFile);
@@ -281,7 +310,7 @@ export const MixedApi = function(configuration?: Configuration, basePath?: strin
       };
 
       const specFile = path.join(tempDir, 'complex-spec.json');
-      fs.writeFileSync(specFile, JSON.stringify(complexSpec, null, 2));
+      writeTestFile(specFile, JSON.stringify(complexSpec, null, 2));
 
       const cleanOpenApiSpec = require('../scripts/clean-openapi-spec.js');
       const result = cleanOpenApiSpec.processSpec(specFile);

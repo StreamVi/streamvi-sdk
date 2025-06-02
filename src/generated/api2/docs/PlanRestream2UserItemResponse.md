@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**planRestream2userId** | **number** | Plan restream id | [default to undefined]
-**planRestreamId** | **number** | Plan restream id | [default to undefined]
-**dateEnd** | **string** | Date end tariff | [default to undefined]
-**dateStart** | **string** | Date start | [default to undefined]
-**dateCreate** | **string** | Date create | [default to undefined]
+**plan_restream2user_id** | **number** | Plan restream id | [default to undefined]
+**plan_restream_id** | **number** | Plan restream id | [default to undefined]
+**date_end** | **string** | Date end tariff | [default to undefined]
+**date_start** | **string** | Date start | [default to undefined]
+**date_create** | **string** | Date create | [default to undefined]
 **period** | **string** | Plan period | [default to undefined]
-**moneyFlowUuid** | **string** | Money flow uuid | [default to undefined]
-**periodUuid** | **string** | Period uuid | [default to undefined]
+**money_flow_uuid** | **string** | Money flow uuid | [default to undefined]
+**period_uuid** | **string** | Period uuid | [default to undefined]
 **status** | **string** | Status | [default to undefined]
 **prolongation** | **number** | Prolongation | [default to undefined]
 
@@ -22,14 +22,14 @@ Name | Type | Description | Notes
 import { PlanRestream2UserItemResponse } from 'streamvi-api-client';
 
 const instance: PlanRestream2UserItemResponse = {
-    planRestream2userId,
-    planRestreamId,
-    dateEnd,
-    dateStart,
-    dateCreate,
+    plan_restream2user_id,
+    plan_restream_id,
+    date_end,
+    date_start,
+    date_create,
     period,
-    moneyFlowUuid,
-    periodUuid,
+    money_flow_uuid,
+    period_uuid,
     status,
     prolongation,
 };

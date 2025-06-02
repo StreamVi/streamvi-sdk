@@ -5,27 +5,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**planRestreamId** | **number** | Unique ID | [default to undefined]
+**plan_restream_id** | **number** | Unique ID | [default to undefined]
 **title** | **string** | Title | [default to undefined]
 **active** | **boolean** | Active | [default to undefined]
-**countChannelMin** | **number** | Minimum channel count | [default to undefined]
-**countChannelMax** | **number** | Maximum channel count | [default to undefined]
+**count_channel_min** | **number** | Minimum channel count | [default to undefined]
+**count_channel_max** | **number** | Maximum channel count | [default to undefined]
 **type** | **string** | Type | [default to undefined]
-**priceRub** | **number** | Price (RUB) | [default to undefined]
-**priceUsd** | **number** | Price (USD) | [default to undefined]
-**bitrateMax** | **number** | Maximum bitrate, kbps | [default to undefined]
-**bitrateMin** | **number** | Minimum bitrate, kbps | [default to undefined]
+**price_rub** | **number** | Price (RUB) | [default to undefined]
+**price_usd** | **number** | Price (USD) | [default to undefined]
+**bitrate_max** | **number** | Maximum bitrate, kbps | [default to undefined]
+**bitrate_min** | **number** | Minimum bitrate, kbps | [default to undefined]
 **resolution** | **string** | Resolution | [default to undefined]
 **fps** | **string** | Fps | [default to undefined]
-**createProjects** | **boolean** | Create project in account | [default to undefined]
+**create_projects** | **boolean** | Create project in account | [default to undefined]
 **chat** | **boolean** | Use multichat | [default to undefined]
 **video** | **boolean** | Playing video as a broadcast | [default to undefined]
-**videoStorage** | **number** | Storage of video files, Gb | [default to undefined]
-**changeSubject** | **boolean** | Change title, description, image and other data of stream | [default to undefined]
-**backgroundChat** | **boolean** | Collect chat messages in the background | [default to undefined]
-**dedicatedServer** | **boolean** | Dedicated server | [default to undefined]
-**personalManager** | **number** | Personal manager | [default to undefined]
-**pullLinkLimit** | **number** | pull links | [default to undefined]
+**video_storage** | **number** | Storage of video files, Gb | [default to undefined]
+**change_subject** | **boolean** | Change title, description, image and other data of stream | [default to undefined]
+**background_chat** | **boolean** | Collect chat messages in the background | [default to undefined]
+**dedicated_server** | **boolean** | Dedicated server | [default to undefined]
+**personal_manager** | **number** | Personal manager | [default to undefined]
+**pull_link_limit** | **number** | pull links | [default to undefined]
 **index** | **number** | Field for sort | [default to undefined]
 **discount** | **PlanRestreamDiscountResponse**(PlanRestreamDiscountResponse.md) | Discount | [default to undefined]
 
@@ -35,27 +35,27 @@ Name | Type | Description | Notes
 import { PlanRestreamResponse } from 'streamvi-api-client';
 
 const instance: PlanRestreamResponse = {
-    planRestreamId,
+    plan_restream_id,
     title,
     active,
-    countChannelMin,
-    countChannelMax,
+    count_channel_min,
+    count_channel_max,
     type,
-    priceRub,
-    priceUsd,
-    bitrateMax,
-    bitrateMin,
+    price_rub,
+    price_usd,
+    bitrate_max,
+    bitrate_min,
     resolution,
     fps,
-    createProjects,
+    create_projects,
     chat,
     video,
-    videoStorage,
-    changeSubject,
-    backgroundChat,
-    dedicatedServer,
-    personalManager,
-    pullLinkLimit,
+    video_storage,
+    change_subject,
+    background_chat,
+    dedicated_server,
+    personal_manager,
+    pull_link_limit,
     index,
     discount,
 };

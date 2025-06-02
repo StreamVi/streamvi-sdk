@@ -1,6 +1,6 @@
 {
   "name": "streamvi-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Library for working with the StreamVi API (https://dev.streamvi.io)",
   "keywords": [
     "streamvi",

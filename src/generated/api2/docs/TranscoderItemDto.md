@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**projectId** | **number** | Project id | [default to undefined]
-**transcoderId** | **number** | Transcoder id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
+**transcoder_id** | **number** | Transcoder id | [default to undefined]
 
 ## Example
 
@@ -18,8 +18,8 @@ import { TranscoderItemDto } from 'streamvi-api-client';
 const instance: TranscoderItemDto = {
     v,
     language,
-    projectId,
-    transcoderId,
+    project_id,
+    transcoder_id,
 };
 ```
 

@@ -329,7 +329,7 @@ export const TranscodersApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig): AxiosPromise<number> {
-            return localVarFp.transcodersAddV1(requestParameters.transcoderCreateDto, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersAddV1(requestParameters.TranscoderCreateDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -339,7 +339,7 @@ export const TranscodersApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.transcodersDeleteV1(requestParameters.transcoderItemDto, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersDeleteV1(requestParameters.TranscoderItemDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -349,7 +349,7 @@ export const TranscodersApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTranscoderListResponse> {
-            return localVarFp.transcodersListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -359,7 +359,7 @@ export const TranscodersApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.transcodersStopV1(requestParameters.transcoderItemDto, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersStopV1(requestParameters.TranscoderItemDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -369,7 +369,7 @@ export const TranscodersApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         transcodersUpdateV1(requestParameters: TranscodersApiTranscodersUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.transcodersUpdateV1(requestParameters.transcoderUpdateDto, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersUpdateV1(requestParameters.TranscoderUpdateDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -443,7 +443,7 @@ export interface TranscodersApiTranscodersAddV1Request {
      * @type {TranscoderCreateDto}
      * @memberof TranscodersApiTranscodersAddV1
      */
-    readonly transcoderCreateDto: TranscoderCreateDto
+    readonly TranscoderCreateDto: TranscoderCreateDto
 }
 
 /**
@@ -457,7 +457,7 @@ export interface TranscodersApiTranscodersDeleteV1Request {
      * @type {TranscoderItemDto}
      * @memberof TranscodersApiTranscodersDeleteV1
      */
-    readonly transcoderItemDto: TranscoderItemDto
+    readonly TranscoderItemDto: TranscoderItemDto
 }
 
 /**
@@ -478,7 +478,7 @@ export interface TranscodersApiTranscodersListV1Request {
      * @type {number}
      * @memberof TranscodersApiTranscodersListV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -499,7 +499,7 @@ export interface TranscodersApiTranscodersStopV1Request {
      * @type {TranscoderItemDto}
      * @memberof TranscodersApiTranscodersStopV1
      */
-    readonly transcoderItemDto: TranscoderItemDto
+    readonly TranscoderItemDto: TranscoderItemDto
 }
 
 /**
@@ -513,7 +513,7 @@ export interface TranscodersApiTranscodersUpdateV1Request {
      * @type {TranscoderUpdateDto}
      * @memberof TranscodersApiTranscodersUpdateV1
      */
-    readonly transcoderUpdateDto: TranscoderUpdateDto
+    readonly TranscoderUpdateDto: TranscoderUpdateDto
 }
 
 /**
@@ -532,7 +532,7 @@ export class TranscodersApi extends BaseAPI implements TranscodersApiInterface {
      * @memberof TranscodersApi
      */
     public transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig) {
-        return TranscodersApiFp(this.configuration).transcodersAddV1(requestParameters.transcoderCreateDto, options).then((request) => request(this.axios, this.basePath));
+        return TranscodersApiFp(this.configuration).transcodersAddV1(requestParameters.TranscoderCreateDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -544,7 +544,7 @@ export class TranscodersApi extends BaseAPI implements TranscodersApiInterface {
      * @memberof TranscodersApi
      */
     public transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig) {
-        return TranscodersApiFp(this.configuration).transcodersDeleteV1(requestParameters.transcoderItemDto, options).then((request) => request(this.axios, this.basePath));
+        return TranscodersApiFp(this.configuration).transcodersDeleteV1(requestParameters.TranscoderItemDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -556,7 +556,7 @@ export class TranscodersApi extends BaseAPI implements TranscodersApiInterface {
      * @memberof TranscodersApi
      */
     public transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig) {
-        return TranscodersApiFp(this.configuration).transcodersListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return TranscodersApiFp(this.configuration).transcodersListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -568,7 +568,7 @@ export class TranscodersApi extends BaseAPI implements TranscodersApiInterface {
      * @memberof TranscodersApi
      */
     public transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig) {
-        return TranscodersApiFp(this.configuration).transcodersStopV1(requestParameters.transcoderItemDto, options).then((request) => request(this.axios, this.basePath));
+        return TranscodersApiFp(this.configuration).transcodersStopV1(requestParameters.TranscoderItemDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -580,7 +580,7 @@ export class TranscodersApi extends BaseAPI implements TranscodersApiInterface {
      * @memberof TranscodersApi
      */
     public transcodersUpdateV1(requestParameters: TranscodersApiTranscodersUpdateV1Request, options?: RawAxiosRequestConfig) {
-        return TranscodersApiFp(this.configuration).transcodersUpdateV1(requestParameters.transcoderUpdateDto, options).then((request) => request(this.axios, this.basePath));
+        return TranscodersApiFp(this.configuration).transcodersUpdateV1(requestParameters.TranscoderUpdateDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

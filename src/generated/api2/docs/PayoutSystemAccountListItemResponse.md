@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payoutSystemAccountId** | **number** | Payout system account id | [default to undefined]
-**payoutSystemId** | **number** | Payout system id | [default to undefined]
+**payout_system_account_id** | **number** | Payout system account id | [default to undefined]
+**payout_system_id** | **number** | Payout system id | [default to undefined]
 **description** | **string** | Description | [default to undefined]
 **commission** | **number** | Payout system id | [default to undefined]
-**commissionType** | **string** | Payout system account unique id | [default to undefined]
+**commission_type** | **string** | Payout system account unique id | [default to undefined]
 **title** | **string** | Title | [default to undefined]
 **active** | **boolean** | Active | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
-**minAmount** | **number** | Minimum amount | [default to undefined]
-**maxAmount** | **number** | Maximum amount | [default to undefined]
+**min_amount** | **number** | Minimum amount | [default to undefined]
+**max_amount** | **number** | Maximum amount | [default to undefined]
 
 ## Example
 
@@ -22,16 +22,16 @@ Name | Type | Description | Notes
 import { PayoutSystemAccountListItemResponse } from 'streamvi-api-client';
 
 const instance: PayoutSystemAccountListItemResponse = {
-    payoutSystemAccountId,
-    payoutSystemId,
+    payout_system_account_id,
+    payout_system_id,
     description,
     commission,
-    commissionType,
+    commission_type,
     title,
     active,
     currency,
-    minAmount,
-    maxAmount,
+    min_amount,
+    max_amount,
 };
 ```
 

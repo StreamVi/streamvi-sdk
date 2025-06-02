@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**updateUrlChannel** | **LiveRestreamCentrifugeItemV2**(LiveRestreamCentrifugeItemV2.md) | Event for restream update url | [default to undefined]
-**updateStatsChannel** | **LiveRestreamCentrifugeItemV2**(LiveRestreamCentrifugeItemV2.md) | Event for restream update viewers | [default to undefined]
+**update_url_channel** | **LiveRestreamCentrifugeItemV2**(LiveRestreamCentrifugeItemV2.md) | Event for restream update url | [default to undefined]
+**update_stats_channel** | **LiveRestreamCentrifugeItemV2**(LiveRestreamCentrifugeItemV2.md) | Event for restream update viewers | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { SiteLiveRestreamCentrifugeResponse } from 'streamvi-api-client';
 
 const instance: SiteLiveRestreamCentrifugeResponse = {
-    updateUrlChannel,
-    updateStatsChannel,
+    update_url_channel,
+    update_stats_channel,
 };
 ```
 

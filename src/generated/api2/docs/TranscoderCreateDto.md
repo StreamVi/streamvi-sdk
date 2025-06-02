@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**projectId** | **number** | Project id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
 **width** | **number** | Width | [optional] [default to undefined]
 **height** | **number** | Height | [optional] [default to undefined]
 **fps** | **number** | Fps | [optional] [default to undefined]
@@ -27,7 +27,7 @@ import { TranscoderCreateDto } from 'streamvi-api-client';
 const instance: TranscoderCreateDto = {
     v,
     language,
-    projectId,
+    project_id,
     width,
     height,
     fps,

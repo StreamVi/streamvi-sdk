@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **BlogPageSiteResponseId**(BlogPageSiteResponseId.md) |  | [default to undefined]
-**notionId** | **string** | Notion id | [default to undefined]
-**notionParentId** | **string** | Notion parent id | [default to undefined]
+**_id** | **BlogPageSiteResponseId**(BlogPageSiteResponseId.md) |  | [default to undefined]
+**notion_id** | **string** | Notion id | [default to undefined]
+**notion_parent_id** | **string** | Notion parent id | [default to undefined]
 **url** | **string** | url | [default to undefined]
-**urlInherit** | **string** | Generated url from root path | [default to undefined]
+**url_inherit** | **string** | Generated url from root path | [default to undefined]
 **status** | **string** | Page status | [default to StatusEnum_Backlog]
 **title** | **Array&lt;StructureHelpPageConnectionsItemLang&gt;**(StructureHelpPageConnectionsItemLang.md) | Subject | [default to undefined]
 **icon** | **object** | Page icon | [default to undefined]
@@ -21,11 +21,11 @@ Name | Type | Description | Notes
 import { StructureHelpPageConnectionsItemFinal } from 'streamvi-api-client';
 
 const instance: StructureHelpPageConnectionsItemFinal = {
-    id,
-    notionId,
-    notionParentId,
+    _id,
+    notion_id,
+    notion_parent_id,
     url,
-    urlInherit,
+    url_inherit,
     status,
     title,
     icon,

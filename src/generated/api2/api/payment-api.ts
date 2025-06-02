@@ -266,7 +266,7 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         paymentCreateV1(requestParameters: PaymentApiPaymentCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCreateResponse> {
-            return localVarFp.paymentCreateV1(requestParameters.language, requestParameters.paymentCreateV1Request, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paymentCreateV1(requestParameters.language, requestParameters.PaymentCreateV1Request, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -275,7 +275,7 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaymentStatusResponse> {
-            return localVarFp.paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -343,7 +343,7 @@ export interface PaymentApiPaymentCreateV1Request {
      * @type {PaymentCreateV1Request}
      * @memberof PaymentApiPaymentCreateV1
      */
-    readonly paymentCreateV1Request: PaymentCreateV1Request
+    readonly PaymentCreateV1Request: PaymentCreateV1Request
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -378,7 +378,7 @@ export interface PaymentApiPaymentGetStatusV1Request {
      * @type {number}
      * @memberof PaymentApiPaymentGetStatusV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -439,7 +439,7 @@ export class PaymentApi extends BaseAPI implements PaymentApiInterface {
      * @memberof PaymentApi
      */
     public paymentCreateV1(requestParameters: PaymentApiPaymentCreateV1Request, options?: RawAxiosRequestConfig) {
-        return PaymentApiFp(this.configuration).paymentCreateV1(requestParameters.language, requestParameters.paymentCreateV1Request, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PaymentApiFp(this.configuration).paymentCreateV1(requestParameters.language, requestParameters.PaymentCreateV1Request, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -450,7 +450,7 @@ export class PaymentApi extends BaseAPI implements PaymentApiInterface {
      * @memberof PaymentApi
      */
     public paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig) {
-        return PaymentApiFp(this.configuration).paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PaymentApiFp(this.configuration).paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

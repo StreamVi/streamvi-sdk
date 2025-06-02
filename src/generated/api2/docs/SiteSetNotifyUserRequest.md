@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**projectId** | **number** | Project id | [default to undefined]
-**notifyChannel** | **string** | Notify channel | [default to undefined]
-**notifyCategory** | **string** | Notify category | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
+**notify_channel** | **string** | Notify channel | [default to undefined]
+**notify_category** | **string** | Notify category | [default to undefined]
 **status** | **string** | Set status | [default to undefined]
 
 ## Example
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 import { SiteSetNotifyUserRequest } from 'streamvi-api-client';
 
 const instance: SiteSetNotifyUserRequest = {
-    projectId,
-    notifyChannel,
-    notifyCategory,
+    project_id,
+    notify_channel,
+    notify_category,
     status,
 };
 ```

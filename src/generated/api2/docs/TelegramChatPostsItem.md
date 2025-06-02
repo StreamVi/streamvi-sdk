@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**messageId** | **number** | message_id | [default to undefined]
+**message_id** | **number** | message_id | [default to undefined]
 **text** | **string** | text | [default to undefined]
 **attachments** | **object** | attachments | [default to undefined]
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 import { TelegramChatPostsItem } from 'streamvi-api-client';
 
 const instance: TelegramChatPostsItem = {
-    messageId,
+    message_id,
     text,
     attachments,
 };

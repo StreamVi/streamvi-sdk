@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filterMode** | **number** | Filter mode | [default to FilterModeEnum_NUMBER_0]
-**messageId** | **number** | Message ID | [optional] [default to undefined]
+**filter_mode** | **number** | Filter mode | [default to FilterModeEnum_NUMBER_0]
+**message_id** | **number** | Message ID | [optional] [default to undefined]
 **link** | **string** | Message Link | [optional] [default to undefined]
 
 ## Example
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { TelegramSetSettingsRequestDto } from 'streamvi-api-client';
 
 const instance: TelegramSetSettingsRequestDto = {
-    filterMode,
-    messageId,
+    filter_mode,
+    message_id,
     link,
 };
 ```

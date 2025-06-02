@@ -282,7 +282,7 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         channelShortChannelListV1(requestParameters: ChannelApiChannelShortChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteGetShortChannelResponse> {
-            return localVarFp.channelShortChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelShortChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -292,7 +292,7 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         methodSearchV1(requestParameters: ChannelApiMethodSearchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSearchChannelResponse> {
-            return localVarFp.methodSearchV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+            return localVarFp.methodSearchV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -302,7 +302,7 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         methodSetStatusV1(requestParameters: ChannelApiMethodSetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.methodSetStatusV1(requestParameters.methodSetStatusChannelRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.methodSetStatusV1(requestParameters.MethodSetStatusChannelRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -363,7 +363,7 @@ export interface ChannelApiChannelShortChannelListV1Request {
      * @type {number}
      * @memberof ChannelApiChannelShortChannelListV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -391,7 +391,7 @@ export interface ChannelApiMethodSearchV1Request {
      * @type {number}
      * @memberof ChannelApiMethodSearchV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -447,7 +447,7 @@ export interface ChannelApiMethodSetStatusV1Request {
      * @type {MethodSetStatusChannelRequest}
      * @memberof ChannelApiMethodSetStatusV1
      */
-    readonly methodSetStatusChannelRequest: MethodSetStatusChannelRequest
+    readonly MethodSetStatusChannelRequest: MethodSetStatusChannelRequest
 }
 
 /**
@@ -466,7 +466,7 @@ export class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @memberof ChannelApi
      */
     public channelShortChannelListV1(requestParameters: ChannelApiChannelShortChannelListV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelApiFp(this.configuration).channelShortChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelApiFp(this.configuration).channelShortChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -478,7 +478,7 @@ export class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @memberof ChannelApi
      */
     public methodSearchV1(requestParameters: ChannelApiMethodSearchV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelApiFp(this.configuration).methodSearchV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+        return ChannelApiFp(this.configuration).methodSearchV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -490,7 +490,7 @@ export class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @memberof ChannelApi
      */
     public methodSetStatusV1(requestParameters: ChannelApiMethodSetStatusV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelApiFp(this.configuration).methodSetStatusV1(requestParameters.methodSetStatusChannelRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelApiFp(this.configuration).methodSetStatusV1(requestParameters.MethodSetStatusChannelRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

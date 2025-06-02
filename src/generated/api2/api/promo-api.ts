@@ -209,7 +209,7 @@ export const PromoApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         promoApplyV1(requestParameters: PromoApiPromoApplyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoApplyResponse> {
-            return localVarFp.promoApplyV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.promoApplyV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -219,7 +219,7 @@ export const PromoApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         promoCheckV1(requestParameters: PromoApiPromoCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoCheckResponse> {
-            return localVarFp.promoCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.promoCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -270,7 +270,7 @@ export interface PromoApiPromoApplyV1Request {
      * @type {number}
      * @memberof PromoApiPromoApplyV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Code
@@ -305,7 +305,7 @@ export interface PromoApiPromoCheckV1Request {
      * @type {number}
      * @memberof PromoApiPromoCheckV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Code
@@ -338,7 +338,7 @@ export class PromoApi extends BaseAPI implements PromoApiInterface {
      * @memberof PromoApi
      */
     public promoApplyV1(requestParameters: PromoApiPromoApplyV1Request, options?: RawAxiosRequestConfig) {
-        return PromoApiFp(this.configuration).promoApplyV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PromoApiFp(this.configuration).promoApplyV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -350,7 +350,7 @@ export class PromoApi extends BaseAPI implements PromoApiInterface {
      * @memberof PromoApi
      */
     public promoCheckV1(requestParameters: PromoApiPromoCheckV1Request, options?: RawAxiosRequestConfig) {
-        return PromoApiFp(this.configuration).promoCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PromoApiFp(this.configuration).promoCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

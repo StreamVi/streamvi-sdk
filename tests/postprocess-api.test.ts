@@ -4,18 +4,54 @@ import * as path from 'path';
 describe('API Postprocessing', () => {
   const tempDir = path.join(__dirname, '../temp-test');
   
+  // Функция-помощник для безопасного создания файлов
+  const writeTestFile = (filePath: string, content: string) => {
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(filePath, content);
+  };
+  
   beforeAll(() => {
     if (!fs.existsSync(tempDir)) {
       fs.mkdirSync(tempDir, { recursive: true });
     }
   });
 
+  afterAll(() => {
+    // Очищаем temp директорию после всех тестов
+    try {
+      if (fs.existsSync(tempDir)) {
+        fs.rmSync(tempDir, { recursive: true, force: true });
+      }
+    } catch (error: any) {
+      console.warn(`Не удалось удалить временную директорию ${tempDir}:`, error?.message || error);
+    }
+  });
+
   beforeEach(() => {
     // Очищаем temp директорию перед каждым тестом
-    const files = fs.readdirSync(tempDir);
-    files.forEach(file => {
-      fs.unlinkSync(path.join(tempDir, file));
-    });
+    try {
+      const files = fs.readdirSync(tempDir);
+      files.forEach(file => {
+        const filePath = path.join(tempDir, file);
+        try {
+          const stat = fs.statSync(filePath);
+          if (stat.isFile()) {
+            fs.unlinkSync(filePath);
+          } else if (stat.isDirectory()) {
+            fs.rmSync(filePath, { recursive: true, force: true });
+          }
+                 } catch (error: any) {
+           // Игнорируем ошибки удаления файлов в Windows
+           console.warn(`Не удалось удалить файл ${filePath}:`, error?.message || error);
+         }
+      });
+         } catch (error: any) {
+       // Игнорируем ошибки чтения директории
+       console.warn(`Не удалось прочитать директорию ${tempDir}:`, error?.message || error);
+     }
   });
 
   describe('extractVersionFromMethodName', () => {
@@ -86,7 +122,7 @@ export const UserApi = function(configuration?: Configuration, basePath?: string
 };`;
 
       const testFile = path.join(tempDir, 'test-query-api.ts');
-      fs.writeFileSync(testFile, testApiCode);
+      writeTestFile(testFile, testApiCode);
 
       const postprocessApi = require('../scripts/postprocess-api.js');
       const result = postprocessApi.processApiFile(testFile);
@@ -126,7 +162,7 @@ export const UserApi = function(configuration?: Configuration, basePath?: string
 };`;
 
       const testFile = path.join(tempDir, 'test-formdata-api.ts');
-      fs.writeFileSync(testFile, testApiCode);
+      writeTestFile(testFile, testApiCode);
 
       const postprocessApi = require('../scripts/postprocess-api.js');
       const result = postprocessApi.processApiFile(testFile);
@@ -180,7 +216,7 @@ export const MixedApi = function(configuration?: Configuration, basePath?: strin
 };`;
 
       const testFile = path.join(tempDir, 'test-mixed-api.ts');
-      fs.writeFileSync(testFile, testApiCode);
+      writeTestFile(testFile, testApiCode);
 
       const postprocessApi = require('../scripts/postprocess-api.js');
       const result = postprocessApi.processApiFile(testFile);
@@ -212,7 +248,7 @@ export const SimpleApi = function(configuration?: Configuration, basePath?: stri
 };`;
 
       const testFile = path.join(tempDir, 'test-no-versions-api.ts');
-      fs.writeFileSync(testFile, testApiCode);
+      writeTestFile(testFile, testApiCode);
 
       const postprocessApi = require('../scripts/postprocess-api.js');
       const result = postprocessApi.processApiFile(testFile);
@@ -240,7 +276,7 @@ export const ExistingApi = function(configuration?: Configuration, basePath?: st
 };`;
 
       const testFile = path.join(tempDir, 'test-existing-api.ts');
-      fs.writeFileSync(testFile, testApiCode);
+      writeTestFile(testFile, testApiCode);
 
       const postprocessApi = require('../scripts/postprocess-api.js');
       const result = postprocessApi.processApiFile(testFile);
@@ -312,7 +348,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
 };`;
 
       const testFile = path.join(tempDir, 'test-real-api.ts');
-      fs.writeFileSync(testFile, realApiCode);
+      writeTestFile(testFile, realApiCode);
 
       const postprocessApi = require('../scripts/postprocess-api.js');
       const result = postprocessApi.processApiFile(testFile);

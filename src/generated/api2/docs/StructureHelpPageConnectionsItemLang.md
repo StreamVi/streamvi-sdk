@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **language** | **string** | Full language name | [default to undefined]
-**languageIso** | **string** | Short language name | [default to undefined]
+**language_iso** | **string** | Short language name | [default to undefined]
 **value** | **string** | Help menu article title | [default to undefined]
 
 ## Example
@@ -16,7 +16,7 @@ import { StructureHelpPageConnectionsItemLang } from 'streamvi-api-client';
 
 const instance: StructureHelpPageConnectionsItemLang = {
     language,
-    languageIso,
+    language_iso,
     value,
 };
 ```

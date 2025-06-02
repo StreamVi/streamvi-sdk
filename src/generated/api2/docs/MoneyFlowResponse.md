@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**moneyFlowId** | **number** | id | [default to undefined]
+**money_flow_id** | **number** | id | [default to undefined]
 **amount** | **number** | Amount | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
 **date** | **string** | Date | [default to undefined]
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 import { MoneyFlowResponse } from 'streamvi-api-client';
 
 const instance: MoneyFlowResponse = {
-    moneyFlowId,
+    money_flow_id,
     amount,
     currency,
     date,

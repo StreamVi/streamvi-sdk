@@ -399,7 +399,7 @@ export const RtmpServerApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         rtmpServerListV1(requestParameters: RtmpServerApiRtmpServerListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListResponse> {
-            return localVarFp.rtmpServerListV1(requestParameters.language, requestParameters.projectId, requestParameters.interval, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.rtmpServerListV1(requestParameters.language, requestParameters.project_id, requestParameters.interval, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -554,7 +554,7 @@ export interface RtmpServerApiRtmpServerListV1Request {
      * @type {number}
      * @memberof RtmpServerApiRtmpServerListV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Interval state in hours
@@ -639,7 +639,7 @@ export class RtmpServerApi extends BaseAPI implements RtmpServerApiInterface {
      * @memberof RtmpServerApi
      */
     public rtmpServerListV1(requestParameters: RtmpServerApiRtmpServerListV1Request, options?: RawAxiosRequestConfig) {
-        return RtmpServerApiFp(this.configuration).rtmpServerListV1(requestParameters.language, requestParameters.projectId, requestParameters.interval, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return RtmpServerApiFp(this.configuration).rtmpServerListV1(requestParameters.language, requestParameters.project_id, requestParameters.interval, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

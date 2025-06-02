@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filterMode** | **number** | Filter | [default to undefined]
+**filter_mode** | **number** | Filter | [default to undefined]
 **chat** | **TelegramChatInfoResponseDto**(TelegramChatInfoResponseDto.md) | Chat info | [default to undefined]
 **post** | **TelegramChatPostsItem**(TelegramChatPostsItem.md) | Post | [optional] [default to undefined]
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 import { TelegramSettingsDto } from 'streamvi-api-client';
 
 const instance: TelegramSettingsDto = {
-    filterMode,
+    filter_mode,
     chat,
     post,
 };

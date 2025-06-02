@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Restream id | [default to undefined]
-**channelId** | **number** | Channel id | [default to undefined]
-**channelName** | **string** | Channel name | [default to undefined]
-**channelType** | **string** | Channel type | [default to undefined]
+**channel_id** | **number** | Channel id | [default to undefined]
+**channel_name** | **string** | Channel name | [default to undefined]
+**channel_type** | **string** | Channel type | [default to undefined]
 **url** | **string** | Stream url | [optional] [default to undefined]
 **viewer** | **number** | Count of viewers | [optional] [default to undefined]
 **message** | **number** | Count of message | [optional] [default to undefined]
@@ -21,9 +21,9 @@ import { LiveRestreamInfoItem } from 'streamvi-api-client';
 
 const instance: LiveRestreamInfoItem = {
     id,
-    channelId,
-    channelName,
-    channelType,
+    channel_id,
+    channel_name,
+    channel_type,
     url,
     viewer,
     message,

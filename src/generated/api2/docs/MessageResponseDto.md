@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**eventId** | **string** |  | [default to undefined]
+**event_id** | **string** |  | [default to undefined]
 **restreams** | **Array&lt;MessageRestreamResponseDto&gt;**(MessageRestreamResponseDto.md) |  | [default to undefined]
 **entities** | **Array&lt;object&gt;** |  | [default to undefined]
 **text** | **string** |  | [default to undefined]
 **sender** | **object** |  | [default to undefined]
-**createdAt** | **string** |  | [default to undefined]
-**broadcastId** | **number** |  | [default to undefined]
-**isOutgoing** | **boolean** |  | [default to undefined]
+**created_at** | **string** |  | [default to undefined]
+**broadcast_id** | **number** |  | [default to undefined]
+**is_outgoing** | **boolean** |  | [default to undefined]
 
 ## Example
 
@@ -20,14 +20,14 @@ Name | Type | Description | Notes
 import { MessageResponseDto } from 'streamvi-api-client';
 
 const instance: MessageResponseDto = {
-    eventId,
+    event_id,
     restreams,
     entities,
     text,
     sender,
-    createdAt,
-    broadcastId,
-    isOutgoing,
+    created_at,
+    broadcast_id,
+    is_outgoing,
 };
 ```
 

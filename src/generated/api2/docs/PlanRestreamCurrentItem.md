@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Plan restream id | [default to undefined]
-**channelMax** | **number** | Max channels | [optional] [default to undefined]
-**bitrateMax** | **number** | Max bitrate | [optional] [default to undefined]
-**dateEnd** | **string** | Date end tariff | [default to undefined]
+**channel_max** | **number** | Max channels | [optional] [default to undefined]
+**bitrate_max** | **number** | Max bitrate | [optional] [default to undefined]
+**date_end** | **string** | Date end tariff | [default to undefined]
 
 ## Example
 
@@ -17,9 +17,9 @@ import { PlanRestreamCurrentItem } from 'streamvi-api-client';
 
 const instance: PlanRestreamCurrentItem = {
     id,
-    channelMax,
-    bitrateMax,
-    dateEnd,
+    channel_max,
+    bitrate_max,
+    date_end,
 };
 ```
 

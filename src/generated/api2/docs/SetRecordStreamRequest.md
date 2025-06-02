@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**projectId** | **number** | Project id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
 **record** | **boolean** | Record status | [default to undefined]
 
 ## Example
@@ -18,7 +18,7 @@ import { SetRecordStreamRequest } from 'streamvi-api-client';
 const instance: SetRecordStreamRequest = {
     v,
     language,
-    projectId,
+    project_id,
     record,
 };
 ```

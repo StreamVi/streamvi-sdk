@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accessType** | **number** | Access type | [default to undefined]
+**access_type** | **number** | Access type | [default to undefined]
 
 ## Example
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 import { ProjectInfoAccessResponse } from 'streamvi-api-client';
 
 const instance: ProjectInfoAccessResponse = {
-    accessType,
+    access_type,
 };
 ```
 

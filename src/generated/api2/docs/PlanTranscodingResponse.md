@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**planTranscodingId** | **number** | Unique id | [default to undefined]
+**plan_transcoding_id** | **number** | Unique id | [default to undefined]
 **title** | **string** | Title | [default to undefined]
 **type** | **string** | Type | [default to undefined]
-**priceRub** | **number** | Price (RUB) | [default to undefined]
-**priceUsd** | **number** | Price (USD) | [default to undefined]
+**price_rub** | **number** | Price (RUB) | [default to undefined]
+**price_usd** | **number** | Price (USD) | [default to undefined]
 **resolution** | **string** | Maximum resolution | [default to undefined]
 **fps** | **string** | Maximum fps | [default to undefined]
 **weight** | **number** | Server load weight | [default to undefined]
@@ -24,11 +24,11 @@ Name | Type | Description | Notes
 import { PlanTranscodingResponse } from 'streamvi-api-client';
 
 const instance: PlanTranscodingResponse = {
-    planTranscodingId,
+    plan_transcoding_id,
     title,
     type,
-    priceRub,
-    priceUsd,
+    price_rub,
+    price_usd,
     resolution,
     fps,
     weight,

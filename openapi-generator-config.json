@@ -12,7 +12,7 @@
     "sortModelPropertiesByRequiredFlag": true,
     "sortParamsByRequiredFlag": true,
     "enumPropertyNaming": "original",
-    "paramNaming": "camelCase",
+    "paramNaming": "original",
     "supportsES6": true,
     "nullSafeAdditionalProps": true,
     "enumNameSuffix": "Enum",

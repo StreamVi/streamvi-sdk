@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **balance** | **number** | Balance | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
-**balancesAllow** | **Array&lt;string&gt;** | Allowed balances | [default to undefined]
-**balancesValues** | **MoneyFlowBalanceTypeValuesResponse**(MoneyFlowBalanceTypeValuesResponse.md) | Balances values | [default to undefined]
+**balances_allow** | **Array&lt;string&gt;** | Allowed balances | [default to undefined]
+**balances_values** | **MoneyFlowBalanceTypeValuesResponse**(MoneyFlowBalanceTypeValuesResponse.md) | Balances values | [default to undefined]
 
 ## Example
 
@@ -18,8 +18,8 @@ import { BalanceForPayResponse } from 'streamvi-api-client';
 const instance: BalanceForPayResponse = {
     balance,
     currency,
-    balancesAllow,
-    balancesValues,
+    balances_allow,
+    balances_values,
 };
 ```
 

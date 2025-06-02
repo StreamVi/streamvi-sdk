@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**planStorageId** | **number** | Unique ID | [default to undefined]
+**plan_storage_id** | **number** | Unique ID | [default to undefined]
 **title** | **string** | Title | [default to undefined]
 **min** | **number** | Minimum storage size, gb | [default to undefined]
 **max** | **number** | Maximum storage size, gb | [default to undefined]
-**priceRub** | **number** | Price per gb (RUB) | [default to undefined]
-**priceUsd** | **number** | Price per gb (USD) | [default to undefined]
+**price_rub** | **number** | Price per gb (RUB) | [default to undefined]
+**price_usd** | **number** | Price per gb (USD) | [default to undefined]
 **step** | **number** | Step increase in gb | [default to undefined]
 **active** | **boolean** | Is active | [default to undefined]
 **discount** | **PlanStorageDiscountResponse**(PlanStorageDiscountResponse.md) | Discount | [default to undefined]
@@ -21,12 +21,12 @@ Name | Type | Description | Notes
 import { PlanStorageResponse } from 'streamvi-api-client';
 
 const instance: PlanStorageResponse = {
-    planStorageId,
+    plan_storage_id,
     title,
     min,
     max,
-    priceRub,
-    priceUsd,
+    price_rub,
+    price_usd,
     step,
     active,
     discount,

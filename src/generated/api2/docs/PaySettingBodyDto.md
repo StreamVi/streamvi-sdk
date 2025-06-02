@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**projectId** | **number** | Project id | [default to undefined]
-**countrieId** | **number** | Countrie id | [default to undefined]
-**organizationId** | **number** | Organization | [optional] [default to undefined]
-**paySystemId** | **number** | Pay system id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
+**countrie_id** | **number** | Countrie id | [default to undefined]
+**organization_id** | **number** | Organization | [optional] [default to undefined]
+**pay_system_id** | **number** | Pay system id | [default to undefined]
 **email** | **string** | E-mail | [default to undefined]
 **description** | **string** | Additional information about the payment | [optional] [default to undefined]
 
@@ -22,10 +22,10 @@ import { PaySettingBodyDto } from 'streamvi-api-client';
 const instance: PaySettingBodyDto = {
     v,
     language,
-    projectId,
-    countrieId,
-    organizationId,
-    paySystemId,
+    project_id,
+    countrie_id,
+    organization_id,
+    pay_system_id,
     email,
     description,
 };

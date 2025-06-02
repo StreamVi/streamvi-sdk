@@ -380,7 +380,7 @@ export const NotifyUserApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse> {
-            return localVarFp.notifyUserGetScreenV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserGetScreenV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -390,7 +390,7 @@ export const NotifyUserApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteNotifyUserResponse> {
-            return localVarFp.notifyUserGetV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserGetV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -400,7 +400,7 @@ export const NotifyUserApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.notifyUserRemoveScreenV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserRemoveScreenV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -410,7 +410,7 @@ export const NotifyUserApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.notifyUserSetV1(requestParameters.siteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserSetV1(requestParameters.SiteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -519,7 +519,7 @@ export interface NotifyUserApiNotifyUserGetScreenV1Request {
      * @type {number}
      * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -540,7 +540,7 @@ export interface NotifyUserApiNotifyUserGetV1Request {
      * @type {number}
      * @memberof NotifyUserApiNotifyUserGetV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -561,7 +561,7 @@ export interface NotifyUserApiNotifyUserRemoveScreenV1Request {
      * @type {number}
      * @memberof NotifyUserApiNotifyUserRemoveScreenV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -582,7 +582,7 @@ export interface NotifyUserApiNotifyUserSetV1Request {
      * @type {SiteSetNotifyUserRequest}
      * @memberof NotifyUserApiNotifyUserSetV1
      */
-    readonly siteSetNotifyUserRequest: SiteSetNotifyUserRequest
+    readonly SiteSetNotifyUserRequest: SiteSetNotifyUserRequest
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -620,7 +620,7 @@ export class NotifyUserApi extends BaseAPI implements NotifyUserApiInterface {
      * @memberof NotifyUserApi
      */
     public notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig) {
-        return NotifyUserApiFp(this.configuration).notifyUserGetScreenV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return NotifyUserApiFp(this.configuration).notifyUserGetScreenV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -632,7 +632,7 @@ export class NotifyUserApi extends BaseAPI implements NotifyUserApiInterface {
      * @memberof NotifyUserApi
      */
     public notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig) {
-        return NotifyUserApiFp(this.configuration).notifyUserGetV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return NotifyUserApiFp(this.configuration).notifyUserGetV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -644,7 +644,7 @@ export class NotifyUserApi extends BaseAPI implements NotifyUserApiInterface {
      * @memberof NotifyUserApi
      */
     public notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig) {
-        return NotifyUserApiFp(this.configuration).notifyUserRemoveScreenV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return NotifyUserApiFp(this.configuration).notifyUserRemoveScreenV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -656,7 +656,7 @@ export class NotifyUserApi extends BaseAPI implements NotifyUserApiInterface {
      * @memberof NotifyUserApi
      */
     public notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig) {
-        return NotifyUserApiFp(this.configuration).notifyUserSetV1(requestParameters.siteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return NotifyUserApiFp(this.configuration).notifyUserSetV1(requestParameters.SiteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

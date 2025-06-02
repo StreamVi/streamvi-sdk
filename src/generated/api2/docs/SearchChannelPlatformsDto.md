@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **number** | Id | [default to undefined]
 **type** | **string** | Type | [default to undefined]
 **title** | **string** | Title | [default to undefined]
-**editName** | **number** | Is edit name | [default to undefined]
+**edit_name** | **number** | Is edit name | [default to undefined]
 
 ## Example
 
@@ -19,7 +19,7 @@ const instance: SearchChannelPlatformsDto = {
     id,
     type,
     title,
-    editName,
+    edit_name,
 };
 ```
 

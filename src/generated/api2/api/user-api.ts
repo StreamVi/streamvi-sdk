@@ -211,7 +211,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         userGetProfileV1(requestParameters: UserApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse> {
-            return localVarFp.userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.projectId, options).then((request) => request(axios, basePath));
+            return localVarFp.userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -221,7 +221,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         userUpdateProfileV1(requestParameters: UserApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.firstName, requestParameters.lastName, requestParameters.avatar, options).then((request) => request(axios, basePath));
+            return localVarFp.userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -279,7 +279,7 @@ export interface UserApiUserGetProfileV1Request {
      * @type {number}
      * @memberof UserApiUserGetProfileV1
      */
-    readonly projectId?: number | null
+    readonly project_id?: number | null
 }
 
 /**
@@ -307,14 +307,14 @@ export interface UserApiUserUpdateProfileV1Request {
      * @type {string}
      * @memberof UserApiUserUpdateProfileV1
      */
-    readonly firstName: string
+    readonly first_name: string
 
     /**
      * Last name
      * @type {string}
      * @memberof UserApiUserUpdateProfileV1
      */
-    readonly lastName: string
+    readonly last_name: string
 
     /**
      * File for avatar upload max size 2MB, format: jpeg, jpg, png
@@ -340,7 +340,7 @@ export class UserApi extends BaseAPI implements UserApiInterface {
      * @memberof UserApi
      */
     public userGetProfileV1(requestParameters: UserApiUserGetProfileV1Request, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+        return UserApiFp(this.configuration).userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -352,7 +352,7 @@ export class UserApi extends BaseAPI implements UserApiInterface {
      * @memberof UserApi
      */
     public userUpdateProfileV1(requestParameters: UserApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.firstName, requestParameters.lastName, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
+        return UserApiFp(this.configuration).userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

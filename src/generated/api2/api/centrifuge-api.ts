@@ -249,7 +249,7 @@ export const CentrifugeApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse> {
-            return localVarFp.centrifugeAuthV2(requestParameters.projectId, options).then((request) => request(axios, basePath));
+            return localVarFp.centrifugeAuthV2(requestParameters.project_id, options).then((request) => request(axios, basePath));
         },
         /**
          *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor     
@@ -259,7 +259,7 @@ export const CentrifugeApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         centrifugeProjectV1(requestParameters: CentrifugeApiCentrifugeProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse> {
-            return localVarFp.centrifugeProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.centrifugeProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min     
@@ -269,7 +269,7 @@ export const CentrifugeApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         getTokenBroadcastV1(requestParameters: CentrifugeApiGetTokenBroadcastV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse> {
-            return localVarFp.getTokenBroadcastV1(requestParameters.broadcastId, requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.getTokenBroadcastV1(requestParameters.broadcast_id, requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -323,7 +323,7 @@ export interface CentrifugeApiCentrifugeAuthV2Request {
      * @type {number}
      * @memberof CentrifugeApiCentrifugeAuthV2
      */
-    readonly projectId: number
+    readonly project_id: number
 }
 
 /**
@@ -344,7 +344,7 @@ export interface CentrifugeApiCentrifugeProjectV1Request {
      * @type {number}
      * @memberof CentrifugeApiCentrifugeProjectV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -365,7 +365,7 @@ export interface CentrifugeApiGetTokenBroadcastV1Request {
      * @type {number}
      * @memberof CentrifugeApiGetTokenBroadcastV1
      */
-    readonly broadcastId: number
+    readonly broadcast_id: number
 
     /**
      * Current language
@@ -379,7 +379,7 @@ export interface CentrifugeApiGetTokenBroadcastV1Request {
      * @type {number}
      * @memberof CentrifugeApiGetTokenBroadcastV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -405,7 +405,7 @@ export class CentrifugeApi extends BaseAPI implements CentrifugeApiInterface {
      * @memberof CentrifugeApi
      */
     public centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig) {
-        return CentrifugeApiFp(this.configuration).centrifugeAuthV2(requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+        return CentrifugeApiFp(this.configuration).centrifugeAuthV2(requestParameters.project_id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -417,7 +417,7 @@ export class CentrifugeApi extends BaseAPI implements CentrifugeApiInterface {
      * @memberof CentrifugeApi
      */
     public centrifugeProjectV1(requestParameters: CentrifugeApiCentrifugeProjectV1Request, options?: RawAxiosRequestConfig) {
-        return CentrifugeApiFp(this.configuration).centrifugeProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return CentrifugeApiFp(this.configuration).centrifugeProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -429,7 +429,7 @@ export class CentrifugeApi extends BaseAPI implements CentrifugeApiInterface {
      * @memberof CentrifugeApi
      */
     public getTokenBroadcastV1(requestParameters: CentrifugeApiGetTokenBroadcastV1Request, options?: RawAxiosRequestConfig) {
-        return CentrifugeApiFp(this.configuration).getTokenBroadcastV1(requestParameters.broadcastId, requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return CentrifugeApiFp(this.configuration).getTokenBroadcastV1(requestParameters.broadcast_id, requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

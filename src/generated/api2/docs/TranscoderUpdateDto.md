@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**projectId** | **number** | Project id | [default to undefined]
-**transcoderId** | **number** | Transcoder id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
+**transcoder_id** | **number** | Transcoder id | [default to undefined]
 **width** | **number** | Width | [optional] [default to undefined]
 **height** | **number** | Height | [optional] [default to undefined]
 **fps** | **number** | Fps | [optional] [default to undefined]
@@ -28,8 +28,8 @@ import { TranscoderUpdateDto } from 'streamvi-api-client';
 const instance: TranscoderUpdateDto = {
     v,
     language,
-    projectId,
-    transcoderId,
+    project_id,
+    transcoder_id,
     width,
     height,
     fps,

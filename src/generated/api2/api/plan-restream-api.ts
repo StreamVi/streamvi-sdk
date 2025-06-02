@@ -585,7 +585,7 @@ export const PlanRestreamApiFactory = function (configuration?: Configuration, b
          * @throws {RequiredError}
          */
         planRestreamBuyV1(requestParameters: PlanRestreamApiPlanRestreamBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.planRestreamBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.countChannel, requestParameters.bitrate, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.count_channel, requestParameters.bitrate, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -595,7 +595,7 @@ export const PlanRestreamApiFactory = function (configuration?: Configuration, b
          * @throws {RequiredError}
          */
         planRestreamCheck2V1(requestParameters: PlanRestreamApiPlanRestreamCheck2V1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanRestreamCheckV2Response> {
-            return localVarFp.planRestreamCheck2V1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.useBalance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamCheck2V1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.use_balance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -615,7 +615,7 @@ export const PlanRestreamApiFactory = function (configuration?: Configuration, b
          * @throws {RequiredError}
          */
         planRestreamListProjectV1(requestParameters: PlanRestreamApiPlanRestreamListProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanRestreamProjectResponseDto> {
-            return localVarFp.planRestreamListProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamListProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -635,7 +635,7 @@ export const PlanRestreamApiFactory = function (configuration?: Configuration, b
          * @throws {RequiredError}
          */
         planRestreamRemoveV1(requestParameters: PlanRestreamApiPlanRestreamRemoveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.planRestreamRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.planRestreamId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.plan_restream_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -645,7 +645,7 @@ export const PlanRestreamApiFactory = function (configuration?: Configuration, b
          * @throws {RequiredError}
          */
         planRestreamTariffV1(requestParameters: PlanRestreamApiPlanRestreamTariffV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanRestreamForProject> {
-            return localVarFp.planRestreamTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -746,7 +746,7 @@ export interface PlanRestreamApiPlanRestreamBuyV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamBuyV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Period
@@ -760,7 +760,7 @@ export interface PlanRestreamApiPlanRestreamBuyV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamBuyV1
      */
-    readonly planRestreamId: number
+    readonly plan_restream_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -774,7 +774,7 @@ export interface PlanRestreamApiPlanRestreamBuyV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamBuyV1
      */
-    readonly countChannel?: number
+    readonly count_channel?: number
 
     /**
      * Bitrate, kbps
@@ -802,7 +802,7 @@ export interface PlanRestreamApiPlanRestreamCheck2V1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamCheck2V1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Period
@@ -816,7 +816,7 @@ export interface PlanRestreamApiPlanRestreamCheck2V1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamCheck2V1
      */
-    readonly planRestreamId: number
+    readonly plan_restream_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -830,7 +830,7 @@ export interface PlanRestreamApiPlanRestreamCheck2V1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamCheck2V1
      */
-    readonly useBalance?: number
+    readonly use_balance?: number
 
     /**
      * Channels count
@@ -886,7 +886,7 @@ export interface PlanRestreamApiPlanRestreamListProjectV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamListProjectV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -935,14 +935,14 @@ export interface PlanRestreamApiPlanRestreamRemoveV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamRemoveV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Restream plan id
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamRemoveV1
      */
-    readonly planRestreamId: number
+    readonly plan_restream_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -970,7 +970,7 @@ export interface PlanRestreamApiPlanRestreamTariffV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamTariffV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -996,7 +996,7 @@ export class PlanRestreamApi extends BaseAPI implements PlanRestreamApiInterface
      * @memberof PlanRestreamApi
      */
     public planRestreamBuyV1(requestParameters: PlanRestreamApiPlanRestreamBuyV1Request, options?: RawAxiosRequestConfig) {
-        return PlanRestreamApiFp(this.configuration).planRestreamBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.countChannel, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
+        return PlanRestreamApiFp(this.configuration).planRestreamBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.count_channel, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1008,7 +1008,7 @@ export class PlanRestreamApi extends BaseAPI implements PlanRestreamApiInterface
      * @memberof PlanRestreamApi
      */
     public planRestreamCheck2V1(requestParameters: PlanRestreamApiPlanRestreamCheck2V1Request, options?: RawAxiosRequestConfig) {
-        return PlanRestreamApiFp(this.configuration).planRestreamCheck2V1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.useBalance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
+        return PlanRestreamApiFp(this.configuration).planRestreamCheck2V1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.use_balance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1032,7 +1032,7 @@ export class PlanRestreamApi extends BaseAPI implements PlanRestreamApiInterface
      * @memberof PlanRestreamApi
      */
     public planRestreamListProjectV1(requestParameters: PlanRestreamApiPlanRestreamListProjectV1Request, options?: RawAxiosRequestConfig) {
-        return PlanRestreamApiFp(this.configuration).planRestreamListProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanRestreamApiFp(this.configuration).planRestreamListProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1056,7 +1056,7 @@ export class PlanRestreamApi extends BaseAPI implements PlanRestreamApiInterface
      * @memberof PlanRestreamApi
      */
     public planRestreamRemoveV1(requestParameters: PlanRestreamApiPlanRestreamRemoveV1Request, options?: RawAxiosRequestConfig) {
-        return PlanRestreamApiFp(this.configuration).planRestreamRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.planRestreamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanRestreamApiFp(this.configuration).planRestreamRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.plan_restream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1068,7 +1068,7 @@ export class PlanRestreamApi extends BaseAPI implements PlanRestreamApiInterface
      * @memberof PlanRestreamApi
      */
     public planRestreamTariffV1(requestParameters: PlanRestreamApiPlanRestreamTariffV1Request, options?: RawAxiosRequestConfig) {
-        return PlanRestreamApiFp(this.configuration).planRestreamTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanRestreamApiFp(this.configuration).planRestreamTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

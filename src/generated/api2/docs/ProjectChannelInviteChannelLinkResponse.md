@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**channelId** | **number** | Unique id | [default to undefined]
+**channel_id** | **number** | Unique id | [default to undefined]
 **name** | **string** | First name | [default to undefined]
-**photo50** | **string** | Link to avatar 50*50px | [default to undefined]
+**photo_50** | **string** | Link to avatar 50*50px | [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { ProjectChannelInviteChannelLinkResponse } from 'streamvi-api-client';
 
 const instance: ProjectChannelInviteChannelLinkResponse = {
-    channelId,
+    channel_id,
     name,
-    photo50,
+    photo_50,
 };
 ```
 

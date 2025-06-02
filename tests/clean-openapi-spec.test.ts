@@ -5,6 +5,15 @@ describe('OpenAPI Spec Preprocessing', () => {
   const testDataDir = path.join(__dirname, 'test-data');
   const tempDir = path.join(__dirname, '../temp-test');
   
+  // Функция-помощник для безопасного создания файлов
+  const writeTestFile = (filePath: string, content: string) => {
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(filePath, content);
+  };
+  
   beforeAll(() => {
     // Создаем директории для тестовых данных
     if (!fs.existsSync(testDataDir)) {
@@ -17,10 +26,26 @@ describe('OpenAPI Spec Preprocessing', () => {
 
   beforeEach(() => {
     // Очищаем temp директорию перед каждым тестом
-    const files = fs.readdirSync(tempDir);
-    files.forEach(file => {
-      fs.unlinkSync(path.join(tempDir, file));
-    });
+    try {
+      const files = fs.readdirSync(tempDir);
+      files.forEach(file => {
+        const filePath = path.join(tempDir, file);
+        try {
+          const stat = fs.statSync(filePath);
+          if (stat.isFile()) {
+            fs.unlinkSync(filePath);
+          } else if (stat.isDirectory()) {
+            fs.rmSync(filePath, { recursive: true, force: true });
+          }
+        } catch (error: any) {
+          // Игнорируем ошибки удаления файлов в Windows
+          console.warn(`Не удалось удалить файл ${filePath}:`, error?.message || error);
+        }
+      });
+    } catch (error: any) {
+      // Игнорируем ошибки чтения директории
+      console.warn(`Не удалось прочитать директорию ${tempDir}:`, error?.message || error);
+    }
   });
 
   describe('cleanDuplicateNames', () => {
@@ -41,7 +66,7 @@ describe('OpenAPI Spec Preprocessing', () => {
       
       // Создаем временный файл
       const inputFile = path.join(tempDir, 'test-input.json');
-      fs.writeFileSync(inputFile, JSON.stringify(testSpec, null, 2));
+      writeTestFile(inputFile, JSON.stringify(testSpec, null, 2));
       
       // Запускаем обработку
       const result = cleanOpenApiSpec.processSpec(inputFile);
@@ -77,7 +102,7 @@ describe('OpenAPI Spec Preprocessing', () => {
 
       const cleanOpenApiSpec = require('../scripts/clean-openapi-spec.js');
       const inputFile = path.join(tempDir, 'test-versions.json');
-      fs.writeFileSync(inputFile, JSON.stringify(testSpec, null, 2));
+      writeTestFile(inputFile, JSON.stringify(testSpec, null, 2));
       
       const result = cleanOpenApiSpec.processSpec(inputFile);
       
@@ -109,7 +134,7 @@ describe('OpenAPI Spec Preprocessing', () => {
 
       const cleanOpenApiSpec = require('../scripts/clean-openapi-spec.js');
       const inputFile = path.join(tempDir, 'test-clean-operation.json');
-      fs.writeFileSync(inputFile, JSON.stringify(testSpec, null, 2));
+      writeTestFile(inputFile, JSON.stringify(testSpec, null, 2));
       
       const result = cleanOpenApiSpec.processSpec(inputFile);
       
@@ -147,7 +172,7 @@ describe('OpenAPI Spec Preprocessing', () => {
 
       const cleanOpenApiSpec = require('../scripts/clean-openapi-spec.js');
       const inputFile = path.join(tempDir, 'test-version-default.json');
-      fs.writeFileSync(inputFile, JSON.stringify(testSpec, null, 2));
+      writeTestFile(inputFile, JSON.stringify(testSpec, null, 2));
       
       const result = cleanOpenApiSpec.processSpec(inputFile);
       
@@ -187,7 +212,7 @@ describe('OpenAPI Spec Preprocessing', () => {
 
       const cleanOpenApiSpec = require('../scripts/clean-openapi-spec.js');
       const inputFile = path.join(tempDir, 'test-full-integration.json');
-      fs.writeFileSync(inputFile, JSON.stringify(realSpec, null, 2));
+      writeTestFile(inputFile, JSON.stringify(realSpec, null, 2));
       
       const result = cleanOpenApiSpec.processSpec(inputFile);
       

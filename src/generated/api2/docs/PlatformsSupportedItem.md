@@ -6,23 +6,23 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | id | [default to undefined]
-**isAdding** | **number** | The possibility of adding a platform | [default to undefined]
+**is_adding** | **number** | The possibility of adding a platform | [default to undefined]
 **title** | **string** | title | [default to undefined]
 **extension** | **string** | Extension | [default to undefined]
 **url** | **string** | url | [default to undefined]
 **type** | **string** | type | [default to undefined]
 **oauth** | **number** | oauth | [default to undefined]
-**readChat** | **number** | read_chat | [default to undefined]
-**writeChat** | **number** | write_chat | [default to undefined]
-**editName** | **number** | edit_name | [default to undefined]
-**setTitle** | **number** | set_title | [default to undefined]
-**setDescription** | **number** | set_description | [default to undefined]
-**createdStream** | **number** | created_stream | [default to undefined]
-**rtmpUrl** | **number** | rtmp_url | [default to undefined]
-**rtmpKey** | **number** | rtmp_key | [default to undefined]
+**read_chat** | **number** | read_chat | [default to undefined]
+**write_chat** | **number** | write_chat | [default to undefined]
+**edit_name** | **number** | edit_name | [default to undefined]
+**set_title** | **number** | set_title | [default to undefined]
+**set_description** | **number** | set_description | [default to undefined]
+**created_stream** | **number** | created_stream | [default to undefined]
+**rtmp_url** | **number** | rtmp_url | [default to undefined]
+**rtmp_key** | **number** | rtmp_key | [default to undefined]
 **planned** | **number** | planned | [default to undefined]
 **_options** | **number** | options | [default to undefined]
-**urlStream** | **number** | url_stream | [default to undefined]
+**url_stream** | **number** | url_stream | [default to undefined]
 **viewers** | **number** | viewers | [default to undefined]
 **messages** | **number** | messages | [default to undefined]
 **like** | **number** | like | [default to undefined]
@@ -34,23 +34,23 @@ import { PlatformsSupportedItem } from 'streamvi-api-client';
 
 const instance: PlatformsSupportedItem = {
     id,
-    isAdding,
+    is_adding,
     title,
     extension,
     url,
     type,
     oauth,
-    readChat,
-    writeChat,
-    editName,
-    setTitle,
-    setDescription,
-    createdStream,
-    rtmpUrl,
-    rtmpKey,
+    read_chat,
+    write_chat,
+    edit_name,
+    set_title,
+    set_description,
+    created_stream,
+    rtmp_url,
+    rtmp_key,
     planned,
     _options,
-    urlStream,
+    url_stream,
     viewers,
     messages,
     like,

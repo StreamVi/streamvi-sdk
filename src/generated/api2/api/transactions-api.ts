@@ -159,7 +159,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @throws {RequiredError}
          */
         transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfTransactionResponse> {
-            return localVarFp.transactionsListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.code, options).then((request) => request(axios, basePath));
+            return localVarFp.transactionsListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.code, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -200,7 +200,7 @@ export interface TransactionsApiTransactionsListV1Request {
      * @type {number}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -228,14 +228,14 @@ export interface TransactionsApiTransactionsListV1Request {
      * @type {string}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly dateFrom?: string
+    readonly date_from?: string
 
     /**
      * Date to
      * @type {string}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly dateTo?: string
+    readonly date_to?: string
 
     /**
      * Filter code transaction. example 1 or 1,2,3
@@ -261,7 +261,7 @@ export class TransactionsApi extends BaseAPI implements TransactionsApiInterface
      * @memberof TransactionsApi
      */
     public transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig) {
-        return TransactionsApiFp(this.configuration).transactionsListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
+        return TransactionsApiFp(this.configuration).transactionsListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

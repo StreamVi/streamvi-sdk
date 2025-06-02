@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**projectId** | **number** | Project id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
 **type** | **string** | Code | [default to undefined]
 **amount** | **number** | Amount | [default to undefined]
-**planPeriod** | **string** | Period | [default to undefined]
-**planRestreamId** | **number** | Restream plan id | [default to undefined]
-**planRestreamCountChannel** | **number** | Channels count | [default to undefined]
-**planRestreamBitrate** | **number** | Bitrate | [default to undefined]
+**plan_period** | **string** | Period | [default to undefined]
+**plan_restream_id** | **number** | Restream plan id | [default to undefined]
+**plan_restream_count_channel** | **number** | Channels count | [default to undefined]
+**plan_restream_bitrate** | **number** | Bitrate | [default to undefined]
 
 ## Example
 
@@ -23,13 +23,13 @@ import { PaymentCreateRequestRestreamBodyDto } from 'streamvi-api-client';
 const instance: PaymentCreateRequestRestreamBodyDto = {
     v,
     language,
-    projectId,
+    project_id,
     type,
     amount,
-    planPeriod,
-    planRestreamId,
-    planRestreamCountChannel,
-    planRestreamBitrate,
+    plan_period,
+    plan_restream_id,
+    plan_restream_count_channel,
+    plan_restream_bitrate,
 };
 ```
 

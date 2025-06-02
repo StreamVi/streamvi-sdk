@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **number** | User id | [default to undefined]
+**user_id** | **number** | User id | [default to undefined]
 **channels** | **NotifyUserChannels**(NotifyUserChannels.md) | Channels | [default to undefined]
 **relation** | **NotifyUserRelation**(NotifyUserRelation.md) | Relation | [default to undefined]
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 import { SiteNotifyUserResponse } from 'streamvi-api-client';
 
 const instance: SiteNotifyUserResponse = {
-    userId,
+    user_id,
     channels,
     relation,
 };

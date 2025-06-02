@@ -252,7 +252,7 @@ export const PaySettingApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayCheckCountryResponse> {
-            return localVarFp.paySettingCheckCountryV1(requestParameters.language, requestParameters.projectId, requestParameters.countryId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paySettingCheckCountryV1(requestParameters.language, requestParameters.project_id, requestParameters.country_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -262,7 +262,7 @@ export const PaySettingApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): AxiosPromise<GetPaySettingResponseV3> {
-            return localVarFp.paySettingGetSettingV3(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paySettingGetSettingV3(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -272,7 +272,7 @@ export const PaySettingApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.paySettingSetSettingV1(requestParameters.paySettingBodyDto, options).then((request) => request(axios, basePath));
+            return localVarFp.paySettingSetSettingV1(requestParameters.PaySettingBodyDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -333,14 +333,14 @@ export interface PaySettingApiPaySettingCheckCountryV1Request {
      * @type {number}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * country id
      * @type {number}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
-    readonly countryId: number
+    readonly country_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -368,7 +368,7 @@ export interface PaySettingApiPaySettingGetSettingV3Request {
      * @type {number}
      * @memberof PaySettingApiPaySettingGetSettingV3
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 3 based on method version, can be overridden)
@@ -389,7 +389,7 @@ export interface PaySettingApiPaySettingSetSettingV1Request {
      * @type {PaySettingBodyDto}
      * @memberof PaySettingApiPaySettingSetSettingV1
      */
-    readonly paySettingBodyDto: PaySettingBodyDto
+    readonly PaySettingBodyDto: PaySettingBodyDto
 }
 
 /**
@@ -408,7 +408,7 @@ export class PaySettingApi extends BaseAPI implements PaySettingApiInterface {
      * @memberof PaySettingApi
      */
     public paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig) {
-        return PaySettingApiFp(this.configuration).paySettingCheckCountryV1(requestParameters.language, requestParameters.projectId, requestParameters.countryId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PaySettingApiFp(this.configuration).paySettingCheckCountryV1(requestParameters.language, requestParameters.project_id, requestParameters.country_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -420,7 +420,7 @@ export class PaySettingApi extends BaseAPI implements PaySettingApiInterface {
      * @memberof PaySettingApi
      */
     public paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig) {
-        return PaySettingApiFp(this.configuration).paySettingGetSettingV3(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PaySettingApiFp(this.configuration).paySettingGetSettingV3(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -432,7 +432,7 @@ export class PaySettingApi extends BaseAPI implements PaySettingApiInterface {
      * @memberof PaySettingApi
      */
     public paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig) {
-        return PaySettingApiFp(this.configuration).paySettingSetSettingV1(requestParameters.paySettingBodyDto, options).then((request) => request(this.axios, this.basePath));
+        return PaySettingApiFp(this.configuration).paySettingSetSettingV1(requestParameters.PaySettingBodyDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

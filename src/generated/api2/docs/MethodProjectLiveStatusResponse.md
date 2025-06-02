@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**liveGroupsCount** | **number** | Live group count | [default to undefined]
-**streamId** | **number** | Stream id | [optional] [default to undefined]
+**live_groups_count** | **number** | Live group count | [default to undefined]
+**stream_id** | **number** | Stream id | [optional] [default to undefined]
 **url** | **string** | Url live stream | [optional] [default to undefined]
 **app** | **string** | App name | [optional] [default to undefined]
 **date** | **string** | Date | [optional] [default to undefined]
 **status** | **string** | Stream status | [optional] [default to undefined]
 **resolution** | **string** | Stream resolution | [optional] [default to undefined]
-**broadcastId** | **number** | Broadcast id | [optional] [default to undefined]
+**broadcast_id** | **number** | Broadcast id | [optional] [default to undefined]
 **action** | **string** | Action | [optional] [default to undefined]
 **info** | **MethodProjectLiveStatusInfo**(MethodProjectLiveStatusInfo.md) | Stream info | [optional] [default to undefined]
 **video** | **MethodProjectLiveStatusVideo**(MethodProjectLiveStatusVideo.md) | Video info | [optional] [default to undefined]
@@ -23,14 +23,14 @@ Name | Type | Description | Notes
 import { MethodProjectLiveStatusResponse } from 'streamvi-api-client';
 
 const instance: MethodProjectLiveStatusResponse = {
-    liveGroupsCount,
-    streamId,
+    live_groups_count,
+    stream_id,
     url,
     app,
     date,
     status,
     resolution,
-    broadcastId,
+    broadcast_id,
     action,
     info,
     video,

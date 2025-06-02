@@ -469,7 +469,7 @@ export const PlanTranscodingApiFactory = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         planTranscodingBuyV1(requestParameters: PlanTranscodingApiPlanTranscodingBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.planTranscodingBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planTranscodingId, requestParameters.v, requestParameters.count, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_transcoding_id, requestParameters.v, requestParameters.count, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -479,7 +479,7 @@ export const PlanTranscodingApiFactory = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         planTranscodingCancelV1(requestParameters: PlanTranscodingApiPlanTranscodingCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.planTranscodingCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -489,7 +489,7 @@ export const PlanTranscodingApiFactory = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         planTranscodingCheckV1(requestParameters: PlanTranscodingApiPlanTranscodingCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingCheckResponse> {
-            return localVarFp.planTranscodingCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -519,7 +519,7 @@ export const PlanTranscodingApiFactory = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         planTranscodingTariffV1(requestParameters: PlanTranscodingApiPlanTranscodingTariffV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingForProject> {
-            return localVarFp.planTranscodingTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -610,7 +610,7 @@ export interface PlanTranscodingApiPlanTranscodingBuyV1Request {
      * @type {number}
      * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Period
@@ -624,7 +624,7 @@ export interface PlanTranscodingApiPlanTranscodingBuyV1Request {
      * @type {number}
      * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
-    readonly planTranscodingId: number
+    readonly plan_transcoding_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -659,7 +659,7 @@ export interface PlanTranscodingApiPlanTranscodingCancelV1Request {
      * @type {number}
      * @memberof PlanTranscodingApiPlanTranscodingCancelV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -687,7 +687,7 @@ export interface PlanTranscodingApiPlanTranscodingCheckV1Request {
      * @type {number}
      * @memberof PlanTranscodingApiPlanTranscodingCheckV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -757,7 +757,7 @@ export interface PlanTranscodingApiPlanTranscodingTariffV1Request {
      * @type {number}
      * @memberof PlanTranscodingApiPlanTranscodingTariffV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -783,7 +783,7 @@ export class PlanTranscodingApi extends BaseAPI implements PlanTranscodingApiInt
      * @memberof PlanTranscodingApi
      */
     public planTranscodingBuyV1(requestParameters: PlanTranscodingApiPlanTranscodingBuyV1Request, options?: RawAxiosRequestConfig) {
-        return PlanTranscodingApiFp(this.configuration).planTranscodingBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planTranscodingId, requestParameters.v, requestParameters.count, options).then((request) => request(this.axios, this.basePath));
+        return PlanTranscodingApiFp(this.configuration).planTranscodingBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_transcoding_id, requestParameters.v, requestParameters.count, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -795,7 +795,7 @@ export class PlanTranscodingApi extends BaseAPI implements PlanTranscodingApiInt
      * @memberof PlanTranscodingApi
      */
     public planTranscodingCancelV1(requestParameters: PlanTranscodingApiPlanTranscodingCancelV1Request, options?: RawAxiosRequestConfig) {
-        return PlanTranscodingApiFp(this.configuration).planTranscodingCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanTranscodingApiFp(this.configuration).planTranscodingCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -807,7 +807,7 @@ export class PlanTranscodingApi extends BaseAPI implements PlanTranscodingApiInt
      * @memberof PlanTranscodingApi
      */
     public planTranscodingCheckV1(requestParameters: PlanTranscodingApiPlanTranscodingCheckV1Request, options?: RawAxiosRequestConfig) {
-        return PlanTranscodingApiFp(this.configuration).planTranscodingCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanTranscodingApiFp(this.configuration).planTranscodingCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -843,7 +843,7 @@ export class PlanTranscodingApi extends BaseAPI implements PlanTranscodingApiInt
      * @memberof PlanTranscodingApi
      */
     public planTranscodingTariffV1(requestParameters: PlanTranscodingApiPlanTranscodingTariffV1Request, options?: RawAxiosRequestConfig) {
-        return PlanTranscodingApiFp(this.configuration).planTranscodingTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanTranscodingApiFp(this.configuration).planTranscodingTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

@@ -19,7 +19,7 @@ async function getProjectInfo(accessToken: string, projectId: number, language: 
 
   const response = await userProjectApi.userProjectGetProjectInfoV1({
     language: language,
-    projectId: projectId
+    project_id: projectId
   });
   return response.data;
 }

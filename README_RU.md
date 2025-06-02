@@ -1,4 +1,4 @@
-# StreamVi SDK
+# StreamVi SDK (Axios-based)
 
 Библиотека для работы с API StreamVi вместе с примером авторизации через OAuth с помощью библиотеки [passport-streamvi](https://www.npmjs.com/package/passport-streamvi).
 
@@ -8,6 +8,12 @@
 
 - ✅ SDK библиотека StreamVi для TypeScript/JavaScript
 - ✅ Готовые примеры использования с авторизацией OAuth2
+
+## Альтернативная версия
+
+Доступна альтернативная версия библиотеки, которая использует нативный `fetch` API вместо axios: [streamvi-sdk-fetch](https://github.com/StreamVi/streamvi-sdk-fetch)
+
+Эта версия может быть предпочтительной для проектов, где важен размер бандла или требуется использование нативного fetch API.
 
 ## Установка
 

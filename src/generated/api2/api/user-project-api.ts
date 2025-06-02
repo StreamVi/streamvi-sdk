@@ -623,7 +623,7 @@ export const UserProjectApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         userProjectChangeAccessV1(requestParameters: UserProjectApiUserProjectChangeAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.userProjectChangeAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.userId, requestParameters.accessType, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -633,7 +633,7 @@ export const UserProjectApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         userProjectDelV1(requestParameters: UserProjectApiUserProjectDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.userProjectDelV1(requestParameters.language, requestParameters.projectId, requestParameters.userId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectDelV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -643,7 +643,7 @@ export const UserProjectApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         userProjectGetProjectInfoV1(requestParameters: UserProjectApiUserProjectGetProjectInfoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectInfoResponse> {
-            return localVarFp.userProjectGetProjectInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectGetProjectInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -653,7 +653,7 @@ export const UserProjectApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         userProjectGetProjectV1(requestParameters: UserProjectApiUserProjectGetProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProjectGetResponse> {
-            return localVarFp.userProjectGetProjectV1(requestParameters.language, requestParameters.projectExternalId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectGetProjectV1(requestParameters.language, requestParameters.project_external_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -663,7 +663,7 @@ export const UserProjectApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         userProjectGetUserV1(requestParameters: UserProjectApiUserProjectGetUserV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProjectGetResponse> {
-            return localVarFp.userProjectGetUserV1(requestParameters.language, requestParameters.userExternalId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectGetUserV1(requestParameters.language, requestParameters.user_external_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -673,7 +673,7 @@ export const UserProjectApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         userProjectListAccessV1(requestParameters: UserProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfUserProject2ProjectResponse> {
-            return localVarFp.userProjectListAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectListAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -804,21 +804,21 @@ export interface UserProjectApiUserProjectChangeAccessV1Request {
      * @type {number}
      * @memberof UserProjectApiUserProjectChangeAccessV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * User id
      * @type {number}
      * @memberof UserProjectApiUserProjectChangeAccessV1
      */
-    readonly userId: number
+    readonly user_id: number
 
     /**
      * Access type
      * @type {0 | 1 | 2}
      * @memberof UserProjectApiUserProjectChangeAccessV1
      */
-    readonly accessType: UserProjectChangeAccessV1AccessTypeEnum
+    readonly access_type: UserProjectChangeAccessV1AccessTypeEnum
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -846,14 +846,14 @@ export interface UserProjectApiUserProjectDelV1Request {
      * @type {number}
      * @memberof UserProjectApiUserProjectDelV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * User id
      * @type {number}
      * @memberof UserProjectApiUserProjectDelV1
      */
-    readonly userId: number
+    readonly user_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -881,7 +881,7 @@ export interface UserProjectApiUserProjectGetProjectInfoV1Request {
      * @type {number}
      * @memberof UserProjectApiUserProjectGetProjectInfoV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -909,7 +909,7 @@ export interface UserProjectApiUserProjectGetProjectV1Request {
      * @type {string}
      * @memberof UserProjectApiUserProjectGetProjectV1
      */
-    readonly projectExternalId: string
+    readonly project_external_id: string
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -937,7 +937,7 @@ export interface UserProjectApiUserProjectGetUserV1Request {
      * @type {string}
      * @memberof UserProjectApiUserProjectGetUserV1
      */
-    readonly userExternalId: string
+    readonly user_external_id: string
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -965,7 +965,7 @@ export interface UserProjectApiUserProjectListAccessV1Request {
      * @type {number}
      * @memberof UserProjectApiUserProjectListAccessV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -1054,7 +1054,7 @@ export class UserProjectApi extends BaseAPI implements UserProjectApiInterface {
      * @memberof UserProjectApi
      */
     public userProjectChangeAccessV1(requestParameters: UserProjectApiUserProjectChangeAccessV1Request, options?: RawAxiosRequestConfig) {
-        return UserProjectApiFp(this.configuration).userProjectChangeAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.userId, requestParameters.accessType, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return UserProjectApiFp(this.configuration).userProjectChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1066,7 +1066,7 @@ export class UserProjectApi extends BaseAPI implements UserProjectApiInterface {
      * @memberof UserProjectApi
      */
     public userProjectDelV1(requestParameters: UserProjectApiUserProjectDelV1Request, options?: RawAxiosRequestConfig) {
-        return UserProjectApiFp(this.configuration).userProjectDelV1(requestParameters.language, requestParameters.projectId, requestParameters.userId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return UserProjectApiFp(this.configuration).userProjectDelV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1078,7 +1078,7 @@ export class UserProjectApi extends BaseAPI implements UserProjectApiInterface {
      * @memberof UserProjectApi
      */
     public userProjectGetProjectInfoV1(requestParameters: UserProjectApiUserProjectGetProjectInfoV1Request, options?: RawAxiosRequestConfig) {
-        return UserProjectApiFp(this.configuration).userProjectGetProjectInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return UserProjectApiFp(this.configuration).userProjectGetProjectInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1090,7 +1090,7 @@ export class UserProjectApi extends BaseAPI implements UserProjectApiInterface {
      * @memberof UserProjectApi
      */
     public userProjectGetProjectV1(requestParameters: UserProjectApiUserProjectGetProjectV1Request, options?: RawAxiosRequestConfig) {
-        return UserProjectApiFp(this.configuration).userProjectGetProjectV1(requestParameters.language, requestParameters.projectExternalId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return UserProjectApiFp(this.configuration).userProjectGetProjectV1(requestParameters.language, requestParameters.project_external_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1102,7 +1102,7 @@ export class UserProjectApi extends BaseAPI implements UserProjectApiInterface {
      * @memberof UserProjectApi
      */
     public userProjectGetUserV1(requestParameters: UserProjectApiUserProjectGetUserV1Request, options?: RawAxiosRequestConfig) {
-        return UserProjectApiFp(this.configuration).userProjectGetUserV1(requestParameters.language, requestParameters.userExternalId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return UserProjectApiFp(this.configuration).userProjectGetUserV1(requestParameters.language, requestParameters.user_external_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1114,7 +1114,7 @@ export class UserProjectApi extends BaseAPI implements UserProjectApiInterface {
      * @memberof UserProjectApi
      */
     public userProjectListAccessV1(requestParameters: UserProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig) {
-        return UserProjectApiFp(this.configuration).userProjectListAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return UserProjectApiFp(this.configuration).userProjectListAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

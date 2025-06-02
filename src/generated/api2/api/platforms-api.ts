@@ -341,7 +341,7 @@ export const PlatformsApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         platformsAddAccountV1(requestParameters: PlatformsApiPlatformsAddAccountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.platformsAddAccountV1(requestParameters.language, requestParameters.projectId, requestParameters.platform, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsAddAccountV1(requestParameters.language, requestParameters.project_id, requestParameters.platform, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -442,7 +442,7 @@ export interface PlatformsApiPlatformsAddAccountV1Request {
      * @type {number}
      * @memberof PlatformsApiPlatformsAddAccountV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Provider oauth
@@ -566,7 +566,7 @@ export class PlatformsApi extends BaseAPI implements PlatformsApiInterface {
      * @memberof PlatformsApi
      */
     public platformsAddAccountV1(requestParameters: PlatformsApiPlatformsAddAccountV1Request, options?: RawAxiosRequestConfig) {
-        return PlatformsApiFp(this.configuration).platformsAddAccountV1(requestParameters.language, requestParameters.projectId, requestParameters.platform, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlatformsApiFp(this.configuration).platformsAddAccountV1(requestParameters.language, requestParameters.project_id, requestParameters.platform, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

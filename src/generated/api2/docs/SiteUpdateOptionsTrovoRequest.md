@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**projectId** | **number** | Project id | [default to undefined]
-**channelId** | **number** | Channel id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
+**channel_id** | **number** | Channel id | [default to undefined]
 **title** | **string** |  | [default to 'title']
-**categoryId** | **string** | category id | [default to '10023']
-**categoryName** | **string** | category name | [default to 'name']
+**category_id** | **string** | category id | [default to '10023']
+**category_name** | **string** | category name | [default to 'name']
 **audience** | **string** |  | [default to 'Audience']
 **lang** | **string** |  | [default to 'Lang']
 
@@ -23,11 +23,11 @@ import { SiteUpdateOptionsTrovoRequest } from 'streamvi-api-client';
 const instance: SiteUpdateOptionsTrovoRequest = {
     v,
     language,
-    projectId,
-    channelId,
+    project_id,
+    channel_id,
     title,
-    categoryId,
-    categoryName,
+    category_id,
+    category_name,
     audience,
     lang,
 };

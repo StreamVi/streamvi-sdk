@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**projectId** | **number** | Project id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
 **transport** | **string** | Provider oauth | [default to undefined]
 **name** | **string** | Name | [optional] [default to undefined]
 
@@ -19,7 +19,7 @@ import { CreatePullKeyRequest } from 'streamvi-api-client';
 const instance: CreatePullKeyRequest = {
     v,
     language,
-    projectId,
+    project_id,
     transport,
     name,
 };

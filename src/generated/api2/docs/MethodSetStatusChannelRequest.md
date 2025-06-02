@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [optional] [default to LanguageEnum_En]
-**channelId** | **number** | Channel id | [default to undefined]
+**channel_id** | **number** | Channel id | [default to undefined]
 **status** | **boolean** | Status channel status | [default to undefined]
 
 ## Example
@@ -18,7 +18,7 @@ import { MethodSetStatusChannelRequest } from 'streamvi-api-client';
 const instance: MethodSetStatusChannelRequest = {
     v,
     language,
-    channelId,
+    channel_id,
     status,
 };
 ```

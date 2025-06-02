@@ -279,7 +279,7 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object> {
-            return localVarFp.analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -289,7 +289,7 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object> {
-            return localVarFp.analyticsTsStreamEventsV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.analyticsTsStreamEventsV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -299,7 +299,7 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object> {
-            return localVarFp.analyticsTsStreamViewersV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.analyticsTsStreamViewersV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -360,14 +360,14 @@ export interface AnalyticsApiAnalyticsTsStreamBitrateV1Request {
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * stream id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
-    readonly streamId: number
+    readonly stream_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -395,14 +395,14 @@ export interface AnalyticsApiAnalyticsTsStreamEventsV1Request {
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * stream id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
-    readonly streamId: number
+    readonly stream_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -430,14 +430,14 @@ export interface AnalyticsApiAnalyticsTsStreamViewersV1Request {
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * stream id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
      */
-    readonly streamId: number
+    readonly stream_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -463,7 +463,7 @@ export class AnalyticsApi extends BaseAPI implements AnalyticsApiInterface {
      * @memberof AnalyticsApi
      */
     public analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig) {
-        return AnalyticsApiFp(this.configuration).analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return AnalyticsApiFp(this.configuration).analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -475,7 +475,7 @@ export class AnalyticsApi extends BaseAPI implements AnalyticsApiInterface {
      * @memberof AnalyticsApi
      */
     public analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig) {
-        return AnalyticsApiFp(this.configuration).analyticsTsStreamEventsV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return AnalyticsApiFp(this.configuration).analyticsTsStreamEventsV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -487,7 +487,7 @@ export class AnalyticsApi extends BaseAPI implements AnalyticsApiInterface {
      * @memberof AnalyticsApi
      */
     public analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig) {
-        return AnalyticsApiFp(this.configuration).analyticsTsStreamViewersV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return AnalyticsApiFp(this.configuration).analyticsTsStreamViewersV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

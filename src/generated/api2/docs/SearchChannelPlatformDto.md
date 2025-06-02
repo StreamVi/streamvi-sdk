@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **type** | **string** | Type platform | [default to undefined]
 **url** | **string** | Url | [default to undefined]
 **extension** | **string** | extension | [default to undefined]
-**editName** | **number** | Is edit name | [default to undefined]
+**edit_name** | **number** | Is edit name | [default to undefined]
 
 ## Example
 
@@ -21,7 +21,7 @@ const instance: SearchChannelPlatformDto = {
     type,
     url,
     extension,
-    editName,
+    edit_name,
 };
 ```
 

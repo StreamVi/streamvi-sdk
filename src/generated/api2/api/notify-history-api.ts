@@ -476,7 +476,7 @@ export const NotifyHistoryApiFactory = function (configuration?: Configuration, 
          * @throws {RequiredError}
          */
         notifyHistoryGetListMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetListMyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfNotifyHistorySiteResponse> {
-            return localVarFp.notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.projectId, requestParameters.name, requestParameters.channel, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.statusRead, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.project_id, requestParameters.name, requestParameters.channel, requestParameters.date_from, requestParameters.date_to, requestParameters.status_read, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -496,7 +496,7 @@ export const NotifyHistoryApiFactory = function (configuration?: Configuration, 
          * @throws {RequiredError}
          */
         notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse> {
-            return localVarFp.notifyHistoryGetV1(requestParameters.id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryGetV1(requestParameters._id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -506,7 +506,7 @@ export const NotifyHistoryApiFactory = function (configuration?: Configuration, 
          * @throws {RequiredError}
          */
         notifyHistoryMarkOfReadV1(requestParameters: NotifyHistoryApiNotifyHistoryMarkOfReadV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteMarkReadHistoryResponse> {
-            return localVarFp.notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.siteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.SiteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -516,7 +516,7 @@ export const NotifyHistoryApiFactory = function (configuration?: Configuration, 
          * @throws {RequiredError}
          */
         notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse> {
-            return localVarFp.notifyHistoryRunActionV1(requestParameters.notifyHistoryId, requestParameters.actionName, requestParameters.groupId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryRunActionV1(requestParameters.notify_history_id, requestParameters.action_name, requestParameters.group_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -636,7 +636,7 @@ export interface NotifyHistoryApiNotifyHistoryGetListMyV1Request {
      * @type {number}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly projectId?: number
+    readonly project_id?: number
 
     /**
      * Name
@@ -657,21 +657,21 @@ export interface NotifyHistoryApiNotifyHistoryGetListMyV1Request {
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly dateFrom?: string
+    readonly date_from?: string
 
     /**
      * Date to
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly dateTo?: string
+    readonly date_to?: string
 
     /**
      * Status read
      * @type {'unread' | 'read'}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly statusRead?: NotifyHistoryGetListMyV1StatusReadEnum
+    readonly status_read?: NotifyHistoryGetListMyV1StatusReadEnum
 }
 
 /**
@@ -706,7 +706,7 @@ export interface NotifyHistoryApiNotifyHistoryGetV1Request {
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryGetV1
      */
-    readonly id: string
+    readonly _id: string
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -734,7 +734,7 @@ export interface NotifyHistoryApiNotifyHistoryMarkOfReadV1Request {
      * @type {SiteMarkReadHistoryRequest}
      * @memberof NotifyHistoryApiNotifyHistoryMarkOfReadV1
      */
-    readonly siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest
+    readonly SiteMarkReadHistoryRequest: SiteMarkReadHistoryRequest
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -755,21 +755,21 @@ export interface NotifyHistoryApiNotifyHistoryRunActionV1Request {
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
-    readonly notifyHistoryId: string
+    readonly notify_history_id: string
 
     /**
      * Action name
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
-    readonly actionName: string
+    readonly action_name: string
 
     /**
      * Group id
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
-    readonly groupId: string
+    readonly group_id: string
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -795,7 +795,7 @@ export class NotifyHistoryApi extends BaseAPI implements NotifyHistoryApiInterfa
      * @memberof NotifyHistoryApi
      */
     public notifyHistoryGetListMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetListMyV1Request, options?: RawAxiosRequestConfig) {
-        return NotifyHistoryApiFp(this.configuration).notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.projectId, requestParameters.name, requestParameters.channel, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.statusRead, options).then((request) => request(this.axios, this.basePath));
+        return NotifyHistoryApiFp(this.configuration).notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.project_id, requestParameters.name, requestParameters.channel, requestParameters.date_from, requestParameters.date_to, requestParameters.status_read, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -819,7 +819,7 @@ export class NotifyHistoryApi extends BaseAPI implements NotifyHistoryApiInterfa
      * @memberof NotifyHistoryApi
      */
     public notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig) {
-        return NotifyHistoryApiFp(this.configuration).notifyHistoryGetV1(requestParameters.id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return NotifyHistoryApiFp(this.configuration).notifyHistoryGetV1(requestParameters._id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -831,7 +831,7 @@ export class NotifyHistoryApi extends BaseAPI implements NotifyHistoryApiInterfa
      * @memberof NotifyHistoryApi
      */
     public notifyHistoryMarkOfReadV1(requestParameters: NotifyHistoryApiNotifyHistoryMarkOfReadV1Request, options?: RawAxiosRequestConfig) {
-        return NotifyHistoryApiFp(this.configuration).notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.siteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return NotifyHistoryApiFp(this.configuration).notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.SiteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -843,7 +843,7 @@ export class NotifyHistoryApi extends BaseAPI implements NotifyHistoryApiInterfa
      * @memberof NotifyHistoryApi
      */
     public notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig) {
-        return NotifyHistoryApiFp(this.configuration).notifyHistoryRunActionV1(requestParameters.notifyHistoryId, requestParameters.actionName, requestParameters.groupId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return NotifyHistoryApiFp(this.configuration).notifyHistoryRunActionV1(requestParameters.notify_history_id, requestParameters.action_name, requestParameters.group_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

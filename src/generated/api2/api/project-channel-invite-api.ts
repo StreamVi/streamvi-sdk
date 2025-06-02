@@ -911,7 +911,7 @@ export const ProjectChannelInviteApiFactory = function (configuration?: Configur
          * @throws {RequiredError}
          */
         projectChannelInviteAcceptForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.projectChannelInviteAcceptForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteAcceptForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -921,7 +921,7 @@ export const ProjectChannelInviteApiFactory = function (configuration?: Configur
          * @throws {RequiredError}
          */
         projectChannelInviteAcceptForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.projectChannelInviteAcceptForSecretV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteAcceptForSecretV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -931,7 +931,7 @@ export const ProjectChannelInviteApiFactory = function (configuration?: Configur
          * @throws {RequiredError}
          */
         projectChannelInviteAddByEmailV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteResponse> {
-            return localVarFp.projectChannelInviteAddByEmailV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.email, requestParameters.accessType, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteAddByEmailV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.email, requestParameters.access_type, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -941,7 +941,7 @@ export const ProjectChannelInviteApiFactory = function (configuration?: Configur
          * @throws {RequiredError}
          */
         projectChannelInviteAddByIdV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteResponse> {
-            return localVarFp.projectChannelInviteAddByIdV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.accessType, requestParameters.toProjectExternalId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteAddByIdV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.access_type, requestParameters.to_project_external_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -951,7 +951,7 @@ export const ProjectChannelInviteApiFactory = function (configuration?: Configur
          * @throws {RequiredError}
          */
         projectChannelInviteDeclineForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.projectChannelInviteDeclineForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteDeclineForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -961,7 +961,7 @@ export const ProjectChannelInviteApiFactory = function (configuration?: Configur
          * @throws {RequiredError}
          */
         projectChannelInviteDeclineForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.projectChannelInviteDeclineForSecretV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteDeclineForSecretV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -981,7 +981,7 @@ export const ProjectChannelInviteApiFactory = function (configuration?: Configur
          * @throws {RequiredError}
          */
         projectChannelInviteGetForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteLinkResponse> {
-            return localVarFp.projectChannelInviteGetForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteGetForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -991,7 +991,7 @@ export const ProjectChannelInviteApiFactory = function (configuration?: Configur
          * @throws {RequiredError}
          */
         projectChannelInviteGetForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelInviteLinkResponse> {
-            return localVarFp.projectChannelInviteGetForSecretV1(requestParameters.language, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteGetForSecretV1(requestParameters.language, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1011,7 +1011,7 @@ export const ProjectChannelInviteApiFactory = function (configuration?: Configur
          * @throws {RequiredError}
          */
         projectChannelInviteListV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelInviteResponse> {
-            return localVarFp.projectChannelInviteListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1152,14 +1152,14 @@ export interface ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Re
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -1187,14 +1187,14 @@ export interface ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Req
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Secret
@@ -1229,14 +1229,14 @@ export interface ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request 
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Email
@@ -1250,7 +1250,7 @@ export interface ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request 
      * @type {0 | 1 | 1 | 2}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
-    readonly accessType: ProjectChannelInviteAddByEmailV1AccessTypeEnum
+    readonly access_type: ProjectChannelInviteAddByEmailV1AccessTypeEnum
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -1278,28 +1278,28 @@ export interface ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request {
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Access type
      * @type {0 | 1 | 1 | 2}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
-    readonly accessType: ProjectChannelInviteAddByIdV1AccessTypeEnum
+    readonly access_type: ProjectChannelInviteAddByIdV1AccessTypeEnum
 
     /**
      * Project for get access by external id
      * @type {string}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
-    readonly toProjectExternalId: string
+    readonly to_project_external_id: string
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -1327,14 +1327,14 @@ export interface ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1R
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -1362,14 +1362,14 @@ export interface ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Re
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Secret
@@ -1432,14 +1432,14 @@ export interface ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Reque
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteGetForProjectV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteGetForProjectV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -1467,7 +1467,7 @@ export interface ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Reques
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteGetForSecretV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Secret
@@ -1530,14 +1530,14 @@ export interface ProjectChannelInviteApiProjectChannelInviteListV1Request {
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteListV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteListV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -1563,7 +1563,7 @@ export class ProjectChannelInviteApi extends BaseAPI implements ProjectChannelIn
      * @memberof ProjectChannelInviteApi
      */
     public projectChannelInviteAcceptForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteAcceptForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteAcceptForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1575,7 +1575,7 @@ export class ProjectChannelInviteApi extends BaseAPI implements ProjectChannelIn
      * @memberof ProjectChannelInviteApi
      */
     public projectChannelInviteAcceptForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteAcceptForSecretV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteAcceptForSecretV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1587,7 +1587,7 @@ export class ProjectChannelInviteApi extends BaseAPI implements ProjectChannelIn
      * @memberof ProjectChannelInviteApi
      */
     public projectChannelInviteAddByEmailV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteAddByEmailV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.email, requestParameters.accessType, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteAddByEmailV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.email, requestParameters.access_type, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1599,7 +1599,7 @@ export class ProjectChannelInviteApi extends BaseAPI implements ProjectChannelIn
      * @memberof ProjectChannelInviteApi
      */
     public projectChannelInviteAddByIdV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteAddByIdV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.accessType, requestParameters.toProjectExternalId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteAddByIdV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.access_type, requestParameters.to_project_external_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1611,7 +1611,7 @@ export class ProjectChannelInviteApi extends BaseAPI implements ProjectChannelIn
      * @memberof ProjectChannelInviteApi
      */
     public projectChannelInviteDeclineForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteDeclineForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteDeclineForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1623,7 +1623,7 @@ export class ProjectChannelInviteApi extends BaseAPI implements ProjectChannelIn
      * @memberof ProjectChannelInviteApi
      */
     public projectChannelInviteDeclineForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteDeclineForSecretV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteDeclineForSecretV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1647,7 +1647,7 @@ export class ProjectChannelInviteApi extends BaseAPI implements ProjectChannelIn
      * @memberof ProjectChannelInviteApi
      */
     public projectChannelInviteGetForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteGetForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteGetForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1659,7 +1659,7 @@ export class ProjectChannelInviteApi extends BaseAPI implements ProjectChannelIn
      * @memberof ProjectChannelInviteApi
      */
     public projectChannelInviteGetForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteGetForSecretV1(requestParameters.language, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteGetForSecretV1(requestParameters.language, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1683,7 +1683,7 @@ export class ProjectChannelInviteApi extends BaseAPI implements ProjectChannelIn
      * @memberof ProjectChannelInviteApi
      */
     public projectChannelInviteListV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteListV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelInviteApiFp(this.configuration).projectChannelInviteListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

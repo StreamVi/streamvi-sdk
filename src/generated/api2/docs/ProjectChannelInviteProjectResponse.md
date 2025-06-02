@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **number** | Unique id | [default to undefined]
+**user_id** | **number** | Unique id | [default to undefined]
 **name** | **string** | First name | [default to undefined]
 **fename** | **string** | Last name | [default to undefined]
-**photo50** | **string** | Link to avatar 50*50px | [default to undefined]
-**refId** | **string** | Unique symbol id of user | [default to undefined]
+**photo_50** | **string** | Link to avatar 50*50px | [default to undefined]
+**ref_id** | **string** | Unique symbol id of user | [default to undefined]
 
 ## Example
 
@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 import { ProjectChannelInviteProjectResponse } from 'streamvi-api-client';
 
 const instance: ProjectChannelInviteProjectResponse = {
-    userId,
+    user_id,
     name,
     fename,
-    photo50,
-    refId,
+    photo_50,
+    ref_id,
 };
 ```
 

@@ -5,21 +5,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**planRestreamId** | **number** | Unique ID | [default to undefined]
+**plan_restream_id** | **number** | Unique ID | [default to undefined]
 **title** | **string** | Title | [default to undefined]
 **active** | **boolean** | Active | [default to undefined]
-**countChannelMin** | **number** | Minimum channel count | [optional] [default to undefined]
-**countChannelMax** | **number** | Maximum channel count | [default to undefined]
-**countChannelStep** | **number** | Step channel | [optional] [default to undefined]
+**count_channel_min** | **number** | Minimum channel count | [optional] [default to undefined]
+**count_channel_max** | **number** | Maximum channel count | [default to undefined]
+**count_channel_step** | **number** | Step channel | [optional] [default to undefined]
 **type** | **string** | Type | [default to undefined]
-**bitrateMax** | **number** | Maximum bitrate, kbps | [default to undefined]
-**bitrateMin** | **number** | Minimum bitrate, kbps | [optional] [default to undefined]
-**bitrateStep** | **number** | Step bitrate | [optional] [default to undefined]
+**bitrate_max** | **number** | Maximum bitrate, kbps | [default to undefined]
+**bitrate_min** | **number** | Minimum bitrate, kbps | [optional] [default to undefined]
+**bitrate_step** | **number** | Step bitrate | [optional] [default to undefined]
 **index** | **number** | Field for sort | [default to undefined]
 **price** | **PlanRestreamPrice**(PlanRestreamPrice.md) | Price | [default to undefined]
 **status** | **string** | Status | [default to undefined]
 **feature** | **Array&lt;PlanRestreamFeatureItemV2&gt;**(PlanRestreamFeatureItemV2.md) | Features | [default to undefined]
-**ownTariff** | **PlanRestreamForProjectV2**(PlanRestreamForProjectV2.md) | Tariff project | [default to undefined]
+**own_tariff** | **PlanRestreamForProjectV2**(PlanRestreamForProjectV2.md) | Tariff project | [default to undefined]
 
 ## Example
 
@@ -27,21 +27,21 @@ Name | Type | Description | Notes
 import { PlanRestreamProjectResponse } from 'streamvi-api-client';
 
 const instance: PlanRestreamProjectResponse = {
-    planRestreamId,
+    plan_restream_id,
     title,
     active,
-    countChannelMin,
-    countChannelMax,
-    countChannelStep,
+    count_channel_min,
+    count_channel_max,
+    count_channel_step,
     type,
-    bitrateMax,
-    bitrateMin,
-    bitrateStep,
+    bitrate_max,
+    bitrate_min,
+    bitrate_step,
     index,
     price,
     status,
     feature,
-    ownTariff,
+    own_tariff,
 };
 ```
 

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **type** | **string** | Type | [default to undefined]
 **text** | **Array&lt;InternalNotifyTypeActionText&gt;**(InternalNotifyTypeActionText.md) | text | [default to undefined]
 **icon** | **string** | Icon (special symbol) | [default to '']
-**groupId** | **string** | Action group id | [default to undefined]
-**groupType** | **string** | Group actions | [default to undefined]
+**group_id** | **string** | Action group id | [default to undefined]
+**group_type** | **string** | Group actions | [default to undefined]
 
 ## Example
 
@@ -24,8 +24,8 @@ const instance: InternalNotifyTypeAction = {
     type,
     text,
     icon,
-    groupId,
-    groupType,
+    group_id,
+    group_type,
 };
 ```
 

@@ -469,7 +469,7 @@ export const PlanStorageApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.planStorageBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planStorageId, requestParameters.v, requestParameters.size, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_storage_id, requestParameters.v, requestParameters.size, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -479,7 +479,7 @@ export const PlanStorageApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.planStorageCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -489,7 +489,7 @@ export const PlanStorageApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageCheckResponse> {
-            return localVarFp.planStorageCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -519,7 +519,7 @@ export const PlanStorageApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageForProject> {
-            return localVarFp.planStorageTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -610,7 +610,7 @@ export interface PlanStorageApiPlanStorageBuyV1Request {
      * @type {number}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Period
@@ -624,7 +624,7 @@ export interface PlanStorageApiPlanStorageBuyV1Request {
      * @type {number}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly planStorageId: number
+    readonly plan_storage_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -659,7 +659,7 @@ export interface PlanStorageApiPlanStorageCancelV1Request {
      * @type {number}
      * @memberof PlanStorageApiPlanStorageCancelV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -687,7 +687,7 @@ export interface PlanStorageApiPlanStorageCheckV1Request {
      * @type {number}
      * @memberof PlanStorageApiPlanStorageCheckV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -757,7 +757,7 @@ export interface PlanStorageApiPlanStorageTariffV1Request {
      * @type {number}
      * @memberof PlanStorageApiPlanStorageTariffV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -783,7 +783,7 @@ export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
      * @memberof PlanStorageApi
      */
     public planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planStorageId, requestParameters.v, requestParameters.size, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_storage_id, requestParameters.v, requestParameters.size, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -795,7 +795,7 @@ export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
      * @memberof PlanStorageApi
      */
     public planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -807,7 +807,7 @@ export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
      * @memberof PlanStorageApi
      */
     public planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -843,7 +843,7 @@ export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
      * @memberof PlanStorageApi
      */
     public planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

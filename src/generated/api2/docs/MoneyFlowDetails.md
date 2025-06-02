@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **string** | Title | [default to undefined]
-**dateEnd** | **string** | Date | [default to undefined]
+**date_end** | **string** | Date | [default to undefined]
 
 ## Example
 
@@ -15,7 +15,7 @@ import { MoneyFlowDetails } from 'streamvi-api-client';
 
 const instance: MoneyFlowDetails = {
     title,
-    dateEnd,
+    date_end,
 };
 ```
 

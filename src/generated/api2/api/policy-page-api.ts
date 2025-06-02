@@ -183,7 +183,7 @@ export const PolicyPageApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         policyPageGetItemV1(requestParameters: PolicyPageApiPolicyPageGetItemV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.policyPageGetItemV1(requestParameters.language, requestParameters.fileName, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.policyPageGetItemV1(requestParameters.language, requestParameters.file_name, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -244,7 +244,7 @@ export interface PolicyPageApiPolicyPageGetItemV1Request {
      * @type {'refund' | 'terms-of-use' | 'using-cookie' | 'acceptable-use' | 'privacy-notice'}
      * @memberof PolicyPageApiPolicyPageGetItemV1
      */
-    readonly fileName: PolicyPageGetItemV1FileNameEnum
+    readonly file_name: PolicyPageGetItemV1FileNameEnum
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -291,7 +291,7 @@ export class PolicyPageApi extends BaseAPI implements PolicyPageApiInterface {
      * @memberof PolicyPageApi
      */
     public policyPageGetItemV1(requestParameters: PolicyPageApiPolicyPageGetItemV1Request, options?: RawAxiosRequestConfig) {
-        return PolicyPageApiFp(this.configuration).policyPageGetItemV1(requestParameters.language, requestParameters.fileName, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PolicyPageApiFp(this.configuration).policyPageGetItemV1(requestParameters.language, requestParameters.file_name, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

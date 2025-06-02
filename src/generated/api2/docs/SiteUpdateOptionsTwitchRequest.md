@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**projectId** | **number** | Project id | [default to undefined]
-**channelId** | **number** | Channel id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
+**channel_id** | **number** | Channel id | [default to undefined]
 **title** | **string** |  | [default to 'title']
-**categoryId** | **string** | category id | [default to '498482']
-**categoryName** | **string** | category name | [default to 'name']
+**category_id** | **string** | category id | [default to '498482']
+**category_name** | **string** | category name | [default to 'name']
 **lang** | **string** |  | [default to 'Lang']
 **tags** | **Set&lt;string&gt;** |  | [default to undefined]
 **domain** | **string** | domain | [default to 'live.twitch.tv']
@@ -24,11 +24,11 @@ import { SiteUpdateOptionsTwitchRequest } from 'streamvi-api-client';
 const instance: SiteUpdateOptionsTwitchRequest = {
     v,
     language,
-    projectId,
-    channelId,
+    project_id,
+    channel_id,
     title,
-    categoryId,
-    categoryName,
+    category_id,
+    category_name,
     lang,
     tags,
     domain,

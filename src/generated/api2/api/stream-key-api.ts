@@ -178,7 +178,7 @@ export const StreamKeyApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetStreamKeyResponse> {
-            return localVarFp.streamKeysKeyV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamKeysKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -188,7 +188,7 @@ export const StreamKeyApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         streamKeysUpdateRecordV1(requestParameters: StreamKeyApiStreamKeysUpdateRecordV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.streamKeysUpdateRecordV1(requestParameters.setRecordStreamRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamKeysUpdateRecordV1(requestParameters.SetRecordStreamRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -239,7 +239,7 @@ export interface StreamKeyApiStreamKeysKeyV1Request {
      * @type {number}
      * @memberof StreamKeyApiStreamKeysKeyV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -260,7 +260,7 @@ export interface StreamKeyApiStreamKeysUpdateRecordV1Request {
      * @type {SetRecordStreamRequest}
      * @memberof StreamKeyApiStreamKeysUpdateRecordV1
      */
-    readonly setRecordStreamRequest: SetRecordStreamRequest
+    readonly SetRecordStreamRequest: SetRecordStreamRequest
 }
 
 /**
@@ -279,7 +279,7 @@ export class StreamKeyApi extends BaseAPI implements StreamKeyApiInterface {
      * @memberof StreamKeyApi
      */
     public streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig) {
-        return StreamKeyApiFp(this.configuration).streamKeysKeyV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return StreamKeyApiFp(this.configuration).streamKeysKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -291,7 +291,7 @@ export class StreamKeyApi extends BaseAPI implements StreamKeyApiInterface {
      * @memberof StreamKeyApi
      */
     public streamKeysUpdateRecordV1(requestParameters: StreamKeyApiStreamKeysUpdateRecordV1Request, options?: RawAxiosRequestConfig) {
-        return StreamKeyApiFp(this.configuration).streamKeysUpdateRecordV1(requestParameters.setRecordStreamRequest, options).then((request) => request(this.axios, this.basePath));
+        return StreamKeyApiFp(this.configuration).streamKeysUpdateRecordV1(requestParameters.SetRecordStreamRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

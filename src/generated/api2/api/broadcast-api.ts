@@ -201,7 +201,7 @@ export const BroadcastApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         methodBroadcastRestreamsV1(requestParameters: BroadcastApiMethodBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodBroadcastRestreamsResponse> {
-            return localVarFp.methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcastId, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcast_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -262,7 +262,7 @@ export interface BroadcastApiMethodBroadcastRestreamsV1Request {
      * @type {number}
      * @memberof BroadcastApiMethodBroadcastRestreamsV1
      */
-    readonly broadcastId: number
+    readonly broadcast_id: number
 
     /**
      * Chat token
@@ -323,7 +323,7 @@ export class BroadcastApi extends BaseAPI implements BroadcastApiInterface {
      * @memberof BroadcastApi
      */
     public methodBroadcastRestreamsV1(requestParameters: BroadcastApiMethodBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig) {
-        return BroadcastApiFp(this.configuration).methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcastId, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return BroadcastApiFp(this.configuration).methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcast_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -165,7 +165,7 @@ export const ProjectHistoryApiFactory = function (configuration?: Configuration,
          * @throws {RequiredError}
          */
         projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfProjectHistoryResponse> {
-            return localVarFp.projectHistoryListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.action, requestParameters.groupId, options).then((request) => request(axios, basePath));
+            return localVarFp.projectHistoryListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.action, requestParameters.group_id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -206,7 +206,7 @@ export interface ProjectHistoryApiProjectHistoryListV1Request {
      * @type {number}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -234,14 +234,14 @@ export interface ProjectHistoryApiProjectHistoryListV1Request {
      * @type {string}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly dateFrom?: string
+    readonly date_from?: string
 
     /**
      * Date to
      * @type {string}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly dateTo?: string
+    readonly date_to?: string
 
     /**
      * Action
@@ -255,7 +255,7 @@ export interface ProjectHistoryApiProjectHistoryListV1Request {
      * @type {number}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly groupId?: number
+    readonly group_id?: number
 }
 
 /**
@@ -274,7 +274,7 @@ export class ProjectHistoryApi extends BaseAPI implements ProjectHistoryApiInter
      * @memberof ProjectHistoryApi
      */
     public projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectHistoryApiFp(this.configuration).projectHistoryListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.action, requestParameters.groupId, options).then((request) => request(this.axios, this.basePath));
+        return ProjectHistoryApiFp(this.configuration).projectHistoryListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.action, requestParameters.group_id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

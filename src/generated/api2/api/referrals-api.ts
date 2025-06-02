@@ -125,7 +125,7 @@ export const ReferralsApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTotalInfoReferralsResponse> {
-            return localVarFp.referralsTotalInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.referralsTotalInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -166,7 +166,7 @@ export interface ReferralsApiReferralsTotalInfoV1Request {
      * @type {number}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -192,7 +192,7 @@ export class ReferralsApi extends BaseAPI implements ReferralsApiInterface {
      * @memberof ReferralsApi
      */
     public referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig) {
-        return ReferralsApiFp(this.configuration).referralsTotalInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ReferralsApiFp(this.configuration).referralsTotalInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

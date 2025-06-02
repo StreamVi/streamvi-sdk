@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **BlogPageSiteResponseId**(BlogPageSiteResponseId.md) |  | [default to undefined]
+**_id** | **BlogPageSiteResponseId**(BlogPageSiteResponseId.md) |  | [default to undefined]
 **language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
-**languageIso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
+**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
 **title** | **string** | Title | [default to undefined]
-**countUse** | **number** | Count of user | [default to undefined]
+**count_use** | **number** | Count of user | [default to undefined]
 
 ## Example
 
@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 import { SiteBlogPageTagResponse } from 'streamvi-api-client';
 
 const instance: SiteBlogPageTagResponse = {
-    id,
+    _id,
     language,
-    languageIso,
+    language_iso,
     title,
-    countUse,
+    count_use,
 };
 ```
 

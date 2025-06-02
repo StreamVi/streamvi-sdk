@@ -7,12 +7,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**projectId** | **number** | Project id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
 **type** | **string** | Code | [default to undefined]
 **amount** | **number** | Amount | [default to undefined]
-**planPeriod** | **string** | Period | [default to undefined]
-**planTranscodingId** | **number** | Transcoding plan id | [default to undefined]
-**planTranscodingCountFlow** | **number** | Count flow | [default to undefined]
+**plan_period** | **string** | Period | [default to undefined]
+**plan_transcoding_id** | **number** | Transcoding plan id | [default to undefined]
+**plan_transcoding_count_flow** | **number** | Count flow | [default to undefined]
 
 ## Example
 
@@ -22,12 +22,12 @@ import { PaymentCreateRequestTranscoderBodyDto } from 'streamvi-api-client';
 const instance: PaymentCreateRequestTranscoderBodyDto = {
     v,
     language,
-    projectId,
+    project_id,
     type,
     amount,
-    planPeriod,
-    planTranscodingId,
-    planTranscodingCountFlow,
+    plan_period,
+    plan_transcoding_id,
+    plan_transcoding_count_flow,
 };
 ```
 

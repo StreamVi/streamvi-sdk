@@ -384,7 +384,7 @@ export const ChatGatewayApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -394,7 +394,7 @@ export const ChatGatewayApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto> {
-            return localVarFp.methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -404,7 +404,7 @@ export const ChatGatewayApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse> {
-            return localVarFp.methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -414,7 +414,7 @@ export const ChatGatewayApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto> {
-            return localVarFp.methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.methodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.MethodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -492,14 +492,14 @@ export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly broadcastId: number
+    readonly broadcast_id: number
 
     /**
      * Event id
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly eventId: string
+    readonly event_id: string
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -534,14 +534,14 @@ export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly broadcastId: number
+    readonly broadcast_id: number
 
     /**
      * Event id
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly eventId: string
+    readonly event_id: string
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -576,7 +576,7 @@ export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly broadcastId: number
+    readonly broadcast_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -611,14 +611,14 @@ export interface ChatGatewayApiMethodChatGatewaySendV1Request {
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly broadcastId: number
+    readonly broadcast_id: number
 
     /**
      * 
      * @type {MethodChatSendMessageRequestDto}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto
+    readonly MethodChatSendMessageRequestDto: MethodChatSendMessageRequestDto
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -644,7 +644,7 @@ export class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
      * @memberof ChatGatewayApi
      */
     public methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig) {
-        return ChatGatewayApiFp(this.configuration).methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChatGatewayApiFp(this.configuration).methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -656,7 +656,7 @@ export class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
      * @memberof ChatGatewayApi
      */
     public methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig) {
-        return ChatGatewayApiFp(this.configuration).methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChatGatewayApiFp(this.configuration).methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -668,7 +668,7 @@ export class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
      * @memberof ChatGatewayApi
      */
     public methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig) {
-        return ChatGatewayApiFp(this.configuration).methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChatGatewayApiFp(this.configuration).methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -680,7 +680,7 @@ export class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
      * @memberof ChatGatewayApi
      */
     public methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig) {
-        return ChatGatewayApiFp(this.configuration).methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.methodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChatGatewayApiFp(this.configuration).methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.MethodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

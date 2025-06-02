@@ -194,7 +194,7 @@ export const PayoutApiFactory = function (configuration?: Configuration, basePat
          * @throws {RequiredError}
          */
         payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.payoutCreateV1(requestParameters.language, requestParameters.payoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.payoutCreateV1(requestParameters.language, requestParameters.PayoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -204,7 +204,7 @@ export const PayoutApiFactory = function (configuration?: Configuration, basePat
          * @throws {RequiredError}
          */
         payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse> {
-            return localVarFp.payoutPrepareV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.payoutPrepareV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -255,7 +255,7 @@ export interface PayoutApiPayoutCreateV1Request {
      * @type {PayoutCreateRequestBodyDto}
      * @memberof PayoutApiPayoutCreateV1
      */
-    readonly payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto
+    readonly PayoutCreateRequestBodyDto: PayoutCreateRequestBodyDto
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -283,7 +283,7 @@ export interface PayoutApiPayoutPrepareV1Request {
      * @type {number}
      * @memberof PayoutApiPayoutPrepareV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -309,7 +309,7 @@ export class PayoutApi extends BaseAPI implements PayoutApiInterface {
      * @memberof PayoutApi
      */
     public payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig) {
-        return PayoutApiFp(this.configuration).payoutCreateV1(requestParameters.language, requestParameters.payoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PayoutApiFp(this.configuration).payoutCreateV1(requestParameters.language, requestParameters.PayoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -321,7 +321,7 @@ export class PayoutApi extends BaseAPI implements PayoutApiInterface {
      * @memberof PayoutApi
      */
     public payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig) {
-        return PayoutApiFp(this.configuration).payoutPrepareV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PayoutApiFp(this.configuration).payoutPrepareV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

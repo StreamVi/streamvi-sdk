@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **name** | **string** | name | [default to undefined]
 **id** | **string** | name | [default to undefined]
 **transcoderId** | **number** | Transcoder id | [optional] [default to undefined]
-**groupId** | **number** | group_id | [default to undefined]
+**group_id** | **number** | group_id | [default to undefined]
 **type** | **string** | type | [default to undefined]
-**photoDefault** | **string** | photo_default | [default to undefined]
+**photo_default** | **string** | photo_default | [default to undefined]
 **sell** | **boolean** | sell | [default to undefined]
 **price** | **number** | price | [default to undefined]
 **live** | **boolean** | live | [default to undefined]
 **status** | **string** | status | [default to undefined]
-**userId** | **number** | user_id | [default to undefined]
+**user_id** | **number** | user_id | [default to undefined]
 **active** | **boolean** | active | [default to undefined]
 **guestsNum** | **number** | guestsNum | [default to undefined]
 **guestRights** | **number** | guestRights | [default to undefined]
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **rtmp** | **SearchChannelRtmpDto**(SearchChannelRtmpDto.md) | rtmp | [default to undefined]
 **credentials** | **Array&lt;SearchChannelCredentialsDto&gt;**(SearchChannelCredentialsDto.md) | credentials | [default to undefined]
 **tokens** | **SearchChannelCredentialDto**(SearchChannelCredentialDto.md) | Tokens | [default to undefined]
-**liveUsers** | **Array&lt;SearchChannelLiveUserDto&gt;**(SearchChannelLiveUserDto.md) | live_users | [optional] [default to undefined]
+**live_users** | **Array&lt;SearchChannelLiveUserDto&gt;**(SearchChannelLiveUserDto.md) | live_users | [optional] [default to undefined]
 **platform** | **SearchChannelPlatformDto**(SearchChannelPlatformDto.md) | Platform | [default to undefined]
 
 ## Example
@@ -38,14 +38,14 @@ const instance: SearchChannelItem = {
     name,
     id,
     transcoderId,
-    groupId,
+    group_id,
     type,
-    photoDefault,
+    photo_default,
     sell,
     price,
     live,
     status,
-    userId,
+    user_id,
     active,
     guestsNum,
     guestRights,
@@ -56,7 +56,7 @@ const instance: SearchChannelItem = {
     rtmp,
     credentials,
     tokens,
-    liveUsers,
+    live_users,
     platform,
 };
 ```

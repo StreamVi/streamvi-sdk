@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**taskId** | **number** |  | [default to undefined]
-**videoId** | **number** |  | [default to undefined]
+**task_id** | **number** |  | [default to undefined]
+**video_id** | **number** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **duration** | **number** |  | [default to undefined]
 
@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 import { MethodProjectLiveStatusVideo } from 'streamvi-api-client';
 
 const instance: MethodProjectLiveStatusVideo = {
-    taskId,
-    videoId,
+    task_id,
+    video_id,
     name,
     duration,
 };

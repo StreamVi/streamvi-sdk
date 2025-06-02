@@ -165,7 +165,7 @@ export const MoneyFlowApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse> {
-            return localVarFp.moneyFlowListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.type, requestParameters.balanceType, options).then((request) => request(axios, basePath));
+            return localVarFp.moneyFlowListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.type, requestParameters.balance_type, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -206,7 +206,7 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
      * @type {number}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -234,14 +234,14 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
      * @type {string}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
-    readonly dateFrom?: string
+    readonly date_from?: string
 
     /**
      * Date to
      * @type {string}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
-    readonly dateTo?: string
+    readonly date_to?: string
 
     /**
      * Filter code transaction. example 1 or 1,2,3
@@ -255,7 +255,7 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
      * @type {string}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
-    readonly balanceType?: string
+    readonly balance_type?: string
 }
 
 /**
@@ -274,7 +274,7 @@ export class MoneyFlowApi extends BaseAPI implements MoneyFlowApiInterface {
      * @memberof MoneyFlowApi
      */
     public moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig) {
-        return MoneyFlowApiFp(this.configuration).moneyFlowListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.type, requestParameters.balanceType, options).then((request) => request(this.axios, this.basePath));
+        return MoneyFlowApiFp(this.configuration).moneyFlowListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.type, requestParameters.balance_type, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

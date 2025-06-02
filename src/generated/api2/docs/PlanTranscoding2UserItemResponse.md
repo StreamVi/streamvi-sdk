@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**planTranscoding2userId** | **number** | Plan transcoding id | [default to undefined]
+**plan_transcoding2user_id** | **number** | Plan transcoding id | [default to undefined]
 **count** | **number** | Count flows | [default to undefined]
-**dateStart** | **string** | Date start tariff | [default to undefined]
-**dateEnd** | **string** | Date end tariff | [default to undefined]
-**dateCreate** | **string** | Date create tariff | [default to undefined]
+**date_start** | **string** | Date start tariff | [default to undefined]
+**date_end** | **string** | Date end tariff | [default to undefined]
+**date_create** | **string** | Date create tariff | [default to undefined]
 **period** | **string** | Period | [default to undefined]
-**periodUuid** | **string** | Period uuid | [default to undefined]
+**period_uuid** | **string** | Period uuid | [default to undefined]
 **status** | **string** | Status | [default to undefined]
 **prolongation** | **number** | Prolongation | [optional] [default to undefined]
 
@@ -21,13 +21,13 @@ Name | Type | Description | Notes
 import { PlanTranscoding2UserItemResponse } from 'streamvi-api-client';
 
 const instance: PlanTranscoding2UserItemResponse = {
-    planTranscoding2userId,
+    plan_transcoding2user_id,
     count,
-    dateStart,
-    dateEnd,
-    dateCreate,
+    date_start,
+    date_end,
+    date_create,
     period,
-    periodUuid,
+    period_uuid,
     status,
     prolongation,
 };

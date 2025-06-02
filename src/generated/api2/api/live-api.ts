@@ -133,7 +133,7 @@ export const LiveApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteLiveRestreamsInfoResponse> {
-            return localVarFp.controllersRestreamsV1(requestParameters.language, requestParameters.projectId, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.controllersRestreamsV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -174,14 +174,14 @@ export interface LiveApiControllersRestreamsV1Request {
      * @type {number}
      * @memberof LiveApiControllersRestreamsV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Broadcast id
      * @type {number}
      * @memberof LiveApiControllersRestreamsV1
      */
-    readonly broadcastId: number
+    readonly broadcast_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -207,7 +207,7 @@ export class LiveApi extends BaseAPI implements LiveApiInterface {
      * @memberof LiveApi
      */
     public controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig) {
-        return LiveApiFp(this.configuration).controllersRestreamsV1(requestParameters.language, requestParameters.projectId, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return LiveApiFp(this.configuration).controllersRestreamsV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

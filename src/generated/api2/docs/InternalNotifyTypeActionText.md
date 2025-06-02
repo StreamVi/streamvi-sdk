@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
-**languageIso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
+**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
 **title** | **string** | Title value | [default to '']
-**complitedTitle** | **string** | Title of complited value | [default to '']
+**complited_title** | **string** | Title of complited value | [default to '']
 
 ## Example
 
@@ -17,9 +17,9 @@ import { InternalNotifyTypeActionText } from 'streamvi-api-client';
 
 const instance: InternalNotifyTypeActionText = {
     language,
-    languageIso,
+    language_iso,
     title,
-    complitedTitle,
+    complited_title,
 };
 ```
 

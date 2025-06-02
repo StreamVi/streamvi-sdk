@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accessToken** | **string** | Access token | [default to undefined]
+**access_token** | **string** | Access token | [default to undefined]
 
 ## Example
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 import { SiteAuthCentrifugeResponse } from 'streamvi-api-client';
 
 const instance: SiteAuthCentrifugeResponse = {
-    accessToken,
+    access_token,
 };
 ```
 

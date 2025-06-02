@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**countUnread** | **number** | Count unread | [default to undefined]
+**count_unread** | **number** | Count unread | [default to undefined]
 
 ## Example
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 import { NotifyHistoryStatusUserResponse } from 'streamvi-api-client';
 
 const instance: NotifyHistoryStatusUserResponse = {
-    countUnread,
+    count_unread,
 };
 ```
 

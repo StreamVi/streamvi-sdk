@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accessToken** | **string** | Access token | [default to undefined]
-**broadcastId** | **number** | Broadcast Id | [default to undefined]
+**access_token** | **string** | Access token | [default to undefined]
+**broadcast_id** | **number** | Broadcast Id | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { MethodCurrentBroadcastResponse } from 'streamvi-api-client';
 
 const instance: MethodCurrentBroadcastResponse = {
-    accessToken,
-    broadcastId,
+    access_token,
+    broadcast_id,
 };
 ```
 

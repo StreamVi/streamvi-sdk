@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Primary key | [default to undefined]
-**userId** | **number** | User id | [default to undefined]
-**projectId** | **number** | Project id | [default to undefined]
-**accessType** | **number** | Access type | [default to undefined]
+**user_id** | **number** | User id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
+**access_type** | **number** | Access type | [default to undefined]
 **project** | **UserProject2ProjectResponse**(UserProject2ProjectResponse.md) | Project data | [default to undefined]
-**memberCount** | **number** | Members count | [default to undefined]
+**member_count** | **number** | Members count | [default to undefined]
 
 ## Example
 
@@ -19,11 +19,11 @@ import { UserProjectResponse } from 'streamvi-api-client';
 
 const instance: UserProjectResponse = {
     id,
-    userId,
-    projectId,
-    accessType,
+    user_id,
+    project_id,
+    access_type,
     project,
-    memberCount,
+    member_count,
 };
 ```
 

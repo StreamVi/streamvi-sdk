@@ -381,7 +381,7 @@ export const StreamPullKeysApiFactory = function (configuration?: Configuration,
          * @throws {RequiredError}
          */
         streamPullKeysSiteCheckV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CheckPullKeyResponse> {
-            return localVarFp.streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -391,7 +391,7 @@ export const StreamPullKeysApiFactory = function (configuration?: Configuration,
          * @throws {RequiredError}
          */
         streamPullKeysSiteCreateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CreatePullKeyResponse> {
-            return localVarFp.streamPullKeysSiteCreateV1(requestParameters.createPullKeyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteCreateV1(requestParameters.CreatePullKeyRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -401,7 +401,7 @@ export const StreamPullKeysApiFactory = function (configuration?: Configuration,
          * @throws {RequiredError}
          */
         streamPullKeysSiteGetV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PullKeyListResponse> {
-            return localVarFp.streamPullKeysSiteGetV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteGetV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -411,7 +411,7 @@ export const StreamPullKeysApiFactory = function (configuration?: Configuration,
          * @throws {RequiredError}
          */
         streamPullKeysSiteRemoveV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteRemoveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -421,7 +421,7 @@ export const StreamPullKeysApiFactory = function (configuration?: Configuration,
          * @throws {RequiredError}
          */
         streamPullKeysSiteUpdateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.streamPullKeysSiteUpdateV1(requestParameters.updatePullKeyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteUpdateV1(requestParameters.UpdatePullKeyRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -502,7 +502,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteCheckV1Request {
      * @type {number}
      * @memberof StreamPullKeysApiStreamPullKeysSiteCheckV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Key
@@ -530,7 +530,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteCreateV1Request {
      * @type {CreatePullKeyRequest}
      * @memberof StreamPullKeysApiStreamPullKeysSiteCreateV1
      */
-    readonly createPullKeyRequest: CreatePullKeyRequest
+    readonly CreatePullKeyRequest: CreatePullKeyRequest
 }
 
 /**
@@ -551,7 +551,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteGetV1Request {
      * @type {number}
      * @memberof StreamPullKeysApiStreamPullKeysSiteGetV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -579,7 +579,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteRemoveV1Request {
      * @type {number}
      * @memberof StreamPullKeysApiStreamPullKeysSiteRemoveV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Key
@@ -607,7 +607,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteUpdateV1Request {
      * @type {UpdatePullKeyRequest}
      * @memberof StreamPullKeysApiStreamPullKeysSiteUpdateV1
      */
-    readonly updatePullKeyRequest: UpdatePullKeyRequest
+    readonly UpdatePullKeyRequest: UpdatePullKeyRequest
 }
 
 /**
@@ -626,7 +626,7 @@ export class StreamPullKeysApi extends BaseAPI implements StreamPullKeysApiInter
      * @memberof StreamPullKeysApi
      */
     public streamPullKeysSiteCheckV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCheckV1Request, options?: RawAxiosRequestConfig) {
-        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -638,7 +638,7 @@ export class StreamPullKeysApi extends BaseAPI implements StreamPullKeysApiInter
      * @memberof StreamPullKeysApi
      */
     public streamPullKeysSiteCreateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCreateV1Request, options?: RawAxiosRequestConfig) {
-        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteCreateV1(requestParameters.createPullKeyRequest, options).then((request) => request(this.axios, this.basePath));
+        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteCreateV1(requestParameters.CreatePullKeyRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -650,7 +650,7 @@ export class StreamPullKeysApi extends BaseAPI implements StreamPullKeysApiInter
      * @memberof StreamPullKeysApi
      */
     public streamPullKeysSiteGetV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteGetV1Request, options?: RawAxiosRequestConfig) {
-        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteGetV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteGetV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -662,7 +662,7 @@ export class StreamPullKeysApi extends BaseAPI implements StreamPullKeysApiInter
      * @memberof StreamPullKeysApi
      */
     public streamPullKeysSiteRemoveV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteRemoveV1Request, options?: RawAxiosRequestConfig) {
-        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -674,7 +674,7 @@ export class StreamPullKeysApi extends BaseAPI implements StreamPullKeysApiInter
      * @memberof StreamPullKeysApi
      */
     public streamPullKeysSiteUpdateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteUpdateV1Request, options?: RawAxiosRequestConfig) {
-        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteUpdateV1(requestParameters.updatePullKeyRequest, options).then((request) => request(this.axios, this.basePath));
+        return StreamPullKeysApiFp(this.configuration).streamPullKeysSiteUpdateV1(requestParameters.UpdatePullKeyRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

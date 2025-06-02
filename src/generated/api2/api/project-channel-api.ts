@@ -389,7 +389,7 @@ export const ProjectChannelApiFactory = function (configuration?: Configuration,
          * @throws {RequiredError}
          */
         projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.projectChannelChangeAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.accessType, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -399,7 +399,7 @@ export const ProjectChannelApiFactory = function (configuration?: Configuration,
          * @throws {RequiredError}
          */
         projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.projectChannelDelV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.targetProjectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelDelV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.target_project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -409,7 +409,7 @@ export const ProjectChannelApiFactory = function (configuration?: Configuration,
          * @throws {RequiredError}
          */
         projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse> {
-            return localVarFp.projectChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -419,7 +419,7 @@ export const ProjectChannelApiFactory = function (configuration?: Configuration,
          * @throws {RequiredError}
          */
         projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.projectChannelTransferOwnerV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelTransferOwnerV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -490,28 +490,28 @@ export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Target project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly toProjectId: number
+    readonly to_project_id: number
 
     /**
      * Access type
      * @type {0 | 1 | 1 | 2}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly accessType: ProjectChannelChangeAccessV1AccessTypeEnum
+    readonly access_type: ProjectChannelChangeAccessV1AccessTypeEnum
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -539,21 +539,21 @@ export interface ProjectChannelApiProjectChannelDelV1Request {
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Target project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly targetProjectId: number
+    readonly target_project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -581,14 +581,14 @@ export interface ProjectChannelApiProjectChannelListV1Request {
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -616,21 +616,21 @@ export interface ProjectChannelApiProjectChannelTransferOwnerV1Request {
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly projectId: number
+    readonly project_id: number
 
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly channelId: number
+    readonly channel_id: number
 
     /**
      * Target project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly toProjectId: number
+    readonly to_project_id: number
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
@@ -656,7 +656,7 @@ export class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInter
      * @memberof ProjectChannelApi
      */
     public projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelApiFp(this.configuration).projectChannelChangeAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.accessType, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelApiFp(this.configuration).projectChannelChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -668,7 +668,7 @@ export class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInter
      * @memberof ProjectChannelApi
      */
     public projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelApiFp(this.configuration).projectChannelDelV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.targetProjectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelApiFp(this.configuration).projectChannelDelV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.target_project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -680,7 +680,7 @@ export class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInter
      * @memberof ProjectChannelApi
      */
     public projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelApiFp(this.configuration).projectChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelApiFp(this.configuration).projectChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -692,7 +692,7 @@ export class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInter
      * @memberof ProjectChannelApi
      */
     public projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelApiFp(this.configuration).projectChannelTransferOwnerV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelApiFp(this.configuration).projectChannelTransferOwnerV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

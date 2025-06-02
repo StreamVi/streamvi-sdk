@@ -6,12 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Id of page in mongodb | [default to undefined]
-**projectId** | **number** | Project id | [default to undefined]
-**dateCreate** | **string** | Date create | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
+**date_create** | **string** | Date create | [default to undefined]
 **actions** | **object** | Actions | [default to undefined]
 **channel** | **string** | Channel | [default to undefined]
 **text** | **Array&lt;InternalNotifyTypeText&gt;**(InternalNotifyTypeText.md) | Array of texts | [default to undefined]
-**statusRead** | **boolean** | Status read | [default to undefined]
+**status_read** | **boolean** | Status read | [default to undefined]
 **category** | **string** | Category of user notify | [default to undefined]
 
 ## Example
@@ -21,12 +21,12 @@ import { NotifyHistorySiteResponse } from 'streamvi-api-client';
 
 const instance: NotifyHistorySiteResponse = {
     id,
-    projectId,
-    dateCreate,
+    project_id,
+    date_create,
     actions,
     channel,
     text,
-    statusRead,
+    status_read,
     category,
 };
 ```

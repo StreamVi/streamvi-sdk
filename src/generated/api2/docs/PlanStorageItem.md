@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **number** | Plan restream id | [default to undefined]
 **size** | **number** | Size | [default to undefined]
 **period** | **string** | Period | [default to undefined]
-**dateEnd** | **string** | Date end tariff | [default to undefined]
+**date_end** | **string** | Date end tariff | [default to undefined]
 
 ## Example
 
@@ -19,7 +19,7 @@ const instance: PlanStorageItem = {
     id,
     size,
     period,
-    dateEnd,
+    date_end,
 };
 ```
 

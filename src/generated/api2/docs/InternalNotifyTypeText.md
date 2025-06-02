@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
-**languageIso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
+**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
 **title** | **string** | Title value | [default to '']
 **text** | **string** | Text value | [default to '']
 
@@ -17,7 +17,7 @@ import { InternalNotifyTypeText } from 'streamvi-api-client';
 
 const instance: InternalNotifyTypeText = {
     language,
-    languageIso,
+    language_iso,
     title,
     text,
 };

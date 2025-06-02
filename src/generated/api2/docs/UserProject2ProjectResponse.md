@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **number** | User id | [default to undefined]
-**projectId** | **number** | Project id | [default to undefined]
+**user_id** | **number** | User id | [default to undefined]
+**project_id** | **number** | Project id | [default to undefined]
 **name** | **string** | Имя | [default to undefined]
 **fename** | **string** | Фамилия | [default to undefined]
-**photo50** | **string** | Аватарка | [default to undefined]
+**photo_50** | **string** | Аватарка | [default to undefined]
 **type** | **number** | Тип 0 - личный проект, 1 - командный проект | [default to undefined]
-**externalId** | **string** | External id | [default to undefined]
-**accessType** | **number** | Access type | [default to undefined]
+**external_id** | **string** | External id | [default to undefined]
+**access_type** | **number** | Access type | [default to undefined]
 
 ## Example
 
@@ -20,14 +20,14 @@ Name | Type | Description | Notes
 import { UserProject2ProjectResponse } from 'streamvi-api-client';
 
 const instance: UserProject2ProjectResponse = {
-    userId,
-    projectId,
+    user_id,
+    project_id,
     name,
     fename,
-    photo50,
+    photo_50,
     type,
-    externalId,
-    accessType,
+    external_id,
+    access_type,
 };
 ```
 

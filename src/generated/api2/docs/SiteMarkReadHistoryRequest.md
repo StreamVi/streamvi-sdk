@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**notifyHistoryIds** | **Array&lt;string&gt;** | Id of page in mongodb | [default to undefined]
+**notify_history_ids** | **Array&lt;string&gt;** | Id of page in mongodb | [default to undefined]
 
 ## Example
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 import { SiteMarkReadHistoryRequest } from 'streamvi-api-client';
 
 const instance: SiteMarkReadHistoryRequest = {
-    notifyHistoryIds,
+    notify_history_ids,
 };
 ```
 

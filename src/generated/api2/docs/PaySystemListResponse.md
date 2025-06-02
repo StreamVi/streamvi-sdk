@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**paySystemId** | **number** | Id | [default to undefined]
+**pay_system_id** | **number** | Id | [default to undefined]
 **name** | **string** | Name | [default to undefined]
-**minAmount** | **number** | Min amount | [default to undefined]
-**maxAmount** | **number** | Max amount | [default to undefined]
+**min_amount** | **number** | Min amount | [default to undefined]
+**max_amount** | **number** | Max amount | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
 **annual** | **number** | The possibility of annual replenishment | [default to undefined]
 **topup** | **number** | The ability to replenish the balance | [default to undefined]
@@ -21,10 +21,10 @@ Name | Type | Description | Notes
 import { PaySystemListResponse } from 'streamvi-api-client';
 
 const instance: PaySystemListResponse = {
-    paySystemId,
+    pay_system_id,
     name,
-    minAmount,
-    maxAmount,
+    min_amount,
+    max_amount,
     currency,
     annual,
     topup,
