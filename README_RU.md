@@ -17,8 +17,64 @@
 
 ## Установка
 
+### Установка из GitHub репозитория
+
+Установите напрямую из GitHub репозитория:
+
+```bash
+npm install git+https://github.com/StreamVi/streamvi-sdk.git
+```
+
+Или с указанием конкретной версии/тега:
+
+```bash
+npm install git+https://github.com/StreamVi/streamvi-sdk.git#v1.0.2
+```
+
+### Локальная установка для разработки
+
 ```bash
 npm install
+```
+
+## Импорт модулей
+
+### Базовая конфигурация SDK
+
+```typescript
+import { StreamViSdkConfig } from 'streamvi-sdk';
+
+const config = new StreamViSdkConfig({ 
+  accessToken: 'ваш_токен_доступа' 
+});
+```
+
+### Импорт API-клиентов
+
+Импортируйте конкретные API-клиенты по необходимости:
+
+```typescript
+import { 
+  UserProjectApi,
+  PaySettingApi,
+  ChannelApi,
+  BroadcastApi 
+} from 'streamvi-sdk';
+```
+
+Или импортируйте все API сразу:
+
+```typescript
+import * as StreamViAPIs from 'streamvi-sdk';
+```
+
+### Импорт типов и перечислений
+
+```typescript
+import { 
+  UserProjectGetProjectInfoV1LanguageEnum,
+  PaySettingGetSettingV3LanguageEnum 
+} from 'streamvi-sdk';
 ```
 
 ## Конфигурация
@@ -45,8 +101,8 @@ npm run example
 ### Пример получения информации о проекте через SDK
 
 ```typescript
-import { StreamViSdkConfig } from './src/streamvi-sdk-config';
-import { UserProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from './src/generated/api2/api/user-project-api';
+import { StreamViSdkConfig } from 'streamvi-sdk';
+import { UserProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from 'streamvi-sdk';
 
 async function getProjectInfo(accessToken: string, projectId: number, language: UserProjectGetProjectInfoV1LanguageEnum = UserProjectGetProjectInfoV1LanguageEnum.Ru) {
   const sdkConfig = new StreamViSdkConfig({ accessToken });
@@ -63,8 +119,8 @@ async function getProjectInfo(accessToken: string, projectId: number, language: 
 ### Пример использования PaySetting API с версией 3
 
 ```typescript
-import { StreamViSdkConfig } from './src/streamvi-sdk-config';
-import { PaySettingApi, PaySettingGetSettingV3LanguageEnum } from './src/generated/api2/api/pay-setting-api';
+import { StreamViSdkConfig } from 'streamvi-sdk';
+import { PaySettingApi, PaySettingGetSettingV3LanguageEnum } from 'streamvi-sdk';
 
 async function getPaySettings(accessToken: string, projectId: number, language: PaySettingGetSettingV3LanguageEnum = PaySettingGetSettingV3LanguageEnum.Ru) {
   const sdkConfig = new StreamViSdkConfig({ accessToken });

@@ -17,6 +17,22 @@ This version may be preferable for projects where bundle size matters or native 
 
 ## Installation
 
+### Install from GitHub repository
+
+Install directly from GitHub repository:
+
+```bash
+npm install git+https://github.com/StreamVi/streamvi-sdk.git
+```
+
+Or with specific version/tag:
+
+```bash
+npm install git+https://github.com/StreamVi/streamvi-sdk.git#v1.0.2
+```
+
+### Local development install
+
 ```bash
 npm install
 ```
@@ -45,8 +61,8 @@ Open http://localhost:3000 and login via StreamVi.
 ### Example of getting project information via SDK
 
 ```typescript
-import { StreamViSdkConfig } from './src/streamvi-sdk-config';
-import { UserProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from './src/generated/api2/api/user-project-api';
+import { StreamViSdkConfig } from 'streamvi-sdk';
+import { UserProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from 'streamvi-sdk';
 
 async function getProjectInfo(accessToken: string, projectId: number, language: UserProjectGetProjectInfoV1LanguageEnum = UserProjectGetProjectInfoV1LanguageEnum.Ru) {
   const sdkConfig = new StreamViSdkConfig({ accessToken });
@@ -63,8 +79,8 @@ async function getProjectInfo(accessToken: string, projectId: number, language: 
 ### Example of using PaySetting API with version 3
 
 ```typescript
-import { StreamViSdkConfig } from './src/streamvi-sdk-config';
-import { PaySettingApi, PaySettingGetSettingV3LanguageEnum } from './src/generated/api2/api/pay-setting-api';
+import { StreamViSdkConfig } from 'streamvi-sdk';
+import { PaySettingApi, PaySettingGetSettingV3LanguageEnum } from 'streamvi-sdk';
 
 async function getPaySettings(accessToken: string, projectId: number, language: PaySettingGetSettingV3LanguageEnum = PaySettingGetSettingV3LanguageEnum.Ru) {
   const sdkConfig = new StreamViSdkConfig({ accessToken });
