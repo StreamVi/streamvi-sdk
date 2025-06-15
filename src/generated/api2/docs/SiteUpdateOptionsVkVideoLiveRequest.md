@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **project_id** | **number** | Project id | [default to undefined]
 **channel_id** | **number** | Channel id | [default to undefined]
 **title** | **string** |  | [default to 'title']
-**category_id** | **string** | category id | [default to '10023']
-**category_name** | **string** | category name | [default to 'name']
+**category_id** | **string** | category id | [optional] [default to '10023']
+**category_name** | **string** | category name | [optional] [default to 'name']
 
 ## Example
 

@@ -3,6 +3,8 @@
   "paths": {
     "/method/users/profile": {
       "get": {
+        "deprecated": true,
+        "description": "Use /method/account/profile instead.",
         "operationId": "User_getProfileV1",
         "parameters": [
           {
@@ -73,10 +75,12 @@
         },
         "summary": "Get user profile",
         "tags": [
-          "User"
+          "Users"
         ]
       },
       "post": {
+        "deprecated": true,
+        "description": "Use /method/account/profile instead.",
         "operationId": "User_updateProfileV1",
         "parameters": [],
         "requestBody": {
@@ -113,7 +117,123 @@
         },
         "summary": "Update profile",
         "tags": [
-          "User"
+          "Users"
+        ]
+      }
+    },
+    "/method/account/profile": {
+      "get": {
+        "operationId": "Account_getProfileV1",
+        "parameters": [
+          {
+            "name": "v",
+            "required": false,
+            "in": "query",
+            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "schema": {
+              "example": "1",
+              "enum": [
+                "1",
+                "2",
+                "3"
+              ],
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "language",
+            "required": true,
+            "in": "query",
+            "description": "Current language",
+            "schema": {
+              "default": "en",
+              "example": "en",
+              "enum": [
+                "ru",
+                "en",
+                "cn"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "project_id",
+            "required": false,
+            "in": "query",
+            "description": "Project id",
+            "schema": {
+              "nullable": true,
+              "default": null,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get account profile",
+        "tags": [
+          "Account"
+        ]
+      },
+      "post": {
+        "operationId": "Account_updateProfileV1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Update account profile",
+        "tags": [
+          "Account"
         ]
       }
     },
@@ -934,7 +1054,7 @@
         },
         "summary": "Select user for project",
         "tags": [
-          "UserProject"
+          "Project"
         ]
       }
     },
@@ -1009,7 +1129,7 @@
         },
         "summary": "Get project by number id",
         "tags": [
-          "UserProject"
+          "Project"
         ]
       }
     },
@@ -1084,7 +1204,7 @@
         },
         "summary": "Get user by number id",
         "tags": [
-          "UserProject"
+          "Project"
         ]
       }
     },
@@ -1173,7 +1293,7 @@
         },
         "summary": "List of user in project",
         "tags": [
-          "UserProject"
+          "Project"
         ]
       }
     },
@@ -1256,7 +1376,7 @@
         },
         "summary": "Remove user from project",
         "tags": [
-          "UserProject"
+          "Project"
         ]
       }
     },
@@ -1353,7 +1473,7 @@
         },
         "summary": "Change access user from project",
         "tags": [
-          "UserProject"
+          "Project"
         ]
       }
     },
@@ -1458,7 +1578,7 @@
         },
         "summary": "List of project for current user",
         "tags": [
-          "UserProject"
+          "Project"
         ]
       }
     },
@@ -1531,50 +1651,6 @@
           }
         },
         "summary": "Get project full info",
-        "tags": [
-          "UserProject"
-        ]
-      }
-    },
-    "/method/project/live-status": {
-      "get": {
-        "operationId": "Method_liveStatusV1",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MethodProjectLiveStatusResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "oAuth": [
-              "oAuth"
-            ]
-          },
-          {
-            "X-API-KEY": [
-              "X-API-KEY"
-            ]
-          }
-        ],
-        "summary": "Get live status",
         "tags": [
           "Project"
         ]
@@ -5642,264 +5718,6 @@
         ]
       }
     },
-    "/method/auth/auth-telegram": {
-      "get": {
-        "operationId": "Auth_authTelegramV1",
-        "parameters": [
-          {
-            "name": "v",
-            "required": false,
-            "in": "query",
-            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
-            "schema": {
-              "example": "1",
-              "enum": [
-                "1",
-                "2",
-                "3"
-              ],
-              "type": "string",
-              "default": "1"
-            }
-          },
-          {
-            "name": "language",
-            "required": true,
-            "in": "query",
-            "description": "Current language",
-            "schema": {
-              "default": "en",
-              "example": "en",
-              "enum": [
-                "ru",
-                "en",
-                "cn"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "name": "auth_date",
-            "required": true,
-            "in": "query",
-            "description": "Time auth",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "id",
-            "required": true,
-            "in": "query",
-            "description": "Telegram userId",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "first_name",
-            "required": true,
-            "in": "query",
-            "description": "First name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "last_name",
-            "required": false,
-            "in": "query",
-            "description": "Last name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "username",
-            "required": false,
-            "in": "query",
-            "description": "Nickname",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "photo_url",
-            "required": false,
-            "in": "query",
-            "description": "Photo",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "language_code",
-            "required": false,
-            "in": "query",
-            "description": "IETF language tag of the user's language",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "is_premium",
-            "required": false,
-            "in": "query",
-            "description": "True, if this user is a Telegram Premium user",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "added_to_attachment_menu",
-            "required": false,
-            "in": "query",
-            "description": "True, if this user added the bot to the attachment menu",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "hash",
-            "required": true,
-            "in": "query",
-            "description": "Hash",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "refId",
-            "required": false,
-            "in": "query",
-            "description": "Referal id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "app",
-            "required": true,
-            "in": "query",
-            "description": "App oauth",
-            "schema": {
-              "default": "site",
-              "example": "site",
-              "enum": [
-                "site",
-                "admin",
-                "mobile",
-                "desktop"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "name": "redirect",
-            "required": false,
-            "in": "query",
-            "description": "Redirect url",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "country",
-            "required": false,
-            "in": "query",
-            "description": "Country code",
-            "schema": {
-              "default": "ru",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "301": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SuccessResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "summary": "Auth telegram",
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
-    "/method/auth/me": {
-      "get": {
-        "operationId": "Auth_getProfileV1",
-        "parameters": [
-          {
-            "name": "v",
-            "required": false,
-            "in": "query",
-            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
-            "schema": {
-              "example": "1",
-              "enum": [
-                "1",
-                "2",
-                "3"
-              ],
-              "type": "string",
-              "default": "1"
-            }
-          },
-          {
-            "name": "language",
-            "required": true,
-            "in": "query",
-            "description": "Current language",
-            "schema": {
-              "default": "en",
-              "example": "en",
-              "enum": [
-                "ru",
-                "en",
-                "cn"
-              ],
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "summary": "Get basic data for auth user",
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
     "/method/auth/redirect-url": {
       "get": {
         "operationId": "Auth_getAuthUrlV1",
@@ -6119,57 +5937,6 @@
         ]
       }
     },
-    "/method/auth/refresh-access": {
-      "post": {
-        "operationId": "Auth_refreshAccessV1",
-        "parameters": [
-          {
-            "name": "User-Agent",
-            "required": true,
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SiteRefreshAuthBodyRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RefreshAuthResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "summary": "Update access token",
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
     "/method/auth/callback/vk": {
       "get": {
         "operationId": "Auth_callbackVkV1",
@@ -6284,40 +6051,6 @@
         ]
       }
     },
-    "/method/auth/guest": {
-      "get": {
-        "operationId": "Auth_guestV1",
-        "parameters": [
-          {
-            "name": "refId",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "summary": "Guest request of auth",
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
     "/method/auth/disconnect": {
       "get": {
         "operationId": "Auth_disconnectV1",
@@ -6387,48 +6120,6 @@
           }
         },
         "summary": "Disconnected social account",
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
-    "/method/auth/logout": {
-      "post": {
-        "operationId": "Auth_logoutV1",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SiteLogoutAuthRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SuccessResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "summary": "Logout",
         "tags": [
           "Auth"
         ]
@@ -9374,22 +9065,22 @@
     },
     "/method/rtmp_server/list": {
       "get": {
-        "operationId": "RtmpServer_listV1",
+        "operationId": "RtmpServer_listV2",
         "parameters": [
           {
             "name": "v",
             "required": false,
             "in": "query",
-            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "description": "Version (automatically defaults to 2 based on method version, can be overridden)",
             "schema": {
-              "example": "1",
+              "example": "2",
               "enum": [
                 "1",
                 "2",
                 "3"
               ],
               "type": "string",
-              "default": "1"
+              "default": "2"
             }
           },
           {
@@ -9442,7 +9133,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RtmpServerListResponse"
+                  "$ref": "#/components/schemas/RtmpServerListV2Response"
                 }
               }
             }
@@ -11401,6 +11092,8 @@
     },
     "/method/live/restreams": {
       "get": {
+        "deprecated": true,
+        "description": "Use /site/broadcast/restreams instead.",
         "operationId": "Controllers_restreamsV1",
         "parameters": [
           {
@@ -13417,7 +13110,7 @@
           "date_end": {
             "format": "date-time",
             "type": "string",
-            "example": "2025-05-29T14:53:17.310Z",
+            "example": "2025-06-14T05:14:43.153Z",
             "description": "Date"
           }
         },
@@ -13452,7 +13145,7 @@
           "date": {
             "format": "date-time",
             "type": "string",
-            "example": "2025-05-29T14:53:17.311Z",
+            "example": "2025-06-14T05:14:43.153Z",
             "description": "Date"
           },
           "type": {
@@ -13824,21 +13517,21 @@
             "type": "string",
             "nullable": true,
             "description": "Date end tariff",
-            "example": "2025-05-29T14:53:17.279Z"
+            "example": "2025-06-14T05:14:43.133Z"
           },
           "date_start": {
             "format": "date-time",
             "type": "string",
             "nullable": true,
             "description": "Date start",
-            "example": "2025-05-29T14:53:17.279Z"
+            "example": "2025-06-14T05:14:43.133Z"
           },
           "date_create": {
             "format": "date-time",
             "type": "string",
             "nullable": true,
             "description": "Date create",
-            "example": "2025-05-29T14:53:17.280Z"
+            "example": "2025-06-14T05:14:43.133Z"
           },
           "period": {
             "nullable": true,
@@ -14309,170 +14002,6 @@
           "access"
         ]
       },
-      "MethodProjectLiveStatusInfoRestreamData": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "status": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "status"
-        ]
-      },
-      "MethodProjectLiveStatusInfo": {
-        "type": "object",
-        "properties": {
-          "restream_data": {
-            "description": "Restream data",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MethodProjectLiveStatusInfoRestreamData"
-            }
-          },
-          "connect_id": {
-            "type": "number"
-          },
-          "connect_id_v2": {
-            "type": "string"
-          },
-          "fps": {
-            "type": "number"
-          },
-          "key_frame": {
-            "type": "number"
-          },
-          "count": {
-            "type": "number"
-          },
-          "speed": {
-            "type": "number"
-          },
-          "quality": {
-            "type": "number"
-          },
-          "bitrate": {
-            "type": "number"
-          },
-          "full_bitrate": {
-            "type": "number"
-          },
-          "status": {
-            "type": "string"
-          },
-          "restrims": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "connect_id",
-          "connect_id_v2",
-          "fps",
-          "key_frame",
-          "count",
-          "speed",
-          "quality",
-          "bitrate",
-          "full_bitrate",
-          "status",
-          "restrims"
-        ]
-      },
-      "MethodProjectLiveStatusVideo": {
-        "type": "object",
-        "properties": {
-          "task_id": {
-            "type": "number"
-          },
-          "video_id": {
-            "type": "number"
-          },
-          "name": {
-            "type": "string"
-          },
-          "duration": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "task_id",
-          "video_id",
-          "name",
-          "duration"
-        ]
-      },
-      "MethodProjectLiveStatusResponse": {
-        "type": "object",
-        "properties": {
-          "live_groups_count": {
-            "type": "number",
-            "example": "1",
-            "description": "Live group count"
-          },
-          "stream_id": {
-            "type": "number",
-            "example": 1,
-            "description": "Stream id"
-          },
-          "url": {
-            "type": "string",
-            "example": "https://example.com/live/stream123.m3u8",
-            "description": "Url live stream"
-          },
-          "app": {
-            "type": "string",
-            "example": "live",
-            "description": "App name"
-          },
-          "date": {
-            "type": "string",
-            "example": "2025-05-29T14:53:17.331Z",
-            "description": "Date"
-          },
-          "status": {
-            "type": "string",
-            "description": "Stream status"
-          },
-          "resolution": {
-            "type": "string",
-            "example": "1080x720",
-            "description": "Stream resolution"
-          },
-          "broadcast_id": {
-            "type": "number",
-            "example": 1,
-            "description": "Broadcast id"
-          },
-          "action": {
-            "type": "string",
-            "example": "active",
-            "description": "Action"
-          },
-          "info": {
-            "description": "Stream info",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MethodProjectLiveStatusInfo"
-              }
-            ]
-          },
-          "video": {
-            "description": "Video info",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MethodProjectLiveStatusVideo"
-              }
-            ]
-          }
-        },
-        "required": [
-          "live_groups_count"
-        ]
-      },
       "ProjectHistoryResponse": {
         "type": "object",
         "properties": {
@@ -14517,7 +14046,7 @@
             "format": "date-time",
             "type": "string",
             "description": "Date",
-            "default": "2025-05-29T14:53:17.407Z"
+            "default": "2025-06-14T05:14:43.219Z"
           }
         },
         "required": [
@@ -15210,15 +14739,7 @@
           "project_id",
           "channel_id",
           "title",
-          "description",
-          "category_id",
-          "category_name",
-          "category_secondary_id",
-          "category_secondary_name",
-          "playlist_id",
-          "privacy_comments",
-          "privacy_video",
-          "wall"
+          "description"
         ]
       },
       "SiteUpdateOptionsYoutubeRequest": {
@@ -15347,16 +14868,7 @@
           "project_id",
           "channel_id",
           "title",
-          "description",
-          "category_id",
-          "category_name",
-          "playlist_id",
-          "audience",
-          "latency",
-          "privacy_video",
-          "image",
-          "lang",
-          "tags"
+          "description"
         ]
       },
       "SiteUpdateOptionsTrovoRequest": {
@@ -15437,11 +14949,7 @@
           "language",
           "project_id",
           "channel_id",
-          "title",
-          "category_id",
-          "category_name",
-          "audience",
-          "lang"
+          "title"
         ]
       },
       "SiteUpdateOptionsTwitchRequest": {
@@ -15534,10 +15042,6 @@
           "project_id",
           "channel_id",
           "title",
-          "category_id",
-          "category_name",
-          "lang",
-          "tags",
           "domain"
         ]
       },
@@ -15650,9 +15154,7 @@
           "language",
           "project_id",
           "channel_id",
-          "title",
-          "category_id",
-          "category_name"
+          "title"
         ]
       },
       "SiteSetPlannedRequest": {
@@ -17404,101 +16906,6 @@
           "results"
         ]
       },
-      "SiteRefreshAuthBodyRequest": {
-        "type": "object",
-        "properties": {
-          "v": {
-            "type": "string",
-            "description": "Version",
-            "enum": [
-              "1",
-              "2",
-              "3"
-            ],
-            "example": "3"
-          },
-          "language": {
-            "default": "en",
-            "enum": [
-              "ru",
-              "en",
-              "cn"
-            ],
-            "type": "string",
-            "description": "Current language",
-            "example": "en"
-          },
-          "app": {
-            "enum": [
-              "site",
-              "admin",
-              "mobile",
-              "desktop"
-            ],
-            "type": "string",
-            "description": "App oauth",
-            "default": "site",
-            "example": "site"
-          },
-          "refresh": {
-            "type": "string",
-            "description": "Refresh token"
-          },
-          "fingerprint": {
-            "type": "string",
-            "default": "",
-            "description": "Fingerprint"
-          }
-        },
-        "required": [
-          "v",
-          "language",
-          "app",
-          "refresh"
-        ]
-      },
-      "RefreshAuthResponse": {
-        "type": "object",
-        "properties": {
-          "accessToken": {
-            "type": "string",
-            "description": "Access token"
-          },
-          "refreshToken": {
-            "type": "string",
-            "description": "Refresh token"
-          }
-        },
-        "required": [
-          "accessToken",
-          "refreshToken"
-        ]
-      },
-      "SiteLogoutAuthRequest": {
-        "type": "object",
-        "properties": {
-          "app": {
-            "enum": [
-              "site",
-              "admin",
-              "mobile",
-              "desktop"
-            ],
-            "type": "string",
-            "description": "App oauth",
-            "default": "site",
-            "example": "site"
-          },
-          "refresh": {
-            "type": "string",
-            "description": "Refresh token"
-          }
-        },
-        "required": [
-          "app",
-          "refresh"
-        ]
-      },
       "CodeAppAuthResponse": {
         "type": "object",
         "properties": {
@@ -17567,6 +16974,23 @@
           "code",
           "userAgent",
           "app"
+        ]
+      },
+      "RefreshAuthResponse": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "Access token"
+          },
+          "refreshToken": {
+            "type": "string",
+            "description": "Refresh token"
+          }
+        },
+        "required": [
+          "accessToken",
+          "refreshToken"
         ]
       },
       "TransactionResponse": {
@@ -18429,7 +17853,7 @@
           "date": {
             "format": "date-time",
             "type": "string",
-            "example": "2025-05-29T14:53:19.320Z",
+            "example": "2025-06-14T05:14:45.031Z",
             "description": "Date create"
           },
           "secret": {
@@ -18782,7 +18206,45 @@
           "reconnect"
         ]
       },
-      "RtmpServerListItem": {
+      "ServerUrlValue": {
+        "type": "object",
+        "properties": {
+          "mask": {
+            "type": "string",
+            "description": "Mask url"
+          },
+          "value": {
+            "type": "string",
+            "description": "Original url"
+          }
+        },
+        "required": [
+          "mask",
+          "value"
+        ]
+      },
+      "ServerUrl": {
+        "type": "object",
+        "properties": {
+          "rtmp": {
+            "description": "Rtmp url",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ServerUrlValue"
+              }
+            ]
+          },
+          "srt": {
+            "description": "Srt url",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ServerUrlValue"
+              }
+            ]
+          }
+        }
+      },
+      "RtmpServerListItemV2": {
         "type": "object",
         "properties": {
           "city": {
@@ -18790,10 +18252,17 @@
             "example": "Moscow",
             "description": "City"
           },
-          "url": {
+          "urls": {
+            "description": "Connection urls",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ServerUrl"
+              }
+            ]
+          },
+          "pingHost": {
             "type": "string",
-            "example": "live.streamvi.io",
-            "description": "Rtmp url"
+            "description": "Ping host"
           },
           "country": {
             "description": "Country",
@@ -18869,7 +18338,8 @@
         },
         "required": [
           "city",
-          "url",
+          "urls",
+          "pingHost",
           "country",
           "network",
           "cpu",
@@ -18880,14 +18350,14 @@
           "platforms"
         ]
       },
-      "RtmpServerListResponse": {
+      "RtmpServerListV2Response": {
         "type": "object",
         "properties": {
           "results": {
             "description": "Array of items",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RtmpServerListItem"
+              "$ref": "#/components/schemas/RtmpServerListItemV2"
             }
           }
         },

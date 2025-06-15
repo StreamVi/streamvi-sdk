@@ -2,6 +2,7 @@
 .npmignore
 README.md
 api.ts
+api/account-api.ts
 api/analytics-api.ts
 api/auth-api.ts
 api/blog-page-api.ts
@@ -39,11 +40,11 @@ api/stream-key-api.ts
 api/stream-pull-keys-api.ts
 api/transactions-api.ts
 api/transcoders-api.ts
-api/user-api.ts
-api/user-project-api.ts
+api/users-api.ts
 base.ts
 common.ts
 configuration.ts
+docs/AccountApi.md
 docs/AmountItem.md
 docs/AnalyticsApi.md
 docs/AuthApi.md
@@ -107,10 +108,6 @@ docs/MethodBroadcastRestreamsResponse.md
 docs/MethodChatHistoryResponse.md
 docs/MethodChatSendMessageRequestDto.md
 docs/MethodCurrentBroadcastResponse.md
-docs/MethodProjectLiveStatusInfo.md
-docs/MethodProjectLiveStatusInfoRestreamData.md
-docs/MethodProjectLiveStatusResponse.md
-docs/MethodProjectLiveStatusVideo.md
 docs/MethodSetStatusChannelRequest.md
 docs/MoneyFlowApi.md
 docs/MoneyFlowBalanceTypeValuesResponse.md
@@ -217,8 +214,8 @@ docs/RefreshAuthResponse.md
 docs/ReleaseApi.md
 docs/RtmpServerApi.md
 docs/RtmpServerGraphResponse.md
-docs/RtmpServerListItem.md
-docs/RtmpServerListResponse.md
+docs/RtmpServerListItemV2.md
+docs/RtmpServerListV2Response.md
 docs/RtmpServerLoading.md
 docs/RtmpServerLocationResponse.md
 docs/RtmpServerPlatformQuality.md
@@ -233,6 +230,8 @@ docs/SearchChannelPlatformDto.md
 docs/SearchChannelPlatformsDto.md
 docs/SearchChannelRtmpDto.md
 docs/SearchChannelTokensDto.md
+docs/ServerUrl.md
+docs/ServerUrlValue.md
 docs/SetRecordStreamRequest.md
 docs/SiteAuthCentrifugeResponse.md
 docs/SiteAuthExchangeRequest.md
@@ -241,7 +240,6 @@ docs/SiteChannelStatusResponse.md
 docs/SiteGetShortChannelResponse.md
 docs/SiteLiveRestreamCentrifugeResponse.md
 docs/SiteLiveRestreamsInfoResponse.md
-docs/SiteLogoutAuthRequest.md
 docs/SiteMarkReadHistoryRequest.md
 docs/SiteMarkReadHistoryResponse.md
 docs/SiteNotifyUserResponse.md
@@ -249,7 +247,6 @@ docs/SitePlannedResponse.md
 docs/SitePlatformsSupportedResponse.md
 docs/SitePromoApplyResponse.md
 docs/SitePromoCheckResponse.md
-docs/SiteRefreshAuthBodyRequest.md
 docs/SiteScreenNotifyUserResponse.md
 docs/SiteSearchChannelResponse.md
 docs/SiteSetNameRequest.md
@@ -294,12 +291,11 @@ docs/TranscoderListItem.md
 docs/TranscoderUpdateDto.md
 docs/TranscodersApi.md
 docs/UpdatePullKeyRequest.md
-docs/UserApi.md
 docs/UserProfileResponse.md
 docs/UserProject2ProjectResponse.md
-docs/UserProjectApi.md
 docs/UserProjectGetResponse.md
 docs/UserProjectResponse.md
+docs/UsersApi.md
 docs/ValidationErrorDto.md
 git_push.sh
 index.ts
@@ -356,10 +352,6 @@ models/method-broadcast-restreams-response.ts
 models/method-chat-history-response.ts
 models/method-chat-send-message-request-dto.ts
 models/method-current-broadcast-response.ts
-models/method-project-live-status-info-restream-data.ts
-models/method-project-live-status-info.ts
-models/method-project-live-status-response.ts
-models/method-project-live-status-video.ts
 models/method-set-status-channel-request.ts
 models/money-flow-balance-type-values-response.ts
 models/money-flow-details.ts
@@ -445,8 +437,8 @@ models/pull-server-list-response.ts
 models/pull-server-transports.ts
 models/refresh-auth-response.ts
 models/rtmp-server-graph-response.ts
-models/rtmp-server-list-item.ts
-models/rtmp-server-list-response.ts
+models/rtmp-server-list-item-v2.ts
+models/rtmp-server-list-v2-response.ts
 models/rtmp-server-loading.ts
 models/rtmp-server-location-response.ts
 models/rtmp-server-platform-quality.ts
@@ -461,6 +453,8 @@ models/search-channel-platform-dto.ts
 models/search-channel-platforms-dto.ts
 models/search-channel-rtmp-dto.ts
 models/search-channel-tokens-dto.ts
+models/server-url-value.ts
+models/server-url.ts
 models/set-record-stream-request.ts
 models/site-auth-centrifuge-response.ts
 models/site-auth-exchange-request.ts
@@ -469,7 +463,6 @@ models/site-channel-status-response.ts
 models/site-get-short-channel-response.ts
 models/site-live-restream-centrifuge-response.ts
 models/site-live-restreams-info-response.ts
-models/site-logout-auth-request.ts
 models/site-mark-read-history-request.ts
 models/site-mark-read-history-response.ts
 models/site-notify-user-response.ts
@@ -477,7 +470,6 @@ models/site-planned-response.ts
 models/site-platforms-supported-response.ts
 models/site-promo-apply-response.ts
 models/site-promo-check-response.ts
-models/site-refresh-auth-body-request.ts
 models/site-screen-notify-user-response.ts
 models/site-search-channel-response.ts
 models/site-set-name-request.ts

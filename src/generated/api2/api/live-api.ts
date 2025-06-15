@@ -32,13 +32,14 @@ import type { SiteLiveRestreamsInfoResponse } from '../models';
 export const LiveApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Use /site/broadcast/restreams instead.
          * @summary View live info
          * @param {ControllersRestreamsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
          * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         controllersRestreamsV1: async (language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -100,13 +101,14 @@ export const LiveApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = LiveApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Use /site/broadcast/restreams instead.
          * @summary View live info
          * @param {ControllersRestreamsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
          * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async controllersRestreamsV1(language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteLiveRestreamsInfoResponse>> {
@@ -126,10 +128,11 @@ export const LiveApiFactory = function (configuration?: Configuration, basePath?
     const localVarFp = LiveApiFp(configuration)
     return {
         /**
-         * 
+         * Use /site/broadcast/restreams instead.
          * @summary View live info
          * @param {LiveApiControllersRestreamsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteLiveRestreamsInfoResponse> {
@@ -145,10 +148,11 @@ export const LiveApiFactory = function (configuration?: Configuration, basePath?
  */
 export interface LiveApiInterface {
     /**
-     * 
+     * Use /site/broadcast/restreams instead.
      * @summary View live info
      * @param {LiveApiControllersRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LiveApiInterface
      */
@@ -199,10 +203,11 @@ export interface LiveApiControllersRestreamsV1Request {
  */
 export class LiveApi extends BaseAPI implements LiveApiInterface {
     /**
-     * 
+     * Use /site/broadcast/restreams instead.
      * @summary View live info
      * @param {LiveApiControllersRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LiveApi
      */

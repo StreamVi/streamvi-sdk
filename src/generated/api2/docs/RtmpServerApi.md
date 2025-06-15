@@ -6,7 +6,7 @@ All URIs are relative to *http://localhost*
 |------------- | ------------- | -------------|
 |**methodRtmpServerListLocationsUnauthorizedV1**(#methodrtmpserverlistlocationsunauthorizedv1) | **GET** /method/rtmp_server/list_locations_unauthorized | Rtmp locations server list example for unauthorized|
 |**rtmpServerGraphV1**(#rtmpservergraphv1) | **GET** /method/rtmp_server/graph | Graph of rtmp servers|
-|**rtmpServerListV1**(#rtmpserverlistv1) | **GET** /method/rtmp_server/list | List rtmp servers|
+|**rtmpServerListV2**(#rtmpserverlistv2) | **GET** /method/rtmp_server/list | List rtmp servers|
 |**rtmpServerStateV1**(#rtmpserverstatev1) | **GET** /method/rtmp_server/state | State of rtmp servers|
 |**rtmpServerUpV1**(#rtmpserverupv1) | **GET** /method/rtmp_server/up | State of rtmp servers|
 
@@ -124,8 +124,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **rtmpServerListV1**
-> RtmpServerListResponse rtmpServerListV1()
+# **rtmpServerListV2**
+> RtmpServerListV2Response rtmpServerListV2()
 
 
 ### Example
@@ -142,9 +142,9 @@ const apiInstance = new RtmpServerApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let interval: 1 | 3 | 6 | 12 | 24; //Interval state in hours (default to 1)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1' | '2' | '3'; //Version (automatically defaults to 2 based on method version, can be overridden) (optional) (default to '2')
 
-const { status, data } = await apiInstance.rtmpServerListV1(
+const { status, data } = await apiInstance.rtmpServerListV2(
     language,
     projectId,
     interval,
@@ -159,12 +159,12 @@ const { status, data } = await apiInstance.rtmpServerListV1(
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
 | **interval** | **1 | 3 | 6 | 12 | 24** | Interval state in hours | defaults to 1|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 2 based on method version, can be overridden) | (optional) defaults to '2'|
 
 
 ### Return type
 
-**RtmpServerListResponse**
+**RtmpServerListV2Response**
 
 ### Authorization
 

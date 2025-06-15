@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **project_id** | **number** | Project id | [default to undefined]
 **channel_id** | **number** | Channel id | [default to undefined]
 **title** | **string** |  | [default to 'title']
-**category_id** | **string** | category id | [default to '10023']
-**category_name** | **string** | category name | [default to 'name']
-**audience** | **string** |  | [default to 'Audience']
-**lang** | **string** |  | [default to 'Lang']
+**category_id** | **string** | category id | [optional] [default to '10023']
+**category_name** | **string** | category name | [optional] [default to 'name']
+**audience** | **string** |  | [optional] [default to 'Audience']
+**lang** | **string** |  | [optional] [default to 'Lang']
 
 ## Example
 

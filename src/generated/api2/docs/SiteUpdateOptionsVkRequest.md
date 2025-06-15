@@ -11,14 +11,14 @@ Name | Type | Description | Notes
 **channel_id** | **number** | Channel id | [default to undefined]
 **title** | **string** |  | [default to 'title']
 **description** | **string** |  | [default to 'description']
-**category_id** | **string** | category id | [default to '42']
-**category_name** | **string** | category name | [default to 'name']
-**category_secondary_id** | **string** | category id | [default to '42']
-**category_secondary_name** | **string** | category name | [default to 'name']
-**playlist_id** | **string** | playlist id | [default to undefined]
-**privacy_comments** | **string** |  | [default to 'privacy comments']
-**privacy_video** | **string** |  | [default to 'privacy video']
-**wall** | **boolean** | Is publish stream on wall | [default to undefined]
+**category_id** | **string** | category id | [optional] [default to '42']
+**category_name** | **string** | category name | [optional] [default to 'name']
+**category_secondary_id** | **string** | category id | [optional] [default to '42']
+**category_secondary_name** | **string** | category name | [optional] [default to 'name']
+**playlist_id** | **string** | playlist id | [optional] [default to undefined]
+**privacy_comments** | **string** |  | [optional] [default to 'privacy comments']
+**privacy_video** | **string** |  | [optional] [default to 'privacy video']
+**wall** | **boolean** | Is publish stream on wall | [optional] [default to undefined]
 
 ## Example
 

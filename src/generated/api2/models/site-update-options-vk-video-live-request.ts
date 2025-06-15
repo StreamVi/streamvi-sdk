@@ -55,13 +55,13 @@ export interface SiteUpdateOptionsVkVideoLiveRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */
-    'category_id': string;
+    'category_id'?: string;
     /**
      * category name
      * @type {string}
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */
-    'category_name': string;
+    'category_name'?: string;
 }
 
 export const SiteUpdateOptionsVkVideoLiveRequestVEnum = {

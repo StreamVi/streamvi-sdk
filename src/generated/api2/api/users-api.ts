@@ -28,18 +28,19 @@ import type { SuccessResponse } from '../models';
 // @ts-ignore
 import type { UserProfileResponse } from '../models';
 /**
- * UserApi - axios parameter creator
+ * UsersApi - axios parameter creator
  * @export
  */
-export const UserApiAxiosParamCreator = function (configuration?: Configuration) {
+export const UsersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Use /method/account/profile instead.
          * @summary Get user profile
          * @param {UserGetProfileV1LanguageEnum} language Current language
          * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number | null} [projectId] Project id
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         userGetProfileV1: async (language: UserGetProfileV1LanguageEnum, v?: UserGetProfileV1VEnum, projectId?: number | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -83,7 +84,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * 
+         * Use /method/account/profile instead.
          * @summary Update profile
          * @param {UserUpdateProfileV1VEnum} v Version
          * @param {UserUpdateProfileV1LanguageEnum} language Current language
@@ -91,6 +92,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} lastName Last name
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         userUpdateProfileV1: async (v: UserUpdateProfileV1VEnum, language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -155,29 +157,30 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
 };
 
 /**
- * UserApi - functional programming interface
+ * UsersApi - functional programming interface
  * @export
  */
-export const UserApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = UserApiAxiosParamCreator(configuration)
+export const UsersApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = UsersApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Use /method/account/profile instead.
          * @summary Get user profile
          * @param {UserGetProfileV1LanguageEnum} language Current language
          * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number | null} [projectId] Project id
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async userGetProfileV1(language: UserGetProfileV1LanguageEnum, v?: UserGetProfileV1VEnum, projectId?: number | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userGetProfileV1(language, v, projectId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserApi.userGetProfileV1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['UsersApi.userGetProfileV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Use /method/account/profile instead.
          * @summary Update profile
          * @param {UserUpdateProfileV1VEnum} v Version
          * @param {UserUpdateProfileV1LanguageEnum} language Current language
@@ -185,174 +188,181 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {string} lastName Last name
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async userUpdateProfileV1(v: UserUpdateProfileV1VEnum, language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userUpdateProfileV1(v, language, firstName, lastName, avatar, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserApi.userUpdateProfileV1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['UsersApi.userUpdateProfileV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
 };
 
 /**
- * UserApi - factory interface
+ * UsersApi - factory interface
  * @export
  */
-export const UserApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = UserApiFp(configuration)
+export const UsersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = UsersApiFp(configuration)
     return {
         /**
-         * 
+         * Use /method/account/profile instead.
          * @summary Get user profile
-         * @param {UserApiUserGetProfileV1Request} requestParameters Request parameters.
+         * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
-        userGetProfileV1(requestParameters: UserApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse> {
+        userGetProfileV1(requestParameters: UsersApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse> {
             return localVarFp.userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Use /method/account/profile instead.
          * @summary Update profile
-         * @param {UserApiUserUpdateProfileV1Request} requestParameters Request parameters.
+         * @param {UsersApiUserUpdateProfileV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
-        userUpdateProfileV1(requestParameters: UserApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+        userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
             return localVarFp.userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * UserApi - interface
+ * UsersApi - interface
  * @export
- * @interface UserApi
+ * @interface UsersApi
  */
-export interface UserApiInterface {
+export interface UsersApiInterface {
     /**
-     * 
+     * Use /method/account/profile instead.
      * @summary Get user profile
-     * @param {UserApiUserGetProfileV1Request} requestParameters Request parameters.
+     * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
-     * @memberof UserApiInterface
+     * @memberof UsersApiInterface
      */
-    userGetProfileV1(requestParameters: UserApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
+    userGetProfileV1(requestParameters: UsersApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
 
     /**
-     * 
+     * Use /method/account/profile instead.
      * @summary Update profile
-     * @param {UserApiUserUpdateProfileV1Request} requestParameters Request parameters.
+     * @param {UsersApiUserUpdateProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
-     * @memberof UserApiInterface
+     * @memberof UsersApiInterface
      */
-    userUpdateProfileV1(requestParameters: UserApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
 }
 
 /**
- * Request parameters for userGetProfileV1 operation in UserApi.
+ * Request parameters for userGetProfileV1 operation in UsersApi.
  * @export
- * @interface UserApiUserGetProfileV1Request
+ * @interface UsersApiUserGetProfileV1Request
  */
-export interface UserApiUserGetProfileV1Request {
+export interface UsersApiUserGetProfileV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof UserApiUserGetProfileV1
+     * @memberof UsersApiUserGetProfileV1
      */
     readonly language: UserGetProfileV1LanguageEnum
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
-     * @memberof UserApiUserGetProfileV1
+     * @memberof UsersApiUserGetProfileV1
      */
     readonly v?: UserGetProfileV1VEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof UserApiUserGetProfileV1
+     * @memberof UsersApiUserGetProfileV1
      */
     readonly project_id?: number | null
 }
 
 /**
- * Request parameters for userUpdateProfileV1 operation in UserApi.
+ * Request parameters for userUpdateProfileV1 operation in UsersApi.
  * @export
- * @interface UserApiUserUpdateProfileV1Request
+ * @interface UsersApiUserUpdateProfileV1Request
  */
-export interface UserApiUserUpdateProfileV1Request {
+export interface UsersApiUserUpdateProfileV1Request {
     /**
      * Version
      * @type {string}
-     * @memberof UserApiUserUpdateProfileV1
+     * @memberof UsersApiUserUpdateProfileV1
      */
     readonly v: UserUpdateProfileV1VEnum
 
     /**
      * Current language
      * @type {string}
-     * @memberof UserApiUserUpdateProfileV1
+     * @memberof UsersApiUserUpdateProfileV1
      */
     readonly language: UserUpdateProfileV1LanguageEnum
 
     /**
      * First name
      * @type {string}
-     * @memberof UserApiUserUpdateProfileV1
+     * @memberof UsersApiUserUpdateProfileV1
      */
     readonly first_name: string
 
     /**
      * Last name
      * @type {string}
-     * @memberof UserApiUserUpdateProfileV1
+     * @memberof UsersApiUserUpdateProfileV1
      */
     readonly last_name: string
 
     /**
      * File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @type {File}
-     * @memberof UserApiUserUpdateProfileV1
+     * @memberof UsersApiUserUpdateProfileV1
      */
     readonly avatar?: File
 }
 
 /**
- * UserApi - object-oriented interface
+ * UsersApi - object-oriented interface
  * @export
- * @class UserApi
+ * @class UsersApi
  * @extends {BaseAPI}
  */
-export class UserApi extends BaseAPI implements UserApiInterface {
+export class UsersApi extends BaseAPI implements UsersApiInterface {
     /**
-     * 
+     * Use /method/account/profile instead.
      * @summary Get user profile
-     * @param {UserApiUserGetProfileV1Request} requestParameters Request parameters.
+     * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
-     * @memberof UserApi
+     * @memberof UsersApi
      */
-    public userGetProfileV1(requestParameters: UserApiUserGetProfileV1Request, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(this.axios, this.basePath));
+    public userGetProfileV1(requestParameters: UsersApiUserGetProfileV1Request, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Use /method/account/profile instead.
      * @summary Update profile
-     * @param {UserApiUserUpdateProfileV1Request} requestParameters Request parameters.
+     * @param {UsersApiUserUpdateProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
-     * @memberof UserApi
+     * @memberof UsersApi
      */
-    public userUpdateProfileV1(requestParameters: UserApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
+    public userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

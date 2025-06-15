@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **project_id** | **number** | Project id | [default to undefined]
 **user_id** | **number** | User id | [default to undefined]
 **group_id** | **number** | Group id | [default to undefined]
-**date** | **string** | Date | [optional] [default to 2025-05-29T14:53:17.407Z]
+**date** | **string** | Date | [optional] [default to 2025-06-14T05:14:43.219Z]
 
 ## Example
 

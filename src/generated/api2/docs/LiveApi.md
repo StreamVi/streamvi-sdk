@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 # **controllersRestreamsV1**
 > SiteLiveRestreamsInfoResponse controllersRestreamsV1()
 
+Use /site/broadcast/restreams instead.
 
 ### Example
 

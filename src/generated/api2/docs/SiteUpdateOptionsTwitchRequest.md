@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **project_id** | **number** | Project id | [default to undefined]
 **channel_id** | **number** | Channel id | [default to undefined]
 **title** | **string** |  | [default to 'title']
-**category_id** | **string** | category id | [default to '498482']
-**category_name** | **string** | category name | [default to 'name']
-**lang** | **string** |  | [default to 'Lang']
-**tags** | **Set&lt;string&gt;** |  | [default to undefined]
+**category_id** | **string** | category id | [optional] [default to '498482']
+**category_name** | **string** | category name | [optional] [default to 'name']
+**lang** | **string** |  | [optional] [default to 'Lang']
+**tags** | **Set&lt;string&gt;** |  | [optional] [default to undefined]
 **domain** | **string** | domain | [default to 'live.twitch.tv']
 
 ## Example

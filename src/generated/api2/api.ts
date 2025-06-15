@@ -14,6 +14,7 @@
 
 
 
+export * from './api/account-api';
 export * from './api/analytics-api';
 export * from './api/auth-api';
 export * from './api/blog-page-api';
@@ -51,6 +52,5 @@ export * from './api/stream-key-api';
 export * from './api/stream-pull-keys-api';
 export * from './api/transactions-api';
 export * from './api/transcoders-api';
-export * from './api/user-api';
-export * from './api/user-project-api';
+export * from './api/users-api';
 

@@ -61,49 +61,49 @@ export interface SiteUpdateOptionsVkRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'category_id': string;
+    'category_id'?: string;
     /**
      * category name
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'category_name': string;
+    'category_name'?: string;
     /**
      * category id
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'category_secondary_id': string;
+    'category_secondary_id'?: string;
     /**
      * category name
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'category_secondary_name': string;
+    'category_secondary_name'?: string;
     /**
      * playlist id
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'playlist_id': string;
+    'playlist_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'privacy_comments': SiteUpdateOptionsVkRequestPrivacyCommentsEnum;
+    'privacy_comments'?: SiteUpdateOptionsVkRequestPrivacyCommentsEnum;
     /**
      * 
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'privacy_video': SiteUpdateOptionsVkRequestPrivacyVideoEnum;
+    'privacy_video'?: SiteUpdateOptionsVkRequestPrivacyVideoEnum;
     /**
      * Is publish stream on wall
      * @type {boolean}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'wall': boolean;
+    'wall'?: boolean;
 }
 
 export const SiteUpdateOptionsVkRequestVEnum = {

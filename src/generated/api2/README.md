@@ -51,10 +51,11 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccountApi* | [**accountGetProfileV1**](docs/AccountApi.md#accountgetprofilev1) | **GET** /method/account/profile | Get account profile
+*AccountApi* | [**accountUpdateProfileV1**](docs/AccountApi.md#accountupdateprofilev1) | **POST** /method/account/profile | Update account profile
 *AnalyticsApi* | [**analyticsTsStreamBitrateV1**](docs/AnalyticsApi.md#analyticstsstreambitratev1) | **GET** /method/analytics/stream/graph/bitrate | Bitrate for stream
 *AnalyticsApi* | [**analyticsTsStreamEventsV1**](docs/AnalyticsApi.md#analyticstsstreameventsv1) | **GET** /method/analytics/stream/events | Events for stream
 *AnalyticsApi* | [**analyticsTsStreamViewersV1**](docs/AnalyticsApi.md#analyticstsstreamviewersv1) | **GET** /method/analytics/stream/graph/viewers | Viewers for stream
-*AuthApi* | [**authAuthTelegramV1**](docs/AuthApi.md#authauthtelegramv1) | **GET** /method/auth/auth-telegram | Auth telegram
 *AuthApi* | [**authCallbackGoogleV1**](docs/AuthApi.md#authcallbackgooglev1) | **GET** /method/auth/callback/google | Internal request of auth google
 *AuthApi* | [**authCallbackVkIdV1**](docs/AuthApi.md#authcallbackvkidv1) | **GET** /method/auth/callback/vk-id | Internal request of auth new vk
 *AuthApi* | [**authCallbackVkV1**](docs/AuthApi.md#authcallbackvkv1) | **GET** /method/auth/callback/vk | Internal request of auth old vk
@@ -65,10 +66,6 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**authDisconnectV1**](docs/AuthApi.md#authdisconnectv1) | **GET** /method/auth/disconnect | Disconnected social account
 *AuthApi* | [**authExchangeV1**](docs/AuthApi.md#authexchangev1) | **POST** /method/auth/app/exchange | Code exchange
 *AuthApi* | [**authGetAuthUrlV1**](docs/AuthApi.md#authgetauthurlv1) | **GET** /method/auth/redirect-url | Get url for start oauth
-*AuthApi* | [**authGetProfileV1**](docs/AuthApi.md#authgetprofilev1) | **GET** /method/auth/me | Get basic data for auth user
-*AuthApi* | [**authGuestV1**](docs/AuthApi.md#authguestv1) | **GET** /method/auth/guest | Guest request of auth
-*AuthApi* | [**authLogoutV1**](docs/AuthApi.md#authlogoutv1) | **POST** /method/auth/logout | Logout
-*AuthApi* | [**authRefreshAccessV1**](docs/AuthApi.md#authrefreshaccessv1) | **POST** /method/auth/refresh-access | Update access token
 *BlogPageApi* | [**blogPageGetV1**](docs/BlogPageApi.md#blogpagegetv1) | **GET** /method/blog/page/get | Get blog page
 *BlogPageApi* | [**blogPageListV1**](docs/BlogPageApi.md#blogpagelistv1) | **GET** /method/blog/page/list | Get list of blog pages
 *BlogPageTagApi* | [**blogPageTagListV1**](docs/BlogPageTagApi.md#blogpagetaglistv1) | **GET** /method/blog/tag/list | Get list of blog pages
@@ -157,7 +154,14 @@ Class | Method | HTTP request | Description
 *PlatformsApi* | [**platformsPlatformListV1**](docs/PlatformsApi.md#platformsplatformlistv1) | **GET** /method/platforms/list | Supported platforms
 *PolicyPageApi* | [**policyPageGetItemV1**](docs/PolicyPageApi.md#policypagegetitemv1) | **GET** /method/policy/get | Get policy page
 *PolicyPageApi* | [**policyPageGetStructureV1**](docs/PolicyPageApi.md#policypagegetstructurev1) | **GET** /method/policy/structure | Get policy structure
-*ProjectApi* | [**methodLiveStatusV1**](docs/ProjectApi.md#methodlivestatusv1) | **GET** /method/project/live-status | Get live status
+*ProjectApi* | [**userProjectChangeAccessV1**](docs/ProjectApi.md#userprojectchangeaccessv1) | **POST** /method/project/user/change_access | Change access user from project
+*ProjectApi* | [**userProjectDelV1**](docs/ProjectApi.md#userprojectdelv1) | **POST** /method/project/user/del | Remove user from project
+*ProjectApi* | [**userProjectGetProjectInfoV1**](docs/ProjectApi.md#userprojectgetprojectinfov1) | **GET** /method/project/get_project_info | Get project full info
+*ProjectApi* | [**userProjectGetProjectV1**](docs/ProjectApi.md#userprojectgetprojectv1) | **GET** /method/project/get_project | Get project by number id
+*ProjectApi* | [**userProjectGetUserV1**](docs/ProjectApi.md#userprojectgetuserv1) | **GET** /method/project/get_user | Get user by number id
+*ProjectApi* | [**userProjectListAccessV1**](docs/ProjectApi.md#userprojectlistaccessv1) | **GET** /method/project/user/list | List of user in project
+*ProjectApi* | [**userProjectListV1**](docs/ProjectApi.md#userprojectlistv1) | **GET** /method/project/list | List of project for current user
+*ProjectApi* | [**userProjectSelectProjectV1**](docs/ProjectApi.md#userprojectselectprojectv1) | **GET** /method/project/select | Select user for project
 *ProjectChannelApi* | [**projectChannelChangeAccessV1**](docs/ProjectChannelApi.md#projectchannelchangeaccessv1) | **POST** /method/channel/access/change | Change access for project in channel
 *ProjectChannelApi* | [**projectChannelDelV1**](docs/ProjectChannelApi.md#projectchanneldelv1) | **POST** /method/channel/access/del | Remove access for project in channel
 *ProjectChannelApi* | [**projectChannelListV1**](docs/ProjectChannelApi.md#projectchannellistv1) | **GET** /method/channel/access/list | Project channel list
@@ -181,7 +185,7 @@ Class | Method | HTTP request | Description
 *ReleaseApi* | [**releaseAppCabinetV1**](docs/ReleaseApi.md#releaseappcabinetv1) | **GET** /method/release-app | Get current version app
 *RtmpServerApi* | [**methodRtmpServerListLocationsUnauthorizedV1**](docs/RtmpServerApi.md#methodrtmpserverlistlocationsunauthorizedv1) | **GET** /method/rtmp_server/list_locations_unauthorized | Rtmp locations server list example for unauthorized
 *RtmpServerApi* | [**rtmpServerGraphV1**](docs/RtmpServerApi.md#rtmpservergraphv1) | **GET** /method/rtmp_server/graph | Graph of rtmp servers
-*RtmpServerApi* | [**rtmpServerListV1**](docs/RtmpServerApi.md#rtmpserverlistv1) | **GET** /method/rtmp_server/list | List rtmp servers
+*RtmpServerApi* | [**rtmpServerListV2**](docs/RtmpServerApi.md#rtmpserverlistv2) | **GET** /method/rtmp_server/list | List rtmp servers
 *RtmpServerApi* | [**rtmpServerStateV1**](docs/RtmpServerApi.md#rtmpserverstatev1) | **GET** /method/rtmp_server/state | State of rtmp servers
 *RtmpServerApi* | [**rtmpServerUpV1**](docs/RtmpServerApi.md#rtmpserverupv1) | **GET** /method/rtmp_server/up | State of rtmp servers
 *SocialsApi* | [**socialsGetListV1**](docs/SocialsApi.md#socialsgetlistv1) | **GET** /method/socials/list | Social list for user
@@ -198,16 +202,8 @@ Class | Method | HTTP request | Description
 *TranscodersApi* | [**transcodersListV1**](docs/TranscodersApi.md#transcoderslistv1) | **GET** /method/transcoder/list | List of transcoder
 *TranscodersApi* | [**transcodersStopV1**](docs/TranscodersApi.md#transcodersstopv1) | **POST** /method/transcoder/stop | Transcoder stop
 *TranscodersApi* | [**transcodersUpdateV1**](docs/TranscodersApi.md#transcodersupdatev1) | **POST** /method/transcoder/update | Transcoder update
-*UserApi* | [**userGetProfileV1**](docs/UserApi.md#usergetprofilev1) | **GET** /method/users/profile | Get user profile
-*UserApi* | [**userUpdateProfileV1**](docs/UserApi.md#userupdateprofilev1) | **POST** /method/users/profile | Update profile
-*UserProjectApi* | [**userProjectChangeAccessV1**](docs/UserProjectApi.md#userprojectchangeaccessv1) | **POST** /method/project/user/change_access | Change access user from project
-*UserProjectApi* | [**userProjectDelV1**](docs/UserProjectApi.md#userprojectdelv1) | **POST** /method/project/user/del | Remove user from project
-*UserProjectApi* | [**userProjectGetProjectInfoV1**](docs/UserProjectApi.md#userprojectgetprojectinfov1) | **GET** /method/project/get_project_info | Get project full info
-*UserProjectApi* | [**userProjectGetProjectV1**](docs/UserProjectApi.md#userprojectgetprojectv1) | **GET** /method/project/get_project | Get project by number id
-*UserProjectApi* | [**userProjectGetUserV1**](docs/UserProjectApi.md#userprojectgetuserv1) | **GET** /method/project/get_user | Get user by number id
-*UserProjectApi* | [**userProjectListAccessV1**](docs/UserProjectApi.md#userprojectlistaccessv1) | **GET** /method/project/user/list | List of user in project
-*UserProjectApi* | [**userProjectListV1**](docs/UserProjectApi.md#userprojectlistv1) | **GET** /method/project/list | List of project for current user
-*UserProjectApi* | [**userProjectSelectProjectV1**](docs/UserProjectApi.md#userprojectselectprojectv1) | **GET** /method/project/select | Select user for project
+*UsersApi* | [**userGetProfileV1**](docs/UsersApi.md#usergetprofilev1) | **GET** /method/users/profile | Get user profile
+*UsersApi* | [**userUpdateProfileV1**](docs/UsersApi.md#userupdateprofilev1) | **POST** /method/users/profile | Update profile
 
 
 ### Documentation For Models
@@ -264,10 +260,6 @@ Class | Method | HTTP request | Description
  - [MethodChatHistoryResponse](docs/MethodChatHistoryResponse.md)
  - [MethodChatSendMessageRequestDto](docs/MethodChatSendMessageRequestDto.md)
  - [MethodCurrentBroadcastResponse](docs/MethodCurrentBroadcastResponse.md)
- - [MethodProjectLiveStatusInfo](docs/MethodProjectLiveStatusInfo.md)
- - [MethodProjectLiveStatusInfoRestreamData](docs/MethodProjectLiveStatusInfoRestreamData.md)
- - [MethodProjectLiveStatusResponse](docs/MethodProjectLiveStatusResponse.md)
- - [MethodProjectLiveStatusVideo](docs/MethodProjectLiveStatusVideo.md)
  - [MethodSetStatusChannelRequest](docs/MethodSetStatusChannelRequest.md)
  - [MoneyFlowBalanceTypeValuesResponse](docs/MoneyFlowBalanceTypeValuesResponse.md)
  - [MoneyFlowDetails](docs/MoneyFlowDetails.md)
@@ -353,8 +345,8 @@ Class | Method | HTTP request | Description
  - [PullServerTransports](docs/PullServerTransports.md)
  - [RefreshAuthResponse](docs/RefreshAuthResponse.md)
  - [RtmpServerGraphResponse](docs/RtmpServerGraphResponse.md)
- - [RtmpServerListItem](docs/RtmpServerListItem.md)
- - [RtmpServerListResponse](docs/RtmpServerListResponse.md)
+ - [RtmpServerListItemV2](docs/RtmpServerListItemV2.md)
+ - [RtmpServerListV2Response](docs/RtmpServerListV2Response.md)
  - [RtmpServerLoading](docs/RtmpServerLoading.md)
  - [RtmpServerLocationResponse](docs/RtmpServerLocationResponse.md)
  - [RtmpServerPlatformQuality](docs/RtmpServerPlatformQuality.md)
@@ -369,6 +361,8 @@ Class | Method | HTTP request | Description
  - [SearchChannelPlatformsDto](docs/SearchChannelPlatformsDto.md)
  - [SearchChannelRtmpDto](docs/SearchChannelRtmpDto.md)
  - [SearchChannelTokensDto](docs/SearchChannelTokensDto.md)
+ - [ServerUrl](docs/ServerUrl.md)
+ - [ServerUrlValue](docs/ServerUrlValue.md)
  - [SetRecordStreamRequest](docs/SetRecordStreamRequest.md)
  - [SiteAuthCentrifugeResponse](docs/SiteAuthCentrifugeResponse.md)
  - [SiteAuthExchangeRequest](docs/SiteAuthExchangeRequest.md)
@@ -377,7 +371,6 @@ Class | Method | HTTP request | Description
  - [SiteGetShortChannelResponse](docs/SiteGetShortChannelResponse.md)
  - [SiteLiveRestreamCentrifugeResponse](docs/SiteLiveRestreamCentrifugeResponse.md)
  - [SiteLiveRestreamsInfoResponse](docs/SiteLiveRestreamsInfoResponse.md)
- - [SiteLogoutAuthRequest](docs/SiteLogoutAuthRequest.md)
  - [SiteMarkReadHistoryRequest](docs/SiteMarkReadHistoryRequest.md)
  - [SiteMarkReadHistoryResponse](docs/SiteMarkReadHistoryResponse.md)
  - [SiteNotifyUserResponse](docs/SiteNotifyUserResponse.md)
@@ -385,7 +378,6 @@ Class | Method | HTTP request | Description
  - [SitePlatformsSupportedResponse](docs/SitePlatformsSupportedResponse.md)
  - [SitePromoApplyResponse](docs/SitePromoApplyResponse.md)
  - [SitePromoCheckResponse](docs/SitePromoCheckResponse.md)
- - [SiteRefreshAuthBodyRequest](docs/SiteRefreshAuthBodyRequest.md)
  - [SiteScreenNotifyUserResponse](docs/SiteScreenNotifyUserResponse.md)
  - [SiteSearchChannelResponse](docs/SiteSearchChannelResponse.md)
  - [SiteSetNameRequest](docs/SiteSetNameRequest.md)
