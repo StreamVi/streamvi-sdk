@@ -62,15 +62,15 @@ Open http://localhost:3000 and login via StreamVi.
 
 ```typescript
 import { StreamViSdkConfig } from 'streamvi-sdk';
-import { UserProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from 'streamvi-sdk';
+import { ProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from 'streamvi-sdk';
 
 async function getProjectInfo(accessToken: string, projectId: number, language: UserProjectGetProjectInfoV1LanguageEnum = UserProjectGetProjectInfoV1LanguageEnum.Ru) {
   const sdkConfig = new StreamViSdkConfig({ accessToken });
-  const userProjectApi = new UserProjectApi(sdkConfig.configuration);
+  const projectApi = new ProjectApi(sdkConfig.configuration);
 
-  const response = await userProjectApi.userProjectGetProjectInfoV1({
+  const response = await projectApi.userProjectGetProjectInfoV1({
     language: language,
-    projectId: projectId
+    project_id: projectId
   });
   return response.data;
 }
@@ -98,6 +98,7 @@ async function getPaySettings(accessToken: string, projectId: number, language: 
 
 After generation, the following API clients are available:
 
+- [AccountApi](src/generated/api2/docs/AccountApi.md)
 - [AnalyticsApi](src/generated/api2/docs/AnalyticsApi.md)
 - [AuthApi](src/generated/api2/docs/AuthApi.md)
 - [BlogPageApi](src/generated/api2/docs/BlogPageApi.md)
@@ -136,7 +137,6 @@ After generation, the following API clients are available:
 - [TranscodersApi](src/generated/api2/docs/TranscodersApi.md)
 - [TransactionsApi](src/generated/api2/docs/TransactionsApi.md)
 - [UserApi](src/generated/api2/docs/UserApi.md)
-- [UserProjectApi](src/generated/api2/docs/UserProjectApi.md) 
 
 The full list is available in `src/generated/api2/api.ts`
 
