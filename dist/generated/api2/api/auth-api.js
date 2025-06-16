@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthGetProfileV1VEnum = exports.AuthGetProfileV1LanguageEnum = exports.AuthGetAuthUrlV1AppEnum = exports.AuthGetAuthUrlV1VEnum = exports.AuthGetAuthUrlV1ProviderEnum = exports.AuthGetAuthUrlV1LanguageEnum = exports.AuthDisconnectV1VEnum = exports.AuthDisconnectV1LanguageEnum = exports.AuthConnectV1AppEnum = exports.AuthConnectV1VEnum = exports.AuthConnectV1ProviderEnum = exports.AuthConnectV1LanguageEnum = exports.AuthConnectTelegramV1VEnum = exports.AuthConnectTelegramV1LanguageEnum = exports.AuthConnectResultV1VEnum = exports.AuthConnectResultV1LanguageEnum = exports.AuthCodeV1VEnum = exports.AuthCodeV1AppEnum = exports.AuthCodeV1LanguageEnum = exports.AuthAuthTelegramV1VEnum = exports.AuthAuthTelegramV1AppEnum = exports.AuthAuthTelegramV1LanguageEnum = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = void 0;
+exports.AuthGetAuthUrlV1AppEnum = exports.AuthGetAuthUrlV1VEnum = exports.AuthGetAuthUrlV1ProviderEnum = exports.AuthGetAuthUrlV1LanguageEnum = exports.AuthDisconnectV1VEnum = exports.AuthDisconnectV1LanguageEnum = exports.AuthConnectV1AppEnum = exports.AuthConnectV1VEnum = exports.AuthConnectV1ProviderEnum = exports.AuthConnectV1LanguageEnum = exports.AuthConnectTelegramV1VEnum = exports.AuthConnectTelegramV1LanguageEnum = exports.AuthConnectResultV1VEnum = exports.AuthConnectResultV1LanguageEnum = exports.AuthCodeV1VEnum = exports.AuthCodeV1AppEnum = exports.AuthCodeV1LanguageEnum = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -29,110 +29,6 @@ const base_1 = require("../base");
  */
 const AuthApiAxiosParamCreator = function (configuration) {
     return {
-        /**
-         *
-         * @summary Auth telegram
-         * @param {AuthAuthTelegramV1LanguageEnum} language Current language
-         * @param {number} authDate Time auth
-         * @param {number} id Telegram userId
-         * @param {string} firstName First name
-         * @param {string} hash Hash
-         * @param {AuthAuthTelegramV1AppEnum} app App oauth
-         * @param {AuthAuthTelegramV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {string} [lastName] Last name
-         * @param {string} [username] Nickname
-         * @param {string} [photoUrl] Photo
-         * @param {string} [languageCode] IETF language tag of the user\&#39;s language
-         * @param {boolean} [isPremium] True, if this user is a Telegram Premium user
-         * @param {boolean} [addedToAttachmentMenu] True, if this user added the bot to the attachment menu
-         * @param {string} [refId] Referal id
-         * @param {string} [redirect] Redirect url
-         * @param {string} [country] Country code
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authAuthTelegramV1: async (language, authDate, id, firstName, hash, app, v, lastName, username, photoUrl, languageCode, isPremium, addedToAttachmentMenu, refId, redirect, country, options = {}) => {
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('authAuthTelegramV1', 'language', language);
-            // verify required parameter 'authDate' is not null or undefined
-            (0, common_1.assertParamExists)('authAuthTelegramV1', 'authDate', authDate);
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('authAuthTelegramV1', 'id', id);
-            // verify required parameter 'firstName' is not null or undefined
-            (0, common_1.assertParamExists)('authAuthTelegramV1', 'firstName', firstName);
-            // verify required parameter 'hash' is not null or undefined
-            (0, common_1.assertParamExists)('authAuthTelegramV1', 'hash', hash);
-            // verify required parameter 'app' is not null or undefined
-            (0, common_1.assertParamExists)('authAuthTelegramV1', 'app', app);
-            const localVarPath = `/method/auth/auth-telegram`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-            if (authDate !== undefined) {
-                localVarQueryParameter['auth_date'] = authDate;
-            }
-            if (id !== undefined) {
-                localVarQueryParameter['id'] = id;
-            }
-            if (firstName !== undefined) {
-                localVarQueryParameter['first_name'] = firstName;
-            }
-            if (lastName !== undefined) {
-                localVarQueryParameter['last_name'] = lastName;
-            }
-            if (username !== undefined) {
-                localVarQueryParameter['username'] = username;
-            }
-            if (photoUrl !== undefined) {
-                localVarQueryParameter['photo_url'] = photoUrl;
-            }
-            if (languageCode !== undefined) {
-                localVarQueryParameter['language_code'] = languageCode;
-            }
-            if (isPremium !== undefined) {
-                localVarQueryParameter['is_premium'] = isPremium;
-            }
-            if (addedToAttachmentMenu !== undefined) {
-                localVarQueryParameter['added_to_attachment_menu'] = addedToAttachmentMenu;
-            }
-            if (hash !== undefined) {
-                localVarQueryParameter['hash'] = hash;
-            }
-            if (refId !== undefined) {
-                localVarQueryParameter['refId'] = refId;
-            }
-            if (app !== undefined) {
-                localVarQueryParameter['app'] = app;
-            }
-            if (redirect !== undefined) {
-                localVarQueryParameter['redirect'] = redirect;
-            }
-            if (country !== undefined) {
-                localVarQueryParameter['country'] = country;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
         /**
          *
          * @summary Internal request of auth google
@@ -532,141 +428,6 @@ const AuthApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        /**
-         *
-         * @summary Get basic data for auth user
-         * @param {AuthGetProfileV1LanguageEnum} language Current language
-         * @param {AuthGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authGetProfileV1: async (language, v, options = {}) => {
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('authGetProfileV1', 'language', language);
-            const localVarPath = `/method/auth/me`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @summary Guest request of auth
-         * @param {string} refId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authGuestV1: async (refId, options = {}) => {
-            // verify required parameter 'refId' is not null or undefined
-            (0, common_1.assertParamExists)('authGuestV1', 'refId', refId);
-            const localVarPath = `/method/auth/guest`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (refId !== undefined) {
-                localVarQueryParameter['refId'] = refId;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @summary Logout
-         * @param {SiteLogoutAuthRequest} siteLogoutAuthRequest
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authLogoutV1: async (siteLogoutAuthRequest, options = {}) => {
-            // verify required parameter 'siteLogoutAuthRequest' is not null or undefined
-            (0, common_1.assertParamExists)('authLogoutV1', 'siteLogoutAuthRequest', siteLogoutAuthRequest);
-            const localVarPath = `/method/auth/logout`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteLogoutAuthRequest, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @summary Update access token
-         * @param {string} userAgent
-         * @param {SiteRefreshAuthBodyRequest} siteRefreshAuthBodyRequest
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authRefreshAccessV1: async (userAgent, siteRefreshAuthBodyRequest, options = {}) => {
-            // verify required parameter 'userAgent' is not null or undefined
-            (0, common_1.assertParamExists)('authRefreshAccessV1', 'userAgent', userAgent);
-            // verify required parameter 'siteRefreshAuthBodyRequest' is not null or undefined
-            (0, common_1.assertParamExists)('authRefreshAccessV1', 'siteRefreshAuthBodyRequest', siteRefreshAuthBodyRequest);
-            const localVarPath = `/method/auth/refresh-access`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            if (userAgent != null) {
-                localVarHeaderParameter['User-Agent'] = String(userAgent);
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteRefreshAuthBodyRequest, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     };
 };
 exports.AuthApiAxiosParamCreator = AuthApiAxiosParamCreator;
@@ -677,35 +438,6 @@ exports.AuthApiAxiosParamCreator = AuthApiAxiosParamCreator;
 const AuthApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.AuthApiAxiosParamCreator)(configuration);
     return {
-        /**
-         *
-         * @summary Auth telegram
-         * @param {AuthAuthTelegramV1LanguageEnum} language Current language
-         * @param {number} authDate Time auth
-         * @param {number} id Telegram userId
-         * @param {string} firstName First name
-         * @param {string} hash Hash
-         * @param {AuthAuthTelegramV1AppEnum} app App oauth
-         * @param {AuthAuthTelegramV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {string} [lastName] Last name
-         * @param {string} [username] Nickname
-         * @param {string} [photoUrl] Photo
-         * @param {string} [languageCode] IETF language tag of the user\&#39;s language
-         * @param {boolean} [isPremium] True, if this user is a Telegram Premium user
-         * @param {boolean} [addedToAttachmentMenu] True, if this user added the bot to the attachment menu
-         * @param {string} [refId] Referal id
-         * @param {string} [redirect] Redirect url
-         * @param {string} [country] Country code
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authAuthTelegramV1(language, authDate, id, firstName, hash, app, v, lastName, username, photoUrl, languageCode, isPremium, addedToAttachmentMenu, refId, redirect, country, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authAuthTelegramV1(language, authDate, id, firstName, hash, app, v, lastName, username, photoUrl, languageCode, isPremium, addedToAttachmentMenu, refId, redirect, country, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authAuthTelegramV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
         /**
          *
          * @summary Internal request of auth google
@@ -862,64 +594,6 @@ const AuthApiFp = function (configuration) {
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authGetAuthUrlV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
-        /**
-         *
-         * @summary Get basic data for auth user
-         * @param {AuthGetProfileV1LanguageEnum} language Current language
-         * @param {AuthGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authGetProfileV1(language, v, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authGetProfileV1(language, v, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authGetProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Guest request of auth
-         * @param {string} refId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authGuestV1(refId, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authGuestV1(refId, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authGuestV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Logout
-         * @param {SiteLogoutAuthRequest} siteLogoutAuthRequest
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authLogoutV1(siteLogoutAuthRequest, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authLogoutV1(siteLogoutAuthRequest, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authLogoutV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Update access token
-         * @param {string} userAgent
-         * @param {SiteRefreshAuthBodyRequest} siteRefreshAuthBodyRequest
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authRefreshAccessV1(userAgent, siteRefreshAuthBodyRequest, options) {
-            var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authRefreshAccessV1(userAgent, siteRefreshAuthBodyRequest, options);
-            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authRefreshAccessV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
     };
 };
 exports.AuthApiFp = AuthApiFp;
@@ -930,16 +604,6 @@ exports.AuthApiFp = AuthApiFp;
 const AuthApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.AuthApiFp)(configuration);
     return {
-        /**
-         *
-         * @summary Auth telegram
-         * @param {AuthApiAuthAuthTelegramV1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authAuthTelegramV1(requestParameters, options) {
-            return localVarFp.authAuthTelegramV1(requestParameters.language, requestParameters.authDate, requestParameters.id, requestParameters.firstName, requestParameters.hash, requestParameters.app, requestParameters.v, requestParameters.lastName, requestParameters.username, requestParameters.photoUrl, requestParameters.languageCode, requestParameters.isPremium, requestParameters.addedToAttachmentMenu, requestParameters.refId, requestParameters.redirect, requestParameters.country, options).then((request) => request(axios, basePath));
-        },
         /**
          *
          * @summary Internal request of auth google
@@ -1017,7 +681,7 @@ const AuthApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         authDisconnectV1(requestParameters, options) {
-            return localVarFp.authDisconnectV1(requestParameters.language, requestParameters.socialId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.authDisconnectV1(requestParameters.language, requestParameters.social_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1027,7 +691,7 @@ const AuthApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         authExchangeV1(requestParameters, options) {
-            return localVarFp.authExchangeV1(requestParameters.siteAuthExchangeRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.authExchangeV1(requestParameters.SiteAuthExchangeRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1039,46 +703,6 @@ const AuthApiFactory = function (configuration, basePath, axios) {
         authGetAuthUrlV1(requestParameters, options) {
             return localVarFp.authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, options).then((request) => request(axios, basePath));
         },
-        /**
-         *
-         * @summary Get basic data for auth user
-         * @param {AuthApiAuthGetProfileV1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authGetProfileV1(requestParameters, options) {
-            return localVarFp.authGetProfileV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Guest request of auth
-         * @param {AuthApiAuthGuestV1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authGuestV1(requestParameters, options) {
-            return localVarFp.authGuestV1(requestParameters.refId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Logout
-         * @param {AuthApiAuthLogoutV1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authLogoutV1(requestParameters, options) {
-            return localVarFp.authLogoutV1(requestParameters.siteLogoutAuthRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Update access token
-         * @param {AuthApiAuthRefreshAccessV1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authRefreshAccessV1(requestParameters, options) {
-            return localVarFp.authRefreshAccessV1(requestParameters.userAgent, requestParameters.siteRefreshAuthBodyRequest, options).then((request) => request(axios, basePath));
-        },
     };
 };
 exports.AuthApiFactory = AuthApiFactory;
@@ -1089,17 +713,6 @@ exports.AuthApiFactory = AuthApiFactory;
  * @extends {BaseAPI}
  */
 class AuthApi extends base_1.BaseAPI {
-    /**
-     *
-     * @summary Auth telegram
-     * @param {AuthApiAuthAuthTelegramV1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    authAuthTelegramV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authAuthTelegramV1(requestParameters.language, requestParameters.authDate, requestParameters.id, requestParameters.firstName, requestParameters.hash, requestParameters.app, requestParameters.v, requestParameters.lastName, requestParameters.username, requestParameters.photoUrl, requestParameters.languageCode, requestParameters.isPremium, requestParameters.addedToAttachmentMenu, requestParameters.refId, requestParameters.redirect, requestParameters.country, options).then((request) => request(this.axios, this.basePath));
-    }
     /**
      *
      * @summary Internal request of auth google
@@ -1185,7 +798,7 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authDisconnectV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authDisconnectV1(requestParameters.language, requestParameters.socialId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authDisconnectV1(requestParameters.language, requestParameters.social_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1196,7 +809,7 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authExchangeV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authExchangeV1(requestParameters.siteAuthExchangeRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authExchangeV1(requestParameters.SiteAuthExchangeRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1209,77 +822,8 @@ class AuthApi extends base_1.BaseAPI {
     authGetAuthUrlV1(requestParameters, options) {
         return (0, exports.AuthApiFp)(this.configuration).authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, options).then((request) => request(this.axios, this.basePath));
     }
-    /**
-     *
-     * @summary Get basic data for auth user
-     * @param {AuthApiAuthGetProfileV1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    authGetProfileV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authGetProfileV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Guest request of auth
-     * @param {AuthApiAuthGuestV1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    authGuestV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authGuestV1(requestParameters.refId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Logout
-     * @param {AuthApiAuthLogoutV1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    authLogoutV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authLogoutV1(requestParameters.siteLogoutAuthRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Update access token
-     * @param {AuthApiAuthRefreshAccessV1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    authRefreshAccessV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authRefreshAccessV1(requestParameters.userAgent, requestParameters.siteRefreshAuthBodyRequest, options).then((request) => request(this.axios, this.basePath));
-    }
 }
 exports.AuthApi = AuthApi;
-/**
- * @export
- */
-exports.AuthAuthTelegramV1LanguageEnum = {
-    Ru: 'ru',
-    En: 'en',
-    Cn: 'cn'
-};
-/**
- * @export
- */
-exports.AuthAuthTelegramV1AppEnum = {
-    Site: 'site',
-    Admin: 'admin',
-    Mobile: 'mobile',
-    Desktop: 'desktop'
-};
-/**
- * @export
- */
-exports.AuthAuthTelegramV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
-};
 /**
  * @export
  */
@@ -1420,20 +964,4 @@ exports.AuthGetAuthUrlV1AppEnum = {
     Admin: 'admin',
     Mobile: 'mobile',
     Desktop: 'desktop'
-};
-/**
- * @export
- */
-exports.AuthGetProfileV1LanguageEnum = {
-    Ru: 'ru',
-    En: 'en',
-    Cn: 'cn'
-};
-/**
- * @export
- */
-exports.AuthGetProfileV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
 };

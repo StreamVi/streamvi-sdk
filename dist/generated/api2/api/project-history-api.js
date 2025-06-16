@@ -151,7 +151,7 @@ const ProjectHistoryApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         projectHistoryListV1(requestParameters, options) {
-            return localVarFp.projectHistoryListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.action, requestParameters.groupId, options).then((request) => request(axios, basePath));
+            return localVarFp.projectHistoryListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.action, requestParameters.group_id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -172,7 +172,7 @@ class ProjectHistoryApi extends base_1.BaseAPI {
      * @memberof ProjectHistoryApi
      */
     projectHistoryListV1(requestParameters, options) {
-        return (0, exports.ProjectHistoryApiFp)(this.configuration).projectHistoryListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.action, requestParameters.groupId, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectHistoryApiFp)(this.configuration).projectHistoryListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.action, requestParameters.group_id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ProjectHistoryApi = ProjectHistoryApi;

@@ -176,7 +176,7 @@ const PayoutApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         payoutCreateV1(requestParameters, options) {
-            return localVarFp.payoutCreateV1(requestParameters.language, requestParameters.payoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.payoutCreateV1(requestParameters.language, requestParameters.PayoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -186,7 +186,7 @@ const PayoutApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         payoutPrepareV1(requestParameters, options) {
-            return localVarFp.payoutPrepareV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.payoutPrepareV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -207,7 +207,7 @@ class PayoutApi extends base_1.BaseAPI {
      * @memberof PayoutApi
      */
     payoutCreateV1(requestParameters, options) {
-        return (0, exports.PayoutApiFp)(this.configuration).payoutCreateV1(requestParameters.language, requestParameters.payoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PayoutApiFp)(this.configuration).payoutCreateV1(requestParameters.language, requestParameters.PayoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -218,7 +218,7 @@ class PayoutApi extends base_1.BaseAPI {
      * @memberof PayoutApi
      */
     payoutPrepareV1(requestParameters, options) {
-        return (0, exports.PayoutApiFp)(this.configuration).payoutPrepareV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PayoutApiFp)(this.configuration).payoutPrepareV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PayoutApi = PayoutApi;

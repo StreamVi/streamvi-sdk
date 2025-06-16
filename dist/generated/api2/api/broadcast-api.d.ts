@@ -132,7 +132,7 @@ export interface BroadcastApiMethodBroadcastRestreamsV1Request {
      * @type {number}
      * @memberof BroadcastApiMethodBroadcastRestreamsV1
      */
-    readonly broadcastId: number;
+    readonly broadcast_id: number;
     /**
      * Chat token
      * @type {string}

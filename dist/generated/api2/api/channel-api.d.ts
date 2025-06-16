@@ -175,7 +175,7 @@ export interface ChannelApiChannelShortChannelListV1Request {
      * @type {number}
      * @memberof ChannelApiChannelShortChannelListV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -200,7 +200,7 @@ export interface ChannelApiMethodSearchV1Request {
      * @type {number}
      * @memberof ChannelApiMethodSearchV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -249,7 +249,7 @@ export interface ChannelApiMethodSetStatusV1Request {
      * @type {MethodSetStatusChannelRequest}
      * @memberof ChannelApiMethodSetStatusV1
      */
-    readonly methodSetStatusChannelRequest: MethodSetStatusChannelRequest;
+    readonly MethodSetStatusChannelRequest: MethodSetStatusChannelRequest;
 }
 /**
  * ChannelApi - object-oriented interface

@@ -184,7 +184,7 @@ const BroadcastApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         methodBroadcastRestreamsV1(requestParameters, options) {
-            return localVarFp.methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcastId, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcast_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -215,7 +215,7 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     methodBroadcastRestreamsV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcastId, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcast_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

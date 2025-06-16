@@ -229,7 +229,7 @@ const CentrifugeApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         centrifugeAuthV2(requestParameters, options) {
-            return localVarFp.centrifugeAuthV2(requestParameters.projectId, options).then((request) => request(axios, basePath));
+            return localVarFp.centrifugeAuthV2(requestParameters.project_id, options).then((request) => request(axios, basePath));
         },
         /**
          *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
@@ -239,7 +239,7 @@ const CentrifugeApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         centrifugeProjectV1(requestParameters, options) {
-            return localVarFp.centrifugeProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.centrifugeProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
@@ -249,7 +249,7 @@ const CentrifugeApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         getTokenBroadcastV1(requestParameters, options) {
-            return localVarFp.getTokenBroadcastV1(requestParameters.broadcastId, requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.getTokenBroadcastV1(requestParameters.broadcast_id, requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -270,7 +270,7 @@ class CentrifugeApi extends base_1.BaseAPI {
      * @memberof CentrifugeApi
      */
     centrifugeAuthV2(requestParameters, options) {
-        return (0, exports.CentrifugeApiFp)(this.configuration).centrifugeAuthV2(requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.CentrifugeApiFp)(this.configuration).centrifugeAuthV2(requestParameters.project_id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor
@@ -281,7 +281,7 @@ class CentrifugeApi extends base_1.BaseAPI {
      * @memberof CentrifugeApi
      */
     centrifugeProjectV1(requestParameters, options) {
-        return (0, exports.CentrifugeApiFp)(this.configuration).centrifugeProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.CentrifugeApiFp)(this.configuration).centrifugeProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min
@@ -292,7 +292,7 @@ class CentrifugeApi extends base_1.BaseAPI {
      * @memberof CentrifugeApi
      */
     getTokenBroadcastV1(requestParameters, options) {
-        return (0, exports.CentrifugeApiFp)(this.configuration).getTokenBroadcastV1(requestParameters.broadcastId, requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.CentrifugeApiFp)(this.configuration).getTokenBroadcastV1(requestParameters.broadcast_id, requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.CentrifugeApi = CentrifugeApi;

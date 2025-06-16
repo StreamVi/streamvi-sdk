@@ -50,25 +50,25 @@ export interface SiteUpdateOptionsTwitchRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'category_id': string;
+    'category_id'?: string;
     /**
      * category name
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'category_name': string;
+    'category_name'?: string;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'lang': SiteUpdateOptionsTwitchRequestLangEnum;
+    'lang'?: SiteUpdateOptionsTwitchRequestLangEnum;
     /**
      *
      * @type {Set<string>}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'tags': Set<string>;
+    'tags'?: Set<string>;
     /**
      * domain
      * @type {string}

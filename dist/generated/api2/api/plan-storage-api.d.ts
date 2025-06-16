@@ -283,7 +283,7 @@ export interface PlanStorageApiPlanStorageBuyV1Request {
      * @type {number}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Period
      * @type {'month' | 'year'}
@@ -295,7 +295,7 @@ export interface PlanStorageApiPlanStorageBuyV1Request {
      * @type {number}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly planStorageId: number;
+    readonly plan_storage_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -326,7 +326,7 @@ export interface PlanStorageApiPlanStorageCancelV1Request {
      * @type {number}
      * @memberof PlanStorageApiPlanStorageCancelV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -351,7 +351,7 @@ export interface PlanStorageApiPlanStorageCheckV1Request {
      * @type {number}
      * @memberof PlanStorageApiPlanStorageCheckV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -414,7 +414,7 @@ export interface PlanStorageApiPlanStorageTariffV1Request {
      * @type {number}
      * @memberof PlanStorageApiPlanStorageTariffV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

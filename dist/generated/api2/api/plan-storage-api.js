@@ -422,7 +422,7 @@ const PlanStorageApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planStorageBuyV1(requestParameters, options) {
-            return localVarFp.planStorageBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planStorageId, requestParameters.v, requestParameters.size, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_storage_id, requestParameters.v, requestParameters.size, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -432,7 +432,7 @@ const PlanStorageApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planStorageCancelV1(requestParameters, options) {
-            return localVarFp.planStorageCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -442,7 +442,7 @@ const PlanStorageApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planStorageCheckV1(requestParameters, options) {
-            return localVarFp.planStorageCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -472,7 +472,7 @@ const PlanStorageApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planStorageTariffV1(requestParameters, options) {
-            return localVarFp.planStorageTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -493,7 +493,7 @@ class PlanStorageApi extends base_1.BaseAPI {
      * @memberof PlanStorageApi
      */
     planStorageBuyV1(requestParameters, options) {
-        return (0, exports.PlanStorageApiFp)(this.configuration).planStorageBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planStorageId, requestParameters.v, requestParameters.size, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanStorageApiFp)(this.configuration).planStorageBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_storage_id, requestParameters.v, requestParameters.size, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -504,7 +504,7 @@ class PlanStorageApi extends base_1.BaseAPI {
      * @memberof PlanStorageApi
      */
     planStorageCancelV1(requestParameters, options) {
-        return (0, exports.PlanStorageApiFp)(this.configuration).planStorageCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanStorageApiFp)(this.configuration).planStorageCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -515,7 +515,7 @@ class PlanStorageApi extends base_1.BaseAPI {
      * @memberof PlanStorageApi
      */
     planStorageCheckV1(requestParameters, options) {
-        return (0, exports.PlanStorageApiFp)(this.configuration).planStorageCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanStorageApiFp)(this.configuration).planStorageCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -548,7 +548,7 @@ class PlanStorageApi extends base_1.BaseAPI {
      * @memberof PlanStorageApi
      */
     planStorageTariffV1(requestParameters, options) {
-        return (0, exports.PlanStorageApiFp)(this.configuration).planStorageTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanStorageApiFp)(this.configuration).planStorageTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PlanStorageApi = PlanStorageApi;

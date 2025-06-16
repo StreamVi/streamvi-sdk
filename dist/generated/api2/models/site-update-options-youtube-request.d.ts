@@ -56,55 +56,55 @@ export interface SiteUpdateOptionsYoutubeRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'category_id': string;
+    'category_id'?: string;
     /**
      * category name
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'category_name': string;
+    'category_name'?: string;
     /**
      * playlist id
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'playlist_id': string;
+    'playlist_id'?: string;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'audience': SiteUpdateOptionsYoutubeRequestAudienceEnum;
+    'audience'?: SiteUpdateOptionsYoutubeRequestAudienceEnum;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'latency': SiteUpdateOptionsYoutubeRequestLatencyEnum;
+    'latency'?: SiteUpdateOptionsYoutubeRequestLatencyEnum;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'privacy_video': SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum;
+    'privacy_video'?: SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'image': string;
+    'image'?: string;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'lang': SiteUpdateOptionsYoutubeRequestLangEnum;
+    'lang'?: SiteUpdateOptionsYoutubeRequestLangEnum;
     /**
      *
      * @type {Set<string>}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'tags': Set<string>;
+    'tags'?: Set<string>;
 }
 export declare const SiteUpdateOptionsYoutubeRequestVEnum: {
     readonly _1: "1";

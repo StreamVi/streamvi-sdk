@@ -27,6 +27,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(require("./api/account-api"), exports);
 __exportStar(require("./api/analytics-api"), exports);
 __exportStar(require("./api/auth-api"), exports);
 __exportStar(require("./api/blog-page-api"), exports);
@@ -64,5 +65,4 @@ __exportStar(require("./api/stream-key-api"), exports);
 __exportStar(require("./api/stream-pull-keys-api"), exports);
 __exportStar(require("./api/transactions-api"), exports);
 __exportStar(require("./api/transcoders-api"), exports);
-__exportStar(require("./api/user-api"), exports);
-__exportStar(require("./api/user-project-api"), exports);
+__exportStar(require("./api/users-api"), exports);

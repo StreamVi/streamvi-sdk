@@ -345,7 +345,7 @@ const ChatGatewayApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         methodChatGatewayDeleteV1(requestParameters, options) {
-            return localVarFp.methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -355,7 +355,7 @@ const ChatGatewayApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         methodChatGatewayGetMessageV1(requestParameters, options) {
-            return localVarFp.methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -365,7 +365,7 @@ const ChatGatewayApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         methodChatGatewayHistoryV1(requestParameters, options) {
-            return localVarFp.methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -375,7 +375,7 @@ const ChatGatewayApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         methodChatGatewaySendV1(requestParameters, options) {
-            return localVarFp.methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.methodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.MethodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -396,7 +396,7 @@ class ChatGatewayApi extends base_1.BaseAPI {
      * @memberof ChatGatewayApi
      */
     methodChatGatewayDeleteV1(requestParameters, options) {
-        return (0, exports.ChatGatewayApiFp)(this.configuration).methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChatGatewayApiFp)(this.configuration).methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -407,7 +407,7 @@ class ChatGatewayApi extends base_1.BaseAPI {
      * @memberof ChatGatewayApi
      */
     methodChatGatewayGetMessageV1(requestParameters, options) {
-        return (0, exports.ChatGatewayApiFp)(this.configuration).methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.eventId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChatGatewayApiFp)(this.configuration).methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -418,7 +418,7 @@ class ChatGatewayApi extends base_1.BaseAPI {
      * @memberof ChatGatewayApi
      */
     methodChatGatewayHistoryV1(requestParameters, options) {
-        return (0, exports.ChatGatewayApiFp)(this.configuration).methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChatGatewayApiFp)(this.configuration).methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -429,7 +429,7 @@ class ChatGatewayApi extends base_1.BaseAPI {
      * @memberof ChatGatewayApi
      */
     methodChatGatewaySendV1(requestParameters, options) {
-        return (0, exports.ChatGatewayApiFp)(this.configuration).methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcastId, requestParameters.methodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChatGatewayApiFp)(this.configuration).methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.MethodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ChatGatewayApi = ChatGatewayApi;

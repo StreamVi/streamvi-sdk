@@ -241,7 +241,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteCheckV1Request {
      * @type {number}
      * @memberof StreamPullKeysApiStreamPullKeysSiteCheckV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Key
      * @type {string}
@@ -266,7 +266,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteCreateV1Request {
      * @type {CreatePullKeyRequest}
      * @memberof StreamPullKeysApiStreamPullKeysSiteCreateV1
      */
-    readonly createPullKeyRequest: CreatePullKeyRequest;
+    readonly CreatePullKeyRequest: CreatePullKeyRequest;
 }
 /**
  * Request parameters for streamPullKeysSiteGetV1 operation in StreamPullKeysApi.
@@ -285,7 +285,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteGetV1Request {
      * @type {number}
      * @memberof StreamPullKeysApiStreamPullKeysSiteGetV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -310,7 +310,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteRemoveV1Request {
      * @type {number}
      * @memberof StreamPullKeysApiStreamPullKeysSiteRemoveV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Key
      * @type {string}
@@ -335,7 +335,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteUpdateV1Request {
      * @type {UpdatePullKeyRequest}
      * @memberof StreamPullKeysApiStreamPullKeysSiteUpdateV1
      */
-    readonly updatePullKeyRequest: UpdatePullKeyRequest;
+    readonly UpdatePullKeyRequest: UpdatePullKeyRequest;
 }
 /**
  * StreamPullKeysApi - object-oriented interface

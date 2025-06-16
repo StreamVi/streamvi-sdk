@@ -104,7 +104,7 @@ export interface ProjectHistoryApiProjectHistoryListV1Request {
      * @type {number}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -128,13 +128,13 @@ export interface ProjectHistoryApiProjectHistoryListV1Request {
      * @type {string}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly dateFrom?: string;
+    readonly date_from?: string;
     /**
      * Date to
      * @type {string}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly dateTo?: string;
+    readonly date_to?: string;
     /**
      * Action
      * @type {'project_channel_invite_add' | 'project_channel_invite_del' | 'project_channel_invite_accept' | 'project_channel_invite_decline' | 'user_project_invite_add' | 'user_project_invite_del' | 'user_project_invite_accept' | 'user_project_invite_decline' | 'user_project_add' | 'user_project_del' | 'user_project_change' | 'project_channel_add' | 'project_channel_del' | 'project_channel_change'}
@@ -146,7 +146,7 @@ export interface ProjectHistoryApiProjectHistoryListV1Request {
      * @type {number}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly groupId?: number;
+    readonly group_id?: number;
 }
 /**
  * ProjectHistoryApi - object-oriented interface

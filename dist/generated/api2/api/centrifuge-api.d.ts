@@ -158,7 +158,7 @@ export interface CentrifugeApiCentrifugeAuthV2Request {
      * @type {number}
      * @memberof CentrifugeApiCentrifugeAuthV2
      */
-    readonly projectId: number;
+    readonly project_id: number;
 }
 /**
  * Request parameters for centrifugeProjectV1 operation in CentrifugeApi.
@@ -177,7 +177,7 @@ export interface CentrifugeApiCentrifugeProjectV1Request {
      * @type {number}
      * @memberof CentrifugeApiCentrifugeProjectV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -196,7 +196,7 @@ export interface CentrifugeApiGetTokenBroadcastV1Request {
      * @type {number}
      * @memberof CentrifugeApiGetTokenBroadcastV1
      */
-    readonly broadcastId: number;
+    readonly broadcast_id: number;
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
@@ -208,7 +208,7 @@ export interface CentrifugeApiGetTokenBroadcastV1Request {
      * @type {number}
      * @memberof CentrifugeApiGetTokenBroadcastV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

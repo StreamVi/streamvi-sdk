@@ -335,7 +335,7 @@ export interface PlanRestreamApiPlanRestreamBuyV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamBuyV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Period
      * @type {'month' | 'year'}
@@ -347,7 +347,7 @@ export interface PlanRestreamApiPlanRestreamBuyV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamBuyV1
      */
-    readonly planRestreamId: number;
+    readonly plan_restream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -359,7 +359,7 @@ export interface PlanRestreamApiPlanRestreamBuyV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamBuyV1
      */
-    readonly countChannel?: number;
+    readonly count_channel?: number;
     /**
      * Bitrate, kbps
      * @type {number}
@@ -384,7 +384,7 @@ export interface PlanRestreamApiPlanRestreamCheck2V1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamCheck2V1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Period
      * @type {'month' | 'year'}
@@ -396,7 +396,7 @@ export interface PlanRestreamApiPlanRestreamCheck2V1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamCheck2V1
      */
-    readonly planRestreamId: number;
+    readonly plan_restream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -408,7 +408,7 @@ export interface PlanRestreamApiPlanRestreamCheck2V1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamCheck2V1
      */
-    readonly useBalance?: number;
+    readonly use_balance?: number;
     /**
      * Channels count
      * @type {number}
@@ -458,7 +458,7 @@ export interface PlanRestreamApiPlanRestreamListProjectV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamListProjectV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -502,13 +502,13 @@ export interface PlanRestreamApiPlanRestreamRemoveV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamRemoveV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Restream plan id
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamRemoveV1
      */
-    readonly planRestreamId: number;
+    readonly plan_restream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -533,7 +533,7 @@ export interface PlanRestreamApiPlanRestreamTariffV1Request {
      * @type {number}
      * @memberof PlanRestreamApiPlanRestreamTariffV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

@@ -21,3 +21,4 @@ package-lock.json
 Thumbs.db 
 .env
 .env.local
+example-sdk/

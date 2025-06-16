@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserUpdateProfileV1LanguageEnum = exports.UserUpdateProfileV1VEnum = exports.UserGetProfileV1VEnum = exports.UserGetProfileV1LanguageEnum = exports.UserApi = exports.UserApiFactory = exports.UserApiFp = exports.UserApiAxiosParamCreator = void 0;
+exports.AccountUpdateProfileV1LanguageEnum = exports.AccountUpdateProfileV1VEnum = exports.AccountGetProfileV1VEnum = exports.AccountGetProfileV1LanguageEnum = exports.AccountApi = exports.AccountApiFactory = exports.AccountApiFp = exports.AccountApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -24,24 +24,24 @@ const common_1 = require("../common");
 // @ts-ignore
 const base_1 = require("../base");
 /**
- * UserApi - axios parameter creator
+ * AccountApi - axios parameter creator
  * @export
  */
-const UserApiAxiosParamCreator = function (configuration) {
+const AccountApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Get user profile
-         * @param {UserGetProfileV1LanguageEnum} language Current language
-         * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @summary Get account profile
+         * @param {AccountGetProfileV1LanguageEnum} language Current language
+         * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number | null} [projectId] Project id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userGetProfileV1: async (language, v, projectId, options = {}) => {
+        accountGetProfileV1: async (language, v, projectId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('userGetProfileV1', 'language', language);
-            const localVarPath = `/method/users/profile`;
+            (0, common_1.assertParamExists)('accountGetProfileV1', 'language', language);
+            const localVarPath = `/method/account/profile`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -73,25 +73,25 @@ const UserApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Update profile
-         * @param {UserUpdateProfileV1VEnum} v Version
-         * @param {UserUpdateProfileV1LanguageEnum} language Current language
+         * @summary Update account profile
+         * @param {AccountUpdateProfileV1VEnum} v Version
+         * @param {AccountUpdateProfileV1LanguageEnum} language Current language
          * @param {string} firstName First name
          * @param {string} lastName Last name
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userUpdateProfileV1: async (v, language, firstName, lastName, avatar, options = {}) => {
+        accountUpdateProfileV1: async (v, language, firstName, lastName, avatar, options = {}) => {
             // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('userUpdateProfileV1', 'v', v);
+            (0, common_1.assertParamExists)('accountUpdateProfileV1', 'v', v);
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('userUpdateProfileV1', 'language', language);
+            (0, common_1.assertParamExists)('accountUpdateProfileV1', 'language', language);
             // verify required parameter 'firstName' is not null or undefined
-            (0, common_1.assertParamExists)('userUpdateProfileV1', 'firstName', firstName);
+            (0, common_1.assertParamExists)('accountUpdateProfileV1', 'firstName', firstName);
             // verify required parameter 'lastName' is not null or undefined
-            (0, common_1.assertParamExists)('userUpdateProfileV1', 'lastName', lastName);
-            const localVarPath = `/method/users/profile`;
+            (0, common_1.assertParamExists)('accountUpdateProfileV1', 'lastName', lastName);
+            const localVarPath = `/method/account/profile`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -132,116 +132,116 @@ const UserApiAxiosParamCreator = function (configuration) {
         },
     };
 };
-exports.UserApiAxiosParamCreator = UserApiAxiosParamCreator;
+exports.AccountApiAxiosParamCreator = AccountApiAxiosParamCreator;
 /**
- * UserApi - functional programming interface
+ * AccountApi - functional programming interface
  * @export
  */
-const UserApiFp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.UserApiAxiosParamCreator)(configuration);
+const AccountApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.AccountApiAxiosParamCreator)(configuration);
     return {
         /**
          *
-         * @summary Get user profile
-         * @param {UserGetProfileV1LanguageEnum} language Current language
-         * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @summary Get account profile
+         * @param {AccountGetProfileV1LanguageEnum} language Current language
+         * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {number | null} [projectId] Project id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userGetProfileV1(language, v, projectId, options) {
+        async accountGetProfileV1(language, v, projectId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userGetProfileV1(language, v, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accountGetProfileV1(language, v, projectId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserApi.userGetProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AccountApi.accountGetProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
-         * @summary Update profile
-         * @param {UserUpdateProfileV1VEnum} v Version
-         * @param {UserUpdateProfileV1LanguageEnum} language Current language
+         * @summary Update account profile
+         * @param {AccountUpdateProfileV1VEnum} v Version
+         * @param {AccountUpdateProfileV1LanguageEnum} language Current language
          * @param {string} firstName First name
          * @param {string} lastName Last name
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userUpdateProfileV1(v, language, firstName, lastName, avatar, options) {
+        async accountUpdateProfileV1(v, language, firstName, lastName, avatar, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userUpdateProfileV1(v, language, firstName, lastName, avatar, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accountUpdateProfileV1(v, language, firstName, lastName, avatar, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserApi.userUpdateProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AccountApi.accountUpdateProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
 };
-exports.UserApiFp = UserApiFp;
+exports.AccountApiFp = AccountApiFp;
 /**
- * UserApi - factory interface
+ * AccountApi - factory interface
  * @export
  */
-const UserApiFactory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.UserApiFp)(configuration);
+const AccountApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.AccountApiFp)(configuration);
     return {
         /**
          *
-         * @summary Get user profile
-         * @param {UserApiUserGetProfileV1Request} requestParameters Request parameters.
+         * @summary Get account profile
+         * @param {AccountApiAccountGetProfileV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userGetProfileV1(requestParameters, options) {
-            return localVarFp.userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.projectId, options).then((request) => request(axios, basePath));
+        accountGetProfileV1(requestParameters, options) {
+            return localVarFp.accountGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(axios, basePath));
         },
         /**
          *
-         * @summary Update profile
-         * @param {UserApiUserUpdateProfileV1Request} requestParameters Request parameters.
+         * @summary Update account profile
+         * @param {AccountApiAccountUpdateProfileV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userUpdateProfileV1(requestParameters, options) {
-            return localVarFp.userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.firstName, requestParameters.lastName, requestParameters.avatar, options).then((request) => request(axios, basePath));
+        accountUpdateProfileV1(requestParameters, options) {
+            return localVarFp.accountUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.UserApiFactory = UserApiFactory;
+exports.AccountApiFactory = AccountApiFactory;
 /**
- * UserApi - object-oriented interface
+ * AccountApi - object-oriented interface
  * @export
- * @class UserApi
+ * @class AccountApi
  * @extends {BaseAPI}
  */
-class UserApi extends base_1.BaseAPI {
+class AccountApi extends base_1.BaseAPI {
     /**
      *
-     * @summary Get user profile
-     * @param {UserApiUserGetProfileV1Request} requestParameters Request parameters.
+     * @summary Get account profile
+     * @param {AccountApiAccountGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
+     * @memberof AccountApi
      */
-    userGetProfileV1(requestParameters, options) {
-        return (0, exports.UserApiFp)(this.configuration).userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.projectId, options).then((request) => request(this.axios, this.basePath));
+    accountGetProfileV1(requestParameters, options) {
+        return (0, exports.AccountApiFp)(this.configuration).accountGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
-     * @summary Update profile
-     * @param {UserApiUserUpdateProfileV1Request} requestParameters Request parameters.
+     * @summary Update account profile
+     * @param {AccountApiAccountUpdateProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
+     * @memberof AccountApi
      */
-    userUpdateProfileV1(requestParameters, options) {
-        return (0, exports.UserApiFp)(this.configuration).userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.firstName, requestParameters.lastName, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
+    accountUpdateProfileV1(requestParameters, options) {
+        return (0, exports.AccountApiFp)(this.configuration).accountUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
     }
 }
-exports.UserApi = UserApi;
+exports.AccountApi = AccountApi;
 /**
  * @export
  */
-exports.UserGetProfileV1LanguageEnum = {
+exports.AccountGetProfileV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'
@@ -249,7 +249,7 @@ exports.UserGetProfileV1LanguageEnum = {
 /**
  * @export
  */
-exports.UserGetProfileV1VEnum = {
+exports.AccountGetProfileV1VEnum = {
     _1: '1',
     _2: '2',
     _3: '3'
@@ -257,7 +257,7 @@ exports.UserGetProfileV1VEnum = {
 /**
  * @export
  */
-exports.UserUpdateProfileV1VEnum = {
+exports.AccountUpdateProfileV1VEnum = {
     _1: '1',
     _2: '2',
     _3: '3'
@@ -265,7 +265,7 @@ exports.UserUpdateProfileV1VEnum = {
 /**
  * @export
  */
-exports.UserUpdateProfileV1LanguageEnum = {
+exports.AccountUpdateProfileV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'

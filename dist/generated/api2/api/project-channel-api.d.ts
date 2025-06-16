@@ -220,25 +220,25 @@ export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Target project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly toProjectId: number;
+    readonly to_project_id: number;
     /**
      * Access type
      * @type {0 | 1 | 1 | 2}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly accessType: ProjectChannelChangeAccessV1AccessTypeEnum;
+    readonly access_type: ProjectChannelChangeAccessV1AccessTypeEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -263,19 +263,19 @@ export interface ProjectChannelApiProjectChannelDelV1Request {
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Target project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly targetProjectId: number;
+    readonly target_project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -300,13 +300,13 @@ export interface ProjectChannelApiProjectChannelListV1Request {
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -331,19 +331,19 @@ export interface ProjectChannelApiProjectChannelTransferOwnerV1Request {
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Target project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly toProjectId: number;
+    readonly to_project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

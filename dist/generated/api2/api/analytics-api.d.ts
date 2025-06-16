@@ -171,13 +171,13 @@ export interface AnalyticsApiAnalyticsTsStreamBitrateV1Request {
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * stream id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
-    readonly streamId: number;
+    readonly stream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -202,13 +202,13 @@ export interface AnalyticsApiAnalyticsTsStreamEventsV1Request {
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * stream id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
-    readonly streamId: number;
+    readonly stream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -233,13 +233,13 @@ export interface AnalyticsApiAnalyticsTsStreamViewersV1Request {
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * stream id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
      */
-    readonly streamId: number;
+    readonly stream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

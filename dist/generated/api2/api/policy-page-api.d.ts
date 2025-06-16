@@ -127,7 +127,7 @@ export interface PolicyPageApiPolicyPageGetItemV1Request {
      * @type {'refund' | 'terms-of-use' | 'using-cookie' | 'acceptable-use' | 'privacy-notice'}
      * @memberof PolicyPageApiPolicyPageGetItemV1
      */
-    readonly fileName: PolicyPageGetItemV1FileNameEnum;
+    readonly file_name: PolicyPageGetItemV1FileNameEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

@@ -151,7 +151,7 @@ export interface PaySystemApiPaySystemCreateChallengeV1Request {
      * @type {number}
      * @memberof PaySystemApiPaySystemCreateChallengeV1
      */
-    readonly paymentId: number;
+    readonly payment_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -176,7 +176,7 @@ export interface PaySystemApiPaySystemCreateUnitpayV1Request {
      * @type {number}
      * @memberof PaySystemApiPaySystemCreateUnitpayV1
      */
-    readonly paymentId: number;
+    readonly payment_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

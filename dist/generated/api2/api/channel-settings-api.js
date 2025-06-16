@@ -1202,7 +1202,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelChatGetTelegramSettingV1(requestParameters, options) {
-            return localVarFp.channelChatGetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatGetTelegramSettingV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1212,7 +1212,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelChatInitTelegramChatConnectV1(requestParameters, options) {
-            return localVarFp.channelChatInitTelegramChatConnectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatInitTelegramChatConnectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1222,7 +1222,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelChatRemoveTelegramChatV1(requestParameters, options) {
-            return localVarFp.channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1232,7 +1232,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelChatSetTelegramSettingV1(requestParameters, options) {
-            return localVarFp.channelChatSetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.telegramSetSettingsRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatSetTelegramSettingV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.TelegramSetSettingsRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1242,7 +1242,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelChatTelegramPostsV1(requestParameters, options) {
-            return localVarFp.channelChatTelegramPostsV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatTelegramPostsV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1252,7 +1252,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelChatUpdateOptionsTelegramV1(requestParameters, options) {
-            return localVarFp.channelChatUpdateOptionsTelegramV1(requestParameters.siteUpdateChatTelegramRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatUpdateOptionsTelegramV1(requestParameters.SiteUpdateChatTelegramRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1262,7 +1262,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelOptionsGetPlannedV1(requestParameters, options) {
-            return localVarFp.channelOptionsGetPlannedV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsGetPlannedV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1272,7 +1272,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelOptionsGetPlayListV1(requestParameters, options) {
-            return localVarFp.channelOptionsGetPlayListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsGetPlayListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1282,7 +1282,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsOkV1(requestParameters, options) {
-            return localVarFp.channelOptionsUpdateOptionsOkV1(requestParameters.siteUpdateOptionsOkRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsOkV1(requestParameters.SiteUpdateOptionsOkRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1292,7 +1292,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsTrovoV1(requestParameters, options) {
-            return localVarFp.channelOptionsUpdateOptionsTrovoV1(requestParameters.siteUpdateOptionsTrovoRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsTrovoV1(requestParameters.SiteUpdateOptionsTrovoRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1302,7 +1302,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsTwitchV1(requestParameters, options) {
-            return localVarFp.channelOptionsUpdateOptionsTwitchV1(requestParameters.siteUpdateOptionsTwitchRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsTwitchV1(requestParameters.SiteUpdateOptionsTwitchRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1312,7 +1312,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsVkV1(requestParameters, options) {
-            return localVarFp.channelOptionsUpdateOptionsVkV1(requestParameters.siteUpdateOptionsVkRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsVkV1(requestParameters.SiteUpdateOptionsVkRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1322,7 +1322,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters, options) {
-            return localVarFp.channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters.siteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters.SiteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1332,7 +1332,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsYoutubeV1(requestParameters, options) {
-            return localVarFp.channelOptionsUpdateOptionsYoutubeV1(requestParameters.siteUpdateOptionsYoutubeRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsYoutubeV1(requestParameters.SiteUpdateOptionsYoutubeRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1342,7 +1342,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelOptionsUpdatePlannedV1(requestParameters, options) {
-            return localVarFp.channelOptionsUpdatePlannedV1(requestParameters.siteSetPlannedRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdatePlannedV1(requestParameters.SiteSetPlannedRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1361,7 +1361,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelSettingSetNameV1(requestParameters, options) {
-            return localVarFp.channelSettingSetNameV1(requestParameters.siteSetNameRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingSetNameV1(requestParameters.SiteSetNameRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1371,7 +1371,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelSettingUpdateRtmpV1(requestParameters, options) {
-            return localVarFp.channelSettingUpdateRtmpV1(requestParameters.siteSetUrlRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingUpdateRtmpV1(requestParameters.SiteSetUrlRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1381,7 +1381,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelSettingUpdateTokenV1(requestParameters, options) {
-            return localVarFp.channelSettingUpdateTokenV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.role, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingUpdateTokenV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.role, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1391,7 +1391,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelSettingUpdateTranscoderV1(requestParameters, options) {
-            return localVarFp.channelSettingUpdateTranscoderV1(requestParameters.siteSetTranscoderRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingUpdateTranscoderV1(requestParameters.SiteSetTranscoderRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1401,7 +1401,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         telegramGetPostByFilterV1(requestParameters, options) {
-            return localVarFp.telegramGetPostByFilterV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.filterMode, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.telegramGetPostByFilterV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.filter_mode, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1422,7 +1422,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelChatGetTelegramSettingV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatGetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatGetTelegramSettingV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1433,7 +1433,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelChatInitTelegramChatConnectV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatInitTelegramChatConnectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatInitTelegramChatConnectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1444,7 +1444,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelChatRemoveTelegramChatV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1455,7 +1455,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelChatSetTelegramSettingV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatSetTelegramSettingV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.telegramSetSettingsRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatSetTelegramSettingV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.TelegramSetSettingsRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1466,7 +1466,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelChatTelegramPostsV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatTelegramPostsV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatTelegramPostsV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1477,7 +1477,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelChatUpdateOptionsTelegramV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatUpdateOptionsTelegramV1(requestParameters.siteUpdateChatTelegramRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelChatUpdateOptionsTelegramV1(requestParameters.SiteUpdateChatTelegramRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1488,7 +1488,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelOptionsGetPlannedV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsGetPlannedV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsGetPlannedV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1499,7 +1499,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelOptionsGetPlayListV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsGetPlayListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsGetPlayListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1510,7 +1510,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelOptionsUpdateOptionsOkV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsOkV1(requestParameters.siteUpdateOptionsOkRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsOkV1(requestParameters.SiteUpdateOptionsOkRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1521,7 +1521,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelOptionsUpdateOptionsTrovoV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsTrovoV1(requestParameters.siteUpdateOptionsTrovoRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsTrovoV1(requestParameters.SiteUpdateOptionsTrovoRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1532,7 +1532,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelOptionsUpdateOptionsTwitchV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsTwitchV1(requestParameters.siteUpdateOptionsTwitchRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsTwitchV1(requestParameters.SiteUpdateOptionsTwitchRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1543,7 +1543,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelOptionsUpdateOptionsVkV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsVkV1(requestParameters.siteUpdateOptionsVkRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsVkV1(requestParameters.SiteUpdateOptionsVkRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1554,7 +1554,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters.siteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters.SiteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1565,7 +1565,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelOptionsUpdateOptionsYoutubeV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsYoutubeV1(requestParameters.siteUpdateOptionsYoutubeRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdateOptionsYoutubeV1(requestParameters.SiteUpdateOptionsYoutubeRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1576,7 +1576,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelOptionsUpdatePlannedV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdatePlannedV1(requestParameters.siteSetPlannedRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelOptionsUpdatePlannedV1(requestParameters.SiteSetPlannedRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1597,7 +1597,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelSettingSetNameV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingSetNameV1(requestParameters.siteSetNameRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingSetNameV1(requestParameters.SiteSetNameRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1608,7 +1608,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelSettingUpdateRtmpV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateRtmpV1(requestParameters.siteSetUrlRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateRtmpV1(requestParameters.SiteSetUrlRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1619,7 +1619,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelSettingUpdateTokenV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateTokenV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.role, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateTokenV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.role, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1630,7 +1630,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     channelSettingUpdateTranscoderV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateTranscoderV1(requestParameters.siteSetTranscoderRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateTranscoderV1(requestParameters.SiteSetTranscoderRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1641,7 +1641,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      * @memberof ChannelSettingsApi
      */
     telegramGetPostByFilterV1(requestParameters, options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).telegramGetPostByFilterV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.filterMode, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).telegramGetPostByFilterV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.filter_mode, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ChannelSettingsApi = ChannelSettingsApi;

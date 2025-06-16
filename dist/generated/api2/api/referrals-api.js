@@ -117,7 +117,7 @@ const ReferralsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         referralsTotalInfoV1(requestParameters, options) {
-            return localVarFp.referralsTotalInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.referralsTotalInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -138,7 +138,7 @@ class ReferralsApi extends base_1.BaseAPI {
      * @memberof ReferralsApi
      */
     referralsTotalInfoV1(requestParameters, options) {
-        return (0, exports.ReferralsApiFp)(this.configuration).referralsTotalInfoV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ReferralsApiFp)(this.configuration).referralsTotalInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ReferralsApi = ReferralsApi;

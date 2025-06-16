@@ -127,7 +127,7 @@ export interface StreamKeyApiStreamKeysKeyV1Request {
      * @type {number}
      * @memberof StreamKeyApiStreamKeysKeyV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -146,7 +146,7 @@ export interface StreamKeyApiStreamKeysUpdateRecordV1Request {
      * @type {SetRecordStreamRequest}
      * @memberof StreamKeyApiStreamKeysUpdateRecordV1
      */
-    readonly setRecordStreamRequest: SetRecordStreamRequest;
+    readonly SetRecordStreamRequest: SetRecordStreamRequest;
 }
 /**
  * StreamKeyApi - object-oriented interface

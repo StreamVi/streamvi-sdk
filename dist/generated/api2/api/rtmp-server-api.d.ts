@@ -14,7 +14,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
 import type { ListOfRtmpServerLocationResponse } from '../models';
 import type { RtmpServerGraphResponse } from '../models';
-import type { RtmpServerListResponse } from '../models';
+import type { RtmpServerListV2Response } from '../models';
 import type { RtmpServerStateResponse } from '../models';
 /**
  * RtmpServerApi - axios parameter creator
@@ -44,14 +44,14 @@ export declare const RtmpServerApiAxiosParamCreator: (configuration?: Configurat
     /**
      *
      * @summary List rtmp servers
-     * @param {RtmpServerListV1LanguageEnum} language Current language
+     * @param {RtmpServerListV2LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {RtmpServerListV1IntervalEnum} interval Interval state in hours
-     * @param {RtmpServerListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {RtmpServerListV2IntervalEnum} interval Interval state in hours
+     * @param {RtmpServerListV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rtmpServerListV1: (language: RtmpServerListV1LanguageEnum, projectId: number, interval: RtmpServerListV1IntervalEnum, v?: RtmpServerListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    rtmpServerListV2: (language: RtmpServerListV2LanguageEnum, projectId: number, interval: RtmpServerListV2IntervalEnum, v?: RtmpServerListV2VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary State of rtmp servers
@@ -98,14 +98,14 @@ export declare const RtmpServerApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary List rtmp servers
-     * @param {RtmpServerListV1LanguageEnum} language Current language
+     * @param {RtmpServerListV2LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {RtmpServerListV1IntervalEnum} interval Interval state in hours
-     * @param {RtmpServerListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {RtmpServerListV2IntervalEnum} interval Interval state in hours
+     * @param {RtmpServerListV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rtmpServerListV1(language: RtmpServerListV1LanguageEnum, projectId: number, interval: RtmpServerListV1IntervalEnum, v?: RtmpServerListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerListResponse>>;
+    rtmpServerListV2(language: RtmpServerListV2LanguageEnum, projectId: number, interval: RtmpServerListV2IntervalEnum, v?: RtmpServerListV2VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerListV2Response>>;
     /**
      *
      * @summary State of rtmp servers
@@ -148,11 +148,11 @@ export declare const RtmpServerApiFactory: (configuration?: Configuration, baseP
     /**
      *
      * @summary List rtmp servers
-     * @param {RtmpServerApiRtmpServerListV1Request} requestParameters Request parameters.
+     * @param {RtmpServerApiRtmpServerListV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rtmpServerListV1(requestParameters: RtmpServerApiRtmpServerListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListResponse>;
+    rtmpServerListV2(requestParameters: RtmpServerApiRtmpServerListV2Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListV2Response>;
     /**
      *
      * @summary State of rtmp servers
@@ -196,12 +196,12 @@ export interface RtmpServerApiInterface {
     /**
      *
      * @summary List rtmp servers
-     * @param {RtmpServerApiRtmpServerListV1Request} requestParameters Request parameters.
+     * @param {RtmpServerApiRtmpServerListV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApiInterface
      */
-    rtmpServerListV1(requestParameters: RtmpServerApiRtmpServerListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListResponse>;
+    rtmpServerListV2(requestParameters: RtmpServerApiRtmpServerListV2Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListV2Response>;
     /**
      *
      * @summary State of rtmp servers
@@ -271,35 +271,35 @@ export interface RtmpServerApiRtmpServerGraphV1Request {
     readonly v?: RtmpServerGraphV1VEnum;
 }
 /**
- * Request parameters for rtmpServerListV1 operation in RtmpServerApi.
+ * Request parameters for rtmpServerListV2 operation in RtmpServerApi.
  * @export
- * @interface RtmpServerApiRtmpServerListV1Request
+ * @interface RtmpServerApiRtmpServerListV2Request
  */
-export interface RtmpServerApiRtmpServerListV1Request {
+export interface RtmpServerApiRtmpServerListV2Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof RtmpServerApiRtmpServerListV1
+     * @memberof RtmpServerApiRtmpServerListV2
      */
-    readonly language: RtmpServerListV1LanguageEnum;
+    readonly language: RtmpServerListV2LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof RtmpServerApiRtmpServerListV1
+     * @memberof RtmpServerApiRtmpServerListV2
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Interval state in hours
      * @type {1 | 3 | 6 | 12 | 24}
-     * @memberof RtmpServerApiRtmpServerListV1
+     * @memberof RtmpServerApiRtmpServerListV2
      */
-    readonly interval: RtmpServerListV1IntervalEnum;
+    readonly interval: RtmpServerListV2IntervalEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 2 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
-     * @memberof RtmpServerApiRtmpServerListV1
+     * @memberof RtmpServerApiRtmpServerListV2
      */
-    readonly v?: RtmpServerListV1VEnum;
+    readonly v?: RtmpServerListV2VEnum;
 }
 /**
  * Request parameters for rtmpServerStateV1 operation in RtmpServerApi.
@@ -354,12 +354,12 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
     /**
      *
      * @summary List rtmp servers
-     * @param {RtmpServerApiRtmpServerListV1Request} requestParameters Request parameters.
+     * @param {RtmpServerApiRtmpServerListV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerListV1(requestParameters: RtmpServerApiRtmpServerListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerListResponse, any>>;
+    rtmpServerListV2(requestParameters: RtmpServerApiRtmpServerListV2Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerListV2Response, any>>;
     /**
      *
      * @summary State of rtmp servers
@@ -439,32 +439,32 @@ export type RtmpServerGraphV1VEnum = typeof RtmpServerGraphV1VEnum[keyof typeof 
 /**
  * @export
  */
-export declare const RtmpServerListV1LanguageEnum: {
+export declare const RtmpServerListV2LanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
     readonly Cn: "cn";
 };
-export type RtmpServerListV1LanguageEnum = typeof RtmpServerListV1LanguageEnum[keyof typeof RtmpServerListV1LanguageEnum];
+export type RtmpServerListV2LanguageEnum = typeof RtmpServerListV2LanguageEnum[keyof typeof RtmpServerListV2LanguageEnum];
 /**
  * @export
  */
-export declare const RtmpServerListV1IntervalEnum: {
+export declare const RtmpServerListV2IntervalEnum: {
     readonly NUMBER_1: 1;
     readonly NUMBER_3: 3;
     readonly NUMBER_6: 6;
     readonly NUMBER_12: 12;
     readonly NUMBER_24: 24;
 };
-export type RtmpServerListV1IntervalEnum = typeof RtmpServerListV1IntervalEnum[keyof typeof RtmpServerListV1IntervalEnum];
+export type RtmpServerListV2IntervalEnum = typeof RtmpServerListV2IntervalEnum[keyof typeof RtmpServerListV2IntervalEnum];
 /**
  * @export
  */
-export declare const RtmpServerListV1VEnum: {
+export declare const RtmpServerListV2VEnum: {
     readonly _1: "1";
     readonly _2: "2";
     readonly _3: "3";
 };
-export type RtmpServerListV1VEnum = typeof RtmpServerListV1VEnum[keyof typeof RtmpServerListV1VEnum];
+export type RtmpServerListV2VEnum = typeof RtmpServerListV2VEnum[keyof typeof RtmpServerListV2VEnum];
 /**
  * @export
  */

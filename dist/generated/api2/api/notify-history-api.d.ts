@@ -304,7 +304,7 @@ export interface NotifyHistoryApiNotifyHistoryGetListMyV1Request {
      * @type {number}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly projectId?: number;
+    readonly project_id?: number;
     /**
      * Name
      * @type {'high_bitrate' | 'request_access_channel' | 'request_access_project' | 'promocode_test' | 'stream_test' | 'plan_restream_expires' | 'plan_restream_expired' | 'plan_restream_renewed' | 'plan_transcoder_expires' | 'plan_transcoder_expired' | 'plan_transcoder_renewed' | 'plan_storage_expires' | 'plan_storage_expired' | 'plan_storage_renewed' | 'broadcast_unsupported_codec' | 'broadcast_unsupported_codec_screen' | 'broadcast_bitrate_exceeded_screen' | 'rtmp_connect_old_server_screen' | 'broadcast_not_audio' | 'broadcast_bitrate_exceeded' | 'broadcast_started' | 'broadcast_stopped' | 'restream_check_twitch_bitrate_1' | 'api_pause_start' | 'api_pause_end' | 'api_wait_edit' | 'api_restream_start' | 'api_restream_stop' | 'api_drop_broadcast' | 'api_drop_broadcast_remove_company' | 'api_drop_broadcast_update_key' | 'publisher_disconnected' | 'publisher_connected' | 'publisher_initializing' | 'publisher_close' | 'broadcast_connected_start' | 'broadcast_connected_end' | 'broadcast_connecting_stream' | 'broadcast_started_new_stream' | 'broadcast_connecting_lost' | 'broadcast_video_lost_start' | 'broadcast_video_lost_end' | 'broadcast_video_pause_start' | 'broadcast_video_pause_end' | 'broadcast_init_restream' | 'start_stream' | 'create_reader' | 'start_channel' | 'stop_channel' | 'stop_stream_video_timeout' | 'stop_stream_no_start_video' | 'stop_stream' | 'delete_reader' | 'transcoder_start' | 'transcoder_stop' | 'start_channel_failed' | 'start_channel_success' | 'api_channel_initializing_start' | 'api_channel_initializing_failed' | 'api_channel_initializing_success' | 'channel_api_update_settings_success' | 'channel_api_update_settings_error' | 'channel_api_update_playlist_success' | 'channel_api_update_playlist_error' | 'channel_api_update_chat_error' | 'channel_api_stream_key_success' | 'channel_api_stream_key_error' | 'channel_api_auto_stop_disable_success' | 'channel_api_auto_stop_disable_error' | 'channel_api_unbinding_stream_key_error' | 'channel_api_create_broadcast_success' | 'channel_api_create_broadcast_error' | 'channel_api_set_planned_success' | 'channel_api_set_planned_error' | 'channel_api_set_thumbnail_success' | 'channel_api_set_thumbnail_error' | 'channel_token_error' | 'channel_api_group_failed' | 'no_audio_reader' | 'restream_check_twitch_bitrate_2' | 'transcoder_support_error_screen' | 'transcoder_tariff_end_screen' | 'transcoder_count_flow_screen' | 'transcoder_resolution_screen' | 'stream_key_banned' | 'broadcast_change_codec' | 'broadcast_change_region' | 'video_upload_error' | 'stop_channel_error' | 'broadcast_user_action_stop'}
@@ -322,19 +322,19 @@ export interface NotifyHistoryApiNotifyHistoryGetListMyV1Request {
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly dateFrom?: string;
+    readonly date_from?: string;
     /**
      * Date to
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly dateTo?: string;
+    readonly date_to?: string;
     /**
      * Status read
      * @type {'unread' | 'read'}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly statusRead?: NotifyHistoryGetListMyV1StatusReadEnum;
+    readonly status_read?: NotifyHistoryGetListMyV1StatusReadEnum;
 }
 /**
  * Request parameters for notifyHistoryGetStatusMyV1 operation in NotifyHistoryApi.
@@ -366,7 +366,7 @@ export interface NotifyHistoryApiNotifyHistoryGetV1Request {
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryGetV1
      */
-    readonly id: string;
+    readonly _id: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1'}
@@ -391,7 +391,7 @@ export interface NotifyHistoryApiNotifyHistoryMarkOfReadV1Request {
      * @type {SiteMarkReadHistoryRequest}
      * @memberof NotifyHistoryApiNotifyHistoryMarkOfReadV1
      */
-    readonly siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest;
+    readonly SiteMarkReadHistoryRequest: SiteMarkReadHistoryRequest;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -410,19 +410,19 @@ export interface NotifyHistoryApiNotifyHistoryRunActionV1Request {
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
-    readonly notifyHistoryId: string;
+    readonly notify_history_id: string;
     /**
      * Action name
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
-    readonly actionName: string;
+    readonly action_name: string;
     /**
      * Group id
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
-    readonly groupId: string;
+    readonly group_id: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1'}

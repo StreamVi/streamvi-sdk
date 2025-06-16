@@ -309,7 +309,7 @@ const PlatformsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         platformsAddAccountV1(requestParameters, options) {
-            return localVarFp.platformsAddAccountV1(requestParameters.language, requestParameters.projectId, requestParameters.platform, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsAddAccountV1(requestParameters.language, requestParameters.project_id, requestParameters.platform, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -360,7 +360,7 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsAddAccountV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsAddAccountV1(requestParameters.language, requestParameters.projectId, requestParameters.platform, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsAddAccountV1(requestParameters.language, requestParameters.project_id, requestParameters.platform, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

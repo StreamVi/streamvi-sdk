@@ -191,7 +191,7 @@ const PromoApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         promoApplyV1(requestParameters, options) {
-            return localVarFp.promoApplyV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.promoApplyV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -201,7 +201,7 @@ const PromoApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         promoCheckV1(requestParameters, options) {
-            return localVarFp.promoCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.promoCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -222,7 +222,7 @@ class PromoApi extends base_1.BaseAPI {
      * @memberof PromoApi
      */
     promoApplyV1(requestParameters, options) {
-        return (0, exports.PromoApiFp)(this.configuration).promoApplyV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PromoApiFp)(this.configuration).promoApplyV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -233,7 +233,7 @@ class PromoApi extends base_1.BaseAPI {
      * @memberof PromoApi
      */
     promoCheckV1(requestParameters, options) {
-        return (0, exports.PromoApiFp)(this.configuration).promoCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PromoApiFp)(this.configuration).promoCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PromoApi = PromoApi;

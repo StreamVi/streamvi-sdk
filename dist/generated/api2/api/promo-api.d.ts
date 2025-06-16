@@ -134,7 +134,7 @@ export interface PromoApiPromoApplyV1Request {
      * @type {number}
      * @memberof PromoApiPromoApplyV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Code
      * @type {number}
@@ -165,7 +165,7 @@ export interface PromoApiPromoCheckV1Request {
      * @type {number}
      * @memberof PromoApiPromoCheckV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Code
      * @type {number}

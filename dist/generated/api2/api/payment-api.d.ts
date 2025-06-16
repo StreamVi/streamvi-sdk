@@ -164,7 +164,7 @@ export interface PaymentApiPaymentCreateV1Request {
      * @type {PaymentCreateV1Request}
      * @memberof PaymentApiPaymentCreateV1
      */
-    readonly paymentCreateV1Request: PaymentCreateV1Request;
+    readonly PaymentCreateV1Request: PaymentCreateV1Request;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -195,7 +195,7 @@ export interface PaymentApiPaymentGetStatusV1Request {
      * @type {number}
      * @memberof PaymentApiPaymentGetStatusV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

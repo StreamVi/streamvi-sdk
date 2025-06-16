@@ -30,13 +30,14 @@ const base_1 = require("../base");
 const LiveApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Use /site/broadcast/restreams instead.
          * @summary View live info
          * @param {ControllersRestreamsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
          * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         controllersRestreamsV1: async (language, projectId, broadcastId, v, options = {}) => {
@@ -90,13 +91,14 @@ const LiveApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.LiveApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Use /site/broadcast/restreams instead.
          * @summary View live info
          * @param {ControllersRestreamsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
          * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async controllersRestreamsV1(language, projectId, broadcastId, v, options) {
@@ -117,14 +119,15 @@ const LiveApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.LiveApiFp)(configuration);
     return {
         /**
-         *
+         * Use /site/broadcast/restreams instead.
          * @summary View live info
          * @param {LiveApiControllersRestreamsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         controllersRestreamsV1(requestParameters, options) {
-            return localVarFp.controllersRestreamsV1(requestParameters.language, requestParameters.projectId, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.controllersRestreamsV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -137,15 +140,16 @@ exports.LiveApiFactory = LiveApiFactory;
  */
 class LiveApi extends base_1.BaseAPI {
     /**
-     *
+     * Use /site/broadcast/restreams instead.
      * @summary View live info
      * @param {LiveApiControllersRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LiveApi
      */
     controllersRestreamsV1(requestParameters, options) {
-        return (0, exports.LiveApiFp)(this.configuration).controllersRestreamsV1(requestParameters.language, requestParameters.projectId, requestParameters.broadcastId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.LiveApiFp)(this.configuration).controllersRestreamsV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.LiveApi = LiveApi;

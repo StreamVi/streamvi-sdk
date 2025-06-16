@@ -146,7 +146,7 @@ const TransactionsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         transactionsListV1(requestParameters, options) {
-            return localVarFp.transactionsListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.code, options).then((request) => request(axios, basePath));
+            return localVarFp.transactionsListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.code, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -167,7 +167,7 @@ class TransactionsApi extends base_1.BaseAPI {
      * @memberof TransactionsApi
      */
     transactionsListV1(requestParameters, options) {
-        return (0, exports.TransactionsApiFp)(this.configuration).transactionsListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.TransactionsApiFp)(this.configuration).transactionsListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.TransactionsApi = TransactionsApi;

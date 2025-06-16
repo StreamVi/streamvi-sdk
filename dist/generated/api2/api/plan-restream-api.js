@@ -523,7 +523,7 @@ const PlanRestreamApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planRestreamBuyV1(requestParameters, options) {
-            return localVarFp.planRestreamBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.countChannel, requestParameters.bitrate, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.count_channel, requestParameters.bitrate, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -533,7 +533,7 @@ const PlanRestreamApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planRestreamCheck2V1(requestParameters, options) {
-            return localVarFp.planRestreamCheck2V1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.useBalance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamCheck2V1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.use_balance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -553,7 +553,7 @@ const PlanRestreamApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planRestreamListProjectV1(requestParameters, options) {
-            return localVarFp.planRestreamListProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamListProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -573,7 +573,7 @@ const PlanRestreamApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planRestreamRemoveV1(requestParameters, options) {
-            return localVarFp.planRestreamRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.planRestreamId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.plan_restream_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -583,7 +583,7 @@ const PlanRestreamApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planRestreamTariffV1(requestParameters, options) {
-            return localVarFp.planRestreamTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -604,7 +604,7 @@ class PlanRestreamApi extends base_1.BaseAPI {
      * @memberof PlanRestreamApi
      */
     planRestreamBuyV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.countChannel, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.count_channel, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -615,7 +615,7 @@ class PlanRestreamApi extends base_1.BaseAPI {
      * @memberof PlanRestreamApi
      */
     planRestreamCheck2V1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamCheck2V1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planRestreamId, requestParameters.v, requestParameters.useBalance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamCheck2V1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.use_balance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -637,7 +637,7 @@ class PlanRestreamApi extends base_1.BaseAPI {
      * @memberof PlanRestreamApi
      */
     planRestreamListProjectV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamListProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamListProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -659,7 +659,7 @@ class PlanRestreamApi extends base_1.BaseAPI {
      * @memberof PlanRestreamApi
      */
     planRestreamRemoveV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.planRestreamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.plan_restream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -670,7 +670,7 @@ class PlanRestreamApi extends base_1.BaseAPI {
      * @memberof PlanRestreamApi
      */
     planRestreamTariffV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PlanRestreamApi = PlanRestreamApi;

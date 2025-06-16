@@ -822,7 +822,7 @@ const ProjectChannelInviteApiFactory = function (configuration, basePath, axios)
          * @throws {RequiredError}
          */
         projectChannelInviteAcceptForProjectV1(requestParameters, options) {
-            return localVarFp.projectChannelInviteAcceptForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteAcceptForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -832,7 +832,7 @@ const ProjectChannelInviteApiFactory = function (configuration, basePath, axios)
          * @throws {RequiredError}
          */
         projectChannelInviteAcceptForSecretV1(requestParameters, options) {
-            return localVarFp.projectChannelInviteAcceptForSecretV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteAcceptForSecretV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -842,7 +842,7 @@ const ProjectChannelInviteApiFactory = function (configuration, basePath, axios)
          * @throws {RequiredError}
          */
         projectChannelInviteAddByEmailV1(requestParameters, options) {
-            return localVarFp.projectChannelInviteAddByEmailV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.email, requestParameters.accessType, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteAddByEmailV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.email, requestParameters.access_type, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -852,7 +852,7 @@ const ProjectChannelInviteApiFactory = function (configuration, basePath, axios)
          * @throws {RequiredError}
          */
         projectChannelInviteAddByIdV1(requestParameters, options) {
-            return localVarFp.projectChannelInviteAddByIdV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.accessType, requestParameters.toProjectExternalId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteAddByIdV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.access_type, requestParameters.to_project_external_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -862,7 +862,7 @@ const ProjectChannelInviteApiFactory = function (configuration, basePath, axios)
          * @throws {RequiredError}
          */
         projectChannelInviteDeclineForProjectV1(requestParameters, options) {
-            return localVarFp.projectChannelInviteDeclineForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteDeclineForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -872,7 +872,7 @@ const ProjectChannelInviteApiFactory = function (configuration, basePath, axios)
          * @throws {RequiredError}
          */
         projectChannelInviteDeclineForSecretV1(requestParameters, options) {
-            return localVarFp.projectChannelInviteDeclineForSecretV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteDeclineForSecretV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -892,7 +892,7 @@ const ProjectChannelInviteApiFactory = function (configuration, basePath, axios)
          * @throws {RequiredError}
          */
         projectChannelInviteGetForProjectV1(requestParameters, options) {
-            return localVarFp.projectChannelInviteGetForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteGetForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -902,7 +902,7 @@ const ProjectChannelInviteApiFactory = function (configuration, basePath, axios)
          * @throws {RequiredError}
          */
         projectChannelInviteGetForSecretV1(requestParameters, options) {
-            return localVarFp.projectChannelInviteGetForSecretV1(requestParameters.language, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteGetForSecretV1(requestParameters.language, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -922,7 +922,7 @@ const ProjectChannelInviteApiFactory = function (configuration, basePath, axios)
          * @throws {RequiredError}
          */
         projectChannelInviteListV1(requestParameters, options) {
-            return localVarFp.projectChannelInviteListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelInviteListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -943,7 +943,7 @@ class ProjectChannelInviteApi extends base_1.BaseAPI {
      * @memberof ProjectChannelInviteApi
      */
     projectChannelInviteAcceptForProjectV1(requestParameters, options) {
-        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteAcceptForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteAcceptForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -954,7 +954,7 @@ class ProjectChannelInviteApi extends base_1.BaseAPI {
      * @memberof ProjectChannelInviteApi
      */
     projectChannelInviteAcceptForSecretV1(requestParameters, options) {
-        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteAcceptForSecretV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteAcceptForSecretV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -965,7 +965,7 @@ class ProjectChannelInviteApi extends base_1.BaseAPI {
      * @memberof ProjectChannelInviteApi
      */
     projectChannelInviteAddByEmailV1(requestParameters, options) {
-        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteAddByEmailV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.email, requestParameters.accessType, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteAddByEmailV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.email, requestParameters.access_type, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -976,7 +976,7 @@ class ProjectChannelInviteApi extends base_1.BaseAPI {
      * @memberof ProjectChannelInviteApi
      */
     projectChannelInviteAddByIdV1(requestParameters, options) {
-        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteAddByIdV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.accessType, requestParameters.toProjectExternalId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteAddByIdV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.access_type, requestParameters.to_project_external_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -987,7 +987,7 @@ class ProjectChannelInviteApi extends base_1.BaseAPI {
      * @memberof ProjectChannelInviteApi
      */
     projectChannelInviteDeclineForProjectV1(requestParameters, options) {
-        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteDeclineForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteDeclineForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -998,7 +998,7 @@ class ProjectChannelInviteApi extends base_1.BaseAPI {
      * @memberof ProjectChannelInviteApi
      */
     projectChannelInviteDeclineForSecretV1(requestParameters, options) {
-        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteDeclineForSecretV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteDeclineForSecretV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1020,7 +1020,7 @@ class ProjectChannelInviteApi extends base_1.BaseAPI {
      * @memberof ProjectChannelInviteApi
      */
     projectChannelInviteGetForProjectV1(requestParameters, options) {
-        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteGetForProjectV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteGetForProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1031,7 +1031,7 @@ class ProjectChannelInviteApi extends base_1.BaseAPI {
      * @memberof ProjectChannelInviteApi
      */
     projectChannelInviteGetForSecretV1(requestParameters, options) {
-        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteGetForSecretV1(requestParameters.language, requestParameters.channelId, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteGetForSecretV1(requestParameters.language, requestParameters.channel_id, requestParameters.secret, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1053,7 +1053,7 @@ class ProjectChannelInviteApi extends base_1.BaseAPI {
      * @memberof ProjectChannelInviteApi
      */
     projectChannelInviteListV1(requestParameters, options) {
-        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelInviteApiFp)(this.configuration).projectChannelInviteListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ProjectChannelInviteApi = ProjectChannelInviteApi;

@@ -166,13 +166,13 @@ export interface PaySettingApiPaySettingCheckCountryV1Request {
      * @type {number}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * country id
      * @type {number}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
-    readonly countryId: number;
+    readonly country_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -197,7 +197,7 @@ export interface PaySettingApiPaySettingGetSettingV3Request {
      * @type {number}
      * @memberof PaySettingApiPaySettingGetSettingV3
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 3 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -216,7 +216,7 @@ export interface PaySettingApiPaySettingSetSettingV1Request {
      * @type {PaySettingBodyDto}
      * @memberof PaySettingApiPaySettingSetSettingV1
      */
-    readonly paySettingBodyDto: PaySettingBodyDto;
+    readonly PaySettingBodyDto: PaySettingBodyDto;
 }
 /**
  * PaySettingApi - object-oriented interface

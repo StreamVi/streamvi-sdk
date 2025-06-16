@@ -283,7 +283,7 @@ export interface PlanTranscodingApiPlanTranscodingBuyV1Request {
      * @type {number}
      * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Period
      * @type {'month' | 'year'}
@@ -295,7 +295,7 @@ export interface PlanTranscodingApiPlanTranscodingBuyV1Request {
      * @type {number}
      * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
-    readonly planTranscodingId: number;
+    readonly plan_transcoding_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -326,7 +326,7 @@ export interface PlanTranscodingApiPlanTranscodingCancelV1Request {
      * @type {number}
      * @memberof PlanTranscodingApiPlanTranscodingCancelV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -351,7 +351,7 @@ export interface PlanTranscodingApiPlanTranscodingCheckV1Request {
      * @type {number}
      * @memberof PlanTranscodingApiPlanTranscodingCheckV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -414,7 +414,7 @@ export interface PlanTranscodingApiPlanTranscodingTariffV1Request {
      * @type {number}
      * @memberof PlanTranscodingApiPlanTranscodingTariffV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

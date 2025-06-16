@@ -226,13 +226,13 @@ export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly broadcastId: number;
+    readonly broadcast_id: number;
     /**
      * Event id
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly eventId: string;
+    readonly event_id: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -263,13 +263,13 @@ export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly broadcastId: number;
+    readonly broadcast_id: number;
     /**
      * Event id
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly eventId: string;
+    readonly event_id: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -300,7 +300,7 @@ export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly broadcastId: number;
+    readonly broadcast_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -331,13 +331,13 @@ export interface ChatGatewayApiMethodChatGatewaySendV1Request {
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly broadcastId: number;
+    readonly broadcast_id: number;
     /**
      *
      * @type {MethodChatSendMessageRequestDto}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto;
+    readonly MethodChatSendMessageRequestDto: MethodChatSendMessageRequestDto;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

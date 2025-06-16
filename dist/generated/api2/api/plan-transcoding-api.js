@@ -422,7 +422,7 @@ const PlanTranscodingApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planTranscodingBuyV1(requestParameters, options) {
-            return localVarFp.planTranscodingBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planTranscodingId, requestParameters.v, requestParameters.count, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_transcoding_id, requestParameters.v, requestParameters.count, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -432,7 +432,7 @@ const PlanTranscodingApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planTranscodingCancelV1(requestParameters, options) {
-            return localVarFp.planTranscodingCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -442,7 +442,7 @@ const PlanTranscodingApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planTranscodingCheckV1(requestParameters, options) {
-            return localVarFp.planTranscodingCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -472,7 +472,7 @@ const PlanTranscodingApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         planTranscodingTariffV1(requestParameters, options) {
-            return localVarFp.planTranscodingTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -493,7 +493,7 @@ class PlanTranscodingApi extends base_1.BaseAPI {
      * @memberof PlanTranscodingApi
      */
     planTranscodingBuyV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingBuyV1(requestParameters.language, requestParameters.projectId, requestParameters.period, requestParameters.planTranscodingId, requestParameters.v, requestParameters.count, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_transcoding_id, requestParameters.v, requestParameters.count, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -504,7 +504,7 @@ class PlanTranscodingApi extends base_1.BaseAPI {
      * @memberof PlanTranscodingApi
      */
     planTranscodingCancelV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingCancelV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -515,7 +515,7 @@ class PlanTranscodingApi extends base_1.BaseAPI {
      * @memberof PlanTranscodingApi
      */
     planTranscodingCheckV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -548,7 +548,7 @@ class PlanTranscodingApi extends base_1.BaseAPI {
      * @memberof PlanTranscodingApi
      */
     planTranscodingTariffV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingTariffV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PlanTranscodingApi = PlanTranscodingApi;

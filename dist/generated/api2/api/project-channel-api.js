@@ -353,7 +353,7 @@ const ProjectChannelApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         projectChannelChangeAccessV1(requestParameters, options) {
-            return localVarFp.projectChannelChangeAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.accessType, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -363,7 +363,7 @@ const ProjectChannelApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         projectChannelDelV1(requestParameters, options) {
-            return localVarFp.projectChannelDelV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.targetProjectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelDelV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.target_project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -373,7 +373,7 @@ const ProjectChannelApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         projectChannelListV1(requestParameters, options) {
-            return localVarFp.projectChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -383,7 +383,7 @@ const ProjectChannelApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         projectChannelTransferOwnerV1(requestParameters, options) {
-            return localVarFp.projectChannelTransferOwnerV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelTransferOwnerV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -404,7 +404,7 @@ class ProjectChannelApi extends base_1.BaseAPI {
      * @memberof ProjectChannelApi
      */
     projectChannelChangeAccessV1(requestParameters, options) {
-        return (0, exports.ProjectChannelApiFp)(this.configuration).projectChannelChangeAccessV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.accessType, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelApiFp)(this.configuration).projectChannelChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -415,7 +415,7 @@ class ProjectChannelApi extends base_1.BaseAPI {
      * @memberof ProjectChannelApi
      */
     projectChannelDelV1(requestParameters, options) {
-        return (0, exports.ProjectChannelApiFp)(this.configuration).projectChannelDelV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.targetProjectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelApiFp)(this.configuration).projectChannelDelV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.target_project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -426,7 +426,7 @@ class ProjectChannelApi extends base_1.BaseAPI {
      * @memberof ProjectChannelApi
      */
     projectChannelListV1(requestParameters, options) {
-        return (0, exports.ProjectChannelApiFp)(this.configuration).projectChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelApiFp)(this.configuration).projectChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -437,7 +437,7 @@ class ProjectChannelApi extends base_1.BaseAPI {
      * @memberof ProjectChannelApi
      */
     projectChannelTransferOwnerV1(requestParameters, options) {
-        return (0, exports.ProjectChannelApiFp)(this.configuration).projectChannelTransferOwnerV1(requestParameters.language, requestParameters.projectId, requestParameters.channelId, requestParameters.toProjectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectChannelApiFp)(this.configuration).projectChannelTransferOwnerV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ProjectChannelApi = ProjectChannelApi;

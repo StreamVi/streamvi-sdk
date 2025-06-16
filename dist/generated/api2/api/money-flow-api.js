@@ -151,7 +151,7 @@ const MoneyFlowApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         moneyFlowListV1(requestParameters, options) {
-            return localVarFp.moneyFlowListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.type, requestParameters.balanceType, options).then((request) => request(axios, basePath));
+            return localVarFp.moneyFlowListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.type, requestParameters.balance_type, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -172,7 +172,7 @@ class MoneyFlowApi extends base_1.BaseAPI {
      * @memberof MoneyFlowApi
      */
     moneyFlowListV1(requestParameters, options) {
-        return (0, exports.MoneyFlowApiFp)(this.configuration).moneyFlowListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.type, requestParameters.balanceType, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MoneyFlowApiFp)(this.configuration).moneyFlowListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.type, requestParameters.balance_type, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.MoneyFlowApi = MoneyFlowApi;

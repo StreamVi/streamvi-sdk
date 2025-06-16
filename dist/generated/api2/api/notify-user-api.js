@@ -345,7 +345,7 @@ const NotifyUserApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         notifyUserGetScreenV1(requestParameters, options) {
-            return localVarFp.notifyUserGetScreenV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserGetScreenV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -355,7 +355,7 @@ const NotifyUserApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         notifyUserGetV1(requestParameters, options) {
-            return localVarFp.notifyUserGetV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserGetV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -365,7 +365,7 @@ const NotifyUserApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         notifyUserRemoveScreenV1(requestParameters, options) {
-            return localVarFp.notifyUserRemoveScreenV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserRemoveScreenV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -375,7 +375,7 @@ const NotifyUserApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         notifyUserSetV1(requestParameters, options) {
-            return localVarFp.notifyUserSetV1(requestParameters.siteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserSetV1(requestParameters.SiteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -407,7 +407,7 @@ class NotifyUserApi extends base_1.BaseAPI {
      * @memberof NotifyUserApi
      */
     notifyUserGetScreenV1(requestParameters, options) {
-        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserGetScreenV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserGetScreenV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -418,7 +418,7 @@ class NotifyUserApi extends base_1.BaseAPI {
      * @memberof NotifyUserApi
      */
     notifyUserGetV1(requestParameters, options) {
-        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserGetV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserGetV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -429,7 +429,7 @@ class NotifyUserApi extends base_1.BaseAPI {
      * @memberof NotifyUserApi
      */
     notifyUserRemoveScreenV1(requestParameters, options) {
-        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserRemoveScreenV1(requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserRemoveScreenV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -440,7 +440,7 @@ class NotifyUserApi extends base_1.BaseAPI {
      * @memberof NotifyUserApi
      */
     notifyUserSetV1(requestParameters, options) {
-        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserSetV1(requestParameters.siteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserSetV1(requestParameters.SiteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.NotifyUserApi = NotifyUserApi;

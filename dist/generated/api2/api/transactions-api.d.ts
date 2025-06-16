@@ -102,7 +102,7 @@ export interface TransactionsApiTransactionsListV1Request {
      * @type {number}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -126,13 +126,13 @@ export interface TransactionsApiTransactionsListV1Request {
      * @type {string}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly dateFrom?: string;
+    readonly date_from?: string;
     /**
      * Date to
      * @type {string}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly dateTo?: string;
+    readonly date_to?: string;
     /**
      * Filter code transaction. example 1 or 1,2,3
      * @type {string}

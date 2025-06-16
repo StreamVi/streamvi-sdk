@@ -92,7 +92,7 @@ export interface ReferralsApiReferralsTotalInfoV1Request {
      * @type {number}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

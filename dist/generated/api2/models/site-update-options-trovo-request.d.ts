@@ -50,25 +50,25 @@ export interface SiteUpdateOptionsTrovoRequest {
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
-    'category_id': string;
+    'category_id'?: string;
     /**
      * category name
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
-    'category_name': string;
+    'category_name'?: string;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
-    'audience': SiteUpdateOptionsTrovoRequestAudienceEnum;
+    'audience'?: SiteUpdateOptionsTrovoRequestAudienceEnum;
     /**
      *
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
-    'lang': SiteUpdateOptionsTrovoRequestLangEnum;
+    'lang'?: SiteUpdateOptionsTrovoRequestLangEnum;
 }
 export declare const SiteUpdateOptionsTrovoRequestVEnum: {
     readonly _1: "1";

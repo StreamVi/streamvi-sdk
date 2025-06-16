@@ -242,7 +242,7 @@ const PaymentApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         paymentCreateV1(requestParameters, options) {
-            return localVarFp.paymentCreateV1(requestParameters.language, requestParameters.paymentCreateV1Request, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paymentCreateV1(requestParameters.language, requestParameters.PaymentCreateV1Request, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -251,7 +251,7 @@ const PaymentApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         paymentGetStatusV1(requestParameters, options) {
-            return localVarFp.paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -281,7 +281,7 @@ class PaymentApi extends base_1.BaseAPI {
      * @memberof PaymentApi
      */
     paymentCreateV1(requestParameters, options) {
-        return (0, exports.PaymentApiFp)(this.configuration).paymentCreateV1(requestParameters.language, requestParameters.paymentCreateV1Request, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PaymentApiFp)(this.configuration).paymentCreateV1(requestParameters.language, requestParameters.PaymentCreateV1Request, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -291,7 +291,7 @@ class PaymentApi extends base_1.BaseAPI {
      * @memberof PaymentApi
      */
     paymentGetStatusV1(requestParameters, options) {
-        return (0, exports.PaymentApiFp)(this.configuration).paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PaymentApiFp)(this.configuration).paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

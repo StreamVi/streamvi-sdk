@@ -131,7 +131,7 @@ export interface PayoutApiPayoutCreateV1Request {
      * @type {PayoutCreateRequestBodyDto}
      * @memberof PayoutApiPayoutCreateV1
      */
-    readonly payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto;
+    readonly PayoutCreateRequestBodyDto: PayoutCreateRequestBodyDto;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -156,7 +156,7 @@ export interface PayoutApiPayoutPrepareV1Request {
      * @type {number}
      * @memberof PayoutApiPayoutPrepareV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

@@ -250,7 +250,7 @@ const ChannelApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         channelShortChannelListV1(requestParameters, options) {
-            return localVarFp.channelShortChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelShortChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -260,7 +260,7 @@ const ChannelApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         methodSearchV1(requestParameters, options) {
-            return localVarFp.methodSearchV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+            return localVarFp.methodSearchV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -270,7 +270,7 @@ const ChannelApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         methodSetStatusV1(requestParameters, options) {
-            return localVarFp.methodSetStatusV1(requestParameters.methodSetStatusChannelRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.methodSetStatusV1(requestParameters.MethodSetStatusChannelRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -291,7 +291,7 @@ class ChannelApi extends base_1.BaseAPI {
      * @memberof ChannelApi
      */
     channelShortChannelListV1(requestParameters, options) {
-        return (0, exports.ChannelApiFp)(this.configuration).channelShortChannelListV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelApiFp)(this.configuration).channelShortChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -302,7 +302,7 @@ class ChannelApi extends base_1.BaseAPI {
      * @memberof ChannelApi
      */
     methodSearchV1(requestParameters, options) {
-        return (0, exports.ChannelApiFp)(this.configuration).methodSearchV1(requestParameters.language, requestParameters.projectId, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelApiFp)(this.configuration).methodSearchV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -313,7 +313,7 @@ class ChannelApi extends base_1.BaseAPI {
      * @memberof ChannelApi
      */
     methodSetStatusV1(requestParameters, options) {
-        return (0, exports.ChannelApiFp)(this.configuration).methodSetStatusV1(requestParameters.methodSetStatusChannelRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChannelApiFp)(this.configuration).methodSetStatusV1(requestParameters.MethodSetStatusChannelRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ChannelApi = ChannelApi;

@@ -824,13 +824,13 @@ export interface ChannelSettingsApiChannelChatGetTelegramSettingV1Request {
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -855,13 +855,13 @@ export interface ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request {
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -886,13 +886,13 @@ export interface ChannelSettingsApiChannelChatRemoveTelegramChatV1Request {
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -917,19 +917,19 @@ export interface ChannelSettingsApiChannelChatSetTelegramSettingV1Request {
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      *
      * @type {TelegramSetSettingsRequestDto}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
-    readonly telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto;
+    readonly TelegramSetSettingsRequestDto: TelegramSetSettingsRequestDto;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -954,13 +954,13 @@ export interface ChannelSettingsApiChannelChatTelegramPostsV1Request {
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -979,7 +979,7 @@ export interface ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request {
      * @type {SiteUpdateChatTelegramRequest}
      * @memberof ChannelSettingsApiChannelChatUpdateOptionsTelegramV1
      */
-    readonly siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest;
+    readonly SiteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest;
 }
 /**
  * Request parameters for channelOptionsGetPlannedV1 operation in ChannelSettingsApi.
@@ -998,13 +998,13 @@ export interface ChannelSettingsApiChannelOptionsGetPlannedV1Request {
      * @type {number}
      * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -1029,13 +1029,13 @@ export interface ChannelSettingsApiChannelOptionsGetPlayListV1Request {
      * @type {number}
      * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -1054,7 +1054,7 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request {
      * @type {SiteUpdateOptionsOkRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsOkV1
      */
-    readonly siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest;
+    readonly SiteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest;
 }
 /**
  * Request parameters for channelOptionsUpdateOptionsTrovoV1 operation in ChannelSettingsApi.
@@ -1067,7 +1067,7 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request {
      * @type {SiteUpdateOptionsTrovoRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1
      */
-    readonly siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest;
+    readonly SiteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest;
 }
 /**
  * Request parameters for channelOptionsUpdateOptionsTwitchV1 operation in ChannelSettingsApi.
@@ -1080,7 +1080,7 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request {
      * @type {SiteUpdateOptionsTwitchRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1
      */
-    readonly siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest;
+    readonly SiteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest;
 }
 /**
  * Request parameters for channelOptionsUpdateOptionsVkV1 operation in ChannelSettingsApi.
@@ -1093,7 +1093,7 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request {
      * @type {SiteUpdateOptionsVkRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsVkV1
      */
-    readonly siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest;
+    readonly SiteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest;
 }
 /**
  * Request parameters for channelOptionsUpdateOptionsVkVideoLiveV1 operation in ChannelSettingsApi.
@@ -1106,7 +1106,7 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Reque
      * @type {SiteUpdateOptionsVkVideoLiveRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1
      */
-    readonly siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest;
+    readonly SiteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest;
 }
 /**
  * Request parameters for channelOptionsUpdateOptionsYoutubeV1 operation in ChannelSettingsApi.
@@ -1119,7 +1119,7 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request {
      * @type {SiteUpdateOptionsYoutubeRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1
      */
-    readonly siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest;
+    readonly SiteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest;
 }
 /**
  * Request parameters for channelOptionsUpdatePlannedV1 operation in ChannelSettingsApi.
@@ -1132,7 +1132,7 @@ export interface ChannelSettingsApiChannelOptionsUpdatePlannedV1Request {
      * @type {SiteSetPlannedRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdatePlannedV1
      */
-    readonly siteSetPlannedRequest: SiteSetPlannedRequest;
+    readonly SiteSetPlannedRequest: SiteSetPlannedRequest;
 }
 /**
  * Request parameters for channelSettingSetNameV1 operation in ChannelSettingsApi.
@@ -1145,7 +1145,7 @@ export interface ChannelSettingsApiChannelSettingSetNameV1Request {
      * @type {SiteSetNameRequest}
      * @memberof ChannelSettingsApiChannelSettingSetNameV1
      */
-    readonly siteSetNameRequest: SiteSetNameRequest;
+    readonly SiteSetNameRequest: SiteSetNameRequest;
 }
 /**
  * Request parameters for channelSettingUpdateRtmpV1 operation in ChannelSettingsApi.
@@ -1158,7 +1158,7 @@ export interface ChannelSettingsApiChannelSettingUpdateRtmpV1Request {
      * @type {SiteSetUrlRequest}
      * @memberof ChannelSettingsApiChannelSettingUpdateRtmpV1
      */
-    readonly siteSetUrlRequest: SiteSetUrlRequest;
+    readonly SiteSetUrlRequest: SiteSetUrlRequest;
 }
 /**
  * Request parameters for channelSettingUpdateTokenV1 operation in ChannelSettingsApi.
@@ -1177,13 +1177,13 @@ export interface ChannelSettingsApiChannelSettingUpdateTokenV1Request {
      * @type {number}
      * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Token role
      * @type {'account' | 'group'}
@@ -1208,7 +1208,7 @@ export interface ChannelSettingsApiChannelSettingUpdateTranscoderV1Request {
      * @type {SiteSetTranscoderRequest}
      * @memberof ChannelSettingsApiChannelSettingUpdateTranscoderV1
      */
-    readonly siteSetTranscoderRequest: SiteSetTranscoderRequest;
+    readonly SiteSetTranscoderRequest: SiteSetTranscoderRequest;
 }
 /**
  * Request parameters for telegramGetPostByFilterV1 operation in ChannelSettingsApi.
@@ -1227,19 +1227,19 @@ export interface ChannelSettingsApiTelegramGetPostByFilterV1Request {
      * @type {number}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      *
      * @type {number}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
-    readonly filterMode: number;
+    readonly filter_mode: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

@@ -262,7 +262,7 @@ export interface NotifyUserApiNotifyUserGetScreenV1Request {
      * @type {number}
      * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -281,7 +281,7 @@ export interface NotifyUserApiNotifyUserGetV1Request {
      * @type {number}
      * @memberof NotifyUserApiNotifyUserGetV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1'}
@@ -300,7 +300,7 @@ export interface NotifyUserApiNotifyUserRemoveScreenV1Request {
      * @type {number}
      * @memberof NotifyUserApiNotifyUserRemoveScreenV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1'}
@@ -319,7 +319,7 @@ export interface NotifyUserApiNotifyUserSetV1Request {
      * @type {SiteSetNotifyUserRequest}
      * @memberof NotifyUserApiNotifyUserSetV1
      */
-    readonly siteSetNotifyUserRequest: SiteSetNotifyUserRequest;
+    readonly SiteSetNotifyUserRequest: SiteSetNotifyUserRequest;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1'}

@@ -104,7 +104,7 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
      * @type {number}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -128,13 +128,13 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
      * @type {string}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
-    readonly dateFrom?: string;
+    readonly date_from?: string;
     /**
      * Date to
      * @type {string}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
-    readonly dateTo?: string;
+    readonly date_to?: string;
     /**
      * Filter code transaction. example 1 or 1,2,3
      * @type {string}
@@ -146,7 +146,7 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
      * @type {string}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
-    readonly balanceType?: string;
+    readonly balance_type?: string;
 }
 /**
  * MoneyFlowApi - object-oriented interface

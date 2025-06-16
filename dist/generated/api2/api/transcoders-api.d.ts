@@ -222,7 +222,7 @@ export interface TranscodersApiTranscodersAddV1Request {
      * @type {TranscoderCreateDto}
      * @memberof TranscodersApiTranscodersAddV1
      */
-    readonly transcoderCreateDto: TranscoderCreateDto;
+    readonly TranscoderCreateDto: TranscoderCreateDto;
 }
 /**
  * Request parameters for transcodersDeleteV1 operation in TranscodersApi.
@@ -235,7 +235,7 @@ export interface TranscodersApiTranscodersDeleteV1Request {
      * @type {TranscoderItemDto}
      * @memberof TranscodersApiTranscodersDeleteV1
      */
-    readonly transcoderItemDto: TranscoderItemDto;
+    readonly TranscoderItemDto: TranscoderItemDto;
 }
 /**
  * Request parameters for transcodersListV1 operation in TranscodersApi.
@@ -254,7 +254,7 @@ export interface TranscodersApiTranscodersListV1Request {
      * @type {number}
      * @memberof TranscodersApiTranscodersListV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -273,7 +273,7 @@ export interface TranscodersApiTranscodersStopV1Request {
      * @type {TranscoderItemDto}
      * @memberof TranscodersApiTranscodersStopV1
      */
-    readonly transcoderItemDto: TranscoderItemDto;
+    readonly TranscoderItemDto: TranscoderItemDto;
 }
 /**
  * Request parameters for transcodersUpdateV1 operation in TranscodersApi.
@@ -286,7 +286,7 @@ export interface TranscodersApiTranscodersUpdateV1Request {
      * @type {TranscoderUpdateDto}
      * @memberof TranscodersApiTranscodersUpdateV1
      */
-    readonly transcoderUpdateDto: TranscoderUpdateDto;
+    readonly TranscoderUpdateDto: TranscoderUpdateDto;
 }
 /**
  * TranscodersApi - object-oriented interface

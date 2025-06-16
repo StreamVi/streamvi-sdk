@@ -424,7 +424,7 @@ const NotifyHistoryApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         notifyHistoryGetListMyV1(requestParameters, options) {
-            return localVarFp.notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.projectId, requestParameters.name, requestParameters.channel, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.statusRead, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.project_id, requestParameters.name, requestParameters.channel, requestParameters.date_from, requestParameters.date_to, requestParameters.status_read, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -444,7 +444,7 @@ const NotifyHistoryApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         notifyHistoryGetV1(requestParameters, options) {
-            return localVarFp.notifyHistoryGetV1(requestParameters.id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryGetV1(requestParameters._id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -454,7 +454,7 @@ const NotifyHistoryApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         notifyHistoryMarkOfReadV1(requestParameters, options) {
-            return localVarFp.notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.siteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.SiteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -464,7 +464,7 @@ const NotifyHistoryApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         notifyHistoryRunActionV1(requestParameters, options) {
-            return localVarFp.notifyHistoryRunActionV1(requestParameters.notifyHistoryId, requestParameters.actionName, requestParameters.groupId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryRunActionV1(requestParameters.notify_history_id, requestParameters.action_name, requestParameters.group_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -494,7 +494,7 @@ class NotifyHistoryApi extends base_1.BaseAPI {
      * @memberof NotifyHistoryApi
      */
     notifyHistoryGetListMyV1(requestParameters, options) {
-        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.projectId, requestParameters.name, requestParameters.channel, requestParameters.dateFrom, requestParameters.dateTo, requestParameters.statusRead, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.project_id, requestParameters.name, requestParameters.channel, requestParameters.date_from, requestParameters.date_to, requestParameters.status_read, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -516,7 +516,7 @@ class NotifyHistoryApi extends base_1.BaseAPI {
      * @memberof NotifyHistoryApi
      */
     notifyHistoryGetV1(requestParameters, options) {
-        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetV1(requestParameters.id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetV1(requestParameters._id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -527,7 +527,7 @@ class NotifyHistoryApi extends base_1.BaseAPI {
      * @memberof NotifyHistoryApi
      */
     notifyHistoryMarkOfReadV1(requestParameters, options) {
-        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.siteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.SiteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -538,7 +538,7 @@ class NotifyHistoryApi extends base_1.BaseAPI {
      * @memberof NotifyHistoryApi
      */
     notifyHistoryRunActionV1(requestParameters, options) {
-        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryRunActionV1(requestParameters.notifyHistoryId, requestParameters.actionName, requestParameters.groupId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryRunActionV1(requestParameters.notify_history_id, requestParameters.action_name, requestParameters.group_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

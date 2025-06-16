@@ -339,7 +339,7 @@ const StreamPullKeysApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         streamPullKeysSiteCheckV1(requestParameters, options) {
-            return localVarFp.streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -349,7 +349,7 @@ const StreamPullKeysApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         streamPullKeysSiteCreateV1(requestParameters, options) {
-            return localVarFp.streamPullKeysSiteCreateV1(requestParameters.createPullKeyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteCreateV1(requestParameters.CreatePullKeyRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -359,7 +359,7 @@ const StreamPullKeysApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         streamPullKeysSiteGetV1(requestParameters, options) {
-            return localVarFp.streamPullKeysSiteGetV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteGetV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -369,7 +369,7 @@ const StreamPullKeysApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         streamPullKeysSiteRemoveV1(requestParameters, options) {
-            return localVarFp.streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -379,7 +379,7 @@ const StreamPullKeysApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         streamPullKeysSiteUpdateV1(requestParameters, options) {
-            return localVarFp.streamPullKeysSiteUpdateV1(requestParameters.updatePullKeyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteUpdateV1(requestParameters.UpdatePullKeyRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -400,7 +400,7 @@ class StreamPullKeysApi extends base_1.BaseAPI {
      * @memberof StreamPullKeysApi
      */
     streamPullKeysSiteCheckV1(requestParameters, options) {
-        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -411,7 +411,7 @@ class StreamPullKeysApi extends base_1.BaseAPI {
      * @memberof StreamPullKeysApi
      */
     streamPullKeysSiteCreateV1(requestParameters, options) {
-        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteCreateV1(requestParameters.createPullKeyRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteCreateV1(requestParameters.CreatePullKeyRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -422,7 +422,7 @@ class StreamPullKeysApi extends base_1.BaseAPI {
      * @memberof StreamPullKeysApi
      */
     streamPullKeysSiteGetV1(requestParameters, options) {
-        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteGetV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteGetV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -433,7 +433,7 @@ class StreamPullKeysApi extends base_1.BaseAPI {
      * @memberof StreamPullKeysApi
      */
     streamPullKeysSiteRemoveV1(requestParameters, options) {
-        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.projectId, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -444,7 +444,7 @@ class StreamPullKeysApi extends base_1.BaseAPI {
      * @memberof StreamPullKeysApi
      */
     streamPullKeysSiteUpdateV1(requestParameters, options) {
-        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteUpdateV1(requestParameters.updatePullKeyRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteUpdateV1(requestParameters.UpdatePullKeyRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.StreamPullKeysApi = StreamPullKeysApi;

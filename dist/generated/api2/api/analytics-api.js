@@ -258,7 +258,7 @@ const AnalyticsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         analyticsTsStreamBitrateV1(requestParameters, options) {
-            return localVarFp.analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -268,7 +268,7 @@ const AnalyticsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         analyticsTsStreamEventsV1(requestParameters, options) {
-            return localVarFp.analyticsTsStreamEventsV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.analyticsTsStreamEventsV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -278,7 +278,7 @@ const AnalyticsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         analyticsTsStreamViewersV1(requestParameters, options) {
-            return localVarFp.analyticsTsStreamViewersV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.analyticsTsStreamViewersV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -299,7 +299,7 @@ class AnalyticsApi extends base_1.BaseAPI {
      * @memberof AnalyticsApi
      */
     analyticsTsStreamBitrateV1(requestParameters, options) {
-        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -310,7 +310,7 @@ class AnalyticsApi extends base_1.BaseAPI {
      * @memberof AnalyticsApi
      */
     analyticsTsStreamEventsV1(requestParameters, options) {
-        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamEventsV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamEventsV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -321,7 +321,7 @@ class AnalyticsApi extends base_1.BaseAPI {
      * @memberof AnalyticsApi
      */
     analyticsTsStreamViewersV1(requestParameters, options) {
-        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamViewersV1(requestParameters.language, requestParameters.projectId, requestParameters.streamId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamViewersV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.AnalyticsApi = AnalyticsApi;

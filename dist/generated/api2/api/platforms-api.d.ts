@@ -208,7 +208,7 @@ export interface PlatformsApiPlatformsAddAccountV1Request {
      * @type {number}
      * @memberof PlatformsApiPlatformsAddAccountV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Provider oauth
      * @type {'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch'}

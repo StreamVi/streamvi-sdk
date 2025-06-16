@@ -170,7 +170,7 @@ const PolicyPageApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         policyPageGetItemV1(requestParameters, options) {
-            return localVarFp.policyPageGetItemV1(requestParameters.language, requestParameters.fileName, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.policyPageGetItemV1(requestParameters.language, requestParameters.file_name, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -201,7 +201,7 @@ class PolicyPageApi extends base_1.BaseAPI {
      * @memberof PolicyPageApi
      */
     policyPageGetItemV1(requestParameters, options) {
-        return (0, exports.PolicyPageApiFp)(this.configuration).policyPageGetItemV1(requestParameters.language, requestParameters.fileName, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PolicyPageApiFp)(this.configuration).policyPageGetItemV1(requestParameters.language, requestParameters.file_name, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

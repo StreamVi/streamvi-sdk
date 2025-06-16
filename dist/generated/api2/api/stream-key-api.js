@@ -161,7 +161,7 @@ const StreamKeyApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         streamKeysKeyV1(requestParameters, options) {
-            return localVarFp.streamKeysKeyV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamKeysKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -171,7 +171,7 @@ const StreamKeyApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         streamKeysUpdateRecordV1(requestParameters, options) {
-            return localVarFp.streamKeysUpdateRecordV1(requestParameters.setRecordStreamRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamKeysUpdateRecordV1(requestParameters.SetRecordStreamRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -192,7 +192,7 @@ class StreamKeyApi extends base_1.BaseAPI {
      * @memberof StreamKeyApi
      */
     streamKeysKeyV1(requestParameters, options) {
-        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysKeyV1(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -203,7 +203,7 @@ class StreamKeyApi extends base_1.BaseAPI {
      * @memberof StreamKeyApi
      */
     streamKeysUpdateRecordV1(requestParameters, options) {
-        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysUpdateRecordV1(requestParameters.setRecordStreamRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysUpdateRecordV1(requestParameters.SetRecordStreamRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.StreamKeyApi = StreamKeyApi;

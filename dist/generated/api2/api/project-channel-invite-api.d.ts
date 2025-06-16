@@ -495,13 +495,13 @@ export interface ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Re
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -526,13 +526,13 @@ export interface ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Req
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Secret
      * @type {string}
@@ -563,13 +563,13 @@ export interface ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request 
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Email
      * @type {string}
@@ -581,7 +581,7 @@ export interface ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request 
      * @type {0 | 1 | 1 | 2}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
-    readonly accessType: ProjectChannelInviteAddByEmailV1AccessTypeEnum;
+    readonly access_type: ProjectChannelInviteAddByEmailV1AccessTypeEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -606,25 +606,25 @@ export interface ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request {
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Access type
      * @type {0 | 1 | 1 | 2}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
-    readonly accessType: ProjectChannelInviteAddByIdV1AccessTypeEnum;
+    readonly access_type: ProjectChannelInviteAddByIdV1AccessTypeEnum;
     /**
      * Project for get access by external id
      * @type {string}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
-    readonly toProjectExternalId: string;
+    readonly to_project_external_id: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -649,13 +649,13 @@ export interface ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1R
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -680,13 +680,13 @@ export interface ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Re
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Secret
      * @type {string}
@@ -742,13 +742,13 @@ export interface ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Reque
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteGetForProjectV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteGetForProjectV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}
@@ -773,7 +773,7 @@ export interface ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Reques
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteGetForSecretV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Secret
      * @type {string}
@@ -829,13 +829,13 @@ export interface ProjectChannelInviteApiProjectChannelInviteListV1Request {
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteListV1
      */
-    readonly projectId: number;
+    readonly project_id: number;
     /**
      * Channel id
      * @type {number}
      * @memberof ProjectChannelInviteApiProjectChannelInviteListV1
      */
-    readonly channelId: number;
+    readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
      * @type {'1' | '2' | '3'}

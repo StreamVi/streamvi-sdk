@@ -228,7 +228,7 @@ const PaySettingApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         paySettingCheckCountryV1(requestParameters, options) {
-            return localVarFp.paySettingCheckCountryV1(requestParameters.language, requestParameters.projectId, requestParameters.countryId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paySettingCheckCountryV1(requestParameters.language, requestParameters.project_id, requestParameters.country_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -238,7 +238,7 @@ const PaySettingApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         paySettingGetSettingV3(requestParameters, options) {
-            return localVarFp.paySettingGetSettingV3(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paySettingGetSettingV3(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -248,7 +248,7 @@ const PaySettingApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         paySettingSetSettingV1(requestParameters, options) {
-            return localVarFp.paySettingSetSettingV1(requestParameters.paySettingBodyDto, options).then((request) => request(axios, basePath));
+            return localVarFp.paySettingSetSettingV1(requestParameters.PaySettingBodyDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -269,7 +269,7 @@ class PaySettingApi extends base_1.BaseAPI {
      * @memberof PaySettingApi
      */
     paySettingCheckCountryV1(requestParameters, options) {
-        return (0, exports.PaySettingApiFp)(this.configuration).paySettingCheckCountryV1(requestParameters.language, requestParameters.projectId, requestParameters.countryId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PaySettingApiFp)(this.configuration).paySettingCheckCountryV1(requestParameters.language, requestParameters.project_id, requestParameters.country_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -280,7 +280,7 @@ class PaySettingApi extends base_1.BaseAPI {
      * @memberof PaySettingApi
      */
     paySettingGetSettingV3(requestParameters, options) {
-        return (0, exports.PaySettingApiFp)(this.configuration).paySettingGetSettingV3(requestParameters.language, requestParameters.projectId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PaySettingApiFp)(this.configuration).paySettingGetSettingV3(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -291,7 +291,7 @@ class PaySettingApi extends base_1.BaseAPI {
      * @memberof PaySettingApi
      */
     paySettingSetSettingV1(requestParameters, options) {
-        return (0, exports.PaySettingApiFp)(this.configuration).paySettingSetSettingV1(requestParameters.paySettingBodyDto, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PaySettingApiFp)(this.configuration).paySettingSetSettingV1(requestParameters.PaySettingBodyDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PaySettingApi = PaySettingApi;

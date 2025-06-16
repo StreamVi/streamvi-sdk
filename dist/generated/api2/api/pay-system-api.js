@@ -210,7 +210,7 @@ const PaySystemApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         paySystemCreateChallengeV1(requestParameters, options) {
-            return localVarFp.paySystemCreateChallengeV1(requestParameters.language, requestParameters.paymentId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paySystemCreateChallengeV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -219,7 +219,7 @@ const PaySystemApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         paySystemCreateUnitpayV1(requestParameters, options) {
-            return localVarFp.paySystemCreateUnitpayV1(requestParameters.language, requestParameters.paymentId, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.paySystemCreateUnitpayV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -248,7 +248,7 @@ class PaySystemApi extends base_1.BaseAPI {
      * @memberof PaySystemApi
      */
     paySystemCreateChallengeV1(requestParameters, options) {
-        return (0, exports.PaySystemApiFp)(this.configuration).paySystemCreateChallengeV1(requestParameters.language, requestParameters.paymentId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PaySystemApiFp)(this.configuration).paySystemCreateChallengeV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -258,7 +258,7 @@ class PaySystemApi extends base_1.BaseAPI {
      * @memberof PaySystemApi
      */
     paySystemCreateUnitpayV1(requestParameters, options) {
-        return (0, exports.PaySystemApiFp)(this.configuration).paySystemCreateUnitpayV1(requestParameters.language, requestParameters.paymentId, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PaySystemApiFp)(this.configuration).paySystemCreateUnitpayV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
