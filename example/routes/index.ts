@@ -15,9 +15,9 @@ interface SessionRequest extends Request {
 
 async function getProjectInfo(accessToken: string, projectId: number, language: UserProjectGetProjectInfoV1LanguageEnum = UserProjectGetProjectInfoV1LanguageEnum.Ru) {
   const sdkConfig = new StreamViSdkConfig({ accessToken });
-  const userProjectApi = new ProjectApi(sdkConfig.configuration);
+  const projectApi = new ProjectApi(sdkConfig.configuration);
 
-  const response = await userProjectApi.userProjectGetProjectInfoV1({
+  const response = await projectApi.userProjectGetProjectInfoV1({
     language: language,
     project_id: projectId
   });
