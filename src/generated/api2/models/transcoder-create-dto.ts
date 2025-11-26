@@ -39,6 +39,12 @@ export interface TranscoderCreateDto {
      */
     'project_id': number;
     /**
+     * Mode
+     * @type {string}
+     * @memberof TranscoderCreateDto
+     */
+    'mode'?: TranscoderCreateDtoModeEnum;
+    /**
      * Width
      * @type {number}
      * @memberof TranscoderCreateDto
@@ -88,22 +94,32 @@ export interface TranscoderCreateDto {
     'bFrames'?: number;
     /**
      * ChannelIds
-     * @type {number}
+     * @type {Array<number>}
      * @memberof TranscoderCreateDto
      */
-    'channelIds'?: number;
+    'channelIds'?: Array<number>;
     /**
-     * Video codec id
+     * Video codec
+     * @type {string}
+     * @memberof TranscoderCreateDto
+     */
+    'videoCodec': TranscoderCreateDtoVideoCodecEnum;
+    /**
+     * Preset
+     * @type {string}
+     * @memberof TranscoderCreateDto
+     */
+    'preset'?: string;
+    /**
+     * Delay
      * @type {number}
      * @memberof TranscoderCreateDto
      */
-    'videoCodecId': number;
+    'delay'?: number;
 }
 
 export const TranscoderCreateDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type TranscoderCreateDtoVEnum = typeof TranscoderCreateDtoVEnum[keyof typeof TranscoderCreateDtoVEnum];
@@ -114,5 +130,17 @@ export const TranscoderCreateDtoLanguageEnum = {
 } as const;
 
 export type TranscoderCreateDtoLanguageEnum = typeof TranscoderCreateDtoLanguageEnum[keyof typeof TranscoderCreateDtoLanguageEnum];
+export const TranscoderCreateDtoModeEnum = {
+    Custom: 'custom',
+    Twitch: 'twitch'
+} as const;
+
+export type TranscoderCreateDtoModeEnum = typeof TranscoderCreateDtoModeEnum[keyof typeof TranscoderCreateDtoModeEnum];
+export const TranscoderCreateDtoVideoCodecEnum = {
+    H264: 'h264',
+    Hevc: 'hevc'
+} as const;
+
+export type TranscoderCreateDtoVideoCodecEnum = typeof TranscoderCreateDtoVideoCodecEnum[keyof typeof TranscoderCreateDtoVideoCodecEnum];
 
 

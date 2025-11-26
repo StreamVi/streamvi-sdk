@@ -26,7 +26,7 @@ const apiInstance = new PaymentApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let paymentCreateV1Request: PaymentCreateV1Request; //
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.paymentCreateV1(
     language,
@@ -41,7 +41,7 @@ const { status, data } = await apiInstance.paymentCreateV1(
 |------------- | ------------- | ------------- | -------------|
 | **paymentCreateV1Request** | **PaymentCreateV1Request**|  | |
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -83,7 +83,7 @@ const apiInstance = new PaymentApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let payId: number; //Pay order id (default to undefined)
 let projectId: number; //Project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.paymentGetStatusV1(
     language,
@@ -100,7 +100,7 @@ const { status, data } = await apiInstance.paymentGetStatusV1(
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **payId** | **number** | Pay order id | defaults to undefined|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -140,7 +140,7 @@ const configuration = new Configuration();
 const apiInstance = new PaymentApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let pageSize: number; //Number of results (optional) (default to 20)
 let page: number; //Page number (optional) (default to 1)
 
@@ -157,7 +157,7 @@ const { status, data } = await apiInstance.paymentListV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **pageSize** | **number** | Number of results | (optional) defaults to 20|
 | **page** | **number** | Page number | (optional) defaults to 1|
 

@@ -347,7 +347,7 @@ export interface PaymentApiPaymentCreateV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PaymentApiPaymentCreateV1
      */
     readonly v?: PaymentCreateV1VEnum
@@ -382,7 +382,7 @@ export interface PaymentApiPaymentGetStatusV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PaymentApiPaymentGetStatusV1
      */
     readonly v?: PaymentGetStatusV1VEnum
@@ -403,7 +403,7 @@ export interface PaymentApiPaymentListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PaymentApiPaymentListV1
      */
     readonly v?: PaymentListV1VEnum
@@ -478,9 +478,7 @@ export type PaymentCreateV1LanguageEnum = typeof PaymentCreateV1LanguageEnum[key
  * @export
  */
 export const PaymentCreateV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PaymentCreateV1VEnum = typeof PaymentCreateV1VEnum[keyof typeof PaymentCreateV1VEnum];
 /**
@@ -496,9 +494,7 @@ export type PaymentGetStatusV1LanguageEnum = typeof PaymentGetStatusV1LanguageEn
  * @export
  */
 export const PaymentGetStatusV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PaymentGetStatusV1VEnum = typeof PaymentGetStatusV1VEnum[keyof typeof PaymentGetStatusV1VEnum];
 /**
@@ -514,8 +510,6 @@ export type PaymentListV1LanguageEnum = typeof PaymentListV1LanguageEnum[keyof t
  * @export
  */
 export const PaymentListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PaymentListV1VEnum = typeof PaymentListV1VEnum[keyof typeof PaymentListV1VEnum];

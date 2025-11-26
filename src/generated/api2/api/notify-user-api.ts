@@ -495,7 +495,7 @@ export interface NotifyUserApiNotifyUserDelMobileTokenV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
     readonly v?: NotifyUserDelMobileTokenV1VEnum
@@ -523,7 +523,7 @@ export interface NotifyUserApiNotifyUserGetScreenV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
     readonly v?: NotifyUserGetScreenV1VEnum
@@ -673,9 +673,7 @@ export type NotifyUserDelMobileTokenV1LanguageEnum = typeof NotifyUserDelMobileT
  * @export
  */
 export const NotifyUserDelMobileTokenV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type NotifyUserDelMobileTokenV1VEnum = typeof NotifyUserDelMobileTokenV1VEnum[keyof typeof NotifyUserDelMobileTokenV1VEnum];
 /**
@@ -691,9 +689,7 @@ export type NotifyUserGetScreenV1LanguageEnum = typeof NotifyUserGetScreenV1Lang
  * @export
  */
 export const NotifyUserGetScreenV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type NotifyUserGetScreenV1VEnum = typeof NotifyUserGetScreenV1VEnum[keyof typeof NotifyUserGetScreenV1VEnum];
 /**

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_id** | **BlogPageSiteResponseId**(BlogPageSiteResponseId.md) |  | [default to undefined]
+**_id** | **string** | id in mongodb | [default to undefined]
 **notion_id** | **string** | Notion id | [default to undefined]
 **notion_parent_id** | **string** | Notion parent id | [default to undefined]
 **url** | **string** | url | [default to undefined]

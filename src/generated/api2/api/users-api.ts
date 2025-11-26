@@ -38,12 +38,12 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Get user profile
          * @param {UserGetProfileV1LanguageEnum} language Current language
          * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {number | null} [projectId] Project id
+         * @param {number} [projectId] Project id
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        userGetProfileV1: async (language: UserGetProfileV1LanguageEnum, v?: UserGetProfileV1VEnum, projectId?: number | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        userGetProfileV1: async (language: UserGetProfileV1LanguageEnum, v?: UserGetProfileV1VEnum, projectId?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('userGetProfileV1', 'language', language)
             const localVarPath = `/method/users/profile`;
@@ -168,12 +168,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary Get user profile
          * @param {UserGetProfileV1LanguageEnum} language Current language
          * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {number | null} [projectId] Project id
+         * @param {number} [projectId] Project id
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        async userGetProfileV1(language: UserGetProfileV1LanguageEnum, v?: UserGetProfileV1VEnum, projectId?: number | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>> {
+        async userGetProfileV1(language: UserGetProfileV1LanguageEnum, v?: UserGetProfileV1VEnum, projectId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userGetProfileV1(language, v, projectId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UsersApi.userGetProfileV1']?.[localVarOperationServerIndex]?.url;
@@ -277,7 +277,7 @@ export interface UsersApiUserGetProfileV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof UsersApiUserGetProfileV1
      */
     readonly v?: UserGetProfileV1VEnum
@@ -287,7 +287,7 @@ export interface UsersApiUserGetProfileV1Request {
      * @type {number}
      * @memberof UsersApiUserGetProfileV1
      */
-    readonly project_id?: number | null
+    readonly project_id?: number
 }
 
 /**
@@ -379,18 +379,14 @@ export type UserGetProfileV1LanguageEnum = typeof UserGetProfileV1LanguageEnum[k
  * @export
  */
 export const UserGetProfileV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type UserGetProfileV1VEnum = typeof UserGetProfileV1VEnum[keyof typeof UserGetProfileV1VEnum];
 /**
  * @export
  */
 export const UserUpdateProfileV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type UserUpdateProfileV1VEnum = typeof UserUpdateProfileV1VEnum[keyof typeof UserUpdateProfileV1VEnum];
 /**

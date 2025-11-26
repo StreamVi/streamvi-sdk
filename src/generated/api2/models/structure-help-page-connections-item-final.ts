@@ -15,9 +15,6 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { BlogPageSiteResponseId } from './blog-page-site-response-id';
-// May contain unused imports in some cases
-// @ts-ignore
 import type { StructureHelpPageConnectionsItemLang } from './structure-help-page-connections-item-lang';
 
 /**
@@ -27,11 +24,11 @@ import type { StructureHelpPageConnectionsItemLang } from './structure-help-page
  */
 export interface StructureHelpPageConnectionsItemFinal {
     /**
-     * 
-     * @type {BlogPageSiteResponseId}
+     * id in mongodb
+     * @type {string}
      * @memberof StructureHelpPageConnectionsItemFinal
      */
-    '_id': BlogPageSiteResponseId;
+    '_id': string;
     /**
      * Notion id
      * @type {string}

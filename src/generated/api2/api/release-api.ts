@@ -161,7 +161,7 @@ export interface ReleaseApiReleaseAppCabinetV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ReleaseApiReleaseAppCabinetV1
      */
     readonly v?: ReleaseAppCabinetV1VEnum
@@ -207,9 +207,7 @@ export type ReleaseAppCabinetV1LanguageEnum = typeof ReleaseAppCabinetV1Language
  * @export
  */
 export const ReleaseAppCabinetV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ReleaseAppCabinetV1VEnum = typeof ReleaseAppCabinetV1VEnum[keyof typeof ReleaseAppCabinetV1VEnum];
 /**

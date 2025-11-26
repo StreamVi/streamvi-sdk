@@ -53,9 +53,7 @@ export interface SiteSetTranscoderRequest {
 }
 
 export const SiteSetTranscoderRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type SiteSetTranscoderRequestVEnum = typeof SiteSetTranscoderRequestVEnum[keyof typeof SiteSetTranscoderRequestVEnum];

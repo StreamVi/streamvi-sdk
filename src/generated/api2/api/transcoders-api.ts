@@ -164,6 +164,42 @@ export const TranscodersApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
+         * @summary Reset delay
+         * @param {TranscoderItemDto} transcoderItemDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        transcodersResetDelayV1: async (transcoderItemDto: TranscoderItemDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'transcoderItemDto' is not null or undefined
+            assertParamExists('transcodersResetDelayV1', 'transcoderItemDto', transcoderItemDto)
+            const localVarPath = `/method/transcoder/reset-delay`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(transcoderItemDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Transcoder stop
          * @param {TranscoderItemDto} transcoderItemDto 
          * @param {*} [options] Override http request option.
@@ -287,6 +323,19 @@ export const TranscodersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Reset delay
+         * @param {TranscoderItemDto} transcoderItemDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async transcodersResetDelayV1(transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersResetDelayV1(transcoderItemDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TranscodersApi.transcodersResetDelayV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Transcoder stop
          * @param {TranscoderItemDto} transcoderItemDto 
          * @param {*} [options] Override http request option.
@@ -353,6 +402,16 @@ export const TranscodersApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
+         * @summary Reset delay
+         * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.transcodersResetDelayV1(requestParameters.TranscoderItemDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Transcoder stop
          * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -409,6 +468,16 @@ export interface TranscodersApiInterface {
      * @memberof TranscodersApiInterface
      */
     transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTranscoderListResponse>;
+
+    /**
+     * 
+     * @summary Reset delay
+     * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TranscodersApiInterface
+     */
+    transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
      * 
@@ -482,10 +551,24 @@ export interface TranscodersApiTranscodersListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof TranscodersApiTranscodersListV1
      */
     readonly v?: TranscodersListV1VEnum
+}
+
+/**
+ * Request parameters for transcodersResetDelayV1 operation in TranscodersApi.
+ * @export
+ * @interface TranscodersApiTranscodersResetDelayV1Request
+ */
+export interface TranscodersApiTranscodersResetDelayV1Request {
+    /**
+     * 
+     * @type {TranscoderItemDto}
+     * @memberof TranscodersApiTranscodersResetDelayV1
+     */
+    readonly TranscoderItemDto: TranscoderItemDto
 }
 
 /**
@@ -561,6 +644,18 @@ export class TranscodersApi extends BaseAPI implements TranscodersApiInterface {
 
     /**
      * 
+     * @summary Reset delay
+     * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TranscodersApi
+     */
+    public transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig) {
+        return TranscodersApiFp(this.configuration).transcodersResetDelayV1(requestParameters.TranscoderItemDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Transcoder stop
      * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -597,8 +692,6 @@ export type TranscodersListV1LanguageEnum = typeof TranscodersListV1LanguageEnum
  * @export
  */
 export const TranscodersListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type TranscodersListV1VEnum = typeof TranscodersListV1VEnum[keyof typeof TranscodersListV1VEnum];

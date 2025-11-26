@@ -15,15 +15,19 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { ListResponse } from './list-response';
-// May contain unused imports in some cases
-// @ts-ignore
 import type { PaySystemListResponse } from './pay-system-list-response';
 
 /**
- * @type ListOfPaySystemListResponse
+ * 
  * @export
+ * @interface ListOfPaySystemListResponse
  */
-export type ListOfPaySystemListResponse = ListResponse;
-
+export interface ListOfPaySystemListResponse {
+    /**
+     * 
+     * @type {Array<PaySystemListResponse>}
+     * @memberof ListOfPaySystemListResponse
+     */
+    'results': Array<PaySystemListResponse>;
+}
 

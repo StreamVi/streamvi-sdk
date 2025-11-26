@@ -40,13 +40,13 @@ export interface ProjectChannelInviteResponse {
      * @type {number}
      * @memberof ProjectChannelInviteResponse
      */
-    'to_project_id': number | null;
+    'to_project_id': number;
     /**
      * Access type
      * @type {number}
      * @memberof ProjectChannelInviteResponse
      */
-    'access_type': number;
+    'access_type': ProjectChannelInviteResponseAccessTypeEnum;
     /**
      * Date create
      * @type {string}
@@ -64,25 +64,25 @@ export interface ProjectChannelInviteResponse {
      * @type {string}
      * @memberof ProjectChannelInviteResponse
      */
-    'email': string | null;
+    'email'?: string | null;
     /**
      * If rejected request then true
      * @type {boolean}
      * @memberof ProjectChannelInviteResponse
      */
-    'reject': boolean | null;
+    'reject'?: boolean | null;
     /**
      * The user who granted access
      * @type {number}
      * @memberof ProjectChannelInviteResponse
      */
-    'from_user_id': number | null;
+    'from_user_id'?: number | null;
     /**
      * from_project_id
      * @type {number}
      * @memberof ProjectChannelInviteResponse
      */
-    'from_project_id': number | null;
+    'from_project_id'?: number | null;
     /**
      * User info
      * @type {ProjectChannelInviteProjectResponse}
@@ -90,4 +90,14 @@ export interface ProjectChannelInviteResponse {
      */
     'to_project_'?: ProjectChannelInviteProjectResponse;
 }
+
+export const ProjectChannelInviteResponseAccessTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_12: 1,
+    NUMBER_2: 2
+} as const;
+
+export type ProjectChannelInviteResponseAccessTypeEnum = typeof ProjectChannelInviteResponseAccessTypeEnum[keyof typeof ProjectChannelInviteResponseAccessTypeEnum];
+
 

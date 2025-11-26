@@ -32,5 +32,11 @@ export interface MethodChatSendMessageRequestDto {
      * @memberof MethodChatSendMessageRequestDto
      */
     'text': string;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof MethodChatSendMessageRequestDto
+     */
+    'restreams': Array<number>;
 }
 

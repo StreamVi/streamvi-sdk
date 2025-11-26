@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **channel_max** | **number** | Max channels | [optional] [default to undefined]
 **bitrate_max** | **number** | Max bitrate | [optional] [default to undefined]
 **date_end** | **string** | Date end tariff | [default to undefined]
+**support_custom_channel** | **boolean** | Support custom channel | [default to undefined]
+**custom_video** | **number** | Custom video | [default to undefined]
 
 ## Example
 
@@ -20,6 +22,8 @@ const instance: PlanRestreamBeforeItem = {
     channel_max,
     bitrate_max,
     date_end,
+    support_custom_channel,
+    custom_video,
 };
 ```
 

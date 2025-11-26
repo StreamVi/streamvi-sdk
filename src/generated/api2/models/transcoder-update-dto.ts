@@ -94,22 +94,32 @@ export interface TranscoderUpdateDto {
     'bFrames'?: number;
     /**
      * ChannelIds
-     * @type {number}
+     * @type {Array<number>}
      * @memberof TranscoderUpdateDto
      */
-    'channelIds'?: number;
+    'channelIds'?: Array<number>;
     /**
      * Video codec id
+     * @type {string}
+     * @memberof TranscoderUpdateDto
+     */
+    'videoCodec': TranscoderUpdateDtoVideoCodecEnum;
+    /**
+     * Preset
+     * @type {string}
+     * @memberof TranscoderUpdateDto
+     */
+    'preset'?: string;
+    /**
+     * Delay
      * @type {number}
      * @memberof TranscoderUpdateDto
      */
-    'videoCodecId': number;
+    'delay'?: number;
 }
 
 export const TranscoderUpdateDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type TranscoderUpdateDtoVEnum = typeof TranscoderUpdateDtoVEnum[keyof typeof TranscoderUpdateDtoVEnum];
@@ -120,5 +130,11 @@ export const TranscoderUpdateDtoLanguageEnum = {
 } as const;
 
 export type TranscoderUpdateDtoLanguageEnum = typeof TranscoderUpdateDtoLanguageEnum[keyof typeof TranscoderUpdateDtoLanguageEnum];
+export const TranscoderUpdateDtoVideoCodecEnum = {
+    H264: 'h264',
+    Hevc: 'hevc'
+} as const;
+
+export type TranscoderUpdateDtoVideoCodecEnum = typeof TranscoderUpdateDtoVideoCodecEnum[keyof typeof TranscoderUpdateDtoVideoCodecEnum];
 
 

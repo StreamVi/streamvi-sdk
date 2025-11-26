@@ -15,15 +15,19 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { ListResponse } from './list-response';
-// May contain unused imports in some cases
-// @ts-ignore
 import type { PlaylistItemResponse } from './playlist-item-response';
 
 /**
- * @type ListOfPlaylistItemResponse
+ * 
  * @export
+ * @interface ListOfPlaylistItemResponse
  */
-export type ListOfPlaylistItemResponse = ListResponse;
-
+export interface ListOfPlaylistItemResponse {
+    /**
+     * 
+     * @type {Array<PlaylistItemResponse>}
+     * @memberof ListOfPlaylistItemResponse
+     */
+    'results': Array<PlaylistItemResponse>;
+}
 

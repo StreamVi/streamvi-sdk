@@ -612,7 +612,7 @@ export interface NotifyHistoryApiNotifyHistoryGetListMyV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
     readonly v?: NotifyHistoryGetListMyV1VEnum
@@ -640,7 +640,7 @@ export interface NotifyHistoryApiNotifyHistoryGetListMyV1Request {
 
     /**
      * Name
-     * @type {'high_bitrate' | 'request_access_channel' | 'request_access_project' | 'promocode_test' | 'stream_test' | 'plan_restream_expires' | 'plan_restream_expired' | 'plan_restream_renewed' | 'plan_transcoder_expires' | 'plan_transcoder_expired' | 'plan_transcoder_renewed' | 'plan_storage_expires' | 'plan_storage_expired' | 'plan_storage_renewed' | 'broadcast_unsupported_codec' | 'broadcast_unsupported_codec_screen' | 'broadcast_bitrate_exceeded_screen' | 'rtmp_connect_old_server_screen' | 'broadcast_not_audio' | 'broadcast_bitrate_exceeded' | 'broadcast_started' | 'broadcast_stopped' | 'restream_check_twitch_bitrate_1' | 'api_pause_start' | 'api_pause_end' | 'api_wait_edit' | 'api_restream_start' | 'api_restream_stop' | 'api_drop_broadcast' | 'api_drop_broadcast_remove_company' | 'api_drop_broadcast_update_key' | 'publisher_disconnected' | 'publisher_connected' | 'publisher_initializing' | 'publisher_close' | 'broadcast_connected_start' | 'broadcast_connected_end' | 'broadcast_connecting_stream' | 'broadcast_started_new_stream' | 'broadcast_connecting_lost' | 'broadcast_video_lost_start' | 'broadcast_video_lost_end' | 'broadcast_video_pause_start' | 'broadcast_video_pause_end' | 'broadcast_init_restream' | 'start_stream' | 'create_reader' | 'start_channel' | 'stop_channel' | 'stop_stream_video_timeout' | 'stop_stream_no_start_video' | 'stop_stream' | 'delete_reader' | 'transcoder_start' | 'transcoder_stop' | 'start_channel_failed' | 'start_channel_success' | 'api_channel_initializing_start' | 'api_channel_initializing_failed' | 'api_channel_initializing_success' | 'channel_api_update_settings_success' | 'channel_api_update_settings_error' | 'channel_api_update_playlist_success' | 'channel_api_update_playlist_error' | 'channel_api_update_chat_error' | 'channel_api_stream_key_success' | 'channel_api_stream_key_error' | 'channel_api_auto_stop_disable_success' | 'channel_api_auto_stop_disable_error' | 'channel_api_unbinding_stream_key_error' | 'channel_api_create_broadcast_success' | 'channel_api_create_broadcast_error' | 'channel_api_set_planned_success' | 'channel_api_set_planned_error' | 'channel_api_set_thumbnail_success' | 'channel_api_set_thumbnail_error' | 'channel_token_error' | 'channel_api_group_failed' | 'no_audio_reader' | 'restream_check_twitch_bitrate_2' | 'transcoder_support_error_screen' | 'transcoder_tariff_end_screen' | 'transcoder_count_flow_screen' | 'transcoder_resolution_screen' | 'stream_key_banned' | 'broadcast_change_codec' | 'broadcast_change_region' | 'video_upload_error' | 'stop_channel_error' | 'broadcast_user_action_stop'}
+     * @type {'high_bitrate' | 'request_access_channel' | 'request_access_project' | 'promocode_test' | 'stream_test' | 'plan_restream_expires' | 'plan_restream_expired' | 'plan_restream_renewed' | 'plan_transcoder_expires' | 'plan_transcoder_expired' | 'plan_transcoder_renewed' | 'plan_storage_expires' | 'plan_storage_expired' | 'plan_storage_renewed' | 'broadcast_unsupported_codec' | 'broadcast_unsupported_codec_screen' | 'broadcast_bitrate_exceeded_screen' | 'rtmp_connect_old_server_screen' | 'broadcast_not_audio' | 'broadcast_bitrate_exceeded' | 'broadcast_started' | 'broadcast_stopped' | 'restream_check_twitch_bitrate_1' | 'api_pause_start' | 'api_pause_end' | 'api_wait_edit' | 'api_restream_start' | 'api_restream_stop' | 'api_drop_broadcast' | 'api_drop_broadcast_remove_company' | 'api_drop_broadcast_update_key' | 'publisher_disconnected' | 'publisher_connected' | 'publisher_initializing' | 'publisher_close' | 'broadcast_connected_start' | 'broadcast_connected_end' | 'broadcast_connecting_stream' | 'broadcast_started_new_stream' | 'broadcast_connecting_lost' | 'broadcast_video_lost_start' | 'broadcast_video_lost_end' | 'broadcast_video_pause_start' | 'broadcast_video_pause_end' | 'broadcast_init_restream' | 'start_stream' | 'create_reader' | 'start_channel' | 'stop_channel' | 'stop_stream_video_timeout' | 'stop_stream_no_start_video' | 'stop_stream' | 'delete_reader' | 'transcoder_start' | 'transcoder_stop' | 'start_channel_failed' | 'start_channel_success' | 'api_channel_initializing_start' | 'api_channel_initializing_failed' | 'api_channel_initializing_success' | 'channel_api_update_settings_success' | 'channel_api_update_settings_error' | 'channel_api_update_playlist_success' | 'channel_api_update_playlist_error' | 'channel_api_update_chat_error' | 'channel_api_stream_key_success' | 'channel_api_stream_key_error' | 'channel_api_auto_stop_disable_success' | 'channel_api_auto_stop_disable_error' | 'channel_api_unbinding_stream_key_error' | 'channel_api_create_broadcast_success' | 'channel_api_create_broadcast_error' | 'channel_api_set_planned_success' | 'channel_api_set_planned_error' | 'channel_api_set_thumbnail_success' | 'channel_api_set_thumbnail_error' | 'channel_token_error' | 'channel_api_group_failed' | 'no_audio_reader' | 'restream_check_twitch_bitrate_2' | 'transcoder_support_error_screen' | 'transcoder_tariff_end_screen' | 'transcoder_count_flow_screen' | 'transcoder_resolution_screen' | 'stream_key_banned' | 'broadcast_change_codec' | 'broadcast_change_region' | 'video_upload_error' | 'stop_channel_error' | 'broadcast_user_action_stop' | 'completed_api_channel_error' | 'transcoder_twitch_tracks'}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
     readonly name?: NotifyHistoryGetListMyV1NameEnum
@@ -689,7 +689,7 @@ export interface NotifyHistoryApiNotifyHistoryGetStatusMyV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof NotifyHistoryApiNotifyHistoryGetStatusMyV1
      */
     readonly v?: NotifyHistoryGetStatusMyV1VEnum
@@ -738,7 +738,7 @@ export interface NotifyHistoryApiNotifyHistoryMarkOfReadV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof NotifyHistoryApiNotifyHistoryMarkOfReadV1
      */
     readonly v?: NotifyHistoryMarkOfReadV1VEnum
@@ -871,9 +871,7 @@ export type NotifyHistoryGetListMyV1LanguageEnum = typeof NotifyHistoryGetListMy
  * @export
  */
 export const NotifyHistoryGetListMyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type NotifyHistoryGetListMyV1VEnum = typeof NotifyHistoryGetListMyV1VEnum[keyof typeof NotifyHistoryGetListMyV1VEnum];
 /**
@@ -969,7 +967,9 @@ export const NotifyHistoryGetListMyV1NameEnum = {
     BroadcastChangeRegion: 'broadcast_change_region',
     VideoUploadError: 'video_upload_error',
     StopChannelError: 'stop_channel_error',
-    BroadcastUserActionStop: 'broadcast_user_action_stop'
+    BroadcastUserActionStop: 'broadcast_user_action_stop',
+    CompletedApiChannelError: 'completed_api_channel_error',
+    TranscoderTwitchTracks: 'transcoder_twitch_tracks'
 } as const;
 export type NotifyHistoryGetListMyV1NameEnum = typeof NotifyHistoryGetListMyV1NameEnum[keyof typeof NotifyHistoryGetListMyV1NameEnum];
 /**
@@ -1002,9 +1002,7 @@ export type NotifyHistoryGetStatusMyV1LanguageEnum = typeof NotifyHistoryGetStat
  * @export
  */
 export const NotifyHistoryGetStatusMyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type NotifyHistoryGetStatusMyV1VEnum = typeof NotifyHistoryGetStatusMyV1VEnum[keyof typeof NotifyHistoryGetStatusMyV1VEnum];
 /**
@@ -1027,9 +1025,7 @@ export type NotifyHistoryMarkOfReadV1LanguageEnum = typeof NotifyHistoryMarkOfRe
  * @export
  */
 export const NotifyHistoryMarkOfReadV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type NotifyHistoryMarkOfReadV1VEnum = typeof NotifyHistoryMarkOfReadV1VEnum[keyof typeof NotifyHistoryMarkOfReadV1VEnum];
 /**

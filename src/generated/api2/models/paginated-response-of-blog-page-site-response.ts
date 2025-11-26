@@ -16,14 +16,36 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import type { BlogPageSiteResponse } from './blog-page-site-response';
-// May contain unused imports in some cases
-// @ts-ignore
-import type { PaginatedResponse } from './paginated-response';
 
 /**
- * @type PaginatedResponseOfBlogPageSiteResponse
+ * 
  * @export
+ * @interface PaginatedResponseOfBlogPageSiteResponse
  */
-export type PaginatedResponseOfBlogPageSiteResponse = PaginatedResponse;
-
+export interface PaginatedResponseOfBlogPageSiteResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedResponseOfBlogPageSiteResponse
+     */
+    'total': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedResponseOfBlogPageSiteResponse
+     */
+    'limit': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedResponseOfBlogPageSiteResponse
+     */
+    'offset': number;
+    /**
+     * 
+     * @type {Array<BlogPageSiteResponse>}
+     * @memberof PaginatedResponseOfBlogPageSiteResponse
+     */
+    'results': Array<BlogPageSiteResponse>;
+}
 

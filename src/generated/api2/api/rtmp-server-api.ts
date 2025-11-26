@@ -168,14 +168,14 @@ export const RtmpServerApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             } else {
                 localVarQueryParameter['v'] = '2';
-            }
-
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
             }
 
             if (projectId !== undefined) {
@@ -495,7 +495,7 @@ export interface RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1
      */
     readonly v?: MethodRtmpServerListLocationsUnauthorizedV1VEnum
@@ -530,7 +530,7 @@ export interface RtmpServerApiRtmpServerGraphV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof RtmpServerApiRtmpServerGraphV1
      */
     readonly v?: RtmpServerGraphV1VEnum
@@ -565,7 +565,7 @@ export interface RtmpServerApiRtmpServerListV2Request {
 
     /**
      * Version (automatically defaults to 2 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'2'}
      * @memberof RtmpServerApiRtmpServerListV2
      */
     readonly v?: RtmpServerListV2VEnum
@@ -593,7 +593,7 @@ export interface RtmpServerApiRtmpServerStateV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof RtmpServerApiRtmpServerStateV1
      */
     readonly v?: RtmpServerStateV1VEnum
@@ -679,9 +679,7 @@ export type MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum = typeof Met
  * @export
  */
 export const MethodRtmpServerListLocationsUnauthorizedV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type MethodRtmpServerListLocationsUnauthorizedV1VEnum = typeof MethodRtmpServerListLocationsUnauthorizedV1VEnum[keyof typeof MethodRtmpServerListLocationsUnauthorizedV1VEnum];
 /**
@@ -719,9 +717,7 @@ export type RtmpServerGraphV1TypeEnum = typeof RtmpServerGraphV1TypeEnum[keyof t
  * @export
  */
 export const RtmpServerGraphV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type RtmpServerGraphV1VEnum = typeof RtmpServerGraphV1VEnum[keyof typeof RtmpServerGraphV1VEnum];
 /**
@@ -748,9 +744,7 @@ export type RtmpServerListV2IntervalEnum = typeof RtmpServerListV2IntervalEnum[k
  * @export
  */
 export const RtmpServerListV2VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _2: '2'
 } as const;
 export type RtmpServerListV2VEnum = typeof RtmpServerListV2VEnum[keyof typeof RtmpServerListV2VEnum];
 /**
@@ -777,8 +771,6 @@ export type RtmpServerStateV1IntervalEnum = typeof RtmpServerStateV1IntervalEnum
  * @export
  */
 export const RtmpServerStateV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type RtmpServerStateV1VEnum = typeof RtmpServerStateV1VEnum[keyof typeof RtmpServerStateV1VEnum];

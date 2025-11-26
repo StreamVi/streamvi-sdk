@@ -210,7 +210,7 @@ export interface ProjectHistoryApiProjectHistoryListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
     readonly v?: ProjectHistoryListV1VEnum
@@ -291,9 +291,7 @@ export type ProjectHistoryListV1LanguageEnum = typeof ProjectHistoryListV1Langua
  * @export
  */
 export const ProjectHistoryListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ProjectHistoryListV1VEnum = typeof ProjectHistoryListV1VEnum[keyof typeof ProjectHistoryListV1VEnum];
 /**

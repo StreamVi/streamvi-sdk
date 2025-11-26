@@ -7,6 +7,7 @@ All URIs are relative to *http://localhost*
 |**transcodersAddV1**(#transcodersaddv1) | **POST** /method/transcoder/add | Transcoder create|
 |**transcodersDeleteV1**(#transcodersdeletev1) | **POST** /method/transcoder/delete | Transcoder delete|
 |**transcodersListV1**(#transcoderslistv1) | **GET** /method/transcoder/list | List of transcoder|
+|**transcodersResetDelayV1**(#transcodersresetdelayv1) | **POST** /method/transcoder/reset-delay | Reset delay|
 |**transcodersStopV1**(#transcodersstopv1) | **POST** /method/transcoder/stop | Transcoder stop|
 |**transcodersUpdateV1**(#transcodersupdatev1) | **POST** /method/transcoder/update | Transcoder update|
 
@@ -131,7 +132,7 @@ const apiInstance = new TranscodersApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.transcodersListV1(
     language,
@@ -146,7 +147,7 @@ const { status, data } = await apiInstance.transcodersListV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -167,6 +168,58 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **transcodersResetDelayV1**
+> SuccessResponse transcodersResetDelayV1(transcoderItemDto)
+
+
+### Example
+
+```typescript
+import {
+    TranscodersApi,
+    Configuration,
+    TranscoderItemDto
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new TranscodersApi(configuration);
+
+let transcoderItemDto: TranscoderItemDto; //
+
+const { status, data } = await apiInstance.transcodersResetDelayV1(
+    transcoderItemDto
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **transcoderItemDto** | **TranscoderItemDto**|  | |
+
+
+### Return type
+
+**SuccessResponse**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** |  |  -  |
 |**400** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

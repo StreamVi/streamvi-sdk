@@ -28,7 +28,9 @@ import type { GetPaySettingResponseV3 } from '../models';
 // @ts-ignore
 import type { PayCheckCountryResponse } from '../models';
 // @ts-ignore
-import type { PaySettingBodyDto } from '../models';
+import type { PaySettingSetSettingV1Request } from '../models';
+// @ts-ignore
+import type { SuccessResponse } from '../models';
 /**
  * PaySettingApi - axios parameter creator
  * @export
@@ -119,18 +121,18 @@ export const PaySettingApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '3';
-            }
-
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
 
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '3';
             }
 
 
@@ -147,13 +149,13 @@ export const PaySettingApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Set pay settings for profile
-         * @param {PaySettingBodyDto} paySettingBodyDto 
+         * @param {PaySettingSetSettingV1Request} paySettingSetSettingV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        paySettingSetSettingV1: async (paySettingBodyDto: PaySettingBodyDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'paySettingBodyDto' is not null or undefined
-            assertParamExists('paySettingSetSettingV1', 'paySettingBodyDto', paySettingBodyDto)
+        paySettingSetSettingV1: async (paySettingSetSettingV1Request: PaySettingSetSettingV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'paySettingSetSettingV1Request' is not null or undefined
+            assertParamExists('paySettingSetSettingV1', 'paySettingSetSettingV1Request', paySettingSetSettingV1Request)
             const localVarPath = `/method/pay-setting`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -173,7 +175,7 @@ export const PaySettingApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(paySettingBodyDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(paySettingSetSettingV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -224,12 +226,12 @@ export const PaySettingApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Set pay settings for profile
-         * @param {PaySettingBodyDto} paySettingBodyDto 
+         * @param {PaySettingSetSettingV1Request} paySettingSetSettingV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async paySettingSetSettingV1(paySettingBodyDto: PaySettingBodyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.paySettingSetSettingV1(paySettingBodyDto, options);
+        async paySettingSetSettingV1(paySettingSetSettingV1Request: PaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.paySettingSetSettingV1(paySettingSetSettingV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaySettingApi.paySettingSetSettingV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -271,8 +273,8 @@ export const PaySettingApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.paySettingSetSettingV1(requestParameters.PaySettingBodyDto, options).then((request) => request(axios, basePath));
+        paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.paySettingSetSettingV1(requestParameters.PaySettingSetSettingV1Request, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -311,7 +313,7 @@ export interface PaySettingApiInterface {
      * @throws {RequiredError}
      * @memberof PaySettingApiInterface
      */
-    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
 }
 
@@ -344,7 +346,7 @@ export interface PaySettingApiPaySettingCheckCountryV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
     readonly v?: PaySettingCheckCountryV1VEnum
@@ -372,7 +374,7 @@ export interface PaySettingApiPaySettingGetSettingV3Request {
 
     /**
      * Version (automatically defaults to 3 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'3'}
      * @memberof PaySettingApiPaySettingGetSettingV3
      */
     readonly v?: PaySettingGetSettingV3VEnum
@@ -386,10 +388,10 @@ export interface PaySettingApiPaySettingGetSettingV3Request {
 export interface PaySettingApiPaySettingSetSettingV1Request {
     /**
      * 
-     * @type {PaySettingBodyDto}
+     * @type {PaySettingSetSettingV1Request}
      * @memberof PaySettingApiPaySettingSetSettingV1
      */
-    readonly PaySettingBodyDto: PaySettingBodyDto
+    readonly PaySettingSetSettingV1Request: PaySettingSetSettingV1Request
 }
 
 /**
@@ -432,7 +434,7 @@ export class PaySettingApi extends BaseAPI implements PaySettingApiInterface {
      * @memberof PaySettingApi
      */
     public paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig) {
-        return PaySettingApiFp(this.configuration).paySettingSetSettingV1(requestParameters.PaySettingBodyDto, options).then((request) => request(this.axios, this.basePath));
+        return PaySettingApiFp(this.configuration).paySettingSetSettingV1(requestParameters.PaySettingSetSettingV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -449,9 +451,7 @@ export type PaySettingCheckCountryV1LanguageEnum = typeof PaySettingCheckCountry
  * @export
  */
 export const PaySettingCheckCountryV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PaySettingCheckCountryV1VEnum = typeof PaySettingCheckCountryV1VEnum[keyof typeof PaySettingCheckCountryV1VEnum];
 /**
@@ -467,8 +467,6 @@ export type PaySettingGetSettingV3LanguageEnum = typeof PaySettingGetSettingV3La
  * @export
  */
 export const PaySettingGetSettingV3VEnum = {
-    _1: '1',
-    _2: '2',
     _3: '3'
 } as const;
 export type PaySettingGetSettingV3VEnum = typeof PaySettingGetSettingV3VEnum[keyof typeof PaySettingGetSettingV3VEnum];

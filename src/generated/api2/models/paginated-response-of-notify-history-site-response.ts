@@ -16,14 +16,36 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import type { NotifyHistorySiteResponse } from './notify-history-site-response';
-// May contain unused imports in some cases
-// @ts-ignore
-import type { PaginatedResponse } from './paginated-response';
 
 /**
- * @type PaginatedResponseOfNotifyHistorySiteResponse
+ * 
  * @export
+ * @interface PaginatedResponseOfNotifyHistorySiteResponse
  */
-export type PaginatedResponseOfNotifyHistorySiteResponse = PaginatedResponse;
-
+export interface PaginatedResponseOfNotifyHistorySiteResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedResponseOfNotifyHistorySiteResponse
+     */
+    'total': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedResponseOfNotifyHistorySiteResponse
+     */
+    'limit': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedResponseOfNotifyHistorySiteResponse
+     */
+    'offset': number;
+    /**
+     * 
+     * @type {Array<NotifyHistorySiteResponse>}
+     * @memberof PaginatedResponseOfNotifyHistorySiteResponse
+     */
+    'results': Array<NotifyHistorySiteResponse>;
+}
 

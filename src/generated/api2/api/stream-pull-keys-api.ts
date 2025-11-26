@@ -513,7 +513,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteCheckV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof StreamPullKeysApiStreamPullKeysSiteCheckV1
      */
     readonly v?: StreamPullKeysSiteCheckV1VEnum
@@ -555,7 +555,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteGetV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof StreamPullKeysApiStreamPullKeysSiteGetV1
      */
     readonly v?: StreamPullKeysSiteGetV1VEnum
@@ -590,7 +590,7 @@ export interface StreamPullKeysApiStreamPullKeysSiteRemoveV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof StreamPullKeysApiStreamPullKeysSiteRemoveV1
      */
     readonly v?: StreamPullKeysSiteRemoveV1VEnum
@@ -691,9 +691,7 @@ export type StreamPullKeysSiteCheckV1LanguageEnum = typeof StreamPullKeysSiteChe
  * @export
  */
 export const StreamPullKeysSiteCheckV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type StreamPullKeysSiteCheckV1VEnum = typeof StreamPullKeysSiteCheckV1VEnum[keyof typeof StreamPullKeysSiteCheckV1VEnum];
 /**
@@ -709,9 +707,7 @@ export type StreamPullKeysSiteGetV1LanguageEnum = typeof StreamPullKeysSiteGetV1
  * @export
  */
 export const StreamPullKeysSiteGetV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type StreamPullKeysSiteGetV1VEnum = typeof StreamPullKeysSiteGetV1VEnum[keyof typeof StreamPullKeysSiteGetV1VEnum];
 /**
@@ -727,8 +723,6 @@ export type StreamPullKeysSiteRemoveV1LanguageEnum = typeof StreamPullKeysSiteRe
  * @export
  */
 export const StreamPullKeysSiteRemoveV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type StreamPullKeysSiteRemoveV1VEnum = typeof StreamPullKeysSiteRemoveV1VEnum[keyof typeof StreamPullKeysSiteRemoveV1VEnum];

@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **image** | **string** |  | [optional] [default to 'image url link or base64']
 **lang** | **string** |  | [optional] [default to 'Lang']
 **tags** | **Set&lt;string&gt;** |  | [optional] [default to undefined]
+**disable_auto_end** | **boolean** |  | [optional] [default to false]
 
 ## Example
 
@@ -42,6 +43,7 @@ const instance: SiteUpdateOptionsYoutubeRequest = {
     image,
     lang,
     tags,
+    disable_auto_end,
 };
 ```
 

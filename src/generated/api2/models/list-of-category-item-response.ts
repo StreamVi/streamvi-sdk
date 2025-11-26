@@ -16,14 +16,18 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import type { CategoryItemResponse } from './category-item-response';
-// May contain unused imports in some cases
-// @ts-ignore
-import type { ListResponse } from './list-response';
 
 /**
- * @type ListOfCategoryItemResponse
+ * 
  * @export
+ * @interface ListOfCategoryItemResponse
  */
-export type ListOfCategoryItemResponse = ListResponse;
-
+export interface ListOfCategoryItemResponse {
+    /**
+     * 
+     * @type {Array<CategoryItemResponse>}
+     * @memberof ListOfCategoryItemResponse
+     */
+    'results': Array<CategoryItemResponse>;
+}
 

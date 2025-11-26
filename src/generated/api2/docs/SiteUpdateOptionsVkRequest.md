@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **privacy_comments** | **string** |  | [optional] [default to 'privacy comments']
 **privacy_video** | **string** |  | [optional] [default to 'privacy video']
 **wall** | **boolean** | Is publish stream on wall | [optional] [default to undefined]
+**disable_auto_end** | **boolean** |  | [optional] [default to false]
 
 ## Example
 
@@ -40,6 +41,7 @@ const instance: SiteUpdateOptionsVkRequest = {
     privacy_comments,
     privacy_video,
     wall,
+    disable_auto_end,
 };
 ```
 

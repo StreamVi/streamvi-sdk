@@ -170,7 +170,7 @@ export interface ReferralsApiReferralsTotalInfoV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */
     readonly v?: ReferralsTotalInfoV1VEnum
@@ -209,8 +209,6 @@ export type ReferralsTotalInfoV1LanguageEnum = typeof ReferralsTotalInfoV1Langua
  * @export
  */
 export const ReferralsTotalInfoV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ReferralsTotalInfoV1VEnum = typeof ReferralsTotalInfoV1VEnum[keyof typeof ReferralsTotalInfoV1VEnum];

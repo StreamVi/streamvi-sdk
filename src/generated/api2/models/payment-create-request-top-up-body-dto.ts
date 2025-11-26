@@ -53,9 +53,7 @@ export interface PaymentCreateRequestTopUpBodyDto {
 }
 
 export const PaymentCreateRequestTopUpBodyDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type PaymentCreateRequestTopUpBodyDtoVEnum = typeof PaymentCreateRequestTopUpBodyDtoVEnum[keyof typeof PaymentCreateRequestTopUpBodyDtoVEnum];

@@ -15,9 +15,6 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { BlogPageSiteResponseId } from './blog-page-site-response-id';
-// May contain unused imports in some cases
-// @ts-ignore
 import type { StructureHelpPageConnectionsItemFinal } from './structure-help-page-connections-item-final';
 // May contain unused imports in some cases
 // @ts-ignore
@@ -30,11 +27,11 @@ import type { StructureHelpPageConnectionsItemLang } from './structure-help-page
  */
 export interface StructureHelpPageItemResponse3 {
     /**
-     * 
-     * @type {BlogPageSiteResponseId}
+     * id in mongodb
+     * @type {string}
      * @memberof StructureHelpPageItemResponse3
      */
-    '_id': BlogPageSiteResponseId;
+    '_id': string;
     /**
      * Notion id
      * @type {string}
@@ -88,7 +85,7 @@ export interface StructureHelpPageItemResponse3 {
      * @type {Array<StructureHelpPageConnectionsItemFinal>}
      * @memberof StructureHelpPageItemResponse3
      */
-    'connections': Array<StructureHelpPageConnectionsItemFinal>;
+    'connections'?: Array<StructureHelpPageConnectionsItemFinal>;
 }
 
 export const StructureHelpPageItemResponse3StatusEnum = {

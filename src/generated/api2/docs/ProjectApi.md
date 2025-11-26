@@ -32,7 +32,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let userId: number; //User id (default to undefined)
 let accessType: 0 | 1 | 2; //Access type (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.userProjectChangeAccessV1(
     language,
@@ -51,7 +51,7 @@ const { status, data } = await apiInstance.userProjectChangeAccessV1(
 | **projectId** | **number** | Project id | defaults to undefined|
 | **userId** | **number** | User id | defaults to undefined|
 | **accessType** | **0 | 1 | 2** | Access type | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -94,7 +94,7 @@ const apiInstance = new ProjectApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let userId: number; //User id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.userProjectDelV1(
     language,
@@ -111,7 +111,7 @@ const { status, data } = await apiInstance.userProjectDelV1(
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
 | **userId** | **number** | User id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -153,7 +153,7 @@ const apiInstance = new ProjectApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.userProjectGetProjectInfoV1(
     language,
@@ -168,7 +168,7 @@ const { status, data } = await apiInstance.userProjectGetProjectInfoV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -210,7 +210,7 @@ const apiInstance = new ProjectApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectExternalId: string; //Project external id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.userProjectGetProjectV1(
     language,
@@ -225,7 +225,7 @@ const { status, data } = await apiInstance.userProjectGetProjectV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectExternalId** | **string** | Project external id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -267,7 +267,7 @@ const apiInstance = new ProjectApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let userExternalId: string; //User external id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.userProjectGetUserV1(
     language,
@@ -282,7 +282,7 @@ const { status, data } = await apiInstance.userProjectGetUserV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **userExternalId** | **string** | User external id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -324,7 +324,7 @@ const apiInstance = new ProjectApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.userProjectListAccessV1(
     language,
@@ -339,7 +339,7 @@ const { status, data } = await apiInstance.userProjectListAccessV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -380,7 +380,7 @@ const configuration = new Configuration();
 const apiInstance = new ProjectApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let limit: number; //Number of results (optional) (default to 20)
 let offset: number; //Page offset number (optional) (default to 0)
 
@@ -397,7 +397,7 @@ const { status, data } = await apiInstance.userProjectListV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **limit** | **number** | Number of results | (optional) defaults to 20|
 | **offset** | **number** | Page offset number | (optional) defaults to 0|
 
@@ -441,7 +441,7 @@ const apiInstance = new ProjectApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let id: number; //Project internal id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.userProjectSelectProjectV1(
     language,
@@ -456,7 +456,7 @@ const { status, data } = await apiInstance.userProjectSelectProjectV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **id** | **number** | Project internal id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

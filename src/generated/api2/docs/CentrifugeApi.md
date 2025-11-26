@@ -24,9 +24,11 @@ const configuration = new Configuration();
 const apiInstance = new CentrifugeApi(configuration);
 
 let projectId: number; //Project id (default to undefined)
+let v: '2'; //Version (automatically defaults to 2 based on method version, can be overridden) (optional) (default to '2')
 
 const { status, data } = await apiInstance.centrifugeAuthV2(
-    projectId
+    projectId,
+    v
 );
 ```
 
@@ -35,6 +37,7 @@ const { status, data } = await apiInstance.centrifugeAuthV2(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | **number** | Project id | defaults to undefined|
+| **v** | **'2'** | Version (automatically defaults to 2 based on method version, can be overridden) | (optional) defaults to '2'|
 
 
 ### Return type
@@ -77,7 +80,7 @@ const apiInstance = new CentrifugeApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.centrifugeProjectV1(
     language,
@@ -92,7 +95,7 @@ const { status, data } = await apiInstance.centrifugeProjectV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -136,7 +139,7 @@ const apiInstance = new CentrifugeApi(configuration);
 let broadcastId: number; // (default to undefined)
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '2'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.getTokenBroadcastV1(
     broadcastId,
@@ -153,7 +156,7 @@ const { status, data } = await apiInstance.getTokenBroadcastV1(
 | **broadcastId** | **number** |  | defaults to undefined|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'2'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

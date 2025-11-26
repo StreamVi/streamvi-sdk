@@ -71,9 +71,7 @@ export interface PaymentCreateRequestStorageBodyDto {
 }
 
 export const PaymentCreateRequestStorageBodyDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type PaymentCreateRequestStorageBodyDtoVEnum = typeof PaymentCreateRequestStorageBodyDtoVEnum[keyof typeof PaymentCreateRequestStorageBodyDtoVEnum];

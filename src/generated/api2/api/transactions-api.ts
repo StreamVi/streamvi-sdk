@@ -204,7 +204,7 @@ export interface TransactionsApiTransactionsListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof TransactionsApiTransactionsListV1
      */
     readonly v?: TransactionsListV1VEnum
@@ -278,8 +278,6 @@ export type TransactionsListV1LanguageEnum = typeof TransactionsListV1LanguageEn
  * @export
  */
 export const TransactionsListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type TransactionsListV1VEnum = typeof TransactionsListV1VEnum[keyof typeof TransactionsListV1VEnum];

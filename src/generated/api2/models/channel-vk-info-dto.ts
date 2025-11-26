@@ -68,6 +68,12 @@ export interface ChannelVkInfoDto {
      * @memberof ChannelVkInfoDto
      */
     'category'?: ChannelVkCategoryInfoDto;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChannelVkInfoDto
+     */
+    'disableAutoEnd'?: boolean;
 }
 
 export const ChannelVkInfoDtoPrivacyVideoEnum = {

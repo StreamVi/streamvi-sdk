@@ -24,7 +24,7 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { PaginatedResponseOfMoneyFlowResponse } from '../models';
+import type { PaginatedMoneyFlowResponse } from '../models';
 /**
  * MoneyFlowApi - axios parameter creator
  * @export
@@ -41,7 +41,7 @@ export const MoneyFlowApiAxiosParamCreator = function (configuration?: Configura
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
-         * @param {string} [type] Filter code transaction. example 1 or 1,2,3
+         * @param {string} [type] Filter code transaction. example: referral_profit or payment,referral_profit
          * @param {string} [balanceType] Filter code transaction. example 1 or 1,2,3
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -86,15 +86,11 @@ export const MoneyFlowApiAxiosParamCreator = function (configuration?: Configura
             }
 
             if (dateFrom !== undefined) {
-                localVarQueryParameter['date_from'] = (dateFrom as any instanceof Date) ?
-                    (dateFrom as any).toISOString() :
-                    dateFrom;
+                localVarQueryParameter['date_from'] = dateFrom;
             }
 
             if (dateTo !== undefined) {
-                localVarQueryParameter['date_to'] = (dateTo as any instanceof Date) ?
-                    (dateTo as any).toISOString() :
-                    dateTo;
+                localVarQueryParameter['date_to'] = dateTo;
             }
 
             if (type !== undefined) {
@@ -136,12 +132,12 @@ export const MoneyFlowApiFp = function(configuration?: Configuration) {
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
-         * @param {string} [type] Filter code transaction. example 1 or 1,2,3
+         * @param {string} [type] Filter code transaction. example: referral_profit or payment,referral_profit
          * @param {string} [balanceType] Filter code transaction. example 1 or 1,2,3
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async moneyFlowListV1(language: MoneyFlowListV1LanguageEnum, projectId: number, v?: MoneyFlowListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfMoneyFlowResponse>> {
+        async moneyFlowListV1(language: MoneyFlowListV1LanguageEnum, projectId: number, v?: MoneyFlowListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedMoneyFlowResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.moneyFlowListV1(language, projectId, v, limit, offset, dateFrom, dateTo, type, balanceType, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['MoneyFlowApi.moneyFlowListV1']?.[localVarOperationServerIndex]?.url;
@@ -164,7 +160,7 @@ export const MoneyFlowApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse> {
+        moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedMoneyFlowResponse> {
             return localVarFp.moneyFlowListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.type, requestParameters.balance_type, options).then((request) => request(axios, basePath));
         },
     };
@@ -184,7 +180,7 @@ export interface MoneyFlowApiInterface {
      * @throws {RequiredError}
      * @memberof MoneyFlowApiInterface
      */
-    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse>;
+    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedMoneyFlowResponse>;
 
 }
 
@@ -210,7 +206,7 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly v?: MoneyFlowListV1VEnum
@@ -244,7 +240,7 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
     readonly date_to?: string
 
     /**
-     * Filter code transaction. example 1 or 1,2,3
+     * Filter code transaction. example: referral_profit or payment,referral_profit
      * @type {string}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
@@ -291,8 +287,6 @@ export type MoneyFlowListV1LanguageEnum = typeof MoneyFlowListV1LanguageEnum[key
  * @export
  */
 export const MoneyFlowListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type MoneyFlowListV1VEnum = typeof MoneyFlowListV1VEnum[keyof typeof MoneyFlowListV1VEnum];

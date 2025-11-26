@@ -28,7 +28,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let key: string; //Key (default to undefined)
 let broadcastId: number; //broadcast id (default to undefined)
 let eventId: string; //Event id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.methodChatGatewayDeleteV1(
     language,
@@ -47,7 +47,7 @@ const { status, data } = await apiInstance.methodChatGatewayDeleteV1(
 | **key** | **string** | Key | defaults to undefined|
 | **broadcastId** | **number** | broadcast id | defaults to undefined|
 | **eventId** | **string** | Event id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -91,7 +91,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let key: string; //Key (default to undefined)
 let broadcastId: number; //broadcast id (default to undefined)
 let eventId: string; //Event id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.methodChatGatewayGetMessageV1(
     language,
@@ -110,7 +110,7 @@ const { status, data } = await apiInstance.methodChatGatewayGetMessageV1(
 | **key** | **string** | Key | defaults to undefined|
 | **broadcastId** | **number** | broadcast id | defaults to undefined|
 | **eventId** | **string** | Event id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -153,7 +153,7 @@ const apiInstance = new ChatGatewayApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let key: string; //Key (default to undefined)
 let broadcastId: number; //broadcast id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.methodChatGatewayHistoryV1(
     language,
@@ -170,7 +170,7 @@ const { status, data } = await apiInstance.methodChatGatewayHistoryV1(
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **key** | **string** | Key | defaults to undefined|
 | **broadcastId** | **number** | broadcast id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -215,7 +215,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let key: string; //Key (default to undefined)
 let broadcastId: number; // (default to undefined)
 let methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto; //
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.methodChatGatewaySendV1(
     language,
@@ -234,7 +234,7 @@ const { status, data } = await apiInstance.methodChatGatewaySendV1(
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **key** | **string** | Key | defaults to undefined|
 | **broadcastId** | **number** |  | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

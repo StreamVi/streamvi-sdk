@@ -822,7 +822,7 @@ export interface ProjectApiUserProjectChangeAccessV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectApiUserProjectChangeAccessV1
      */
     readonly v?: UserProjectChangeAccessV1VEnum
@@ -857,7 +857,7 @@ export interface ProjectApiUserProjectDelV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectApiUserProjectDelV1
      */
     readonly v?: UserProjectDelV1VEnum
@@ -885,7 +885,7 @@ export interface ProjectApiUserProjectGetProjectInfoV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectApiUserProjectGetProjectInfoV1
      */
     readonly v?: UserProjectGetProjectInfoV1VEnum
@@ -913,7 +913,7 @@ export interface ProjectApiUserProjectGetProjectV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectApiUserProjectGetProjectV1
      */
     readonly v?: UserProjectGetProjectV1VEnum
@@ -941,7 +941,7 @@ export interface ProjectApiUserProjectGetUserV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectApiUserProjectGetUserV1
      */
     readonly v?: UserProjectGetUserV1VEnum
@@ -969,7 +969,7 @@ export interface ProjectApiUserProjectListAccessV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectApiUserProjectListAccessV1
      */
     readonly v?: UserProjectListAccessV1VEnum
@@ -990,7 +990,7 @@ export interface ProjectApiUserProjectListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectApiUserProjectListV1
      */
     readonly v?: UserProjectListV1VEnum
@@ -1032,7 +1032,7 @@ export interface ProjectApiUserProjectSelectProjectV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectApiUserProjectSelectProjectV1
      */
     readonly v?: UserProjectSelectProjectV1VEnum
@@ -1164,9 +1164,7 @@ export type UserProjectChangeAccessV1AccessTypeEnum = typeof UserProjectChangeAc
  * @export
  */
 export const UserProjectChangeAccessV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type UserProjectChangeAccessV1VEnum = typeof UserProjectChangeAccessV1VEnum[keyof typeof UserProjectChangeAccessV1VEnum];
 /**
@@ -1182,9 +1180,7 @@ export type UserProjectDelV1LanguageEnum = typeof UserProjectDelV1LanguageEnum[k
  * @export
  */
 export const UserProjectDelV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type UserProjectDelV1VEnum = typeof UserProjectDelV1VEnum[keyof typeof UserProjectDelV1VEnum];
 /**
@@ -1200,9 +1196,7 @@ export type UserProjectGetProjectInfoV1LanguageEnum = typeof UserProjectGetProje
  * @export
  */
 export const UserProjectGetProjectInfoV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type UserProjectGetProjectInfoV1VEnum = typeof UserProjectGetProjectInfoV1VEnum[keyof typeof UserProjectGetProjectInfoV1VEnum];
 /**
@@ -1218,9 +1212,7 @@ export type UserProjectGetProjectV1LanguageEnum = typeof UserProjectGetProjectV1
  * @export
  */
 export const UserProjectGetProjectV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type UserProjectGetProjectV1VEnum = typeof UserProjectGetProjectV1VEnum[keyof typeof UserProjectGetProjectV1VEnum];
 /**
@@ -1236,9 +1228,7 @@ export type UserProjectGetUserV1LanguageEnum = typeof UserProjectGetUserV1Langua
  * @export
  */
 export const UserProjectGetUserV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type UserProjectGetUserV1VEnum = typeof UserProjectGetUserV1VEnum[keyof typeof UserProjectGetUserV1VEnum];
 /**
@@ -1254,9 +1244,7 @@ export type UserProjectListAccessV1LanguageEnum = typeof UserProjectListAccessV1
  * @export
  */
 export const UserProjectListAccessV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type UserProjectListAccessV1VEnum = typeof UserProjectListAccessV1VEnum[keyof typeof UserProjectListAccessV1VEnum];
 /**
@@ -1272,9 +1260,7 @@ export type UserProjectListV1LanguageEnum = typeof UserProjectListV1LanguageEnum
  * @export
  */
 export const UserProjectListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type UserProjectListV1VEnum = typeof UserProjectListV1VEnum[keyof typeof UserProjectListV1VEnum];
 /**
@@ -1290,8 +1276,6 @@ export type UserProjectSelectProjectV1LanguageEnum = typeof UserProjectSelectPro
  * @export
  */
 export const UserProjectSelectProjectV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type UserProjectSelectProjectV1VEnum = typeof UserProjectSelectProjectV1VEnum[keyof typeof UserProjectSelectProjectV1VEnum];

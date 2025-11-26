@@ -24,8 +24,8 @@ const apiInstance = new PromoApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let code: number; //Code (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let code: string; //Code (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.promoApplyV1(
     language,
@@ -41,8 +41,8 @@ const { status, data } = await apiInstance.promoApplyV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **code** | **number** | Code | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **code** | **string** | Code | defaults to undefined|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -84,8 +84,8 @@ const apiInstance = new PromoApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let code: number; //Code (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let code: string; //Code (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.promoCheckV1(
     language,
@@ -101,8 +101,8 @@ const { status, data } = await apiInstance.promoCheckV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **code** | **number** | Code | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **code** | **string** | Code | defaults to undefined|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

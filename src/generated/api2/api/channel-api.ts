@@ -22,21 +22,999 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
+import type { BoostyDto } from '../models';
+// @ts-ignore
+import type { CustomDto } from '../models';
+// @ts-ignore
+import type { DeleteChannelDto } from '../models';
+// @ts-ignore
+import type { DouyuDto } from '../models';
+// @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
+import type { FbDto } from '../models';
+// @ts-ignore
+import type { Fc2liveDto } from '../models';
+// @ts-ignore
+import type { GoodgameDto } from '../models';
+// @ts-ignore
+import type { HuyaDto } from '../models';
+// @ts-ignore
+import type { InstagramDto } from '../models';
+// @ts-ignore
+import type { KickDto } from '../models';
+// @ts-ignore
+import type { LinkedinDto } from '../models';
+// @ts-ignore
 import type { MethodSetStatusChannelRequest } from '../models';
+// @ts-ignore
+import type { NavertvDto } from '../models';
+// @ts-ignore
+import type { NimotvDto } from '../models';
+// @ts-ignore
+import type { NonoliveDto } from '../models';
+// @ts-ignore
+import type { OkDto } from '../models';
+// @ts-ignore
+import type { PlvideoDto } from '../models';
+// @ts-ignore
+import type { RutubeDto } from '../models';
+// @ts-ignore
+import type { SearchChannelItem } from '../models';
 // @ts-ignore
 import type { SiteGetShortChannelResponse } from '../models';
 // @ts-ignore
 import type { SiteSearchChannelResponse } from '../models';
 // @ts-ignore
+import type { SteamDto } from '../models';
+// @ts-ignore
 import type { SuccessResponse } from '../models';
+// @ts-ignore
+import type { TelegramDto } from '../models';
+// @ts-ignore
+import type { TiktokDto } from '../models';
+// @ts-ignore
+import type { VkDto } from '../models';
+// @ts-ignore
+import type { VliveDto } from '../models';
+// @ts-ignore
+import type { ZhanqitvDto } from '../models';
 /**
  * ChannelApi - axios parameter creator
  * @export
  */
 export const ChannelApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Add boosty channel
+         * @param {BoostyDto} boostyDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddBoostyV1: async (boostyDto: BoostyDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'boostyDto' is not null or undefined
+            assertParamExists('addChannelMethodAddBoostyV1', 'boostyDto', boostyDto)
+            const localVarPath = `/method/channel/add/boosty`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(boostyDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add custom channel
+         * @param {CustomDto} customDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddCustomV1: async (customDto: CustomDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'customDto' is not null or undefined
+            assertParamExists('addChannelMethodAddCustomV1', 'customDto', customDto)
+            const localVarPath = `/method/channel/add/custom`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(customDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add douyu channel
+         * @param {DouyuDto} douyuDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddDouyuV1: async (douyuDto: DouyuDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'douyuDto' is not null or undefined
+            assertParamExists('addChannelMethodAddDouyuV1', 'douyuDto', douyuDto)
+            const localVarPath = `/method/channel/add/douyu`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(douyuDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add fb channel
+         * @param {FbDto} fbDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddFbV1: async (fbDto: FbDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fbDto' is not null or undefined
+            assertParamExists('addChannelMethodAddFbV1', 'fbDto', fbDto)
+            const localVarPath = `/method/channel/add/fb`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(fbDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add fc2Live channel
+         * @param {Fc2liveDto} fc2liveDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddFc2LiveV1: async (fc2liveDto: Fc2liveDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fc2liveDto' is not null or undefined
+            assertParamExists('addChannelMethodAddFc2LiveV1', 'fc2liveDto', fc2liveDto)
+            const localVarPath = `/method/channel/add/fc2Live`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(fc2liveDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add goodgame channel
+         * @param {GoodgameDto} goodgameDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddGoodgameV1: async (goodgameDto: GoodgameDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'goodgameDto' is not null or undefined
+            assertParamExists('addChannelMethodAddGoodgameV1', 'goodgameDto', goodgameDto)
+            const localVarPath = `/method/channel/add/goodgame`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(goodgameDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add huya channel
+         * @param {HuyaDto} huyaDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddHuyaV1: async (huyaDto: HuyaDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'huyaDto' is not null or undefined
+            assertParamExists('addChannelMethodAddHuyaV1', 'huyaDto', huyaDto)
+            const localVarPath = `/method/channel/add/huya`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(huyaDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add instagram channel
+         * @param {InstagramDto} instagramDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddInstagramV1: async (instagramDto: InstagramDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'instagramDto' is not null or undefined
+            assertParamExists('addChannelMethodAddInstagramV1', 'instagramDto', instagramDto)
+            const localVarPath = `/method/channel/add/instagram`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(instagramDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add kick channel
+         * @param {KickDto} kickDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddKickV1: async (kickDto: KickDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'kickDto' is not null or undefined
+            assertParamExists('addChannelMethodAddKickV1', 'kickDto', kickDto)
+            const localVarPath = `/method/channel/add/kick`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(kickDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add linkedin channel
+         * @param {LinkedinDto} linkedinDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddLinkedinV1: async (linkedinDto: LinkedinDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'linkedinDto' is not null or undefined
+            assertParamExists('addChannelMethodAddLinkedinV1', 'linkedinDto', linkedinDto)
+            const localVarPath = `/method/channel/add/linkedin`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(linkedinDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add navertv channel
+         * @param {NavertvDto} navertvDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddNavertvV1: async (navertvDto: NavertvDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'navertvDto' is not null or undefined
+            assertParamExists('addChannelMethodAddNavertvV1', 'navertvDto', navertvDto)
+            const localVarPath = `/method/channel/add/navertv`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(navertvDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add nimotv channel
+         * @param {NimotvDto} nimotvDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddNimotvV1: async (nimotvDto: NimotvDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'nimotvDto' is not null or undefined
+            assertParamExists('addChannelMethodAddNimotvV1', 'nimotvDto', nimotvDto)
+            const localVarPath = `/method/channel/add/nimotv`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(nimotvDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add nonolive channel
+         * @param {NonoliveDto} nonoliveDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddNonoliveV1: async (nonoliveDto: NonoliveDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'nonoliveDto' is not null or undefined
+            assertParamExists('addChannelMethodAddNonoliveV1', 'nonoliveDto', nonoliveDto)
+            const localVarPath = `/method/channel/add/nonolive`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(nonoliveDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add ok channel
+         * @param {OkDto} okDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddOkV1: async (okDto: OkDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'okDto' is not null or undefined
+            assertParamExists('addChannelMethodAddOkV1', 'okDto', okDto)
+            const localVarPath = `/method/channel/add/ok`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(okDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add plvideo channel
+         * @param {PlvideoDto} plvideoDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddPlvideoV1: async (plvideoDto: PlvideoDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'plvideoDto' is not null or undefined
+            assertParamExists('addChannelMethodAddPlvideoV1', 'plvideoDto', plvideoDto)
+            const localVarPath = `/method/channel/add/plvideo`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(plvideoDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add rutube channel
+         * @param {RutubeDto} rutubeDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddRutubeV1: async (rutubeDto: RutubeDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'rutubeDto' is not null or undefined
+            assertParamExists('addChannelMethodAddRutubeV1', 'rutubeDto', rutubeDto)
+            const localVarPath = `/method/channel/add/rutube`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(rutubeDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add steam channel
+         * @param {SteamDto} steamDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddSteamV1: async (steamDto: SteamDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'steamDto' is not null or undefined
+            assertParamExists('addChannelMethodAddSteamV1', 'steamDto', steamDto)
+            const localVarPath = `/method/channel/add/steam`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(steamDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add telegram channel
+         * @param {TelegramDto} telegramDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddTelegramV1: async (telegramDto: TelegramDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'telegramDto' is not null or undefined
+            assertParamExists('addChannelMethodAddTelegramV1', 'telegramDto', telegramDto)
+            const localVarPath = `/method/channel/add/telegram`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(telegramDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add tiktok channel
+         * @param {TiktokDto} tiktokDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddTiktokV1: async (tiktokDto: TiktokDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tiktokDto' is not null or undefined
+            assertParamExists('addChannelMethodAddTiktokV1', 'tiktokDto', tiktokDto)
+            const localVarPath = `/method/channel/add/tiktok`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(tiktokDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add vk channel
+         * @param {VkDto} vkDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddVkV1: async (vkDto: VkDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vkDto' is not null or undefined
+            assertParamExists('addChannelMethodAddVkV1', 'vkDto', vkDto)
+            const localVarPath = `/method/channel/add/vk`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(vkDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add vlive channel
+         * @param {VliveDto} vliveDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddVliveV1: async (vliveDto: VliveDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vliveDto' is not null or undefined
+            assertParamExists('addChannelMethodAddVliveV1', 'vliveDto', vliveDto)
+            const localVarPath = `/method/channel/add/vlive`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(vliveDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add zhanqitv channel
+         * @param {ZhanqitvDto} zhanqitvDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddZhanqiTvV1: async (zhanqitvDto: ZhanqitvDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'zhanqitvDto' is not null or undefined
+            assertParamExists('addChannelMethodAddZhanqiTvV1', 'zhanqitvDto', zhanqitvDto)
+            const localVarPath = `/method/channel/add/zhanqitv`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(zhanqitvDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete channel
+         * @param {DeleteChannelDto} deleteChannelDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelDeleteChannelV1: async (deleteChannelDto: DeleteChannelDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'deleteChannelDto' is not null or undefined
+            assertParamExists('channelDeleteChannelV1', 'deleteChannelDto', deleteChannelDto)
+            const localVarPath = `/method/channel/delete`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(deleteChannelDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get channel by id
+         * @param {ChannelGetChannelV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} channelId Channel id
+         * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelGetChannelV1: async (language: ChannelGetChannelV1LanguageEnum, projectId: number, channelId: number, v?: ChannelGetChannelV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('channelGetChannelV1', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('channelGetChannelV1', 'projectId', projectId)
+            // verify required parameter 'channelId' is not null or undefined
+            assertParamExists('channelGetChannelV1', 'channelId', channelId)
+            const localVarPath = `/method/channel/get`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+            if (channelId !== undefined) {
+                localVarQueryParameter['channel_id'] = channelId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Set delay - test point
+         * @param {number} channelId 
+         * @param {number} projectId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSetDelayV1: async (channelId: number, projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'channelId' is not null or undefined
+            assertParamExists('channelSetDelayV1', 'channelId', channelId)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('channelSetDelayV1', 'projectId', projectId)
+            const localVarPath = `/method/channel/set-delay`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (channelId !== undefined) {
+                localVarQueryParameter['channel_id'] = channelId;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary Minimal channel list
@@ -218,6 +1196,335 @@ export const ChannelApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Add boosty channel
+         * @param {BoostyDto} boostyDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddBoostyV1(boostyDto: BoostyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddBoostyV1(boostyDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddBoostyV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add custom channel
+         * @param {CustomDto} customDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddCustomV1(customDto: CustomDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddCustomV1(customDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddCustomV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add douyu channel
+         * @param {DouyuDto} douyuDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddDouyuV1(douyuDto: DouyuDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddDouyuV1(douyuDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddDouyuV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add fb channel
+         * @param {FbDto} fbDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddFbV1(fbDto: FbDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddFbV1(fbDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddFbV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add fc2Live channel
+         * @param {Fc2liveDto} fc2liveDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddFc2LiveV1(fc2liveDto: Fc2liveDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddFc2LiveV1(fc2liveDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddFc2LiveV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add goodgame channel
+         * @param {GoodgameDto} goodgameDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddGoodgameV1(goodgameDto: GoodgameDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddGoodgameV1(goodgameDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddGoodgameV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add huya channel
+         * @param {HuyaDto} huyaDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddHuyaV1(huyaDto: HuyaDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddHuyaV1(huyaDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddHuyaV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add instagram channel
+         * @param {InstagramDto} instagramDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddInstagramV1(instagramDto: InstagramDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddInstagramV1(instagramDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddInstagramV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add kick channel
+         * @param {KickDto} kickDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddKickV1(kickDto: KickDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddKickV1(kickDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddKickV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add linkedin channel
+         * @param {LinkedinDto} linkedinDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddLinkedinV1(linkedinDto: LinkedinDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddLinkedinV1(linkedinDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddLinkedinV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add navertv channel
+         * @param {NavertvDto} navertvDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddNavertvV1(navertvDto: NavertvDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddNavertvV1(navertvDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddNavertvV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add nimotv channel
+         * @param {NimotvDto} nimotvDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddNimotvV1(nimotvDto: NimotvDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddNimotvV1(nimotvDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddNimotvV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add nonolive channel
+         * @param {NonoliveDto} nonoliveDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddNonoliveV1(nonoliveDto: NonoliveDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddNonoliveV1(nonoliveDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddNonoliveV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add ok channel
+         * @param {OkDto} okDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddOkV1(okDto: OkDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddOkV1(okDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddOkV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add plvideo channel
+         * @param {PlvideoDto} plvideoDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddPlvideoV1(plvideoDto: PlvideoDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddPlvideoV1(plvideoDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddPlvideoV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add rutube channel
+         * @param {RutubeDto} rutubeDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddRutubeV1(rutubeDto: RutubeDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddRutubeV1(rutubeDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddRutubeV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add steam channel
+         * @param {SteamDto} steamDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddSteamV1(steamDto: SteamDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddSteamV1(steamDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddSteamV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add telegram channel
+         * @param {TelegramDto} telegramDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddTelegramV1(telegramDto: TelegramDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddTelegramV1(telegramDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddTelegramV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add tiktok channel
+         * @param {TiktokDto} tiktokDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddTiktokV1(tiktokDto: TiktokDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddTiktokV1(tiktokDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddTiktokV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add vk channel
+         * @param {VkDto} vkDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddVkV1(vkDto: VkDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddVkV1(vkDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddVkV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add vlive channel
+         * @param {VliveDto} vliveDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddVliveV1(vliveDto: VliveDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddVliveV1(vliveDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddVliveV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add zhanqitv channel
+         * @param {ZhanqitvDto} zhanqitvDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddZhanqiTvV1(zhanqitvDto: ZhanqitvDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddZhanqiTvV1(zhanqitvDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddZhanqiTvV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Delete channel
+         * @param {DeleteChannelDto} deleteChannelDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelDeleteChannelV1(deleteChannelDto: DeleteChannelDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelDeleteChannelV1(deleteChannelDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.channelDeleteChannelV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get channel by id
+         * @param {ChannelGetChannelV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} channelId Channel id
+         * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelGetChannelV1(language: ChannelGetChannelV1LanguageEnum, projectId: number, channelId: number, v?: ChannelGetChannelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchChannelItem>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelGetChannelV1(language, projectId, channelId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.channelGetChannelV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Set delay - test point
+         * @param {number} channelId 
+         * @param {number} projectId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelSetDelayV1(channelId: number, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSetDelayV1(channelId, projectId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.channelSetDelayV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Minimal channel list
          * @param {ChannelShortChannelListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
@@ -276,6 +1583,256 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @summary Add boosty channel
+         * @param {ChannelApiAddChannelMethodAddBoostyV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddBoostyV1(requestParameters.BoostyDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add custom channel
+         * @param {ChannelApiAddChannelMethodAddCustomV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddCustomV1(requestParameters.CustomDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add douyu channel
+         * @param {ChannelApiAddChannelMethodAddDouyuV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddDouyuV1(requestParameters.DouyuDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add fb channel
+         * @param {ChannelApiAddChannelMethodAddFbV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddFbV1(requestParameters.FbDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add fc2Live channel
+         * @param {ChannelApiAddChannelMethodAddFc2LiveV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddFc2LiveV1(requestParameters.Fc2liveDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add goodgame channel
+         * @param {ChannelApiAddChannelMethodAddGoodgameV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddGoodgameV1(requestParameters.GoodgameDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add huya channel
+         * @param {ChannelApiAddChannelMethodAddHuyaV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddHuyaV1(requestParameters.HuyaDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add instagram channel
+         * @param {ChannelApiAddChannelMethodAddInstagramV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddInstagramV1(requestParameters.InstagramDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add kick channel
+         * @param {ChannelApiAddChannelMethodAddKickV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddKickV1(requestParameters.KickDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add linkedin channel
+         * @param {ChannelApiAddChannelMethodAddLinkedinV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddLinkedinV1(requestParameters.LinkedinDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add navertv channel
+         * @param {ChannelApiAddChannelMethodAddNavertvV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddNavertvV1(requestParameters.NavertvDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add nimotv channel
+         * @param {ChannelApiAddChannelMethodAddNimotvV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddNimotvV1(requestParameters.NimotvDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add nonolive channel
+         * @param {ChannelApiAddChannelMethodAddNonoliveV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddNonoliveV1(requestParameters.NonoliveDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add ok channel
+         * @param {ChannelApiAddChannelMethodAddOkV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddOkV1(requestParameters.OkDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add plvideo channel
+         * @param {ChannelApiAddChannelMethodAddPlvideoV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddPlvideoV1(requestParameters.PlvideoDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add rutube channel
+         * @param {ChannelApiAddChannelMethodAddRutubeV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddRutubeV1(requestParameters.RutubeDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add steam channel
+         * @param {ChannelApiAddChannelMethodAddSteamV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddSteamV1(requestParameters.SteamDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add telegram channel
+         * @param {ChannelApiAddChannelMethodAddTelegramV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddTelegramV1(requestParameters.TelegramDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add tiktok channel
+         * @param {ChannelApiAddChannelMethodAddTiktokV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddTiktokV1(requestParameters.TiktokDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add vk channel
+         * @param {ChannelApiAddChannelMethodAddVkV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddVkV1(requestParameters.VkDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add vlive channel
+         * @param {ChannelApiAddChannelMethodAddVliveV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddVliveV1(requestParameters.VliveDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add zhanqitv channel
+         * @param {ChannelApiAddChannelMethodAddZhanqiTvV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddZhanqiTvV1(requestParameters.ZhanqitvDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete channel
+         * @param {ChannelApiChannelDeleteChannelV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelDeleteChannelV1(requestParameters: ChannelApiChannelDeleteChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelDeleteChannelV1(requestParameters.DeleteChannelDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get channel by id
+         * @param {ChannelApiChannelGetChannelV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelGetChannelV1(requestParameters: ChannelApiChannelGetChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SearchChannelItem> {
+            return localVarFp.channelGetChannelV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Set delay - test point
+         * @param {ChannelApiChannelSetDelayV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSetDelayV1(requestParameters: ChannelApiChannelSetDelayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelSetDelayV1(requestParameters.channel_id, requestParameters.project_id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Minimal channel list
          * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -315,6 +1872,256 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
 export interface ChannelApiInterface {
     /**
      * 
+     * @summary Add boosty channel
+     * @param {ChannelApiAddChannelMethodAddBoostyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add custom channel
+     * @param {ChannelApiAddChannelMethodAddCustomV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add douyu channel
+     * @param {ChannelApiAddChannelMethodAddDouyuV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add fb channel
+     * @param {ChannelApiAddChannelMethodAddFbV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add fc2Live channel
+     * @param {ChannelApiAddChannelMethodAddFc2LiveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add goodgame channel
+     * @param {ChannelApiAddChannelMethodAddGoodgameV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add huya channel
+     * @param {ChannelApiAddChannelMethodAddHuyaV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add instagram channel
+     * @param {ChannelApiAddChannelMethodAddInstagramV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add kick channel
+     * @param {ChannelApiAddChannelMethodAddKickV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add linkedin channel
+     * @param {ChannelApiAddChannelMethodAddLinkedinV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add navertv channel
+     * @param {ChannelApiAddChannelMethodAddNavertvV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add nimotv channel
+     * @param {ChannelApiAddChannelMethodAddNimotvV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add nonolive channel
+     * @param {ChannelApiAddChannelMethodAddNonoliveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add ok channel
+     * @param {ChannelApiAddChannelMethodAddOkV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add plvideo channel
+     * @param {ChannelApiAddChannelMethodAddPlvideoV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add rutube channel
+     * @param {ChannelApiAddChannelMethodAddRutubeV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add steam channel
+     * @param {ChannelApiAddChannelMethodAddSteamV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add telegram channel
+     * @param {ChannelApiAddChannelMethodAddTelegramV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add tiktok channel
+     * @param {ChannelApiAddChannelMethodAddTiktokV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add vk channel
+     * @param {ChannelApiAddChannelMethodAddVkV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add vlive channel
+     * @param {ChannelApiAddChannelMethodAddVliveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add zhanqitv channel
+     * @param {ChannelApiAddChannelMethodAddZhanqiTvV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Delete channel
+     * @param {ChannelApiChannelDeleteChannelV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    channelDeleteChannelV1(requestParameters: ChannelApiChannelDeleteChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Get channel by id
+     * @param {ChannelApiChannelGetChannelV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    channelGetChannelV1(requestParameters: ChannelApiChannelGetChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SearchChannelItem>;
+
+    /**
+     * 
+     * @summary Set delay - test point
+     * @param {ChannelApiChannelSetDelayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    channelSetDelayV1(requestParameters: ChannelApiChannelSetDelayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
      * @summary Minimal channel list
      * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -346,6 +2153,384 @@ export interface ChannelApiInterface {
 }
 
 /**
+ * Request parameters for addChannelMethodAddBoostyV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddBoostyV1Request
+ */
+export interface ChannelApiAddChannelMethodAddBoostyV1Request {
+    /**
+     * 
+     * @type {BoostyDto}
+     * @memberof ChannelApiAddChannelMethodAddBoostyV1
+     */
+    readonly BoostyDto: BoostyDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddCustomV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddCustomV1Request
+ */
+export interface ChannelApiAddChannelMethodAddCustomV1Request {
+    /**
+     * 
+     * @type {CustomDto}
+     * @memberof ChannelApiAddChannelMethodAddCustomV1
+     */
+    readonly CustomDto: CustomDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddDouyuV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddDouyuV1Request
+ */
+export interface ChannelApiAddChannelMethodAddDouyuV1Request {
+    /**
+     * 
+     * @type {DouyuDto}
+     * @memberof ChannelApiAddChannelMethodAddDouyuV1
+     */
+    readonly DouyuDto: DouyuDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddFbV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddFbV1Request
+ */
+export interface ChannelApiAddChannelMethodAddFbV1Request {
+    /**
+     * 
+     * @type {FbDto}
+     * @memberof ChannelApiAddChannelMethodAddFbV1
+     */
+    readonly FbDto: FbDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddFc2LiveV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddFc2LiveV1Request
+ */
+export interface ChannelApiAddChannelMethodAddFc2LiveV1Request {
+    /**
+     * 
+     * @type {Fc2liveDto}
+     * @memberof ChannelApiAddChannelMethodAddFc2LiveV1
+     */
+    readonly Fc2liveDto: Fc2liveDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddGoodgameV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddGoodgameV1Request
+ */
+export interface ChannelApiAddChannelMethodAddGoodgameV1Request {
+    /**
+     * 
+     * @type {GoodgameDto}
+     * @memberof ChannelApiAddChannelMethodAddGoodgameV1
+     */
+    readonly GoodgameDto: GoodgameDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddHuyaV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddHuyaV1Request
+ */
+export interface ChannelApiAddChannelMethodAddHuyaV1Request {
+    /**
+     * 
+     * @type {HuyaDto}
+     * @memberof ChannelApiAddChannelMethodAddHuyaV1
+     */
+    readonly HuyaDto: HuyaDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddInstagramV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddInstagramV1Request
+ */
+export interface ChannelApiAddChannelMethodAddInstagramV1Request {
+    /**
+     * 
+     * @type {InstagramDto}
+     * @memberof ChannelApiAddChannelMethodAddInstagramV1
+     */
+    readonly InstagramDto: InstagramDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddKickV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddKickV1Request
+ */
+export interface ChannelApiAddChannelMethodAddKickV1Request {
+    /**
+     * 
+     * @type {KickDto}
+     * @memberof ChannelApiAddChannelMethodAddKickV1
+     */
+    readonly KickDto: KickDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddLinkedinV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddLinkedinV1Request
+ */
+export interface ChannelApiAddChannelMethodAddLinkedinV1Request {
+    /**
+     * 
+     * @type {LinkedinDto}
+     * @memberof ChannelApiAddChannelMethodAddLinkedinV1
+     */
+    readonly LinkedinDto: LinkedinDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddNavertvV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddNavertvV1Request
+ */
+export interface ChannelApiAddChannelMethodAddNavertvV1Request {
+    /**
+     * 
+     * @type {NavertvDto}
+     * @memberof ChannelApiAddChannelMethodAddNavertvV1
+     */
+    readonly NavertvDto: NavertvDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddNimotvV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddNimotvV1Request
+ */
+export interface ChannelApiAddChannelMethodAddNimotvV1Request {
+    /**
+     * 
+     * @type {NimotvDto}
+     * @memberof ChannelApiAddChannelMethodAddNimotvV1
+     */
+    readonly NimotvDto: NimotvDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddNonoliveV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddNonoliveV1Request
+ */
+export interface ChannelApiAddChannelMethodAddNonoliveV1Request {
+    /**
+     * 
+     * @type {NonoliveDto}
+     * @memberof ChannelApiAddChannelMethodAddNonoliveV1
+     */
+    readonly NonoliveDto: NonoliveDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddOkV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddOkV1Request
+ */
+export interface ChannelApiAddChannelMethodAddOkV1Request {
+    /**
+     * 
+     * @type {OkDto}
+     * @memberof ChannelApiAddChannelMethodAddOkV1
+     */
+    readonly OkDto: OkDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddPlvideoV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddPlvideoV1Request
+ */
+export interface ChannelApiAddChannelMethodAddPlvideoV1Request {
+    /**
+     * 
+     * @type {PlvideoDto}
+     * @memberof ChannelApiAddChannelMethodAddPlvideoV1
+     */
+    readonly PlvideoDto: PlvideoDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddRutubeV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddRutubeV1Request
+ */
+export interface ChannelApiAddChannelMethodAddRutubeV1Request {
+    /**
+     * 
+     * @type {RutubeDto}
+     * @memberof ChannelApiAddChannelMethodAddRutubeV1
+     */
+    readonly RutubeDto: RutubeDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddSteamV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddSteamV1Request
+ */
+export interface ChannelApiAddChannelMethodAddSteamV1Request {
+    /**
+     * 
+     * @type {SteamDto}
+     * @memberof ChannelApiAddChannelMethodAddSteamV1
+     */
+    readonly SteamDto: SteamDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddTelegramV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddTelegramV1Request
+ */
+export interface ChannelApiAddChannelMethodAddTelegramV1Request {
+    /**
+     * 
+     * @type {TelegramDto}
+     * @memberof ChannelApiAddChannelMethodAddTelegramV1
+     */
+    readonly TelegramDto: TelegramDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddTiktokV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddTiktokV1Request
+ */
+export interface ChannelApiAddChannelMethodAddTiktokV1Request {
+    /**
+     * 
+     * @type {TiktokDto}
+     * @memberof ChannelApiAddChannelMethodAddTiktokV1
+     */
+    readonly TiktokDto: TiktokDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddVkV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddVkV1Request
+ */
+export interface ChannelApiAddChannelMethodAddVkV1Request {
+    /**
+     * 
+     * @type {VkDto}
+     * @memberof ChannelApiAddChannelMethodAddVkV1
+     */
+    readonly VkDto: VkDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddVliveV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddVliveV1Request
+ */
+export interface ChannelApiAddChannelMethodAddVliveV1Request {
+    /**
+     * 
+     * @type {VliveDto}
+     * @memberof ChannelApiAddChannelMethodAddVliveV1
+     */
+    readonly VliveDto: VliveDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddZhanqiTvV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddZhanqiTvV1Request
+ */
+export interface ChannelApiAddChannelMethodAddZhanqiTvV1Request {
+    /**
+     * 
+     * @type {ZhanqitvDto}
+     * @memberof ChannelApiAddChannelMethodAddZhanqiTvV1
+     */
+    readonly ZhanqitvDto: ZhanqitvDto
+}
+
+/**
+ * Request parameters for channelDeleteChannelV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiChannelDeleteChannelV1Request
+ */
+export interface ChannelApiChannelDeleteChannelV1Request {
+    /**
+     * 
+     * @type {DeleteChannelDto}
+     * @memberof ChannelApiChannelDeleteChannelV1
+     */
+    readonly DeleteChannelDto: DeleteChannelDto
+}
+
+/**
+ * Request parameters for channelGetChannelV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiChannelGetChannelV1Request
+ */
+export interface ChannelApiChannelGetChannelV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ChannelApiChannelGetChannelV1
+     */
+    readonly language: ChannelGetChannelV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ChannelApiChannelGetChannelV1
+     */
+    readonly project_id: number
+
+    /**
+     * Channel id
+     * @type {number}
+     * @memberof ChannelApiChannelGetChannelV1
+     */
+    readonly channel_id: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof ChannelApiChannelGetChannelV1
+     */
+    readonly v?: ChannelGetChannelV1VEnum
+}
+
+/**
+ * Request parameters for channelSetDelayV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiChannelSetDelayV1Request
+ */
+export interface ChannelApiChannelSetDelayV1Request {
+    /**
+     * 
+     * @type {number}
+     * @memberof ChannelApiChannelSetDelayV1
+     */
+    readonly channel_id: number
+
+    /**
+     * 
+     * @type {number}
+     * @memberof ChannelApiChannelSetDelayV1
+     */
+    readonly project_id: number
+}
+
+/**
  * Request parameters for channelShortChannelListV1 operation in ChannelApi.
  * @export
  * @interface ChannelApiChannelShortChannelListV1Request
@@ -367,7 +2552,7 @@ export interface ChannelApiChannelShortChannelListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelApiChannelShortChannelListV1
      */
     readonly v?: ChannelShortChannelListV1VEnum
@@ -395,7 +2580,7 @@ export interface ChannelApiMethodSearchV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelApiMethodSearchV1
      */
     readonly v?: MethodSearchV1VEnum
@@ -459,6 +2644,306 @@ export interface ChannelApiMethodSetStatusV1Request {
 export class ChannelApi extends BaseAPI implements ChannelApiInterface {
     /**
      * 
+     * @summary Add boosty channel
+     * @param {ChannelApiAddChannelMethodAddBoostyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddBoostyV1(requestParameters.BoostyDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add custom channel
+     * @param {ChannelApiAddChannelMethodAddCustomV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddCustomV1(requestParameters.CustomDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add douyu channel
+     * @param {ChannelApiAddChannelMethodAddDouyuV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddDouyuV1(requestParameters.DouyuDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add fb channel
+     * @param {ChannelApiAddChannelMethodAddFbV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddFbV1(requestParameters.FbDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add fc2Live channel
+     * @param {ChannelApiAddChannelMethodAddFc2LiveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddFc2LiveV1(requestParameters.Fc2liveDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add goodgame channel
+     * @param {ChannelApiAddChannelMethodAddGoodgameV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddGoodgameV1(requestParameters.GoodgameDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add huya channel
+     * @param {ChannelApiAddChannelMethodAddHuyaV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddHuyaV1(requestParameters.HuyaDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add instagram channel
+     * @param {ChannelApiAddChannelMethodAddInstagramV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddInstagramV1(requestParameters.InstagramDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add kick channel
+     * @param {ChannelApiAddChannelMethodAddKickV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddKickV1(requestParameters.KickDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add linkedin channel
+     * @param {ChannelApiAddChannelMethodAddLinkedinV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddLinkedinV1(requestParameters.LinkedinDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add navertv channel
+     * @param {ChannelApiAddChannelMethodAddNavertvV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddNavertvV1(requestParameters.NavertvDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add nimotv channel
+     * @param {ChannelApiAddChannelMethodAddNimotvV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddNimotvV1(requestParameters.NimotvDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add nonolive channel
+     * @param {ChannelApiAddChannelMethodAddNonoliveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddNonoliveV1(requestParameters.NonoliveDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add ok channel
+     * @param {ChannelApiAddChannelMethodAddOkV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddOkV1(requestParameters.OkDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add plvideo channel
+     * @param {ChannelApiAddChannelMethodAddPlvideoV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddPlvideoV1(requestParameters.PlvideoDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add rutube channel
+     * @param {ChannelApiAddChannelMethodAddRutubeV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddRutubeV1(requestParameters.RutubeDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add steam channel
+     * @param {ChannelApiAddChannelMethodAddSteamV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddSteamV1(requestParameters.SteamDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add telegram channel
+     * @param {ChannelApiAddChannelMethodAddTelegramV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddTelegramV1(requestParameters.TelegramDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add tiktok channel
+     * @param {ChannelApiAddChannelMethodAddTiktokV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddTiktokV1(requestParameters.TiktokDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add vk channel
+     * @param {ChannelApiAddChannelMethodAddVkV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddVkV1(requestParameters.VkDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add vlive channel
+     * @param {ChannelApiAddChannelMethodAddVliveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddVliveV1(requestParameters.VliveDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add zhanqitv channel
+     * @param {ChannelApiAddChannelMethodAddZhanqiTvV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddZhanqiTvV1(requestParameters.ZhanqitvDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete channel
+     * @param {ChannelApiChannelDeleteChannelV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public channelDeleteChannelV1(requestParameters: ChannelApiChannelDeleteChannelV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).channelDeleteChannelV1(requestParameters.DeleteChannelDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get channel by id
+     * @param {ChannelApiChannelGetChannelV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public channelGetChannelV1(requestParameters: ChannelApiChannelGetChannelV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).channelGetChannelV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Set delay - test point
+     * @param {ChannelApiChannelSetDelayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public channelSetDelayV1(requestParameters: ChannelApiChannelSetDelayV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).channelSetDelayV1(requestParameters.channel_id, requestParameters.project_id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Minimal channel list
      * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -497,6 +2982,22 @@ export class ChannelApi extends BaseAPI implements ChannelApiInterface {
 /**
  * @export
  */
+export const ChannelGetChannelV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelGetChannelV1LanguageEnum = typeof ChannelGetChannelV1LanguageEnum[keyof typeof ChannelGetChannelV1LanguageEnum];
+/**
+ * @export
+ */
+export const ChannelGetChannelV1VEnum = {
+    _1: '1'
+} as const;
+export type ChannelGetChannelV1VEnum = typeof ChannelGetChannelV1VEnum[keyof typeof ChannelGetChannelV1VEnum];
+/**
+ * @export
+ */
 export const ChannelShortChannelListV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
@@ -507,9 +3008,7 @@ export type ChannelShortChannelListV1LanguageEnum = typeof ChannelShortChannelLi
  * @export
  */
 export const ChannelShortChannelListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ChannelShortChannelListV1VEnum = typeof ChannelShortChannelListV1VEnum[keyof typeof ChannelShortChannelListV1VEnum];
 /**
@@ -525,9 +3024,7 @@ export type MethodSearchV1LanguageEnum = typeof MethodSearchV1LanguageEnum[keyof
  * @export
  */
 export const MethodSearchV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type MethodSearchV1VEnum = typeof MethodSearchV1VEnum[keyof typeof MethodSearchV1VEnum];
 /**

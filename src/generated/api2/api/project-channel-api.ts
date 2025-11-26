@@ -24,7 +24,7 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { ListOfProjectChannelResponse } from '../models';
+import type { ProjectChannelListResponse } from '../models';
 // @ts-ignore
 import type { SuccessResponse } from '../models';
 /**
@@ -348,7 +348,7 @@ export const ProjectChannelApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async projectChannelListV1(language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfProjectChannelResponse>> {
+        async projectChannelListV1(language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelListResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelListV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.projectChannelListV1']?.[localVarOperationServerIndex]?.url;
@@ -408,7 +408,7 @@ export const ProjectChannelApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse> {
+        projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelListResponse> {
             return localVarFp.projectChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
@@ -458,7 +458,7 @@ export interface ProjectChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectChannelApiInterface
      */
-    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse>;
+    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelListResponse>;
 
     /**
      * 
@@ -515,7 +515,7 @@ export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
     readonly v?: ProjectChannelChangeAccessV1VEnum
@@ -557,7 +557,7 @@ export interface ProjectChannelApiProjectChannelDelV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
     readonly v?: ProjectChannelDelV1VEnum
@@ -592,7 +592,7 @@ export interface ProjectChannelApiProjectChannelListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
     readonly v?: ProjectChannelListV1VEnum
@@ -634,7 +634,7 @@ export interface ProjectChannelApiProjectChannelTransferOwnerV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
     readonly v?: ProjectChannelTransferOwnerV1VEnum
@@ -719,9 +719,7 @@ export type ProjectChannelChangeAccessV1AccessTypeEnum = typeof ProjectChannelCh
  * @export
  */
 export const ProjectChannelChangeAccessV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ProjectChannelChangeAccessV1VEnum = typeof ProjectChannelChangeAccessV1VEnum[keyof typeof ProjectChannelChangeAccessV1VEnum];
 /**
@@ -737,9 +735,7 @@ export type ProjectChannelDelV1LanguageEnum = typeof ProjectChannelDelV1Language
  * @export
  */
 export const ProjectChannelDelV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ProjectChannelDelV1VEnum = typeof ProjectChannelDelV1VEnum[keyof typeof ProjectChannelDelV1VEnum];
 /**
@@ -755,9 +751,7 @@ export type ProjectChannelListV1LanguageEnum = typeof ProjectChannelListV1Langua
  * @export
  */
 export const ProjectChannelListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ProjectChannelListV1VEnum = typeof ProjectChannelListV1VEnum[keyof typeof ProjectChannelListV1VEnum];
 /**
@@ -773,8 +767,6 @@ export type ProjectChannelTransferOwnerV1LanguageEnum = typeof ProjectChannelTra
  * @export
  */
 export const ProjectChannelTransferOwnerV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ProjectChannelTransferOwnerV1VEnum = typeof ProjectChannelTransferOwnerV1VEnum[keyof typeof ProjectChannelTransferOwnerV1VEnum];

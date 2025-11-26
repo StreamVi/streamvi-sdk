@@ -24,7 +24,7 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ListOfPaySystemListResponse } from '../models';
 // @ts-ignore
-import type { SuccessResponse } from '../models';
+import type { PayRedirectUrlDto } from '../models';
 /**
  * PaySystemApi - axios parameter creator
  * @export
@@ -33,6 +33,7 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
     return {
         /**
          * 
+         * @summary Create payoneer payment challenge redirect url
          * @param {PaySystemCreateChallengeV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
          * @param {PaySystemCreateChallengeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
@@ -83,6 +84,58 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Create t-bank payment challenge redirect url
+         * @param {PaySystemCreateTBankV1LanguageEnum} language Current language
+         * @param {number} paymentId Payment id
+         * @param {PaySystemCreateTBankV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        paySystemCreateTBankV1: async (language: PaySystemCreateTBankV1LanguageEnum, paymentId: number, v?: PaySystemCreateTBankV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('paySystemCreateTBankV1', 'language', language)
+            // verify required parameter 'paymentId' is not null or undefined
+            assertParamExists('paySystemCreateTBankV1', 'paymentId', paymentId)
+            const localVarPath = `/method/pay-system/t-bank/create`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (paymentId !== undefined) {
+                localVarQueryParameter['payment_id'] = paymentId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create unitpay payment challenge redirect url
          * @param {PaySystemCreateUnitpayV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
          * @param {PaySystemCreateUnitpayV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
@@ -173,13 +226,14 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Create payoneer payment challenge redirect url
          * @param {PaySystemCreateChallengeV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
          * @param {PaySystemCreateChallengeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async paySystemCreateChallengeV1(language: PaySystemCreateChallengeV1LanguageEnum, paymentId: number, v?: PaySystemCreateChallengeV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+        async paySystemCreateChallengeV1(language: PaySystemCreateChallengeV1LanguageEnum, paymentId: number, v?: PaySystemCreateChallengeV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayRedirectUrlDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.paySystemCreateChallengeV1(language, paymentId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaySystemApi.paySystemCreateChallengeV1']?.[localVarOperationServerIndex]?.url;
@@ -187,13 +241,29 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Create t-bank payment challenge redirect url
+         * @param {PaySystemCreateTBankV1LanguageEnum} language Current language
+         * @param {number} paymentId Payment id
+         * @param {PaySystemCreateTBankV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async paySystemCreateTBankV1(language: PaySystemCreateTBankV1LanguageEnum, paymentId: number, v?: PaySystemCreateTBankV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayRedirectUrlDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.paySystemCreateTBankV1(language, paymentId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaySystemApi.paySystemCreateTBankV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Create unitpay payment challenge redirect url
          * @param {PaySystemCreateUnitpayV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
          * @param {PaySystemCreateUnitpayV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async paySystemCreateUnitpayV1(language: PaySystemCreateUnitpayV1LanguageEnum, paymentId: number, v?: PaySystemCreateUnitpayV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+        async paySystemCreateUnitpayV1(language: PaySystemCreateUnitpayV1LanguageEnum, paymentId: number, v?: PaySystemCreateUnitpayV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayRedirectUrlDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.paySystemCreateUnitpayV1(language, paymentId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaySystemApi.paySystemCreateUnitpayV1']?.[localVarOperationServerIndex]?.url;
@@ -223,20 +293,32 @@ export const PaySystemApiFactory = function (configuration?: Configuration, base
     return {
         /**
          * 
+         * @summary Create payoneer payment challenge redirect url
          * @param {PaySystemApiPaySystemCreateChallengeV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+        paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto> {
             return localVarFp.paySystemCreateChallengeV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
+         * @summary Create t-bank payment challenge redirect url
+         * @param {PaySystemApiPaySystemCreateTBankV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        paySystemCreateTBankV1(requestParameters: PaySystemApiPaySystemCreateTBankV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto> {
+            return localVarFp.paySystemCreateTBankV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Create unitpay payment challenge redirect url
          * @param {PaySystemApiPaySystemCreateUnitpayV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+        paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto> {
             return localVarFp.paySystemCreateUnitpayV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
@@ -259,21 +341,33 @@ export const PaySystemApiFactory = function (configuration?: Configuration, base
 export interface PaySystemApiInterface {
     /**
      * 
+     * @summary Create payoneer payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateChallengeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySystemApiInterface
      */
-    paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto>;
 
     /**
      * 
+     * @summary Create t-bank payment challenge redirect url
+     * @param {PaySystemApiPaySystemCreateTBankV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
+     */
+    paySystemCreateTBankV1(requestParameters: PaySystemApiPaySystemCreateTBankV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto>;
+
+    /**
+     * 
+     * @summary Create unitpay payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateUnitpayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySystemApiInterface
      */
-    paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto>;
 
     /**
      * 
@@ -308,10 +402,38 @@ export interface PaySystemApiPaySystemCreateChallengeV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PaySystemApiPaySystemCreateChallengeV1
      */
     readonly v?: PaySystemCreateChallengeV1VEnum
+}
+
+/**
+ * Request parameters for paySystemCreateTBankV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiPaySystemCreateTBankV1Request
+ */
+export interface PaySystemApiPaySystemCreateTBankV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PaySystemApiPaySystemCreateTBankV1
+     */
+    readonly language: PaySystemCreateTBankV1LanguageEnum
+
+    /**
+     * Payment id
+     * @type {number}
+     * @memberof PaySystemApiPaySystemCreateTBankV1
+     */
+    readonly payment_id: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof PaySystemApiPaySystemCreateTBankV1
+     */
+    readonly v?: PaySystemCreateTBankV1VEnum
 }
 
 /**
@@ -336,7 +458,7 @@ export interface PaySystemApiPaySystemCreateUnitpayV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PaySystemApiPaySystemCreateUnitpayV1
      */
     readonly v?: PaySystemCreateUnitpayV1VEnum
@@ -351,6 +473,7 @@ export interface PaySystemApiPaySystemCreateUnitpayV1Request {
 export class PaySystemApi extends BaseAPI implements PaySystemApiInterface {
     /**
      * 
+     * @summary Create payoneer payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateChallengeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -362,6 +485,19 @@ export class PaySystemApi extends BaseAPI implements PaySystemApiInterface {
 
     /**
      * 
+     * @summary Create t-bank payment challenge redirect url
+     * @param {PaySystemApiPaySystemCreateTBankV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApi
+     */
+    public paySystemCreateTBankV1(requestParameters: PaySystemApiPaySystemCreateTBankV1Request, options?: RawAxiosRequestConfig) {
+        return PaySystemApiFp(this.configuration).paySystemCreateTBankV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Create unitpay payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateUnitpayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -396,11 +532,25 @@ export type PaySystemCreateChallengeV1LanguageEnum = typeof PaySystemCreateChall
  * @export
  */
 export const PaySystemCreateChallengeV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PaySystemCreateChallengeV1VEnum = typeof PaySystemCreateChallengeV1VEnum[keyof typeof PaySystemCreateChallengeV1VEnum];
+/**
+ * @export
+ */
+export const PaySystemCreateTBankV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PaySystemCreateTBankV1LanguageEnum = typeof PaySystemCreateTBankV1LanguageEnum[keyof typeof PaySystemCreateTBankV1LanguageEnum];
+/**
+ * @export
+ */
+export const PaySystemCreateTBankV1VEnum = {
+    _1: '1'
+} as const;
+export type PaySystemCreateTBankV1VEnum = typeof PaySystemCreateTBankV1VEnum[keyof typeof PaySystemCreateTBankV1VEnum];
 /**
  * @export
  */
@@ -414,8 +564,6 @@ export type PaySystemCreateUnitpayV1LanguageEnum = typeof PaySystemCreateUnitpay
  * @export
  */
 export const PaySystemCreateUnitpayV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PaySystemCreateUnitpayV1VEnum = typeof PaySystemCreateUnitpayV1VEnum[keyof typeof PaySystemCreateUnitpayV1VEnum];

@@ -266,7 +266,7 @@ export interface BlogPageApiBlogPageGetV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof BlogPageApiBlogPageGetV1
      */
     readonly v?: BlogPageGetV1VEnum
@@ -287,7 +287,7 @@ export interface BlogPageApiBlogPageListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof BlogPageApiBlogPageListV1
      */
     readonly v?: BlogPageListV1VEnum
@@ -359,9 +359,7 @@ export type BlogPageGetV1LanguageEnum = typeof BlogPageGetV1LanguageEnum[keyof t
  * @export
  */
 export const BlogPageGetV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type BlogPageGetV1VEnum = typeof BlogPageGetV1VEnum[keyof typeof BlogPageGetV1VEnum];
 /**
@@ -377,8 +375,6 @@ export type BlogPageListV1LanguageEnum = typeof BlogPageListV1LanguageEnum[keyof
  * @export
  */
 export const BlogPageListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type BlogPageListV1VEnum = typeof BlogPageListV1VEnum[keyof typeof BlogPageListV1VEnum];

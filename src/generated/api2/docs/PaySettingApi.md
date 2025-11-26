@@ -26,7 +26,7 @@ const apiInstance = new PaySettingApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let countryId: number; //country id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.paySettingCheckCountryV1(
     language,
@@ -43,7 +43,7 @@ const { status, data } = await apiInstance.paySettingCheckCountryV1(
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
 | **countryId** | **number** | country id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -85,7 +85,7 @@ const apiInstance = new PaySettingApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 3 based on method version, can be overridden) (optional) (default to '3')
+let v: '3'; //Version (automatically defaults to 3 based on method version, can be overridden) (optional) (default to '3')
 
 const { status, data } = await apiInstance.paySettingGetSettingV3(
     language,
@@ -100,7 +100,7 @@ const { status, data } = await apiInstance.paySettingGetSettingV3(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 3 based on method version, can be overridden) | (optional) defaults to '3'|
+| **v** | **'3'** | Version (automatically defaults to 3 based on method version, can be overridden) | (optional) defaults to '3'|
 
 
 ### Return type
@@ -126,7 +126,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **paySettingSetSettingV1**
-> paySettingSetSettingV1(paySettingBodyDto)
+> SuccessResponse paySettingSetSettingV1(paySettingSetSettingV1Request)
 
 
 ### Example
@@ -135,16 +135,16 @@ No authorization required
 import {
     PaySettingApi,
     Configuration,
-    PaySettingBodyDto
+    PaySettingSetSettingV1Request
 } from 'streamvi-api-client';
 
 const configuration = new Configuration();
 const apiInstance = new PaySettingApi(configuration);
 
-let paySettingBodyDto: PaySettingBodyDto; //
+let paySettingSetSettingV1Request: PaySettingSetSettingV1Request; //
 
 const { status, data } = await apiInstance.paySettingSetSettingV1(
-    paySettingBodyDto
+    paySettingSetSettingV1Request
 );
 ```
 
@@ -152,12 +152,12 @@ const { status, data } = await apiInstance.paySettingSetSettingV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **paySettingBodyDto** | **PaySettingBodyDto**|  | |
+| **paySettingSetSettingV1Request** | **PaySettingSetSettingV1Request**|  | |
 
 
 ### Return type
 
-void (empty response body)
+**SuccessResponse**
 
 ### Authorization
 

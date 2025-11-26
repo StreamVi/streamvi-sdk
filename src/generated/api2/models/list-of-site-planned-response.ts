@@ -15,15 +15,19 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { ListResponse } from './list-response';
-// May contain unused imports in some cases
-// @ts-ignore
 import type { SitePlannedResponse } from './site-planned-response';
 
 /**
- * @type ListOfSitePlannedResponse
+ * 
  * @export
+ * @interface ListOfSitePlannedResponse
  */
-export type ListOfSitePlannedResponse = ListResponse;
-
+export interface ListOfSitePlannedResponse {
+    /**
+     * 
+     * @type {Array<SitePlannedResponse>}
+     * @memberof ListOfSitePlannedResponse
+     */
+    'results': Array<SitePlannedResponse>;
+}
 

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **latency** | **string** |  | [optional] [default to undefined]
 **audience** | **string** |  | [optional] [default to undefined]
 **image** | **string** |  | [optional] [default to undefined]
+**disableAutoEnd** | **boolean** |  | [optional] [default to undefined]
 **wall** | **boolean** |  | [optional] [default to undefined]
 **privacyComments** | **string** |  | [optional] [default to undefined]
 **domain** | **string** |  | [optional] [default to undefined]
@@ -36,6 +37,7 @@ const instance: SearchChannelItemStreamInfo = {
     latency,
     audience,
     image,
+    disableAutoEnd,
     wall,
     privacyComments,
     domain,

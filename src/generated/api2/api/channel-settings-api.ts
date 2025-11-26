@@ -1819,7 +1819,7 @@ export interface ChannelSettingsApiChannelChatGetTelegramSettingV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
     readonly v?: ChannelChatGetTelegramSettingV1VEnum
@@ -1854,7 +1854,7 @@ export interface ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
     readonly v?: ChannelChatInitTelegramChatConnectV1VEnum
@@ -1889,7 +1889,7 @@ export interface ChannelSettingsApiChannelChatRemoveTelegramChatV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
     readonly v?: ChannelChatRemoveTelegramChatV1VEnum
@@ -1931,7 +1931,7 @@ export interface ChannelSettingsApiChannelChatSetTelegramSettingV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
     readonly v?: ChannelChatSetTelegramSettingV1VEnum
@@ -1966,7 +1966,7 @@ export interface ChannelSettingsApiChannelChatTelegramPostsV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
     readonly v?: ChannelChatTelegramPostsV1VEnum
@@ -2015,7 +2015,7 @@ export interface ChannelSettingsApiChannelOptionsGetPlannedV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
     readonly v?: ChannelOptionsGetPlannedV1VEnum
@@ -2050,7 +2050,7 @@ export interface ChannelSettingsApiChannelOptionsGetPlayListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
     readonly v?: ChannelOptionsGetPlayListV1VEnum
@@ -2218,7 +2218,7 @@ export interface ChannelSettingsApiChannelSettingUpdateTokenV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
     readonly v?: ChannelSettingUpdateTokenV1VEnum
@@ -2274,7 +2274,7 @@ export interface ChannelSettingsApiTelegramGetPostByFilterV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
     readonly v?: TelegramGetPostByFilterV1VEnum
@@ -2552,9 +2552,7 @@ export type ChannelChatGetTelegramSettingV1LanguageEnum = typeof ChannelChatGetT
  * @export
  */
 export const ChannelChatGetTelegramSettingV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ChannelChatGetTelegramSettingV1VEnum = typeof ChannelChatGetTelegramSettingV1VEnum[keyof typeof ChannelChatGetTelegramSettingV1VEnum];
 /**
@@ -2570,9 +2568,7 @@ export type ChannelChatInitTelegramChatConnectV1LanguageEnum = typeof ChannelCha
  * @export
  */
 export const ChannelChatInitTelegramChatConnectV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ChannelChatInitTelegramChatConnectV1VEnum = typeof ChannelChatInitTelegramChatConnectV1VEnum[keyof typeof ChannelChatInitTelegramChatConnectV1VEnum];
 /**
@@ -2588,9 +2584,7 @@ export type ChannelChatRemoveTelegramChatV1LanguageEnum = typeof ChannelChatRemo
  * @export
  */
 export const ChannelChatRemoveTelegramChatV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ChannelChatRemoveTelegramChatV1VEnum = typeof ChannelChatRemoveTelegramChatV1VEnum[keyof typeof ChannelChatRemoveTelegramChatV1VEnum];
 /**
@@ -2606,9 +2600,7 @@ export type ChannelChatSetTelegramSettingV1LanguageEnum = typeof ChannelChatSetT
  * @export
  */
 export const ChannelChatSetTelegramSettingV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ChannelChatSetTelegramSettingV1VEnum = typeof ChannelChatSetTelegramSettingV1VEnum[keyof typeof ChannelChatSetTelegramSettingV1VEnum];
 /**
@@ -2624,9 +2616,7 @@ export type ChannelChatTelegramPostsV1LanguageEnum = typeof ChannelChatTelegramP
  * @export
  */
 export const ChannelChatTelegramPostsV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ChannelChatTelegramPostsV1VEnum = typeof ChannelChatTelegramPostsV1VEnum[keyof typeof ChannelChatTelegramPostsV1VEnum];
 /**
@@ -2642,9 +2632,7 @@ export type ChannelOptionsGetPlannedV1LanguageEnum = typeof ChannelOptionsGetPla
  * @export
  */
 export const ChannelOptionsGetPlannedV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ChannelOptionsGetPlannedV1VEnum = typeof ChannelOptionsGetPlannedV1VEnum[keyof typeof ChannelOptionsGetPlannedV1VEnum];
 /**
@@ -2660,9 +2648,7 @@ export type ChannelOptionsGetPlayListV1LanguageEnum = typeof ChannelOptionsGetPl
  * @export
  */
 export const ChannelOptionsGetPlayListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ChannelOptionsGetPlayListV1VEnum = typeof ChannelOptionsGetPlayListV1VEnum[keyof typeof ChannelOptionsGetPlayListV1VEnum];
 /**
@@ -2686,9 +2672,7 @@ export type ChannelSettingUpdateTokenV1RoleEnum = typeof ChannelSettingUpdateTok
  * @export
  */
 export const ChannelSettingUpdateTokenV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type ChannelSettingUpdateTokenV1VEnum = typeof ChannelSettingUpdateTokenV1VEnum[keyof typeof ChannelSettingUpdateTokenV1VEnum];
 /**
@@ -2704,8 +2688,6 @@ export type TelegramGetPostByFilterV1LanguageEnum = typeof TelegramGetPostByFilt
  * @export
  */
 export const TelegramGetPostByFilterV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type TelegramGetPostByFilterV1VEnum = typeof TelegramGetPostByFilterV1VEnum[keyof typeof TelegramGetPostByFilterV1VEnum];

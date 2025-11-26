@@ -173,7 +173,7 @@ export interface BlogPageTagApiBlogPageTagListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof BlogPageTagApiBlogPageTagListV1
      */
     readonly v?: BlogPageTagListV1VEnum
@@ -233,8 +233,6 @@ export type BlogPageTagListV1LanguageEnum = typeof BlogPageTagListV1LanguageEnum
  * @export
  */
 export const BlogPageTagListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type BlogPageTagListV1VEnum = typeof BlogPageTagListV1VEnum[keyof typeof BlogPageTagListV1VEnum];

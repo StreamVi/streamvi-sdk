@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **wait** | **number** | Seconds the stream guard | [default to undefined]
 **record** | **boolean** | Is recordable stream | [default to undefined]
 **key** | **string** | Key | [default to undefined]
+**pause_media_service_file_id** | **number** | Pause video id | [default to undefined]
+**lost_media_service_file_id** | **number** | Protected video id | [default to undefined]
 
 ## Example
 
@@ -18,6 +20,8 @@ const instance: GetStreamKeyResponse = {
     wait,
     record,
     key,
+    pause_media_service_file_id,
+    lost_media_service_file_id,
 };
 ```
 

@@ -53,9 +53,7 @@ export interface SiteSetPlannedRequest {
 }
 
 export const SiteSetPlannedRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type SiteSetPlannedRequestVEnum = typeof SiteSetPlannedRequestVEnum[keyof typeof SiteSetPlannedRequestVEnum];

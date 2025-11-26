@@ -31,7 +31,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let period: 'month' | 'year'; //Period (default to undefined)
 let planRestreamId: number; //Restream plan id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let countChannel: number; //Channel count (optional) (default to undefined)
 let bitrate: number; //Bitrate, kbps (optional) (default to undefined)
 
@@ -54,7 +54,7 @@ const { status, data } = await apiInstance.planRestreamBuyV1(
 | **projectId** | **number** | Project id | defaults to undefined|
 | **period** | **'month' | 'year'** | Period | defaults to undefined|
 | **planRestreamId** | **number** | Restream plan id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **countChannel** | **number** | Channel count | (optional) defaults to undefined|
 | **bitrate** | **number** | Bitrate, kbps | (optional) defaults to undefined|
 
@@ -100,7 +100,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let period: 'month' | 'year'; //Period (default to undefined)
 let planRestreamId: number; //Restream plan id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '2'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let useBalance: number; //Is select balance (optional) (default to undefined)
 let channels: number; //Channels count (optional) (default to undefined)
 let bitrate: number; //Bitrate, kbps (optional) (default to undefined)
@@ -125,7 +125,7 @@ const { status, data } = await apiInstance.planRestreamCheck2V1(
 | **projectId** | **number** | Project id | defaults to undefined|
 | **period** | **'month' | 'year'** | Period | defaults to undefined|
 | **planRestreamId** | **number** | Restream plan id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'2'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **useBalance** | **number** | Is select balance | (optional) defaults to undefined|
 | **channels** | **number** | Channels count | (optional) defaults to undefined|
 | **bitrate** | **number** | Bitrate, kbps | (optional) defaults to undefined|
@@ -169,7 +169,7 @@ const configuration = new Configuration();
 const apiInstance = new PlanRestreamApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.planRestreamGetDiscountV1(
     language,
@@ -182,7 +182,7 @@ const { status, data } = await apiInstance.planRestreamGetDiscountV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -224,7 +224,7 @@ const apiInstance = new PlanRestreamApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.planRestreamListProjectV1(
     language,
@@ -239,7 +239,7 @@ const { status, data } = await apiInstance.planRestreamListProjectV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -280,7 +280,7 @@ const configuration = new Configuration();
 const apiInstance = new PlanRestreamApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.planRestreamListV1(
     language,
@@ -293,7 +293,7 @@ const { status, data } = await apiInstance.planRestreamListV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -336,7 +336,7 @@ const apiInstance = new PlanRestreamApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let planRestreamId: number; //Restream plan id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.planRestreamRemoveV1(
     language,
@@ -353,7 +353,7 @@ const { status, data } = await apiInstance.planRestreamRemoveV1(
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
 | **planRestreamId** | **number** | Restream plan id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -395,7 +395,7 @@ const apiInstance = new PlanRestreamApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.planRestreamTariffV1(
     language,
@@ -410,7 +410,7 @@ const { status, data } = await apiInstance.planRestreamTariffV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

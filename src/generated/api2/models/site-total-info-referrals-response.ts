@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { AmountItem } from './amount-item';
+import type { TotalInfoReferralsProfit } from './total-info-referrals-profit';
 
 /**
  * 
@@ -25,10 +25,10 @@ import type { AmountItem } from './amount-item';
 export interface SiteTotalInfoReferralsResponse {
     /**
      * Amount of referrals
-     * @type {Array<AmountItem>}
+     * @type {TotalInfoReferralsProfit}
      * @memberof SiteTotalInfoReferralsResponse
      */
-    'profit': Array<AmountItem>;
+    'profit': TotalInfoReferralsProfit;
     /**
      * Members of referral
      * @type {number}

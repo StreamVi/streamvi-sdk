@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **personal_manager** | **number** | Personal manager | [default to undefined]
 **pull_link_limit** | **number** | pull links | [default to undefined]
 **index** | **number** | Field for sort | [default to undefined]
+**support_custom_channel** | **boolean** | Support custom channel | [default to undefined]
 **discount** | **PlanRestreamDiscountResponse**(PlanRestreamDiscountResponse.md) | Discount | [default to undefined]
 
 ## Example
@@ -57,6 +58,7 @@ const instance: PlanRestreamResponse = {
     personal_manager,
     pull_link_limit,
     index,
+    support_custom_channel,
     discount,
 };
 ```

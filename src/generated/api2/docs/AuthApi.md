@@ -14,6 +14,7 @@ All URIs are relative to *http://localhost*
 |**authDisconnectV1**(#authdisconnectv1) | **GET** /method/auth/disconnect | Disconnected social account|
 |**authExchangeV1**(#authexchangev1) | **POST** /method/auth/app/exchange | Code exchange|
 |**authGetAuthUrlV1**(#authgetauthurlv1) | **GET** /method/auth/redirect-url | Get url for start oauth|
+|**authGetClientConfigurationV1**(#authgetclientconfigurationv1) | **POST** /method/auth/GetClientConfiguration | Get client configuration|
 
 # **authCallbackGoogleV1**
 > authCallbackGoogleV1()
@@ -178,7 +179,7 @@ const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let app: 'site' | 'admin' | 'mobile' | 'desktop'; //Create auth code for app (default to 'site')
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.authCodeV1(
     language,
@@ -193,7 +194,7 @@ const { status, data } = await apiInstance.authCodeV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **app** | **'site' | 'admin' | 'mobile' | 'desktop'** | Create auth code for app | defaults to 'site'|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -235,7 +236,7 @@ const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let message: string; //Result message for connect (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.authConnectResultV1(
     language,
@@ -250,7 +251,7 @@ const { status, data } = await apiInstance.authConnectResultV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **message** | **string** | Result message for connect | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -291,7 +292,7 @@ const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.authConnectTelegramV1(
     language,
@@ -304,7 +305,7 @@ const { status, data } = await apiInstance.authConnectTelegramV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -346,7 +347,7 @@ const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let provider: 'google' | 'vk' | 'vk-id' | 'telegram'; //Provider oauth (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let app: 'site' | 'admin' | 'mobile' | 'desktop'; //App oauth (optional) (default to 'site')
 let redirect: string; //Redirect url (optional) (default to undefined)
 
@@ -365,7 +366,7 @@ const { status, data } = await apiInstance.authConnectV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **provider** | **'google' | 'vk' | 'vk-id' | 'telegram'** | Provider oauth | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **app** | **'site' | 'admin' | 'mobile' | 'desktop'** | App oauth | (optional) defaults to 'site'|
 | **redirect** | **string** | Redirect url | (optional) defaults to undefined|
 
@@ -409,7 +410,7 @@ const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let socialId: number; //Social id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.authDisconnectV1(
     language,
@@ -424,7 +425,7 @@ const { status, data } = await apiInstance.authDisconnectV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **socialId** | **number** | Social id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -518,7 +519,7 @@ const apiInstance = new AuthApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let provider: 'google' | 'vk' | 'vk-id' | 'telegram'; //Provider oauth (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 let app: 'site' | 'admin' | 'mobile' | 'desktop'; //App oauth (optional) (default to 'site')
 let redirect: string; //Redirect url (optional) (default to undefined)
 let refId: string; //Referal id (optional) (default to undefined)
@@ -541,7 +542,7 @@ const { status, data } = await apiInstance.authGetAuthUrlV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **provider** | **'google' | 'vk' | 'vk-id' | 'telegram'** | Provider oauth | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 | **app** | **'site' | 'admin' | 'mobile' | 'desktop'** | App oauth | (optional) defaults to 'site'|
 | **redirect** | **string** | Redirect url | (optional) defaults to undefined|
 | **refId** | **string** | Referal id | (optional) defaults to undefined|
@@ -566,6 +567,50 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **authGetClientConfigurationV1**
+> authGetClientConfigurationV1()
+
+
+### Example
+
+```typescript
+import {
+    AuthApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
+
+const { status, data } = await apiInstance.authGetClientConfigurationV1();
+```
+
+### Parameters
+This endpoint does not have any parameters.
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** |  |  -  |
 |**400** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -64,13 +64,13 @@ export interface ProjectInfoResponse {
      * @type {ProjectInfoTranscodingResponse}
      * @memberof ProjectInfoResponse
      */
-    'transcoding': ProjectInfoTranscodingResponse | null;
+    'transcoding'?: ProjectInfoTranscodingResponse | null;
     /**
      * Storage tariff
      * @type {ProjectInfoStorageResponse}
      * @memberof ProjectInfoResponse
      */
-    'storage': ProjectInfoStorageResponse | null;
+    'storage'?: ProjectInfoStorageResponse | null;
     /**
      * Project info access
      * @type {ProjectInfoAccessResponse}
@@ -80,9 +80,7 @@ export interface ProjectInfoResponse {
 }
 
 export const ProjectInfoResponseVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type ProjectInfoResponseVEnum = typeof ProjectInfoResponseVEnum[keyof typeof ProjectInfoResponseVEnum];

@@ -503,7 +503,7 @@ export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
     readonly v?: MethodChatGatewayDeleteV1VEnum
@@ -545,7 +545,7 @@ export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
     readonly v?: MethodChatGatewayGetMessageV1VEnum
@@ -580,7 +580,7 @@ export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
     readonly v?: MethodChatGatewayHistoryV1VEnum
@@ -622,7 +622,7 @@ export interface ChatGatewayApiMethodChatGatewaySendV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
     readonly v?: MethodChatGatewaySendV1VEnum
@@ -697,9 +697,7 @@ export type MethodChatGatewayDeleteV1LanguageEnum = typeof MethodChatGatewayDele
  * @export
  */
 export const MethodChatGatewayDeleteV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type MethodChatGatewayDeleteV1VEnum = typeof MethodChatGatewayDeleteV1VEnum[keyof typeof MethodChatGatewayDeleteV1VEnum];
 /**
@@ -715,9 +713,7 @@ export type MethodChatGatewayGetMessageV1LanguageEnum = typeof MethodChatGateway
  * @export
  */
 export const MethodChatGatewayGetMessageV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type MethodChatGatewayGetMessageV1VEnum = typeof MethodChatGatewayGetMessageV1VEnum[keyof typeof MethodChatGatewayGetMessageV1VEnum];
 /**
@@ -733,9 +729,7 @@ export type MethodChatGatewayHistoryV1LanguageEnum = typeof MethodChatGatewayHis
  * @export
  */
 export const MethodChatGatewayHistoryV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type MethodChatGatewayHistoryV1VEnum = typeof MethodChatGatewayHistoryV1VEnum[keyof typeof MethodChatGatewayHistoryV1VEnum];
 /**
@@ -751,8 +745,6 @@ export type MethodChatGatewaySendV1LanguageEnum = typeof MethodChatGatewaySendV1
  * @export
  */
 export const MethodChatGatewaySendV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type MethodChatGatewaySendV1VEnum = typeof MethodChatGatewaySendV1VEnum[keyof typeof MethodChatGatewaySendV1VEnum];

@@ -104,12 +104,16 @@ export interface SiteUpdateOptionsVkRequest {
      * @memberof SiteUpdateOptionsVkRequest
      */
     'wall'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SiteUpdateOptionsVkRequest
+     */
+    'disable_auto_end'?: boolean;
 }
 
 export const SiteUpdateOptionsVkRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type SiteUpdateOptionsVkRequestVEnum = typeof SiteUpdateOptionsVkRequestVEnum[keyof typeof SiteUpdateOptionsVkRequestVEnum];
@@ -132,7 +136,8 @@ export const SiteUpdateOptionsVkRequestPrivacyVideoEnum = {
     All: 'all',
     Members: 'members',
     Editors: 'editors',
-    Nobody: 'nobody'
+    ByLink: 'by_link',
+    Donut: 'donut'
 } as const;
 
 export type SiteUpdateOptionsVkRequestPrivacyVideoEnum = typeof SiteUpdateOptionsVkRequestPrivacyVideoEnum[keyof typeof SiteUpdateOptionsVkRequestPrivacyVideoEnum];

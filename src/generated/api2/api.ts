@@ -26,6 +26,7 @@ export * from './api/channel-settings-api';
 export * from './api/chat-gateway-api';
 export * from './api/help-page-api';
 export * from './api/live-api';
+export * from './api/media-service-files-api';
 export * from './api/money-flow-api';
 export * from './api/notify-history-api';
 export * from './api/notify-user-api';

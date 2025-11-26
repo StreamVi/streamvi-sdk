@@ -40,7 +40,7 @@ export interface MoneyFlowResponse {
      * @type {string}
      * @memberof MoneyFlowResponse
      */
-    'currency': MoneyFlowResponseCurrencyEnum | null;
+    'currency'?: MoneyFlowResponseCurrencyEnum | null;
     /**
      * Date
      * @type {string}
@@ -64,7 +64,7 @@ export interface MoneyFlowResponse {
      * @type {MoneyFlowDetails}
      * @memberof MoneyFlowResponse
      */
-    'details': MoneyFlowDetails | null;
+    'details'?: MoneyFlowDetails | null;
 }
 
 export const MoneyFlowResponseCurrencyEnum = {

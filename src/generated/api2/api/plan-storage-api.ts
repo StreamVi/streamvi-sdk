@@ -628,7 +628,7 @@ export interface PlanStorageApiPlanStorageBuyV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
     readonly v?: PlanStorageBuyV1VEnum
@@ -663,7 +663,7 @@ export interface PlanStorageApiPlanStorageCancelV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanStorageApiPlanStorageCancelV1
      */
     readonly v?: PlanStorageCancelV1VEnum
@@ -691,7 +691,7 @@ export interface PlanStorageApiPlanStorageCheckV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanStorageApiPlanStorageCheckV1
      */
     readonly v?: PlanStorageCheckV1VEnum
@@ -712,7 +712,7 @@ export interface PlanStorageApiPlanStorageGetDiscountV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanStorageApiPlanStorageGetDiscountV1
      */
     readonly v?: PlanStorageGetDiscountV1VEnum
@@ -733,7 +733,7 @@ export interface PlanStorageApiPlanStorageListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanStorageApiPlanStorageListV1
      */
     readonly v?: PlanStorageListV1VEnum
@@ -761,7 +761,7 @@ export interface PlanStorageApiPlanStorageTariffV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanStorageApiPlanStorageTariffV1
      */
     readonly v?: PlanStorageTariffV1VEnum
@@ -868,9 +868,7 @@ export type PlanStorageBuyV1PeriodEnum = typeof PlanStorageBuyV1PeriodEnum[keyof
  * @export
  */
 export const PlanStorageBuyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanStorageBuyV1VEnum = typeof PlanStorageBuyV1VEnum[keyof typeof PlanStorageBuyV1VEnum];
 /**
@@ -886,9 +884,7 @@ export type PlanStorageCancelV1LanguageEnum = typeof PlanStorageCancelV1Language
  * @export
  */
 export const PlanStorageCancelV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanStorageCancelV1VEnum = typeof PlanStorageCancelV1VEnum[keyof typeof PlanStorageCancelV1VEnum];
 /**
@@ -904,9 +900,7 @@ export type PlanStorageCheckV1LanguageEnum = typeof PlanStorageCheckV1LanguageEn
  * @export
  */
 export const PlanStorageCheckV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanStorageCheckV1VEnum = typeof PlanStorageCheckV1VEnum[keyof typeof PlanStorageCheckV1VEnum];
 /**
@@ -922,9 +916,7 @@ export type PlanStorageGetDiscountV1LanguageEnum = typeof PlanStorageGetDiscount
  * @export
  */
 export const PlanStorageGetDiscountV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanStorageGetDiscountV1VEnum = typeof PlanStorageGetDiscountV1VEnum[keyof typeof PlanStorageGetDiscountV1VEnum];
 /**
@@ -940,9 +932,7 @@ export type PlanStorageListV1LanguageEnum = typeof PlanStorageListV1LanguageEnum
  * @export
  */
 export const PlanStorageListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanStorageListV1VEnum = typeof PlanStorageListV1VEnum[keyof typeof PlanStorageListV1VEnum];
 /**
@@ -958,8 +948,6 @@ export type PlanStorageTariffV1LanguageEnum = typeof PlanStorageTariffV1Language
  * @export
  */
 export const PlanStorageTariffV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanStorageTariffV1VEnum = typeof PlanStorageTariffV1VEnum[keyof typeof PlanStorageTariffV1VEnum];

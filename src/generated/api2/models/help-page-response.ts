@@ -13,9 +13,6 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import type { BlogPageSiteResponseId } from './blog-page-site-response-id';
 
 /**
  * 
@@ -24,11 +21,11 @@ import type { BlogPageSiteResponseId } from './blog-page-site-response-id';
  */
 export interface HelpPageResponse {
     /**
-     * 
-     * @type {BlogPageSiteResponseId}
+     * id in mongodb
+     * @type {string}
      * @memberof HelpPageResponse
      */
-    '_id': BlogPageSiteResponseId;
+    '_id': string;
     /**
      * url
      * @type {string}
@@ -70,7 +67,7 @@ export interface HelpPageResponse {
      * @type {object}
      * @memberof HelpPageResponse
      */
-    'icon': object | null;
+    'icon'?: object | null;
     /**
      * Subject
      * @type {string}

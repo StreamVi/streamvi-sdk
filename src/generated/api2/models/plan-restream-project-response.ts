@@ -114,6 +114,18 @@ export interface PlanRestreamProjectResponse {
      */
     'feature': Array<PlanRestreamFeatureItemV2>;
     /**
+     * Support custom channel
+     * @type {boolean}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'support_custom_channel': boolean;
+    /**
+     * Custom video
+     * @type {number}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'custom_video': number;
+    /**
      * Tariff project
      * @type {PlanRestreamForProjectV2}
      * @memberof PlanRestreamProjectResponse

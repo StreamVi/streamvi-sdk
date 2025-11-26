@@ -59,9 +59,7 @@ export interface PayoutCreateRequestBodyDto {
 }
 
 export const PayoutCreateRequestBodyDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type PayoutCreateRequestBodyDtoVEnum = typeof PayoutCreateRequestBodyDtoVEnum[keyof typeof PayoutCreateRequestBodyDtoVEnum];

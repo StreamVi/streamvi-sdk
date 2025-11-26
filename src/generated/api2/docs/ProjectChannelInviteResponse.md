@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **access_type** | **number** | Access type | [default to undefined]
 **date** | **string** | Date create | [default to undefined]
 **secret** | **string** | Secret key for link | [default to undefined]
-**email** | **string** | Email | [default to undefined]
-**reject** | **boolean** | If rejected request then true | [default to undefined]
-**from_user_id** | **number** | The user who granted access | [default to undefined]
-**from_project_id** | **number** | from_project_id | [default to undefined]
+**email** | **string** | Email | [optional] [default to undefined]
+**reject** | **boolean** | If rejected request then true | [optional] [default to undefined]
+**from_user_id** | **number** | The user who granted access | [optional] [default to undefined]
+**from_project_id** | **number** | from_project_id | [optional] [default to undefined]
 **to_project_** | **ProjectChannelInviteProjectResponse**(ProjectChannelInviteProjectResponse.md) | User info | [optional] [default to undefined]
 
 ## Example

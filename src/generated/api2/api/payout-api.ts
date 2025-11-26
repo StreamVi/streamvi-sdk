@@ -259,7 +259,7 @@ export interface PayoutApiPayoutCreateV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PayoutApiPayoutCreateV1
      */
     readonly v?: PayoutCreateV1VEnum
@@ -287,7 +287,7 @@ export interface PayoutApiPayoutPrepareV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PayoutApiPayoutPrepareV1
      */
     readonly v?: PayoutPrepareV1VEnum
@@ -338,9 +338,7 @@ export type PayoutCreateV1LanguageEnum = typeof PayoutCreateV1LanguageEnum[keyof
  * @export
  */
 export const PayoutCreateV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PayoutCreateV1VEnum = typeof PayoutCreateV1VEnum[keyof typeof PayoutCreateV1VEnum];
 /**
@@ -356,8 +354,6 @@ export type PayoutPrepareV1LanguageEnum = typeof PayoutPrepareV1LanguageEnum[key
  * @export
  */
 export const PayoutPrepareV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PayoutPrepareV1VEnum = typeof PayoutPrepareV1VEnum[keyof typeof PayoutPrepareV1VEnum];

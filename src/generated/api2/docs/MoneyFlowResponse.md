@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **money_flow_id** | **number** | id | [default to undefined]
 **amount** | **number** | Amount | [default to undefined]
-**currency** | **string** | Currency | [default to undefined]
+**currency** | **string** | Currency | [optional] [default to undefined]
 **date** | **string** | Date | [default to undefined]
 **type** | **string** | Type | [default to undefined]
 **balance** | **number** | Current balance before transaction | [default to undefined]
-**details** | **MoneyFlowDetails**(MoneyFlowDetails.md) | Details | [default to undefined]
+**details** | **MoneyFlowDetails**(MoneyFlowDetails.md) | Details | [optional] [default to undefined]
 
 ## Example
 

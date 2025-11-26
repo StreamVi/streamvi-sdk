@@ -28,7 +28,7 @@ export interface NotifyHistorySiteResponse {
      * @type {string}
      * @memberof NotifyHistorySiteResponse
      */
-    'id': string;
+    '_id': string;
     /**
      * Project id
      * @type {number}

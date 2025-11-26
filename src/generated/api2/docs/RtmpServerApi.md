@@ -26,7 +26,7 @@ const configuration = new Configuration();
 const apiInstance = new RtmpServerApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.methodRtmpServerListLocationsUnauthorizedV1(
     language,
@@ -39,7 +39,7 @@ const { status, data } = await apiInstance.methodRtmpServerListLocationsUnauthor
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -82,7 +82,7 @@ const apiInstance = new RtmpServerApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let interval: 1 | 3 | 6 | 12 | 24; //Interval state in hours (default to 1)
 let type: 'performance' | 'network' | 'cpu' | 'ram' | 'deliveredPackages'; //Type graph (default to 'network')
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.rtmpServerGraphV1(
     language,
@@ -99,7 +99,7 @@ const { status, data } = await apiInstance.rtmpServerGraphV1(
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **interval** | **1 | 3 | 6 | 12 | 24** | Interval state in hours | defaults to 1|
 | **type** | **'performance' | 'network' | 'cpu' | 'ram' | 'deliveredPackages'** | Type graph | defaults to 'network'|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -142,7 +142,7 @@ const apiInstance = new RtmpServerApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let interval: 1 | 3 | 6 | 12 | 24; //Interval state in hours (default to 1)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 2 based on method version, can be overridden) (optional) (default to '2')
+let v: '2'; //Version (automatically defaults to 2 based on method version, can be overridden) (optional) (default to '2')
 
 const { status, data } = await apiInstance.rtmpServerListV2(
     language,
@@ -159,7 +159,7 @@ const { status, data } = await apiInstance.rtmpServerListV2(
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
 | **interval** | **1 | 3 | 6 | 12 | 24** | Interval state in hours | defaults to 1|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 2 based on method version, can be overridden) | (optional) defaults to '2'|
+| **v** | **'2'** | Version (automatically defaults to 2 based on method version, can be overridden) | (optional) defaults to '2'|
 
 
 ### Return type
@@ -201,7 +201,7 @@ const apiInstance = new RtmpServerApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let interval: 1 | 3 | 6 | 12 | 24; //Interval state in hours (default to 1)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.rtmpServerStateV1(
     language,
@@ -216,7 +216,7 @@ const { status, data } = await apiInstance.rtmpServerStateV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **interval** | **1 | 3 | 6 | 12 | 24** | Interval state in hours | defaults to 1|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

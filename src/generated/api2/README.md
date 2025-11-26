@@ -66,14 +66,47 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**authDisconnectV1**](docs/AuthApi.md#authdisconnectv1) | **GET** /method/auth/disconnect | Disconnected social account
 *AuthApi* | [**authExchangeV1**](docs/AuthApi.md#authexchangev1) | **POST** /method/auth/app/exchange | Code exchange
 *AuthApi* | [**authGetAuthUrlV1**](docs/AuthApi.md#authgetauthurlv1) | **GET** /method/auth/redirect-url | Get url for start oauth
+*AuthApi* | [**authGetClientConfigurationV1**](docs/AuthApi.md#authgetclientconfigurationv1) | **POST** /method/auth/GetClientConfiguration | Get client configuration
 *BlogPageApi* | [**blogPageGetV1**](docs/BlogPageApi.md#blogpagegetv1) | **GET** /method/blog/page/get | Get blog page
 *BlogPageApi* | [**blogPageListV1**](docs/BlogPageApi.md#blogpagelistv1) | **GET** /method/blog/page/list | Get list of blog pages
 *BlogPageTagApi* | [**blogPageTagListV1**](docs/BlogPageTagApi.md#blogpagetaglistv1) | **GET** /method/blog/tag/list | Get list of blog pages
-*BroadcastApi* | [**methodBroadcastRestreamsV1**](docs/BroadcastApi.md#methodbroadcastrestreamsv1) | **GET** /method/broadcast/restreams | Get restreams
-*BroadcastApi* | [**methodBroadcastTokenChannelV1**](docs/BroadcastApi.md#methodbroadcasttokenchannelv1) | **GET** /method/broadcast/longpoll | Connect channel, long polling
+*BroadcastApi* | [**broadcastCredentialsV1**](docs/BroadcastApi.md#broadcastcredentialsv1) | **GET** /method/broadcast/credentials | Get credentials
+*BroadcastApi* | [**broadcastEventsV1**](docs/BroadcastApi.md#broadcasteventsv1) | **GET** /method/broadcast/events | Events from broadcast
+*BroadcastApi* | [**broadcastFindV1**](docs/BroadcastApi.md#broadcastfindv1) | **GET** /method/broadcast | Get one broadcast
+*BroadcastApi* | [**broadcastGraphBitrateV1**](docs/BroadcastApi.md#broadcastgraphbitratev1) | **GET** /method/broadcast/graph/bitrate | Bitrate from broadcast
+*BroadcastApi* | [**broadcastGraphViewersV1**](docs/BroadcastApi.md#broadcastgraphviewersv1) | **GET** /method/broadcast/graph/viewers | Viewers from broadcast
+*BroadcastApi* | [**broadcastListV1**](docs/BroadcastApi.md#broadcastlistv1) | **GET** /method/broadcast/list | List broadcast
+*BroadcastApi* | [**broadcastRestreamChatV1**](docs/BroadcastApi.md#broadcastrestreamchatv1) | **GET** /method/broadcast/restreams-chat | Get restreams for chat
+*BroadcastApi* | [**broadcastRestreamsV1**](docs/BroadcastApi.md#broadcastrestreamsv1) | **GET** /method/broadcast/restreams | View live info
+*BroadcastApi* | [**broadcastTokenChannelV1**](docs/BroadcastApi.md#broadcasttokenchannelv1) | **GET** /method/broadcast/longpoll | Connect channel, long polling
 *CentrifugeApi* | [**centrifugeAuthV2**](docs/CentrifugeApi.md#centrifugeauthv2) | **GET** /method/centrifuge | Auth centrifuge
 *CentrifugeApi* | [**centrifugeProjectV1**](docs/CentrifugeApi.md#centrifugeprojectv1) | **GET** /method/centrifuge/auth/project | Auth token for project
 *CentrifugeApi* | [**getTokenBroadcastV1**](docs/CentrifugeApi.md#gettokenbroadcastv1) | **GET** /method/centrifuge/token/broadcast | Auth token for broadcast
+*ChannelApi* | [**addChannelMethodAddBoostyV1**](docs/ChannelApi.md#addchannelmethodaddboostyv1) | **POST** /method/channel/add/boosty | Add boosty channel
+*ChannelApi* | [**addChannelMethodAddCustomV1**](docs/ChannelApi.md#addchannelmethodaddcustomv1) | **POST** /method/channel/add/custom | Add custom channel
+*ChannelApi* | [**addChannelMethodAddDouyuV1**](docs/ChannelApi.md#addchannelmethodadddouyuv1) | **POST** /method/channel/add/douyu | Add douyu channel
+*ChannelApi* | [**addChannelMethodAddFbV1**](docs/ChannelApi.md#addchannelmethodaddfbv1) | **POST** /method/channel/add/fb | Add fb channel
+*ChannelApi* | [**addChannelMethodAddFc2LiveV1**](docs/ChannelApi.md#addchannelmethodaddfc2livev1) | **POST** /method/channel/add/fc2Live | Add fc2Live channel
+*ChannelApi* | [**addChannelMethodAddGoodgameV1**](docs/ChannelApi.md#addchannelmethodaddgoodgamev1) | **POST** /method/channel/add/goodgame | Add goodgame channel
+*ChannelApi* | [**addChannelMethodAddHuyaV1**](docs/ChannelApi.md#addchannelmethodaddhuyav1) | **POST** /method/channel/add/huya | Add huya channel
+*ChannelApi* | [**addChannelMethodAddInstagramV1**](docs/ChannelApi.md#addchannelmethodaddinstagramv1) | **POST** /method/channel/add/instagram | Add instagram channel
+*ChannelApi* | [**addChannelMethodAddKickV1**](docs/ChannelApi.md#addchannelmethodaddkickv1) | **POST** /method/channel/add/kick | Add kick channel
+*ChannelApi* | [**addChannelMethodAddLinkedinV1**](docs/ChannelApi.md#addchannelmethodaddlinkedinv1) | **POST** /method/channel/add/linkedin | Add linkedin channel
+*ChannelApi* | [**addChannelMethodAddNavertvV1**](docs/ChannelApi.md#addchannelmethodaddnavertvv1) | **POST** /method/channel/add/navertv | Add navertv channel
+*ChannelApi* | [**addChannelMethodAddNimotvV1**](docs/ChannelApi.md#addchannelmethodaddnimotvv1) | **POST** /method/channel/add/nimotv | Add nimotv channel
+*ChannelApi* | [**addChannelMethodAddNonoliveV1**](docs/ChannelApi.md#addchannelmethodaddnonolivev1) | **POST** /method/channel/add/nonolive | Add nonolive channel
+*ChannelApi* | [**addChannelMethodAddOkV1**](docs/ChannelApi.md#addchannelmethodaddokv1) | **POST** /method/channel/add/ok | Add ok channel
+*ChannelApi* | [**addChannelMethodAddPlvideoV1**](docs/ChannelApi.md#addchannelmethodaddplvideov1) | **POST** /method/channel/add/plvideo | Add plvideo channel
+*ChannelApi* | [**addChannelMethodAddRutubeV1**](docs/ChannelApi.md#addchannelmethodaddrutubev1) | **POST** /method/channel/add/rutube | Add rutube channel
+*ChannelApi* | [**addChannelMethodAddSteamV1**](docs/ChannelApi.md#addchannelmethodaddsteamv1) | **POST** /method/channel/add/steam | Add steam channel
+*ChannelApi* | [**addChannelMethodAddTelegramV1**](docs/ChannelApi.md#addchannelmethodaddtelegramv1) | **POST** /method/channel/add/telegram | Add telegram channel
+*ChannelApi* | [**addChannelMethodAddTiktokV1**](docs/ChannelApi.md#addchannelmethodaddtiktokv1) | **POST** /method/channel/add/tiktok | Add tiktok channel
+*ChannelApi* | [**addChannelMethodAddVkV1**](docs/ChannelApi.md#addchannelmethodaddvkv1) | **POST** /method/channel/add/vk | Add vk channel
+*ChannelApi* | [**addChannelMethodAddVliveV1**](docs/ChannelApi.md#addchannelmethodaddvlivev1) | **POST** /method/channel/add/vlive | Add vlive channel
+*ChannelApi* | [**addChannelMethodAddZhanqiTvV1**](docs/ChannelApi.md#addchannelmethodaddzhanqitvv1) | **POST** /method/channel/add/zhanqitv | Add zhanqitv channel
+*ChannelApi* | [**channelDeleteChannelV1**](docs/ChannelApi.md#channeldeletechannelv1) | **POST** /method/channel/delete | Delete channel
+*ChannelApi* | [**channelGetChannelV1**](docs/ChannelApi.md#channelgetchannelv1) | **GET** /method/channel/get | Get channel by id
+*ChannelApi* | [**channelSetDelayV1**](docs/ChannelApi.md#channelsetdelayv1) | **GET** /method/channel/set-delay | Set delay - test point
 *ChannelApi* | [**channelShortChannelListV1**](docs/ChannelApi.md#channelshortchannellistv1) | **GET** /method/channel/short | Minimal channel list
 *ChannelApi* | [**methodSearchV1**](docs/ChannelApi.md#methodsearchv1) | **GET** /method/channel/search | Search channel list
 *ChannelApi* | [**methodSetStatusV1**](docs/ChannelApi.md#methodsetstatusv1) | **POST** /method/channel/set-status | Get live status
@@ -106,6 +139,14 @@ Class | Method | HTTP request | Description
 *HelpPageApi* | [**helpPageListV1**](docs/HelpPageApi.md#helppagelistv1) | **GET** /method/help/page/search | Get list of help pages
 *HelpPageApi* | [**helpPageStructureV1**](docs/HelpPageApi.md#helppagestructurev1) | **GET** /method/help/page/structure | Get structure of help pages
 *LiveApi* | [**controllersRestreamsV1**](docs/LiveApi.md#controllersrestreamsv1) | **GET** /method/live/restreams | View live info
+*MediaServiceFilesApi* | [**mediaServiceFilesSiteCancelV1**](docs/MediaServiceFilesApi.md#mediaservicefilessitecancelv1) | **POST** /method/media-service-files/cancel | Cancel service video
+*MediaServiceFilesApi* | [**mediaServiceFilesSiteCreateV1**](docs/MediaServiceFilesApi.md#mediaservicefilessitecreatev1) | **POST** /method/media-service-files/add | Create service video
+*MediaServiceFilesApi* | [**mediaServiceFilesSiteDeleteV1**](docs/MediaServiceFilesApi.md#mediaservicefilessitedeletev1) | **POST** /method/media-service-files/delete | Delete service video
+*MediaServiceFilesApi* | [**mediaServiceFilesSiteGetV1**](docs/MediaServiceFilesApi.md#mediaservicefilessitegetv1) | **GET** /method/media-service-files/get | Get service video
+*MediaServiceFilesApi* | [**mediaServiceFilesSiteListV1**](docs/MediaServiceFilesApi.md#mediaservicefilessitelistv1) | **GET** /method/media-service-files/list | Get service video list
+*MediaServiceFilesApi* | [**mediaServiceFilesSiteSessionV1**](docs/MediaServiceFilesApi.md#mediaservicefilessitesessionv1) | **GET** /method/media-service-files/session | Get session by media id
+*MediaServiceFilesApi* | [**mediaServiceFilesSiteSetV1**](docs/MediaServiceFilesApi.md#mediaservicefilessitesetv1) | **POST** /method/media-service-files/set | Set service video
+*MediaServiceFilesApi* | [**mediaServiceFilesSiteUpdateV1**](docs/MediaServiceFilesApi.md#mediaservicefilessiteupdatev1) | **POST** /method/media-service-files/update | Update service video
 *MoneyFlowApi* | [**moneyFlowListV1**](docs/MoneyFlowApi.md#moneyflowlistv1) | **GET** /method/money_flow/list | Transaction list for frontend
 *NotifyHistoryApi* | [**notifyHistoryGetListMyV1**](docs/NotifyHistoryApi.md#notifyhistorygetlistmyv1) | **GET** /method/notify_history/list | Get list of my notifications
 *NotifyHistoryApi* | [**notifyHistoryGetStatusMyV1**](docs/NotifyHistoryApi.md#notifyhistorygetstatusmyv1) | **GET** /method/notify_history/get_status | Get my status unread message for user
@@ -121,8 +162,9 @@ Class | Method | HTTP request | Description
 *PaySettingApi* | [**paySettingCheckCountryV1**](docs/PaySettingApi.md#paysettingcheckcountryv1) | **GET** /method/pay-setting/check-country | Check country after update user
 *PaySettingApi* | [**paySettingGetSettingV3**](docs/PaySettingApi.md#paysettinggetsettingv3) | **GET** /method/pay-setting | Get pay settings for profile v3
 *PaySettingApi* | [**paySettingSetSettingV1**](docs/PaySettingApi.md#paysettingsetsettingv1) | **POST** /method/pay-setting | Set pay settings for profile
-*PaySystemApi* | [**paySystemCreateChallengeV1**](docs/PaySystemApi.md#paysystemcreatechallengev1) | **GET** /method/pay-system/payoneer/create | 
-*PaySystemApi* | [**paySystemCreateUnitpayV1**](docs/PaySystemApi.md#paysystemcreateunitpayv1) | **GET** /method/pay-system/unitpay/create | 
+*PaySystemApi* | [**paySystemCreateChallengeV1**](docs/PaySystemApi.md#paysystemcreatechallengev1) | **GET** /method/pay-system/payoneer/create | Create payoneer payment challenge redirect url
+*PaySystemApi* | [**paySystemCreateTBankV1**](docs/PaySystemApi.md#paysystemcreatetbankv1) | **GET** /method/pay-system/t-bank/create | Create t-bank payment challenge redirect url
+*PaySystemApi* | [**paySystemCreateUnitpayV1**](docs/PaySystemApi.md#paysystemcreateunitpayv1) | **GET** /method/pay-system/unitpay/create | Create unitpay payment challenge redirect url
 *PaySystemApi* | [**paySystemListV1**](docs/PaySystemApi.md#paysystemlistv1) | **GET** /method/pay-system/list | Load available pay systems
 *PaymentApi* | [**paymentCreateV1**](docs/PaymentApi.md#paymentcreatev1) | **POST** /method/payment | Create payment item for pay system
 *PaymentApi* | [**paymentGetStatusV1**](docs/PaymentApi.md#paymentgetstatusv1) | **GET** /method/payment | 
@@ -149,9 +191,16 @@ Class | Method | HTTP request | Description
 *PlanTranscodingApi* | [**planTranscodingListV1**](docs/PlanTranscodingApi.md#plantranscodinglistv1) | **GET** /method/plan_transcoding/list | Get list of transcoding tariffs
 *PlanTranscodingApi* | [**planTranscodingTariffV1**](docs/PlanTranscodingApi.md#plantranscodingtariffv1) | **GET** /method/plan_transcoding | Get tariff for project
 *PlatformsApi* | [**platformsAddAccountV1**](docs/PlatformsApi.md#platformsaddaccountv1) | **GET** /method/platforms/connect | Get url for start oauth
+*PlatformsApi* | [**platformsAddAccountVkCommunityV1**](docs/PlatformsApi.md#platformsaddaccountvkcommunityv1) | **GET** /method/platforms/connect/vk-community | Get url for start oauth
+*PlatformsApi* | [**platformsCallbackCommunityV1**](docs/PlatformsApi.md#platformscallbackcommunityv1) | **GET** /method/platforms/vk/callback-community | Internal request of auth
+*PlatformsApi* | [**platformsCallbackV1**](docs/PlatformsApi.md#platformscallbackv1) | **GET** /method/platforms/{provider}/callback | Internal request of auth
+*PlatformsApi* | [**platformsCallbackVkIdV1**](docs/PlatformsApi.md#platformscallbackvkidv1) | **GET** /method/platforms/vk-id/callback | Internal request of auth vk-id
+*PlatformsApi* | [**platformsGetAccountsV1**](docs/PlatformsApi.md#platformsgetaccountsv1) | **GET** /method/platforms/accounts | Get accounts
 *PlatformsApi* | [**platformsGetCategoryV1**](docs/PlatformsApi.md#platformsgetcategoryv1) | **GET** /method/platforms/category | Get category from the platform
+*PlatformsApi* | [**platformsGetChannelsV1**](docs/PlatformsApi.md#platformsgetchannelsv1) | **GET** /method/platforms/account/channels | Get channels with accounts
 *PlatformsApi* | [**platformsLogoutAccountV1**](docs/PlatformsApi.md#platformslogoutaccountv1) | **POST** /method/platforms/logout | Get category from the platform
 *PlatformsApi* | [**platformsPlatformListV1**](docs/PlatformsApi.md#platformsplatformlistv1) | **GET** /method/platforms/list | Supported platforms
+*PlatformsApi* | [**platformsRemoveAccountV1**](docs/PlatformsApi.md#platformsremoveaccountv1) | **POST** /method/platforms/account/remove | Remove account
 *PolicyPageApi* | [**policyPageGetItemV1**](docs/PolicyPageApi.md#policypagegetitemv1) | **GET** /method/policy/get | Get policy page
 *PolicyPageApi* | [**policyPageGetStructureV1**](docs/PolicyPageApi.md#policypagegetstructurev1) | **GET** /method/policy/structure | Get policy structure
 *ProjectApi* | [**userProjectChangeAccessV1**](docs/ProjectApi.md#userprojectchangeaccessv1) | **POST** /method/project/user/change_access | Change access user from project
@@ -200,6 +249,7 @@ Class | Method | HTTP request | Description
 *TranscodersApi* | [**transcodersAddV1**](docs/TranscodersApi.md#transcodersaddv1) | **POST** /method/transcoder/add | Transcoder create
 *TranscodersApi* | [**transcodersDeleteV1**](docs/TranscodersApi.md#transcodersdeletev1) | **POST** /method/transcoder/delete | Transcoder delete
 *TranscodersApi* | [**transcodersListV1**](docs/TranscodersApi.md#transcoderslistv1) | **GET** /method/transcoder/list | List of transcoder
+*TranscodersApi* | [**transcodersResetDelayV1**](docs/TranscodersApi.md#transcodersresetdelayv1) | **POST** /method/transcoder/reset-delay | Reset delay
 *TranscodersApi* | [**transcodersStopV1**](docs/TranscodersApi.md#transcodersstopv1) | **POST** /method/transcoder/stop | Transcoder stop
 *TranscodersApi* | [**transcodersUpdateV1**](docs/TranscodersApi.md#transcodersupdatev1) | **POST** /method/transcoder/update | Transcoder update
 *UsersApi* | [**userGetProfileV1**](docs/UsersApi.md#usergetprofilev1) | **GET** /method/users/profile | Get user profile
@@ -208,10 +258,14 @@ Class | Method | HTTP request | Description
 
 ### Documentation For Models
 
- - [AmountItem](docs/AmountItem.md)
  - [BalanceForPayResponse](docs/BalanceForPayResponse.md)
  - [BlogPageSiteResponse](docs/BlogPageSiteResponse.md)
  - [BlogPageSiteResponseId](docs/BlogPageSiteResponseId.md)
+ - [BoostyDto](docs/BoostyDto.md)
+ - [BroadcastCredentialsIngress](docs/BroadcastCredentialsIngress.md)
+ - [BroadcastRestreamCentrifugeItemV2](docs/BroadcastRestreamCentrifugeItemV2.md)
+ - [BroadcastRestreamInfoItem](docs/BroadcastRestreamInfoItem.md)
+ - [CancelMediaServiceFileRequest](docs/CancelMediaServiceFileRequest.md)
  - [CategoryItemResponse](docs/CategoryItemResponse.md)
  - [CategorySubListItemResponse](docs/CategorySubListItemResponse.md)
  - [ChannelCategoryInfoDto](docs/ChannelCategoryInfoDto.md)
@@ -228,31 +282,48 @@ Class | Method | HTTP request | Description
  - [CountryItem](docs/CountryItem.md)
  - [CreatePullKeyRequest](docs/CreatePullKeyRequest.md)
  - [CreatePullKeyResponse](docs/CreatePullKeyResponse.md)
+ - [CustomDto](docs/CustomDto.md)
+ - [DeleteChannelDto](docs/DeleteChannelDto.md)
+ - [DeleteMediaServiceFileRequest](docs/DeleteMediaServiceFileRequest.md)
+ - [DouyuDto](docs/DouyuDto.md)
  - [ErrorData](docs/ErrorData.md)
  - [ErrorResponse](docs/ErrorResponse.md)
+ - [FbDto](docs/FbDto.md)
+ - [Fc2liveDto](docs/Fc2liveDto.md)
+ - [GetAccountChannelsAccountItem](docs/GetAccountChannelsAccountItem.md)
+ - [GetAccountChannelsItem](docs/GetAccountChannelsItem.md)
+ - [GetAccountChannelsResponse](docs/GetAccountChannelsResponse.md)
+ - [GetAccountsResponse](docs/GetAccountsResponse.md)
+ - [GetAccountsResponseItem](docs/GetAccountsResponseItem.md)
  - [GetHelpPageResponse](docs/GetHelpPageResponse.md)
+ - [GetMediaServiceFileResponse](docs/GetMediaServiceFileResponse.md)
  - [GetPaySettingResponseV3](docs/GetPaySettingResponseV3.md)
  - [GetPolicyStructure](docs/GetPolicyStructure.md)
  - [GetPolicyStructureDto](docs/GetPolicyStructureDto.md)
  - [GetShortChannelItem](docs/GetShortChannelItem.md)
  - [GetStreamKeyResponse](docs/GetStreamKeyResponse.md)
  - [GetVersionAppResponse](docs/GetVersionAppResponse.md)
+ - [GoodgameDto](docs/GoodgameDto.md)
  - [HelpPageResponse](docs/HelpPageResponse.md)
+ - [HuyaDto](docs/HuyaDto.md)
+ - [InstagramDto](docs/InstagramDto.md)
  - [InternalNotifyTypeAction](docs/InternalNotifyTypeAction.md)
  - [InternalNotifyTypeActionText](docs/InternalNotifyTypeActionText.md)
  - [InternalNotifyTypeText](docs/InternalNotifyTypeText.md)
+ - [KickDto](docs/KickDto.md)
+ - [LinkedinDto](docs/LinkedinDto.md)
+ - [ListMediaServiceFilesItem](docs/ListMediaServiceFilesItem.md)
+ - [ListMediaServiceFilesResponse](docs/ListMediaServiceFilesResponse.md)
  - [ListOfCategoryItemResponse](docs/ListOfCategoryItemResponse.md)
  - [ListOfPaySystemListResponse](docs/ListOfPaySystemListResponse.md)
  - [ListOfPayoutSystemAccountListItemResponse](docs/ListOfPayoutSystemAccountListItemResponse.md)
  - [ListOfPlaylistItemResponse](docs/ListOfPlaylistItemResponse.md)
- - [ListOfProjectChannelInviteResponse](docs/ListOfProjectChannelInviteResponse.md)
- - [ListOfProjectChannelResponse](docs/ListOfProjectChannelResponse.md)
  - [ListOfRtmpServerLocationResponse](docs/ListOfRtmpServerLocationResponse.md)
  - [ListOfSitePlannedResponse](docs/ListOfSitePlannedResponse.md)
  - [ListOfUserProject2ProjectResponse](docs/ListOfUserProject2ProjectResponse.md)
- - [ListResponse](docs/ListResponse.md)
  - [LiveRestreamCentrifugeItemV2](docs/LiveRestreamCentrifugeItemV2.md)
  - [LiveRestreamInfoItem](docs/LiveRestreamInfoItem.md)
+ - [MediaServiceFilesStatus](docs/MediaServiceFilesStatus.md)
  - [MessageResponseDto](docs/MessageResponseDto.md)
  - [MessageRestreamResponseDto](docs/MessageRestreamResponseDto.md)
  - [MethodBroadcastRestreamItemResponse](docs/MethodBroadcastRestreamItemResponse.md)
@@ -264,22 +335,28 @@ Class | Method | HTTP request | Description
  - [MoneyFlowBalanceTypeValuesResponse](docs/MoneyFlowBalanceTypeValuesResponse.md)
  - [MoneyFlowDetails](docs/MoneyFlowDetails.md)
  - [MoneyFlowResponse](docs/MoneyFlowResponse.md)
+ - [NavertvDto](docs/NavertvDto.md)
+ - [NimotvDto](docs/NimotvDto.md)
+ - [NonoliveDto](docs/NonoliveDto.md)
  - [NotifyHistorySiteResponse](docs/NotifyHistorySiteResponse.md)
  - [NotifyHistoryStatusUserResponse](docs/NotifyHistoryStatusUserResponse.md)
  - [NotifyUserChannels](docs/NotifyUserChannels.md)
  - [NotifyUserRelation](docs/NotifyUserRelation.md)
- - [PaginatedResponse](docs/PaginatedResponse.md)
+ - [OkDto](docs/OkDto.md)
+ - [PaginatedHelpPageResponse](docs/PaginatedHelpPageResponse.md)
+ - [PaginatedMoneyFlowResponse](docs/PaginatedMoneyFlowResponse.md)
  - [PaginatedResponseOfBlogPageSiteResponse](docs/PaginatedResponseOfBlogPageSiteResponse.md)
- - [PaginatedResponseOfHelpPageResponse](docs/PaginatedResponseOfHelpPageResponse.md)
- - [PaginatedResponseOfMoneyFlowResponse](docs/PaginatedResponseOfMoneyFlowResponse.md)
  - [PaginatedResponseOfNotifyHistorySiteResponse](docs/PaginatedResponseOfNotifyHistorySiteResponse.md)
  - [PaginatedResponseOfProjectHistoryResponse](docs/PaginatedResponseOfProjectHistoryResponse.md)
  - [PaginatedResponseOfSiteBlogPageTagResponse](docs/PaginatedResponseOfSiteBlogPageTagResponse.md)
  - [PaginatedResponseOfTransactionResponse](docs/PaginatedResponseOfTransactionResponse.md)
  - [PaginatedResponseOfUserProjectResponse](docs/PaginatedResponseOfUserProjectResponse.md)
  - [PayCheckCountryResponse](docs/PayCheckCountryResponse.md)
- - [PaySettingBodyDto](docs/PaySettingBodyDto.md)
+ - [PayRedirectUrlDto](docs/PayRedirectUrlDto.md)
+ - [PaySettingEnBodyDto](docs/PaySettingEnBodyDto.md)
  - [PaySettingResponseV3](docs/PaySettingResponseV3.md)
+ - [PaySettingRuBodyDto](docs/PaySettingRuBodyDto.md)
+ - [PaySettingSetSettingV1Request](docs/PaySettingSetSettingV1Request.md)
  - [PaySystemListResponse](docs/PaySystemListResponse.md)
  - [PaymentCreateRequestRestreamBodyDto](docs/PaymentCreateRequestRestreamBodyDto.md)
  - [PaymentCreateRequestStorageBodyDto](docs/PaymentCreateRequestStorageBodyDto.md)
@@ -326,10 +403,15 @@ Class | Method | HTTP request | Description
  - [PlannedItemResponse](docs/PlannedItemResponse.md)
  - [PlatformsSupportedItem](docs/PlatformsSupportedItem.md)
  - [PlaylistItemResponse](docs/PlaylistItemResponse.md)
+ - [PlvideoDto](docs/PlvideoDto.md)
  - [ProjectChannelInviteChannelLinkResponse](docs/ProjectChannelInviteChannelLinkResponse.md)
  - [ProjectChannelInviteLinkResponse](docs/ProjectChannelInviteLinkResponse.md)
+ - [ProjectChannelInviteListResponse](docs/ProjectChannelInviteListResponse.md)
  - [ProjectChannelInviteProjectResponse](docs/ProjectChannelInviteProjectResponse.md)
  - [ProjectChannelInviteResponse](docs/ProjectChannelInviteResponse.md)
+ - [ProjectChannelListResponse](docs/ProjectChannelListResponse.md)
+ - [ProjectChannelMemberInfoResponse](docs/ProjectChannelMemberInfoResponse.md)
+ - [ProjectChannelMemberStreamInfoResponse](docs/ProjectChannelMemberStreamInfoResponse.md)
  - [ProjectChannelResponse](docs/ProjectChannelResponse.md)
  - [ProjectHistoryResponse](docs/ProjectHistoryResponse.md)
  - [ProjectInfoAccessResponse](docs/ProjectInfoAccessResponse.md)
@@ -344,6 +426,7 @@ Class | Method | HTTP request | Description
  - [PullServerListResponse](docs/PullServerListResponse.md)
  - [PullServerTransports](docs/PullServerTransports.md)
  - [RefreshAuthResponse](docs/RefreshAuthResponse.md)
+ - [RemoveAccountQuery](docs/RemoveAccountQuery.md)
  - [RtmpServerGraphResponse](docs/RtmpServerGraphResponse.md)
  - [RtmpServerListItemV2](docs/RtmpServerListItemV2.md)
  - [RtmpServerListV2Response](docs/RtmpServerListV2Response.md)
@@ -352,6 +435,7 @@ Class | Method | HTTP request | Description
  - [RtmpServerPlatformQuality](docs/RtmpServerPlatformQuality.md)
  - [RtmpServerStateItem](docs/RtmpServerStateItem.md)
  - [RtmpServerStateResponse](docs/RtmpServerStateResponse.md)
+ - [RutubeDto](docs/RutubeDto.md)
  - [SearchChannelCredentialDto](docs/SearchChannelCredentialDto.md)
  - [SearchChannelCredentialsDto](docs/SearchChannelCredentialsDto.md)
  - [SearchChannelItem](docs/SearchChannelItem.md)
@@ -363,10 +447,20 @@ Class | Method | HTTP request | Description
  - [SearchChannelTokensDto](docs/SearchChannelTokensDto.md)
  - [ServerUrl](docs/ServerUrl.md)
  - [ServerUrlValue](docs/ServerUrlValue.md)
+ - [SessionMediaServiceFileResponse](docs/SessionMediaServiceFileResponse.md)
+ - [SetMediaServiceFileRequest](docs/SetMediaServiceFileRequest.md)
  - [SetRecordStreamRequest](docs/SetRecordStreamRequest.md)
  - [SiteAuthCentrifugeResponse](docs/SiteAuthCentrifugeResponse.md)
  - [SiteAuthExchangeRequest](docs/SiteAuthExchangeRequest.md)
  - [SiteBlogPageTagResponse](docs/SiteBlogPageTagResponse.md)
+ - [SiteBroadcastCredentialsResponse](docs/SiteBroadcastCredentialsResponse.md)
+ - [SiteBroadcastEventsResponse](docs/SiteBroadcastEventsResponse.md)
+ - [SiteBroadcastFindResponse](docs/SiteBroadcastFindResponse.md)
+ - [SiteBroadcastGraphResponse](docs/SiteBroadcastGraphResponse.md)
+ - [SiteBroadcastItemResponse](docs/SiteBroadcastItemResponse.md)
+ - [SiteBroadcastListResponse](docs/SiteBroadcastListResponse.md)
+ - [SiteBroadcastRestreamCentrifugeResponse](docs/SiteBroadcastRestreamCentrifugeResponse.md)
+ - [SiteBroadcastRestreamsInfoResponse](docs/SiteBroadcastRestreamsInfoResponse.md)
  - [SiteChannelStatusResponse](docs/SiteChannelStatusResponse.md)
  - [SiteGetShortChannelResponse](docs/SiteGetShortChannelResponse.md)
  - [SiteLiveRestreamCentrifugeResponse](docs/SiteLiveRestreamCentrifugeResponse.md)
@@ -378,6 +472,9 @@ Class | Method | HTTP request | Description
  - [SitePlatformsSupportedResponse](docs/SitePlatformsSupportedResponse.md)
  - [SitePromoApplyResponse](docs/SitePromoApplyResponse.md)
  - [SitePromoCheckResponse](docs/SitePromoCheckResponse.md)
+ - [SiteRestreamEventResponse](docs/SiteRestreamEventResponse.md)
+ - [SiteRestreamItemResponse](docs/SiteRestreamItemResponse.md)
+ - [SiteRestreamResponse](docs/SiteRestreamResponse.md)
  - [SiteScreenNotifyUserResponse](docs/SiteScreenNotifyUserResponse.md)
  - [SiteSearchChannelResponse](docs/SiteSearchChannelResponse.md)
  - [SiteSetNameRequest](docs/SiteSetNameRequest.md)
@@ -394,6 +491,7 @@ Class | Method | HTTP request | Description
  - [SiteUpdateOptionsVkRequest](docs/SiteUpdateOptionsVkRequest.md)
  - [SiteUpdateOptionsVkVideoLiveRequest](docs/SiteUpdateOptionsVkVideoLiveRequest.md)
  - [SiteUpdateOptionsYoutubeRequest](docs/SiteUpdateOptionsYoutubeRequest.md)
+ - [SteamDto](docs/SteamDto.md)
  - [StructureHelpPageConnectionsItemFinal](docs/StructureHelpPageConnectionsItemFinal.md)
  - [StructureHelpPageConnectionsItemLang](docs/StructureHelpPageConnectionsItemLang.md)
  - [StructureHelpPageItemResponse](docs/StructureHelpPageItemResponse.md)
@@ -406,22 +504,30 @@ Class | Method | HTTP request | Description
  - [TelegramChatInfoResponseDto](docs/TelegramChatInfoResponseDto.md)
  - [TelegramChatPostsItem](docs/TelegramChatPostsItem.md)
  - [TelegramChatPostsResponseDto](docs/TelegramChatPostsResponseDto.md)
+ - [TelegramDto](docs/TelegramDto.md)
  - [TelegramInitConnectResponseDto](docs/TelegramInitConnectResponseDto.md)
  - [TelegramSetSettingsRequestDto](docs/TelegramSetSettingsRequestDto.md)
  - [TelegramSettingsDto](docs/TelegramSettingsDto.md)
  - [TelegramSettingsResponseDto](docs/TelegramSettingsResponseDto.md)
+ - [TiktokDto](docs/TiktokDto.md)
+ - [TotalInfoReferralsProfit](docs/TotalInfoReferralsProfit.md)
  - [TransactionResponse](docs/TransactionResponse.md)
  - [TranscoderChannelItem](docs/TranscoderChannelItem.md)
  - [TranscoderCreateDto](docs/TranscoderCreateDto.md)
  - [TranscoderItemDto](docs/TranscoderItemDto.md)
  - [TranscoderListItem](docs/TranscoderListItem.md)
+ - [TranscoderState](docs/TranscoderState.md)
  - [TranscoderUpdateDto](docs/TranscoderUpdateDto.md)
+ - [UpdateMediaServiceFileRequest](docs/UpdateMediaServiceFileRequest.md)
  - [UpdatePullKeyRequest](docs/UpdatePullKeyRequest.md)
  - [UserProfileResponse](docs/UserProfileResponse.md)
  - [UserProject2ProjectResponse](docs/UserProject2ProjectResponse.md)
  - [UserProjectGetResponse](docs/UserProjectGetResponse.md)
  - [UserProjectResponse](docs/UserProjectResponse.md)
  - [ValidationErrorDto](docs/ValidationErrorDto.md)
+ - [VkDto](docs/VkDto.md)
+ - [VliveDto](docs/VliveDto.md)
+ - [ZhanqitvDto](docs/ZhanqitvDto.md)
 
 
 <a id="documentation-for-authorization"></a>

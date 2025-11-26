@@ -53,9 +53,7 @@ export interface UpdatePullKeyRequest {
 }
 
 export const UpdatePullKeyRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type UpdatePullKeyRequestVEnum = typeof UpdatePullKeyRequestVEnum[keyof typeof UpdatePullKeyRequestVEnum];

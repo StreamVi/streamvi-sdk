@@ -71,9 +71,7 @@ export interface PaymentCreateRequestTranscoderBodyDto {
 }
 
 export const PaymentCreateRequestTranscoderBodyDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type PaymentCreateRequestTranscoderBodyDtoVEnum = typeof PaymentCreateRequestTranscoderBodyDtoVEnum[keyof typeof PaymentCreateRequestTranscoderBodyDtoVEnum];

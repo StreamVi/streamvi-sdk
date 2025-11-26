@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **language** | **string** | Current language | [default to LanguageEnum_En]
 **data** | **ProjectInfoDataResponse**(ProjectInfoDataResponse.md) | Project info | [default to undefined]
 **restream** | **ProjectInfoRestreamResponse**(ProjectInfoRestreamResponse.md) | Restream tariff | [default to undefined]
-**transcoding** | **ProjectInfoTranscodingResponse**(ProjectInfoTranscodingResponse.md) | Transcoding tariff | [default to undefined]
-**storage** | **ProjectInfoStorageResponse**(ProjectInfoStorageResponse.md) | Storage tariff | [default to undefined]
+**transcoding** | **ProjectInfoTranscodingResponse**(ProjectInfoTranscodingResponse.md) | Transcoding tariff | [optional] [default to undefined]
+**storage** | **ProjectInfoStorageResponse**(ProjectInfoStorageResponse.md) | Storage tariff | [optional] [default to undefined]
 **access** | **ProjectInfoAccessResponse**(ProjectInfoAccessResponse.md) | Project info access | [default to undefined]
 
 ## Example

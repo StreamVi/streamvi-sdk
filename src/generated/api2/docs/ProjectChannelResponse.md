@@ -5,11 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **number** | Primary key | [default to undefined]
-**project_id** | **number** | User id | [default to undefined]
+**access_type** | **number** | Access type | [default to undefined]
+**active** | **number** |  | [default to undefined]
 **channel_id** | **number** | Channel id | [default to undefined]
+**id** | **number** | Primary key | [default to undefined]
 **owner_id** | **number** | Owner id | [default to undefined]
+**preview** | **string** | Preview | [optional] [default to undefined]
+**title** | **string** | Title | [optional] [default to undefined]
+**transcoder_id** | **number** | Transcoder ID | [optional] [default to undefined]
+**unlim** | **string** | Unlim | [default to undefined]
 **usageType** | **number** | usageType | [default to undefined]
+**project_id** | **number** | User id | [default to undefined]
+**project_** | **ProjectChannelMemberInfoResponse**(ProjectChannelMemberInfoResponse.md) | User info | [optional] [default to undefined]
+**streamInfo** | **ProjectChannelMemberStreamInfoResponse**(ProjectChannelMemberStreamInfoResponse.md) | Stream info | [default to undefined]
 
 ## Example
 
@@ -17,11 +25,19 @@ Name | Type | Description | Notes
 import { ProjectChannelResponse } from 'streamvi-api-client';
 
 const instance: ProjectChannelResponse = {
-    id,
-    project_id,
+    access_type,
+    active,
     channel_id,
+    id,
     owner_id,
+    preview,
+    title,
+    transcoder_id,
+    unlim,
     usageType,
+    project_id,
+    project_,
+    streamInfo,
 };
 ```
 

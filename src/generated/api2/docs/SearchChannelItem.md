@@ -28,6 +28,8 @@ Name | Type | Description | Notes
 **tokens** | **SearchChannelCredentialDto**(SearchChannelCredentialDto.md) | Tokens | [default to undefined]
 **live_users** | **Array&lt;SearchChannelLiveUserDto&gt;**(SearchChannelLiveUserDto.md) | live_users | [optional] [default to undefined]
 **platform** | **SearchChannelPlatformDto**(SearchChannelPlatformDto.md) | Platform | [default to undefined]
+**timer** | **number** | Timer | [optional] [default to undefined]
+**delay** | **number** | Delay | [optional] [default to undefined]
 
 ## Example
 
@@ -58,6 +60,8 @@ const instance: SearchChannelItem = {
     tokens,
     live_users,
     platform,
+    timer,
+    delay,
 };
 ```
 

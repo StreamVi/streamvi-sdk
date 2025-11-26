@@ -243,7 +243,7 @@ export interface StreamKeyApiStreamKeysKeyV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof StreamKeyApiStreamKeysKeyV1
      */
     readonly v?: StreamKeysKeyV1VEnum
@@ -308,8 +308,6 @@ export type StreamKeysKeyV1LanguageEnum = typeof StreamKeysKeyV1LanguageEnum[key
  * @export
  */
 export const StreamKeysKeyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type StreamKeysKeyV1VEnum = typeof StreamKeysKeyV1VEnum[keyof typeof StreamKeysKeyV1VEnum];

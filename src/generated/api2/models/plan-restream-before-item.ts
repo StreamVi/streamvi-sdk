@@ -44,5 +44,17 @@ export interface PlanRestreamBeforeItem {
      * @memberof PlanRestreamBeforeItem
      */
     'date_end': string;
+    /**
+     * Support custom channel
+     * @type {boolean}
+     * @memberof PlanRestreamBeforeItem
+     */
+    'support_custom_channel': boolean;
+    /**
+     * Custom video
+     * @type {number}
+     * @memberof PlanRestreamBeforeItem
+     */
+    'custom_video': number;
 }
 

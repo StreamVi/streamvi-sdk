@@ -15,15 +15,37 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { PaginatedResponse } from './paginated-response';
-// May contain unused imports in some cases
-// @ts-ignore
 import type { ProjectHistoryResponse } from './project-history-response';
 
 /**
- * @type PaginatedResponseOfProjectHistoryResponse
+ * 
  * @export
+ * @interface PaginatedResponseOfProjectHistoryResponse
  */
-export type PaginatedResponseOfProjectHistoryResponse = PaginatedResponse;
-
+export interface PaginatedResponseOfProjectHistoryResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedResponseOfProjectHistoryResponse
+     */
+    'total': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedResponseOfProjectHistoryResponse
+     */
+    'limit': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedResponseOfProjectHistoryResponse
+     */
+    'offset': number;
+    /**
+     * 
+     * @type {Array<ProjectHistoryResponse>}
+     * @memberof PaginatedResponseOfProjectHistoryResponse
+     */
+    'results': Array<ProjectHistoryResponse>;
+}
 

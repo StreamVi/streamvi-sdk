@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Id of page in mongodb | [default to undefined]
+**_id** | **string** | Id of page in mongodb | [default to undefined]
 **project_id** | **number** | Project id | [default to undefined]
 **date_create** | **string** | Date create | [default to undefined]
 **actions** | **object** | Actions | [default to undefined]
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 import { NotifyHistorySiteResponse } from 'streamvi-api-client';
 
 const instance: NotifyHistorySiteResponse = {
-    id,
+    _id,
     project_id,
     date_create,
     actions,

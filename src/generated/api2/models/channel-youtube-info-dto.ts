@@ -86,6 +86,12 @@ export interface ChannelYoutubeInfoDto {
      * @memberof ChannelYoutubeInfoDto
      */
     'image'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChannelYoutubeInfoDto
+     */
+    'disableAutoEnd'?: boolean;
 }
 
 export const ChannelYoutubeInfoDtoLangEnum = {

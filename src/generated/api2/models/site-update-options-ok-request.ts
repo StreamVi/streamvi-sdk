@@ -59,9 +59,7 @@ export interface SiteUpdateOptionsOkRequest {
 }
 
 export const SiteUpdateOptionsOkRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type SiteUpdateOptionsOkRequestVEnum = typeof SiteUpdateOptionsOkRequestVEnum[keyof typeof SiteUpdateOptionsOkRequestVEnum];

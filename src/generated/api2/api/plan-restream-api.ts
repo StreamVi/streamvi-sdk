@@ -151,14 +151,14 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             } else {
                 localVarQueryParameter['v'] = '1';
-            }
-
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
             }
 
             if (projectId !== undefined) {
@@ -764,7 +764,7 @@ export interface PlanRestreamApiPlanRestreamBuyV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamBuyV1
      */
     readonly v?: PlanRestreamBuyV1VEnum
@@ -820,7 +820,7 @@ export interface PlanRestreamApiPlanRestreamCheck2V1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'2'}
      * @memberof PlanRestreamApiPlanRestreamCheck2V1
      */
     readonly v?: PlanRestreamCheck2V1VEnum
@@ -862,7 +862,7 @@ export interface PlanRestreamApiPlanRestreamGetDiscountV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamGetDiscountV1
      */
     readonly v?: PlanRestreamGetDiscountV1VEnum
@@ -890,7 +890,7 @@ export interface PlanRestreamApiPlanRestreamListProjectV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamListProjectV1
      */
     readonly v?: PlanRestreamListProjectV1VEnum
@@ -911,7 +911,7 @@ export interface PlanRestreamApiPlanRestreamListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamListV1
      */
     readonly v?: PlanRestreamListV1VEnum
@@ -946,7 +946,7 @@ export interface PlanRestreamApiPlanRestreamRemoveV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamRemoveV1
      */
     readonly v?: PlanRestreamRemoveV1VEnum
@@ -974,7 +974,7 @@ export interface PlanRestreamApiPlanRestreamTariffV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamTariffV1
      */
     readonly v?: PlanRestreamTariffV1VEnum
@@ -1093,9 +1093,7 @@ export type PlanRestreamBuyV1PeriodEnum = typeof PlanRestreamBuyV1PeriodEnum[key
  * @export
  */
 export const PlanRestreamBuyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanRestreamBuyV1VEnum = typeof PlanRestreamBuyV1VEnum[keyof typeof PlanRestreamBuyV1VEnum];
 /**
@@ -1119,9 +1117,7 @@ export type PlanRestreamCheck2V1PeriodEnum = typeof PlanRestreamCheck2V1PeriodEn
  * @export
  */
 export const PlanRestreamCheck2V1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _2: '2'
 } as const;
 export type PlanRestreamCheck2V1VEnum = typeof PlanRestreamCheck2V1VEnum[keyof typeof PlanRestreamCheck2V1VEnum];
 /**
@@ -1137,9 +1133,7 @@ export type PlanRestreamGetDiscountV1LanguageEnum = typeof PlanRestreamGetDiscou
  * @export
  */
 export const PlanRestreamGetDiscountV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanRestreamGetDiscountV1VEnum = typeof PlanRestreamGetDiscountV1VEnum[keyof typeof PlanRestreamGetDiscountV1VEnum];
 /**
@@ -1155,9 +1149,7 @@ export type PlanRestreamListProjectV1LanguageEnum = typeof PlanRestreamListProje
  * @export
  */
 export const PlanRestreamListProjectV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanRestreamListProjectV1VEnum = typeof PlanRestreamListProjectV1VEnum[keyof typeof PlanRestreamListProjectV1VEnum];
 /**
@@ -1173,9 +1165,7 @@ export type PlanRestreamListV1LanguageEnum = typeof PlanRestreamListV1LanguageEn
  * @export
  */
 export const PlanRestreamListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanRestreamListV1VEnum = typeof PlanRestreamListV1VEnum[keyof typeof PlanRestreamListV1VEnum];
 /**
@@ -1191,9 +1181,7 @@ export type PlanRestreamRemoveV1LanguageEnum = typeof PlanRestreamRemoveV1Langua
  * @export
  */
 export const PlanRestreamRemoveV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanRestreamRemoveV1VEnum = typeof PlanRestreamRemoveV1VEnum[keyof typeof PlanRestreamRemoveV1VEnum];
 /**
@@ -1209,8 +1197,6 @@ export type PlanRestreamTariffV1LanguageEnum = typeof PlanRestreamTariffV1Langua
  * @export
  */
 export const PlanRestreamTariffV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanRestreamTariffV1VEnum = typeof PlanRestreamTariffV1VEnum[keyof typeof PlanRestreamTariffV1VEnum];

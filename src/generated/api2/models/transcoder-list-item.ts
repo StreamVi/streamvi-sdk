@@ -16,6 +16,9 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import type { TranscoderChannelItem } from './transcoder-channel-item';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { TranscoderState } from './transcoder-state';
 
 /**
  * 
@@ -101,6 +104,30 @@ export interface TranscoderListItem {
      * @memberof TranscoderListItem
      */
     'channels': Array<TranscoderChannelItem>;
+    /**
+     * Delay
+     * @type {number}
+     * @memberof TranscoderListItem
+     */
+    'delay': number;
+    /**
+     * Preset
+     * @type {string}
+     * @memberof TranscoderListItem
+     */
+    'preset': string;
+    /**
+     * State
+     * @type {TranscoderState}
+     * @memberof TranscoderListItem
+     */
+    'state'?: TranscoderState | null;
+    /**
+     * Mode
+     * @type {string}
+     * @memberof TranscoderListItem
+     */
+    'mode': TranscoderListItemModeEnum;
 }
 
 export const TranscoderListItemStatusEnum = {
@@ -115,5 +142,11 @@ export const TranscoderListItemVideoCodecEnum = {
 } as const;
 
 export type TranscoderListItemVideoCodecEnum = typeof TranscoderListItemVideoCodecEnum[keyof typeof TranscoderListItemVideoCodecEnum];
+export const TranscoderListItemModeEnum = {
+    Custom: 'custom',
+    Twitch: 'twitch'
+} as const;
+
+export type TranscoderListItemModeEnum = typeof TranscoderListItemModeEnum[keyof typeof TranscoderListItemModeEnum];
 
 

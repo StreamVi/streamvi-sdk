@@ -13,6 +13,12 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import type { ProjectChannelMemberInfoResponse } from './project-channel-member-info-response';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { ProjectChannelMemberStreamInfoResponse } from './project-channel-member-stream-info-response';
 
 /**
  * 
@@ -21,17 +27,17 @@
  */
 export interface ProjectChannelResponse {
     /**
-     * Primary key
+     * Access type
      * @type {number}
      * @memberof ProjectChannelResponse
      */
-    'id': number;
+    'access_type': ProjectChannelResponseAccessTypeEnum;
     /**
-     * User id
+     * 
      * @type {number}
      * @memberof ProjectChannelResponse
      */
-    'project_id': number;
+    'active': number;
     /**
      * Channel id
      * @type {number}
@@ -39,16 +45,81 @@ export interface ProjectChannelResponse {
      */
     'channel_id': number;
     /**
+     * Primary key
+     * @type {number}
+     * @memberof ProjectChannelResponse
+     */
+    'id': number;
+    /**
      * Owner id
      * @type {number}
      * @memberof ProjectChannelResponse
      */
     'owner_id': number;
     /**
+     * Preview
+     * @type {string}
+     * @memberof ProjectChannelResponse
+     */
+    'preview'?: string | null;
+    /**
+     * Title
+     * @type {string}
+     * @memberof ProjectChannelResponse
+     */
+    'title'?: string | null;
+    /**
+     * Transcoder ID
+     * @type {number}
+     * @memberof ProjectChannelResponse
+     */
+    'transcoder_id'?: number | null;
+    /**
+     * Unlim
+     * @type {string}
+     * @memberof ProjectChannelResponse
+     */
+    'unlim': string;
+    /**
      * usageType
      * @type {number}
      * @memberof ProjectChannelResponse
      */
-    'usageType': number;
+    'usageType': ProjectChannelResponseUsageTypeEnum;
+    /**
+     * User id
+     * @type {number}
+     * @memberof ProjectChannelResponse
+     */
+    'project_id': number;
+    /**
+     * User info
+     * @type {ProjectChannelMemberInfoResponse}
+     * @memberof ProjectChannelResponse
+     */
+    'project_'?: ProjectChannelMemberInfoResponse;
+    /**
+     * Stream info
+     * @type {ProjectChannelMemberStreamInfoResponse}
+     * @memberof ProjectChannelResponse
+     */
+    'streamInfo': ProjectChannelMemberStreamInfoResponse;
 }
+
+export const ProjectChannelResponseAccessTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_12: 1,
+    NUMBER_2: 2
+} as const;
+
+export type ProjectChannelResponseAccessTypeEnum = typeof ProjectChannelResponseAccessTypeEnum[keyof typeof ProjectChannelResponseAccessTypeEnum];
+export const ProjectChannelResponseUsageTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2
+} as const;
+
+export type ProjectChannelResponseUsageTypeEnum = typeof ProjectChannelResponseUsageTypeEnum[keyof typeof ProjectChannelResponseUsageTypeEnum];
+
 

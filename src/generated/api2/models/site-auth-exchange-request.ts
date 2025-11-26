@@ -59,9 +59,7 @@ export interface SiteAuthExchangeRequest {
 }
 
 export const SiteAuthExchangeRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 
 export type SiteAuthExchangeRequestVEnum = typeof SiteAuthExchangeRequestVEnum[keyof typeof SiteAuthExchangeRequestVEnum];

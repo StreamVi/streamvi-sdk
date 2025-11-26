@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **privacyComments** | **string** |  | [optional] [default to undefined]
 **playlist** | **ChannelPlayListInfoDto**(ChannelPlayListInfoDto.md) |  | [optional] [default to undefined]
 **category** | **ChannelVkCategoryInfoDto**(ChannelVkCategoryInfoDto.md) |  | [optional] [default to undefined]
+**disableAutoEnd** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -26,6 +27,7 @@ const instance: ChannelVkInfoDto = {
     privacyComments,
     playlist,
     category,
+    disableAutoEnd,
 };
 ```
 

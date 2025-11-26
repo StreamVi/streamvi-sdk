@@ -38,11 +38,11 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Get account profile
          * @param {AccountGetProfileV1LanguageEnum} language Current language
          * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {number | null} [projectId] Project id
+         * @param {number} [projectId] Project id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountGetProfileV1: async (language: AccountGetProfileV1LanguageEnum, v?: AccountGetProfileV1VEnum, projectId?: number | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        accountGetProfileV1: async (language: AccountGetProfileV1LanguageEnum, v?: AccountGetProfileV1VEnum, projectId?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('accountGetProfileV1', 'language', language)
             const localVarPath = `/method/account/profile`;
@@ -166,11 +166,11 @@ export const AccountApiFp = function(configuration?: Configuration) {
          * @summary Get account profile
          * @param {AccountGetProfileV1LanguageEnum} language Current language
          * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {number | null} [projectId] Project id
+         * @param {number} [projectId] Project id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async accountGetProfileV1(language: AccountGetProfileV1LanguageEnum, v?: AccountGetProfileV1VEnum, projectId?: number | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>> {
+        async accountGetProfileV1(language: AccountGetProfileV1LanguageEnum, v?: AccountGetProfileV1VEnum, projectId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.accountGetProfileV1(language, v, projectId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AccountApi.accountGetProfileV1']?.[localVarOperationServerIndex]?.url;
@@ -269,7 +269,7 @@ export interface AccountApiAccountGetProfileV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AccountApiAccountGetProfileV1
      */
     readonly v?: AccountGetProfileV1VEnum
@@ -279,7 +279,7 @@ export interface AccountApiAccountGetProfileV1Request {
      * @type {number}
      * @memberof AccountApiAccountGetProfileV1
      */
-    readonly project_id?: number | null
+    readonly project_id?: number
 }
 
 /**
@@ -369,18 +369,14 @@ export type AccountGetProfileV1LanguageEnum = typeof AccountGetProfileV1Language
  * @export
  */
 export const AccountGetProfileV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type AccountGetProfileV1VEnum = typeof AccountGetProfileV1VEnum[keyof typeof AccountGetProfileV1VEnum];
 /**
  * @export
  */
 export const AccountUpdateProfileV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type AccountUpdateProfileV1VEnum = typeof AccountUpdateProfileV1VEnum[keyof typeof AccountUpdateProfileV1VEnum];
 /**

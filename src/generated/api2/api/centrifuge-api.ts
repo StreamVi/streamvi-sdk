@@ -35,10 +35,11 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @summary Auth centrifuge
          * @param {number} projectId Project id
+         * @param {CentrifugeAuthV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        centrifugeAuthV2: async (projectId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        centrifugeAuthV2: async (projectId: number, v?: CentrifugeAuthV2VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectId' is not null or undefined
             assertParamExists('centrifugeAuthV2', 'projectId', projectId)
             const localVarPath = `/method/centrifuge`;
@@ -52,6 +53,12 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '2';
+            }
 
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
@@ -97,7 +104,7 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             } else {
-                localVarQueryParameter['v'] = '2';
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -152,14 +159,14 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
                 localVarQueryParameter['broadcast_id'] = broadcastId;
             }
 
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             } else {
                 localVarQueryParameter['v'] = '1';
-            }
-
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
             }
 
             if (projectId !== undefined) {
@@ -191,11 +198,12 @@ export const CentrifugeApiFp = function(configuration?: Configuration) {
          * 
          * @summary Auth centrifuge
          * @param {number} projectId Project id
+         * @param {CentrifugeAuthV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async centrifugeAuthV2(projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.centrifugeAuthV2(projectId, options);
+        async centrifugeAuthV2(projectId: number, v?: CentrifugeAuthV2VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.centrifugeAuthV2(projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CentrifugeApi.centrifugeAuthV2']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -249,7 +257,7 @@ export const CentrifugeApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse> {
-            return localVarFp.centrifugeAuthV2(requestParameters.project_id, options).then((request) => request(axios, basePath));
+            return localVarFp.centrifugeAuthV2(requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor     
@@ -324,6 +332,13 @@ export interface CentrifugeApiCentrifugeAuthV2Request {
      * @memberof CentrifugeApiCentrifugeAuthV2
      */
     readonly project_id: number
+
+    /**
+     * Version (automatically defaults to 2 based on method version, can be overridden)
+     * @type {'2'}
+     * @memberof CentrifugeApiCentrifugeAuthV2
+     */
+    readonly v?: CentrifugeAuthV2VEnum
 }
 
 /**
@@ -348,7 +363,7 @@ export interface CentrifugeApiCentrifugeProjectV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof CentrifugeApiCentrifugeProjectV1
      */
     readonly v?: CentrifugeProjectV1VEnum
@@ -383,7 +398,7 @@ export interface CentrifugeApiGetTokenBroadcastV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'2'}
      * @memberof CentrifugeApiGetTokenBroadcastV1
      */
     readonly v?: GetTokenBroadcastV1VEnum
@@ -405,7 +420,7 @@ export class CentrifugeApi extends BaseAPI implements CentrifugeApiInterface {
      * @memberof CentrifugeApi
      */
     public centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig) {
-        return CentrifugeApiFp(this.configuration).centrifugeAuthV2(requestParameters.project_id, options).then((request) => request(this.axios, this.basePath));
+        return CentrifugeApiFp(this.configuration).centrifugeAuthV2(requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -436,6 +451,13 @@ export class CentrifugeApi extends BaseAPI implements CentrifugeApiInterface {
 /**
  * @export
  */
+export const CentrifugeAuthV2VEnum = {
+    _2: '2'
+} as const;
+export type CentrifugeAuthV2VEnum = typeof CentrifugeAuthV2VEnum[keyof typeof CentrifugeAuthV2VEnum];
+/**
+ * @export
+ */
 export const CentrifugeProjectV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
@@ -446,9 +468,7 @@ export type CentrifugeProjectV1LanguageEnum = typeof CentrifugeProjectV1Language
  * @export
  */
 export const CentrifugeProjectV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type CentrifugeProjectV1VEnum = typeof CentrifugeProjectV1VEnum[keyof typeof CentrifugeProjectV1VEnum];
 /**
@@ -464,8 +484,6 @@ export type GetTokenBroadcastV1LanguageEnum = typeof GetTokenBroadcastV1Language
  * @export
  */
 export const GetTokenBroadcastV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _2: '2'
 } as const;
 export type GetTokenBroadcastV1VEnum = typeof GetTokenBroadcastV1VEnum[keyof typeof GetTokenBroadcastV1VEnum];

@@ -61,14 +61,14 @@ export const LiveApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             } else {
                 localVarQueryParameter['v'] = '1';
-            }
-
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
             }
 
             if (projectId !== undefined) {
@@ -189,7 +189,7 @@ export interface LiveApiControllersRestreamsV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'2'}
      * @memberof LiveApiControllersRestreamsV1
      */
     readonly v?: ControllersRestreamsV1VEnum
@@ -229,8 +229,6 @@ export type ControllersRestreamsV1LanguageEnum = typeof ControllersRestreamsV1La
  * @export
  */
 export const ControllersRestreamsV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _2: '2'
 } as const;
 export type ControllersRestreamsV1VEnum = typeof ControllersRestreamsV1VEnum[keyof typeof ControllersRestreamsV1VEnum];

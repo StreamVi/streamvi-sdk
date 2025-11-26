@@ -15,15 +15,19 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { ListResponse } from './list-response';
-// May contain unused imports in some cases
-// @ts-ignore
 import type { RtmpServerLocationResponse } from './rtmp-server-location-response';
 
 /**
- * @type ListOfRtmpServerLocationResponse
+ * 
  * @export
+ * @interface ListOfRtmpServerLocationResponse
  */
-export type ListOfRtmpServerLocationResponse = ListResponse;
-
+export interface ListOfRtmpServerLocationResponse {
+    /**
+     * 
+     * @type {Array<RtmpServerLocationResponse>}
+     * @memberof ListOfRtmpServerLocationResponse
+     */
+    'results': Array<RtmpServerLocationResponse>;
+}
 

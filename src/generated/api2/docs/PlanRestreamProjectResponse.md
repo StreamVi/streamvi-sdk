@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **price** | **PlanRestreamPrice**(PlanRestreamPrice.md) | Price | [default to undefined]
 **status** | **string** | Status | [default to undefined]
 **feature** | **Array&lt;PlanRestreamFeatureItemV2&gt;**(PlanRestreamFeatureItemV2.md) | Features | [default to undefined]
+**support_custom_channel** | **boolean** | Support custom channel | [default to undefined]
+**custom_video** | **number** | Custom video | [default to undefined]
 **own_tariff** | **PlanRestreamForProjectV2**(PlanRestreamForProjectV2.md) | Tariff project | [default to undefined]
 
 ## Example
@@ -41,6 +43,8 @@ const instance: PlanRestreamProjectResponse = {
     price,
     status,
     feature,
+    support_custom_channel,
+    custom_video,
     own_tariff,
 };
 ```

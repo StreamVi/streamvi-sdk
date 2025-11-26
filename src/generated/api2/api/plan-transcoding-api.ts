@@ -628,7 +628,7 @@ export interface PlanTranscodingApiPlanTranscodingBuyV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
     readonly v?: PlanTranscodingBuyV1VEnum
@@ -663,7 +663,7 @@ export interface PlanTranscodingApiPlanTranscodingCancelV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingCancelV1
      */
     readonly v?: PlanTranscodingCancelV1VEnum
@@ -691,7 +691,7 @@ export interface PlanTranscodingApiPlanTranscodingCheckV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingCheckV1
      */
     readonly v?: PlanTranscodingCheckV1VEnum
@@ -712,7 +712,7 @@ export interface PlanTranscodingApiPlanTranscodingGetDiscountV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingGetDiscountV1
      */
     readonly v?: PlanTranscodingGetDiscountV1VEnum
@@ -733,7 +733,7 @@ export interface PlanTranscodingApiPlanTranscodingListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingListV1
      */
     readonly v?: PlanTranscodingListV1VEnum
@@ -761,7 +761,7 @@ export interface PlanTranscodingApiPlanTranscodingTariffV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingTariffV1
      */
     readonly v?: PlanTranscodingTariffV1VEnum
@@ -868,9 +868,7 @@ export type PlanTranscodingBuyV1PeriodEnum = typeof PlanTranscodingBuyV1PeriodEn
  * @export
  */
 export const PlanTranscodingBuyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanTranscodingBuyV1VEnum = typeof PlanTranscodingBuyV1VEnum[keyof typeof PlanTranscodingBuyV1VEnum];
 /**
@@ -886,9 +884,7 @@ export type PlanTranscodingCancelV1LanguageEnum = typeof PlanTranscodingCancelV1
  * @export
  */
 export const PlanTranscodingCancelV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanTranscodingCancelV1VEnum = typeof PlanTranscodingCancelV1VEnum[keyof typeof PlanTranscodingCancelV1VEnum];
 /**
@@ -904,9 +900,7 @@ export type PlanTranscodingCheckV1LanguageEnum = typeof PlanTranscodingCheckV1La
  * @export
  */
 export const PlanTranscodingCheckV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanTranscodingCheckV1VEnum = typeof PlanTranscodingCheckV1VEnum[keyof typeof PlanTranscodingCheckV1VEnum];
 /**
@@ -922,9 +916,7 @@ export type PlanTranscodingGetDiscountV1LanguageEnum = typeof PlanTranscodingGet
  * @export
  */
 export const PlanTranscodingGetDiscountV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanTranscodingGetDiscountV1VEnum = typeof PlanTranscodingGetDiscountV1VEnum[keyof typeof PlanTranscodingGetDiscountV1VEnum];
 /**
@@ -940,9 +932,7 @@ export type PlanTranscodingListV1LanguageEnum = typeof PlanTranscodingListV1Lang
  * @export
  */
 export const PlanTranscodingListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanTranscodingListV1VEnum = typeof PlanTranscodingListV1VEnum[keyof typeof PlanTranscodingListV1VEnum];
 /**
@@ -958,8 +948,6 @@ export type PlanTranscodingTariffV1LanguageEnum = typeof PlanTranscodingTariffV1
  * @export
  */
 export const PlanTranscodingTariffV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PlanTranscodingTariffV1VEnum = typeof PlanTranscodingTariffV1VEnum[keyof typeof PlanTranscodingTariffV1VEnum];

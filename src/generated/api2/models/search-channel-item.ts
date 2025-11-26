@@ -176,6 +176,18 @@ export interface SearchChannelItem {
      * @memberof SearchChannelItem
      */
     'platform': SearchChannelPlatformDto;
+    /**
+     * Timer
+     * @type {number}
+     * @memberof SearchChannelItem
+     */
+    'timer'?: number | null;
+    /**
+     * Delay
+     * @type {number}
+     * @memberof SearchChannelItem
+     */
+    'delay'?: number | null;
 }
 
 export const SearchChannelItemStatusEnum = {
@@ -184,7 +196,10 @@ export const SearchChannelItemStatusEnum = {
     Error: 'error',
     Live: 'live',
     Offline: 'offline',
-    Busy: 'busy'
+    Busy: 'busy',
+    WaitTranscoding: 'wait_transcoding',
+    RunningTranscoding: 'running_transcoding',
+    ErrorTranscoding: 'error_transcoding'
 } as const;
 
 export type SearchChannelItemStatusEnum = typeof SearchChannelItemStatusEnum[keyof typeof SearchChannelItemStatusEnum];

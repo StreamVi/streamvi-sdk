@@ -17,8 +17,10 @@ Name | Type | Description | Notes
 **name** | **string** | Name | [optional] [default to undefined]
 **rotation** | **number** | Rotation | [optional] [default to undefined]
 **bFrames** | **number** | Rotation | [optional] [default to undefined]
-**channelIds** | **number** | ChannelIds | [optional] [default to undefined]
-**videoCodecId** | **number** | Video codec id | [default to undefined]
+**channelIds** | **Array&lt;number&gt;** | ChannelIds | [optional] [default to undefined]
+**videoCodec** | **string** | Video codec id | [default to undefined]
+**preset** | **string** | Preset | [optional] [default to undefined]
+**delay** | **number** | Delay | [optional] [default to undefined]
 
 ## Example
 
@@ -39,7 +41,9 @@ const instance: TranscoderUpdateDto = {
     rotation,
     bFrames,
     channelIds,
-    videoCodecId,
+    videoCodec,
+    preset,
+    delay,
 };
 ```
 

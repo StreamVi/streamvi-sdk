@@ -29,7 +29,7 @@ let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
 let toProjectId: number; //Target project id (default to undefined)
 let accessType: 0 | 1 | 1 | 2; //Access type (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.projectChannelChangeAccessV1(
     language,
@@ -50,7 +50,7 @@ const { status, data } = await apiInstance.projectChannelChangeAccessV1(
 | **channelId** | **number** | Channel id | defaults to undefined|
 | **toProjectId** | **number** | Target project id | defaults to undefined|
 | **accessType** | **0 | 1 | 1 | 2** | Access type | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -94,7 +94,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
 let targetProjectId: number; //Target project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.projectChannelDelV1(
     language,
@@ -113,7 +113,7 @@ const { status, data } = await apiInstance.projectChannelDelV1(
 | **projectId** | **number** | Project id | defaults to undefined|
 | **channelId** | **number** | Channel id | defaults to undefined|
 | **targetProjectId** | **number** | Target project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -139,7 +139,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **projectChannelListV1**
-> ListOfProjectChannelResponse projectChannelListV1()
+> ProjectChannelListResponse projectChannelListV1()
 
 
 ### Example
@@ -156,7 +156,7 @@ const apiInstance = new ProjectChannelApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.projectChannelListV1(
     language,
@@ -173,12 +173,12 @@ const { status, data } = await apiInstance.projectChannelListV1(
 | **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
 | **projectId** | **number** | Project id | defaults to undefined|
 | **channelId** | **number** | Channel id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
 
-**ListOfProjectChannelResponse**
+**ProjectChannelListResponse**
 
 ### Authorization
 
@@ -217,7 +217,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
 let toProjectId: number; //Target project id (default to undefined)
-let v: '1' | '2' | '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.projectChannelTransferOwnerV1(
     language,
@@ -236,7 +236,7 @@ const { status, data } = await apiInstance.projectChannelTransferOwnerV1(
 | **projectId** | **number** | Project id | defaults to undefined|
 | **channelId** | **number** | Channel id | defaults to undefined|
 | **toProjectId** | **number** | Target project id | defaults to undefined|
-| **v** | **'1' | '2' | '3'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

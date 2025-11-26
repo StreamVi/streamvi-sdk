@@ -26,7 +26,7 @@ import type { ErrorResponse } from '../models';
 // @ts-ignore
 import type { GetHelpPageResponse } from '../models';
 // @ts-ignore
-import type { PaginatedResponseOfHelpPageResponse } from '../models';
+import type { PaginatedHelpPageResponse } from '../models';
 // @ts-ignore
 import type { StructureHelpPageResponse } from '../models';
 /**
@@ -225,7 +225,7 @@ export const HelpPageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async helpPageListV1(language: HelpPageListV1LanguageEnum, v?: HelpPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfHelpPageResponse>> {
+        async helpPageListV1(language: HelpPageListV1LanguageEnum, v?: HelpPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHelpPageResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.helpPageListV1(language, v, s, limit, offset, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['HelpPageApi.helpPageListV1']?.[localVarOperationServerIndex]?.url;
@@ -272,7 +272,7 @@ export const HelpPageApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfHelpPageResponse> {
+        helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHelpPageResponse> {
             return localVarFp.helpPageListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
         /**
@@ -312,7 +312,7 @@ export interface HelpPageApiInterface {
      * @throws {RequiredError}
      * @memberof HelpPageApiInterface
      */
-    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfHelpPageResponse>;
+    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHelpPageResponse>;
 
     /**
      * 
@@ -348,7 +348,7 @@ export interface HelpPageApiHelpPageGetV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof HelpPageApiHelpPageGetV1
      */
     readonly v?: HelpPageGetV1VEnum
@@ -369,7 +369,7 @@ export interface HelpPageApiHelpPageListV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof HelpPageApiHelpPageListV1
      */
     readonly v?: HelpPageListV1VEnum
@@ -411,7 +411,7 @@ export interface HelpPageApiHelpPageStructureV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof HelpPageApiHelpPageStructureV1
      */
     readonly v?: HelpPageStructureV1VEnum
@@ -474,9 +474,7 @@ export type HelpPageGetV1LanguageEnum = typeof HelpPageGetV1LanguageEnum[keyof t
  * @export
  */
 export const HelpPageGetV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type HelpPageGetV1VEnum = typeof HelpPageGetV1VEnum[keyof typeof HelpPageGetV1VEnum];
 /**
@@ -492,9 +490,7 @@ export type HelpPageListV1LanguageEnum = typeof HelpPageListV1LanguageEnum[keyof
  * @export
  */
 export const HelpPageListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type HelpPageListV1VEnum = typeof HelpPageListV1VEnum[keyof typeof HelpPageListV1VEnum];
 /**
@@ -510,8 +506,6 @@ export type HelpPageStructureV1LanguageEnum = typeof HelpPageStructureV1Language
  * @export
  */
 export const HelpPageStructureV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type HelpPageStructureV1VEnum = typeof HelpPageStructureV1VEnum[keyof typeof HelpPageStructureV1VEnum];

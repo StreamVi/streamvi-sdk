@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
 **text** | **string** |  | [default to undefined]
+**restreams** | **Array&lt;number&gt;** |  | [default to undefined]
 
 ## Example
 
@@ -16,6 +17,7 @@ import { MethodChatSendMessageRequestDto } from 'streamvi-api-client';
 const instance: MethodChatSendMessageRequestDto = {
     id,
     text,
+    restreams,
 };
 ```
 

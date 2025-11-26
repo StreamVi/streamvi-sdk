@@ -248,7 +248,7 @@ export interface PolicyPageApiPolicyPageGetItemV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PolicyPageApiPolicyPageGetItemV1
      */
     readonly v?: PolicyPageGetItemV1VEnum
@@ -269,7 +269,7 @@ export interface PolicyPageApiPolicyPageGetStructureV1Request {
 
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PolicyPageApiPolicyPageGetStructureV1
      */
     readonly v?: PolicyPageGetStructureV1VEnum
@@ -331,9 +331,7 @@ export type PolicyPageGetItemV1FileNameEnum = typeof PolicyPageGetItemV1FileName
  * @export
  */
 export const PolicyPageGetItemV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PolicyPageGetItemV1VEnum = typeof PolicyPageGetItemV1VEnum[keyof typeof PolicyPageGetItemV1VEnum];
 /**
@@ -349,8 +347,6 @@ export type PolicyPageGetStructureV1LanguageEnum = typeof PolicyPageGetStructure
  * @export
  */
 export const PolicyPageGetStructureV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 } as const;
 export type PolicyPageGetStructureV1VEnum = typeof PolicyPageGetStructureV1VEnum[keyof typeof PolicyPageGetStructureV1VEnum];

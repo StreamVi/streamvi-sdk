@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **latency** | **string** |  | [optional] [default to undefined]
 **audience** | **string** |  | [optional] [default to undefined]
 **image** | **string** |  | [optional] [default to undefined]
+**disableAutoEnd** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -32,6 +33,7 @@ const instance: ChannelYoutubeInfoDto = {
     latency,
     audience,
     image,
+    disableAutoEnd,
 };
 ```
 
