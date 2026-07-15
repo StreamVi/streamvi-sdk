@@ -49,6 +49,9 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -79,6 +82,9 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -113,11 +119,11 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["transcoding:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -128,6 +134,39 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Reset delay
+         * @param {TranscoderItemDto} transcoderItemDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        transcodersResetDelayV1: async (transcoderItemDto, options = {}) => {
+            // verify required parameter 'transcoderItemDto' is not null or undefined
+            (0, common_1.assertParamExists)('transcodersResetDelayV1', 'transcoderItemDto', transcoderItemDto);
+            const localVarPath = `/method/transcoder/reset-delay`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(transcoderItemDto, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -153,6 +192,9 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -183,6 +225,9 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -245,6 +290,20 @@ const TranscodersApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersListV1(language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TranscodersApi.transcodersListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Reset delay
+         * @param {TranscoderItemDto} transcoderItemDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async transcodersResetDelayV1(transcoderItemDto, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersResetDelayV1(transcoderItemDto, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TranscodersApi.transcodersResetDelayV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -317,6 +376,16 @@ const TranscodersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Reset delay
+         * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        transcodersResetDelayV1(requestParameters, options) {
+            return localVarFp.transcodersResetDelayV1(requestParameters.TranscoderItemDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Transcoder stop
          * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -380,6 +449,17 @@ class TranscodersApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Reset delay
+     * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TranscodersApi
+     */
+    transcodersResetDelayV1(requestParameters, options) {
+        return (0, exports.TranscodersApiFp)(this.configuration).transcodersResetDelayV1(requestParameters.TranscoderItemDto, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Transcoder stop
      * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -414,7 +494,5 @@ exports.TranscodersListV1LanguageEnum = {
  * @export
  */
 exports.TranscodersListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

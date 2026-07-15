@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **string** | Stream key | [default to undefined]
-**ingresses** | **Array&lt;BroadcastCredentialsIngress&gt;**(BroadcastCredentialsIngress.md) | Ingress regions | [default to undefined]
+**ingresses** | [**Array&lt;BroadcastCredentialsIngress&gt;**](BroadcastCredentialsIngress.md) | Ingress regions | [default to undefined]
 
 ## Example
 

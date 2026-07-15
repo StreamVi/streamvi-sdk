@@ -9,10 +9,36 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { PaginatedResponse } from './paginated-response';
+import type { SiteBlogPageTagResponse } from './site-blog-page-tag-response';
 /**
- * @type PaginatedResponseOfSiteBlogPageTagResponse
+ *
  * @export
+ * @interface PaginatedResponseOfSiteBlogPageTagResponse
  */
-export type PaginatedResponseOfSiteBlogPageTagResponse = PaginatedResponse;
+export interface PaginatedResponseOfSiteBlogPageTagResponse {
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedResponseOfSiteBlogPageTagResponse
+     */
+    'total': number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedResponseOfSiteBlogPageTagResponse
+     */
+    'limit': number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedResponseOfSiteBlogPageTagResponse
+     */
+    'offset': number;
+    /**
+     *
+     * @type {Array<SiteBlogPageTagResponse>}
+     * @memberof PaginatedResponseOfSiteBlogPageTagResponse
+     */
+    'results': Array<SiteBlogPageTagResponse>;
+}
 //# sourceMappingURL=paginated-response-of-site-blog-page-tag-response.d.ts.map

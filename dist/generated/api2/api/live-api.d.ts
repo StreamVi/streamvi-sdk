@@ -107,7 +107,7 @@ export interface LiveApiControllersRestreamsV1Request {
     readonly broadcast_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'2'}
      * @memberof LiveApiControllersRestreamsV1
      */
     readonly v?: ControllersRestreamsV1VEnum;
@@ -128,7 +128,7 @@ export declare class LiveApi extends BaseAPI implements LiveApiInterface {
      * @throws {RequiredError}
      * @memberof LiveApi
      */
-    controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteLiveRestreamsInfoResponse, any>>;
+    controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteLiveRestreamsInfoResponse, any, {}>>;
 }
 /**
  * @export
@@ -143,9 +143,7 @@ export type ControllersRestreamsV1LanguageEnum = typeof ControllersRestreamsV1La
  * @export
  */
 export declare const ControllersRestreamsV1VEnum: {
-    readonly _1: "1";
     readonly _2: "2";
-    readonly _3: "3";
 };
 export type ControllersRestreamsV1VEnum = typeof ControllersRestreamsV1VEnum[keyof typeof ControllersRestreamsV1VEnum];
 //# sourceMappingURL=live-api.d.ts.map

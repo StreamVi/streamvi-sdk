@@ -25,6 +25,24 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 import type { ListOfPaySystemListResponse } from '../models';
 // @ts-ignore
 import type { PayRedirectUrlDto } from '../models';
+// @ts-ignore
+import type { TonConnectPaymentIntentDto } from '../models';
+// @ts-ignore
+import type { TonConnectPaymentStatusDto } from '../models';
+// @ts-ignore
+import type { TonConnectPaymentSubmitBodyDto } from '../models';
+// @ts-ignore
+import type { TronPaymentIntentDto } from '../models';
+// @ts-ignore
+import type { TronPaymentStatusDto } from '../models';
+// @ts-ignore
+import type { TronPaymentSubmitBodyDto } from '../models';
+// @ts-ignore
+import type { WalletConnectPaymentIntentDto } from '../models';
+// @ts-ignore
+import type { WalletConnectPaymentStatusDto } from '../models';
+// @ts-ignore
+import type { WalletConnectPaymentSubmitBodyDto } from '../models';
 /**
  * PaySystemApi - axios parameter creator
  * @export
@@ -59,8 +77,6 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -110,8 +126,6 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -161,8 +175,6 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -203,11 +215,455 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create TonConnect payment intent
+         * @param {number} paymentId Payment id
+         * @param {string} payerAddress Connected TON wallet address / payer
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tonConnectIntentV1: async (paymentId: number, payerAddress: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'paymentId' is not null or undefined
+            assertParamExists('tonConnectIntentV1', 'paymentId', paymentId)
+            // verify required parameter 'payerAddress' is not null or undefined
+            assertParamExists('tonConnectIntentV1', 'payerAddress', payerAddress)
+            const localVarPath = `/method/pay-system/tonconnect/intent`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
+            if (paymentId !== undefined) {
+                localVarQueryParameter['payment_id'] = paymentId;
+            }
+
+            if (payerAddress !== undefined) {
+                localVarQueryParameter['payer_address'] = payerAddress;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get TonConnect payment verification status
+         * @param {TonConnectStatusV1LanguageEnum} language Current language
+         * @param {number} paymentId Payment id
+         * @param {TonConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tonConnectStatusV1: async (language: TonConnectStatusV1LanguageEnum, paymentId: number, v?: TonConnectStatusV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('tonConnectStatusV1', 'language', language)
+            // verify required parameter 'paymentId' is not null or undefined
+            assertParamExists('tonConnectStatusV1', 'paymentId', paymentId)
+            const localVarPath = `/method/pay-system/tonconnect/status`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (paymentId !== undefined) {
+                localVarQueryParameter['payment_id'] = paymentId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Submit TonConnect payment transaction
+         * @param {TonConnectPaymentSubmitBodyDto} tonConnectPaymentSubmitBodyDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tonConnectSubmitV1: async (tonConnectPaymentSubmitBodyDto: TonConnectPaymentSubmitBodyDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tonConnectPaymentSubmitBodyDto' is not null or undefined
+            assertParamExists('tonConnectSubmitV1', 'tonConnectPaymentSubmitBodyDto', tonConnectPaymentSubmitBodyDto)
+            const localVarPath = `/method/pay-system/tonconnect/submit`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(tonConnectPaymentSubmitBodyDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create TRON USDT deposit payment intent
+         * @param {TronPaymentIntentV1LanguageEnum} language Current language
+         * @param {number} paymentId Payment id
+         * @param {TronPaymentIntentV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tronPaymentIntentV1: async (language: TronPaymentIntentV1LanguageEnum, paymentId: number, v?: TronPaymentIntentV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('tronPaymentIntentV1', 'language', language)
+            // verify required parameter 'paymentId' is not null or undefined
+            assertParamExists('tronPaymentIntentV1', 'paymentId', paymentId)
+            const localVarPath = `/method/pay-system/tron/intent`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (paymentId !== undefined) {
+                localVarQueryParameter['payment_id'] = paymentId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get TRON USDT payment status
+         * @param {TronPaymentStatusV1LanguageEnum} language Current language
+         * @param {number} paymentId Payment id
+         * @param {TronPaymentStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tronPaymentStatusV1: async (language: TronPaymentStatusV1LanguageEnum, paymentId: number, v?: TronPaymentStatusV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('tronPaymentStatusV1', 'language', language)
+            // verify required parameter 'paymentId' is not null or undefined
+            assertParamExists('tronPaymentStatusV1', 'paymentId', paymentId)
+            const localVarPath = `/method/pay-system/tron/status`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (paymentId !== undefined) {
+                localVarQueryParameter['payment_id'] = paymentId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Submit TRON USDT transaction hash (disabled)
+         * @param {TronPaymentSubmitV1LanguageEnum} language Current language
+         * @param {TronPaymentSubmitBodyDto} tronPaymentSubmitBodyDto 
+         * @param {TronPaymentSubmitV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tronPaymentSubmitV1: async (language: TronPaymentSubmitV1LanguageEnum, tronPaymentSubmitBodyDto: TronPaymentSubmitBodyDto, v?: TronPaymentSubmitV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('tronPaymentSubmitV1', 'language', language)
+            // verify required parameter 'tronPaymentSubmitBodyDto' is not null or undefined
+            assertParamExists('tronPaymentSubmitV1', 'tronPaymentSubmitBodyDto', tronPaymentSubmitBodyDto)
+            const localVarPath = `/method/pay-system/tron/submit`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:write"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(tronPaymentSubmitBodyDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create WalletConnect payment intent
+         * @param {number} paymentId Payment id
+         * @param {string} payerAddress Connected wallet address / EVM payer
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        walletConnectIntentV1: async (paymentId: number, payerAddress: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'paymentId' is not null or undefined
+            assertParamExists('walletConnectIntentV1', 'paymentId', paymentId)
+            // verify required parameter 'payerAddress' is not null or undefined
+            assertParamExists('walletConnectIntentV1', 'payerAddress', payerAddress)
+            const localVarPath = `/method/pay-system/walletconnect/intent`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
+            if (paymentId !== undefined) {
+                localVarQueryParameter['payment_id'] = paymentId;
+            }
+
+            if (payerAddress !== undefined) {
+                localVarQueryParameter['payer_address'] = payerAddress;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get WalletConnect payment verification status
+         * @param {WalletConnectStatusV1LanguageEnum} language Current language
+         * @param {number} paymentId Payment id
+         * @param {WalletConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        walletConnectStatusV1: async (language: WalletConnectStatusV1LanguageEnum, paymentId: number, v?: WalletConnectStatusV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('walletConnectStatusV1', 'language', language)
+            // verify required parameter 'paymentId' is not null or undefined
+            assertParamExists('walletConnectStatusV1', 'paymentId', paymentId)
+            const localVarPath = `/method/pay-system/walletconnect/status`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (paymentId !== undefined) {
+                localVarQueryParameter['payment_id'] = paymentId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Submit WalletConnect payment transaction hash
+         * @param {WalletConnectPaymentSubmitBodyDto} walletConnectPaymentSubmitBodyDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        walletConnectSubmitV1: async (walletConnectPaymentSubmitBodyDto: WalletConnectPaymentSubmitBodyDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'walletConnectPaymentSubmitBodyDto' is not null or undefined
+            assertParamExists('walletConnectSubmitV1', 'walletConnectPaymentSubmitBodyDto', walletConnectPaymentSubmitBodyDto)
+            const localVarPath = `/method/pay-system/walletconnect/submit`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(walletConnectPaymentSubmitBodyDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -281,6 +737,135 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['PaySystemApi.paySystemListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @summary Create TonConnect payment intent
+         * @param {number} paymentId Payment id
+         * @param {string} payerAddress Connected TON wallet address / payer
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async tonConnectIntentV1(paymentId: number, payerAddress: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TonConnectPaymentIntentDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.tonConnectIntentV1(paymentId, payerAddress, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaySystemApi.tonConnectIntentV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get TonConnect payment verification status
+         * @param {TonConnectStatusV1LanguageEnum} language Current language
+         * @param {number} paymentId Payment id
+         * @param {TonConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async tonConnectStatusV1(language: TonConnectStatusV1LanguageEnum, paymentId: number, v?: TonConnectStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TonConnectPaymentStatusDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.tonConnectStatusV1(language, paymentId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaySystemApi.tonConnectStatusV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Submit TonConnect payment transaction
+         * @param {TonConnectPaymentSubmitBodyDto} tonConnectPaymentSubmitBodyDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async tonConnectSubmitV1(tonConnectPaymentSubmitBodyDto: TonConnectPaymentSubmitBodyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TonConnectPaymentStatusDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.tonConnectSubmitV1(tonConnectPaymentSubmitBodyDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaySystemApi.tonConnectSubmitV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Create TRON USDT deposit payment intent
+         * @param {TronPaymentIntentV1LanguageEnum} language Current language
+         * @param {number} paymentId Payment id
+         * @param {TronPaymentIntentV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async tronPaymentIntentV1(language: TronPaymentIntentV1LanguageEnum, paymentId: number, v?: TronPaymentIntentV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TronPaymentIntentDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.tronPaymentIntentV1(language, paymentId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaySystemApi.tronPaymentIntentV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get TRON USDT payment status
+         * @param {TronPaymentStatusV1LanguageEnum} language Current language
+         * @param {number} paymentId Payment id
+         * @param {TronPaymentStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async tronPaymentStatusV1(language: TronPaymentStatusV1LanguageEnum, paymentId: number, v?: TronPaymentStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TronPaymentStatusDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.tronPaymentStatusV1(language, paymentId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaySystemApi.tronPaymentStatusV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Submit TRON USDT transaction hash (disabled)
+         * @param {TronPaymentSubmitV1LanguageEnum} language Current language
+         * @param {TronPaymentSubmitBodyDto} tronPaymentSubmitBodyDto 
+         * @param {TronPaymentSubmitV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async tronPaymentSubmitV1(language: TronPaymentSubmitV1LanguageEnum, tronPaymentSubmitBodyDto: TronPaymentSubmitBodyDto, v?: TronPaymentSubmitV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.tronPaymentSubmitV1(language, tronPaymentSubmitBodyDto, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaySystemApi.tronPaymentSubmitV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Create WalletConnect payment intent
+         * @param {number} paymentId Payment id
+         * @param {string} payerAddress Connected wallet address / EVM payer
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async walletConnectIntentV1(paymentId: number, payerAddress: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletConnectPaymentIntentDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.walletConnectIntentV1(paymentId, payerAddress, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaySystemApi.walletConnectIntentV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get WalletConnect payment verification status
+         * @param {WalletConnectStatusV1LanguageEnum} language Current language
+         * @param {number} paymentId Payment id
+         * @param {WalletConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async walletConnectStatusV1(language: WalletConnectStatusV1LanguageEnum, paymentId: number, v?: WalletConnectStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletConnectPaymentStatusDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.walletConnectStatusV1(language, paymentId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaySystemApi.walletConnectStatusV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Submit WalletConnect payment transaction hash
+         * @param {WalletConnectPaymentSubmitBodyDto} walletConnectPaymentSubmitBodyDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async walletConnectSubmitV1(walletConnectPaymentSubmitBodyDto: WalletConnectPaymentSubmitBodyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletConnectPaymentStatusDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.walletConnectSubmitV1(walletConnectPaymentSubmitBodyDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaySystemApi.walletConnectSubmitV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -330,6 +915,96 @@ export const PaySystemApiFactory = function (configuration?: Configuration, base
         paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<ListOfPaySystemListResponse> {
             return localVarFp.paySystemListV1(options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @summary Create TonConnect payment intent
+         * @param {PaySystemApiTonConnectIntentV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tonConnectIntentV1(requestParameters: PaySystemApiTonConnectIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentIntentDto> {
+            return localVarFp.tonConnectIntentV1(requestParameters.payment_id, requestParameters.payer_address, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get TonConnect payment verification status
+         * @param {PaySystemApiTonConnectStatusV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tonConnectStatusV1(requestParameters: PaySystemApiTonConnectStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentStatusDto> {
+            return localVarFp.tonConnectStatusV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Submit TonConnect payment transaction
+         * @param {PaySystemApiTonConnectSubmitV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tonConnectSubmitV1(requestParameters: PaySystemApiTonConnectSubmitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentStatusDto> {
+            return localVarFp.tonConnectSubmitV1(requestParameters.TonConnectPaymentSubmitBodyDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Create TRON USDT deposit payment intent
+         * @param {PaySystemApiTronPaymentIntentV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tronPaymentIntentV1(requestParameters: PaySystemApiTronPaymentIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TronPaymentIntentDto> {
+            return localVarFp.tronPaymentIntentV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get TRON USDT payment status
+         * @param {PaySystemApiTronPaymentStatusV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tronPaymentStatusV1(requestParameters: PaySystemApiTronPaymentStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TronPaymentStatusDto> {
+            return localVarFp.tronPaymentStatusV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Submit TRON USDT transaction hash (disabled)
+         * @param {PaySystemApiTronPaymentSubmitV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tronPaymentSubmitV1(requestParameters: PaySystemApiTronPaymentSubmitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.tronPaymentSubmitV1(requestParameters.language, requestParameters.TronPaymentSubmitBodyDto, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Create WalletConnect payment intent
+         * @param {PaySystemApiWalletConnectIntentV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        walletConnectIntentV1(requestParameters: PaySystemApiWalletConnectIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<WalletConnectPaymentIntentDto> {
+            return localVarFp.walletConnectIntentV1(requestParameters.payment_id, requestParameters.payer_address, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get WalletConnect payment verification status
+         * @param {PaySystemApiWalletConnectStatusV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        walletConnectStatusV1(requestParameters: PaySystemApiWalletConnectStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<WalletConnectPaymentStatusDto> {
+            return localVarFp.walletConnectStatusV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Submit WalletConnect payment transaction hash
+         * @param {PaySystemApiWalletConnectSubmitV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        walletConnectSubmitV1(requestParameters: PaySystemApiWalletConnectSubmitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<WalletConnectPaymentStatusDto> {
+            return localVarFp.walletConnectSubmitV1(requestParameters.WalletConnectPaymentSubmitBodyDto, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -377,6 +1052,96 @@ export interface PaySystemApiInterface {
      * @memberof PaySystemApiInterface
      */
     paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<ListOfPaySystemListResponse>;
+
+    /**
+     * 
+     * @summary Create TonConnect payment intent
+     * @param {PaySystemApiTonConnectIntentV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
+     */
+    tonConnectIntentV1(requestParameters: PaySystemApiTonConnectIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentIntentDto>;
+
+    /**
+     * 
+     * @summary Get TonConnect payment verification status
+     * @param {PaySystemApiTonConnectStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
+     */
+    tonConnectStatusV1(requestParameters: PaySystemApiTonConnectStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentStatusDto>;
+
+    /**
+     * 
+     * @summary Submit TonConnect payment transaction
+     * @param {PaySystemApiTonConnectSubmitV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
+     */
+    tonConnectSubmitV1(requestParameters: PaySystemApiTonConnectSubmitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentStatusDto>;
+
+    /**
+     * 
+     * @summary Create TRON USDT deposit payment intent
+     * @param {PaySystemApiTronPaymentIntentV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
+     */
+    tronPaymentIntentV1(requestParameters: PaySystemApiTronPaymentIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TronPaymentIntentDto>;
+
+    /**
+     * 
+     * @summary Get TRON USDT payment status
+     * @param {PaySystemApiTronPaymentStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
+     */
+    tronPaymentStatusV1(requestParameters: PaySystemApiTronPaymentStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TronPaymentStatusDto>;
+
+    /**
+     * 
+     * @summary Submit TRON USDT transaction hash (disabled)
+     * @param {PaySystemApiTronPaymentSubmitV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
+     */
+    tronPaymentSubmitV1(requestParameters: PaySystemApiTronPaymentSubmitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Create WalletConnect payment intent
+     * @param {PaySystemApiWalletConnectIntentV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
+     */
+    walletConnectIntentV1(requestParameters: PaySystemApiWalletConnectIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<WalletConnectPaymentIntentDto>;
+
+    /**
+     * 
+     * @summary Get WalletConnect payment verification status
+     * @param {PaySystemApiWalletConnectStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
+     */
+    walletConnectStatusV1(requestParameters: PaySystemApiWalletConnectStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<WalletConnectPaymentStatusDto>;
+
+    /**
+     * 
+     * @summary Submit WalletConnect payment transaction hash
+     * @param {PaySystemApiWalletConnectSubmitV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApiInterface
+     */
+    walletConnectSubmitV1(requestParameters: PaySystemApiWalletConnectSubmitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<WalletConnectPaymentStatusDto>;
 
 }
 
@@ -465,6 +1230,216 @@ export interface PaySystemApiPaySystemCreateUnitpayV1Request {
 }
 
 /**
+ * Request parameters for tonConnectIntentV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiTonConnectIntentV1Request
+ */
+export interface PaySystemApiTonConnectIntentV1Request {
+    /**
+     * Payment id
+     * @type {number}
+     * @memberof PaySystemApiTonConnectIntentV1
+     */
+    readonly payment_id: number
+
+    /**
+     * Connected TON wallet address / payer
+     * @type {string}
+     * @memberof PaySystemApiTonConnectIntentV1
+     */
+    readonly payer_address: string
+}
+
+/**
+ * Request parameters for tonConnectStatusV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiTonConnectStatusV1Request
+ */
+export interface PaySystemApiTonConnectStatusV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PaySystemApiTonConnectStatusV1
+     */
+    readonly language: TonConnectStatusV1LanguageEnum
+
+    /**
+     * Payment id
+     * @type {number}
+     * @memberof PaySystemApiTonConnectStatusV1
+     */
+    readonly payment_id: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof PaySystemApiTonConnectStatusV1
+     */
+    readonly v?: TonConnectStatusV1VEnum
+}
+
+/**
+ * Request parameters for tonConnectSubmitV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiTonConnectSubmitV1Request
+ */
+export interface PaySystemApiTonConnectSubmitV1Request {
+    /**
+     * 
+     * @type {TonConnectPaymentSubmitBodyDto}
+     * @memberof PaySystemApiTonConnectSubmitV1
+     */
+    readonly TonConnectPaymentSubmitBodyDto: TonConnectPaymentSubmitBodyDto
+}
+
+/**
+ * Request parameters for tronPaymentIntentV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiTronPaymentIntentV1Request
+ */
+export interface PaySystemApiTronPaymentIntentV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PaySystemApiTronPaymentIntentV1
+     */
+    readonly language: TronPaymentIntentV1LanguageEnum
+
+    /**
+     * Payment id
+     * @type {number}
+     * @memberof PaySystemApiTronPaymentIntentV1
+     */
+    readonly payment_id: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof PaySystemApiTronPaymentIntentV1
+     */
+    readonly v?: TronPaymentIntentV1VEnum
+}
+
+/**
+ * Request parameters for tronPaymentStatusV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiTronPaymentStatusV1Request
+ */
+export interface PaySystemApiTronPaymentStatusV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PaySystemApiTronPaymentStatusV1
+     */
+    readonly language: TronPaymentStatusV1LanguageEnum
+
+    /**
+     * Payment id
+     * @type {number}
+     * @memberof PaySystemApiTronPaymentStatusV1
+     */
+    readonly payment_id: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof PaySystemApiTronPaymentStatusV1
+     */
+    readonly v?: TronPaymentStatusV1VEnum
+}
+
+/**
+ * Request parameters for tronPaymentSubmitV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiTronPaymentSubmitV1Request
+ */
+export interface PaySystemApiTronPaymentSubmitV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PaySystemApiTronPaymentSubmitV1
+     */
+    readonly language: TronPaymentSubmitV1LanguageEnum
+
+    /**
+     * 
+     * @type {TronPaymentSubmitBodyDto}
+     * @memberof PaySystemApiTronPaymentSubmitV1
+     */
+    readonly TronPaymentSubmitBodyDto: TronPaymentSubmitBodyDto
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof PaySystemApiTronPaymentSubmitV1
+     */
+    readonly v?: TronPaymentSubmitV1VEnum
+}
+
+/**
+ * Request parameters for walletConnectIntentV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiWalletConnectIntentV1Request
+ */
+export interface PaySystemApiWalletConnectIntentV1Request {
+    /**
+     * Payment id
+     * @type {number}
+     * @memberof PaySystemApiWalletConnectIntentV1
+     */
+    readonly payment_id: number
+
+    /**
+     * Connected wallet address / EVM payer
+     * @type {string}
+     * @memberof PaySystemApiWalletConnectIntentV1
+     */
+    readonly payer_address: string
+}
+
+/**
+ * Request parameters for walletConnectStatusV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiWalletConnectStatusV1Request
+ */
+export interface PaySystemApiWalletConnectStatusV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PaySystemApiWalletConnectStatusV1
+     */
+    readonly language: WalletConnectStatusV1LanguageEnum
+
+    /**
+     * Payment id
+     * @type {number}
+     * @memberof PaySystemApiWalletConnectStatusV1
+     */
+    readonly payment_id: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof PaySystemApiWalletConnectStatusV1
+     */
+    readonly v?: WalletConnectStatusV1VEnum
+}
+
+/**
+ * Request parameters for walletConnectSubmitV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiWalletConnectSubmitV1Request
+ */
+export interface PaySystemApiWalletConnectSubmitV1Request {
+    /**
+     * 
+     * @type {WalletConnectPaymentSubmitBodyDto}
+     * @memberof PaySystemApiWalletConnectSubmitV1
+     */
+    readonly WalletConnectPaymentSubmitBodyDto: WalletConnectPaymentSubmitBodyDto
+}
+
+/**
  * PaySystemApi - object-oriented interface
  * @export
  * @class PaySystemApi
@@ -517,6 +1492,114 @@ export class PaySystemApi extends BaseAPI implements PaySystemApiInterface {
     public paySystemListV1(options?: RawAxiosRequestConfig) {
         return PaySystemApiFp(this.configuration).paySystemListV1(options).then((request) => request(this.axios, this.basePath));
     }
+
+    /**
+     * 
+     * @summary Create TonConnect payment intent
+     * @param {PaySystemApiTonConnectIntentV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApi
+     */
+    public tonConnectIntentV1(requestParameters: PaySystemApiTonConnectIntentV1Request, options?: RawAxiosRequestConfig) {
+        return PaySystemApiFp(this.configuration).tonConnectIntentV1(requestParameters.payment_id, requestParameters.payer_address, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get TonConnect payment verification status
+     * @param {PaySystemApiTonConnectStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApi
+     */
+    public tonConnectStatusV1(requestParameters: PaySystemApiTonConnectStatusV1Request, options?: RawAxiosRequestConfig) {
+        return PaySystemApiFp(this.configuration).tonConnectStatusV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Submit TonConnect payment transaction
+     * @param {PaySystemApiTonConnectSubmitV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApi
+     */
+    public tonConnectSubmitV1(requestParameters: PaySystemApiTonConnectSubmitV1Request, options?: RawAxiosRequestConfig) {
+        return PaySystemApiFp(this.configuration).tonConnectSubmitV1(requestParameters.TonConnectPaymentSubmitBodyDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Create TRON USDT deposit payment intent
+     * @param {PaySystemApiTronPaymentIntentV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApi
+     */
+    public tronPaymentIntentV1(requestParameters: PaySystemApiTronPaymentIntentV1Request, options?: RawAxiosRequestConfig) {
+        return PaySystemApiFp(this.configuration).tronPaymentIntentV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get TRON USDT payment status
+     * @param {PaySystemApiTronPaymentStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApi
+     */
+    public tronPaymentStatusV1(requestParameters: PaySystemApiTronPaymentStatusV1Request, options?: RawAxiosRequestConfig) {
+        return PaySystemApiFp(this.configuration).tronPaymentStatusV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Submit TRON USDT transaction hash (disabled)
+     * @param {PaySystemApiTronPaymentSubmitV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApi
+     */
+    public tronPaymentSubmitV1(requestParameters: PaySystemApiTronPaymentSubmitV1Request, options?: RawAxiosRequestConfig) {
+        return PaySystemApiFp(this.configuration).tronPaymentSubmitV1(requestParameters.language, requestParameters.TronPaymentSubmitBodyDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Create WalletConnect payment intent
+     * @param {PaySystemApiWalletConnectIntentV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApi
+     */
+    public walletConnectIntentV1(requestParameters: PaySystemApiWalletConnectIntentV1Request, options?: RawAxiosRequestConfig) {
+        return PaySystemApiFp(this.configuration).walletConnectIntentV1(requestParameters.payment_id, requestParameters.payer_address, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get WalletConnect payment verification status
+     * @param {PaySystemApiWalletConnectStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApi
+     */
+    public walletConnectStatusV1(requestParameters: PaySystemApiWalletConnectStatusV1Request, options?: RawAxiosRequestConfig) {
+        return PaySystemApiFp(this.configuration).walletConnectStatusV1(requestParameters.language, requestParameters.payment_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Submit WalletConnect payment transaction hash
+     * @param {PaySystemApiWalletConnectSubmitV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaySystemApi
+     */
+    public walletConnectSubmitV1(requestParameters: PaySystemApiWalletConnectSubmitV1Request, options?: RawAxiosRequestConfig) {
+        return PaySystemApiFp(this.configuration).walletConnectSubmitV1(requestParameters.WalletConnectPaymentSubmitBodyDto, options).then((request) => request(this.axios, this.basePath));
+    }
 }
 
 /**
@@ -567,3 +1650,83 @@ export const PaySystemCreateUnitpayV1VEnum = {
     _1: '1'
 } as const;
 export type PaySystemCreateUnitpayV1VEnum = typeof PaySystemCreateUnitpayV1VEnum[keyof typeof PaySystemCreateUnitpayV1VEnum];
+/**
+ * @export
+ */
+export const TonConnectStatusV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type TonConnectStatusV1LanguageEnum = typeof TonConnectStatusV1LanguageEnum[keyof typeof TonConnectStatusV1LanguageEnum];
+/**
+ * @export
+ */
+export const TonConnectStatusV1VEnum = {
+    _1: '1'
+} as const;
+export type TonConnectStatusV1VEnum = typeof TonConnectStatusV1VEnum[keyof typeof TonConnectStatusV1VEnum];
+/**
+ * @export
+ */
+export const TronPaymentIntentV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type TronPaymentIntentV1LanguageEnum = typeof TronPaymentIntentV1LanguageEnum[keyof typeof TronPaymentIntentV1LanguageEnum];
+/**
+ * @export
+ */
+export const TronPaymentIntentV1VEnum = {
+    _1: '1'
+} as const;
+export type TronPaymentIntentV1VEnum = typeof TronPaymentIntentV1VEnum[keyof typeof TronPaymentIntentV1VEnum];
+/**
+ * @export
+ */
+export const TronPaymentStatusV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type TronPaymentStatusV1LanguageEnum = typeof TronPaymentStatusV1LanguageEnum[keyof typeof TronPaymentStatusV1LanguageEnum];
+/**
+ * @export
+ */
+export const TronPaymentStatusV1VEnum = {
+    _1: '1'
+} as const;
+export type TronPaymentStatusV1VEnum = typeof TronPaymentStatusV1VEnum[keyof typeof TronPaymentStatusV1VEnum];
+/**
+ * @export
+ */
+export const TronPaymentSubmitV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type TronPaymentSubmitV1LanguageEnum = typeof TronPaymentSubmitV1LanguageEnum[keyof typeof TronPaymentSubmitV1LanguageEnum];
+/**
+ * @export
+ */
+export const TronPaymentSubmitV1VEnum = {
+    _1: '1'
+} as const;
+export type TronPaymentSubmitV1VEnum = typeof TronPaymentSubmitV1VEnum[keyof typeof TronPaymentSubmitV1VEnum];
+/**
+ * @export
+ */
+export const WalletConnectStatusV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type WalletConnectStatusV1LanguageEnum = typeof WalletConnectStatusV1LanguageEnum[keyof typeof WalletConnectStatusV1LanguageEnum];
+/**
+ * @export
+ */
+export const WalletConnectStatusV1VEnum = {
+    _1: '1'
+} as const;
+export type WalletConnectStatusV1VEnum = typeof WalletConnectStatusV1VEnum[keyof typeof WalletConnectStatusV1VEnum];

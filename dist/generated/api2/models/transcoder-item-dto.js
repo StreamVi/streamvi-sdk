@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TranscoderItemDtoLanguageEnum = exports.TranscoderItemDtoVEnum = void 0;
 exports.TranscoderItemDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.TranscoderItemDtoLanguageEnum = {
     Ru: 'ru',

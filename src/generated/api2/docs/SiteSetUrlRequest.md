@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **language** | **string** | Current language | [default to LanguageEnum_En]
 **project_id** | **number** | Project id | [default to undefined]
 **channel_id** | **number** | Channel id | [default to undefined]
-**url** | **string** |  | [default to 'Rtmp link']
+**url** | **string** | Stream link | [default to undefined]
 
 ## Example
 

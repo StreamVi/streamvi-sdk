@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SiteUpdateOptionsYoutubeRequestLangEnum = exports.SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum = exports.SiteUpdateOptionsYoutubeRequestLatencyEnum = exports.SiteUpdateOptionsYoutubeRequestAudienceEnum = exports.SiteUpdateOptionsYoutubeRequestLanguageEnum = exports.SiteUpdateOptionsYoutubeRequestVEnum = void 0;
 exports.SiteUpdateOptionsYoutubeRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.SiteUpdateOptionsYoutubeRequestLanguageEnum = {
     Ru: 'ru',

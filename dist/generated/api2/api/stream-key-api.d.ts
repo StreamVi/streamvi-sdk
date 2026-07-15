@@ -130,7 +130,7 @@ export interface StreamKeyApiStreamKeysKeyV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof StreamKeyApiStreamKeysKeyV1
      */
     readonly v?: StreamKeysKeyV1VEnum;
@@ -163,7 +163,7 @@ export declare class StreamKeyApi extends BaseAPI implements StreamKeyApiInterfa
      * @throws {RequiredError}
      * @memberof StreamKeyApi
      */
-    streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetStreamKeyResponse, any>>;
+    streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetStreamKeyResponse, any, {}>>;
     /**
      *
      * @summary Update record
@@ -172,7 +172,7 @@ export declare class StreamKeyApi extends BaseAPI implements StreamKeyApiInterfa
      * @throws {RequiredError}
      * @memberof StreamKeyApi
      */
-    streamKeysUpdateRecordV1(requestParameters: StreamKeyApiStreamKeysUpdateRecordV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    streamKeysUpdateRecordV1(requestParameters: StreamKeyApiStreamKeysUpdateRecordV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
 }
 /**
  * @export
@@ -188,8 +188,6 @@ export type StreamKeysKeyV1LanguageEnum = typeof StreamKeysKeyV1LanguageEnum[key
  */
 export declare const StreamKeysKeyV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type StreamKeysKeyV1VEnum = typeof StreamKeysKeyV1VEnum[keyof typeof StreamKeysKeyV1VEnum];
 //# sourceMappingURL=stream-key-api.d.ts.map

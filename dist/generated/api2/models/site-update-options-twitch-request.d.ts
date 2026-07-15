@@ -65,10 +65,10 @@ export interface SiteUpdateOptionsTwitchRequest {
     'lang'?: SiteUpdateOptionsTwitchRequestLangEnum;
     /**
      *
-     * @type {Set<string>}
+     * @type {Array<string>}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'tags'?: Set<string>;
+    'tags'?: Array<string>;
     /**
      * domain
      * @type {string}
@@ -78,8 +78,6 @@ export interface SiteUpdateOptionsTwitchRequest {
 }
 export declare const SiteUpdateOptionsTwitchRequestVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type SiteUpdateOptionsTwitchRequestVEnum = typeof SiteUpdateOptionsTwitchRequestVEnum[keyof typeof SiteUpdateOptionsTwitchRequestVEnum];
 export declare const SiteUpdateOptionsTwitchRequestLanguageEnum: {

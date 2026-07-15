@@ -1,0 +1,1 @@
+{"version":3,"file":"centrifugo-stream-start-payload.d.ts","sourceRoot":"","sources":["../../../../src/generated/api2/models/centrifugo-stream-start-payload.ts"],"names":[],"mappings":"AAEA;;;;;;;;;;GAUG;AAIH;;;;GAIG;AACH,MAAM,WAAW,4BAA4B;IACzC;;;;OAIG;IACH,cAAc,EAAE,MAAM,CAAC;IACvB;;;;OAIG;IACH,WAAW,EAAE,MAAM,CAAC;IACpB;;;;OAIG;IACH,KAAK,EAAE,MAAM,CAAC;CACjB"}

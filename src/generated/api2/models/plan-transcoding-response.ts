@@ -98,9 +98,7 @@ export interface PlanTranscodingResponse {
 }
 
 export const PlanTranscodingResponseTypeEnum = {
-    Free: 'free',
     PaidMonth: 'paid_month',
-    PaidMinute: 'paid_minute',
     Custom: 'custom'
 } as const;
 

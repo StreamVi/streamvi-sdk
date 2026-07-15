@@ -4,34 +4,91 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**addChannelMethodAddBoostyV1**(#addchannelmethodaddboostyv1) | **POST** /method/channel/add/boosty | Add boosty channel|
-|**addChannelMethodAddCustomV1**(#addchannelmethodaddcustomv1) | **POST** /method/channel/add/custom | Add custom channel|
-|**addChannelMethodAddDouyuV1**(#addchannelmethodadddouyuv1) | **POST** /method/channel/add/douyu | Add douyu channel|
-|**addChannelMethodAddFbV1**(#addchannelmethodaddfbv1) | **POST** /method/channel/add/fb | Add fb channel|
-|**addChannelMethodAddFc2LiveV1**(#addchannelmethodaddfc2livev1) | **POST** /method/channel/add/fc2Live | Add fc2Live channel|
-|**addChannelMethodAddGoodgameV1**(#addchannelmethodaddgoodgamev1) | **POST** /method/channel/add/goodgame | Add goodgame channel|
-|**addChannelMethodAddHuyaV1**(#addchannelmethodaddhuyav1) | **POST** /method/channel/add/huya | Add huya channel|
-|**addChannelMethodAddInstagramV1**(#addchannelmethodaddinstagramv1) | **POST** /method/channel/add/instagram | Add instagram channel|
-|**addChannelMethodAddKickV1**(#addchannelmethodaddkickv1) | **POST** /method/channel/add/kick | Add kick channel|
-|**addChannelMethodAddLinkedinV1**(#addchannelmethodaddlinkedinv1) | **POST** /method/channel/add/linkedin | Add linkedin channel|
-|**addChannelMethodAddNavertvV1**(#addchannelmethodaddnavertvv1) | **POST** /method/channel/add/navertv | Add navertv channel|
-|**addChannelMethodAddNimotvV1**(#addchannelmethodaddnimotvv1) | **POST** /method/channel/add/nimotv | Add nimotv channel|
-|**addChannelMethodAddNonoliveV1**(#addchannelmethodaddnonolivev1) | **POST** /method/channel/add/nonolive | Add nonolive channel|
-|**addChannelMethodAddOkV1**(#addchannelmethodaddokv1) | **POST** /method/channel/add/ok | Add ok channel|
-|**addChannelMethodAddPlvideoV1**(#addchannelmethodaddplvideov1) | **POST** /method/channel/add/plvideo | Add plvideo channel|
-|**addChannelMethodAddRutubeV1**(#addchannelmethodaddrutubev1) | **POST** /method/channel/add/rutube | Add rutube channel|
-|**addChannelMethodAddSteamV1**(#addchannelmethodaddsteamv1) | **POST** /method/channel/add/steam | Add steam channel|
-|**addChannelMethodAddTelegramV1**(#addchannelmethodaddtelegramv1) | **POST** /method/channel/add/telegram | Add telegram channel|
-|**addChannelMethodAddTiktokV1**(#addchannelmethodaddtiktokv1) | **POST** /method/channel/add/tiktok | Add tiktok channel|
-|**addChannelMethodAddVkV1**(#addchannelmethodaddvkv1) | **POST** /method/channel/add/vk | Add vk channel|
-|**addChannelMethodAddVliveV1**(#addchannelmethodaddvlivev1) | **POST** /method/channel/add/vlive | Add vlive channel|
-|**addChannelMethodAddZhanqiTvV1**(#addchannelmethodaddzhanqitvv1) | **POST** /method/channel/add/zhanqitv | Add zhanqitv channel|
-|**channelDeleteChannelV1**(#channeldeletechannelv1) | **POST** /method/channel/delete | Delete channel|
-|**channelGetChannelV1**(#channelgetchannelv1) | **GET** /method/channel/get | Get channel by id|
-|**channelSetDelayV1**(#channelsetdelayv1) | **GET** /method/channel/set-delay | Set delay - test point|
-|**channelShortChannelListV1**(#channelshortchannellistv1) | **GET** /method/channel/short | Minimal channel list|
-|**methodSearchV1**(#methodsearchv1) | **GET** /method/channel/search | Search channel list|
-|**methodSetStatusV1**(#methodsetstatusv1) | **POST** /method/channel/set-status | Get live status|
+|[**addChannelMethodAddBizonV1**](#addchannelmethodaddbizonv1) | **POST** /method/channel/add/bizon | Add bizon channel|
+|[**addChannelMethodAddBoostyV1**](#addchannelmethodaddboostyv1) | **POST** /method/channel/add/boosty | Add boosty channel|
+|[**addChannelMethodAddCustomV1**](#addchannelmethodaddcustomv1) | **POST** /method/channel/add/custom | Add custom channel|
+|[**addChannelMethodAddDouyuV1**](#addchannelmethodadddouyuv1) | **POST** /method/channel/add/douyu | Add douyu channel|
+|[**addChannelMethodAddFbV1**](#addchannelmethodaddfbv1) | **POST** /method/channel/add/fb | Add fb channel|
+|[**addChannelMethodAddFc2LiveV1**](#addchannelmethodaddfc2livev1) | **POST** /method/channel/add/fc2Live | Add fc2Live channel|
+|[**addChannelMethodAddGetcourseV1**](#addchannelmethodaddgetcoursev1) | **POST** /method/channel/add/getcourse | Add getcourse channel|
+|[**addChannelMethodAddGoodgameV1**](#addchannelmethodaddgoodgamev1) | **POST** /method/channel/add/goodgame | Add goodgame channel|
+|[**addChannelMethodAddHuyaV1**](#addchannelmethodaddhuyav1) | **POST** /method/channel/add/huya | Add huya channel|
+|[**addChannelMethodAddInstagramV1**](#addchannelmethodaddinstagramv1) | **POST** /method/channel/add/instagram | Add instagram channel|
+|[**addChannelMethodAddKickV1**](#addchannelmethodaddkickv1) | **POST** /method/channel/add/kick | Add kick channel|
+|[**addChannelMethodAddKinescopeV1**](#addchannelmethodaddkinescopev1) | **POST** /method/channel/add/kinescope | Add kinescope channel|
+|[**addChannelMethodAddLinkedinV1**](#addchannelmethodaddlinkedinv1) | **POST** /method/channel/add/linkedin | Add linkedin channel|
+|[**addChannelMethodAddNavertvV1**](#addchannelmethodaddnavertvv1) | **POST** /method/channel/add/navertv | Add navertv channel|
+|[**addChannelMethodAddNimotvV1**](#addchannelmethodaddnimotvv1) | **POST** /method/channel/add/nimotv | Add nimotv channel|
+|[**addChannelMethodAddNonoliveV1**](#addchannelmethodaddnonolivev1) | **POST** /method/channel/add/nonolive | Add nonolive channel|
+|[**addChannelMethodAddOkV1**](#addchannelmethodaddokv1) | **POST** /method/channel/add/ok | Add ok channel|
+|[**addChannelMethodAddPlvideoV1**](#addchannelmethodaddplvideov1) | **POST** /method/channel/add/plvideo | Add plvideo channel|
+|[**addChannelMethodAddRutubeV1**](#addchannelmethodaddrutubev1) | **POST** /method/channel/add/rutube | Add rutube channel|
+|[**addChannelMethodAddSrtV1**](#addchannelmethodaddsrtv1) | **POST** /method/channel/add/srt | Add srt channel|
+|[**addChannelMethodAddSteamV1**](#addchannelmethodaddsteamv1) | **POST** /method/channel/add/steam | Add steam channel|
+|[**addChannelMethodAddTachidV1**](#addchannelmethodaddtachidv1) | **POST** /method/channel/add/tachid | Add tach channel|
+|[**addChannelMethodAddTelegramV1**](#addchannelmethodaddtelegramv1) | **POST** /method/channel/add/telegram | Add telegram channel|
+|[**addChannelMethodAddTiktokV1**](#addchannelmethodaddtiktokv1) | **POST** /method/channel/add/tiktok | Add tiktok channel|
+|[**addChannelMethodAddVkV1**](#addchannelmethodaddvkv1) | **POST** /method/channel/add/vk | Add vk channel|
+|[**addChannelMethodAddVliveV1**](#addchannelmethodaddvlivev1) | **POST** /method/channel/add/vlive | Add vlive channel|
+|[**addChannelMethodAddZhanqiTvV1**](#addchannelmethodaddzhanqitvv1) | **POST** /method/channel/add/zhanqitv | Add zhanqitv channel|
+|[**channelDeleteChannelV1**](#channeldeletechannelv1) | **POST** /method/channel/delete | Delete channel|
+|[**channelGetChannelV1**](#channelgetchannelv1) | **GET** /method/channel/get | Get channel by id|
+|[**channelSetDelayV1**](#channelsetdelayv1) | **GET** /method/channel/set-delay | Set delay - test point|
+|[**channelShortChannelListV1**](#channelshortchannellistv1) | **GET** /method/channel/short | Minimal channel list|
+|[**methodSearchV1**](#methodsearchv1) | **GET** /method/channel/search | Search channel list|
+|[**methodSetStatusV1**](#methodsetstatusv1) | **POST** /method/channel/set-status | Get live status|
+
+# **addChannelMethodAddBizonV1**
+> addChannelMethodAddBizonV1(bizonDto)
+
+
+### Example
+
+```typescript
+import {
+    ChannelApi,
+    Configuration,
+    BizonDto
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new ChannelApi(configuration);
+
+let bizonDto: BizonDto; //
+
+const { status, data } = await apiInstance.addChannelMethodAddBizonV1(
+    bizonDto
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **bizonDto** | **BizonDto**|  | |
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddBoostyV1**
 > addChannelMethodAddBoostyV1(boostyDto)
@@ -69,7 +126,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -121,7 +178,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -173,7 +230,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -225,7 +282,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -277,7 +334,59 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **addChannelMethodAddGetcourseV1**
+> addChannelMethodAddGetcourseV1(getcourseDto)
+
+
+### Example
+
+```typescript
+import {
+    ChannelApi,
+    Configuration,
+    GetcourseDto
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new ChannelApi(configuration);
+
+let getcourseDto: GetcourseDto; //
+
+const { status, data } = await apiInstance.addChannelMethodAddGetcourseV1(
+    getcourseDto
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **getcourseDto** | **GetcourseDto**|  | |
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -329,7 +438,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -381,7 +490,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -433,7 +542,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -485,7 +594,59 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **addChannelMethodAddKinescopeV1**
+> addChannelMethodAddKinescopeV1(kinescopeDto)
+
+
+### Example
+
+```typescript
+import {
+    ChannelApi,
+    Configuration,
+    KinescopeDto
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new ChannelApi(configuration);
+
+let kinescopeDto: KinescopeDto; //
+
+const { status, data } = await apiInstance.addChannelMethodAddKinescopeV1(
+    kinescopeDto
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **kinescopeDto** | **KinescopeDto**|  | |
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -537,7 +698,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -589,7 +750,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -641,7 +802,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -693,7 +854,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -745,7 +906,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -797,7 +958,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -849,7 +1010,59 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **addChannelMethodAddSrtV1**
+> addChannelMethodAddSrtV1(methodSrtDto)
+
+
+### Example
+
+```typescript
+import {
+    ChannelApi,
+    Configuration,
+    MethodSrtDto
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new ChannelApi(configuration);
+
+let methodSrtDto: MethodSrtDto; //
+
+const { status, data } = await apiInstance.addChannelMethodAddSrtV1(
+    methodSrtDto
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **methodSrtDto** | **MethodSrtDto**|  | |
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -901,7 +1114,59 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **addChannelMethodAddTachidV1**
+> addChannelMethodAddTachidV1(tachidDto)
+
+
+### Example
+
+```typescript
+import {
+    ChannelApi,
+    Configuration,
+    TachidDto
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new ChannelApi(configuration);
+
+let tachidDto: TachidDto; //
+
+const { status, data } = await apiInstance.addChannelMethodAddTachidV1(
+    tachidDto
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **tachidDto** | **TachidDto**|  | |
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -953,7 +1218,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1005,7 +1270,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1057,7 +1322,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1109,7 +1374,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1161,7 +1426,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1213,7 +1478,7 @@ const { status, data } = await apiInstance.channelDeleteChannelV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1261,10 +1526,10 @@ const { status, data } = await apiInstance.channelGetChannelV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **channelId** | **number** | Channel id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **channelId** | [**number**] | Channel id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -1273,7 +1538,7 @@ const { status, data } = await apiInstance.channelGetChannelV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1317,8 +1582,8 @@ const { status, data } = await apiInstance.channelSetDelayV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **channelId** | **number** |  | defaults to undefined|
-| **projectId** | **number** |  | defaults to undefined|
+| **channelId** | [**number**] |  | defaults to undefined|
+| **projectId** | [**number**] |  | defaults to undefined|
 
 
 ### Return type
@@ -1327,7 +1592,7 @@ const { status, data } = await apiInstance.channelSetDelayV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1373,9 +1638,9 @@ const { status, data } = await apiInstance.channelShortChannelListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -1384,7 +1649,7 @@ const { status, data } = await apiInstance.channelShortChannelListV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1440,14 +1705,14 @@ const { status, data } = await apiInstance.methodSearchV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **type** | **'all' | 'my' | 'available' | 'active'** |  | (optional) defaults to undefined|
-| **platform** | **string** | platform type | (optional) defaults to undefined|
-| **name** | **string** | name | (optional) defaults to undefined|
-| **limit** | **number** | Number of results | (optional) defaults to 30|
-| **offset** | **number** | Page offset number | (optional) defaults to 0|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **type** | [**&#39;all&#39; | &#39;my&#39; | &#39;available&#39; | &#39;active&#39;**]**Array<&#39;all&#39; &#124; &#39;my&#39; &#124; &#39;available&#39; &#124; &#39;active&#39;>** |  | (optional) defaults to undefined|
+| **platform** | [**string**] | platform type | (optional) defaults to undefined|
+| **name** | [**string**] | name | (optional) defaults to undefined|
+| **limit** | [**number**] | Number of results | (optional) defaults to 30|
+| **offset** | [**number**] | Page offset number | (optional) defaults to 0|
 
 
 ### Return type
@@ -1456,7 +1721,7 @@ const { status, data } = await apiInstance.methodSearchV1(
 
 ### Authorization
 
-[X-API-KEY](../README.md#X-API-KEY)
+[X-API-KEY](../README.md#X-API-KEY), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1508,7 +1773,7 @@ const { status, data } = await apiInstance.methodSetStatusV1(
 
 ### Authorization
 
-[X-API-KEY](../README.md#X-API-KEY)
+[X-API-KEY](../README.md#X-API-KEY), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

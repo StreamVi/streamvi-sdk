@@ -79,7 +79,8 @@ export type UserProject2ProjectResponseTypeEnum = typeof UserProject2ProjectResp
 export const UserProject2ProjectResponseAccessTypeEnum = {
     NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_2: 2
+    NUMBER_2: 2,
+    NUMBER_3: 3
 } as const;
 
 export type UserProject2ProjectResponseAccessTypeEnum = typeof UserProject2ProjectResponseAccessTypeEnum[keyof typeof UserProject2ProjectResponseAccessTypeEnum];

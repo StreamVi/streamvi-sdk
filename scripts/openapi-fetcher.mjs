@@ -53,8 +53,8 @@ async function loadEnvFiles() {
 await loadEnvFiles();
 
 const backendHost = argv[2];
-const userName = process.env.SWAGGER_USER || 'JD84hg78hHD784gfhIDH94g9';
-const password = process.env.SWAGGER_PASS || 'SDL84jgfpDJk4jlkmdbd63kg0eUY5i45mi';
+const userName = process.env.SWAGGER_USER;
+const password = process.env.SWAGGER_PASS;
 const pathName = '/method/apidoc-json';
 const url = backendHost.startsWith('http://localhost')
   ? `${backendHost}${pathName}`

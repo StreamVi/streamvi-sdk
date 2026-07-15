@@ -21,18 +21,18 @@ export interface PlanStorageForProject {
      * @type {PlanStorageItem}
      * @memberof PlanStorageForProject
      */
-    'before': PlanStorageItem;
+    'before'?: PlanStorageItem;
     /**
      * Current tariff restream
      * @type {PlanStorageItem}
      * @memberof PlanStorageForProject
      */
-    'current': PlanStorageItem;
+    'current'?: PlanStorageItem;
     /**
      * Next tariff restream
      * @type {PlanStorageItem}
      * @memberof PlanStorageForProject
      */
-    'next': PlanStorageItem;
+    'next'?: PlanStorageItem;
 }
 //# sourceMappingURL=plan-storage-for-project.d.ts.map

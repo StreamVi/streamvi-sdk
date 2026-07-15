@@ -66,10 +66,12 @@ export const PaySettingApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -121,6 +123,10 @@ export const PaySettingApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -131,8 +137,6 @@ export const PaySettingApiAxiosParamCreator = function (configuration?: Configur
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '3';
             }
 
 
@@ -167,6 +171,10 @@ export const PaySettingApiAxiosParamCreator = function (configuration?: Configur
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
 
 
     

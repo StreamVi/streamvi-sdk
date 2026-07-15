@@ -13,3 +13,15 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProjectChannelResponseUsageTypeEnum = exports.ProjectChannelResponseAccessTypeEnum = void 0;
+exports.ProjectChannelResponseAccessTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_12: 1,
+    NUMBER_2: 2
+};
+exports.ProjectChannelResponseUsageTypeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2
+};

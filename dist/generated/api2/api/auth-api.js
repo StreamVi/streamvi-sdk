@@ -140,11 +140,11 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -187,9 +187,6 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -225,11 +222,11 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -268,11 +265,11 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -318,11 +315,11 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -399,9 +396,6 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -420,6 +414,31 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (country !== undefined) {
                 localVarQueryParameter['country'] = country;
             }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get client configuration
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authGetClientConfigurationV1: async (options = {}) => {
+            const localVarPath = `/method/auth/GetClientConfiguration`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -594,6 +613,19 @@ const AuthApiFp = function (configuration) {
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authGetAuthUrlV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         *
+         * @summary Get client configuration
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authGetClientConfigurationV1(options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authGetClientConfigurationV1(options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authGetClientConfigurationV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     };
 };
 exports.AuthApiFp = AuthApiFp;
@@ -702,6 +734,15 @@ const AuthApiFactory = function (configuration, basePath, axios) {
          */
         authGetAuthUrlV1(requestParameters, options) {
             return localVarFp.authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get client configuration
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authGetClientConfigurationV1(options) {
+            return localVarFp.authGetClientConfigurationV1(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -822,6 +863,16 @@ class AuthApi extends base_1.BaseAPI {
     authGetAuthUrlV1(requestParameters, options) {
         return (0, exports.AuthApiFp)(this.configuration).authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, options).then((request) => request(this.axios, this.basePath));
     }
+    /**
+     *
+     * @summary Get client configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    authGetClientConfigurationV1(options) {
+        return (0, exports.AuthApiFp)(this.configuration).authGetClientConfigurationV1(options).then((request) => request(this.axios, this.basePath));
+    }
 }
 exports.AuthApi = AuthApi;
 /**
@@ -845,9 +896,7 @@ exports.AuthCodeV1AppEnum = {
  * @export
  */
 exports.AuthCodeV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -861,9 +910,7 @@ exports.AuthConnectResultV1LanguageEnum = {
  * @export
  */
 exports.AuthConnectResultV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -877,9 +924,7 @@ exports.AuthConnectTelegramV1LanguageEnum = {
  * @export
  */
 exports.AuthConnectTelegramV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -902,9 +947,7 @@ exports.AuthConnectV1ProviderEnum = {
  * @export
  */
 exports.AuthConnectV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -927,9 +970,7 @@ exports.AuthDisconnectV1LanguageEnum = {
  * @export
  */
 exports.AuthDisconnectV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -952,9 +993,7 @@ exports.AuthGetAuthUrlV1ProviderEnum = {
  * @export
  */
 exports.AuthGetAuthUrlV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export

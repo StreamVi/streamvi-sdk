@@ -9,10 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ListResponse } from './list-response';
+import type { PaySystemListResponse } from './pay-system-list-response';
 /**
- * @type ListOfPaySystemListResponse
+ *
  * @export
+ * @interface ListOfPaySystemListResponse
  */
-export type ListOfPaySystemListResponse = ListResponse;
+export interface ListOfPaySystemListResponse {
+    /**
+     *
+     * @type {Array<PaySystemListResponse>}
+     * @memberof ListOfPaySystemListResponse
+     */
+    'results': Array<PaySystemListResponse>;
+}
 //# sourceMappingURL=list-of-pay-system-list-response.d.ts.map

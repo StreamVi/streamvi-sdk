@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **photo** | **string** | Photo channel | [default to undefined]
 **members** | **number** | Members channel | [default to undefined]
 **connectedId** | **number** | Connected id | [default to undefined]
-**accounts** | **Array&lt;GetAccountChannelsAccountItem&gt;**(GetAccountChannelsAccountItem.md) | Accounts | [default to undefined]
+**accounts** | [**Array&lt;GetAccountChannelsAccountItem&gt;**](GetAccountChannelsAccountItem.md) | Accounts | [default to undefined]
 
 ## Example
 

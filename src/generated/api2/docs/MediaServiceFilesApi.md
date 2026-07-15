@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**mediaServiceFilesSiteCancelV1**(#mediaservicefilessitecancelv1) | **POST** /method/media-service-files/cancel | Cancel service video|
-|**mediaServiceFilesSiteCreateV1**(#mediaservicefilessitecreatev1) | **POST** /method/media-service-files/add | Create service video|
-|**mediaServiceFilesSiteDeleteV1**(#mediaservicefilessitedeletev1) | **POST** /method/media-service-files/delete | Delete service video|
-|**mediaServiceFilesSiteGetV1**(#mediaservicefilessitegetv1) | **GET** /method/media-service-files/get | Get service video|
-|**mediaServiceFilesSiteListV1**(#mediaservicefilessitelistv1) | **GET** /method/media-service-files/list | Get service video list|
-|**mediaServiceFilesSiteSessionV1**(#mediaservicefilessitesessionv1) | **GET** /method/media-service-files/session | Get session by media id|
-|**mediaServiceFilesSiteSetV1**(#mediaservicefilessitesetv1) | **POST** /method/media-service-files/set | Set service video|
-|**mediaServiceFilesSiteUpdateV1**(#mediaservicefilessiteupdatev1) | **POST** /method/media-service-files/update | Update service video|
+|[**mediaServiceFilesSiteCancelV1**](#mediaservicefilessitecancelv1) | **POST** /method/media-service-files/cancel | Cancel service video|
+|[**mediaServiceFilesSiteCreateV1**](#mediaservicefilessitecreatev1) | **POST** /method/media-service-files/add | Create service video|
+|[**mediaServiceFilesSiteDeleteV1**](#mediaservicefilessitedeletev1) | **POST** /method/media-service-files/delete | Delete service video|
+|[**mediaServiceFilesSiteGetV1**](#mediaservicefilessitegetv1) | **GET** /method/media-service-files/get | Get service video|
+|[**mediaServiceFilesSiteListV1**](#mediaservicefilessitelistv1) | **GET** /method/media-service-files/list | Get service video list|
+|[**mediaServiceFilesSiteSessionV1**](#mediaservicefilessitesessionv1) | **GET** /method/media-service-files/session | Get session by media id|
+|[**mediaServiceFilesSiteSetV1**](#mediaservicefilessitesetv1) | **POST** /method/media-service-files/set | Set service video|
+|[**mediaServiceFilesSiteUpdateV1**](#mediaservicefilessiteupdatev1) | **POST** /method/media-service-files/update | Update service video|
 
 # **mediaServiceFilesSiteCancelV1**
 > SuccessResponse mediaServiceFilesSiteCancelV1(cancelMediaServiceFileRequest)
@@ -49,7 +49,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteCancelV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -95,9 +95,9 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteCreateV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -106,7 +106,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteCreateV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -158,7 +158,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteDeleteV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -206,10 +206,10 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteGetV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **mediaId** | **number** | Media service file id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **mediaId** | [**number**] | Media service file id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -218,7 +218,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteGetV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -264,9 +264,9 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -275,7 +275,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteListV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -307,11 +307,13 @@ const configuration = new Configuration();
 const apiInstance = new MediaServiceFilesApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let projectId: number; //Project id (default to undefined)
 let mediaId: number; //Media service file id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.mediaServiceFilesSiteSessionV1(
     language,
+    projectId,
     mediaId,
     v
 );
@@ -321,9 +323,10 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteSessionV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **mediaId** | **number** | Media service file id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **mediaId** | [**number**] | Media service file id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -332,7 +335,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteSessionV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -384,7 +387,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteSetV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -436,7 +439,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteUpdateV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

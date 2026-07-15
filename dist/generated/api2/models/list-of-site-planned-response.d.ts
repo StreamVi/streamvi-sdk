@@ -9,10 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ListResponse } from './list-response';
+import type { SitePlannedResponse } from './site-planned-response';
 /**
- * @type ListOfSitePlannedResponse
+ *
  * @export
+ * @interface ListOfSitePlannedResponse
  */
-export type ListOfSitePlannedResponse = ListResponse;
+export interface ListOfSitePlannedResponse {
+    /**
+     *
+     * @type {Array<SitePlannedResponse>}
+     * @memberof ListOfSitePlannedResponse
+     */
+    'results': Array<SitePlannedResponse>;
+}
 //# sourceMappingURL=list-of-site-planned-response.d.ts.map

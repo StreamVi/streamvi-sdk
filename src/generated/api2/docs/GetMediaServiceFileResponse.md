@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **thumbnail** | **string** | Thumbnail | [default to undefined]
 **video** | **string** | Video url | [default to undefined]
 **isDisabled** | **boolean** | No select video | [default to undefined]
-**status** | **MediaServiceFilesStatus**(MediaServiceFilesStatus.md) | Status | [default to undefined]
+**status** | [**MediaServiceFilesStatus**](MediaServiceFilesStatus.md) | Status | [default to undefined]
 **error** | **string** | Error | [optional] [default to undefined]
 **created_at** | **string** | Created at | [default to undefined]
 **event_channel** | **string** | Event channel for connect to centrifuge | [optional] [default to undefined]

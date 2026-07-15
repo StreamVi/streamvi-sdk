@@ -62,10 +62,12 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -120,10 +122,12 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {

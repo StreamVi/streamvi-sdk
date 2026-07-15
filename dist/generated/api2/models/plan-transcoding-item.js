@@ -13,3 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PlanTranscodingItemPeriodEnum = exports.PlanTranscodingItemTypeEnum = void 0;
+exports.PlanTranscodingItemTypeEnum = {
+    PaidMonth: 'paid_month',
+    Custom: 'custom'
+};
+exports.PlanTranscodingItemPeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+};

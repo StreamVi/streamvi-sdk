@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TranscoderListItemVideoCodecEnum = exports.TranscoderListItemStatusEnum = void 0;
+exports.TranscoderListItemModeEnum = exports.TranscoderListItemVideoCodecEnum = exports.TranscoderListItemStatusEnum = void 0;
 exports.TranscoderListItemStatusEnum = {
     Active: 'active',
     Inactive: 'inactive'
@@ -21,4 +21,8 @@ exports.TranscoderListItemStatusEnum = {
 exports.TranscoderListItemVideoCodecEnum = {
     H264: 'h264',
     Hevc: 'hevc'
+};
+exports.TranscoderListItemModeEnum = {
+    Custom: 'custom',
+    Twitch: 'twitch'
 };

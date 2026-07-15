@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PlatformsPlatformListV1VEnum = exports.PlatformsPlatformListV1LanguageEnum = exports.PlatformsLogoutAccountV1VEnum = exports.PlatformsLogoutAccountV1PlatformEnum = exports.PlatformsLogoutAccountV1LanguageEnum = exports.PlatformsGetCategoryV1VEnum = exports.PlatformsGetCategoryV1TypeEnum = exports.PlatformsGetCategoryV1LanguageEnum = exports.PlatformsAddAccountV1VEnum = exports.PlatformsAddAccountV1PlatformEnum = exports.PlatformsAddAccountV1LanguageEnum = exports.PlatformsApi = exports.PlatformsApiFactory = exports.PlatformsApiFp = exports.PlatformsApiAxiosParamCreator = void 0;
+exports.PlatformsPlatformListV1VEnum = exports.PlatformsPlatformListV1LanguageEnum = exports.PlatformsLogoutAccountV1VEnum = exports.PlatformsLogoutAccountV1PlatformEnum = exports.PlatformsLogoutAccountV1LanguageEnum = exports.PlatformsGetChannelsV1SortEnum = exports.PlatformsGetChannelsV1VEnum = exports.PlatformsGetChannelsV1PlatformEnum = exports.PlatformsGetChannelsV1LanguageEnum = exports.PlatformsGetCategoryV1VEnum = exports.PlatformsGetCategoryV1TypeEnum = exports.PlatformsGetCategoryV1LanguageEnum = exports.PlatformsGetAccountsV1VEnum = exports.PlatformsGetAccountsV1PlatformEnum = exports.PlatformsGetAccountsV1LanguageEnum = exports.PlatformsCallbackV1ProviderEnum = exports.PlatformsAddAccountVkCommunityV1VEnum = exports.PlatformsAddAccountVkCommunityV1LanguageEnum = exports.PlatformsAddAccountV1VEnum = exports.PlatformsAddAccountV1PlatformEnum = exports.PlatformsAddAccountV1LanguageEnum = exports.PlatformsApi = exports.PlatformsApiFactory = exports.PlatformsApiFp = exports.PlatformsApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -36,10 +36,11 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
          * @param {number} projectId Project id
          * @param {PlatformsAddAccountV1PlatformEnum} platform Provider oauth
          * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {string} [subId] Sub id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsAddAccountV1: async (language, projectId, platform, v, options = {}) => {
+        platformsAddAccountV1: async (language, projectId, platform, v, subId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('platformsAddAccountV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -56,17 +57,221 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+            if (platform !== undefined) {
+                localVarQueryParameter['platform'] = platform;
+            }
+            if (subId !== undefined) {
+                localVarQueryParameter['sub_id'] = subId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get url for start oauth
+         * @param {PlatformsAddAccountVkCommunityV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} channelId Channel external id
+         * @param {string} accountId Id account on platform
+         * @param {PlatformsAddAccountVkCommunityV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {string} [subId] Sub id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsAddAccountVkCommunityV1: async (language, projectId, channelId, accountId, v, subId, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('platformsAddAccountVkCommunityV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('platformsAddAccountVkCommunityV1', 'projectId', projectId);
+            // verify required parameter 'channelId' is not null or undefined
+            (0, common_1.assertParamExists)('platformsAddAccountVkCommunityV1', 'channelId', channelId);
+            // verify required parameter 'accountId' is not null or undefined
+            (0, common_1.assertParamExists)('platformsAddAccountVkCommunityV1', 'accountId', accountId);
+            const localVarPath = `/method/platforms/connect/vk-community`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:write"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (channelId !== undefined) {
+                localVarQueryParameter['channel_id'] = channelId;
+            }
+            if (accountId !== undefined) {
+                localVarQueryParameter['account_id'] = accountId;
+            }
+            if (subId !== undefined) {
+                localVarQueryParameter['sub_id'] = subId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Internal request of auth
+         * @param {string} state State
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsCallbackCommunityV1: async (state, options = {}) => {
+            // verify required parameter 'state' is not null or undefined
+            (0, common_1.assertParamExists)('platformsCallbackCommunityV1', 'state', state);
+            const localVarPath = `/method/platforms/vk/callback-community`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (state !== undefined) {
+                localVarQueryParameter['state'] = state;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Internal request of auth
+         * @param {PlatformsCallbackV1ProviderEnum} provider Provider oauth
+         * @param {string} state State
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsCallbackV1: async (provider, state, options = {}) => {
+            // verify required parameter 'provider' is not null or undefined
+            (0, common_1.assertParamExists)('platformsCallbackV1', 'provider', provider);
+            // verify required parameter 'state' is not null or undefined
+            (0, common_1.assertParamExists)('platformsCallbackV1', 'state', state);
+            const localVarPath = `/method/platforms/{provider}/callback`
+                .replace(`{${"provider"}}`, encodeURIComponent(String(provider)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (state !== undefined) {
+                localVarQueryParameter['state'] = state;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Internal request of auth vk-id
+         * @param {string} state State
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsCallbackVkIdV1: async (state, options = {}) => {
+            // verify required parameter 'state' is not null or undefined
+            (0, common_1.assertParamExists)('platformsCallbackVkIdV1', 'state', state);
+            const localVarPath = `/method/platforms/vk-id/callback`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (state !== undefined) {
+                localVarQueryParameter['state'] = state;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get accounts
+         * @param {PlatformsGetAccountsV1LanguageEnum} language Current language
+         * @param {PlatformsGetAccountsV1PlatformEnum} platform Provider oauth
+         * @param {PlatformsGetAccountsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsGetAccountsV1: async (language, platform, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('platformsGetAccountsV1', 'language', language);
+            // verify required parameter 'platform' is not null or undefined
+            (0, common_1.assertParamExists)('platformsGetAccountsV1', 'platform', platform);
+            const localVarPath = `/method/platforms/accounts`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
             }
             if (platform !== undefined) {
                 localVarQueryParameter['platform'] = platform;
@@ -104,11 +309,11 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -118,6 +323,84 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             }
             if (type !== undefined) {
                 localVarQueryParameter['type'] = type;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get channels with accounts
+         * @param {PlatformsGetChannelsV1LanguageEnum} language Current language
+         * @param {PlatformsGetChannelsV1PlatformEnum} platform Platform (vk, ok)
+         * @param {Array<number>} ids Id accounts
+         * @param {number} projectId Project id
+         * @param {string} requestId Request id (for cache)
+         * @param {PlatformsGetChannelsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {string} [q] Search
+         * @param {PlatformsGetChannelsV1SortEnum} [sort] Sort by asc or desc (default asc)
+         * @param {number} [limit] Limit
+         * @param {number} [page] Page
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsGetChannelsV1: async (language, platform, ids, projectId, requestId, v, q, sort, limit, page, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('platformsGetChannelsV1', 'language', language);
+            // verify required parameter 'platform' is not null or undefined
+            (0, common_1.assertParamExists)('platformsGetChannelsV1', 'platform', platform);
+            // verify required parameter 'ids' is not null or undefined
+            (0, common_1.assertParamExists)('platformsGetChannelsV1', 'ids', ids);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('platformsGetChannelsV1', 'projectId', projectId);
+            // verify required parameter 'requestId' is not null or undefined
+            (0, common_1.assertParamExists)('platformsGetChannelsV1', 'requestId', requestId);
+            const localVarPath = `/method/platforms/account/channels`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (platform !== undefined) {
+                localVarQueryParameter['platform'] = platform;
+            }
+            if (ids) {
+                localVarQueryParameter['ids'] = ids;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (q !== undefined) {
+                localVarQueryParameter['q'] = q;
+            }
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+            if (requestId !== undefined) {
+                localVarQueryParameter['request_id'] = requestId;
+            }
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -154,11 +437,11 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -201,15 +484,45 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Remove account
+         * @param {RemoveAccountQuery} removeAccountQuery
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsRemoveAccountV1: async (removeAccountQuery, options = {}) => {
+            // verify required parameter 'removeAccountQuery' is not null or undefined
+            (0, common_1.assertParamExists)('platformsRemoveAccountV1', 'removeAccountQuery', removeAccountQuery);
+            const localVarPath = `/method/platforms/account/remove`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:write"], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(removeAccountQuery, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -232,14 +545,93 @@ const PlatformsApiFp = function (configuration) {
          * @param {number} projectId Project id
          * @param {PlatformsAddAccountV1PlatformEnum} platform Provider oauth
          * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {string} [subId] Sub id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsAddAccountV1(language, projectId, platform, v, options) {
+        async platformsAddAccountV1(language, projectId, platform, v, subId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsAddAccountV1(language, projectId, platform, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsAddAccountV1(language, projectId, platform, v, subId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsAddAccountV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get url for start oauth
+         * @param {PlatformsAddAccountVkCommunityV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} channelId Channel external id
+         * @param {string} accountId Id account on platform
+         * @param {PlatformsAddAccountVkCommunityV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {string} [subId] Sub id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async platformsAddAccountVkCommunityV1(language, projectId, channelId, accountId, v, subId, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsAddAccountVkCommunityV1(language, projectId, channelId, accountId, v, subId, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsAddAccountVkCommunityV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Internal request of auth
+         * @param {string} state State
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async platformsCallbackCommunityV1(state, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsCallbackCommunityV1(state, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsCallbackCommunityV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Internal request of auth
+         * @param {PlatformsCallbackV1ProviderEnum} provider Provider oauth
+         * @param {string} state State
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async platformsCallbackV1(provider, state, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsCallbackV1(provider, state, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsCallbackV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Internal request of auth vk-id
+         * @param {string} state State
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async platformsCallbackVkIdV1(state, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsCallbackVkIdV1(state, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsCallbackVkIdV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get accounts
+         * @param {PlatformsGetAccountsV1LanguageEnum} language Current language
+         * @param {PlatformsGetAccountsV1PlatformEnum} platform Provider oauth
+         * @param {PlatformsGetAccountsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async platformsGetAccountsV1(language, platform, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsGetAccountsV1(language, platform, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsGetAccountsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -257,6 +649,29 @@ const PlatformsApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.platformsGetCategoryV1(language, type, v, q, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsGetCategoryV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get channels with accounts
+         * @param {PlatformsGetChannelsV1LanguageEnum} language Current language
+         * @param {PlatformsGetChannelsV1PlatformEnum} platform Platform (vk, ok)
+         * @param {Array<number>} ids Id accounts
+         * @param {number} projectId Project id
+         * @param {string} requestId Request id (for cache)
+         * @param {PlatformsGetChannelsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {string} [q] Search
+         * @param {PlatformsGetChannelsV1SortEnum} [sort] Sort by asc or desc (default asc)
+         * @param {number} [limit] Limit
+         * @param {number} [page] Page
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async platformsGetChannelsV1(language, platform, ids, projectId, requestId, v, q, sort, limit, page, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsGetChannelsV1(language, platform, ids, projectId, requestId, v, q, sort, limit, page, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsGetChannelsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -291,6 +706,20 @@ const PlatformsApiFp = function (configuration) {
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsPlatformListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         *
+         * @summary Remove account
+         * @param {RemoveAccountQuery} removeAccountQuery
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async platformsRemoveAccountV1(removeAccountQuery, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsRemoveAccountV1(removeAccountQuery, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsRemoveAccountV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     };
 };
 exports.PlatformsApiFp = PlatformsApiFp;
@@ -309,7 +738,57 @@ const PlatformsApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         platformsAddAccountV1(requestParameters, options) {
-            return localVarFp.platformsAddAccountV1(requestParameters.language, requestParameters.project_id, requestParameters.platform, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsAddAccountV1(requestParameters.language, requestParameters.project_id, requestParameters.platform, requestParameters.v, requestParameters.sub_id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get url for start oauth
+         * @param {PlatformsApiPlatformsAddAccountVkCommunityV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsAddAccountVkCommunityV1(requestParameters, options) {
+            return localVarFp.platformsAddAccountVkCommunityV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.account_id, requestParameters.v, requestParameters.sub_id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Internal request of auth
+         * @param {PlatformsApiPlatformsCallbackCommunityV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsCallbackCommunityV1(requestParameters, options) {
+            return localVarFp.platformsCallbackCommunityV1(requestParameters.state, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Internal request of auth
+         * @param {PlatformsApiPlatformsCallbackV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsCallbackV1(requestParameters, options) {
+            return localVarFp.platformsCallbackV1(requestParameters.provider, requestParameters.state, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Internal request of auth vk-id
+         * @param {PlatformsApiPlatformsCallbackVkIdV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsCallbackVkIdV1(requestParameters, options) {
+            return localVarFp.platformsCallbackVkIdV1(requestParameters.state, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get accounts
+         * @param {PlatformsApiPlatformsGetAccountsV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsGetAccountsV1(requestParameters, options) {
+            return localVarFp.platformsGetAccountsV1(requestParameters.language, requestParameters.platform, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -320,6 +799,16 @@ const PlatformsApiFactory = function (configuration, basePath, axios) {
          */
         platformsGetCategoryV1(requestParameters, options) {
             return localVarFp.platformsGetCategoryV1(requestParameters.language, requestParameters.type, requestParameters.v, requestParameters.q, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get channels with accounts
+         * @param {PlatformsApiPlatformsGetChannelsV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsGetChannelsV1(requestParameters, options) {
+            return localVarFp.platformsGetChannelsV1(requestParameters.language, requestParameters.platform, requestParameters.ids, requestParameters.project_id, requestParameters.request_id, requestParameters.v, requestParameters.q, requestParameters.sort, requestParameters.limit, requestParameters.page, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -341,6 +830,16 @@ const PlatformsApiFactory = function (configuration, basePath, axios) {
         platformsPlatformListV1(requestParameters, options) {
             return localVarFp.platformsPlatformListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
+        /**
+         *
+         * @summary Remove account
+         * @param {PlatformsApiPlatformsRemoveAccountV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        platformsRemoveAccountV1(requestParameters, options) {
+            return localVarFp.platformsRemoveAccountV1(requestParameters.RemoveAccountQuery, options).then((request) => request(axios, basePath));
+        },
     };
 };
 exports.PlatformsApiFactory = PlatformsApiFactory;
@@ -360,7 +859,62 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsAddAccountV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsAddAccountV1(requestParameters.language, requestParameters.project_id, requestParameters.platform, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsAddAccountV1(requestParameters.language, requestParameters.project_id, requestParameters.platform, requestParameters.v, requestParameters.sub_id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get url for start oauth
+     * @param {PlatformsApiPlatformsAddAccountVkCommunityV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApi
+     */
+    platformsAddAccountVkCommunityV1(requestParameters, options) {
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsAddAccountVkCommunityV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.account_id, requestParameters.v, requestParameters.sub_id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Internal request of auth
+     * @param {PlatformsApiPlatformsCallbackCommunityV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApi
+     */
+    platformsCallbackCommunityV1(requestParameters, options) {
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsCallbackCommunityV1(requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Internal request of auth
+     * @param {PlatformsApiPlatformsCallbackV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApi
+     */
+    platformsCallbackV1(requestParameters, options) {
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsCallbackV1(requestParameters.provider, requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Internal request of auth vk-id
+     * @param {PlatformsApiPlatformsCallbackVkIdV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApi
+     */
+    platformsCallbackVkIdV1(requestParameters, options) {
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsCallbackVkIdV1(requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get accounts
+     * @param {PlatformsApiPlatformsGetAccountsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApi
+     */
+    platformsGetAccountsV1(requestParameters, options) {
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsGetAccountsV1(requestParameters.language, requestParameters.platform, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -372,6 +926,17 @@ class PlatformsApi extends base_1.BaseAPI {
      */
     platformsGetCategoryV1(requestParameters, options) {
         return (0, exports.PlatformsApiFp)(this.configuration).platformsGetCategoryV1(requestParameters.language, requestParameters.type, requestParameters.v, requestParameters.q, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get channels with accounts
+     * @param {PlatformsApiPlatformsGetChannelsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApi
+     */
+    platformsGetChannelsV1(requestParameters, options) {
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsGetChannelsV1(requestParameters.language, requestParameters.platform, requestParameters.ids, requestParameters.project_id, requestParameters.request_id, requestParameters.v, requestParameters.q, requestParameters.sort, requestParameters.limit, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -395,6 +960,17 @@ class PlatformsApi extends base_1.BaseAPI {
     platformsPlatformListV1(requestParameters, options) {
         return (0, exports.PlatformsApiFp)(this.configuration).platformsPlatformListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
+    /**
+     *
+     * @summary Remove account
+     * @param {PlatformsApiPlatformsRemoveAccountV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlatformsApi
+     */
+    platformsRemoveAccountV1(requestParameters, options) {
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsRemoveAccountV1(requestParameters.RemoveAccountQuery, options).then((request) => request(this.axios, this.basePath));
+    }
 }
 exports.PlatformsApi = PlatformsApi;
 /**
@@ -414,15 +990,66 @@ exports.PlatformsAddAccountV1PlatformEnum = {
     Ok: 'ok',
     Youtube: 'youtube',
     Trovo: 'trovo',
-    Twitch: 'twitch'
+    Twitch: 'twitch',
+    Vkvideolive: 'vkvideolive'
 };
 /**
  * @export
  */
 exports.PlatformsAddAccountV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.PlatformsAddAccountVkCommunityV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.PlatformsAddAccountVkCommunityV1VEnum = {
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.PlatformsCallbackV1ProviderEnum = {
+    Vk: 'vk',
+    VkId: 'vk-id',
+    Ok: 'ok',
+    Youtube: 'youtube',
+    Trovo: 'trovo',
+    Twitch: 'twitch',
+    Vkvideolive: 'vkvideolive'
+};
+/**
+ * @export
+ */
+exports.PlatformsGetAccountsV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.PlatformsGetAccountsV1PlatformEnum = {
+    Vk: 'vk',
+    VkId: 'vk-id',
+    Ok: 'ok',
+    Youtube: 'youtube',
+    Trovo: 'trovo',
+    Twitch: 'twitch',
+    Vkvideolive: 'vkvideolive'
+};
+/**
+ * @export
+ */
+exports.PlatformsGetAccountsV1VEnum = {
+    _1: '1'
 };
 /**
  * @export
@@ -446,9 +1073,35 @@ exports.PlatformsGetCategoryV1TypeEnum = {
  * @export
  */
 exports.PlatformsGetCategoryV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.PlatformsGetChannelsV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.PlatformsGetChannelsV1PlatformEnum = {
+    Vk: 'vk',
+    Ok: 'ok'
+};
+/**
+ * @export
+ */
+exports.PlatformsGetChannelsV1VEnum = {
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.PlatformsGetChannelsV1SortEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
 };
 /**
  * @export
@@ -467,15 +1120,14 @@ exports.PlatformsLogoutAccountV1PlatformEnum = {
     Ok: 'ok',
     Youtube: 'youtube',
     Trovo: 'trovo',
-    Twitch: 'twitch'
+    Twitch: 'twitch',
+    Vkvideolive: 'vkvideolive'
 };
 /**
  * @export
  */
 exports.PlatformsLogoutAccountV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -489,7 +1141,5 @@ exports.PlatformsPlatformListV1LanguageEnum = {
  * @export
  */
 exports.PlatformsPlatformListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**rtmp** | **ServerUrlValue**(ServerUrlValue.md) | Rtmp url | [optional] [default to undefined]
-**srt** | **ServerUrlValue**(ServerUrlValue.md) | Srt url | [optional] [default to undefined]
+**rtmp** | [**ServerUrlValue**](ServerUrlValue.md) | Rtmp url | [optional] [default to undefined]
+**srt** | [**ServerUrlValue**](ServerUrlValue.md) | Srt url | [optional] [default to undefined]
 
 ## Example
 

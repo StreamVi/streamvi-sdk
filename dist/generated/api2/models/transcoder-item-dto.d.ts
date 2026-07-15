@@ -42,8 +42,6 @@ export interface TranscoderItemDto {
 }
 export declare const TranscoderItemDtoVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type TranscoderItemDtoVEnum = typeof TranscoderItemDtoVEnum[keyof typeof TranscoderItemDtoVEnum];
 export declare const TranscoderItemDtoLanguageEnum: {

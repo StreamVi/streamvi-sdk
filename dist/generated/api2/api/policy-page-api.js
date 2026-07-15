@@ -56,9 +56,6 @@ const PolicyPageApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -96,9 +93,6 @@ const PolicyPageApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -238,9 +232,7 @@ exports.PolicyPageGetItemV1FileNameEnum = {
  * @export
  */
 exports.PolicyPageGetItemV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -254,7 +246,5 @@ exports.PolicyPageGetStructureV1LanguageEnum = {
  * @export
  */
 exports.PolicyPageGetStructureV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

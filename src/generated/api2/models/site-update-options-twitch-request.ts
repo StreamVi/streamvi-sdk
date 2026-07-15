@@ -70,10 +70,10 @@ export interface SiteUpdateOptionsTwitchRequest {
     'lang'?: SiteUpdateOptionsTwitchRequestLangEnum;
     /**
      * 
-     * @type {Set<string>}
+     * @type {Array<string>}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
-    'tags'?: Set<string>;
+    'tags'?: Array<string>;
     /**
      * domain
      * @type {string}

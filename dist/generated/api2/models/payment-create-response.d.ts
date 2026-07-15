@@ -39,5 +39,47 @@ export interface PaymentCreateResponse {
      * @memberof PaymentCreateResponse
      */
     'pay_key'?: string;
+    /**
+     * Crypto payment provider
+     * @type {string}
+     * @memberof PaymentCreateResponse
+     */
+    'crypto_provider'?: PaymentCreateResponseCryptoProviderEnum | null;
+    /**
+     * Crypto chain family
+     * @type {string}
+     * @memberof PaymentCreateResponse
+     */
+    'crypto_chain_family'?: PaymentCreateResponseCryptoChainFamilyEnum | null;
+    /**
+     * Crypto asset type
+     * @type {string}
+     * @memberof PaymentCreateResponse
+     */
+    'crypto_asset_type'?: PaymentCreateResponseCryptoAssetTypeEnum | null;
+    /**
+     * Crypto token symbol
+     * @type {string}
+     * @memberof PaymentCreateResponse
+     */
+    'crypto_token_symbol'?: string | null;
 }
+export declare const PaymentCreateResponseCryptoProviderEnum: {
+    readonly Walletconnect: "walletconnect";
+    readonly Tonconnect: "tonconnect";
+    readonly Tron: "tron";
+};
+export type PaymentCreateResponseCryptoProviderEnum = typeof PaymentCreateResponseCryptoProviderEnum[keyof typeof PaymentCreateResponseCryptoProviderEnum];
+export declare const PaymentCreateResponseCryptoChainFamilyEnum: {
+    readonly Evm: "evm";
+    readonly Ton: "ton";
+    readonly Tron: "tron";
+};
+export type PaymentCreateResponseCryptoChainFamilyEnum = typeof PaymentCreateResponseCryptoChainFamilyEnum[keyof typeof PaymentCreateResponseCryptoChainFamilyEnum];
+export declare const PaymentCreateResponseCryptoAssetTypeEnum: {
+    readonly Erc20: "erc20";
+    readonly Native: "native";
+    readonly Trc20: "trc20";
+};
+export type PaymentCreateResponseCryptoAssetTypeEnum = typeof PaymentCreateResponseCryptoAssetTypeEnum[keyof typeof PaymentCreateResponseCryptoAssetTypeEnum];
 //# sourceMappingURL=payment-create-response.d.ts.map

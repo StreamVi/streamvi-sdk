@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | **Array&lt;ProjectChannelInviteResponse&gt;**(ProjectChannelInviteResponse.md) | Channel invites list | [default to undefined]
+**results** | [**Array&lt;ProjectChannelInviteResponse&gt;**](ProjectChannelInviteResponse.md) | Channel invites list | [default to undefined]
 
 ## Example
 

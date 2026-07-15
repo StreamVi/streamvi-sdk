@@ -9,10 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ListResponse } from './list-response';
+import type { RtmpServerLocationResponse } from './rtmp-server-location-response';
 /**
- * @type ListOfRtmpServerLocationResponse
+ *
  * @export
+ * @interface ListOfRtmpServerLocationResponse
  */
-export type ListOfRtmpServerLocationResponse = ListResponse;
+export interface ListOfRtmpServerLocationResponse {
+    /**
+     *
+     * @type {Array<RtmpServerLocationResponse>}
+     * @memberof ListOfRtmpServerLocationResponse
+     */
+    'results': Array<RtmpServerLocationResponse>;
+}
 //# sourceMappingURL=list-of-rtmp-server-location-response.d.ts.map

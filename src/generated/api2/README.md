@@ -53,6 +53,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountApi* | [**accountGetProfileV1**](docs/AccountApi.md#accountgetprofilev1) | **GET** /method/account/profile | Get account profile
 *AccountApi* | [**accountUpdateProfileV1**](docs/AccountApi.md#accountupdateprofilev1) | **POST** /method/account/profile | Update account profile
+*AnalyticsApi* | [**analyticsTsBroadcastMessagesV1**](docs/AnalyticsApi.md#analyticstsbroadcastmessagesv1) | **GET** /method/analytics/broadcast/messages | Messages for broadcast
 *AnalyticsApi* | [**analyticsTsStreamBitrateV1**](docs/AnalyticsApi.md#analyticstsstreambitratev1) | **GET** /method/analytics/stream/graph/bitrate | Bitrate for stream
 *AnalyticsApi* | [**analyticsTsStreamEventsV1**](docs/AnalyticsApi.md#analyticstsstreameventsv1) | **GET** /method/analytics/stream/events | Events for stream
 *AnalyticsApi* | [**analyticsTsStreamViewersV1**](docs/AnalyticsApi.md#analyticstsstreamviewersv1) | **GET** /method/analytics/stream/graph/viewers | Viewers for stream
@@ -71,26 +72,37 @@ Class | Method | HTTP request | Description
 *BlogPageApi* | [**blogPageListV1**](docs/BlogPageApi.md#blogpagelistv1) | **GET** /method/blog/page/list | Get list of blog pages
 *BlogPageTagApi* | [**blogPageTagListV1**](docs/BlogPageTagApi.md#blogpagetaglistv1) | **GET** /method/blog/tag/list | Get list of blog pages
 *BroadcastApi* | [**broadcastCredentialsV1**](docs/BroadcastApi.md#broadcastcredentialsv1) | **GET** /method/broadcast/credentials | Get credentials
-*BroadcastApi* | [**broadcastEventsV1**](docs/BroadcastApi.md#broadcasteventsv1) | **GET** /method/broadcast/events | Events from broadcast
+*BroadcastApi* | [**broadcastEventItemV1**](docs/BroadcastApi.md#broadcasteventitemv1) | **GET** /method/broadcast/events/item | Broadcast event item
+*BroadcastApi* | [**broadcastEventsV4**](docs/BroadcastApi.md#broadcasteventsv4) | **GET** /method/broadcast/events | Events from broadcast v4
 *BroadcastApi* | [**broadcastFindV1**](docs/BroadcastApi.md#broadcastfindv1) | **GET** /method/broadcast | Get one broadcast
 *BroadcastApi* | [**broadcastGraphBitrateV1**](docs/BroadcastApi.md#broadcastgraphbitratev1) | **GET** /method/broadcast/graph/bitrate | Bitrate from broadcast
 *BroadcastApi* | [**broadcastGraphViewersV1**](docs/BroadcastApi.md#broadcastgraphviewersv1) | **GET** /method/broadcast/graph/viewers | Viewers from broadcast
 *BroadcastApi* | [**broadcastListV1**](docs/BroadcastApi.md#broadcastlistv1) | **GET** /method/broadcast/list | List broadcast
+*BroadcastApi* | [**broadcastPauseV1**](docs/BroadcastApi.md#broadcastpausev1) | **POST** /method/broadcast/pause | Pause stream
+*BroadcastApi* | [**broadcastPlayV1**](docs/BroadcastApi.md#broadcastplayv1) | **POST** /method/broadcast/play | Play stream
 *BroadcastApi* | [**broadcastRestreamChatV1**](docs/BroadcastApi.md#broadcastrestreamchatv1) | **GET** /method/broadcast/restreams-chat | Get restreams for chat
 *BroadcastApi* | [**broadcastRestreamsV1**](docs/BroadcastApi.md#broadcastrestreamsv1) | **GET** /method/broadcast/restreams | View live info
+*BroadcastApi* | [**broadcastStatusV1**](docs/BroadcastApi.md#broadcaststatusv1) | **GET** /method/broadcast/status | Live status info by project id
+*BroadcastApi* | [**broadcastStopV1**](docs/BroadcastApi.md#broadcaststopv1) | **POST** /method/broadcast/stop | Stop stream
 *BroadcastApi* | [**broadcastTokenChannelV1**](docs/BroadcastApi.md#broadcasttokenchannelv1) | **GET** /method/broadcast/longpoll | Connect channel, long polling
-*CentrifugeApi* | [**centrifugeAuthV2**](docs/CentrifugeApi.md#centrifugeauthv2) | **GET** /method/centrifuge | Auth centrifuge
+*CentrifugeApi* | [**centrifugeAuthV2**](docs/CentrifugeApi.md#centrifugeauthv2) | **GET** /method/centrifuge | Auth centrifuge for project
+*CentrifugeApi* | [**centrifugeChannelTokenV1**](docs/CentrifugeApi.md#centrifugechanneltokenv1) | **GET** /method/centrifuge/auth/channel | Get token for connect to centrifuge for channel
+*CentrifugeApi* | [**centrifugeChannelsCatalogV1**](docs/CentrifugeApi.md#centrifugechannelscatalogv1) | **GET** /method/centrifuge/channels | List available Method API Centrifuge channels
+*CentrifugeApi* | [**centrifugeConnectionTokenV1**](docs/CentrifugeApi.md#centrifugeconnectiontokenv1) | **GET** /method/centrifuge/auth/connect | Get token for connect to centrifuge for project
 *CentrifugeApi* | [**centrifugeProjectV1**](docs/CentrifugeApi.md#centrifugeprojectv1) | **GET** /method/centrifuge/auth/project | Auth token for project
 *CentrifugeApi* | [**getTokenBroadcastV1**](docs/CentrifugeApi.md#gettokenbroadcastv1) | **GET** /method/centrifuge/token/broadcast | Auth token for broadcast
+*ChannelApi* | [**addChannelMethodAddBizonV1**](docs/ChannelApi.md#addchannelmethodaddbizonv1) | **POST** /method/channel/add/bizon | Add bizon channel
 *ChannelApi* | [**addChannelMethodAddBoostyV1**](docs/ChannelApi.md#addchannelmethodaddboostyv1) | **POST** /method/channel/add/boosty | Add boosty channel
 *ChannelApi* | [**addChannelMethodAddCustomV1**](docs/ChannelApi.md#addchannelmethodaddcustomv1) | **POST** /method/channel/add/custom | Add custom channel
 *ChannelApi* | [**addChannelMethodAddDouyuV1**](docs/ChannelApi.md#addchannelmethodadddouyuv1) | **POST** /method/channel/add/douyu | Add douyu channel
 *ChannelApi* | [**addChannelMethodAddFbV1**](docs/ChannelApi.md#addchannelmethodaddfbv1) | **POST** /method/channel/add/fb | Add fb channel
 *ChannelApi* | [**addChannelMethodAddFc2LiveV1**](docs/ChannelApi.md#addchannelmethodaddfc2livev1) | **POST** /method/channel/add/fc2Live | Add fc2Live channel
+*ChannelApi* | [**addChannelMethodAddGetcourseV1**](docs/ChannelApi.md#addchannelmethodaddgetcoursev1) | **POST** /method/channel/add/getcourse | Add getcourse channel
 *ChannelApi* | [**addChannelMethodAddGoodgameV1**](docs/ChannelApi.md#addchannelmethodaddgoodgamev1) | **POST** /method/channel/add/goodgame | Add goodgame channel
 *ChannelApi* | [**addChannelMethodAddHuyaV1**](docs/ChannelApi.md#addchannelmethodaddhuyav1) | **POST** /method/channel/add/huya | Add huya channel
 *ChannelApi* | [**addChannelMethodAddInstagramV1**](docs/ChannelApi.md#addchannelmethodaddinstagramv1) | **POST** /method/channel/add/instagram | Add instagram channel
 *ChannelApi* | [**addChannelMethodAddKickV1**](docs/ChannelApi.md#addchannelmethodaddkickv1) | **POST** /method/channel/add/kick | Add kick channel
+*ChannelApi* | [**addChannelMethodAddKinescopeV1**](docs/ChannelApi.md#addchannelmethodaddkinescopev1) | **POST** /method/channel/add/kinescope | Add kinescope channel
 *ChannelApi* | [**addChannelMethodAddLinkedinV1**](docs/ChannelApi.md#addchannelmethodaddlinkedinv1) | **POST** /method/channel/add/linkedin | Add linkedin channel
 *ChannelApi* | [**addChannelMethodAddNavertvV1**](docs/ChannelApi.md#addchannelmethodaddnavertvv1) | **POST** /method/channel/add/navertv | Add navertv channel
 *ChannelApi* | [**addChannelMethodAddNimotvV1**](docs/ChannelApi.md#addchannelmethodaddnimotvv1) | **POST** /method/channel/add/nimotv | Add nimotv channel
@@ -98,7 +110,9 @@ Class | Method | HTTP request | Description
 *ChannelApi* | [**addChannelMethodAddOkV1**](docs/ChannelApi.md#addchannelmethodaddokv1) | **POST** /method/channel/add/ok | Add ok channel
 *ChannelApi* | [**addChannelMethodAddPlvideoV1**](docs/ChannelApi.md#addchannelmethodaddplvideov1) | **POST** /method/channel/add/plvideo | Add plvideo channel
 *ChannelApi* | [**addChannelMethodAddRutubeV1**](docs/ChannelApi.md#addchannelmethodaddrutubev1) | **POST** /method/channel/add/rutube | Add rutube channel
+*ChannelApi* | [**addChannelMethodAddSrtV1**](docs/ChannelApi.md#addchannelmethodaddsrtv1) | **POST** /method/channel/add/srt | Add srt channel
 *ChannelApi* | [**addChannelMethodAddSteamV1**](docs/ChannelApi.md#addchannelmethodaddsteamv1) | **POST** /method/channel/add/steam | Add steam channel
+*ChannelApi* | [**addChannelMethodAddTachidV1**](docs/ChannelApi.md#addchannelmethodaddtachidv1) | **POST** /method/channel/add/tachid | Add tach channel
 *ChannelApi* | [**addChannelMethodAddTelegramV1**](docs/ChannelApi.md#addchannelmethodaddtelegramv1) | **POST** /method/channel/add/telegram | Add telegram channel
 *ChannelApi* | [**addChannelMethodAddTiktokV1**](docs/ChannelApi.md#addchannelmethodaddtiktokv1) | **POST** /method/channel/add/tiktok | Add tiktok channel
 *ChannelApi* | [**addChannelMethodAddVkV1**](docs/ChannelApi.md#addchannelmethodaddvkv1) | **POST** /method/channel/add/vk | Add vk channel
@@ -125,12 +139,15 @@ Class | Method | HTTP request | Description
 *ChannelSettingsApi* | [**channelOptionsUpdateOptionsVkVideoLiveV1**](docs/ChannelSettingsApi.md#channeloptionsupdateoptionsvkvideolivev1) | **POST** /method/channel_settings/options/setVkVideoLive | Optional settings for vk video live. Depends on the tariff.
 *ChannelSettingsApi* | [**channelOptionsUpdateOptionsYoutubeV1**](docs/ChannelSettingsApi.md#channeloptionsupdateoptionsyoutubev1) | **POST** /method/channel_settings/options/setYoutube | Optional settings for youtube. Depends on the tariff.
 *ChannelSettingsApi* | [**channelOptionsUpdatePlannedV1**](docs/ChannelSettingsApi.md#channeloptionsupdateplannedv1) | **POST** /method/channel_settings/options/setPlanned | Set planned id. Depends on the tariff.
+*ChannelSettingsApi* | [**channelSettingBulkUpdateV1**](docs/ChannelSettingsApi.md#channelsettingbulkupdatev1) | **POST** /method/channel_settings/bulkUpdate | Bulk update channel title and description. Global settings.
 *ChannelSettingsApi* | [**channelSettingGetStatusV1**](docs/ChannelSettingsApi.md#channelsettinggetstatusv1) | **GET** /method/channel_settings/getStatus | Get status platform
 *ChannelSettingsApi* | [**channelSettingSetNameV1**](docs/ChannelSettingsApi.md#channelsettingsetnamev1) | **POST** /method/channel_settings/setName | Set name from custom channel. Global settings.
 *ChannelSettingsApi* | [**channelSettingUpdateRtmpV1**](docs/ChannelSettingsApi.md#channelsettingupdatertmpv1) | **POST** /method/channel_settings/setRtmp | Set rtmp url from channel. Global settings.
+*ChannelSettingsApi* | [**channelSettingUpdateSrtUrlV1**](docs/ChannelSettingsApi.md#channelsettingupdatesrturlv1) | **POST** /method/channel_settings/setSrt | Set srt url from channel. Global settings.
 *ChannelSettingsApi* | [**channelSettingUpdateTokenV1**](docs/ChannelSettingsApi.md#channelsettingupdatetokenv1) | **GET** /method/channel_settings/update-token | Get status platform
 *ChannelSettingsApi* | [**channelSettingUpdateTranscoderV1**](docs/ChannelSettingsApi.md#channelsettingupdatetranscoderv1) | **POST** /method/channel_settings/setTranscoder | Set transcoder from channel. Personal settings.
 *ChannelSettingsApi* | [**telegramGetPostByFilterV1**](docs/ChannelSettingsApi.md#telegramgetpostbyfilterv1) | **GET** /method/channel_settings/chat/telegram/posts/get-by-filter | Get telegram post by filter
+*ChatApi* | [**chatGatewayKeyV1**](docs/ChatApi.md#chatgatewaykeyv1) | **GET** /method/chat/key | Get chat key
 *ChatGatewayApi* | [**methodChatGatewayDeleteV1**](docs/ChatGatewayApi.md#methodchatgatewaydeletev1) | **POST** /method/chat/messages/delete | Remove message
 *ChatGatewayApi* | [**methodChatGatewayGetMessageV1**](docs/ChatGatewayApi.md#methodchatgatewaygetmessagev1) | **GET** /method/chat/messages/message | Get one message
 *ChatGatewayApi* | [**methodChatGatewayHistoryV1**](docs/ChatGatewayApi.md#methodchatgatewayhistoryv1) | **GET** /method/chat/messages | List history message
@@ -147,6 +164,7 @@ Class | Method | HTTP request | Description
 *MediaServiceFilesApi* | [**mediaServiceFilesSiteSessionV1**](docs/MediaServiceFilesApi.md#mediaservicefilessitesessionv1) | **GET** /method/media-service-files/session | Get session by media id
 *MediaServiceFilesApi* | [**mediaServiceFilesSiteSetV1**](docs/MediaServiceFilesApi.md#mediaservicefilessitesetv1) | **POST** /method/media-service-files/set | Set service video
 *MediaServiceFilesApi* | [**mediaServiceFilesSiteUpdateV1**](docs/MediaServiceFilesApi.md#mediaservicefilessiteupdatev1) | **POST** /method/media-service-files/update | Update service video
+*MethodIntegrationApi* | [**methodIntegrationTemplateGetTemplateWidgetDataV1**](docs/MethodIntegrationApi.md#methodintegrationtemplategettemplatewidgetdatav1) | **GET** /method/integration-template/widget/get | Get template widget data
 *MoneyFlowApi* | [**moneyFlowListV1**](docs/MoneyFlowApi.md#moneyflowlistv1) | **GET** /method/money_flow/list | Transaction list for frontend
 *NotifyHistoryApi* | [**notifyHistoryGetListMyV1**](docs/NotifyHistoryApi.md#notifyhistorygetlistmyv1) | **GET** /method/notify_history/list | Get list of my notifications
 *NotifyHistoryApi* | [**notifyHistoryGetStatusMyV1**](docs/NotifyHistoryApi.md#notifyhistorygetstatusmyv1) | **GET** /method/notify_history/get_status | Get my status unread message for user
@@ -166,9 +184,17 @@ Class | Method | HTTP request | Description
 *PaySystemApi* | [**paySystemCreateTBankV1**](docs/PaySystemApi.md#paysystemcreatetbankv1) | **GET** /method/pay-system/t-bank/create | Create t-bank payment challenge redirect url
 *PaySystemApi* | [**paySystemCreateUnitpayV1**](docs/PaySystemApi.md#paysystemcreateunitpayv1) | **GET** /method/pay-system/unitpay/create | Create unitpay payment challenge redirect url
 *PaySystemApi* | [**paySystemListV1**](docs/PaySystemApi.md#paysystemlistv1) | **GET** /method/pay-system/list | Load available pay systems
+*PaySystemApi* | [**tonConnectIntentV1**](docs/PaySystemApi.md#tonconnectintentv1) | **GET** /method/pay-system/tonconnect/intent | Create TonConnect payment intent
+*PaySystemApi* | [**tonConnectStatusV1**](docs/PaySystemApi.md#tonconnectstatusv1) | **GET** /method/pay-system/tonconnect/status | Get TonConnect payment verification status
+*PaySystemApi* | [**tonConnectSubmitV1**](docs/PaySystemApi.md#tonconnectsubmitv1) | **POST** /method/pay-system/tonconnect/submit | Submit TonConnect payment transaction
+*PaySystemApi* | [**tronPaymentIntentV1**](docs/PaySystemApi.md#tronpaymentintentv1) | **GET** /method/pay-system/tron/intent | Create TRON USDT deposit payment intent
+*PaySystemApi* | [**tronPaymentStatusV1**](docs/PaySystemApi.md#tronpaymentstatusv1) | **GET** /method/pay-system/tron/status | Get TRON USDT payment status
+*PaySystemApi* | [**tronPaymentSubmitV1**](docs/PaySystemApi.md#tronpaymentsubmitv1) | **POST** /method/pay-system/tron/submit | Submit TRON USDT transaction hash (disabled)
+*PaySystemApi* | [**walletConnectIntentV1**](docs/PaySystemApi.md#walletconnectintentv1) | **GET** /method/pay-system/walletconnect/intent | Create WalletConnect payment intent
+*PaySystemApi* | [**walletConnectStatusV1**](docs/PaySystemApi.md#walletconnectstatusv1) | **GET** /method/pay-system/walletconnect/status | Get WalletConnect payment verification status
+*PaySystemApi* | [**walletConnectSubmitV1**](docs/PaySystemApi.md#walletconnectsubmitv1) | **POST** /method/pay-system/walletconnect/submit | Submit WalletConnect payment transaction hash
 *PaymentApi* | [**paymentCreateV1**](docs/PaymentApi.md#paymentcreatev1) | **POST** /method/payment | Create payment item for pay system
 *PaymentApi* | [**paymentGetStatusV1**](docs/PaymentApi.md#paymentgetstatusv1) | **GET** /method/payment | 
-*PaymentApi* | [**paymentListV1**](docs/PaymentApi.md#paymentlistv1) | **GET** /method/payment/list | 
 *PayoutApi* | [**payoutCreateV1**](docs/PayoutApi.md#payoutcreatev1) | **POST** /method/payout/create | Create payout
 *PayoutApi* | [**payoutPrepareV1**](docs/PayoutApi.md#payoutpreparev1) | **GET** /method/payout/prepare | Get payout data for create
 *PlanRestreamApi* | [**planRestreamBuyV1**](docs/PlanRestreamApi.md#planrestreambuyv1) | **POST** /method/plan_restream | Buy restream tariff
@@ -177,19 +203,29 @@ Class | Method | HTTP request | Description
 *PlanRestreamApi* | [**planRestreamListProjectV1**](docs/PlanRestreamApi.md#planrestreamlistprojectv1) | **GET** /method/plan_restream/list/project | Get list of restream tariffs for project
 *PlanRestreamApi* | [**planRestreamListV1**](docs/PlanRestreamApi.md#planrestreamlistv1) | **GET** /method/plan_restream/list | Get list of restream tariffs
 *PlanRestreamApi* | [**planRestreamRemoveV1**](docs/PlanRestreamApi.md#planrestreamremovev1) | **DELETE** /method/plan_restream | Remove after tariff
+*PlanRestreamApi* | [**planRestreamSetProlongationV1**](docs/PlanRestreamApi.md#planrestreamsetprolongationv1) | **POST** /method/plan_restream/prolongation | Set restream tariff auto prolongation
 *PlanRestreamApi* | [**planRestreamTariffV1**](docs/PlanRestreamApi.md#planrestreamtariffv1) | **GET** /method/plan_restream | Get tariff for project
 *PlanStorageApi* | [**planStorageBuyV1**](docs/PlanStorageApi.md#planstoragebuyv1) | **POST** /method/plan_storage | Buy storage tariff
 *PlanStorageApi* | [**planStorageCancelV1**](docs/PlanStorageApi.md#planstoragecancelv1) | **DELETE** /method/plan_storage | Remove next tariff
 *PlanStorageApi* | [**planStorageCheckV1**](docs/PlanStorageApi.md#planstoragecheckv1) | **GET** /method/plan_storage/check | Check storage tariff before buy
 *PlanStorageApi* | [**planStorageGetDiscountV1**](docs/PlanStorageApi.md#planstoragegetdiscountv1) | **GET** /method/plan_storage/get_discount | Get discount of storage
 *PlanStorageApi* | [**planStorageListV1**](docs/PlanStorageApi.md#planstoragelistv1) | **GET** /method/plan_storage/list | Get info for storage tariff
+*PlanStorageApi* | [**planStorageSetProlongationV1**](docs/PlanStorageApi.md#planstoragesetprolongationv1) | **POST** /method/plan_storage/prolongation | Set storage tariff auto prolongation
 *PlanStorageApi* | [**planStorageTariffV1**](docs/PlanStorageApi.md#planstoragetariffv1) | **GET** /method/plan_storage | Get tariff for project
 *PlanTranscodingApi* | [**planTranscodingBuyV1**](docs/PlanTranscodingApi.md#plantranscodingbuyv1) | **POST** /method/plan_transcoding | Buy transcoder tariff
 *PlanTranscodingApi* | [**planTranscodingCancelV1**](docs/PlanTranscodingApi.md#plantranscodingcancelv1) | **DELETE** /method/plan_transcoding | Remove after tariff
 *PlanTranscodingApi* | [**planTranscodingCheckV1**](docs/PlanTranscodingApi.md#plantranscodingcheckv1) | **GET** /method/plan_transcoding/check | Check transcoding tariff before buy
 *PlanTranscodingApi* | [**planTranscodingGetDiscountV1**](docs/PlanTranscodingApi.md#plantranscodinggetdiscountv1) | **GET** /method/plan_transcoding/get_discount | Get discount transcoding
 *PlanTranscodingApi* | [**planTranscodingListV1**](docs/PlanTranscodingApi.md#plantranscodinglistv1) | **GET** /method/plan_transcoding/list | Get list of transcoding tariffs
+*PlanTranscodingApi* | [**planTranscodingSetProlongationV1**](docs/PlanTranscodingApi.md#plantranscodingsetprolongationv1) | **POST** /method/plan_transcoding/prolongation | Set transcoding tariff auto prolongation
 *PlanTranscodingApi* | [**planTranscodingTariffV1**](docs/PlanTranscodingApi.md#plantranscodingtariffv1) | **GET** /method/plan_transcoding | Get tariff for project
+*PlanWebinarApi* | [**siteBuyV1**](docs/PlanWebinarApi.md#sitebuyv1) | **POST** /method/plan_webinar | Buy webinar tariff
+*PlanWebinarApi* | [**siteCancelV1**](docs/PlanWebinarApi.md#sitecancelv1) | **DELETE** /method/plan_webinar | Remove after tariff
+*PlanWebinarApi* | [**siteCheckV1**](docs/PlanWebinarApi.md#sitecheckv1) | **GET** /method/plan_webinar/check | Check webinar tariff before buy
+*PlanWebinarApi* | [**siteGetDiscountV1**](docs/PlanWebinarApi.md#sitegetdiscountv1) | **GET** /method/plan_webinar/get_discount | Get discount webinar
+*PlanWebinarApi* | [**siteListV1**](docs/PlanWebinarApi.md#sitelistv1) | **GET** /method/plan_webinar/list | Get list of webinar tariffs
+*PlanWebinarApi* | [**siteSetProlongationV1**](docs/PlanWebinarApi.md#sitesetprolongationv1) | **POST** /method/plan_webinar/prolongation | Set webinar tariff auto prolongation
+*PlanWebinarApi* | [**siteTariffV1**](docs/PlanWebinarApi.md#sitetariffv1) | **GET** /method/plan_webinar | Get tariff for project
 *PlatformsApi* | [**platformsAddAccountV1**](docs/PlatformsApi.md#platformsaddaccountv1) | **GET** /method/platforms/connect | Get url for start oauth
 *PlatformsApi* | [**platformsAddAccountVkCommunityV1**](docs/PlatformsApi.md#platformsaddaccountvkcommunityv1) | **GET** /method/platforms/connect/vk-community | Get url for start oauth
 *PlatformsApi* | [**platformsCallbackCommunityV1**](docs/PlatformsApi.md#platformscallbackcommunityv1) | **GET** /method/platforms/vk/callback-community | Internal request of auth
@@ -203,11 +239,14 @@ Class | Method | HTTP request | Description
 *PlatformsApi* | [**platformsRemoveAccountV1**](docs/PlatformsApi.md#platformsremoveaccountv1) | **POST** /method/platforms/account/remove | Remove account
 *PolicyPageApi* | [**policyPageGetItemV1**](docs/PolicyPageApi.md#policypagegetitemv1) | **GET** /method/policy/get | Get policy page
 *PolicyPageApi* | [**policyPageGetStructureV1**](docs/PolicyPageApi.md#policypagegetstructurev1) | **GET** /method/policy/structure | Get policy structure
+*ProjectApi* | [**methodProjectMeMeV1**](docs/ProjectApi.md#methodprojectmemev1) | **GET** /method/project/me | Get current user project
 *ProjectApi* | [**userProjectChangeAccessV1**](docs/ProjectApi.md#userprojectchangeaccessv1) | **POST** /method/project/user/change_access | Change access user from project
 *ProjectApi* | [**userProjectDelV1**](docs/ProjectApi.md#userprojectdelv1) | **POST** /method/project/user/del | Remove user from project
+*ProjectApi* | [**userProjectDeleteMemberV1**](docs/ProjectApi.md#userprojectdeletememberv1) | **POST** /method/project/user/delete | Remove member from project
 *ProjectApi* | [**userProjectGetProjectInfoV1**](docs/ProjectApi.md#userprojectgetprojectinfov1) | **GET** /method/project/get_project_info | Get project full info
 *ProjectApi* | [**userProjectGetProjectV1**](docs/ProjectApi.md#userprojectgetprojectv1) | **GET** /method/project/get_project | Get project by number id
 *ProjectApi* | [**userProjectGetUserV1**](docs/ProjectApi.md#userprojectgetuserv1) | **GET** /method/project/get_user | Get user by number id
+*ProjectApi* | [**userProjectLeaveV1**](docs/ProjectApi.md#userprojectleavev1) | **POST** /method/project/user/leave | Leave project
 *ProjectApi* | [**userProjectListAccessV1**](docs/ProjectApi.md#userprojectlistaccessv1) | **GET** /method/project/user/list | List of user in project
 *ProjectApi* | [**userProjectListV1**](docs/ProjectApi.md#userprojectlistv1) | **GET** /method/project/list | List of project for current user
 *ProjectApi* | [**userProjectSelectProjectV1**](docs/ProjectApi.md#userprojectselectprojectv1) | **GET** /method/project/select | Select user for project
@@ -234,7 +273,9 @@ Class | Method | HTTP request | Description
 *ReleaseApi* | [**releaseAppCabinetV1**](docs/ReleaseApi.md#releaseappcabinetv1) | **GET** /method/release-app | Get current version app
 *RtmpServerApi* | [**methodRtmpServerListLocationsUnauthorizedV1**](docs/RtmpServerApi.md#methodrtmpserverlistlocationsunauthorizedv1) | **GET** /method/rtmp_server/list_locations_unauthorized | Rtmp locations server list example for unauthorized
 *RtmpServerApi* | [**rtmpServerGraphV1**](docs/RtmpServerApi.md#rtmpservergraphv1) | **GET** /method/rtmp_server/graph | Graph of rtmp servers
-*RtmpServerApi* | [**rtmpServerListV2**](docs/RtmpServerApi.md#rtmpserverlistv2) | **GET** /method/rtmp_server/list | List rtmp servers
+*RtmpServerApi* | [**rtmpServerListBaseV1**](docs/RtmpServerApi.md#rtmpserverlistbasev1) | **GET** /method/rtmp_server/base-list | List rtmp servers (base info)
+*RtmpServerApi* | [**rtmpServerListV3**](docs/RtmpServerApi.md#rtmpserverlistv3) | **GET** /method/rtmp_server/list | List rtmp servers v3
+*RtmpServerApi* | [**rtmpServerSrtLatencyV1**](docs/RtmpServerApi.md#rtmpserversrtlatencyv1) | **GET** /method/rtmp_server/srt-latency | Get recommended SRT latency by source and destination ip
 *RtmpServerApi* | [**rtmpServerStateV1**](docs/RtmpServerApi.md#rtmpserverstatev1) | **GET** /method/rtmp_server/state | State of rtmp servers
 *RtmpServerApi* | [**rtmpServerUpV1**](docs/RtmpServerApi.md#rtmpserverupv1) | **GET** /method/rtmp_server/up | State of rtmp servers
 *SocialsApi* | [**socialsGetListV1**](docs/SocialsApi.md#socialsgetlistv1) | **GET** /method/socials/list | Social list for user
@@ -254,20 +295,90 @@ Class | Method | HTTP request | Description
 *TranscodersApi* | [**transcodersUpdateV1**](docs/TranscodersApi.md#transcodersupdatev1) | **POST** /method/transcoder/update | Transcoder update
 *UsersApi* | [**userGetProfileV1**](docs/UsersApi.md#usergetprofilev1) | **GET** /method/users/profile | Get user profile
 *UsersApi* | [**userUpdateProfileV1**](docs/UsersApi.md#userupdateprofilev1) | **POST** /method/users/profile | Update profile
+*VideoApi* | [**videoSiteCreateV1**](docs/VideoApi.md#videositecreatev1) | **GET** /method/video/create | Create upload session
+*VideoApi* | [**videoSiteDeleteV1**](docs/VideoApi.md#videositedeletev1) | **POST** /method/video/delete | Delete video
+*VideoApi* | [**videoSiteDownloadV1**](docs/VideoApi.md#videositedownloadv1) | **GET** /method/video/download | Get video download link
+*VideoApi* | [**videoSiteGetV1**](docs/VideoApi.md#videositegetv1) | **GET** /method/video/get | Get video by id
+*VideoApi* | [**videoSiteLimitsV1**](docs/VideoApi.md#videositelimitsv1) | **GET** /method/video/limits | Get video limits
+*VideoApi* | [**videoSiteListV1**](docs/VideoApi.md#videositelistv1) | **GET** /method/video/list | List videos
+*VideoApi* | [**videoSiteProgressChannelV1**](docs/VideoApi.md#videositeprogresschannelv1) | **GET** /method/video/progress-channel | Get upload progress channel for centrifuge
+*VideoApi* | [**videoSiteUpdateV1**](docs/VideoApi.md#videositeupdatev1) | **POST** /method/video/update | Update video
+*WebinarApi* | [**webinarRoomSiteCreateV1**](docs/WebinarApi.md#webinarroomsitecreatev1) | **POST** /method/webinar/room/create | Create a new webinar room
+*WebinarApi* | [**webinarRoomSiteDeleteV1**](docs/WebinarApi.md#webinarroomsitedeletev1) | **POST** /method/webinar/room/delete | Delete a webinar room
+*WebinarApi* | [**webinarRoomSiteGetSyncV1**](docs/WebinarApi.md#webinarroomsitegetsyncv1) | **GET** /method/webinar/room/sync | Get sync a webinar room
+*WebinarApi* | [**webinarRoomSiteJoinAnonymousV1**](docs/WebinarApi.md#webinarroomsitejoinanonymousv1) | **POST** /method/webinar/room/join-anonymous | join in room anonymously
+*WebinarApi* | [**webinarRoomSiteJoinV1**](docs/WebinarApi.md#webinarroomsitejoinv1) | **POST** /method/webinar/room/join | join in room
+*WebinarApi* | [**webinarRoomSiteListV1**](docs/WebinarApi.md#webinarroomsitelistv1) | **GET** /method/webinar/room/list | List of webinar rooms
+*WebinarApi* | [**webinarRoomSitePreJoinV1**](docs/WebinarApi.md#webinarroomsiteprejoinv1) | **GET** /method/webinar/room/pre-join | Pre-join in room
+*WebinarApi* | [**webinarRoomSiteSyncV1**](docs/WebinarApi.md#webinarroomsitesyncv1) | **POST** /method/webinar/room/sync | Sync a webinar room
+*WebinarApi* | [**webinarRoomSiteUpdateV1**](docs/WebinarApi.md#webinarroomsiteupdatev1) | **POST** /method/webinar/room/update | Update a webinar room
+*WebinarApi* | [**webinarStreamSiteCreateV1**](docs/WebinarApi.md#webinarstreamsitecreatev1) | **POST** /method/webinar/stream/start | Start a webinar stream
+*WebinarApi* | [**webinarStreamSiteGetSettingStreamV1**](docs/WebinarApi.md#webinarstreamsitegetsettingstreamv1) | **GET** /method/webinar/stream/setting | Get setting a webinar stream
+*WebinarApi* | [**webinarStreamSiteLastV1**](docs/WebinarApi.md#webinarstreamsitelastv1) | **GET** /method/webinar/stream/last | Get last webinar stream
+*WebinarApi* | [**webinarStreamSitePauseV1**](docs/WebinarApi.md#webinarstreamsitepausev1) | **POST** /method/webinar/stream/pause | Pause a webinar stream
+*WebinarApi* | [**webinarStreamSitePlayV1**](docs/WebinarApi.md#webinarstreamsiteplayv1) | **POST** /method/webinar/stream/play | Play after pause
+*WebinarApi* | [**webinarStreamSiteSettingStreamV1**](docs/WebinarApi.md#webinarstreamsitesettingstreamv1) | **POST** /method/webinar/stream/setting | Setting a webinar stream
+*WebinarApi* | [**webinarStreamSiteUpdateV1**](docs/WebinarApi.md#webinarstreamsiteupdatev1) | **POST** /method/webinar/stream/stop | Stop a webinar stream
 
 
 ### Documentation For Models
 
+ - [AuthCentrifugoChannelResponse](docs/AuthCentrifugoChannelResponse.md)
+ - [AuthCentrifugoConnectResponse](docs/AuthCentrifugoConnectResponse.md)
  - [BalanceForPayResponse](docs/BalanceForPayResponse.md)
+ - [BizonDto](docs/BizonDto.md)
  - [BlogPageSiteResponse](docs/BlogPageSiteResponse.md)
  - [BlogPageSiteResponseId](docs/BlogPageSiteResponseId.md)
  - [BoostyDto](docs/BoostyDto.md)
  - [BroadcastCredentialsIngress](docs/BroadcastCredentialsIngress.md)
+ - [BroadcastLiveStatusRestream](docs/BroadcastLiveStatusRestream.md)
+ - [BroadcastMessageItemResponse](docs/BroadcastMessageItemResponse.md)
+ - [BroadcastMessageItemResponseEntitiesInner](docs/BroadcastMessageItemResponseEntitiesInner.md)
+ - [BroadcastMessageItemResponseEntitiesInnerOneOf](docs/BroadcastMessageItemResponseEntitiesInnerOneOf.md)
+ - [BroadcastMessageItemResponseEntitiesInnerOneOf1](docs/BroadcastMessageItemResponseEntitiesInnerOneOf1.md)
+ - [BroadcastMessageListResponse](docs/BroadcastMessageListResponse.md)
  - [BroadcastRestreamCentrifugeItemV2](docs/BroadcastRestreamCentrifugeItemV2.md)
  - [BroadcastRestreamInfoItem](docs/BroadcastRestreamInfoItem.md)
+ - [BroadcastStatusV1200Response](docs/BroadcastStatusV1200Response.md)
  - [CancelMediaServiceFileRequest](docs/CancelMediaServiceFileRequest.md)
  - [CategoryItemResponse](docs/CategoryItemResponse.md)
  - [CategorySubListItemResponse](docs/CategorySubListItemResponse.md)
+ - [CentrifugoAppEventResponseUnion](docs/CentrifugoAppEventResponseUnion.md)
+ - [CentrifugoAppReleasePayload](docs/CentrifugoAppReleasePayload.md)
+ - [CentrifugoAppReleaseResponse](docs/CentrifugoAppReleaseResponse.md)
+ - [CentrifugoBroadcastEventResponseUnion](docs/CentrifugoBroadcastEventResponseUnion.md)
+ - [CentrifugoBroadcastEventResponseUnionEvent](docs/CentrifugoBroadcastEventResponseUnionEvent.md)
+ - [CentrifugoBroadcastRestreamStartedPayload](docs/CentrifugoBroadcastRestreamStartedPayload.md)
+ - [CentrifugoBroadcastRestreamStartedResponse](docs/CentrifugoBroadcastRestreamStartedResponse.md)
+ - [CentrifugoBroadcastRestreamStoppedResponse](docs/CentrifugoBroadcastRestreamStoppedResponse.md)
+ - [CentrifugoBroadcastViewsResponse](docs/CentrifugoBroadcastViewsResponse.md)
+ - [CentrifugoChannelCatalogItemResponse](docs/CentrifugoChannelCatalogItemResponse.md)
+ - [CentrifugoChannelEventResponseUnion](docs/CentrifugoChannelEventResponseUnion.md)
+ - [CentrifugoChannelEventResponseUnionEvent](docs/CentrifugoChannelEventResponseUnionEvent.md)
+ - [CentrifugoChannelStartedPayload](docs/CentrifugoChannelStartedPayload.md)
+ - [CentrifugoChannelStartedResponse](docs/CentrifugoChannelStartedResponse.md)
+ - [CentrifugoChannelStartedUser](docs/CentrifugoChannelStartedUser.md)
+ - [CentrifugoChannelStatusPayload](docs/CentrifugoChannelStatusPayload.md)
+ - [CentrifugoChannelStatusResponse](docs/CentrifugoChannelStatusResponse.md)
+ - [CentrifugoChannelStoppedPayload](docs/CentrifugoChannelStoppedPayload.md)
+ - [CentrifugoChannelStoppedResponse](docs/CentrifugoChannelStoppedResponse.md)
+ - [CentrifugoChannelsCatalogResponse](docs/CentrifugoChannelsCatalogResponse.md)
+ - [CentrifugoPaymentUpdatePayload](docs/CentrifugoPaymentUpdatePayload.md)
+ - [CentrifugoPaymentUpdateResponse](docs/CentrifugoPaymentUpdateResponse.md)
+ - [CentrifugoProjectEventResponseUnion](docs/CentrifugoProjectEventResponseUnion.md)
+ - [CentrifugoProjectEventResponseUnionEvent](docs/CentrifugoProjectEventResponseUnionEvent.md)
+ - [CentrifugoProjectImportantEventPayload](docs/CentrifugoProjectImportantEventPayload.md)
+ - [CentrifugoProjectImportantEventResponse](docs/CentrifugoProjectImportantEventResponse.md)
+ - [CentrifugoProjectNotificationResponse](docs/CentrifugoProjectNotificationResponse.md)
+ - [CentrifugoProjectUpdateResponse](docs/CentrifugoProjectUpdateResponse.md)
+ - [CentrifugoRestreamStatsUpdatedResponse](docs/CentrifugoRestreamStatsUpdatedResponse.md)
+ - [CentrifugoRestreamUrlUpdatedResponse](docs/CentrifugoRestreamUrlUpdatedResponse.md)
+ - [CentrifugoStreamStartPayload](docs/CentrifugoStreamStartPayload.md)
+ - [CentrifugoStreamStartResponse](docs/CentrifugoStreamStartResponse.md)
+ - [CentrifugoStreamStopPayload](docs/CentrifugoStreamStopPayload.md)
+ - [CentrifugoStreamStopResponse](docs/CentrifugoStreamStopResponse.md)
+ - [CentrifugoTemplateEventResponseUnion](docs/CentrifugoTemplateEventResponseUnion.md)
+ - [CentrifugoWidgetTemplatePayloadResponse](docs/CentrifugoWidgetTemplatePayloadResponse.md)
  - [ChannelCategoryInfoDto](docs/ChannelCategoryInfoDto.md)
  - [ChannelDefaultInfoDto](docs/ChannelDefaultInfoDto.md)
  - [ChannelOkInfoDto](docs/ChannelOkInfoDto.md)
@@ -303,14 +414,17 @@ Class | Method | HTTP request | Description
  - [GetShortChannelItem](docs/GetShortChannelItem.md)
  - [GetStreamKeyResponse](docs/GetStreamKeyResponse.md)
  - [GetVersionAppResponse](docs/GetVersionAppResponse.md)
+ - [GetcourseDto](docs/GetcourseDto.md)
  - [GoodgameDto](docs/GoodgameDto.md)
  - [HelpPageResponse](docs/HelpPageResponse.md)
  - [HuyaDto](docs/HuyaDto.md)
  - [InstagramDto](docs/InstagramDto.md)
+ - [IntegrationTemplateWidgetGetResponse](docs/IntegrationTemplateWidgetGetResponse.md)
  - [InternalNotifyTypeAction](docs/InternalNotifyTypeAction.md)
  - [InternalNotifyTypeActionText](docs/InternalNotifyTypeActionText.md)
  - [InternalNotifyTypeText](docs/InternalNotifyTypeText.md)
  - [KickDto](docs/KickDto.md)
+ - [KinescopeDto](docs/KinescopeDto.md)
  - [LinkedinDto](docs/LinkedinDto.md)
  - [ListMediaServiceFilesItem](docs/ListMediaServiceFilesItem.md)
  - [ListMediaServiceFilesResponse](docs/ListMediaServiceFilesResponse.md)
@@ -321,6 +435,7 @@ Class | Method | HTTP request | Description
  - [ListOfRtmpServerLocationResponse](docs/ListOfRtmpServerLocationResponse.md)
  - [ListOfSitePlannedResponse](docs/ListOfSitePlannedResponse.md)
  - [ListOfUserProject2ProjectResponse](docs/ListOfUserProject2ProjectResponse.md)
+ - [ListVideoResponse](docs/ListVideoResponse.md)
  - [LiveRestreamCentrifugeItemV2](docs/LiveRestreamCentrifugeItemV2.md)
  - [LiveRestreamInfoItem](docs/LiveRestreamInfoItem.md)
  - [MediaServiceFilesStatus](docs/MediaServiceFilesStatus.md)
@@ -332,8 +447,12 @@ Class | Method | HTTP request | Description
  - [MethodChatSendMessageRequestDto](docs/MethodChatSendMessageRequestDto.md)
  - [MethodCurrentBroadcastResponse](docs/MethodCurrentBroadcastResponse.md)
  - [MethodSetStatusChannelRequest](docs/MethodSetStatusChannelRequest.md)
+ - [MethodSrtDto](docs/MethodSrtDto.md)
  - [MoneyFlowBalanceTypeValuesResponse](docs/MoneyFlowBalanceTypeValuesResponse.md)
  - [MoneyFlowDetails](docs/MoneyFlowDetails.md)
+ - [MoneyFlowPaymentDetails](docs/MoneyFlowPaymentDetails.md)
+ - [MoneyFlowPayoutDetails](docs/MoneyFlowPayoutDetails.md)
+ - [MoneyFlowRefundDetails](docs/MoneyFlowRefundDetails.md)
  - [MoneyFlowResponse](docs/MoneyFlowResponse.md)
  - [NavertvDto](docs/NavertvDto.md)
  - [NimotvDto](docs/NimotvDto.md)
@@ -362,6 +481,7 @@ Class | Method | HTTP request | Description
  - [PaymentCreateRequestStorageBodyDto](docs/PaymentCreateRequestStorageBodyDto.md)
  - [PaymentCreateRequestTopUpBodyDto](docs/PaymentCreateRequestTopUpBodyDto.md)
  - [PaymentCreateRequestTranscoderBodyDto](docs/PaymentCreateRequestTranscoderBodyDto.md)
+ - [PaymentCreateRequestWebinarBodyDto](docs/PaymentCreateRequestWebinarBodyDto.md)
  - [PaymentCreateResponse](docs/PaymentCreateResponse.md)
  - [PaymentCreateV1Request](docs/PaymentCreateV1Request.md)
  - [PaymentStatusResponse](docs/PaymentStatusResponse.md)
@@ -400,6 +520,13 @@ Class | Method | HTTP request | Description
  - [PlanTranscodingItem](docs/PlanTranscodingItem.md)
  - [PlanTranscodingResponse](docs/PlanTranscodingResponse.md)
  - [PlanTranscodingResponseDto](docs/PlanTranscodingResponseDto.md)
+ - [PlanWebinar2UserItemResponse](docs/PlanWebinar2UserItemResponse.md)
+ - [PlanWebinarCheckV2Response](docs/PlanWebinarCheckV2Response.md)
+ - [PlanWebinarDiscountResponse](docs/PlanWebinarDiscountResponse.md)
+ - [PlanWebinarForProject](docs/PlanWebinarForProject.md)
+ - [PlanWebinarItem](docs/PlanWebinarItem.md)
+ - [PlanWebinarResponse](docs/PlanWebinarResponse.md)
+ - [PlanWebinarResponseDto](docs/PlanWebinarResponseDto.md)
  - [PlannedItemResponse](docs/PlannedItemResponse.md)
  - [PlatformsSupportedItem](docs/PlatformsSupportedItem.md)
  - [PlaylistItemResponse](docs/PlaylistItemResponse.md)
@@ -420,6 +547,8 @@ Class | Method | HTTP request | Description
  - [ProjectInfoRestreamResponse](docs/ProjectInfoRestreamResponse.md)
  - [ProjectInfoStorageResponse](docs/ProjectInfoStorageResponse.md)
  - [ProjectInfoTranscodingResponse](docs/ProjectInfoTranscodingResponse.md)
+ - [ProjectInfoWebinarResponse](docs/ProjectInfoWebinarResponse.md)
+ - [ProjectMeResponse](docs/ProjectMeResponse.md)
  - [PullKeyItemResponse](docs/PullKeyItemResponse.md)
  - [PullKeyListResponse](docs/PullKeyListResponse.md)
  - [PullServerListItem](docs/PullServerListItem.md)
@@ -428,11 +557,15 @@ Class | Method | HTTP request | Description
  - [RefreshAuthResponse](docs/RefreshAuthResponse.md)
  - [RemoveAccountQuery](docs/RemoveAccountQuery.md)
  - [RtmpServerGraphResponse](docs/RtmpServerGraphResponse.md)
- - [RtmpServerListItemV2](docs/RtmpServerListItemV2.md)
- - [RtmpServerListV2Response](docs/RtmpServerListV2Response.md)
+ - [RtmpServerListItemBase](docs/RtmpServerListItemBase.md)
+ - [RtmpServerListItemV3](docs/RtmpServerListItemV3.md)
+ - [RtmpServerListOptionsV3](docs/RtmpServerListOptionsV3.md)
+ - [RtmpServerListResponseBase](docs/RtmpServerListResponseBase.md)
+ - [RtmpServerListV3Response](docs/RtmpServerListV3Response.md)
  - [RtmpServerLoading](docs/RtmpServerLoading.md)
  - [RtmpServerLocationResponse](docs/RtmpServerLocationResponse.md)
  - [RtmpServerPlatformQuality](docs/RtmpServerPlatformQuality.md)
+ - [RtmpServerSrtLatencyResponse](docs/RtmpServerSrtLatencyResponse.md)
  - [RtmpServerStateItem](docs/RtmpServerStateItem.md)
  - [RtmpServerStateResponse](docs/RtmpServerStateResponse.md)
  - [RutubeDto](docs/RutubeDto.md)
@@ -454,14 +587,23 @@ Class | Method | HTTP request | Description
  - [SiteAuthExchangeRequest](docs/SiteAuthExchangeRequest.md)
  - [SiteBlogPageTagResponse](docs/SiteBlogPageTagResponse.md)
  - [SiteBroadcastCredentialsResponse](docs/SiteBroadcastCredentialsResponse.md)
- - [SiteBroadcastEventsResponse](docs/SiteBroadcastEventsResponse.md)
+ - [SiteBroadcastEventsV4Response](docs/SiteBroadcastEventsV4Response.md)
  - [SiteBroadcastFindResponse](docs/SiteBroadcastFindResponse.md)
  - [SiteBroadcastGraphResponse](docs/SiteBroadcastGraphResponse.md)
  - [SiteBroadcastItemResponse](docs/SiteBroadcastItemResponse.md)
  - [SiteBroadcastListResponse](docs/SiteBroadcastListResponse.md)
+ - [SiteBroadcastPauseRequest](docs/SiteBroadcastPauseRequest.md)
+ - [SiteBroadcastPlayRequest](docs/SiteBroadcastPlayRequest.md)
  - [SiteBroadcastRestreamCentrifugeResponse](docs/SiteBroadcastRestreamCentrifugeResponse.md)
  - [SiteBroadcastRestreamsInfoResponse](docs/SiteBroadcastRestreamsInfoResponse.md)
+ - [SiteBroadcastStatusInactiveResponse](docs/SiteBroadcastStatusInactiveResponse.md)
+ - [SiteBroadcastStatusLiveResponse](docs/SiteBroadcastStatusLiveResponse.md)
+ - [SiteBroadcastStatusSchedulerResponse](docs/SiteBroadcastStatusSchedulerResponse.md)
+ - [SiteBroadcastStatusTranscodingResponse](docs/SiteBroadcastStatusTranscodingResponse.md)
+ - [SiteBroadcastStopRequest](docs/SiteBroadcastStopRequest.md)
+ - [SiteBulkUpdateChannelRequest](docs/SiteBulkUpdateChannelRequest.md)
  - [SiteChannelStatusResponse](docs/SiteChannelStatusResponse.md)
+ - [SiteChatKeyResponse](docs/SiteChatKeyResponse.md)
  - [SiteGetShortChannelResponse](docs/SiteGetShortChannelResponse.md)
  - [SiteLiveRestreamCentrifugeResponse](docs/SiteLiveRestreamCentrifugeResponse.md)
  - [SiteLiveRestreamsInfoResponse](docs/SiteLiveRestreamsInfoResponse.md)
@@ -473,6 +615,8 @@ Class | Method | HTTP request | Description
  - [SitePromoApplyResponse](docs/SitePromoApplyResponse.md)
  - [SitePromoCheckResponse](docs/SitePromoCheckResponse.md)
  - [SiteRestreamEventResponse](docs/SiteRestreamEventResponse.md)
+ - [SiteRestreamEventServerResponse](docs/SiteRestreamEventServerResponse.md)
+ - [SiteRestreamEventV4Response](docs/SiteRestreamEventV4Response.md)
  - [SiteRestreamItemResponse](docs/SiteRestreamItemResponse.md)
  - [SiteRestreamResponse](docs/SiteRestreamResponse.md)
  - [SiteScreenNotifyUserResponse](docs/SiteScreenNotifyUserResponse.md)
@@ -480,6 +624,7 @@ Class | Method | HTTP request | Description
  - [SiteSetNameRequest](docs/SiteSetNameRequest.md)
  - [SiteSetNotifyUserRequest](docs/SiteSetNotifyUserRequest.md)
  - [SiteSetPlannedRequest](docs/SiteSetPlannedRequest.md)
+ - [SiteSetSrtUrlRequest](docs/SiteSetSrtUrlRequest.md)
  - [SiteSetTranscoderRequest](docs/SiteSetTranscoderRequest.md)
  - [SiteSetUrlRequest](docs/SiteSetUrlRequest.md)
  - [SiteTotalInfoReferralsResponse](docs/SiteTotalInfoReferralsResponse.md)
@@ -491,6 +636,20 @@ Class | Method | HTTP request | Description
  - [SiteUpdateOptionsVkRequest](docs/SiteUpdateOptionsVkRequest.md)
  - [SiteUpdateOptionsVkVideoLiveRequest](docs/SiteUpdateOptionsVkVideoLiveRequest.md)
  - [SiteUpdateOptionsYoutubeRequest](docs/SiteUpdateOptionsYoutubeRequest.md)
+ - [SiteWebinarGetSettingsStreamResponse](docs/SiteWebinarGetSettingsStreamResponse.md)
+ - [SiteWebinarRoomCreateResponse](docs/SiteWebinarRoomCreateResponse.md)
+ - [SiteWebinarRoomDeleteResponse](docs/SiteWebinarRoomDeleteResponse.md)
+ - [SiteWebinarRoomItemResponse](docs/SiteWebinarRoomItemResponse.md)
+ - [SiteWebinarRoomJoinResponse](docs/SiteWebinarRoomJoinResponse.md)
+ - [SiteWebinarRoomListResponse](docs/SiteWebinarRoomListResponse.md)
+ - [SiteWebinarRoomPreJoinParticipantResponse](docs/SiteWebinarRoomPreJoinParticipantResponse.md)
+ - [SiteWebinarRoomPreJoinResponse](docs/SiteWebinarRoomPreJoinResponse.md)
+ - [SiteWebinarRoomSetSyncBodyRequest](docs/SiteWebinarRoomSetSyncBodyRequest.md)
+ - [SiteWebinarRoomStreamLastResponse](docs/SiteWebinarRoomStreamLastResponse.md)
+ - [SiteWebinarRoomSyncFocusTrackResponse](docs/SiteWebinarRoomSyncFocusTrackResponse.md)
+ - [SiteWebinarRoomSyncResponse](docs/SiteWebinarRoomSyncResponse.md)
+ - [SiteWebinarRoomSyncTrackResponse](docs/SiteWebinarRoomSyncTrackResponse.md)
+ - [SiteWebinarRoomUpdateResponse](docs/SiteWebinarRoomUpdateResponse.md)
  - [SteamDto](docs/SteamDto.md)
  - [StructureHelpPageConnectionsItemFinal](docs/StructureHelpPageConnectionsItemFinal.md)
  - [StructureHelpPageConnectionsItemLang](docs/StructureHelpPageConnectionsItemLang.md)
@@ -501,6 +660,7 @@ Class | Method | HTTP request | Description
  - [SuccessResponse](docs/SuccessResponse.md)
  - [TCityChartData](docs/TCityChartData.md)
  - [TCountryChartData](docs/TCountryChartData.md)
+ - [TachidDto](docs/TachidDto.md)
  - [TelegramChatInfoResponseDto](docs/TelegramChatInfoResponseDto.md)
  - [TelegramChatPostsItem](docs/TelegramChatPostsItem.md)
  - [TelegramChatPostsResponseDto](docs/TelegramChatPostsResponseDto.md)
@@ -510,6 +670,9 @@ Class | Method | HTTP request | Description
  - [TelegramSettingsDto](docs/TelegramSettingsDto.md)
  - [TelegramSettingsResponseDto](docs/TelegramSettingsResponseDto.md)
  - [TiktokDto](docs/TiktokDto.md)
+ - [TonConnectPaymentIntentDto](docs/TonConnectPaymentIntentDto.md)
+ - [TonConnectPaymentStatusDto](docs/TonConnectPaymentStatusDto.md)
+ - [TonConnectPaymentSubmitBodyDto](docs/TonConnectPaymentSubmitBodyDto.md)
  - [TotalInfoReferralsProfit](docs/TotalInfoReferralsProfit.md)
  - [TransactionResponse](docs/TransactionResponse.md)
  - [TranscoderChannelItem](docs/TranscoderChannelItem.md)
@@ -518,15 +681,39 @@ Class | Method | HTTP request | Description
  - [TranscoderListItem](docs/TranscoderListItem.md)
  - [TranscoderState](docs/TranscoderState.md)
  - [TranscoderUpdateDto](docs/TranscoderUpdateDto.md)
+ - [TronPaymentIntentDto](docs/TronPaymentIntentDto.md)
+ - [TronPaymentStatusDto](docs/TronPaymentStatusDto.md)
+ - [TronPaymentSubmitBodyDto](docs/TronPaymentSubmitBodyDto.md)
  - [UpdateMediaServiceFileRequest](docs/UpdateMediaServiceFileRequest.md)
  - [UpdatePullKeyRequest](docs/UpdatePullKeyRequest.md)
+ - [UpdateVideoRequest](docs/UpdateVideoRequest.md)
  - [UserProfileResponse](docs/UserProfileResponse.md)
  - [UserProject2ProjectResponse](docs/UserProject2ProjectResponse.md)
  - [UserProjectGetResponse](docs/UserProjectGetResponse.md)
  - [UserProjectResponse](docs/UserProjectResponse.md)
  - [ValidationErrorDto](docs/ValidationErrorDto.md)
+ - [VideoCreateErrorResponse](docs/VideoCreateErrorResponse.md)
+ - [VideoCreateSuccessResponse](docs/VideoCreateSuccessResponse.md)
+ - [VideoDownloadResponse](docs/VideoDownloadResponse.md)
+ - [VideoItemResponse](docs/VideoItemResponse.md)
+ - [VideoLimitsResponse](docs/VideoLimitsResponse.md)
+ - [VideoProgressChannelResponse](docs/VideoProgressChannelResponse.md)
+ - [VideoSiteCreateV1200Response](docs/VideoSiteCreateV1200Response.md)
  - [VkDto](docs/VkDto.md)
  - [VliveDto](docs/VliveDto.md)
+ - [WalletConnectPaymentIntentDto](docs/WalletConnectPaymentIntentDto.md)
+ - [WalletConnectPaymentStatusDto](docs/WalletConnectPaymentStatusDto.md)
+ - [WalletConnectPaymentSubmitBodyDto](docs/WalletConnectPaymentSubmitBodyDto.md)
+ - [WebinarRoomCreateDto](docs/WebinarRoomCreateDto.md)
+ - [WebinarRoomDeleteDto](docs/WebinarRoomDeleteDto.md)
+ - [WebinarRoomJoinAnonymousDto](docs/WebinarRoomJoinAnonymousDto.md)
+ - [WebinarRoomJoinDto](docs/WebinarRoomJoinDto.md)
+ - [WebinarRoomUpdateDto](docs/WebinarRoomUpdateDto.md)
+ - [WebinarStreamPauseDto](docs/WebinarStreamPauseDto.md)
+ - [WebinarStreamPlayDto](docs/WebinarStreamPlayDto.md)
+ - [WebinarStreamStartDto](docs/WebinarStreamStartDto.md)
+ - [WebinarStreamStopDto](docs/WebinarStreamStopDto.md)
+ - [WebinarUpdateStreamSettingDto](docs/WebinarUpdateStreamSettingDto.md)
  - [ZhanqitvDto](docs/ZhanqitvDto.md)
 
 
@@ -546,4 +733,55 @@ Authentication schemes defined for the API:
 - **Type**: API key
 - **API key parameter name**: X-API-KEY
 - **Location**: HTTP header
+
+<a id="oauth2"></a>
+### oauth2
+
+- **Type**: OAuth
+- **Flow**: accessCode
+- **Authorization URL**: https://streamvi.io/cabinet/oauth
+- **Scopes**: 
+ - **analytics:read**: Чтение аналитики
+ - **broadcast:read**: Чтение трансляций
+ - **broadcast:write**: Управление трансляциями
+ - **billing:read**: Чтение биллинга
+ - **billing:write**: Управление биллингом
+ - **chat:read**: Чтение чата
+ - **chat:write**: Управление чатом
+ - **centrifuge:read**: Чтение Centrifuge
+ - **channel:read**: Чтение каналов
+ - **channel:write**: Управление каналами
+ - **channel:delete**: Удаление каналов
+ - **channel-access:write**: Управление доступом к каналам
+ - **media-files:read**: Чтение медиафайлов
+ - **media-files:write**: Управление медиафайлами
+ - **notification:read**: Чтение уведомлений
+ - **notification:write**: Управление уведомлениями
+ - **platform:read**: Чтение платформ
+ - **platform:write**: Управление платформами
+ - **stream-keys:read**: Чтение ключей потока
+ - **stream-keys:write**: Управление ключами потока
+ - **transcoding:read**: Чтение транскодирования
+ - **transcoding:write**: Управление транскодированием
+ - **profile:read**: Чтение профиля
+ - **profile:write**: Управление профилем
+ - **project:read**: Чтение проектов
+ - **project:write**: Управление проектами
+ - **project-access:write**: Управление доступом к проекту
+ - **project-access:leave**: Выход из проекта
+ - **project-access:delete**: Удаление участников проекта
+ - **payout:read**: Чтение выводов средств
+ - **payout:write**: Создание выводов средств
+ - **video:read**: Чтение видео
+ - **video:write**: Управление видео
+ - **webinar:read**: Чтение вебинаров
+ - **webinar:write**: Управление вебинарами
+ - **integration:read**: Чтение интеграций
+ - **integration:write**: Управление интеграциями
+ - **integration-template:read**: Чтение шаблонов интеграций
+ - **integration-template:write**: Управление шаблонами интеграций
+ - **plugin:read**: Чтение плагинов
+ - **plugin:write**: Управление плагинами
+ - **project-invite:read**: Чтение приглашений в проект
+ - **project-invite:write**: Управление приглашениями в проект
 

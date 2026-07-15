@@ -34,11 +34,10 @@ const AccountApiAxiosParamCreator = function (configuration) {
          * @summary Get account profile
          * @param {AccountGetProfileV1LanguageEnum} language Current language
          * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {number | null} [projectId] Project id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountGetProfileV1: async (language, v, projectId, options = {}) => {
+        accountGetProfileV1: async (language, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('accountGetProfileV1', 'language', language);
             const localVarPath = `/method/account/profile`;
@@ -51,17 +50,14 @@ const AccountApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
-            }
-            if (projectId !== undefined) {
-                localVarQueryParameter['project_id'] = projectId;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -102,11 +98,11 @@ const AccountApiAxiosParamCreator = function (configuration) {
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarFormParams.append('v', v);
-            }
-            else {
-                localVarFormParams.append('v', '1');
             }
             if (language !== undefined) {
                 localVarFormParams.append('language', language);
@@ -145,13 +141,12 @@ const AccountApiFp = function (configuration) {
          * @summary Get account profile
          * @param {AccountGetProfileV1LanguageEnum} language Current language
          * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {number | null} [projectId] Project id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async accountGetProfileV1(language, v, projectId, options) {
+        async accountGetProfileV1(language, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.accountGetProfileV1(language, v, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accountGetProfileV1(language, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AccountApi.accountGetProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -192,7 +187,7 @@ const AccountApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         accountGetProfileV1(requestParameters, options) {
-            return localVarFp.accountGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(axios, basePath));
+            return localVarFp.accountGetProfileV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -223,7 +218,7 @@ class AccountApi extends base_1.BaseAPI {
      * @memberof AccountApi
      */
     accountGetProfileV1(requestParameters, options) {
-        return (0, exports.AccountApiFp)(this.configuration).accountGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AccountApiFp)(this.configuration).accountGetProfileV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -250,17 +245,13 @@ exports.AccountGetProfileV1LanguageEnum = {
  * @export
  */
 exports.AccountGetProfileV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
  */
 exports.AccountUpdateProfileV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export

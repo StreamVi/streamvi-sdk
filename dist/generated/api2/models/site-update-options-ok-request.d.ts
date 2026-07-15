@@ -54,8 +54,6 @@ export interface SiteUpdateOptionsOkRequest {
 }
 export declare const SiteUpdateOptionsOkRequestVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type SiteUpdateOptionsOkRequestVEnum = typeof SiteUpdateOptionsOkRequestVEnum[keyof typeof SiteUpdateOptionsOkRequestVEnum];
 export declare const SiteUpdateOptionsOkRequestLanguageEnum: {

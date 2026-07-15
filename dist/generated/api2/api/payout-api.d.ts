@@ -134,7 +134,7 @@ export interface PayoutApiPayoutCreateV1Request {
     readonly PayoutCreateRequestBodyDto: PayoutCreateRequestBodyDto;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PayoutApiPayoutCreateV1
      */
     readonly v?: PayoutCreateV1VEnum;
@@ -159,7 +159,7 @@ export interface PayoutApiPayoutPrepareV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PayoutApiPayoutPrepareV1
      */
     readonly v?: PayoutPrepareV1VEnum;
@@ -179,7 +179,7 @@ export declare class PayoutApi extends BaseAPI implements PayoutApiInterface {
      * @throws {RequiredError}
      * @memberof PayoutApi
      */
-    payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Get payout data for create
@@ -188,7 +188,7 @@ export declare class PayoutApi extends BaseAPI implements PayoutApiInterface {
      * @throws {RequiredError}
      * @memberof PayoutApi
      */
-    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListOfPayoutSystemAccountListItemResponse, any, {}>>;
 }
 /**
  * @export
@@ -204,8 +204,6 @@ export type PayoutCreateV1LanguageEnum = typeof PayoutCreateV1LanguageEnum[keyof
  */
 export declare const PayoutCreateV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PayoutCreateV1VEnum = typeof PayoutCreateV1VEnum[keyof typeof PayoutCreateV1VEnum];
 /**
@@ -222,8 +220,6 @@ export type PayoutPrepareV1LanguageEnum = typeof PayoutPrepareV1LanguageEnum[key
  */
 export declare const PayoutPrepareV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PayoutPrepareV1VEnum = typeof PayoutPrepareV1VEnum[keyof typeof PayoutPrepareV1VEnum];
 //# sourceMappingURL=payout-api.d.ts.map

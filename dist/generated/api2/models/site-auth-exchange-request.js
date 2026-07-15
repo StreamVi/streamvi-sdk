@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SiteAuthExchangeRequestAppEnum = exports.SiteAuthExchangeRequestLanguageEnum = exports.SiteAuthExchangeRequestVEnum = void 0;
 exports.SiteAuthExchangeRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.SiteAuthExchangeRequestLanguageEnum = {
     Ru: 'ru',

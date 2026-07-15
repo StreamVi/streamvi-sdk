@@ -4,14 +4,71 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**userProjectChangeAccessV1**(#userprojectchangeaccessv1) | **POST** /method/project/user/change_access | Change access user from project|
-|**userProjectDelV1**(#userprojectdelv1) | **POST** /method/project/user/del | Remove user from project|
-|**userProjectGetProjectInfoV1**(#userprojectgetprojectinfov1) | **GET** /method/project/get_project_info | Get project full info|
-|**userProjectGetProjectV1**(#userprojectgetprojectv1) | **GET** /method/project/get_project | Get project by number id|
-|**userProjectGetUserV1**(#userprojectgetuserv1) | **GET** /method/project/get_user | Get user by number id|
-|**userProjectListAccessV1**(#userprojectlistaccessv1) | **GET** /method/project/user/list | List of user in project|
-|**userProjectListV1**(#userprojectlistv1) | **GET** /method/project/list | List of project for current user|
-|**userProjectSelectProjectV1**(#userprojectselectprojectv1) | **GET** /method/project/select | Select user for project|
+|[**methodProjectMeMeV1**](#methodprojectmemev1) | **GET** /method/project/me | Get current user project|
+|[**userProjectChangeAccessV1**](#userprojectchangeaccessv1) | **POST** /method/project/user/change_access | Change access user from project|
+|[**userProjectDelV1**](#userprojectdelv1) | **POST** /method/project/user/del | Remove user from project|
+|[**userProjectDeleteMemberV1**](#userprojectdeletememberv1) | **POST** /method/project/user/delete | Remove member from project|
+|[**userProjectGetProjectInfoV1**](#userprojectgetprojectinfov1) | **GET** /method/project/get_project_info | Get project full info|
+|[**userProjectGetProjectV1**](#userprojectgetprojectv1) | **GET** /method/project/get_project | Get project by number id|
+|[**userProjectGetUserV1**](#userprojectgetuserv1) | **GET** /method/project/get_user | Get user by number id|
+|[**userProjectLeaveV1**](#userprojectleavev1) | **POST** /method/project/user/leave | Leave project|
+|[**userProjectListAccessV1**](#userprojectlistaccessv1) | **GET** /method/project/user/list | List of user in project|
+|[**userProjectListV1**](#userprojectlistv1) | **GET** /method/project/list | List of project for current user|
+|[**userProjectSelectProjectV1**](#userprojectselectprojectv1) | **GET** /method/project/select | Select user for project|
+
+# **methodProjectMeMeV1**
+> ProjectMeResponse methodProjectMeMeV1()
+
+
+### Example
+
+```typescript
+import {
+    ProjectApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new ProjectApi(configuration);
+
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let language: 'ru' | 'en' | 'cn'; //Current language (optional) (default to 'en')
+
+const { status, data } = await apiInstance.methodProjectMeMeV1(
+    v,
+    language
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | (optional) defaults to 'en'|
+
+
+### Return type
+
+**ProjectMeResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userProjectChangeAccessV1**
 > SuccessResponse userProjectChangeAccessV1()
@@ -31,7 +88,7 @@ const apiInstance = new ProjectApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let userId: number; //User id (default to undefined)
-let accessType: 0 | 1 | 2; //Access type (default to undefined)
+let accessType: 0 | 1 | 2 | 3; //Access type (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.userProjectChangeAccessV1(
@@ -47,11 +104,11 @@ const { status, data } = await apiInstance.userProjectChangeAccessV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **userId** | **number** | User id | defaults to undefined|
-| **accessType** | **0 | 1 | 2** | Access type | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **userId** | [**number**] | User id | defaults to undefined|
+| **accessType** | [**0 | 1 | 2 | 3**]**Array<0 &#124; 1 &#124; 2 &#124; 3>** | Access type | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -60,7 +117,7 @@ const { status, data } = await apiInstance.userProjectChangeAccessV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -79,6 +136,7 @@ No authorization required
 # **userProjectDelV1**
 > SuccessResponse userProjectDelV1()
 
+Use /site/project/user/leave or /site/project/user/delete instead.
 
 ### Example
 
@@ -108,10 +166,10 @@ const { status, data } = await apiInstance.userProjectDelV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **userId** | **number** | User id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **userId** | [**number**] | User id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -120,7 +178,67 @@ const { status, data } = await apiInstance.userProjectDelV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userProjectDeleteMemberV1**
+> SuccessResponse userProjectDeleteMemberV1()
+
+
+### Example
+
+```typescript
+import {
+    ProjectApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new ProjectApi(configuration);
+
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let projectId: number; //Project id (default to undefined)
+let userId: number; //User id (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.userProjectDeleteMemberV1(
+    language,
+    projectId,
+    userId,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **userId** | [**number**] | User id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+**SuccessResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -166,9 +284,9 @@ const { status, data } = await apiInstance.userProjectGetProjectInfoV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -177,7 +295,7 @@ const { status, data } = await apiInstance.userProjectGetProjectInfoV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -223,9 +341,9 @@ const { status, data } = await apiInstance.userProjectGetProjectV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectExternalId** | **string** | Project external id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectExternalId** | [**string**] | Project external id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -234,7 +352,7 @@ const { status, data } = await apiInstance.userProjectGetProjectV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -280,9 +398,9 @@ const { status, data } = await apiInstance.userProjectGetUserV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **userExternalId** | **string** | User external id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **userExternalId** | [**string**] | User external id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -291,7 +409,64 @@ const { status, data } = await apiInstance.userProjectGetUserV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userProjectLeaveV1**
+> SuccessResponse userProjectLeaveV1()
+
+
+### Example
+
+```typescript
+import {
+    ProjectApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new ProjectApi(configuration);
+
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let projectId: number; //Project id (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.userProjectLeaveV1(
+    language,
+    projectId,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+**SuccessResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -337,9 +512,9 @@ const { status, data } = await apiInstance.userProjectListAccessV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -348,7 +523,7 @@ const { status, data } = await apiInstance.userProjectListAccessV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -396,10 +571,10 @@ const { status, data } = await apiInstance.userProjectListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **limit** | **number** | Number of results | (optional) defaults to 20|
-| **offset** | **number** | Page offset number | (optional) defaults to 0|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **limit** | [**number**] | Number of results | (optional) defaults to 20|
+| **offset** | [**number**] | Page offset number | (optional) defaults to 0|
 
 
 ### Return type
@@ -408,7 +583,7 @@ const { status, data } = await apiInstance.userProjectListV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -454,9 +629,9 @@ const { status, data } = await apiInstance.userProjectSelectProjectV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **id** | **number** | Project internal id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **id** | [**number**] | Project internal id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -465,7 +640,7 @@ const { status, data } = await apiInstance.userProjectSelectProjectV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

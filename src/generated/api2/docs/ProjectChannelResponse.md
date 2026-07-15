@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **unlim** | **string** | Unlim | [default to undefined]
 **usageType** | **number** | usageType | [default to undefined]
 **project_id** | **number** | User id | [default to undefined]
-**project_** | **ProjectChannelMemberInfoResponse**(ProjectChannelMemberInfoResponse.md) | User info | [optional] [default to undefined]
-**streamInfo** | **ProjectChannelMemberStreamInfoResponse**(ProjectChannelMemberStreamInfoResponse.md) | Stream info | [default to undefined]
+**project_** | [**ProjectChannelMemberInfoResponse**](ProjectChannelMemberInfoResponse.md) | User info | [optional] [default to undefined]
+**streamInfo** | [**ProjectChannelMemberStreamInfoResponse**](ProjectChannelMemberStreamInfoResponse.md) | Stream info | [default to undefined]
 
 ## Example
 

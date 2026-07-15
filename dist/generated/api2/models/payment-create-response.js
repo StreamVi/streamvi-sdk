@@ -13,3 +13,19 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PaymentCreateResponseCryptoAssetTypeEnum = exports.PaymentCreateResponseCryptoChainFamilyEnum = exports.PaymentCreateResponseCryptoProviderEnum = void 0;
+exports.PaymentCreateResponseCryptoProviderEnum = {
+    Walletconnect: 'walletconnect',
+    Tonconnect: 'tonconnect',
+    Tron: 'tron'
+};
+exports.PaymentCreateResponseCryptoChainFamilyEnum = {
+    Evm: 'evm',
+    Ton: 'ton',
+    Tron: 'tron'
+};
+exports.PaymentCreateResponseCryptoAssetTypeEnum = {
+    Erc20: 'erc20',
+    Native: 'native',
+    Trc20: 'trc20'
+};

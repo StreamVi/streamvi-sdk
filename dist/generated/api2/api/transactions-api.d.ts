@@ -105,7 +105,7 @@ export interface TransactionsApiTransactionsListV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof TransactionsApiTransactionsListV1
      */
     readonly v?: TransactionsListV1VEnum;
@@ -155,7 +155,7 @@ export declare class TransactionsApi extends BaseAPI implements TransactionsApiI
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfTransactionResponse, any, {}>>;
 }
 /**
  * @export
@@ -171,8 +171,6 @@ export type TransactionsListV1LanguageEnum = typeof TransactionsListV1LanguageEn
  */
 export declare const TransactionsListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type TransactionsListV1VEnum = typeof TransactionsListV1VEnum[keyof typeof TransactionsListV1VEnum];
 //# sourceMappingURL=transactions-api.d.ts.map

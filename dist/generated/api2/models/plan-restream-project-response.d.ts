@@ -61,6 +61,18 @@ export interface PlanRestreamProjectResponse {
      */
     'type': PlanRestreamProjectResponseTypeEnum;
     /**
+     * Available for purchase
+     * @type {boolean}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'purchase_available': boolean;
+    /**
+     * Available for auto prolongation
+     * @type {boolean}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'prolongation_available': boolean;
+    /**
      * Maximum bitrate, kbps
      * @type {number}
      * @memberof PlanRestreamProjectResponse
@@ -103,6 +115,18 @@ export interface PlanRestreamProjectResponse {
      */
     'feature': Array<PlanRestreamFeatureItemV2>;
     /**
+     * Support custom channel
+     * @type {boolean}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'support_custom_channel': boolean;
+    /**
+     * Custom video
+     * @type {number}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'custom_video': number;
+    /**
      * Tariff project
      * @type {PlanRestreamForProjectV2}
      * @memberof PlanRestreamProjectResponse
@@ -111,6 +135,7 @@ export interface PlanRestreamProjectResponse {
 }
 export declare const PlanRestreamProjectResponseTypeEnum: {
     readonly Free: "free";
+    readonly Trial: "trial";
     readonly PaidFix: "paid_fix";
     readonly PaidFlex: "paid_flex";
     readonly Custom: "custom";

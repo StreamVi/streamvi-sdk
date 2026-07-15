@@ -56,11 +56,11 @@ const PaySettingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -103,17 +103,17 @@ const PaySettingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '3';
-            }
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -126,13 +126,13 @@ const PaySettingApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Set pay settings for profile
-         * @param {PaySettingBodyDto} paySettingBodyDto
+         * @param {PaySettingSetSettingV1Request} paySettingSetSettingV1Request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        paySettingSetSettingV1: async (paySettingBodyDto, options = {}) => {
-            // verify required parameter 'paySettingBodyDto' is not null or undefined
-            (0, common_1.assertParamExists)('paySettingSetSettingV1', 'paySettingBodyDto', paySettingBodyDto);
+        paySettingSetSettingV1: async (paySettingSetSettingV1Request, options = {}) => {
+            // verify required parameter 'paySettingSetSettingV1Request' is not null or undefined
+            (0, common_1.assertParamExists)('paySettingSetSettingV1', 'paySettingSetSettingV1Request', paySettingSetSettingV1Request);
             const localVarPath = `/method/pay-setting`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -143,11 +143,14 @@ const PaySettingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(paySettingBodyDto, localVarRequestOptions, configuration);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(paySettingSetSettingV1Request, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -199,13 +202,13 @@ const PaySettingApiFp = function (configuration) {
         /**
          *
          * @summary Set pay settings for profile
-         * @param {PaySettingBodyDto} paySettingBodyDto
+         * @param {PaySettingSetSettingV1Request} paySettingSetSettingV1Request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async paySettingSetSettingV1(paySettingBodyDto, options) {
+        async paySettingSetSettingV1(paySettingSetSettingV1Request, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.paySettingSetSettingV1(paySettingBodyDto, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.paySettingSetSettingV1(paySettingSetSettingV1Request, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PaySettingApi.paySettingSetSettingV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -248,7 +251,7 @@ const PaySettingApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         paySettingSetSettingV1(requestParameters, options) {
-            return localVarFp.paySettingSetSettingV1(requestParameters.PaySettingBodyDto, options).then((request) => request(axios, basePath));
+            return localVarFp.paySettingSetSettingV1(requestParameters.PaySettingSetSettingV1Request, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -291,7 +294,7 @@ class PaySettingApi extends base_1.BaseAPI {
      * @memberof PaySettingApi
      */
     paySettingSetSettingV1(requestParameters, options) {
-        return (0, exports.PaySettingApiFp)(this.configuration).paySettingSetSettingV1(requestParameters.PaySettingBodyDto, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PaySettingApiFp)(this.configuration).paySettingSetSettingV1(requestParameters.PaySettingSetSettingV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PaySettingApi = PaySettingApi;
@@ -307,9 +310,7 @@ exports.PaySettingCheckCountryV1LanguageEnum = {
  * @export
  */
 exports.PaySettingCheckCountryV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -323,7 +324,5 @@ exports.PaySettingGetSettingV3LanguageEnum = {
  * @export
  */
 exports.PaySettingGetSettingV3VEnum = {
-    _1: '1',
-    _2: '2',
     _3: '3'
 };

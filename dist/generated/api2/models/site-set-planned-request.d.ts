@@ -48,8 +48,6 @@ export interface SiteSetPlannedRequest {
 }
 export declare const SiteSetPlannedRequestVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type SiteSetPlannedRequestVEnum = typeof SiteSetPlannedRequestVEnum[keyof typeof SiteSetPlannedRequestVEnum];
 export declare const SiteSetPlannedRequestLanguageEnum: {

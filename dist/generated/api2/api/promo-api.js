@@ -34,7 +34,7 @@ const PromoApiAxiosParamCreator = function (configuration) {
          * @summary Apply code
          * @param {PromoApplyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {number} code Code
+         * @param {string} code Code
          * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -56,11 +56,11 @@ const PromoApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -84,7 +84,7 @@ const PromoApiAxiosParamCreator = function (configuration) {
          * @summary Check code
          * @param {PromoCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {number} code Code
+         * @param {string} code Code
          * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -106,11 +106,11 @@ const PromoApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -144,7 +144,7 @@ const PromoApiFp = function (configuration) {
          * @summary Apply code
          * @param {PromoApplyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {number} code Code
+         * @param {string} code Code
          * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -161,7 +161,7 @@ const PromoApiFp = function (configuration) {
          * @summary Check code
          * @param {PromoCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {number} code Code
+         * @param {string} code Code
          * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -249,9 +249,7 @@ exports.PromoApplyV1LanguageEnum = {
  * @export
  */
 exports.PromoApplyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -265,7 +263,5 @@ exports.PromoCheckV1LanguageEnum = {
  * @export
  */
 exports.PromoCheckV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

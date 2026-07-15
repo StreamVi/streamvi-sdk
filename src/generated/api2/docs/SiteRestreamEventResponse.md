@@ -5,9 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**level** | **string** | Level of event. \'info\', \'warning\', \'error\', \'debug\' only. Default is \'info | [default to undefined]
+**id** | **string** | Event id | [optional] [default to undefined]
+**level** | **string** | Level of event. \&#39;info\&#39;, \&#39;warning\&#39;, \&#39;error\&#39;, \&#39;debug\&#39; only. Default is \&#39;info | [default to undefined]
 **text** | **string** | text | [default to undefined]
 **created_at** | **string** | Create time | [default to undefined]
+**app** | **string** | App | [default to undefined]
+**server** | [**SiteRestreamEventServerResponse**](SiteRestreamEventServerResponse.md) | Server location info | [default to undefined]
+**platform** | **string** | Platform | [optional] [default to undefined]
 
 ## Example
 
@@ -15,9 +19,13 @@ Name | Type | Description | Notes
 import { SiteRestreamEventResponse } from 'streamvi-api-client';
 
 const instance: SiteRestreamEventResponse = {
+    id,
     level,
     text,
     created_at,
+    app,
+    server,
+    platform,
 };
 ```
 

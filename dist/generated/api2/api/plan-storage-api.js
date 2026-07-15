@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PlanStorageTariffV1VEnum = exports.PlanStorageTariffV1LanguageEnum = exports.PlanStorageListV1VEnum = exports.PlanStorageListV1LanguageEnum = exports.PlanStorageGetDiscountV1VEnum = exports.PlanStorageGetDiscountV1LanguageEnum = exports.PlanStorageCheckV1VEnum = exports.PlanStorageCheckV1LanguageEnum = exports.PlanStorageCancelV1VEnum = exports.PlanStorageCancelV1LanguageEnum = exports.PlanStorageBuyV1VEnum = exports.PlanStorageBuyV1PeriodEnum = exports.PlanStorageBuyV1LanguageEnum = exports.PlanStorageApi = exports.PlanStorageApiFactory = exports.PlanStorageApiFp = exports.PlanStorageApiAxiosParamCreator = void 0;
+exports.PlanStorageTariffV1VEnum = exports.PlanStorageTariffV1LanguageEnum = exports.PlanStorageSetProlongationV1VEnum = exports.PlanStorageSetProlongationV1LanguageEnum = exports.PlanStorageListV1VEnum = exports.PlanStorageListV1LanguageEnum = exports.PlanStorageGetDiscountV1VEnum = exports.PlanStorageGetDiscountV1LanguageEnum = exports.PlanStorageCheckV1VEnum = exports.PlanStorageCheckV1LanguageEnum = exports.PlanStorageCancelV1VEnum = exports.PlanStorageCancelV1LanguageEnum = exports.PlanStorageBuyV1VEnum = exports.PlanStorageBuyV1PeriodEnum = exports.PlanStorageBuyV1LanguageEnum = exports.PlanStorageApi = exports.PlanStorageApiFactory = exports.PlanStorageApiFp = exports.PlanStorageApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -60,11 +60,11 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -113,11 +113,11 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -157,11 +157,11 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -198,11 +198,11 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -236,14 +236,64 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Set storage tariff auto prolongation
+         * @param {PlanStorageSetProlongationV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {boolean} enabled Auto prolongation enabled
+         * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        planStorageSetProlongationV1: async (language, projectId, enabled, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('planStorageSetProlongationV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('planStorageSetProlongationV1', 'projectId', projectId);
+            // verify required parameter 'enabled' is not null or undefined
+            (0, common_1.assertParamExists)('planStorageSetProlongationV1', 'enabled', enabled);
+            const localVarPath = `/method/plan_storage/prolongation`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (enabled !== undefined) {
+                localVarQueryParameter['enabled'] = enabled;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -277,11 +327,11 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -390,6 +440,23 @@ const PlanStorageApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Set storage tariff auto prolongation
+         * @param {PlanStorageSetProlongationV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {boolean} enabled Auto prolongation enabled
+         * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async planStorageSetProlongationV1(language, projectId, enabled, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageSetProlongationV1(language, projectId, enabled, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanStorageApi.planStorageSetProlongationV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @summary Get tariff for project
          * @param {PlanStorageTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
@@ -463,6 +530,16 @@ const PlanStorageApiFactory = function (configuration, basePath, axios) {
          */
         planStorageListV1(requestParameters, options) {
             return localVarFp.planStorageListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Set storage tariff auto prolongation
+         * @param {PlanStorageApiPlanStorageSetProlongationV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        planStorageSetProlongationV1(requestParameters, options) {
+            return localVarFp.planStorageSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -541,6 +618,17 @@ class PlanStorageApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Set storage tariff auto prolongation
+     * @param {PlanStorageApiPlanStorageSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanStorageApi
+     */
+    planStorageSetProlongationV1(requestParameters, options) {
+        return (0, exports.PlanStorageApiFp)(this.configuration).planStorageSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Get tariff for project
      * @param {PlanStorageApiPlanStorageTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -571,9 +659,7 @@ exports.PlanStorageBuyV1PeriodEnum = {
  * @export
  */
 exports.PlanStorageBuyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -587,9 +673,7 @@ exports.PlanStorageCancelV1LanguageEnum = {
  * @export
  */
 exports.PlanStorageCancelV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -603,9 +687,7 @@ exports.PlanStorageCheckV1LanguageEnum = {
  * @export
  */
 exports.PlanStorageCheckV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -619,9 +701,7 @@ exports.PlanStorageGetDiscountV1LanguageEnum = {
  * @export
  */
 exports.PlanStorageGetDiscountV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -635,9 +715,21 @@ exports.PlanStorageListV1LanguageEnum = {
  * @export
  */
 exports.PlanStorageListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.PlanStorageSetProlongationV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.PlanStorageSetProlongationV1VEnum = {
+    _1: '1'
 };
 /**
  * @export
@@ -651,7 +743,5 @@ exports.PlanStorageTariffV1LanguageEnum = {
  * @export
  */
 exports.PlanStorageTariffV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

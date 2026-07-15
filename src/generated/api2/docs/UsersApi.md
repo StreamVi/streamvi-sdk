@@ -4,8 +4,8 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**userGetProfileV1**(#usergetprofilev1) | **GET** /method/users/profile | Get user profile|
-|**userUpdateProfileV1**(#userupdateprofilev1) | **POST** /method/users/profile | Update profile|
+|[**userGetProfileV1**](#usergetprofilev1) | **GET** /method/users/profile | Get user profile|
+|[**userUpdateProfileV1**](#userupdateprofilev1) | **POST** /method/users/profile | Update profile|
 
 # **userGetProfileV1**
 > UserProfileResponse userGetProfileV1()
@@ -23,24 +23,11 @@ import {
 const configuration = new Configuration();
 const apiInstance = new UsersApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
-let projectId: number; //Project id (optional) (default to undefined)
-
-const { status, data } = await apiInstance.userGetProfileV1(
-    language,
-    v,
-    projectId
-);
+const { status, data } = await apiInstance.userGetProfileV1();
 ```
 
 ### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **projectId** | **number** | Project id | (optional) defaults to undefined|
+This endpoint does not have any parameters.
 
 
 ### Return type
@@ -49,7 +36,7 @@ const { status, data } = await apiInstance.userGetProfileV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -100,11 +87,11 @@ const { status, data } = await apiInstance.userUpdateProfileV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | **string** | Version | defaults to undefined|
-| **language** | **string** | Current language | defaults to 'en'|
-| **firstName** | **string** | First name | defaults to undefined|
-| **lastName** | **string** | Last name | defaults to undefined|
-| **avatar** | **File** | File for avatar upload max size 2MB, format: jpeg, jpg, png | (optional) defaults to undefined|
+| **v** | [**string**]**Array<&#39;1&#39;>** | Version | defaults to undefined|
+| **language** | [**string**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **firstName** | [**string**] | First name | defaults to undefined|
+| **lastName** | [**string**] | Last name | defaults to undefined|
+| **avatar** | [**File**] | File for avatar upload max size 2MB, format: jpeg, jpg, png | (optional) defaults to undefined|
 
 
 ### Return type
@@ -113,7 +100,7 @@ const { status, data } = await apiInstance.userUpdateProfileV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

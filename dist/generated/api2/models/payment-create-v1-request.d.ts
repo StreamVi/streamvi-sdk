@@ -13,9 +13,10 @@ import type { PaymentCreateRequestRestreamBodyDto } from './payment-create-reque
 import type { PaymentCreateRequestStorageBodyDto } from './payment-create-request-storage-body-dto';
 import type { PaymentCreateRequestTopUpBodyDto } from './payment-create-request-top-up-body-dto';
 import type { PaymentCreateRequestTranscoderBodyDto } from './payment-create-request-transcoder-body-dto';
+import type { PaymentCreateRequestWebinarBodyDto } from './payment-create-request-webinar-body-dto';
 /**
  * @type PaymentCreateV1Request
  * @export
  */
-export type PaymentCreateV1Request = PaymentCreateRequestRestreamBodyDto | PaymentCreateRequestStorageBodyDto | PaymentCreateRequestTopUpBodyDto | PaymentCreateRequestTranscoderBodyDto;
+export type PaymentCreateV1Request = PaymentCreateRequestRestreamBodyDto | PaymentCreateRequestStorageBodyDto | PaymentCreateRequestTopUpBodyDto | PaymentCreateRequestTranscoderBodyDto | PaymentCreateRequestWebinarBodyDto;
 //# sourceMappingURL=payment-create-v1-request.d.ts.map

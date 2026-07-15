@@ -39,7 +39,7 @@ const MoneyFlowApiAxiosParamCreator = function (configuration) {
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
-         * @param {string} [type] Filter code transaction. example 1 or 1,2,3
+         * @param {string} [type] Filter code transaction. example: referral_profit or payment,referral_profit
          * @param {string} [balanceType] Filter code transaction. example 1 or 1,2,3
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -59,11 +59,11 @@ const MoneyFlowApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -78,14 +78,10 @@ const MoneyFlowApiAxiosParamCreator = function (configuration) {
                 localVarQueryParameter['offset'] = offset;
             }
             if (dateFrom !== undefined) {
-                localVarQueryParameter['date_from'] = (dateFrom instanceof Date) ?
-                    dateFrom.toISOString() :
-                    dateFrom;
+                localVarQueryParameter['date_from'] = dateFrom;
             }
             if (dateTo !== undefined) {
-                localVarQueryParameter['date_to'] = (dateTo instanceof Date) ?
-                    dateTo.toISOString() :
-                    dateTo;
+                localVarQueryParameter['date_to'] = dateTo;
             }
             if (type !== undefined) {
                 localVarQueryParameter['type'] = type;
@@ -121,7 +117,7 @@ const MoneyFlowApiFp = function (configuration) {
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
-         * @param {string} [type] Filter code transaction. example 1 or 1,2,3
+         * @param {string} [type] Filter code transaction. example: referral_profit or payment,referral_profit
          * @param {string} [balanceType] Filter code transaction. example 1 or 1,2,3
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -188,7 +184,5 @@ exports.MoneyFlowListV1LanguageEnum = {
  * @export
  */
 exports.MoneyFlowListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

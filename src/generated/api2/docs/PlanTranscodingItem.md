@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **count** | **number** | Count flows | [default to undefined]
 **date_end** | **string** | Date end tariff | [default to undefined]
 **title** | **string** | Plan title | [default to undefined]
-**prolongation** | **number** | Prolongation | [optional] [default to undefined]
+**type** | **string** | Tariff type | [optional] [default to undefined]
+**prolongation** | **boolean** | Prolongation status | [default to undefined]
+**period** | **string** | Period | [default to undefined]
 
 ## Example
 
@@ -21,7 +23,9 @@ const instance: PlanTranscodingItem = {
     count,
     date_end,
     title,
+    type,
     prolongation,
+    period,
 };
 ```
 

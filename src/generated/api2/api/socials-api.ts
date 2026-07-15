@@ -48,6 +48,10 @@ export const SocialsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["profile:read"], configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);

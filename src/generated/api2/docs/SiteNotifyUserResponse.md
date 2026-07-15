@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_id** | **number** | User id | [default to undefined]
-**channels** | **NotifyUserChannels**(NotifyUserChannels.md) | Channels | [default to undefined]
-**relation** | **NotifyUserRelation**(NotifyUserRelation.md) | Relation | [default to undefined]
+**channels** | [**NotifyUserChannels**](NotifyUserChannels.md) | Channels | [default to undefined]
+**relation** | [**NotifyUserRelation**](NotifyUserRelation.md) | Relation | [default to undefined]
 
 ## Example
 

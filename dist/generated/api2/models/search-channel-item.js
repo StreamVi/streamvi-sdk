@@ -20,5 +20,8 @@ exports.SearchChannelItemStatusEnum = {
     Error: 'error',
     Live: 'live',
     Offline: 'offline',
-    Busy: 'busy'
+    Busy: 'busy',
+    WaitTranscoding: 'wait_transcoding',
+    RunningTranscoding: 'running_transcoding',
+    ErrorTranscoding: 'error_transcoding'
 };

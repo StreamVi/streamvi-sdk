@@ -44,5 +44,52 @@ export interface PaymentCreateResponse {
      * @memberof PaymentCreateResponse
      */
     'pay_key'?: string;
+    /**
+     * Crypto payment provider
+     * @type {string}
+     * @memberof PaymentCreateResponse
+     */
+    'crypto_provider'?: PaymentCreateResponseCryptoProviderEnum | null;
+    /**
+     * Crypto chain family
+     * @type {string}
+     * @memberof PaymentCreateResponse
+     */
+    'crypto_chain_family'?: PaymentCreateResponseCryptoChainFamilyEnum | null;
+    /**
+     * Crypto asset type
+     * @type {string}
+     * @memberof PaymentCreateResponse
+     */
+    'crypto_asset_type'?: PaymentCreateResponseCryptoAssetTypeEnum | null;
+    /**
+     * Crypto token symbol
+     * @type {string}
+     * @memberof PaymentCreateResponse
+     */
+    'crypto_token_symbol'?: string | null;
 }
+
+export const PaymentCreateResponseCryptoProviderEnum = {
+    Walletconnect: 'walletconnect',
+    Tonconnect: 'tonconnect',
+    Tron: 'tron'
+} as const;
+
+export type PaymentCreateResponseCryptoProviderEnum = typeof PaymentCreateResponseCryptoProviderEnum[keyof typeof PaymentCreateResponseCryptoProviderEnum];
+export const PaymentCreateResponseCryptoChainFamilyEnum = {
+    Evm: 'evm',
+    Ton: 'ton',
+    Tron: 'tron'
+} as const;
+
+export type PaymentCreateResponseCryptoChainFamilyEnum = typeof PaymentCreateResponseCryptoChainFamilyEnum[keyof typeof PaymentCreateResponseCryptoChainFamilyEnum];
+export const PaymentCreateResponseCryptoAssetTypeEnum = {
+    Erc20: 'erc20',
+    Native: 'native',
+    Trc20: 'trc20'
+} as const;
+
+export type PaymentCreateResponseCryptoAssetTypeEnum = typeof PaymentCreateResponseCryptoAssetTypeEnum[keyof typeof PaymentCreateResponseCryptoAssetTypeEnum];
+
 

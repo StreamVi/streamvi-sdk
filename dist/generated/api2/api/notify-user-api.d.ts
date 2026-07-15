@@ -240,7 +240,7 @@ export interface NotifyUserApiNotifyUserDelMobileTokenV1Request {
     readonly token: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
     readonly v?: NotifyUserDelMobileTokenV1VEnum;
@@ -265,7 +265,7 @@ export interface NotifyUserApiNotifyUserGetScreenV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
     readonly v?: NotifyUserGetScreenV1VEnum;
@@ -342,7 +342,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Get user screen notify
@@ -351,7 +351,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteScreenNotifyUserResponse, any>>;
+    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteScreenNotifyUserResponse, any, {}>>;
     /**
      *
      * @summary Get user notify settings
@@ -360,7 +360,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteNotifyUserResponse, any>>;
+    notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteNotifyUserResponse, any, {}>>;
     /**
      *
      * @summary Remove user screen notify
@@ -369,7 +369,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Set user notify settings
@@ -378,7 +378,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
 }
 /**
  * @export
@@ -394,8 +394,6 @@ export type NotifyUserDelMobileTokenV1LanguageEnum = typeof NotifyUserDelMobileT
  */
 export declare const NotifyUserDelMobileTokenV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type NotifyUserDelMobileTokenV1VEnum = typeof NotifyUserDelMobileTokenV1VEnum[keyof typeof NotifyUserDelMobileTokenV1VEnum];
 /**
@@ -412,8 +410,6 @@ export type NotifyUserGetScreenV1LanguageEnum = typeof NotifyUserGetScreenV1Lang
  */
 export declare const NotifyUserGetScreenV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type NotifyUserGetScreenV1VEnum = typeof NotifyUserGetScreenV1VEnum[keyof typeof NotifyUserGetScreenV1VEnum];
 /**

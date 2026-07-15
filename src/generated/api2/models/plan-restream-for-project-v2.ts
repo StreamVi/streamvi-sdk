@@ -40,7 +40,7 @@ export interface PlanRestreamForProjectV2 {
      * @type {PlanRestreamCurrentItem}
      * @memberof PlanRestreamForProjectV2
      */
-    'current': PlanRestreamCurrentItem;
+    'current'?: PlanRestreamCurrentItem;
     /**
      * Next tariff restream
      * @type {PlanRestreamNextItem}

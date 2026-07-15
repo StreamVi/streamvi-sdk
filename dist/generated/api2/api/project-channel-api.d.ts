@@ -12,7 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { ListOfProjectChannelResponse } from '../models';
+import type { ProjectChannelListResponse } from '../models';
 import type { SuccessResponse } from '../models';
 /**
  * ProjectChannelApi - axios parameter creator
@@ -108,7 +108,7 @@ export declare const ProjectChannelApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    projectChannelListV1(language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfProjectChannelResponse>>;
+    projectChannelListV1(language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelListResponse>>;
     /**
      *
      * @summary Transfer owner for project in channel
@@ -150,7 +150,7 @@ export declare const ProjectChannelApiFactory: (configuration?: Configuration, b
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse>;
+    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelListResponse>;
     /**
      *
      * @summary Transfer owner for project in channel
@@ -192,7 +192,7 @@ export interface ProjectChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectChannelApiInterface
      */
-    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfProjectChannelResponse>;
+    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelListResponse>;
     /**
      *
      * @summary Transfer owner for project in channel
@@ -241,7 +241,7 @@ export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
     readonly access_type: ProjectChannelChangeAccessV1AccessTypeEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
     readonly v?: ProjectChannelChangeAccessV1VEnum;
@@ -278,7 +278,7 @@ export interface ProjectChannelApiProjectChannelDelV1Request {
     readonly target_project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
     readonly v?: ProjectChannelDelV1VEnum;
@@ -309,7 +309,7 @@ export interface ProjectChannelApiProjectChannelListV1Request {
     readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
     readonly v?: ProjectChannelListV1VEnum;
@@ -346,7 +346,7 @@ export interface ProjectChannelApiProjectChannelTransferOwnerV1Request {
     readonly to_project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
     readonly v?: ProjectChannelTransferOwnerV1VEnum;
@@ -366,7 +366,7 @@ export declare class ProjectChannelApi extends BaseAPI implements ProjectChannel
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Remove access for project in channel
@@ -375,7 +375,7 @@ export declare class ProjectChannelApi extends BaseAPI implements ProjectChannel
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Project channel list
@@ -384,7 +384,7 @@ export declare class ProjectChannelApi extends BaseAPI implements ProjectChannel
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelListResponse, any, {}>>;
     /**
      *
      * @summary Transfer owner for project in channel
@@ -393,7 +393,7 @@ export declare class ProjectChannelApi extends BaseAPI implements ProjectChannel
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
 }
 /**
  * @export
@@ -419,8 +419,6 @@ export type ProjectChannelChangeAccessV1AccessTypeEnum = typeof ProjectChannelCh
  */
 export declare const ProjectChannelChangeAccessV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ProjectChannelChangeAccessV1VEnum = typeof ProjectChannelChangeAccessV1VEnum[keyof typeof ProjectChannelChangeAccessV1VEnum];
 /**
@@ -437,8 +435,6 @@ export type ProjectChannelDelV1LanguageEnum = typeof ProjectChannelDelV1Language
  */
 export declare const ProjectChannelDelV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ProjectChannelDelV1VEnum = typeof ProjectChannelDelV1VEnum[keyof typeof ProjectChannelDelV1VEnum];
 /**
@@ -455,8 +451,6 @@ export type ProjectChannelListV1LanguageEnum = typeof ProjectChannelListV1Langua
  */
 export declare const ProjectChannelListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ProjectChannelListV1VEnum = typeof ProjectChannelListV1VEnum[keyof typeof ProjectChannelListV1VEnum];
 /**
@@ -473,8 +467,6 @@ export type ProjectChannelTransferOwnerV1LanguageEnum = typeof ProjectChannelTra
  */
 export declare const ProjectChannelTransferOwnerV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ProjectChannelTransferOwnerV1VEnum = typeof ProjectChannelTransferOwnerV1VEnum[keyof typeof ProjectChannelTransferOwnerV1VEnum];
 //# sourceMappingURL=project-channel-api.d.ts.map

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **created_at** | **string** | Create time | [default to undefined]
 **finish_at** | **string** | Finish time | [default to undefined]
 **reconnects** | **number** | Count reconnects | [default to undefined]
-**restreams** | **Array&lt;SiteRestreamItemResponse&gt;**(SiteRestreamItemResponse.md) | Restream channels | [default to undefined]
+**restreams** | [**Array&lt;SiteRestreamItemResponse&gt;**](SiteRestreamItemResponse.md) | Restream channels | [default to undefined]
 
 ## Example
 

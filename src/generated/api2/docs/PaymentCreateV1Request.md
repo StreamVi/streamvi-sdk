@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **plan_storage_value** | **number** | Space GB | [default to undefined]
 **plan_transcoding_id** | **number** | Transcoding plan id | [default to undefined]
 **plan_transcoding_count_flow** | **number** | Count flow | [default to undefined]
+**plan_webinar_id** | **number** | Webinar plan id | [default to undefined]
 
 ## Example
 
@@ -38,6 +39,7 @@ const instance: PaymentCreateV1Request = {
     plan_storage_value,
     plan_transcoding_id,
     plan_transcoding_count_flow,
+    plan_webinar_id,
 };
 ```
 

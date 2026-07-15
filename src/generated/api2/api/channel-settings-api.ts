@@ -28,6 +28,8 @@ import type { ListOfPlaylistItemResponse } from '../models';
 // @ts-ignore
 import type { ListOfSitePlannedResponse } from '../models';
 // @ts-ignore
+import type { SiteBulkUpdateChannelRequest } from '../models';
+// @ts-ignore
 import type { SiteChannelStatusResponse } from '../models';
 // @ts-ignore
 import type { SitePlannedResponse } from '../models';
@@ -35,6 +37,8 @@ import type { SitePlannedResponse } from '../models';
 import type { SiteSetNameRequest } from '../models';
 // @ts-ignore
 import type { SiteSetPlannedRequest } from '../models';
+// @ts-ignore
+import type { SiteSetSrtUrlRequest } from '../models';
 // @ts-ignore
 import type { SiteSetTranscoderRequest } from '../models';
 // @ts-ignore
@@ -100,10 +104,12 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["chat:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -158,10 +164,12 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["chat:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -216,10 +224,12 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -277,10 +287,12 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -338,10 +350,12 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["chat:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -389,6 +403,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -432,10 +450,12 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -490,10 +510,12 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -541,6 +563,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -576,6 +602,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
 
 
     
@@ -613,6 +643,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -648,6 +682,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
 
 
     
@@ -685,6 +723,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -720,6 +762,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
 
 
     
@@ -757,6 +803,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -773,11 +823,61 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
         },
         /**
          * 
-         * @summary Get status platform
+         * @summary Bulk update channel title and description. Global settings.
+         * @param {SiteBulkUpdateChannelRequest} siteBulkUpdateChannelRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingGetStatusV1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingBulkUpdateV1: async (siteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'siteBulkUpdateChannelRequest' is not null or undefined
+            assertParamExists('channelSettingBulkUpdateV1', 'siteBulkUpdateChannelRequest', siteBulkUpdateChannelRequest)
+            const localVarPath = `/method/channel_settings/bulkUpdate`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(siteBulkUpdateChannelRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get status platform
+         * @param {ChannelSettingGetStatusV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} channelId Channel id
+         * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingGetStatusV1: async (language: ChannelSettingGetStatusV1LanguageEnum, projectId: number, channelId: number, v?: ChannelSettingGetStatusV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('channelSettingGetStatusV1', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('channelSettingGetStatusV1', 'projectId', projectId)
+            // verify required parameter 'channelId' is not null or undefined
+            assertParamExists('channelSettingGetStatusV1', 'channelId', channelId)
             const localVarPath = `/method/channel_settings/getStatus`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -789,6 +889,26 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+            if (channelId !== undefined) {
+                localVarQueryParameter['channel_id'] = channelId;
+            }
 
 
     
@@ -822,6 +942,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
 
 
     
@@ -859,6 +983,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -867,6 +995,46 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(siteSetUrlRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Set srt url from channel. Global settings.
+         * @param {SiteSetSrtUrlRequest} siteSetSrtUrlRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingUpdateSrtUrlV1: async (siteSetSrtUrlRequest: SiteSetSrtUrlRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'siteSetSrtUrlRequest' is not null or undefined
+            assertParamExists('channelSettingUpdateSrtUrlV1', 'siteSetSrtUrlRequest', siteSetSrtUrlRequest)
+            const localVarPath = `/method/channel_settings/setSrt`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(siteSetSrtUrlRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -905,10 +1073,12 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -960,6 +1130,10 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -1006,10 +1180,12 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["chat:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -1268,12 +1444,29 @@ export const ChannelSettingsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get status platform
+         * @summary Bulk update channel title and description. Global settings.
+         * @param {SiteBulkUpdateChannelRequest} siteBulkUpdateChannelRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelSettingGetStatusV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChannelStatusResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingGetStatusV1(options);
+        async channelSettingBulkUpdateV1(siteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingBulkUpdateV1(siteBulkUpdateChannelRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingBulkUpdateV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get status platform
+         * @param {ChannelSettingGetStatusV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} channelId Channel id
+         * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelSettingGetStatusV1(language: ChannelSettingGetStatusV1LanguageEnum, projectId: number, channelId: number, v?: ChannelSettingGetStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChannelStatusResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingGetStatusV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingGetStatusV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -1302,6 +1495,19 @@ export const ChannelSettingsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateRtmpV1(siteSetUrlRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingUpdateRtmpV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Set srt url from channel. Global settings.
+         * @param {SiteSetSrtUrlRequest} siteSetSrtUrlRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelSettingUpdateSrtUrlV1(siteSetSrtUrlRequest: SiteSetSrtUrlRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateSrtUrlV1(siteSetSrtUrlRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingUpdateSrtUrlV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1513,12 +1719,23 @@ export const ChannelSettingsApiFactory = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get status platform
+         * @summary Bulk update channel title and description. Global settings.
+         * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingGetStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse> {
-            return localVarFp.channelSettingGetStatusV1(options).then((request) => request(axios, basePath));
+        channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelSettingBulkUpdateV1(requestParameters.SiteBulkUpdateChannelRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get status platform
+         * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse> {
+            return localVarFp.channelSettingGetStatusV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1539,6 +1756,16 @@ export const ChannelSettingsApiFactory = function (configuration?: Configuration
          */
         channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
             return localVarFp.channelSettingUpdateRtmpV1(requestParameters.SiteSetUrlRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Set srt url from channel. Global settings.
+         * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.channelSettingUpdateSrtUrlV1(requestParameters.SiteSetSrtUrlRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1731,12 +1958,23 @@ export interface ChannelSettingsApiInterface {
 
     /**
      * 
-     * @summary Get status platform
+     * @summary Bulk update channel title and description. Global settings.
+     * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApiInterface
      */
-    channelSettingGetStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
+    channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Get status platform
+     * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
 
     /**
      * 
@@ -1757,6 +1995,16 @@ export interface ChannelSettingsApiInterface {
      * @memberof ChannelSettingsApiInterface
      */
     channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Set srt url from channel. Global settings.
+     * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
      * 
@@ -2155,6 +2403,55 @@ export interface ChannelSettingsApiChannelOptionsUpdatePlannedV1Request {
 }
 
 /**
+ * Request parameters for channelSettingBulkUpdateV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelSettingBulkUpdateV1Request
+ */
+export interface ChannelSettingsApiChannelSettingBulkUpdateV1Request {
+    /**
+     * 
+     * @type {SiteBulkUpdateChannelRequest}
+     * @memberof ChannelSettingsApiChannelSettingBulkUpdateV1
+     */
+    readonly SiteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest
+}
+
+/**
+ * Request parameters for channelSettingGetStatusV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelSettingGetStatusV1Request
+ */
+export interface ChannelSettingsApiChannelSettingGetStatusV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ChannelSettingsApiChannelSettingGetStatusV1
+     */
+    readonly language: ChannelSettingGetStatusV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelSettingGetStatusV1
+     */
+    readonly project_id: number
+
+    /**
+     * Channel id
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelSettingGetStatusV1
+     */
+    readonly channel_id: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof ChannelSettingsApiChannelSettingGetStatusV1
+     */
+    readonly v?: ChannelSettingGetStatusV1VEnum
+}
+
+/**
  * Request parameters for channelSettingSetNameV1 operation in ChannelSettingsApi.
  * @export
  * @interface ChannelSettingsApiChannelSettingSetNameV1Request
@@ -2180,6 +2477,20 @@ export interface ChannelSettingsApiChannelSettingUpdateRtmpV1Request {
      * @memberof ChannelSettingsApiChannelSettingUpdateRtmpV1
      */
     readonly SiteSetUrlRequest: SiteSetUrlRequest
+}
+
+/**
+ * Request parameters for channelSettingUpdateSrtUrlV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request
+ */
+export interface ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request {
+    /**
+     * 
+     * @type {SiteSetSrtUrlRequest}
+     * @memberof ChannelSettingsApiChannelSettingUpdateSrtUrlV1
+     */
+    readonly SiteSetSrtUrlRequest: SiteSetSrtUrlRequest
 }
 
 /**
@@ -2469,13 +2780,26 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
 
     /**
      * 
-     * @summary Get status platform
+     * @summary Bulk update channel title and description. Global settings.
+     * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    public channelSettingGetStatusV1(options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelSettingGetStatusV1(options).then((request) => request(this.axios, this.basePath));
+    public channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelSettingBulkUpdateV1(requestParameters.SiteBulkUpdateChannelRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get status platform
+     * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApi
+     */
+    public channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelSettingGetStatusV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2500,6 +2824,18 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      */
     public channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig) {
         return ChannelSettingsApiFp(this.configuration).channelSettingUpdateRtmpV1(requestParameters.SiteSetUrlRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Set srt url from channel. Global settings.
+     * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApi
+     */
+    public channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateSrtUrlV1(requestParameters.SiteSetSrtUrlRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2651,6 +2987,22 @@ export const ChannelOptionsGetPlayListV1VEnum = {
     _1: '1'
 } as const;
 export type ChannelOptionsGetPlayListV1VEnum = typeof ChannelOptionsGetPlayListV1VEnum[keyof typeof ChannelOptionsGetPlayListV1VEnum];
+/**
+ * @export
+ */
+export const ChannelSettingGetStatusV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelSettingGetStatusV1LanguageEnum = typeof ChannelSettingGetStatusV1LanguageEnum[keyof typeof ChannelSettingGetStatusV1LanguageEnum];
+/**
+ * @export
+ */
+export const ChannelSettingGetStatusV1VEnum = {
+    _1: '1'
+} as const;
+export type ChannelSettingGetStatusV1VEnum = typeof ChannelSettingGetStatusV1VEnum[keyof typeof ChannelSettingGetStatusV1VEnum];
 /**
  * @export
  */

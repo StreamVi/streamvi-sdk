@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ProjectChannelMemberInfoResponse } from './project-channel-member-info-response';
+import type { ProjectChannelMemberStreamInfoResponse } from './project-channel-member-stream-info-response';
 /**
  *
  * @export
@@ -16,17 +18,17 @@
  */
 export interface ProjectChannelResponse {
     /**
-     * Primary key
+     * Access type
      * @type {number}
      * @memberof ProjectChannelResponse
      */
-    'id': number;
+    'access_type': ProjectChannelResponseAccessTypeEnum;
     /**
-     * User id
+     *
      * @type {number}
      * @memberof ProjectChannelResponse
      */
-    'project_id': number;
+    'active': number;
     /**
      * Channel id
      * @type {number}
@@ -34,16 +36,77 @@ export interface ProjectChannelResponse {
      */
     'channel_id': number;
     /**
+     * Primary key
+     * @type {number}
+     * @memberof ProjectChannelResponse
+     */
+    'id': number;
+    /**
      * Owner id
      * @type {number}
      * @memberof ProjectChannelResponse
      */
     'owner_id': number;
     /**
+     * Preview
+     * @type {string}
+     * @memberof ProjectChannelResponse
+     */
+    'preview'?: string | null;
+    /**
+     * Title
+     * @type {string}
+     * @memberof ProjectChannelResponse
+     */
+    'title'?: string | null;
+    /**
+     * Transcoder ID
+     * @type {number}
+     * @memberof ProjectChannelResponse
+     */
+    'transcoder_id'?: number | null;
+    /**
+     * Unlim
+     * @type {string}
+     * @memberof ProjectChannelResponse
+     */
+    'unlim': string;
+    /**
      * usageType
      * @type {number}
      * @memberof ProjectChannelResponse
      */
-    'usageType': number;
+    'usageType': ProjectChannelResponseUsageTypeEnum;
+    /**
+     * User id
+     * @type {number}
+     * @memberof ProjectChannelResponse
+     */
+    'project_id': number;
+    /**
+     * User info
+     * @type {ProjectChannelMemberInfoResponse}
+     * @memberof ProjectChannelResponse
+     */
+    'project_'?: ProjectChannelMemberInfoResponse;
+    /**
+     * Stream info
+     * @type {ProjectChannelMemberStreamInfoResponse}
+     * @memberof ProjectChannelResponse
+     */
+    'streamInfo': ProjectChannelMemberStreamInfoResponse;
 }
+export declare const ProjectChannelResponseAccessTypeEnum: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+    readonly NUMBER_12: 1;
+    readonly NUMBER_2: 2;
+};
+export type ProjectChannelResponseAccessTypeEnum = typeof ProjectChannelResponseAccessTypeEnum[keyof typeof ProjectChannelResponseAccessTypeEnum];
+export declare const ProjectChannelResponseUsageTypeEnum: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+    readonly NUMBER_2: 2;
+};
+export type ProjectChannelResponseUsageTypeEnum = typeof ProjectChannelResponseUsageTypeEnum[keyof typeof ProjectChannelResponseUsageTypeEnum];
 //# sourceMappingURL=project-channel-response.d.ts.map

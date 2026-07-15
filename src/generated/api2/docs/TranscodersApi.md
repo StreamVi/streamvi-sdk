@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**transcodersAddV1**(#transcodersaddv1) | **POST** /method/transcoder/add | Transcoder create|
-|**transcodersDeleteV1**(#transcodersdeletev1) | **POST** /method/transcoder/delete | Transcoder delete|
-|**transcodersListV1**(#transcoderslistv1) | **GET** /method/transcoder/list | List of transcoder|
-|**transcodersResetDelayV1**(#transcodersresetdelayv1) | **POST** /method/transcoder/reset-delay | Reset delay|
-|**transcodersStopV1**(#transcodersstopv1) | **POST** /method/transcoder/stop | Transcoder stop|
-|**transcodersUpdateV1**(#transcodersupdatev1) | **POST** /method/transcoder/update | Transcoder update|
+|[**transcodersAddV1**](#transcodersaddv1) | **POST** /method/transcoder/add | Transcoder create|
+|[**transcodersDeleteV1**](#transcodersdeletev1) | **POST** /method/transcoder/delete | Transcoder delete|
+|[**transcodersListV1**](#transcoderslistv1) | **GET** /method/transcoder/list | List of transcoder|
+|[**transcodersResetDelayV1**](#transcodersresetdelayv1) | **POST** /method/transcoder/reset-delay | Reset delay|
+|[**transcodersStopV1**](#transcodersstopv1) | **POST** /method/transcoder/stop | Transcoder stop|
+|[**transcodersUpdateV1**](#transcodersupdatev1) | **POST** /method/transcoder/update | Transcoder update|
 
 # **transcodersAddV1**
 > number transcodersAddV1(transcoderCreateDto)
@@ -47,7 +47,7 @@ const { status, data } = await apiInstance.transcodersAddV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -99,7 +99,7 @@ const { status, data } = await apiInstance.transcodersDeleteV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -145,9 +145,9 @@ const { status, data } = await apiInstance.transcodersListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -156,7 +156,7 @@ const { status, data } = await apiInstance.transcodersListV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -208,7 +208,7 @@ const { status, data } = await apiInstance.transcodersResetDelayV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -260,7 +260,7 @@ const { status, data } = await apiInstance.transcodersStopV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -312,7 +312,7 @@ const { status, data } = await apiInstance.transcodersUpdateV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

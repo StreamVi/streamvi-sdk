@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profit** | **TotalInfoReferralsProfit**(TotalInfoReferralsProfit.md) | Amount of referrals | [default to undefined]
+**profit** | [**TotalInfoReferralsProfit**](TotalInfoReferralsProfit.md) | Amount of referrals | [default to undefined]
 **members** | **number** | Members of referral | [default to undefined]
 
 ## Example

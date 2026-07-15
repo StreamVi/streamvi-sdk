@@ -4,8 +4,8 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**payoutCreateV1**(#payoutcreatev1) | **POST** /method/payout/create | Create payout|
-|**payoutPrepareV1**(#payoutpreparev1) | **GET** /method/payout/prepare | Get payout data for create|
+|[**payoutCreateV1**](#payoutcreatev1) | **POST** /method/payout/create | Create payout|
+|[**payoutPrepareV1**](#payoutpreparev1) | **GET** /method/payout/prepare | Get payout data for create|
 
 # **payoutCreateV1**
 > SuccessResponse payoutCreateV1(payoutCreateRequestBodyDto)
@@ -39,8 +39,8 @@ const { status, data } = await apiInstance.payoutCreateV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **payoutCreateRequestBodyDto** | **PayoutCreateRequestBodyDto**|  | |
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -49,7 +49,7 @@ const { status, data } = await apiInstance.payoutCreateV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -95,9 +95,9 @@ const { status, data } = await apiInstance.payoutPrepareV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -106,7 +106,7 @@ const { status, data } = await apiInstance.payoutPrepareV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

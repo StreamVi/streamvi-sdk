@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TelegramGetPostByFilterV1VEnum = exports.TelegramGetPostByFilterV1LanguageEnum = exports.ChannelSettingUpdateTokenV1VEnum = exports.ChannelSettingUpdateTokenV1RoleEnum = exports.ChannelSettingUpdateTokenV1LanguageEnum = exports.ChannelOptionsGetPlayListV1VEnum = exports.ChannelOptionsGetPlayListV1LanguageEnum = exports.ChannelOptionsGetPlannedV1VEnum = exports.ChannelOptionsGetPlannedV1LanguageEnum = exports.ChannelChatTelegramPostsV1VEnum = exports.ChannelChatTelegramPostsV1LanguageEnum = exports.ChannelChatSetTelegramSettingV1VEnum = exports.ChannelChatSetTelegramSettingV1LanguageEnum = exports.ChannelChatRemoveTelegramChatV1VEnum = exports.ChannelChatRemoveTelegramChatV1LanguageEnum = exports.ChannelChatInitTelegramChatConnectV1VEnum = exports.ChannelChatInitTelegramChatConnectV1LanguageEnum = exports.ChannelChatGetTelegramSettingV1VEnum = exports.ChannelChatGetTelegramSettingV1LanguageEnum = exports.ChannelSettingsApi = exports.ChannelSettingsApiFactory = exports.ChannelSettingsApiFp = exports.ChannelSettingsApiAxiosParamCreator = void 0;
+exports.TelegramGetPostByFilterV1VEnum = exports.TelegramGetPostByFilterV1LanguageEnum = exports.ChannelSettingUpdateTokenV1VEnum = exports.ChannelSettingUpdateTokenV1RoleEnum = exports.ChannelSettingUpdateTokenV1LanguageEnum = exports.ChannelSettingGetStatusV1VEnum = exports.ChannelSettingGetStatusV1LanguageEnum = exports.ChannelOptionsGetPlayListV1VEnum = exports.ChannelOptionsGetPlayListV1LanguageEnum = exports.ChannelOptionsGetPlannedV1VEnum = exports.ChannelOptionsGetPlannedV1LanguageEnum = exports.ChannelChatTelegramPostsV1VEnum = exports.ChannelChatTelegramPostsV1LanguageEnum = exports.ChannelChatSetTelegramSettingV1VEnum = exports.ChannelChatSetTelegramSettingV1LanguageEnum = exports.ChannelChatRemoveTelegramChatV1VEnum = exports.ChannelChatRemoveTelegramChatV1LanguageEnum = exports.ChannelChatInitTelegramChatConnectV1VEnum = exports.ChannelChatInitTelegramChatConnectV1LanguageEnum = exports.ChannelChatGetTelegramSettingV1VEnum = exports.ChannelChatGetTelegramSettingV1LanguageEnum = exports.ChannelSettingsApi = exports.ChannelSettingsApiFactory = exports.ChannelSettingsApiFp = exports.ChannelSettingsApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -56,11 +56,11 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["chat:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -106,11 +106,11 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["chat:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -156,11 +156,11 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -209,11 +209,11 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -261,11 +261,11 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["chat:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -304,6 +304,9 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -341,11 +344,11 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -391,11 +394,11 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -434,6 +437,9 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -464,6 +470,9 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -494,6 +503,9 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -524,6 +536,9 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -554,6 +569,9 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -584,6 +602,9 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -614,6 +635,9 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -626,11 +650,54 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get status platform
+         * @summary Bulk update channel title and description. Global settings.
+         * @param {SiteBulkUpdateChannelRequest} siteBulkUpdateChannelRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingGetStatusV1: async (options = {}) => {
+        channelSettingBulkUpdateV1: async (siteBulkUpdateChannelRequest, options = {}) => {
+            // verify required parameter 'siteBulkUpdateChannelRequest' is not null or undefined
+            (0, common_1.assertParamExists)('channelSettingBulkUpdateV1', 'siteBulkUpdateChannelRequest', siteBulkUpdateChannelRequest);
+            const localVarPath = `/method/channel_settings/bulkUpdate`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteBulkUpdateChannelRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get status platform
+         * @param {ChannelSettingGetStatusV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} channelId Channel id
+         * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingGetStatusV1: async (language, projectId, channelId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('channelSettingGetStatusV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('channelSettingGetStatusV1', 'projectId', projectId);
+            // verify required parameter 'channelId' is not null or undefined
+            (0, common_1.assertParamExists)('channelSettingGetStatusV1', 'channelId', channelId);
             const localVarPath = `/method/channel_settings/getStatus`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -641,6 +708,21 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (channelId !== undefined) {
+                localVarQueryParameter['channel_id'] = channelId;
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -669,6 +751,9 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -699,11 +784,47 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
             localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteSetUrlRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Set srt url from channel. Global settings.
+         * @param {SiteSetSrtUrlRequest} siteSetSrtUrlRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingUpdateSrtUrlV1: async (siteSetSrtUrlRequest, options = {}) => {
+            // verify required parameter 'siteSetSrtUrlRequest' is not null or undefined
+            (0, common_1.assertParamExists)('channelSettingUpdateSrtUrlV1', 'siteSetSrtUrlRequest', siteSetSrtUrlRequest);
+            const localVarPath = `/method/channel_settings/setSrt`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteSetSrtUrlRequest, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -739,11 +860,11 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -785,6 +906,9 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -825,11 +949,11 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["chat:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -1095,13 +1219,31 @@ const ChannelSettingsApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get status platform
+         * @summary Bulk update channel title and description. Global settings.
+         * @param {SiteBulkUpdateChannelRequest} siteBulkUpdateChannelRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelSettingGetStatusV1(options) {
+        async channelSettingBulkUpdateV1(siteBulkUpdateChannelRequest, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingGetStatusV1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingBulkUpdateV1(siteBulkUpdateChannelRequest, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelSettingBulkUpdateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get status platform
+         * @param {ChannelSettingGetStatusV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} channelId Channel id
+         * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelSettingGetStatusV1(language, projectId, channelId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingGetStatusV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelSettingGetStatusV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -1132,6 +1274,20 @@ const ChannelSettingsApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateRtmpV1(siteSetUrlRequest, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelSettingUpdateRtmpV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Set srt url from channel. Global settings.
+         * @param {SiteSetSrtUrlRequest} siteSetSrtUrlRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelSettingUpdateSrtUrlV1(siteSetSrtUrlRequest, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateSrtUrlV1(siteSetSrtUrlRequest, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChannelSettingsApi.channelSettingUpdateSrtUrlV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1346,12 +1502,23 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get status platform
+         * @summary Bulk update channel title and description. Global settings.
+         * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingGetStatusV1(options) {
-            return localVarFp.channelSettingGetStatusV1(options).then((request) => request(axios, basePath));
+        channelSettingBulkUpdateV1(requestParameters, options) {
+            return localVarFp.channelSettingBulkUpdateV1(requestParameters.SiteBulkUpdateChannelRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get status platform
+         * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingGetStatusV1(requestParameters, options) {
+            return localVarFp.channelSettingGetStatusV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1372,6 +1539,16 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
          */
         channelSettingUpdateRtmpV1(requestParameters, options) {
             return localVarFp.channelSettingUpdateRtmpV1(requestParameters.SiteSetUrlRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Set srt url from channel. Global settings.
+         * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingUpdateSrtUrlV1(requestParameters, options) {
+            return localVarFp.channelSettingUpdateSrtUrlV1(requestParameters.SiteSetSrtUrlRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1580,13 +1757,25 @@ class ChannelSettingsApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Get status platform
+     * @summary Bulk update channel title and description. Global settings.
+     * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingGetStatusV1(options) {
-        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingGetStatusV1(options).then((request) => request(this.axios, this.basePath));
+    channelSettingBulkUpdateV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingBulkUpdateV1(requestParameters.SiteBulkUpdateChannelRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get status platform
+     * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApi
+     */
+    channelSettingGetStatusV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingGetStatusV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1609,6 +1798,17 @@ class ChannelSettingsApi extends base_1.BaseAPI {
      */
     channelSettingUpdateRtmpV1(requestParameters, options) {
         return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateRtmpV1(requestParameters.SiteSetUrlRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Set srt url from channel. Global settings.
+     * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApi
+     */
+    channelSettingUpdateSrtUrlV1(requestParameters, options) {
+        return (0, exports.ChannelSettingsApiFp)(this.configuration).channelSettingUpdateSrtUrlV1(requestParameters.SiteSetSrtUrlRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1657,9 +1857,7 @@ exports.ChannelChatGetTelegramSettingV1LanguageEnum = {
  * @export
  */
 exports.ChannelChatGetTelegramSettingV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -1673,9 +1871,7 @@ exports.ChannelChatInitTelegramChatConnectV1LanguageEnum = {
  * @export
  */
 exports.ChannelChatInitTelegramChatConnectV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -1689,9 +1885,7 @@ exports.ChannelChatRemoveTelegramChatV1LanguageEnum = {
  * @export
  */
 exports.ChannelChatRemoveTelegramChatV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -1705,9 +1899,7 @@ exports.ChannelChatSetTelegramSettingV1LanguageEnum = {
  * @export
  */
 exports.ChannelChatSetTelegramSettingV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -1721,9 +1913,7 @@ exports.ChannelChatTelegramPostsV1LanguageEnum = {
  * @export
  */
 exports.ChannelChatTelegramPostsV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -1737,9 +1927,7 @@ exports.ChannelOptionsGetPlannedV1LanguageEnum = {
  * @export
  */
 exports.ChannelOptionsGetPlannedV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -1753,9 +1941,21 @@ exports.ChannelOptionsGetPlayListV1LanguageEnum = {
  * @export
  */
 exports.ChannelOptionsGetPlayListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.ChannelSettingGetStatusV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.ChannelSettingGetStatusV1VEnum = {
+    _1: '1'
 };
 /**
  * @export
@@ -1776,9 +1976,7 @@ exports.ChannelSettingUpdateTokenV1RoleEnum = {
  * @export
  */
 exports.ChannelSettingUpdateTokenV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -1792,7 +1990,5 @@ exports.TelegramGetPostByFilterV1LanguageEnum = {
  * @export
  */
 exports.TelegramGetPostByFilterV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

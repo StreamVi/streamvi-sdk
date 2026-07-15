@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SetRecordStreamRequestLanguageEnum = exports.SetRecordStreamRequestVEnum = void 0;
 exports.SetRecordStreamRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.SetRecordStreamRequestLanguageEnum = {
     Ru: 'ru',

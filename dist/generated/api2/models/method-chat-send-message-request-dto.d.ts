@@ -27,5 +27,11 @@ export interface MethodChatSendMessageRequestDto {
      * @memberof MethodChatSendMessageRequestDto
      */
     'text': string;
+    /**
+     *
+     * @type {Array<number>}
+     * @memberof MethodChatSendMessageRequestDto
+     */
+    'restreams': Array<number>;
 }
 //# sourceMappingURL=method-chat-send-message-request-dto.d.ts.map

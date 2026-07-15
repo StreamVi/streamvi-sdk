@@ -14,7 +14,9 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
 import type { ListOfRtmpServerLocationResponse } from '../models';
 import type { RtmpServerGraphResponse } from '../models';
-import type { RtmpServerListV2Response } from '../models';
+import type { RtmpServerListResponseBase } from '../models';
+import type { RtmpServerListV3Response } from '../models';
+import type { RtmpServerSrtLatencyResponse } from '../models';
 import type { RtmpServerStateResponse } from '../models';
 /**
  * RtmpServerApi - axios parameter creator
@@ -43,15 +45,36 @@ export declare const RtmpServerApiAxiosParamCreator: (configuration?: Configurat
     rtmpServerGraphV1: (language: RtmpServerGraphV1LanguageEnum, interval: RtmpServerGraphV1IntervalEnum, type: RtmpServerGraphV1TypeEnum, v?: RtmpServerGraphV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary List rtmp servers
-     * @param {RtmpServerListV2LanguageEnum} language Current language
+     * @summary List rtmp servers (base info)
+     * @param {RtmpServerListBaseV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {RtmpServerListV2IntervalEnum} interval Interval state in hours
-     * @param {RtmpServerListV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
+     * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rtmpServerListV2: (language: RtmpServerListV2LanguageEnum, projectId: number, interval: RtmpServerListV2IntervalEnum, v?: RtmpServerListV2VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    rtmpServerListBaseV1: (language: RtmpServerListBaseV1LanguageEnum, projectId: number, v?: RtmpServerListBaseV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary List rtmp servers v3
+     * @param {RtmpServerListV3LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    rtmpServerListV3: (language: RtmpServerListV3LanguageEnum, projectId: number, v?: RtmpServerListV3VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get recommended SRT latency by source and destination ip
+     * @param {RtmpServerSrtLatencyV1LanguageEnum} language Current language
+     * @param {string} srcIp Source IPv4 address
+     * @param {string} dstIp Destination IPv4 address
+     * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {string} [profile] Recommendation profile
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    rtmpServerSrtLatencyV1: (language: RtmpServerSrtLatencyV1LanguageEnum, srcIp: string, dstIp: string, v?: RtmpServerSrtLatencyV1VEnum, profile?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary State of rtmp servers
@@ -97,15 +120,36 @@ export declare const RtmpServerApiFp: (configuration?: Configuration) => {
     rtmpServerGraphV1(language: RtmpServerGraphV1LanguageEnum, interval: RtmpServerGraphV1IntervalEnum, type: RtmpServerGraphV1TypeEnum, v?: RtmpServerGraphV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerGraphResponse>>;
     /**
      *
-     * @summary List rtmp servers
-     * @param {RtmpServerListV2LanguageEnum} language Current language
+     * @summary List rtmp servers (base info)
+     * @param {RtmpServerListBaseV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {RtmpServerListV2IntervalEnum} interval Interval state in hours
-     * @param {RtmpServerListV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
+     * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rtmpServerListV2(language: RtmpServerListV2LanguageEnum, projectId: number, interval: RtmpServerListV2IntervalEnum, v?: RtmpServerListV2VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerListV2Response>>;
+    rtmpServerListBaseV1(language: RtmpServerListBaseV1LanguageEnum, projectId: number, v?: RtmpServerListBaseV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerListResponseBase>>;
+    /**
+     *
+     * @summary List rtmp servers v3
+     * @param {RtmpServerListV3LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    rtmpServerListV3(language: RtmpServerListV3LanguageEnum, projectId: number, v?: RtmpServerListV3VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerListV3Response>>;
+    /**
+     *
+     * @summary Get recommended SRT latency by source and destination ip
+     * @param {RtmpServerSrtLatencyV1LanguageEnum} language Current language
+     * @param {string} srcIp Source IPv4 address
+     * @param {string} dstIp Destination IPv4 address
+     * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {string} [profile] Recommendation profile
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    rtmpServerSrtLatencyV1(language: RtmpServerSrtLatencyV1LanguageEnum, srcIp: string, dstIp: string, v?: RtmpServerSrtLatencyV1VEnum, profile?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerSrtLatencyResponse>>;
     /**
      *
      * @summary State of rtmp servers
@@ -147,12 +191,28 @@ export declare const RtmpServerApiFactory: (configuration?: Configuration, baseP
     rtmpServerGraphV1(requestParameters: RtmpServerApiRtmpServerGraphV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerGraphResponse>;
     /**
      *
-     * @summary List rtmp servers
-     * @param {RtmpServerApiRtmpServerListV2Request} requestParameters Request parameters.
+     * @summary List rtmp servers (base info)
+     * @param {RtmpServerApiRtmpServerListBaseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rtmpServerListV2(requestParameters: RtmpServerApiRtmpServerListV2Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListV2Response>;
+    rtmpServerListBaseV1(requestParameters: RtmpServerApiRtmpServerListBaseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListResponseBase>;
+    /**
+     *
+     * @summary List rtmp servers v3
+     * @param {RtmpServerApiRtmpServerListV3Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    rtmpServerListV3(requestParameters: RtmpServerApiRtmpServerListV3Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListV3Response>;
+    /**
+     *
+     * @summary Get recommended SRT latency by source and destination ip
+     * @param {RtmpServerApiRtmpServerSrtLatencyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    rtmpServerSrtLatencyV1(requestParameters: RtmpServerApiRtmpServerSrtLatencyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerSrtLatencyResponse>;
     /**
      *
      * @summary State of rtmp servers
@@ -195,13 +255,31 @@ export interface RtmpServerApiInterface {
     rtmpServerGraphV1(requestParameters: RtmpServerApiRtmpServerGraphV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerGraphResponse>;
     /**
      *
-     * @summary List rtmp servers
-     * @param {RtmpServerApiRtmpServerListV2Request} requestParameters Request parameters.
+     * @summary List rtmp servers (base info)
+     * @param {RtmpServerApiRtmpServerListBaseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApiInterface
      */
-    rtmpServerListV2(requestParameters: RtmpServerApiRtmpServerListV2Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListV2Response>;
+    rtmpServerListBaseV1(requestParameters: RtmpServerApiRtmpServerListBaseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListResponseBase>;
+    /**
+     *
+     * @summary List rtmp servers v3
+     * @param {RtmpServerApiRtmpServerListV3Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RtmpServerApiInterface
+     */
+    rtmpServerListV3(requestParameters: RtmpServerApiRtmpServerListV3Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListV3Response>;
+    /**
+     *
+     * @summary Get recommended SRT latency by source and destination ip
+     * @param {RtmpServerApiRtmpServerSrtLatencyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RtmpServerApiInterface
+     */
+    rtmpServerSrtLatencyV1(requestParameters: RtmpServerApiRtmpServerSrtLatencyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerSrtLatencyResponse>;
     /**
      *
      * @summary State of rtmp servers
@@ -234,7 +312,7 @@ export interface RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request
     readonly language: MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1
      */
     readonly v?: MethodRtmpServerListLocationsUnauthorizedV1VEnum;
@@ -265,41 +343,97 @@ export interface RtmpServerApiRtmpServerGraphV1Request {
     readonly type: RtmpServerGraphV1TypeEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof RtmpServerApiRtmpServerGraphV1
      */
     readonly v?: RtmpServerGraphV1VEnum;
 }
 /**
- * Request parameters for rtmpServerListV2 operation in RtmpServerApi.
+ * Request parameters for rtmpServerListBaseV1 operation in RtmpServerApi.
  * @export
- * @interface RtmpServerApiRtmpServerListV2Request
+ * @interface RtmpServerApiRtmpServerListBaseV1Request
  */
-export interface RtmpServerApiRtmpServerListV2Request {
+export interface RtmpServerApiRtmpServerListBaseV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof RtmpServerApiRtmpServerListV2
+     * @memberof RtmpServerApiRtmpServerListBaseV1
      */
-    readonly language: RtmpServerListV2LanguageEnum;
+    readonly language: RtmpServerListBaseV1LanguageEnum;
     /**
      * Project id
      * @type {number}
-     * @memberof RtmpServerApiRtmpServerListV2
+     * @memberof RtmpServerApiRtmpServerListBaseV1
      */
     readonly project_id: number;
     /**
-     * Interval state in hours
-     * @type {1 | 3 | 6 | 12 | 24}
-     * @memberof RtmpServerApiRtmpServerListV2
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof RtmpServerApiRtmpServerListBaseV1
      */
-    readonly interval: RtmpServerListV2IntervalEnum;
+    readonly v?: RtmpServerListBaseV1VEnum;
+}
+/**
+ * Request parameters for rtmpServerListV3 operation in RtmpServerApi.
+ * @export
+ * @interface RtmpServerApiRtmpServerListV3Request
+ */
+export interface RtmpServerApiRtmpServerListV3Request {
     /**
-     * Version (automatically defaults to 2 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
-     * @memberof RtmpServerApiRtmpServerListV2
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof RtmpServerApiRtmpServerListV3
      */
-    readonly v?: RtmpServerListV2VEnum;
+    readonly language: RtmpServerListV3LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof RtmpServerApiRtmpServerListV3
+     */
+    readonly project_id: number;
+    /**
+     * Version (automatically defaults to 3 based on method version, can be overridden)
+     * @type {'3'}
+     * @memberof RtmpServerApiRtmpServerListV3
+     */
+    readonly v?: RtmpServerListV3VEnum;
+}
+/**
+ * Request parameters for rtmpServerSrtLatencyV1 operation in RtmpServerApi.
+ * @export
+ * @interface RtmpServerApiRtmpServerSrtLatencyV1Request
+ */
+export interface RtmpServerApiRtmpServerSrtLatencyV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof RtmpServerApiRtmpServerSrtLatencyV1
+     */
+    readonly language: RtmpServerSrtLatencyV1LanguageEnum;
+    /**
+     * Source IPv4 address
+     * @type {string}
+     * @memberof RtmpServerApiRtmpServerSrtLatencyV1
+     */
+    readonly src_ip: string;
+    /**
+     * Destination IPv4 address
+     * @type {string}
+     * @memberof RtmpServerApiRtmpServerSrtLatencyV1
+     */
+    readonly dst_ip: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof RtmpServerApiRtmpServerSrtLatencyV1
+     */
+    readonly v?: RtmpServerSrtLatencyV1VEnum;
+    /**
+     * Recommendation profile
+     * @type {string}
+     * @memberof RtmpServerApiRtmpServerSrtLatencyV1
+     */
+    readonly profile?: string;
 }
 /**
  * Request parameters for rtmpServerStateV1 operation in RtmpServerApi.
@@ -321,7 +455,7 @@ export interface RtmpServerApiRtmpServerStateV1Request {
     readonly interval: RtmpServerStateV1IntervalEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof RtmpServerApiRtmpServerStateV1
      */
     readonly v?: RtmpServerStateV1VEnum;
@@ -341,7 +475,7 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListOfRtmpServerLocationResponse, any, {}>>;
     /**
      *
      * @summary Graph of rtmp servers
@@ -350,16 +484,34 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerGraphV1(requestParameters: RtmpServerApiRtmpServerGraphV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerGraphResponse, any>>;
+    rtmpServerGraphV1(requestParameters: RtmpServerApiRtmpServerGraphV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerGraphResponse, any, {}>>;
     /**
      *
-     * @summary List rtmp servers
-     * @param {RtmpServerApiRtmpServerListV2Request} requestParameters Request parameters.
+     * @summary List rtmp servers (base info)
+     * @param {RtmpServerApiRtmpServerListBaseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerListV2(requestParameters: RtmpServerApiRtmpServerListV2Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerListV2Response, any>>;
+    rtmpServerListBaseV1(requestParameters: RtmpServerApiRtmpServerListBaseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerListResponseBase, any, {}>>;
+    /**
+     *
+     * @summary List rtmp servers v3
+     * @param {RtmpServerApiRtmpServerListV3Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RtmpServerApi
+     */
+    rtmpServerListV3(requestParameters: RtmpServerApiRtmpServerListV3Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerListV3Response, any, {}>>;
+    /**
+     *
+     * @summary Get recommended SRT latency by source and destination ip
+     * @param {RtmpServerApiRtmpServerSrtLatencyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RtmpServerApi
+     */
+    rtmpServerSrtLatencyV1(requestParameters: RtmpServerApiRtmpServerSrtLatencyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerSrtLatencyResponse, any, {}>>;
     /**
      *
      * @summary State of rtmp servers
@@ -368,7 +520,7 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerStateV1(requestParameters: RtmpServerApiRtmpServerStateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerStateResponse, any>>;
+    rtmpServerStateV1(requestParameters: RtmpServerApiRtmpServerStateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerStateResponse, any, {}>>;
     /**
      *
      * @summary State of rtmp servers
@@ -376,7 +528,7 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerUpV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
+    rtmpServerUpV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}>>;
 }
 /**
  * @export
@@ -392,8 +544,6 @@ export type MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum = typeof Met
  */
 export declare const MethodRtmpServerListLocationsUnauthorizedV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type MethodRtmpServerListLocationsUnauthorizedV1VEnum = typeof MethodRtmpServerListLocationsUnauthorizedV1VEnum[keyof typeof MethodRtmpServerListLocationsUnauthorizedV1VEnum];
 /**
@@ -432,39 +582,56 @@ export type RtmpServerGraphV1TypeEnum = typeof RtmpServerGraphV1TypeEnum[keyof t
  */
 export declare const RtmpServerGraphV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type RtmpServerGraphV1VEnum = typeof RtmpServerGraphV1VEnum[keyof typeof RtmpServerGraphV1VEnum];
 /**
  * @export
  */
-export declare const RtmpServerListV2LanguageEnum: {
+export declare const RtmpServerListBaseV1LanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
     readonly Cn: "cn";
 };
-export type RtmpServerListV2LanguageEnum = typeof RtmpServerListV2LanguageEnum[keyof typeof RtmpServerListV2LanguageEnum];
+export type RtmpServerListBaseV1LanguageEnum = typeof RtmpServerListBaseV1LanguageEnum[keyof typeof RtmpServerListBaseV1LanguageEnum];
 /**
  * @export
  */
-export declare const RtmpServerListV2IntervalEnum: {
-    readonly NUMBER_1: 1;
-    readonly NUMBER_3: 3;
-    readonly NUMBER_6: 6;
-    readonly NUMBER_12: 12;
-    readonly NUMBER_24: 24;
-};
-export type RtmpServerListV2IntervalEnum = typeof RtmpServerListV2IntervalEnum[keyof typeof RtmpServerListV2IntervalEnum];
-/**
- * @export
- */
-export declare const RtmpServerListV2VEnum: {
+export declare const RtmpServerListBaseV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
+};
+export type RtmpServerListBaseV1VEnum = typeof RtmpServerListBaseV1VEnum[keyof typeof RtmpServerListBaseV1VEnum];
+/**
+ * @export
+ */
+export declare const RtmpServerListV3LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type RtmpServerListV3LanguageEnum = typeof RtmpServerListV3LanguageEnum[keyof typeof RtmpServerListV3LanguageEnum];
+/**
+ * @export
+ */
+export declare const RtmpServerListV3VEnum: {
     readonly _3: "3";
 };
-export type RtmpServerListV2VEnum = typeof RtmpServerListV2VEnum[keyof typeof RtmpServerListV2VEnum];
+export type RtmpServerListV3VEnum = typeof RtmpServerListV3VEnum[keyof typeof RtmpServerListV3VEnum];
+/**
+ * @export
+ */
+export declare const RtmpServerSrtLatencyV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type RtmpServerSrtLatencyV1LanguageEnum = typeof RtmpServerSrtLatencyV1LanguageEnum[keyof typeof RtmpServerSrtLatencyV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const RtmpServerSrtLatencyV1VEnum: {
+    readonly _1: "1";
+};
+export type RtmpServerSrtLatencyV1VEnum = typeof RtmpServerSrtLatencyV1VEnum[keyof typeof RtmpServerSrtLatencyV1VEnum];
 /**
  * @export
  */
@@ -490,8 +657,6 @@ export type RtmpServerStateV1IntervalEnum = typeof RtmpServerStateV1IntervalEnum
  */
 export declare const RtmpServerStateV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type RtmpServerStateV1VEnum = typeof RtmpServerStateV1VEnum[keyof typeof RtmpServerStateV1VEnum];
 //# sourceMappingURL=rtmp-server-api.d.ts.map

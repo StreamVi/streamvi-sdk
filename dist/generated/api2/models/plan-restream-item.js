@@ -13,3 +13,15 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PlanRestreamItemPeriodEnum = exports.PlanRestreamItemTypeEnum = void 0;
+exports.PlanRestreamItemTypeEnum = {
+    Free: 'free',
+    Trial: 'trial',
+    PaidFix: 'paid_fix',
+    PaidFlex: 'paid_flex',
+    Custom: 'custom'
+};
+exports.PlanRestreamItemPeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+};

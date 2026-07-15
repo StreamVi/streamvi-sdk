@@ -60,8 +60,6 @@ export interface SiteUpdateOptionsVkVideoLiveRequest {
 }
 export declare const SiteUpdateOptionsVkVideoLiveRequestVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type SiteUpdateOptionsVkVideoLiveRequestVEnum = typeof SiteUpdateOptionsVkVideoLiveRequestVEnum[keyof typeof SiteUpdateOptionsVkVideoLiveRequestVEnum];
 export declare const SiteUpdateOptionsVkVideoLiveRequestLanguageEnum: {

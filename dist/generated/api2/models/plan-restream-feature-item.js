@@ -25,5 +25,6 @@ exports.PlanRestreamFeatureItemNameEnum = {
     ChangeSubject: 'change_subject',
     BackgroundChat: 'background_chat',
     DedicatedServer: 'dedicated_server',
-    PersonalManager: 'personal_manager'
+    PersonalManager: 'personal_manager',
+    SupportCustomChannel: 'support_custom_channel'
 };

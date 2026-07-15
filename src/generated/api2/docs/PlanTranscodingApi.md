@@ -4,12 +4,13 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**planTranscodingBuyV1**(#plantranscodingbuyv1) | **POST** /method/plan_transcoding | Buy transcoder tariff|
-|**planTranscodingCancelV1**(#plantranscodingcancelv1) | **DELETE** /method/plan_transcoding | Remove after tariff|
-|**planTranscodingCheckV1**(#plantranscodingcheckv1) | **GET** /method/plan_transcoding/check | Check transcoding tariff before buy|
-|**planTranscodingGetDiscountV1**(#plantranscodinggetdiscountv1) | **GET** /method/plan_transcoding/get_discount | Get discount transcoding|
-|**planTranscodingListV1**(#plantranscodinglistv1) | **GET** /method/plan_transcoding/list | Get list of transcoding tariffs|
-|**planTranscodingTariffV1**(#plantranscodingtariffv1) | **GET** /method/plan_transcoding | Get tariff for project|
+|[**planTranscodingBuyV1**](#plantranscodingbuyv1) | **POST** /method/plan_transcoding | Buy transcoder tariff|
+|[**planTranscodingCancelV1**](#plantranscodingcancelv1) | **DELETE** /method/plan_transcoding | Remove after tariff|
+|[**planTranscodingCheckV1**](#plantranscodingcheckv1) | **GET** /method/plan_transcoding/check | Check transcoding tariff before buy|
+|[**planTranscodingGetDiscountV1**](#plantranscodinggetdiscountv1) | **GET** /method/plan_transcoding/get_discount | Get discount transcoding|
+|[**planTranscodingListV1**](#plantranscodinglistv1) | **GET** /method/plan_transcoding/list | Get list of transcoding tariffs|
+|[**planTranscodingSetProlongationV1**](#plantranscodingsetprolongationv1) | **POST** /method/plan_transcoding/prolongation | Set transcoding tariff auto prolongation|
+|[**planTranscodingTariffV1**](#plantranscodingtariffv1) | **GET** /method/plan_transcoding | Get tariff for project|
 
 # **planTranscodingBuyV1**
 > SuccessResponse planTranscodingBuyV1()
@@ -47,12 +48,12 @@ const { status, data } = await apiInstance.planTranscodingBuyV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **period** | **'month' | 'year'** | Period | defaults to undefined|
-| **planTranscodingId** | **number** | Transcoding plan id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **count** | **number** | Count flow | (optional) defaults to undefined|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **period** | [**&#39;month&#39; | &#39;year&#39;**]**Array<&#39;month&#39; &#124; &#39;year&#39;>** | Period | defaults to undefined|
+| **planTranscodingId** | [**number**] | Transcoding plan id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **count** | [**number**] | Count flow | (optional) defaults to undefined|
 
 
 ### Return type
@@ -61,7 +62,7 @@ const { status, data } = await apiInstance.planTranscodingBuyV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -107,9 +108,9 @@ const { status, data } = await apiInstance.planTranscodingCancelV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -118,7 +119,7 @@ const { status, data } = await apiInstance.planTranscodingCancelV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -164,9 +165,9 @@ const { status, data } = await apiInstance.planTranscodingCheckV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -175,7 +176,7 @@ const { status, data } = await apiInstance.planTranscodingCheckV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -219,8 +220,8 @@ const { status, data } = await apiInstance.planTranscodingGetDiscountV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -229,7 +230,7 @@ const { status, data } = await apiInstance.planTranscodingGetDiscountV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -273,8 +274,8 @@ const { status, data } = await apiInstance.planTranscodingListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -283,7 +284,67 @@ const { status, data } = await apiInstance.planTranscodingListV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **planTranscodingSetProlongationV1**
+> SuccessResponse planTranscodingSetProlongationV1()
+
+
+### Example
+
+```typescript
+import {
+    PlanTranscodingApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new PlanTranscodingApi(configuration);
+
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let projectId: number; //Project id (default to undefined)
+let enabled: boolean; //Auto prolongation enabled (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.planTranscodingSetProlongationV1(
+    language,
+    projectId,
+    enabled,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **enabled** | [**boolean**] | Auto prolongation enabled | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+**SuccessResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -329,9 +390,9 @@ const { status, data } = await apiInstance.planTranscodingTariffV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -340,7 +401,7 @@ const { status, data } = await apiInstance.planTranscodingTariffV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -9,10 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ListResponse } from './list-response';
+import type { UserProject2ProjectResponse } from './user-project2-project-response';
 /**
- * @type ListOfUserProject2ProjectResponse
+ *
  * @export
+ * @interface ListOfUserProject2ProjectResponse
  */
-export type ListOfUserProject2ProjectResponse = ListResponse;
+export interface ListOfUserProject2ProjectResponse {
+    /**
+     *
+     * @type {Array<UserProject2ProjectResponse>}
+     * @memberof ListOfUserProject2ProjectResponse
+     */
+    'results': Array<UserProject2ProjectResponse>;
+}
 //# sourceMappingURL=list-of-user-project2-project-response.d.ts.map

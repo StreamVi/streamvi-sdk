@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PaymentCreateRequestTopUpBodyDtoTypeEnum = exports.PaymentCreateRequestTopUpBodyDtoLanguageEnum = exports.PaymentCreateRequestTopUpBodyDtoVEnum = void 0;
 exports.PaymentCreateRequestTopUpBodyDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.PaymentCreateRequestTopUpBodyDtoLanguageEnum = {
     Ru: 'ru',
@@ -28,5 +26,6 @@ exports.PaymentCreateRequestTopUpBodyDtoTypeEnum = {
     Restream: 'restream',
     Transcoding: 'transcoding',
     Storage: 'storage',
-    Topup: 'topup'
+    Topup: 'topup',
+    Webinar: 'webinar'
 };

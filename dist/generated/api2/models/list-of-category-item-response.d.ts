@@ -9,10 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ListResponse } from './list-response';
+import type { CategoryItemResponse } from './category-item-response';
 /**
- * @type ListOfCategoryItemResponse
+ *
  * @export
+ * @interface ListOfCategoryItemResponse
  */
-export type ListOfCategoryItemResponse = ListResponse;
+export interface ListOfCategoryItemResponse {
+    /**
+     *
+     * @type {Array<CategoryItemResponse>}
+     * @memberof ListOfCategoryItemResponse
+     */
+    'results': Array<CategoryItemResponse>;
+}
 //# sourceMappingURL=list-of-category-item-response.d.ts.map

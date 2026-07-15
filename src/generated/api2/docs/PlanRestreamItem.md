@@ -11,6 +11,10 @@ Name | Type | Description | Notes
 **support_custom_channel** | **boolean** | Support custom channel | [default to undefined]
 **date_end** | **string** | Date end tariff | [default to undefined]
 **custom_video** | **number** | Custom video | [default to undefined]
+**prolongation** | **boolean** | Prolongation status | [default to undefined]
+**title** | **string** | Title | [default to undefined]
+**type** | **string** | Tariff type | [default to undefined]
+**period** | **string** | Period | [default to undefined]
 
 ## Example
 
@@ -24,6 +28,10 @@ const instance: PlanRestreamItem = {
     support_custom_channel,
     date_end,
     custom_video,
+    prolongation,
+    title,
+    type,
+    period,
 };
 ```
 

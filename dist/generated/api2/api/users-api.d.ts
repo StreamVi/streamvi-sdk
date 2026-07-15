@@ -22,14 +22,11 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
-     * @param {UserGetProfileV1LanguageEnum} language Current language
-     * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-     * @param {number | null} [projectId] Project id
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userGetProfileV1: (language: UserGetProfileV1LanguageEnum, v?: UserGetProfileV1VEnum, projectId?: number | null, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userGetProfileV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
@@ -52,14 +49,11 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
-     * @param {UserGetProfileV1LanguageEnum} language Current language
-     * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-     * @param {number | null} [projectId] Project id
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userGetProfileV1(language: UserGetProfileV1LanguageEnum, v?: UserGetProfileV1VEnum, projectId?: number | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>>;
+    userGetProfileV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
@@ -82,12 +76,11 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
-     * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userGetProfileV1(requestParameters: UsersApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
+    userGetProfileV1(options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
@@ -107,13 +100,12 @@ export interface UsersApiInterface {
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
-     * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      * @memberof UsersApiInterface
      */
-    userGetProfileV1(requestParameters: UsersApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
+    userGetProfileV1(options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
@@ -124,31 +116,6 @@ export interface UsersApiInterface {
      * @memberof UsersApiInterface
      */
     userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
-}
-/**
- * Request parameters for userGetProfileV1 operation in UsersApi.
- * @export
- * @interface UsersApiUserGetProfileV1Request
- */
-export interface UsersApiUserGetProfileV1Request {
-    /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof UsersApiUserGetProfileV1
-     */
-    readonly language: UserGetProfileV1LanguageEnum;
-    /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
-     * @memberof UsersApiUserGetProfileV1
-     */
-    readonly v?: UserGetProfileV1VEnum;
-    /**
-     * Project id
-     * @type {number}
-     * @memberof UsersApiUserGetProfileV1
-     */
-    readonly project_id?: number | null;
 }
 /**
  * Request parameters for userUpdateProfileV1 operation in UsersApi.
@@ -197,13 +164,12 @@ export declare class UsersApi extends BaseAPI implements UsersApiInterface {
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
-     * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    userGetProfileV1(requestParameters: UsersApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any>>;
+    userGetProfileV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any, {}>>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
@@ -213,33 +179,13 @@ export declare class UsersApi extends BaseAPI implements UsersApiInterface {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
 }
-/**
- * @export
- */
-export declare const UserGetProfileV1LanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-    readonly Cn: "cn";
-};
-export type UserGetProfileV1LanguageEnum = typeof UserGetProfileV1LanguageEnum[keyof typeof UserGetProfileV1LanguageEnum];
-/**
- * @export
- */
-export declare const UserGetProfileV1VEnum: {
-    readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
-};
-export type UserGetProfileV1VEnum = typeof UserGetProfileV1VEnum[keyof typeof UserGetProfileV1VEnum];
 /**
  * @export
  */
 export declare const UserUpdateProfileV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type UserUpdateProfileV1VEnum = typeof UserUpdateProfileV1VEnum[keyof typeof UserUpdateProfileV1VEnum];
 /**

@@ -48,8 +48,6 @@ export interface SiteSetNameRequest {
 }
 export declare const SiteSetNameRequestVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type SiteSetNameRequestVEnum = typeof SiteSetNameRequestVEnum[keyof typeof SiteSetNameRequestVEnum];
 export declare const SiteSetNameRequestLanguageEnum: {

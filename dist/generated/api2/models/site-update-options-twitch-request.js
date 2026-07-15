@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SiteUpdateOptionsTwitchRequestLangEnum = exports.SiteUpdateOptionsTwitchRequestLanguageEnum = exports.SiteUpdateOptionsTwitchRequestVEnum = void 0;
 exports.SiteUpdateOptionsTwitchRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.SiteUpdateOptionsTwitchRequestLanguageEnum = {
     Ru: 'ru',

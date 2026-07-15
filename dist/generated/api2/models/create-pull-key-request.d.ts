@@ -48,8 +48,6 @@ export interface CreatePullKeyRequest {
 }
 export declare const CreatePullKeyRequestVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type CreatePullKeyRequestVEnum = typeof CreatePullKeyRequestVEnum[keyof typeof CreatePullKeyRequestVEnum];
 export declare const CreatePullKeyRequestLanguageEnum: {

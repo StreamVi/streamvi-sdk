@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PayoutCreateRequestBodyDtoLanguageEnum = exports.PayoutCreateRequestBodyDtoVEnum = void 0;
 exports.PayoutCreateRequestBodyDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.PayoutCreateRequestBodyDtoLanguageEnum = {
     Ru: 'ru',

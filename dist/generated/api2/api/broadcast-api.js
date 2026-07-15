@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MethodBroadcastTokenChannelV1VEnum = exports.MethodBroadcastTokenChannelV1LanguageEnum = exports.MethodBroadcastRestreamsV1VEnum = exports.MethodBroadcastRestreamsV1LanguageEnum = exports.BroadcastApi = exports.BroadcastApiFactory = exports.BroadcastApiFp = exports.BroadcastApiAxiosParamCreator = void 0;
+exports.BroadcastTokenChannelV1VEnum = exports.BroadcastTokenChannelV1LanguageEnum = exports.BroadcastStatusV1VEnum = exports.BroadcastStatusV1LanguageEnum = exports.BroadcastRestreamsV1VEnum = exports.BroadcastRestreamsV1LanguageEnum = exports.BroadcastRestreamChatV1VEnum = exports.BroadcastRestreamChatV1LanguageEnum = exports.BroadcastListV1VEnum = exports.BroadcastListV1OrderEnum = exports.BroadcastListV1LanguageEnum = exports.BroadcastGraphViewersV1VEnum = exports.BroadcastGraphViewersV1LanguageEnum = exports.BroadcastGraphBitrateV1VEnum = exports.BroadcastGraphBitrateV1LanguageEnum = exports.BroadcastFindV1VEnum = exports.BroadcastFindV1LanguageEnum = exports.BroadcastEventsV4VEnum = exports.BroadcastEventsV4SortByDateEnum = exports.BroadcastEventsV4LevelEnum = exports.BroadcastEventsV4LanguageEnum = exports.BroadcastEventItemV1VEnum = exports.BroadcastEventItemV1LanguageEnum = exports.BroadcastCredentialsV1VEnum = exports.BroadcastCredentialsV1LanguageEnum = exports.BroadcastApi = exports.BroadcastApiFactory = exports.BroadcastApiFp = exports.BroadcastApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -31,22 +31,19 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Get restreams
-         * @param {MethodBroadcastRestreamsV1LanguageEnum} language Current language
-         * @param {number} broadcastId broadcast id
-         * @param {string} key Chat token
-         * @param {MethodBroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @summary Get credentials
+         * @param {BroadcastCredentialsV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodBroadcastRestreamsV1: async (language, broadcastId, key, v, options = {}) => {
+        broadcastCredentialsV1: async (language, projectId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('methodBroadcastRestreamsV1', 'language', language);
-            // verify required parameter 'broadcastId' is not null or undefined
-            (0, common_1.assertParamExists)('methodBroadcastRestreamsV1', 'broadcastId', broadcastId);
-            // verify required parameter 'key' is not null or undefined
-            (0, common_1.assertParamExists)('methodBroadcastRestreamsV1', 'key', key);
-            const localVarPath = `/method/broadcast/restreams`;
+            (0, common_1.assertParamExists)('broadcastCredentialsV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastCredentialsV1', 'projectId', projectId);
+            const localVarPath = `/method/broadcast/credentials`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -56,11 +53,486 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Broadcast event item
+         * @param {BroadcastEventItemV1LanguageEnum} language Current language
+         * @param {string} id Event id
+         * @param {string} date Event date
+         * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastEventItemV1: async (language, id, date, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastEventItemV1', 'language', language);
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastEventItemV1', 'id', id);
+            // verify required parameter 'date' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastEventItemV1', 'date', date);
+            const localVarPath = `/method/broadcast/events/item`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (id !== undefined) {
+                localVarQueryParameter['id'] = id;
+            }
+            if (date !== undefined) {
+                localVarQueryParameter['date'] = (date instanceof Date) ?
+                    date.toISOString() :
+                    date;
+            }
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Events from broadcast v4
+         * @param {BroadcastEventsV4LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId broadcast id
+         * @param {Array<number>} [channels] Channels id
+         * @param {BroadcastEventsV4LevelEnum} [level] Level log
+         * @param {string} [platform] Platform
+         * @param {string} [app] App stream
+         * @param {string} [server] Server IP
+         * @param {string} [dateFrom] Date only after create date
+         * @param {string} [dateTo] Date only after create date
+         * @param {number} [offset] Page offset number
+         * @param {number} [limit] Number of results
+         * @param {BroadcastEventsV4SortByDateEnum} [sortByDate] Sort order by created_at
+         * @param {string} [cursorId] Cursor event id
+         * @param {string} [cursorDatetime] Cursor event datetime
+         * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastEventsV4: async (language, projectId, broadcastId, channels, level, platform, app, server, dateFrom, dateTo, offset, limit, sortByDate, cursorId, cursorDatetime, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastEventsV4', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastEventsV4', 'projectId', projectId);
+            // verify required parameter 'broadcastId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastEventsV4', 'broadcastId', broadcastId);
+            const localVarPath = `/method/broadcast/events`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (broadcastId !== undefined) {
+                localVarQueryParameter['broadcast_id'] = broadcastId;
+            }
+            if (channels) {
+                localVarQueryParameter['channels'] = channels;
+            }
+            if (level !== undefined) {
+                localVarQueryParameter['level'] = level;
+            }
+            if (platform !== undefined) {
+                localVarQueryParameter['platform'] = platform;
+            }
+            if (app !== undefined) {
+                localVarQueryParameter['app'] = app;
+            }
+            if (server !== undefined) {
+                localVarQueryParameter['server'] = server;
+            }
+            if (dateFrom !== undefined) {
+                localVarQueryParameter['date_from'] = (dateFrom instanceof Date) ?
+                    dateFrom.toISOString().substring(0, 10) :
+                    dateFrom;
+            }
+            if (dateTo !== undefined) {
+                localVarQueryParameter['date_to'] = (dateTo instanceof Date) ?
+                    dateTo.toISOString().substring(0, 10) :
+                    dateTo;
+            }
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+            if (sortByDate !== undefined) {
+                localVarQueryParameter['sort_by_date'] = sortByDate;
+            }
+            if (cursorId !== undefined) {
+                localVarQueryParameter['cursor_id'] = cursorId;
+            }
+            if (cursorDatetime !== undefined) {
+                localVarQueryParameter['cursor_datetime'] = (cursorDatetime instanceof Date) ?
+                    cursorDatetime.toISOString() :
+                    cursorDatetime;
+            }
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get one broadcast
+         * @param {BroadcastFindV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId broadcast id
+         * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastFindV1: async (language, projectId, broadcastId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastFindV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastFindV1', 'projectId', projectId);
+            // verify required parameter 'broadcastId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastFindV1', 'broadcastId', broadcastId);
+            const localVarPath = `/method/broadcast`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (broadcastId !== undefined) {
+                localVarQueryParameter['broadcast_id'] = broadcastId;
+            }
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Bitrate from broadcast
+         * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId broadcast id
+         * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastGraphBitrateV1: async (language, projectId, broadcastId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastGraphBitrateV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastGraphBitrateV1', 'projectId', projectId);
+            // verify required parameter 'broadcastId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastGraphBitrateV1', 'broadcastId', broadcastId);
+            const localVarPath = `/method/broadcast/graph/bitrate`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (broadcastId !== undefined) {
+                localVarQueryParameter['broadcast_id'] = broadcastId;
+            }
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Viewers from broadcast
+         * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId broadcast id
+         * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastGraphViewersV1: async (language, projectId, broadcastId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastGraphViewersV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastGraphViewersV1', 'projectId', projectId);
+            // verify required parameter 'broadcastId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastGraphViewersV1', 'broadcastId', broadcastId);
+            const localVarPath = `/method/broadcast/graph/viewers`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (broadcastId !== undefined) {
+                localVarQueryParameter['broadcast_id'] = broadcastId;
+            }
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary List broadcast
+         * @param {BroadcastListV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} [limit] Number of results
+         * @param {number} [offset] Page offset number
+         * @param {BroadcastListV1OrderEnum} [order] order
+         * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastListV1: async (language, projectId, limit, offset, order, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastListV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastListV1', 'projectId', projectId);
+            const localVarPath = `/method/broadcast/list`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+            if (order !== undefined) {
+                localVarQueryParameter['order'] = order;
+            }
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Pause stream
+         * @param {SiteBroadcastPauseRequest} siteBroadcastPauseRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastPauseV1: async (siteBroadcastPauseRequest, options = {}) => {
+            // verify required parameter 'siteBroadcastPauseRequest' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastPauseV1', 'siteBroadcastPauseRequest', siteBroadcastPauseRequest);
+            const localVarPath = `/method/broadcast/pause`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteBroadcastPauseRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Play stream
+         * @param {SiteBroadcastPlayRequest} siteBroadcastPlayRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastPlayV1: async (siteBroadcastPlayRequest, options = {}) => {
+            // verify required parameter 'siteBroadcastPlayRequest' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastPlayV1', 'siteBroadcastPlayRequest', siteBroadcastPlayRequest);
+            const localVarPath = `/method/broadcast/play`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteBroadcastPlayRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get restreams for chat
+         * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
+         * @param {number} broadcastId broadcast id
+         * @param {string} key Chat token
+         * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastRestreamChatV1: async (language, broadcastId, key, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastRestreamChatV1', 'language', language);
+            // verify required parameter 'broadcastId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastRestreamChatV1', 'broadcastId', broadcastId);
+            // verify required parameter 'key' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastRestreamChatV1', 'key', key);
+            const localVarPath = `/method/broadcast/restreams-chat`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -81,18 +553,145 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Connect channel, long polling
-         * @param {MethodBroadcastTokenChannelV1LanguageEnum} language Current language
-         * @param {string} key
-         * @param {MethodBroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @summary View live info
+         * @param {BroadcastRestreamsV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId Broadcast id
+         * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodBroadcastTokenChannelV1: async (language, key, v, options = {}) => {
+        broadcastRestreamsV1: async (language, projectId, broadcastId, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('methodBroadcastTokenChannelV1', 'language', language);
+            (0, common_1.assertParamExists)('broadcastRestreamsV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastRestreamsV1', 'projectId', projectId);
+            // verify required parameter 'broadcastId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastRestreamsV1', 'broadcastId', broadcastId);
+            const localVarPath = `/method/broadcast/restreams`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (broadcastId !== undefined) {
+                localVarQueryParameter['broadcast_id'] = broadcastId;
+            }
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Live status info by project id
+         * @param {BroadcastStatusV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastStatusV1: async (language, projectId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastStatusV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastStatusV1', 'projectId', projectId);
+            const localVarPath = `/method/broadcast/status`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Stop stream
+         * @param {SiteBroadcastStopRequest} siteBroadcastStopRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastStopV1: async (siteBroadcastStopRequest, options = {}) => {
+            // verify required parameter 'siteBroadcastStopRequest' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastStopV1', 'siteBroadcastStopRequest', siteBroadcastStopRequest);
+            const localVarPath = `/method/broadcast/stop`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteBroadcastStopRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Connect channel, long polling
+         * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
+         * @param {string} key
+         * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastTokenChannelV1: async (language, key, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastTokenChannelV1', 'language', language);
             // verify required parameter 'key' is not null or undefined
-            (0, common_1.assertParamExists)('methodBroadcastTokenChannelV1', 'key', key);
+            (0, common_1.assertParamExists)('broadcastTokenChannelV1', 'key', key);
             const localVarPath = `/method/broadcast/longpoll`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -103,11 +702,11 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -135,35 +734,242 @@ const BroadcastApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Get restreams
-         * @param {MethodBroadcastRestreamsV1LanguageEnum} language Current language
-         * @param {number} broadcastId broadcast id
-         * @param {string} key Chat token
-         * @param {MethodBroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @summary Get credentials
+         * @param {BroadcastCredentialsV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodBroadcastRestreamsV1(language, broadcastId, key, v, options) {
+        async broadcastCredentialsV1(language, projectId, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.methodBroadcastRestreamsV1(language, broadcastId, key, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastCredentialsV1(language, projectId, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.methodBroadcastRestreamsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastCredentialsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Broadcast event item
+         * @param {BroadcastEventItemV1LanguageEnum} language Current language
+         * @param {string} id Event id
+         * @param {string} date Event date
+         * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastEventItemV1(language, id, date, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastEventItemV1(language, id, date, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastEventItemV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Events from broadcast v4
+         * @param {BroadcastEventsV4LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId broadcast id
+         * @param {Array<number>} [channels] Channels id
+         * @param {BroadcastEventsV4LevelEnum} [level] Level log
+         * @param {string} [platform] Platform
+         * @param {string} [app] App stream
+         * @param {string} [server] Server IP
+         * @param {string} [dateFrom] Date only after create date
+         * @param {string} [dateTo] Date only after create date
+         * @param {number} [offset] Page offset number
+         * @param {number} [limit] Number of results
+         * @param {BroadcastEventsV4SortByDateEnum} [sortByDate] Sort order by created_at
+         * @param {string} [cursorId] Cursor event id
+         * @param {string} [cursorDatetime] Cursor event datetime
+         * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastEventsV4(language, projectId, broadcastId, channels, level, platform, app, server, dateFrom, dateTo, offset, limit, sortByDate, cursorId, cursorDatetime, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastEventsV4(language, projectId, broadcastId, channels, level, platform, app, server, dateFrom, dateTo, offset, limit, sortByDate, cursorId, cursorDatetime, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastEventsV4']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get one broadcast
+         * @param {BroadcastFindV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId broadcast id
+         * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastFindV1(language, projectId, broadcastId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastFindV1(language, projectId, broadcastId, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastFindV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Bitrate from broadcast
+         * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId broadcast id
+         * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastGraphBitrateV1(language, projectId, broadcastId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastGraphBitrateV1(language, projectId, broadcastId, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastGraphBitrateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Viewers from broadcast
+         * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId broadcast id
+         * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastGraphViewersV1(language, projectId, broadcastId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastGraphViewersV1(language, projectId, broadcastId, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastGraphViewersV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary List broadcast
+         * @param {BroadcastListV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} [limit] Number of results
+         * @param {number} [offset] Page offset number
+         * @param {BroadcastListV1OrderEnum} [order] order
+         * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastListV1(language, projectId, limit, offset, order, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastListV1(language, projectId, limit, offset, order, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Pause stream
+         * @param {SiteBroadcastPauseRequest} siteBroadcastPauseRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastPauseV1(siteBroadcastPauseRequest, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastPauseV1(siteBroadcastPauseRequest, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastPauseV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Play stream
+         * @param {SiteBroadcastPlayRequest} siteBroadcastPlayRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastPlayV1(siteBroadcastPlayRequest, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastPlayV1(siteBroadcastPlayRequest, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastPlayV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get restreams for chat
+         * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
+         * @param {number} broadcastId broadcast id
+         * @param {string} key Chat token
+         * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastRestreamChatV1(language, broadcastId, key, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastRestreamChatV1(language, broadcastId, key, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastRestreamChatV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary View live info
+         * @param {BroadcastRestreamsV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId Broadcast id
+         * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastRestreamsV1(language, projectId, broadcastId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastRestreamsV1(language, projectId, broadcastId, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastRestreamsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Live status info by project id
+         * @param {BroadcastStatusV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastStatusV1(language, projectId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastStatusV1(language, projectId, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastStatusV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Stop stream
+         * @param {SiteBroadcastStopRequest} siteBroadcastStopRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastStopV1(siteBroadcastStopRequest, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastStopV1(siteBroadcastStopRequest, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastStopV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          *
          * @summary Connect channel, long polling
-         * @param {MethodBroadcastTokenChannelV1LanguageEnum} language Current language
+         * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
          * @param {string} key
-         * @param {MethodBroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodBroadcastTokenChannelV1(language, key, v, options) {
+        async broadcastTokenChannelV1(language, key, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.methodBroadcastTokenChannelV1(language, key, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastTokenChannelV1(language, key, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.methodBroadcastTokenChannelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastTokenChannelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
@@ -178,23 +984,143 @@ const BroadcastApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Get restreams
-         * @param {BroadcastApiMethodBroadcastRestreamsV1Request} requestParameters Request parameters.
+         * @summary Get credentials
+         * @param {BroadcastApiBroadcastCredentialsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodBroadcastRestreamsV1(requestParameters, options) {
-            return localVarFp.methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcast_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+        broadcastCredentialsV1(requestParameters, options) {
+            return localVarFp.broadcastCredentialsV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Broadcast event item
+         * @param {BroadcastApiBroadcastEventItemV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastEventItemV1(requestParameters, options) {
+            return localVarFp.broadcastEventItemV1(requestParameters.language, requestParameters.id, requestParameters.date, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Events from broadcast v4
+         * @param {BroadcastApiBroadcastEventsV4Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastEventsV4(requestParameters, options) {
+            return localVarFp.broadcastEventsV4(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.channels, requestParameters.level, requestParameters.platform, requestParameters.app, requestParameters.server, requestParameters.date_from, requestParameters.date_to, requestParameters.offset, requestParameters.limit, requestParameters.sort_by_date, requestParameters.cursor_id, requestParameters.cursor_datetime, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get one broadcast
+         * @param {BroadcastApiBroadcastFindV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastFindV1(requestParameters, options) {
+            return localVarFp.broadcastFindV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Bitrate from broadcast
+         * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastGraphBitrateV1(requestParameters, options) {
+            return localVarFp.broadcastGraphBitrateV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Viewers from broadcast
+         * @param {BroadcastApiBroadcastGraphViewersV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastGraphViewersV1(requestParameters, options) {
+            return localVarFp.broadcastGraphViewersV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary List broadcast
+         * @param {BroadcastApiBroadcastListV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastListV1(requestParameters, options) {
+            return localVarFp.broadcastListV1(requestParameters.language, requestParameters.project_id, requestParameters.limit, requestParameters.offset, requestParameters.order, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Pause stream
+         * @param {BroadcastApiBroadcastPauseV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastPauseV1(requestParameters, options) {
+            return localVarFp.broadcastPauseV1(requestParameters.SiteBroadcastPauseRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Play stream
+         * @param {BroadcastApiBroadcastPlayV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastPlayV1(requestParameters, options) {
+            return localVarFp.broadcastPlayV1(requestParameters.SiteBroadcastPlayRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get restreams for chat
+         * @param {BroadcastApiBroadcastRestreamChatV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastRestreamChatV1(requestParameters, options) {
+            return localVarFp.broadcastRestreamChatV1(requestParameters.language, requestParameters.broadcast_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary View live info
+         * @param {BroadcastApiBroadcastRestreamsV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastRestreamsV1(requestParameters, options) {
+            return localVarFp.broadcastRestreamsV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Live status info by project id
+         * @param {BroadcastApiBroadcastStatusV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastStatusV1(requestParameters, options) {
+            return localVarFp.broadcastStatusV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Stop stream
+         * @param {BroadcastApiBroadcastStopV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastStopV1(requestParameters, options) {
+            return localVarFp.broadcastStopV1(requestParameters.SiteBroadcastStopRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
          * @summary Connect channel, long polling
-         * @param {BroadcastApiMethodBroadcastTokenChannelV1Request} requestParameters Request parameters.
+         * @param {BroadcastApiBroadcastTokenChannelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodBroadcastTokenChannelV1(requestParameters, options) {
-            return localVarFp.methodBroadcastTokenChannelV1(requestParameters.language, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+        broadcastTokenChannelV1(requestParameters, options) {
+            return localVarFp.broadcastTokenChannelV1(requestParameters.language, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -208,32 +1134,164 @@ exports.BroadcastApiFactory = BroadcastApiFactory;
 class BroadcastApi extends base_1.BaseAPI {
     /**
      *
-     * @summary Get restreams
-     * @param {BroadcastApiMethodBroadcastRestreamsV1Request} requestParameters Request parameters.
+     * @summary Get credentials
+     * @param {BroadcastApiBroadcastCredentialsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    methodBroadcastRestreamsV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).methodBroadcastRestreamsV1(requestParameters.language, requestParameters.broadcast_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    broadcastCredentialsV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastCredentialsV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Broadcast event item
+     * @param {BroadcastApiBroadcastEventItemV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastEventItemV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastEventItemV1(requestParameters.language, requestParameters.id, requestParameters.date, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Events from broadcast v4
+     * @param {BroadcastApiBroadcastEventsV4Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastEventsV4(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastEventsV4(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.channels, requestParameters.level, requestParameters.platform, requestParameters.app, requestParameters.server, requestParameters.date_from, requestParameters.date_to, requestParameters.offset, requestParameters.limit, requestParameters.sort_by_date, requestParameters.cursor_id, requestParameters.cursor_datetime, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get one broadcast
+     * @param {BroadcastApiBroadcastFindV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastFindV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastFindV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Bitrate from broadcast
+     * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastGraphBitrateV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastGraphBitrateV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Viewers from broadcast
+     * @param {BroadcastApiBroadcastGraphViewersV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastGraphViewersV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastGraphViewersV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary List broadcast
+     * @param {BroadcastApiBroadcastListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastListV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastListV1(requestParameters.language, requestParameters.project_id, requestParameters.limit, requestParameters.offset, requestParameters.order, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Pause stream
+     * @param {BroadcastApiBroadcastPauseV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastPauseV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastPauseV1(requestParameters.SiteBroadcastPauseRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Play stream
+     * @param {BroadcastApiBroadcastPlayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastPlayV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastPlayV1(requestParameters.SiteBroadcastPlayRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get restreams for chat
+     * @param {BroadcastApiBroadcastRestreamChatV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastRestreamChatV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastRestreamChatV1(requestParameters.language, requestParameters.broadcast_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary View live info
+     * @param {BroadcastApiBroadcastRestreamsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastRestreamsV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastRestreamsV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Live status info by project id
+     * @param {BroadcastApiBroadcastStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastStatusV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastStatusV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Stop stream
+     * @param {BroadcastApiBroadcastStopV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastStopV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastStopV1(requestParameters.SiteBroadcastStopRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
      * @summary Connect channel, long polling
-     * @param {BroadcastApiMethodBroadcastTokenChannelV1Request} requestParameters Request parameters.
+     * @param {BroadcastApiBroadcastTokenChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    methodBroadcastTokenChannelV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).methodBroadcastTokenChannelV1(requestParameters.language, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    broadcastTokenChannelV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastTokenChannelV1(requestParameters.language, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.BroadcastApi = BroadcastApi;
 /**
  * @export
  */
-exports.MethodBroadcastRestreamsV1LanguageEnum = {
+exports.BroadcastCredentialsV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'
@@ -241,15 +1299,13 @@ exports.MethodBroadcastRestreamsV1LanguageEnum = {
 /**
  * @export
  */
-exports.MethodBroadcastRestreamsV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+exports.BroadcastCredentialsV1VEnum = {
+    _1: '1'
 };
 /**
  * @export
  */
-exports.MethodBroadcastTokenChannelV1LanguageEnum = {
+exports.BroadcastEventItemV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'
@@ -257,8 +1313,155 @@ exports.MethodBroadcastTokenChannelV1LanguageEnum = {
 /**
  * @export
  */
-exports.MethodBroadcastTokenChannelV1VEnum = {
-    _1: '1',
-    _2: '2',
+exports.BroadcastEventItemV1VEnum = {
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.BroadcastEventsV4LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.BroadcastEventsV4LevelEnum = {
+    Info: 'info',
+    Warning: 'warning',
+    Error: 'error',
+    Debug: 'debug'
+};
+/**
+ * @export
+ */
+exports.BroadcastEventsV4SortByDateEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
+/**
+ * @export
+ */
+exports.BroadcastEventsV4VEnum = {
+    _4: '4'
+};
+/**
+ * @export
+ */
+exports.BroadcastFindV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.BroadcastFindV1VEnum = {
     _3: '3'
+};
+/**
+ * @export
+ */
+exports.BroadcastGraphBitrateV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.BroadcastGraphBitrateV1VEnum = {
+    _3: '3'
+};
+/**
+ * @export
+ */
+exports.BroadcastGraphViewersV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.BroadcastGraphViewersV1VEnum = {
+    _3: '3'
+};
+/**
+ * @export
+ */
+exports.BroadcastListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.BroadcastListV1OrderEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
+/**
+ * @export
+ */
+exports.BroadcastListV1VEnum = {
+    _3: '3'
+};
+/**
+ * @export
+ */
+exports.BroadcastRestreamChatV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.BroadcastRestreamChatV1VEnum = {
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.BroadcastRestreamsV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.BroadcastRestreamsV1VEnum = {
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.BroadcastStatusV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.BroadcastStatusV1VEnum = {
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.BroadcastTokenChannelV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.BroadcastTokenChannelV1VEnum = {
+    _1: '1'
 };

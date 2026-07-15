@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | **Array&lt;GetAccountChannelsItem&gt;**(GetAccountChannelsItem.md) | Array of items | [default to undefined]
+**results** | [**Array&lt;GetAccountChannelsItem&gt;**](GetAccountChannelsItem.md) | Array of items | [default to undefined]
 **totalItems** | **number** | Total items | [default to undefined]
 **totalPages** | **number** | Total pages | [default to undefined]
 **currentPage** | **number** | Current page | [default to undefined]

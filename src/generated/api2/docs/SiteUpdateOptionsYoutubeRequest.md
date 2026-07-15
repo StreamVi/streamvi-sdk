@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **privacy_video** | **string** |  | [optional] [default to 'privacy video']
 **image** | **string** |  | [optional] [default to 'image url link or base64']
 **lang** | **string** |  | [optional] [default to 'Lang']
-**tags** | **Set&lt;string&gt;** |  | [optional] [default to undefined]
+**tags** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **disable_auto_end** | **boolean** |  | [optional] [default to false]
 
 ## Example

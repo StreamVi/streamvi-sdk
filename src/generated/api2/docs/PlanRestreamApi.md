@@ -4,13 +4,14 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**planRestreamBuyV1**(#planrestreambuyv1) | **POST** /method/plan_restream | Buy restream tariff|
-|**planRestreamCheck2V1**(#planrestreamcheck2v1) | **GET** /method/plan_restream/check | Load data for show card the tariffs v2|
-|**planRestreamGetDiscountV1**(#planrestreamgetdiscountv1) | **GET** /method/plan_restream/get_discount | Get discount restream|
-|**planRestreamListProjectV1**(#planrestreamlistprojectv1) | **GET** /method/plan_restream/list/project | Get list of restream tariffs for project|
-|**planRestreamListV1**(#planrestreamlistv1) | **GET** /method/plan_restream/list | Get list of restream tariffs|
-|**planRestreamRemoveV1**(#planrestreamremovev1) | **DELETE** /method/plan_restream | Remove after tariff|
-|**planRestreamTariffV1**(#planrestreamtariffv1) | **GET** /method/plan_restream | Get tariff for project|
+|[**planRestreamBuyV1**](#planrestreambuyv1) | **POST** /method/plan_restream | Buy restream tariff|
+|[**planRestreamCheck2V1**](#planrestreamcheck2v1) | **GET** /method/plan_restream/check | Load data for show card the tariffs v2|
+|[**planRestreamGetDiscountV1**](#planrestreamgetdiscountv1) | **GET** /method/plan_restream/get_discount | Get discount restream|
+|[**planRestreamListProjectV1**](#planrestreamlistprojectv1) | **GET** /method/plan_restream/list/project | Get list of restream tariffs for project|
+|[**planRestreamListV1**](#planrestreamlistv1) | **GET** /method/plan_restream/list | Get list of restream tariffs|
+|[**planRestreamRemoveV1**](#planrestreamremovev1) | **DELETE** /method/plan_restream | Remove after tariff|
+|[**planRestreamSetProlongationV1**](#planrestreamsetprolongationv1) | **POST** /method/plan_restream/prolongation | Set restream tariff auto prolongation|
+|[**planRestreamTariffV1**](#planrestreamtariffv1) | **GET** /method/plan_restream | Get tariff for project|
 
 # **planRestreamBuyV1**
 > SuccessResponse planRestreamBuyV1()
@@ -50,13 +51,13 @@ const { status, data } = await apiInstance.planRestreamBuyV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **period** | **'month' | 'year'** | Period | defaults to undefined|
-| **planRestreamId** | **number** | Restream plan id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **countChannel** | **number** | Channel count | (optional) defaults to undefined|
-| **bitrate** | **number** | Bitrate, kbps | (optional) defaults to undefined|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **period** | [**&#39;month&#39; | &#39;year&#39;**]**Array<&#39;month&#39; &#124; &#39;year&#39;>** | Period | defaults to undefined|
+| **planRestreamId** | [**number**] | Restream plan id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **countChannel** | [**number**] | Channel count | (optional) defaults to undefined|
+| **bitrate** | [**number**] | Bitrate, kbps | (optional) defaults to undefined|
 
 
 ### Return type
@@ -65,7 +66,7 @@ const { status, data } = await apiInstance.planRestreamBuyV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -121,14 +122,14 @@ const { status, data } = await apiInstance.planRestreamCheck2V1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **period** | **'month' | 'year'** | Period | defaults to undefined|
-| **planRestreamId** | **number** | Restream plan id | defaults to undefined|
-| **v** | **'2'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **useBalance** | **number** | Is select balance | (optional) defaults to undefined|
-| **channels** | **number** | Channels count | (optional) defaults to undefined|
-| **bitrate** | **number** | Bitrate, kbps | (optional) defaults to undefined|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **period** | [**&#39;month&#39; | &#39;year&#39;**]**Array<&#39;month&#39; &#124; &#39;year&#39;>** | Period | defaults to undefined|
+| **planRestreamId** | [**number**] | Restream plan id | defaults to undefined|
+| **v** | [**&#39;2&#39;**]**Array<&#39;2&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **useBalance** | [**number**] | Is select balance | (optional) defaults to undefined|
+| **channels** | [**number**] | Channels count | (optional) defaults to undefined|
+| **bitrate** | [**number**] | Bitrate, kbps | (optional) defaults to undefined|
 
 
 ### Return type
@@ -137,7 +138,7 @@ const { status, data } = await apiInstance.planRestreamCheck2V1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -181,8 +182,8 @@ const { status, data } = await apiInstance.planRestreamGetDiscountV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -191,7 +192,7 @@ const { status, data } = await apiInstance.planRestreamGetDiscountV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -237,9 +238,9 @@ const { status, data } = await apiInstance.planRestreamListProjectV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -248,7 +249,7 @@ const { status, data } = await apiInstance.planRestreamListProjectV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -292,8 +293,8 @@ const { status, data } = await apiInstance.planRestreamListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -302,7 +303,7 @@ const { status, data } = await apiInstance.planRestreamListV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -350,10 +351,10 @@ const { status, data } = await apiInstance.planRestreamRemoveV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **planRestreamId** | **number** | Restream plan id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **planRestreamId** | [**number**] | Restream plan id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -362,7 +363,67 @@ const { status, data } = await apiInstance.planRestreamRemoveV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **planRestreamSetProlongationV1**
+> SuccessResponse planRestreamSetProlongationV1()
+
+
+### Example
+
+```typescript
+import {
+    PlanRestreamApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new PlanRestreamApi(configuration);
+
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let projectId: number; //Project id (default to undefined)
+let enabled: boolean; //Auto prolongation enabled (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.planRestreamSetProlongationV1(
+    language,
+    projectId,
+    enabled,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **enabled** | [**boolean**] | Auto prolongation enabled | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+**SuccessResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -408,9 +469,9 @@ const { status, data } = await apiInstance.planRestreamTariffV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -419,7 +480,7 @@ const { status, data } = await apiInstance.planRestreamTariffV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

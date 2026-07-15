@@ -13,7 +13,7 @@ import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
 import type { GetHelpPageResponse } from '../models';
-import type { PaginatedResponseOfHelpPageResponse } from '../models';
+import type { PaginatedHelpPageResponse } from '../models';
 import type { StructureHelpPageResponse } from '../models';
 /**
  * HelpPageApi - axios parameter creator
@@ -78,7 +78,7 @@ export declare const HelpPageApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    helpPageListV1(language: HelpPageListV1LanguageEnum, v?: HelpPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfHelpPageResponse>>;
+    helpPageListV1(language: HelpPageListV1LanguageEnum, v?: HelpPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHelpPageResponse>>;
     /**
      *
      * @summary Get structure of help pages
@@ -109,7 +109,7 @@ export declare const HelpPageApiFactory: (configuration?: Configuration, basePat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfHelpPageResponse>;
+    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHelpPageResponse>;
     /**
      *
      * @summary Get structure of help pages
@@ -142,7 +142,7 @@ export interface HelpPageApiInterface {
      * @throws {RequiredError}
      * @memberof HelpPageApiInterface
      */
-    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfHelpPageResponse>;
+    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHelpPageResponse>;
     /**
      *
      * @summary Get structure of help pages
@@ -173,7 +173,7 @@ export interface HelpPageApiHelpPageGetV1Request {
     readonly url: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof HelpPageApiHelpPageGetV1
      */
     readonly v?: HelpPageGetV1VEnum;
@@ -192,7 +192,7 @@ export interface HelpPageApiHelpPageListV1Request {
     readonly language: HelpPageListV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof HelpPageApiHelpPageListV1
      */
     readonly v?: HelpPageListV1VEnum;
@@ -229,7 +229,7 @@ export interface HelpPageApiHelpPageStructureV1Request {
     readonly language: HelpPageStructureV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof HelpPageApiHelpPageStructureV1
      */
     readonly v?: HelpPageStructureV1VEnum;
@@ -249,7 +249,7 @@ export declare class HelpPageApi extends BaseAPI implements HelpPageApiInterface
      * @throws {RequiredError}
      * @memberof HelpPageApi
      */
-    helpPageGetV1(requestParameters: HelpPageApiHelpPageGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetHelpPageResponse, any>>;
+    helpPageGetV1(requestParameters: HelpPageApiHelpPageGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetHelpPageResponse, any, {}>>;
     /**
      *
      * @summary Get list of help pages
@@ -258,7 +258,7 @@ export declare class HelpPageApi extends BaseAPI implements HelpPageApiInterface
      * @throws {RequiredError}
      * @memberof HelpPageApi
      */
-    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedHelpPageResponse, any, {}>>;
     /**
      *
      * @summary Get structure of help pages
@@ -267,7 +267,7 @@ export declare class HelpPageApi extends BaseAPI implements HelpPageApiInterface
      * @throws {RequiredError}
      * @memberof HelpPageApi
      */
-    helpPageStructureV1(requestParameters: HelpPageApiHelpPageStructureV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StructureHelpPageResponse, any>>;
+    helpPageStructureV1(requestParameters: HelpPageApiHelpPageStructureV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StructureHelpPageResponse, any, {}>>;
 }
 /**
  * @export
@@ -283,8 +283,6 @@ export type HelpPageGetV1LanguageEnum = typeof HelpPageGetV1LanguageEnum[keyof t
  */
 export declare const HelpPageGetV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type HelpPageGetV1VEnum = typeof HelpPageGetV1VEnum[keyof typeof HelpPageGetV1VEnum];
 /**
@@ -301,8 +299,6 @@ export type HelpPageListV1LanguageEnum = typeof HelpPageListV1LanguageEnum[keyof
  */
 export declare const HelpPageListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type HelpPageListV1VEnum = typeof HelpPageListV1VEnum[keyof typeof HelpPageListV1VEnum];
 /**
@@ -319,8 +315,6 @@ export type HelpPageStructureV1LanguageEnum = typeof HelpPageStructureV1Language
  */
 export declare const HelpPageStructureV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type HelpPageStructureV1VEnum = typeof HelpPageStructureV1VEnum[keyof typeof HelpPageStructureV1VEnum];
 //# sourceMappingURL=help-page-api.d.ts.map

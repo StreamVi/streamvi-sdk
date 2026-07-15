@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserUpdateProfileV1LanguageEnum = exports.UserUpdateProfileV1VEnum = exports.UserGetProfileV1VEnum = exports.UserGetProfileV1LanguageEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = void 0;
+exports.UserUpdateProfileV1LanguageEnum = exports.UserUpdateProfileV1VEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -32,16 +32,11 @@ const UsersApiAxiosParamCreator = function (configuration) {
         /**
          * Use /method/account/profile instead.
          * @summary Get user profile
-         * @param {UserGetProfileV1LanguageEnum} language Current language
-         * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {number | null} [projectId] Project id
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        userGetProfileV1: async (language, v, projectId, options = {}) => {
-            // verify required parameter 'language' is not null or undefined
-            (0, common_1.assertParamExists)('userGetProfileV1', 'language', language);
+        userGetProfileV1: async (options = {}) => {
             const localVarPath = `/method/users/profile`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -52,18 +47,9 @@ const UsersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-            if (projectId !== undefined) {
-                localVarQueryParameter['project_id'] = projectId;
-            }
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:read"], configuration);
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -104,11 +90,11 @@ const UsersApiAxiosParamCreator = function (configuration) {
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarFormParams.append('v', v);
-            }
-            else {
-                localVarFormParams.append('v', '1');
             }
             if (language !== undefined) {
                 localVarFormParams.append('language', language);
@@ -145,16 +131,13 @@ const UsersApiFp = function (configuration) {
         /**
          * Use /method/account/profile instead.
          * @summary Get user profile
-         * @param {UserGetProfileV1LanguageEnum} language Current language
-         * @param {UserGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {number | null} [projectId] Project id
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        async userGetProfileV1(language, v, projectId, options) {
+        async userGetProfileV1(options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userGetProfileV1(language, v, projectId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userGetProfileV1(options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.userGetProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -191,13 +174,12 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         /**
          * Use /method/account/profile instead.
          * @summary Get user profile
-         * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        userGetProfileV1(requestParameters, options) {
-            return localVarFp.userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(axios, basePath));
+        userGetProfileV1(options) {
+            return localVarFp.userGetProfileV1(options).then((request) => request(axios, basePath));
         },
         /**
          * Use /method/account/profile instead.
@@ -223,14 +205,13 @@ class UsersApi extends base_1.BaseAPI {
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
-     * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    userGetProfileV1(requestParameters, options) {
-        return (0, exports.UsersApiFp)(this.configuration).userGetProfileV1(requestParameters.language, requestParameters.v, requestParameters.project_id, options).then((request) => request(this.axios, this.basePath));
+    userGetProfileV1(options) {
+        return (0, exports.UsersApiFp)(this.configuration).userGetProfileV1(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Use /method/account/profile instead.
@@ -249,26 +230,8 @@ exports.UsersApi = UsersApi;
 /**
  * @export
  */
-exports.UserGetProfileV1LanguageEnum = {
-    Ru: 'ru',
-    En: 'en',
-    Cn: 'cn'
-};
-/**
- * @export
- */
-exports.UserGetProfileV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
-};
-/**
- * @export
- */
 exports.UserUpdateProfileV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export

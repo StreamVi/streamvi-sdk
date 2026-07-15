@@ -34,6 +34,12 @@ export interface TranscoderCreateDto {
      */
     'project_id': number;
     /**
+     * Mode
+     * @type {string}
+     * @memberof TranscoderCreateDto
+     */
+    'mode'?: TranscoderCreateDtoModeEnum;
+    /**
      * Width
      * @type {number}
      * @memberof TranscoderCreateDto
@@ -83,21 +89,31 @@ export interface TranscoderCreateDto {
     'bFrames'?: number;
     /**
      * ChannelIds
-     * @type {number}
+     * @type {Array<number>}
      * @memberof TranscoderCreateDto
      */
-    'channelIds'?: number;
+    'channelIds'?: Array<number>;
     /**
-     * Video codec id
+     * Video codec
+     * @type {string}
+     * @memberof TranscoderCreateDto
+     */
+    'videoCodec': TranscoderCreateDtoVideoCodecEnum;
+    /**
+     * Preset
+     * @type {string}
+     * @memberof TranscoderCreateDto
+     */
+    'preset'?: string;
+    /**
+     * Delay
      * @type {number}
      * @memberof TranscoderCreateDto
      */
-    'videoCodecId': number;
+    'delay'?: number;
 }
 export declare const TranscoderCreateDtoVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type TranscoderCreateDtoVEnum = typeof TranscoderCreateDtoVEnum[keyof typeof TranscoderCreateDtoVEnum];
 export declare const TranscoderCreateDtoLanguageEnum: {
@@ -106,4 +122,14 @@ export declare const TranscoderCreateDtoLanguageEnum: {
     readonly Cn: "cn";
 };
 export type TranscoderCreateDtoLanguageEnum = typeof TranscoderCreateDtoLanguageEnum[keyof typeof TranscoderCreateDtoLanguageEnum];
+export declare const TranscoderCreateDtoModeEnum: {
+    readonly Custom: "custom";
+    readonly Twitch: "twitch";
+};
+export type TranscoderCreateDtoModeEnum = typeof TranscoderCreateDtoModeEnum[keyof typeof TranscoderCreateDtoModeEnum];
+export declare const TranscoderCreateDtoVideoCodecEnum: {
+    readonly H264: "h264";
+    readonly Hevc: "hevc";
+};
+export type TranscoderCreateDtoVideoCodecEnum = typeof TranscoderCreateDtoVideoCodecEnum[keyof typeof TranscoderCreateDtoVideoCodecEnum];
 //# sourceMappingURL=transcoder-create-dto.d.ts.map

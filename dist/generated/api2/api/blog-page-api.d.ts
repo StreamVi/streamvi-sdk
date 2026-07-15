@@ -136,7 +136,7 @@ export interface BlogPageApiBlogPageGetV1Request {
     readonly url: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof BlogPageApiBlogPageGetV1
      */
     readonly v?: BlogPageGetV1VEnum;
@@ -155,7 +155,7 @@ export interface BlogPageApiBlogPageListV1Request {
     readonly language: BlogPageListV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof BlogPageApiBlogPageListV1
      */
     readonly v?: BlogPageListV1VEnum;
@@ -193,7 +193,7 @@ export declare class BlogPageApi extends BaseAPI implements BlogPageApiInterface
      * @throws {RequiredError}
      * @memberof BlogPageApi
      */
-    blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfBlogPageSiteResponse, any, {}>>;
     /**
      *
      * @summary Get list of blog pages
@@ -202,7 +202,7 @@ export declare class BlogPageApi extends BaseAPI implements BlogPageApiInterface
      * @throws {RequiredError}
      * @memberof BlogPageApi
      */
-    blogPageListV1(requestParameters: BlogPageApiBlogPageListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    blogPageListV1(requestParameters: BlogPageApiBlogPageListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfBlogPageSiteResponse, any, {}>>;
 }
 /**
  * @export
@@ -218,8 +218,6 @@ export type BlogPageGetV1LanguageEnum = typeof BlogPageGetV1LanguageEnum[keyof t
  */
 export declare const BlogPageGetV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type BlogPageGetV1VEnum = typeof BlogPageGetV1VEnum[keyof typeof BlogPageGetV1VEnum];
 /**
@@ -236,8 +234,6 @@ export type BlogPageListV1LanguageEnum = typeof BlogPageListV1LanguageEnum[keyof
  */
 export declare const BlogPageListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type BlogPageListV1VEnum = typeof BlogPageListV1VEnum[keyof typeof BlogPageListV1VEnum];
 //# sourceMappingURL=blog-page-api.d.ts.map

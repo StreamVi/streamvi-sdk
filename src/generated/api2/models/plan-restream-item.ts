@@ -56,5 +56,46 @@ export interface PlanRestreamItem {
      * @memberof PlanRestreamItem
      */
     'custom_video': number;
+    /**
+     * Prolongation status
+     * @type {boolean}
+     * @memberof PlanRestreamItem
+     */
+    'prolongation': boolean;
+    /**
+     * Title
+     * @type {string}
+     * @memberof PlanRestreamItem
+     */
+    'title': string;
+    /**
+     * Tariff type
+     * @type {string}
+     * @memberof PlanRestreamItem
+     */
+    'type': PlanRestreamItemTypeEnum;
+    /**
+     * Period
+     * @type {string}
+     * @memberof PlanRestreamItem
+     */
+    'period': PlanRestreamItemPeriodEnum;
 }
+
+export const PlanRestreamItemTypeEnum = {
+    Free: 'free',
+    Trial: 'trial',
+    PaidFix: 'paid_fix',
+    PaidFlex: 'paid_flex',
+    Custom: 'custom'
+} as const;
+
+export type PlanRestreamItemTypeEnum = typeof PlanRestreamItemTypeEnum[keyof typeof PlanRestreamItemTypeEnum];
+export const PlanRestreamItemPeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+} as const;
+
+export type PlanRestreamItemPeriodEnum = typeof PlanRestreamItemPeriodEnum[keyof typeof PlanRestreamItemPeriodEnum];
+
 

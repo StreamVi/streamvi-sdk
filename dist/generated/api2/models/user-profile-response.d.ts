@@ -20,7 +20,7 @@ export interface UserProfileResponse {
      * @type {number}
      * @memberof UserProfileResponse
      */
-    'id': UserProfileResponseIdEnum;
+    'id': number;
     /**
      * Type profile
      * @type {number}
@@ -100,11 +100,6 @@ export interface UserProfileResponse {
      */
     'lastProjectId': number | null;
 }
-export declare const UserProfileResponseIdEnum: {
-    readonly NUMBER_0: 0;
-    readonly NUMBER_1: 1;
-};
-export type UserProfileResponseIdEnum = typeof UserProfileResponseIdEnum[keyof typeof UserProfileResponseIdEnum];
 export declare const UserProfileResponseCurrencyEnum: {
     readonly Rub: "rub";
     readonly Usd: "usd";

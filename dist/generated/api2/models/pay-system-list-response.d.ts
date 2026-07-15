@@ -69,10 +69,52 @@ export interface PaySystemListResponse {
      * @memberof PaySystemListResponse
      */
     'description': string;
+    /**
+     * Crypto payment provider
+     * @type {string}
+     * @memberof PaySystemListResponse
+     */
+    'crypto_provider'?: PaySystemListResponseCryptoProviderEnum | null;
+    /**
+     * Crypto chain family
+     * @type {string}
+     * @memberof PaySystemListResponse
+     */
+    'crypto_chain_family'?: PaySystemListResponseCryptoChainFamilyEnum | null;
+    /**
+     * Crypto asset type
+     * @type {string}
+     * @memberof PaySystemListResponse
+     */
+    'crypto_asset_type'?: PaySystemListResponseCryptoAssetTypeEnum | null;
+    /**
+     * Crypto token symbol
+     * @type {string}
+     * @memberof PaySystemListResponse
+     */
+    'crypto_token_symbol'?: string | null;
 }
 export declare const PaySystemListResponseCurrencyEnum: {
     readonly Rub: "rub";
     readonly Usd: "usd";
 };
 export type PaySystemListResponseCurrencyEnum = typeof PaySystemListResponseCurrencyEnum[keyof typeof PaySystemListResponseCurrencyEnum];
+export declare const PaySystemListResponseCryptoProviderEnum: {
+    readonly Walletconnect: "walletconnect";
+    readonly Tonconnect: "tonconnect";
+    readonly Tron: "tron";
+};
+export type PaySystemListResponseCryptoProviderEnum = typeof PaySystemListResponseCryptoProviderEnum[keyof typeof PaySystemListResponseCryptoProviderEnum];
+export declare const PaySystemListResponseCryptoChainFamilyEnum: {
+    readonly Evm: "evm";
+    readonly Ton: "ton";
+    readonly Tron: "tron";
+};
+export type PaySystemListResponseCryptoChainFamilyEnum = typeof PaySystemListResponseCryptoChainFamilyEnum[keyof typeof PaySystemListResponseCryptoChainFamilyEnum];
+export declare const PaySystemListResponseCryptoAssetTypeEnum: {
+    readonly Erc20: "erc20";
+    readonly Native: "native";
+    readonly Trc20: "trc20";
+};
+export type PaySystemListResponseCryptoAssetTypeEnum = typeof PaySystemListResponseCryptoAssetTypeEnum[keyof typeof PaySystemListResponseCryptoAssetTypeEnum];
 //# sourceMappingURL=pay-system-list-response.d.ts.map

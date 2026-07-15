@@ -60,8 +60,6 @@ export interface SiteUpdateChatTelegramRequest {
 }
 export declare const SiteUpdateChatTelegramRequestVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type SiteUpdateChatTelegramRequestVEnum = typeof SiteUpdateChatTelegramRequestVEnum[keyof typeof SiteUpdateChatTelegramRequestVEnum];
 export declare const SiteUpdateChatTelegramRequestLanguageEnum: {

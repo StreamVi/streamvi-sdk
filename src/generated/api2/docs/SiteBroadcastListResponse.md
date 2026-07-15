@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | **Array&lt;SiteBroadcastItemResponse&gt;**(SiteBroadcastItemResponse.md) | Array of items | [default to undefined]
+**results** | [**Array&lt;SiteBroadcastItemResponse&gt;**](SiteBroadcastItemResponse.md) | Array of items | [default to undefined]
 **limit** | **number** |  | [default to undefined]
 **offset** | **number** |  | [default to undefined]
 **total** | **number** |  | [default to undefined]

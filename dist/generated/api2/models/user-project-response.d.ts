@@ -57,6 +57,7 @@ export declare const UserProjectResponseAccessTypeEnum: {
     readonly NUMBER_0: 0;
     readonly NUMBER_1: 1;
     readonly NUMBER_2: 2;
+    readonly NUMBER_3: 3;
 };
 export type UserProjectResponseAccessTypeEnum = typeof UserProjectResponseAccessTypeEnum[keyof typeof UserProjectResponseAccessTypeEnum];
 //# sourceMappingURL=user-project-response.d.ts.map

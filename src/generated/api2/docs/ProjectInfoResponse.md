@@ -7,11 +7,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version | [default to undefined]
 **language** | **string** | Current language | [default to LanguageEnum_En]
-**data** | **ProjectInfoDataResponse**(ProjectInfoDataResponse.md) | Project info | [default to undefined]
-**restream** | **ProjectInfoRestreamResponse**(ProjectInfoRestreamResponse.md) | Restream tariff | [default to undefined]
-**transcoding** | **ProjectInfoTranscodingResponse**(ProjectInfoTranscodingResponse.md) | Transcoding tariff | [optional] [default to undefined]
-**storage** | **ProjectInfoStorageResponse**(ProjectInfoStorageResponse.md) | Storage tariff | [optional] [default to undefined]
-**access** | **ProjectInfoAccessResponse**(ProjectInfoAccessResponse.md) | Project info access | [default to undefined]
+**data** | [**ProjectInfoDataResponse**](ProjectInfoDataResponse.md) | Project info | [default to undefined]
+**restream** | [**ProjectInfoRestreamResponse**](ProjectInfoRestreamResponse.md) | Restream tariff | [optional] [default to undefined]
+**transcoding** | [**ProjectInfoTranscodingResponse**](ProjectInfoTranscodingResponse.md) | Transcoding tariff | [optional] [default to undefined]
+**storage** | [**ProjectInfoStorageResponse**](ProjectInfoStorageResponse.md) | Storage tariff | [optional] [default to undefined]
+**webinar** | [**ProjectInfoWebinarResponse**](ProjectInfoWebinarResponse.md) | Webinar tariff | [optional] [default to undefined]
+**access** | [**ProjectInfoAccessResponse**](ProjectInfoAccessResponse.md) | Project info access | [default to undefined]
 
 ## Example
 
@@ -25,6 +26,7 @@ const instance: ProjectInfoResponse = {
     restream,
     transcoding,
     storage,
+    webinar,
     access,
 };
 ```

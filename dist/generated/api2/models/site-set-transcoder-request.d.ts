@@ -48,8 +48,6 @@ export interface SiteSetTranscoderRequest {
 }
 export declare const SiteSetTranscoderRequestVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type SiteSetTranscoderRequestVEnum = typeof SiteSetTranscoderRequestVEnum[keyof typeof SiteSetTranscoderRequestVEnum];
 export declare const SiteSetTranscoderRequestLanguageEnum: {

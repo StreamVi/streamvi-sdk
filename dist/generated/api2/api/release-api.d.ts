@@ -89,7 +89,7 @@ export interface ReleaseApiReleaseAppCabinetV1Request {
     readonly language: ReleaseAppCabinetV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ReleaseApiReleaseAppCabinetV1
      */
     readonly v?: ReleaseAppCabinetV1VEnum;
@@ -115,7 +115,7 @@ export declare class ReleaseApi extends BaseAPI implements ReleaseApiInterface {
      * @throws {RequiredError}
      * @memberof ReleaseApi
      */
-    releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetVersionAppResponse, any>>;
+    releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetVersionAppResponse, any, {}>>;
 }
 /**
  * @export
@@ -131,8 +131,6 @@ export type ReleaseAppCabinetV1LanguageEnum = typeof ReleaseAppCabinetV1Language
  */
 export declare const ReleaseAppCabinetV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ReleaseAppCabinetV1VEnum = typeof ReleaseAppCabinetV1VEnum[keyof typeof ReleaseAppCabinetV1VEnum];
 /**

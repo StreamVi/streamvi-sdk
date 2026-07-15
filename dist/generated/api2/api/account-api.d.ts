@@ -24,11 +24,10 @@ export declare const AccountApiAxiosParamCreator: (configuration?: Configuration
      * @summary Get account profile
      * @param {AccountGetProfileV1LanguageEnum} language Current language
      * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-     * @param {number | null} [projectId] Project id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    accountGetProfileV1: (language: AccountGetProfileV1LanguageEnum, v?: AccountGetProfileV1VEnum, projectId?: number | null, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    accountGetProfileV1: (language: AccountGetProfileV1LanguageEnum, v?: AccountGetProfileV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update account profile
@@ -52,11 +51,10 @@ export declare const AccountApiFp: (configuration?: Configuration) => {
      * @summary Get account profile
      * @param {AccountGetProfileV1LanguageEnum} language Current language
      * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-     * @param {number | null} [projectId] Project id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    accountGetProfileV1(language: AccountGetProfileV1LanguageEnum, v?: AccountGetProfileV1VEnum, projectId?: number | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>>;
+    accountGetProfileV1(language: AccountGetProfileV1LanguageEnum, v?: AccountGetProfileV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>>;
     /**
      *
      * @summary Update account profile
@@ -131,16 +129,10 @@ export interface AccountApiAccountGetProfileV1Request {
     readonly language: AccountGetProfileV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AccountApiAccountGetProfileV1
      */
     readonly v?: AccountGetProfileV1VEnum;
-    /**
-     * Project id
-     * @type {number}
-     * @memberof AccountApiAccountGetProfileV1
-     */
-    readonly project_id?: number | null;
 }
 /**
  * Request parameters for accountUpdateProfileV1 operation in AccountApi.
@@ -194,7 +186,7 @@ export declare class AccountApi extends BaseAPI implements AccountApiInterface {
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    accountGetProfileV1(requestParameters: AccountApiAccountGetProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any>>;
+    accountGetProfileV1(requestParameters: AccountApiAccountGetProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any, {}>>;
     /**
      *
      * @summary Update account profile
@@ -203,7 +195,7 @@ export declare class AccountApi extends BaseAPI implements AccountApiInterface {
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    accountUpdateProfileV1(requestParameters: AccountApiAccountUpdateProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    accountUpdateProfileV1(requestParameters: AccountApiAccountUpdateProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
 }
 /**
  * @export
@@ -219,8 +211,6 @@ export type AccountGetProfileV1LanguageEnum = typeof AccountGetProfileV1Language
  */
 export declare const AccountGetProfileV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AccountGetProfileV1VEnum = typeof AccountGetProfileV1VEnum[keyof typeof AccountGetProfileV1VEnum];
 /**
@@ -228,8 +218,6 @@ export type AccountGetProfileV1VEnum = typeof AccountGetProfileV1VEnum[keyof typ
  */
 export declare const AccountUpdateProfileV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AccountUpdateProfileV1VEnum = typeof AccountUpdateProfileV1VEnum[keyof typeof AccountUpdateProfileV1VEnum];
 /**

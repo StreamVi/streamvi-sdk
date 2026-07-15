@@ -4,17 +4,17 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**platformsAddAccountV1**(#platformsaddaccountv1) | **GET** /method/platforms/connect | Get url for start oauth|
-|**platformsAddAccountVkCommunityV1**(#platformsaddaccountvkcommunityv1) | **GET** /method/platforms/connect/vk-community | Get url for start oauth|
-|**platformsCallbackCommunityV1**(#platformscallbackcommunityv1) | **GET** /method/platforms/vk/callback-community | Internal request of auth|
-|**platformsCallbackV1**(#platformscallbackv1) | **GET** /method/platforms/{provider}/callback | Internal request of auth|
-|**platformsCallbackVkIdV1**(#platformscallbackvkidv1) | **GET** /method/platforms/vk-id/callback | Internal request of auth vk-id|
-|**platformsGetAccountsV1**(#platformsgetaccountsv1) | **GET** /method/platforms/accounts | Get accounts|
-|**platformsGetCategoryV1**(#platformsgetcategoryv1) | **GET** /method/platforms/category | Get category from the platform|
-|**platformsGetChannelsV1**(#platformsgetchannelsv1) | **GET** /method/platforms/account/channels | Get channels with accounts|
-|**platformsLogoutAccountV1**(#platformslogoutaccountv1) | **POST** /method/platforms/logout | Get category from the platform|
-|**platformsPlatformListV1**(#platformsplatformlistv1) | **GET** /method/platforms/list | Supported platforms|
-|**platformsRemoveAccountV1**(#platformsremoveaccountv1) | **POST** /method/platforms/account/remove | Remove account|
+|[**platformsAddAccountV1**](#platformsaddaccountv1) | **GET** /method/platforms/connect | Get url for start oauth|
+|[**platformsAddAccountVkCommunityV1**](#platformsaddaccountvkcommunityv1) | **GET** /method/platforms/connect/vk-community | Get url for start oauth|
+|[**platformsCallbackCommunityV1**](#platformscallbackcommunityv1) | **GET** /method/platforms/vk/callback-community | Internal request of auth|
+|[**platformsCallbackV1**](#platformscallbackv1) | **GET** /method/platforms/{provider}/callback | Internal request of auth|
+|[**platformsCallbackVkIdV1**](#platformscallbackvkidv1) | **GET** /method/platforms/vk-id/callback | Internal request of auth vk-id|
+|[**platformsGetAccountsV1**](#platformsgetaccountsv1) | **GET** /method/platforms/accounts | Get accounts|
+|[**platformsGetCategoryV1**](#platformsgetcategoryv1) | **GET** /method/platforms/category | Get category from the platform|
+|[**platformsGetChannelsV1**](#platformsgetchannelsv1) | **GET** /method/platforms/account/channels | Get channels with accounts|
+|[**platformsLogoutAccountV1**](#platformslogoutaccountv1) | **POST** /method/platforms/logout | Get category from the platform|
+|[**platformsPlatformListV1**](#platformsplatformlistv1) | **GET** /method/platforms/list | Supported platforms|
+|[**platformsRemoveAccountV1**](#platformsremoveaccountv1) | **POST** /method/platforms/account/remove | Remove account|
 
 # **platformsAddAccountV1**
 > platformsAddAccountV1()
@@ -50,11 +50,11 @@ const { status, data } = await apiInstance.platformsAddAccountV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **platform** | **'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'** | Provider oauth | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **subId** | **string** | Sub id | (optional) defaults to undefined|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **platform** | [**&#39;vk&#39; | &#39;vk-id&#39; | &#39;ok&#39; | &#39;youtube&#39; | &#39;trovo&#39; | &#39;twitch&#39; | &#39;vkvideolive&#39;**]**Array<&#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;ok&#39; &#124; &#39;youtube&#39; &#124; &#39;trovo&#39; &#124; &#39;twitch&#39; &#124; &#39;vkvideolive&#39;>** | Provider oauth | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **subId** | [**string**] | Sub id | (optional) defaults to undefined|
 
 
 ### Return type
@@ -63,7 +63,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -115,12 +115,12 @@ const { status, data } = await apiInstance.platformsAddAccountVkCommunityV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **channelId** | **number** | Channel external id | defaults to undefined|
-| **accountId** | **string** | Id account on platform | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **subId** | **string** | Sub id | (optional) defaults to undefined|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **channelId** | [**number**] | Channel external id | defaults to undefined|
+| **accountId** | [**string**] | Id account on platform | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **subId** | [**string**] | Sub id | (optional) defaults to undefined|
 
 
 ### Return type
@@ -129,7 +129,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -171,7 +171,7 @@ const { status, data } = await apiInstance.platformsCallbackCommunityV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **state** | **string** | State | defaults to undefined|
+| **state** | [**string**] | State | defaults to undefined|
 
 
 ### Return type
@@ -224,8 +224,8 @@ const { status, data } = await apiInstance.platformsCallbackV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **provider** | **'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'** | Provider oauth | defaults to undefined|
-| **state** | **string** | State | defaults to undefined|
+| **provider** | [**&#39;vk&#39; | &#39;vk-id&#39; | &#39;ok&#39; | &#39;youtube&#39; | &#39;trovo&#39; | &#39;twitch&#39; | &#39;vkvideolive&#39;**]**Array<&#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;ok&#39; &#124; &#39;youtube&#39; &#124; &#39;trovo&#39; &#124; &#39;twitch&#39; &#124; &#39;vkvideolive&#39;>** | Provider oauth | defaults to undefined|
+| **state** | [**string**] | State | defaults to undefined|
 
 
 ### Return type
@@ -276,7 +276,7 @@ const { status, data } = await apiInstance.platformsCallbackVkIdV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **state** | **string** | State | defaults to undefined|
+| **state** | [**string**] | State | defaults to undefined|
 
 
 ### Return type
@@ -331,9 +331,9 @@ const { status, data } = await apiInstance.platformsGetAccountsV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **platform** | **'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'** | Provider oauth | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **platform** | [**&#39;vk&#39; | &#39;vk-id&#39; | &#39;ok&#39; | &#39;youtube&#39; | &#39;trovo&#39; | &#39;twitch&#39; | &#39;vkvideolive&#39;**]**Array<&#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;ok&#39; &#124; &#39;youtube&#39; &#124; &#39;trovo&#39; &#124; &#39;twitch&#39; &#124; &#39;vkvideolive&#39;>** | Provider oauth | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -342,7 +342,7 @@ const { status, data } = await apiInstance.platformsGetAccountsV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -390,10 +390,10 @@ const { status, data } = await apiInstance.platformsGetCategoryV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **type** | **'vk' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'** | Category search bar | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **q** | **string** | Category search bar | (optional) defaults to undefined|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **type** | [**&#39;vk&#39; | &#39;youtube&#39; | &#39;trovo&#39; | &#39;twitch&#39; | &#39;vkvideolive&#39;**]**Array<&#39;vk&#39; &#124; &#39;youtube&#39; &#124; &#39;trovo&#39; &#124; &#39;twitch&#39; &#124; &#39;vkvideolive&#39;>** | Category search bar | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **q** | [**string**] | Category search bar | (optional) defaults to undefined|
 
 
 ### Return type
@@ -402,7 +402,7 @@ const { status, data } = await apiInstance.platformsGetCategoryV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -462,16 +462,16 @@ const { status, data } = await apiInstance.platformsGetChannelsV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **platform** | **'vk' | 'ok'** | Platform (vk, ok) | defaults to undefined|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **platform** | [**&#39;vk&#39; | &#39;ok&#39;**]**Array<&#39;vk&#39; &#124; &#39;ok&#39;>** | Platform (vk, ok) | defaults to undefined|
 | **ids** | **Array&lt;number&gt;** | Id accounts | defaults to undefined|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **requestId** | **string** | Request id (for cache) | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **q** | **string** | Search | (optional) defaults to ''|
-| **sort** | **'asc' | 'desc'** | Sort by asc or desc (default asc) | (optional) defaults to 'asc'|
-| **limit** | **number** | Limit | (optional) defaults to 10|
-| **page** | **number** | Page | (optional) defaults to 1|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **requestId** | [**string**] | Request id (for cache) | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **q** | [**string**] | Search | (optional) defaults to ''|
+| **sort** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort by asc or desc (default asc) | (optional) defaults to 'asc'|
+| **limit** | [**number**] | Limit | (optional) defaults to 10|
+| **page** | [**number**] | Page | (optional) defaults to 1|
 
 
 ### Return type
@@ -480,7 +480,7 @@ const { status, data } = await apiInstance.platformsGetChannelsV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -528,10 +528,10 @@ const { status, data } = await apiInstance.platformsLogoutAccountV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **id** | **string** | Category search bar | defaults to undefined|
-| **platform** | **'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'** | Provider oauth | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **id** | [**string**] | Category search bar | defaults to undefined|
+| **platform** | [**&#39;vk&#39; | &#39;vk-id&#39; | &#39;ok&#39; | &#39;youtube&#39; | &#39;trovo&#39; | &#39;twitch&#39; | &#39;vkvideolive&#39;**]**Array<&#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;ok&#39; &#124; &#39;youtube&#39; &#124; &#39;trovo&#39; &#124; &#39;twitch&#39; &#124; &#39;vkvideolive&#39;>** | Provider oauth | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -540,7 +540,7 @@ const { status, data } = await apiInstance.platformsLogoutAccountV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -585,8 +585,8 @@ const { status, data } = await apiInstance.platformsPlatformListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -647,7 +647,7 @@ const { status, data } = await apiInstance.platformsRemoveAccountV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -30,6 +30,8 @@ import type { PaginatedResponseOfUserProjectResponse } from '../models';
 // @ts-ignore
 import type { ProjectInfoResponse } from '../models';
 // @ts-ignore
+import type { ProjectMeResponse } from '../models';
+// @ts-ignore
 import type { SuccessResponse } from '../models';
 // @ts-ignore
 import type { UserProjectGetResponse } from '../models';
@@ -39,6 +41,50 @@ import type { UserProjectGetResponse } from '../models';
  */
 export const ProjectApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Get current user project
+         * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodProjectMeMeV1LanguageEnum} [language] Current language
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodProjectMeMeV1: async (v?: MethodProjectMeMeV1VEnum, language?: MethodProjectMeMeV1LanguageEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/method/project/me`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["project:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary Change access user from project
@@ -71,10 +117,12 @@ export const ProjectApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -105,13 +153,14 @@ export const ProjectApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Use /site/project/user/leave or /site/project/user/delete instead.
          * @summary Remove user from project
          * @param {UserProjectDelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} userId User id
          * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         userProjectDelV1: async (language: UserProjectDelV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDelV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -133,10 +182,72 @@ export const ProjectApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+            if (userId !== undefined) {
+                localVarQueryParameter['user_id'] = userId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Remove member from project
+         * @param {UserProjectDeleteMemberV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} userId User id
+         * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userProjectDeleteMemberV1: async (language: UserProjectDeleteMemberV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDeleteMemberV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('userProjectDeleteMemberV1', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('userProjectDeleteMemberV1', 'projectId', projectId)
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('userProjectDeleteMemberV1', 'userId', userId)
+            const localVarPath = `/method/project/user/delete`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
             }
 
             if (language !== undefined) {
@@ -188,10 +299,12 @@ export const ProjectApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["project:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -239,10 +352,12 @@ export const ProjectApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["project:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -290,10 +405,12 @@ export const ProjectApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["project:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -302,6 +419,59 @@ export const ProjectApiAxiosParamCreator = function (configuration?: Configurati
 
             if (userExternalId !== undefined) {
                 localVarQueryParameter['user_external_id'] = userExternalId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Leave project
+         * @param {UserProjectLeaveV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userProjectLeaveV1: async (language: UserProjectLeaveV1LanguageEnum, projectId: number, v?: UserProjectLeaveV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('userProjectLeaveV1', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('userProjectLeaveV1', 'projectId', projectId)
+            const localVarPath = `/method/project/user/leave`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
             }
 
 
@@ -341,10 +511,12 @@ export const ProjectApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["project:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -391,10 +563,12 @@ export const ProjectApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["project:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -446,10 +620,12 @@ export const ProjectApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["project:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -483,6 +659,20 @@ export const ProjectApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Get current user project
+         * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodProjectMeMeV1LanguageEnum} [language] Current language
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async methodProjectMeMeV1(v?: MethodProjectMeMeV1VEnum, language?: MethodProjectMeMeV1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectMeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodProjectMeMeV1(v, language, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ProjectApi.methodProjectMeMeV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Change access user from project
          * @param {UserProjectChangeAccessV1LanguageEnum} language Current language
          * @param {number} projectId Project id
@@ -499,19 +689,36 @@ export const ProjectApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Use /site/project/user/leave or /site/project/user/delete instead.
          * @summary Remove user from project
          * @param {UserProjectDelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} userId User id
          * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async userProjectDelV1(language: UserProjectDelV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectDelV1(language, projectId, userId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProjectApi.userProjectDelV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Remove member from project
+         * @param {UserProjectDeleteMemberV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} userId User id
+         * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userProjectDeleteMemberV1(language: UserProjectDeleteMemberV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDeleteMemberV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectDeleteMemberV1(language, projectId, userId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ProjectApi.userProjectDeleteMemberV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -557,6 +764,21 @@ export const ProjectApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectGetUserV1(language, userExternalId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProjectApi.userProjectGetUserV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Leave project
+         * @param {UserProjectLeaveV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userProjectLeaveV1(language: UserProjectLeaveV1LanguageEnum, projectId: number, v?: UserProjectLeaveV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectLeaveV1(language, projectId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ProjectApi.userProjectLeaveV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -617,6 +839,16 @@ export const ProjectApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @summary Get current user project
+         * @param {ProjectApiMethodProjectMeMeV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodProjectMeMeV1(requestParameters: ProjectApiMethodProjectMeMeV1Request = {}, options?: RawAxiosRequestConfig): AxiosPromise<ProjectMeResponse> {
+            return localVarFp.methodProjectMeMeV1(requestParameters.v, requestParameters.language, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Change access user from project
          * @param {ProjectApiUserProjectChangeAccessV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -626,14 +858,25 @@ export const ProjectApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.userProjectChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Use /site/project/user/leave or /site/project/user/delete instead.
          * @summary Remove user from project
          * @param {ProjectApiUserProjectDelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         userProjectDelV1(requestParameters: ProjectApiUserProjectDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
             return localVarFp.userProjectDelV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Remove member from project
+         * @param {ProjectApiUserProjectDeleteMemberV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userProjectDeleteMemberV1(requestParameters: ProjectApiUserProjectDeleteMemberV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.userProjectDeleteMemberV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -664,6 +907,16 @@ export const ProjectApiFactory = function (configuration?: Configuration, basePa
          */
         userProjectGetUserV1(requestParameters: ProjectApiUserProjectGetUserV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProjectGetResponse> {
             return localVarFp.userProjectGetUserV1(requestParameters.language, requestParameters.user_external_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Leave project
+         * @param {ProjectApiUserProjectLeaveV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userProjectLeaveV1(requestParameters: ProjectApiUserProjectLeaveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.userProjectLeaveV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -706,6 +959,16 @@ export const ProjectApiFactory = function (configuration?: Configuration, basePa
 export interface ProjectApiInterface {
     /**
      * 
+     * @summary Get current user project
+     * @param {ProjectApiMethodProjectMeMeV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApiInterface
+     */
+    methodProjectMeMeV1(requestParameters?: ProjectApiMethodProjectMeMeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectMeResponse>;
+
+    /**
+     * 
      * @summary Change access user from project
      * @param {ProjectApiUserProjectChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -715,14 +978,25 @@ export interface ProjectApiInterface {
     userProjectChangeAccessV1(requestParameters: ProjectApiUserProjectChangeAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Use /site/project/user/leave or /site/project/user/delete instead.
      * @summary Remove user from project
      * @param {ProjectApiUserProjectDelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof ProjectApiInterface
      */
     userProjectDelV1(requestParameters: ProjectApiUserProjectDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Remove member from project
+     * @param {ProjectApiUserProjectDeleteMemberV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApiInterface
+     */
+    userProjectDeleteMemberV1(requestParameters: ProjectApiUserProjectDeleteMemberV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
      * 
@@ -753,6 +1027,16 @@ export interface ProjectApiInterface {
      * @memberof ProjectApiInterface
      */
     userProjectGetUserV1(requestParameters: ProjectApiUserProjectGetUserV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProjectGetResponse>;
+
+    /**
+     * 
+     * @summary Leave project
+     * @param {ProjectApiUserProjectLeaveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApiInterface
+     */
+    userProjectLeaveV1(requestParameters: ProjectApiUserProjectLeaveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
      * 
@@ -787,6 +1071,27 @@ export interface ProjectApiInterface {
 }
 
 /**
+ * Request parameters for methodProjectMeMeV1 operation in ProjectApi.
+ * @export
+ * @interface ProjectApiMethodProjectMeMeV1Request
+ */
+export interface ProjectApiMethodProjectMeMeV1Request {
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof ProjectApiMethodProjectMeMeV1
+     */
+    readonly v?: MethodProjectMeMeV1VEnum
+
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ProjectApiMethodProjectMeMeV1
+     */
+    readonly language?: MethodProjectMeMeV1LanguageEnum
+}
+
+/**
  * Request parameters for userProjectChangeAccessV1 operation in ProjectApi.
  * @export
  * @interface ProjectApiUserProjectChangeAccessV1Request
@@ -815,7 +1120,7 @@ export interface ProjectApiUserProjectChangeAccessV1Request {
 
     /**
      * Access type
-     * @type {0 | 1 | 2}
+     * @type {0 | 1 | 2 | 3}
      * @memberof ProjectApiUserProjectChangeAccessV1
      */
     readonly access_type: UserProjectChangeAccessV1AccessTypeEnum
@@ -861,6 +1166,41 @@ export interface ProjectApiUserProjectDelV1Request {
      * @memberof ProjectApiUserProjectDelV1
      */
     readonly v?: UserProjectDelV1VEnum
+}
+
+/**
+ * Request parameters for userProjectDeleteMemberV1 operation in ProjectApi.
+ * @export
+ * @interface ProjectApiUserProjectDeleteMemberV1Request
+ */
+export interface ProjectApiUserProjectDeleteMemberV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ProjectApiUserProjectDeleteMemberV1
+     */
+    readonly language: UserProjectDeleteMemberV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ProjectApiUserProjectDeleteMemberV1
+     */
+    readonly project_id: number
+
+    /**
+     * User id
+     * @type {number}
+     * @memberof ProjectApiUserProjectDeleteMemberV1
+     */
+    readonly user_id: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof ProjectApiUserProjectDeleteMemberV1
+     */
+    readonly v?: UserProjectDeleteMemberV1VEnum
 }
 
 /**
@@ -945,6 +1285,34 @@ export interface ProjectApiUserProjectGetUserV1Request {
      * @memberof ProjectApiUserProjectGetUserV1
      */
     readonly v?: UserProjectGetUserV1VEnum
+}
+
+/**
+ * Request parameters for userProjectLeaveV1 operation in ProjectApi.
+ * @export
+ * @interface ProjectApiUserProjectLeaveV1Request
+ */
+export interface ProjectApiUserProjectLeaveV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ProjectApiUserProjectLeaveV1
+     */
+    readonly language: UserProjectLeaveV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ProjectApiUserProjectLeaveV1
+     */
+    readonly project_id: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof ProjectApiUserProjectLeaveV1
+     */
+    readonly v?: UserProjectLeaveV1VEnum
 }
 
 /**
@@ -1047,6 +1415,18 @@ export interface ProjectApiUserProjectSelectProjectV1Request {
 export class ProjectApi extends BaseAPI implements ProjectApiInterface {
     /**
      * 
+     * @summary Get current user project
+     * @param {ProjectApiMethodProjectMeMeV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    public methodProjectMeMeV1(requestParameters: ProjectApiMethodProjectMeMeV1Request = {}, options?: RawAxiosRequestConfig) {
+        return ProjectApiFp(this.configuration).methodProjectMeMeV1(requestParameters.v, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Change access user from project
      * @param {ProjectApiUserProjectChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1058,15 +1438,28 @@ export class ProjectApi extends BaseAPI implements ProjectApiInterface {
     }
 
     /**
-     * 
+     * Use /site/project/user/leave or /site/project/user/delete instead.
      * @summary Remove user from project
      * @param {ProjectApiUserProjectDelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
     public userProjectDelV1(requestParameters: ProjectApiUserProjectDelV1Request, options?: RawAxiosRequestConfig) {
         return ProjectApiFp(this.configuration).userProjectDelV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Remove member from project
+     * @param {ProjectApiUserProjectDeleteMemberV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    public userProjectDeleteMemberV1(requestParameters: ProjectApiUserProjectDeleteMemberV1Request, options?: RawAxiosRequestConfig) {
+        return ProjectApiFp(this.configuration).userProjectDeleteMemberV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1103,6 +1496,18 @@ export class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     public userProjectGetUserV1(requestParameters: ProjectApiUserProjectGetUserV1Request, options?: RawAxiosRequestConfig) {
         return ProjectApiFp(this.configuration).userProjectGetUserV1(requestParameters.language, requestParameters.user_external_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Leave project
+     * @param {ProjectApiUserProjectLeaveV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    public userProjectLeaveV1(requestParameters: ProjectApiUserProjectLeaveV1Request, options?: RawAxiosRequestConfig) {
+        return ProjectApiFp(this.configuration).userProjectLeaveV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1145,6 +1550,22 @@ export class ProjectApi extends BaseAPI implements ProjectApiInterface {
 /**
  * @export
  */
+export const MethodProjectMeMeV1VEnum = {
+    _1: '1'
+} as const;
+export type MethodProjectMeMeV1VEnum = typeof MethodProjectMeMeV1VEnum[keyof typeof MethodProjectMeMeV1VEnum];
+/**
+ * @export
+ */
+export const MethodProjectMeMeV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type MethodProjectMeMeV1LanguageEnum = typeof MethodProjectMeMeV1LanguageEnum[keyof typeof MethodProjectMeMeV1LanguageEnum];
+/**
+ * @export
+ */
 export const UserProjectChangeAccessV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
@@ -1157,7 +1578,8 @@ export type UserProjectChangeAccessV1LanguageEnum = typeof UserProjectChangeAcce
 export const UserProjectChangeAccessV1AccessTypeEnum = {
     NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_2: 2
+    NUMBER_2: 2,
+    NUMBER_3: 3
 } as const;
 export type UserProjectChangeAccessV1AccessTypeEnum = typeof UserProjectChangeAccessV1AccessTypeEnum[keyof typeof UserProjectChangeAccessV1AccessTypeEnum];
 /**
@@ -1183,6 +1605,22 @@ export const UserProjectDelV1VEnum = {
     _1: '1'
 } as const;
 export type UserProjectDelV1VEnum = typeof UserProjectDelV1VEnum[keyof typeof UserProjectDelV1VEnum];
+/**
+ * @export
+ */
+export const UserProjectDeleteMemberV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type UserProjectDeleteMemberV1LanguageEnum = typeof UserProjectDeleteMemberV1LanguageEnum[keyof typeof UserProjectDeleteMemberV1LanguageEnum];
+/**
+ * @export
+ */
+export const UserProjectDeleteMemberV1VEnum = {
+    _1: '1'
+} as const;
+export type UserProjectDeleteMemberV1VEnum = typeof UserProjectDeleteMemberV1VEnum[keyof typeof UserProjectDeleteMemberV1VEnum];
 /**
  * @export
  */
@@ -1231,6 +1669,22 @@ export const UserProjectGetUserV1VEnum = {
     _1: '1'
 } as const;
 export type UserProjectGetUserV1VEnum = typeof UserProjectGetUserV1VEnum[keyof typeof UserProjectGetUserV1VEnum];
+/**
+ * @export
+ */
+export const UserProjectLeaveV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type UserProjectLeaveV1LanguageEnum = typeof UserProjectLeaveV1LanguageEnum[keyof typeof UserProjectLeaveV1LanguageEnum];
+/**
+ * @export
+ */
+export const UserProjectLeaveV1VEnum = {
+    _1: '1'
+} as const;
+export type UserProjectLeaveV1VEnum = typeof UserProjectLeaveV1VEnum[keyof typeof UserProjectLeaveV1VEnum];
 /**
  * @export
  */

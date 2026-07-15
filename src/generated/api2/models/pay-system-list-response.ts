@@ -74,6 +74,30 @@ export interface PaySystemListResponse {
      * @memberof PaySystemListResponse
      */
     'description': string;
+    /**
+     * Crypto payment provider
+     * @type {string}
+     * @memberof PaySystemListResponse
+     */
+    'crypto_provider'?: PaySystemListResponseCryptoProviderEnum | null;
+    /**
+     * Crypto chain family
+     * @type {string}
+     * @memberof PaySystemListResponse
+     */
+    'crypto_chain_family'?: PaySystemListResponseCryptoChainFamilyEnum | null;
+    /**
+     * Crypto asset type
+     * @type {string}
+     * @memberof PaySystemListResponse
+     */
+    'crypto_asset_type'?: PaySystemListResponseCryptoAssetTypeEnum | null;
+    /**
+     * Crypto token symbol
+     * @type {string}
+     * @memberof PaySystemListResponse
+     */
+    'crypto_token_symbol'?: string | null;
 }
 
 export const PaySystemListResponseCurrencyEnum = {
@@ -82,5 +106,26 @@ export const PaySystemListResponseCurrencyEnum = {
 } as const;
 
 export type PaySystemListResponseCurrencyEnum = typeof PaySystemListResponseCurrencyEnum[keyof typeof PaySystemListResponseCurrencyEnum];
+export const PaySystemListResponseCryptoProviderEnum = {
+    Walletconnect: 'walletconnect',
+    Tonconnect: 'tonconnect',
+    Tron: 'tron'
+} as const;
+
+export type PaySystemListResponseCryptoProviderEnum = typeof PaySystemListResponseCryptoProviderEnum[keyof typeof PaySystemListResponseCryptoProviderEnum];
+export const PaySystemListResponseCryptoChainFamilyEnum = {
+    Evm: 'evm',
+    Ton: 'ton',
+    Tron: 'tron'
+} as const;
+
+export type PaySystemListResponseCryptoChainFamilyEnum = typeof PaySystemListResponseCryptoChainFamilyEnum[keyof typeof PaySystemListResponseCryptoChainFamilyEnum];
+export const PaySystemListResponseCryptoAssetTypeEnum = {
+    Erc20: 'erc20',
+    Native: 'native',
+    Trc20: 'trc20'
+} as const;
+
+export type PaySystemListResponseCryptoAssetTypeEnum = typeof PaySystemListResponseCryptoAssetTypeEnum[keyof typeof PaySystemListResponseCryptoAssetTypeEnum];
 
 

@@ -61,14 +61,16 @@ export const LiveApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration)
+
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (projectId !== undefined) {

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { TranscoderChannelItem } from './transcoder-channel-item';
+import type { TranscoderState } from './transcoder-state';
 /**
  *
  * @export
@@ -94,6 +95,30 @@ export interface TranscoderListItem {
      * @memberof TranscoderListItem
      */
     'channels': Array<TranscoderChannelItem>;
+    /**
+     * Delay
+     * @type {number}
+     * @memberof TranscoderListItem
+     */
+    'delay': number;
+    /**
+     * Preset
+     * @type {string}
+     * @memberof TranscoderListItem
+     */
+    'preset': string;
+    /**
+     * State
+     * @type {TranscoderState}
+     * @memberof TranscoderListItem
+     */
+    'state'?: TranscoderState | null;
+    /**
+     * Mode
+     * @type {string}
+     * @memberof TranscoderListItem
+     */
+    'mode': TranscoderListItemModeEnum;
 }
 export declare const TranscoderListItemStatusEnum: {
     readonly Active: "active";
@@ -105,4 +130,9 @@ export declare const TranscoderListItemVideoCodecEnum: {
     readonly Hevc: "hevc";
 };
 export type TranscoderListItemVideoCodecEnum = typeof TranscoderListItemVideoCodecEnum[keyof typeof TranscoderListItemVideoCodecEnum];
+export declare const TranscoderListItemModeEnum: {
+    readonly Custom: "custom";
+    readonly Twitch: "twitch";
+};
+export type TranscoderListItemModeEnum = typeof TranscoderListItemModeEnum[keyof typeof TranscoderListItemModeEnum];
 //# sourceMappingURL=transcoder-list-item.d.ts.map

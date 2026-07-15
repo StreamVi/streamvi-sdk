@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { BlogPageSiteResponseId } from './blog-page-site-response-id';
 import type { StructureHelpPageConnectionsItemFinal } from './structure-help-page-connections-item-final';
 import type { StructureHelpPageConnectionsItemLang } from './structure-help-page-connections-item-lang';
 /**
@@ -19,11 +18,11 @@ import type { StructureHelpPageConnectionsItemLang } from './structure-help-page
  */
 export interface StructureHelpPageItemResponse3 {
     /**
-     *
-     * @type {BlogPageSiteResponseId}
+     * id in mongodb
+     * @type {string}
      * @memberof StructureHelpPageItemResponse3
      */
-    '_id': BlogPageSiteResponseId;
+    '_id': string;
     /**
      * Notion id
      * @type {string}
@@ -77,7 +76,7 @@ export interface StructureHelpPageItemResponse3 {
      * @type {Array<StructureHelpPageConnectionsItemFinal>}
      * @memberof StructureHelpPageItemResponse3
      */
-    'connections': Array<StructureHelpPageConnectionsItemFinal>;
+    'connections'?: Array<StructureHelpPageConnectionsItemFinal>;
 }
 export declare const StructureHelpPageItemResponse3StatusEnum: {
     readonly None: "None";

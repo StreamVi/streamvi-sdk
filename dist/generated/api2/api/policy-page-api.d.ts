@@ -130,7 +130,7 @@ export interface PolicyPageApiPolicyPageGetItemV1Request {
     readonly file_name: PolicyPageGetItemV1FileNameEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PolicyPageApiPolicyPageGetItemV1
      */
     readonly v?: PolicyPageGetItemV1VEnum;
@@ -149,7 +149,7 @@ export interface PolicyPageApiPolicyPageGetStructureV1Request {
     readonly language: PolicyPageGetStructureV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PolicyPageApiPolicyPageGetStructureV1
      */
     readonly v?: PolicyPageGetStructureV1VEnum;
@@ -169,7 +169,7 @@ export declare class PolicyPageApi extends BaseAPI implements PolicyPageApiInter
      * @throws {RequiredError}
      * @memberof PolicyPageApi
      */
-    policyPageGetItemV1(requestParameters: PolicyPageApiPolicyPageGetItemV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    policyPageGetItemV1(requestParameters: PolicyPageApiPolicyPageGetItemV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Get policy structure
@@ -178,7 +178,7 @@ export declare class PolicyPageApi extends BaseAPI implements PolicyPageApiInter
      * @throws {RequiredError}
      * @memberof PolicyPageApi
      */
-    policyPageGetStructureV1(requestParameters: PolicyPageApiPolicyPageGetStructureV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPolicyStructureDto, any>>;
+    policyPageGetStructureV1(requestParameters: PolicyPageApiPolicyPageGetStructureV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPolicyStructureDto, any, {}>>;
 }
 /**
  * @export
@@ -205,8 +205,6 @@ export type PolicyPageGetItemV1FileNameEnum = typeof PolicyPageGetItemV1FileName
  */
 export declare const PolicyPageGetItemV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PolicyPageGetItemV1VEnum = typeof PolicyPageGetItemV1VEnum[keyof typeof PolicyPageGetItemV1VEnum];
 /**
@@ -223,8 +221,6 @@ export type PolicyPageGetStructureV1LanguageEnum = typeof PolicyPageGetStructure
  */
 export declare const PolicyPageGetStructureV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PolicyPageGetStructureV1VEnum = typeof PolicyPageGetStructureV1VEnum[keyof typeof PolicyPageGetStructureV1VEnum];
 //# sourceMappingURL=policy-page-api.d.ts.map

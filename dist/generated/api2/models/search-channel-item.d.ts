@@ -136,6 +136,18 @@ export interface SearchChannelItem {
      */
     'rtmp': SearchChannelRtmpDto | null;
     /**
+     * ingress_url
+     * @type {string}
+     * @memberof SearchChannelItem
+     */
+    'ingress_url'?: string;
+    /**
+     * ingress_protocol
+     * @type {string}
+     * @memberof SearchChannelItem
+     */
+    'ingress_protocol'?: string;
+    /**
      * credentials
      * @type {Array<SearchChannelCredentialsDto>}
      * @memberof SearchChannelItem
@@ -159,6 +171,18 @@ export interface SearchChannelItem {
      * @memberof SearchChannelItem
      */
     'platform': SearchChannelPlatformDto;
+    /**
+     * Timer
+     * @type {number}
+     * @memberof SearchChannelItem
+     */
+    'timer'?: number | null;
+    /**
+     * Delay
+     * @type {number}
+     * @memberof SearchChannelItem
+     */
+    'delay'?: number | null;
 }
 export declare const SearchChannelItemStatusEnum: {
     readonly Init: "init";
@@ -167,6 +191,9 @@ export declare const SearchChannelItemStatusEnum: {
     readonly Live: "live";
     readonly Offline: "offline";
     readonly Busy: "busy";
+    readonly WaitTranscoding: "wait_transcoding";
+    readonly RunningTranscoding: "running_transcoding";
+    readonly ErrorTranscoding: "error_transcoding";
 };
 export type SearchChannelItemStatusEnum = typeof SearchChannelItemStatusEnum[keyof typeof SearchChannelItemStatusEnum];
 //# sourceMappingURL=search-channel-item.d.ts.map

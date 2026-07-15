@@ -54,9 +54,6 @@ const ReleaseApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -152,9 +149,7 @@ exports.ReleaseAppCabinetV1LanguageEnum = {
  * @export
  */
 exports.ReleaseAppCabinetV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export

@@ -106,10 +106,10 @@ export interface SiteUpdateOptionsYoutubeRequest {
     'lang'?: SiteUpdateOptionsYoutubeRequestLangEnum;
     /**
      * 
-     * @type {Set<string>}
+     * @type {Array<string>}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'tags'?: Set<string>;
+    'tags'?: Array<string>;
     /**
      * 
      * @type {boolean}

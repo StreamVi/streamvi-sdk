@@ -101,15 +101,19 @@ export interface SiteUpdateOptionsYoutubeRequest {
     'lang'?: SiteUpdateOptionsYoutubeRequestLangEnum;
     /**
      *
-     * @type {Set<string>}
+     * @type {Array<string>}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'tags'?: Set<string>;
+    'tags'?: Array<string>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof SiteUpdateOptionsYoutubeRequest
+     */
+    'disable_auto_end'?: boolean;
 }
 export declare const SiteUpdateOptionsYoutubeRequestVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type SiteUpdateOptionsYoutubeRequestVEnum = typeof SiteUpdateOptionsYoutubeRequestVEnum[keyof typeof SiteUpdateOptionsYoutubeRequestVEnum];
 export declare const SiteUpdateOptionsYoutubeRequestLanguageEnum: {

@@ -53,6 +53,18 @@ export interface PlanRestreamResponse {
      */
     'type': PlanRestreamResponseTypeEnum;
     /**
+     * Available for purchase
+     * @type {boolean}
+     * @memberof PlanRestreamResponse
+     */
+    'purchase_available': boolean;
+    /**
+     * Available for auto prolongation
+     * @type {boolean}
+     * @memberof PlanRestreamResponse
+     */
+    'prolongation_available': boolean;
+    /**
      * Price (RUB)
      * @type {number}
      * @memberof PlanRestreamResponse
@@ -149,6 +161,18 @@ export interface PlanRestreamResponse {
      */
     'index': number;
     /**
+     * Support custom channel
+     * @type {boolean}
+     * @memberof PlanRestreamResponse
+     */
+    'support_custom_channel': boolean;
+    /**
+     * Custom video
+     * @type {number}
+     * @memberof PlanRestreamResponse
+     */
+    'custom_video': number;
+    /**
      * Discount
      * @type {PlanRestreamDiscountResponse}
      * @memberof PlanRestreamResponse
@@ -157,6 +181,7 @@ export interface PlanRestreamResponse {
 }
 export declare const PlanRestreamResponseTypeEnum: {
     readonly Free: "free";
+    readonly Trial: "trial";
     readonly PaidFix: "paid_fix";
     readonly PaidFlex: "paid_flex";
     readonly Custom: "custom";

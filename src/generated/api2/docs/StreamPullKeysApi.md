@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**streamPullKeysSiteCheckV1**(#streampullkeyssitecheckv1) | **GET** /method/stream-pull-keys/check | Check key|
-|**streamPullKeysSiteCreateV1**(#streampullkeyssitecreatev1) | **POST** /method/stream-pull-keys | Create key|
-|**streamPullKeysSiteGetV1**(#streampullkeyssitegetv1) | **GET** /method/stream-pull-keys | List keys|
-|**streamPullKeysSiteRemoveV1**(#streampullkeyssiteremovev1) | **DELETE** /method/stream-pull-keys | Delete key|
-|**streamPullKeysSiteUpdateV1**(#streampullkeyssiteupdatev1) | **PUT** /method/stream-pull-keys | Update key|
+|[**streamPullKeysSiteCheckV1**](#streampullkeyssitecheckv1) | **GET** /method/stream-pull-keys/check | Check key|
+|[**streamPullKeysSiteCreateV1**](#streampullkeyssitecreatev1) | **POST** /method/stream-pull-keys | Create key|
+|[**streamPullKeysSiteGetV1**](#streampullkeyssitegetv1) | **GET** /method/stream-pull-keys | List keys|
+|[**streamPullKeysSiteRemoveV1**](#streampullkeyssiteremovev1) | **DELETE** /method/stream-pull-keys | Delete key|
+|[**streamPullKeysSiteUpdateV1**](#streampullkeyssiteupdatev1) | **PUT** /method/stream-pull-keys | Update key|
 
 # **streamPullKeysSiteCheckV1**
 > CheckPullKeyResponse streamPullKeysSiteCheckV1()
@@ -42,10 +42,10 @@ const { status, data } = await apiInstance.streamPullKeysSiteCheckV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **key** | **string** | Key | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **key** | [**string**] | Key | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -54,7 +54,7 @@ const { status, data } = await apiInstance.streamPullKeysSiteCheckV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -106,7 +106,7 @@ const { status, data } = await apiInstance.streamPullKeysSiteCreateV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -152,9 +152,9 @@ const { status, data } = await apiInstance.streamPullKeysSiteGetV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -163,7 +163,7 @@ const { status, data } = await apiInstance.streamPullKeysSiteGetV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -211,10 +211,10 @@ const { status, data } = await apiInstance.streamPullKeysSiteRemoveV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **key** | **string** | Key | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **key** | [**string**] | Key | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -223,7 +223,7 @@ const { status, data } = await apiInstance.streamPullKeysSiteRemoveV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -275,7 +275,7 @@ const { status, data } = await apiInstance.streamPullKeysSiteUpdateV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

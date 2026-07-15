@@ -12,11 +12,32 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
+import type { BroadcastMessageListResponse } from '../models';
 /**
  * AnalyticsApi - axios parameter creator
  * @export
  */
 export declare const AnalyticsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Messages for broadcast
+     * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId Broadcast id
+     * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {number} [offset] Offset
+     * @param {number} [limit] Limit
+     * @param {string} [date] Exact date filter
+     * @param {string} [dateStart] Date range start
+     * @param {string} [dateEnd] Date range end
+     * @param {AnalyticsTsBroadcastMessagesV1SortByDateEnum} [sortByDate] Sort by date
+     * @param {string} [platform] Platform
+     * @param {number} [restreamId] Restream id
+     * @param {string} [text] Text search
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    analyticsTsBroadcastMessagesV1: (language: AnalyticsTsBroadcastMessagesV1LanguageEnum, projectId: number, broadcastId: number, v?: AnalyticsTsBroadcastMessagesV1VEnum, offset?: number, limit?: number, date?: string, dateStart?: string, dateEnd?: string, sortByDate?: AnalyticsTsBroadcastMessagesV1SortByDateEnum, platform?: string, restreamId?: number, text?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Bitrate for stream
@@ -58,6 +79,26 @@ export declare const AnalyticsApiAxiosParamCreator: (configuration?: Configurati
 export declare const AnalyticsApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @summary Messages for broadcast
+     * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId Broadcast id
+     * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {number} [offset] Offset
+     * @param {number} [limit] Limit
+     * @param {string} [date] Exact date filter
+     * @param {string} [dateStart] Date range start
+     * @param {string} [dateEnd] Date range end
+     * @param {AnalyticsTsBroadcastMessagesV1SortByDateEnum} [sortByDate] Sort by date
+     * @param {string} [platform] Platform
+     * @param {number} [restreamId] Restream id
+     * @param {string} [text] Text search
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    analyticsTsBroadcastMessagesV1(language: AnalyticsTsBroadcastMessagesV1LanguageEnum, projectId: number, broadcastId: number, v?: AnalyticsTsBroadcastMessagesV1VEnum, offset?: number, limit?: number, date?: string, dateStart?: string, dateEnd?: string, sortByDate?: AnalyticsTsBroadcastMessagesV1SortByDateEnum, platform?: string, restreamId?: number, text?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BroadcastMessageListResponse>>;
+    /**
+     *
      * @summary Bitrate for stream
      * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
      * @param {number} projectId Project id
@@ -97,6 +138,14 @@ export declare const AnalyticsApiFp: (configuration?: Configuration) => {
 export declare const AnalyticsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Messages for broadcast
+     * @param {AnalyticsApiAnalyticsTsBroadcastMessagesV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    analyticsTsBroadcastMessagesV1(requestParameters: AnalyticsApiAnalyticsTsBroadcastMessagesV1Request, options?: RawAxiosRequestConfig): AxiosPromise<BroadcastMessageListResponse>;
+    /**
+     *
      * @summary Bitrate for stream
      * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -128,6 +177,15 @@ export declare const AnalyticsApiFactory: (configuration?: Configuration, basePa
 export interface AnalyticsApiInterface {
     /**
      *
+     * @summary Messages for broadcast
+     * @param {AnalyticsApiAnalyticsTsBroadcastMessagesV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AnalyticsApiInterface
+     */
+    analyticsTsBroadcastMessagesV1(requestParameters: AnalyticsApiAnalyticsTsBroadcastMessagesV1Request, options?: RawAxiosRequestConfig): AxiosPromise<BroadcastMessageListResponse>;
+    /**
+     *
      * @summary Bitrate for stream
      * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -155,6 +213,91 @@ export interface AnalyticsApiInterface {
     analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
 }
 /**
+ * Request parameters for analyticsTsBroadcastMessagesV1 operation in AnalyticsApi.
+ * @export
+ * @interface AnalyticsApiAnalyticsTsBroadcastMessagesV1Request
+ */
+export interface AnalyticsApiAnalyticsTsBroadcastMessagesV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly language: AnalyticsTsBroadcastMessagesV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly project_id: number;
+    /**
+     * Broadcast id
+     * @type {number}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly broadcast_id: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly v?: AnalyticsTsBroadcastMessagesV1VEnum;
+    /**
+     * Offset
+     * @type {number}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly offset?: number;
+    /**
+     * Limit
+     * @type {number}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly limit?: number;
+    /**
+     * Exact date filter
+     * @type {string}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly date?: string;
+    /**
+     * Date range start
+     * @type {string}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly date_start?: string;
+    /**
+     * Date range end
+     * @type {string}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly date_end?: string;
+    /**
+     * Sort by date
+     * @type {'asc' | 'desc'}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly sort_by_date?: AnalyticsTsBroadcastMessagesV1SortByDateEnum;
+    /**
+     * Platform
+     * @type {string}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly platform?: string;
+    /**
+     * Restream id
+     * @type {number}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly restream_id?: number;
+    /**
+     * Text search
+     * @type {string}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly text?: string;
+}
+/**
  * Request parameters for analyticsTsStreamBitrateV1 operation in AnalyticsApi.
  * @export
  * @interface AnalyticsApiAnalyticsTsStreamBitrateV1Request
@@ -180,7 +323,7 @@ export interface AnalyticsApiAnalyticsTsStreamBitrateV1Request {
     readonly stream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
     readonly v?: AnalyticsTsStreamBitrateV1VEnum;
@@ -211,7 +354,7 @@ export interface AnalyticsApiAnalyticsTsStreamEventsV1Request {
     readonly stream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
     readonly v?: AnalyticsTsStreamEventsV1VEnum;
@@ -242,7 +385,7 @@ export interface AnalyticsApiAnalyticsTsStreamViewersV1Request {
     readonly stream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
      */
     readonly v?: AnalyticsTsStreamViewersV1VEnum;
@@ -256,13 +399,22 @@ export interface AnalyticsApiAnalyticsTsStreamViewersV1Request {
 export declare class AnalyticsApi extends BaseAPI implements AnalyticsApiInterface {
     /**
      *
+     * @summary Messages for broadcast
+     * @param {AnalyticsApiAnalyticsTsBroadcastMessagesV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AnalyticsApi
+     */
+    analyticsTsBroadcastMessagesV1(requestParameters: AnalyticsApiAnalyticsTsBroadcastMessagesV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BroadcastMessageListResponse, any, {}>>;
+    /**
+     *
      * @summary Bitrate for stream
      * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
+    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}>>;
     /**
      *
      * @summary Events for stream
@@ -271,7 +423,7 @@ export declare class AnalyticsApi extends BaseAPI implements AnalyticsApiInterfa
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
+    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}>>;
     /**
      *
      * @summary Viewers for stream
@@ -280,8 +432,32 @@ export declare class AnalyticsApi extends BaseAPI implements AnalyticsApiInterfa
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
+    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}>>;
 }
+/**
+ * @export
+ */
+export declare const AnalyticsTsBroadcastMessagesV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type AnalyticsTsBroadcastMessagesV1LanguageEnum = typeof AnalyticsTsBroadcastMessagesV1LanguageEnum[keyof typeof AnalyticsTsBroadcastMessagesV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const AnalyticsTsBroadcastMessagesV1VEnum: {
+    readonly _1: "1";
+};
+export type AnalyticsTsBroadcastMessagesV1VEnum = typeof AnalyticsTsBroadcastMessagesV1VEnum[keyof typeof AnalyticsTsBroadcastMessagesV1VEnum];
+/**
+ * @export
+ */
+export declare const AnalyticsTsBroadcastMessagesV1SortByDateEnum: {
+    readonly Asc: "asc";
+    readonly Desc: "desc";
+};
+export type AnalyticsTsBroadcastMessagesV1SortByDateEnum = typeof AnalyticsTsBroadcastMessagesV1SortByDateEnum[keyof typeof AnalyticsTsBroadcastMessagesV1SortByDateEnum];
 /**
  * @export
  */
@@ -296,8 +472,6 @@ export type AnalyticsTsStreamBitrateV1LanguageEnum = typeof AnalyticsTsStreamBit
  */
 export declare const AnalyticsTsStreamBitrateV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AnalyticsTsStreamBitrateV1VEnum = typeof AnalyticsTsStreamBitrateV1VEnum[keyof typeof AnalyticsTsStreamBitrateV1VEnum];
 /**
@@ -314,8 +488,6 @@ export type AnalyticsTsStreamEventsV1LanguageEnum = typeof AnalyticsTsStreamEven
  */
 export declare const AnalyticsTsStreamEventsV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AnalyticsTsStreamEventsV1VEnum = typeof AnalyticsTsStreamEventsV1VEnum[keyof typeof AnalyticsTsStreamEventsV1VEnum];
 /**
@@ -332,8 +504,6 @@ export type AnalyticsTsStreamViewersV1LanguageEnum = typeof AnalyticsTsStreamVie
  */
 export declare const AnalyticsTsStreamViewersV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AnalyticsTsStreamViewersV1VEnum = typeof AnalyticsTsStreamViewersV1VEnum[keyof typeof AnalyticsTsStreamViewersV1VEnum];
 //# sourceMappingURL=analytics-api.d.ts.map

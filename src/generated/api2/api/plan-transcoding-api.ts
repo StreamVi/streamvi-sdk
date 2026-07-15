@@ -72,10 +72,12 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -135,10 +137,12 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -186,10 +190,12 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -234,10 +240,12 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -278,14 +286,76 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Set transcoding tariff auto prolongation
+         * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {boolean} enabled Auto prolongation enabled
+         * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        planTranscodingSetProlongationV1: async (language: PlanTranscodingSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanTranscodingSetProlongationV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('planTranscodingSetProlongationV1', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('planTranscodingSetProlongationV1', 'projectId', projectId)
+            // verify required parameter 'enabled' is not null or undefined
+            assertParamExists('planTranscodingSetProlongationV1', 'enabled', enabled)
+            const localVarPath = `/method/plan_transcoding/prolongation`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+            if (enabled !== undefined) {
+                localVarQueryParameter['enabled'] = enabled;
             }
 
 
@@ -325,10 +395,12 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -438,6 +510,22 @@ export const PlanTranscodingApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Set transcoding tariff auto prolongation
+         * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {boolean} enabled Auto prolongation enabled
+         * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async planTranscodingSetProlongationV1(language: PlanTranscodingSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanTranscodingSetProlongationV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingSetProlongationV1(language, projectId, enabled, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PlanTranscodingApi.planTranscodingSetProlongationV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get tariff for project
          * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
@@ -513,6 +601,16 @@ export const PlanTranscodingApiFactory = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Set transcoding tariff auto prolongation
+         * @param {PlanTranscodingApiPlanTranscodingSetProlongationV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        planTranscodingSetProlongationV1(requestParameters: PlanTranscodingApiPlanTranscodingSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.planTranscodingSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get tariff for project
          * @param {PlanTranscodingApiPlanTranscodingTariffV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -579,6 +677,16 @@ export interface PlanTranscodingApiInterface {
      * @memberof PlanTranscodingApiInterface
      */
     planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingResponseDto>;
+
+    /**
+     * 
+     * @summary Set transcoding tariff auto prolongation
+     * @param {PlanTranscodingApiPlanTranscodingSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApiInterface
+     */
+    planTranscodingSetProlongationV1(requestParameters: PlanTranscodingApiPlanTranscodingSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
      * 
@@ -740,6 +848,41 @@ export interface PlanTranscodingApiPlanTranscodingListV1Request {
 }
 
 /**
+ * Request parameters for planTranscodingSetProlongationV1 operation in PlanTranscodingApi.
+ * @export
+ * @interface PlanTranscodingApiPlanTranscodingSetProlongationV1Request
+ */
+export interface PlanTranscodingApiPlanTranscodingSetProlongationV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PlanTranscodingApiPlanTranscodingSetProlongationV1
+     */
+    readonly language: PlanTranscodingSetProlongationV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof PlanTranscodingApiPlanTranscodingSetProlongationV1
+     */
+    readonly project_id: number
+
+    /**
+     * Auto prolongation enabled
+     * @type {boolean}
+     * @memberof PlanTranscodingApiPlanTranscodingSetProlongationV1
+     */
+    readonly enabled: boolean
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof PlanTranscodingApiPlanTranscodingSetProlongationV1
+     */
+    readonly v?: PlanTranscodingSetProlongationV1VEnum
+}
+
+/**
  * Request parameters for planTranscodingTariffV1 operation in PlanTranscodingApi.
  * @export
  * @interface PlanTranscodingApiPlanTranscodingTariffV1Request
@@ -832,6 +975,18 @@ export class PlanTranscodingApi extends BaseAPI implements PlanTranscodingApiInt
      */
     public planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig) {
         return PlanTranscodingApiFp(this.configuration).planTranscodingListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Set transcoding tariff auto prolongation
+     * @param {PlanTranscodingApiPlanTranscodingSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApi
+     */
+    public planTranscodingSetProlongationV1(requestParameters: PlanTranscodingApiPlanTranscodingSetProlongationV1Request, options?: RawAxiosRequestConfig) {
+        return PlanTranscodingApiFp(this.configuration).planTranscodingSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -935,6 +1090,22 @@ export const PlanTranscodingListV1VEnum = {
     _1: '1'
 } as const;
 export type PlanTranscodingListV1VEnum = typeof PlanTranscodingListV1VEnum[keyof typeof PlanTranscodingListV1VEnum];
+/**
+ * @export
+ */
+export const PlanTranscodingSetProlongationV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlanTranscodingSetProlongationV1LanguageEnum = typeof PlanTranscodingSetProlongationV1LanguageEnum[keyof typeof PlanTranscodingSetProlongationV1LanguageEnum];
+/**
+ * @export
+ */
+export const PlanTranscodingSetProlongationV1VEnum = {
+    _1: '1'
+} as const;
+export type PlanTranscodingSetProlongationV1VEnum = typeof PlanTranscodingSetProlongationV1VEnum[keyof typeof PlanTranscodingSetProlongationV1VEnum];
 /**
  * @export
  */

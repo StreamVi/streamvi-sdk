@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **viewers** | **number** | Count viewers | [default to undefined]
 **reconnects** | **number** | Count reconnects | [default to undefined]
 **message** | **number** | Message count | [default to undefined]
-**restreams** | **Array&lt;SiteRestreamResponse&gt;**(SiteRestreamResponse.md) | Restream channels | [default to undefined]
+**restreams** | [**Array&lt;SiteRestreamResponse&gt;**](SiteRestreamResponse.md) | Restream channels | [default to undefined]
 
 ## Example
 

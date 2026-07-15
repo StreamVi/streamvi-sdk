@@ -12,7 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { PaginatedResponseOfMoneyFlowResponse } from '../models';
+import type { PaginatedMoneyFlowResponse } from '../models';
 /**
  * MoneyFlowApi - axios parameter creator
  * @export
@@ -28,7 +28,7 @@ export declare const MoneyFlowApiAxiosParamCreator: (configuration?: Configurati
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
      * @param {string} [dateTo] Date to
-     * @param {string} [type] Filter code transaction. example 1 or 1,2,3
+     * @param {string} [type] Filter code transaction. example: referral_profit or payment,referral_profit
      * @param {string} [balanceType] Filter code transaction. example 1 or 1,2,3
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -50,12 +50,12 @@ export declare const MoneyFlowApiFp: (configuration?: Configuration) => {
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
      * @param {string} [dateTo] Date to
-     * @param {string} [type] Filter code transaction. example 1 or 1,2,3
+     * @param {string} [type] Filter code transaction. example: referral_profit or payment,referral_profit
      * @param {string} [balanceType] Filter code transaction. example 1 or 1,2,3
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    moneyFlowListV1(language: MoneyFlowListV1LanguageEnum, projectId: number, v?: MoneyFlowListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfMoneyFlowResponse>>;
+    moneyFlowListV1(language: MoneyFlowListV1LanguageEnum, projectId: number, v?: MoneyFlowListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, type?: string, balanceType?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedMoneyFlowResponse>>;
 };
 /**
  * MoneyFlowApi - factory interface
@@ -69,7 +69,7 @@ export declare const MoneyFlowApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse>;
+    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedMoneyFlowResponse>;
 };
 /**
  * MoneyFlowApi - interface
@@ -85,7 +85,7 @@ export interface MoneyFlowApiInterface {
      * @throws {RequiredError}
      * @memberof MoneyFlowApiInterface
      */
-    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfMoneyFlowResponse>;
+    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedMoneyFlowResponse>;
 }
 /**
  * Request parameters for moneyFlowListV1 operation in MoneyFlowApi.
@@ -107,7 +107,7 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
     readonly v?: MoneyFlowListV1VEnum;
@@ -136,7 +136,7 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
      */
     readonly date_to?: string;
     /**
-     * Filter code transaction. example 1 or 1,2,3
+     * Filter code transaction. example: referral_profit or payment,referral_profit
      * @type {string}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */
@@ -163,7 +163,7 @@ export declare class MoneyFlowApi extends BaseAPI implements MoneyFlowApiInterfa
      * @throws {RequiredError}
      * @memberof MoneyFlowApi
      */
-    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedMoneyFlowResponse, any, {}>>;
 }
 /**
  * @export
@@ -179,8 +179,6 @@ export type MoneyFlowListV1LanguageEnum = typeof MoneyFlowListV1LanguageEnum[key
  */
 export declare const MoneyFlowListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type MoneyFlowListV1VEnum = typeof MoneyFlowListV1VEnum[keyof typeof MoneyFlowListV1VEnum];
 //# sourceMappingURL=money-flow-api.d.ts.map

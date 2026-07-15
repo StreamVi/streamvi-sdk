@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SiteUpdateOptionsOkRequestLanguageEnum = exports.SiteUpdateOptionsOkRequestVEnum = void 0;
 exports.SiteUpdateOptionsOkRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.SiteUpdateOptionsOkRequestLanguageEnum = {
     Ru: 'ru',

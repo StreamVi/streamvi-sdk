@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SiteUpdateChatTelegramRequestLanguageEnum = exports.SiteUpdateChatTelegramRequestVEnum = void 0;
 exports.SiteUpdateChatTelegramRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.SiteUpdateChatTelegramRequestLanguageEnum = {
     Ru: 'ru',

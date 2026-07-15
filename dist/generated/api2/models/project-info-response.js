@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProjectInfoResponseLanguageEnum = exports.ProjectInfoResponseVEnum = void 0;
 exports.ProjectInfoResponseVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.ProjectInfoResponseLanguageEnum = {
     Ru: 'ru',

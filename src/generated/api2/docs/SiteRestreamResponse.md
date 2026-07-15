@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Restream Id | [default to undefined]
+**channel_id** | **number** | Channel id | [default to undefined]
 **name** | **string** | Channel name | [default to undefined]
 **type** | **string** | Channel type | [default to undefined]
 **photo** | **string** | Channel photo | [default to undefined]
@@ -21,6 +22,7 @@ import { SiteRestreamResponse } from 'streamvi-api-client';
 
 const instance: SiteRestreamResponse = {
     id,
+    channel_id,
     name,
     type,
     photo,

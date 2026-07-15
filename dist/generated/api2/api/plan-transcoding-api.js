@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PlanTranscodingTariffV1VEnum = exports.PlanTranscodingTariffV1LanguageEnum = exports.PlanTranscodingListV1VEnum = exports.PlanTranscodingListV1LanguageEnum = exports.PlanTranscodingGetDiscountV1VEnum = exports.PlanTranscodingGetDiscountV1LanguageEnum = exports.PlanTranscodingCheckV1VEnum = exports.PlanTranscodingCheckV1LanguageEnum = exports.PlanTranscodingCancelV1VEnum = exports.PlanTranscodingCancelV1LanguageEnum = exports.PlanTranscodingBuyV1VEnum = exports.PlanTranscodingBuyV1PeriodEnum = exports.PlanTranscodingBuyV1LanguageEnum = exports.PlanTranscodingApi = exports.PlanTranscodingApiFactory = exports.PlanTranscodingApiFp = exports.PlanTranscodingApiAxiosParamCreator = void 0;
+exports.PlanTranscodingTariffV1VEnum = exports.PlanTranscodingTariffV1LanguageEnum = exports.PlanTranscodingSetProlongationV1VEnum = exports.PlanTranscodingSetProlongationV1LanguageEnum = exports.PlanTranscodingListV1VEnum = exports.PlanTranscodingListV1LanguageEnum = exports.PlanTranscodingGetDiscountV1VEnum = exports.PlanTranscodingGetDiscountV1LanguageEnum = exports.PlanTranscodingCheckV1VEnum = exports.PlanTranscodingCheckV1LanguageEnum = exports.PlanTranscodingCancelV1VEnum = exports.PlanTranscodingCancelV1LanguageEnum = exports.PlanTranscodingBuyV1VEnum = exports.PlanTranscodingBuyV1PeriodEnum = exports.PlanTranscodingBuyV1LanguageEnum = exports.PlanTranscodingApi = exports.PlanTranscodingApiFactory = exports.PlanTranscodingApiFp = exports.PlanTranscodingApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -60,11 +60,11 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -113,11 +113,11 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -157,11 +157,11 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -198,11 +198,11 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -236,14 +236,64 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Set transcoding tariff auto prolongation
+         * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {boolean} enabled Auto prolongation enabled
+         * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        planTranscodingSetProlongationV1: async (language, projectId, enabled, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('planTranscodingSetProlongationV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('planTranscodingSetProlongationV1', 'projectId', projectId);
+            // verify required parameter 'enabled' is not null or undefined
+            (0, common_1.assertParamExists)('planTranscodingSetProlongationV1', 'enabled', enabled);
+            const localVarPath = `/method/plan_transcoding/prolongation`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (enabled !== undefined) {
+                localVarQueryParameter['enabled'] = enabled;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -277,11 +327,11 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -390,6 +440,23 @@ const PlanTranscodingApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Set transcoding tariff auto prolongation
+         * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {boolean} enabled Auto prolongation enabled
+         * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async planTranscodingSetProlongationV1(language, projectId, enabled, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingSetProlongationV1(language, projectId, enabled, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingSetProlongationV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @summary Get tariff for project
          * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
@@ -463,6 +530,16 @@ const PlanTranscodingApiFactory = function (configuration, basePath, axios) {
          */
         planTranscodingListV1(requestParameters, options) {
             return localVarFp.planTranscodingListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Set transcoding tariff auto prolongation
+         * @param {PlanTranscodingApiPlanTranscodingSetProlongationV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        planTranscodingSetProlongationV1(requestParameters, options) {
+            return localVarFp.planTranscodingSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -541,6 +618,17 @@ class PlanTranscodingApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Set transcoding tariff auto prolongation
+     * @param {PlanTranscodingApiPlanTranscodingSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApi
+     */
+    planTranscodingSetProlongationV1(requestParameters, options) {
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Get tariff for project
      * @param {PlanTranscodingApiPlanTranscodingTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -571,9 +659,7 @@ exports.PlanTranscodingBuyV1PeriodEnum = {
  * @export
  */
 exports.PlanTranscodingBuyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -587,9 +673,7 @@ exports.PlanTranscodingCancelV1LanguageEnum = {
  * @export
  */
 exports.PlanTranscodingCancelV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -603,9 +687,7 @@ exports.PlanTranscodingCheckV1LanguageEnum = {
  * @export
  */
 exports.PlanTranscodingCheckV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -619,9 +701,7 @@ exports.PlanTranscodingGetDiscountV1LanguageEnum = {
  * @export
  */
 exports.PlanTranscodingGetDiscountV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -635,9 +715,21 @@ exports.PlanTranscodingListV1LanguageEnum = {
  * @export
  */
 exports.PlanTranscodingListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.PlanTranscodingSetProlongationV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.PlanTranscodingSetProlongationV1VEnum = {
+    _1: '1'
 };
 /**
  * @export
@@ -651,7 +743,5 @@ exports.PlanTranscodingTariffV1LanguageEnum = {
  * @export
  */
 exports.PlanTranscodingTariffV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

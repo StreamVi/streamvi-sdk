@@ -45,10 +45,36 @@ export interface PlanTranscodingItem {
      */
     'title': string;
     /**
-     * Prolongation
-     * @type {number}
+     * Tariff type
+     * @type {string}
      * @memberof PlanTranscodingItem
      */
-    'prolongation'?: number;
+    'type'?: PlanTranscodingItemTypeEnum;
+    /**
+     * Prolongation status
+     * @type {boolean}
+     * @memberof PlanTranscodingItem
+     */
+    'prolongation': boolean;
+    /**
+     * Period
+     * @type {string}
+     * @memberof PlanTranscodingItem
+     */
+    'period': PlanTranscodingItemPeriodEnum;
 }
+
+export const PlanTranscodingItemTypeEnum = {
+    PaidMonth: 'paid_month',
+    Custom: 'custom'
+} as const;
+
+export type PlanTranscodingItemTypeEnum = typeof PlanTranscodingItemTypeEnum[keyof typeof PlanTranscodingItemTypeEnum];
+export const PlanTranscodingItemPeriodEnum = {
+    Month: 'month',
+    Year: 'year'
+} as const;
+
+export type PlanTranscodingItemPeriodEnum = typeof PlanTranscodingItemPeriodEnum[keyof typeof PlanTranscodingItemPeriodEnum];
+
 

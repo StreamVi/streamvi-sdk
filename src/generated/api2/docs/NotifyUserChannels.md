@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cabinet** | **boolean** | Active cabinet | [default to undefined]
-**telegram** | **boolean** | Active telegram | [default to undefined]
-**mobile** | **boolean** | Active mobile | [default to undefined]
+**telegram** | **boolean** | Active telegram | [optional] [default to undefined]
+**mobile** | **boolean** | Active mobile | [optional] [default to undefined]
 
 ## Example
 

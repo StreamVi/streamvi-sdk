@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **category_id** | **string** | category id | [optional] [default to '498482']
 **category_name** | **string** | category name | [optional] [default to 'name']
 **lang** | **string** |  | [optional] [default to 'Lang']
-**tags** | **Set&lt;string&gt;** |  | [optional] [default to undefined]
+**tags** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **domain** | **string** | domain | [default to 'live.twitch.tv']
 
 ## Example

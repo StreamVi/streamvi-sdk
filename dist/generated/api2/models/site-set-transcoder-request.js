@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SiteSetTranscoderRequestLanguageEnum = exports.SiteSetTranscoderRequestVEnum = void 0;
 exports.SiteSetTranscoderRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.SiteSetTranscoderRequestLanguageEnum = {
     Ru: 'ru',

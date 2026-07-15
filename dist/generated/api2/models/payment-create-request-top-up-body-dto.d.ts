@@ -48,8 +48,6 @@ export interface PaymentCreateRequestTopUpBodyDto {
 }
 export declare const PaymentCreateRequestTopUpBodyDtoVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PaymentCreateRequestTopUpBodyDtoVEnum = typeof PaymentCreateRequestTopUpBodyDtoVEnum[keyof typeof PaymentCreateRequestTopUpBodyDtoVEnum];
 export declare const PaymentCreateRequestTopUpBodyDtoLanguageEnum: {
@@ -63,6 +61,7 @@ export declare const PaymentCreateRequestTopUpBodyDtoTypeEnum: {
     readonly Transcoding: "transcoding";
     readonly Storage: "storage";
     readonly Topup: "topup";
+    readonly Webinar: "webinar";
 };
 export type PaymentCreateRequestTopUpBodyDtoTypeEnum = typeof PaymentCreateRequestTopUpBodyDtoTypeEnum[keyof typeof PaymentCreateRequestTopUpBodyDtoTypeEnum];
 //# sourceMappingURL=payment-create-request-top-up-body-dto.d.ts.map

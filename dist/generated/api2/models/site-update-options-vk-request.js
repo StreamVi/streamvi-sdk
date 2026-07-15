@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SiteUpdateOptionsVkRequestPrivacyVideoEnum = exports.SiteUpdateOptionsVkRequestPrivacyCommentsEnum = exports.SiteUpdateOptionsVkRequestLanguageEnum = exports.SiteUpdateOptionsVkRequestVEnum = void 0;
 exports.SiteUpdateOptionsVkRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.SiteUpdateOptionsVkRequestLanguageEnum = {
     Ru: 'ru',
@@ -34,5 +32,6 @@ exports.SiteUpdateOptionsVkRequestPrivacyVideoEnum = {
     All: 'all',
     Members: 'members',
     Editors: 'editors',
-    Nobody: 'nobody'
+    ByLink: 'by_link',
+    Donut: 'donut'
 };

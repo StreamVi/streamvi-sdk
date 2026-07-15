@@ -1,0 +1,1 @@
+{"version":3,"file":"get-accounts-response.d.ts","sourceRoot":"","sources":["../../../../src/generated/api2/models/get-accounts-response.ts"],"names":[],"mappings":"AAEA;;;;;;;;;;GAUG;AAKH,OAAO,KAAK,EAAE,uBAAuB,EAAE,MAAM,8BAA8B,CAAC;AAE5E;;;;GAIG;AACH,MAAM,WAAW,mBAAmB;IAChC;;;;OAIG;IACH,SAAS,EAAE,KAAK,CAAC,uBAAuB,CAAC,CAAC;CAC7C"}

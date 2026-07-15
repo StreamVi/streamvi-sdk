@@ -81,6 +81,6 @@ export declare class PullServersApi extends BaseAPI implements PullServersApiInt
      * @throws {RequiredError}
      * @memberof PullServersApi
      */
-    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PullServerListResponse, any>>;
+    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PullServerListResponse, any, {}>>;
 }
 //# sourceMappingURL=pull-servers-api.d.ts.map

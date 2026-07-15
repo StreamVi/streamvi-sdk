@@ -235,7 +235,7 @@ export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
     readonly event_id: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
     readonly v?: MethodChatGatewayDeleteV1VEnum;
@@ -272,7 +272,7 @@ export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
     readonly event_id: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
     readonly v?: MethodChatGatewayGetMessageV1VEnum;
@@ -303,7 +303,7 @@ export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
     readonly broadcast_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
     readonly v?: MethodChatGatewayHistoryV1VEnum;
@@ -340,7 +340,7 @@ export interface ChatGatewayApiMethodChatGatewaySendV1Request {
     readonly MethodChatSendMessageRequestDto: MethodChatSendMessageRequestDto;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
     readonly v?: MethodChatGatewaySendV1VEnum;
@@ -360,7 +360,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Get one message
@@ -369,7 +369,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any>>;
+    methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any, {}>>;
     /**
      *
      * @summary List history message
@@ -378,7 +378,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodChatHistoryResponse, any>>;
+    methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodChatHistoryResponse, any, {}>>;
     /**
      *
      * @summary Send message
@@ -387,7 +387,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any>>;
+    methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any, {}>>;
 }
 /**
  * @export
@@ -403,8 +403,6 @@ export type MethodChatGatewayDeleteV1LanguageEnum = typeof MethodChatGatewayDele
  */
 export declare const MethodChatGatewayDeleteV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type MethodChatGatewayDeleteV1VEnum = typeof MethodChatGatewayDeleteV1VEnum[keyof typeof MethodChatGatewayDeleteV1VEnum];
 /**
@@ -421,8 +419,6 @@ export type MethodChatGatewayGetMessageV1LanguageEnum = typeof MethodChatGateway
  */
 export declare const MethodChatGatewayGetMessageV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type MethodChatGatewayGetMessageV1VEnum = typeof MethodChatGatewayGetMessageV1VEnum[keyof typeof MethodChatGatewayGetMessageV1VEnum];
 /**
@@ -439,8 +435,6 @@ export type MethodChatGatewayHistoryV1LanguageEnum = typeof MethodChatGatewayHis
  */
 export declare const MethodChatGatewayHistoryV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type MethodChatGatewayHistoryV1VEnum = typeof MethodChatGatewayHistoryV1VEnum[keyof typeof MethodChatGatewayHistoryV1VEnum];
 /**
@@ -457,8 +451,6 @@ export type MethodChatGatewaySendV1LanguageEnum = typeof MethodChatGatewaySendV1
  */
 export declare const MethodChatGatewaySendV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type MethodChatGatewaySendV1VEnum = typeof MethodChatGatewaySendV1VEnum[keyof typeof MethodChatGatewaySendV1VEnum];
 //# sourceMappingURL=chat-gateway-api.d.ts.map

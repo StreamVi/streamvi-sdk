@@ -56,9 +56,6 @@ const BlogPageApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -99,9 +96,6 @@ const BlogPageApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -243,9 +237,7 @@ exports.BlogPageGetV1LanguageEnum = {
  * @export
  */
 exports.BlogPageGetV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -259,7 +251,5 @@ exports.BlogPageListV1LanguageEnum = {
  * @export
  */
 exports.BlogPageListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

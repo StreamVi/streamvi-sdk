@@ -26,12 +26,12 @@ export interface NotifyUserChannels {
      * @type {boolean}
      * @memberof NotifyUserChannels
      */
-    'telegram': boolean;
+    'telegram'?: boolean;
     /**
      * Active mobile
      * @type {boolean}
      * @memberof NotifyUserChannels
      */
-    'mobile': boolean;
+    'mobile'?: boolean;
 }
 //# sourceMappingURL=notify-user-channels.d.ts.map

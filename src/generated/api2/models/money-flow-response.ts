@@ -16,6 +16,15 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import type { MoneyFlowDetails } from './money-flow-details';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { MoneyFlowPaymentDetails } from './money-flow-payment-details';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { MoneyFlowPayoutDetails } from './money-flow-payout-details';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { MoneyFlowRefundDetails } from './money-flow-refund-details';
 
 /**
  * 
@@ -65,6 +74,24 @@ export interface MoneyFlowResponse {
      * @memberof MoneyFlowResponse
      */
     'details'?: MoneyFlowDetails | null;
+    /**
+     * Payment details
+     * @type {MoneyFlowPaymentDetails}
+     * @memberof MoneyFlowResponse
+     */
+    'payment_details'?: MoneyFlowPaymentDetails | null;
+    /**
+     * Payout details
+     * @type {MoneyFlowPayoutDetails}
+     * @memberof MoneyFlowResponse
+     */
+    'payout_details'?: MoneyFlowPayoutDetails | null;
+    /**
+     * Refund details
+     * @type {MoneyFlowRefundDetails}
+     * @memberof MoneyFlowResponse
+     */
+    'refund_details'?: MoneyFlowRefundDetails | null;
 }
 
 export const MoneyFlowResponseCurrencyEnum = {
@@ -78,6 +105,7 @@ export const MoneyFlowResponseTypeEnum = {
     PlanRestreamBuy: 'plan_restream_buy',
     PlanTranscodingBuy: 'plan_transcoding_buy',
     PlanStorageBuy: 'plan_storage_buy',
+    PlanWebinarBuy: 'plan_webinar_buy',
     ChannelStoryBuy: 'channel_story_buy',
     ChannelShopSell: 'channel_shop_sell',
     ReferralProfit: 'referral_profit',
@@ -86,6 +114,11 @@ export const MoneyFlowResponseTypeEnum = {
     Payout: 'payout',
     PayoutCancel: 'payout_cancel',
     Refund: 'refund',
+    RefundTariffPartial: 'refund_tariff_partial',
+    RefundTariffFull: 'refund_tariff_full',
+    RefundTariffNone: 'refund_tariff_none',
+    Compensation: 'compensation',
+    CompensationReversal: 'compensation_reversal',
     Conversion: 'conversion',
     Withdrawal: 'withdrawal',
     TransferredOfOldSite: 'transferred_of_old_site',

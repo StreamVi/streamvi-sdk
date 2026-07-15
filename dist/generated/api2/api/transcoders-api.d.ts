@@ -50,6 +50,14 @@ export declare const TranscodersApiAxiosParamCreator: (configuration?: Configura
     transcodersListV1: (language: TranscodersListV1LanguageEnum, projectId: number, v?: TranscodersListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Reset delay
+     * @param {TranscoderItemDto} transcoderItemDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    transcodersResetDelayV1: (transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Transcoder stop
      * @param {TranscoderItemDto} transcoderItemDto
      * @param {*} [options] Override http request option.
@@ -98,6 +106,14 @@ export declare const TranscodersApiFp: (configuration?: Configuration) => {
     transcodersListV1(language: TranscodersListV1LanguageEnum, projectId: number, v?: TranscodersListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTranscoderListResponse>>;
     /**
      *
+     * @summary Reset delay
+     * @param {TranscoderItemDto} transcoderItemDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    transcodersResetDelayV1(transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     *
      * @summary Transcoder stop
      * @param {TranscoderItemDto} transcoderItemDto
      * @param {*} [options] Override http request option.
@@ -142,6 +158,14 @@ export declare const TranscodersApiFactory: (configuration?: Configuration, base
      * @throws {RequiredError}
      */
     transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTranscoderListResponse>;
+    /**
+     *
+     * @summary Reset delay
+     * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Transcoder stop
@@ -192,6 +216,15 @@ export interface TranscodersApiInterface {
      * @memberof TranscodersApiInterface
      */
     transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTranscoderListResponse>;
+    /**
+     *
+     * @summary Reset delay
+     * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TranscodersApiInterface
+     */
+    transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Transcoder stop
@@ -257,10 +290,23 @@ export interface TranscodersApiTranscodersListV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof TranscodersApiTranscodersListV1
      */
     readonly v?: TranscodersListV1VEnum;
+}
+/**
+ * Request parameters for transcodersResetDelayV1 operation in TranscodersApi.
+ * @export
+ * @interface TranscodersApiTranscodersResetDelayV1Request
+ */
+export interface TranscodersApiTranscodersResetDelayV1Request {
+    /**
+     *
+     * @type {TranscoderItemDto}
+     * @memberof TranscodersApiTranscodersResetDelayV1
+     */
+    readonly TranscoderItemDto: TranscoderItemDto;
 }
 /**
  * Request parameters for transcodersStopV1 operation in TranscodersApi.
@@ -303,7 +349,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<number, any>>;
+    transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<number, any, {}>>;
     /**
      *
      * @summary Transcoder delete
@@ -312,7 +358,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary List of transcoder
@@ -321,7 +367,16 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTranscoderListResponse, any>>;
+    transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTranscoderListResponse, any, {}>>;
+    /**
+     *
+     * @summary Reset delay
+     * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TranscodersApi
+     */
+    transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Transcoder stop
@@ -330,7 +385,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Transcoder update
@@ -339,7 +394,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersUpdateV1(requestParameters: TranscodersApiTranscodersUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    transcodersUpdateV1(requestParameters: TranscodersApiTranscodersUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
 }
 /**
  * @export
@@ -355,8 +410,6 @@ export type TranscodersListV1LanguageEnum = typeof TranscodersListV1LanguageEnum
  */
 export declare const TranscodersListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type TranscodersListV1VEnum = typeof TranscodersListV1VEnum[keyof typeof TranscodersListV1VEnum];
 //# sourceMappingURL=transcoders-api.d.ts.map

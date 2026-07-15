@@ -1,0 +1,1 @@
+{"version":3,"file":"rtmp-server-list-response-base.d.ts","sourceRoot":"","sources":["../../../../src/generated/api2/models/rtmp-server-list-response-base.ts"],"names":[],"mappings":"AAEA;;;;;;;;;;GAUG;AAKH,OAAO,KAAK,EAAE,sBAAsB,EAAE,MAAM,8BAA8B,CAAC;AAE3E;;;;GAIG;AACH,MAAM,WAAW,0BAA0B;IACvC;;;;OAIG;IACH,SAAS,EAAE,KAAK,CAAC,sBAAsB,CAAC,CAAC;CAC5C"}

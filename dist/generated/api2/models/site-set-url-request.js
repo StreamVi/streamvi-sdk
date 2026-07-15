@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SiteSetUrlRequestLanguageEnum = exports.SiteSetUrlRequestVEnum = void 0;
 exports.SiteSetUrlRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.SiteSetUrlRequestLanguageEnum = {
     Ru: 'ru',

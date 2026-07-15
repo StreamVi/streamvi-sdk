@@ -93,6 +93,17 @@ export declare const PlanRestreamApiAxiosParamCreator: (configuration?: Configur
     planRestreamRemoveV1: (language: PlanRestreamRemoveV1LanguageEnum, projectId: number, planRestreamId: number, v?: PlanRestreamRemoveV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Set restream tariff auto prolongation
+     * @param {PlanRestreamSetProlongationV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {boolean} enabled Auto prolongation enabled
+     * @param {PlanRestreamSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    planRestreamSetProlongationV1: (language: PlanRestreamSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanRestreamSetProlongationV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get tariff for project
      * @param {PlanRestreamTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
@@ -177,6 +188,17 @@ export declare const PlanRestreamApiFp: (configuration?: Configuration) => {
     planRestreamRemoveV1(language: PlanRestreamRemoveV1LanguageEnum, projectId: number, planRestreamId: number, v?: PlanRestreamRemoveV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
+     * @summary Set restream tariff auto prolongation
+     * @param {PlanRestreamSetProlongationV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {boolean} enabled Auto prolongation enabled
+     * @param {PlanRestreamSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    planRestreamSetProlongationV1(language: PlanRestreamSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanRestreamSetProlongationV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     *
      * @summary Get tariff for project
      * @param {PlanRestreamTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
@@ -239,6 +261,14 @@ export declare const PlanRestreamApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     planRestreamRemoveV1(requestParameters: PlanRestreamApiPlanRestreamRemoveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Set restream tariff auto prolongation
+     * @param {PlanRestreamApiPlanRestreamSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    planRestreamSetProlongationV1(requestParameters: PlanRestreamApiPlanRestreamSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get tariff for project
@@ -310,6 +340,15 @@ export interface PlanRestreamApiInterface {
     planRestreamRemoveV1(requestParameters: PlanRestreamApiPlanRestreamRemoveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
+     * @summary Set restream tariff auto prolongation
+     * @param {PlanRestreamApiPlanRestreamSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanRestreamApiInterface
+     */
+    planRestreamSetProlongationV1(requestParameters: PlanRestreamApiPlanRestreamSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
      * @summary Get tariff for project
      * @param {PlanRestreamApiPlanRestreamTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -350,7 +389,7 @@ export interface PlanRestreamApiPlanRestreamBuyV1Request {
     readonly plan_restream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamBuyV1
      */
     readonly v?: PlanRestreamBuyV1VEnum;
@@ -399,7 +438,7 @@ export interface PlanRestreamApiPlanRestreamCheck2V1Request {
     readonly plan_restream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'2'}
      * @memberof PlanRestreamApiPlanRestreamCheck2V1
      */
     readonly v?: PlanRestreamCheck2V1VEnum;
@@ -436,7 +475,7 @@ export interface PlanRestreamApiPlanRestreamGetDiscountV1Request {
     readonly language: PlanRestreamGetDiscountV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamGetDiscountV1
      */
     readonly v?: PlanRestreamGetDiscountV1VEnum;
@@ -461,7 +500,7 @@ export interface PlanRestreamApiPlanRestreamListProjectV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamListProjectV1
      */
     readonly v?: PlanRestreamListProjectV1VEnum;
@@ -480,7 +519,7 @@ export interface PlanRestreamApiPlanRestreamListV1Request {
     readonly language: PlanRestreamListV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamListV1
      */
     readonly v?: PlanRestreamListV1VEnum;
@@ -511,10 +550,41 @@ export interface PlanRestreamApiPlanRestreamRemoveV1Request {
     readonly plan_restream_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamRemoveV1
      */
     readonly v?: PlanRestreamRemoveV1VEnum;
+}
+/**
+ * Request parameters for planRestreamSetProlongationV1 operation in PlanRestreamApi.
+ * @export
+ * @interface PlanRestreamApiPlanRestreamSetProlongationV1Request
+ */
+export interface PlanRestreamApiPlanRestreamSetProlongationV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PlanRestreamApiPlanRestreamSetProlongationV1
+     */
+    readonly language: PlanRestreamSetProlongationV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof PlanRestreamApiPlanRestreamSetProlongationV1
+     */
+    readonly project_id: number;
+    /**
+     * Auto prolongation enabled
+     * @type {boolean}
+     * @memberof PlanRestreamApiPlanRestreamSetProlongationV1
+     */
+    readonly enabled: boolean;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof PlanRestreamApiPlanRestreamSetProlongationV1
+     */
+    readonly v?: PlanRestreamSetProlongationV1VEnum;
 }
 /**
  * Request parameters for planRestreamTariffV1 operation in PlanRestreamApi.
@@ -536,7 +606,7 @@ export interface PlanRestreamApiPlanRestreamTariffV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanRestreamApiPlanRestreamTariffV1
      */
     readonly v?: PlanRestreamTariffV1VEnum;
@@ -556,7 +626,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamBuyV1(requestParameters: PlanRestreamApiPlanRestreamBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    planRestreamBuyV1(requestParameters: PlanRestreamApiPlanRestreamBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Load data for show card the tariffs v2
@@ -565,7 +635,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamCheck2V1(requestParameters: PlanRestreamApiPlanRestreamCheck2V1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamCheckV2Response, any>>;
+    planRestreamCheck2V1(requestParameters: PlanRestreamApiPlanRestreamCheck2V1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamCheckV2Response, any, {}>>;
     /**
      *
      * @summary Get discount restream
@@ -574,7 +644,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamGetDiscountV1(requestParameters: PlanRestreamApiPlanRestreamGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamDiscountResponse, any>>;
+    planRestreamGetDiscountV1(requestParameters: PlanRestreamApiPlanRestreamGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamDiscountResponse, any, {}>>;
     /**
      *
      * @summary Get list of restream tariffs for project
@@ -583,7 +653,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamListProjectV1(requestParameters: PlanRestreamApiPlanRestreamListProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamProjectResponseDto, any>>;
+    planRestreamListProjectV1(requestParameters: PlanRestreamApiPlanRestreamListProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamProjectResponseDto, any, {}>>;
     /**
      *
      * @summary Get list of restream tariffs
@@ -592,7 +662,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamListV1(requestParameters: PlanRestreamApiPlanRestreamListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamResponseDto, any>>;
+    planRestreamListV1(requestParameters: PlanRestreamApiPlanRestreamListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamResponseDto, any, {}>>;
     /**
      *
      * @summary Remove after tariff
@@ -601,7 +671,16 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamRemoveV1(requestParameters: PlanRestreamApiPlanRestreamRemoveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    planRestreamRemoveV1(requestParameters: PlanRestreamApiPlanRestreamRemoveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    /**
+     *
+     * @summary Set restream tariff auto prolongation
+     * @param {PlanRestreamApiPlanRestreamSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanRestreamApi
+     */
+    planRestreamSetProlongationV1(requestParameters: PlanRestreamApiPlanRestreamSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Get tariff for project
@@ -610,7 +689,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamTariffV1(requestParameters: PlanRestreamApiPlanRestreamTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamForProject, any>>;
+    planRestreamTariffV1(requestParameters: PlanRestreamApiPlanRestreamTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamForProject, any, {}>>;
 }
 /**
  * @export
@@ -634,8 +713,6 @@ export type PlanRestreamBuyV1PeriodEnum = typeof PlanRestreamBuyV1PeriodEnum[key
  */
 export declare const PlanRestreamBuyV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanRestreamBuyV1VEnum = typeof PlanRestreamBuyV1VEnum[keyof typeof PlanRestreamBuyV1VEnum];
 /**
@@ -659,9 +736,7 @@ export type PlanRestreamCheck2V1PeriodEnum = typeof PlanRestreamCheck2V1PeriodEn
  * @export
  */
 export declare const PlanRestreamCheck2V1VEnum: {
-    readonly _1: "1";
     readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanRestreamCheck2V1VEnum = typeof PlanRestreamCheck2V1VEnum[keyof typeof PlanRestreamCheck2V1VEnum];
 /**
@@ -678,8 +753,6 @@ export type PlanRestreamGetDiscountV1LanguageEnum = typeof PlanRestreamGetDiscou
  */
 export declare const PlanRestreamGetDiscountV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanRestreamGetDiscountV1VEnum = typeof PlanRestreamGetDiscountV1VEnum[keyof typeof PlanRestreamGetDiscountV1VEnum];
 /**
@@ -696,8 +769,6 @@ export type PlanRestreamListProjectV1LanguageEnum = typeof PlanRestreamListProje
  */
 export declare const PlanRestreamListProjectV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanRestreamListProjectV1VEnum = typeof PlanRestreamListProjectV1VEnum[keyof typeof PlanRestreamListProjectV1VEnum];
 /**
@@ -714,8 +785,6 @@ export type PlanRestreamListV1LanguageEnum = typeof PlanRestreamListV1LanguageEn
  */
 export declare const PlanRestreamListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanRestreamListV1VEnum = typeof PlanRestreamListV1VEnum[keyof typeof PlanRestreamListV1VEnum];
 /**
@@ -732,10 +801,24 @@ export type PlanRestreamRemoveV1LanguageEnum = typeof PlanRestreamRemoveV1Langua
  */
 export declare const PlanRestreamRemoveV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanRestreamRemoveV1VEnum = typeof PlanRestreamRemoveV1VEnum[keyof typeof PlanRestreamRemoveV1VEnum];
+/**
+ * @export
+ */
+export declare const PlanRestreamSetProlongationV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanRestreamSetProlongationV1LanguageEnum = typeof PlanRestreamSetProlongationV1LanguageEnum[keyof typeof PlanRestreamSetProlongationV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const PlanRestreamSetProlongationV1VEnum: {
+    readonly _1: "1";
+};
+export type PlanRestreamSetProlongationV1VEnum = typeof PlanRestreamSetProlongationV1VEnum[keyof typeof PlanRestreamSetProlongationV1VEnum];
 /**
  * @export
  */
@@ -750,8 +833,6 @@ export type PlanRestreamTariffV1LanguageEnum = typeof PlanRestreamTariffV1Langua
  */
 export declare const PlanRestreamTariffV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanRestreamTariffV1VEnum = typeof PlanRestreamTariffV1VEnum[keyof typeof PlanRestreamTariffV1VEnum];
 //# sourceMappingURL=plan-restream-api.d.ts.map

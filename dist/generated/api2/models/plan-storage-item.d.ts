@@ -34,6 +34,18 @@ export interface PlanStorageItem {
      */
     'period': PlanStorageItemPeriodEnum;
     /**
+     * Prolongation status
+     * @type {boolean}
+     * @memberof PlanStorageItem
+     */
+    'prolongation': boolean;
+    /**
+     * Title
+     * @type {string}
+     * @memberof PlanStorageItem
+     */
+    'title': string;
+    /**
      * Date end tariff
      * @type {string}
      * @memberof PlanStorageItem

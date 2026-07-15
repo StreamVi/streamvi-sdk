@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AnalyticsTsStreamViewersV1VEnum = exports.AnalyticsTsStreamViewersV1LanguageEnum = exports.AnalyticsTsStreamEventsV1VEnum = exports.AnalyticsTsStreamEventsV1LanguageEnum = exports.AnalyticsTsStreamBitrateV1VEnum = exports.AnalyticsTsStreamBitrateV1LanguageEnum = exports.AnalyticsApi = exports.AnalyticsApiFactory = exports.AnalyticsApiFp = exports.AnalyticsApiAxiosParamCreator = void 0;
+exports.AnalyticsTsStreamViewersV1VEnum = exports.AnalyticsTsStreamViewersV1LanguageEnum = exports.AnalyticsTsStreamEventsV1VEnum = exports.AnalyticsTsStreamEventsV1LanguageEnum = exports.AnalyticsTsStreamBitrateV1VEnum = exports.AnalyticsTsStreamBitrateV1LanguageEnum = exports.AnalyticsTsBroadcastMessagesV1SortByDateEnum = exports.AnalyticsTsBroadcastMessagesV1VEnum = exports.AnalyticsTsBroadcastMessagesV1LanguageEnum = exports.AnalyticsApi = exports.AnalyticsApiFactory = exports.AnalyticsApiFp = exports.AnalyticsApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -29,6 +29,98 @@ const base_1 = require("../base");
  */
 const AnalyticsApiAxiosParamCreator = function (configuration) {
     return {
+        /**
+         *
+         * @summary Messages for broadcast
+         * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId Broadcast id
+         * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {number} [offset] Offset
+         * @param {number} [limit] Limit
+         * @param {string} [date] Exact date filter
+         * @param {string} [dateStart] Date range start
+         * @param {string} [dateEnd] Date range end
+         * @param {AnalyticsTsBroadcastMessagesV1SortByDateEnum} [sortByDate] Sort by date
+         * @param {string} [platform] Platform
+         * @param {number} [restreamId] Restream id
+         * @param {string} [text] Text search
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        analyticsTsBroadcastMessagesV1: async (language, projectId, broadcastId, v, offset, limit, date, dateStart, dateEnd, sortByDate, platform, restreamId, text, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('analyticsTsBroadcastMessagesV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('analyticsTsBroadcastMessagesV1', 'projectId', projectId);
+            // verify required parameter 'broadcastId' is not null or undefined
+            (0, common_1.assertParamExists)('analyticsTsBroadcastMessagesV1', 'broadcastId', broadcastId);
+            const localVarPath = `/method/analytics/broadcast/messages`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["analytics:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (broadcastId !== undefined) {
+                localVarQueryParameter['broadcast_id'] = broadcastId;
+            }
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+            if (date !== undefined) {
+                localVarQueryParameter['date'] = (date instanceof Date) ?
+                    date.toISOString() :
+                    date;
+            }
+            if (dateStart !== undefined) {
+                localVarQueryParameter['date_start'] = (dateStart instanceof Date) ?
+                    dateStart.toISOString() :
+                    dateStart;
+            }
+            if (dateEnd !== undefined) {
+                localVarQueryParameter['date_end'] = (dateEnd instanceof Date) ?
+                    dateEnd.toISOString() :
+                    dateEnd;
+            }
+            if (sortByDate !== undefined) {
+                localVarQueryParameter['sort_by_date'] = sortByDate;
+            }
+            if (platform !== undefined) {
+                localVarQueryParameter['platform'] = platform;
+            }
+            if (restreamId !== undefined) {
+                localVarQueryParameter['restream_id'] = restreamId;
+            }
+            if (text !== undefined) {
+                localVarQueryParameter['text'] = text;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          *
          * @summary Bitrate for stream
@@ -56,11 +148,11 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["analytics:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -106,11 +198,11 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["analytics:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -156,11 +248,11 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["analytics:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -189,6 +281,32 @@ exports.AnalyticsApiAxiosParamCreator = AnalyticsApiAxiosParamCreator;
 const AnalyticsApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.AnalyticsApiAxiosParamCreator)(configuration);
     return {
+        /**
+         *
+         * @summary Messages for broadcast
+         * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {number} broadcastId Broadcast id
+         * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {number} [offset] Offset
+         * @param {number} [limit] Limit
+         * @param {string} [date] Exact date filter
+         * @param {string} [dateStart] Date range start
+         * @param {string} [dateEnd] Date range end
+         * @param {AnalyticsTsBroadcastMessagesV1SortByDateEnum} [sortByDate] Sort by date
+         * @param {string} [platform] Platform
+         * @param {number} [restreamId] Restream id
+         * @param {string} [text] Text search
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async analyticsTsBroadcastMessagesV1(language, projectId, broadcastId, v, offset, limit, date, dateStart, dateEnd, sortByDate, platform, restreamId, text, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsBroadcastMessagesV1(language, projectId, broadcastId, v, offset, limit, date, dateStart, dateEnd, sortByDate, platform, restreamId, text, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AnalyticsApi.analyticsTsBroadcastMessagesV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
         /**
          *
          * @summary Bitrate for stream
@@ -252,6 +370,16 @@ const AnalyticsApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
+         * @summary Messages for broadcast
+         * @param {AnalyticsApiAnalyticsTsBroadcastMessagesV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        analyticsTsBroadcastMessagesV1(requestParameters, options) {
+            return localVarFp.analyticsTsBroadcastMessagesV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, requestParameters.offset, requestParameters.limit, requestParameters.date, requestParameters.date_start, requestParameters.date_end, requestParameters.sort_by_date, requestParameters.platform, requestParameters.restream_id, requestParameters.text, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Bitrate for stream
          * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -292,6 +420,17 @@ exports.AnalyticsApiFactory = AnalyticsApiFactory;
 class AnalyticsApi extends base_1.BaseAPI {
     /**
      *
+     * @summary Messages for broadcast
+     * @param {AnalyticsApiAnalyticsTsBroadcastMessagesV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AnalyticsApi
+     */
+    analyticsTsBroadcastMessagesV1(requestParameters, options) {
+        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsBroadcastMessagesV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, requestParameters.offset, requestParameters.limit, requestParameters.date, requestParameters.date_start, requestParameters.date_end, requestParameters.sort_by_date, requestParameters.platform, requestParameters.restream_id, requestParameters.text, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Bitrate for stream
      * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -328,6 +467,27 @@ exports.AnalyticsApi = AnalyticsApi;
 /**
  * @export
  */
+exports.AnalyticsTsBroadcastMessagesV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.AnalyticsTsBroadcastMessagesV1VEnum = {
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.AnalyticsTsBroadcastMessagesV1SortByDateEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
+/**
+ * @export
+ */
 exports.AnalyticsTsStreamBitrateV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
@@ -337,9 +497,7 @@ exports.AnalyticsTsStreamBitrateV1LanguageEnum = {
  * @export
  */
 exports.AnalyticsTsStreamBitrateV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -353,9 +511,7 @@ exports.AnalyticsTsStreamEventsV1LanguageEnum = {
  * @export
  */
 exports.AnalyticsTsStreamEventsV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -369,7 +525,5 @@ exports.AnalyticsTsStreamViewersV1LanguageEnum = {
  * @export
  */
 exports.AnalyticsTsStreamViewersV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

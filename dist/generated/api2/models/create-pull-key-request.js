@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreatePullKeyRequestTransportEnum = exports.CreatePullKeyRequestLanguageEnum = exports.CreatePullKeyRequestVEnum = void 0;
 exports.CreatePullKeyRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.CreatePullKeyRequestLanguageEnum = {
     Ru: 'ru',

@@ -89,21 +89,31 @@ export interface TranscoderUpdateDto {
     'bFrames'?: number;
     /**
      * ChannelIds
-     * @type {number}
+     * @type {Array<number>}
      * @memberof TranscoderUpdateDto
      */
-    'channelIds'?: number;
+    'channelIds'?: Array<number>;
     /**
      * Video codec id
+     * @type {string}
+     * @memberof TranscoderUpdateDto
+     */
+    'videoCodec': TranscoderUpdateDtoVideoCodecEnum;
+    /**
+     * Preset
+     * @type {string}
+     * @memberof TranscoderUpdateDto
+     */
+    'preset'?: string;
+    /**
+     * Delay
      * @type {number}
      * @memberof TranscoderUpdateDto
      */
-    'videoCodecId': number;
+    'delay'?: number;
 }
 export declare const TranscoderUpdateDtoVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type TranscoderUpdateDtoVEnum = typeof TranscoderUpdateDtoVEnum[keyof typeof TranscoderUpdateDtoVEnum];
 export declare const TranscoderUpdateDtoLanguageEnum: {
@@ -112,4 +122,9 @@ export declare const TranscoderUpdateDtoLanguageEnum: {
     readonly Cn: "cn";
 };
 export type TranscoderUpdateDtoLanguageEnum = typeof TranscoderUpdateDtoLanguageEnum[keyof typeof TranscoderUpdateDtoLanguageEnum];
+export declare const TranscoderUpdateDtoVideoCodecEnum: {
+    readonly H264: "h264";
+    readonly Hevc: "hevc";
+};
+export type TranscoderUpdateDtoVideoCodecEnum = typeof TranscoderUpdateDtoVideoCodecEnum[keyof typeof TranscoderUpdateDtoVideoCodecEnum];
 //# sourceMappingURL=transcoder-update-dto.d.ts.map

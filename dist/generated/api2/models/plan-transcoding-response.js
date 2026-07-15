@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PlanTranscodingResponseFpsEnum = exports.PlanTranscodingResponseResolutionEnum = exports.PlanTranscodingResponseTypeEnum = void 0;
 exports.PlanTranscodingResponseTypeEnum = {
-    Free: 'free',
     PaidMonth: 'paid_month',
-    PaidMinute: 'paid_minute',
     Custom: 'custom'
 };
 exports.PlanTranscodingResponseResolutionEnum = {

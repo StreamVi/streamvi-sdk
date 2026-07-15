@@ -75,6 +75,17 @@ export declare const PlanTranscodingApiAxiosParamCreator: (configuration?: Confi
     planTranscodingListV1: (language: PlanTranscodingListV1LanguageEnum, v?: PlanTranscodingListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Set transcoding tariff auto prolongation
+     * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {boolean} enabled Auto prolongation enabled
+     * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    planTranscodingSetProlongationV1: (language: PlanTranscodingSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanTranscodingSetProlongationV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get tariff for project
      * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
@@ -142,6 +153,17 @@ export declare const PlanTranscodingApiFp: (configuration?: Configuration) => {
     planTranscodingListV1(language: PlanTranscodingListV1LanguageEnum, v?: PlanTranscodingListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanTranscodingResponseDto>>;
     /**
      *
+     * @summary Set transcoding tariff auto prolongation
+     * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {boolean} enabled Auto prolongation enabled
+     * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    planTranscodingSetProlongationV1(language: PlanTranscodingSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanTranscodingSetProlongationV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     *
      * @summary Get tariff for project
      * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
@@ -196,6 +218,14 @@ export declare const PlanTranscodingApiFactory: (configuration?: Configuration, 
      * @throws {RequiredError}
      */
     planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingResponseDto>;
+    /**
+     *
+     * @summary Set transcoding tariff auto prolongation
+     * @param {PlanTranscodingApiPlanTranscodingSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    planTranscodingSetProlongationV1(requestParameters: PlanTranscodingApiPlanTranscodingSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get tariff for project
@@ -258,6 +288,15 @@ export interface PlanTranscodingApiInterface {
     planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanTranscodingResponseDto>;
     /**
      *
+     * @summary Set transcoding tariff auto prolongation
+     * @param {PlanTranscodingApiPlanTranscodingSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApiInterface
+     */
+    planTranscodingSetProlongationV1(requestParameters: PlanTranscodingApiPlanTranscodingSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
      * @summary Get tariff for project
      * @param {PlanTranscodingApiPlanTranscodingTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -298,7 +337,7 @@ export interface PlanTranscodingApiPlanTranscodingBuyV1Request {
     readonly plan_transcoding_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
     readonly v?: PlanTranscodingBuyV1VEnum;
@@ -329,7 +368,7 @@ export interface PlanTranscodingApiPlanTranscodingCancelV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingCancelV1
      */
     readonly v?: PlanTranscodingCancelV1VEnum;
@@ -354,7 +393,7 @@ export interface PlanTranscodingApiPlanTranscodingCheckV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingCheckV1
      */
     readonly v?: PlanTranscodingCheckV1VEnum;
@@ -373,7 +412,7 @@ export interface PlanTranscodingApiPlanTranscodingGetDiscountV1Request {
     readonly language: PlanTranscodingGetDiscountV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingGetDiscountV1
      */
     readonly v?: PlanTranscodingGetDiscountV1VEnum;
@@ -392,10 +431,41 @@ export interface PlanTranscodingApiPlanTranscodingListV1Request {
     readonly language: PlanTranscodingListV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingListV1
      */
     readonly v?: PlanTranscodingListV1VEnum;
+}
+/**
+ * Request parameters for planTranscodingSetProlongationV1 operation in PlanTranscodingApi.
+ * @export
+ * @interface PlanTranscodingApiPlanTranscodingSetProlongationV1Request
+ */
+export interface PlanTranscodingApiPlanTranscodingSetProlongationV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PlanTranscodingApiPlanTranscodingSetProlongationV1
+     */
+    readonly language: PlanTranscodingSetProlongationV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof PlanTranscodingApiPlanTranscodingSetProlongationV1
+     */
+    readonly project_id: number;
+    /**
+     * Auto prolongation enabled
+     * @type {boolean}
+     * @memberof PlanTranscodingApiPlanTranscodingSetProlongationV1
+     */
+    readonly enabled: boolean;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof PlanTranscodingApiPlanTranscodingSetProlongationV1
+     */
+    readonly v?: PlanTranscodingSetProlongationV1VEnum;
 }
 /**
  * Request parameters for planTranscodingTariffV1 operation in PlanTranscodingApi.
@@ -417,7 +487,7 @@ export interface PlanTranscodingApiPlanTranscodingTariffV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingTariffV1
      */
     readonly v?: PlanTranscodingTariffV1VEnum;
@@ -437,7 +507,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingBuyV1(requestParameters: PlanTranscodingApiPlanTranscodingBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    planTranscodingBuyV1(requestParameters: PlanTranscodingApiPlanTranscodingBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Remove after tariff
@@ -446,7 +516,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingCancelV1(requestParameters: PlanTranscodingApiPlanTranscodingCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    planTranscodingCancelV1(requestParameters: PlanTranscodingApiPlanTranscodingCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Check transcoding tariff before buy
@@ -455,7 +525,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingCheckV1(requestParameters: PlanTranscodingApiPlanTranscodingCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingCheckResponse, any>>;
+    planTranscodingCheckV1(requestParameters: PlanTranscodingApiPlanTranscodingCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingCheckResponse, any, {}>>;
     /**
      *
      * @summary Get discount transcoding
@@ -464,7 +534,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingGetDiscountV1(requestParameters: PlanTranscodingApiPlanTranscodingGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingDiscountResponse, any>>;
+    planTranscodingGetDiscountV1(requestParameters: PlanTranscodingApiPlanTranscodingGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingDiscountResponse, any, {}>>;
     /**
      *
      * @summary Get list of transcoding tariffs
@@ -473,7 +543,16 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingResponseDto, any>>;
+    planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingResponseDto, any, {}>>;
+    /**
+     *
+     * @summary Set transcoding tariff auto prolongation
+     * @param {PlanTranscodingApiPlanTranscodingSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanTranscodingApi
+     */
+    planTranscodingSetProlongationV1(requestParameters: PlanTranscodingApiPlanTranscodingSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Get tariff for project
@@ -482,7 +561,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingTariffV1(requestParameters: PlanTranscodingApiPlanTranscodingTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingForProject, any>>;
+    planTranscodingTariffV1(requestParameters: PlanTranscodingApiPlanTranscodingTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingForProject, any, {}>>;
 }
 /**
  * @export
@@ -506,8 +585,6 @@ export type PlanTranscodingBuyV1PeriodEnum = typeof PlanTranscodingBuyV1PeriodEn
  */
 export declare const PlanTranscodingBuyV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanTranscodingBuyV1VEnum = typeof PlanTranscodingBuyV1VEnum[keyof typeof PlanTranscodingBuyV1VEnum];
 /**
@@ -524,8 +601,6 @@ export type PlanTranscodingCancelV1LanguageEnum = typeof PlanTranscodingCancelV1
  */
 export declare const PlanTranscodingCancelV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanTranscodingCancelV1VEnum = typeof PlanTranscodingCancelV1VEnum[keyof typeof PlanTranscodingCancelV1VEnum];
 /**
@@ -542,8 +617,6 @@ export type PlanTranscodingCheckV1LanguageEnum = typeof PlanTranscodingCheckV1La
  */
 export declare const PlanTranscodingCheckV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanTranscodingCheckV1VEnum = typeof PlanTranscodingCheckV1VEnum[keyof typeof PlanTranscodingCheckV1VEnum];
 /**
@@ -560,8 +633,6 @@ export type PlanTranscodingGetDiscountV1LanguageEnum = typeof PlanTranscodingGet
  */
 export declare const PlanTranscodingGetDiscountV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanTranscodingGetDiscountV1VEnum = typeof PlanTranscodingGetDiscountV1VEnum[keyof typeof PlanTranscodingGetDiscountV1VEnum];
 /**
@@ -578,10 +649,24 @@ export type PlanTranscodingListV1LanguageEnum = typeof PlanTranscodingListV1Lang
  */
 export declare const PlanTranscodingListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanTranscodingListV1VEnum = typeof PlanTranscodingListV1VEnum[keyof typeof PlanTranscodingListV1VEnum];
+/**
+ * @export
+ */
+export declare const PlanTranscodingSetProlongationV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PlanTranscodingSetProlongationV1LanguageEnum = typeof PlanTranscodingSetProlongationV1LanguageEnum[keyof typeof PlanTranscodingSetProlongationV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const PlanTranscodingSetProlongationV1VEnum: {
+    readonly _1: "1";
+};
+export type PlanTranscodingSetProlongationV1VEnum = typeof PlanTranscodingSetProlongationV1VEnum[keyof typeof PlanTranscodingSetProlongationV1VEnum];
 /**
  * @export
  */
@@ -596,8 +681,6 @@ export type PlanTranscodingTariffV1LanguageEnum = typeof PlanTranscodingTariffV1
  */
 export declare const PlanTranscodingTariffV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PlanTranscodingTariffV1VEnum = typeof PlanTranscodingTariffV1VEnum[keyof typeof PlanTranscodingTariffV1VEnum];
 //# sourceMappingURL=plan-transcoding-api.d.ts.map

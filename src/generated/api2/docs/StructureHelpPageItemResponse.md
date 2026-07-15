@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **url** | **string** | url | [default to undefined]
 **url_inherit** | **string** | Generated url from root path | [default to undefined]
 **status** | **string** | Page status | [default to StatusEnum_Backlog]
-**title** | **Array&lt;StructureHelpPageConnectionsItemLang&gt;**(StructureHelpPageConnectionsItemLang.md) | Subject | [default to undefined]
+**title** | [**Array&lt;StructureHelpPageConnectionsItemLang&gt;**](StructureHelpPageConnectionsItemLang.md) | Subject | [default to undefined]
 **icon** | **object** | Page icon | [default to undefined]
 **priority** | **number** | Priority for sorting | [default to undefined]
-**connections** | **Array&lt;StructureHelpPageItemResponse2&gt;**(StructureHelpPageItemResponse2.md) | Structure of child pages same as this array of class StructureHelpPageItemResponse, maximum 4 | [optional] [default to undefined]
+**connections** | [**Array&lt;StructureHelpPageItemResponse2&gt;**](StructureHelpPageItemResponse2.md) | Structure of child pages same as this array of class StructureHelpPageItemResponse, maximum 4 | [optional] [default to undefined]
 
 ## Example
 

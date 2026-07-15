@@ -13,14 +13,16 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TranscoderUpdateDtoLanguageEnum = exports.TranscoderUpdateDtoVEnum = void 0;
+exports.TranscoderUpdateDtoVideoCodecEnum = exports.TranscoderUpdateDtoLanguageEnum = exports.TranscoderUpdateDtoVEnum = void 0;
 exports.TranscoderUpdateDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.TranscoderUpdateDtoLanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'
+};
+exports.TranscoderUpdateDtoVideoCodecEnum = {
+    H264: 'h264',
+    Hevc: 'hevc'
 };

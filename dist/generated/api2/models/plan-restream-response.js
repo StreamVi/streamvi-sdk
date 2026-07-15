@@ -16,6 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PlanRestreamResponseFpsEnum = exports.PlanRestreamResponseResolutionEnum = exports.PlanRestreamResponseTypeEnum = void 0;
 exports.PlanRestreamResponseTypeEnum = {
     Free: 'free',
+    Trial: 'trial',
     PaidFix: 'paid_fix',
     PaidFlex: 'paid_flex',
     Custom: 'custom'

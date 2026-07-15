@@ -14,7 +14,8 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
 import type { GetPaySettingResponseV3 } from '../models';
 import type { PayCheckCountryResponse } from '../models';
-import type { PaySettingBodyDto } from '../models';
+import type { PaySettingSetSettingV1Request } from '../models';
+import type { SuccessResponse } from '../models';
 /**
  * PaySettingApi - axios parameter creator
  * @export
@@ -44,11 +45,11 @@ export declare const PaySettingApiAxiosParamCreator: (configuration?: Configurat
     /**
      *
      * @summary Set pay settings for profile
-     * @param {PaySettingBodyDto} paySettingBodyDto
+     * @param {PaySettingSetSettingV1Request} paySettingSetSettingV1Request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySettingSetSettingV1: (paySettingBodyDto: PaySettingBodyDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySettingSetSettingV1: (paySettingSetSettingV1Request: PaySettingSetSettingV1Request, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PaySettingApi - functional programming interface
@@ -79,11 +80,11 @@ export declare const PaySettingApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Set pay settings for profile
-     * @param {PaySettingBodyDto} paySettingBodyDto
+     * @param {PaySettingSetSettingV1Request} paySettingSetSettingV1Request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySettingSetSettingV1(paySettingBodyDto: PaySettingBodyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    paySettingSetSettingV1(paySettingSetSettingV1Request: PaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * PaySettingApi - factory interface
@@ -113,7 +114,7 @@ export declare const PaySettingApiFactory: (configuration?: Configuration, baseP
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 };
 /**
  * PaySettingApi - interface
@@ -147,7 +148,7 @@ export interface PaySettingApiInterface {
      * @throws {RequiredError}
      * @memberof PaySettingApiInterface
      */
-    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 }
 /**
  * Request parameters for paySettingCheckCountryV1 operation in PaySettingApi.
@@ -175,7 +176,7 @@ export interface PaySettingApiPaySettingCheckCountryV1Request {
     readonly country_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
     readonly v?: PaySettingCheckCountryV1VEnum;
@@ -200,7 +201,7 @@ export interface PaySettingApiPaySettingGetSettingV3Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 3 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'3'}
      * @memberof PaySettingApiPaySettingGetSettingV3
      */
     readonly v?: PaySettingGetSettingV3VEnum;
@@ -213,10 +214,10 @@ export interface PaySettingApiPaySettingGetSettingV3Request {
 export interface PaySettingApiPaySettingSetSettingV1Request {
     /**
      *
-     * @type {PaySettingBodyDto}
+     * @type {PaySettingSetSettingV1Request}
      * @memberof PaySettingApiPaySettingSetSettingV1
      */
-    readonly PaySettingBodyDto: PaySettingBodyDto;
+    readonly PaySettingSetSettingV1Request: PaySettingSetSettingV1Request;
 }
 /**
  * PaySettingApi - object-oriented interface
@@ -233,7 +234,7 @@ export declare class PaySettingApi extends BaseAPI implements PaySettingApiInter
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayCheckCountryResponse, any>>;
+    paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayCheckCountryResponse, any, {}>>;
     /**
      *
      * @summary Get pay settings for profile v3
@@ -242,7 +243,7 @@ export declare class PaySettingApi extends BaseAPI implements PaySettingApiInter
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPaySettingResponseV3, any>>;
+    paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPaySettingResponseV3, any, {}>>;
     /**
      *
      * @summary Set pay settings for profile
@@ -251,7 +252,7 @@ export declare class PaySettingApi extends BaseAPI implements PaySettingApiInter
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
 }
 /**
  * @export
@@ -267,8 +268,6 @@ export type PaySettingCheckCountryV1LanguageEnum = typeof PaySettingCheckCountry
  */
 export declare const PaySettingCheckCountryV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PaySettingCheckCountryV1VEnum = typeof PaySettingCheckCountryV1VEnum[keyof typeof PaySettingCheckCountryV1VEnum];
 /**
@@ -284,8 +283,6 @@ export type PaySettingGetSettingV3LanguageEnum = typeof PaySettingGetSettingV3La
  * @export
  */
 export declare const PaySettingGetSettingV3VEnum: {
-    readonly _1: "1";
-    readonly _2: "2";
     readonly _3: "3";
 };
 export type PaySettingGetSettingV3VEnum = typeof PaySettingGetSettingV3VEnum[keyof typeof PaySettingGetSettingV3VEnum];

@@ -22,6 +22,12 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
+import type { AuthCentrifugoChannelResponse } from '../models';
+// @ts-ignore
+import type { AuthCentrifugoConnectResponse } from '../models';
+// @ts-ignore
+import type { CentrifugoChannelsCatalogResponse } from '../models';
+// @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
 import type { SiteAuthCentrifugeResponse } from '../models';
@@ -32,11 +38,12 @@ import type { SiteAuthCentrifugeResponse } from '../models';
 export const CentrifugeApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
-         * @summary Auth centrifuge
+         * Use /method/centrifuge/auth/connect instead.
+         * @summary Auth centrifuge for project
          * @param {number} projectId Project id
          * @param {CentrifugeAuthV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         centrifugeAuthV2: async (projectId: number, v?: CentrifugeAuthV2VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -54,10 +61,12 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["centrifuge:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '2';
             }
 
             if (projectId !== undefined) {
@@ -76,20 +85,23 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor     
-         * @summary Auth token for project
-         * @param {CentrifugeProjectV1LanguageEnum} language Current language
+         *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+         * @summary Get token for connect to centrifuge for channel
+         * @param {CentrifugeChannelTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {string} channelName Channel name
+         * @param {CentrifugeChannelTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        centrifugeProjectV1: async (language: CentrifugeProjectV1LanguageEnum, projectId: number, v?: CentrifugeProjectV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        centrifugeChannelTokenV1: async (language: CentrifugeChannelTokenV1LanguageEnum, projectId: number, channelName: string, v?: CentrifugeChannelTokenV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('centrifugeProjectV1', 'language', language)
+            assertParamExists('centrifugeChannelTokenV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('centrifugeProjectV1', 'projectId', projectId)
-            const localVarPath = `/method/centrifuge/auth/project`;
+            assertParamExists('centrifugeChannelTokenV1', 'projectId', projectId)
+            // verify required parameter 'channelName' is not null or undefined
+            assertParamExists('centrifugeChannelTokenV1', 'channelName', channelName)
+            const localVarPath = `/method/centrifuge/auth/channel`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -101,10 +113,115 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["centrifuge:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+            if (channelName !== undefined) {
+                localVarQueryParameter['channel_name'] = channelName;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns supported channel_type values, required params, events, and response schema names.
+         * @summary List available Method API Centrifuge channels
+         * @param {CentrifugeChannelsCatalogV1LanguageEnum} language Current language
+         * @param {CentrifugeChannelsCatalogV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        centrifugeChannelsCatalogV1: async (language: CentrifugeChannelsCatalogV1LanguageEnum, v?: CentrifugeChannelsCatalogV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('centrifugeChannelsCatalogV1', 'language', language)
+            const localVarPath = `/method/centrifuge/channels`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["centrifuge:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get token for connect to centrifuge for project
+         * @summary Get token for connect to centrifuge for project
+         * @param {CentrifugeConnectionTokenV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {CentrifugeConnectionTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        centrifugeConnectionTokenV1: async (language: CentrifugeConnectionTokenV1LanguageEnum, projectId: number, v?: CentrifugeConnectionTokenV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('centrifugeConnectionTokenV1', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('centrifugeConnectionTokenV1', 'projectId', projectId)
+            const localVarPath = `/method/centrifuge/auth/connect`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["centrifuge:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
             }
 
             if (language !== undefined) {
@@ -127,13 +244,68 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min     
+         * Use /method/centrifuge/auth/channel instead.
+         * @summary Auth token for project
+         * @param {CentrifugeProjectV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        centrifugeProjectV1: async (language: CentrifugeProjectV1LanguageEnum, projectId: number, v?: CentrifugeProjectV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('centrifugeProjectV1', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('centrifugeProjectV1', 'projectId', projectId)
+            const localVarPath = `/method/centrifuge/auth/project`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["centrifuge:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Use /method/centrifuge/auth/channel instead.
          * @summary Auth token for broadcast
          * @param {number} broadcastId 
          * @param {GetTokenBroadcastV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getTokenBroadcastV1: async (broadcastId: number, language: GetTokenBroadcastV1LanguageEnum, projectId: number, v?: GetTokenBroadcastV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -155,6 +327,10 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["centrifuge:read"], configuration)
+
             if (broadcastId !== undefined) {
                 localVarQueryParameter['broadcast_id'] = broadcastId;
             }
@@ -165,8 +341,6 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (projectId !== undefined) {
@@ -195,11 +369,12 @@ export const CentrifugeApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = CentrifugeApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
-         * @summary Auth centrifuge
+         * Use /method/centrifuge/auth/connect instead.
+         * @summary Auth centrifuge for project
          * @param {number} projectId Project id
          * @param {CentrifugeAuthV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async centrifugeAuthV2(projectId: number, v?: CentrifugeAuthV2VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>> {
@@ -209,12 +384,58 @@ export const CentrifugeApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor     
+         *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+         * @summary Get token for connect to centrifuge for channel
+         * @param {CentrifugeChannelTokenV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {string} channelName Channel name
+         * @param {CentrifugeChannelTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async centrifugeChannelTokenV1(language: CentrifugeChannelTokenV1LanguageEnum, projectId: number, channelName: string, v?: CentrifugeChannelTokenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthCentrifugoChannelResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.centrifugeChannelTokenV1(language, projectId, channelName, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CentrifugeApi.centrifugeChannelTokenV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Returns supported channel_type values, required params, events, and response schema names.
+         * @summary List available Method API Centrifuge channels
+         * @param {CentrifugeChannelsCatalogV1LanguageEnum} language Current language
+         * @param {CentrifugeChannelsCatalogV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async centrifugeChannelsCatalogV1(language: CentrifugeChannelsCatalogV1LanguageEnum, v?: CentrifugeChannelsCatalogV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CentrifugoChannelsCatalogResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.centrifugeChannelsCatalogV1(language, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CentrifugeApi.centrifugeChannelsCatalogV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Get token for connect to centrifuge for project
+         * @summary Get token for connect to centrifuge for project
+         * @param {CentrifugeConnectionTokenV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {CentrifugeConnectionTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async centrifugeConnectionTokenV1(language: CentrifugeConnectionTokenV1LanguageEnum, projectId: number, v?: CentrifugeConnectionTokenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthCentrifugoConnectResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.centrifugeConnectionTokenV1(language, projectId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CentrifugeApi.centrifugeConnectionTokenV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Use /method/centrifuge/auth/channel instead.
          * @summary Auth token for project
          * @param {CentrifugeProjectV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async centrifugeProjectV1(language: CentrifugeProjectV1LanguageEnum, projectId: number, v?: CentrifugeProjectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>> {
@@ -224,13 +445,14 @@ export const CentrifugeApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min     
+         * Use /method/centrifuge/auth/channel instead.
          * @summary Auth token for broadcast
          * @param {number} broadcastId 
          * @param {GetTokenBroadcastV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async getTokenBroadcastV1(broadcastId: number, language: GetTokenBroadcastV1LanguageEnum, projectId: number, v?: GetTokenBroadcastV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>> {
@@ -250,30 +472,63 @@ export const CentrifugeApiFactory = function (configuration?: Configuration, bas
     const localVarFp = CentrifugeApiFp(configuration)
     return {
         /**
-         * 
-         * @summary Auth centrifuge
+         * Use /method/centrifuge/auth/connect instead.
+         * @summary Auth centrifuge for project
          * @param {CentrifugeApiCentrifugeAuthV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse> {
             return localVarFp.centrifugeAuthV2(requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
-         *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor     
+         *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+         * @summary Get token for connect to centrifuge for channel
+         * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        centrifugeChannelTokenV1(requestParameters: CentrifugeApiCentrifugeChannelTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AuthCentrifugoChannelResponse> {
+            return localVarFp.centrifugeChannelTokenV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_name, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns supported channel_type values, required params, events, and response schema names.
+         * @summary List available Method API Centrifuge channels
+         * @param {CentrifugeApiCentrifugeChannelsCatalogV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        centrifugeChannelsCatalogV1(requestParameters: CentrifugeApiCentrifugeChannelsCatalogV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CentrifugoChannelsCatalogResponse> {
+            return localVarFp.centrifugeChannelsCatalogV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get token for connect to centrifuge for project
+         * @summary Get token for connect to centrifuge for project
+         * @param {CentrifugeApiCentrifugeConnectionTokenV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        centrifugeConnectionTokenV1(requestParameters: CentrifugeApiCentrifugeConnectionTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AuthCentrifugoConnectResponse> {
+            return localVarFp.centrifugeConnectionTokenV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Use /method/centrifuge/auth/channel instead.
          * @summary Auth token for project
          * @param {CentrifugeApiCentrifugeProjectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         centrifugeProjectV1(requestParameters: CentrifugeApiCentrifugeProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse> {
             return localVarFp.centrifugeProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
-         *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min     
+         * Use /method/centrifuge/auth/channel instead.
          * @summary Auth token for broadcast
          * @param {CentrifugeApiGetTokenBroadcastV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getTokenBroadcastV1(requestParameters: CentrifugeApiGetTokenBroadcastV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse> {
@@ -289,30 +544,63 @@ export const CentrifugeApiFactory = function (configuration?: Configuration, bas
  */
 export interface CentrifugeApiInterface {
     /**
-     * 
-     * @summary Auth centrifuge
+     * Use /method/centrifuge/auth/connect instead.
+     * @summary Auth centrifuge for project
      * @param {CentrifugeApiCentrifugeAuthV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof CentrifugeApiInterface
      */
     centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
 
     /**
-     *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor     
+     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+     * @summary Get token for connect to centrifuge for channel
+     * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApiInterface
+     */
+    centrifugeChannelTokenV1(requestParameters: CentrifugeApiCentrifugeChannelTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AuthCentrifugoChannelResponse>;
+
+    /**
+     * Returns supported channel_type values, required params, events, and response schema names.
+     * @summary List available Method API Centrifuge channels
+     * @param {CentrifugeApiCentrifugeChannelsCatalogV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApiInterface
+     */
+    centrifugeChannelsCatalogV1(requestParameters: CentrifugeApiCentrifugeChannelsCatalogV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CentrifugoChannelsCatalogResponse>;
+
+    /**
+     * Get token for connect to centrifuge for project
+     * @summary Get token for connect to centrifuge for project
+     * @param {CentrifugeApiCentrifugeConnectionTokenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApiInterface
+     */
+    centrifugeConnectionTokenV1(requestParameters: CentrifugeApiCentrifugeConnectionTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AuthCentrifugoConnectResponse>;
+
+    /**
+     * Use /method/centrifuge/auth/channel instead.
      * @summary Auth token for project
      * @param {CentrifugeApiCentrifugeProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof CentrifugeApiInterface
      */
     centrifugeProjectV1(requestParameters: CentrifugeApiCentrifugeProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
 
     /**
-     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min     
+     * Use /method/centrifuge/auth/channel instead.
      * @summary Auth token for broadcast
      * @param {CentrifugeApiGetTokenBroadcastV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof CentrifugeApiInterface
      */
@@ -339,6 +627,90 @@ export interface CentrifugeApiCentrifugeAuthV2Request {
      * @memberof CentrifugeApiCentrifugeAuthV2
      */
     readonly v?: CentrifugeAuthV2VEnum
+}
+
+/**
+ * Request parameters for centrifugeChannelTokenV1 operation in CentrifugeApi.
+ * @export
+ * @interface CentrifugeApiCentrifugeChannelTokenV1Request
+ */
+export interface CentrifugeApiCentrifugeChannelTokenV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof CentrifugeApiCentrifugeChannelTokenV1
+     */
+    readonly language: CentrifugeChannelTokenV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof CentrifugeApiCentrifugeChannelTokenV1
+     */
+    readonly project_id: number
+
+    /**
+     * Channel name
+     * @type {string}
+     * @memberof CentrifugeApiCentrifugeChannelTokenV1
+     */
+    readonly channel_name: string
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof CentrifugeApiCentrifugeChannelTokenV1
+     */
+    readonly v?: CentrifugeChannelTokenV1VEnum
+}
+
+/**
+ * Request parameters for centrifugeChannelsCatalogV1 operation in CentrifugeApi.
+ * @export
+ * @interface CentrifugeApiCentrifugeChannelsCatalogV1Request
+ */
+export interface CentrifugeApiCentrifugeChannelsCatalogV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof CentrifugeApiCentrifugeChannelsCatalogV1
+     */
+    readonly language: CentrifugeChannelsCatalogV1LanguageEnum
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof CentrifugeApiCentrifugeChannelsCatalogV1
+     */
+    readonly v?: CentrifugeChannelsCatalogV1VEnum
+}
+
+/**
+ * Request parameters for centrifugeConnectionTokenV1 operation in CentrifugeApi.
+ * @export
+ * @interface CentrifugeApiCentrifugeConnectionTokenV1Request
+ */
+export interface CentrifugeApiCentrifugeConnectionTokenV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof CentrifugeApiCentrifugeConnectionTokenV1
+     */
+    readonly language: CentrifugeConnectionTokenV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof CentrifugeApiCentrifugeConnectionTokenV1
+     */
+    readonly project_id: number
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof CentrifugeApiCentrifugeConnectionTokenV1
+     */
+    readonly v?: CentrifugeConnectionTokenV1VEnum
 }
 
 /**
@@ -412,10 +784,11 @@ export interface CentrifugeApiGetTokenBroadcastV1Request {
  */
 export class CentrifugeApi extends BaseAPI implements CentrifugeApiInterface {
     /**
-     * 
-     * @summary Auth centrifuge
+     * Use /method/centrifuge/auth/connect instead.
+     * @summary Auth centrifuge for project
      * @param {CentrifugeApiCentrifugeAuthV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
@@ -424,10 +797,47 @@ export class CentrifugeApi extends BaseAPI implements CentrifugeApiInterface {
     }
 
     /**
-     *        channel - \"$project_channels:{project_id}\"       expiresIn - 30min       project access min - editor     
+     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+     * @summary Get token for connect to centrifuge for channel
+     * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApi
+     */
+    public centrifugeChannelTokenV1(requestParameters: CentrifugeApiCentrifugeChannelTokenV1Request, options?: RawAxiosRequestConfig) {
+        return CentrifugeApiFp(this.configuration).centrifugeChannelTokenV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_name, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Returns supported channel_type values, required params, events, and response schema names.
+     * @summary List available Method API Centrifuge channels
+     * @param {CentrifugeApiCentrifugeChannelsCatalogV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApi
+     */
+    public centrifugeChannelsCatalogV1(requestParameters: CentrifugeApiCentrifugeChannelsCatalogV1Request, options?: RawAxiosRequestConfig) {
+        return CentrifugeApiFp(this.configuration).centrifugeChannelsCatalogV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Get token for connect to centrifuge for project
+     * @summary Get token for connect to centrifuge for project
+     * @param {CentrifugeApiCentrifugeConnectionTokenV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CentrifugeApi
+     */
+    public centrifugeConnectionTokenV1(requestParameters: CentrifugeApiCentrifugeConnectionTokenV1Request, options?: RawAxiosRequestConfig) {
+        return CentrifugeApiFp(this.configuration).centrifugeConnectionTokenV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Use /method/centrifuge/auth/channel instead.
      * @summary Auth token for project
      * @param {CentrifugeApiCentrifugeProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
@@ -436,10 +846,11 @@ export class CentrifugeApi extends BaseAPI implements CentrifugeApiInterface {
     }
 
     /**
-     *        channel - \"$broadcast:{broadcast_id}\"       expiresIn - 30min     
+     * Use /method/centrifuge/auth/channel instead.
      * @summary Auth token for broadcast
      * @param {CentrifugeApiGetTokenBroadcastV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
@@ -455,6 +866,54 @@ export const CentrifugeAuthV2VEnum = {
     _2: '2'
 } as const;
 export type CentrifugeAuthV2VEnum = typeof CentrifugeAuthV2VEnum[keyof typeof CentrifugeAuthV2VEnum];
+/**
+ * @export
+ */
+export const CentrifugeChannelTokenV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type CentrifugeChannelTokenV1LanguageEnum = typeof CentrifugeChannelTokenV1LanguageEnum[keyof typeof CentrifugeChannelTokenV1LanguageEnum];
+/**
+ * @export
+ */
+export const CentrifugeChannelTokenV1VEnum = {
+    _1: '1'
+} as const;
+export type CentrifugeChannelTokenV1VEnum = typeof CentrifugeChannelTokenV1VEnum[keyof typeof CentrifugeChannelTokenV1VEnum];
+/**
+ * @export
+ */
+export const CentrifugeChannelsCatalogV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type CentrifugeChannelsCatalogV1LanguageEnum = typeof CentrifugeChannelsCatalogV1LanguageEnum[keyof typeof CentrifugeChannelsCatalogV1LanguageEnum];
+/**
+ * @export
+ */
+export const CentrifugeChannelsCatalogV1VEnum = {
+    _1: '1'
+} as const;
+export type CentrifugeChannelsCatalogV1VEnum = typeof CentrifugeChannelsCatalogV1VEnum[keyof typeof CentrifugeChannelsCatalogV1VEnum];
+/**
+ * @export
+ */
+export const CentrifugeConnectionTokenV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type CentrifugeConnectionTokenV1LanguageEnum = typeof CentrifugeConnectionTokenV1LanguageEnum[keyof typeof CentrifugeConnectionTokenV1LanguageEnum];
+/**
+ * @export
+ */
+export const CentrifugeConnectionTokenV1VEnum = {
+    _1: '1'
+} as const;
+export type CentrifugeConnectionTokenV1VEnum = typeof CentrifugeConnectionTokenV1VEnum[keyof typeof CentrifugeConnectionTokenV1VEnum];
 /**
  * @export
  */

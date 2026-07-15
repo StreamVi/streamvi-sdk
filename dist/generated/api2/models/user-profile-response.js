@@ -13,11 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserProfileResponseLanguageEnum = exports.UserProfileResponseCurrencyEnum = exports.UserProfileResponseIdEnum = void 0;
-exports.UserProfileResponseIdEnum = {
-    NUMBER_0: 0,
-    NUMBER_1: 1
-};
+exports.UserProfileResponseLanguageEnum = exports.UserProfileResponseCurrencyEnum = void 0;
 exports.UserProfileResponseCurrencyEnum = {
     Rub: 'rub',
     Usd: 'usd'

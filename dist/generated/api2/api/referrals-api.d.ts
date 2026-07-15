@@ -95,7 +95,7 @@ export interface ReferralsApiReferralsTotalInfoV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */
     readonly v?: ReferralsTotalInfoV1VEnum;
@@ -115,7 +115,7 @@ export declare class ReferralsApi extends BaseAPI implements ReferralsApiInterfa
      * @throws {RequiredError}
      * @memberof ReferralsApi
      */
-    referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTotalInfoReferralsResponse, any>>;
+    referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTotalInfoReferralsResponse, any, {}>>;
 }
 /**
  * @export
@@ -131,8 +131,6 @@ export type ReferralsTotalInfoV1LanguageEnum = typeof ReferralsTotalInfoV1Langua
  */
 export declare const ReferralsTotalInfoV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ReferralsTotalInfoV1VEnum = typeof ReferralsTotalInfoV1VEnum[keyof typeof ReferralsTotalInfoV1VEnum];
 //# sourceMappingURL=referrals-api.d.ts.map

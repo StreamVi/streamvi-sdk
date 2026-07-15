@@ -86,7 +86,8 @@ export const PaymentCreateRequestStorageBodyDtoTypeEnum = {
     Restream: 'restream',
     Transcoding: 'transcoding',
     Storage: 'storage',
-    Topup: 'topup'
+    Topup: 'topup',
+    Webinar: 'webinar'
 } as const;
 
 export type PaymentCreateRequestStorageBodyDtoTypeEnum = typeof PaymentCreateRequestStorageBodyDtoTypeEnum[keyof typeof PaymentCreateRequestStorageBodyDtoTypeEnum];

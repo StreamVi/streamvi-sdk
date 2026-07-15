@@ -14,6 +14,7 @@ import type { ProjectInfoDataResponse } from './project-info-data-response';
 import type { ProjectInfoRestreamResponse } from './project-info-restream-response';
 import type { ProjectInfoStorageResponse } from './project-info-storage-response';
 import type { ProjectInfoTranscodingResponse } from './project-info-transcoding-response';
+import type { ProjectInfoWebinarResponse } from './project-info-webinar-response';
 /**
  *
  * @export
@@ -43,19 +44,25 @@ export interface ProjectInfoResponse {
      * @type {ProjectInfoRestreamResponse}
      * @memberof ProjectInfoResponse
      */
-    'restream': ProjectInfoRestreamResponse;
+    'restream'?: ProjectInfoRestreamResponse;
     /**
      * Transcoding tariff
      * @type {ProjectInfoTranscodingResponse}
      * @memberof ProjectInfoResponse
      */
-    'transcoding': ProjectInfoTranscodingResponse | null;
+    'transcoding'?: ProjectInfoTranscodingResponse | null;
     /**
      * Storage tariff
      * @type {ProjectInfoStorageResponse}
      * @memberof ProjectInfoResponse
      */
-    'storage': ProjectInfoStorageResponse | null;
+    'storage'?: ProjectInfoStorageResponse | null;
+    /**
+     * Webinar tariff
+     * @type {ProjectInfoWebinarResponse}
+     * @memberof ProjectInfoResponse
+     */
+    'webinar'?: ProjectInfoWebinarResponse | null;
     /**
      * Project info access
      * @type {ProjectInfoAccessResponse}
@@ -65,8 +72,6 @@ export interface ProjectInfoResponse {
 }
 export declare const ProjectInfoResponseVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ProjectInfoResponseVEnum = typeof ProjectInfoResponseVEnum[keyof typeof ProjectInfoResponseVEnum];
 export declare const ProjectInfoResponseLanguageEnum: {

@@ -22,6 +22,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
+import type { BizonDto } from '../models';
+// @ts-ignore
 import type { BoostyDto } from '../models';
 // @ts-ignore
 import type { CustomDto } from '../models';
@@ -36,6 +38,8 @@ import type { FbDto } from '../models';
 // @ts-ignore
 import type { Fc2liveDto } from '../models';
 // @ts-ignore
+import type { GetcourseDto } from '../models';
+// @ts-ignore
 import type { GoodgameDto } from '../models';
 // @ts-ignore
 import type { HuyaDto } from '../models';
@@ -44,9 +48,13 @@ import type { InstagramDto } from '../models';
 // @ts-ignore
 import type { KickDto } from '../models';
 // @ts-ignore
+import type { KinescopeDto } from '../models';
+// @ts-ignore
 import type { LinkedinDto } from '../models';
 // @ts-ignore
 import type { MethodSetStatusChannelRequest } from '../models';
+// @ts-ignore
+import type { MethodSrtDto } from '../models';
 // @ts-ignore
 import type { NavertvDto } from '../models';
 // @ts-ignore
@@ -70,6 +78,8 @@ import type { SteamDto } from '../models';
 // @ts-ignore
 import type { SuccessResponse } from '../models';
 // @ts-ignore
+import type { TachidDto } from '../models';
+// @ts-ignore
 import type { TelegramDto } from '../models';
 // @ts-ignore
 import type { TiktokDto } from '../models';
@@ -85,6 +95,46 @@ import type { ZhanqitvDto } from '../models';
  */
 export const ChannelApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Add bizon channel
+         * @param {BizonDto} bizonDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddBizonV1: async (bizonDto: BizonDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'bizonDto' is not null or undefined
+            assertParamExists('addChannelMethodAddBizonV1', 'bizonDto', bizonDto)
+            const localVarPath = `/method/channel/add/bizon`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(bizonDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary Add boosty channel
@@ -106,6 +156,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
 
 
     
@@ -143,6 +197,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -178,6 +236,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
 
 
     
@@ -215,6 +277,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -251,6 +317,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -259,6 +329,46 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(fc2liveDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add getcourse channel
+         * @param {GetcourseDto} getcourseDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddGetcourseV1: async (getcourseDto: GetcourseDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'getcourseDto' is not null or undefined
+            assertParamExists('addChannelMethodAddGetcourseV1', 'getcourseDto', getcourseDto)
+            const localVarPath = `/method/channel/add/getcourse`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(getcourseDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -286,6 +396,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
 
 
     
@@ -323,6 +437,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -358,6 +476,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
 
 
     
@@ -395,6 +517,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -403,6 +529,46 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(kickDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add kinescope channel
+         * @param {KinescopeDto} kinescopeDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddKinescopeV1: async (kinescopeDto: KinescopeDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'kinescopeDto' is not null or undefined
+            assertParamExists('addChannelMethodAddKinescopeV1', 'kinescopeDto', kinescopeDto)
+            const localVarPath = `/method/channel/add/kinescope`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(kinescopeDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -430,6 +596,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
 
 
     
@@ -467,6 +637,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -502,6 +676,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
 
 
     
@@ -539,6 +717,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -574,6 +756,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
 
 
     
@@ -611,6 +797,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -647,6 +837,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -655,6 +849,46 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(rutubeDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add srt channel
+         * @param {MethodSrtDto} methodSrtDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddSrtV1: async (methodSrtDto: MethodSrtDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'methodSrtDto' is not null or undefined
+            assertParamExists('addChannelMethodAddSrtV1', 'methodSrtDto', methodSrtDto)
+            const localVarPath = `/method/channel/add/srt`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(methodSrtDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -683,6 +917,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -691,6 +929,46 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(steamDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add tach channel
+         * @param {TachidDto} tachidDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddTachidV1: async (tachidDto: TachidDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tachidDto' is not null or undefined
+            assertParamExists('addChannelMethodAddTachidV1', 'tachidDto', tachidDto)
+            const localVarPath = `/method/channel/add/tachid`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(tachidDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -718,6 +996,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
 
 
     
@@ -755,6 +1037,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -790,6 +1076,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
 
 
     
@@ -827,6 +1117,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -863,6 +1157,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:write"], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -898,6 +1196,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
 
 
     
@@ -942,10 +1244,12 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -996,6 +1300,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (channelId !== undefined) {
                 localVarQueryParameter['channel_id'] = channelId;
             }
@@ -1041,10 +1349,12 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -1100,10 +1410,12 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             // authentication X-API-KEY required
             await setApiKeyToObject(localVarHeaderParameter, "X-API-KEY", configuration)
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -1170,6 +1482,10 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             // authentication X-API-KEY required
             await setApiKeyToObject(localVarHeaderParameter, "X-API-KEY", configuration)
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -1194,6 +1510,19 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
 export const ChannelApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ChannelApiAxiosParamCreator(configuration)
     return {
+        /**
+         * 
+         * @summary Add bizon channel
+         * @param {BizonDto} bizonDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddBizonV1(bizonDto: BizonDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddBizonV1(bizonDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddBizonV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
         /**
          * 
          * @summary Add boosty channel
@@ -1261,6 +1590,19 @@ export const ChannelApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Add getcourse channel
+         * @param {GetcourseDto} getcourseDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddGetcourseV1(getcourseDto: GetcourseDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddGetcourseV1(getcourseDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddGetcourseV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Add goodgame channel
          * @param {GoodgameDto} goodgameDto 
          * @param {*} [options] Override http request option.
@@ -1309,6 +1651,19 @@ export const ChannelApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddKickV1(kickDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddKickV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add kinescope channel
+         * @param {KinescopeDto} kinescopeDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddKinescopeV1(kinescopeDto: KinescopeDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddKinescopeV1(kinescopeDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddKinescopeV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1404,6 +1759,19 @@ export const ChannelApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Add srt channel
+         * @param {MethodSrtDto} methodSrtDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddSrtV1(methodSrtDto: MethodSrtDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddSrtV1(methodSrtDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddSrtV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Add steam channel
          * @param {SteamDto} steamDto 
          * @param {*} [options] Override http request option.
@@ -1413,6 +1781,19 @@ export const ChannelApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddSteamV1(steamDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddSteamV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Add tach channel
+         * @param {TachidDto} tachidDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addChannelMethodAddTachidV1(tachidDto: TachidDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addChannelMethodAddTachidV1(tachidDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.addChannelMethodAddTachidV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1583,6 +1964,16 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @summary Add bizon channel
+         * @param {ChannelApiAddChannelMethodAddBizonV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddBizonV1(requestParameters.BizonDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Add boosty channel
          * @param {ChannelApiAddChannelMethodAddBoostyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1633,6 +2024,16 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Add getcourse channel
+         * @param {ChannelApiAddChannelMethodAddGetcourseV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddGetcourseV1(requestParameters.GetcourseDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Add goodgame channel
          * @param {ChannelApiAddChannelMethodAddGoodgameV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1670,6 +2071,16 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
          */
         addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.addChannelMethodAddKickV1(requestParameters.KickDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add kinescope channel
+         * @param {ChannelApiAddChannelMethodAddKinescopeV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddKinescopeV1(requestParameters.KinescopeDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1743,6 +2154,16 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Add srt channel
+         * @param {ChannelApiAddChannelMethodAddSrtV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddSrtV1(requestParameters.MethodSrtDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Add steam channel
          * @param {ChannelApiAddChannelMethodAddSteamV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1750,6 +2171,16 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
          */
         addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.addChannelMethodAddSteamV1(requestParameters.SteamDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add tach channel
+         * @param {ChannelApiAddChannelMethodAddTachidV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.addChannelMethodAddTachidV1(requestParameters.TachidDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1872,6 +2303,16 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
 export interface ChannelApiInterface {
     /**
      * 
+     * @summary Add bizon channel
+     * @param {ChannelApiAddChannelMethodAddBizonV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
      * @summary Add boosty channel
      * @param {ChannelApiAddChannelMethodAddBoostyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1922,6 +2363,16 @@ export interface ChannelApiInterface {
 
     /**
      * 
+     * @summary Add getcourse channel
+     * @param {ChannelApiAddChannelMethodAddGetcourseV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
      * @summary Add goodgame channel
      * @param {ChannelApiAddChannelMethodAddGoodgameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1959,6 +2410,16 @@ export interface ChannelApiInterface {
      * @memberof ChannelApiInterface
      */
     addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add kinescope channel
+     * @param {ChannelApiAddChannelMethodAddKinescopeV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * 
@@ -2032,6 +2493,16 @@ export interface ChannelApiInterface {
 
     /**
      * 
+     * @summary Add srt channel
+     * @param {ChannelApiAddChannelMethodAddSrtV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
      * @summary Add steam channel
      * @param {ChannelApiAddChannelMethodAddSteamV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2039,6 +2510,16 @@ export interface ChannelApiInterface {
      * @memberof ChannelApiInterface
      */
     addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * 
+     * @summary Add tach channel
+     * @param {ChannelApiAddChannelMethodAddTachidV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * 
@@ -2153,6 +2634,20 @@ export interface ChannelApiInterface {
 }
 
 /**
+ * Request parameters for addChannelMethodAddBizonV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddBizonV1Request
+ */
+export interface ChannelApiAddChannelMethodAddBizonV1Request {
+    /**
+     * 
+     * @type {BizonDto}
+     * @memberof ChannelApiAddChannelMethodAddBizonV1
+     */
+    readonly BizonDto: BizonDto
+}
+
+/**
  * Request parameters for addChannelMethodAddBoostyV1 operation in ChannelApi.
  * @export
  * @interface ChannelApiAddChannelMethodAddBoostyV1Request
@@ -2223,6 +2718,20 @@ export interface ChannelApiAddChannelMethodAddFc2LiveV1Request {
 }
 
 /**
+ * Request parameters for addChannelMethodAddGetcourseV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddGetcourseV1Request
+ */
+export interface ChannelApiAddChannelMethodAddGetcourseV1Request {
+    /**
+     * 
+     * @type {GetcourseDto}
+     * @memberof ChannelApiAddChannelMethodAddGetcourseV1
+     */
+    readonly GetcourseDto: GetcourseDto
+}
+
+/**
  * Request parameters for addChannelMethodAddGoodgameV1 operation in ChannelApi.
  * @export
  * @interface ChannelApiAddChannelMethodAddGoodgameV1Request
@@ -2276,6 +2785,20 @@ export interface ChannelApiAddChannelMethodAddKickV1Request {
      * @memberof ChannelApiAddChannelMethodAddKickV1
      */
     readonly KickDto: KickDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddKinescopeV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddKinescopeV1Request
+ */
+export interface ChannelApiAddChannelMethodAddKinescopeV1Request {
+    /**
+     * 
+     * @type {KinescopeDto}
+     * @memberof ChannelApiAddChannelMethodAddKinescopeV1
+     */
+    readonly KinescopeDto: KinescopeDto
 }
 
 /**
@@ -2377,6 +2900,20 @@ export interface ChannelApiAddChannelMethodAddRutubeV1Request {
 }
 
 /**
+ * Request parameters for addChannelMethodAddSrtV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddSrtV1Request
+ */
+export interface ChannelApiAddChannelMethodAddSrtV1Request {
+    /**
+     * 
+     * @type {MethodSrtDto}
+     * @memberof ChannelApiAddChannelMethodAddSrtV1
+     */
+    readonly MethodSrtDto: MethodSrtDto
+}
+
+/**
  * Request parameters for addChannelMethodAddSteamV1 operation in ChannelApi.
  * @export
  * @interface ChannelApiAddChannelMethodAddSteamV1Request
@@ -2388,6 +2925,20 @@ export interface ChannelApiAddChannelMethodAddSteamV1Request {
      * @memberof ChannelApiAddChannelMethodAddSteamV1
      */
     readonly SteamDto: SteamDto
+}
+
+/**
+ * Request parameters for addChannelMethodAddTachidV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiAddChannelMethodAddTachidV1Request
+ */
+export interface ChannelApiAddChannelMethodAddTachidV1Request {
+    /**
+     * 
+     * @type {TachidDto}
+     * @memberof ChannelApiAddChannelMethodAddTachidV1
+     */
+    readonly TachidDto: TachidDto
 }
 
 /**
@@ -2644,6 +3195,18 @@ export interface ChannelApiMethodSetStatusV1Request {
 export class ChannelApi extends BaseAPI implements ChannelApiInterface {
     /**
      * 
+     * @summary Add bizon channel
+     * @param {ChannelApiAddChannelMethodAddBizonV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddBizonV1(requestParameters.BizonDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Add boosty channel
      * @param {ChannelApiAddChannelMethodAddBoostyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2704,6 +3267,18 @@ export class ChannelApi extends BaseAPI implements ChannelApiInterface {
 
     /**
      * 
+     * @summary Add getcourse channel
+     * @param {ChannelApiAddChannelMethodAddGetcourseV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddGetcourseV1(requestParameters.GetcourseDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Add goodgame channel
      * @param {ChannelApiAddChannelMethodAddGoodgameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2748,6 +3323,18 @@ export class ChannelApi extends BaseAPI implements ChannelApiInterface {
      */
     public addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig) {
         return ChannelApiFp(this.configuration).addChannelMethodAddKickV1(requestParameters.KickDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add kinescope channel
+     * @param {ChannelApiAddChannelMethodAddKinescopeV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddKinescopeV1(requestParameters.KinescopeDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2836,6 +3423,18 @@ export class ChannelApi extends BaseAPI implements ChannelApiInterface {
 
     /**
      * 
+     * @summary Add srt channel
+     * @param {ChannelApiAddChannelMethodAddSrtV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddSrtV1(requestParameters.MethodSrtDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Add steam channel
      * @param {ChannelApiAddChannelMethodAddSteamV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2844,6 +3443,18 @@ export class ChannelApi extends BaseAPI implements ChannelApiInterface {
      */
     public addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig) {
         return ChannelApiFp(this.configuration).addChannelMethodAddSteamV1(requestParameters.SteamDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Add tach channel
+     * @param {ChannelApiAddChannelMethodAddTachidV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).addChannelMethodAddTachidV1(requestParameters.TachidDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

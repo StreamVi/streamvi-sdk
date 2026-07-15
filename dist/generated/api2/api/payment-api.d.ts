@@ -40,16 +40,6 @@ export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration
      * @throws {RequiredError}
      */
     paymentGetStatusV1: (language: PaymentGetStatusV1LanguageEnum, payId: number, projectId: number, v?: PaymentGetStatusV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @param {PaymentListV1LanguageEnum} language Current language
-     * @param {PaymentListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-     * @param {number} [pageSize] Number of results
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    paymentListV1: (language: PaymentListV1LanguageEnum, v?: PaymentListV1VEnum, pageSize?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PaymentApi - functional programming interface
@@ -76,16 +66,6 @@ export declare const PaymentApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     paymentGetStatusV1(language: PaymentGetStatusV1LanguageEnum, payId: number, projectId: number, v?: PaymentGetStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentStatusResponse>>;
-    /**
-     *
-     * @param {PaymentListV1LanguageEnum} language Current language
-     * @param {PaymentListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-     * @param {number} [pageSize] Number of results
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    paymentListV1(language: PaymentListV1LanguageEnum, v?: PaymentListV1VEnum, pageSize?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * PaymentApi - factory interface
@@ -107,13 +87,6 @@ export declare const PaymentApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaymentStatusResponse>;
-    /**
-     *
-     * @param {PaymentApiPaymentListV1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    paymentListV1(requestParameters: PaymentApiPaymentListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 };
 /**
  * PaymentApi - interface
@@ -138,14 +111,6 @@ export interface PaymentApiInterface {
      * @memberof PaymentApiInterface
      */
     paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaymentStatusResponse>;
-    /**
-     *
-     * @param {PaymentApiPaymentListV1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentApiInterface
-     */
-    paymentListV1(requestParameters: PaymentApiPaymentListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 }
 /**
  * Request parameters for paymentCreateV1 operation in PaymentApi.
@@ -167,7 +132,7 @@ export interface PaymentApiPaymentCreateV1Request {
     readonly PaymentCreateV1Request: PaymentCreateV1Request;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PaymentApiPaymentCreateV1
      */
     readonly v?: PaymentCreateV1VEnum;
@@ -198,41 +163,10 @@ export interface PaymentApiPaymentGetStatusV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof PaymentApiPaymentGetStatusV1
      */
     readonly v?: PaymentGetStatusV1VEnum;
-}
-/**
- * Request parameters for paymentListV1 operation in PaymentApi.
- * @export
- * @interface PaymentApiPaymentListV1Request
- */
-export interface PaymentApiPaymentListV1Request {
-    /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof PaymentApiPaymentListV1
-     */
-    readonly language: PaymentListV1LanguageEnum;
-    /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
-     * @memberof PaymentApiPaymentListV1
-     */
-    readonly v?: PaymentListV1VEnum;
-    /**
-     * Number of results
-     * @type {number}
-     * @memberof PaymentApiPaymentListV1
-     */
-    readonly pageSize?: number;
-    /**
-     * Page number
-     * @type {number}
-     * @memberof PaymentApiPaymentListV1
-     */
-    readonly page?: number;
 }
 /**
  * PaymentApi - object-oriented interface
@@ -249,7 +183,7 @@ export declare class PaymentApi extends BaseAPI implements PaymentApiInterface {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    paymentCreateV1(requestParameters: PaymentApiPaymentCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentCreateResponse, any>>;
+    paymentCreateV1(requestParameters: PaymentApiPaymentCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentCreateResponse, any, {}>>;
     /**
      *
      * @param {PaymentApiPaymentGetStatusV1Request} requestParameters Request parameters.
@@ -257,15 +191,7 @@ export declare class PaymentApi extends BaseAPI implements PaymentApiInterface {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentStatusResponse, any>>;
-    /**
-     *
-     * @param {PaymentApiPaymentListV1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentApi
-     */
-    paymentListV1(requestParameters: PaymentApiPaymentListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentStatusResponse, any, {}>>;
 }
 /**
  * @export
@@ -281,8 +207,6 @@ export type PaymentCreateV1LanguageEnum = typeof PaymentCreateV1LanguageEnum[key
  */
 export declare const PaymentCreateV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PaymentCreateV1VEnum = typeof PaymentCreateV1VEnum[keyof typeof PaymentCreateV1VEnum];
 /**
@@ -299,26 +223,6 @@ export type PaymentGetStatusV1LanguageEnum = typeof PaymentGetStatusV1LanguageEn
  */
 export declare const PaymentGetStatusV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PaymentGetStatusV1VEnum = typeof PaymentGetStatusV1VEnum[keyof typeof PaymentGetStatusV1VEnum];
-/**
- * @export
- */
-export declare const PaymentListV1LanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-    readonly Cn: "cn";
-};
-export type PaymentListV1LanguageEnum = typeof PaymentListV1LanguageEnum[keyof typeof PaymentListV1LanguageEnum];
-/**
- * @export
- */
-export declare const PaymentListV1VEnum: {
-    readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
-};
-export type PaymentListV1VEnum = typeof PaymentListV1VEnum[keyof typeof PaymentListV1VEnum];
 //# sourceMappingURL=payment-api.d.ts.map

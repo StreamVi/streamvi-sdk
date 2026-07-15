@@ -34,10 +34,59 @@ export interface PlanRestreamItem {
      */
     'bitrate_max': number;
     /**
+     * Support custom channel
+     * @type {boolean}
+     * @memberof PlanRestreamItem
+     */
+    'support_custom_channel': boolean;
+    /**
      * Date end tariff
      * @type {string}
      * @memberof PlanRestreamItem
      */
     'date_end': string;
+    /**
+     * Custom video
+     * @type {number}
+     * @memberof PlanRestreamItem
+     */
+    'custom_video': number;
+    /**
+     * Prolongation status
+     * @type {boolean}
+     * @memberof PlanRestreamItem
+     */
+    'prolongation': boolean;
+    /**
+     * Title
+     * @type {string}
+     * @memberof PlanRestreamItem
+     */
+    'title': string;
+    /**
+     * Tariff type
+     * @type {string}
+     * @memberof PlanRestreamItem
+     */
+    'type': PlanRestreamItemTypeEnum;
+    /**
+     * Period
+     * @type {string}
+     * @memberof PlanRestreamItem
+     */
+    'period': PlanRestreamItemPeriodEnum;
 }
+export declare const PlanRestreamItemTypeEnum: {
+    readonly Free: "free";
+    readonly Trial: "trial";
+    readonly PaidFix: "paid_fix";
+    readonly PaidFlex: "paid_flex";
+    readonly Custom: "custom";
+};
+export type PlanRestreamItemTypeEnum = typeof PlanRestreamItemTypeEnum[keyof typeof PlanRestreamItemTypeEnum];
+export declare const PlanRestreamItemPeriodEnum: {
+    readonly Month: "month";
+    readonly Year: "year";
+};
+export type PlanRestreamItemPeriodEnum = typeof PlanRestreamItemPeriodEnum[keyof typeof PlanRestreamItemPeriodEnum];
 //# sourceMappingURL=plan-restream-item.d.ts.map

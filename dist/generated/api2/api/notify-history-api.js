@@ -58,11 +58,11 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["notification:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -124,11 +124,11 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["notification:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -162,11 +162,11 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["notification:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (id !== undefined) {
                 localVarQueryParameter['_id'] = id;
@@ -203,11 +203,11 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -249,11 +249,11 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (notifyHistoryId !== undefined) {
                 localVarQueryParameter['notify_history_id'] = notifyHistoryId;
@@ -289,6 +289,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -564,9 +567,7 @@ exports.NotifyHistoryGetListMyV1LanguageEnum = {
  * @export
  */
 exports.NotifyHistoryGetListMyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -575,6 +576,7 @@ exports.NotifyHistoryGetListMyV1NameEnum = {
     HighBitrate: 'high_bitrate',
     RequestAccessChannel: 'request_access_channel',
     RequestAccessProject: 'request_access_project',
+    RequestAccessIntegration: 'request_access_integration',
     PromocodeTest: 'promocode_test',
     StreamTest: 'stream_test',
     PlanRestreamExpires: 'plan_restream_expires',
@@ -586,6 +588,7 @@ exports.NotifyHistoryGetListMyV1NameEnum = {
     PlanStorageExpires: 'plan_storage_expires',
     PlanStorageExpired: 'plan_storage_expired',
     PlanStorageRenewed: 'plan_storage_renewed',
+    CompensationReceived: 'compensation_received',
     BroadcastUnsupportedCodec: 'broadcast_unsupported_codec',
     BroadcastUnsupportedCodecScreen: 'broadcast_unsupported_codec_screen',
     BroadcastBitrateExceededScreen: 'broadcast_bitrate_exceeded_screen',
@@ -661,7 +664,19 @@ exports.NotifyHistoryGetListMyV1NameEnum = {
     BroadcastChangeRegion: 'broadcast_change_region',
     VideoUploadError: 'video_upload_error',
     StopChannelError: 'stop_channel_error',
-    BroadcastUserActionStop: 'broadcast_user_action_stop'
+    BroadcastUserActionStop: 'broadcast_user_action_stop',
+    CompletedApiChannelError: 'completed_api_channel_error',
+    TranscoderTwitchTracks: 'transcoder_twitch_tracks',
+    PlanWebinarExpired: 'plan_webinar_expired',
+    PlanWebinarRenewed: 'plan_webinar_renewed',
+    PlanWebinarExpires: 'plan_webinar_expires',
+    PayoutCreated: 'payout_created',
+    PayoutStatusExecution: 'payout_status_execution',
+    PayoutStatusSuccess: 'payout_status_success',
+    PayoutStatusCanceled: 'payout_status_canceled',
+    PayoutStatusError: 'payout_status_error',
+    PlanTrialExpires: 'plan_trial_expires',
+    PlanTrialExpired: 'plan_trial_expired'
 };
 /**
  * @export
@@ -690,9 +705,7 @@ exports.NotifyHistoryGetStatusMyV1LanguageEnum = {
  * @export
  */
 exports.NotifyHistoryGetStatusMyV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -712,9 +725,7 @@ exports.NotifyHistoryMarkOfReadV1LanguageEnum = {
  * @export
  */
 exports.NotifyHistoryMarkOfReadV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export

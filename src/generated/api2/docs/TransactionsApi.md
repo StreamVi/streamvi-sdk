@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**transactionsListV1**(#transactionslistv1) | **GET** /method/transactions/list | Transaction list for frontend|
+|[**transactionsListV1**](#transactionslistv1) | **GET** /method/transactions/list | Transaction list for frontend|
 
 # **transactionsListV1**
 > PaginatedResponseOfTransactionResponse transactionsListV1()
@@ -46,14 +46,14 @@ const { status, data } = await apiInstance.transactionsListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
-| **limit** | **number** | Number of results | (optional) defaults to 20|
-| **offset** | **number** | Page offset number | (optional) defaults to 0|
-| **dateFrom** | **string** | Date from | (optional) defaults to undefined|
-| **dateTo** | **string** | Date to | (optional) defaults to undefined|
-| **code** | **string** | Filter code transaction. example 1 or 1,2,3 | (optional) defaults to ''|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **limit** | [**number**] | Number of results | (optional) defaults to 20|
+| **offset** | [**number**] | Page offset number | (optional) defaults to 0|
+| **dateFrom** | [**string**] | Date from | (optional) defaults to undefined|
+| **dateTo** | [**string**] | Date to | (optional) defaults to undefined|
+| **code** | [**string**] | Filter code transaction. example 1 or 1,2,3 | (optional) defaults to ''|
 
 
 ### Return type
@@ -62,7 +62,7 @@ const { status, data } = await apiInstance.transactionsListV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -25,11 +25,14 @@ import type { PaymentCreateRequestTopUpBodyDto } from './payment-create-request-
 // May contain unused imports in some cases
 // @ts-ignore
 import type { PaymentCreateRequestTranscoderBodyDto } from './payment-create-request-transcoder-body-dto';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { PaymentCreateRequestWebinarBodyDto } from './payment-create-request-webinar-body-dto';
 
 /**
  * @type PaymentCreateV1Request
  * @export
  */
-export type PaymentCreateV1Request = PaymentCreateRequestRestreamBodyDto | PaymentCreateRequestStorageBodyDto | PaymentCreateRequestTopUpBodyDto | PaymentCreateRequestTranscoderBodyDto;
+export type PaymentCreateV1Request = PaymentCreateRequestRestreamBodyDto | PaymentCreateRequestStorageBodyDto | PaymentCreateRequestTopUpBodyDto | PaymentCreateRequestTranscoderBodyDto | PaymentCreateRequestWebinarBodyDto;
 
 

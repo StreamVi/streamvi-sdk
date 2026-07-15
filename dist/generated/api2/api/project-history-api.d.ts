@@ -107,7 +107,7 @@ export interface ProjectHistoryApiProjectHistoryListV1Request {
     readonly project_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
     readonly v?: ProjectHistoryListV1VEnum;
@@ -163,7 +163,7 @@ export declare class ProjectHistoryApi extends BaseAPI implements ProjectHistory
      * @throws {RequiredError}
      * @memberof ProjectHistoryApi
      */
-    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfProjectHistoryResponse, any, {}>>;
 }
 /**
  * @export
@@ -179,8 +179,6 @@ export type ProjectHistoryListV1LanguageEnum = typeof ProjectHistoryListV1Langua
  */
 export declare const ProjectHistoryListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ProjectHistoryListV1VEnum = typeof ProjectHistoryListV1VEnum[keyof typeof ProjectHistoryListV1VEnum];
 /**

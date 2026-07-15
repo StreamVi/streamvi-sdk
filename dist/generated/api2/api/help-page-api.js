@@ -56,9 +56,6 @@ const HelpPageApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
-            else {
-                localVarQueryParameter['v'] = '1';
-            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -99,9 +96,6 @@ const HelpPageApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -146,9 +140,6 @@ const HelpPageApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            }
-            else {
-                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -317,9 +308,7 @@ exports.HelpPageGetV1LanguageEnum = {
  * @export
  */
 exports.HelpPageGetV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -333,9 +322,7 @@ exports.HelpPageListV1LanguageEnum = {
  * @export
  */
 exports.HelpPageListV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 /**
  * @export
@@ -349,7 +336,5 @@ exports.HelpPageStructureV1LanguageEnum = {
  * @export
  */
 exports.HelpPageStructureV1VEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };

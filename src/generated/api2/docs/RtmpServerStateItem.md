@@ -5,16 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **number** | id | [default to undefined]
 **city** | **string** | City | [default to undefined]
-**country** | **CountryItem**(CountryItem.md) | Country | [default to undefined]
+**country** | [**CountryItem**](CountryItem.md) | Country | [default to undefined]
 **lat** | **number** | Latitude | [default to undefined]
 **_long** | **number** | Longitude | [default to undefined]
-**network** | **RtmpServerLoading**(RtmpServerLoading.md) | Network load of the selected time | [default to undefined]
-**cpu** | **RtmpServerLoading**(RtmpServerLoading.md) | CPU load of the selected time | [default to undefined]
-**ram** | **RtmpServerLoading**(RtmpServerLoading.md) | RAM load of the selected time | [default to undefined]
+**network** | [**RtmpServerLoading**](RtmpServerLoading.md) | Network load of the selected time | [default to undefined]
+**cpu** | [**RtmpServerLoading**](RtmpServerLoading.md) | CPU load of the selected time | [default to undefined]
+**ram** | [**RtmpServerLoading**](RtmpServerLoading.md) | RAM load of the selected time | [default to undefined]
 **quality** | **number** | Quality connection of pool | [default to undefined]
 **serverStatus** | **string** | Quality in string format | [default to undefined]
-**platforms** | **Array&lt;RtmpServerPlatformQuality&gt;**(RtmpServerPlatformQuality.md) | Quality array | [default to undefined]
+**platforms** | [**Array&lt;RtmpServerPlatformQuality&gt;**](RtmpServerPlatformQuality.md) | Quality array | [default to undefined]
 
 ## Example
 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 import { RtmpServerStateItem } from 'streamvi-api-client';
 
 const instance: RtmpServerStateItem = {
+    id,
     city,
     country,
     lat,

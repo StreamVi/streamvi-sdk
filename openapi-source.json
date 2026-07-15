@@ -1,0 +1,6 @@
+{
+  "package": "streamvi-sdk",
+  "version": "1.1.1",
+  "openapiUrl": "https://napi.streamvi.io/method/apidoc-json",
+  "openapiSha256": "cc43012215931a0d8443113dbecb148b096f5444a205e0428dcc26b4631ea30a"
+}

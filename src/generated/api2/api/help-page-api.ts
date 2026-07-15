@@ -63,8 +63,6 @@ export const HelpPageApiAxiosParamCreator = function (configuration?: Configurat
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -114,8 +112,6 @@ export const HelpPageApiAxiosParamCreator = function (configuration?: Configurat
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -170,8 +166,6 @@ export const HelpPageApiAxiosParamCreator = function (configuration?: Configurat
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {

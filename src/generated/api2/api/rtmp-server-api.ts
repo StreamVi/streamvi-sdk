@@ -28,7 +28,11 @@ import type { ListOfRtmpServerLocationResponse } from '../models';
 // @ts-ignore
 import type { RtmpServerGraphResponse } from '../models';
 // @ts-ignore
-import type { RtmpServerListV2Response } from '../models';
+import type { RtmpServerListResponseBase } from '../models';
+// @ts-ignore
+import type { RtmpServerListV3Response } from '../models';
+// @ts-ignore
+import type { RtmpServerSrtLatencyResponse } from '../models';
 // @ts-ignore
 import type { RtmpServerStateResponse } from '../models';
 /**
@@ -62,8 +66,6 @@ export const RtmpServerApiAxiosParamCreator = function (configuration?: Configur
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -112,8 +114,6 @@ export const RtmpServerApiAxiosParamCreator = function (configuration?: Configur
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -141,21 +141,71 @@ export const RtmpServerApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @summary List rtmp servers
-         * @param {RtmpServerListV2LanguageEnum} language Current language
+         * @summary List rtmp servers (base info)
+         * @param {RtmpServerListBaseV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {RtmpServerListV2IntervalEnum} interval Interval state in hours
-         * @param {RtmpServerListV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
+         * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rtmpServerListV2: async (language: RtmpServerListV2LanguageEnum, projectId: number, interval: RtmpServerListV2IntervalEnum, v?: RtmpServerListV2VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        rtmpServerListBaseV1: async (language: RtmpServerListBaseV1LanguageEnum, projectId: number, v?: RtmpServerListBaseV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
-            assertParamExists('rtmpServerListV2', 'language', language)
+            assertParamExists('rtmpServerListBaseV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
-            assertParamExists('rtmpServerListV2', 'projectId', projectId)
-            // verify required parameter 'interval' is not null or undefined
-            assertParamExists('rtmpServerListV2', 'interval', interval)
+            assertParamExists('rtmpServerListBaseV1', 'projectId', projectId)
+            const localVarPath = `/method/rtmp_server/base-list`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["transcoding:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List rtmp servers v3
+         * @param {RtmpServerListV3LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rtmpServerListV3: async (language: RtmpServerListV3LanguageEnum, projectId: number, v?: RtmpServerListV3VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('rtmpServerListV3', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('rtmpServerListV3', 'projectId', projectId)
             const localVarPath = `/method/rtmp_server/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -168,22 +218,81 @@ export const RtmpServerApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["transcoding:read"], configuration)
+
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '2';
             }
 
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
 
-            if (interval !== undefined) {
-                localVarQueryParameter['interval'] = interval;
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get recommended SRT latency by source and destination ip
+         * @param {RtmpServerSrtLatencyV1LanguageEnum} language Current language
+         * @param {string} srcIp Source IPv4 address
+         * @param {string} dstIp Destination IPv4 address
+         * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {string} [profile] Recommendation profile
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rtmpServerSrtLatencyV1: async (language: RtmpServerSrtLatencyV1LanguageEnum, srcIp: string, dstIp: string, v?: RtmpServerSrtLatencyV1VEnum, profile?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('rtmpServerSrtLatencyV1', 'language', language)
+            // verify required parameter 'srcIp' is not null or undefined
+            assertParamExists('rtmpServerSrtLatencyV1', 'srcIp', srcIp)
+            // verify required parameter 'dstIp' is not null or undefined
+            assertParamExists('rtmpServerSrtLatencyV1', 'dstIp', dstIp)
+            const localVarPath = `/method/rtmp_server/srt-latency`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (srcIp !== undefined) {
+                localVarQueryParameter['src_ip'] = srcIp;
+            }
+
+            if (dstIp !== undefined) {
+                localVarQueryParameter['dst_ip'] = dstIp;
+            }
+
+            if (profile !== undefined) {
+                localVarQueryParameter['profile'] = profile;
             }
 
 
@@ -225,8 +334,6 @@ export const RtmpServerApiAxiosParamCreator = function (configuration?: Configur
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -320,18 +427,49 @@ export const RtmpServerApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary List rtmp servers
-         * @param {RtmpServerListV2LanguageEnum} language Current language
+         * @summary List rtmp servers (base info)
+         * @param {RtmpServerListBaseV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {RtmpServerListV2IntervalEnum} interval Interval state in hours
-         * @param {RtmpServerListV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
+         * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rtmpServerListV2(language: RtmpServerListV2LanguageEnum, projectId: number, interval: RtmpServerListV2IntervalEnum, v?: RtmpServerListV2VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerListV2Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerListV2(language, projectId, interval, v, options);
+        async rtmpServerListBaseV1(language: RtmpServerListBaseV1LanguageEnum, projectId: number, v?: RtmpServerListBaseV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerListResponseBase>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerListBaseV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['RtmpServerApi.rtmpServerListV2']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['RtmpServerApi.rtmpServerListBaseV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary List rtmp servers v3
+         * @param {RtmpServerListV3LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async rtmpServerListV3(language: RtmpServerListV3LanguageEnum, projectId: number, v?: RtmpServerListV3VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerListV3Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerListV3(language, projectId, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RtmpServerApi.rtmpServerListV3']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get recommended SRT latency by source and destination ip
+         * @param {RtmpServerSrtLatencyV1LanguageEnum} language Current language
+         * @param {string} srcIp Source IPv4 address
+         * @param {string} dstIp Destination IPv4 address
+         * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {string} [profile] Recommendation profile
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async rtmpServerSrtLatencyV1(language: RtmpServerSrtLatencyV1LanguageEnum, srcIp: string, dstIp: string, v?: RtmpServerSrtLatencyV1VEnum, profile?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerSrtLatencyResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerSrtLatencyV1(language, srcIp, dstIp, v, profile, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RtmpServerApi.rtmpServerSrtLatencyV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -393,13 +531,33 @@ export const RtmpServerApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @summary List rtmp servers
-         * @param {RtmpServerApiRtmpServerListV2Request} requestParameters Request parameters.
+         * @summary List rtmp servers (base info)
+         * @param {RtmpServerApiRtmpServerListBaseV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rtmpServerListV2(requestParameters: RtmpServerApiRtmpServerListV2Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListV2Response> {
-            return localVarFp.rtmpServerListV2(requestParameters.language, requestParameters.project_id, requestParameters.interval, requestParameters.v, options).then((request) => request(axios, basePath));
+        rtmpServerListBaseV1(requestParameters: RtmpServerApiRtmpServerListBaseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListResponseBase> {
+            return localVarFp.rtmpServerListBaseV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary List rtmp servers v3
+         * @param {RtmpServerApiRtmpServerListV3Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rtmpServerListV3(requestParameters: RtmpServerApiRtmpServerListV3Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListV3Response> {
+            return localVarFp.rtmpServerListV3(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get recommended SRT latency by source and destination ip
+         * @param {RtmpServerApiRtmpServerSrtLatencyV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rtmpServerSrtLatencyV1(requestParameters: RtmpServerApiRtmpServerSrtLatencyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerSrtLatencyResponse> {
+            return localVarFp.rtmpServerSrtLatencyV1(requestParameters.language, requestParameters.src_ip, requestParameters.dst_ip, requestParameters.v, requestParameters.profile, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -451,13 +609,33 @@ export interface RtmpServerApiInterface {
 
     /**
      * 
-     * @summary List rtmp servers
-     * @param {RtmpServerApiRtmpServerListV2Request} requestParameters Request parameters.
+     * @summary List rtmp servers (base info)
+     * @param {RtmpServerApiRtmpServerListBaseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApiInterface
      */
-    rtmpServerListV2(requestParameters: RtmpServerApiRtmpServerListV2Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListV2Response>;
+    rtmpServerListBaseV1(requestParameters: RtmpServerApiRtmpServerListBaseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListResponseBase>;
+
+    /**
+     * 
+     * @summary List rtmp servers v3
+     * @param {RtmpServerApiRtmpServerListV3Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RtmpServerApiInterface
+     */
+    rtmpServerListV3(requestParameters: RtmpServerApiRtmpServerListV3Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerListV3Response>;
+
+    /**
+     * 
+     * @summary Get recommended SRT latency by source and destination ip
+     * @param {RtmpServerApiRtmpServerSrtLatencyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RtmpServerApiInterface
+     */
+    rtmpServerSrtLatencyV1(requestParameters: RtmpServerApiRtmpServerSrtLatencyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerSrtLatencyResponse>;
 
     /**
      * 
@@ -537,38 +715,101 @@ export interface RtmpServerApiRtmpServerGraphV1Request {
 }
 
 /**
- * Request parameters for rtmpServerListV2 operation in RtmpServerApi.
+ * Request parameters for rtmpServerListBaseV1 operation in RtmpServerApi.
  * @export
- * @interface RtmpServerApiRtmpServerListV2Request
+ * @interface RtmpServerApiRtmpServerListBaseV1Request
  */
-export interface RtmpServerApiRtmpServerListV2Request {
+export interface RtmpServerApiRtmpServerListBaseV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof RtmpServerApiRtmpServerListV2
+     * @memberof RtmpServerApiRtmpServerListBaseV1
      */
-    readonly language: RtmpServerListV2LanguageEnum
+    readonly language: RtmpServerListBaseV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
-     * @memberof RtmpServerApiRtmpServerListV2
+     * @memberof RtmpServerApiRtmpServerListBaseV1
      */
     readonly project_id: number
 
     /**
-     * Interval state in hours
-     * @type {1 | 3 | 6 | 12 | 24}
-     * @memberof RtmpServerApiRtmpServerListV2
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof RtmpServerApiRtmpServerListBaseV1
      */
-    readonly interval: RtmpServerListV2IntervalEnum
+    readonly v?: RtmpServerListBaseV1VEnum
+}
+
+/**
+ * Request parameters for rtmpServerListV3 operation in RtmpServerApi.
+ * @export
+ * @interface RtmpServerApiRtmpServerListV3Request
+ */
+export interface RtmpServerApiRtmpServerListV3Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof RtmpServerApiRtmpServerListV3
+     */
+    readonly language: RtmpServerListV3LanguageEnum
 
     /**
-     * Version (automatically defaults to 2 based on method version, can be overridden)
-     * @type {'2'}
-     * @memberof RtmpServerApiRtmpServerListV2
+     * Project id
+     * @type {number}
+     * @memberof RtmpServerApiRtmpServerListV3
      */
-    readonly v?: RtmpServerListV2VEnum
+    readonly project_id: number
+
+    /**
+     * Version (automatically defaults to 3 based on method version, can be overridden)
+     * @type {'3'}
+     * @memberof RtmpServerApiRtmpServerListV3
+     */
+    readonly v?: RtmpServerListV3VEnum
+}
+
+/**
+ * Request parameters for rtmpServerSrtLatencyV1 operation in RtmpServerApi.
+ * @export
+ * @interface RtmpServerApiRtmpServerSrtLatencyV1Request
+ */
+export interface RtmpServerApiRtmpServerSrtLatencyV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof RtmpServerApiRtmpServerSrtLatencyV1
+     */
+    readonly language: RtmpServerSrtLatencyV1LanguageEnum
+
+    /**
+     * Source IPv4 address
+     * @type {string}
+     * @memberof RtmpServerApiRtmpServerSrtLatencyV1
+     */
+    readonly src_ip: string
+
+    /**
+     * Destination IPv4 address
+     * @type {string}
+     * @memberof RtmpServerApiRtmpServerSrtLatencyV1
+     */
+    readonly dst_ip: string
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof RtmpServerApiRtmpServerSrtLatencyV1
+     */
+    readonly v?: RtmpServerSrtLatencyV1VEnum
+
+    /**
+     * Recommendation profile
+     * @type {string}
+     * @memberof RtmpServerApiRtmpServerSrtLatencyV1
+     */
+    readonly profile?: string
 }
 
 /**
@@ -632,14 +873,38 @@ export class RtmpServerApi extends BaseAPI implements RtmpServerApiInterface {
 
     /**
      * 
-     * @summary List rtmp servers
-     * @param {RtmpServerApiRtmpServerListV2Request} requestParameters Request parameters.
+     * @summary List rtmp servers (base info)
+     * @param {RtmpServerApiRtmpServerListBaseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    public rtmpServerListV2(requestParameters: RtmpServerApiRtmpServerListV2Request, options?: RawAxiosRequestConfig) {
-        return RtmpServerApiFp(this.configuration).rtmpServerListV2(requestParameters.language, requestParameters.project_id, requestParameters.interval, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    public rtmpServerListBaseV1(requestParameters: RtmpServerApiRtmpServerListBaseV1Request, options?: RawAxiosRequestConfig) {
+        return RtmpServerApiFp(this.configuration).rtmpServerListBaseV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary List rtmp servers v3
+     * @param {RtmpServerApiRtmpServerListV3Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RtmpServerApi
+     */
+    public rtmpServerListV3(requestParameters: RtmpServerApiRtmpServerListV3Request, options?: RawAxiosRequestConfig) {
+        return RtmpServerApiFp(this.configuration).rtmpServerListV3(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get recommended SRT latency by source and destination ip
+     * @param {RtmpServerApiRtmpServerSrtLatencyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RtmpServerApi
+     */
+    public rtmpServerSrtLatencyV1(requestParameters: RtmpServerApiRtmpServerSrtLatencyV1Request, options?: RawAxiosRequestConfig) {
+        return RtmpServerApiFp(this.configuration).rtmpServerSrtLatencyV1(requestParameters.language, requestParameters.src_ip, requestParameters.dst_ip, requestParameters.v, requestParameters.profile, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -723,30 +988,51 @@ export type RtmpServerGraphV1VEnum = typeof RtmpServerGraphV1VEnum[keyof typeof 
 /**
  * @export
  */
-export const RtmpServerListV2LanguageEnum = {
+export const RtmpServerListBaseV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'
 } as const;
-export type RtmpServerListV2LanguageEnum = typeof RtmpServerListV2LanguageEnum[keyof typeof RtmpServerListV2LanguageEnum];
+export type RtmpServerListBaseV1LanguageEnum = typeof RtmpServerListBaseV1LanguageEnum[keyof typeof RtmpServerListBaseV1LanguageEnum];
 /**
  * @export
  */
-export const RtmpServerListV2IntervalEnum = {
-    NUMBER_1: 1,
-    NUMBER_3: 3,
-    NUMBER_6: 6,
-    NUMBER_12: 12,
-    NUMBER_24: 24
+export const RtmpServerListBaseV1VEnum = {
+    _1: '1'
 } as const;
-export type RtmpServerListV2IntervalEnum = typeof RtmpServerListV2IntervalEnum[keyof typeof RtmpServerListV2IntervalEnum];
+export type RtmpServerListBaseV1VEnum = typeof RtmpServerListBaseV1VEnum[keyof typeof RtmpServerListBaseV1VEnum];
 /**
  * @export
  */
-export const RtmpServerListV2VEnum = {
-    _2: '2'
+export const RtmpServerListV3LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
 } as const;
-export type RtmpServerListV2VEnum = typeof RtmpServerListV2VEnum[keyof typeof RtmpServerListV2VEnum];
+export type RtmpServerListV3LanguageEnum = typeof RtmpServerListV3LanguageEnum[keyof typeof RtmpServerListV3LanguageEnum];
+/**
+ * @export
+ */
+export const RtmpServerListV3VEnum = {
+    _3: '3'
+} as const;
+export type RtmpServerListV3VEnum = typeof RtmpServerListV3VEnum[keyof typeof RtmpServerListV3VEnum];
+/**
+ * @export
+ */
+export const RtmpServerSrtLatencyV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type RtmpServerSrtLatencyV1LanguageEnum = typeof RtmpServerSrtLatencyV1LanguageEnum[keyof typeof RtmpServerSrtLatencyV1LanguageEnum];
+/**
+ * @export
+ */
+export const RtmpServerSrtLatencyV1VEnum = {
+    _1: '1'
+} as const;
+export type RtmpServerSrtLatencyV1VEnum = typeof RtmpServerSrtLatencyV1VEnum[keyof typeof RtmpServerSrtLatencyV1VEnum];
 /**
  * @export
  */

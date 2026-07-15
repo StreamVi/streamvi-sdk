@@ -10,6 +10,9 @@
  * Do not edit the class manually.
  */
 import type { MoneyFlowDetails } from './money-flow-details';
+import type { MoneyFlowPaymentDetails } from './money-flow-payment-details';
+import type { MoneyFlowPayoutDetails } from './money-flow-payout-details';
+import type { MoneyFlowRefundDetails } from './money-flow-refund-details';
 /**
  *
  * @export
@@ -33,7 +36,7 @@ export interface MoneyFlowResponse {
      * @type {string}
      * @memberof MoneyFlowResponse
      */
-    'currency': MoneyFlowResponseCurrencyEnum | null;
+    'currency'?: MoneyFlowResponseCurrencyEnum | null;
     /**
      * Date
      * @type {string}
@@ -57,7 +60,25 @@ export interface MoneyFlowResponse {
      * @type {MoneyFlowDetails}
      * @memberof MoneyFlowResponse
      */
-    'details': MoneyFlowDetails | null;
+    'details'?: MoneyFlowDetails | null;
+    /**
+     * Payment details
+     * @type {MoneyFlowPaymentDetails}
+     * @memberof MoneyFlowResponse
+     */
+    'payment_details'?: MoneyFlowPaymentDetails | null;
+    /**
+     * Payout details
+     * @type {MoneyFlowPayoutDetails}
+     * @memberof MoneyFlowResponse
+     */
+    'payout_details'?: MoneyFlowPayoutDetails | null;
+    /**
+     * Refund details
+     * @type {MoneyFlowRefundDetails}
+     * @memberof MoneyFlowResponse
+     */
+    'refund_details'?: MoneyFlowRefundDetails | null;
 }
 export declare const MoneyFlowResponseCurrencyEnum: {
     readonly Rub: "rub";
@@ -69,6 +90,7 @@ export declare const MoneyFlowResponseTypeEnum: {
     readonly PlanRestreamBuy: "plan_restream_buy";
     readonly PlanTranscodingBuy: "plan_transcoding_buy";
     readonly PlanStorageBuy: "plan_storage_buy";
+    readonly PlanWebinarBuy: "plan_webinar_buy";
     readonly ChannelStoryBuy: "channel_story_buy";
     readonly ChannelShopSell: "channel_shop_sell";
     readonly ReferralProfit: "referral_profit";
@@ -77,6 +99,11 @@ export declare const MoneyFlowResponseTypeEnum: {
     readonly Payout: "payout";
     readonly PayoutCancel: "payout_cancel";
     readonly Refund: "refund";
+    readonly RefundTariffPartial: "refund_tariff_partial";
+    readonly RefundTariffFull: "refund_tariff_full";
+    readonly RefundTariffNone: "refund_tariff_none";
+    readonly Compensation: "compensation";
+    readonly CompensationReversal: "compensation_reversal";
     readonly Conversion: "conversion";
     readonly Withdrawal: "withdrawal";
     readonly TransferredOfOldSite: "transferred_of_old_site";

@@ -33,5 +33,17 @@ export interface GetStreamKeyResponse {
      * @memberof GetStreamKeyResponse
      */
     'key': string;
+    /**
+     * Pause video id
+     * @type {number}
+     * @memberof GetStreamKeyResponse
+     */
+    'pause_media_service_file_id': number | null;
+    /**
+     * Protected video id
+     * @type {number}
+     * @memberof GetStreamKeyResponse
+     */
+    'lost_media_service_file_id': number | null;
 }
 //# sourceMappingURL=get-stream-key-response.d.ts.map

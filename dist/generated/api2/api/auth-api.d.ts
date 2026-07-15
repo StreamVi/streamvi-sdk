@@ -117,6 +117,13 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @throws {RequiredError}
      */
     authGetAuthUrlV1: (language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get client configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authGetClientConfigurationV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AuthApi - functional programming interface
@@ -219,6 +226,13 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     authGetAuthUrlV1(language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Get client configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authGetClientConfigurationV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * AuthApi - factory interface
@@ -304,6 +318,13 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     *
+     * @summary Get client configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authGetClientConfigurationV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
 };
 /**
  * AuthApi - interface
@@ -400,6 +421,14 @@ export interface AuthApiInterface {
      * @memberof AuthApiInterface
      */
     authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     *
+     * @summary Get client configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApiInterface
+     */
+    authGetClientConfigurationV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
 }
 /**
  * Request parameters for authCallbackGoogleV1 operation in AuthApi.
@@ -447,7 +476,7 @@ export interface AuthApiAuthCodeV1Request {
     readonly app: AuthCodeV1AppEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AuthApiAuthCodeV1
      */
     readonly v?: AuthCodeV1VEnum;
@@ -472,7 +501,7 @@ export interface AuthApiAuthConnectResultV1Request {
     readonly message: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AuthApiAuthConnectResultV1
      */
     readonly v?: AuthConnectResultV1VEnum;
@@ -491,7 +520,7 @@ export interface AuthApiAuthConnectTelegramV1Request {
     readonly language: AuthConnectTelegramV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AuthApiAuthConnectTelegramV1
      */
     readonly v?: AuthConnectTelegramV1VEnum;
@@ -516,7 +545,7 @@ export interface AuthApiAuthConnectV1Request {
     readonly provider: AuthConnectV1ProviderEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AuthApiAuthConnectV1
      */
     readonly v?: AuthConnectV1VEnum;
@@ -553,7 +582,7 @@ export interface AuthApiAuthDisconnectV1Request {
     readonly social_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AuthApiAuthDisconnectV1
      */
     readonly v?: AuthDisconnectV1VEnum;
@@ -591,7 +620,7 @@ export interface AuthApiAuthGetAuthUrlV1Request {
     readonly provider: AuthGetAuthUrlV1ProviderEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof AuthApiAuthGetAuthUrlV1
      */
     readonly v?: AuthGetAuthUrlV1VEnum;
@@ -635,7 +664,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authCallbackGoogleV1(requestParameters: AuthApiAuthCallbackGoogleV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    authCallbackGoogleV1(requestParameters: AuthApiAuthCallbackGoogleV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Internal request of auth new vk
@@ -644,7 +673,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authCallbackVkIdV1(requestParameters: AuthApiAuthCallbackVkIdV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    authCallbackVkIdV1(requestParameters: AuthApiAuthCallbackVkIdV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Internal request of auth old vk
@@ -652,7 +681,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authCallbackVkV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    authCallbackVkV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Get code for auth
@@ -661,7 +690,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authCodeV1(requestParameters: AuthApiAuthCodeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CodeAppAuthResponse, any>>;
+    authCodeV1(requestParameters: AuthApiAuthCodeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CodeAppAuthResponse, any, {}>>;
     /**
      *
      * @summary CallBack for connect social
@@ -670,7 +699,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authConnectResultV1(requestParameters: AuthApiAuthConnectResultV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    authConnectResultV1(requestParameters: AuthApiAuthConnectResultV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Connect telegram in account
@@ -679,7 +708,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authConnectTelegramV1(requestParameters: AuthApiAuthConnectTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    authConnectTelegramV1(requestParameters: AuthApiAuthConnectTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Connected social account
@@ -688,7 +717,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authConnectV1(requestParameters: AuthApiAuthConnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    authConnectV1(requestParameters: AuthApiAuthConnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Disconnected social account
@@ -697,7 +726,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authDisconnectV1(requestParameters: AuthApiAuthDisconnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    authDisconnectV1(requestParameters: AuthApiAuthDisconnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Code exchange
@@ -706,7 +735,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authExchangeV1(requestParameters: AuthApiAuthExchangeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RefreshAuthResponse, any>>;
+    authExchangeV1(requestParameters: AuthApiAuthExchangeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RefreshAuthResponse, any, {}>>;
     /**
      *
      * @summary Get url for start oauth
@@ -715,7 +744,15 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Get client configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    authGetClientConfigurationV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
 }
 /**
  * @export
@@ -741,8 +778,6 @@ export type AuthCodeV1AppEnum = typeof AuthCodeV1AppEnum[keyof typeof AuthCodeV1
  */
 export declare const AuthCodeV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AuthCodeV1VEnum = typeof AuthCodeV1VEnum[keyof typeof AuthCodeV1VEnum];
 /**
@@ -759,8 +794,6 @@ export type AuthConnectResultV1LanguageEnum = typeof AuthConnectResultV1Language
  */
 export declare const AuthConnectResultV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AuthConnectResultV1VEnum = typeof AuthConnectResultV1VEnum[keyof typeof AuthConnectResultV1VEnum];
 /**
@@ -777,8 +810,6 @@ export type AuthConnectTelegramV1LanguageEnum = typeof AuthConnectTelegramV1Lang
  */
 export declare const AuthConnectTelegramV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AuthConnectTelegramV1VEnum = typeof AuthConnectTelegramV1VEnum[keyof typeof AuthConnectTelegramV1VEnum];
 /**
@@ -805,8 +836,6 @@ export type AuthConnectV1ProviderEnum = typeof AuthConnectV1ProviderEnum[keyof t
  */
 export declare const AuthConnectV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AuthConnectV1VEnum = typeof AuthConnectV1VEnum[keyof typeof AuthConnectV1VEnum];
 /**
@@ -833,8 +862,6 @@ export type AuthDisconnectV1LanguageEnum = typeof AuthDisconnectV1LanguageEnum[k
  */
 export declare const AuthDisconnectV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AuthDisconnectV1VEnum = typeof AuthDisconnectV1VEnum[keyof typeof AuthDisconnectV1VEnum];
 /**
@@ -861,8 +888,6 @@ export type AuthGetAuthUrlV1ProviderEnum = typeof AuthGetAuthUrlV1ProviderEnum[k
  */
 export declare const AuthGetAuthUrlV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type AuthGetAuthUrlV1VEnum = typeof AuthGetAuthUrlV1VEnum[keyof typeof AuthGetAuthUrlV1VEnum];
 /**

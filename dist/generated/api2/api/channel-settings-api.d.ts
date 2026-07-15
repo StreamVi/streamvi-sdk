@@ -14,10 +14,12 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
 import type { ListOfPlaylistItemResponse } from '../models';
 import type { ListOfSitePlannedResponse } from '../models';
+import type { SiteBulkUpdateChannelRequest } from '../models';
 import type { SiteChannelStatusResponse } from '../models';
 import type { SitePlannedResponse } from '../models';
 import type { SiteSetNameRequest } from '../models';
 import type { SiteSetPlannedRequest } from '../models';
+import type { SiteSetSrtUrlRequest } from '../models';
 import type { SiteSetTranscoderRequest } from '../models';
 import type { SiteSetUrlRequest } from '../models';
 import type { SiteUpdateChatTelegramRequest } from '../models';
@@ -182,11 +184,23 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
     channelOptionsUpdatePlannedV1: (siteSetPlannedRequest: SiteSetPlannedRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get status platform
+     * @summary Bulk update channel title and description. Global settings.
+     * @param {SiteBulkUpdateChannelRequest} siteBulkUpdateChannelRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelSettingGetStatusV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelSettingBulkUpdateV1: (siteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get status platform
+     * @param {ChannelSettingGetStatusV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} channelId Channel id
+     * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    channelSettingGetStatusV1: (language: ChannelSettingGetStatusV1LanguageEnum, projectId: number, channelId: number, v?: ChannelSettingGetStatusV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Set name from custom channel. Global settings.
@@ -203,6 +217,14 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @throws {RequiredError}
      */
     channelSettingUpdateRtmpV1: (siteSetUrlRequest: SiteSetUrlRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Set srt url from channel. Global settings.
+     * @param {SiteSetSrtUrlRequest} siteSetSrtUrlRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    channelSettingUpdateSrtUrlV1: (siteSetSrtUrlRequest: SiteSetSrtUrlRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get status platform
@@ -385,11 +407,23 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
     channelOptionsUpdatePlannedV1(siteSetPlannedRequest: SiteSetPlannedRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlannedResponse>>;
     /**
      *
-     * @summary Get status platform
+     * @summary Bulk update channel title and description. Global settings.
+     * @param {SiteBulkUpdateChannelRequest} siteBulkUpdateChannelRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelSettingGetStatusV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChannelStatusResponse>>;
+    channelSettingBulkUpdateV1(siteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     *
+     * @summary Get status platform
+     * @param {ChannelSettingGetStatusV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} channelId Channel id
+     * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    channelSettingGetStatusV1(language: ChannelSettingGetStatusV1LanguageEnum, projectId: number, channelId: number, v?: ChannelSettingGetStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChannelStatusResponse>>;
     /**
      *
      * @summary Set name from custom channel. Global settings.
@@ -406,6 +440,14 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     channelSettingUpdateRtmpV1(siteSetUrlRequest: SiteSetUrlRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     *
+     * @summary Set srt url from channel. Global settings.
+     * @param {SiteSetSrtUrlRequest} siteSetSrtUrlRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    channelSettingUpdateSrtUrlV1(siteSetSrtUrlRequest: SiteSetSrtUrlRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Get status platform
@@ -566,11 +608,20 @@ export declare const ChannelSettingsApiFactory: (configuration?: Configuration, 
     channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlannedResponse>;
     /**
      *
-     * @summary Get status platform
+     * @summary Bulk update channel title and description. Global settings.
+     * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelSettingGetStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
+    channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get status platform
+     * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
     /**
      *
      * @summary Set name from custom channel. Global settings.
@@ -587,6 +638,14 @@ export declare const ChannelSettingsApiFactory: (configuration?: Configuration, 
      * @throws {RequiredError}
      */
     channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Set srt url from channel. Global settings.
+     * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get status platform
@@ -755,12 +814,22 @@ export interface ChannelSettingsApiInterface {
     channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlannedResponse>;
     /**
      *
-     * @summary Get status platform
+     * @summary Bulk update channel title and description. Global settings.
+     * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApiInterface
      */
-    channelSettingGetStatusV1(options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
+    channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get status platform
+     * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
     /**
      *
      * @summary Set name from custom channel. Global settings.
@@ -779,6 +848,15 @@ export interface ChannelSettingsApiInterface {
      * @memberof ChannelSettingsApiInterface
      */
     channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Set srt url from channel. Global settings.
+     * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Get status platform
@@ -833,7 +911,7 @@ export interface ChannelSettingsApiChannelChatGetTelegramSettingV1Request {
     readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
     readonly v?: ChannelChatGetTelegramSettingV1VEnum;
@@ -864,7 +942,7 @@ export interface ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request {
     readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
     readonly v?: ChannelChatInitTelegramChatConnectV1VEnum;
@@ -895,7 +973,7 @@ export interface ChannelSettingsApiChannelChatRemoveTelegramChatV1Request {
     readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
     readonly v?: ChannelChatRemoveTelegramChatV1VEnum;
@@ -932,7 +1010,7 @@ export interface ChannelSettingsApiChannelChatSetTelegramSettingV1Request {
     readonly TelegramSetSettingsRequestDto: TelegramSetSettingsRequestDto;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
     readonly v?: ChannelChatSetTelegramSettingV1VEnum;
@@ -963,7 +1041,7 @@ export interface ChannelSettingsApiChannelChatTelegramPostsV1Request {
     readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
     readonly v?: ChannelChatTelegramPostsV1VEnum;
@@ -1007,7 +1085,7 @@ export interface ChannelSettingsApiChannelOptionsGetPlannedV1Request {
     readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
     readonly v?: ChannelOptionsGetPlannedV1VEnum;
@@ -1038,7 +1116,7 @@ export interface ChannelSettingsApiChannelOptionsGetPlayListV1Request {
     readonly channel_id: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
     readonly v?: ChannelOptionsGetPlayListV1VEnum;
@@ -1135,6 +1213,50 @@ export interface ChannelSettingsApiChannelOptionsUpdatePlannedV1Request {
     readonly SiteSetPlannedRequest: SiteSetPlannedRequest;
 }
 /**
+ * Request parameters for channelSettingBulkUpdateV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelSettingBulkUpdateV1Request
+ */
+export interface ChannelSettingsApiChannelSettingBulkUpdateV1Request {
+    /**
+     *
+     * @type {SiteBulkUpdateChannelRequest}
+     * @memberof ChannelSettingsApiChannelSettingBulkUpdateV1
+     */
+    readonly SiteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest;
+}
+/**
+ * Request parameters for channelSettingGetStatusV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelSettingGetStatusV1Request
+ */
+export interface ChannelSettingsApiChannelSettingGetStatusV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ChannelSettingsApiChannelSettingGetStatusV1
+     */
+    readonly language: ChannelSettingGetStatusV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelSettingGetStatusV1
+     */
+    readonly project_id: number;
+    /**
+     * Channel id
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelSettingGetStatusV1
+     */
+    readonly channel_id: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof ChannelSettingsApiChannelSettingGetStatusV1
+     */
+    readonly v?: ChannelSettingGetStatusV1VEnum;
+}
+/**
  * Request parameters for channelSettingSetNameV1 operation in ChannelSettingsApi.
  * @export
  * @interface ChannelSettingsApiChannelSettingSetNameV1Request
@@ -1159,6 +1281,19 @@ export interface ChannelSettingsApiChannelSettingUpdateRtmpV1Request {
      * @memberof ChannelSettingsApiChannelSettingUpdateRtmpV1
      */
     readonly SiteSetUrlRequest: SiteSetUrlRequest;
+}
+/**
+ * Request parameters for channelSettingUpdateSrtUrlV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request
+ */
+export interface ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request {
+    /**
+     *
+     * @type {SiteSetSrtUrlRequest}
+     * @memberof ChannelSettingsApiChannelSettingUpdateSrtUrlV1
+     */
+    readonly SiteSetSrtUrlRequest: SiteSetSrtUrlRequest;
 }
 /**
  * Request parameters for channelSettingUpdateTokenV1 operation in ChannelSettingsApi.
@@ -1192,7 +1327,7 @@ export interface ChannelSettingsApiChannelSettingUpdateTokenV1Request {
     readonly role: ChannelSettingUpdateTokenV1RoleEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
     readonly v?: ChannelSettingUpdateTokenV1VEnum;
@@ -1242,7 +1377,7 @@ export interface ChannelSettingsApiTelegramGetPostByFilterV1Request {
     readonly filter_mode: number;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
     readonly v?: TelegramGetPostByFilterV1VEnum;
@@ -1262,7 +1397,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramSettingsResponseDto, any>>;
+    channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramSettingsResponseDto, any, {}>>;
     /**
      *
      * @summary Get code for connected chat
@@ -1271,7 +1406,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramInitConnectResponseDto, any>>;
+    channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramInitConnectResponseDto, any, {}>>;
     /**
      *
      * @summary Disconnect telegram chat
@@ -1280,7 +1415,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Set telegram settings
@@ -1289,7 +1424,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Get telegram post list
@@ -1298,7 +1433,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramChatPostsResponseDto, any>>;
+    channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramChatPostsResponseDto, any, {}>>;
     /**
      *
      * @summary Optional settings for telegram
@@ -1307,7 +1442,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Get planned list
@@ -1316,7 +1451,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListOfSitePlannedResponse, any, {}>>;
     /**
      *
      * @summary Get playlists from the platform
@@ -1325,7 +1460,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").ListResponse, any>>;
+    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListOfPlaylistItemResponse, any, {}>>;
     /**
      *
      * @summary Optional settings for ok. Depends on the tariff.
@@ -1334,7 +1469,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Optional settings for trovo. Depends on the tariff.
@@ -1343,7 +1478,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Optional settings for twitch. Depends on the tariff.
@@ -1352,7 +1487,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Optional settings for vk. Depends on the tariff.
@@ -1361,7 +1496,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Optional settings for vk video live. Depends on the tariff.
@@ -1370,7 +1505,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Optional settings for youtube. Depends on the tariff.
@@ -1379,7 +1514,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Set planned id. Depends on the tariff.
@@ -1388,15 +1523,25 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePlannedResponse, any>>;
+    channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePlannedResponse, any, {}>>;
     /**
      *
-     * @summary Get status platform
+     * @summary Bulk update channel title and description. Global settings.
+     * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingGetStatusV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteChannelStatusResponse, any>>;
+    channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    /**
+     *
+     * @summary Get status platform
+     * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApi
+     */
+    channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteChannelStatusResponse, any, {}>>;
     /**
      *
      * @summary Set name from custom channel. Global settings.
@@ -1405,7 +1550,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Set rtmp url from channel. Global settings.
@@ -1414,7 +1559,16 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    /**
+     *
+     * @summary Set srt url from channel. Global settings.
+     * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApi
+     */
+    channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Get status platform
@@ -1423,7 +1577,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Set transcoder from channel. Personal settings.
@@ -1432,7 +1586,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any>>;
+    channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Get telegram post by filter
@@ -1441,7 +1595,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramChatPostsItem, any>>;
+    telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramChatPostsItem, any, {}>>;
 }
 /**
  * @export
@@ -1457,8 +1611,6 @@ export type ChannelChatGetTelegramSettingV1LanguageEnum = typeof ChannelChatGetT
  */
 export declare const ChannelChatGetTelegramSettingV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ChannelChatGetTelegramSettingV1VEnum = typeof ChannelChatGetTelegramSettingV1VEnum[keyof typeof ChannelChatGetTelegramSettingV1VEnum];
 /**
@@ -1475,8 +1627,6 @@ export type ChannelChatInitTelegramChatConnectV1LanguageEnum = typeof ChannelCha
  */
 export declare const ChannelChatInitTelegramChatConnectV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ChannelChatInitTelegramChatConnectV1VEnum = typeof ChannelChatInitTelegramChatConnectV1VEnum[keyof typeof ChannelChatInitTelegramChatConnectV1VEnum];
 /**
@@ -1493,8 +1643,6 @@ export type ChannelChatRemoveTelegramChatV1LanguageEnum = typeof ChannelChatRemo
  */
 export declare const ChannelChatRemoveTelegramChatV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ChannelChatRemoveTelegramChatV1VEnum = typeof ChannelChatRemoveTelegramChatV1VEnum[keyof typeof ChannelChatRemoveTelegramChatV1VEnum];
 /**
@@ -1511,8 +1659,6 @@ export type ChannelChatSetTelegramSettingV1LanguageEnum = typeof ChannelChatSetT
  */
 export declare const ChannelChatSetTelegramSettingV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ChannelChatSetTelegramSettingV1VEnum = typeof ChannelChatSetTelegramSettingV1VEnum[keyof typeof ChannelChatSetTelegramSettingV1VEnum];
 /**
@@ -1529,8 +1675,6 @@ export type ChannelChatTelegramPostsV1LanguageEnum = typeof ChannelChatTelegramP
  */
 export declare const ChannelChatTelegramPostsV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ChannelChatTelegramPostsV1VEnum = typeof ChannelChatTelegramPostsV1VEnum[keyof typeof ChannelChatTelegramPostsV1VEnum];
 /**
@@ -1547,8 +1691,6 @@ export type ChannelOptionsGetPlannedV1LanguageEnum = typeof ChannelOptionsGetPla
  */
 export declare const ChannelOptionsGetPlannedV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ChannelOptionsGetPlannedV1VEnum = typeof ChannelOptionsGetPlannedV1VEnum[keyof typeof ChannelOptionsGetPlannedV1VEnum];
 /**
@@ -1565,10 +1707,24 @@ export type ChannelOptionsGetPlayListV1LanguageEnum = typeof ChannelOptionsGetPl
  */
 export declare const ChannelOptionsGetPlayListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ChannelOptionsGetPlayListV1VEnum = typeof ChannelOptionsGetPlayListV1VEnum[keyof typeof ChannelOptionsGetPlayListV1VEnum];
+/**
+ * @export
+ */
+export declare const ChannelSettingGetStatusV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type ChannelSettingGetStatusV1LanguageEnum = typeof ChannelSettingGetStatusV1LanguageEnum[keyof typeof ChannelSettingGetStatusV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const ChannelSettingGetStatusV1VEnum: {
+    readonly _1: "1";
+};
+export type ChannelSettingGetStatusV1VEnum = typeof ChannelSettingGetStatusV1VEnum[keyof typeof ChannelSettingGetStatusV1VEnum];
 /**
  * @export
  */
@@ -1591,8 +1747,6 @@ export type ChannelSettingUpdateTokenV1RoleEnum = typeof ChannelSettingUpdateTok
  */
 export declare const ChannelSettingUpdateTokenV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type ChannelSettingUpdateTokenV1VEnum = typeof ChannelSettingUpdateTokenV1VEnum[keyof typeof ChannelSettingUpdateTokenV1VEnum];
 /**
@@ -1609,8 +1763,6 @@ export type TelegramGetPostByFilterV1LanguageEnum = typeof TelegramGetPostByFilt
  */
 export declare const TelegramGetPostByFilterV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type TelegramGetPostByFilterV1VEnum = typeof TelegramGetPostByFilterV1VEnum[keyof typeof TelegramGetPostByFilterV1VEnum];
 //# sourceMappingURL=channel-settings-api.d.ts.map

@@ -9,10 +9,36 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { PaginatedResponse } from './paginated-response';
+import type { NotifyHistorySiteResponse } from './notify-history-site-response';
 /**
- * @type PaginatedResponseOfNotifyHistorySiteResponse
+ *
  * @export
+ * @interface PaginatedResponseOfNotifyHistorySiteResponse
  */
-export type PaginatedResponseOfNotifyHistorySiteResponse = PaginatedResponse;
+export interface PaginatedResponseOfNotifyHistorySiteResponse {
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedResponseOfNotifyHistorySiteResponse
+     */
+    'total': number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedResponseOfNotifyHistorySiteResponse
+     */
+    'limit': number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedResponseOfNotifyHistorySiteResponse
+     */
+    'offset': number;
+    /**
+     *
+     * @type {Array<NotifyHistorySiteResponse>}
+     * @memberof PaginatedResponseOfNotifyHistorySiteResponse
+     */
+    'results': Array<NotifyHistorySiteResponse>;
+}
 //# sourceMappingURL=paginated-response-of-notify-history-site-response.d.ts.map

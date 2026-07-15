@@ -67,6 +67,10 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -107,10 +111,12 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -153,6 +159,10 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
 
 
     
@@ -197,10 +207,12 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["media-files:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -252,10 +264,12 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["media-files:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -281,14 +295,17 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
          * 
          * @summary Get session by media id
          * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
          * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaServiceFilesSiteSessionV1: async (language: MediaServiceFilesSiteSessionV1LanguageEnum, mediaId: number, v?: MediaServiceFilesSiteSessionV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        mediaServiceFilesSiteSessionV1: async (language: MediaServiceFilesSiteSessionV1LanguageEnum, projectId: number, mediaId: number, v?: MediaServiceFilesSiteSessionV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('mediaServiceFilesSiteSessionV1', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('mediaServiceFilesSiteSessionV1', 'projectId', projectId)
             // verify required parameter 'mediaId' is not null or undefined
             assertParamExists('mediaServiceFilesSiteSessionV1', 'mediaId', mediaId)
             const localVarPath = `/method/media-service-files/session`;
@@ -303,14 +320,20 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["media-files:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
             }
 
             if (mediaId !== undefined) {
@@ -350,6 +373,10 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -385,6 +412,10 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
 
 
     
@@ -486,13 +517,14 @@ export const MediaServiceFilesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get session by media id
          * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
          * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async mediaServiceFilesSiteSessionV1(language: MediaServiceFilesSiteSessionV1LanguageEnum, mediaId: number, v?: MediaServiceFilesSiteSessionV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SessionMediaServiceFileResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteSessionV1(language, mediaId, v, options);
+        async mediaServiceFilesSiteSessionV1(language: MediaServiceFilesSiteSessionV1LanguageEnum, projectId: number, mediaId: number, v?: MediaServiceFilesSiteSessionV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SessionMediaServiceFileResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteSessionV1(language, projectId, mediaId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['MediaServiceFilesApi.mediaServiceFilesSiteSessionV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -591,7 +623,7 @@ export const MediaServiceFilesApiFactory = function (configuration?: Configurati
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteSessionV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SessionMediaServiceFileResponse> {
-            return localVarFp.mediaServiceFilesSiteSessionV1(requestParameters.language, requestParameters.media_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.mediaServiceFilesSiteSessionV1(requestParameters.language, requestParameters.project_id, requestParameters.media_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -837,6 +869,13 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request {
     readonly language: MediaServiceFilesSiteSessionV1LanguageEnum
 
     /**
+     * Project id
+     * @type {number}
+     * @memberof MediaServiceFilesApiMediaServiceFilesSiteSessionV1
+     */
+    readonly project_id: number
+
+    /**
      * Media service file id
      * @type {number}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteSessionV1
@@ -955,7 +994,7 @@ export class MediaServiceFilesApi extends BaseAPI implements MediaServiceFilesAp
      * @memberof MediaServiceFilesApi
      */
     public mediaServiceFilesSiteSessionV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request, options?: RawAxiosRequestConfig) {
-        return MediaServiceFilesApiFp(this.configuration).mediaServiceFilesSiteSessionV1(requestParameters.language, requestParameters.media_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return MediaServiceFilesApiFp(this.configuration).mediaServiceFilesSiteSessionV1(requestParameters.language, requestParameters.project_id, requestParameters.media_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

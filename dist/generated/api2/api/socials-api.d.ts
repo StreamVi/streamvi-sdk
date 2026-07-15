@@ -80,6 +80,6 @@ export declare class SocialsApi extends BaseAPI implements SocialsApiInterface {
      * @throws {RequiredError}
      * @memberof SocialsApi
      */
-    socialsGetListV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    socialsGetListV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
 }
 //# sourceMappingURL=socials-api.d.ts.map

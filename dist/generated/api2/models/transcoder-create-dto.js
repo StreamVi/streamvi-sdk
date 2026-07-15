@@ -13,14 +13,20 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TranscoderCreateDtoLanguageEnum = exports.TranscoderCreateDtoVEnum = void 0;
+exports.TranscoderCreateDtoVideoCodecEnum = exports.TranscoderCreateDtoModeEnum = exports.TranscoderCreateDtoLanguageEnum = exports.TranscoderCreateDtoVEnum = void 0;
 exports.TranscoderCreateDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.TranscoderCreateDtoLanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'
+};
+exports.TranscoderCreateDtoModeEnum = {
+    Custom: 'custom',
+    Twitch: 'twitch'
+};
+exports.TranscoderCreateDtoVideoCodecEnum = {
+    H264: 'h264',
+    Hevc: 'hevc'
 };

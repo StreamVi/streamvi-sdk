@@ -75,10 +75,12 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -151,14 +153,16 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (projectId !== undefined) {
@@ -219,10 +223,12 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -266,10 +272,12 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -314,10 +322,12 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -364,10 +374,12 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -380,6 +392,66 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
 
             if (planRestreamId !== undefined) {
                 localVarQueryParameter['plan_restream_id'] = planRestreamId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Set restream tariff auto prolongation
+         * @param {PlanRestreamSetProlongationV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {boolean} enabled Auto prolongation enabled
+         * @param {PlanRestreamSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        planRestreamSetProlongationV1: async (language: PlanRestreamSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanRestreamSetProlongationV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('planRestreamSetProlongationV1', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('planRestreamSetProlongationV1', 'projectId', projectId)
+            // verify required parameter 'enabled' is not null or undefined
+            assertParamExists('planRestreamSetProlongationV1', 'enabled', enabled)
+            const localVarPath = `/method/plan_restream/prolongation`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+            if (enabled !== undefined) {
+                localVarQueryParameter['enabled'] = enabled;
             }
 
 
@@ -419,10 +491,12 @@ export const PlanRestreamApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -554,6 +628,22 @@ export const PlanRestreamApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Set restream tariff auto prolongation
+         * @param {PlanRestreamSetProlongationV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {boolean} enabled Auto prolongation enabled
+         * @param {PlanRestreamSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async planRestreamSetProlongationV1(language: PlanRestreamSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanRestreamSetProlongationV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamSetProlongationV1(language, projectId, enabled, v, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PlanRestreamApi.planRestreamSetProlongationV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get tariff for project
          * @param {PlanRestreamTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
@@ -639,6 +729,16 @@ export const PlanRestreamApiFactory = function (configuration?: Configuration, b
         },
         /**
          * 
+         * @summary Set restream tariff auto prolongation
+         * @param {PlanRestreamApiPlanRestreamSetProlongationV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        planRestreamSetProlongationV1(requestParameters: PlanRestreamApiPlanRestreamSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.planRestreamSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get tariff for project
          * @param {PlanRestreamApiPlanRestreamTariffV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -715,6 +815,16 @@ export interface PlanRestreamApiInterface {
      * @memberof PlanRestreamApiInterface
      */
     planRestreamRemoveV1(requestParameters: PlanRestreamApiPlanRestreamRemoveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
+     * 
+     * @summary Set restream tariff auto prolongation
+     * @param {PlanRestreamApiPlanRestreamSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanRestreamApiInterface
+     */
+    planRestreamSetProlongationV1(requestParameters: PlanRestreamApiPlanRestreamSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
      * 
@@ -953,6 +1063,41 @@ export interface PlanRestreamApiPlanRestreamRemoveV1Request {
 }
 
 /**
+ * Request parameters for planRestreamSetProlongationV1 operation in PlanRestreamApi.
+ * @export
+ * @interface PlanRestreamApiPlanRestreamSetProlongationV1Request
+ */
+export interface PlanRestreamApiPlanRestreamSetProlongationV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PlanRestreamApiPlanRestreamSetProlongationV1
+     */
+    readonly language: PlanRestreamSetProlongationV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof PlanRestreamApiPlanRestreamSetProlongationV1
+     */
+    readonly project_id: number
+
+    /**
+     * Auto prolongation enabled
+     * @type {boolean}
+     * @memberof PlanRestreamApiPlanRestreamSetProlongationV1
+     */
+    readonly enabled: boolean
+
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof PlanRestreamApiPlanRestreamSetProlongationV1
+     */
+    readonly v?: PlanRestreamSetProlongationV1VEnum
+}
+
+/**
  * Request parameters for planRestreamTariffV1 operation in PlanRestreamApi.
  * @export
  * @interface PlanRestreamApiPlanRestreamTariffV1Request
@@ -1057,6 +1202,18 @@ export class PlanRestreamApi extends BaseAPI implements PlanRestreamApiInterface
      */
     public planRestreamRemoveV1(requestParameters: PlanRestreamApiPlanRestreamRemoveV1Request, options?: RawAxiosRequestConfig) {
         return PlanRestreamApiFp(this.configuration).planRestreamRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.plan_restream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Set restream tariff auto prolongation
+     * @param {PlanRestreamApiPlanRestreamSetProlongationV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlanRestreamApi
+     */
+    public planRestreamSetProlongationV1(requestParameters: PlanRestreamApiPlanRestreamSetProlongationV1Request, options?: RawAxiosRequestConfig) {
+        return PlanRestreamApiFp(this.configuration).planRestreamSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1184,6 +1341,22 @@ export const PlanRestreamRemoveV1VEnum = {
     _1: '1'
 } as const;
 export type PlanRestreamRemoveV1VEnum = typeof PlanRestreamRemoveV1VEnum[keyof typeof PlanRestreamRemoveV1VEnum];
+/**
+ * @export
+ */
+export const PlanRestreamSetProlongationV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type PlanRestreamSetProlongationV1LanguageEnum = typeof PlanRestreamSetProlongationV1LanguageEnum[keyof typeof PlanRestreamSetProlongationV1LanguageEnum];
+/**
+ * @export
+ */
+export const PlanRestreamSetProlongationV1VEnum = {
+    _1: '1'
+} as const;
+export type PlanRestreamSetProlongationV1VEnum = typeof PlanRestreamSetProlongationV1VEnum[keyof typeof PlanRestreamSetProlongationV1VEnum];
 /**
  * @export
  */

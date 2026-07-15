@@ -9,10 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ListResponse } from './list-response';
+import type { PlaylistItemResponse } from './playlist-item-response';
 /**
- * @type ListOfPlaylistItemResponse
+ *
  * @export
+ * @interface ListOfPlaylistItemResponse
  */
-export type ListOfPlaylistItemResponse = ListResponse;
+export interface ListOfPlaylistItemResponse {
+    /**
+     *
+     * @type {Array<PlaylistItemResponse>}
+     * @memberof ListOfPlaylistItemResponse
+     */
+    'results': Array<PlaylistItemResponse>;
+}
 //# sourceMappingURL=list-of-playlist-item-response.d.ts.map

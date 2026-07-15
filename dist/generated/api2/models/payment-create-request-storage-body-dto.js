@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PaymentCreateRequestStorageBodyDtoPlanPeriodEnum = exports.PaymentCreateRequestStorageBodyDtoTypeEnum = exports.PaymentCreateRequestStorageBodyDtoLanguageEnum = exports.PaymentCreateRequestStorageBodyDtoVEnum = void 0;
 exports.PaymentCreateRequestStorageBodyDtoVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.PaymentCreateRequestStorageBodyDtoLanguageEnum = {
     Ru: 'ru',
@@ -28,7 +26,8 @@ exports.PaymentCreateRequestStorageBodyDtoTypeEnum = {
     Restream: 'restream',
     Transcoding: 'transcoding',
     Storage: 'storage',
-    Topup: 'topup'
+    Topup: 'topup',
+    Webinar: 'webinar'
 };
 exports.PaymentCreateRequestStorageBodyDtoPlanPeriodEnum = {
     Month: 'month',

@@ -73,6 +73,7 @@ export declare const UserProject2ProjectResponseAccessTypeEnum: {
     readonly NUMBER_0: 0;
     readonly NUMBER_1: 1;
     readonly NUMBER_2: 2;
+    readonly NUMBER_3: 3;
 };
 export type UserProject2ProjectResponseAccessTypeEnum = typeof UserProject2ProjectResponseAccessTypeEnum[keyof typeof UserProject2ProjectResponseAccessTypeEnum];
 //# sourceMappingURL=user-project2-project-response.d.ts.map

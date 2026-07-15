@@ -66,8 +66,6 @@ export interface PaymentCreateRequestTranscoderBodyDto {
 }
 export declare const PaymentCreateRequestTranscoderBodyDtoVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type PaymentCreateRequestTranscoderBodyDtoVEnum = typeof PaymentCreateRequestTranscoderBodyDtoVEnum[keyof typeof PaymentCreateRequestTranscoderBodyDtoVEnum];
 export declare const PaymentCreateRequestTranscoderBodyDtoLanguageEnum: {
@@ -81,6 +79,7 @@ export declare const PaymentCreateRequestTranscoderBodyDtoTypeEnum: {
     readonly Transcoding: "transcoding";
     readonly Storage: "storage";
     readonly Topup: "topup";
+    readonly Webinar: "webinar";
 };
 export type PaymentCreateRequestTranscoderBodyDtoTypeEnum = typeof PaymentCreateRequestTranscoderBodyDtoTypeEnum[keyof typeof PaymentCreateRequestTranscoderBodyDtoTypeEnum];
 export declare const PaymentCreateRequestTranscoderBodyDtoPlanPeriodEnum: {

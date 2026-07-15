@@ -19,6 +19,12 @@ import type { RtmpServerPlatformQuality } from './rtmp-server-platform-quality';
  */
 export interface RtmpServerStateItem {
     /**
+     * id
+     * @type {number}
+     * @memberof RtmpServerStateItem
+     */
+    'id': number;
+    /**
      * City
      * @type {string}
      * @memberof RtmpServerStateItem

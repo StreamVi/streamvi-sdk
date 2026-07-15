@@ -59,10 +59,12 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -111,10 +113,12 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -127,59 +131,6 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
 
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {PaymentListV1LanguageEnum} language Current language
-         * @param {PaymentListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {number} [pageSize] Number of results
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        paymentListV1: async (language: PaymentListV1LanguageEnum, v?: PaymentListV1VEnum, pageSize?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'language' is not null or undefined
-            assertParamExists('paymentListV1', 'language', language)
-            const localVarPath = `/method/payment/list`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (v !== undefined) {
-                localVarQueryParameter['v'] = v;
-            } else {
-                localVarQueryParameter['v'] = '1';
-            }
-
-            if (language !== undefined) {
-                localVarQueryParameter['language'] = language;
-            }
-
-            if (pageSize !== undefined) {
-                localVarQueryParameter['pageSize'] = pageSize;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
             }
 
 
@@ -233,21 +184,6 @@ export const PaymentApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['PaymentApi.paymentGetStatusV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
-        /**
-         * 
-         * @param {PaymentListV1LanguageEnum} language Current language
-         * @param {PaymentListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
-         * @param {number} [pageSize] Number of results
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async paymentListV1(language: PaymentListV1LanguageEnum, v?: PaymentListV1VEnum, pageSize?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.paymentListV1(language, v, pageSize, page, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentApi.paymentListV1']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
     }
 };
 
@@ -277,15 +213,6 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
         paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaymentStatusResponse> {
             return localVarFp.paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
-        /**
-         * 
-         * @param {PaymentApiPaymentListV1Request} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        paymentListV1(requestParameters: PaymentApiPaymentListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.paymentListV1(requestParameters.language, requestParameters.v, requestParameters.pageSize, requestParameters.page, options).then((request) => request(axios, basePath));
-        },
     };
 };
 
@@ -313,15 +240,6 @@ export interface PaymentApiInterface {
      * @memberof PaymentApiInterface
      */
     paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaymentStatusResponse>;
-
-    /**
-     * 
-     * @param {PaymentApiPaymentListV1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentApiInterface
-     */
-    paymentListV1(requestParameters: PaymentApiPaymentListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 
 }
 
@@ -389,41 +307,6 @@ export interface PaymentApiPaymentGetStatusV1Request {
 }
 
 /**
- * Request parameters for paymentListV1 operation in PaymentApi.
- * @export
- * @interface PaymentApiPaymentListV1Request
- */
-export interface PaymentApiPaymentListV1Request {
-    /**
-     * Current language
-     * @type {'ru' | 'en' | 'cn'}
-     * @memberof PaymentApiPaymentListV1
-     */
-    readonly language: PaymentListV1LanguageEnum
-
-    /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1'}
-     * @memberof PaymentApiPaymentListV1
-     */
-    readonly v?: PaymentListV1VEnum
-
-    /**
-     * Number of results
-     * @type {number}
-     * @memberof PaymentApiPaymentListV1
-     */
-    readonly pageSize?: number
-
-    /**
-     * Page number
-     * @type {number}
-     * @memberof PaymentApiPaymentListV1
-     */
-    readonly page?: number
-}
-
-/**
  * PaymentApi - object-oriented interface
  * @export
  * @class PaymentApi
@@ -451,17 +334,6 @@ export class PaymentApi extends BaseAPI implements PaymentApiInterface {
      */
     public paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig) {
         return PaymentApiFp(this.configuration).paymentGetStatusV1(requestParameters.language, requestParameters.payId, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {PaymentApiPaymentListV1Request} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentApi
-     */
-    public paymentListV1(requestParameters: PaymentApiPaymentListV1Request, options?: RawAxiosRequestConfig) {
-        return PaymentApiFp(this.configuration).paymentListV1(requestParameters.language, requestParameters.v, requestParameters.pageSize, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -497,19 +369,3 @@ export const PaymentGetStatusV1VEnum = {
     _1: '1'
 } as const;
 export type PaymentGetStatusV1VEnum = typeof PaymentGetStatusV1VEnum[keyof typeof PaymentGetStatusV1VEnum];
-/**
- * @export
- */
-export const PaymentListV1LanguageEnum = {
-    Ru: 'ru',
-    En: 'en',
-    Cn: 'cn'
-} as const;
-export type PaymentListV1LanguageEnum = typeof PaymentListV1LanguageEnum[keyof typeof PaymentListV1LanguageEnum];
-/**
- * @export
- */
-export const PaymentListV1VEnum = {
-    _1: '1'
-} as const;
-export type PaymentListV1VEnum = typeof PaymentListV1VEnum[keyof typeof PaymentListV1VEnum];

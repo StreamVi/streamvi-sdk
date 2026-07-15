@@ -9,10 +9,36 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { PaginatedResponse } from './paginated-response';
+import type { TransactionResponse } from './transaction-response';
 /**
- * @type PaginatedResponseOfTransactionResponse
+ *
  * @export
+ * @interface PaginatedResponseOfTransactionResponse
  */
-export type PaginatedResponseOfTransactionResponse = PaginatedResponse;
+export interface PaginatedResponseOfTransactionResponse {
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedResponseOfTransactionResponse
+     */
+    'total': number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedResponseOfTransactionResponse
+     */
+    'limit': number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedResponseOfTransactionResponse
+     */
+    'offset': number;
+    /**
+     *
+     * @type {Array<TransactionResponse>}
+     * @memberof PaginatedResponseOfTransactionResponse
+     */
+    'results': Array<TransactionResponse>;
+}
 //# sourceMappingURL=paginated-response-of-transaction-response.d.ts.map

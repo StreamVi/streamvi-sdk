@@ -93,7 +93,7 @@ export interface BlogPageTagApiBlogPageTagListV1Request {
     readonly language: BlogPageTagListV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
+     * @type {'1'}
      * @memberof BlogPageTagApiBlogPageTagListV1
      */
     readonly v?: BlogPageTagListV1VEnum;
@@ -131,7 +131,7 @@ export declare class BlogPageTagApi extends BaseAPI implements BlogPageTagApiInt
      * @throws {RequiredError}
      * @memberof BlogPageTagApi
      */
-    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<import("../models").PaginatedResponse, any>>;
+    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfSiteBlogPageTagResponse, any, {}>>;
 }
 /**
  * @export
@@ -147,8 +147,6 @@ export type BlogPageTagListV1LanguageEnum = typeof BlogPageTagListV1LanguageEnum
  */
 export declare const BlogPageTagListV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type BlogPageTagListV1VEnum = typeof BlogPageTagListV1VEnum[keyof typeof BlogPageTagListV1VEnum];
 //# sourceMappingURL=blog-page-tag-api.d.ts.map

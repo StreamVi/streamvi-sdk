@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**update_url_channel** | **LiveRestreamCentrifugeItemV2**(LiveRestreamCentrifugeItemV2.md) | Event for restream update url | [default to undefined]
-**update_stats_channel** | **LiveRestreamCentrifugeItemV2**(LiveRestreamCentrifugeItemV2.md) | Event for restream update viewers | [default to undefined]
+**update_url_channel** | [**LiveRestreamCentrifugeItemV2**](LiveRestreamCentrifugeItemV2.md) | Event for restream update url | [default to undefined]
+**update_stats_channel** | [**LiveRestreamCentrifugeItemV2**](LiveRestreamCentrifugeItemV2.md) | Event for restream update viewers | [default to undefined]
 
 ## Example
 

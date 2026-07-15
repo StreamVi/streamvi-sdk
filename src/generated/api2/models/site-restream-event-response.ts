@@ -13,6 +13,9 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import type { SiteRestreamEventServerResponse } from './site-restream-event-server-response';
 
 /**
  * 
@@ -20,6 +23,12 @@
  * @interface SiteRestreamEventResponse
  */
 export interface SiteRestreamEventResponse {
+    /**
+     * Event id
+     * @type {string}
+     * @memberof SiteRestreamEventResponse
+     */
+    'id'?: string;
     /**
      * Level of event. \'info\', \'warning\', \'error\', \'debug\' only. Default is \'info
      * @type {string}
@@ -38,6 +47,24 @@ export interface SiteRestreamEventResponse {
      * @memberof SiteRestreamEventResponse
      */
     'created_at': string;
+    /**
+     * App
+     * @type {string}
+     * @memberof SiteRestreamEventResponse
+     */
+    'app': SiteRestreamEventResponseAppEnum;
+    /**
+     * Server location info
+     * @type {SiteRestreamEventServerResponse}
+     * @memberof SiteRestreamEventResponse
+     */
+    'server': SiteRestreamEventServerResponse;
+    /**
+     * Platform
+     * @type {string}
+     * @memberof SiteRestreamEventResponse
+     */
+    'platform'?: string;
 }
 
 export const SiteRestreamEventResponseLevelEnum = {
@@ -48,5 +75,12 @@ export const SiteRestreamEventResponseLevelEnum = {
 } as const;
 
 export type SiteRestreamEventResponseLevelEnum = typeof SiteRestreamEventResponseLevelEnum[keyof typeof SiteRestreamEventResponseLevelEnum];
+export const SiteRestreamEventResponseAppEnum = {
+    Live: 'live',
+    Scheduler: 'scheduler',
+    Transcoder: 'transcoder'
+} as const;
+
+export type SiteRestreamEventResponseAppEnum = typeof SiteRestreamEventResponseAppEnum[keyof typeof SiteRestreamEventResponseAppEnum];
 
 

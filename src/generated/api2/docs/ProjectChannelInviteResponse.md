@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **reject** | **boolean** | If rejected request then true | [optional] [default to undefined]
 **from_user_id** | **number** | The user who granted access | [optional] [default to undefined]
 **from_project_id** | **number** | from_project_id | [optional] [default to undefined]
-**to_project_** | **ProjectChannelInviteProjectResponse**(ProjectChannelInviteProjectResponse.md) | User info | [optional] [default to undefined]
+**to_project_** | [**ProjectChannelInviteProjectResponse**](ProjectChannelInviteProjectResponse.md) | User info | [optional] [default to undefined]
 
 ## Example
 

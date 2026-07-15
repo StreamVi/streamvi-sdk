@@ -15,9 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = exports.SiteUpdateOptionsVkVideoLiveRequestVEnum = void 0;
 exports.SiteUpdateOptionsVkVideoLiveRequestVEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3'
+    _1: '1'
 };
 exports.SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = {
     Ru: 'ru',

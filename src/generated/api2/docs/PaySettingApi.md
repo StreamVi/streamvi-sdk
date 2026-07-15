@@ -4,9 +4,9 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**paySettingCheckCountryV1**(#paysettingcheckcountryv1) | **GET** /method/pay-setting/check-country | Check country after update user|
-|**paySettingGetSettingV3**(#paysettinggetsettingv3) | **GET** /method/pay-setting | Get pay settings for profile v3|
-|**paySettingSetSettingV1**(#paysettingsetsettingv1) | **POST** /method/pay-setting | Set pay settings for profile|
+|[**paySettingCheckCountryV1**](#paysettingcheckcountryv1) | **GET** /method/pay-setting/check-country | Check country after update user|
+|[**paySettingGetSettingV3**](#paysettinggetsettingv3) | **GET** /method/pay-setting | Get pay settings for profile v3|
+|[**paySettingSetSettingV1**](#paysettingsetsettingv1) | **POST** /method/pay-setting | Set pay settings for profile|
 
 # **paySettingCheckCountryV1**
 > PayCheckCountryResponse paySettingCheckCountryV1()
@@ -40,10 +40,10 @@ const { status, data } = await apiInstance.paySettingCheckCountryV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **countryId** | **number** | country id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **countryId** | [**number**] | country id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -52,7 +52,7 @@ const { status, data } = await apiInstance.paySettingCheckCountryV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -98,9 +98,9 @@ const { status, data } = await apiInstance.paySettingGetSettingV3(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **projectId** | **number** | Project id | defaults to undefined|
-| **v** | **'3'** | Version (automatically defaults to 3 based on method version, can be overridden) | (optional) defaults to '3'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;3&#39;**]**Array<&#39;3&#39;>** | Version (automatically defaults to 3 based on method version, can be overridden) | (optional) defaults to '3'|
 
 
 ### Return type
@@ -109,7 +109,7 @@ const { status, data } = await apiInstance.paySettingGetSettingV3(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -161,7 +161,7 @@ const { status, data } = await apiInstance.paySettingSetSettingV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

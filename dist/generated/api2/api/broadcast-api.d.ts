@@ -12,8 +12,20 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
+import type { BroadcastStatusV1200Response } from '../models';
 import type { MethodBroadcastRestreamsResponse } from '../models';
 import type { MethodCurrentBroadcastResponse } from '../models';
+import type { SiteBroadcastCredentialsResponse } from '../models';
+import type { SiteBroadcastEventsV4Response } from '../models';
+import type { SiteBroadcastFindResponse } from '../models';
+import type { SiteBroadcastGraphResponse } from '../models';
+import type { SiteBroadcastListResponse } from '../models';
+import type { SiteBroadcastPauseRequest } from '../models';
+import type { SiteBroadcastPlayRequest } from '../models';
+import type { SiteBroadcastRestreamsInfoResponse } from '../models';
+import type { SiteBroadcastStopRequest } from '../models';
+import type { SiteRestreamEventResponse } from '../models';
+import type { SuccessResponse } from '../models';
 /**
  * BroadcastApi - axios parameter creator
  * @export
@@ -21,25 +33,160 @@ import type { MethodCurrentBroadcastResponse } from '../models';
 export declare const BroadcastApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Get restreams
-     * @param {MethodBroadcastRestreamsV1LanguageEnum} language Current language
-     * @param {number} broadcastId broadcast id
-     * @param {string} key Chat token
-     * @param {MethodBroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @summary Get credentials
+     * @param {BroadcastCredentialsV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodBroadcastRestreamsV1: (language: MethodBroadcastRestreamsV1LanguageEnum, broadcastId: number, key: string, v?: MethodBroadcastRestreamsV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastCredentialsV1: (language: BroadcastCredentialsV1LanguageEnum, projectId: number, v?: BroadcastCredentialsV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Broadcast event item
+     * @param {BroadcastEventItemV1LanguageEnum} language Current language
+     * @param {string} id Event id
+     * @param {string} date Event date
+     * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastEventItemV1: (language: BroadcastEventItemV1LanguageEnum, id: string, date: string, v?: BroadcastEventItemV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Events from broadcast v4
+     * @param {BroadcastEventsV4LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId broadcast id
+     * @param {Array<number>} [channels] Channels id
+     * @param {BroadcastEventsV4LevelEnum} [level] Level log
+     * @param {string} [platform] Platform
+     * @param {string} [app] App stream
+     * @param {string} [server] Server IP
+     * @param {string} [dateFrom] Date only after create date
+     * @param {string} [dateTo] Date only after create date
+     * @param {number} [offset] Page offset number
+     * @param {number} [limit] Number of results
+     * @param {BroadcastEventsV4SortByDateEnum} [sortByDate] Sort order by created_at
+     * @param {string} [cursorId] Cursor event id
+     * @param {string} [cursorDatetime] Cursor event datetime
+     * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastEventsV4: (language: BroadcastEventsV4LanguageEnum, projectId: number, broadcastId: number, channels?: Array<number>, level?: BroadcastEventsV4LevelEnum, platform?: string, app?: string, server?: string, dateFrom?: string, dateTo?: string, offset?: number, limit?: number, sortByDate?: BroadcastEventsV4SortByDateEnum, cursorId?: string, cursorDatetime?: string, v?: BroadcastEventsV4VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get one broadcast
+     * @param {BroadcastFindV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId broadcast id
+     * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastFindV1: (language: BroadcastFindV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastFindV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Bitrate from broadcast
+     * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId broadcast id
+     * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastGraphBitrateV1: (language: BroadcastGraphBitrateV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphBitrateV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Viewers from broadcast
+     * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId broadcast id
+     * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastGraphViewersV1: (language: BroadcastGraphViewersV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphViewersV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary List broadcast
+     * @param {BroadcastListV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} [limit] Number of results
+     * @param {number} [offset] Page offset number
+     * @param {BroadcastListV1OrderEnum} [order] order
+     * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastListV1: (language: BroadcastListV1LanguageEnum, projectId: number, limit?: number, offset?: number, order?: BroadcastListV1OrderEnum, v?: BroadcastListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Pause stream
+     * @param {SiteBroadcastPauseRequest} siteBroadcastPauseRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastPauseV1: (siteBroadcastPauseRequest: SiteBroadcastPauseRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Play stream
+     * @param {SiteBroadcastPlayRequest} siteBroadcastPlayRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastPlayV1: (siteBroadcastPlayRequest: SiteBroadcastPlayRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get restreams for chat
+     * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
+     * @param {number} broadcastId broadcast id
+     * @param {string} key Chat token
+     * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastRestreamChatV1: (language: BroadcastRestreamChatV1LanguageEnum, broadcastId: number, key: string, v?: BroadcastRestreamChatV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary View live info
+     * @param {BroadcastRestreamsV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId Broadcast id
+     * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastRestreamsV1: (language: BroadcastRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastRestreamsV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Live status info by project id
+     * @param {BroadcastStatusV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastStatusV1: (language: BroadcastStatusV1LanguageEnum, projectId: number, v?: BroadcastStatusV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Stop stream
+     * @param {SiteBroadcastStopRequest} siteBroadcastStopRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastStopV1: (siteBroadcastStopRequest: SiteBroadcastStopRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Connect channel, long polling
-     * @param {MethodBroadcastTokenChannelV1LanguageEnum} language Current language
+     * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
      * @param {string} key
-     * @param {MethodBroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodBroadcastTokenChannelV1: (language: MethodBroadcastTokenChannelV1LanguageEnum, key: string, v?: MethodBroadcastTokenChannelV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastTokenChannelV1: (language: BroadcastTokenChannelV1LanguageEnum, key: string, v?: BroadcastTokenChannelV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BroadcastApi - functional programming interface
@@ -48,25 +195,160 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
 export declare const BroadcastApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Get restreams
-     * @param {MethodBroadcastRestreamsV1LanguageEnum} language Current language
-     * @param {number} broadcastId broadcast id
-     * @param {string} key Chat token
-     * @param {MethodBroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @summary Get credentials
+     * @param {BroadcastCredentialsV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodBroadcastRestreamsV1(language: MethodBroadcastRestreamsV1LanguageEnum, broadcastId: number, key: string, v?: MethodBroadcastRestreamsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodBroadcastRestreamsResponse>>;
+    broadcastCredentialsV1(language: BroadcastCredentialsV1LanguageEnum, projectId: number, v?: BroadcastCredentialsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastCredentialsResponse>>;
+    /**
+     *
+     * @summary Broadcast event item
+     * @param {BroadcastEventItemV1LanguageEnum} language Current language
+     * @param {string} id Event id
+     * @param {string} date Event date
+     * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastEventItemV1(language: BroadcastEventItemV1LanguageEnum, id: string, date: string, v?: BroadcastEventItemV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteRestreamEventResponse>>;
+    /**
+     *
+     * @summary Events from broadcast v4
+     * @param {BroadcastEventsV4LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId broadcast id
+     * @param {Array<number>} [channels] Channels id
+     * @param {BroadcastEventsV4LevelEnum} [level] Level log
+     * @param {string} [platform] Platform
+     * @param {string} [app] App stream
+     * @param {string} [server] Server IP
+     * @param {string} [dateFrom] Date only after create date
+     * @param {string} [dateTo] Date only after create date
+     * @param {number} [offset] Page offset number
+     * @param {number} [limit] Number of results
+     * @param {BroadcastEventsV4SortByDateEnum} [sortByDate] Sort order by created_at
+     * @param {string} [cursorId] Cursor event id
+     * @param {string} [cursorDatetime] Cursor event datetime
+     * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastEventsV4(language: BroadcastEventsV4LanguageEnum, projectId: number, broadcastId: number, channels?: Array<number>, level?: BroadcastEventsV4LevelEnum, platform?: string, app?: string, server?: string, dateFrom?: string, dateTo?: string, offset?: number, limit?: number, sortByDate?: BroadcastEventsV4SortByDateEnum, cursorId?: string, cursorDatetime?: string, v?: BroadcastEventsV4VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastEventsV4Response>>;
+    /**
+     *
+     * @summary Get one broadcast
+     * @param {BroadcastFindV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId broadcast id
+     * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastFindV1(language: BroadcastFindV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastFindV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastFindResponse>>;
+    /**
+     *
+     * @summary Bitrate from broadcast
+     * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId broadcast id
+     * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastGraphBitrateV1(language: BroadcastGraphBitrateV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphBitrateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastGraphResponse>>;
+    /**
+     *
+     * @summary Viewers from broadcast
+     * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId broadcast id
+     * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastGraphViewersV1(language: BroadcastGraphViewersV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphViewersV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastGraphResponse>>;
+    /**
+     *
+     * @summary List broadcast
+     * @param {BroadcastListV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} [limit] Number of results
+     * @param {number} [offset] Page offset number
+     * @param {BroadcastListV1OrderEnum} [order] order
+     * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastListV1(language: BroadcastListV1LanguageEnum, projectId: number, limit?: number, offset?: number, order?: BroadcastListV1OrderEnum, v?: BroadcastListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastListResponse>>;
+    /**
+     *
+     * @summary Pause stream
+     * @param {SiteBroadcastPauseRequest} siteBroadcastPauseRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastPauseV1(siteBroadcastPauseRequest: SiteBroadcastPauseRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     *
+     * @summary Play stream
+     * @param {SiteBroadcastPlayRequest} siteBroadcastPlayRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastPlayV1(siteBroadcastPlayRequest: SiteBroadcastPlayRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     *
+     * @summary Get restreams for chat
+     * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
+     * @param {number} broadcastId broadcast id
+     * @param {string} key Chat token
+     * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastRestreamChatV1(language: BroadcastRestreamChatV1LanguageEnum, broadcastId: number, key: string, v?: BroadcastRestreamChatV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodBroadcastRestreamsResponse>>;
+    /**
+     *
+     * @summary View live info
+     * @param {BroadcastRestreamsV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {number} broadcastId Broadcast id
+     * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastRestreamsV1(language: BroadcastRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastRestreamsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastRestreamsInfoResponse>>;
+    /**
+     *
+     * @summary Live status info by project id
+     * @param {BroadcastStatusV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastStatusV1(language: BroadcastStatusV1LanguageEnum, projectId: number, v?: BroadcastStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BroadcastStatusV1200Response>>;
+    /**
+     *
+     * @summary Stop stream
+     * @param {SiteBroadcastStopRequest} siteBroadcastStopRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastStopV1(siteBroadcastStopRequest: SiteBroadcastStopRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
      * @summary Connect channel, long polling
-     * @param {MethodBroadcastTokenChannelV1LanguageEnum} language Current language
+     * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
      * @param {string} key
-     * @param {MethodBroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodBroadcastTokenChannelV1(language: MethodBroadcastTokenChannelV1LanguageEnum, key: string, v?: MethodBroadcastTokenChannelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodCurrentBroadcastResponse>>;
+    broadcastTokenChannelV1(language: BroadcastTokenChannelV1LanguageEnum, key: string, v?: BroadcastTokenChannelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodCurrentBroadcastResponse>>;
 };
 /**
  * BroadcastApi - factory interface
@@ -75,20 +357,116 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
 export declare const BroadcastApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Get restreams
-     * @param {BroadcastApiMethodBroadcastRestreamsV1Request} requestParameters Request parameters.
+     * @summary Get credentials
+     * @param {BroadcastApiBroadcastCredentialsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodBroadcastRestreamsV1(requestParameters: BroadcastApiMethodBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodBroadcastRestreamsResponse>;
+    broadcastCredentialsV1(requestParameters: BroadcastApiBroadcastCredentialsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastCredentialsResponse>;
+    /**
+     *
+     * @summary Broadcast event item
+     * @param {BroadcastApiBroadcastEventItemV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastEventItemV1(requestParameters: BroadcastApiBroadcastEventItemV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteRestreamEventResponse>;
+    /**
+     *
+     * @summary Events from broadcast v4
+     * @param {BroadcastApiBroadcastEventsV4Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastEventsV4(requestParameters: BroadcastApiBroadcastEventsV4Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastEventsV4Response>;
+    /**
+     *
+     * @summary Get one broadcast
+     * @param {BroadcastApiBroadcastFindV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastFindV1(requestParameters: BroadcastApiBroadcastFindV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastFindResponse>;
+    /**
+     *
+     * @summary Bitrate from broadcast
+     * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastGraphBitrateV1(requestParameters: BroadcastApiBroadcastGraphBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastGraphResponse>;
+    /**
+     *
+     * @summary Viewers from broadcast
+     * @param {BroadcastApiBroadcastGraphViewersV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastGraphViewersV1(requestParameters: BroadcastApiBroadcastGraphViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastGraphResponse>;
+    /**
+     *
+     * @summary List broadcast
+     * @param {BroadcastApiBroadcastListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastListV1(requestParameters: BroadcastApiBroadcastListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastListResponse>;
+    /**
+     *
+     * @summary Pause stream
+     * @param {BroadcastApiBroadcastPauseV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastPauseV1(requestParameters: BroadcastApiBroadcastPauseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Play stream
+     * @param {BroadcastApiBroadcastPlayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastPlayV1(requestParameters: BroadcastApiBroadcastPlayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get restreams for chat
+     * @param {BroadcastApiBroadcastRestreamChatV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastRestreamChatV1(requestParameters: BroadcastApiBroadcastRestreamChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodBroadcastRestreamsResponse>;
+    /**
+     *
+     * @summary View live info
+     * @param {BroadcastApiBroadcastRestreamsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastRestreamsV1(requestParameters: BroadcastApiBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastRestreamsInfoResponse>;
+    /**
+     *
+     * @summary Live status info by project id
+     * @param {BroadcastApiBroadcastStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastStatusV1(requestParameters: BroadcastApiBroadcastStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<BroadcastStatusV1200Response>;
+    /**
+     *
+     * @summary Stop stream
+     * @param {BroadcastApiBroadcastStopV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastStopV1(requestParameters: BroadcastApiBroadcastStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Connect channel, long polling
-     * @param {BroadcastApiMethodBroadcastTokenChannelV1Request} requestParameters Request parameters.
+     * @param {BroadcastApiBroadcastTokenChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodBroadcastTokenChannelV1(requestParameters: BroadcastApiMethodBroadcastTokenChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodCurrentBroadcastResponse>;
+    broadcastTokenChannelV1(requestParameters: BroadcastApiBroadcastTokenChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodCurrentBroadcastResponse>;
 };
 /**
  * BroadcastApi - interface
@@ -98,78 +476,576 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
 export interface BroadcastApiInterface {
     /**
      *
-     * @summary Get restreams
-     * @param {BroadcastApiMethodBroadcastRestreamsV1Request} requestParameters Request parameters.
+     * @summary Get credentials
+     * @param {BroadcastApiBroadcastCredentialsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApiInterface
      */
-    methodBroadcastRestreamsV1(requestParameters: BroadcastApiMethodBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodBroadcastRestreamsResponse>;
+    broadcastCredentialsV1(requestParameters: BroadcastApiBroadcastCredentialsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastCredentialsResponse>;
+    /**
+     *
+     * @summary Broadcast event item
+     * @param {BroadcastApiBroadcastEventItemV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastEventItemV1(requestParameters: BroadcastApiBroadcastEventItemV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteRestreamEventResponse>;
+    /**
+     *
+     * @summary Events from broadcast v4
+     * @param {BroadcastApiBroadcastEventsV4Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastEventsV4(requestParameters: BroadcastApiBroadcastEventsV4Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastEventsV4Response>;
+    /**
+     *
+     * @summary Get one broadcast
+     * @param {BroadcastApiBroadcastFindV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastFindV1(requestParameters: BroadcastApiBroadcastFindV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastFindResponse>;
+    /**
+     *
+     * @summary Bitrate from broadcast
+     * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastGraphBitrateV1(requestParameters: BroadcastApiBroadcastGraphBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastGraphResponse>;
+    /**
+     *
+     * @summary Viewers from broadcast
+     * @param {BroadcastApiBroadcastGraphViewersV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastGraphViewersV1(requestParameters: BroadcastApiBroadcastGraphViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastGraphResponse>;
+    /**
+     *
+     * @summary List broadcast
+     * @param {BroadcastApiBroadcastListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastListV1(requestParameters: BroadcastApiBroadcastListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastListResponse>;
+    /**
+     *
+     * @summary Pause stream
+     * @param {BroadcastApiBroadcastPauseV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastPauseV1(requestParameters: BroadcastApiBroadcastPauseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Play stream
+     * @param {BroadcastApiBroadcastPlayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastPlayV1(requestParameters: BroadcastApiBroadcastPlayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     *
+     * @summary Get restreams for chat
+     * @param {BroadcastApiBroadcastRestreamChatV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastRestreamChatV1(requestParameters: BroadcastApiBroadcastRestreamChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodBroadcastRestreamsResponse>;
+    /**
+     *
+     * @summary View live info
+     * @param {BroadcastApiBroadcastRestreamsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastRestreamsV1(requestParameters: BroadcastApiBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastRestreamsInfoResponse>;
+    /**
+     *
+     * @summary Live status info by project id
+     * @param {BroadcastApiBroadcastStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastStatusV1(requestParameters: BroadcastApiBroadcastStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<BroadcastStatusV1200Response>;
+    /**
+     *
+     * @summary Stop stream
+     * @param {BroadcastApiBroadcastStopV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastStopV1(requestParameters: BroadcastApiBroadcastStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Connect channel, long polling
-     * @param {BroadcastApiMethodBroadcastTokenChannelV1Request} requestParameters Request parameters.
+     * @param {BroadcastApiBroadcastTokenChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApiInterface
      */
-    methodBroadcastTokenChannelV1(requestParameters: BroadcastApiMethodBroadcastTokenChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodCurrentBroadcastResponse>;
+    broadcastTokenChannelV1(requestParameters: BroadcastApiBroadcastTokenChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodCurrentBroadcastResponse>;
 }
 /**
- * Request parameters for methodBroadcastRestreamsV1 operation in BroadcastApi.
+ * Request parameters for broadcastCredentialsV1 operation in BroadcastApi.
  * @export
- * @interface BroadcastApiMethodBroadcastRestreamsV1Request
+ * @interface BroadcastApiBroadcastCredentialsV1Request
  */
-export interface BroadcastApiMethodBroadcastRestreamsV1Request {
+export interface BroadcastApiBroadcastCredentialsV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof BroadcastApiMethodBroadcastRestreamsV1
+     * @memberof BroadcastApiBroadcastCredentialsV1
      */
-    readonly language: MethodBroadcastRestreamsV1LanguageEnum;
+    readonly language: BroadcastCredentialsV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastCredentialsV1
+     */
+    readonly project_id: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof BroadcastApiBroadcastCredentialsV1
+     */
+    readonly v?: BroadcastCredentialsV1VEnum;
+}
+/**
+ * Request parameters for broadcastEventItemV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastEventItemV1Request
+ */
+export interface BroadcastApiBroadcastEventItemV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof BroadcastApiBroadcastEventItemV1
+     */
+    readonly language: BroadcastEventItemV1LanguageEnum;
+    /**
+     * Event id
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventItemV1
+     */
+    readonly id: string;
+    /**
+     * Event date
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventItemV1
+     */
+    readonly date: string;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof BroadcastApiBroadcastEventItemV1
+     */
+    readonly v?: BroadcastEventItemV1VEnum;
+}
+/**
+ * Request parameters for broadcastEventsV4 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastEventsV4Request
+ */
+export interface BroadcastApiBroadcastEventsV4Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly language: BroadcastEventsV4LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly project_id: number;
     /**
      * broadcast id
      * @type {number}
-     * @memberof BroadcastApiMethodBroadcastRestreamsV1
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly broadcast_id: number;
+    /**
+     * Channels id
+     * @type {Array<number>}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly channels?: Array<number>;
+    /**
+     * Level log
+     * @type {'info' | 'warning' | 'error' | 'debug'}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly level?: BroadcastEventsV4LevelEnum;
+    /**
+     * Platform
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly platform?: string;
+    /**
+     * App stream
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly app?: string;
+    /**
+     * Server IP
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly server?: string;
+    /**
+     * Date only after create date
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly date_from?: string;
+    /**
+     * Date only after create date
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly date_to?: string;
+    /**
+     * Page offset number
+     * @type {number}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly offset?: number;
+    /**
+     * Number of results
+     * @type {number}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly limit?: number;
+    /**
+     * Sort order by created_at
+     * @type {'asc' | 'desc'}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly sort_by_date?: BroadcastEventsV4SortByDateEnum;
+    /**
+     * Cursor event id
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly cursor_id?: string;
+    /**
+     * Cursor event datetime
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly cursor_datetime?: string;
+    /**
+     * Version (automatically defaults to 4 based on method version, can be overridden)
+     * @type {'4'}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly v?: BroadcastEventsV4VEnum;
+}
+/**
+ * Request parameters for broadcastFindV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastFindV1Request
+ */
+export interface BroadcastApiBroadcastFindV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof BroadcastApiBroadcastFindV1
+     */
+    readonly language: BroadcastFindV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastFindV1
+     */
+    readonly project_id: number;
+    /**
+     * broadcast id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastFindV1
+     */
+    readonly broadcast_id: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'3'}
+     * @memberof BroadcastApiBroadcastFindV1
+     */
+    readonly v?: BroadcastFindV1VEnum;
+}
+/**
+ * Request parameters for broadcastGraphBitrateV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastGraphBitrateV1Request
+ */
+export interface BroadcastApiBroadcastGraphBitrateV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof BroadcastApiBroadcastGraphBitrateV1
+     */
+    readonly language: BroadcastGraphBitrateV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastGraphBitrateV1
+     */
+    readonly project_id: number;
+    /**
+     * broadcast id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastGraphBitrateV1
+     */
+    readonly broadcast_id: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'3'}
+     * @memberof BroadcastApiBroadcastGraphBitrateV1
+     */
+    readonly v?: BroadcastGraphBitrateV1VEnum;
+}
+/**
+ * Request parameters for broadcastGraphViewersV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastGraphViewersV1Request
+ */
+export interface BroadcastApiBroadcastGraphViewersV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof BroadcastApiBroadcastGraphViewersV1
+     */
+    readonly language: BroadcastGraphViewersV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastGraphViewersV1
+     */
+    readonly project_id: number;
+    /**
+     * broadcast id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastGraphViewersV1
+     */
+    readonly broadcast_id: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'3'}
+     * @memberof BroadcastApiBroadcastGraphViewersV1
+     */
+    readonly v?: BroadcastGraphViewersV1VEnum;
+}
+/**
+ * Request parameters for broadcastListV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastListV1Request
+ */
+export interface BroadcastApiBroadcastListV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof BroadcastApiBroadcastListV1
+     */
+    readonly language: BroadcastListV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastListV1
+     */
+    readonly project_id: number;
+    /**
+     * Number of results
+     * @type {number}
+     * @memberof BroadcastApiBroadcastListV1
+     */
+    readonly limit?: number;
+    /**
+     * Page offset number
+     * @type {number}
+     * @memberof BroadcastApiBroadcastListV1
+     */
+    readonly offset?: number;
+    /**
+     * order
+     * @type {'asc' | 'desc'}
+     * @memberof BroadcastApiBroadcastListV1
+     */
+    readonly order?: BroadcastListV1OrderEnum;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'3'}
+     * @memberof BroadcastApiBroadcastListV1
+     */
+    readonly v?: BroadcastListV1VEnum;
+}
+/**
+ * Request parameters for broadcastPauseV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastPauseV1Request
+ */
+export interface BroadcastApiBroadcastPauseV1Request {
+    /**
+     *
+     * @type {SiteBroadcastPauseRequest}
+     * @memberof BroadcastApiBroadcastPauseV1
+     */
+    readonly SiteBroadcastPauseRequest: SiteBroadcastPauseRequest;
+}
+/**
+ * Request parameters for broadcastPlayV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastPlayV1Request
+ */
+export interface BroadcastApiBroadcastPlayV1Request {
+    /**
+     *
+     * @type {SiteBroadcastPlayRequest}
+     * @memberof BroadcastApiBroadcastPlayV1
+     */
+    readonly SiteBroadcastPlayRequest: SiteBroadcastPlayRequest;
+}
+/**
+ * Request parameters for broadcastRestreamChatV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastRestreamChatV1Request
+ */
+export interface BroadcastApiBroadcastRestreamChatV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof BroadcastApiBroadcastRestreamChatV1
+     */
+    readonly language: BroadcastRestreamChatV1LanguageEnum;
+    /**
+     * broadcast id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastRestreamChatV1
      */
     readonly broadcast_id: number;
     /**
      * Chat token
      * @type {string}
-     * @memberof BroadcastApiMethodBroadcastRestreamsV1
+     * @memberof BroadcastApiBroadcastRestreamChatV1
      */
     readonly key: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
-     * @memberof BroadcastApiMethodBroadcastRestreamsV1
+     * @type {'1'}
+     * @memberof BroadcastApiBroadcastRestreamChatV1
      */
-    readonly v?: MethodBroadcastRestreamsV1VEnum;
+    readonly v?: BroadcastRestreamChatV1VEnum;
 }
 /**
- * Request parameters for methodBroadcastTokenChannelV1 operation in BroadcastApi.
+ * Request parameters for broadcastRestreamsV1 operation in BroadcastApi.
  * @export
- * @interface BroadcastApiMethodBroadcastTokenChannelV1Request
+ * @interface BroadcastApiBroadcastRestreamsV1Request
  */
-export interface BroadcastApiMethodBroadcastTokenChannelV1Request {
+export interface BroadcastApiBroadcastRestreamsV1Request {
     /**
      * Current language
      * @type {'ru' | 'en' | 'cn'}
-     * @memberof BroadcastApiMethodBroadcastTokenChannelV1
+     * @memberof BroadcastApiBroadcastRestreamsV1
      */
-    readonly language: MethodBroadcastTokenChannelV1LanguageEnum;
+    readonly language: BroadcastRestreamsV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastRestreamsV1
+     */
+    readonly project_id: number;
+    /**
+     * Broadcast id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastRestreamsV1
+     */
+    readonly broadcast_id: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof BroadcastApiBroadcastRestreamsV1
+     */
+    readonly v?: BroadcastRestreamsV1VEnum;
+}
+/**
+ * Request parameters for broadcastStatusV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastStatusV1Request
+ */
+export interface BroadcastApiBroadcastStatusV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof BroadcastApiBroadcastStatusV1
+     */
+    readonly language: BroadcastStatusV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastStatusV1
+     */
+    readonly project_id: number;
+    /**
+     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * @type {'1'}
+     * @memberof BroadcastApiBroadcastStatusV1
+     */
+    readonly v?: BroadcastStatusV1VEnum;
+}
+/**
+ * Request parameters for broadcastStopV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastStopV1Request
+ */
+export interface BroadcastApiBroadcastStopV1Request {
+    /**
+     *
+     * @type {SiteBroadcastStopRequest}
+     * @memberof BroadcastApiBroadcastStopV1
+     */
+    readonly SiteBroadcastStopRequest: SiteBroadcastStopRequest;
+}
+/**
+ * Request parameters for broadcastTokenChannelV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastTokenChannelV1Request
+ */
+export interface BroadcastApiBroadcastTokenChannelV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof BroadcastApiBroadcastTokenChannelV1
+     */
+    readonly language: BroadcastTokenChannelV1LanguageEnum;
     /**
      *
      * @type {string}
-     * @memberof BroadcastApiMethodBroadcastTokenChannelV1
+     * @memberof BroadcastApiBroadcastTokenChannelV1
      */
     readonly key: string;
     /**
      * Version (automatically defaults to 1 based on method version, can be overridden)
-     * @type {'1' | '2' | '3'}
-     * @memberof BroadcastApiMethodBroadcastTokenChannelV1
+     * @type {'1'}
+     * @memberof BroadcastApiBroadcastTokenChannelV1
      */
-    readonly v?: MethodBroadcastTokenChannelV1VEnum;
+    readonly v?: BroadcastTokenChannelV1VEnum;
 }
 /**
  * BroadcastApi - object-oriented interface
@@ -180,57 +1056,331 @@ export interface BroadcastApiMethodBroadcastTokenChannelV1Request {
 export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterface {
     /**
      *
-     * @summary Get restreams
-     * @param {BroadcastApiMethodBroadcastRestreamsV1Request} requestParameters Request parameters.
+     * @summary Get credentials
+     * @param {BroadcastApiBroadcastCredentialsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    methodBroadcastRestreamsV1(requestParameters: BroadcastApiMethodBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodBroadcastRestreamsResponse, any>>;
+    broadcastCredentialsV1(requestParameters: BroadcastApiBroadcastCredentialsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastCredentialsResponse, any, {}>>;
+    /**
+     *
+     * @summary Broadcast event item
+     * @param {BroadcastApiBroadcastEventItemV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastEventItemV1(requestParameters: BroadcastApiBroadcastEventItemV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteRestreamEventResponse, any, {}>>;
+    /**
+     *
+     * @summary Events from broadcast v4
+     * @param {BroadcastApiBroadcastEventsV4Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastEventsV4(requestParameters: BroadcastApiBroadcastEventsV4Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastEventsV4Response, any, {}>>;
+    /**
+     *
+     * @summary Get one broadcast
+     * @param {BroadcastApiBroadcastFindV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastFindV1(requestParameters: BroadcastApiBroadcastFindV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastFindResponse, any, {}>>;
+    /**
+     *
+     * @summary Bitrate from broadcast
+     * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastGraphBitrateV1(requestParameters: BroadcastApiBroadcastGraphBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastGraphResponse, any, {}>>;
+    /**
+     *
+     * @summary Viewers from broadcast
+     * @param {BroadcastApiBroadcastGraphViewersV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastGraphViewersV1(requestParameters: BroadcastApiBroadcastGraphViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastGraphResponse, any, {}>>;
+    /**
+     *
+     * @summary List broadcast
+     * @param {BroadcastApiBroadcastListV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastListV1(requestParameters: BroadcastApiBroadcastListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastListResponse, any, {}>>;
+    /**
+     *
+     * @summary Pause stream
+     * @param {BroadcastApiBroadcastPauseV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastPauseV1(requestParameters: BroadcastApiBroadcastPauseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    /**
+     *
+     * @summary Play stream
+     * @param {BroadcastApiBroadcastPlayV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastPlayV1(requestParameters: BroadcastApiBroadcastPlayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    /**
+     *
+     * @summary Get restreams for chat
+     * @param {BroadcastApiBroadcastRestreamChatV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastRestreamChatV1(requestParameters: BroadcastApiBroadcastRestreamChatV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodBroadcastRestreamsResponse, any, {}>>;
+    /**
+     *
+     * @summary View live info
+     * @param {BroadcastApiBroadcastRestreamsV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastRestreamsV1(requestParameters: BroadcastApiBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastRestreamsInfoResponse, any, {}>>;
+    /**
+     *
+     * @summary Live status info by project id
+     * @param {BroadcastApiBroadcastStatusV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastStatusV1(requestParameters: BroadcastApiBroadcastStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BroadcastStatusV1200Response, any, {}>>;
+    /**
+     *
+     * @summary Stop stream
+     * @param {BroadcastApiBroadcastStopV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastStopV1(requestParameters: BroadcastApiBroadcastStopV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
     /**
      *
      * @summary Connect channel, long polling
-     * @param {BroadcastApiMethodBroadcastTokenChannelV1Request} requestParameters Request parameters.
+     * @param {BroadcastApiBroadcastTokenChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    methodBroadcastTokenChannelV1(requestParameters: BroadcastApiMethodBroadcastTokenChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodCurrentBroadcastResponse, any>>;
+    broadcastTokenChannelV1(requestParameters: BroadcastApiBroadcastTokenChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodCurrentBroadcastResponse, any, {}>>;
 }
 /**
  * @export
  */
-export declare const MethodBroadcastRestreamsV1LanguageEnum: {
+export declare const BroadcastCredentialsV1LanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
     readonly Cn: "cn";
 };
-export type MethodBroadcastRestreamsV1LanguageEnum = typeof MethodBroadcastRestreamsV1LanguageEnum[keyof typeof MethodBroadcastRestreamsV1LanguageEnum];
+export type BroadcastCredentialsV1LanguageEnum = typeof BroadcastCredentialsV1LanguageEnum[keyof typeof BroadcastCredentialsV1LanguageEnum];
 /**
  * @export
  */
-export declare const MethodBroadcastRestreamsV1VEnum: {
+export declare const BroadcastCredentialsV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
-export type MethodBroadcastRestreamsV1VEnum = typeof MethodBroadcastRestreamsV1VEnum[keyof typeof MethodBroadcastRestreamsV1VEnum];
+export type BroadcastCredentialsV1VEnum = typeof BroadcastCredentialsV1VEnum[keyof typeof BroadcastCredentialsV1VEnum];
 /**
  * @export
  */
-export declare const MethodBroadcastTokenChannelV1LanguageEnum: {
+export declare const BroadcastEventItemV1LanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
     readonly Cn: "cn";
 };
-export type MethodBroadcastTokenChannelV1LanguageEnum = typeof MethodBroadcastTokenChannelV1LanguageEnum[keyof typeof MethodBroadcastTokenChannelV1LanguageEnum];
+export type BroadcastEventItemV1LanguageEnum = typeof BroadcastEventItemV1LanguageEnum[keyof typeof BroadcastEventItemV1LanguageEnum];
 /**
  * @export
  */
-export declare const MethodBroadcastTokenChannelV1VEnum: {
+export declare const BroadcastEventItemV1VEnum: {
     readonly _1: "1";
-    readonly _2: "2";
+};
+export type BroadcastEventItemV1VEnum = typeof BroadcastEventItemV1VEnum[keyof typeof BroadcastEventItemV1VEnum];
+/**
+ * @export
+ */
+export declare const BroadcastEventsV4LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BroadcastEventsV4LanguageEnum = typeof BroadcastEventsV4LanguageEnum[keyof typeof BroadcastEventsV4LanguageEnum];
+/**
+ * @export
+ */
+export declare const BroadcastEventsV4LevelEnum: {
+    readonly Info: "info";
+    readonly Warning: "warning";
+    readonly Error: "error";
+    readonly Debug: "debug";
+};
+export type BroadcastEventsV4LevelEnum = typeof BroadcastEventsV4LevelEnum[keyof typeof BroadcastEventsV4LevelEnum];
+/**
+ * @export
+ */
+export declare const BroadcastEventsV4SortByDateEnum: {
+    readonly Asc: "asc";
+    readonly Desc: "desc";
+};
+export type BroadcastEventsV4SortByDateEnum = typeof BroadcastEventsV4SortByDateEnum[keyof typeof BroadcastEventsV4SortByDateEnum];
+/**
+ * @export
+ */
+export declare const BroadcastEventsV4VEnum: {
+    readonly _4: "4";
+};
+export type BroadcastEventsV4VEnum = typeof BroadcastEventsV4VEnum[keyof typeof BroadcastEventsV4VEnum];
+/**
+ * @export
+ */
+export declare const BroadcastFindV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BroadcastFindV1LanguageEnum = typeof BroadcastFindV1LanguageEnum[keyof typeof BroadcastFindV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const BroadcastFindV1VEnum: {
     readonly _3: "3";
 };
-export type MethodBroadcastTokenChannelV1VEnum = typeof MethodBroadcastTokenChannelV1VEnum[keyof typeof MethodBroadcastTokenChannelV1VEnum];
+export type BroadcastFindV1VEnum = typeof BroadcastFindV1VEnum[keyof typeof BroadcastFindV1VEnum];
+/**
+ * @export
+ */
+export declare const BroadcastGraphBitrateV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BroadcastGraphBitrateV1LanguageEnum = typeof BroadcastGraphBitrateV1LanguageEnum[keyof typeof BroadcastGraphBitrateV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const BroadcastGraphBitrateV1VEnum: {
+    readonly _3: "3";
+};
+export type BroadcastGraphBitrateV1VEnum = typeof BroadcastGraphBitrateV1VEnum[keyof typeof BroadcastGraphBitrateV1VEnum];
+/**
+ * @export
+ */
+export declare const BroadcastGraphViewersV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BroadcastGraphViewersV1LanguageEnum = typeof BroadcastGraphViewersV1LanguageEnum[keyof typeof BroadcastGraphViewersV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const BroadcastGraphViewersV1VEnum: {
+    readonly _3: "3";
+};
+export type BroadcastGraphViewersV1VEnum = typeof BroadcastGraphViewersV1VEnum[keyof typeof BroadcastGraphViewersV1VEnum];
+/**
+ * @export
+ */
+export declare const BroadcastListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BroadcastListV1LanguageEnum = typeof BroadcastListV1LanguageEnum[keyof typeof BroadcastListV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const BroadcastListV1OrderEnum: {
+    readonly Asc: "asc";
+    readonly Desc: "desc";
+};
+export type BroadcastListV1OrderEnum = typeof BroadcastListV1OrderEnum[keyof typeof BroadcastListV1OrderEnum];
+/**
+ * @export
+ */
+export declare const BroadcastListV1VEnum: {
+    readonly _3: "3";
+};
+export type BroadcastListV1VEnum = typeof BroadcastListV1VEnum[keyof typeof BroadcastListV1VEnum];
+/**
+ * @export
+ */
+export declare const BroadcastRestreamChatV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BroadcastRestreamChatV1LanguageEnum = typeof BroadcastRestreamChatV1LanguageEnum[keyof typeof BroadcastRestreamChatV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const BroadcastRestreamChatV1VEnum: {
+    readonly _1: "1";
+};
+export type BroadcastRestreamChatV1VEnum = typeof BroadcastRestreamChatV1VEnum[keyof typeof BroadcastRestreamChatV1VEnum];
+/**
+ * @export
+ */
+export declare const BroadcastRestreamsV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BroadcastRestreamsV1LanguageEnum = typeof BroadcastRestreamsV1LanguageEnum[keyof typeof BroadcastRestreamsV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const BroadcastRestreamsV1VEnum: {
+    readonly _1: "1";
+};
+export type BroadcastRestreamsV1VEnum = typeof BroadcastRestreamsV1VEnum[keyof typeof BroadcastRestreamsV1VEnum];
+/**
+ * @export
+ */
+export declare const BroadcastStatusV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BroadcastStatusV1LanguageEnum = typeof BroadcastStatusV1LanguageEnum[keyof typeof BroadcastStatusV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const BroadcastStatusV1VEnum: {
+    readonly _1: "1";
+};
+export type BroadcastStatusV1VEnum = typeof BroadcastStatusV1VEnum[keyof typeof BroadcastStatusV1VEnum];
+/**
+ * @export
+ */
+export declare const BroadcastTokenChannelV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BroadcastTokenChannelV1LanguageEnum = typeof BroadcastTokenChannelV1LanguageEnum[keyof typeof BroadcastTokenChannelV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const BroadcastTokenChannelV1VEnum: {
+    readonly _1: "1";
+};
+export type BroadcastTokenChannelV1VEnum = typeof BroadcastTokenChannelV1VEnum[keyof typeof BroadcastTokenChannelV1VEnum];
 //# sourceMappingURL=broadcast-api.d.ts.map

@@ -54,8 +54,6 @@ export interface SiteAuthExchangeRequest {
 }
 export declare const SiteAuthExchangeRequestVEnum: {
     readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
 };
 export type SiteAuthExchangeRequestVEnum = typeof SiteAuthExchangeRequestVEnum[keyof typeof SiteAuthExchangeRequestVEnum];
 export declare const SiteAuthExchangeRequestLanguageEnum: {

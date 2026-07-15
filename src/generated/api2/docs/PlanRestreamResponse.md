@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **count_channel_min** | **number** | Minimum channel count | [default to undefined]
 **count_channel_max** | **number** | Maximum channel count | [default to undefined]
 **type** | **string** | Type | [default to undefined]
+**purchase_available** | **boolean** | Available for purchase | [default to undefined]
+**prolongation_available** | **boolean** | Available for auto prolongation | [default to undefined]
 **price_rub** | **number** | Price (RUB) | [default to undefined]
 **price_usd** | **number** | Price (USD) | [default to undefined]
 **bitrate_max** | **number** | Maximum bitrate, kbps | [default to undefined]
@@ -28,7 +30,8 @@ Name | Type | Description | Notes
 **pull_link_limit** | **number** | pull links | [default to undefined]
 **index** | **number** | Field for sort | [default to undefined]
 **support_custom_channel** | **boolean** | Support custom channel | [default to undefined]
-**discount** | **PlanRestreamDiscountResponse**(PlanRestreamDiscountResponse.md) | Discount | [default to undefined]
+**custom_video** | **number** | Custom video | [default to undefined]
+**discount** | [**PlanRestreamDiscountResponse**](PlanRestreamDiscountResponse.md) | Discount | [default to undefined]
 
 ## Example
 
@@ -42,6 +45,8 @@ const instance: PlanRestreamResponse = {
     count_channel_min,
     count_channel_max,
     type,
+    purchase_available,
+    prolongation_available,
     price_rub,
     price_usd,
     bitrate_max,
@@ -59,6 +64,7 @@ const instance: PlanRestreamResponse = {
     pull_link_limit,
     index,
     support_custom_channel,
+    custom_video,
     discount,
 };
 ```

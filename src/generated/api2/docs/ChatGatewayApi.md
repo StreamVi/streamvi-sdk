@@ -4,10 +4,10 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|**methodChatGatewayDeleteV1**(#methodchatgatewaydeletev1) | **POST** /method/chat/messages/delete | Remove message|
-|**methodChatGatewayGetMessageV1**(#methodchatgatewaygetmessagev1) | **GET** /method/chat/messages/message | Get one message|
-|**methodChatGatewayHistoryV1**(#methodchatgatewayhistoryv1) | **GET** /method/chat/messages | List history message|
-|**methodChatGatewaySendV1**(#methodchatgatewaysendv1) | **POST** /method/chat/messages | Send message|
+|[**methodChatGatewayDeleteV1**](#methodchatgatewaydeletev1) | **POST** /method/chat/messages/delete | Remove message|
+|[**methodChatGatewayGetMessageV1**](#methodchatgatewaygetmessagev1) | **GET** /method/chat/messages/message | Get one message|
+|[**methodChatGatewayHistoryV1**](#methodchatgatewayhistoryv1) | **GET** /method/chat/messages | List history message|
+|[**methodChatGatewaySendV1**](#methodchatgatewaysendv1) | **POST** /method/chat/messages | Send message|
 
 # **methodChatGatewayDeleteV1**
 > SuccessResponse methodChatGatewayDeleteV1()
@@ -43,11 +43,11 @@ const { status, data } = await apiInstance.methodChatGatewayDeleteV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **key** | **string** | Key | defaults to undefined|
-| **broadcastId** | **number** | broadcast id | defaults to undefined|
-| **eventId** | **string** | Event id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **key** | [**string**] | Key | defaults to undefined|
+| **broadcastId** | [**number**] | broadcast id | defaults to undefined|
+| **eventId** | [**string**] | Event id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -56,7 +56,7 @@ const { status, data } = await apiInstance.methodChatGatewayDeleteV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -106,11 +106,11 @@ const { status, data } = await apiInstance.methodChatGatewayGetMessageV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **key** | **string** | Key | defaults to undefined|
-| **broadcastId** | **number** | broadcast id | defaults to undefined|
-| **eventId** | **string** | Event id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **key** | [**string**] | Key | defaults to undefined|
+| **broadcastId** | [**number**] | broadcast id | defaults to undefined|
+| **eventId** | [**string**] | Event id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -119,7 +119,7 @@ const { status, data } = await apiInstance.methodChatGatewayGetMessageV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -167,10 +167,10 @@ const { status, data } = await apiInstance.methodChatGatewayHistoryV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **key** | **string** | Key | defaults to undefined|
-| **broadcastId** | **number** | broadcast id | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **key** | [**string**] | Key | defaults to undefined|
+| **broadcastId** | [**number**] | broadcast id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -179,7 +179,7 @@ const { status, data } = await apiInstance.methodChatGatewayHistoryV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -231,10 +231,10 @@ const { status, data } = await apiInstance.methodChatGatewaySendV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **methodChatSendMessageRequestDto** | **MethodChatSendMessageRequestDto**|  | |
-| **language** | **'ru' | 'en' | 'cn'** | Current language | defaults to 'en'|
-| **key** | **string** | Key | defaults to undefined|
-| **broadcastId** | **number** |  | defaults to undefined|
-| **v** | **'1'** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **key** | [**string**] | Key | defaults to undefined|
+| **broadcastId** | [**number**] |  | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -243,7 +243,7 @@ const { status, data } = await apiInstance.methodChatGatewaySendV1(
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

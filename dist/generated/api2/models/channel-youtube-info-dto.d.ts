@@ -77,6 +77,12 @@ export interface ChannelYoutubeInfoDto {
      * @memberof ChannelYoutubeInfoDto
      */
     'image'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ChannelYoutubeInfoDto
+     */
+    'disableAutoEnd'?: boolean;
 }
 export declare const ChannelYoutubeInfoDtoLangEnum: {
     readonly Ru: "ru";
