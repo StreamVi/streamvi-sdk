@@ -34,11 +34,12 @@ const PayoutApiAxiosParamCreator = function (configuration) {
          * @summary Create payout
          * @param {PayoutCreateV1LanguageEnum} language Current language
          * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto
-         * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         payoutCreateV1: async (language, payoutCreateRequestBodyDto, v, options = {}) => {
+            var _a;
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('payoutCreateV1', 'language', language);
             // verify required parameter 'payoutCreateRequestBodyDto' is not null or undefined
@@ -59,6 +60,9 @@ const PayoutApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -66,7 +70,8 @@ const PayoutApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(payoutCreateRequestBodyDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...payoutCreateRequestBodyDto, v: (_a = payoutCreateRequestBodyDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -77,7 +82,7 @@ const PayoutApiAxiosParamCreator = function (configuration) {
          * @summary Get payout data for create
          * @param {PayoutPrepareV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -101,6 +106,9 @@ const PayoutApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["payout:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -131,7 +139,7 @@ const PayoutApiFp = function (configuration) {
          * @summary Create payout
          * @param {PayoutCreateV1LanguageEnum} language Current language
          * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto
-         * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -147,7 +155,7 @@ const PayoutApiFp = function (configuration) {
          * @summary Get payout data for create
          * @param {PayoutPrepareV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

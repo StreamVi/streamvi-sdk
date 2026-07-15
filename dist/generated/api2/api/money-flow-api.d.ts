@@ -23,7 +23,7 @@ export declare const MoneyFlowApiAxiosParamCreator: (configuration?: Configurati
      * @summary Transaction list for frontend
      * @param {MoneyFlowListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
@@ -45,7 +45,7 @@ export declare const MoneyFlowApiFp: (configuration?: Configuration) => {
      * @summary Transaction list for frontend
      * @param {MoneyFlowListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
@@ -106,7 +106,7 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */

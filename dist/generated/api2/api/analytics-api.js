@@ -35,7 +35,7 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
          * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
-         * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [offset] Offset
          * @param {number} [limit] Limit
          * @param {string} [date] Exact date filter
@@ -70,6 +70,9 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["analytics:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -127,7 +130,7 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
          * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -154,6 +157,9 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -177,7 +183,7 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
          * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -204,6 +210,9 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -227,7 +236,7 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
          * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -253,6 +262,9 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["analytics:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -287,7 +299,7 @@ const AnalyticsApiFp = function (configuration) {
          * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
-         * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [offset] Offset
          * @param {number} [limit] Limit
          * @param {string} [date] Exact date filter
@@ -313,7 +325,7 @@ const AnalyticsApiFp = function (configuration) {
          * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -330,7 +342,7 @@ const AnalyticsApiFp = function (configuration) {
          * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -347,7 +359,7 @@ const AnalyticsApiFp = function (configuration) {
          * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

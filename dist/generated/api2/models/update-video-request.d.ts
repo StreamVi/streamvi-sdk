@@ -16,11 +16,11 @@
  */
 export interface UpdateVideoRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof UpdateVideoRequest
      */
-    'v': UpdateVideoRequestVEnum;
+    'v'?: UpdateVideoRequestVEnum;
     /**
      * Current language
      * @type {string}

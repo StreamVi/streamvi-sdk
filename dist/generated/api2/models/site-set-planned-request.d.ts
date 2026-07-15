@@ -16,11 +16,11 @@
  */
 export interface SiteSetPlannedRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof SiteSetPlannedRequest
      */
-    'v': SiteSetPlannedRequestVEnum;
+    'v'?: SiteSetPlannedRequestVEnum;
     /**
      * Current language
      * @type {string}

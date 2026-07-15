@@ -16,11 +16,11 @@
  */
 export interface SiteWebinarRoomSetSyncBodyRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof SiteWebinarRoomSetSyncBodyRequest
      */
-    'v': SiteWebinarRoomSetSyncBodyRequestVEnum;
+    'v'?: SiteWebinarRoomSetSyncBodyRequestVEnum;
     /**
      * Current language
      * @type {string}

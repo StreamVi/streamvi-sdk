@@ -25,7 +25,7 @@ export declare const HelpPageApiAxiosParamCreator: (configuration?: Configuratio
      * @summary Get help page
      * @param {HelpPageGetV1LanguageEnum} language Current language
      * @param {string} url Url of page
-     * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -34,7 +34,7 @@ export declare const HelpPageApiAxiosParamCreator: (configuration?: Configuratio
      *
      * @summary Get list of help pages
      * @param {HelpPageListV1LanguageEnum} language Current language
-     * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {string} [s] String for search
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
@@ -46,7 +46,7 @@ export declare const HelpPageApiAxiosParamCreator: (configuration?: Configuratio
      *
      * @summary Get structure of help pages
      * @param {HelpPageStructureV1LanguageEnum} language Current language
-     * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -62,7 +62,7 @@ export declare const HelpPageApiFp: (configuration?: Configuration) => {
      * @summary Get help page
      * @param {HelpPageGetV1LanguageEnum} language Current language
      * @param {string} url Url of page
-     * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -71,7 +71,7 @@ export declare const HelpPageApiFp: (configuration?: Configuration) => {
      *
      * @summary Get list of help pages
      * @param {HelpPageListV1LanguageEnum} language Current language
-     * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {string} [s] String for search
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
@@ -83,7 +83,7 @@ export declare const HelpPageApiFp: (configuration?: Configuration) => {
      *
      * @summary Get structure of help pages
      * @param {HelpPageStructureV1LanguageEnum} language Current language
-     * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -172,7 +172,7 @@ export interface HelpPageApiHelpPageGetV1Request {
      */
     readonly url: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof HelpPageApiHelpPageGetV1
      */
@@ -191,7 +191,7 @@ export interface HelpPageApiHelpPageListV1Request {
      */
     readonly language: HelpPageListV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof HelpPageApiHelpPageListV1
      */
@@ -228,7 +228,7 @@ export interface HelpPageApiHelpPageStructureV1Request {
      */
     readonly language: HelpPageStructureV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof HelpPageApiHelpPageStructureV1
      */

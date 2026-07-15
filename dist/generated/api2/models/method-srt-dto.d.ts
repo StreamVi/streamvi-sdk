@@ -16,11 +16,11 @@
  */
 export interface MethodSrtDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof MethodSrtDto
      */
-    'v': MethodSrtDtoVEnum;
+    'v'?: MethodSrtDtoVEnum;
     /**
      * Current language
      * @type {string}

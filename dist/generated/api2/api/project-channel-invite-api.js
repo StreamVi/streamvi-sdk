@@ -35,7 +35,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @param {ProjectChannelInviteAcceptForProjectV1LanguageEnum} language Current language
          * @param {number} projectId The project to which you want to add a channel
          * @param {number} channelId Channel id
-         * @param {ProjectChannelInviteAcceptForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteAcceptForProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -62,6 +62,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -86,7 +89,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @param {number} projectId The project to which you want to add a channel
          * @param {number} channelId Channel id
          * @param {string} secret Secret
-         * @param {ProjectChannelInviteAcceptForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteAcceptForSecretV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -114,6 +117,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -143,7 +149,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @param {number} channelId Channel id
          * @param {string} email Email
          * @param {ProjectChannelInviteAddByEmailV1AccessTypeEnum} accessType Access type
-         * @param {ProjectChannelInviteAddByEmailV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteAddByEmailV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -173,6 +179,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -205,7 +214,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @param {number} channelId Channel id
          * @param {ProjectChannelInviteAddByIdV1AccessTypeEnum} accessType Access type
          * @param {string} toProjectExternalId Project for get access by external id
-         * @param {ProjectChannelInviteAddByIdV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteAddByIdV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -236,6 +245,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -265,7 +277,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @param {ProjectChannelInviteDeclineForProjectV1LanguageEnum} language Current language
          * @param {number} projectId Channel id
          * @param {number} channelId Channel id
-         * @param {ProjectChannelInviteDeclineForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteDeclineForProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -292,6 +304,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -316,7 +331,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @param {number} projectId The project to which you want to add a channel
          * @param {number} channelId Channel id
          * @param {string} secret Secret
-         * @param {ProjectChannelInviteDeclineForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteDeclineForSecretV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -345,6 +360,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -370,7 +388,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @summary Del channel invite item for my channel for another user
          * @param {ProjectChannelInviteDelV1LanguageEnum} language Current language
          * @param {number} id Unique id
-         * @param {ProjectChannelInviteDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -395,6 +413,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -415,7 +436,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @param {ProjectChannelInviteGetForProjectV1LanguageEnum} language Current language
          * @param {number} projectId Current project id
          * @param {number} channelId Channel id
-         * @param {ProjectChannelInviteGetForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteGetForProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -442,6 +463,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -465,7 +489,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @param {ProjectChannelInviteGetForSecretV1LanguageEnum} language Current language
          * @param {number} channelId Channel id
          * @param {string} secret Secret
-         * @param {ProjectChannelInviteGetForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteGetForSecretV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -492,6 +516,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -514,7 +541,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @summary Get channel invite item for my channel for another user
          * @param {ProjectChannelInviteGetV1LanguageEnum} language Current language
          * @param {number} id Channel request id
-         * @param {ProjectChannelInviteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -539,6 +566,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -559,7 +589,7 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
          * @param {ProjectChannelInviteListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {ProjectChannelInviteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -585,6 +615,9 @@ const ProjectChannelInviteApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -619,7 +652,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @param {ProjectChannelInviteAcceptForProjectV1LanguageEnum} language Current language
          * @param {number} projectId The project to which you want to add a channel
          * @param {number} channelId Channel id
-         * @param {ProjectChannelInviteAcceptForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteAcceptForProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -637,7 +670,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @param {number} projectId The project to which you want to add a channel
          * @param {number} channelId Channel id
          * @param {string} secret Secret
-         * @param {ProjectChannelInviteAcceptForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteAcceptForSecretV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -656,7 +689,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @param {number} channelId Channel id
          * @param {string} email Email
          * @param {ProjectChannelInviteAddByEmailV1AccessTypeEnum} accessType Access type
-         * @param {ProjectChannelInviteAddByEmailV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteAddByEmailV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -675,7 +708,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @param {number} channelId Channel id
          * @param {ProjectChannelInviteAddByIdV1AccessTypeEnum} accessType Access type
          * @param {string} toProjectExternalId Project for get access by external id
-         * @param {ProjectChannelInviteAddByIdV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteAddByIdV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -692,7 +725,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @param {ProjectChannelInviteDeclineForProjectV1LanguageEnum} language Current language
          * @param {number} projectId Channel id
          * @param {number} channelId Channel id
-         * @param {ProjectChannelInviteDeclineForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteDeclineForProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -710,7 +743,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @param {number} projectId The project to which you want to add a channel
          * @param {number} channelId Channel id
          * @param {string} secret Secret
-         * @param {ProjectChannelInviteDeclineForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteDeclineForSecretV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -726,7 +759,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @summary Del channel invite item for my channel for another user
          * @param {ProjectChannelInviteDelV1LanguageEnum} language Current language
          * @param {number} id Unique id
-         * @param {ProjectChannelInviteDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -743,7 +776,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @param {ProjectChannelInviteGetForProjectV1LanguageEnum} language Current language
          * @param {number} projectId Current project id
          * @param {number} channelId Channel id
-         * @param {ProjectChannelInviteGetForProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteGetForProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -760,7 +793,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @param {ProjectChannelInviteGetForSecretV1LanguageEnum} language Current language
          * @param {number} channelId Channel id
          * @param {string} secret Secret
-         * @param {ProjectChannelInviteGetForSecretV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteGetForSecretV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -776,7 +809,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @summary Get channel invite item for my channel for another user
          * @param {ProjectChannelInviteGetV1LanguageEnum} language Current language
          * @param {number} id Channel request id
-         * @param {ProjectChannelInviteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -793,7 +826,7 @@ const ProjectChannelInviteApiFp = function (configuration) {
          * @param {ProjectChannelInviteListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {ProjectChannelInviteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelInviteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

@@ -16,11 +16,11 @@
  */
 export interface SetRecordStreamRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof SetRecordStreamRequest
      */
-    'v': SetRecordStreamRequestVEnum;
+    'v'?: SetRecordStreamRequestVEnum;
     /**
      * Current language
      * @type {string}

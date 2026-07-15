@@ -34,7 +34,7 @@ const apiInstance = new PlatformsApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let platform: 'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'; //Provider oauth (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 let subId: string; //Sub id (optional) (default to undefined)
 
 const { status, data } = await apiInstance.platformsAddAccountV1(
@@ -53,7 +53,7 @@ const { status, data } = await apiInstance.platformsAddAccountV1(
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **platform** | [**&#39;vk&#39; | &#39;vk-id&#39; | &#39;ok&#39; | &#39;youtube&#39; | &#39;trovo&#39; | &#39;twitch&#39; | &#39;vkvideolive&#39;**]**Array<&#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;ok&#39; &#124; &#39;youtube&#39; &#124; &#39;trovo&#39; &#124; &#39;twitch&#39; &#124; &#39;vkvideolive&#39;>** | Provider oauth | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 | **subId** | [**string**] | Sub id | (optional) defaults to undefined|
 
 
@@ -98,7 +98,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel external id (default to undefined)
 let accountId: string; //Id account on platform (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 let subId: string; //Sub id (optional) (default to undefined)
 
 const { status, data } = await apiInstance.platformsAddAccountVkCommunityV1(
@@ -119,7 +119,7 @@ const { status, data } = await apiInstance.platformsAddAccountVkCommunityV1(
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel external id | defaults to undefined|
 | **accountId** | [**string**] | Id account on platform | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 | **subId** | [**string**] | Sub id | (optional) defaults to undefined|
 
 
@@ -318,7 +318,7 @@ const apiInstance = new PlatformsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let platform: 'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'; //Provider oauth (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.platformsGetAccountsV1(
     language,
@@ -333,7 +333,7 @@ const { status, data } = await apiInstance.platformsGetAccountsV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **platform** | [**&#39;vk&#39; | &#39;vk-id&#39; | &#39;ok&#39; | &#39;youtube&#39; | &#39;trovo&#39; | &#39;twitch&#39; | &#39;vkvideolive&#39;**]**Array<&#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;ok&#39; &#124; &#39;youtube&#39; &#124; &#39;trovo&#39; &#124; &#39;twitch&#39; &#124; &#39;vkvideolive&#39;>** | Provider oauth | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -375,7 +375,7 @@ const apiInstance = new PlatformsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let type: 'vk' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'; //Category search bar (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 let q: string; //Category search bar (optional) (default to undefined)
 
 const { status, data } = await apiInstance.platformsGetCategoryV1(
@@ -392,7 +392,7 @@ const { status, data } = await apiInstance.platformsGetCategoryV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **type** | [**&#39;vk&#39; | &#39;youtube&#39; | &#39;trovo&#39; | &#39;twitch&#39; | &#39;vkvideolive&#39;**]**Array<&#39;vk&#39; &#124; &#39;youtube&#39; &#124; &#39;trovo&#39; &#124; &#39;twitch&#39; &#124; &#39;vkvideolive&#39;>** | Category search bar | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 | **q** | [**string**] | Category search bar | (optional) defaults to undefined|
 
 
@@ -438,7 +438,7 @@ let platform: 'vk' | 'ok'; //Platform (vk, ok) (default to undefined)
 let ids: Array<number>; //Id accounts (default to undefined)
 let projectId: number; //Project id (default to undefined)
 let requestId: string; //Request id (for cache) (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 let q: string; //Search (optional) (default to '')
 let sort: 'asc' | 'desc'; //Sort by asc or desc (default asc) (optional) (default to 'asc')
 let limit: number; //Limit (optional) (default to 10)
@@ -467,7 +467,7 @@ const { status, data } = await apiInstance.platformsGetChannelsV1(
 | **ids** | **Array&lt;number&gt;** | Id accounts | defaults to undefined|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **requestId** | [**string**] | Request id (for cache) | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 | **q** | [**string**] | Search | (optional) defaults to ''|
 | **sort** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort by asc or desc (default asc) | (optional) defaults to 'asc'|
 | **limit** | [**number**] | Limit | (optional) defaults to 10|
@@ -514,7 +514,7 @@ const apiInstance = new PlatformsApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let id: string; //Category search bar (default to undefined)
 let platform: 'vk' | 'vk-id' | 'ok' | 'youtube' | 'trovo' | 'twitch' | 'vkvideolive'; //Provider oauth (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.platformsLogoutAccountV1(
     language,
@@ -531,7 +531,7 @@ const { status, data } = await apiInstance.platformsLogoutAccountV1(
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **id** | [**string**] | Category search bar | defaults to undefined|
 | **platform** | [**&#39;vk&#39; | &#39;vk-id&#39; | &#39;ok&#39; | &#39;youtube&#39; | &#39;trovo&#39; | &#39;twitch&#39; | &#39;vkvideolive&#39;**]**Array<&#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;ok&#39; &#124; &#39;youtube&#39; &#124; &#39;trovo&#39; &#124; &#39;twitch&#39; &#124; &#39;vkvideolive&#39;>** | Provider oauth | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -573,7 +573,7 @@ const configuration = new Configuration();
 const apiInstance = new PlatformsApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.platformsPlatformListV1(
     language,
@@ -586,7 +586,7 @@ const { status, data } = await apiInstance.platformsPlatformListV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

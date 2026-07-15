@@ -16,11 +16,11 @@
  */
 export interface UpdatePullKeyRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof UpdatePullKeyRequest
      */
-    'v': UpdatePullKeyRequestVEnum;
+    'v'?: UpdatePullKeyRequestVEnum;
     /**
      * Current language
      * @type {string}

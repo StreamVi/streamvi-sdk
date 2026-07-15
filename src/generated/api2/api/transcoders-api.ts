@@ -72,7 +72,8 @@ export const TranscodersApiAxiosParamCreator = function (configuration?: Configu
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(transcoderCreateDto, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...transcoderCreateDto, v: transcoderCreateDto.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -112,7 +113,8 @@ export const TranscodersApiAxiosParamCreator = function (configuration?: Configu
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(transcoderItemDto, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...transcoderItemDto, v: transcoderItemDto.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -124,7 +126,7 @@ export const TranscodersApiAxiosParamCreator = function (configuration?: Configu
          * @summary List of transcoder
          * @param {TranscodersListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -151,6 +153,8 @@ export const TranscodersApiAxiosParamCreator = function (configuration?: Configu
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -205,7 +209,8 @@ export const TranscodersApiAxiosParamCreator = function (configuration?: Configu
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(transcoderItemDto, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...transcoderItemDto, v: transcoderItemDto.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -245,7 +250,8 @@ export const TranscodersApiAxiosParamCreator = function (configuration?: Configu
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(transcoderItemDto, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...transcoderItemDto, v: transcoderItemDto.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -285,7 +291,8 @@ export const TranscodersApiAxiosParamCreator = function (configuration?: Configu
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(transcoderUpdateDto, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...transcoderUpdateDto, v: transcoderUpdateDto.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -333,7 +340,7 @@ export const TranscodersApiFp = function(configuration?: Configuration) {
          * @summary List of transcoder
          * @param {TranscodersListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -572,7 +579,7 @@ export interface TranscodersApiTranscodersListV1Request {
     readonly project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof TranscodersApiTranscodersListV1
      */

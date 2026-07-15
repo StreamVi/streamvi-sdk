@@ -34,7 +34,7 @@ const HelpPageApiAxiosParamCreator = function (configuration) {
          * @summary Get help page
          * @param {HelpPageGetV1LanguageEnum} language Current language
          * @param {string} url Url of page
-         * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -56,6 +56,9 @@ const HelpPageApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -74,7 +77,7 @@ const HelpPageApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get list of help pages
          * @param {HelpPageListV1LanguageEnum} language Current language
-         * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
@@ -96,6 +99,9 @@ const HelpPageApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -121,7 +127,7 @@ const HelpPageApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get structure of help pages
          * @param {HelpPageStructureV1LanguageEnum} language Current language
-         * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -140,6 +146,9 @@ const HelpPageApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -167,7 +176,7 @@ const HelpPageApiFp = function (configuration) {
          * @summary Get help page
          * @param {HelpPageGetV1LanguageEnum} language Current language
          * @param {string} url Url of page
-         * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -182,7 +191,7 @@ const HelpPageApiFp = function (configuration) {
          *
          * @summary Get list of help pages
          * @param {HelpPageListV1LanguageEnum} language Current language
-         * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
@@ -200,7 +209,7 @@ const HelpPageApiFp = function (configuration) {
          *
          * @summary Get structure of help pages
          * @param {HelpPageStructureV1LanguageEnum} language Current language
-         * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

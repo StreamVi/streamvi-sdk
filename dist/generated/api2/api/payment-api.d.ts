@@ -25,7 +25,7 @@ export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration
      * @summary Create payment item for pay system
      * @param {PaymentCreateV1LanguageEnum} language Current language
      * @param {PaymentCreateV1Request} paymentCreateV1Request
-     * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -35,7 +35,7 @@ export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration
      * @param {PaymentGetStatusV1LanguageEnum} language Current language
      * @param {number} payId Pay order id
      * @param {number} projectId Project id
-     * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -51,7 +51,7 @@ export declare const PaymentApiFp: (configuration?: Configuration) => {
      * @summary Create payment item for pay system
      * @param {PaymentCreateV1LanguageEnum} language Current language
      * @param {PaymentCreateV1Request} paymentCreateV1Request
-     * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -61,7 +61,7 @@ export declare const PaymentApiFp: (configuration?: Configuration) => {
      * @param {PaymentGetStatusV1LanguageEnum} language Current language
      * @param {number} payId Pay order id
      * @param {number} projectId Project id
-     * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -131,7 +131,7 @@ export interface PaymentApiPaymentCreateV1Request {
      */
     readonly PaymentCreateV1Request: PaymentCreateV1Request;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaymentApiPaymentCreateV1
      */
@@ -162,7 +162,7 @@ export interface PaymentApiPaymentGetStatusV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaymentApiPaymentGetStatusV1
      */

@@ -16,11 +16,11 @@
  */
 export interface WebinarRoomCreateDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof WebinarRoomCreateDto
      */
-    'v': WebinarRoomCreateDtoVEnum;
+    'v'?: WebinarRoomCreateDtoVEnum;
     /**
      * Current language
      * @type {string}

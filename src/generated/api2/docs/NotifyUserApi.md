@@ -27,7 +27,7 @@ const apiInstance = new NotifyUserApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let token: string; //Token in mobile app (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.notifyUserDelMobileTokenV1(
     language,
@@ -42,7 +42,7 @@ const { status, data } = await apiInstance.notifyUserDelMobileTokenV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **token** | [**string**] | Token in mobile app | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -84,7 +84,7 @@ const apiInstance = new NotifyUserApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.notifyUserGetScreenV1(
     language,
@@ -99,7 +99,7 @@ const { status, data } = await apiInstance.notifyUserGetScreenV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -140,7 +140,7 @@ const configuration = new Configuration();
 const apiInstance = new NotifyUserApi(configuration);
 
 let projectId: number; //Project id (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.notifyUserGetV1(
     projectId,
@@ -153,7 +153,7 @@ const { status, data } = await apiInstance.notifyUserGetV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -194,7 +194,7 @@ const configuration = new Configuration();
 const apiInstance = new NotifyUserApi(configuration);
 
 let projectId: number; //Project id (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.notifyUserRemoveScreenV1(
     projectId,
@@ -207,7 +207,7 @@ const { status, data } = await apiInstance.notifyUserRemoveScreenV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -249,7 +249,7 @@ const configuration = new Configuration();
 const apiInstance = new NotifyUserApi(configuration);
 
 let siteSetNotifyUserRequest: SiteSetNotifyUserRequest; //Set user notify settings
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.notifyUserSetV1(
     siteSetNotifyUserRequest,
@@ -262,7 +262,7 @@ const { status, data } = await apiInstance.notifyUserSetV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **siteSetNotifyUserRequest** | **SiteSetNotifyUserRequest**| Set user notify settings | |
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

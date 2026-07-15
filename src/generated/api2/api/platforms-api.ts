@@ -47,7 +47,7 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
          * @param {PlatformsAddAccountV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {PlatformsAddAccountV1PlatformEnum} platform Provider oauth
-         * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [subId] Sub id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -77,6 +77,8 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -113,7 +115,7 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
          * @param {number} projectId Project id
          * @param {number} channelId Channel external id
          * @param {string} accountId Id account on platform
-         * @param {PlatformsAddAccountVkCommunityV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsAddAccountVkCommunityV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [subId] Sub id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -145,6 +147,8 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -298,7 +302,7 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
          * @summary Get accounts
          * @param {PlatformsGetAccountsV1LanguageEnum} language Current language
          * @param {PlatformsGetAccountsV1PlatformEnum} platform Provider oauth
-         * @param {PlatformsGetAccountsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsGetAccountsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -325,6 +329,8 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -351,7 +357,7 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
          * @summary Get category from the platform
          * @param {PlatformsGetCategoryV1LanguageEnum} language Current language
          * @param {PlatformsGetCategoryV1TypeEnum} type Category search bar
-         * @param {PlatformsGetCategoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsGetCategoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [q] Category search bar
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -379,6 +385,8 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -412,7 +420,7 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
          * @param {Array<number>} ids Id accounts
          * @param {number} projectId Project id
          * @param {string} requestId Request id (for cache)
-         * @param {PlatformsGetChannelsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsGetChannelsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [q] Search
          * @param {PlatformsGetChannelsV1SortEnum} [sort] Sort by asc or desc (default asc)
          * @param {number} [limit] Limit
@@ -449,6 +457,8 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -504,7 +514,7 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
          * @param {PlatformsLogoutAccountV1LanguageEnum} language Current language
          * @param {string} id Category search bar
          * @param {PlatformsLogoutAccountV1PlatformEnum} platform Provider oauth
-         * @param {PlatformsLogoutAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsLogoutAccountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -533,6 +543,8 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -562,7 +574,7 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @summary Supported platforms
          * @param {PlatformsPlatformListV1LanguageEnum} language Current language
-         * @param {PlatformsPlatformListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsPlatformListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -583,6 +595,8 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -633,7 +647,8 @@ export const PlatformsApiAxiosParamCreator = function (configuration?: Configura
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(removeAccountQuery, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...removeAccountQuery, v: removeAccountQuery.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -656,7 +671,7 @@ export const PlatformsApiFp = function(configuration?: Configuration) {
          * @param {PlatformsAddAccountV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {PlatformsAddAccountV1PlatformEnum} platform Provider oauth
-         * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [subId] Sub id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -674,7 +689,7 @@ export const PlatformsApiFp = function(configuration?: Configuration) {
          * @param {number} projectId Project id
          * @param {number} channelId Channel external id
          * @param {string} accountId Id account on platform
-         * @param {PlatformsAddAccountVkCommunityV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsAddAccountVkCommunityV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [subId] Sub id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -730,7 +745,7 @@ export const PlatformsApiFp = function(configuration?: Configuration) {
          * @summary Get accounts
          * @param {PlatformsGetAccountsV1LanguageEnum} language Current language
          * @param {PlatformsGetAccountsV1PlatformEnum} platform Provider oauth
-         * @param {PlatformsGetAccountsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsGetAccountsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -745,7 +760,7 @@ export const PlatformsApiFp = function(configuration?: Configuration) {
          * @summary Get category from the platform
          * @param {PlatformsGetCategoryV1LanguageEnum} language Current language
          * @param {PlatformsGetCategoryV1TypeEnum} type Category search bar
-         * @param {PlatformsGetCategoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsGetCategoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [q] Category search bar
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -764,7 +779,7 @@ export const PlatformsApiFp = function(configuration?: Configuration) {
          * @param {Array<number>} ids Id accounts
          * @param {number} projectId Project id
          * @param {string} requestId Request id (for cache)
-         * @param {PlatformsGetChannelsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsGetChannelsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [q] Search
          * @param {PlatformsGetChannelsV1SortEnum} [sort] Sort by asc or desc (default asc)
          * @param {number} [limit] Limit
@@ -784,7 +799,7 @@ export const PlatformsApiFp = function(configuration?: Configuration) {
          * @param {PlatformsLogoutAccountV1LanguageEnum} language Current language
          * @param {string} id Category search bar
          * @param {PlatformsLogoutAccountV1PlatformEnum} platform Provider oauth
-         * @param {PlatformsLogoutAccountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsLogoutAccountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -798,7 +813,7 @@ export const PlatformsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Supported platforms
          * @param {PlatformsPlatformListV1LanguageEnum} language Current language
-         * @param {PlatformsPlatformListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlatformsPlatformListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1090,7 +1105,7 @@ export interface PlatformsApiPlatformsAddAccountV1Request {
     readonly platform: PlatformsAddAccountV1PlatformEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlatformsApiPlatformsAddAccountV1
      */
@@ -1139,7 +1154,7 @@ export interface PlatformsApiPlatformsAddAccountVkCommunityV1Request {
     readonly account_id: string
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlatformsApiPlatformsAddAccountVkCommunityV1
      */
@@ -1223,7 +1238,7 @@ export interface PlatformsApiPlatformsGetAccountsV1Request {
     readonly platform: PlatformsGetAccountsV1PlatformEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlatformsApiPlatformsGetAccountsV1
      */
@@ -1251,7 +1266,7 @@ export interface PlatformsApiPlatformsGetCategoryV1Request {
     readonly type: PlatformsGetCategoryV1TypeEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlatformsApiPlatformsGetCategoryV1
      */
@@ -1307,7 +1322,7 @@ export interface PlatformsApiPlatformsGetChannelsV1Request {
     readonly request_id: string
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlatformsApiPlatformsGetChannelsV1
      */
@@ -1370,7 +1385,7 @@ export interface PlatformsApiPlatformsLogoutAccountV1Request {
     readonly platform: PlatformsLogoutAccountV1PlatformEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlatformsApiPlatformsLogoutAccountV1
      */
@@ -1391,7 +1406,7 @@ export interface PlatformsApiPlatformsPlatformListV1Request {
     readonly language: PlatformsPlatformListV1LanguageEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlatformsApiPlatformsPlatformListV1
      */

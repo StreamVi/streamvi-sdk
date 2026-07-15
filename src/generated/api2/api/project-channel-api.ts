@@ -41,7 +41,7 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
          * @param {number} channelId Channel id
          * @param {number} toProjectId Target project id
          * @param {ProjectChannelChangeAccessV1AccessTypeEnum} accessType Access type
-         * @param {ProjectChannelChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -74,6 +74,8 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -114,7 +116,7 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} targetProjectId Target project id
-         * @param {ProjectChannelDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -145,6 +147,8 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -180,7 +184,7 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
          * @param {ProjectChannelListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {ProjectChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -209,6 +213,8 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -241,7 +247,7 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} toProjectId Target project id
-         * @param {ProjectChannelTransferOwnerV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelTransferOwnerV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -272,6 +278,8 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -319,7 +327,7 @@ export const ProjectChannelApiFp = function(configuration?: Configuration) {
          * @param {number} channelId Channel id
          * @param {number} toProjectId Target project id
          * @param {ProjectChannelChangeAccessV1AccessTypeEnum} accessType Access type
-         * @param {ProjectChannelChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -336,7 +344,7 @@ export const ProjectChannelApiFp = function(configuration?: Configuration) {
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} targetProjectId Target project id
-         * @param {ProjectChannelDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -352,7 +360,7 @@ export const ProjectChannelApiFp = function(configuration?: Configuration) {
          * @param {ProjectChannelListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {ProjectChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -369,7 +377,7 @@ export const ProjectChannelApiFp = function(configuration?: Configuration) {
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
          * @param {number} toProjectId Target project id
-         * @param {ProjectChannelTransferOwnerV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ProjectChannelTransferOwnerV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -522,7 +530,7 @@ export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
     readonly access_type: ProjectChannelChangeAccessV1AccessTypeEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
@@ -564,7 +572,7 @@ export interface ProjectChannelApiProjectChannelDelV1Request {
     readonly target_project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
@@ -599,7 +607,7 @@ export interface ProjectChannelApiProjectChannelListV1Request {
     readonly channel_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
@@ -641,7 +649,7 @@ export interface ProjectChannelApiProjectChannelTransferOwnerV1Request {
     readonly to_project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */

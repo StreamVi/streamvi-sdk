@@ -27,7 +27,7 @@ export declare const RtmpServerApiAxiosParamCreator: (configuration?: Configurat
      *
      * @summary Rtmp locations server list example for unauthorized
      * @param {MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum} language Current language
-     * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -38,7 +38,7 @@ export declare const RtmpServerApiAxiosParamCreator: (configuration?: Configurat
      * @param {RtmpServerGraphV1LanguageEnum} language Current language
      * @param {RtmpServerGraphV1IntervalEnum} interval Interval state in hours
      * @param {RtmpServerGraphV1TypeEnum} type Type graph
-     * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -48,7 +48,7 @@ export declare const RtmpServerApiAxiosParamCreator: (configuration?: Configurat
      * @summary List rtmp servers (base info)
      * @param {RtmpServerListBaseV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -58,7 +58,7 @@ export declare const RtmpServerApiAxiosParamCreator: (configuration?: Configurat
      * @summary List rtmp servers v3
      * @param {RtmpServerListV3LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+     * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -69,7 +69,7 @@ export declare const RtmpServerApiAxiosParamCreator: (configuration?: Configurat
      * @param {RtmpServerSrtLatencyV1LanguageEnum} language Current language
      * @param {string} srcIp Source IPv4 address
      * @param {string} dstIp Destination IPv4 address
-     * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {string} [profile] Recommendation profile
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -80,7 +80,7 @@ export declare const RtmpServerApiAxiosParamCreator: (configuration?: Configurat
      * @summary State of rtmp servers
      * @param {RtmpServerStateV1LanguageEnum} language Current language
      * @param {RtmpServerStateV1IntervalEnum} interval Interval state in hours
-     * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -102,7 +102,7 @@ export declare const RtmpServerApiFp: (configuration?: Configuration) => {
      *
      * @summary Rtmp locations server list example for unauthorized
      * @param {MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum} language Current language
-     * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -113,7 +113,7 @@ export declare const RtmpServerApiFp: (configuration?: Configuration) => {
      * @param {RtmpServerGraphV1LanguageEnum} language Current language
      * @param {RtmpServerGraphV1IntervalEnum} interval Interval state in hours
      * @param {RtmpServerGraphV1TypeEnum} type Type graph
-     * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -123,7 +123,7 @@ export declare const RtmpServerApiFp: (configuration?: Configuration) => {
      * @summary List rtmp servers (base info)
      * @param {RtmpServerListBaseV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -133,7 +133,7 @@ export declare const RtmpServerApiFp: (configuration?: Configuration) => {
      * @summary List rtmp servers v3
      * @param {RtmpServerListV3LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+     * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -144,7 +144,7 @@ export declare const RtmpServerApiFp: (configuration?: Configuration) => {
      * @param {RtmpServerSrtLatencyV1LanguageEnum} language Current language
      * @param {string} srcIp Source IPv4 address
      * @param {string} dstIp Destination IPv4 address
-     * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {string} [profile] Recommendation profile
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -155,7 +155,7 @@ export declare const RtmpServerApiFp: (configuration?: Configuration) => {
      * @summary State of rtmp servers
      * @param {RtmpServerStateV1LanguageEnum} language Current language
      * @param {RtmpServerStateV1IntervalEnum} interval Interval state in hours
-     * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -311,7 +311,7 @@ export interface RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request
      */
     readonly language: MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1
      */
@@ -342,7 +342,7 @@ export interface RtmpServerApiRtmpServerGraphV1Request {
      */
     readonly type: RtmpServerGraphV1TypeEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof RtmpServerApiRtmpServerGraphV1
      */
@@ -367,7 +367,7 @@ export interface RtmpServerApiRtmpServerListBaseV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof RtmpServerApiRtmpServerListBaseV1
      */
@@ -392,7 +392,7 @@ export interface RtmpServerApiRtmpServerListV3Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 3 based on method version, can be overridden)
+     * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof RtmpServerApiRtmpServerListV3
      */
@@ -423,7 +423,7 @@ export interface RtmpServerApiRtmpServerSrtLatencyV1Request {
      */
     readonly dst_ip: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof RtmpServerApiRtmpServerSrtLatencyV1
      */
@@ -454,7 +454,7 @@ export interface RtmpServerApiRtmpServerStateV1Request {
      */
     readonly interval: RtmpServerStateV1IntervalEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof RtmpServerApiRtmpServerStateV1
      */

@@ -23,7 +23,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @summary Transaction list for frontend
      * @param {TransactionsListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
@@ -44,7 +44,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @summary Transaction list for frontend
      * @param {TransactionsListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
@@ -104,7 +104,7 @@ export interface TransactionsApiTransactionsListV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof TransactionsApiTransactionsListV1
      */

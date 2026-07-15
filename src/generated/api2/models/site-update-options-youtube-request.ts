@@ -21,11 +21,11 @@
  */
 export interface SiteUpdateOptionsYoutubeRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
-    'v': SiteUpdateOptionsYoutubeRequestVEnum;
+    'v'?: SiteUpdateOptionsYoutubeRequestVEnum;
     /**
      * Current language
      * @type {string}

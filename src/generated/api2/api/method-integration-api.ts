@@ -37,7 +37,7 @@ export const MethodIntegrationApiAxiosParamCreator = function (configuration?: C
          * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum} language Current language
          * @param {string} templateId Integration project template ID
          * @param {number} projectId Project ID
-         * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -66,6 +66,8 @@ export const MethodIntegrationApiAxiosParamCreator = function (configuration?: C
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -107,7 +109,7 @@ export const MethodIntegrationApiFp = function(configuration?: Configuration) {
          * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum} language Current language
          * @param {string} templateId Integration project template ID
          * @param {number} projectId Project ID
-         * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -186,7 +188,7 @@ export interface MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetD
     readonly project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1
      */

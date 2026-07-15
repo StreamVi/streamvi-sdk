@@ -16,11 +16,11 @@
  */
 export interface PaymentCreateRequestRestreamBodyDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof PaymentCreateRequestRestreamBodyDto
      */
-    'v': PaymentCreateRequestRestreamBodyDtoVEnum;
+    'v'?: PaymentCreateRequestRestreamBodyDtoVEnum;
     /**
      * Current language
      * @type {string}

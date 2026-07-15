@@ -21,11 +21,11 @@
  */
 export interface TranscoderCreateDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof TranscoderCreateDto
      */
-    'v': TranscoderCreateDtoVEnum;
+    'v'?: TranscoderCreateDtoVEnum;
     /**
      * Current language
      * @type {string}

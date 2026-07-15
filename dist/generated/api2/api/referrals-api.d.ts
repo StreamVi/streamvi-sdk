@@ -23,7 +23,7 @@ export declare const ReferralsApiAxiosParamCreator: (configuration?: Configurati
      * @summary Total info
      * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -39,7 +39,7 @@ export declare const ReferralsApiFp: (configuration?: Configuration) => {
      * @summary Total info
      * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -94,7 +94,7 @@ export interface ReferralsApiReferralsTotalInfoV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */

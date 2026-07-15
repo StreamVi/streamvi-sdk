@@ -23,7 +23,7 @@ const configuration = new Configuration();
 const apiInstance = new AccountApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.accountGetProfileV1(
     language,
@@ -36,7 +36,7 @@ const { status, data } = await apiInstance.accountGetProfileV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -76,17 +76,17 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AccountApi(configuration);
 
-let v: string; //Version (default to undefined)
 let language: string; //Current language (default to 'en')
 let firstName: string; //First name (default to undefined)
 let lastName: string; //Last name (default to undefined)
+let v: string; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 let avatar: File; //File for avatar upload max size 2MB, format: jpeg, jpg, png (optional) (default to undefined)
 
 const { status, data } = await apiInstance.accountUpdateProfileV1(
-    v,
     language,
     firstName,
     lastName,
+    v,
     avatar
 );
 ```
@@ -95,10 +95,10 @@ const { status, data } = await apiInstance.accountUpdateProfileV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**string**]**Array<&#39;1&#39;>** | Version | defaults to undefined|
 | **language** | [**string**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **firstName** | [**string**] | First name | defaults to undefined|
 | **lastName** | [**string**] | Last name | defaults to undefined|
+| **v** | [**string**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 | **avatar** | [**File**] | File for avatar upload max size 2MB, format: jpeg, jpg, png | (optional) defaults to undefined|
 
 

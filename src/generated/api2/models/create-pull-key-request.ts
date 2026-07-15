@@ -21,11 +21,11 @@
  */
 export interface CreatePullKeyRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof CreatePullKeyRequest
      */
-    'v': CreatePullKeyRequestVEnum;
+    'v'?: CreatePullKeyRequestVEnum;
     /**
      * Current language
      * @type {string}

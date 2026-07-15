@@ -36,7 +36,7 @@ const apiInstance = new BroadcastApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.broadcastCredentialsV1(
     language,
@@ -51,7 +51,7 @@ const { status, data } = await apiInstance.broadcastCredentialsV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -94,7 +94,7 @@ const apiInstance = new BroadcastApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let id: string; //Event id (default to undefined)
 let date: string; //Event date (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.broadcastEventItemV1(
     language,
@@ -111,7 +111,7 @@ const { status, data } = await apiInstance.broadcastEventItemV1(
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **id** | [**string**] | Event id | defaults to undefined|
 | **date** | [**string**] | Event date | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -166,7 +166,7 @@ let limit: number; //Number of results (optional) (default to 50)
 let sortByDate: 'asc' | 'desc'; //Sort order by created_at (optional) (default to 'desc')
 let cursorId: string; //Cursor event id (optional) (default to undefined)
 let cursorDatetime: string; //Cursor event datetime (optional) (default to undefined)
-let v: '4'; //Version (automatically defaults to 4 based on method version, can be overridden) (optional) (default to '4')
+let v: '4'; //Version (automatically defaults to 4 based on the API contract, can be overridden) (optional) (default to '4')
 
 const { status, data } = await apiInstance.broadcastEventsV4(
     language,
@@ -207,7 +207,7 @@ const { status, data } = await apiInstance.broadcastEventsV4(
 | **sortByDate** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order by created_at | (optional) defaults to 'desc'|
 | **cursorId** | [**string**] | Cursor event id | (optional) defaults to undefined|
 | **cursorDatetime** | [**string**] | Cursor event datetime | (optional) defaults to undefined|
-| **v** | [**&#39;4&#39;**]**Array<&#39;4&#39;>** | Version (automatically defaults to 4 based on method version, can be overridden) | (optional) defaults to '4'|
+| **v** | [**&#39;4&#39;**]**Array<&#39;4&#39;>** | Version (automatically defaults to 4 based on the API contract, can be overridden) | (optional) defaults to '4'|
 
 
 ### Return type
@@ -250,7 +250,7 @@ const apiInstance = new BroadcastApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let broadcastId: number; //broadcast id (default to undefined)
-let v: '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '3'; //Version (automatically defaults to 3 based on the API contract, can be overridden) (optional) (default to '3')
 
 const { status, data } = await apiInstance.broadcastFindV1(
     language,
@@ -267,7 +267,7 @@ const { status, data } = await apiInstance.broadcastFindV1(
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **broadcastId** | [**number**] | broadcast id | defaults to undefined|
-| **v** | [**&#39;3&#39;**]**Array<&#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;3&#39;**]**Array<&#39;3&#39;>** | Version (automatically defaults to 3 based on the API contract, can be overridden) | (optional) defaults to '3'|
 
 
 ### Return type
@@ -310,7 +310,7 @@ const apiInstance = new BroadcastApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let broadcastId: number; //broadcast id (default to undefined)
-let v: '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '3'; //Version (automatically defaults to 3 based on the API contract, can be overridden) (optional) (default to '3')
 
 const { status, data } = await apiInstance.broadcastGraphBitrateV1(
     language,
@@ -327,7 +327,7 @@ const { status, data } = await apiInstance.broadcastGraphBitrateV1(
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **broadcastId** | [**number**] | broadcast id | defaults to undefined|
-| **v** | [**&#39;3&#39;**]**Array<&#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;3&#39;**]**Array<&#39;3&#39;>** | Version (automatically defaults to 3 based on the API contract, can be overridden) | (optional) defaults to '3'|
 
 
 ### Return type
@@ -370,7 +370,7 @@ const apiInstance = new BroadcastApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let broadcastId: number; //broadcast id (default to undefined)
-let v: '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '3'; //Version (automatically defaults to 3 based on the API contract, can be overridden) (optional) (default to '3')
 
 const { status, data } = await apiInstance.broadcastGraphViewersV1(
     language,
@@ -387,7 +387,7 @@ const { status, data } = await apiInstance.broadcastGraphViewersV1(
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **broadcastId** | [**number**] | broadcast id | defaults to undefined|
-| **v** | [**&#39;3&#39;**]**Array<&#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;3&#39;**]**Array<&#39;3&#39;>** | Version (automatically defaults to 3 based on the API contract, can be overridden) | (optional) defaults to '3'|
 
 
 ### Return type
@@ -432,7 +432,7 @@ let projectId: number; //Project id (default to undefined)
 let limit: number; //Number of results (optional) (default to 20)
 let offset: number; //Page offset number (optional) (default to 0)
 let order: 'asc' | 'desc'; //order (optional) (default to 'asc')
-let v: '3'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '3'; //Version (automatically defaults to 3 based on the API contract, can be overridden) (optional) (default to '3')
 
 const { status, data } = await apiInstance.broadcastListV1(
     language,
@@ -453,7 +453,7 @@ const { status, data } = await apiInstance.broadcastListV1(
 | **limit** | [**number**] | Number of results | (optional) defaults to 20|
 | **offset** | [**number**] | Page offset number | (optional) defaults to 0|
 | **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | order | (optional) defaults to 'asc'|
-| **v** | [**&#39;3&#39;**]**Array<&#39;3&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;3&#39;**]**Array<&#39;3&#39;>** | Version (automatically defaults to 3 based on the API contract, can be overridden) | (optional) defaults to '3'|
 
 
 ### Return type
@@ -600,7 +600,7 @@ const apiInstance = new BroadcastApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let broadcastId: number; //broadcast id (default to undefined)
 let key: string; //Chat token (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.broadcastRestreamChatV1(
     language,
@@ -617,7 +617,7 @@ const { status, data } = await apiInstance.broadcastRestreamChatV1(
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **broadcastId** | [**number**] | broadcast id | defaults to undefined|
 | **key** | [**string**] | Chat token | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -660,7 +660,7 @@ const apiInstance = new BroadcastApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let broadcastId: number; //Broadcast id (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.broadcastRestreamsV1(
     language,
@@ -677,7 +677,7 @@ const { status, data } = await apiInstance.broadcastRestreamsV1(
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **broadcastId** | [**number**] | Broadcast id | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -719,7 +719,7 @@ const apiInstance = new BroadcastApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.broadcastStatusV1(
     language,
@@ -734,7 +734,7 @@ const { status, data } = await apiInstance.broadcastStatusV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type
@@ -828,7 +828,7 @@ const apiInstance = new BroadcastApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let key: string; // (default to undefined)
-let v: '1'; //Version (automatically defaults to 1 based on method version, can be overridden) (optional) (default to '1')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.broadcastTokenChannelV1(
     language,
@@ -843,7 +843,7 @@ const { status, data } = await apiInstance.broadcastTokenChannelV1(
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **key** | [**string**] |  | defaults to undefined|
-| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on method version, can be overridden) | (optional) defaults to '1'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
 ### Return type

@@ -46,7 +46,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -57,7 +57,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -68,7 +68,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -80,7 +80,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {TelegramSetSettingsRequestDto} telegramSetSettingsRequestDto
-     * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -91,7 +91,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @param {ChannelChatTelegramPostsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -110,7 +110,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -121,7 +121,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -196,7 +196,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @param {ChannelSettingGetStatusV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -232,7 +232,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {ChannelSettingUpdateTokenV1RoleEnum} role Token role
-     * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -252,7 +252,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {number} filterMode
-     * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -269,7 +269,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -280,7 +280,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -291,7 +291,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -303,7 +303,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {TelegramSetSettingsRequestDto} telegramSetSettingsRequestDto
-     * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -314,7 +314,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {ChannelChatTelegramPostsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -333,7 +333,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -344,7 +344,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -419,7 +419,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {ChannelSettingGetStatusV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -455,7 +455,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {ChannelSettingUpdateTokenV1RoleEnum} role Token role
-     * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -475,7 +475,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
      * @param {number} filterMode
-     * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -910,7 +910,7 @@ export interface ChannelSettingsApiChannelChatGetTelegramSettingV1Request {
      */
     readonly channel_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
@@ -941,7 +941,7 @@ export interface ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request {
      */
     readonly channel_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
@@ -972,7 +972,7 @@ export interface ChannelSettingsApiChannelChatRemoveTelegramChatV1Request {
      */
     readonly channel_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
@@ -1009,7 +1009,7 @@ export interface ChannelSettingsApiChannelChatSetTelegramSettingV1Request {
      */
     readonly TelegramSetSettingsRequestDto: TelegramSetSettingsRequestDto;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
@@ -1040,7 +1040,7 @@ export interface ChannelSettingsApiChannelChatTelegramPostsV1Request {
      */
     readonly channel_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
@@ -1084,7 +1084,7 @@ export interface ChannelSettingsApiChannelOptionsGetPlannedV1Request {
      */
     readonly channel_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
@@ -1115,7 +1115,7 @@ export interface ChannelSettingsApiChannelOptionsGetPlayListV1Request {
      */
     readonly channel_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
@@ -1250,7 +1250,7 @@ export interface ChannelSettingsApiChannelSettingGetStatusV1Request {
      */
     readonly channel_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelSettingGetStatusV1
      */
@@ -1326,7 +1326,7 @@ export interface ChannelSettingsApiChannelSettingUpdateTokenV1Request {
      */
     readonly role: ChannelSettingUpdateTokenV1RoleEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
@@ -1376,7 +1376,7 @@ export interface ChannelSettingsApiTelegramGetPostByFilterV1Request {
      */
     readonly filter_mode: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */

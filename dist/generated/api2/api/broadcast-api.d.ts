@@ -36,7 +36,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @summary Get credentials
      * @param {BroadcastCredentialsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -47,7 +47,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @param {BroadcastEventItemV1LanguageEnum} language Current language
      * @param {string} id Event id
      * @param {string} date Event date
-     * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -70,7 +70,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @param {BroadcastEventsV4SortByDateEnum} [sortByDate] Sort order by created_at
      * @param {string} [cursorId] Cursor event id
      * @param {string} [cursorDatetime] Cursor event datetime
-     * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on method version, can be overridden)
+     * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -81,7 +81,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @param {BroadcastFindV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
-     * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -92,7 +92,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
-     * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -103,7 +103,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
-     * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -116,7 +116,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {BroadcastListV1OrderEnum} [order] order
-     * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -143,7 +143,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
      * @param {number} broadcastId broadcast id
      * @param {string} key Chat token
-     * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -154,7 +154,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @param {BroadcastRestreamsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} broadcastId Broadcast id
-     * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -164,7 +164,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @summary Live status info by project id
      * @param {BroadcastStatusV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -182,7 +182,7 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @summary Connect channel, long polling
      * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
      * @param {string} key
-     * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -198,7 +198,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @summary Get credentials
      * @param {BroadcastCredentialsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -209,7 +209,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @param {BroadcastEventItemV1LanguageEnum} language Current language
      * @param {string} id Event id
      * @param {string} date Event date
-     * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -232,7 +232,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @param {BroadcastEventsV4SortByDateEnum} [sortByDate] Sort order by created_at
      * @param {string} [cursorId] Cursor event id
      * @param {string} [cursorDatetime] Cursor event datetime
-     * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on method version, can be overridden)
+     * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -243,7 +243,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @param {BroadcastFindV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
-     * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -254,7 +254,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
-     * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -265,7 +265,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
-     * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -278,7 +278,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {BroadcastListV1OrderEnum} [order] order
-     * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -305,7 +305,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
      * @param {number} broadcastId broadcast id
      * @param {string} key Chat token
-     * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -316,7 +316,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @param {BroadcastRestreamsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} broadcastId Broadcast id
-     * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -326,7 +326,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @summary Live status info by project id
      * @param {BroadcastStatusV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -344,7 +344,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @summary Connect channel, long polling
      * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
      * @param {string} key
-     * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -620,7 +620,7 @@ export interface BroadcastApiBroadcastCredentialsV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastCredentialsV1
      */
@@ -651,7 +651,7 @@ export interface BroadcastApiBroadcastEventItemV1Request {
      */
     readonly date: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastEventItemV1
      */
@@ -754,7 +754,7 @@ export interface BroadcastApiBroadcastEventsV4Request {
      */
     readonly cursor_datetime?: string;
     /**
-     * Version (automatically defaults to 4 based on method version, can be overridden)
+     * Version (automatically defaults to 4 based on the API contract, can be overridden)
      * @type {'4'}
      * @memberof BroadcastApiBroadcastEventsV4
      */
@@ -785,7 +785,7 @@ export interface BroadcastApiBroadcastFindV1Request {
      */
     readonly broadcast_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof BroadcastApiBroadcastFindV1
      */
@@ -816,7 +816,7 @@ export interface BroadcastApiBroadcastGraphBitrateV1Request {
      */
     readonly broadcast_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof BroadcastApiBroadcastGraphBitrateV1
      */
@@ -847,7 +847,7 @@ export interface BroadcastApiBroadcastGraphViewersV1Request {
      */
     readonly broadcast_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof BroadcastApiBroadcastGraphViewersV1
      */
@@ -890,7 +890,7 @@ export interface BroadcastApiBroadcastListV1Request {
      */
     readonly order?: BroadcastListV1OrderEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof BroadcastApiBroadcastListV1
      */
@@ -947,7 +947,7 @@ export interface BroadcastApiBroadcastRestreamChatV1Request {
      */
     readonly key: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastRestreamChatV1
      */
@@ -978,7 +978,7 @@ export interface BroadcastApiBroadcastRestreamsV1Request {
      */
     readonly broadcast_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastRestreamsV1
      */
@@ -1003,7 +1003,7 @@ export interface BroadcastApiBroadcastStatusV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastStatusV1
      */
@@ -1041,7 +1041,7 @@ export interface BroadcastApiBroadcastTokenChannelV1Request {
      */
     readonly key: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastTokenChannelV1
      */

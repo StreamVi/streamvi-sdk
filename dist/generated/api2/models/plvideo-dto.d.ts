@@ -16,11 +16,11 @@
  */
 export interface PlvideoDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof PlvideoDto
      */
-    'v': PlvideoDtoVEnum;
+    'v'?: PlvideoDtoVEnum;
     /**
      * Current language
      * @type {string}

@@ -37,6 +37,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarRoomSiteCreateV1: async (webinarRoomCreateDto, options = {}) => {
+            var _a;
             // verify required parameter 'webinarRoomCreateDto' is not null or undefined
             (0, common_1.assertParamExists)('webinarRoomSiteCreateV1', 'webinarRoomCreateDto', webinarRoomCreateDto);
             const localVarPath = `/method/webinar/room/create`;
@@ -56,7 +57,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(webinarRoomCreateDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...webinarRoomCreateDto, v: (_a = webinarRoomCreateDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -70,6 +72,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarRoomSiteDeleteV1: async (webinarRoomDeleteDto, options = {}) => {
+            var _a;
             // verify required parameter 'webinarRoomDeleteDto' is not null or undefined
             (0, common_1.assertParamExists)('webinarRoomSiteDeleteV1', 'webinarRoomDeleteDto', webinarRoomDeleteDto);
             const localVarPath = `/method/webinar/room/delete`;
@@ -89,7 +92,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(webinarRoomDeleteDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...webinarRoomDeleteDto, v: (_a = webinarRoomDeleteDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -101,7 +105,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @param {WebinarRoomSiteGetSyncV1LanguageEnum} language Current language
          * @param {string} roomId Room name
          * @param {string} clientId Client ID
-         * @param {WebinarRoomSiteGetSyncV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WebinarRoomSiteGetSyncV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -128,6 +132,9 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -153,6 +160,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarRoomSiteJoinAnonymousV1: async (webinarRoomJoinAnonymousDto, options = {}) => {
+            var _a;
             // verify required parameter 'webinarRoomJoinAnonymousDto' is not null or undefined
             (0, common_1.assertParamExists)('webinarRoomSiteJoinAnonymousV1', 'webinarRoomJoinAnonymousDto', webinarRoomJoinAnonymousDto);
             const localVarPath = `/method/webinar/room/join-anonymous`;
@@ -172,7 +180,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(webinarRoomJoinAnonymousDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...webinarRoomJoinAnonymousDto, v: (_a = webinarRoomJoinAnonymousDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -186,6 +195,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarRoomSiteJoinV1: async (webinarRoomJoinDto, options = {}) => {
+            var _a;
             // verify required parameter 'webinarRoomJoinDto' is not null or undefined
             (0, common_1.assertParamExists)('webinarRoomSiteJoinV1', 'webinarRoomJoinDto', webinarRoomJoinDto);
             const localVarPath = `/method/webinar/room/join`;
@@ -205,7 +215,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(webinarRoomJoinDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...webinarRoomJoinDto, v: (_a = webinarRoomJoinDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -216,7 +227,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @summary List of webinar rooms
          * @param {WebinarRoomSiteListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {WebinarRoomSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WebinarRoomSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -241,6 +252,9 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -261,7 +275,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @param {WebinarRoomSitePreJoinV1LanguageEnum} language Current language
          * @param {string} roomId Room id
          * @param {string} clientId Client ID
-         * @param {WebinarRoomSitePreJoinV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WebinarRoomSitePreJoinV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -288,6 +302,9 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -313,6 +330,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarRoomSiteSyncV1: async (siteWebinarRoomSetSyncBodyRequest, options = {}) => {
+            var _a;
             // verify required parameter 'siteWebinarRoomSetSyncBodyRequest' is not null or undefined
             (0, common_1.assertParamExists)('webinarRoomSiteSyncV1', 'siteWebinarRoomSetSyncBodyRequest', siteWebinarRoomSetSyncBodyRequest);
             const localVarPath = `/method/webinar/room/sync`;
@@ -332,7 +350,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteWebinarRoomSetSyncBodyRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...siteWebinarRoomSetSyncBodyRequest, v: (_a = siteWebinarRoomSetSyncBodyRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -346,6 +365,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarRoomSiteUpdateV1: async (webinarRoomUpdateDto, options = {}) => {
+            var _a;
             // verify required parameter 'webinarRoomUpdateDto' is not null or undefined
             (0, common_1.assertParamExists)('webinarRoomSiteUpdateV1', 'webinarRoomUpdateDto', webinarRoomUpdateDto);
             const localVarPath = `/method/webinar/room/update`;
@@ -365,7 +385,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(webinarRoomUpdateDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...webinarRoomUpdateDto, v: (_a = webinarRoomUpdateDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -379,6 +400,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarStreamSiteCreateV1: async (webinarStreamStartDto, options = {}) => {
+            var _a;
             // verify required parameter 'webinarStreamStartDto' is not null or undefined
             (0, common_1.assertParamExists)('webinarStreamSiteCreateV1', 'webinarStreamStartDto', webinarStreamStartDto);
             const localVarPath = `/method/webinar/stream/start`;
@@ -398,7 +420,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(webinarStreamStartDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...webinarStreamStartDto, v: (_a = webinarStreamStartDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -410,7 +433,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @param {WebinarStreamSiteGetSettingStreamV1LanguageEnum} language Current language
          * @param {string} clientId Client ID
          * @param {string} roomId Room id
-         * @param {WebinarStreamSiteGetSettingStreamV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WebinarStreamSiteGetSettingStreamV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -437,6 +460,9 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -460,7 +486,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @param {WebinarStreamSiteLastV1LanguageEnum} language Current language
          * @param {string} roomId Room id
          * @param {string} clientId Client ID
-         * @param {WebinarStreamSiteLastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WebinarStreamSiteLastV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -487,6 +513,9 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -512,6 +541,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarStreamSitePauseV1: async (webinarStreamPauseDto, options = {}) => {
+            var _a;
             // verify required parameter 'webinarStreamPauseDto' is not null or undefined
             (0, common_1.assertParamExists)('webinarStreamSitePauseV1', 'webinarStreamPauseDto', webinarStreamPauseDto);
             const localVarPath = `/method/webinar/stream/pause`;
@@ -531,7 +561,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(webinarStreamPauseDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...webinarStreamPauseDto, v: (_a = webinarStreamPauseDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -545,6 +576,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarStreamSitePlayV1: async (webinarStreamPlayDto, options = {}) => {
+            var _a;
             // verify required parameter 'webinarStreamPlayDto' is not null or undefined
             (0, common_1.assertParamExists)('webinarStreamSitePlayV1', 'webinarStreamPlayDto', webinarStreamPlayDto);
             const localVarPath = `/method/webinar/stream/play`;
@@ -564,7 +596,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(webinarStreamPlayDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...webinarStreamPlayDto, v: (_a = webinarStreamPlayDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -578,6 +611,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarStreamSiteSettingStreamV1: async (webinarUpdateStreamSettingDto, options = {}) => {
+            var _a;
             // verify required parameter 'webinarUpdateStreamSettingDto' is not null or undefined
             (0, common_1.assertParamExists)('webinarStreamSiteSettingStreamV1', 'webinarUpdateStreamSettingDto', webinarUpdateStreamSettingDto);
             const localVarPath = `/method/webinar/stream/setting`;
@@ -597,7 +631,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(webinarUpdateStreamSettingDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...webinarUpdateStreamSettingDto, v: (_a = webinarUpdateStreamSettingDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -611,6 +646,7 @@ const WebinarApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         webinarStreamSiteUpdateV1: async (webinarStreamStopDto, options = {}) => {
+            var _a;
             // verify required parameter 'webinarStreamStopDto' is not null or undefined
             (0, common_1.assertParamExists)('webinarStreamSiteUpdateV1', 'webinarStreamStopDto', webinarStreamStopDto);
             const localVarPath = `/method/webinar/stream/stop`;
@@ -630,7 +666,8 @@ const WebinarApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(webinarStreamStopDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...webinarStreamStopDto, v: (_a = webinarStreamStopDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -680,7 +717,7 @@ const WebinarApiFp = function (configuration) {
          * @param {WebinarRoomSiteGetSyncV1LanguageEnum} language Current language
          * @param {string} roomId Room name
          * @param {string} clientId Client ID
-         * @param {WebinarRoomSiteGetSyncV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WebinarRoomSiteGetSyncV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -724,7 +761,7 @@ const WebinarApiFp = function (configuration) {
          * @summary List of webinar rooms
          * @param {WebinarRoomSiteListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {WebinarRoomSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WebinarRoomSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -741,7 +778,7 @@ const WebinarApiFp = function (configuration) {
          * @param {WebinarRoomSitePreJoinV1LanguageEnum} language Current language
          * @param {string} roomId Room id
          * @param {string} clientId Client ID
-         * @param {WebinarRoomSitePreJoinV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WebinarRoomSitePreJoinV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -800,7 +837,7 @@ const WebinarApiFp = function (configuration) {
          * @param {WebinarStreamSiteGetSettingStreamV1LanguageEnum} language Current language
          * @param {string} clientId Client ID
          * @param {string} roomId Room id
-         * @param {WebinarStreamSiteGetSettingStreamV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WebinarStreamSiteGetSettingStreamV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -817,7 +854,7 @@ const WebinarApiFp = function (configuration) {
          * @param {WebinarStreamSiteLastV1LanguageEnum} language Current language
          * @param {string} roomId Room id
          * @param {string} clientId Client ID
-         * @param {WebinarStreamSiteLastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WebinarStreamSiteLastV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

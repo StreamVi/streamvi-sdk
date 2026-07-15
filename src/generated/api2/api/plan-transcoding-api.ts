@@ -46,7 +46,7 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
          * @param {number} projectId Project id
          * @param {PlanTranscodingBuyV1PeriodEnum} period Period
          * @param {number} planTranscodingId Transcoding plan id
-         * @param {PlanTranscodingBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [count] Count flow
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -78,6 +78,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -116,7 +118,7 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
          * @summary Remove after tariff
          * @param {PlanTranscodingCancelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanTranscodingCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -143,6 +145,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -169,7 +173,7 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
          * @summary Check transcoding tariff before buy
          * @param {PlanTranscodingCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanTranscodingCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -196,6 +200,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -221,7 +227,7 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
          * 
          * @summary Get discount transcoding
          * @param {PlanTranscodingGetDiscountV1LanguageEnum} language Current language
-         * @param {PlanTranscodingGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -246,6 +252,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -267,7 +275,7 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
          * 
          * @summary Get list of transcoding tariffs
          * @param {PlanTranscodingListV1LanguageEnum} language Current language
-         * @param {PlanTranscodingListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -292,6 +300,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -315,7 +325,7 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
          * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
-         * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -344,6 +354,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -374,7 +386,7 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
          * @summary Get tariff for project
          * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanTranscodingTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -401,6 +413,8 @@ export const PlanTranscodingApiAxiosParamCreator = function (configuration?: Con
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -439,7 +453,7 @@ export const PlanTranscodingApiFp = function(configuration?: Configuration) {
          * @param {number} projectId Project id
          * @param {PlanTranscodingBuyV1PeriodEnum} period Period
          * @param {number} planTranscodingId Transcoding plan id
-         * @param {PlanTranscodingBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [count] Count flow
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -455,7 +469,7 @@ export const PlanTranscodingApiFp = function(configuration?: Configuration) {
          * @summary Remove after tariff
          * @param {PlanTranscodingCancelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanTranscodingCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -470,7 +484,7 @@ export const PlanTranscodingApiFp = function(configuration?: Configuration) {
          * @summary Check transcoding tariff before buy
          * @param {PlanTranscodingCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanTranscodingCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -484,7 +498,7 @@ export const PlanTranscodingApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get discount transcoding
          * @param {PlanTranscodingGetDiscountV1LanguageEnum} language Current language
-         * @param {PlanTranscodingGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -498,7 +512,7 @@ export const PlanTranscodingApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get list of transcoding tariffs
          * @param {PlanTranscodingListV1LanguageEnum} language Current language
-         * @param {PlanTranscodingListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -514,7 +528,7 @@ export const PlanTranscodingApiFp = function(configuration?: Configuration) {
          * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
-         * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -529,7 +543,7 @@ export const PlanTranscodingApiFp = function(configuration?: Configuration) {
          * @summary Get tariff for project
          * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanTranscodingTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanTranscodingTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -735,7 +749,7 @@ export interface PlanTranscodingApiPlanTranscodingBuyV1Request {
     readonly plan_transcoding_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingBuyV1
      */
@@ -770,7 +784,7 @@ export interface PlanTranscodingApiPlanTranscodingCancelV1Request {
     readonly project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingCancelV1
      */
@@ -798,7 +812,7 @@ export interface PlanTranscodingApiPlanTranscodingCheckV1Request {
     readonly project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingCheckV1
      */
@@ -819,7 +833,7 @@ export interface PlanTranscodingApiPlanTranscodingGetDiscountV1Request {
     readonly language: PlanTranscodingGetDiscountV1LanguageEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingGetDiscountV1
      */
@@ -840,7 +854,7 @@ export interface PlanTranscodingApiPlanTranscodingListV1Request {
     readonly language: PlanTranscodingListV1LanguageEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingListV1
      */
@@ -875,7 +889,7 @@ export interface PlanTranscodingApiPlanTranscodingSetProlongationV1Request {
     readonly enabled: boolean
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingSetProlongationV1
      */
@@ -903,7 +917,7 @@ export interface PlanTranscodingApiPlanTranscodingTariffV1Request {
     readonly project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanTranscodingApiPlanTranscodingTariffV1
      */

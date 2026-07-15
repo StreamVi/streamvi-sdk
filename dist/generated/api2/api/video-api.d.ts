@@ -30,7 +30,7 @@ export declare const VideoApiAxiosParamCreator: (configuration?: Configuration) 
      * @summary Create upload session
      * @param {VideoSiteCreateV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {VideoSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -41,7 +41,7 @@ export declare const VideoApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {VideoSiteDeleteV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} id Video id
-     * @param {VideoSiteDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -52,7 +52,7 @@ export declare const VideoApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {VideoSiteDownloadV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {string} id Download link id
-     * @param {VideoSiteDownloadV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteDownloadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -63,7 +63,7 @@ export declare const VideoApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {VideoSiteGetV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} id Video id
-     * @param {VideoSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -73,7 +73,7 @@ export declare const VideoApiAxiosParamCreator: (configuration?: Configuration) 
      * @summary Get video limits
      * @param {VideoSiteLimitsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {VideoSiteLimitsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteLimitsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -83,7 +83,7 @@ export declare const VideoApiAxiosParamCreator: (configuration?: Configuration) 
      * @summary List videos
      * @param {VideoSiteListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {VideoSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [offset] Offset for v2 list endpoint
      * @param {number} [limit] Limit for v2 list endpoint
      * @param {*} [options] Override http request option.
@@ -95,7 +95,7 @@ export declare const VideoApiAxiosParamCreator: (configuration?: Configuration) 
      * @summary Get upload progress channel for centrifuge
      * @param {VideoSiteProgressChannelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -119,7 +119,7 @@ export declare const VideoApiFp: (configuration?: Configuration) => {
      * @summary Create upload session
      * @param {VideoSiteCreateV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {VideoSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -130,7 +130,7 @@ export declare const VideoApiFp: (configuration?: Configuration) => {
      * @param {VideoSiteDeleteV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} id Video id
-     * @param {VideoSiteDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -141,7 +141,7 @@ export declare const VideoApiFp: (configuration?: Configuration) => {
      * @param {VideoSiteDownloadV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {string} id Download link id
-     * @param {VideoSiteDownloadV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteDownloadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -152,7 +152,7 @@ export declare const VideoApiFp: (configuration?: Configuration) => {
      * @param {VideoSiteGetV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} id Video id
-     * @param {VideoSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -162,7 +162,7 @@ export declare const VideoApiFp: (configuration?: Configuration) => {
      * @summary Get video limits
      * @param {VideoSiteLimitsV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {VideoSiteLimitsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteLimitsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -172,7 +172,7 @@ export declare const VideoApiFp: (configuration?: Configuration) => {
      * @summary List videos
      * @param {VideoSiteListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {VideoSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [offset] Offset for v2 list endpoint
      * @param {number} [limit] Limit for v2 list endpoint
      * @param {*} [options] Override http request option.
@@ -184,7 +184,7 @@ export declare const VideoApiFp: (configuration?: Configuration) => {
      * @summary Get upload progress channel for centrifuge
      * @param {VideoSiteProgressChannelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -366,7 +366,7 @@ export interface VideoApiVideoSiteCreateV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof VideoApiVideoSiteCreateV1
      */
@@ -397,7 +397,7 @@ export interface VideoApiVideoSiteDeleteV1Request {
      */
     readonly id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof VideoApiVideoSiteDeleteV1
      */
@@ -428,7 +428,7 @@ export interface VideoApiVideoSiteDownloadV1Request {
      */
     readonly id: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof VideoApiVideoSiteDownloadV1
      */
@@ -459,7 +459,7 @@ export interface VideoApiVideoSiteGetV1Request {
      */
     readonly id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof VideoApiVideoSiteGetV1
      */
@@ -484,7 +484,7 @@ export interface VideoApiVideoSiteLimitsV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof VideoApiVideoSiteLimitsV1
      */
@@ -509,7 +509,7 @@ export interface VideoApiVideoSiteListV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof VideoApiVideoSiteListV1
      */
@@ -546,7 +546,7 @@ export interface VideoApiVideoSiteProgressChannelV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof VideoApiVideoSiteProgressChannelV1
      */

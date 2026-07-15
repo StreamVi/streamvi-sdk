@@ -78,7 +78,8 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(cancelMediaServiceFileRequest, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...cancelMediaServiceFileRequest, v: cancelMediaServiceFileRequest.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -90,7 +91,7 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
          * @summary Create service video
          * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -117,6 +118,8 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -171,7 +174,8 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(deleteMediaServiceFileRequest, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...deleteMediaServiceFileRequest, v: deleteMediaServiceFileRequest.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -184,7 +188,7 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
          * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
-         * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -213,6 +217,8 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -243,7 +249,7 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
          * @summary Get service video list
          * @param {MediaServiceFilesSiteListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -270,6 +276,8 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -297,7 +305,7 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
          * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
-         * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -326,6 +334,8 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -384,7 +394,8 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(setMediaServiceFileRequest, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...setMediaServiceFileRequest, v: setMediaServiceFileRequest.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -424,7 +435,8 @@ export const MediaServiceFilesApiAxiosParamCreator = function (configuration?: C
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateMediaServiceFileRequest, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...updateMediaServiceFileRequest, v: updateMediaServiceFileRequest.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -459,7 +471,7 @@ export const MediaServiceFilesApiFp = function(configuration?: Configuration) {
          * @summary Create service video
          * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -488,7 +500,7 @@ export const MediaServiceFilesApiFp = function(configuration?: Configuration) {
          * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
-         * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -503,7 +515,7 @@ export const MediaServiceFilesApiFp = function(configuration?: Configuration) {
          * @summary Get service video list
          * @param {MediaServiceFilesSiteListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -519,7 +531,7 @@ export const MediaServiceFilesApiFp = function(configuration?: Configuration) {
          * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
-         * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -771,7 +783,7 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request {
     readonly project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteCreateV1
      */
@@ -820,7 +832,7 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteGetV1Request {
     readonly media_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteGetV1
      */
@@ -848,7 +860,7 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteListV1Request {
     readonly project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteListV1
      */
@@ -883,7 +895,7 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request {
     readonly media_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteSessionV1
      */

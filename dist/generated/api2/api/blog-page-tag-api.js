@@ -33,7 +33,7 @@ const BlogPageTagApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get list of blog pages
          * @param {BlogPageTagListV1LanguageEnum} language Current language
-         * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
@@ -55,6 +55,9 @@ const BlogPageTagApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -90,7 +93,7 @@ const BlogPageTagApiFp = function (configuration) {
          *
          * @summary Get list of blog pages
          * @param {BlogPageTagListV1LanguageEnum} language Current language
-         * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number

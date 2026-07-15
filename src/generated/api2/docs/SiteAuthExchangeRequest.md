@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**v** | **string** | Version | [default to undefined]
+**v** | **string** | Version (automatically defaults to 1 based on the API contract, can be overridden) | [optional] [default to VEnum__1]
 **language** | **string** | Current language | [default to LanguageEnum_En]
 **code** | **string** | Auth code for exchange of token | [default to undefined]
 **userAgent** | **string** | userAgent | [default to undefined]

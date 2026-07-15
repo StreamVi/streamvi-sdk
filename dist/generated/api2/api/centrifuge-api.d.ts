@@ -25,7 +25,7 @@ export declare const CentrifugeApiAxiosParamCreator: (configuration?: Configurat
      * Use /method/centrifuge/auth/connect instead.
      * @summary Auth centrifuge for project
      * @param {number} projectId Project id
-     * @param {CentrifugeAuthV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
+     * @param {CentrifugeAuthV2VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
@@ -37,7 +37,7 @@ export declare const CentrifugeApiAxiosParamCreator: (configuration?: Configurat
      * @param {CentrifugeChannelTokenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {string} channelName Channel name
-     * @param {CentrifugeChannelTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {CentrifugeChannelTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -46,7 +46,7 @@ export declare const CentrifugeApiAxiosParamCreator: (configuration?: Configurat
      * Returns supported channel_type values, required params, events, and response schema names.
      * @summary List available Method API Centrifuge channels
      * @param {CentrifugeChannelsCatalogV1LanguageEnum} language Current language
-     * @param {CentrifugeChannelsCatalogV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {CentrifugeChannelsCatalogV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -56,7 +56,7 @@ export declare const CentrifugeApiAxiosParamCreator: (configuration?: Configurat
      * @summary Get token for connect to centrifuge for project
      * @param {CentrifugeConnectionTokenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {CentrifugeConnectionTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {CentrifugeConnectionTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -66,7 +66,7 @@ export declare const CentrifugeApiAxiosParamCreator: (configuration?: Configurat
      * @summary Auth token for project
      * @param {CentrifugeProjectV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
@@ -78,7 +78,7 @@ export declare const CentrifugeApiAxiosParamCreator: (configuration?: Configurat
      * @param {number} broadcastId
      * @param {GetTokenBroadcastV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
@@ -94,7 +94,7 @@ export declare const CentrifugeApiFp: (configuration?: Configuration) => {
      * Use /method/centrifuge/auth/connect instead.
      * @summary Auth centrifuge for project
      * @param {number} projectId Project id
-     * @param {CentrifugeAuthV2VEnum} [v] Version (automatically defaults to 2 based on method version, can be overridden)
+     * @param {CentrifugeAuthV2VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
@@ -106,7 +106,7 @@ export declare const CentrifugeApiFp: (configuration?: Configuration) => {
      * @param {CentrifugeChannelTokenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {string} channelName Channel name
-     * @param {CentrifugeChannelTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {CentrifugeChannelTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -115,7 +115,7 @@ export declare const CentrifugeApiFp: (configuration?: Configuration) => {
      * Returns supported channel_type values, required params, events, and response schema names.
      * @summary List available Method API Centrifuge channels
      * @param {CentrifugeChannelsCatalogV1LanguageEnum} language Current language
-     * @param {CentrifugeChannelsCatalogV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {CentrifugeChannelsCatalogV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -125,7 +125,7 @@ export declare const CentrifugeApiFp: (configuration?: Configuration) => {
      * @summary Get token for connect to centrifuge for project
      * @param {CentrifugeConnectionTokenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {CentrifugeConnectionTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {CentrifugeConnectionTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -135,7 +135,7 @@ export declare const CentrifugeApiFp: (configuration?: Configuration) => {
      * @summary Auth token for project
      * @param {CentrifugeProjectV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
@@ -147,7 +147,7 @@ export declare const CentrifugeApiFp: (configuration?: Configuration) => {
      * @param {number} broadcastId
      * @param {GetTokenBroadcastV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
@@ -288,7 +288,7 @@ export interface CentrifugeApiCentrifugeAuthV2Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 2 based on method version, can be overridden)
+     * Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @type {'2'}
      * @memberof CentrifugeApiCentrifugeAuthV2
      */
@@ -319,7 +319,7 @@ export interface CentrifugeApiCentrifugeChannelTokenV1Request {
      */
     readonly channel_name: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof CentrifugeApiCentrifugeChannelTokenV1
      */
@@ -338,7 +338,7 @@ export interface CentrifugeApiCentrifugeChannelsCatalogV1Request {
      */
     readonly language: CentrifugeChannelsCatalogV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof CentrifugeApiCentrifugeChannelsCatalogV1
      */
@@ -363,7 +363,7 @@ export interface CentrifugeApiCentrifugeConnectionTokenV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof CentrifugeApiCentrifugeConnectionTokenV1
      */
@@ -388,7 +388,7 @@ export interface CentrifugeApiCentrifugeProjectV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof CentrifugeApiCentrifugeProjectV1
      */
@@ -419,7 +419,7 @@ export interface CentrifugeApiGetTokenBroadcastV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @type {'2'}
      * @memberof CentrifugeApiGetTokenBroadcastV1
      */

@@ -16,11 +16,11 @@
  */
 export interface VliveDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof VliveDto
      */
-    'v': VliveDtoVEnum;
+    'v'?: VliveDtoVEnum;
     /**
      * Current language
      * @type {string}

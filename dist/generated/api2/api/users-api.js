@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserUpdateProfileV1LanguageEnum = exports.UserUpdateProfileV1VEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = void 0;
+exports.UserUpdateProfileV1VEnum = exports.UserUpdateProfileV1LanguageEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -61,18 +61,16 @@ const UsersApiAxiosParamCreator = function (configuration) {
         /**
          * Use /method/account/profile instead.
          * @summary Update profile
-         * @param {UserUpdateProfileV1VEnum} v Version
          * @param {UserUpdateProfileV1LanguageEnum} language Current language
          * @param {string} firstName First name
          * @param {string} lastName Last name
+         * @param {UserUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        userUpdateProfileV1: async (v, language, firstName, lastName, avatar, options = {}) => {
-            // verify required parameter 'v' is not null or undefined
-            (0, common_1.assertParamExists)('userUpdateProfileV1', 'v', v);
+        userUpdateProfileV1: async (language, firstName, lastName, v, avatar, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userUpdateProfileV1', 'language', language);
             // verify required parameter 'firstName' is not null or undefined
@@ -95,6 +93,9 @@ const UsersApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarFormParams.append('v', v);
+            }
+            else {
+                localVarFormParams.append('v', '1');
             }
             if (language !== undefined) {
                 localVarFormParams.append('language', language);
@@ -145,18 +146,18 @@ const UsersApiFp = function (configuration) {
         /**
          * Use /method/account/profile instead.
          * @summary Update profile
-         * @param {UserUpdateProfileV1VEnum} v Version
          * @param {UserUpdateProfileV1LanguageEnum} language Current language
          * @param {string} firstName First name
          * @param {string} lastName Last name
+         * @param {UserUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        async userUpdateProfileV1(v, language, firstName, lastName, avatar, options) {
+        async userUpdateProfileV1(language, firstName, lastName, v, avatar, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userUpdateProfileV1(v, language, firstName, lastName, avatar, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userUpdateProfileV1(language, firstName, lastName, v, avatar, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.userUpdateProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -190,7 +191,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         userUpdateProfileV1(requestParameters, options) {
-            return localVarFp.userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(axios, basePath));
+            return localVarFp.userUpdateProfileV1(requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.v, requestParameters.avatar, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -223,16 +224,10 @@ class UsersApi extends base_1.BaseAPI {
      * @memberof UsersApi
      */
     userUpdateProfileV1(requestParameters, options) {
-        return (0, exports.UsersApiFp)(this.configuration).userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.UsersApiFp)(this.configuration).userUpdateProfileV1(requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.v, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.UsersApi = UsersApi;
-/**
- * @export
- */
-exports.UserUpdateProfileV1VEnum = {
-    _1: '1'
-};
 /**
  * @export
  */
@@ -240,4 +235,10 @@ exports.UserUpdateProfileV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.UserUpdateProfileV1VEnum = {
+    _1: '1'
 };

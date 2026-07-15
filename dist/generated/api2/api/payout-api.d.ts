@@ -25,7 +25,7 @@ export declare const PayoutApiAxiosParamCreator: (configuration?: Configuration)
      * @summary Create payout
      * @param {PayoutCreateV1LanguageEnum} language Current language
      * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto
-     * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -35,7 +35,7 @@ export declare const PayoutApiAxiosParamCreator: (configuration?: Configuration)
      * @summary Get payout data for create
      * @param {PayoutPrepareV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -51,7 +51,7 @@ export declare const PayoutApiFp: (configuration?: Configuration) => {
      * @summary Create payout
      * @param {PayoutCreateV1LanguageEnum} language Current language
      * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto
-     * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -61,7 +61,7 @@ export declare const PayoutApiFp: (configuration?: Configuration) => {
      * @summary Get payout data for create
      * @param {PayoutPrepareV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -133,7 +133,7 @@ export interface PayoutApiPayoutCreateV1Request {
      */
     readonly PayoutCreateRequestBodyDto: PayoutCreateRequestBodyDto;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PayoutApiPayoutCreateV1
      */
@@ -158,7 +158,7 @@ export interface PayoutApiPayoutPrepareV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PayoutApiPayoutPrepareV1
      */

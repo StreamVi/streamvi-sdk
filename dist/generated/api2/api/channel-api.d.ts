@@ -280,7 +280,7 @@ export declare const ChannelApiAxiosParamCreator: (configuration?: Configuration
      * @param {ChannelGetChannelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -299,7 +299,7 @@ export declare const ChannelApiAxiosParamCreator: (configuration?: Configuration
      * @summary Minimal channel list
      * @param {ChannelShortChannelListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -309,7 +309,7 @@ export declare const ChannelApiAxiosParamCreator: (configuration?: Configuration
      * @summary Search channel list
      * @param {MethodSearchV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {MethodSearchV1TypeEnum} [type]
      * @param {string} [platform] platform type
      * @param {string} [name] name
@@ -563,7 +563,7 @@ export declare const ChannelApiFp: (configuration?: Configuration) => {
      * @param {ChannelGetChannelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
-     * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -582,7 +582,7 @@ export declare const ChannelApiFp: (configuration?: Configuration) => {
      * @summary Minimal channel list
      * @param {ChannelShortChannelListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -592,7 +592,7 @@ export declare const ChannelApiFp: (configuration?: Configuration) => {
      * @summary Search channel list
      * @param {MethodSearchV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {MethodSearchV1TypeEnum} [type]
      * @param {string} [platform] platform type
      * @param {string} [name] name
@@ -1574,7 +1574,7 @@ export interface ChannelApiChannelGetChannelV1Request {
      */
     readonly channel_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelApiChannelGetChannelV1
      */
@@ -1618,7 +1618,7 @@ export interface ChannelApiChannelShortChannelListV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelApiChannelShortChannelListV1
      */
@@ -1643,7 +1643,7 @@ export interface ChannelApiMethodSearchV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelApiMethodSearchV1
      */

@@ -34,7 +34,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @summary Get credentials
          * @param {BroadcastCredentialsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -59,6 +59,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -79,7 +82,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @param {BroadcastEventItemV1LanguageEnum} language Current language
          * @param {string} id Event id
          * @param {string} date Event date
-         * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -117,6 +120,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -143,7 +149,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @param {BroadcastEventsV4SortByDateEnum} [sortByDate] Sort order by created_at
          * @param {string} [cursorId] Cursor event id
          * @param {string} [cursorDatetime] Cursor event datetime
-         * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on method version, can be overridden)
+         * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -221,6 +227,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '4';
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -235,7 +244,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @param {BroadcastFindV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
-         * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -271,6 +280,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '3';
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -285,7 +297,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
-         * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -321,6 +333,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '3';
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -335,7 +350,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
-         * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -371,6 +386,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '3';
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -387,7 +405,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {BroadcastListV1OrderEnum} [order] order
-         * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -427,6 +445,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '3';
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -443,6 +464,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         broadcastPauseV1: async (siteBroadcastPauseRequest, options = {}) => {
+            var _a;
             // verify required parameter 'siteBroadcastPauseRequest' is not null or undefined
             (0, common_1.assertParamExists)('broadcastPauseV1', 'siteBroadcastPauseRequest', siteBroadcastPauseRequest);
             const localVarPath = `/method/broadcast/pause`;
@@ -462,7 +484,8 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteBroadcastPauseRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...siteBroadcastPauseRequest, v: (_a = siteBroadcastPauseRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -476,6 +499,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         broadcastPlayV1: async (siteBroadcastPlayRequest, options = {}) => {
+            var _a;
             // verify required parameter 'siteBroadcastPlayRequest' is not null or undefined
             (0, common_1.assertParamExists)('broadcastPlayV1', 'siteBroadcastPlayRequest', siteBroadcastPlayRequest);
             const localVarPath = `/method/broadcast/play`;
@@ -495,7 +519,8 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteBroadcastPlayRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...siteBroadcastPlayRequest, v: (_a = siteBroadcastPlayRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -507,7 +532,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
          * @param {number} broadcastId broadcast id
          * @param {string} key Chat token
-         * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -534,6 +559,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -557,7 +585,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @param {BroadcastRestreamsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
-         * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -593,6 +621,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -606,7 +637,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @summary Live status info by project id
          * @param {BroadcastStatusV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -631,6 +662,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -653,6 +687,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         broadcastStopV1: async (siteBroadcastStopRequest, options = {}) => {
+            var _a;
             // verify required parameter 'siteBroadcastStopRequest' is not null or undefined
             (0, common_1.assertParamExists)('broadcastStopV1', 'siteBroadcastStopRequest', siteBroadcastStopRequest);
             const localVarPath = `/method/broadcast/stop`;
@@ -672,7 +707,8 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteBroadcastStopRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...siteBroadcastStopRequest, v: (_a = siteBroadcastStopRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -683,7 +719,7 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @summary Connect channel, long polling
          * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
          * @param {string} key
-         * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -707,6 +743,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -737,7 +776,7 @@ const BroadcastApiFp = function (configuration) {
          * @summary Get credentials
          * @param {BroadcastCredentialsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -754,7 +793,7 @@ const BroadcastApiFp = function (configuration) {
          * @param {BroadcastEventItemV1LanguageEnum} language Current language
          * @param {string} id Event id
          * @param {string} date Event date
-         * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -783,7 +822,7 @@ const BroadcastApiFp = function (configuration) {
          * @param {BroadcastEventsV4SortByDateEnum} [sortByDate] Sort order by created_at
          * @param {string} [cursorId] Cursor event id
          * @param {string} [cursorDatetime] Cursor event datetime
-         * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on method version, can be overridden)
+         * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -800,7 +839,7 @@ const BroadcastApiFp = function (configuration) {
          * @param {BroadcastFindV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
-         * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -817,7 +856,7 @@ const BroadcastApiFp = function (configuration) {
          * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
-         * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -834,7 +873,7 @@ const BroadcastApiFp = function (configuration) {
          * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
-         * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -853,7 +892,7 @@ const BroadcastApiFp = function (configuration) {
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {BroadcastListV1OrderEnum} [order] order
-         * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -898,7 +937,7 @@ const BroadcastApiFp = function (configuration) {
          * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
          * @param {number} broadcastId broadcast id
          * @param {string} key Chat token
-         * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -915,7 +954,7 @@ const BroadcastApiFp = function (configuration) {
          * @param {BroadcastRestreamsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
-         * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -931,7 +970,7 @@ const BroadcastApiFp = function (configuration) {
          * @summary Live status info by project id
          * @param {BroadcastStatusV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -961,7 +1000,7 @@ const BroadcastApiFp = function (configuration) {
          * @summary Connect channel, long polling
          * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
          * @param {string} key
-         * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

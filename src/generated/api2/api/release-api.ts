@@ -35,7 +35,7 @@ export const ReleaseApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Get current version app
          * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
-         * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -57,6 +57,8 @@ export const ReleaseApiAxiosParamCreator = function (configuration?: Configurati
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -92,7 +94,7 @@ export const ReleaseApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get current version app
          * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
-         * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -158,7 +160,7 @@ export interface ReleaseApiReleaseAppCabinetV1Request {
     readonly language: ReleaseAppCabinetV1LanguageEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ReleaseApiReleaseAppCabinetV1
      */

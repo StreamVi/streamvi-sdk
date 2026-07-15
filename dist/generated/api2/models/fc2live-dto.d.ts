@@ -16,11 +16,11 @@
  */
 export interface Fc2liveDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof Fc2liveDto
      */
-    'v': Fc2liveDtoVEnum;
+    'v'?: Fc2liveDtoVEnum;
     /**
      * Current language
      * @type {string}

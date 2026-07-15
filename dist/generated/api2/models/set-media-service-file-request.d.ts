@@ -16,11 +16,11 @@
  */
 export interface SetMediaServiceFileRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof SetMediaServiceFileRequest
      */
-    'v': SetMediaServiceFileRequestVEnum;
+    'v'?: SetMediaServiceFileRequestVEnum;
     /**
      * Current language
      * @type {string}

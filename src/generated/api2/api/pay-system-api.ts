@@ -54,7 +54,7 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
          * @summary Create payoneer payment challenge redirect url
          * @param {PaySystemCreateChallengeV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {PaySystemCreateChallengeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaySystemCreateChallengeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -77,6 +77,8 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -103,7 +105,7 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
          * @summary Create t-bank payment challenge redirect url
          * @param {PaySystemCreateTBankV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {PaySystemCreateTBankV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaySystemCreateTBankV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -126,6 +128,8 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -152,7 +156,7 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
          * @summary Create unitpay payment challenge redirect url
          * @param {PaySystemCreateUnitpayV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {PaySystemCreateUnitpayV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaySystemCreateUnitpayV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -175,6 +179,8 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -283,7 +289,7 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
          * @summary Get TonConnect payment verification status
          * @param {TonConnectStatusV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {TonConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TonConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -310,6 +316,8 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -376,7 +384,7 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
          * @summary Create TRON USDT deposit payment intent
          * @param {TronPaymentIntentV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {TronPaymentIntentV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TronPaymentIntentV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -403,6 +411,8 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -429,7 +439,7 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
          * @summary Get TRON USDT payment status
          * @param {TronPaymentStatusV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {TronPaymentStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TronPaymentStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -456,6 +466,8 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -482,7 +494,7 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
          * @summary Submit TRON USDT transaction hash (disabled)
          * @param {TronPaymentSubmitV1LanguageEnum} language Current language
          * @param {TronPaymentSubmitBodyDto} tronPaymentSubmitBodyDto 
-         * @param {TronPaymentSubmitV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TronPaymentSubmitV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -509,6 +521,8 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -582,7 +596,7 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
          * @summary Get WalletConnect payment verification status
          * @param {WalletConnectStatusV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {WalletConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WalletConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -609,6 +623,8 @@ export const PaySystemApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -685,7 +701,7 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
          * @summary Create payoneer payment challenge redirect url
          * @param {PaySystemCreateChallengeV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {PaySystemCreateChallengeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaySystemCreateChallengeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -700,7 +716,7 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
          * @summary Create t-bank payment challenge redirect url
          * @param {PaySystemCreateTBankV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {PaySystemCreateTBankV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaySystemCreateTBankV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -715,7 +731,7 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
          * @summary Create unitpay payment challenge redirect url
          * @param {PaySystemCreateUnitpayV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {PaySystemCreateUnitpayV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaySystemCreateUnitpayV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -756,7 +772,7 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
          * @summary Get TonConnect payment verification status
          * @param {TonConnectStatusV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {TonConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TonConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -784,7 +800,7 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
          * @summary Create TRON USDT deposit payment intent
          * @param {TronPaymentIntentV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {TronPaymentIntentV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TronPaymentIntentV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -799,7 +815,7 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
          * @summary Get TRON USDT payment status
          * @param {TronPaymentStatusV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {TronPaymentStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TronPaymentStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -814,7 +830,7 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
          * @summary Submit TRON USDT transaction hash (disabled)
          * @param {TronPaymentSubmitV1LanguageEnum} language Current language
          * @param {TronPaymentSubmitBodyDto} tronPaymentSubmitBodyDto 
-         * @param {TronPaymentSubmitV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TronPaymentSubmitV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -843,7 +859,7 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
          * @summary Get WalletConnect payment verification status
          * @param {WalletConnectStatusV1LanguageEnum} language Current language
          * @param {number} paymentId Payment id
-         * @param {WalletConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {WalletConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1166,7 +1182,7 @@ export interface PaySystemApiPaySystemCreateChallengeV1Request {
     readonly payment_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiPaySystemCreateChallengeV1
      */
@@ -1194,7 +1210,7 @@ export interface PaySystemApiPaySystemCreateTBankV1Request {
     readonly payment_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiPaySystemCreateTBankV1
      */
@@ -1222,7 +1238,7 @@ export interface PaySystemApiPaySystemCreateUnitpayV1Request {
     readonly payment_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiPaySystemCreateUnitpayV1
      */
@@ -1271,7 +1287,7 @@ export interface PaySystemApiTonConnectStatusV1Request {
     readonly payment_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiTonConnectStatusV1
      */
@@ -1313,7 +1329,7 @@ export interface PaySystemApiTronPaymentIntentV1Request {
     readonly payment_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiTronPaymentIntentV1
      */
@@ -1341,7 +1357,7 @@ export interface PaySystemApiTronPaymentStatusV1Request {
     readonly payment_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiTronPaymentStatusV1
      */
@@ -1369,7 +1385,7 @@ export interface PaySystemApiTronPaymentSubmitV1Request {
     readonly TronPaymentSubmitBodyDto: TronPaymentSubmitBodyDto
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiTronPaymentSubmitV1
      */
@@ -1418,7 +1434,7 @@ export interface PaySystemApiWalletConnectStatusV1Request {
     readonly payment_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiWalletConnectStatusV1
      */

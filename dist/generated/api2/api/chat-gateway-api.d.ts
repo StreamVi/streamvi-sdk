@@ -28,7 +28,7 @@ export declare const ChatGatewayApiAxiosParamCreator: (configuration?: Configura
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
-     * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -40,7 +40,7 @@ export declare const ChatGatewayApiAxiosParamCreator: (configuration?: Configura
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
-     * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -51,7 +51,7 @@ export declare const ChatGatewayApiAxiosParamCreator: (configuration?: Configura
      * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
-     * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -63,7 +63,7 @@ export declare const ChatGatewayApiAxiosParamCreator: (configuration?: Configura
      * @param {string} key Key
      * @param {number} broadcastId
      * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto
-     * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -81,7 +81,7 @@ export declare const ChatGatewayApiFp: (configuration?: Configuration) => {
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
-     * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -93,7 +93,7 @@ export declare const ChatGatewayApiFp: (configuration?: Configuration) => {
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
-     * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -104,7 +104,7 @@ export declare const ChatGatewayApiFp: (configuration?: Configuration) => {
      * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
-     * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -116,7 +116,7 @@ export declare const ChatGatewayApiFp: (configuration?: Configuration) => {
      * @param {string} key Key
      * @param {number} broadcastId
      * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto
-     * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -234,7 +234,7 @@ export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
      */
     readonly event_id: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
@@ -271,7 +271,7 @@ export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
      */
     readonly event_id: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
@@ -302,7 +302,7 @@ export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
      */
     readonly broadcast_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
@@ -339,7 +339,7 @@ export interface ChatGatewayApiMethodChatGatewaySendV1Request {
      */
     readonly MethodChatSendMessageRequestDto: MethodChatSendMessageRequestDto;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */

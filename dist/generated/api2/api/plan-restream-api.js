@@ -36,7 +36,7 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
          * @param {number} projectId Project id
          * @param {PlanRestreamBuyV1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
-         * @param {PlanRestreamBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [countChannel] Channel count
          * @param {number} [bitrate] Bitrate, kbps
          * @param {*} [options] Override http request option.
@@ -66,6 +66,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -100,7 +103,7 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
          * @param {number} projectId Project id
          * @param {PlanRestreamCheck2V1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
-         * @param {PlanRestreamCheck2V1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamCheck2V1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
          * @param {number} [useBalance] Is select balance
          * @param {number} [channels] Channels count
          * @param {number} [bitrate] Bitrate, kbps
@@ -135,6 +138,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '2';
+            }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
@@ -165,7 +171,7 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get discount restream
          * @param {PlanRestreamGetDiscountV1LanguageEnum} language Current language
-         * @param {PlanRestreamGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -188,6 +194,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -204,7 +213,7 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
          * @summary Get list of restream tariffs for project
          * @param {PlanRestreamListProjectV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanRestreamListProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamListProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -229,6 +238,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -247,7 +259,7 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get list of restream tariffs
          * @param {PlanRestreamListV1LanguageEnum} language Current language
-         * @param {PlanRestreamListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -270,6 +282,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -287,7 +302,7 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
          * @param {PlanRestreamRemoveV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} planRestreamId Restream plan id
-         * @param {PlanRestreamRemoveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamRemoveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -314,6 +329,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -337,7 +355,7 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
          * @param {PlanRestreamSetProlongationV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
-         * @param {PlanRestreamSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -364,6 +382,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -386,7 +407,7 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
          * @summary Get tariff for project
          * @param {PlanRestreamTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanRestreamTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -410,6 +431,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -442,7 +466,7 @@ const PlanRestreamApiFp = function (configuration) {
          * @param {number} projectId Project id
          * @param {PlanRestreamBuyV1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
-         * @param {PlanRestreamBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [countChannel] Channel count
          * @param {number} [bitrate] Bitrate, kbps
          * @param {*} [options] Override http request option.
@@ -462,7 +486,7 @@ const PlanRestreamApiFp = function (configuration) {
          * @param {number} projectId Project id
          * @param {PlanRestreamCheck2V1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
-         * @param {PlanRestreamCheck2V1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamCheck2V1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
          * @param {number} [useBalance] Is select balance
          * @param {number} [channels] Channels count
          * @param {number} [bitrate] Bitrate, kbps
@@ -480,7 +504,7 @@ const PlanRestreamApiFp = function (configuration) {
          *
          * @summary Get discount restream
          * @param {PlanRestreamGetDiscountV1LanguageEnum} language Current language
-         * @param {PlanRestreamGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -496,7 +520,7 @@ const PlanRestreamApiFp = function (configuration) {
          * @summary Get list of restream tariffs for project
          * @param {PlanRestreamListProjectV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanRestreamListProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamListProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -511,7 +535,7 @@ const PlanRestreamApiFp = function (configuration) {
          *
          * @summary Get list of restream tariffs
          * @param {PlanRestreamListV1LanguageEnum} language Current language
-         * @param {PlanRestreamListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -528,7 +552,7 @@ const PlanRestreamApiFp = function (configuration) {
          * @param {PlanRestreamRemoveV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} planRestreamId Restream plan id
-         * @param {PlanRestreamRemoveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamRemoveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -545,7 +569,7 @@ const PlanRestreamApiFp = function (configuration) {
          * @param {PlanRestreamSetProlongationV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
-         * @param {PlanRestreamSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -561,7 +585,7 @@ const PlanRestreamApiFp = function (configuration) {
          * @summary Get tariff for project
          * @param {PlanRestreamTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanRestreamTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanRestreamTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

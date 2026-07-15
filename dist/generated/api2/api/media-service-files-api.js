@@ -37,6 +37,7 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteCancelV1: async (cancelMediaServiceFileRequest, options = {}) => {
+            var _a;
             // verify required parameter 'cancelMediaServiceFileRequest' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteCancelV1', 'cancelMediaServiceFileRequest', cancelMediaServiceFileRequest);
             const localVarPath = `/method/media-service-files/cancel`;
@@ -56,7 +57,8 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(cancelMediaServiceFileRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...cancelMediaServiceFileRequest, v: (_a = cancelMediaServiceFileRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -67,7 +69,7 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
          * @summary Create service video
          * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -92,6 +94,9 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -114,6 +119,7 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteDeleteV1: async (deleteMediaServiceFileRequest, options = {}) => {
+            var _a;
             // verify required parameter 'deleteMediaServiceFileRequest' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteDeleteV1', 'deleteMediaServiceFileRequest', deleteMediaServiceFileRequest);
             const localVarPath = `/method/media-service-files/delete`;
@@ -133,7 +139,8 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(deleteMediaServiceFileRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...deleteMediaServiceFileRequest, v: (_a = deleteMediaServiceFileRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -145,7 +152,7 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
          * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
-         * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -172,6 +179,9 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -194,7 +204,7 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
          * @summary Get service video list
          * @param {MediaServiceFilesSiteListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -219,6 +229,9 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -239,7 +252,7 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
          * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
-         * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -266,6 +279,9 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -291,6 +307,7 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteSetV1: async (setMediaServiceFileRequest, options = {}) => {
+            var _a;
             // verify required parameter 'setMediaServiceFileRequest' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteSetV1', 'setMediaServiceFileRequest', setMediaServiceFileRequest);
             const localVarPath = `/method/media-service-files/set`;
@@ -310,7 +327,8 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(setMediaServiceFileRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...setMediaServiceFileRequest, v: (_a = setMediaServiceFileRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -324,6 +342,7 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteUpdateV1: async (updateMediaServiceFileRequest, options = {}) => {
+            var _a;
             // verify required parameter 'updateMediaServiceFileRequest' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteUpdateV1', 'updateMediaServiceFileRequest', updateMediaServiceFileRequest);
             const localVarPath = `/method/media-service-files/update`;
@@ -343,7 +362,8 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(updateMediaServiceFileRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...updateMediaServiceFileRequest, v: (_a = updateMediaServiceFileRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -378,7 +398,7 @@ const MediaServiceFilesApiFp = function (configuration) {
          * @summary Create service video
          * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -409,7 +429,7 @@ const MediaServiceFilesApiFp = function (configuration) {
          * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
-         * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -425,7 +445,7 @@ const MediaServiceFilesApiFp = function (configuration) {
          * @summary Get service video list
          * @param {MediaServiceFilesSiteListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -442,7 +462,7 @@ const MediaServiceFilesApiFp = function (configuration) {
          * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
-         * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

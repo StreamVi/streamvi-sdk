@@ -23,7 +23,7 @@ export declare const AccountApiAxiosParamCreator: (configuration?: Configuration
      *
      * @summary Get account profile
      * @param {AccountGetProfileV1LanguageEnum} language Current language
-     * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -31,15 +31,15 @@ export declare const AccountApiAxiosParamCreator: (configuration?: Configuration
     /**
      *
      * @summary Update account profile
-     * @param {AccountUpdateProfileV1VEnum} v Version
      * @param {AccountUpdateProfileV1LanguageEnum} language Current language
      * @param {string} firstName First name
      * @param {string} lastName Last name
+     * @param {AccountUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    accountUpdateProfileV1: (v: AccountUpdateProfileV1VEnum, language: AccountUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    accountUpdateProfileV1: (language: AccountUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: AccountUpdateProfileV1VEnum, avatar?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AccountApi - functional programming interface
@@ -50,7 +50,7 @@ export declare const AccountApiFp: (configuration?: Configuration) => {
      *
      * @summary Get account profile
      * @param {AccountGetProfileV1LanguageEnum} language Current language
-     * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -58,15 +58,15 @@ export declare const AccountApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Update account profile
-     * @param {AccountUpdateProfileV1VEnum} v Version
      * @param {AccountUpdateProfileV1LanguageEnum} language Current language
      * @param {string} firstName First name
      * @param {string} lastName Last name
+     * @param {AccountUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    accountUpdateProfileV1(v: AccountUpdateProfileV1VEnum, language: AccountUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    accountUpdateProfileV1(language: AccountUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: AccountUpdateProfileV1VEnum, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * AccountApi - factory interface
@@ -128,7 +128,7 @@ export interface AccountApiAccountGetProfileV1Request {
      */
     readonly language: AccountGetProfileV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AccountApiAccountGetProfileV1
      */
@@ -140,12 +140,6 @@ export interface AccountApiAccountGetProfileV1Request {
  * @interface AccountApiAccountUpdateProfileV1Request
  */
 export interface AccountApiAccountUpdateProfileV1Request {
-    /**
-     * Version
-     * @type {string}
-     * @memberof AccountApiAccountUpdateProfileV1
-     */
-    readonly v: AccountUpdateProfileV1VEnum;
     /**
      * Current language
      * @type {string}
@@ -164,6 +158,12 @@ export interface AccountApiAccountUpdateProfileV1Request {
      * @memberof AccountApiAccountUpdateProfileV1
      */
     readonly last_name: string;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {string}
+     * @memberof AccountApiAccountUpdateProfileV1
+     */
+    readonly v?: AccountUpdateProfileV1VEnum;
     /**
      * File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @type {File}
@@ -216,17 +216,17 @@ export type AccountGetProfileV1VEnum = typeof AccountGetProfileV1VEnum[keyof typ
 /**
  * @export
  */
-export declare const AccountUpdateProfileV1VEnum: {
-    readonly _1: "1";
-};
-export type AccountUpdateProfileV1VEnum = typeof AccountUpdateProfileV1VEnum[keyof typeof AccountUpdateProfileV1VEnum];
-/**
- * @export
- */
 export declare const AccountUpdateProfileV1LanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
     readonly Cn: "cn";
 };
 export type AccountUpdateProfileV1LanguageEnum = typeof AccountUpdateProfileV1LanguageEnum[keyof typeof AccountUpdateProfileV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const AccountUpdateProfileV1VEnum: {
+    readonly _1: "1";
+};
+export type AccountUpdateProfileV1VEnum = typeof AccountUpdateProfileV1VEnum[keyof typeof AccountUpdateProfileV1VEnum];
 //# sourceMappingURL=account-api.d.ts.map

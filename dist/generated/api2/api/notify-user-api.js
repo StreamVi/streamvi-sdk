@@ -34,7 +34,7 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
          * @summary Delete mobile token from user
          * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Current language
          * @param {string} token Token in mobile app
-         * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -59,6 +59,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -78,7 +81,7 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
          * @summary Get user screen notify
          * @param {NotifyUserGetScreenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -103,6 +106,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -121,7 +127,7 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get user notify settings
          * @param {number} projectId Project id
-         * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -144,6 +150,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
@@ -159,7 +168,7 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
          *
          * @summary Remove user screen notify
          * @param {number} projectId Project id
-         * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -182,6 +191,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
@@ -197,7 +209,7 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
          *
          * @summary Set user notify settings
          * @param {SiteSetNotifyUserRequest} siteSetNotifyUserRequest Set user notify settings
-         * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -219,6 +231,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
@@ -245,7 +260,7 @@ const NotifyUserApiFp = function (configuration) {
          * @summary Delete mobile token from user
          * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Current language
          * @param {string} token Token in mobile app
-         * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -261,7 +276,7 @@ const NotifyUserApiFp = function (configuration) {
          * @summary Get user screen notify
          * @param {NotifyUserGetScreenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -276,7 +291,7 @@ const NotifyUserApiFp = function (configuration) {
          *
          * @summary Get user notify settings
          * @param {number} projectId Project id
-         * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -291,7 +306,7 @@ const NotifyUserApiFp = function (configuration) {
          *
          * @summary Remove user screen notify
          * @param {number} projectId Project id
-         * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -306,7 +321,7 @@ const NotifyUserApiFp = function (configuration) {
          *
          * @summary Set user notify settings
          * @param {SiteSetNotifyUserRequest} siteSetNotifyUserRequest Set user notify settings
-         * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

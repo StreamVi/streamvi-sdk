@@ -21,11 +21,11 @@
  */
 export interface CancelMediaServiceFileRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof CancelMediaServiceFileRequest
      */
-    'v': CancelMediaServiceFileRequestVEnum;
+    'v'?: CancelMediaServiceFileRequestVEnum;
     /**
      * Current language
      * @type {string}

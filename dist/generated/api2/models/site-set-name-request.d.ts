@@ -16,11 +16,11 @@
  */
 export interface SiteSetNameRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof SiteSetNameRequest
      */
-    'v': SiteSetNameRequestVEnum;
+    'v'?: SiteSetNameRequestVEnum;
     /**
      * Current language
      * @type {string}

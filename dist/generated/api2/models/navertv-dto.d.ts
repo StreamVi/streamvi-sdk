@@ -16,11 +16,11 @@
  */
 export interface NavertvDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof NavertvDto
      */
-    'v': NavertvDtoVEnum;
+    'v'?: NavertvDtoVEnum;
     /**
      * Current language
      * @type {string}

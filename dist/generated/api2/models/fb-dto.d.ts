@@ -16,11 +16,11 @@
  */
 export interface FbDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof FbDto
      */
-    'v': FbDtoVEnum;
+    'v'?: FbDtoVEnum;
     /**
      * Current language
      * @type {string}

@@ -36,7 +36,7 @@ const ChatGatewayApiAxiosParamCreator = function (configuration) {
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
-         * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -65,6 +65,9 @@ const ChatGatewayApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -92,7 +95,7 @@ const ChatGatewayApiAxiosParamCreator = function (configuration) {
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
-         * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -121,6 +124,9 @@ const ChatGatewayApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -147,7 +153,7 @@ const ChatGatewayApiAxiosParamCreator = function (configuration) {
          * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
-         * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -174,6 +180,9 @@ const ChatGatewayApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -198,7 +207,7 @@ const ChatGatewayApiAxiosParamCreator = function (configuration) {
          * @param {string} key Key
          * @param {number} broadcastId
          * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto
-         * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -226,6 +235,9 @@ const ChatGatewayApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -263,7 +275,7 @@ const ChatGatewayApiFp = function (configuration) {
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
-         * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -281,7 +293,7 @@ const ChatGatewayApiFp = function (configuration) {
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
-         * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -298,7 +310,7 @@ const ChatGatewayApiFp = function (configuration) {
          * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
-         * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -316,7 +328,7 @@ const ChatGatewayApiFp = function (configuration) {
          * @param {string} key Key
          * @param {number} broadcastId
          * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto
-         * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

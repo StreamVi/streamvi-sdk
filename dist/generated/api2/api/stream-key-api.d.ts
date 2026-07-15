@@ -25,7 +25,7 @@ export declare const StreamKeyApiAxiosParamCreator: (configuration?: Configurati
      * @summary Get stream credentials
      * @param {StreamKeysKeyV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -49,7 +49,7 @@ export declare const StreamKeyApiFp: (configuration?: Configuration) => {
      * @summary Get stream credentials
      * @param {StreamKeysKeyV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -129,7 +129,7 @@ export interface StreamKeyApiStreamKeysKeyV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof StreamKeyApiStreamKeysKeyV1
      */

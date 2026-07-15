@@ -21,11 +21,11 @@
  */
 export interface InstagramDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof InstagramDto
      */
-    'v': InstagramDtoVEnum;
+    'v'?: InstagramDtoVEnum;
     /**
      * Current language
      * @type {string}

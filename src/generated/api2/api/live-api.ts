@@ -37,7 +37,7 @@ export const LiveApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {ControllersRestreamsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
-         * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
@@ -71,6 +71,8 @@ export const LiveApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '2';
             }
 
             if (projectId !== undefined) {
@@ -108,7 +110,7 @@ export const LiveApiFp = function(configuration?: Configuration) {
          * @param {ControllersRestreamsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
-         * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
@@ -190,7 +192,7 @@ export interface LiveApiControllersRestreamsV1Request {
     readonly broadcast_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @type {'2'}
      * @memberof LiveApiControllersRestreamsV1
      */

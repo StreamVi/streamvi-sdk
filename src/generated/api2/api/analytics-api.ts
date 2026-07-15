@@ -37,7 +37,7 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
          * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
-         * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [offset] Offset
          * @param {number} [limit] Limit
          * @param {string} [date] Exact date filter
@@ -75,6 +75,8 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -148,7 +150,7 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
          * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -177,6 +179,8 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -208,7 +212,7 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
          * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -237,6 +241,8 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -268,7 +274,7 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
          * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -297,6 +303,8 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -338,7 +346,7 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
-         * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [offset] Offset
          * @param {number} [limit] Limit
          * @param {string} [date] Exact date filter
@@ -363,7 +371,7 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -379,7 +387,7 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -395,7 +403,7 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} streamId stream id
-         * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -534,7 +542,7 @@ export interface AnalyticsApiAnalyticsTsBroadcastMessagesV1Request {
     readonly broadcast_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
@@ -632,7 +640,7 @@ export interface AnalyticsApiAnalyticsTsStreamBitrateV1Request {
     readonly stream_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
@@ -667,7 +675,7 @@ export interface AnalyticsApiAnalyticsTsStreamEventsV1Request {
     readonly stream_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
@@ -702,7 +710,7 @@ export interface AnalyticsApiAnalyticsTsStreamViewersV1Request {
     readonly stream_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
      */

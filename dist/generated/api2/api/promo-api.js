@@ -35,7 +35,7 @@ const PromoApiAxiosParamCreator = function (configuration) {
          * @param {PromoApplyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} code Code
-         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -62,6 +62,9 @@ const PromoApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -85,7 +88,7 @@ const PromoApiAxiosParamCreator = function (configuration) {
          * @param {PromoCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} code Code
-         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -111,6 +114,9 @@ const PromoApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -145,7 +151,7 @@ const PromoApiFp = function (configuration) {
          * @param {PromoApplyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} code Code
-         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -162,7 +168,7 @@ const PromoApiFp = function (configuration) {
          * @param {PromoCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} code Code
-         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

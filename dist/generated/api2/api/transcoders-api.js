@@ -37,6 +37,7 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         transcodersAddV1: async (transcoderCreateDto, options = {}) => {
+            var _a;
             // verify required parameter 'transcoderCreateDto' is not null or undefined
             (0, common_1.assertParamExists)('transcodersAddV1', 'transcoderCreateDto', transcoderCreateDto);
             const localVarPath = `/method/transcoder/add`;
@@ -56,7 +57,8 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(transcoderCreateDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...transcoderCreateDto, v: (_a = transcoderCreateDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -70,6 +72,7 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         transcodersDeleteV1: async (transcoderItemDto, options = {}) => {
+            var _a;
             // verify required parameter 'transcoderItemDto' is not null or undefined
             (0, common_1.assertParamExists)('transcodersDeleteV1', 'transcoderItemDto', transcoderItemDto);
             const localVarPath = `/method/transcoder/delete`;
@@ -89,7 +92,8 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(transcoderItemDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...transcoderItemDto, v: (_a = transcoderItemDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -100,7 +104,7 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
          * @summary List of transcoder
          * @param {TranscodersListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -125,6 +129,9 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -147,6 +154,7 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         transcodersResetDelayV1: async (transcoderItemDto, options = {}) => {
+            var _a;
             // verify required parameter 'transcoderItemDto' is not null or undefined
             (0, common_1.assertParamExists)('transcodersResetDelayV1', 'transcoderItemDto', transcoderItemDto);
             const localVarPath = `/method/transcoder/reset-delay`;
@@ -166,7 +174,8 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(transcoderItemDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...transcoderItemDto, v: (_a = transcoderItemDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -180,6 +189,7 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         transcodersStopV1: async (transcoderItemDto, options = {}) => {
+            var _a;
             // verify required parameter 'transcoderItemDto' is not null or undefined
             (0, common_1.assertParamExists)('transcodersStopV1', 'transcoderItemDto', transcoderItemDto);
             const localVarPath = `/method/transcoder/stop`;
@@ -199,7 +209,8 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(transcoderItemDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...transcoderItemDto, v: (_a = transcoderItemDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -213,6 +224,7 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         transcodersUpdateV1: async (transcoderUpdateDto, options = {}) => {
+            var _a;
             // verify required parameter 'transcoderUpdateDto' is not null or undefined
             (0, common_1.assertParamExists)('transcodersUpdateV1', 'transcoderUpdateDto', transcoderUpdateDto);
             const localVarPath = `/method/transcoder/update`;
@@ -232,7 +244,8 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(transcoderUpdateDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...transcoderUpdateDto, v: (_a = transcoderUpdateDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -281,7 +294,7 @@ const TranscodersApiFp = function (configuration) {
          * @summary List of transcoder
          * @param {TranscodersListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

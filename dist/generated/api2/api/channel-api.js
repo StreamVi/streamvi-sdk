@@ -37,6 +37,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddBizonV1: async (bizonDto, options = {}) => {
+            var _a;
             // verify required parameter 'bizonDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddBizonV1', 'bizonDto', bizonDto);
             const localVarPath = `/method/channel/add/bizon`;
@@ -56,7 +57,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(bizonDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...bizonDto, v: (_a = bizonDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -70,6 +72,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddBoostyV1: async (boostyDto, options = {}) => {
+            var _a;
             // verify required parameter 'boostyDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddBoostyV1', 'boostyDto', boostyDto);
             const localVarPath = `/method/channel/add/boosty`;
@@ -89,7 +92,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(boostyDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...boostyDto, v: (_a = boostyDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -103,6 +107,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddCustomV1: async (customDto, options = {}) => {
+            var _a;
             // verify required parameter 'customDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddCustomV1', 'customDto', customDto);
             const localVarPath = `/method/channel/add/custom`;
@@ -122,7 +127,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(customDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...customDto, v: (_a = customDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -136,6 +142,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddDouyuV1: async (douyuDto, options = {}) => {
+            var _a;
             // verify required parameter 'douyuDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddDouyuV1', 'douyuDto', douyuDto);
             const localVarPath = `/method/channel/add/douyu`;
@@ -155,7 +162,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(douyuDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...douyuDto, v: (_a = douyuDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -169,6 +177,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddFbV1: async (fbDto, options = {}) => {
+            var _a;
             // verify required parameter 'fbDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddFbV1', 'fbDto', fbDto);
             const localVarPath = `/method/channel/add/fb`;
@@ -188,7 +197,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(fbDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...fbDto, v: (_a = fbDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -202,6 +212,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddFc2LiveV1: async (fc2liveDto, options = {}) => {
+            var _a;
             // verify required parameter 'fc2liveDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddFc2LiveV1', 'fc2liveDto', fc2liveDto);
             const localVarPath = `/method/channel/add/fc2Live`;
@@ -221,7 +232,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(fc2liveDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...fc2liveDto, v: (_a = fc2liveDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -235,6 +247,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddGetcourseV1: async (getcourseDto, options = {}) => {
+            var _a;
             // verify required parameter 'getcourseDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddGetcourseV1', 'getcourseDto', getcourseDto);
             const localVarPath = `/method/channel/add/getcourse`;
@@ -254,7 +267,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(getcourseDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...getcourseDto, v: (_a = getcourseDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -268,6 +282,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddGoodgameV1: async (goodgameDto, options = {}) => {
+            var _a;
             // verify required parameter 'goodgameDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddGoodgameV1', 'goodgameDto', goodgameDto);
             const localVarPath = `/method/channel/add/goodgame`;
@@ -287,7 +302,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(goodgameDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...goodgameDto, v: (_a = goodgameDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -301,6 +317,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddHuyaV1: async (huyaDto, options = {}) => {
+            var _a;
             // verify required parameter 'huyaDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddHuyaV1', 'huyaDto', huyaDto);
             const localVarPath = `/method/channel/add/huya`;
@@ -320,7 +337,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(huyaDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...huyaDto, v: (_a = huyaDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -334,6 +352,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddInstagramV1: async (instagramDto, options = {}) => {
+            var _a;
             // verify required parameter 'instagramDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddInstagramV1', 'instagramDto', instagramDto);
             const localVarPath = `/method/channel/add/instagram`;
@@ -353,7 +372,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(instagramDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...instagramDto, v: (_a = instagramDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -367,6 +387,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddKickV1: async (kickDto, options = {}) => {
+            var _a;
             // verify required parameter 'kickDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddKickV1', 'kickDto', kickDto);
             const localVarPath = `/method/channel/add/kick`;
@@ -386,7 +407,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(kickDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...kickDto, v: (_a = kickDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -400,6 +422,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddKinescopeV1: async (kinescopeDto, options = {}) => {
+            var _a;
             // verify required parameter 'kinescopeDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddKinescopeV1', 'kinescopeDto', kinescopeDto);
             const localVarPath = `/method/channel/add/kinescope`;
@@ -419,7 +442,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(kinescopeDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...kinescopeDto, v: (_a = kinescopeDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -433,6 +457,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddLinkedinV1: async (linkedinDto, options = {}) => {
+            var _a;
             // verify required parameter 'linkedinDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddLinkedinV1', 'linkedinDto', linkedinDto);
             const localVarPath = `/method/channel/add/linkedin`;
@@ -452,7 +477,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(linkedinDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...linkedinDto, v: (_a = linkedinDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -466,6 +492,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddNavertvV1: async (navertvDto, options = {}) => {
+            var _a;
             // verify required parameter 'navertvDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddNavertvV1', 'navertvDto', navertvDto);
             const localVarPath = `/method/channel/add/navertv`;
@@ -485,7 +512,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(navertvDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...navertvDto, v: (_a = navertvDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -499,6 +527,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddNimotvV1: async (nimotvDto, options = {}) => {
+            var _a;
             // verify required parameter 'nimotvDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddNimotvV1', 'nimotvDto', nimotvDto);
             const localVarPath = `/method/channel/add/nimotv`;
@@ -518,7 +547,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(nimotvDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...nimotvDto, v: (_a = nimotvDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -532,6 +562,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddNonoliveV1: async (nonoliveDto, options = {}) => {
+            var _a;
             // verify required parameter 'nonoliveDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddNonoliveV1', 'nonoliveDto', nonoliveDto);
             const localVarPath = `/method/channel/add/nonolive`;
@@ -551,7 +582,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(nonoliveDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...nonoliveDto, v: (_a = nonoliveDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -565,6 +597,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddOkV1: async (okDto, options = {}) => {
+            var _a;
             // verify required parameter 'okDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddOkV1', 'okDto', okDto);
             const localVarPath = `/method/channel/add/ok`;
@@ -584,7 +617,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(okDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...okDto, v: (_a = okDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -598,6 +632,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddPlvideoV1: async (plvideoDto, options = {}) => {
+            var _a;
             // verify required parameter 'plvideoDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddPlvideoV1', 'plvideoDto', plvideoDto);
             const localVarPath = `/method/channel/add/plvideo`;
@@ -617,7 +652,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(plvideoDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...plvideoDto, v: (_a = plvideoDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -631,6 +667,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddRutubeV1: async (rutubeDto, options = {}) => {
+            var _a;
             // verify required parameter 'rutubeDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddRutubeV1', 'rutubeDto', rutubeDto);
             const localVarPath = `/method/channel/add/rutube`;
@@ -650,7 +687,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(rutubeDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...rutubeDto, v: (_a = rutubeDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -664,6 +702,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddSrtV1: async (methodSrtDto, options = {}) => {
+            var _a;
             // verify required parameter 'methodSrtDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddSrtV1', 'methodSrtDto', methodSrtDto);
             const localVarPath = `/method/channel/add/srt`;
@@ -683,7 +722,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(methodSrtDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...methodSrtDto, v: (_a = methodSrtDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -697,6 +737,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddSteamV1: async (steamDto, options = {}) => {
+            var _a;
             // verify required parameter 'steamDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddSteamV1', 'steamDto', steamDto);
             const localVarPath = `/method/channel/add/steam`;
@@ -716,7 +757,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(steamDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...steamDto, v: (_a = steamDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -730,6 +772,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddTachidV1: async (tachidDto, options = {}) => {
+            var _a;
             // verify required parameter 'tachidDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddTachidV1', 'tachidDto', tachidDto);
             const localVarPath = `/method/channel/add/tachid`;
@@ -749,7 +792,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(tachidDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...tachidDto, v: (_a = tachidDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -763,6 +807,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddTelegramV1: async (telegramDto, options = {}) => {
+            var _a;
             // verify required parameter 'telegramDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddTelegramV1', 'telegramDto', telegramDto);
             const localVarPath = `/method/channel/add/telegram`;
@@ -782,7 +827,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(telegramDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...telegramDto, v: (_a = telegramDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -796,6 +842,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddTiktokV1: async (tiktokDto, options = {}) => {
+            var _a;
             // verify required parameter 'tiktokDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddTiktokV1', 'tiktokDto', tiktokDto);
             const localVarPath = `/method/channel/add/tiktok`;
@@ -815,7 +862,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(tiktokDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...tiktokDto, v: (_a = tiktokDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -829,6 +877,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddVkV1: async (vkDto, options = {}) => {
+            var _a;
             // verify required parameter 'vkDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddVkV1', 'vkDto', vkDto);
             const localVarPath = `/method/channel/add/vk`;
@@ -848,7 +897,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(vkDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...vkDto, v: (_a = vkDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -862,6 +912,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddVliveV1: async (vliveDto, options = {}) => {
+            var _a;
             // verify required parameter 'vliveDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddVliveV1', 'vliveDto', vliveDto);
             const localVarPath = `/method/channel/add/vlive`;
@@ -881,7 +932,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(vliveDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...vliveDto, v: (_a = vliveDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -895,6 +947,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         addChannelMethodAddZhanqiTvV1: async (zhanqitvDto, options = {}) => {
+            var _a;
             // verify required parameter 'zhanqitvDto' is not null or undefined
             (0, common_1.assertParamExists)('addChannelMethodAddZhanqiTvV1', 'zhanqitvDto', zhanqitvDto);
             const localVarPath = `/method/channel/add/zhanqitv`;
@@ -914,7 +967,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(zhanqitvDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...zhanqitvDto, v: (_a = zhanqitvDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -928,6 +982,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         channelDeleteChannelV1: async (deleteChannelDto, options = {}) => {
+            var _a;
             // verify required parameter 'deleteChannelDto' is not null or undefined
             (0, common_1.assertParamExists)('channelDeleteChannelV1', 'deleteChannelDto', deleteChannelDto);
             const localVarPath = `/method/channel/delete`;
@@ -947,7 +1002,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(deleteChannelDto, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...deleteChannelDto, v: (_a = deleteChannelDto.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -959,7 +1015,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @param {ChannelGetChannelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -985,6 +1041,9 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -1048,7 +1107,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @summary Minimal channel list
          * @param {ChannelShortChannelListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1073,6 +1132,9 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -1092,7 +1154,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @summary Search channel list
          * @param {MethodSearchV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {MethodSearchV1TypeEnum} [type]
          * @param {string} [platform] platform type
          * @param {string} [name] name
@@ -1123,6 +1185,9 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["channel:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -1161,6 +1226,7 @@ const ChannelApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         methodSetStatusV1: async (methodSetStatusChannelRequest, options = {}) => {
+            var _a;
             // verify required parameter 'methodSetStatusChannelRequest' is not null or undefined
             (0, common_1.assertParamExists)('methodSetStatusV1', 'methodSetStatusChannelRequest', methodSetStatusChannelRequest);
             const localVarPath = `/method/channel/set-status`;
@@ -1182,7 +1248,8 @@ const ChannelApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(methodSetStatusChannelRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...methodSetStatusChannelRequest, v: (_a = methodSetStatusChannelRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -1596,7 +1663,7 @@ const ChannelApiFp = function (configuration) {
          * @param {ChannelGetChannelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
-         * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1627,7 +1694,7 @@ const ChannelApiFp = function (configuration) {
          * @summary Minimal channel list
          * @param {ChannelShortChannelListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1643,7 +1710,7 @@ const ChannelApiFp = function (configuration) {
          * @summary Search channel list
          * @param {MethodSearchV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {MethodSearchV1TypeEnum} [type]
          * @param {string} [platform] platform type
          * @param {string} [name] name

@@ -29,7 +29,7 @@ export declare const PlanWebinarApiAxiosParamCreator: (configuration?: Configura
      * @param {number} projectId Project id
      * @param {SiteBuyV1PeriodEnum} period Period
      * @param {number} planWebinarId Webinar plan id
-     * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -39,7 +39,7 @@ export declare const PlanWebinarApiAxiosParamCreator: (configuration?: Configura
      * @summary Remove after tariff
      * @param {SiteCancelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -51,7 +51,7 @@ export declare const PlanWebinarApiAxiosParamCreator: (configuration?: Configura
      * @param {number} projectId Project id
      * @param {SiteCheckV1PeriodEnum} period Period
      * @param {number} planWebinarId Webinar plan id
-     * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [useBalance] Is select balance
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -61,7 +61,7 @@ export declare const PlanWebinarApiAxiosParamCreator: (configuration?: Configura
      *
      * @summary Get discount webinar
      * @param {SiteGetDiscountV1LanguageEnum} language Current language
-     * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -70,7 +70,7 @@ export declare const PlanWebinarApiAxiosParamCreator: (configuration?: Configura
      *
      * @summary Get list of webinar tariffs
      * @param {SiteListV1LanguageEnum} language Current language
-     * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -81,7 +81,7 @@ export declare const PlanWebinarApiAxiosParamCreator: (configuration?: Configura
      * @param {SiteSetProlongationV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {boolean} enabled Auto prolongation enabled
-     * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -91,7 +91,7 @@ export declare const PlanWebinarApiAxiosParamCreator: (configuration?: Configura
      * @summary Get tariff for project
      * @param {SiteTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -109,7 +109,7 @@ export declare const PlanWebinarApiFp: (configuration?: Configuration) => {
      * @param {number} projectId Project id
      * @param {SiteBuyV1PeriodEnum} period Period
      * @param {number} planWebinarId Webinar plan id
-     * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -119,7 +119,7 @@ export declare const PlanWebinarApiFp: (configuration?: Configuration) => {
      * @summary Remove after tariff
      * @param {SiteCancelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -131,7 +131,7 @@ export declare const PlanWebinarApiFp: (configuration?: Configuration) => {
      * @param {number} projectId Project id
      * @param {SiteCheckV1PeriodEnum} period Period
      * @param {number} planWebinarId Webinar plan id
-     * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [useBalance] Is select balance
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -141,7 +141,7 @@ export declare const PlanWebinarApiFp: (configuration?: Configuration) => {
      *
      * @summary Get discount webinar
      * @param {SiteGetDiscountV1LanguageEnum} language Current language
-     * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -150,7 +150,7 @@ export declare const PlanWebinarApiFp: (configuration?: Configuration) => {
      *
      * @summary Get list of webinar tariffs
      * @param {SiteListV1LanguageEnum} language Current language
-     * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -161,7 +161,7 @@ export declare const PlanWebinarApiFp: (configuration?: Configuration) => {
      * @param {SiteSetProlongationV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {boolean} enabled Auto prolongation enabled
-     * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -171,7 +171,7 @@ export declare const PlanWebinarApiFp: (configuration?: Configuration) => {
      * @summary Get tariff for project
      * @param {SiteTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -340,7 +340,7 @@ export interface PlanWebinarApiSiteBuyV1Request {
      */
     readonly plan_webinar_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteBuyV1
      */
@@ -365,7 +365,7 @@ export interface PlanWebinarApiSiteCancelV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteCancelV1
      */
@@ -402,7 +402,7 @@ export interface PlanWebinarApiSiteCheckV1Request {
      */
     readonly plan_webinar_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteCheckV1
      */
@@ -427,7 +427,7 @@ export interface PlanWebinarApiSiteGetDiscountV1Request {
      */
     readonly language: SiteGetDiscountV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteGetDiscountV1
      */
@@ -446,7 +446,7 @@ export interface PlanWebinarApiSiteListV1Request {
      */
     readonly language: SiteListV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteListV1
      */
@@ -477,7 +477,7 @@ export interface PlanWebinarApiSiteSetProlongationV1Request {
      */
     readonly enabled: boolean;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteSetProlongationV1
      */
@@ -502,7 +502,7 @@ export interface PlanWebinarApiSiteTariffV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteTariffV1
      */

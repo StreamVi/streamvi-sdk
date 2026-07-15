@@ -34,7 +34,7 @@ const MoneyFlowApiAxiosParamCreator = function (configuration) {
          * @summary Transaction list for frontend
          * @param {MoneyFlowListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
@@ -64,6 +64,9 @@ const MoneyFlowApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -112,7 +115,7 @@ const MoneyFlowApiFp = function (configuration) {
          * @summary Transaction list for frontend
          * @param {MoneyFlowListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from

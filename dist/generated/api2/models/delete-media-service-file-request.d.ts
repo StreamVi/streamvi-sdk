@@ -16,11 +16,11 @@
  */
 export interface DeleteMediaServiceFileRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof DeleteMediaServiceFileRequest
      */
-    'v': DeleteMediaServiceFileRequestVEnum;
+    'v'?: DeleteMediaServiceFileRequestVEnum;
     /**
      * Current language
      * @type {string}

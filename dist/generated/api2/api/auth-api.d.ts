@@ -49,7 +49,7 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @summary Get code for auth
      * @param {AuthCodeV1LanguageEnum} language Current language
      * @param {AuthCodeV1AppEnum} app Create auth code for app
-     * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -59,7 +59,7 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @summary CallBack for connect social
      * @param {AuthConnectResultV1LanguageEnum} language Current language
      * @param {string} message Result message for connect
-     * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -68,7 +68,7 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      *
      * @summary Connect telegram in account
      * @param {AuthConnectTelegramV1LanguageEnum} language Current language
-     * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -78,7 +78,7 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @summary Connected social account
      * @param {AuthConnectV1LanguageEnum} language Current language
      * @param {AuthConnectV1ProviderEnum} provider Provider oauth
-     * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {AuthConnectV1AppEnum} [app] App oauth
      * @param {string} [redirect] Redirect url
      * @param {*} [options] Override http request option.
@@ -90,7 +90,7 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @summary Disconnected social account
      * @param {AuthDisconnectV1LanguageEnum} language Current language
      * @param {number} socialId Social id
-     * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -108,7 +108,7 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @summary Get url for start oauth
      * @param {AuthGetAuthUrlV1LanguageEnum} language Current language
      * @param {AuthGetAuthUrlV1ProviderEnum} provider Provider oauth
-     * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {AuthGetAuthUrlV1AppEnum} [app] App oauth
      * @param {string} [redirect] Redirect url
      * @param {string} [refId] Referal id
@@ -158,7 +158,7 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @summary Get code for auth
      * @param {AuthCodeV1LanguageEnum} language Current language
      * @param {AuthCodeV1AppEnum} app Create auth code for app
-     * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -168,7 +168,7 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @summary CallBack for connect social
      * @param {AuthConnectResultV1LanguageEnum} language Current language
      * @param {string} message Result message for connect
-     * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -177,7 +177,7 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      *
      * @summary Connect telegram in account
      * @param {AuthConnectTelegramV1LanguageEnum} language Current language
-     * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -187,7 +187,7 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @summary Connected social account
      * @param {AuthConnectV1LanguageEnum} language Current language
      * @param {AuthConnectV1ProviderEnum} provider Provider oauth
-     * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {AuthConnectV1AppEnum} [app] App oauth
      * @param {string} [redirect] Redirect url
      * @param {*} [options] Override http request option.
@@ -199,7 +199,7 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @summary Disconnected social account
      * @param {AuthDisconnectV1LanguageEnum} language Current language
      * @param {number} socialId Social id
-     * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -217,7 +217,7 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @summary Get url for start oauth
      * @param {AuthGetAuthUrlV1LanguageEnum} language Current language
      * @param {AuthGetAuthUrlV1ProviderEnum} provider Provider oauth
-     * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {AuthGetAuthUrlV1AppEnum} [app] App oauth
      * @param {string} [redirect] Redirect url
      * @param {string} [refId] Referal id
@@ -475,7 +475,7 @@ export interface AuthApiAuthCodeV1Request {
      */
     readonly app: AuthCodeV1AppEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthCodeV1
      */
@@ -500,7 +500,7 @@ export interface AuthApiAuthConnectResultV1Request {
      */
     readonly message: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthConnectResultV1
      */
@@ -519,7 +519,7 @@ export interface AuthApiAuthConnectTelegramV1Request {
      */
     readonly language: AuthConnectTelegramV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthConnectTelegramV1
      */
@@ -544,7 +544,7 @@ export interface AuthApiAuthConnectV1Request {
      */
     readonly provider: AuthConnectV1ProviderEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthConnectV1
      */
@@ -581,7 +581,7 @@ export interface AuthApiAuthDisconnectV1Request {
      */
     readonly social_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthDisconnectV1
      */
@@ -619,7 +619,7 @@ export interface AuthApiAuthGetAuthUrlV1Request {
      */
     readonly provider: AuthGetAuthUrlV1ProviderEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthGetAuthUrlV1
      */

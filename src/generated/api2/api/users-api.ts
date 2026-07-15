@@ -71,18 +71,16 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * Use /method/account/profile instead.
          * @summary Update profile
-         * @param {UserUpdateProfileV1VEnum} v Version
          * @param {UserUpdateProfileV1LanguageEnum} language Current language
          * @param {string} firstName First name
          * @param {string} lastName Last name
+         * @param {UserUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        userUpdateProfileV1: async (v: UserUpdateProfileV1VEnum, language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('userUpdateProfileV1', 'v', v)
+        userUpdateProfileV1: async (language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: UserUpdateProfileV1VEnum, avatar?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('userUpdateProfileV1', 'language', language)
             // verify required parameter 'firstName' is not null or undefined
@@ -107,8 +105,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             await setOAuthToObject(localVarHeaderParameter, "oauth2", ["profile:write"], configuration)
 
 
-            if (v !== undefined) { 
+            if (v !== undefined) {
                 localVarFormParams.append('v', v as any);
+            } else {
+                localVarFormParams.append('v', '1' as any);
             }
     
             if (language !== undefined) { 
@@ -166,17 +166,17 @@ export const UsersApiFp = function(configuration?: Configuration) {
         /**
          * Use /method/account/profile instead.
          * @summary Update profile
-         * @param {UserUpdateProfileV1VEnum} v Version
          * @param {UserUpdateProfileV1LanguageEnum} language Current language
          * @param {string} firstName First name
          * @param {string} lastName Last name
+         * @param {UserUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        async userUpdateProfileV1(v: UserUpdateProfileV1VEnum, language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userUpdateProfileV1(v, language, firstName, lastName, avatar, options);
+        async userUpdateProfileV1(language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: UserUpdateProfileV1VEnum, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userUpdateProfileV1(language, firstName, lastName, v, avatar, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UsersApi.userUpdateProfileV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -210,7 +210,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(axios, basePath));
+            return localVarFp.userUpdateProfileV1(requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.v, requestParameters.avatar, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -251,13 +251,6 @@ export interface UsersApiInterface {
  */
 export interface UsersApiUserUpdateProfileV1Request {
     /**
-     * Version
-     * @type {string}
-     * @memberof UsersApiUserUpdateProfileV1
-     */
-    readonly v: UserUpdateProfileV1VEnum
-
-    /**
      * Current language
      * @type {string}
      * @memberof UsersApiUserUpdateProfileV1
@@ -277,6 +270,13 @@ export interface UsersApiUserUpdateProfileV1Request {
      * @memberof UsersApiUserUpdateProfileV1
      */
     readonly last_name: string
+
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {string}
+     * @memberof UsersApiUserUpdateProfileV1
+     */
+    readonly v?: UserUpdateProfileV1VEnum
 
     /**
      * File for avatar upload max size 2MB, format: jpeg, jpg, png
@@ -315,17 +315,10 @@ export class UsersApi extends BaseAPI implements UsersApiInterface {
      * @memberof UsersApi
      */
     public userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig) {
-        return UsersApiFp(this.configuration).userUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
+        return UsersApiFp(this.configuration).userUpdateProfileV1(requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.v, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
-/**
- * @export
- */
-export const UserUpdateProfileV1VEnum = {
-    _1: '1'
-} as const;
-export type UserUpdateProfileV1VEnum = typeof UserUpdateProfileV1VEnum[keyof typeof UserUpdateProfileV1VEnum];
 /**
  * @export
  */
@@ -335,3 +328,10 @@ export const UserUpdateProfileV1LanguageEnum = {
     Cn: 'cn'
 } as const;
 export type UserUpdateProfileV1LanguageEnum = typeof UserUpdateProfileV1LanguageEnum[keyof typeof UserUpdateProfileV1LanguageEnum];
+/**
+ * @export
+ */
+export const UserUpdateProfileV1VEnum = {
+    _1: '1'
+} as const;
+export type UserUpdateProfileV1VEnum = typeof UserUpdateProfileV1VEnum[keyof typeof UserUpdateProfileV1VEnum];

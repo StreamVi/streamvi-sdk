@@ -21,11 +21,11 @@
  */
 export interface SiteUpdateOptionsTrovoRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
-    'v': SiteUpdateOptionsTrovoRequestVEnum;
+    'v'?: SiteUpdateOptionsTrovoRequestVEnum;
     /**
      * Current language
      * @type {string}

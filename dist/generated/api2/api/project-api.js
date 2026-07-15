@@ -32,7 +32,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get current user project
-         * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {MethodProjectMeMeV1LanguageEnum} [language] Current language
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -54,6 +54,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -72,7 +75,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
          * @param {number} projectId Project id
          * @param {number} userId User id
          * @param {UserProjectChangeAccessV1AccessTypeEnum} accessType Access type
-         * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -101,6 +104,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -127,7 +133,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
          * @param {UserProjectDelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} userId User id
-         * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
@@ -155,6 +161,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -178,7 +187,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
          * @param {UserProjectDeleteMemberV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} userId User id
-         * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -205,6 +214,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -227,7 +239,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
          * @summary Get project full info
          * @param {UserProjectGetProjectInfoV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -252,6 +264,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -271,7 +286,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
          * @summary Get project by number id
          * @param {UserProjectGetProjectV1LanguageEnum} language Current language
          * @param {string} projectExternalId Project external id
-         * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -296,6 +311,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -315,7 +333,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
          * @summary Get user by number id
          * @param {UserProjectGetUserV1LanguageEnum} language Current language
          * @param {string} userExternalId User external id
-         * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -340,6 +358,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -359,7 +380,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
          * @summary Leave project
          * @param {UserProjectLeaveV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -384,6 +405,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -403,7 +427,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
          * @summary List of user in project
          * @param {UserProjectListAccessV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -428,6 +452,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -446,7 +473,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
          *
          * @summary List of project for current user
          * @param {UserProjectListV1LanguageEnum} language Current language
-         * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {*} [options] Override http request option.
@@ -471,6 +498,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -493,7 +523,7 @@ const ProjectApiAxiosParamCreator = function (configuration) {
          * @summary Select user for project
          * @param {UserProjectSelectProjectV1LanguageEnum} language Current language
          * @param {number} id Project internal id
-         * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -517,6 +547,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -545,7 +578,7 @@ const ProjectApiFp = function (configuration) {
         /**
          *
          * @summary Get current user project
-         * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {MethodProjectMeMeV1LanguageEnum} [language] Current language
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -564,7 +597,7 @@ const ProjectApiFp = function (configuration) {
          * @param {number} projectId Project id
          * @param {number} userId User id
          * @param {UserProjectChangeAccessV1AccessTypeEnum} accessType Access type
-         * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -581,7 +614,7 @@ const ProjectApiFp = function (configuration) {
          * @param {UserProjectDelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} userId User id
-         * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
@@ -599,7 +632,7 @@ const ProjectApiFp = function (configuration) {
          * @param {UserProjectDeleteMemberV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} userId User id
-         * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -615,7 +648,7 @@ const ProjectApiFp = function (configuration) {
          * @summary Get project full info
          * @param {UserProjectGetProjectInfoV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -631,7 +664,7 @@ const ProjectApiFp = function (configuration) {
          * @summary Get project by number id
          * @param {UserProjectGetProjectV1LanguageEnum} language Current language
          * @param {string} projectExternalId Project external id
-         * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -647,7 +680,7 @@ const ProjectApiFp = function (configuration) {
          * @summary Get user by number id
          * @param {UserProjectGetUserV1LanguageEnum} language Current language
          * @param {string} userExternalId User external id
-         * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -663,7 +696,7 @@ const ProjectApiFp = function (configuration) {
          * @summary Leave project
          * @param {UserProjectLeaveV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -679,7 +712,7 @@ const ProjectApiFp = function (configuration) {
          * @summary List of user in project
          * @param {UserProjectListAccessV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -694,7 +727,7 @@ const ProjectApiFp = function (configuration) {
          *
          * @summary List of project for current user
          * @param {UserProjectListV1LanguageEnum} language Current language
-         * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {*} [options] Override http request option.
@@ -712,7 +745,7 @@ const ProjectApiFp = function (configuration) {
          * @summary Select user for project
          * @param {UserProjectSelectProjectV1LanguageEnum} language Current language
          * @param {number} id Project internal id
-         * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

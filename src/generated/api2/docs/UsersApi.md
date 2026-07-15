@@ -68,17 +68,17 @@ import {
 const configuration = new Configuration();
 const apiInstance = new UsersApi(configuration);
 
-let v: string; //Version (default to undefined)
 let language: string; //Current language (default to 'en')
 let firstName: string; //First name (default to undefined)
 let lastName: string; //Last name (default to undefined)
+let v: string; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 let avatar: File; //File for avatar upload max size 2MB, format: jpeg, jpg, png (optional) (default to undefined)
 
 const { status, data } = await apiInstance.userUpdateProfileV1(
-    v,
     language,
     firstName,
     lastName,
+    v,
     avatar
 );
 ```
@@ -87,10 +87,10 @@ const { status, data } = await apiInstance.userUpdateProfileV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **v** | [**string**]**Array<&#39;1&#39;>** | Version | defaults to undefined|
 | **language** | [**string**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **firstName** | [**string**] | First name | defaults to undefined|
 | **lastName** | [**string**] | Last name | defaults to undefined|
+| **v** | [**string**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 | **avatar** | [**File**] | File for avatar upload max size 2MB, format: jpeg, jpg, png | (optional) defaults to undefined|
 
 

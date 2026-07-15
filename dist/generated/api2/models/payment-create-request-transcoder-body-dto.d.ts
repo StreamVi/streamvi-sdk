@@ -16,11 +16,11 @@
  */
 export interface PaymentCreateRequestTranscoderBodyDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof PaymentCreateRequestTranscoderBodyDto
      */
-    'v': PaymentCreateRequestTranscoderBodyDtoVEnum;
+    'v'?: PaymentCreateRequestTranscoderBodyDtoVEnum;
     /**
      * Current language
      * @type {string}

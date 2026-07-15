@@ -37,7 +37,7 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Get account profile
          * @param {AccountGetProfileV1LanguageEnum} language Current language
-         * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -62,6 +62,8 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -82,17 +84,15 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Update account profile
-         * @param {AccountUpdateProfileV1VEnum} v Version
          * @param {AccountUpdateProfileV1LanguageEnum} language Current language
          * @param {string} firstName First name
          * @param {string} lastName Last name
+         * @param {AccountUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountUpdateProfileV1: async (v: AccountUpdateProfileV1VEnum, language: AccountUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'v' is not null or undefined
-            assertParamExists('accountUpdateProfileV1', 'v', v)
+        accountUpdateProfileV1: async (language: AccountUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: AccountUpdateProfileV1VEnum, avatar?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('accountUpdateProfileV1', 'language', language)
             // verify required parameter 'firstName' is not null or undefined
@@ -117,8 +117,10 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             await setOAuthToObject(localVarHeaderParameter, "oauth2", ["profile:write"], configuration)
 
 
-            if (v !== undefined) { 
+            if (v !== undefined) {
                 localVarFormParams.append('v', v as any);
+            } else {
+                localVarFormParams.append('v', '1' as any);
             }
     
             if (language !== undefined) { 
@@ -164,7 +166,7 @@ export const AccountApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get account profile
          * @param {AccountGetProfileV1LanguageEnum} language Current language
-         * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -177,16 +179,16 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Update account profile
-         * @param {AccountUpdateProfileV1VEnum} v Version
          * @param {AccountUpdateProfileV1LanguageEnum} language Current language
          * @param {string} firstName First name
          * @param {string} lastName Last name
+         * @param {AccountUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async accountUpdateProfileV1(v: AccountUpdateProfileV1VEnum, language: AccountUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.accountUpdateProfileV1(v, language, firstName, lastName, avatar, options);
+        async accountUpdateProfileV1(language: AccountUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: AccountUpdateProfileV1VEnum, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accountUpdateProfileV1(language, firstName, lastName, v, avatar, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AccountApi.accountUpdateProfileV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -219,7 +221,7 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         accountUpdateProfileV1(requestParameters: AccountApiAccountUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.accountUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(axios, basePath));
+            return localVarFp.accountUpdateProfileV1(requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.v, requestParameters.avatar, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -266,7 +268,7 @@ export interface AccountApiAccountGetProfileV1Request {
     readonly language: AccountGetProfileV1LanguageEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AccountApiAccountGetProfileV1
      */
@@ -279,13 +281,6 @@ export interface AccountApiAccountGetProfileV1Request {
  * @interface AccountApiAccountUpdateProfileV1Request
  */
 export interface AccountApiAccountUpdateProfileV1Request {
-    /**
-     * Version
-     * @type {string}
-     * @memberof AccountApiAccountUpdateProfileV1
-     */
-    readonly v: AccountUpdateProfileV1VEnum
-
     /**
      * Current language
      * @type {string}
@@ -306,6 +301,13 @@ export interface AccountApiAccountUpdateProfileV1Request {
      * @memberof AccountApiAccountUpdateProfileV1
      */
     readonly last_name: string
+
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {string}
+     * @memberof AccountApiAccountUpdateProfileV1
+     */
+    readonly v?: AccountUpdateProfileV1VEnum
 
     /**
      * File for avatar upload max size 2MB, format: jpeg, jpg, png
@@ -343,7 +345,7 @@ export class AccountApi extends BaseAPI implements AccountApiInterface {
      * @memberof AccountApi
      */
     public accountUpdateProfileV1(requestParameters: AccountApiAccountUpdateProfileV1Request, options?: RawAxiosRequestConfig) {
-        return AccountApiFp(this.configuration).accountUpdateProfileV1(requestParameters.v, requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
+        return AccountApiFp(this.configuration).accountUpdateProfileV1(requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.v, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -366,16 +368,16 @@ export type AccountGetProfileV1VEnum = typeof AccountGetProfileV1VEnum[keyof typ
 /**
  * @export
  */
-export const AccountUpdateProfileV1VEnum = {
-    _1: '1'
-} as const;
-export type AccountUpdateProfileV1VEnum = typeof AccountUpdateProfileV1VEnum[keyof typeof AccountUpdateProfileV1VEnum];
-/**
- * @export
- */
 export const AccountUpdateProfileV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'
 } as const;
 export type AccountUpdateProfileV1LanguageEnum = typeof AccountUpdateProfileV1LanguageEnum[keyof typeof AccountUpdateProfileV1LanguageEnum];
+/**
+ * @export
+ */
+export const AccountUpdateProfileV1VEnum = {
+    _1: '1'
+} as const;
+export type AccountUpdateProfileV1VEnum = typeof AccountUpdateProfileV1VEnum[keyof typeof AccountUpdateProfileV1VEnum];

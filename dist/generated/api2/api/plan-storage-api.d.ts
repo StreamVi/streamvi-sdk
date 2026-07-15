@@ -29,7 +29,7 @@ export declare const PlanStorageApiAxiosParamCreator: (configuration?: Configura
      * @param {number} projectId Project id
      * @param {PlanStorageBuyV1PeriodEnum} period Period
      * @param {number} planStorageId Storage plan id
-     * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [size] Size
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -40,7 +40,7 @@ export declare const PlanStorageApiAxiosParamCreator: (configuration?: Configura
      * @summary Remove next tariff
      * @param {PlanStorageCancelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -50,7 +50,7 @@ export declare const PlanStorageApiAxiosParamCreator: (configuration?: Configura
      * @summary Check storage tariff before buy
      * @param {PlanStorageCheckV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -59,7 +59,7 @@ export declare const PlanStorageApiAxiosParamCreator: (configuration?: Configura
      *
      * @summary Get discount of storage
      * @param {PlanStorageGetDiscountV1LanguageEnum} language Current language
-     * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -68,7 +68,7 @@ export declare const PlanStorageApiAxiosParamCreator: (configuration?: Configura
      *
      * @summary Get info for storage tariff
      * @param {PlanStorageListV1LanguageEnum} language Current language
-     * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -79,7 +79,7 @@ export declare const PlanStorageApiAxiosParamCreator: (configuration?: Configura
      * @param {PlanStorageSetProlongationV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {boolean} enabled Auto prolongation enabled
-     * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -89,7 +89,7 @@ export declare const PlanStorageApiAxiosParamCreator: (configuration?: Configura
      * @summary Get tariff for project
      * @param {PlanStorageTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -107,7 +107,7 @@ export declare const PlanStorageApiFp: (configuration?: Configuration) => {
      * @param {number} projectId Project id
      * @param {PlanStorageBuyV1PeriodEnum} period Period
      * @param {number} planStorageId Storage plan id
-     * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [size] Size
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -118,7 +118,7 @@ export declare const PlanStorageApiFp: (configuration?: Configuration) => {
      * @summary Remove next tariff
      * @param {PlanStorageCancelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -128,7 +128,7 @@ export declare const PlanStorageApiFp: (configuration?: Configuration) => {
      * @summary Check storage tariff before buy
      * @param {PlanStorageCheckV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -137,7 +137,7 @@ export declare const PlanStorageApiFp: (configuration?: Configuration) => {
      *
      * @summary Get discount of storage
      * @param {PlanStorageGetDiscountV1LanguageEnum} language Current language
-     * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -146,7 +146,7 @@ export declare const PlanStorageApiFp: (configuration?: Configuration) => {
      *
      * @summary Get info for storage tariff
      * @param {PlanStorageListV1LanguageEnum} language Current language
-     * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -157,7 +157,7 @@ export declare const PlanStorageApiFp: (configuration?: Configuration) => {
      * @param {PlanStorageSetProlongationV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {boolean} enabled Auto prolongation enabled
-     * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -167,7 +167,7 @@ export declare const PlanStorageApiFp: (configuration?: Configuration) => {
      * @summary Get tariff for project
      * @param {PlanStorageTariffV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -336,7 +336,7 @@ export interface PlanStorageApiPlanStorageBuyV1Request {
      */
     readonly plan_storage_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
@@ -367,7 +367,7 @@ export interface PlanStorageApiPlanStorageCancelV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageCancelV1
      */
@@ -392,7 +392,7 @@ export interface PlanStorageApiPlanStorageCheckV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageCheckV1
      */
@@ -411,7 +411,7 @@ export interface PlanStorageApiPlanStorageGetDiscountV1Request {
      */
     readonly language: PlanStorageGetDiscountV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageGetDiscountV1
      */
@@ -430,7 +430,7 @@ export interface PlanStorageApiPlanStorageListV1Request {
      */
     readonly language: PlanStorageListV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageListV1
      */
@@ -461,7 +461,7 @@ export interface PlanStorageApiPlanStorageSetProlongationV1Request {
      */
     readonly enabled: boolean;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageSetProlongationV1
      */
@@ -486,7 +486,7 @@ export interface PlanStorageApiPlanStorageTariffV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageTariffV1
      */

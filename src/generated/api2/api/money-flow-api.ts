@@ -36,7 +36,7 @@ export const MoneyFlowApiAxiosParamCreator = function (configuration?: Configura
          * @summary Transaction list for frontend
          * @param {MoneyFlowListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
@@ -69,6 +69,8 @@ export const MoneyFlowApiAxiosParamCreator = function (configuration?: Configura
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -129,7 +131,7 @@ export const MoneyFlowApiFp = function(configuration?: Configuration) {
          * @summary Transaction list for frontend
          * @param {MoneyFlowListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
@@ -207,7 +209,7 @@ export interface MoneyFlowApiMoneyFlowListV1Request {
     readonly project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MoneyFlowApiMoneyFlowListV1
      */

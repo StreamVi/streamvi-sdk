@@ -21,11 +21,11 @@
  */
 export interface SiteUpdateOptionsOkRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof SiteUpdateOptionsOkRequest
      */
-    'v': SiteUpdateOptionsOkRequestVEnum;
+    'v'?: SiteUpdateOptionsOkRequestVEnum;
     /**
      * Current language
      * @type {string}

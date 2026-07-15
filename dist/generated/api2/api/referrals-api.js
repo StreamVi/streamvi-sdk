@@ -34,7 +34,7 @@ const ReferralsApiAxiosParamCreator = function (configuration) {
          * @summary Total info
          * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -58,6 +58,9 @@ const ReferralsApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -88,7 +91,7 @@ const ReferralsApiFp = function (configuration) {
          * @summary Total info
          * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

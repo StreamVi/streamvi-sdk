@@ -34,7 +34,7 @@ const VideoApiAxiosParamCreator = function (configuration) {
          * @summary Create upload session
          * @param {VideoSiteCreateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {VideoSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -59,6 +59,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -79,7 +82,7 @@ const VideoApiAxiosParamCreator = function (configuration) {
          * @param {VideoSiteDeleteV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} id Video id
-         * @param {VideoSiteDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -106,6 +109,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -129,7 +135,7 @@ const VideoApiAxiosParamCreator = function (configuration) {
          * @param {VideoSiteDownloadV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} id Download link id
-         * @param {VideoSiteDownloadV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteDownloadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -156,6 +162,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -179,7 +188,7 @@ const VideoApiAxiosParamCreator = function (configuration) {
          * @param {VideoSiteGetV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} id Video id
-         * @param {VideoSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -206,6 +215,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -228,7 +240,7 @@ const VideoApiAxiosParamCreator = function (configuration) {
          * @summary Get video limits
          * @param {VideoSiteLimitsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {VideoSiteLimitsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteLimitsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -253,6 +265,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -272,7 +287,7 @@ const VideoApiAxiosParamCreator = function (configuration) {
          * @summary List videos
          * @param {VideoSiteListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {VideoSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [offset] Offset for v2 list endpoint
          * @param {number} [limit] Limit for v2 list endpoint
          * @param {*} [options] Override http request option.
@@ -299,6 +314,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -324,7 +342,7 @@ const VideoApiAxiosParamCreator = function (configuration) {
          * @summary Get upload progress channel for centrifuge
          * @param {VideoSiteProgressChannelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -349,6 +367,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -371,6 +392,7 @@ const VideoApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         videoSiteUpdateV1: async (updateVideoRequest, options = {}) => {
+            var _a;
             // verify required parameter 'updateVideoRequest' is not null or undefined
             (0, common_1.assertParamExists)('videoSiteUpdateV1', 'updateVideoRequest', updateVideoRequest);
             const localVarPath = `/method/video/update`;
@@ -390,7 +412,8 @@ const VideoApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(updateVideoRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...updateVideoRequest, v: (_a = updateVideoRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -411,7 +434,7 @@ const VideoApiFp = function (configuration) {
          * @summary Create upload session
          * @param {VideoSiteCreateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {VideoSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -428,7 +451,7 @@ const VideoApiFp = function (configuration) {
          * @param {VideoSiteDeleteV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} id Video id
-         * @param {VideoSiteDeleteV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -445,7 +468,7 @@ const VideoApiFp = function (configuration) {
          * @param {VideoSiteDownloadV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} id Download link id
-         * @param {VideoSiteDownloadV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteDownloadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -462,7 +485,7 @@ const VideoApiFp = function (configuration) {
          * @param {VideoSiteGetV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} id Video id
-         * @param {VideoSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -478,7 +501,7 @@ const VideoApiFp = function (configuration) {
          * @summary Get video limits
          * @param {VideoSiteLimitsV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {VideoSiteLimitsV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteLimitsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -494,7 +517,7 @@ const VideoApiFp = function (configuration) {
          * @summary List videos
          * @param {VideoSiteListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {VideoSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [offset] Offset for v2 list endpoint
          * @param {number} [limit] Limit for v2 list endpoint
          * @param {*} [options] Override http request option.
@@ -512,7 +535,7 @@ const VideoApiFp = function (configuration) {
          * @summary Get upload progress channel for centrifuge
          * @param {VideoSiteProgressChannelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

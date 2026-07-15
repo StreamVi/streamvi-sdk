@@ -16,11 +16,11 @@
  */
 export interface OkDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof OkDto
      */
-    'v': OkDtoVEnum;
+    'v'?: OkDtoVEnum;
     /**
      * Current language
      * @type {string}

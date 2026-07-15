@@ -33,7 +33,7 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
          *
          * @summary Rtmp locations server list example for unauthorized
          * @param {MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum} language Current language
-         * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -53,6 +53,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -70,7 +73,7 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
          * @param {RtmpServerGraphV1LanguageEnum} language Current language
          * @param {RtmpServerGraphV1IntervalEnum} interval Interval state in hours
          * @param {RtmpServerGraphV1TypeEnum} type Type graph
-         * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -94,6 +97,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -116,7 +122,7 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
          * @summary List rtmp servers (base info)
          * @param {RtmpServerListBaseV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -141,6 +147,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -160,7 +169,7 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
          * @summary List rtmp servers v3
          * @param {RtmpServerListV3LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+         * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -188,6 +197,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '3';
+            }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
@@ -205,7 +217,7 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
          * @param {RtmpServerSrtLatencyV1LanguageEnum} language Current language
          * @param {string} srcIp Source IPv4 address
          * @param {string} dstIp Destination IPv4 address
-         * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [profile] Recommendation profile
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -229,6 +241,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -255,7 +270,7 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
          * @summary State of rtmp servers
          * @param {RtmpServerStateV1LanguageEnum} language Current language
          * @param {RtmpServerStateV1IntervalEnum} interval Interval state in hours
-         * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -276,6 +291,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -330,7 +348,7 @@ const RtmpServerApiFp = function (configuration) {
          *
          * @summary Rtmp locations server list example for unauthorized
          * @param {MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum} language Current language
-         * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -347,7 +365,7 @@ const RtmpServerApiFp = function (configuration) {
          * @param {RtmpServerGraphV1LanguageEnum} language Current language
          * @param {RtmpServerGraphV1IntervalEnum} interval Interval state in hours
          * @param {RtmpServerGraphV1TypeEnum} type Type graph
-         * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -363,7 +381,7 @@ const RtmpServerApiFp = function (configuration) {
          * @summary List rtmp servers (base info)
          * @param {RtmpServerListBaseV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -379,7 +397,7 @@ const RtmpServerApiFp = function (configuration) {
          * @summary List rtmp servers v3
          * @param {RtmpServerListV3LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+         * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -396,7 +414,7 @@ const RtmpServerApiFp = function (configuration) {
          * @param {RtmpServerSrtLatencyV1LanguageEnum} language Current language
          * @param {string} srcIp Source IPv4 address
          * @param {string} dstIp Destination IPv4 address
-         * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [profile] Recommendation profile
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -413,7 +431,7 @@ const RtmpServerApiFp = function (configuration) {
          * @summary State of rtmp servers
          * @param {RtmpServerStateV1LanguageEnum} language Current language
          * @param {RtmpServerStateV1IntervalEnum} interval Interval state in hours
-         * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

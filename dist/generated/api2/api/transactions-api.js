@@ -34,7 +34,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @summary Transaction list for frontend
          * @param {TransactionsListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
@@ -63,6 +63,9 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -112,7 +115,7 @@ const TransactionsApiFp = function (configuration) {
          * @summary Transaction list for frontend
          * @param {TransactionsListV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from

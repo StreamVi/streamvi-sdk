@@ -35,7 +35,7 @@ export const BlogPageTagApiAxiosParamCreator = function (configuration?: Configu
          * 
          * @summary Get list of blog pages
          * @param {BlogPageTagListV1LanguageEnum} language Current language
-         * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
@@ -59,6 +59,8 @@ export const BlogPageTagApiAxiosParamCreator = function (configuration?: Configu
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -102,7 +104,7 @@ export const BlogPageTagApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get list of blog pages
          * @param {BlogPageTagListV1LanguageEnum} language Current language
-         * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
@@ -170,7 +172,7 @@ export interface BlogPageTagApiBlogPageTagListV1Request {
     readonly language: BlogPageTagListV1LanguageEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BlogPageTagApiBlogPageTagListV1
      */

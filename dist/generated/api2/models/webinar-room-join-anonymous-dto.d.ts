@@ -16,11 +16,11 @@
  */
 export interface WebinarRoomJoinAnonymousDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof WebinarRoomJoinAnonymousDto
      */
-    'v': WebinarRoomJoinAnonymousDtoVEnum;
+    'v'?: WebinarRoomJoinAnonymousDtoVEnum;
     /**
      * Current language
      * @type {string}

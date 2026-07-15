@@ -36,7 +36,7 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
          * @param {number} projectId Project id
          * @param {SiteBuyV1PeriodEnum} period Period
          * @param {number} planWebinarId Webinar plan id
-         * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -65,6 +65,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -90,7 +93,7 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
          * @summary Remove after tariff
          * @param {SiteCancelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -115,6 +118,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -136,7 +142,7 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
          * @param {number} projectId Project id
          * @param {SiteCheckV1PeriodEnum} period Period
          * @param {number} planWebinarId Webinar plan id
-         * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [useBalance] Is select balance
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -166,6 +172,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -193,7 +202,7 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get discount webinar
          * @param {SiteGetDiscountV1LanguageEnum} language Current language
-         * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -216,6 +225,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -231,7 +243,7 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get list of webinar tariffs
          * @param {SiteListV1LanguageEnum} language Current language
-         * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -254,6 +266,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -271,7 +286,7 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
          * @param {SiteSetProlongationV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
-         * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -298,6 +313,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -320,7 +338,7 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
          * @summary Get tariff for project
          * @param {SiteTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -344,6 +362,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -376,7 +397,7 @@ const PlanWebinarApiFp = function (configuration) {
          * @param {number} projectId Project id
          * @param {SiteBuyV1PeriodEnum} period Period
          * @param {number} planWebinarId Webinar plan id
-         * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -392,7 +413,7 @@ const PlanWebinarApiFp = function (configuration) {
          * @summary Remove after tariff
          * @param {SiteCancelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -410,7 +431,7 @@ const PlanWebinarApiFp = function (configuration) {
          * @param {number} projectId Project id
          * @param {SiteCheckV1PeriodEnum} period Period
          * @param {number} planWebinarId Webinar plan id
-         * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [useBalance] Is select balance
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -426,7 +447,7 @@ const PlanWebinarApiFp = function (configuration) {
          *
          * @summary Get discount webinar
          * @param {SiteGetDiscountV1LanguageEnum} language Current language
-         * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -441,7 +462,7 @@ const PlanWebinarApiFp = function (configuration) {
          *
          * @summary Get list of webinar tariffs
          * @param {SiteListV1LanguageEnum} language Current language
-         * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -458,7 +479,7 @@ const PlanWebinarApiFp = function (configuration) {
          * @param {SiteSetProlongationV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
-         * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -474,7 +495,7 @@ const PlanWebinarApiFp = function (configuration) {
          * @summary Get tariff for project
          * @param {SiteTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

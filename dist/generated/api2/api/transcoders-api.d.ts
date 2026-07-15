@@ -43,7 +43,7 @@ export declare const TranscodersApiAxiosParamCreator: (configuration?: Configura
      * @summary List of transcoder
      * @param {TranscodersListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -99,7 +99,7 @@ export declare const TranscodersApiFp: (configuration?: Configuration) => {
      * @summary List of transcoder
      * @param {TranscodersListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -289,7 +289,7 @@ export interface TranscodersApiTranscodersListV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof TranscodersApiTranscodersListV1
      */

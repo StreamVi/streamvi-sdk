@@ -21,11 +21,11 @@
  */
 export interface NonoliveDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof NonoliveDto
      */
-    'v': NonoliveDtoVEnum;
+    'v'?: NonoliveDtoVEnum;
     /**
      * Current language
      * @type {string}

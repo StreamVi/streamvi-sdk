@@ -16550,7 +16550,7 @@
             "description": "Date only after create date",
             "schema": {
               "format": "date",
-              "example": "2026-07-15T15:05:26.362Z",
+              "example": "2026-07-15T17:55:07.863Z",
               "type": "string"
             }
           },
@@ -16561,7 +16561,7 @@
             "description": "Date only after create date",
             "schema": {
               "format": "date",
-              "example": "2026-07-15T15:05:26.362Z",
+              "example": "2026-07-15T17:55:07.863Z",
               "type": "string"
             }
           },
@@ -20942,11 +20942,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -20979,7 +20980,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "first_name",
           "last_name"
@@ -22024,7 +22024,7 @@
           "date_end": {
             "format": "date-time",
             "type": "string",
-            "example": "2026-07-15T15:05:23.548Z",
+            "example": "2026-07-15T17:55:04.034Z",
             "description": "Date"
           }
         },
@@ -22097,7 +22097,7 @@
           },
           "date": {
             "type": "string",
-            "example": "2026-07-15T15:05:23.549Z",
+            "example": "2026-07-15T17:55:04.036Z",
             "description": "Date"
           },
           "type": {
@@ -22521,21 +22521,21 @@
             "type": "string",
             "nullable": true,
             "description": "Date end tariff",
-            "example": "2026-07-15T15:05:23.459Z"
+            "example": "2026-07-15T17:55:03.902Z"
           },
           "date_start": {
             "format": "date-time",
             "type": "string",
             "nullable": true,
             "description": "Date start",
-            "example": "2026-07-15T15:05:23.459Z"
+            "example": "2026-07-15T17:55:03.902Z"
           },
           "date_create": {
             "format": "date-time",
             "type": "string",
             "nullable": true,
             "description": "Date create",
-            "example": "2026-07-15T15:05:23.460Z"
+            "example": "2026-07-15T17:55:03.902Z"
           },
           "period": {
             "nullable": true,
@@ -23300,7 +23300,7 @@
             "format": "date-time",
             "type": "string",
             "description": "Date",
-            "default": "2026-07-15T15:05:23.642Z"
+            "default": "2026-07-15T17:55:04.169Z"
           }
         },
         "required": [
@@ -23923,11 +23923,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24027,7 +24028,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -24040,11 +24040,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24157,7 +24158,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -24170,11 +24170,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24237,7 +24238,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -24249,11 +24249,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24326,7 +24327,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -24339,11 +24339,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24376,7 +24377,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -24389,11 +24389,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24435,7 +24436,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -24447,11 +24447,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24479,7 +24480,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id"
@@ -24548,11 +24548,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24580,7 +24581,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "title",
@@ -24592,11 +24592,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24626,7 +24627,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -24638,11 +24638,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24670,7 +24671,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -24682,11 +24682,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24716,7 +24717,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -24728,11 +24728,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24759,7 +24760,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id"
@@ -24783,11 +24783,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -24826,7 +24827,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id"
@@ -25708,11 +25708,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -25735,7 +25736,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id"
@@ -25746,11 +25746,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -25772,7 +25773,6 @@
           }
         },
         "required": [
-          "v",
           "channel_id",
           "status"
         ]
@@ -25782,11 +25782,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -25813,7 +25814,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -25825,11 +25825,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -25869,7 +25870,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_id",
@@ -25883,11 +25883,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -25926,7 +25927,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -25939,11 +25939,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -25976,7 +25977,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -25988,11 +25988,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26031,7 +26032,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_url",
@@ -26044,11 +26044,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26087,7 +26088,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "channel_url",
@@ -26100,11 +26100,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26143,7 +26144,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26156,11 +26156,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26199,7 +26200,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26212,11 +26212,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26255,7 +26256,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26268,11 +26268,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26311,7 +26312,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26324,11 +26324,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26367,7 +26368,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26380,11 +26380,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26423,7 +26424,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26436,11 +26436,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26479,7 +26480,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26492,11 +26492,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26535,7 +26536,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26548,11 +26548,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26591,7 +26592,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26604,11 +26604,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26647,7 +26648,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26660,11 +26660,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26703,7 +26704,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26716,11 +26716,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26759,7 +26760,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26772,11 +26772,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26815,7 +26816,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26828,11 +26828,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26871,7 +26872,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26884,11 +26884,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26927,7 +26928,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26940,11 +26940,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -26983,7 +26984,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -26996,11 +26996,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -27039,7 +27040,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -27052,11 +27052,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -27095,7 +27096,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -27108,11 +27108,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -27151,7 +27152,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -27164,11 +27164,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -27207,7 +27208,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -27220,11 +27220,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -27263,7 +27264,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -27484,11 +27484,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -27588,7 +27589,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "name",
@@ -27600,11 +27600,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -27700,7 +27701,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "transcoder_id",
@@ -27712,11 +27712,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -27739,7 +27740,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "transcoder_id"
@@ -27994,11 +27994,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -28031,7 +28032,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "platform",
           "id"
@@ -28165,11 +28165,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -28209,7 +28210,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "code",
           "userAgent",
@@ -28272,11 +28272,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -28299,7 +28300,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "record"
@@ -29174,7 +29174,7 @@
           },
           "date": {
             "type": "string",
-            "example": "2026-07-15T15:05:25.346Z",
+            "example": "2026-07-15T17:55:06.588Z",
             "description": "Date create"
           },
           "secret": {
@@ -30218,11 +30218,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -30256,7 +30257,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "type",
@@ -30268,11 +30268,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -30326,7 +30327,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "type",
@@ -30342,11 +30342,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -30396,7 +30397,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "type",
@@ -30411,11 +30411,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -30465,7 +30466,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "type",
@@ -30480,11 +30480,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -30530,7 +30531,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "type",
@@ -30655,11 +30655,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -30738,7 +30739,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "countrie_id",
@@ -30756,11 +30756,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -30803,7 +30804,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "countrie_id",
@@ -31833,11 +31833,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -31872,7 +31873,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "transport"
@@ -31895,11 +31895,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -31926,7 +31927,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "key",
@@ -31938,11 +31938,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -31977,7 +31978,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "payout_system_account_id",
           "project_id",
@@ -32597,7 +32597,7 @@
           "date_start": {
             "format": "date-time",
             "type": "string",
-            "example": "2026-07-15T15:05:26.337Z",
+            "example": "2026-07-15T17:55:07.839Z",
             "description": "Date start stream"
           },
           "resolution": {
@@ -32693,7 +32693,7 @@
           "date_start": {
             "format": "date-time",
             "type": "string",
-            "example": "2026-07-15T15:05:26.337Z",
+            "example": "2026-07-15T17:55:07.839Z",
             "description": "Date start stream"
           },
           "resolution": {
@@ -32789,7 +32789,7 @@
           "date_start": {
             "format": "date-time",
             "type": "string",
-            "example": "2026-07-15T15:05:26.337Z",
+            "example": "2026-07-15T17:55:07.839Z",
             "description": "Date start stream"
           },
           "resolution": {
@@ -33427,11 +33427,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -33454,7 +33455,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "broadcast_id"
@@ -33465,11 +33465,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -33492,7 +33493,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "broadcast_id"
@@ -33503,11 +33503,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -33530,7 +33531,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "broadcast_id"
@@ -33907,11 +33907,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -33942,7 +33943,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "media_id",
@@ -34128,11 +34128,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -34161,7 +34162,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "media_id",
@@ -34173,11 +34173,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -34200,7 +34201,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "media_id"
@@ -34211,11 +34211,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -34238,7 +34239,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "media_id"
@@ -34506,11 +34506,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -34539,7 +34540,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "id",
@@ -34612,11 +34612,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -34651,7 +34652,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "room_name",
@@ -34676,11 +34676,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -34713,7 +34714,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "project_id",
           "room_name",
@@ -34738,11 +34738,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -34768,7 +34769,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "room_id",
           "project_id"
@@ -34792,11 +34792,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -34830,7 +34831,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "room_id",
           "client_id"
@@ -34913,11 +34913,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -34958,7 +34959,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "room_id",
           "participant_name",
@@ -35155,11 +35155,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -35199,7 +35200,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "room_id",
           "client_id"
@@ -35210,11 +35210,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -35241,7 +35242,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "room_id",
           "client_id"
@@ -35252,11 +35252,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -35283,7 +35284,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "room_id",
           "client_id"
@@ -35294,11 +35294,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -35325,7 +35326,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "room_id",
           "client_id"
@@ -35336,11 +35336,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -35367,7 +35368,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "room_id",
           "client_id"
@@ -35449,11 +35449,12 @@
         "properties": {
           "v": {
             "type": "string",
-            "description": "Version",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
             "enum": [
               "1"
             ],
-            "example": "1"
+            "example": "1",
+            "default": "1"
           },
           "language": {
             "default": "en",
@@ -35506,7 +35507,6 @@
           }
         },
         "required": [
-          "v",
           "language",
           "client_id",
           "room_id",

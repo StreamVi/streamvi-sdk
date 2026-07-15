@@ -40,7 +40,7 @@ export const PayoutApiAxiosParamCreator = function (configuration?: Configuratio
          * @summary Create payout
          * @param {PayoutCreateV1LanguageEnum} language Current language
          * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto 
-         * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -67,6 +67,8 @@ export const PayoutApiAxiosParamCreator = function (configuration?: Configuratio
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -80,7 +82,8 @@ export const PayoutApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(payoutCreateRequestBodyDto, localVarRequestOptions, configuration)
+            const localVarVersionedBody = { ...payoutCreateRequestBodyDto, v: payoutCreateRequestBodyDto.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -92,7 +95,7 @@ export const PayoutApiAxiosParamCreator = function (configuration?: Configuratio
          * @summary Get payout data for create
          * @param {PayoutPrepareV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -119,6 +122,8 @@ export const PayoutApiAxiosParamCreator = function (configuration?: Configuratio
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -155,7 +160,7 @@ export const PayoutApiFp = function(configuration?: Configuration) {
          * @summary Create payout
          * @param {PayoutCreateV1LanguageEnum} language Current language
          * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto 
-         * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -170,7 +175,7 @@ export const PayoutApiFp = function(configuration?: Configuration) {
          * @summary Get payout data for create
          * @param {PayoutPrepareV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -262,7 +267,7 @@ export interface PayoutApiPayoutCreateV1Request {
     readonly PayoutCreateRequestBodyDto: PayoutCreateRequestBodyDto
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PayoutApiPayoutCreateV1
      */
@@ -290,7 +295,7 @@ export interface PayoutApiPayoutPrepareV1Request {
     readonly project_id: number
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PayoutApiPayoutPrepareV1
      */

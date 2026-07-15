@@ -21,11 +21,11 @@
  */
 export interface PayoutCreateRequestBodyDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof PayoutCreateRequestBodyDto
      */
-    'v': PayoutCreateRequestBodyDtoVEnum;
+    'v'?: PayoutCreateRequestBodyDtoVEnum;
     /**
      * Current language
      * @type {string}

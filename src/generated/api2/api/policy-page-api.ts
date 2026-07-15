@@ -36,7 +36,7 @@ export const PolicyPageApiAxiosParamCreator = function (configuration?: Configur
          * @summary Get policy page
          * @param {PolicyPageGetItemV1LanguageEnum} language Current language
          * @param {PolicyPageGetItemV1FileNameEnum} fileName Policy file name
-         * @param {PolicyPageGetItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PolicyPageGetItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -59,6 +59,8 @@ export const PolicyPageApiAxiosParamCreator = function (configuration?: Configur
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -84,7 +86,7 @@ export const PolicyPageApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @summary Get policy structure
          * @param {PolicyPageGetStructureV1LanguageEnum} language Current language
-         * @param {PolicyPageGetStructureV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PolicyPageGetStructureV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -105,6 +107,8 @@ export const PolicyPageApiAxiosParamCreator = function (configuration?: Configur
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -137,7 +141,7 @@ export const PolicyPageApiFp = function(configuration?: Configuration) {
          * @summary Get policy page
          * @param {PolicyPageGetItemV1LanguageEnum} language Current language
          * @param {PolicyPageGetItemV1FileNameEnum} fileName Policy file name
-         * @param {PolicyPageGetItemV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PolicyPageGetItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -151,7 +155,7 @@ export const PolicyPageApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get policy structure
          * @param {PolicyPageGetStructureV1LanguageEnum} language Current language
-         * @param {PolicyPageGetStructureV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PolicyPageGetStructureV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -243,7 +247,7 @@ export interface PolicyPageApiPolicyPageGetItemV1Request {
     readonly file_name: PolicyPageGetItemV1FileNameEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PolicyPageApiPolicyPageGetItemV1
      */
@@ -264,7 +268,7 @@ export interface PolicyPageApiPolicyPageGetStructureV1Request {
     readonly language: PolicyPageGetStructureV1LanguageEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PolicyPageApiPolicyPageGetStructureV1
      */

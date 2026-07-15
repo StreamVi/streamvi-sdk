@@ -16,11 +16,11 @@
  */
 export interface MethodSetStatusChannelRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof MethodSetStatusChannelRequest
      */
-    'v': MethodSetStatusChannelRequestVEnum;
+    'v'?: MethodSetStatusChannelRequestVEnum;
     /**
      * Current language
      * @type {string}

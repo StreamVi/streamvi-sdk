@@ -60,7 +60,7 @@ export declare const WebinarApiAxiosParamCreator: (configuration?: Configuration
      * @param {WebinarRoomSiteGetSyncV1LanguageEnum} language Current language
      * @param {string} roomId Room name
      * @param {string} clientId Client ID
-     * @param {WebinarRoomSiteGetSyncV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {WebinarRoomSiteGetSyncV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -86,7 +86,7 @@ export declare const WebinarApiAxiosParamCreator: (configuration?: Configuration
      * @summary List of webinar rooms
      * @param {WebinarRoomSiteListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {WebinarRoomSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {WebinarRoomSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -97,7 +97,7 @@ export declare const WebinarApiAxiosParamCreator: (configuration?: Configuration
      * @param {WebinarRoomSitePreJoinV1LanguageEnum} language Current language
      * @param {string} roomId Room id
      * @param {string} clientId Client ID
-     * @param {WebinarRoomSitePreJoinV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {WebinarRoomSitePreJoinV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -132,7 +132,7 @@ export declare const WebinarApiAxiosParamCreator: (configuration?: Configuration
      * @param {WebinarStreamSiteGetSettingStreamV1LanguageEnum} language Current language
      * @param {string} clientId Client ID
      * @param {string} roomId Room id
-     * @param {WebinarStreamSiteGetSettingStreamV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {WebinarStreamSiteGetSettingStreamV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -143,7 +143,7 @@ export declare const WebinarApiAxiosParamCreator: (configuration?: Configuration
      * @param {WebinarStreamSiteLastV1LanguageEnum} language Current language
      * @param {string} roomId Room id
      * @param {string} clientId Client ID
-     * @param {WebinarStreamSiteLastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {WebinarStreamSiteLastV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -208,7 +208,7 @@ export declare const WebinarApiFp: (configuration?: Configuration) => {
      * @param {WebinarRoomSiteGetSyncV1LanguageEnum} language Current language
      * @param {string} roomId Room name
      * @param {string} clientId Client ID
-     * @param {WebinarRoomSiteGetSyncV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {WebinarRoomSiteGetSyncV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -234,7 +234,7 @@ export declare const WebinarApiFp: (configuration?: Configuration) => {
      * @summary List of webinar rooms
      * @param {WebinarRoomSiteListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {WebinarRoomSiteListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {WebinarRoomSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -245,7 +245,7 @@ export declare const WebinarApiFp: (configuration?: Configuration) => {
      * @param {WebinarRoomSitePreJoinV1LanguageEnum} language Current language
      * @param {string} roomId Room id
      * @param {string} clientId Client ID
-     * @param {WebinarRoomSitePreJoinV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {WebinarRoomSitePreJoinV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -280,7 +280,7 @@ export declare const WebinarApiFp: (configuration?: Configuration) => {
      * @param {WebinarStreamSiteGetSettingStreamV1LanguageEnum} language Current language
      * @param {string} clientId Client ID
      * @param {string} roomId Room id
-     * @param {WebinarStreamSiteGetSettingStreamV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {WebinarStreamSiteGetSettingStreamV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -291,7 +291,7 @@ export declare const WebinarApiFp: (configuration?: Configuration) => {
      * @param {WebinarStreamSiteLastV1LanguageEnum} language Current language
      * @param {string} roomId Room id
      * @param {string} clientId Client ID
-     * @param {WebinarStreamSiteLastV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {WebinarStreamSiteLastV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -665,7 +665,7 @@ export interface WebinarApiWebinarRoomSiteGetSyncV1Request {
      */
     readonly client_id: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof WebinarApiWebinarRoomSiteGetSyncV1
      */
@@ -716,7 +716,7 @@ export interface WebinarApiWebinarRoomSiteListV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof WebinarApiWebinarRoomSiteListV1
      */
@@ -747,7 +747,7 @@ export interface WebinarApiWebinarRoomSitePreJoinV1Request {
      */
     readonly client_id: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof WebinarApiWebinarRoomSitePreJoinV1
      */
@@ -817,7 +817,7 @@ export interface WebinarApiWebinarStreamSiteGetSettingStreamV1Request {
      */
     readonly room_id: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof WebinarApiWebinarStreamSiteGetSettingStreamV1
      */
@@ -848,7 +848,7 @@ export interface WebinarApiWebinarStreamSiteLastV1Request {
      */
     readonly client_id: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof WebinarApiWebinarStreamSiteLastV1
      */

@@ -34,7 +34,7 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
          * @summary Get stream credentials
          * @param {StreamKeysKeyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -59,6 +59,9 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -81,6 +84,7 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         streamKeysUpdateRecordV1: async (setRecordStreamRequest, options = {}) => {
+            var _a;
             // verify required parameter 'setRecordStreamRequest' is not null or undefined
             (0, common_1.assertParamExists)('streamKeysUpdateRecordV1', 'setRecordStreamRequest', setRecordStreamRequest);
             const localVarPath = `/method/stream-keys/record`;
@@ -100,7 +104,8 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(setRecordStreamRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...setRecordStreamRequest, v: (_a = setRecordStreamRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -121,7 +126,7 @@ const StreamKeyApiFp = function (configuration) {
          * @summary Get stream credentials
          * @param {StreamKeysKeyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

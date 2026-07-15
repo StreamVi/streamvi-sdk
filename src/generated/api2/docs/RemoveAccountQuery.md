@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**v** | **string** | Version | [default to undefined]
+**v** | **string** | Version (automatically defaults to 1 based on the API contract, can be overridden) | [optional] [default to VEnum__1]
 **language** | **string** | Current language | [default to LanguageEnum_En]
 **platform** | **string** | Provider oauth | [default to undefined]
 **id** | **string** | Id account | [default to undefined]

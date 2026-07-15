@@ -33,7 +33,7 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get list of my notifications
          * @param {NotifyHistoryGetListMyV1LanguageEnum} language Current language
-         * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {number} [projectId] Project id
@@ -63,6 +63,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["notification:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -107,7 +110,7 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get my status unread message for user
          * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Current language
-         * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -130,6 +133,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -145,7 +151,7 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get my NotifyHistory item by id
          * @param {string} id Id of page in mongodb
-         * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -168,6 +174,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (id !== undefined) {
                 localVarQueryParameter['_id'] = id;
             }
@@ -184,7 +193,7 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
          * @summary Set notification in cabinet as read
          * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Current language
          * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
-         * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -209,6 +218,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -228,7 +240,7 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
          * @param {string} notifyHistoryId Id of page in mongodb
          * @param {string} actionName Action name
          * @param {string} groupId Group id
-         * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -254,6 +266,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (notifyHistoryId !== undefined) {
                 localVarQueryParameter['notify_history_id'] = notifyHistoryId;
@@ -314,7 +329,7 @@ const NotifyHistoryApiFp = function (configuration) {
          *
          * @summary Get list of my notifications
          * @param {NotifyHistoryGetListMyV1LanguageEnum} language Current language
-         * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
          * @param {number} [projectId] Project id
@@ -337,7 +352,7 @@ const NotifyHistoryApiFp = function (configuration) {
          *
          * @summary Get my status unread message for user
          * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Current language
-         * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -352,7 +367,7 @@ const NotifyHistoryApiFp = function (configuration) {
          *
          * @summary Get my NotifyHistory item by id
          * @param {string} id Id of page in mongodb
-         * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -368,7 +383,7 @@ const NotifyHistoryApiFp = function (configuration) {
          * @summary Set notification in cabinet as read
          * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Current language
          * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
-         * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -385,7 +400,7 @@ const NotifyHistoryApiFp = function (configuration) {
          * @param {string} notifyHistoryId Id of page in mongodb
          * @param {string} actionName Action name
          * @param {string} groupId Group id
-         * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

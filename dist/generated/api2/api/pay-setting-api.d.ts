@@ -27,7 +27,7 @@ export declare const PaySettingApiAxiosParamCreator: (configuration?: Configurat
      * @param {PaySettingCheckCountryV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} countryId country id
-     * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -37,7 +37,7 @@ export declare const PaySettingApiAxiosParamCreator: (configuration?: Configurat
      * @summary Get pay settings for profile v3
      * @param {PaySettingGetSettingV3LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+     * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -62,7 +62,7 @@ export declare const PaySettingApiFp: (configuration?: Configuration) => {
      * @param {PaySettingCheckCountryV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} countryId country id
-     * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -72,7 +72,7 @@ export declare const PaySettingApiFp: (configuration?: Configuration) => {
      * @summary Get pay settings for profile v3
      * @param {PaySettingGetSettingV3LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+     * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -175,7 +175,7 @@ export interface PaySettingApiPaySettingCheckCountryV1Request {
      */
     readonly country_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
@@ -200,7 +200,7 @@ export interface PaySettingApiPaySettingGetSettingV3Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 3 based on method version, can be overridden)
+     * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof PaySettingApiPaySettingGetSettingV3
      */

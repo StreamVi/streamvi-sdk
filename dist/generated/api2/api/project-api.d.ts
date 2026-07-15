@@ -26,7 +26,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
     /**
      *
      * @summary Get current user project
-     * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {MethodProjectMeMeV1LanguageEnum} [language] Current language
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -39,7 +39,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
      * @param {number} projectId Project id
      * @param {number} userId User id
      * @param {UserProjectChangeAccessV1AccessTypeEnum} accessType Access type
-     * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -50,7 +50,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
      * @param {UserProjectDelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} userId User id
-     * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
@@ -62,7 +62,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
      * @param {UserProjectDeleteMemberV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} userId User id
-     * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -72,7 +72,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
      * @summary Get project full info
      * @param {UserProjectGetProjectInfoV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -82,7 +82,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
      * @summary Get project by number id
      * @param {UserProjectGetProjectV1LanguageEnum} language Current language
      * @param {string} projectExternalId Project external id
-     * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -92,7 +92,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
      * @summary Get user by number id
      * @param {UserProjectGetUserV1LanguageEnum} language Current language
      * @param {string} userExternalId User external id
-     * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -102,7 +102,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
      * @summary Leave project
      * @param {UserProjectLeaveV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -112,7 +112,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
      * @summary List of user in project
      * @param {UserProjectListAccessV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -121,7 +121,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
      *
      * @summary List of project for current user
      * @param {UserProjectListV1LanguageEnum} language Current language
-     * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {*} [options] Override http request option.
@@ -133,7 +133,7 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
      * @summary Select user for project
      * @param {UserProjectSelectProjectV1LanguageEnum} language Current language
      * @param {number} id Project internal id
-     * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -147,7 +147,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get current user project
-     * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {MethodProjectMeMeV1LanguageEnum} [language] Current language
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -160,7 +160,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @param {number} projectId Project id
      * @param {number} userId User id
      * @param {UserProjectChangeAccessV1AccessTypeEnum} accessType Access type
-     * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -171,7 +171,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @param {UserProjectDelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} userId User id
-     * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
@@ -183,7 +183,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @param {UserProjectDeleteMemberV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} userId User id
-     * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -193,7 +193,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @summary Get project full info
      * @param {UserProjectGetProjectInfoV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -203,7 +203,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @summary Get project by number id
      * @param {UserProjectGetProjectV1LanguageEnum} language Current language
      * @param {string} projectExternalId Project external id
-     * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -213,7 +213,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @summary Get user by number id
      * @param {UserProjectGetUserV1LanguageEnum} language Current language
      * @param {string} userExternalId User external id
-     * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -223,7 +223,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @summary Leave project
      * @param {UserProjectLeaveV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -233,7 +233,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @summary List of user in project
      * @param {UserProjectListAccessV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -242,7 +242,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      *
      * @summary List of project for current user
      * @param {UserProjectListV1LanguageEnum} language Current language
-     * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {*} [options] Override http request option.
@@ -254,7 +254,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @summary Select user for project
      * @param {UserProjectSelectProjectV1LanguageEnum} language Current language
      * @param {number} id Project internal id
-     * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -469,7 +469,7 @@ export interface ProjectApiInterface {
  */
 export interface ProjectApiMethodProjectMeMeV1Request {
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiMethodProjectMeMeV1
      */
@@ -512,7 +512,7 @@ export interface ProjectApiUserProjectChangeAccessV1Request {
      */
     readonly access_type: UserProjectChangeAccessV1AccessTypeEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectChangeAccessV1
      */
@@ -543,7 +543,7 @@ export interface ProjectApiUserProjectDelV1Request {
      */
     readonly user_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectDelV1
      */
@@ -574,7 +574,7 @@ export interface ProjectApiUserProjectDeleteMemberV1Request {
      */
     readonly user_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectDeleteMemberV1
      */
@@ -599,7 +599,7 @@ export interface ProjectApiUserProjectGetProjectInfoV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectGetProjectInfoV1
      */
@@ -624,7 +624,7 @@ export interface ProjectApiUserProjectGetProjectV1Request {
      */
     readonly project_external_id: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectGetProjectV1
      */
@@ -649,7 +649,7 @@ export interface ProjectApiUserProjectGetUserV1Request {
      */
     readonly user_external_id: string;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectGetUserV1
      */
@@ -674,7 +674,7 @@ export interface ProjectApiUserProjectLeaveV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectLeaveV1
      */
@@ -699,7 +699,7 @@ export interface ProjectApiUserProjectListAccessV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectListAccessV1
      */
@@ -718,7 +718,7 @@ export interface ProjectApiUserProjectListV1Request {
      */
     readonly language: UserProjectListV1LanguageEnum;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectListV1
      */
@@ -755,7 +755,7 @@ export interface ProjectApiUserProjectSelectProjectV1Request {
      */
     readonly id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectSelectProjectV1
      */

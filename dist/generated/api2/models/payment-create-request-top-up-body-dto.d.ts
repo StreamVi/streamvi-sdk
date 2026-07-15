@@ -16,11 +16,11 @@
  */
 export interface PaymentCreateRequestTopUpBodyDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof PaymentCreateRequestTopUpBodyDto
      */
-    'v': PaymentCreateRequestTopUpBodyDtoVEnum;
+    'v'?: PaymentCreateRequestTopUpBodyDtoVEnum;
     /**
      * Current language
      * @type {string}

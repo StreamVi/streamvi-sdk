@@ -35,7 +35,7 @@ const PaySettingApiAxiosParamCreator = function (configuration) {
          * @param {PaySettingCheckCountryV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} countryId country id
-         * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -62,6 +62,9 @@ const PaySettingApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -84,7 +87,7 @@ const PaySettingApiAxiosParamCreator = function (configuration) {
          * @summary Get pay settings for profile v3
          * @param {PaySettingGetSettingV3LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+         * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -115,6 +118,9 @@ const PaySettingApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '3';
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -131,6 +137,7 @@ const PaySettingApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         paySettingSetSettingV1: async (paySettingSetSettingV1Request, options = {}) => {
+            var _a;
             // verify required parameter 'paySettingSetSettingV1Request' is not null or undefined
             (0, common_1.assertParamExists)('paySettingSetSettingV1', 'paySettingSetSettingV1Request', paySettingSetSettingV1Request);
             const localVarPath = `/method/pay-setting`;
@@ -150,7 +157,8 @@ const PaySettingApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(paySettingSetSettingV1Request, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...paySettingSetSettingV1Request, v: (_a = paySettingSetSettingV1Request.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -172,7 +180,7 @@ const PaySettingApiFp = function (configuration) {
          * @param {PaySettingCheckCountryV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} countryId country id
-         * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -188,7 +196,7 @@ const PaySettingApiFp = function (configuration) {
          * @summary Get pay settings for profile v3
          * @param {PaySettingGetSettingV3LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on method version, can be overridden)
+         * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

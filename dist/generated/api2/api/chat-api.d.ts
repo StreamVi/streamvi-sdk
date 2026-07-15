@@ -23,7 +23,7 @@ export declare const ChatApiAxiosParamCreator: (configuration?: Configuration) =
      * @summary Get chat key
      * @param {ChatGatewayKeyV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {ChatGatewayKeyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChatGatewayKeyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -39,7 +39,7 @@ export declare const ChatApiFp: (configuration?: Configuration) => {
      * @summary Get chat key
      * @param {ChatGatewayKeyV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {ChatGatewayKeyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ChatGatewayKeyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -94,7 +94,7 @@ export interface ChatApiChatGatewayKeyV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatApiChatGatewayKeyV1
      */

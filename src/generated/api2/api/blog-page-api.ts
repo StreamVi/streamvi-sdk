@@ -36,7 +36,7 @@ export const BlogPageApiAxiosParamCreator = function (configuration?: Configurat
          * @summary Get blog page
          * @param {BlogPageGetV1LanguageEnum} language Current language
          * @param {string} url Url of page
-         * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -59,6 +59,8 @@ export const BlogPageApiAxiosParamCreator = function (configuration?: Configurat
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -84,7 +86,7 @@ export const BlogPageApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @summary Get list of blog pages
          * @param {BlogPageListV1LanguageEnum} language Current language
-         * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
@@ -108,6 +110,8 @@ export const BlogPageApiAxiosParamCreator = function (configuration?: Configurat
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -152,7 +156,7 @@ export const BlogPageApiFp = function(configuration?: Configuration) {
          * @summary Get blog page
          * @param {BlogPageGetV1LanguageEnum} language Current language
          * @param {string} url Url of page
-         * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -166,7 +170,7 @@ export const BlogPageApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get list of blog pages
          * @param {BlogPageListV1LanguageEnum} language Current language
-         * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
@@ -261,7 +265,7 @@ export interface BlogPageApiBlogPageGetV1Request {
     readonly url: string
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BlogPageApiBlogPageGetV1
      */
@@ -282,7 +286,7 @@ export interface BlogPageApiBlogPageListV1Request {
     readonly language: BlogPageListV1LanguageEnum
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BlogPageApiBlogPageListV1
      */

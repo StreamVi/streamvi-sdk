@@ -23,7 +23,7 @@ export declare const ProjectHistoryApiAxiosParamCreator: (configuration?: Config
      * @summary Get project history of actions
      * @param {ProjectHistoryListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {ProjectHistoryListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ProjectHistoryListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
@@ -45,7 +45,7 @@ export declare const ProjectHistoryApiFp: (configuration?: Configuration) => {
      * @summary Get project history of actions
      * @param {ProjectHistoryListV1LanguageEnum} language Current language
      * @param {number} projectId Project id
-     * @param {ProjectHistoryListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+     * @param {ProjectHistoryListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
@@ -106,7 +106,7 @@ export interface ProjectHistoryApiProjectHistoryListV1Request {
      */
     readonly project_id: number;
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */

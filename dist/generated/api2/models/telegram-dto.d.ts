@@ -16,11 +16,11 @@
  */
 export interface TelegramDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof TelegramDto
      */
-    'v': TelegramDtoVEnum;
+    'v'?: TelegramDtoVEnum;
     /**
      * Current language
      * @type {string}

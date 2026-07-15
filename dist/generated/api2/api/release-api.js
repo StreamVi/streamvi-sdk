@@ -33,7 +33,7 @@ const ReleaseApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get current version app
          * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
-         * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -53,6 +53,9 @@ const ReleaseApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -82,7 +85,7 @@ const ReleaseApiFp = function (configuration) {
          *
          * @summary Get current version app
          * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
-         * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}

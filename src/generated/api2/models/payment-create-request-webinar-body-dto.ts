@@ -21,11 +21,11 @@
  */
 export interface PaymentCreateRequestWebinarBodyDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof PaymentCreateRequestWebinarBodyDto
      */
-    'v': PaymentCreateRequestWebinarBodyDtoVEnum;
+    'v'?: PaymentCreateRequestWebinarBodyDtoVEnum;
     /**
      * Current language
      * @type {string}

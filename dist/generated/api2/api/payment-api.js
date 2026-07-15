@@ -34,11 +34,12 @@ const PaymentApiAxiosParamCreator = function (configuration) {
          * @summary Create payment item for pay system
          * @param {PaymentCreateV1LanguageEnum} language Current language
          * @param {PaymentCreateV1Request} paymentCreateV1Request
-         * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         paymentCreateV1: async (language, paymentCreateV1Request, v, options = {}) => {
+            var _a;
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('paymentCreateV1', 'language', language);
             // verify required parameter 'paymentCreateV1Request' is not null or undefined
@@ -59,6 +60,9 @@ const PaymentApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -66,7 +70,8 @@ const PaymentApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(paymentCreateV1Request, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...paymentCreateV1Request, v: (_a = paymentCreateV1Request.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -77,7 +82,7 @@ const PaymentApiAxiosParamCreator = function (configuration) {
          * @param {PaymentGetStatusV1LanguageEnum} language Current language
          * @param {number} payId Pay order id
          * @param {number} projectId Project id
-         * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -103,6 +108,9 @@ const PaymentApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -136,7 +144,7 @@ const PaymentApiFp = function (configuration) {
          * @summary Create payment item for pay system
          * @param {PaymentCreateV1LanguageEnum} language Current language
          * @param {PaymentCreateV1Request} paymentCreateV1Request
-         * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -152,7 +160,7 @@ const PaymentApiFp = function (configuration) {
          * @param {PaymentGetStatusV1LanguageEnum} language Current language
          * @param {number} payId Pay order id
          * @param {number} projectId Project id
-         * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

@@ -30,16 +30,16 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
-     * @param {UserUpdateProfileV1VEnum} v Version
      * @param {UserUpdateProfileV1LanguageEnum} language Current language
      * @param {string} firstName First name
      * @param {string} lastName Last name
+     * @param {UserUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userUpdateProfileV1: (v: UserUpdateProfileV1VEnum, language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userUpdateProfileV1: (language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: UserUpdateProfileV1VEnum, avatar?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UsersApi - functional programming interface
@@ -57,16 +57,16 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
-     * @param {UserUpdateProfileV1VEnum} v Version
      * @param {UserUpdateProfileV1LanguageEnum} language Current language
      * @param {string} firstName First name
      * @param {string} lastName Last name
+     * @param {UserUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userUpdateProfileV1(v: UserUpdateProfileV1VEnum, language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    userUpdateProfileV1(language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: UserUpdateProfileV1VEnum, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * UsersApi - factory interface
@@ -124,12 +124,6 @@ export interface UsersApiInterface {
  */
 export interface UsersApiUserUpdateProfileV1Request {
     /**
-     * Version
-     * @type {string}
-     * @memberof UsersApiUserUpdateProfileV1
-     */
-    readonly v: UserUpdateProfileV1VEnum;
-    /**
      * Current language
      * @type {string}
      * @memberof UsersApiUserUpdateProfileV1
@@ -147,6 +141,12 @@ export interface UsersApiUserUpdateProfileV1Request {
      * @memberof UsersApiUserUpdateProfileV1
      */
     readonly last_name: string;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {string}
+     * @memberof UsersApiUserUpdateProfileV1
+     */
+    readonly v?: UserUpdateProfileV1VEnum;
     /**
      * File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @type {File}
@@ -184,17 +184,17 @@ export declare class UsersApi extends BaseAPI implements UsersApiInterface {
 /**
  * @export
  */
-export declare const UserUpdateProfileV1VEnum: {
-    readonly _1: "1";
-};
-export type UserUpdateProfileV1VEnum = typeof UserUpdateProfileV1VEnum[keyof typeof UserUpdateProfileV1VEnum];
-/**
- * @export
- */
 export declare const UserUpdateProfileV1LanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
     readonly Cn: "cn";
 };
 export type UserUpdateProfileV1LanguageEnum = typeof UserUpdateProfileV1LanguageEnum[keyof typeof UserUpdateProfileV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const UserUpdateProfileV1VEnum: {
+    readonly _1: "1";
+};
+export type UserUpdateProfileV1VEnum = typeof UserUpdateProfileV1VEnum[keyof typeof UserUpdateProfileV1VEnum];
 //# sourceMappingURL=users-api.d.ts.map

@@ -39,7 +39,7 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
          * @param {PromoApplyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} code Code
-         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -68,6 +68,8 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -99,7 +101,7 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
          * @param {PromoCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} code Code
-         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -128,6 +130,8 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
             }
 
             if (language !== undefined) {
@@ -169,7 +173,7 @@ export const PromoApiFp = function(configuration?: Configuration) {
          * @param {PromoApplyV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} code Code
-         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -185,7 +189,7 @@ export const PromoApiFp = function(configuration?: Configuration) {
          * @param {PromoCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} code Code
-         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -284,7 +288,7 @@ export interface PromoApiPromoApplyV1Request {
     readonly code: string
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PromoApiPromoApplyV1
      */
@@ -319,7 +323,7 @@ export interface PromoApiPromoCheckV1Request {
     readonly code: string
 
     /**
-     * Version (automatically defaults to 1 based on method version, can be overridden)
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PromoApiPromoCheckV1
      */

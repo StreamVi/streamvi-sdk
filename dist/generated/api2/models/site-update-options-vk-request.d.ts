@@ -16,11 +16,11 @@
  */
 export interface SiteUpdateOptionsVkRequest {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
-    'v': SiteUpdateOptionsVkRequestVEnum;
+    'v'?: SiteUpdateOptionsVkRequestVEnum;
     /**
      * Current language
      * @type {string}

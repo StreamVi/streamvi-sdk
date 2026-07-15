@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**v** | **string** | Version | [default to undefined]
+**v** | **string** | Version (automatically defaults to 1 based on the API contract, can be overridden) | [optional] [default to VEnum__1]
 **language** | **string** | Current language | [default to LanguageEnum_En]
 **room_id** | **string** | Room name | [default to undefined]
 **client_id** | **string** | Client ID | [default to undefined]

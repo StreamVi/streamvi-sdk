@@ -36,7 +36,7 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
          * @param {number} projectId Project id
          * @param {PlanStorageBuyV1PeriodEnum} period Period
          * @param {number} planStorageId Storage plan id
-         * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [size] Size
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -66,6 +66,9 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -94,7 +97,7 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
          * @summary Remove next tariff
          * @param {PlanStorageCancelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -119,6 +122,9 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -138,7 +144,7 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
          * @summary Check storage tariff before buy
          * @param {PlanStorageCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -163,6 +169,9 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -181,7 +190,7 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get discount of storage
          * @param {PlanStorageGetDiscountV1LanguageEnum} language Current language
-         * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -204,6 +213,9 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -219,7 +231,7 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get info for storage tariff
          * @param {PlanStorageListV1LanguageEnum} language Current language
-         * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -242,6 +254,9 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -259,7 +274,7 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
          * @param {PlanStorageSetProlongationV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
-         * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -286,6 +301,9 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -308,7 +326,7 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
          * @summary Get tariff for project
          * @param {PlanStorageTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -332,6 +350,9 @@ const PlanStorageApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -364,7 +385,7 @@ const PlanStorageApiFp = function (configuration) {
          * @param {number} projectId Project id
          * @param {PlanStorageBuyV1PeriodEnum} period Period
          * @param {number} planStorageId Storage plan id
-         * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [size] Size
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -381,7 +402,7 @@ const PlanStorageApiFp = function (configuration) {
          * @summary Remove next tariff
          * @param {PlanStorageCancelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -397,7 +418,7 @@ const PlanStorageApiFp = function (configuration) {
          * @summary Check storage tariff before buy
          * @param {PlanStorageCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -412,7 +433,7 @@ const PlanStorageApiFp = function (configuration) {
          *
          * @summary Get discount of storage
          * @param {PlanStorageGetDiscountV1LanguageEnum} language Current language
-         * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -427,7 +448,7 @@ const PlanStorageApiFp = function (configuration) {
          *
          * @summary Get info for storage tariff
          * @param {PlanStorageListV1LanguageEnum} language Current language
-         * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -444,7 +465,7 @@ const PlanStorageApiFp = function (configuration) {
          * @param {PlanStorageSetProlongationV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
-         * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -460,7 +481,7 @@ const PlanStorageApiFp = function (configuration) {
          * @summary Get tariff for project
          * @param {PlanStorageTariffV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */

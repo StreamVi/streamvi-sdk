@@ -121,7 +121,7 @@ const AuthApiAxiosParamCreator = function (configuration) {
          * @summary Get code for auth
          * @param {AuthCodeV1LanguageEnum} language Current language
          * @param {AuthCodeV1AppEnum} app Create auth code for app
-         * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -146,6 +146,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -165,7 +168,7 @@ const AuthApiAxiosParamCreator = function (configuration) {
          * @summary CallBack for connect social
          * @param {AuthConnectResultV1LanguageEnum} language Current language
          * @param {string} message Result message for connect
-         * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -187,6 +190,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -205,7 +211,7 @@ const AuthApiAxiosParamCreator = function (configuration) {
          *
          * @summary Connect telegram in account
          * @param {AuthConnectTelegramV1LanguageEnum} language Current language
-         * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -228,6 +234,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -244,7 +253,7 @@ const AuthApiAxiosParamCreator = function (configuration) {
          * @summary Connected social account
          * @param {AuthConnectV1LanguageEnum} language Current language
          * @param {AuthConnectV1ProviderEnum} provider Provider oauth
-         * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {AuthConnectV1AppEnum} [app] App oauth
          * @param {string} [redirect] Redirect url
          * @param {*} [options] Override http request option.
@@ -271,6 +280,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -296,7 +308,7 @@ const AuthApiAxiosParamCreator = function (configuration) {
          * @summary Disconnected social account
          * @param {AuthDisconnectV1LanguageEnum} language Current language
          * @param {number} socialId Social id
-         * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -321,6 +333,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -343,6 +358,7 @@ const AuthApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         authExchangeV1: async (siteAuthExchangeRequest, options = {}) => {
+            var _a;
             // verify required parameter 'siteAuthExchangeRequest' is not null or undefined
             (0, common_1.assertParamExists)('authExchangeV1', 'siteAuthExchangeRequest', siteAuthExchangeRequest);
             const localVarPath = `/method/auth/app/exchange`;
@@ -359,7 +375,8 @@ const AuthApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(siteAuthExchangeRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...siteAuthExchangeRequest, v: (_a = siteAuthExchangeRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -370,7 +387,7 @@ const AuthApiAxiosParamCreator = function (configuration) {
          * @summary Get url for start oauth
          * @param {AuthGetAuthUrlV1LanguageEnum} language Current language
          * @param {AuthGetAuthUrlV1ProviderEnum} provider Provider oauth
-         * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {AuthGetAuthUrlV1AppEnum} [app] App oauth
          * @param {string} [redirect] Redirect url
          * @param {string} [refId] Referal id
@@ -395,6 +412,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -503,7 +523,7 @@ const AuthApiFp = function (configuration) {
          * @summary Get code for auth
          * @param {AuthCodeV1LanguageEnum} language Current language
          * @param {AuthCodeV1AppEnum} app Create auth code for app
-         * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -519,7 +539,7 @@ const AuthApiFp = function (configuration) {
          * @summary CallBack for connect social
          * @param {AuthConnectResultV1LanguageEnum} language Current language
          * @param {string} message Result message for connect
-         * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -534,7 +554,7 @@ const AuthApiFp = function (configuration) {
          *
          * @summary Connect telegram in account
          * @param {AuthConnectTelegramV1LanguageEnum} language Current language
-         * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -550,7 +570,7 @@ const AuthApiFp = function (configuration) {
          * @summary Connected social account
          * @param {AuthConnectV1LanguageEnum} language Current language
          * @param {AuthConnectV1ProviderEnum} provider Provider oauth
-         * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {AuthConnectV1AppEnum} [app] App oauth
          * @param {string} [redirect] Redirect url
          * @param {*} [options] Override http request option.
@@ -568,7 +588,7 @@ const AuthApiFp = function (configuration) {
          * @summary Disconnected social account
          * @param {AuthDisconnectV1LanguageEnum} language Current language
          * @param {number} socialId Social id
-         * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -598,7 +618,7 @@ const AuthApiFp = function (configuration) {
          * @summary Get url for start oauth
          * @param {AuthGetAuthUrlV1LanguageEnum} language Current language
          * @param {AuthGetAuthUrlV1ProviderEnum} provider Provider oauth
-         * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {AuthGetAuthUrlV1AppEnum} [app] App oauth
          * @param {string} [redirect] Redirect url
          * @param {string} [refId] Referal id

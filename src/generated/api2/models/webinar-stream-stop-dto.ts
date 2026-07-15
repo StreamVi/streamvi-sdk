@@ -21,11 +21,11 @@
  */
 export interface WebinarStreamStopDto {
     /**
-     * Version
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {string}
      * @memberof WebinarStreamStopDto
      */
-    'v': WebinarStreamStopDtoVEnum;
+    'v'?: WebinarStreamStopDtoVEnum;
     /**
      * Current language
      * @type {string}

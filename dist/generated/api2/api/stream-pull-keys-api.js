@@ -35,7 +35,7 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
          * @param {StreamPullKeysSiteCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} key Key
-         * @param {StreamPullKeysSiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {StreamPullKeysSiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -62,6 +62,9 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -87,6 +90,7 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         streamPullKeysSiteCreateV1: async (createPullKeyRequest, options = {}) => {
+            var _a;
             // verify required parameter 'createPullKeyRequest' is not null or undefined
             (0, common_1.assertParamExists)('streamPullKeysSiteCreateV1', 'createPullKeyRequest', createPullKeyRequest);
             const localVarPath = `/method/stream-pull-keys`;
@@ -106,7 +110,8 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(createPullKeyRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...createPullKeyRequest, v: (_a = createPullKeyRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -117,7 +122,7 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
          * @summary List keys
          * @param {StreamPullKeysSiteGetV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {StreamPullKeysSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {StreamPullKeysSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -142,6 +147,9 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -162,7 +170,7 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
          * @param {StreamPullKeysSiteRemoveV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} key Key
-         * @param {StreamPullKeysSiteRemoveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {StreamPullKeysSiteRemoveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -189,6 +197,9 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -214,6 +225,7 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
          * @throws {RequiredError}
          */
         streamPullKeysSiteUpdateV1: async (updatePullKeyRequest, options = {}) => {
+            var _a;
             // verify required parameter 'updatePullKeyRequest' is not null or undefined
             (0, common_1.assertParamExists)('streamPullKeysSiteUpdateV1', 'updatePullKeyRequest', updatePullKeyRequest);
             const localVarPath = `/method/stream-pull-keys`;
@@ -233,7 +245,8 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(updatePullKeyRequest, localVarRequestOptions, configuration);
+            const localVarVersionedBody = { ...updatePullKeyRequest, v: (_a = updatePullKeyRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -255,7 +268,7 @@ const StreamPullKeysApiFp = function (configuration) {
          * @param {StreamPullKeysSiteCheckV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} key Key
-         * @param {StreamPullKeysSiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {StreamPullKeysSiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -285,7 +298,7 @@ const StreamPullKeysApiFp = function (configuration) {
          * @summary List keys
          * @param {StreamPullKeysSiteGetV1LanguageEnum} language Current language
          * @param {number} projectId Project id
-         * @param {StreamPullKeysSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {StreamPullKeysSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -302,7 +315,7 @@ const StreamPullKeysApiFp = function (configuration) {
          * @param {StreamPullKeysSiteRemoveV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {string} key Key
-         * @param {StreamPullKeysSiteRemoveV1VEnum} [v] Version (automatically defaults to 1 based on method version, can be overridden)
+         * @param {StreamPullKeysSiteRemoveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
