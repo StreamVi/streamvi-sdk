@@ -14,14 +14,16 @@ Name | Type | Description | Notes
 **bitrate** | **number** | Bitrate | [default to undefined]
 **key_frame** | **number** | Key frame | [optional] [default to undefined]
 **status** | **string** | Stream status | [default to undefined]
+**action** | **string** | Restream action state | [default to undefined]
 **url** | **string** | Broadcast url | [default to undefined]
 **video_codec_name** | **string** | Video codec | [default to undefined]
 **restreams** | [**Array&lt;BroadcastLiveStatusRestream&gt;**](BroadcastLiveStatusRestream.md) | Restreams | [default to undefined]
+**kind** | **string** | Broadcast status response kind | [default to undefined]
 **app** | **string** | App name (scheduler) | [default to undefined]
-**schedulerId** | **number** | Scheduler id | [default to undefined]
-**video_id** | **number** | Video id | [default to undefined]
-**name** | **string** | Video name | [default to undefined]
-**duration** | **number** | Video duration | [default to undefined]
+**schedulerId** | **number** | Scheduler id | [optional] [default to undefined]
+**video_id** | **number** | Video id | [optional] [default to undefined]
+**name** | **string** | Video name | [optional] [default to undefined]
+**duration** | **number** | Video duration | [optional] [default to undefined]
 
 ## Example
 
@@ -38,9 +40,11 @@ const instance: SiteBroadcastStatusSchedulerResponse = {
     bitrate,
     key_frame,
     status,
+    action,
     url,
     video_codec_name,
     restreams,
+    kind,
     app,
     schedulerId,
     video_id,

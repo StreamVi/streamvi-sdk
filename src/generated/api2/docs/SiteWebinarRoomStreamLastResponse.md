@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Stream id | [optional] [default to undefined]
-**status** | **string** | Status | [default to StatusEnum_Complete]
+**status** | **string** | Status | [optional] [default to undefined]
 **start_at** | **string** | Start at | [optional] [default to undefined]
 **end_at** | **string** | End at | [optional] [default to undefined]
 **is_current_room** | **boolean** | Is current room stream | [default to undefined]

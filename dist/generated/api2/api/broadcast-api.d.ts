@@ -24,6 +24,7 @@ import type { SiteBroadcastPauseRequest } from '../models';
 import type { SiteBroadcastPlayRequest } from '../models';
 import type { SiteBroadcastRestreamsInfoResponse } from '../models';
 import type { SiteBroadcastStopRequest } from '../models';
+import type { SiteBroadcastTemplateResponse } from '../models';
 import type { SiteRestreamEventResponse } from '../models';
 import type { SuccessResponse } from '../models';
 /**
@@ -86,6 +87,16 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     broadcastFindV1: (language: BroadcastFindV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastFindV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get broadcast title and description template
+     * @param {BroadcastGetTemplateV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {BroadcastGetTemplateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastGetTemplateV1: (language: BroadcastGetTemplateV1LanguageEnum, projectId: number, v?: BroadcastGetTemplateV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Bitrate from broadcast
@@ -250,6 +261,16 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
     broadcastFindV1(language: BroadcastFindV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastFindV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastFindResponse>>;
     /**
      *
+     * @summary Get broadcast title and description template
+     * @param {BroadcastGetTemplateV1LanguageEnum} language Current language
+     * @param {number} projectId Project id
+     * @param {BroadcastGetTemplateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastGetTemplateV1(language: BroadcastGetTemplateV1LanguageEnum, projectId: number, v?: BroadcastGetTemplateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastTemplateResponse>>;
+    /**
+     *
      * @summary Bitrate from broadcast
      * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
      * @param {number} projectId Project id
@@ -389,6 +410,14 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
     broadcastFindV1(requestParameters: BroadcastApiBroadcastFindV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastFindResponse>;
     /**
      *
+     * @summary Get broadcast title and description template
+     * @param {BroadcastApiBroadcastGetTemplateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    broadcastGetTemplateV1(requestParameters: BroadcastApiBroadcastGetTemplateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastTemplateResponse>;
+    /**
+     *
      * @summary Bitrate from broadcast
      * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -510,6 +539,15 @@ export interface BroadcastApiInterface {
      * @memberof BroadcastApiInterface
      */
     broadcastFindV1(requestParameters: BroadcastApiBroadcastFindV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastFindResponse>;
+    /**
+     *
+     * @summary Get broadcast title and description template
+     * @param {BroadcastApiBroadcastGetTemplateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApiInterface
+     */
+    broadcastGetTemplateV1(requestParameters: BroadcastApiBroadcastGetTemplateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastTemplateResponse>;
     /**
      *
      * @summary Bitrate from broadcast
@@ -792,6 +830,31 @@ export interface BroadcastApiBroadcastFindV1Request {
     readonly v?: BroadcastFindV1VEnum;
 }
 /**
+ * Request parameters for broadcastGetTemplateV1 operation in BroadcastApi.
+ * @export
+ * @interface BroadcastApiBroadcastGetTemplateV1Request
+ */
+export interface BroadcastApiBroadcastGetTemplateV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof BroadcastApiBroadcastGetTemplateV1
+     */
+    readonly language: BroadcastGetTemplateV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof BroadcastApiBroadcastGetTemplateV1
+     */
+    readonly project_id: number;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof BroadcastApiBroadcastGetTemplateV1
+     */
+    readonly v?: BroadcastGetTemplateV1VEnum;
+}
+/**
  * Request parameters for broadcastGraphBitrateV1 operation in BroadcastApi.
  * @export
  * @interface BroadcastApiBroadcastGraphBitrateV1Request
@@ -1062,7 +1125,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastCredentialsV1(requestParameters: BroadcastApiBroadcastCredentialsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastCredentialsResponse, any, {}>>;
+    broadcastCredentialsV1(requestParameters: BroadcastApiBroadcastCredentialsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastCredentialsResponse, any, {}, any>>;
     /**
      *
      * @summary Broadcast event item
@@ -1071,7 +1134,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastEventItemV1(requestParameters: BroadcastApiBroadcastEventItemV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteRestreamEventResponse, any, {}>>;
+    broadcastEventItemV1(requestParameters: BroadcastApiBroadcastEventItemV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteRestreamEventResponse, any, {}, any>>;
     /**
      *
      * @summary Events from broadcast v4
@@ -1080,7 +1143,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastEventsV4(requestParameters: BroadcastApiBroadcastEventsV4Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastEventsV4Response, any, {}>>;
+    broadcastEventsV4(requestParameters: BroadcastApiBroadcastEventsV4Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastEventsV4Response, any, {}, any>>;
     /**
      *
      * @summary Get one broadcast
@@ -1089,7 +1152,16 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastFindV1(requestParameters: BroadcastApiBroadcastFindV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastFindResponse, any, {}>>;
+    broadcastFindV1(requestParameters: BroadcastApiBroadcastFindV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastFindResponse, any, {}, any>>;
+    /**
+     *
+     * @summary Get broadcast title and description template
+     * @param {BroadcastApiBroadcastGetTemplateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastGetTemplateV1(requestParameters: BroadcastApiBroadcastGetTemplateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastTemplateResponse, any, {}, any>>;
     /**
      *
      * @summary Bitrate from broadcast
@@ -1098,7 +1170,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastGraphBitrateV1(requestParameters: BroadcastApiBroadcastGraphBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastGraphResponse, any, {}>>;
+    broadcastGraphBitrateV1(requestParameters: BroadcastApiBroadcastGraphBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastGraphResponse, any, {}, any>>;
     /**
      *
      * @summary Viewers from broadcast
@@ -1107,7 +1179,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastGraphViewersV1(requestParameters: BroadcastApiBroadcastGraphViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastGraphResponse, any, {}>>;
+    broadcastGraphViewersV1(requestParameters: BroadcastApiBroadcastGraphViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastGraphResponse, any, {}, any>>;
     /**
      *
      * @summary List broadcast
@@ -1116,7 +1188,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastListV1(requestParameters: BroadcastApiBroadcastListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastListResponse, any, {}>>;
+    broadcastListV1(requestParameters: BroadcastApiBroadcastListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastListResponse, any, {}, any>>;
     /**
      *
      * @summary Pause stream
@@ -1125,7 +1197,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastPauseV1(requestParameters: BroadcastApiBroadcastPauseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    broadcastPauseV1(requestParameters: BroadcastApiBroadcastPauseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Play stream
@@ -1134,7 +1206,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastPlayV1(requestParameters: BroadcastApiBroadcastPlayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    broadcastPlayV1(requestParameters: BroadcastApiBroadcastPlayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get restreams for chat
@@ -1143,7 +1215,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastRestreamChatV1(requestParameters: BroadcastApiBroadcastRestreamChatV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodBroadcastRestreamsResponse, any, {}>>;
+    broadcastRestreamChatV1(requestParameters: BroadcastApiBroadcastRestreamChatV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodBroadcastRestreamsResponse, any, {}, any>>;
     /**
      *
      * @summary View live info
@@ -1152,7 +1224,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastRestreamsV1(requestParameters: BroadcastApiBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastRestreamsInfoResponse, any, {}>>;
+    broadcastRestreamsV1(requestParameters: BroadcastApiBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastRestreamsInfoResponse, any, {}, any>>;
     /**
      *
      * @summary Live status info by project id
@@ -1161,7 +1233,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastStatusV1(requestParameters: BroadcastApiBroadcastStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BroadcastStatusV1200Response, any, {}>>;
+    broadcastStatusV1(requestParameters: BroadcastApiBroadcastStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BroadcastStatusV1200Response, any, {}, any>>;
     /**
      *
      * @summary Stop stream
@@ -1170,7 +1242,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastStopV1(requestParameters: BroadcastApiBroadcastStopV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    broadcastStopV1(requestParameters: BroadcastApiBroadcastStopV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Connect channel, long polling
@@ -1179,7 +1251,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
-    broadcastTokenChannelV1(requestParameters: BroadcastApiBroadcastTokenChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodCurrentBroadcastResponse, any, {}>>;
+    broadcastTokenChannelV1(requestParameters: BroadcastApiBroadcastTokenChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodCurrentBroadcastResponse, any, {}, any>>;
 }
 /**
  * @export
@@ -1263,6 +1335,22 @@ export declare const BroadcastFindV1VEnum: {
     readonly _3: "3";
 };
 export type BroadcastFindV1VEnum = typeof BroadcastFindV1VEnum[keyof typeof BroadcastFindV1VEnum];
+/**
+ * @export
+ */
+export declare const BroadcastGetTemplateV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type BroadcastGetTemplateV1LanguageEnum = typeof BroadcastGetTemplateV1LanguageEnum[keyof typeof BroadcastGetTemplateV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const BroadcastGetTemplateV1VEnum: {
+    readonly _1: "1";
+};
+export type BroadcastGetTemplateV1VEnum = typeof BroadcastGetTemplateV1VEnum[keyof typeof BroadcastGetTemplateV1VEnum];
 /**
  * @export
  */

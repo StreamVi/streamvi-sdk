@@ -163,7 +163,7 @@ export declare class MoneyFlowApi extends BaseAPI implements MoneyFlowApiInterfa
      * @throws {RequiredError}
      * @memberof MoneyFlowApi
      */
-    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedMoneyFlowResponse, any, {}>>;
+    moneyFlowListV1(requestParameters: MoneyFlowApiMoneyFlowListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedMoneyFlowResponse, any, {}, any>>;
 }
 /**
  * @export

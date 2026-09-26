@@ -76,6 +76,41 @@ const ChatApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
+        /**
+         *
+         * @summary Rotate chat key
+         * @param {SiteChatKeyRequest} siteChatKeyRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        chatGatewayRotateKeyV1: async (siteChatKeyRequest, options = {}) => {
+            var _a;
+            // verify required parameter 'siteChatKeyRequest' is not null or undefined
+            (0, common_1.assertParamExists)('chatGatewayRotateKeyV1', 'siteChatKeyRequest', siteChatKeyRequest);
+            const localVarPath = `/method/chat/key`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            const localVarVersionedBody = { ...siteChatKeyRequest, v: (_a = siteChatKeyRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     };
 };
 exports.ChatApiAxiosParamCreator = ChatApiAxiosParamCreator;
@@ -102,6 +137,20 @@ const ChatApiFp = function (configuration) {
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChatApi.chatGatewayKeyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         *
+         * @summary Rotate chat key
+         * @param {SiteChatKeyRequest} siteChatKeyRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async chatGatewayRotateKeyV1(siteChatKeyRequest, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.chatGatewayRotateKeyV1(siteChatKeyRequest, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChatApi.chatGatewayRotateKeyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     };
 };
 exports.ChatApiFp = ChatApiFp;
@@ -121,6 +170,16 @@ const ChatApiFactory = function (configuration, basePath, axios) {
          */
         chatGatewayKeyV1(requestParameters, options) {
             return localVarFp.chatGatewayKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Rotate chat key
+         * @param {ChatApiChatGatewayRotateKeyV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        chatGatewayRotateKeyV1(requestParameters, options) {
+            return localVarFp.chatGatewayRotateKeyV1(requestParameters.SiteChatKeyRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -142,6 +201,17 @@ class ChatApi extends base_1.BaseAPI {
      */
     chatGatewayKeyV1(requestParameters, options) {
         return (0, exports.ChatApiFp)(this.configuration).chatGatewayKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Rotate chat key
+     * @param {ChatApiChatGatewayRotateKeyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatApi
+     */
+    chatGatewayRotateKeyV1(requestParameters, options) {
+        return (0, exports.ChatApiFp)(this.configuration).chatGatewayRotateKeyV1(requestParameters.SiteChatKeyRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ChatApi = ChatApi;

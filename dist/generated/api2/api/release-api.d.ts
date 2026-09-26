@@ -22,12 +22,12 @@ export declare const ReleaseApiAxiosParamCreator: (configuration?: Configuration
      *
      * @summary Get current version app
      * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
+     * @param {ReleaseAppCabinetV1AppEnum} app Apps
      * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    releaseAppCabinetV1: (language: ReleaseAppCabinetV1LanguageEnum, v?: ReleaseAppCabinetV1VEnum, app?: ReleaseAppCabinetV1AppEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    releaseAppCabinetV1: (language: ReleaseAppCabinetV1LanguageEnum, app: ReleaseAppCabinetV1AppEnum, v?: ReleaseAppCabinetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ReleaseApi - functional programming interface
@@ -38,12 +38,12 @@ export declare const ReleaseApiFp: (configuration?: Configuration) => {
      *
      * @summary Get current version app
      * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
+     * @param {ReleaseAppCabinetV1AppEnum} app Apps
      * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    releaseAppCabinetV1(language: ReleaseAppCabinetV1LanguageEnum, v?: ReleaseAppCabinetV1VEnum, app?: ReleaseAppCabinetV1AppEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVersionAppResponse>>;
+    releaseAppCabinetV1(language: ReleaseAppCabinetV1LanguageEnum, app: ReleaseAppCabinetV1AppEnum, v?: ReleaseAppCabinetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVersionAppResponse>>;
 };
 /**
  * ReleaseApi - factory interface
@@ -88,17 +88,17 @@ export interface ReleaseApiReleaseAppCabinetV1Request {
      */
     readonly language: ReleaseAppCabinetV1LanguageEnum;
     /**
+     * Apps
+     * @type {'cabinet'}
+     * @memberof ReleaseApiReleaseAppCabinetV1
+     */
+    readonly app: ReleaseAppCabinetV1AppEnum;
+    /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ReleaseApiReleaseAppCabinetV1
      */
     readonly v?: ReleaseAppCabinetV1VEnum;
-    /**
-     * Apps
-     * @type {'cabinet'}
-     * @memberof ReleaseApiReleaseAppCabinetV1
-     */
-    readonly app?: ReleaseAppCabinetV1AppEnum;
 }
 /**
  * ReleaseApi - object-oriented interface
@@ -115,7 +115,7 @@ export declare class ReleaseApi extends BaseAPI implements ReleaseApiInterface {
      * @throws {RequiredError}
      * @memberof ReleaseApi
      */
-    releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetVersionAppResponse, any, {}>>;
+    releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetVersionAppResponse, any, {}, any>>;
 }
 /**
  * @export
@@ -129,15 +129,15 @@ export type ReleaseAppCabinetV1LanguageEnum = typeof ReleaseAppCabinetV1Language
 /**
  * @export
  */
-export declare const ReleaseAppCabinetV1VEnum: {
-    readonly _1: "1";
-};
-export type ReleaseAppCabinetV1VEnum = typeof ReleaseAppCabinetV1VEnum[keyof typeof ReleaseAppCabinetV1VEnum];
-/**
- * @export
- */
 export declare const ReleaseAppCabinetV1AppEnum: {
     readonly Cabinet: "cabinet";
 };
 export type ReleaseAppCabinetV1AppEnum = typeof ReleaseAppCabinetV1AppEnum[keyof typeof ReleaseAppCabinetV1AppEnum];
+/**
+ * @export
+ */
+export declare const ReleaseAppCabinetV1VEnum: {
+    readonly _1: "1";
+};
+export type ReleaseAppCabinetV1VEnum = typeof ReleaseAppCabinetV1VEnum[keyof typeof ReleaseAppCabinetV1VEnum];
 //# sourceMappingURL=release-api.d.ts.map

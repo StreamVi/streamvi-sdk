@@ -49,7 +49,7 @@ export interface PlatformsSupportedItem {
      * @type {string}
      * @memberof PlatformsSupportedItem
      */
-    'url': string;
+    'url': string | null;
     /**
      * type
      * @type {string}

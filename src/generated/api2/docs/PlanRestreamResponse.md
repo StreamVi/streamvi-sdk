@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **index** | **number** | Field for sort | [default to undefined]
 **support_custom_channel** | **boolean** | Support custom channel | [default to undefined]
 **custom_video** | **number** | Custom video | [default to undefined]
+**disconnect_protection_max_minutes** | **number** | Maximum disconnect protection time in minutes | [default to undefined]
 **discount** | [**PlanRestreamDiscountResponse**](PlanRestreamDiscountResponse.md) | Discount | [default to undefined]
 
 ## Example
@@ -65,6 +66,7 @@ const instance: PlanRestreamResponse = {
     index,
     support_custom_channel,
     custom_video,
+    disconnect_protection_max_minutes,
     discount,
 };
 ```

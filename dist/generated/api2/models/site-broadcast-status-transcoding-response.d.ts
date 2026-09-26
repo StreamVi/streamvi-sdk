@@ -21,7 +21,7 @@ export interface SiteBroadcastStatusTranscodingResponse {
      * @type {number}
      * @memberof SiteBroadcastStatusTranscodingResponse
      */
-    'broadcast_id': number;
+    'broadcast_id': number | null;
     /**
      * Stream id
      * @type {number}
@@ -39,7 +39,7 @@ export interface SiteBroadcastStatusTranscodingResponse {
      * @type {string}
      * @memberof SiteBroadcastStatusTranscodingResponse
      */
-    'date_start': string;
+    'date_start': string | null;
     /**
      * Stream resolution
      * @type {string}
@@ -51,13 +51,13 @@ export interface SiteBroadcastStatusTranscodingResponse {
      * @type {number}
      * @memberof SiteBroadcastStatusTranscodingResponse
      */
-    'fps': number;
+    'fps': number | null;
     /**
      * Bitrate
      * @type {number}
      * @memberof SiteBroadcastStatusTranscodingResponse
      */
-    'bitrate': number;
+    'bitrate': number | null;
     /**
      * Key frame
      * @type {number}
@@ -70,6 +70,12 @@ export interface SiteBroadcastStatusTranscodingResponse {
      * @memberof SiteBroadcastStatusTranscodingResponse
      */
     'status': SiteBroadcastStatusTranscodingResponseStatusEnum;
+    /**
+     * Restream action state
+     * @type {string}
+     * @memberof SiteBroadcastStatusTranscodingResponse
+     */
+    'action': SiteBroadcastStatusTranscodingResponseActionEnum;
     /**
      * Broadcast url
      * @type {string}
@@ -89,6 +95,12 @@ export interface SiteBroadcastStatusTranscodingResponse {
      */
     'restreams': Array<BroadcastLiveStatusRestream>;
     /**
+     * Broadcast status response kind
+     * @type {string}
+     * @memberof SiteBroadcastStatusTranscodingResponse
+     */
+    'kind': SiteBroadcastStatusTranscodingResponseKindEnum;
+    /**
      * App name (transcoding)
      * @type {string}
      * @memberof SiteBroadcastStatusTranscodingResponse
@@ -102,6 +114,15 @@ export declare const SiteBroadcastStatusTranscodingResponseStatusEnum: {
     readonly Done: "done";
 };
 export type SiteBroadcastStatusTranscodingResponseStatusEnum = typeof SiteBroadcastStatusTranscodingResponseStatusEnum[keyof typeof SiteBroadcastStatusTranscodingResponseStatusEnum];
+export declare const SiteBroadcastStatusTranscodingResponseActionEnum: {
+    readonly Active: "active";
+    readonly Stopped: "stopped";
+};
+export type SiteBroadcastStatusTranscodingResponseActionEnum = typeof SiteBroadcastStatusTranscodingResponseActionEnum[keyof typeof SiteBroadcastStatusTranscodingResponseActionEnum];
+export declare const SiteBroadcastStatusTranscodingResponseKindEnum: {
+    readonly Transcoding: "transcoding";
+};
+export type SiteBroadcastStatusTranscodingResponseKindEnum = typeof SiteBroadcastStatusTranscodingResponseKindEnum[keyof typeof SiteBroadcastStatusTranscodingResponseKindEnum];
 export declare const SiteBroadcastStatusTranscodingResponseAppEnum: {
     readonly Transcoding: "transcoding";
 };

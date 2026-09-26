@@ -52,6 +52,8 @@ import type { KinescopeDto } from '../models';
 // @ts-ignore
 import type { LinkedinDto } from '../models';
 // @ts-ignore
+import type { MethodChannelStatusRequest } from '../models';
+// @ts-ignore
 import type { MethodSetStatusChannelRequest } from '../models';
 // @ts-ignore
 import type { MethodSrtDto } from '../models';
@@ -1492,15 +1494,16 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
-         * @summary Get live status
+         * Deprecated. Use PUT /method/channel/status with the active field instead of status.
+         * @summary Set desired channel state
          * @param {MethodSetStatusChannelRequest} methodSetStatusChannelRequest 
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
-        methodSetStatusV1: async (methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        methodSetStatusLegacyV1: async (methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'methodSetStatusChannelRequest' is not null or undefined
-            assertParamExists('methodSetStatusV1', 'methodSetStatusChannelRequest', methodSetStatusChannelRequest)
+            assertParamExists('methodSetStatusLegacyV1', 'methodSetStatusChannelRequest', methodSetStatusChannelRequest)
             const localVarPath = `/method/channel/set-status`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1528,6 +1531,50 @@ export const ChannelApiAxiosParamCreator = function (configuration?: Configurati
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             const localVarVersionedBody = { ...methodSetStatusChannelRequest, v: methodSetStatusChannelRequest.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Set desired channel state
+         * @param {MethodChannelStatusRequest} methodChannelStatusRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodSetStatusV1: async (methodChannelStatusRequest: MethodChannelStatusRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'methodChannelStatusRequest' is not null or undefined
+            assertParamExists('methodSetStatusV1', 'methodChannelStatusRequest', methodChannelStatusRequest)
+            const localVarPath = `/method/channel/status`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication X-API-KEY required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-KEY", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const localVarVersionedBody = { ...methodChannelStatusRequest, v: methodChannelStatusRequest.v ?? '1' };
             localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
 
             return {
@@ -1975,14 +2022,28 @@ export const ChannelApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @summary Get live status
+         * Deprecated. Use PUT /method/channel/status with the active field instead of status.
+         * @summary Set desired channel state
          * @param {MethodSetStatusChannelRequest} methodSetStatusChannelRequest 
+         * @param {*} [options] Override http request option.
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        async methodSetStatusLegacyV1(methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodSetStatusLegacyV1(methodSetStatusChannelRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelApi.methodSetStatusLegacyV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Set desired channel state
+         * @param {MethodChannelStatusRequest} methodChannelStatusRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodSetStatusV1(methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.methodSetStatusV1(methodSetStatusChannelRequest, options);
+        async methodSetStatusV1(methodChannelStatusRequest: MethodChannelStatusRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodSetStatusV1(methodChannelStatusRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelApi.methodSetStatusV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -2318,14 +2379,25 @@ export const ChannelApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.methodSearchV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.type, requestParameters.platform, requestParameters.name, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
         /**
+         * Deprecated. Use PUT /method/channel/status with the active field instead of status.
+         * @summary Set desired channel state
+         * @param {ChannelApiMethodSetStatusLegacyV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        methodSetStatusLegacyV1(requestParameters: ChannelApiMethodSetStatusLegacyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+            return localVarFp.methodSetStatusLegacyV1(requestParameters.MethodSetStatusChannelRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 
-         * @summary Get live status
+         * @summary Set desired channel state
          * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         methodSetStatusV1(requestParameters: ChannelApiMethodSetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.methodSetStatusV1(requestParameters.MethodSetStatusChannelRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.methodSetStatusV1(requestParameters.MethodChannelStatusRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2657,8 +2729,19 @@ export interface ChannelApiInterface {
     methodSearchV1(requestParameters: ChannelApiMethodSearchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSearchChannelResponse>;
 
     /**
+     * Deprecated. Use PUT /method/channel/status with the active field instead of status.
+     * @summary Set desired channel state
+     * @param {ChannelApiMethodSetStatusLegacyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    methodSetStatusLegacyV1(requestParameters: ChannelApiMethodSetStatusLegacyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+
+    /**
      * 
-     * @summary Get live status
+     * @summary Set desired channel state
      * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3208,6 +3291,20 @@ export interface ChannelApiMethodSearchV1Request {
 }
 
 /**
+ * Request parameters for methodSetStatusLegacyV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiMethodSetStatusLegacyV1Request
+ */
+export interface ChannelApiMethodSetStatusLegacyV1Request {
+    /**
+     * 
+     * @type {MethodSetStatusChannelRequest}
+     * @memberof ChannelApiMethodSetStatusLegacyV1
+     */
+    readonly MethodSetStatusChannelRequest: MethodSetStatusChannelRequest
+}
+
+/**
  * Request parameters for methodSetStatusV1 operation in ChannelApi.
  * @export
  * @interface ChannelApiMethodSetStatusV1Request
@@ -3215,10 +3312,10 @@ export interface ChannelApiMethodSearchV1Request {
 export interface ChannelApiMethodSetStatusV1Request {
     /**
      * 
-     * @type {MethodSetStatusChannelRequest}
+     * @type {MethodChannelStatusRequest}
      * @memberof ChannelApiMethodSetStatusV1
      */
-    readonly MethodSetStatusChannelRequest: MethodSetStatusChannelRequest
+    readonly MethodChannelStatusRequest: MethodChannelStatusRequest
 }
 
 /**
@@ -3613,15 +3710,28 @@ export class ChannelApi extends BaseAPI implements ChannelApiInterface {
     }
 
     /**
+     * Deprecated. Use PUT /method/channel/status with the active field instead of status.
+     * @summary Set desired channel state
+     * @param {ChannelApiMethodSetStatusLegacyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    public methodSetStatusLegacyV1(requestParameters: ChannelApiMethodSetStatusLegacyV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelApiFp(this.configuration).methodSetStatusLegacyV1(requestParameters.MethodSetStatusChannelRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * 
-     * @summary Get live status
+     * @summary Set desired channel state
      * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
     public methodSetStatusV1(requestParameters: ChannelApiMethodSetStatusV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelApiFp(this.configuration).methodSetStatusV1(requestParameters.MethodSetStatusChannelRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelApiFp(this.configuration).methodSetStatusV1(requestParameters.MethodChannelStatusRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

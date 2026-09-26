@@ -169,7 +169,7 @@ export declare class PolicyPageApi extends BaseAPI implements PolicyPageApiInter
      * @throws {RequiredError}
      * @memberof PolicyPageApi
      */
-    policyPageGetItemV1(requestParameters: PolicyPageApiPolicyPageGetItemV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    policyPageGetItemV1(requestParameters: PolicyPageApiPolicyPageGetItemV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Get policy structure
@@ -178,7 +178,7 @@ export declare class PolicyPageApi extends BaseAPI implements PolicyPageApiInter
      * @throws {RequiredError}
      * @memberof PolicyPageApi
      */
-    policyPageGetStructureV1(requestParameters: PolicyPageApiPolicyPageGetStructureV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPolicyStructureDto, any, {}>>;
+    policyPageGetStructureV1(requestParameters: PolicyPageApiPolicyPageGetStructureV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPolicyStructureDto, any, {}, any>>;
 }
 /**
  * @export

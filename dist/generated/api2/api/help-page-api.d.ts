@@ -249,7 +249,7 @@ export declare class HelpPageApi extends BaseAPI implements HelpPageApiInterface
      * @throws {RequiredError}
      * @memberof HelpPageApi
      */
-    helpPageGetV1(requestParameters: HelpPageApiHelpPageGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetHelpPageResponse, any, {}>>;
+    helpPageGetV1(requestParameters: HelpPageApiHelpPageGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetHelpPageResponse, any, {}, any>>;
     /**
      *
      * @summary Get list of help pages
@@ -258,7 +258,7 @@ export declare class HelpPageApi extends BaseAPI implements HelpPageApiInterface
      * @throws {RequiredError}
      * @memberof HelpPageApi
      */
-    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedHelpPageResponse, any, {}>>;
+    helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedHelpPageResponse, any, {}, any>>;
     /**
      *
      * @summary Get structure of help pages
@@ -267,7 +267,7 @@ export declare class HelpPageApi extends BaseAPI implements HelpPageApiInterface
      * @throws {RequiredError}
      * @memberof HelpPageApi
      */
-    helpPageStructureV1(requestParameters: HelpPageApiHelpPageStructureV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StructureHelpPageResponse, any, {}>>;
+    helpPageStructureV1(requestParameters: HelpPageApiHelpPageStructureV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StructureHelpPageResponse, any, {}, any>>;
 }
 /**
  * @export

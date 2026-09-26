@@ -44,7 +44,7 @@ export interface SiteRestreamResponse {
      * @type {string}
      * @memberof SiteRestreamResponse
      */
-    'photo': string;
+    'photo': string | null;
     /**
      * Channel video url
      * @type {string}
@@ -68,6 +68,6 @@ export interface SiteRestreamResponse {
      * @type {string}
      * @memberof SiteRestreamResponse
      */
-    'created_at': string;
+    'created_at': string | null;
 }
 //# sourceMappingURL=site-restream-response.d.ts.map

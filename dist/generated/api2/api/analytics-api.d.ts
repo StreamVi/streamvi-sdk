@@ -405,7 +405,7 @@ export declare class AnalyticsApi extends BaseAPI implements AnalyticsApiInterfa
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    analyticsTsBroadcastMessagesV1(requestParameters: AnalyticsApiAnalyticsTsBroadcastMessagesV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BroadcastMessageListResponse, any, {}>>;
+    analyticsTsBroadcastMessagesV1(requestParameters: AnalyticsApiAnalyticsTsBroadcastMessagesV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BroadcastMessageListResponse, any, {}, any>>;
     /**
      *
      * @summary Bitrate for stream
@@ -414,7 +414,7 @@ export declare class AnalyticsApi extends BaseAPI implements AnalyticsApiInterfa
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}>>;
+    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
     /**
      *
      * @summary Events for stream
@@ -423,7 +423,7 @@ export declare class AnalyticsApi extends BaseAPI implements AnalyticsApiInterfa
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}>>;
+    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
     /**
      *
      * @summary Viewers for stream
@@ -432,7 +432,7 @@ export declare class AnalyticsApi extends BaseAPI implements AnalyticsApiInterfa
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}>>;
+    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
 }
 /**
  * @export

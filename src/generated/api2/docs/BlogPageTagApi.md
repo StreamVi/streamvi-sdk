@@ -7,7 +7,7 @@ All URIs are relative to *http://localhost*
 |[**blogPageTagListV1**](#blogpagetaglistv1) | **GET** /method/blog/tag/list | Get list of blog pages|
 
 # **blogPageTagListV1**
-> PaginatedResponseOfSiteBlogPageTagResponse blogPageTagListV1()
+> PaginatedBlogPageTagResponse blogPageTagListV1()
 
 
 ### Example
@@ -49,7 +49,7 @@ const { status, data } = await apiInstance.blogPageTagListV1(
 
 ### Return type
 
-**PaginatedResponseOfSiteBlogPageTagResponse**
+**PaginatedBlogPageTagResponse**
 
 ### Authorization
 

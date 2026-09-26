@@ -44,7 +44,7 @@ export interface SiteSetPlannedRequest {
      * @type {string}
      * @memberof SiteSetPlannedRequest
      */
-    'id'?: string;
+    'id'?: string | null;
 }
 export declare const SiteSetPlannedRequestVEnum: {
     readonly _1: "1";

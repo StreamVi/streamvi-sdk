@@ -12,7 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { PaginatedResponseOfTransactionResponse } from '../models';
+import type { PaginatedTransactionResponse } from '../models';
 /**
  * TransactionsApi - axios parameter creator
  * @export
@@ -53,7 +53,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transactionsListV1(language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfTransactionResponse>>;
+    transactionsListV1(language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransactionResponse>>;
 };
 /**
  * TransactionsApi - factory interface
@@ -67,7 +67,7 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfTransactionResponse>;
+    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTransactionResponse>;
 };
 /**
  * TransactionsApi - interface
@@ -83,7 +83,7 @@ export interface TransactionsApiInterface {
      * @throws {RequiredError}
      * @memberof TransactionsApiInterface
      */
-    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfTransactionResponse>;
+    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTransactionResponse>;
 }
 /**
  * Request parameters for transactionsListV1 operation in TransactionsApi.
@@ -155,7 +155,7 @@ export declare class TransactionsApi extends BaseAPI implements TransactionsApiI
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfTransactionResponse, any, {}>>;
+    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedTransactionResponse, any, {}, any>>;
 }
 /**
  * @export

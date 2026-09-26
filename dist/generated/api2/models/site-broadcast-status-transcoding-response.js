@@ -13,12 +13,19 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SiteBroadcastStatusTranscodingResponseAppEnum = exports.SiteBroadcastStatusTranscodingResponseStatusEnum = void 0;
+exports.SiteBroadcastStatusTranscodingResponseAppEnum = exports.SiteBroadcastStatusTranscodingResponseKindEnum = exports.SiteBroadcastStatusTranscodingResponseActionEnum = exports.SiteBroadcastStatusTranscodingResponseStatusEnum = void 0;
 exports.SiteBroadcastStatusTranscodingResponseStatusEnum = {
     Active: 'active',
     Pause: 'pause',
     Lost: 'lost',
     Done: 'done'
+};
+exports.SiteBroadcastStatusTranscodingResponseActionEnum = {
+    Active: 'active',
+    Stopped: 'stopped'
+};
+exports.SiteBroadcastStatusTranscodingResponseKindEnum = {
+    Transcoding: 'transcoding'
 };
 exports.SiteBroadcastStatusTranscodingResponseAppEnum = {
     Transcoding: 'transcoding'

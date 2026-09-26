@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **title** | **string** |  | [default to 'title']
 **category_id** | **string** | category id | [optional] [default to '10023']
 **category_name** | **string** | category name | [optional] [default to 'name']
+**category_type** | **string** | category type | [optional] [default to undefined]
 
 ## Example
 
@@ -26,6 +27,7 @@ const instance: SiteUpdateOptionsVkVideoLiveRequest = {
     title,
     category_id,
     category_name,
+    category_type,
 };
 ```
 

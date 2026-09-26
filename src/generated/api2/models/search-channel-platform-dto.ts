@@ -37,7 +37,7 @@ export interface SearchChannelPlatformDto {
      * @type {string}
      * @memberof SearchChannelPlatformDto
      */
-    'url': string;
+    'url': string | null;
     /**
      * extension
      * @type {string}

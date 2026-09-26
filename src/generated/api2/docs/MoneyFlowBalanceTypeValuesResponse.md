@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bonus** | **number** | Bonus balance | [default to undefined]
-**payment** | **number** | Payment balance | [default to undefined]
-**profit** | **number** | Profit balance | [default to undefined]
+**bonus** | **number** | Bonus balance | [optional] [default to undefined]
+**payment** | **number** | Payment balance | [optional] [default to undefined]
+**profit** | **number** | Profit balance | [optional] [default to undefined]
 
 ## Example
 

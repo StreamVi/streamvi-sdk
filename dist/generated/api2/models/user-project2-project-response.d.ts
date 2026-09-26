@@ -56,7 +56,7 @@ export interface UserProject2ProjectResponse {
      * @type {string}
      * @memberof UserProject2ProjectResponse
      */
-    'external_id': string;
+    'external_id': string | null;
     /**
      * Access type
      * @type {number}

@@ -87,7 +87,7 @@ export interface ListMediaServiceFilesItem {
      * @type {string}
      * @memberof ListMediaServiceFilesItem
      */
-    'created_at': string;
+    'created_at': string | null;
     /**
      * Event channel for connect to centrifuge
      * @type {string}

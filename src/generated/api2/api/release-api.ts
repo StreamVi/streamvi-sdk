@@ -35,14 +35,16 @@ export const ReleaseApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Get current version app
          * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
+         * @param {ReleaseAppCabinetV1AppEnum} app Apps
          * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        releaseAppCabinetV1: async (language: ReleaseAppCabinetV1LanguageEnum, v?: ReleaseAppCabinetV1VEnum, app?: ReleaseAppCabinetV1AppEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        releaseAppCabinetV1: async (language: ReleaseAppCabinetV1LanguageEnum, app: ReleaseAppCabinetV1AppEnum, v?: ReleaseAppCabinetV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('releaseAppCabinetV1', 'language', language)
+            // verify required parameter 'app' is not null or undefined
+            assertParamExists('releaseAppCabinetV1', 'app', app)
             const localVarPath = `/method/release-app`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -94,13 +96,13 @@ export const ReleaseApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get current version app
          * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
+         * @param {ReleaseAppCabinetV1AppEnum} app Apps
          * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async releaseAppCabinetV1(language: ReleaseAppCabinetV1LanguageEnum, v?: ReleaseAppCabinetV1VEnum, app?: ReleaseAppCabinetV1AppEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVersionAppResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.releaseAppCabinetV1(language, v, app, options);
+        async releaseAppCabinetV1(language: ReleaseAppCabinetV1LanguageEnum, app: ReleaseAppCabinetV1AppEnum, v?: ReleaseAppCabinetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVersionAppResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.releaseAppCabinetV1(language, app, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ReleaseApi.releaseAppCabinetV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -123,7 +125,7 @@ export const ReleaseApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetVersionAppResponse> {
-            return localVarFp.releaseAppCabinetV1(requestParameters.language, requestParameters.v, requestParameters.app, options).then((request) => request(axios, basePath));
+            return localVarFp.releaseAppCabinetV1(requestParameters.language, requestParameters.app, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -160,18 +162,18 @@ export interface ReleaseApiReleaseAppCabinetV1Request {
     readonly language: ReleaseAppCabinetV1LanguageEnum
 
     /**
+     * Apps
+     * @type {'cabinet'}
+     * @memberof ReleaseApiReleaseAppCabinetV1
+     */
+    readonly app: ReleaseAppCabinetV1AppEnum
+
+    /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ReleaseApiReleaseAppCabinetV1
      */
     readonly v?: ReleaseAppCabinetV1VEnum
-
-    /**
-     * Apps
-     * @type {'cabinet'}
-     * @memberof ReleaseApiReleaseAppCabinetV1
-     */
-    readonly app?: ReleaseAppCabinetV1AppEnum
 }
 
 /**
@@ -190,7 +192,7 @@ export class ReleaseApi extends BaseAPI implements ReleaseApiInterface {
      * @memberof ReleaseApi
      */
     public releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig) {
-        return ReleaseApiFp(this.configuration).releaseAppCabinetV1(requestParameters.language, requestParameters.v, requestParameters.app, options).then((request) => request(this.axios, this.basePath));
+        return ReleaseApiFp(this.configuration).releaseAppCabinetV1(requestParameters.language, requestParameters.app, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -206,14 +208,14 @@ export type ReleaseAppCabinetV1LanguageEnum = typeof ReleaseAppCabinetV1Language
 /**
  * @export
  */
-export const ReleaseAppCabinetV1VEnum = {
-    _1: '1'
-} as const;
-export type ReleaseAppCabinetV1VEnum = typeof ReleaseAppCabinetV1VEnum[keyof typeof ReleaseAppCabinetV1VEnum];
-/**
- * @export
- */
 export const ReleaseAppCabinetV1AppEnum = {
     Cabinet: 'cabinet'
 } as const;
 export type ReleaseAppCabinetV1AppEnum = typeof ReleaseAppCabinetV1AppEnum[keyof typeof ReleaseAppCabinetV1AppEnum];
+/**
+ * @export
+ */
+export const ReleaseAppCabinetV1VEnum = {
+    _1: '1'
+} as const;
+export type ReleaseAppCabinetV1VEnum = typeof ReleaseAppCabinetV1VEnum[keyof typeof ReleaseAppCabinetV1VEnum];

@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**targetKey** | **string** | Stable speed-test target key | [default to undefined]
 **city** | **string** | City | [default to undefined]
 **pingHost** | **string** | Ping host | [default to undefined]
 **url** | [**PullServerTransports**](PullServerTransports.md) | Transports | [default to undefined]
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 import { PullServerListItem } from 'streamvi-api-client';
 
 const instance: PullServerListItem = {
+    targetKey,
     city,
     pingHost,
     url,

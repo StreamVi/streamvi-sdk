@@ -13,10 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProjectInfoResponseLanguageEnum = exports.ProjectInfoResponseVEnum = void 0;
-exports.ProjectInfoResponseVEnum = {
-    _1: '1'
-};
+exports.ProjectInfoResponseLanguageEnum = void 0;
 exports.ProjectInfoResponseLanguageEnum = {
     Ru: 'ru',
     En: 'en',

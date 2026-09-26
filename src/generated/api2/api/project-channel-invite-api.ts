@@ -1291,7 +1291,7 @@ export interface ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request 
 
     /**
      * Access type
-     * @type {0 | 1 | 1 | 2}
+     * @type {1 | 2}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
     readonly access_type: ProjectChannelInviteAddByEmailV1AccessTypeEnum
@@ -1333,7 +1333,7 @@ export interface ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request {
 
     /**
      * Access type
-     * @type {0 | 1 | 1 | 2}
+     * @type {1 | 2}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
     readonly access_type: ProjectChannelInviteAddByIdV1AccessTypeEnum
@@ -1776,9 +1776,7 @@ export type ProjectChannelInviteAddByEmailV1LanguageEnum = typeof ProjectChannel
  * @export
  */
 export const ProjectChannelInviteAddByEmailV1AccessTypeEnum = {
-    NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_12: 1,
     NUMBER_2: 2
 } as const;
 export type ProjectChannelInviteAddByEmailV1AccessTypeEnum = typeof ProjectChannelInviteAddByEmailV1AccessTypeEnum[keyof typeof ProjectChannelInviteAddByEmailV1AccessTypeEnum];
@@ -1802,9 +1800,7 @@ export type ProjectChannelInviteAddByIdV1LanguageEnum = typeof ProjectChannelInv
  * @export
  */
 export const ProjectChannelInviteAddByIdV1AccessTypeEnum = {
-    NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_12: 1,
     NUMBER_2: 2
 } as const;
 export type ProjectChannelInviteAddByIdV1AccessTypeEnum = typeof ProjectChannelInviteAddByIdV1AccessTypeEnum[keyof typeof ProjectChannelInviteAddByIdV1AccessTypeEnum];

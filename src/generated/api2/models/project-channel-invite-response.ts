@@ -40,7 +40,7 @@ export interface ProjectChannelInviteResponse {
      * @type {number}
      * @memberof ProjectChannelInviteResponse
      */
-    'to_project_id': number;
+    'to_project_id': number | null;
     /**
      * Access type
      * @type {number}
@@ -88,7 +88,7 @@ export interface ProjectChannelInviteResponse {
      * @type {ProjectChannelInviteProjectResponse}
      * @memberof ProjectChannelInviteResponse
      */
-    'to_project_'?: ProjectChannelInviteProjectResponse;
+    'to_project_'?: ProjectChannelInviteProjectResponse | null;
 }
 
 export const ProjectChannelInviteResponseAccessTypeEnum = {

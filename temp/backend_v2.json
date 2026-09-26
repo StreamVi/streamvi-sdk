@@ -45,7 +45,38 @@
         "deprecated": true,
         "description": "Use /method/account/profile instead.",
         "operationId": "User_updateProfileV1",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "v",
+            "required": false,
+            "in": "query",
+            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "schema": {
+              "example": "1",
+              "enum": [
+                "1"
+              ],
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "language",
+            "required": true,
+            "in": "query",
+            "description": "Current language",
+            "schema": {
+              "default": "en",
+              "example": "en",
+              "enum": [
+                "ru",
+                "en",
+                "cn"
+              ],
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -162,7 +193,38 @@
       },
       "post": {
         "operationId": "Account_updateProfileV1",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "v",
+            "required": false,
+            "in": "query",
+            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "schema": {
+              "example": "1",
+              "enum": [
+                "1"
+              ],
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "language",
+            "required": true,
+            "in": "query",
+            "description": "Current language",
+            "schema": {
+              "default": "en",
+              "example": "en",
+              "enum": [
+                "ru",
+                "en",
+                "cn"
+              ],
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1370,25 +1432,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "ListOfUserProject2ProjectResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withListResponse"
-                    },
-                    {
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/UserProject2ProjectResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/UserProject2ProjectListResponse"
                 }
               }
             }
@@ -1863,37 +1907,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "PaginatedResponseOfUserProjectResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withPaginatedResponse"
-                    },
-                    {
-                      "properties": {
-                        "total": {
-                          "type": "number"
-                        },
-                        "limit": {
-                          "type": "number"
-                        },
-                        "offset": {
-                          "type": "number"
-                        },
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/UserProjectResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "total",
-                        "limit",
-                        "offset",
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/PaginatedUserProjectResponse"
                 }
               }
             }
@@ -2202,37 +2216,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "PaginatedResponseOfProjectHistoryResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withPaginatedResponse"
-                    },
-                    {
-                      "properties": {
-                        "total": {
-                          "type": "number"
-                        },
-                        "limit": {
-                          "type": "number"
-                        },
-                        "offset": {
-                          "type": "number"
-                        },
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/ProjectHistoryResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "total",
-                        "limit",
-                        "offset",
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/PaginatedProjectHistoryResponse"
                 }
               }
             }
@@ -2637,7 +2621,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SiteScreenNotifyUserResponse"
+                  "type": "object"
                 }
               }
             }
@@ -4341,25 +4325,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "ListOfPlaylistItemResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withListResponse"
-                    },
-                    {
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/PlaylistItemResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/PlaylistResponse"
                 }
               }
             }
@@ -4447,25 +4413,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "ListOfSitePlannedResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withListResponse"
-                    },
-                    {
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/SitePlannedResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/PlannedListResponse"
                 }
               }
             }
@@ -4903,6 +4851,9 @@
           "200": {
             "description": ""
           },
+          "302": {
+            "description": "Redirect to the platform OAuth authorization page"
+          },
           "400": {
             "description": "",
             "content": {
@@ -4922,7 +4873,7 @@
             ]
           }
         ],
-        "summary": "Get status platform",
+        "summary": "Redirect to OAuth for updating a channel token",
         "tags": [
           "Channel settings"
         ]
@@ -5498,14 +5449,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SuccessResponse"
-                }
-              }
-            }
+            "description": ""
           },
           "400": {
             "description": "",
@@ -5968,8 +5912,8 @@
         ]
       }
     },
-    "/method/channel/set-status": {
-      "post": {
+    "/method/channel/status": {
+      "put": {
         "operationId": "Method_setStatusV1",
         "parameters": [],
         "requestBody": {
@@ -5977,7 +5921,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MethodSetStatusChannelRequest"
+                "$ref": "#/components/schemas/MethodChannelStatusRequest"
               }
             }
           }
@@ -5994,7 +5938,27 @@
             }
           },
           "400": {
-            "description": "",
+            "description": "`tariff_limit_channels` when the active-channel limit is reached; `tariff_not_support_custom_channels` when the tariff does not support custom channels.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "`restream_tariff_required` when the project has no active restream tariff.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "`restream_tariff_check_unavailable` when the tariff service cannot complete the check.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6026,7 +5990,93 @@
             ]
           }
         ],
-        "summary": "Get live status",
+        "summary": "Set desired channel state",
+        "tags": [
+          "Channel"
+        ]
+      }
+    },
+    "/method/channel/set-status": {
+      "post": {
+        "deprecated": true,
+        "description": "Deprecated. Use PUT /method/channel/status with the active field instead of status.",
+        "operationId": "Method_setStatusLegacyV1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MethodSetStatusChannelRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "`tariff_limit_channels` when the active-channel limit is reached; `tariff_not_support_custom_channels` when the tariff does not support custom channels.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "`restream_tariff_required` when the project has no active restream tariff.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "`restream_tariff_check_unavailable` when the tariff service cannot complete the check.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oAuth": [
+              "oAuth"
+            ]
+          },
+          {
+            "X-API-KEY": [
+              "X-API-KEY"
+            ]
+          },
+          {
+            "oauth2": [
+              "channel:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "channel:write"
+            ]
+          }
+        ],
+        "summary": "Set desired channel state",
         "tags": [
           "Channel"
         ]
@@ -7685,23 +7735,17 @@
               "application/json": {
                 "schema": {
                   "title": "ListOfCategoryItemResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withListResponse"
-                    },
-                    {
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/CategoryItemResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "results"
-                      ]
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CategoryItemResponse"
+                      }
                     }
+                  },
+                  "required": [
+                    "results"
                   ]
                 }
               }
@@ -7808,25 +7852,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "ListOfCategoryItemResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withListResponse"
-                    },
-                    {
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/CategoryItemResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/CategoryListResponse"
                 }
               }
             }
@@ -7850,6 +7876,111 @@
           }
         ],
         "summary": "Get category from the platform",
+        "tags": [
+          "Platforms"
+        ]
+      }
+    },
+    "/method/platforms/category/vkvideolive": {
+      "get": {
+        "operationId": "Platforms_vkVideoLiveCategoryV1",
+        "parameters": [
+          {
+            "name": "v",
+            "required": false,
+            "in": "query",
+            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "schema": {
+              "example": "1",
+              "enum": [
+                "1"
+              ],
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "language",
+            "required": true,
+            "in": "query",
+            "description": "Current language",
+            "schema": {
+              "default": "en",
+              "example": "en",
+              "enum": [
+                "ru",
+                "en",
+                "cn"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "required": true,
+            "in": "query",
+            "description": "Category type",
+            "schema": {
+              "example": "irl",
+              "enum": [
+                "irl",
+                "game",
+                "sport"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Category offset (for pagination)",
+            "schema": {
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          {
+            "name": "q",
+            "required": false,
+            "in": "query",
+            "description": "Category name prefix",
+            "schema": {
+              "maxLength": 100,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "platform:read"
+            ]
+          }
+        ],
+        "summary": "Search VK Video Live categories in the saved catalog",
         "tags": [
           "Platforms"
         ]
@@ -8465,6 +8596,120 @@
         ]
       }
     },
+    "/method/platforms/category/details": {
+      "get": {
+        "operationId": "PlatformCategoryDetails_getCategoryDetailsV1",
+        "parameters": [
+          {
+            "name": "v",
+            "required": false,
+            "in": "query",
+            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "schema": {
+              "example": "1",
+              "enum": [
+                "1"
+              ],
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "language",
+            "required": true,
+            "in": "query",
+            "description": "Current language",
+            "schema": {
+              "default": "en",
+              "example": "en",
+              "enum": [
+                "ru",
+                "en",
+                "cn"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "vkvideolive"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "game",
+                "irl",
+                "sport"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "description": "Opaque external category identifier; passed through unchanged",
+            "schema": {
+              "pattern": "/\\S/u",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformCategoryDetailsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformCategoryNotFoundResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "platform:read"
+            ]
+          }
+        ],
+        "summary": "Get a saved platform category by its external identifier",
+        "tags": [
+          "Platforms"
+        ]
+      }
+    },
     "/method/auth/GetClientConfiguration": {
       "post": {
         "operationId": "Auth_getClientConfigurationV1",
@@ -8652,6 +8897,16 @@
             "description": "Country code",
             "schema": {
               "default": "ru",
+              "type": "string"
+            }
+          },
+          {
+            "name": "visitorId",
+            "required": false,
+            "in": "query",
+            "description": "Anonymous landing visitor UUID v4",
+            "schema": {
+              "format": "uuid",
               "type": "string"
             }
           }
@@ -9172,10 +9427,48 @@
     "/method/socials/list": {
       "get": {
         "operationId": "Socials_getListV1",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "v",
+            "required": false,
+            "in": "query",
+            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "schema": {
+              "example": "1",
+              "enum": [
+                "1"
+              ],
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "language",
+            "required": true,
+            "in": "query",
+            "description": "Current language",
+            "schema": {
+              "default": "en",
+              "example": "en",
+              "enum": [
+                "ru",
+                "en",
+                "cn"
+              ],
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteSocialListResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "",
@@ -9295,6 +9588,16 @@
           }
         },
         "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
           "201": {
             "description": "",
             "content": {
@@ -9324,6 +9627,114 @@
           }
         ],
         "summary": "Update record",
+        "tags": [
+          "Stream key"
+        ]
+      }
+    },
+    "/method/stream-keys/rotate": {
+      "post": {
+        "operationId": "StreamKeys_rotateV1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RotateStreamKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RotateStreamKeyResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RotateStreamKeyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "stream-keys:write"
+            ]
+          }
+        ],
+        "summary": "Rotate stream key",
+        "tags": [
+          "Stream key"
+        ]
+      }
+    },
+    "/method/stream-keys/wait": {
+      "put": {
+        "operationId": "StreamKeys_setWaitV1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetWaitStreamKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "stream-keys:write"
+            ]
+          }
+        ],
+        "summary": "Update disconnect protection wait",
         "tags": [
           "Stream key"
         ]
@@ -9432,37 +9843,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "PaginatedResponseOfTransactionResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withPaginatedResponse"
-                    },
-                    {
-                      "properties": {
-                        "total": {
-                          "type": "number"
-                        },
-                        "limit": {
-                          "type": "number"
-                        },
-                        "offset": {
-                          "type": "number"
-                        },
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/TransactionResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "total",
-                        "limit",
-                        "offset",
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/PaginatedTransactionResponse"
                 }
               }
             }
@@ -9566,37 +9947,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "PaginatedResponseOfBlogPageSiteResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withPaginatedResponse"
-                    },
-                    {
-                      "properties": {
-                        "total": {
-                          "type": "number"
-                        },
-                        "limit": {
-                          "type": "number"
-                        },
-                        "offset": {
-                          "type": "number"
-                        },
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/BlogPageSiteResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "total",
-                        "limit",
-                        "offset",
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/PaginatedBlogPageSiteResponse"
                 }
               }
             }
@@ -9669,37 +10020,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "PaginatedResponseOfBlogPageSiteResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withPaginatedResponse"
-                    },
-                    {
-                      "properties": {
-                        "total": {
-                          "type": "number"
-                        },
-                        "limit": {
-                          "type": "number"
-                        },
-                        "offset": {
-                          "type": "number"
-                        },
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/BlogPageSiteResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "total",
-                        "limit",
-                        "offset",
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/GetBlogPageResponse"
                 }
               }
             }
@@ -10076,7 +10397,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NotifyHistorySiteResponse"
+                  "$ref": "#/components/schemas/NotifyHistory"
                 }
               }
             }
@@ -10215,6 +10536,11 @@
                 "publisher_connected",
                 "publisher_initializing",
                 "publisher_close",
+                "publisher_connection_interrupted",
+                "publisher_connection_timeout",
+                "publisher_protocol_error",
+                "publisher_start_failed",
+                "publisher_reconnect_failed",
                 "broadcast_connected_start",
                 "broadcast_connected_end",
                 "broadcast_connecting_stream",
@@ -10225,6 +10551,9 @@
                 "broadcast_video_pause_start",
                 "broadcast_video_pause_end",
                 "broadcast_init_restream",
+                "broadcast_placeholder_ready",
+                "broadcast_placeholder_failed",
+                "broadcast_placeholder_fallback_used",
                 "start_stream",
                 "create_reader",
                 "start_channel",
@@ -10341,35 +10670,29 @@
               "application/json": {
                 "schema": {
                   "title": "PaginatedResponseOfNotifyHistorySiteResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withPaginatedResponse"
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "number"
                     },
-                    {
-                      "properties": {
-                        "total": {
-                          "type": "number"
-                        },
-                        "limit": {
-                          "type": "number"
-                        },
-                        "offset": {
-                          "type": "number"
-                        },
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/NotifyHistorySiteResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "total",
-                        "limit",
-                        "offset",
-                        "results"
-                      ]
+                    "limit": {
+                      "type": "number"
+                    },
+                    "offset": {
+                      "type": "number"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/NotifyHistorySiteResponse"
+                      }
                     }
+                  },
+                  "required": [
+                    "total",
+                    "limit",
+                    "offset",
+                    "results"
                   ]
                 }
               }
@@ -10565,7 +10888,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NotifyHistorySiteResponse"
+                  "type": "object"
                 }
               }
             }
@@ -11476,8 +11799,6 @@
             "description": "Access type",
             "schema": {
               "enum": [
-                0,
-                1,
                 1,
                 2
               ],
@@ -11501,7 +11822,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProjectChannelInviteResponse"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ProjectChannelInviteResponse"
+                    }
+                  ],
+                  "nullable": true
                 }
               }
             }
@@ -11604,8 +11930,6 @@
             "description": "Access type",
             "schema": {
               "enum": [
-                0,
-                1,
                 1,
                 2
               ],
@@ -11995,8 +12319,6 @@
             "description": "Access type",
             "schema": {
               "enum": [
-                0,
-                1,
                 1,
                 2
               ],
@@ -12221,37 +12543,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "PaginatedResponseOfSiteBlogPageTagResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withPaginatedResponse"
-                    },
-                    {
-                      "properties": {
-                        "total": {
-                          "type": "number"
-                        },
-                        "limit": {
-                          "type": "number"
-                        },
-                        "offset": {
-                          "type": "number"
-                        },
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/SiteBlogPageTagResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "total",
-                        "limit",
-                        "offset",
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/PaginatedBlogPageTagResponse"
                 }
               }
             }
@@ -12314,25 +12606,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "ListOfRtmpServerLocationResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withListResponse"
-                    },
-                    {
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/RtmpServerLocationResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/RtmpServerLocationsResponse"
                 }
               }
             }
@@ -12828,25 +13102,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "ListOfPaySystemListResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withListResponse"
-                    },
-                    {
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/PaySystemListResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/PaySystemsResponse"
                 }
               }
             }
@@ -15124,25 +15380,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "ListOfPayoutSystemAccountListItemResponse",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/withListResponse"
-                    },
-                    {
-                      "properties": {
-                        "results": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/PayoutSystemAccountListItemResponse"
-                          }
-                        }
-                      },
-                      "required": [
-                        "results"
-                      ]
-                    }
-                  ]
+                  "$ref": "#/components/schemas/PayoutSystemAccountListResponse"
                 }
               }
             }
@@ -15667,6 +15905,58 @@
         "tags": [
           "Chat"
         ]
+      },
+      "put": {
+        "operationId": "ChatGateway_rotateKeyV1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SiteChatKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteChatKeyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "chat:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "chat:write"
+            ]
+          }
+        ],
+        "summary": "Rotate chat key",
+        "tags": [
+          "Chat"
+        ]
       }
     },
     "/method/centrifuge": {
@@ -15986,7 +16276,7 @@
     },
     "/method/centrifuge/auth/channel": {
       "get": {
-        "description": "\n      Get token for specific channel name:\n      - channel_name: \"channel_name\" - channel name\n      \n      Examples:\n      - $broadcast:123 - broadcast\n      - $widget_template:507f1f77bcf86cd799439011 - integration template widget data\n    ",
+        "description": "\n      Get token for specific channel name:\n      - channel_name: \"channel_name\" - channel name\n\n      Examples:\n      - $broadcast:123 - broadcast\n      - $widget_template:507f1f77bcf86cd799439011 - integration template widget data\n    ",
         "operationId": "Centrifuge_channelTokenV1",
         "parameters": [
           {
@@ -16146,6 +16436,85 @@
         ]
       }
     },
+    "/method/broadcast/template": {
+      "get": {
+        "operationId": "Broadcast_getTemplateV1",
+        "parameters": [
+          {
+            "name": "v",
+            "required": false,
+            "in": "query",
+            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "schema": {
+              "example": "1",
+              "enum": [
+                "1"
+              ],
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "language",
+            "required": true,
+            "in": "query",
+            "description": "Current language",
+            "schema": {
+              "default": "en",
+              "example": "en",
+              "enum": [
+                "ru",
+                "en",
+                "cn"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "project_id",
+            "required": true,
+            "in": "query",
+            "description": "Project id",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteBroadcastTemplateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "broadcast:read"
+            ]
+          }
+        ],
+        "summary": "Get broadcast title and description template",
+        "tags": [
+          "Broadcast"
+        ]
+      }
+    },
     "/method/broadcast": {
       "get": {
         "operationId": "Broadcast_findV1",
@@ -16296,7 +16665,16 @@
                     {
                       "$ref": "#/components/schemas/SiteBroadcastStatusSchedulerResponse"
                     }
-                  ]
+                  ],
+                  "discriminator": {
+                    "propertyName": "kind",
+                    "mapping": {
+                      "inactive": "#/components/schemas/SiteBroadcastStatusInactiveResponse",
+                      "live": "#/components/schemas/SiteBroadcastStatusLiveResponse",
+                      "transcoding": "#/components/schemas/SiteBroadcastStatusTranscodingResponse",
+                      "scheduler": "#/components/schemas/SiteBroadcastStatusSchedulerResponse"
+                    }
+                  }
                 }
               }
             }
@@ -16550,7 +16928,7 @@
             "description": "Date only after create date",
             "schema": {
               "format": "date",
-              "example": "2026-07-15T17:55:07.863Z",
+              "example": "2026-09-25T20:56:25.466Z",
               "type": "string"
             }
           },
@@ -16561,7 +16939,7 @@
             "description": "Date only after create date",
             "schema": {
               "format": "date",
-              "example": "2026-07-15T17:55:07.863Z",
+              "example": "2026-09-25T20:56:25.466Z",
               "type": "string"
             }
           },
@@ -17468,7 +17846,7 @@
           },
           {
             "name": "app",
-            "required": false,
+            "required": true,
             "in": "query",
             "description": "Apps",
             "schema": {
@@ -19226,7 +19604,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/VideoProgressChannelResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VideoProgressChannelResponse"
+                  }
                 }
               }
             }
@@ -19249,7 +19630,7 @@
             ]
           }
         ],
-        "summary": "Get upload progress channel for centrifuge",
+        "summary": "Get upload progress channels for centrifuge",
         "tags": [
           "Video"
         ]
@@ -19305,21 +19686,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/VideoCreateSuccessResponse"
-                    },
-                    {
-                      "$ref": "#/components/schemas/VideoCreateErrorResponse"
-                    }
-                  ],
-                  "discriminator": {
-                    "propertyName": "status",
-                    "mapping": {
-                      "success": "#/components/schemas/VideoCreateSuccessResponse",
-                      "error": "#/components/schemas/VideoCreateErrorResponse"
-                    }
-                  }
+                  "$ref": "#/components/schemas/VideoCreateSuccessResponse"
                 }
               }
             }
@@ -20682,6 +21049,498 @@
           "Webinar"
         ]
       }
+    },
+    "/method/scheduler": {
+      "get": {
+        "operationId": "Scheduler_listV1",
+        "parameters": [
+          {
+            "name": "v",
+            "required": false,
+            "in": "query",
+            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "schema": {
+              "example": "1",
+              "enum": [
+                "1"
+              ],
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "language",
+            "required": true,
+            "in": "query",
+            "description": "Current language",
+            "schema": {
+              "default": "en",
+              "example": "en",
+              "enum": [
+                "ru",
+                "en",
+                "cn"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "project_id",
+            "required": true,
+            "in": "query",
+            "description": "Project id",
+            "schema": {
+              "minimum": 1,
+              "example": 42,
+              "type": "number"
+            }
+          },
+          {
+            "name": "channel_id",
+            "required": false,
+            "in": "query",
+            "description": "Filter by associated channel id",
+            "schema": {
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "date_from",
+            "required": false,
+            "in": "query",
+            "description": "Filter interval start in Unix seconds",
+            "schema": {
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "date_to",
+            "required": false,
+            "in": "query",
+            "description": "Filter interval end in Unix seconds",
+            "schema": {
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Result offset",
+            "schema": {
+              "minimum": 0,
+              "default": 0,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Page size",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "order",
+            "required": false,
+            "in": "query",
+            "description": "Start-time order",
+            "schema": {
+              "default": "asc",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListSchedulerResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "broadcast:read"
+            ]
+          }
+        ],
+        "summary": "List non-expired project video schedules",
+        "tags": [
+          "Scheduler"
+        ]
+      },
+      "post": {
+        "operationId": "Scheduler_createV1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSchedulerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSchedulerResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "broadcast:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "broadcast:write"
+            ]
+          }
+        ],
+        "summary": "Create a project video schedule",
+        "tags": [
+          "Scheduler"
+        ]
+      },
+      "put": {
+        "operationId": "Scheduler_updateV1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSchedulerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "broadcast:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "broadcast:write"
+            ]
+          }
+        ],
+        "summary": "Replace a future project video schedule",
+        "tags": [
+          "Scheduler"
+        ]
+      },
+      "delete": {
+        "operationId": "Scheduler_deleteV1",
+        "parameters": [
+          {
+            "name": "v",
+            "required": false,
+            "in": "query",
+            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "schema": {
+              "example": "1",
+              "enum": [
+                "1"
+              ],
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "language",
+            "required": true,
+            "in": "query",
+            "description": "Current language",
+            "schema": {
+              "default": "en",
+              "example": "en",
+              "enum": [
+                "ru",
+                "en",
+                "cn"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "description": "Backend scheduler id",
+            "schema": {
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "project_id",
+            "required": true,
+            "in": "query",
+            "description": "Project id",
+            "schema": {
+              "minimum": 1,
+              "example": 42,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "broadcast:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "broadcast:write"
+            ]
+          }
+        ],
+        "summary": "Delete a non-expired project video schedule",
+        "tags": [
+          "Scheduler"
+        ]
+      }
+    },
+    "/method/scheduler/get": {
+      "get": {
+        "operationId": "Scheduler_getV1",
+        "parameters": [
+          {
+            "name": "v",
+            "required": false,
+            "in": "query",
+            "description": "Version (automatically defaults to 1 based on method version, can be overridden)",
+            "schema": {
+              "example": "1",
+              "enum": [
+                "1"
+              ],
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "language",
+            "required": true,
+            "in": "query",
+            "description": "Current language",
+            "schema": {
+              "default": "en",
+              "example": "en",
+              "enum": [
+                "ru",
+                "en",
+                "cn"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "project_id",
+            "required": true,
+            "in": "query",
+            "description": "Project id",
+            "schema": {
+              "minimum": 1,
+              "example": 42,
+              "type": "number"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "description": "Scheduler item id",
+            "schema": {
+              "minimum": 1,
+              "example": 321,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchedulerItemResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "broadcast:read"
+            ]
+          }
+        ],
+        "summary": "Get a project video schedule by id",
+        "tags": [
+          "Scheduler"
+        ]
+      }
+    },
+    "/method/scheduler/stop": {
+      "post": {
+        "operationId": "Scheduler_stopV1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StopSchedulerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "broadcast:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "broadcast:write"
+            ]
+          }
+        ],
+        "summary": "Stop the active project video schedule",
+        "tags": [
+          "Scheduler"
+        ]
+      }
     }
   },
   "info": {
@@ -20724,6 +21583,7 @@
               "channel:write": "Управление каналами",
               "channel:delete": "Удаление каналов",
               "channel-access:write": "Управление доступом к каналам",
+              "diagnostics:run": "Запуск диагностики",
               "media-files:read": "Чтение медиафайлов",
               "media-files:write": "Управление медиафайлами",
               "notification:read": "Чтение уведомлений",
@@ -20798,8 +21658,15 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "description": "Error name"
+            "description": "Error name",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "msg": {
             "type": "string",
@@ -20819,15 +21686,21 @@
             "default": {}
           },
           "data": {
-            "type": "object",
             "description": "Custom object for error",
-            "properties": {},
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {}
+              },
+              {
+                "type": "string"
+              }
+            ],
             "default": {}
           }
         },
         "required": [
           "name",
-          "msg",
           "options",
           "data"
         ]
@@ -20873,6 +21746,7 @@
           },
           "refId": {
             "type": "string",
+            "nullable": true,
             "description": "RefId"
           },
           "partners": {
@@ -20940,26 +21814,6 @@
       "ProfileUpdateDto": {
         "type": "object",
         "properties": {
-          "v": {
-            "type": "string",
-            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
-            "enum": [
-              "1"
-            ],
-            "example": "1",
-            "default": "1"
-          },
-          "language": {
-            "default": "en",
-            "enum": [
-              "ru",
-              "en",
-              "cn"
-            ],
-            "type": "string",
-            "description": "Current language",
-            "example": "en"
-          },
           "first_name": {
             "type": "string",
             "maxLength": 255,
@@ -20980,7 +21834,6 @@
           }
         },
         "required": [
-          "language",
           "first_name",
           "last_name"
         ]
@@ -20997,10 +21850,6 @@
         "required": [
           "success"
         ]
-      },
-      "withPaginatedResponse": {
-        "type": "object",
-        "properties": {}
       },
       "InternalNotifyTypeActionText": {
         "type": "object",
@@ -21184,6 +22033,10 @@
             "type": "number",
             "description": "Custom video"
           },
+          "disconnect_protection_max_minutes": {
+            "type": "number",
+            "description": "Maximum disconnect protection time for this purchased period, in minutes"
+          },
           "prolongation": {
             "type": "boolean",
             "description": "Prolongation status"
@@ -21205,6 +22058,7 @@
             "example": "trial"
           },
           "period": {
+            "nullable": true,
             "enum": [
               "month",
               "year"
@@ -21219,8 +22073,8 @@
           "channel_max",
           "bitrate_max",
           "support_custom_channel",
-          "date_end",
           "custom_video",
+          "disconnect_protection_max_minutes",
           "prolongation",
           "title",
           "type",
@@ -21438,6 +22292,11 @@
             "description": "Custom video",
             "example": 0
           },
+          "disconnect_protection_max_minutes": {
+            "type": "number",
+            "description": "Maximum disconnect protection time in minutes",
+            "example": 720
+          },
           "discount": {
             "description": "Discount",
             "allOf": [
@@ -21474,6 +22333,7 @@
           "index",
           "support_custom_channel",
           "custom_video",
+          "disconnect_protection_max_minutes",
           "discount"
         ]
       },
@@ -21495,7 +22355,8 @@
               "background_chat",
               "dedicated_server",
               "personal_manager",
-              "support_custom_channel"
+              "support_custom_channel",
+              "disconnect_protection_max_minutes"
             ]
           },
           "unit": {
@@ -21587,7 +22448,8 @@
                 "type": "string"
               },
               {
-                "type": "number"
+                "type": "number",
+                "nullable": true
               },
               {
                 "type": "boolean"
@@ -21639,13 +22501,18 @@
           "custom_video": {
             "type": "number",
             "description": "Custom video"
+          },
+          "disconnect_protection_max_minutes": {
+            "type": "number",
+            "description": "Maximum disconnect protection time for this purchased period, in minutes"
           }
         },
         "required": [
           "id",
           "date_end",
           "support_custom_channel",
-          "custom_video"
+          "custom_video",
+          "disconnect_protection_max_minutes"
         ]
       },
       "PlanRestreamCurrentItem": {
@@ -21676,13 +22543,18 @@
           "custom_video": {
             "type": "number",
             "description": "Custom video"
+          },
+          "disconnect_protection_max_minutes": {
+            "type": "number",
+            "description": "Maximum disconnect protection time for this purchased period, in minutes"
           }
         },
         "required": [
           "id",
           "date_end",
           "support_custom_channel",
-          "custom_video"
+          "custom_video",
+          "disconnect_protection_max_minutes"
         ]
       },
       "PlanRestreamNextItem": {
@@ -21713,13 +22585,18 @@
           "custom_video": {
             "type": "number",
             "description": "Custom video"
+          },
+          "disconnect_protection_max_minutes": {
+            "type": "number",
+            "description": "Maximum disconnect protection time for this purchased period, in minutes"
           }
         },
         "required": [
           "id",
           "date_start",
           "support_custom_channel",
-          "custom_video"
+          "custom_video",
+          "disconnect_protection_max_minutes"
         ]
       },
       "PlanRestreamForProjectV2": {
@@ -21775,6 +22652,7 @@
           },
           "count_channel_max": {
             "type": "number",
+            "nullable": true,
             "description": "Maximum channel count",
             "example": 1
           },
@@ -21807,8 +22685,8 @@
           },
           "bitrate_max": {
             "type": "number",
-            "description": "Maximum bitrate, kbps",
             "nullable": true,
+            "description": "Maximum bitrate, kbps",
             "example": 10000
           },
           "bitrate_min": {
@@ -21857,6 +22735,11 @@
             "type": "number",
             "description": "Custom video"
           },
+          "disconnect_protection_max_minutes": {
+            "type": "number",
+            "description": "Maximum disconnect protection time in minutes",
+            "example": 720
+          },
           "own_tariff": {
             "description": "Tariff project",
             "allOf": [
@@ -21881,6 +22764,7 @@
           "feature",
           "support_custom_channel",
           "custom_video",
+          "disconnect_protection_max_minutes",
           "own_tariff"
         ]
       },
@@ -22018,13 +22902,14 @@
         "properties": {
           "title": {
             "type": "string",
+            "nullable": true,
             "example": "text",
             "description": "Title"
           },
           "date_end": {
             "format": "date-time",
             "type": "string",
-            "example": "2026-07-15T17:55:04.034Z",
+            "example": "2026-09-25T20:56:22.366Z",
             "description": "Date"
           }
         },
@@ -22097,7 +22982,7 @@
           },
           "date": {
             "type": "string",
-            "example": "2026-07-15T17:55:04.036Z",
+            "example": "2026-09-25T20:56:22.367Z",
             "description": "Date"
           },
           "type": {
@@ -22295,10 +23180,6 @@
           "currency"
         ]
       },
-      "withListResponse": {
-        "type": "object",
-        "properties": {}
-      },
       "UserProject2ProjectResponse": {
         "type": "object",
         "properties": {
@@ -22338,6 +23219,7 @@
           },
           "external_id": {
             "type": "string",
+            "nullable": true,
             "example": 1,
             "description": "External id"
           },
@@ -22362,6 +23244,20 @@
           "type",
           "external_id",
           "access_type"
+        ]
+      },
+      "UserProject2ProjectListResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserProject2ProjectResponse"
+            }
+          }
+        },
+        "required": [
+          "results"
         ]
       },
       "UserProjectResponse": {
@@ -22416,6 +23312,35 @@
           "member_count"
         ]
       },
+      "PaginatedUserProjectResponse": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number",
+            "description": "Общее количество элементов вообще"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Размер запрашиваемой страницы"
+          },
+          "offset": {
+            "type": "number",
+            "description": "С какого элемента включительно делать запрос"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserProjectResponse"
+            }
+          }
+        },
+        "required": [
+          "total",
+          "limit",
+          "offset",
+          "results"
+        ]
+      },
       "ProjectInfoDataResponse": {
         "type": "object",
         "properties": {
@@ -22446,6 +23371,7 @@
           },
           "external_id": {
             "type": "string",
+            "nullable": true,
             "description": "External project id",
             "example": "Dkj49jfs"
           },
@@ -22478,9 +23404,9 @@
               "rub",
               "usd"
             ],
-            "type": "number",
+            "type": "string",
             "description": "Currency",
-            "example": 0
+            "example": "rub"
           },
           "country_id": {
             "type": "number",
@@ -22503,39 +23429,26 @@
           "country_id"
         ]
       },
-      "PlanRestream2UserItemResponse": {
+      "ProjectInfoRestreamPeriodResponse": {
         "type": "object",
         "properties": {
           "plan_restream2user_id": {
-            "type": "number",
-            "example": 1,
-            "description": "Plan restream id"
+            "type": "number"
           },
           "plan_restream_id": {
-            "type": "number",
-            "example": 1,
-            "description": "Plan restream id"
+            "type": "number"
           },
           "date_end": {
             "format": "date-time",
-            "type": "string",
-            "nullable": true,
-            "description": "Date end tariff",
-            "example": "2026-07-15T17:55:03.902Z"
+            "type": "string"
           },
           "date_start": {
             "format": "date-time",
-            "type": "string",
-            "nullable": true,
-            "description": "Date start",
-            "example": "2026-07-15T17:55:03.902Z"
+            "type": "string"
           },
           "date_create": {
             "format": "date-time",
-            "type": "string",
-            "nullable": true,
-            "description": "Date create",
-            "example": "2026-07-15T17:55:03.902Z"
+            "type": "string"
           },
           "period": {
             "nullable": true,
@@ -22543,29 +23456,26 @@
               "month",
               "year"
             ],
-            "type": "string",
-            "description": "Plan period",
-            "example": "month"
+            "type": "string"
           },
           "money_flow_uuid": {
-            "type": "string",
-            "description": "Money flow uuid",
-            "example": "5htgethge"
+            "type": "string"
           },
           "period_uuid": {
-            "type": "string",
-            "description": "Period uuid",
-            "example": "5htgethge"
+            "type": "string"
           },
           "status": {
-            "type": "string",
-            "description": "Status",
-            "example": ""
+            "type": "string"
           },
           "prolongation": {
+            "type": "number"
+          },
+          "support_custom_channel": {
+            "type": "boolean"
+          },
+          "disconnect_protection_max_minutes": {
             "type": "number",
-            "description": "Prolongation",
-            "example": 0
+            "description": "Maximum disconnect protection time for this purchased period, in minutes"
           }
         },
         "required": [
@@ -22578,7 +23488,148 @@
           "money_flow_uuid",
           "period_uuid",
           "status",
-          "prolongation"
+          "prolongation",
+          "support_custom_channel",
+          "disconnect_protection_max_minutes"
+        ]
+      },
+      "ProjectInfoRestreamDataResponse": {
+        "type": "object",
+        "properties": {
+          "plan_restream_id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "count_channel_max": {
+            "type": "number"
+          },
+          "count_channel_min": {
+            "type": "number",
+            "nullable": true
+          },
+          "type": {
+            "enum": [
+              "free",
+              "trial",
+              "paid_fix",
+              "paid_flex",
+              "custom"
+            ],
+            "type": "string"
+          },
+          "price_rub": {
+            "type": "number",
+            "nullable": true
+          },
+          "price_usd": {
+            "type": "number",
+            "nullable": true
+          },
+          "bitrate_max": {
+            "type": "number"
+          },
+          "bitrate_min": {
+            "type": "number",
+            "nullable": true
+          },
+          "resolution": {
+            "enum": [
+              "720p",
+              "1080p",
+              "2K",
+              "UW",
+              "4K",
+              "8K"
+            ],
+            "type": "string"
+          },
+          "fps": {
+            "type": "string",
+            "enum": [
+              "30",
+              "60"
+            ]
+          },
+          "create_projects": {
+            "type": "boolean"
+          },
+          "chat": {
+            "type": "boolean"
+          },
+          "video": {
+            "type": "boolean"
+          },
+          "video_storage": {
+            "type": "number"
+          },
+          "change_subject": {
+            "type": "boolean"
+          },
+          "background_chat": {
+            "type": "boolean"
+          },
+          "dedicated_server": {
+            "type": "boolean"
+          },
+          "personal_manager": {
+            "type": "number"
+          },
+          "index": {
+            "type": "number"
+          },
+          "pull_link_limit": {
+            "type": "number"
+          },
+          "discount": {
+            "$ref": "#/components/schemas/PlanRestreamDiscountResponse"
+          },
+          "support_custom_channel": {
+            "type": "boolean"
+          },
+          "purchase_available": {
+            "type": "boolean"
+          },
+          "prolongation_available": {
+            "type": "boolean"
+          },
+          "disconnect_protection_max_minutes": {
+            "type": "number",
+            "description": "Maximum disconnect protection time for this purchased period, in minutes"
+          }
+        },
+        "required": [
+          "plan_restream_id",
+          "title",
+          "active",
+          "count_channel_max",
+          "count_channel_min",
+          "type",
+          "price_rub",
+          "price_usd",
+          "bitrate_max",
+          "bitrate_min",
+          "resolution",
+          "fps",
+          "create_projects",
+          "chat",
+          "video",
+          "video_storage",
+          "change_subject",
+          "background_chat",
+          "dedicated_server",
+          "personal_manager",
+          "index",
+          "pull_link_limit",
+          "discount",
+          "support_custom_channel",
+          "purchase_available",
+          "prolongation_available",
+          "disconnect_protection_max_minutes"
         ]
       },
       "ProjectInfoRestreamResponse": {
@@ -22588,7 +23639,7 @@
             "description": "Plan restream to user",
             "allOf": [
               {
-                "$ref": "#/components/schemas/PlanRestream2UserItemResponse"
+                "$ref": "#/components/schemas/ProjectInfoRestreamPeriodResponse"
               }
             ]
           },
@@ -22596,7 +23647,7 @@
             "description": "Plan restream data",
             "allOf": [
               {
-                "$ref": "#/components/schemas/PlanRestreamResponse"
+                "$ref": "#/components/schemas/ProjectInfoRestreamDataResponse"
               }
             ]
           }
@@ -22696,6 +23747,7 @@
           },
           "title": {
             "type": "string",
+            "nullable": true,
             "description": "Title",
             "example": "test"
           },
@@ -22710,15 +23762,19 @@
           },
           "price_rub": {
             "type": "number",
+            "nullable": true,
             "description": "Price (RUB)",
             "example": 0
           },
           "price_usd": {
             "type": "number",
+            "nullable": true,
             "description": "Price (USD)",
             "example": 0
           },
           "resolution": {
+            "type": "string",
+            "description": "Maximum resolution",
             "enum": [
               "720p",
               "1080p",
@@ -22727,14 +23783,12 @@
               "4K",
               "8K"
             ],
-            "type": "string",
-            "description": "Maximum resolution",
-            "example": "2K",
-            "nullable": true
+            "example": "2K"
           },
           "fps": {
             "type": "string",
             "description": "Maximum fps",
+            "nullable": true,
             "example": "30",
             "enum": [
               "30",
@@ -22753,6 +23807,7 @@
           },
           "index": {
             "type": "number",
+            "nullable": true,
             "description": "Field for sort",
             "example": 0
           },
@@ -22810,75 +23865,143 @@
           "data"
         ]
       },
-      "PlanStorage2UserItemResponse": {
+      "ProjectInfoStoragePeriodResponse": {
         "type": "object",
         "properties": {
           "plan_storage2user_id": {
-            "type": "number",
-            "example": 1,
-            "description": "Plan storage2user id"
-          },
-          "plan_storage_id": {
-            "type": "number",
-            "example": 1,
-            "description": "Plan storage id"
-          },
-          "size": {
-            "type": "number",
-            "description": "Size"
-          },
-          "date_start": {
-            "format": "date-time",
-            "type": "string",
-            "description": "Date start tariff"
+            "type": "number"
           },
           "date_end": {
             "format": "date-time",
-            "type": "string",
-            "description": "Date end tariff"
+            "type": "string"
+          },
+          "date_start": {
+            "format": "date-time",
+            "type": "string"
           },
           "date_create": {
             "format": "date-time",
-            "type": "string",
-            "description": "Date create tariff"
+            "type": "string"
           },
           "period": {
-            "nullable": true,
+            "type": "string",
             "enum": [
               "month",
               "year"
             ],
-            "type": "string",
-            "description": "Period"
-          },
-          "period_uuid": {
-            "type": "string",
-            "description": "Period uuid"
-          },
-          "status": {
-            "type": "string",
-            "description": "Status"
-          },
-          "prolongation": {
-            "type": "number",
-            "description": "Prolongation"
+            "nullable": true
           },
           "money_flow_uuid": {
-            "type": "string",
-            "description": "Money flow uuid"
+            "type": "string"
+          },
+          "period_uuid": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "prolongation": {
+            "type": "number"
+          },
+          "size": {
+            "type": "number"
           }
         },
         "required": [
           "plan_storage2user_id",
-          "plan_storage_id",
-          "size",
-          "date_start",
           "date_end",
+          "date_start",
           "date_create",
           "period",
+          "money_flow_uuid",
           "period_uuid",
           "status",
-          "money_flow_uuid"
+          "prolongation",
+          "size"
+        ]
+      },
+      "PlanStorageDiscountResponse": {
+        "type": "object",
+        "properties": {
+          "month": {
+            "type": "number",
+            "default": 0,
+            "example": 0,
+            "description": "Month discount"
+          },
+          "year": {
+            "type": "number",
+            "example": 10,
+            "description": "Year discount"
+          }
+        },
+        "required": [
+          "month",
+          "year"
+        ]
+      },
+      "PlanStorageResponse": {
+        "type": "object",
+        "properties": {
+          "plan_storage_id": {
+            "type": "number",
+            "description": "Unique ID"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title",
+            "example": "First"
+          },
+          "min": {
+            "type": "number",
+            "description": "Minimum storage size, gb",
+            "example": 1
+          },
+          "max": {
+            "type": "number",
+            "description": "Maximum storage size, gb",
+            "example": 10
+          },
+          "price_rub": {
+            "type": "number",
+            "description": "Price per gb (RUB)",
+            "example": 10
+          },
+          "price_usd": {
+            "type": "number",
+            "nullable": true,
+            "description": "Price per gb (USD)",
+            "example": 10
+          },
+          "step": {
+            "type": "number",
+            "description": "Step increase in gb",
+            "example": 1
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Is active",
+            "example": true
+          },
+          "discount": {
+            "description": "Discount",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PlanStorageDiscountResponse"
+              }
+            ]
+          }
+        },
+        "required": [
+          "plan_storage_id",
+          "title",
+          "min",
+          "max",
+          "price_rub",
+          "price_usd",
+          "step",
+          "active",
+          "discount"
         ]
       },
       "ProjectInfoStorageResponse": {
@@ -22888,7 +24011,7 @@
             "description": "Plan storage to user",
             "allOf": [
               {
-                "$ref": "#/components/schemas/PlanStorage2UserItemResponse"
+                "$ref": "#/components/schemas/ProjectInfoStoragePeriodResponse"
               }
             ]
           },
@@ -22896,7 +24019,7 @@
             "description": "Plan storage data",
             "allOf": [
               {
-                "$ref": "#/components/schemas/PlanTranscodingResponse"
+                "$ref": "#/components/schemas/PlanStorageResponse"
               }
             ]
           }
@@ -23024,22 +24147,24 @@
           },
           "price_rub": {
             "type": "number",
+            "nullable": true,
             "description": "Price (RUB)",
             "example": 0
           },
           "price_usd": {
             "type": "number",
+            "nullable": true,
             "description": "Price (USD)",
             "example": 0
           },
           "resolution": {
             "type": "string",
             "description": "Maximum resolution",
-            "example": "2K",
-            "nullable": true
+            "example": "2K"
           },
           "index": {
             "type": "number",
+            "nullable": true,
             "description": "Field for sort",
             "example": 0
           },
@@ -23111,14 +24236,6 @@
       "ProjectInfoResponse": {
         "type": "object",
         "properties": {
-          "v": {
-            "type": "string",
-            "description": "Version",
-            "enum": [
-              "1"
-            ],
-            "example": "1"
-          },
           "language": {
             "default": "en",
             "enum": [
@@ -23127,8 +24244,7 @@
               "cn"
             ],
             "type": "string",
-            "description": "Current language",
-            "example": "en"
+            "description": "Current language"
           },
           "data": {
             "description": "Project info",
@@ -23186,9 +24302,11 @@
           }
         },
         "required": [
-          "v",
           "language",
           "data",
+          "transcoding",
+          "storage",
+          "webinar",
           "access"
         ]
       },
@@ -23217,6 +24335,7 @@
                 "channel:write",
                 "channel:delete",
                 "channel-access:write",
+                "diagnostics:run",
                 "media-files:read",
                 "media-files:write",
                 "notification:read",
@@ -23300,7 +24419,7 @@
             "format": "date-time",
             "type": "string",
             "description": "Date",
-            "default": "2026-07-15T17:55:04.169Z"
+            "default": "2026-09-25T20:56:22.225Z"
           }
         },
         "required": [
@@ -23309,6 +24428,35 @@
           "project_id",
           "user_id",
           "group_id"
+        ]
+      },
+      "PaginatedProjectHistoryResponse": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number",
+            "description": "Общее количество элементов вообще"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Размер запрашиваемой страницы"
+          },
+          "offset": {
+            "type": "number",
+            "description": "С какого элемента включительно делать запрос"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProjectHistoryResponse"
+            }
+          }
+        },
+        "required": [
+          "total",
+          "limit",
+          "offset",
+          "results"
         ]
       },
       "NotifyUserChannels": {
@@ -23405,8 +24553,7 @@
         },
         "required": [
           "user_id",
-          "channels",
-          "relation"
+          "channels"
         ]
       },
       "SiteSetNotifyUserRequest": {
@@ -23453,40 +24600,110 @@
           "status"
         ]
       },
-      "SiteScreenNotifyUserResponse": {
+      "NotifyHistoryAction": {
         "type": "object",
         "properties": {
-          "type": {
-            "default": "info",
+          "name": {
+            "type": "string",
+            "description": "Action name",
             "enum": [
-              "debug",
-              "info",
-              "warning",
-              "error"
-            ],
-            "type": "string",
-            "description": "Level of notify. Default is info"
-          },
-          "title": {
-            "type": "string",
-            "description": "Title of notify"
+              "external_link",
+              "cabinet_link",
+              "landing_link",
+              "link",
+              "accept",
+              "decline",
+              "accept_1",
+              "accept_2",
+              "accept_3"
+            ]
           },
           "text": {
-            "type": "string",
-            "description": "Text of notify"
-          },
-          "actions": {
-            "description": "Array of texts",
+            "description": "Array of text actions",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/InternalNotifyTypeAction"
+              "$ref": "#/components/schemas/InternalNotifyTypeActionText"
             }
+          },
+          "value": {
+            "type": "string",
+            "description": "Value for button"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Icon (special symbol)"
+          },
+          "done": {
+            "type": "boolean",
+            "description": "If action run then true",
+            "default": false
+          },
+          "type": {
+            "type": "string",
+            "description": "Type",
+            "enum": [
+              "primary",
+              "secondary",
+              "link"
+            ]
+          },
+          "group_id": {
+            "type": "string",
+            "description": "Action group id"
+          },
+          "group_type": {
+            "type": "string",
+            "description": "Group actions",
+            "enum": [
+              "toggle",
+              "select",
+              "default"
+            ]
           }
         },
         "required": [
-          "type",
-          "text"
+          "name",
+          "done",
+          "group_id",
+          "group_type"
         ]
+      },
+      "NotifyHistoryChannelTelegram": {
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "type": "string",
+            "description": "Chat id"
+          },
+          "message_id": {
+            "type": "string",
+            "description": "Message id"
+          }
+        },
+        "required": [
+          "chat_id",
+          "message_id"
+        ]
+      },
+      "NotifyHistoryChannelMobile": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Token"
+          },
+          "message_id": {
+            "type": "string",
+            "description": "Message id"
+          }
+        },
+        "required": [
+          "token"
+        ]
+      },
+      "NotifyHistoryChannelCabinet": {
+        "type": "object",
+        "properties": {}
       },
       "PlanTranscodingItem": {
         "type": "object",
@@ -23507,6 +24724,7 @@
           },
           "title": {
             "type": "string",
+            "nullable": true,
             "description": "Plan title"
           },
           "type": {
@@ -23523,6 +24741,7 @@
             "description": "Prolongation status"
           },
           "period": {
+            "nullable": true,
             "enum": [
               "month",
               "year"
@@ -23535,7 +24754,6 @@
         "required": [
           "id",
           "count",
-          "date_end",
           "title",
           "prolongation",
           "period"
@@ -23603,12 +24821,7 @@
             "example": 1,
             "description": "Profit balance"
           }
-        },
-        "required": [
-          "bonus",
-          "payment",
-          "profit"
-        ]
+        }
       },
       "BalanceForPayResponse": {
         "type": "object",
@@ -23725,12 +24938,13 @@
             "description": "Size"
           },
           "period": {
+            "type": "string",
+            "description": "Period",
             "enum": [
               "month",
               "year"
             ],
-            "type": "string",
-            "description": "Period"
+            "nullable": true
           },
           "prolongation": {
             "type": "boolean",
@@ -23751,8 +24965,7 @@
           "size",
           "period",
           "prolongation",
-          "title",
-          "date_end"
+          "title"
         ]
       },
       "PlanStorageForProject": {
@@ -23786,89 +24999,6 @@
             ]
           }
         }
-      },
-      "PlanStorageDiscountResponse": {
-        "type": "object",
-        "properties": {
-          "month": {
-            "type": "number",
-            "default": 0,
-            "example": 0,
-            "description": "Month discount"
-          },
-          "year": {
-            "type": "number",
-            "example": 10,
-            "description": "Year discount"
-          }
-        },
-        "required": [
-          "month",
-          "year"
-        ]
-      },
-      "PlanStorageResponse": {
-        "type": "object",
-        "properties": {
-          "plan_storage_id": {
-            "type": "number",
-            "description": "Unique ID"
-          },
-          "title": {
-            "type": "string",
-            "description": "Title",
-            "example": "First"
-          },
-          "min": {
-            "type": "number",
-            "description": "Minimum storage size, gb",
-            "example": 1
-          },
-          "max": {
-            "type": "number",
-            "description": "Maximum storage size, gb",
-            "example": 10
-          },
-          "price_rub": {
-            "type": "number",
-            "description": "Price per gb (RUB)",
-            "example": 10
-          },
-          "price_usd": {
-            "type": "number",
-            "description": "Price per gb (USD)",
-            "example": 10
-          },
-          "step": {
-            "type": "number",
-            "description": "Step increase in gb",
-            "example": 1
-          },
-          "active": {
-            "type": "boolean",
-            "description": "Is active",
-            "example": true
-          },
-          "discount": {
-            "description": "Discount",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PlanStorageDiscountResponse"
-              }
-            ]
-          }
-        },
-        "required": [
-          "plan_storage_id",
-          "title",
-          "min",
-          "max",
-          "price_rub",
-          "price_usd",
-          "step",
-          "active",
-          "discount"
-        ]
       },
       "PlanStorageResponseDto": {
         "type": "object",
@@ -24433,6 +25563,15 @@
             "maxLength": 255,
             "description": "category name",
             "default": "name"
+          },
+          "category_type": {
+            "enum": [
+              "irl",
+              "game",
+              "sport"
+            ],
+            "type": "string",
+            "description": "category type"
           }
         },
         "required": [
@@ -24475,7 +25614,8 @@
           },
           "id": {
             "type": "string",
-            "default": "Planned id",
+            "nullable": true,
+            "default": null,
             "maxLength": 20
           }
         },
@@ -24485,7 +25625,7 @@
           "channel_id"
         ]
       },
-      "PlannedItemResponse": {
+      "SelectedPlannedItemResponse": {
         "type": "object",
         "properties": {
           "id": {
@@ -24498,19 +25638,18 @@
           },
           "description": {
             "type": "string",
+            "nullable": true,
             "description": "description"
           },
           "date": {
             "format": "date-time",
             "type": "string",
-            "description": "date"
+            "description": "Date of the selected broadcast; absent for automatic selection"
           }
         },
         "required": [
           "id",
-          "title",
-          "description",
-          "date"
+          "title"
         ]
       },
       "SitePlannedResponse": {
@@ -24520,7 +25659,7 @@
             "description": "Planned item",
             "allOf": [
               {
-                "$ref": "#/components/schemas/PlannedItemResponse"
+                "$ref": "#/components/schemas/SelectedPlannedItemResponse"
               }
             ]
           }
@@ -24541,6 +25680,62 @@
         "required": [
           "id",
           "name"
+        ]
+      },
+      "PlaylistResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlaylistItemResponse"
+            }
+          }
+        },
+        "required": [
+          "results"
+        ]
+      },
+      "PlannedItemResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id"
+          },
+          "title": {
+            "type": "string",
+            "description": "title"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "description": "description"
+          },
+          "date": {
+            "format": "date-time",
+            "type": "string",
+            "description": "date"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "date"
+        ]
+      },
+      "PlannedListResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlannedItemResponse"
+            }
+          }
+        },
+        "required": [
+          "results"
         ]
       },
       "SiteBulkUpdateChannelRequest": {
@@ -24668,6 +25863,11 @@
             "type": "string",
             "maxLength": 1000,
             "description": "Stream link"
+          },
+          "stream_key": {
+            "type": "string",
+            "maxLength": 1000,
+            "description": "Stream key"
           }
         },
         "required": [
@@ -24773,10 +25973,7 @@
             "nullable": true,
             "description": "message"
           }
-        },
-        "required": [
-          "message"
-        ]
+        }
       },
       "SiteUpdateChatTelegramRequest": {
         "type": "object",
@@ -25074,7 +26271,6 @@
           }
         },
         "required": [
-          "title",
           "description"
         ]
       },
@@ -25139,7 +26335,6 @@
           }
         },
         "required": [
-          "title",
           "description"
         ]
       },
@@ -25168,10 +26363,7 @@
           "category": {
             "$ref": "#/components/schemas/ChannelCategoryInfoDto"
           }
-        },
-        "required": [
-          "title"
-        ]
+        }
       },
       "ChannelTwitchInfoDto": {
         "type": "object",
@@ -25199,6 +26391,44 @@
           "domain": {
             "type": "string"
           }
+        }
+      },
+      "ChannelVkVideoLiveCategoryInfoDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "irl",
+              "game",
+              "sport"
+            ],
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "ChannelVkVideoLiveInfoDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Title of the channel"
+          },
+          "category": {
+            "$ref": "#/components/schemas/ChannelVkVideoLiveCategoryInfoDto"
+          }
         },
         "required": [
           "title"
@@ -25216,7 +26446,6 @@
           }
         },
         "required": [
-          "title",
           "description"
         ]
       },
@@ -25227,10 +26456,7 @@
             "type": "string",
             "description": "Title of the channel"
           }
-        },
-        "required": [
-          "title"
-        ]
+        }
       },
       "SearchChannelRtmpDto": {
         "type": "object",
@@ -25381,6 +26607,7 @@
           },
           "url": {
             "type": "string",
+            "nullable": true,
             "description": "Url",
             "example": "https://vk.com"
           },
@@ -25419,6 +26646,7 @@
           },
           "transcoderId": {
             "type": "number",
+            "nullable": true,
             "description": "Transcoder id"
           },
           "group_id": {
@@ -25431,6 +26659,7 @@
           },
           "photo_default": {
             "type": "string",
+            "nullable": true,
             "description": "photo_default"
           },
           "sell": {
@@ -25439,6 +26668,7 @@
           },
           "price": {
             "type": "number",
+            "nullable": true,
             "description": "price"
           },
           "live": {
@@ -25463,6 +26693,7 @@
           },
           "user_id": {
             "type": "number",
+            "nullable": true,
             "description": "user_id"
           },
           "active": {
@@ -25492,8 +26723,9 @@
             "description": "threads"
           },
           "streamInfo": {
+            "nullable": true,
             "description": "streamInfo",
-            "oneOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/ChannelYoutubeInfoDto"
               },
@@ -25507,10 +26739,17 @@
                 "$ref": "#/components/schemas/ChannelTwitchInfoDto"
               },
               {
+                "$ref": "#/components/schemas/ChannelVkVideoLiveInfoDto"
+              },
+              {
                 "$ref": "#/components/schemas/ChannelOkInfoDto"
               },
               {
                 "$ref": "#/components/schemas/ChannelDefaultInfoDto"
+              },
+              {
+                "type": "array",
+                "items": {}
               }
             ]
           },
@@ -25525,13 +26764,18 @@
           },
           "ingress_url": {
             "type": "string",
-            "description": "ingress_url",
-            "example": "https://example.com/stream"
+            "description": "RTMP endpoint without stream key or complete ingress URI for protocols without a separate key",
+            "example": "rtmp://example.com/live"
           },
           "ingress_protocol": {
             "type": "string",
             "description": "ingress_protocol",
             "example": "https"
+          },
+          "stream_key": {
+            "type": "string",
+            "description": "RTMP stream key",
+            "example": "stream-key"
           },
           "credentials": {
             "nullable": true,
@@ -25578,6 +26822,7 @@
         "required": [
           "name",
           "id",
+          "transcoderId",
           "group_id",
           "type",
           "photo_default",
@@ -25636,12 +26881,6 @@
               "$ref": "#/components/schemas/SearchChannelItem"
             }
           },
-          "platforms": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SearchChannelPlatformsDto"
-            }
-          },
           "limit": {
             "type": "number"
           },
@@ -25650,14 +26889,20 @@
           },
           "total": {
             "type": "number"
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchChannelPlatformsDto"
+            }
           }
         },
         "required": [
           "results",
-          "platforms",
           "limit",
           "offset",
-          "total"
+          "total",
+          "platforms"
         ]
       },
       "GetShortChannelItem": {
@@ -25741,6 +26986,43 @@
           "channel_id"
         ]
       },
+      "MethodChannelStatusRequest": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "type": "string",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
+            "enum": [
+              "1"
+            ],
+            "example": "1",
+            "default": "1"
+          },
+          "language": {
+            "default": "en",
+            "enum": [
+              "ru",
+              "en",
+              "cn"
+            ],
+            "type": "string",
+            "description": "Current language"
+          },
+          "channel_id": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Channel ID"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Desired channel state"
+          }
+        },
+        "required": [
+          "channel_id",
+          "active"
+        ]
+      },
       "MethodSetStatusChannelRequest": {
         "type": "object",
         "properties": {
@@ -25769,7 +27051,7 @@
           },
           "status": {
             "type": "boolean",
-            "description": "Status channel status"
+            "description": "Desired channel state. Use active in PUT /method/channel/status for new integrations."
           }
         },
         "required": [
@@ -27287,7 +28569,8 @@
             "type": "boolean"
           },
           "photo_default": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "live": {
             "type": "number"
@@ -27296,10 +28579,12 @@
             "type": "string"
           },
           "user_id": {
-            "type": "number"
+            "type": "number",
+            "nullable": true
           },
           "transcoderId": {
-            "type": "number"
+            "type": "number",
+            "nullable": true
           }
         },
         "required": [
@@ -27413,11 +28698,7 @@
           },
           "videoCodec": {
             "type": "string",
-            "description": "Video codec",
-            "enum": [
-              "h264",
-              "hevc"
-            ]
+            "description": "Video codec"
           },
           "channels": {
             "description": "B-Frames",
@@ -27459,8 +28740,6 @@
           "status",
           "videoCodec",
           "channels",
-          "delay",
-          "preset",
           "mode"
         ]
       },
@@ -27790,6 +29069,20 @@
           "name"
         ]
       },
+      "CategoryListResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CategoryItemResponse"
+            }
+          }
+        },
+        "required": [
+          "results"
+        ]
+      },
       "PlatformsSupportedItem": {
         "type": "object",
         "properties": {
@@ -27819,6 +29112,7 @@
           },
           "url": {
             "type": "string",
+            "nullable": true,
             "description": "url",
             "example": "https://www.youtube.com"
           },
@@ -27955,10 +29249,12 @@
           },
           "name": {
             "type": "string",
+            "nullable": true,
             "description": "Name account"
           },
           "avatar": {
             "type": "string",
+            "nullable": true,
             "description": "Avatar account"
           },
           "status": {
@@ -28046,10 +29342,12 @@
           },
           "name": {
             "type": "string",
+            "nullable": true,
             "description": "Name account"
           },
           "avatar": {
             "type": "string",
+            "nullable": true,
             "description": "Avatar account"
           },
           "internalId": {
@@ -28137,6 +29435,7 @@
           },
           "nextPage": {
             "type": "number",
+            "nullable": true,
             "description": "Next page"
           }
         },
@@ -28146,6 +29445,80 @@
           "totalPages",
           "currentPage",
           "nextPage"
+        ]
+      },
+      "PlatformCategoryDetailsResponse": {
+        "type": "object",
+        "properties": {
+          "platform": {
+            "type": "string",
+            "enum": [
+              "vkvideolive"
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "game",
+              "irl",
+              "sport"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "platform",
+          "scope",
+          "id",
+          "name"
+        ]
+      },
+      "PlatformCategoryNotFoundError": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "number",
+            "enum": [
+              6
+            ]
+          },
+          "msg": {
+            "type": "string",
+            "example": "Category not found"
+          },
+          "options": {
+            "type": "object",
+            "properties": {}
+          },
+          "data": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "required": [
+          "name",
+          "msg",
+          "options",
+          "data"
+        ]
+      },
+      "PlatformCategoryNotFoundResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/PlatformCategoryNotFoundError"
+          }
+        },
+        "required": [
+          "error"
         ]
       },
       "CodeAppAuthResponse": {
@@ -28233,12 +29606,85 @@
           "refreshToken"
         ]
       },
+      "SocialItemResultResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "User name"
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true,
+            "description": "User avatar"
+          },
+          "sid": {
+            "type": "string",
+            "description": "User social id"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true,
+            "description": "Email social id"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "photo",
+          "sid",
+          "email"
+        ]
+      },
+      "SiteSocialListResponse": {
+        "type": "object",
+        "properties": {
+          "google": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SocialItemResultResponse"
+              }
+            ]
+          },
+          "vk": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SocialItemResultResponse"
+              }
+            ]
+          },
+          "telegram": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SocialItemResultResponse"
+              }
+            ]
+          }
+        },
+        "required": [
+          "google",
+          "vk",
+          "telegram"
+        ]
+      },
       "GetStreamKeyResponse": {
         "type": "object",
         "properties": {
           "wait": {
             "type": "number",
-            "description": "Seconds the stream guard"
+            "nullable": true,
+            "description": "Disconnect protection wait time in minutes"
+          },
+          "wait_max_minutes": {
+            "type": "number",
+            "description": "Maximum disconnect protection wait time for the active purchased tariff, in minutes"
           },
           "record": {
             "type": "boolean",
@@ -28261,6 +29707,7 @@
         },
         "required": [
           "wait",
+          "wait_max_minutes",
           "record",
           "key",
           "pause_media_service_file_id",
@@ -28303,6 +29750,90 @@
           "language",
           "project_id",
           "record"
+        ]
+      },
+      "RotateStreamKeyRequest": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "type": "string",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
+            "enum": [
+              "1"
+            ],
+            "example": "1",
+            "default": "1"
+          },
+          "language": {
+            "default": "en",
+            "enum": [
+              "ru",
+              "en",
+              "cn"
+            ],
+            "type": "string",
+            "description": "Current language",
+            "example": "en"
+          },
+          "project_id": {
+            "type": "number",
+            "description": "Project id"
+          }
+        },
+        "required": [
+          "language",
+          "project_id"
+        ]
+      },
+      "RotateStreamKeyResponse": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "New stream key"
+          }
+        },
+        "required": [
+          "key"
+        ]
+      },
+      "SetWaitStreamKeyRequest": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "type": "string",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
+            "enum": [
+              "1"
+            ],
+            "example": "1",
+            "default": "1"
+          },
+          "language": {
+            "default": "en",
+            "enum": [
+              "ru",
+              "en",
+              "cn"
+            ],
+            "type": "string",
+            "description": "Current language",
+            "example": "en"
+          },
+          "project_id": {
+            "type": "number",
+            "description": "Project id"
+          },
+          "wait_minutes": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Disconnect protection wait time in minutes"
+          }
+        },
+        "required": [
+          "language",
+          "project_id",
+          "wait_minutes"
         ]
       },
       "TransactionResponse": {
@@ -28359,6 +29890,35 @@
           "date",
           "paymentId",
           "payoutId"
+        ]
+      },
+      "PaginatedTransactionResponse": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number",
+            "description": "Общее количество элементов вообще"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Размер запрашиваемой страницы"
+          },
+          "offset": {
+            "type": "number",
+            "description": "С какого элемента включительно делать запрос"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionResponse"
+            }
+          }
+        },
+        "required": [
+          "total",
+          "limit",
+          "offset",
+          "results"
         ]
       },
       "BlogPageTagContent": {
@@ -28477,6 +30037,57 @@
           "short_text",
           "text",
           "alt_languages"
+        ]
+      },
+      "PaginatedBlogPageSiteResponse": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number",
+            "description": "Общее количество элементов вообще"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Размер запрашиваемой страницы"
+          },
+          "offset": {
+            "type": "number",
+            "description": "С какого элемента включительно делать запрос"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BlogPageSiteResponse"
+            }
+          }
+        },
+        "required": [
+          "total",
+          "limit",
+          "offset",
+          "results"
+        ]
+      },
+      "GetBlogPageResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "default": true,
+            "description": "Response execution success"
+          },
+          "result": {
+            "description": "Page data",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BlogPageSiteResponse"
+              }
+            ]
+          }
+        },
+        "required": [
+          "success",
+          "result"
         ]
       },
       "HelpPageIcon": {
@@ -29008,6 +30619,312 @@
           "payload"
         ]
       },
+      "NotifyHistoryError": {
+        "type": "object",
+        "properties": {}
+      },
+      "NotifyHistory": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Id of page in mongodb"
+          },
+          "uuid": {
+            "type": "string",
+            "description": "Uuid for execute actions"
+          },
+          "v": {
+            "type": "string",
+            "description": "Version"
+          },
+          "project_id": {
+            "type": "number",
+            "description": "Project id"
+          },
+          "user_id": {
+            "type": "number",
+            "description": "User id"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name",
+            "enum": [
+              "high_bitrate",
+              "request_access_channel",
+              "request_access_project",
+              "request_access_integration",
+              "promocode_test",
+              "stream_test",
+              "plan_restream_expires",
+              "plan_restream_expired",
+              "plan_restream_renewed",
+              "plan_transcoder_expires",
+              "plan_transcoder_expired",
+              "plan_transcoder_renewed",
+              "plan_storage_expires",
+              "plan_storage_expired",
+              "plan_storage_renewed",
+              "compensation_received",
+              "broadcast_unsupported_codec",
+              "broadcast_unsupported_codec_screen",
+              "broadcast_bitrate_exceeded_screen",
+              "rtmp_connect_old_server_screen",
+              "broadcast_not_audio",
+              "broadcast_bitrate_exceeded",
+              "broadcast_started",
+              "broadcast_stopped",
+              "restream_check_twitch_bitrate_1",
+              "api_pause_start",
+              "api_pause_end",
+              "api_wait_edit",
+              "api_restream_start",
+              "api_restream_stop",
+              "api_drop_broadcast",
+              "api_drop_broadcast_remove_company",
+              "api_drop_broadcast_update_key",
+              "publisher_disconnected",
+              "publisher_connected",
+              "publisher_initializing",
+              "publisher_close",
+              "publisher_connection_interrupted",
+              "publisher_connection_timeout",
+              "publisher_protocol_error",
+              "publisher_start_failed",
+              "publisher_reconnect_failed",
+              "broadcast_connected_start",
+              "broadcast_connected_end",
+              "broadcast_connecting_stream",
+              "broadcast_started_new_stream",
+              "broadcast_connecting_lost",
+              "broadcast_video_lost_start",
+              "broadcast_video_lost_end",
+              "broadcast_video_pause_start",
+              "broadcast_video_pause_end",
+              "broadcast_init_restream",
+              "broadcast_placeholder_ready",
+              "broadcast_placeholder_failed",
+              "broadcast_placeholder_fallback_used",
+              "start_stream",
+              "create_reader",
+              "start_channel",
+              "stop_channel",
+              "stop_stream_video_timeout",
+              "stop_stream_no_start_video",
+              "stop_stream",
+              "delete_reader",
+              "transcoder_start",
+              "transcoder_stop",
+              "start_channel_failed",
+              "start_channel_success",
+              "api_channel_initializing_start",
+              "api_channel_initializing_failed",
+              "api_channel_initializing_success",
+              "channel_api_update_settings_success",
+              "channel_api_update_settings_error",
+              "channel_api_update_playlist_success",
+              "channel_api_update_playlist_error",
+              "channel_api_update_chat_error",
+              "channel_api_stream_key_success",
+              "channel_api_stream_key_error",
+              "channel_api_auto_stop_disable_success",
+              "channel_api_auto_stop_disable_error",
+              "channel_api_unbinding_stream_key_error",
+              "channel_api_create_broadcast_success",
+              "channel_api_create_broadcast_error",
+              "channel_api_set_planned_success",
+              "channel_api_set_planned_error",
+              "channel_api_set_thumbnail_success",
+              "channel_api_set_thumbnail_error",
+              "channel_token_error",
+              "channel_api_group_failed",
+              "no_audio_reader",
+              "restream_check_twitch_bitrate_2",
+              "transcoder_support_error_screen",
+              "transcoder_tariff_end_screen",
+              "transcoder_count_flow_screen",
+              "transcoder_resolution_screen",
+              "stream_key_banned",
+              "broadcast_change_codec",
+              "broadcast_change_region",
+              "video_upload_error",
+              "stop_channel_error",
+              "broadcast_user_action_stop",
+              "completed_api_channel_error",
+              "transcoder_twitch_tracks",
+              "plan_webinar_expired",
+              "plan_webinar_renewed",
+              "plan_webinar_expires",
+              "payout_created",
+              "payout_status_execution",
+              "payout_status_success",
+              "payout_status_canceled",
+              "payout_status_error",
+              "plan_trial_expires",
+              "plan_trial_expired"
+            ],
+            "nullable": true
+          },
+          "channel": {
+            "type": "string",
+            "description": "Channel",
+            "enum": [
+              "telegram",
+              "cabinet",
+              "mobile"
+            ]
+          },
+          "actions": {
+            "description": "Actions",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NotifyHistoryAction"
+            }
+          },
+          "text": {
+            "description": "Array of texts",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InternalNotifyTypeText"
+            }
+          },
+          "date_create": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date create",
+            "default": "2026-09-25T20:56:21.588Z"
+          },
+          "date_process": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date process",
+            "default": "2026-09-25T20:56:21.588Z"
+          },
+          "status_delivery": {
+            "type": "string",
+            "description": "Status delivery",
+            "enum": [
+              "pending",
+              "success",
+              "error"
+            ],
+            "default": "pending"
+          },
+          "status_read": {
+            "type": "boolean",
+            "description": "Status read"
+          },
+          "date_read": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date read",
+            "default": "2026-09-25T20:56:21.588Z",
+            "nullable": true
+          },
+          "icon": {
+            "type": "string",
+            "description": "Icon (special symbol)"
+          },
+          "variables": {
+            "type": "object",
+            "description": "Object of variables. E.g.: {name: 'value'}",
+            "default": {}
+          },
+          "data": {
+            "type": "object",
+            "description": "Object of custom data",
+            "default": {}
+          },
+          "user_notify_category": {
+            "type": "string",
+            "description": "Category of user notify",
+            "enum": [
+              "important",
+              "stream"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "description": "Message",
+            "nullable": true
+          },
+          "error": {
+            "description": "Error",
+            "nullable": true,
+            "default": null,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NotifyHistoryError"
+              }
+            ]
+          },
+          "language": {
+            "type": "string",
+            "description": "Language for indexing",
+            "enum": [
+              "russian",
+              "english",
+              "none"
+            ],
+            "default": "russian"
+          },
+          "language_iso": {
+            "type": "string",
+            "description": "Language ISO",
+            "enum": [
+              "ru",
+              "en",
+              "cn"
+            ],
+            "default": "ru"
+          },
+          "telegram": {
+            "description": "Channel telegram",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NotifyHistoryChannelTelegram"
+              }
+            ]
+          },
+          "mobile": {
+            "description": "Channel mobile",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NotifyHistoryChannelMobile"
+              }
+            ]
+          },
+          "cabinet": {
+            "description": "Channel cabinet",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NotifyHistoryChannelCabinet"
+              }
+            ]
+          }
+        },
+        "required": [
+          "_id",
+          "uuid",
+          "project_id",
+          "user_id",
+          "channel",
+          "actions",
+          "text",
+          "status_read",
+          "date_read",
+          "icon",
+          "variables",
+          "data",
+          "user_notify_category",
+          "error",
+          "language",
+          "language_iso"
+        ]
+      },
       "NotifyHistorySiteResponse": {
         "type": "object",
         "properties": {
@@ -29131,6 +31048,7 @@
           },
           "ref_id": {
             "type": "string",
+            "nullable": true,
             "example": "asdfaD9",
             "description": "Unique symbol id of user"
           }
@@ -29158,6 +31076,7 @@
           },
           "to_project_id": {
             "type": "number",
+            "nullable": true,
             "example": 1,
             "description": "Project id (user)"
           },
@@ -29173,8 +31092,9 @@
             "description": "Access type"
           },
           "date": {
+            "format": "date-time",
             "type": "string",
-            "example": "2026-07-15T17:55:06.588Z",
+            "example": "2026-09-25T20:56:24.370Z",
             "description": "Date create"
           },
           "secret": {
@@ -29202,6 +31122,7 @@
             "description": "from_project_id"
           },
           "to_project_": {
+            "nullable": true,
             "description": "User info",
             "example": {
               "user_id": 1,
@@ -29256,6 +31177,7 @@
           },
           "photo_50": {
             "type": "string",
+            "nullable": true,
             "example": "https://example.com/photo.jpg",
             "description": "Link to avatar 50*50px"
           }
@@ -29347,6 +31269,25 @@
           "from_user_id"
         ]
       },
+      "ProjectChannelMemberStreamInfoResponse": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "example": "...",
+            "description": "Description"
+          },
+          "title": {
+            "type": "string",
+            "example": "....",
+            "description": "Title"
+          }
+        },
+        "required": [
+          "description",
+          "title"
+        ]
+      },
       "ProjectChannelMemberInfoResponse": {
         "type": "object",
         "properties": {
@@ -29372,6 +31313,7 @@
           },
           "ref_id": {
             "type": "string",
+            "nullable": true,
             "example": "asdfaD9",
             "description": "Unique symbol id of user"
           }
@@ -29382,25 +31324,6 @@
           "fename",
           "photo_50",
           "ref_id"
-        ]
-      },
-      "ProjectChannelMemberStreamInfoResponse": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string",
-            "example": "...",
-            "description": "Description"
-          },
-          "title": {
-            "type": "string",
-            "example": "....",
-            "description": "Title"
-          }
-        },
-        "required": [
-          "description",
-          "title"
         ]
       },
       "ProjectChannelResponse": {
@@ -29418,8 +31341,8 @@
             "description": "Access type"
           },
           "active": {
-            "type": "number",
-            "example": 1,
+            "type": "boolean",
+            "example": false,
             "description": ""
           },
           "channel_id": {
@@ -29439,21 +31362,21 @@
           },
           "preview": {
             "type": "string",
+            "nullable": true,
             "example": "",
-            "description": "Preview",
-            "nullable": true
+            "description": "Preview"
           },
           "title": {
             "type": "string",
+            "nullable": true,
             "example": "Ex title",
-            "description": "Title",
-            "nullable": true
+            "description": "Title"
           },
           "transcoder_id": {
             "type": "number",
+            "nullable": true,
             "example": "1",
-            "description": "Transcoder ID",
-            "nullable": true
+            "description": "Transcoder ID"
           },
           "unlim": {
             "type": "string",
@@ -29491,10 +31414,15 @@
             ]
           },
           "streamInfo": {
+            "nullable": true,
             "description": "Stream info",
-            "allOf": [
+            "oneOf": [
               {
                 "$ref": "#/components/schemas/ProjectChannelMemberStreamInfoResponse"
+              },
+              {
+                "type": "array",
+                "items": {}
               }
             ]
           }
@@ -29530,15 +31458,8 @@
         "type": "object",
         "properties": {
           "_id": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "$ref": "#/components/schemas/ObjectId"
-              }
-            },
-            "required": [
-              "type"
-            ]
+            "type": "string",
+            "description": "Id of page in mongodb"
           },
           "language": {
             "enum": [
@@ -29581,6 +31502,35 @@
           "count_use"
         ]
       },
+      "PaginatedBlogPageTagResponse": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number",
+            "description": "Общее количество элементов вообще"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Размер запрашиваемой страницы"
+          },
+          "offset": {
+            "type": "number",
+            "description": "С какого элемента включительно делать запрос"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SiteBlogPageTagResponse"
+            }
+          }
+        },
+        "required": [
+          "total",
+          "limit",
+          "offset",
+          "results"
+        ]
+      },
       "RtmpServerLocationResponse": {
         "type": "object",
         "properties": {
@@ -29601,6 +31551,20 @@
           "name",
           "host",
           "url"
+        ]
+      },
+      "RtmpServerLocationsResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RtmpServerLocationResponse"
+            }
+          }
+        },
+        "required": [
+          "results"
         ]
       },
       "RtmpServerListItemBase": {
@@ -30201,6 +32165,20 @@
           "description"
         ]
       },
+      "PaySystemsResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaySystemListResponse"
+            }
+          }
+        },
+        "required": [
+          "results"
+        ]
+      },
       "PayRedirectUrlDto": {
         "type": "object",
         "properties": {
@@ -30552,10 +32530,12 @@
           },
           "pay_id": {
             "type": "string",
+            "nullable": true,
             "description": "Pay system id"
           },
           "pay_key": {
             "type": "string",
+            "nullable": true,
             "description": "Pay system key"
           },
           "crypto_provider": {
@@ -30612,13 +32592,14 @@
             "description": "Amount"
           },
           "currency": {
+            "type": "string",
+            "example": "usd",
+            "description": "Currency",
             "enum": [
               "rub",
               "usd"
             ],
-            "type": "string",
-            "example": "usd",
-            "description": "Currency"
+            "nullable": true
           },
           "plan_period": {
             "type": "string",
@@ -30626,7 +32607,8 @@
             "enum": [
               "month",
               "year"
-            ]
+            ],
+            "nullable": true
           },
           "status": {
             "type": "string",
@@ -30638,6 +32620,7 @@
           },
           "title": {
             "type": "string",
+            "nullable": true,
             "description": "Tariff title"
           }
         },
@@ -30841,41 +32824,35 @@
           },
           "email": {
             "type": "string",
+            "nullable": true,
             "description": "E-mail"
           },
           "street": {
             "type": "string",
-            "nullable": true,
             "description": "Street"
           },
           "house_number": {
             "type": "string",
-            "nullable": true,
             "description": "House number"
           },
           "zip": {
             "type": "string",
-            "nullable": true,
             "description": "Postal code"
           },
           "city": {
             "type": "string",
-            "nullable": true,
             "description": "City"
           },
           "state": {
             "type": "string",
-            "nullable": true,
             "description": "State ot region"
           },
           "company_name": {
             "type": "string",
-            "nullable": true,
             "description": "Company name"
           },
           "description": {
             "type": "string",
-            "nullable": true,
             "description": "Additional information about the payment"
           }
         },
@@ -30976,6 +32953,7 @@
             "description": "Prolongation status"
           },
           "period": {
+            "nullable": true,
             "enum": [
               "month",
               "year"
@@ -30987,7 +32965,6 @@
         },
         "required": [
           "id",
-          "date_end",
           "title",
           "prolongation",
           "period"
@@ -32060,6 +34037,20 @@
           "max_amount"
         ]
       },
+      "PayoutSystemAccountListResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PayoutSystemAccountListItemResponse"
+            }
+          }
+        },
+        "required": [
+          "results"
+        ]
+      },
       "PullServerTransports": {
         "type": "object",
         "properties": {
@@ -32088,6 +34079,11 @@
       "PullServerListItem": {
         "type": "object",
         "properties": {
+          "targetKey": {
+            "type": "string",
+            "example": "pull:12",
+            "description": "Stable speed-test target key"
+          },
           "city": {
             "type": "string",
             "example": "Moscow",
@@ -32116,6 +34112,7 @@
           }
         },
         "required": [
+          "targetKey",
           "city",
           "pingHost",
           "url",
@@ -32270,6 +34267,39 @@
           "key"
         ]
       },
+      "SiteChatKeyRequest": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "type": "string",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
+            "enum": [
+              "1"
+            ],
+            "example": "1",
+            "default": "1"
+          },
+          "language": {
+            "default": "en",
+            "enum": [
+              "ru",
+              "en",
+              "cn"
+            ],
+            "type": "string",
+            "description": "Current language",
+            "example": "en"
+          },
+          "project_id": {
+            "type": "number",
+            "description": "Project id"
+          }
+        },
+        "required": [
+          "language",
+          "project_id"
+        ]
+      },
       "SiteAuthCentrifugeResponse": {
         "type": "object",
         "properties": {
@@ -32407,6 +34437,23 @@
           "results"
         ]
       },
+      "SiteBroadcastTemplateResponse": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Stream title"
+          },
+          "description": {
+            "type": "string",
+            "example": "Stream description"
+          }
+        },
+        "required": [
+          "title",
+          "description"
+        ]
+      },
       "SiteRestreamResponse": {
         "type": "object",
         "properties": {
@@ -32428,6 +34475,7 @@
           },
           "photo": {
             "type": "string",
+            "nullable": true,
             "description": "Channel photo"
           },
           "video": {
@@ -32445,6 +34493,7 @@
           "created_at": {
             "format": "date-time",
             "type": "string",
+            "nullable": true,
             "description": "Create time"
           }
         },
@@ -32469,18 +34518,22 @@
           },
           "bitrate": {
             "type": "number",
+            "nullable": true,
             "description": "Bitrate Id"
           },
           "fps": {
             "type": "number",
+            "nullable": true,
             "description": "Fps"
           },
           "width": {
             "type": "number",
+            "nullable": true,
             "description": "width"
           },
           "height": {
             "type": "number",
+            "nullable": true,
             "description": "height"
           },
           "location": {
@@ -32489,20 +34542,24 @@
           },
           "encoder": {
             "type": "string",
+            "nullable": true,
             "description": "Encoder"
           },
           "ip": {
             "type": "string",
+            "nullable": true,
             "description": "IP address"
           },
           "created_at": {
             "format": "date-time",
             "type": "string",
+            "nullable": true,
             "description": "Create time"
           },
           "finish_at": {
             "format": "date-time",
             "type": "string",
+            "nullable": true,
             "description": "Finish time"
           },
           "viewers": {
@@ -32545,6 +34602,14 @@
       "SiteBroadcastStatusInactiveResponse": {
         "type": "object",
         "properties": {
+          "kind": {
+            "type": "string",
+            "example": "inactive",
+            "description": "Broadcast status response kind",
+            "enum": [
+              "inactive"
+            ]
+          },
           "status": {
             "type": "string",
             "example": "offline",
@@ -32555,6 +34620,7 @@
           }
         },
         "required": [
+          "kind",
           "status"
         ]
       },
@@ -32581,6 +34647,7 @@
         "properties": {
           "broadcast_id": {
             "type": "number",
+            "nullable": true,
             "example": 1,
             "description": "Broadcast id"
           },
@@ -32597,7 +34664,8 @@
           "date_start": {
             "format": "date-time",
             "type": "string",
-            "example": "2026-07-15T17:55:07.839Z",
+            "nullable": true,
+            "example": "2026-09-25T20:56:25.451Z",
             "description": "Date start stream"
           },
           "resolution": {
@@ -32607,11 +34675,13 @@
           },
           "fps": {
             "type": "number",
+            "nullable": true,
             "example": 1,
             "description": "FPS"
           },
           "bitrate": {
             "type": "number",
+            "nullable": true,
             "example": 1,
             "description": "Bitrate"
           },
@@ -32631,6 +34701,15 @@
               "done"
             ]
           },
+          "action": {
+            "type": "string",
+            "example": "active",
+            "description": "Restream action state",
+            "enum": [
+              "active",
+              "stopped"
+            ]
+          },
           "url": {
             "type": "string",
             "example": "https://example.com/live/stream123.m3u8",
@@ -32647,6 +34726,14 @@
             "items": {
               "$ref": "#/components/schemas/BroadcastLiveStatusRestream"
             }
+          },
+          "kind": {
+            "type": "string",
+            "example": "live",
+            "description": "Broadcast status response kind",
+            "enum": [
+              "live"
+            ]
           },
           "app": {
             "type": "string",
@@ -32666,9 +34753,11 @@
           "fps",
           "bitrate",
           "status",
+          "action",
           "url",
           "video_codec_name",
           "restreams",
+          "kind",
           "app"
         ]
       },
@@ -32677,6 +34766,7 @@
         "properties": {
           "broadcast_id": {
             "type": "number",
+            "nullable": true,
             "example": 1,
             "description": "Broadcast id"
           },
@@ -32693,7 +34783,8 @@
           "date_start": {
             "format": "date-time",
             "type": "string",
-            "example": "2026-07-15T17:55:07.839Z",
+            "nullable": true,
+            "example": "2026-09-25T20:56:25.451Z",
             "description": "Date start stream"
           },
           "resolution": {
@@ -32703,11 +34794,13 @@
           },
           "fps": {
             "type": "number",
+            "nullable": true,
             "example": 1,
             "description": "FPS"
           },
           "bitrate": {
             "type": "number",
+            "nullable": true,
             "example": 1,
             "description": "Bitrate"
           },
@@ -32727,6 +34820,15 @@
               "done"
             ]
           },
+          "action": {
+            "type": "string",
+            "example": "active",
+            "description": "Restream action state",
+            "enum": [
+              "active",
+              "stopped"
+            ]
+          },
           "url": {
             "type": "string",
             "example": "https://example.com/live/stream123.m3u8",
@@ -32743,6 +34845,14 @@
             "items": {
               "$ref": "#/components/schemas/BroadcastLiveStatusRestream"
             }
+          },
+          "kind": {
+            "type": "string",
+            "example": "transcoding",
+            "description": "Broadcast status response kind",
+            "enum": [
+              "transcoding"
+            ]
           },
           "app": {
             "type": "string",
@@ -32762,9 +34872,11 @@
           "fps",
           "bitrate",
           "status",
+          "action",
           "url",
           "video_codec_name",
           "restreams",
+          "kind",
           "app"
         ]
       },
@@ -32773,6 +34885,7 @@
         "properties": {
           "broadcast_id": {
             "type": "number",
+            "nullable": true,
             "example": 1,
             "description": "Broadcast id"
           },
@@ -32789,7 +34902,8 @@
           "date_start": {
             "format": "date-time",
             "type": "string",
-            "example": "2026-07-15T17:55:07.839Z",
+            "nullable": true,
+            "example": "2026-09-25T20:56:25.451Z",
             "description": "Date start stream"
           },
           "resolution": {
@@ -32799,11 +34913,13 @@
           },
           "fps": {
             "type": "number",
+            "nullable": true,
             "example": 1,
             "description": "FPS"
           },
           "bitrate": {
             "type": "number",
+            "nullable": true,
             "example": 1,
             "description": "Bitrate"
           },
@@ -32823,6 +34939,15 @@
               "done"
             ]
           },
+          "action": {
+            "type": "string",
+            "example": "active",
+            "description": "Restream action state",
+            "enum": [
+              "active",
+              "stopped"
+            ]
+          },
           "url": {
             "type": "string",
             "example": "https://example.com/live/stream123.m3u8",
@@ -32839,6 +34964,14 @@
             "items": {
               "$ref": "#/components/schemas/BroadcastLiveStatusRestream"
             }
+          },
+          "kind": {
+            "type": "string",
+            "example": "scheduler",
+            "description": "Broadcast status response kind",
+            "enum": [
+              "scheduler"
+            ]
           },
           "app": {
             "type": "string",
@@ -32878,14 +35011,12 @@
           "fps",
           "bitrate",
           "status",
+          "action",
           "url",
           "video_codec_name",
           "restreams",
-          "app",
-          "schedulerId",
-          "video_id",
-          "name",
-          "duration"
+          "kind",
+          "app"
         ]
       },
       "SiteRestreamItemResponse": {
@@ -32920,11 +35051,13 @@
           "created_at": {
             "format": "date-time",
             "type": "string",
+            "nullable": true,
             "description": "Create time"
           },
           "finish_at": {
             "format": "date-time",
             "type": "string",
+            "nullable": true,
             "description": "Finish time"
           },
           "reconnects": {
@@ -33006,6 +35139,23 @@
           "ip"
         ]
       },
+      "SiteRestreamEventChannelResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Channel name"
+          },
+          "photo": {
+            "type": "string",
+            "description": "Channel photo"
+          }
+        },
+        "required": [
+          "name",
+          "photo"
+        ]
+      },
       "SiteRestreamEventResponse": {
         "type": "object",
         "properties": {
@@ -33053,6 +35203,14 @@
           "platform": {
             "type": "string",
             "description": "Platform"
+          },
+          "channel": {
+            "description": "Channel",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SiteRestreamEventChannelResponse"
+              }
+            ]
           }
         },
         "required": [
@@ -33110,6 +35268,14 @@
           "platform": {
             "type": "string",
             "description": "Platform"
+          },
+          "channel": {
+            "description": "Channel",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SiteRestreamEventChannelResponse"
+              }
+            ]
           }
         },
         "required": [
@@ -33346,6 +35512,7 @@
           },
           "image": {
             "type": "string",
+            "nullable": true,
             "description": "Platform image",
             "example": "https://example.com/image.jpg"
           },
@@ -34012,7 +36179,8 @@
           "created_at": {
             "format": "date-time",
             "type": "string",
-            "description": "Created at"
+            "description": "Created at",
+            "nullable": true
           },
           "event_channel": {
             "type": "string",
@@ -34102,7 +36270,8 @@
           "created_at": {
             "format": "date-time",
             "type": "string",
-            "description": "Created at"
+            "description": "Created at",
+            "nullable": true
           },
           "event_channel": {
             "type": "string",
@@ -34423,36 +36592,6 @@
           "url",
           "token",
           "channel",
-          "space",
-          "success"
-        ]
-      },
-      "VideoCreateErrorResponse": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "string",
-            "enum": [
-              "error"
-            ],
-            "description": "Response status for API discriminator"
-          },
-          "error": {
-            "type": "string",
-            "description": "Error message"
-          },
-          "space": {
-            "type": "number",
-            "description": "Upload space in bytes"
-          },
-          "success": {
-            "type": "boolean",
-            "description": "Upload session success"
-          }
-        },
-        "required": [
-          "status",
-          "error",
           "space",
           "success"
         ]
@@ -35391,8 +37530,7 @@
               "failed",
               "aborted",
               "limit_reached"
-            ],
-            "default": "complete"
+            ]
           },
           "start_at": {
             "type": "string",
@@ -35412,7 +37550,6 @@
           }
         },
         "required": [
-          "status",
           "is_current_room",
           "is_webinar_room"
         ]
@@ -35514,6 +37651,387 @@
           "height",
           "fps",
           "bitrate"
+        ]
+      },
+      "SchedulerVideoResponse": {
+        "type": "object",
+        "properties": {
+          "duration": {
+            "type": "number",
+            "description": "Video duration in seconds"
+          },
+          "id": {
+            "type": "number",
+            "description": "Video id"
+          },
+          "name": {
+            "type": "string",
+            "description": "Video name"
+          },
+          "previewPhotoSmall": {
+            "type": "string",
+            "description": "Small video preview URL"
+          },
+          "size": {
+            "type": "number",
+            "description": "Video size in bytes"
+          },
+          "cacheStatus": {
+            "enum": [
+              "pending",
+              "completed",
+              "error",
+              "prepare"
+            ],
+            "type": "string",
+            "description": "Video cache preparation status"
+          }
+        },
+        "required": [
+          "duration",
+          "id",
+          "name",
+          "previewPhotoSmall",
+          "size",
+          "cacheStatus"
+        ]
+      },
+      "SchedulerItemResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "Backend scheduler id"
+          },
+          "project_id": {
+            "type": "number",
+            "description": "Project id"
+          },
+          "group_id": {
+            "type": "number",
+            "description": "Legacy primary channel id"
+          },
+          "taskId": {
+            "type": "number",
+            "nullable": true,
+            "description": "External video-scheduler task id"
+          },
+          "start_at": {
+            "type": "number",
+            "description": "Start time in Unix seconds"
+          },
+          "end_at": {
+            "type": "number",
+            "description": "End time in Unix seconds"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the persisted schedule is active"
+          },
+          "channel_ids": {
+            "description": "Complete associated channel id list",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "video"
+            ],
+            "description": "Scheduler execution mode"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "video"
+            ],
+            "description": "Legacy scheduler item type"
+          },
+          "video": {
+            "nullable": true,
+            "description": "Referenced video details, or null if the video was removed",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SchedulerVideoResponse"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "project_id",
+          "group_id",
+          "taskId",
+          "start_at",
+          "end_at",
+          "active",
+          "channel_ids",
+          "mode",
+          "type",
+          "video"
+        ]
+      },
+      "ListSchedulerResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SchedulerItemResponse"
+            }
+          },
+          "total": {
+            "type": "number",
+            "description": "Complete filtered result count"
+          },
+          "offset": {
+            "type": "number",
+            "description": "Result offset"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Page size"
+          }
+        },
+        "required": [
+          "results",
+          "total",
+          "offset",
+          "limit"
+        ]
+      },
+      "SchedulerVideoRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Project video id",
+            "example": 123
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "CreateSchedulerRequest": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "type": "string",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
+            "enum": [
+              "1"
+            ],
+            "example": "1",
+            "default": "1"
+          },
+          "language": {
+            "default": "en",
+            "enum": [
+              "ru",
+              "en",
+              "cn"
+            ],
+            "type": "string",
+            "description": "Current language",
+            "example": "en"
+          },
+          "project_id": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Project id",
+            "example": 42
+          },
+          "channel_ids": {
+            "minItems": 1,
+            "description": "Complete list of target channel ids",
+            "example": [
+              11,
+              12
+            ],
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": 1
+            }
+          },
+          "start_at": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Requested start time in Unix seconds"
+          },
+          "end_at": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Requested end time in Unix seconds"
+          },
+          "start_now": {
+            "type": "boolean",
+            "description": "Start the external scheduler task immediately",
+            "example": false
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "video"
+            ],
+            "description": "Scheduler execution mode",
+            "example": "video"
+          },
+          "video": {
+            "description": "Video-mode configuration",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SchedulerVideoRequest"
+              }
+            ]
+          }
+        },
+        "required": [
+          "language",
+          "project_id",
+          "channel_ids",
+          "start_at",
+          "end_at",
+          "start_now",
+          "mode",
+          "video"
+        ]
+      },
+      "CreateSchedulerResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "Backend scheduler id",
+            "example": 321
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "UpdateSchedulerRequest": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "type": "string",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
+            "enum": [
+              "1"
+            ],
+            "example": "1",
+            "default": "1"
+          },
+          "language": {
+            "default": "en",
+            "enum": [
+              "ru",
+              "en",
+              "cn"
+            ],
+            "type": "string",
+            "description": "Current language",
+            "example": "en"
+          },
+          "id": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Backend scheduler id"
+          },
+          "project_id": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Project id",
+            "example": 42
+          },
+          "channel_ids": {
+            "minItems": 1,
+            "description": "Complete replacement list of target channel ids",
+            "example": [
+              11,
+              12
+            ],
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": 1
+            }
+          },
+          "start_at": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Replacement start time in Unix seconds"
+          },
+          "end_at": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Replacement end time in Unix seconds"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "video"
+            ],
+            "description": "Scheduler execution mode",
+            "example": "video"
+          },
+          "video": {
+            "description": "Video-mode configuration",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SchedulerVideoRequest"
+              }
+            ]
+          }
+        },
+        "required": [
+          "language",
+          "id",
+          "project_id",
+          "channel_ids",
+          "start_at",
+          "end_at",
+          "mode",
+          "video"
+        ]
+      },
+      "StopSchedulerRequest": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "type": "string",
+            "description": "Version (automatically defaults to 1 based on the API contract, can be overridden)",
+            "enum": [
+              "1"
+            ],
+            "example": "1",
+            "default": "1"
+          },
+          "language": {
+            "default": "en",
+            "enum": [
+              "ru",
+              "en",
+              "cn"
+            ],
+            "type": "string",
+            "description": "Current language",
+            "example": "en"
+          },
+          "project_id": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Project id",
+            "example": 42
+          }
+        },
+        "required": [
+          "language",
+          "project_id"
         ]
       },
       "CentrifugoStreamStartPayload": {
@@ -35679,13 +38197,10 @@
             "example": "Text"
           },
           "content_actions": {
+            "description": "Action",
             "type": "array",
             "items": {
-              "description": "Action",
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/InternalNotifyTypeAction"
-              }
+              "$ref": "#/components/schemas/InternalNotifyTypeAction"
             }
           }
         },
@@ -35693,8 +38208,7 @@
           "type",
           "content_type",
           "content_title",
-          "content_text",
-          "content_actions"
+          "content_text"
         ]
       },
       "CentrifugoProjectImportantEventResponse": {

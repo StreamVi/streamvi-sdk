@@ -35,6 +35,7 @@ export declare const ProjectMeResponseScopesEnum: {
     readonly ChannelWrite: "channel:write";
     readonly ChannelDelete: "channel:delete";
     readonly ChannelAccessWrite: "channel-access:write";
+    readonly DiagnosticsRun: "diagnostics:run";
     readonly MediaFilesRead: "media-files:read";
     readonly MediaFilesWrite: "media-files:write";
     readonly NotificationRead: "notification:read";

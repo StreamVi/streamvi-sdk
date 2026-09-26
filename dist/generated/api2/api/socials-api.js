@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SocialsApi = exports.SocialsApiFactory = exports.SocialsApiFp = exports.SocialsApiAxiosParamCreator = void 0;
+exports.SocialsGetListV1VEnum = exports.SocialsGetListV1LanguageEnum = exports.SocialsApi = exports.SocialsApiFactory = exports.SocialsApiFp = exports.SocialsApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -32,10 +32,14 @@ const SocialsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Social list for user
+         * @param {SocialsGetListV1LanguageEnum} language Current language
+         * @param {SocialsGetListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        socialsGetListV1: async (options = {}) => {
+        socialsGetListV1: async (language, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('socialsGetListV1', 'language', language);
             const localVarPath = `/method/socials/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -49,6 +53,15 @@ const SocialsApiAxiosParamCreator = function (configuration) {
             // authentication oauth2 required
             // oauth required
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -70,12 +83,14 @@ const SocialsApiFp = function (configuration) {
         /**
          *
          * @summary Social list for user
+         * @param {SocialsGetListV1LanguageEnum} language Current language
+         * @param {SocialsGetListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async socialsGetListV1(options) {
+        async socialsGetListV1(language, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.socialsGetListV1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.socialsGetListV1(language, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['SocialsApi.socialsGetListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -93,11 +108,12 @@ const SocialsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Social list for user
+         * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        socialsGetListV1(options) {
-            return localVarFp.socialsGetListV1(options).then((request) => request(axios, basePath));
+        socialsGetListV1(requestParameters, options) {
+            return localVarFp.socialsGetListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -112,12 +128,27 @@ class SocialsApi extends base_1.BaseAPI {
     /**
      *
      * @summary Social list for user
+     * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SocialsApi
      */
-    socialsGetListV1(options) {
-        return (0, exports.SocialsApiFp)(this.configuration).socialsGetListV1(options).then((request) => request(this.axios, this.basePath));
+    socialsGetListV1(requestParameters, options) {
+        return (0, exports.SocialsApiFp)(this.configuration).socialsGetListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.SocialsApi = SocialsApi;
+/**
+ * @export
+ */
+exports.SocialsGetListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.SocialsGetListV1VEnum = {
+    _1: '1'
+};

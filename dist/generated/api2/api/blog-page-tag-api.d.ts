@@ -12,7 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { PaginatedResponseOfSiteBlogPageTagResponse } from '../models';
+import type { PaginatedBlogPageTagResponse } from '../models';
 /**
  * BlogPageTagApi - axios parameter creator
  * @export
@@ -47,7 +47,7 @@ export declare const BlogPageTagApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    blogPageTagListV1(language: BlogPageTagListV1LanguageEnum, v?: BlogPageTagListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse>>;
+    blogPageTagListV1(language: BlogPageTagListV1LanguageEnum, v?: BlogPageTagListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBlogPageTagResponse>>;
 };
 /**
  * BlogPageTagApi - factory interface
@@ -61,7 +61,7 @@ export declare const BlogPageTagApiFactory: (configuration?: Configuration, base
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse>;
+    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedBlogPageTagResponse>;
 };
 /**
  * BlogPageTagApi - interface
@@ -77,7 +77,7 @@ export interface BlogPageTagApiInterface {
      * @throws {RequiredError}
      * @memberof BlogPageTagApiInterface
      */
-    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse>;
+    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedBlogPageTagResponse>;
 }
 /**
  * Request parameters for blogPageTagListV1 operation in BlogPageTagApi.
@@ -131,7 +131,7 @@ export declare class BlogPageTagApi extends BaseAPI implements BlogPageTagApiInt
      * @throws {RequiredError}
      * @memberof BlogPageTagApi
      */
-    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfSiteBlogPageTagResponse, any, {}>>;
+    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBlogPageTagResponse, any, {}, any>>;
 }
 /**
  * @export

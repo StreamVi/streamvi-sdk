@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { PlanRestream2UserItemResponse } from './plan-restream2-user-item-response';
-import type { PlanRestreamResponse } from './plan-restream-response';
+import type { ProjectInfoRestreamDataResponse } from './project-info-restream-data-response';
+import type { ProjectInfoRestreamPeriodResponse } from './project-info-restream-period-response';
 /**
  *
  * @export
@@ -19,15 +19,15 @@ import type { PlanRestreamResponse } from './plan-restream-response';
 export interface ProjectInfoRestreamResponse {
     /**
      * Plan restream to user
-     * @type {PlanRestream2UserItemResponse}
+     * @type {ProjectInfoRestreamPeriodResponse}
      * @memberof ProjectInfoRestreamResponse
      */
-    'plan2user': PlanRestream2UserItemResponse;
+    'plan2user': ProjectInfoRestreamPeriodResponse;
     /**
      * Plan restream data
-     * @type {PlanRestreamResponse}
+     * @type {ProjectInfoRestreamDataResponse}
      * @memberof ProjectInfoRestreamResponse
      */
-    'data': PlanRestreamResponse;
+    'data': ProjectInfoRestreamDataResponse;
 }
 //# sourceMappingURL=project-info-restream-response.d.ts.map

@@ -22,9 +22,9 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
-import type { ListOfPaySystemListResponse } from '../models';
-// @ts-ignore
 import type { PayRedirectUrlDto } from '../models';
+// @ts-ignore
+import type { PaySystemsResponse } from '../models';
 // @ts-ignore
 import type { TonConnectPaymentIntentDto } from '../models';
 // @ts-ignore
@@ -747,7 +747,7 @@ export const PaySystemApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async paySystemListV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPaySystemListResponse>> {
+        async paySystemListV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaySystemsResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.paySystemListV1(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaySystemApi.paySystemListV1']?.[localVarOperationServerIndex]?.url;
@@ -928,7 +928,7 @@ export const PaySystemApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<ListOfPaySystemListResponse> {
+        paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<PaySystemsResponse> {
             return localVarFp.paySystemListV1(options).then((request) => request(axios, basePath));
         },
         /**
@@ -1067,7 +1067,7 @@ export interface PaySystemApiInterface {
      * @throws {RequiredError}
      * @memberof PaySystemApiInterface
      */
-    paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<ListOfPaySystemListResponse>;
+    paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<PaySystemsResponse>;
 
     /**
      * 

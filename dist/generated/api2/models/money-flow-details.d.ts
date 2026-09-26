@@ -20,7 +20,7 @@ export interface MoneyFlowDetails {
      * @type {string}
      * @memberof MoneyFlowDetails
      */
-    'title': string;
+    'title': string | null;
     /**
      * Date
      * @type {string}

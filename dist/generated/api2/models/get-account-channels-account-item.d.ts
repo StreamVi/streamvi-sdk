@@ -26,13 +26,13 @@ export interface GetAccountChannelsAccountItem {
      * @type {string}
      * @memberof GetAccountChannelsAccountItem
      */
-    'name': string;
+    'name': string | null;
     /**
      * Avatar account
      * @type {string}
      * @memberof GetAccountChannelsAccountItem
      */
-    'avatar': string;
+    'avatar': string | null;
     /**
      * Internal id account
      * @type {number}

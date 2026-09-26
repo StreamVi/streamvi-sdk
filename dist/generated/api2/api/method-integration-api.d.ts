@@ -123,7 +123,7 @@ export declare class MethodIntegrationApi extends BaseAPI implements MethodInteg
      * @throws {RequiredError}
      * @memberof MethodIntegrationApi
      */
-    methodIntegrationTemplateGetTemplateWidgetDataV1(requestParameters: MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<IntegrationTemplateWidgetGetResponse, any, {}>>;
+    methodIntegrationTemplateGetTemplateWidgetDataV1(requestParameters: MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<IntegrationTemplateWidgetGetResponse, any, {}, any>>;
 }
 /**
  * @export

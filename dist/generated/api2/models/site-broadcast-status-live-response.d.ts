@@ -21,7 +21,7 @@ export interface SiteBroadcastStatusLiveResponse {
      * @type {number}
      * @memberof SiteBroadcastStatusLiveResponse
      */
-    'broadcast_id': number;
+    'broadcast_id': number | null;
     /**
      * Stream id
      * @type {number}
@@ -39,7 +39,7 @@ export interface SiteBroadcastStatusLiveResponse {
      * @type {string}
      * @memberof SiteBroadcastStatusLiveResponse
      */
-    'date_start': string;
+    'date_start': string | null;
     /**
      * Stream resolution
      * @type {string}
@@ -51,13 +51,13 @@ export interface SiteBroadcastStatusLiveResponse {
      * @type {number}
      * @memberof SiteBroadcastStatusLiveResponse
      */
-    'fps': number;
+    'fps': number | null;
     /**
      * Bitrate
      * @type {number}
      * @memberof SiteBroadcastStatusLiveResponse
      */
-    'bitrate': number;
+    'bitrate': number | null;
     /**
      * Key frame
      * @type {number}
@@ -70,6 +70,12 @@ export interface SiteBroadcastStatusLiveResponse {
      * @memberof SiteBroadcastStatusLiveResponse
      */
     'status': SiteBroadcastStatusLiveResponseStatusEnum;
+    /**
+     * Restream action state
+     * @type {string}
+     * @memberof SiteBroadcastStatusLiveResponse
+     */
+    'action': SiteBroadcastStatusLiveResponseActionEnum;
     /**
      * Broadcast url
      * @type {string}
@@ -89,6 +95,12 @@ export interface SiteBroadcastStatusLiveResponse {
      */
     'restreams': Array<BroadcastLiveStatusRestream>;
     /**
+     * Broadcast status response kind
+     * @type {string}
+     * @memberof SiteBroadcastStatusLiveResponse
+     */
+    'kind': SiteBroadcastStatusLiveResponseKindEnum;
+    /**
      * App name (live)
      * @type {string}
      * @memberof SiteBroadcastStatusLiveResponse
@@ -102,6 +114,15 @@ export declare const SiteBroadcastStatusLiveResponseStatusEnum: {
     readonly Done: "done";
 };
 export type SiteBroadcastStatusLiveResponseStatusEnum = typeof SiteBroadcastStatusLiveResponseStatusEnum[keyof typeof SiteBroadcastStatusLiveResponseStatusEnum];
+export declare const SiteBroadcastStatusLiveResponseActionEnum: {
+    readonly Active: "active";
+    readonly Stopped: "stopped";
+};
+export type SiteBroadcastStatusLiveResponseActionEnum = typeof SiteBroadcastStatusLiveResponseActionEnum[keyof typeof SiteBroadcastStatusLiveResponseActionEnum];
+export declare const SiteBroadcastStatusLiveResponseKindEnum: {
+    readonly Live: "live";
+};
+export type SiteBroadcastStatusLiveResponseKindEnum = typeof SiteBroadcastStatusLiveResponseKindEnum[keyof typeof SiteBroadcastStatusLiveResponseKindEnum];
 export declare const SiteBroadcastStatusLiveResponseAppEnum: {
     readonly Live: "live";
 };

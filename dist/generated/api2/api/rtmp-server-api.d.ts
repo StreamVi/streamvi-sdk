@@ -12,10 +12,10 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { ListOfRtmpServerLocationResponse } from '../models';
 import type { RtmpServerGraphResponse } from '../models';
 import type { RtmpServerListResponseBase } from '../models';
 import type { RtmpServerListV3Response } from '../models';
+import type { RtmpServerLocationsResponse } from '../models';
 import type { RtmpServerSrtLatencyResponse } from '../models';
 import type { RtmpServerStateResponse } from '../models';
 /**
@@ -106,7 +106,7 @@ export declare const RtmpServerApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodRtmpServerListLocationsUnauthorizedV1(language: MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum, v?: MethodRtmpServerListLocationsUnauthorizedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfRtmpServerLocationResponse>>;
+    methodRtmpServerListLocationsUnauthorizedV1(language: MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum, v?: MethodRtmpServerListLocationsUnauthorizedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerLocationsResponse>>;
     /**
      *
      * @summary Graph of rtmp servers
@@ -180,7 +180,7 @@ export declare const RtmpServerApiFactory: (configuration?: Configuration, baseP
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfRtmpServerLocationResponse>;
+    methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerLocationsResponse>;
     /**
      *
      * @summary Graph of rtmp servers
@@ -243,7 +243,7 @@ export interface RtmpServerApiInterface {
      * @throws {RequiredError}
      * @memberof RtmpServerApiInterface
      */
-    methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfRtmpServerLocationResponse>;
+    methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerLocationsResponse>;
     /**
      *
      * @summary Graph of rtmp servers
@@ -475,7 +475,7 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListOfRtmpServerLocationResponse, any, {}>>;
+    methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerLocationsResponse, any, {}, any>>;
     /**
      *
      * @summary Graph of rtmp servers
@@ -484,7 +484,7 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerGraphV1(requestParameters: RtmpServerApiRtmpServerGraphV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerGraphResponse, any, {}>>;
+    rtmpServerGraphV1(requestParameters: RtmpServerApiRtmpServerGraphV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerGraphResponse, any, {}, any>>;
     /**
      *
      * @summary List rtmp servers (base info)
@@ -493,7 +493,7 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerListBaseV1(requestParameters: RtmpServerApiRtmpServerListBaseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerListResponseBase, any, {}>>;
+    rtmpServerListBaseV1(requestParameters: RtmpServerApiRtmpServerListBaseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerListResponseBase, any, {}, any>>;
     /**
      *
      * @summary List rtmp servers v3
@@ -502,7 +502,7 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerListV3(requestParameters: RtmpServerApiRtmpServerListV3Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerListV3Response, any, {}>>;
+    rtmpServerListV3(requestParameters: RtmpServerApiRtmpServerListV3Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerListV3Response, any, {}, any>>;
     /**
      *
      * @summary Get recommended SRT latency by source and destination ip
@@ -511,7 +511,7 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerSrtLatencyV1(requestParameters: RtmpServerApiRtmpServerSrtLatencyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerSrtLatencyResponse, any, {}>>;
+    rtmpServerSrtLatencyV1(requestParameters: RtmpServerApiRtmpServerSrtLatencyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerSrtLatencyResponse, any, {}, any>>;
     /**
      *
      * @summary State of rtmp servers
@@ -520,7 +520,7 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerStateV1(requestParameters: RtmpServerApiRtmpServerStateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerStateResponse, any, {}>>;
+    rtmpServerStateV1(requestParameters: RtmpServerApiRtmpServerStateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RtmpServerStateResponse, any, {}, any>>;
     /**
      *
      * @summary State of rtmp servers
@@ -528,7 +528,7 @@ export declare class RtmpServerApi extends BaseAPI implements RtmpServerApiInter
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerUpV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}>>;
+    rtmpServerUpV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
 }
 /**
  * @export

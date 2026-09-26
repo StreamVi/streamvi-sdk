@@ -37,13 +37,13 @@ export interface PaymentCreateResponse {
      * @type {string}
      * @memberof PaymentCreateResponse
      */
-    'pay_id'?: string;
+    'pay_id'?: string | null;
     /**
      * Pay system key
      * @type {string}
      * @memberof PaymentCreateResponse
      */
-    'pay_key'?: string;
+    'pay_key'?: string | null;
     /**
      * Crypto payment provider
      * @type {string}

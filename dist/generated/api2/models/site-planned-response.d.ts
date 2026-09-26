@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { PlannedItemResponse } from './planned-item-response';
+import type { SelectedPlannedItemResponse } from './selected-planned-item-response';
 /**
  *
  * @export
@@ -18,9 +18,9 @@ import type { PlannedItemResponse } from './planned-item-response';
 export interface SitePlannedResponse {
     /**
      * Planned item
-     * @type {PlannedItemResponse}
+     * @type {SelectedPlannedItemResponse}
      * @memberof SitePlannedResponse
      */
-    'planned'?: PlannedItemResponse;
+    'planned'?: SelectedPlannedItemResponse;
 }
 //# sourceMappingURL=site-planned-response.d.ts.map

@@ -128,7 +128,7 @@ export declare class LiveApi extends BaseAPI implements LiveApiInterface {
      * @throws {RequiredError}
      * @memberof LiveApi
      */
-    controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteLiveRestreamsInfoResponse, any, {}>>;
+    controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteLiveRestreamsInfoResponse, any, {}, any>>;
 }
 /**
  * @export

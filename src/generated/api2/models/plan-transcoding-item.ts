@@ -37,13 +37,13 @@ export interface PlanTranscodingItem {
      * @type {string}
      * @memberof PlanTranscodingItem
      */
-    'date_end': string;
+    'date_end'?: string;
     /**
      * Plan title
      * @type {string}
      * @memberof PlanTranscodingItem
      */
-    'title': string;
+    'title': string | null;
     /**
      * Tariff type
      * @type {string}
@@ -61,7 +61,7 @@ export interface PlanTranscodingItem {
      * @type {string}
      * @memberof PlanTranscodingItem
      */
-    'period': PlanTranscodingItemPeriodEnum;
+    'period': PlanTranscodingItemPeriodEnum | null;
 }
 
 export const PlanTranscodingItemTypeEnum = {

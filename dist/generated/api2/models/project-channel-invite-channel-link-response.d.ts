@@ -32,6 +32,6 @@ export interface ProjectChannelInviteChannelLinkResponse {
      * @type {string}
      * @memberof ProjectChannelInviteChannelLinkResponse
      */
-    'photo_50': string;
+    'photo_50': string | null;
 }
 //# sourceMappingURL=project-channel-invite-channel-link-response.d.ts.map

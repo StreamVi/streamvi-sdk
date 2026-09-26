@@ -50,6 +50,12 @@ export interface SiteSetUrlRequest {
      * @memberof SiteSetUrlRequest
      */
     'url': string;
+    /**
+     * Stream key
+     * @type {string}
+     * @memberof SiteSetUrlRequest
+     */
+    'stream_key'?: string;
 }
 
 export const SiteSetUrlRequestVEnum = {

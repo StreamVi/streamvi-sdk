@@ -26,6 +26,7 @@ import type { InstagramDto } from '../models';
 import type { KickDto } from '../models';
 import type { KinescopeDto } from '../models';
 import type { LinkedinDto } from '../models';
+import type { MethodChannelStatusRequest } from '../models';
 import type { MethodSetStatusChannelRequest } from '../models';
 import type { MethodSrtDto } from '../models';
 import type { NavertvDto } from '../models';
@@ -320,13 +321,22 @@ export declare const ChannelApiAxiosParamCreator: (configuration?: Configuration
      */
     methodSearchV1: (language: MethodSearchV1LanguageEnum, projectId: number, v?: MethodSearchV1VEnum, type?: MethodSearchV1TypeEnum, platform?: string, name?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary Get live status
+     * Deprecated. Use PUT /method/channel/status with the active field instead of status.
+     * @summary Set desired channel state
      * @param {MethodSetStatusChannelRequest} methodSetStatusChannelRequest
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    methodSetStatusLegacyV1: (methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Set desired channel state
+     * @param {MethodChannelStatusRequest} methodChannelStatusRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodSetStatusV1: (methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodSetStatusV1: (methodChannelStatusRequest: MethodChannelStatusRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ChannelApi - functional programming interface
@@ -603,13 +613,22 @@ export declare const ChannelApiFp: (configuration?: Configuration) => {
      */
     methodSearchV1(language: MethodSearchV1LanguageEnum, projectId: number, v?: MethodSearchV1VEnum, type?: MethodSearchV1TypeEnum, platform?: string, name?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSearchChannelResponse>>;
     /**
-     *
-     * @summary Get live status
+     * Deprecated. Use PUT /method/channel/status with the active field instead of status.
+     * @summary Set desired channel state
      * @param {MethodSetStatusChannelRequest} methodSetStatusChannelRequest
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    methodSetStatusLegacyV1(methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     *
+     * @summary Set desired channel state
+     * @param {MethodChannelStatusRequest} methodChannelStatusRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodSetStatusV1(methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    methodSetStatusV1(methodChannelStatusRequest: MethodChannelStatusRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * ChannelApi - factory interface
@@ -873,8 +892,17 @@ export declare const ChannelApiFactory: (configuration?: Configuration, basePath
      */
     methodSearchV1(requestParameters: ChannelApiMethodSearchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSearchChannelResponse>;
     /**
+     * Deprecated. Use PUT /method/channel/status with the active field instead of status.
+     * @summary Set desired channel state
+     * @param {ChannelApiMethodSetStatusLegacyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    methodSetStatusLegacyV1(requestParameters: ChannelApiMethodSetStatusLegacyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
      *
-     * @summary Get live status
+     * @summary Set desired channel state
      * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1176,8 +1204,18 @@ export interface ChannelApiInterface {
      */
     methodSearchV1(requestParameters: ChannelApiMethodSearchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSearchChannelResponse>;
     /**
+     * Deprecated. Use PUT /method/channel/status with the active field instead of status.
+     * @summary Set desired channel state
+     * @param {ChannelApiMethodSetStatusLegacyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     * @memberof ChannelApiInterface
+     */
+    methodSetStatusLegacyV1(requestParameters: ChannelApiMethodSetStatusLegacyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
      *
-     * @summary Get live status
+     * @summary Set desired channel state
      * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1680,6 +1718,19 @@ export interface ChannelApiMethodSearchV1Request {
     readonly offset?: number;
 }
 /**
+ * Request parameters for methodSetStatusLegacyV1 operation in ChannelApi.
+ * @export
+ * @interface ChannelApiMethodSetStatusLegacyV1Request
+ */
+export interface ChannelApiMethodSetStatusLegacyV1Request {
+    /**
+     *
+     * @type {MethodSetStatusChannelRequest}
+     * @memberof ChannelApiMethodSetStatusLegacyV1
+     */
+    readonly MethodSetStatusChannelRequest: MethodSetStatusChannelRequest;
+}
+/**
  * Request parameters for methodSetStatusV1 operation in ChannelApi.
  * @export
  * @interface ChannelApiMethodSetStatusV1Request
@@ -1687,10 +1738,10 @@ export interface ChannelApiMethodSearchV1Request {
 export interface ChannelApiMethodSetStatusV1Request {
     /**
      *
-     * @type {MethodSetStatusChannelRequest}
+     * @type {MethodChannelStatusRequest}
      * @memberof ChannelApiMethodSetStatusV1
      */
-    readonly MethodSetStatusChannelRequest: MethodSetStatusChannelRequest;
+    readonly MethodChannelStatusRequest: MethodChannelStatusRequest;
 }
 /**
  * ChannelApi - object-oriented interface
@@ -1707,7 +1758,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add boosty channel
@@ -1716,7 +1767,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add custom channel
@@ -1725,7 +1776,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add douyu channel
@@ -1734,7 +1785,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add fb channel
@@ -1743,7 +1794,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add fc2Live channel
@@ -1752,7 +1803,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add getcourse channel
@@ -1761,7 +1812,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add goodgame channel
@@ -1770,7 +1821,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add huya channel
@@ -1779,7 +1830,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add instagram channel
@@ -1788,7 +1839,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add kick channel
@@ -1797,7 +1848,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add kinescope channel
@@ -1806,7 +1857,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add linkedin channel
@@ -1815,7 +1866,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add navertv channel
@@ -1824,7 +1875,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add nimotv channel
@@ -1833,7 +1884,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add nonolive channel
@@ -1842,7 +1893,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add ok channel
@@ -1851,7 +1902,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add plvideo channel
@@ -1860,7 +1911,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add rutube channel
@@ -1869,7 +1920,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add srt channel
@@ -1878,7 +1929,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add steam channel
@@ -1887,7 +1938,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add tach channel
@@ -1896,7 +1947,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add telegram channel
@@ -1905,7 +1956,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add tiktok channel
@@ -1914,7 +1965,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add vk channel
@@ -1923,7 +1974,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add vlive channel
@@ -1932,7 +1983,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Add zhanqitv channel
@@ -1941,7 +1992,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Delete channel
@@ -1950,7 +2001,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    channelDeleteChannelV1(requestParameters: ChannelApiChannelDeleteChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelDeleteChannelV1(requestParameters: ChannelApiChannelDeleteChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get channel by id
@@ -1959,7 +2010,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    channelGetChannelV1(requestParameters: ChannelApiChannelGetChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SearchChannelItem, any, {}>>;
+    channelGetChannelV1(requestParameters: ChannelApiChannelGetChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SearchChannelItem, any, {}, any>>;
     /**
      *
      * @summary Set delay - test point
@@ -1968,7 +2019,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    channelSetDelayV1(requestParameters: ChannelApiChannelSetDelayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelSetDelayV1(requestParameters: ChannelApiChannelSetDelayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Minimal channel list
@@ -1977,7 +2028,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    channelShortChannelListV1(requestParameters: ChannelApiChannelShortChannelListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteGetShortChannelResponse, any, {}>>;
+    channelShortChannelListV1(requestParameters: ChannelApiChannelShortChannelListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteGetShortChannelResponse, any, {}, any>>;
     /**
      *
      * @summary Search channel list
@@ -1986,16 +2037,26 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    methodSearchV1(requestParameters: ChannelApiMethodSearchV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteSearchChannelResponse, any, {}>>;
+    methodSearchV1(requestParameters: ChannelApiMethodSearchV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteSearchChannelResponse, any, {}, any>>;
+    /**
+     * Deprecated. Use PUT /method/channel/status with the active field instead of status.
+     * @summary Set desired channel state
+     * @param {ChannelApiMethodSetStatusLegacyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     * @memberof ChannelApi
+     */
+    methodSetStatusLegacyV1(requestParameters: ChannelApiMethodSetStatusLegacyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
-     * @summary Get live status
+     * @summary Set desired channel state
      * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    methodSetStatusV1(requestParameters: ChannelApiMethodSetStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    methodSetStatusV1(requestParameters: ChannelApiMethodSetStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

@@ -27,13 +27,13 @@ export interface SiteBroadcastItemResponse {
      * @type {string}
      * @memberof SiteBroadcastItemResponse
      */
-    'created_at': string;
+    'created_at': string | null;
     /**
      * Finish time
      * @type {string}
      * @memberof SiteBroadcastItemResponse
      */
-    'finish_at': string;
+    'finish_at': string | null;
     /**
      * Count reconnects
      * @type {number}

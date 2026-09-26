@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { BlogPageSiteResponseId } from './blog-page-site-response-id';
 /**
  *
  * @export
@@ -17,11 +16,11 @@ import type { BlogPageSiteResponseId } from './blog-page-site-response-id';
  */
 export interface SiteBlogPageTagResponse {
     /**
-     *
-     * @type {BlogPageSiteResponseId}
+     * Id of page in mongodb
+     * @type {string}
      * @memberof SiteBlogPageTagResponse
      */
-    '_id': BlogPageSiteResponseId;
+    '_id': string;
     /**
      * Language for indexing
      * @type {string}

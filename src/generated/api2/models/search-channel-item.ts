@@ -55,7 +55,7 @@ export interface SearchChannelItem {
      * @type {number}
      * @memberof SearchChannelItem
      */
-    'transcoderId'?: number;
+    'transcoderId': number | null;
     /**
      * group_id
      * @type {number}
@@ -73,7 +73,7 @@ export interface SearchChannelItem {
      * @type {string}
      * @memberof SearchChannelItem
      */
-    'photo_default': string;
+    'photo_default': string | null;
     /**
      * sell
      * @type {boolean}
@@ -85,7 +85,7 @@ export interface SearchChannelItem {
      * @type {number}
      * @memberof SearchChannelItem
      */
-    'price': number;
+    'price': number | null;
     /**
      * live
      * @type {boolean}
@@ -103,7 +103,7 @@ export interface SearchChannelItem {
      * @type {number}
      * @memberof SearchChannelItem
      */
-    'user_id': number;
+    'user_id': number | null;
     /**
      * active
      * @type {boolean}
@@ -145,7 +145,7 @@ export interface SearchChannelItem {
      * @type {SearchChannelItemStreamInfo}
      * @memberof SearchChannelItem
      */
-    'streamInfo': SearchChannelItemStreamInfo;
+    'streamInfo': SearchChannelItemStreamInfo | null;
     /**
      * rtmp
      * @type {SearchChannelRtmpDto}
@@ -153,7 +153,7 @@ export interface SearchChannelItem {
      */
     'rtmp': SearchChannelRtmpDto | null;
     /**
-     * ingress_url
+     * RTMP endpoint without stream key or complete ingress URI for protocols without a separate key
      * @type {string}
      * @memberof SearchChannelItem
      */
@@ -164,6 +164,12 @@ export interface SearchChannelItem {
      * @memberof SearchChannelItem
      */
     'ingress_protocol'?: string;
+    /**
+     * RTMP stream key
+     * @type {string}
+     * @memberof SearchChannelItem
+     */
+    'stream_key'?: string;
     /**
      * credentials
      * @type {Array<SearchChannelCredentialsDto>}

@@ -15,6 +15,9 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
+import type { SiteRestreamEventChannelResponse } from './site-restream-event-channel-response';
+// May contain unused imports in some cases
+// @ts-ignore
 import type { SiteRestreamEventServerResponse } from './site-restream-event-server-response';
 
 /**
@@ -65,6 +68,12 @@ export interface SiteRestreamEventV4Response {
      * @memberof SiteRestreamEventV4Response
      */
     'platform'?: string;
+    /**
+     * Channel
+     * @type {SiteRestreamEventChannelResponse}
+     * @memberof SiteRestreamEventV4Response
+     */
+    'channel'?: SiteRestreamEventChannelResponse;
 }
 
 export const SiteRestreamEventV4ResponseLevelEnum = {

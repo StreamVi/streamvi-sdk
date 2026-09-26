@@ -173,6 +173,12 @@ export interface PlanRestreamResponse {
      */
     'custom_video': number;
     /**
+     * Maximum disconnect protection time in minutes
+     * @type {number}
+     * @memberof PlanRestreamResponse
+     */
+    'disconnect_protection_max_minutes': number;
+    /**
      * Discount
      * @type {PlanRestreamDiscountResponse}
      * @memberof PlanRestreamResponse

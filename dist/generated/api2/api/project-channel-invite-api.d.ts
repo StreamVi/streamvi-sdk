@@ -578,7 +578,7 @@ export interface ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request 
     readonly email: string;
     /**
      * Access type
-     * @type {0 | 1 | 1 | 2}
+     * @type {1 | 2}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByEmailV1
      */
     readonly access_type: ProjectChannelInviteAddByEmailV1AccessTypeEnum;
@@ -615,7 +615,7 @@ export interface ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request {
     readonly channel_id: number;
     /**
      * Access type
-     * @type {0 | 1 | 1 | 2}
+     * @type {1 | 2}
      * @memberof ProjectChannelInviteApiProjectChannelInviteAddByIdV1
      */
     readonly access_type: ProjectChannelInviteAddByIdV1AccessTypeEnum;
@@ -858,7 +858,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteAcceptForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    projectChannelInviteAcceptForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Accept channel invitation using a secret link
@@ -867,7 +867,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteAcceptForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    projectChannelInviteAcceptForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAcceptForSecretV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Add channel invite item for another user by email
@@ -876,7 +876,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteAddByEmailV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteResponse, any, {}>>;
+    projectChannelInviteAddByEmailV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByEmailV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteResponse, any, {}, any>>;
     /**
      *
      * @summary Add channel invite item for another user by id
@@ -885,7 +885,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteAddByIdV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteResponse, any, {}>>;
+    projectChannelInviteAddByIdV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteAddByIdV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteResponse, any, {}, any>>;
     /**
      *
      * @summary Decline channel invitation for selected project
@@ -894,7 +894,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteDeclineForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    projectChannelInviteDeclineForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Decline channel invitation using a secret link
@@ -903,7 +903,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteDeclineForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    projectChannelInviteDeclineForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDeclineForSecretV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Del channel invite item for my channel for another user
@@ -912,7 +912,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteDelV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    projectChannelInviteDelV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get invitation for channel
@@ -921,7 +921,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteGetForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteLinkResponse, any, {}>>;
+    projectChannelInviteGetForProjectV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteLinkResponse, any, {}, any>>;
     /**
      *
      * @summary Get channel invitation using a secret link
@@ -930,7 +930,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteGetForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteLinkResponse, any, {}>>;
+    projectChannelInviteGetForSecretV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetForSecretV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteLinkResponse, any, {}, any>>;
     /**
      *
      * @summary Get channel invite item for my channel for another user
@@ -939,7 +939,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteGetV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    projectChannelInviteGetV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary List of invites for channel in project
@@ -948,7 +948,7 @@ export declare class ProjectChannelInviteApi extends BaseAPI implements ProjectC
      * @throws {RequiredError}
      * @memberof ProjectChannelInviteApi
      */
-    projectChannelInviteListV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteListResponse, any, {}>>;
+    projectChannelInviteListV1(requestParameters: ProjectChannelInviteApiProjectChannelInviteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelInviteListResponse, any, {}, any>>;
 }
 /**
  * @export
@@ -995,9 +995,7 @@ export type ProjectChannelInviteAddByEmailV1LanguageEnum = typeof ProjectChannel
  * @export
  */
 export declare const ProjectChannelInviteAddByEmailV1AccessTypeEnum: {
-    readonly NUMBER_0: 0;
     readonly NUMBER_1: 1;
-    readonly NUMBER_12: 1;
     readonly NUMBER_2: 2;
 };
 export type ProjectChannelInviteAddByEmailV1AccessTypeEnum = typeof ProjectChannelInviteAddByEmailV1AccessTypeEnum[keyof typeof ProjectChannelInviteAddByEmailV1AccessTypeEnum];
@@ -1021,9 +1019,7 @@ export type ProjectChannelInviteAddByIdV1LanguageEnum = typeof ProjectChannelInv
  * @export
  */
 export declare const ProjectChannelInviteAddByIdV1AccessTypeEnum: {
-    readonly NUMBER_0: 0;
     readonly NUMBER_1: 1;
-    readonly NUMBER_12: 1;
     readonly NUMBER_2: 2;
 };
 export type ProjectChannelInviteAddByIdV1AccessTypeEnum = typeof ProjectChannelInviteAddByIdV1AccessTypeEnum[keyof typeof ProjectChannelInviteAddByIdV1AccessTypeEnum];

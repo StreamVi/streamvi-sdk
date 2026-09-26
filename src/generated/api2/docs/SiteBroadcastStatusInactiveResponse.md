@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**kind** | **string** | Broadcast status response kind | [default to undefined]
 **status** | **string** | Stream status | [default to undefined]
 
 ## Example
@@ -13,6 +14,7 @@ Name | Type | Description | Notes
 import { SiteBroadcastStatusInactiveResponse } from 'streamvi-api-client';
 
 const instance: SiteBroadcastStatusInactiveResponse = {
+    kind,
     status,
 };
 ```

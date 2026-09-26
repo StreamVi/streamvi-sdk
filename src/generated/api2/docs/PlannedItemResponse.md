@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | id | [default to undefined]
 **title** | **string** | title | [default to undefined]
-**description** | **string** | description | [default to undefined]
+**description** | **string** | description | [optional] [default to undefined]
 **date** | **string** | date | [default to undefined]
 
 ## Example

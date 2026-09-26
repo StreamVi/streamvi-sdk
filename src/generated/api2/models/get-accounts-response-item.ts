@@ -37,13 +37,13 @@ export interface GetAccountsResponseItem {
      * @type {string}
      * @memberof GetAccountsResponseItem
      */
-    'name': string;
+    'name': string | null;
     /**
      * Avatar account
      * @type {string}
      * @memberof GetAccountsResponseItem
      */
-    'avatar': string;
+    'avatar': string | null;
     /**
      * Status account
      * @type {number}

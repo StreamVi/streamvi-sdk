@@ -57,6 +57,12 @@ export interface SiteUpdateOptionsVkVideoLiveRequest {
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */
     'category_name'?: string;
+    /**
+     * category type
+     * @type {string}
+     * @memberof SiteUpdateOptionsVkVideoLiveRequest
+     */
+    'category_type'?: SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum;
 }
 export declare const SiteUpdateOptionsVkVideoLiveRequestVEnum: {
     readonly _1: "1";
@@ -68,4 +74,10 @@ export declare const SiteUpdateOptionsVkVideoLiveRequestLanguageEnum: {
     readonly Cn: "cn";
 };
 export type SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = typeof SiteUpdateOptionsVkVideoLiveRequestLanguageEnum[keyof typeof SiteUpdateOptionsVkVideoLiveRequestLanguageEnum];
+export declare const SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum: {
+    readonly Irl: "irl";
+    readonly Game: "game";
+    readonly Sport: "sport";
+};
+export type SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum = typeof SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum[keyof typeof SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum];
 //# sourceMappingURL=site-update-options-vk-video-live-request.d.ts.map

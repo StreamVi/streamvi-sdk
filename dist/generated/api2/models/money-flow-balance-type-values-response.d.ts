@@ -20,18 +20,18 @@ export interface MoneyFlowBalanceTypeValuesResponse {
      * @type {number}
      * @memberof MoneyFlowBalanceTypeValuesResponse
      */
-    'bonus': number;
+    'bonus'?: number;
     /**
      * Payment balance
      * @type {number}
      * @memberof MoneyFlowBalanceTypeValuesResponse
      */
-    'payment': number;
+    'payment'?: number;
     /**
      * Profit balance
      * @type {number}
      * @memberof MoneyFlowBalanceTypeValuesResponse
      */
-    'profit': number;
+    'profit'?: number;
 }
 //# sourceMappingURL=money-flow-balance-type-values-response.d.ts.map

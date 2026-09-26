@@ -22,13 +22,13 @@ const configuration = new Configuration();
 const apiInstance = new ReleaseApi(configuration);
 
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let app: 'cabinet'; //Apps (default to 'cabinet')
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
-let app: 'cabinet'; //Apps (optional) (default to 'cabinet')
 
 const { status, data } = await apiInstance.releaseAppCabinetV1(
     language,
-    v,
-    app
+    app,
+    v
 );
 ```
 
@@ -37,8 +37,8 @@ const { status, data } = await apiInstance.releaseAppCabinetV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **app** | [**&#39;cabinet&#39;**]**Array<&#39;cabinet&#39;>** | Apps | defaults to 'cabinet'|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
-| **app** | [**&#39;cabinet&#39;**]**Array<&#39;cabinet&#39;>** | Apps | (optional) defaults to 'cabinet'|
 
 
 ### Return type

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**title** | **string** | Title of the channel | [default to undefined]
+**title** | **string** | Title of the channel | [optional] [default to undefined]
 **description** | **string** |  | [default to undefined]
 
 ## Example

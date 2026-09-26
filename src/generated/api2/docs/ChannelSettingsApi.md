@@ -24,7 +24,7 @@ All URIs are relative to *http://localhost*
 |[**channelSettingSetNameV1**](#channelsettingsetnamev1) | **POST** /method/channel_settings/setName | Set name from custom channel. Global settings.|
 |[**channelSettingUpdateRtmpV1**](#channelsettingupdatertmpv1) | **POST** /method/channel_settings/setRtmp | Set rtmp url from channel. Global settings.|
 |[**channelSettingUpdateSrtUrlV1**](#channelsettingupdatesrturlv1) | **POST** /method/channel_settings/setSrt | Set srt url from channel. Global settings.|
-|[**channelSettingUpdateTokenV1**](#channelsettingupdatetokenv1) | **GET** /method/channel_settings/update-token | Get status platform|
+|[**channelSettingUpdateTokenV1**](#channelsettingupdatetokenv1) | **GET** /method/channel_settings/update-token | Redirect to OAuth for updating a channel token|
 |[**channelSettingUpdateTranscoderV1**](#channelsettingupdatetranscoderv1) | **POST** /method/channel_settings/setTranscoder | Set transcoder from channel. Personal settings.|
 |[**telegramGetPostByFilterV1**](#telegramgetpostbyfilterv1) | **GET** /method/channel_settings/chat/telegram/posts/get-by-filter | Get telegram post by filter|
 
@@ -149,7 +149,7 @@ const { status, data } = await apiInstance.channelChatInitTelegramChatConnectV1(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **channelChatRemoveTelegramChatV1**
-> SuccessResponse channelChatRemoveTelegramChatV1()
+> channelChatRemoveTelegramChatV1()
 
 
 ### Example
@@ -188,7 +188,7 @@ const { status, data } = await apiInstance.channelChatRemoveTelegramChatV1(
 
 ### Return type
 
-**SuccessResponse**
+void (empty response body)
 
 ### Authorization
 
@@ -385,7 +385,7 @@ const { status, data } = await apiInstance.channelChatUpdateOptionsTelegramV1(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **channelOptionsGetPlannedV1**
-> ListOfSitePlannedResponse channelOptionsGetPlannedV1()
+> PlannedListResponse channelOptionsGetPlannedV1()
 
 
 ### Example
@@ -424,7 +424,7 @@ const { status, data } = await apiInstance.channelOptionsGetPlannedV1(
 
 ### Return type
 
-**ListOfSitePlannedResponse**
+**PlannedListResponse**
 
 ### Authorization
 
@@ -445,7 +445,7 @@ const { status, data } = await apiInstance.channelOptionsGetPlannedV1(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **channelOptionsGetPlayListV1**
-> ListOfPlaylistItemResponse channelOptionsGetPlayListV1()
+> PlaylistResponse channelOptionsGetPlayListV1()
 
 
 ### Example
@@ -484,7 +484,7 @@ const { status, data } = await apiInstance.channelOptionsGetPlayListV1(
 
 ### Return type
 
-**ListOfPlaylistItemResponse**
+**PlaylistResponse**
 
 ### Authorization
 
@@ -1195,6 +1195,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** |  |  -  |
+|**302** | Redirect to the platform OAuth authorization page |  -  |
 |**400** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

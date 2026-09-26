@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **status** | **string** | Status | [default to undefined]
 **videoCodec** | **string** | Video codec | [default to undefined]
 **channels** | [**Array&lt;TranscoderChannelItem&gt;**](TranscoderChannelItem.md) | B-Frames | [default to undefined]
-**delay** | **number** | Delay | [default to undefined]
-**preset** | **string** | Preset | [default to undefined]
+**delay** | **number** | Delay | [optional] [default to undefined]
+**preset** | **string** | Preset | [optional] [default to undefined]
 **state** | [**TranscoderState**](TranscoderState.md) | State | [optional] [default to undefined]
 **mode** | **string** | Mode | [default to undefined]
 

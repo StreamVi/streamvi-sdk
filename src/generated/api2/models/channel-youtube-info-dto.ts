@@ -31,7 +31,7 @@ export interface ChannelYoutubeInfoDto {
      * @type {string}
      * @memberof ChannelYoutubeInfoDto
      */
-    'title': string;
+    'title'?: string;
     /**
      * 
      * @type {string}

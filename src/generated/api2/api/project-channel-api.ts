@@ -524,7 +524,7 @@ export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
 
     /**
      * Access type
-     * @type {0 | 1 | 1 | 2}
+     * @type {1 | 2}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
     readonly access_type: ProjectChannelChangeAccessV1AccessTypeEnum
@@ -725,9 +725,7 @@ export type ProjectChannelChangeAccessV1LanguageEnum = typeof ProjectChannelChan
  * @export
  */
 export const ProjectChannelChangeAccessV1AccessTypeEnum = {
-    NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_12: 1,
     NUMBER_2: 2
 } as const;
 export type ProjectChannelChangeAccessV1AccessTypeEnum = typeof ProjectChannelChangeAccessV1AccessTypeEnum[keyof typeof ProjectChannelChangeAccessV1AccessTypeEnum];

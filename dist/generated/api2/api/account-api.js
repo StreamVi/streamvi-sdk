@@ -103,13 +103,13 @@ const AccountApiAxiosParamCreator = function (configuration) {
             // oauth required
             await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
             if (v !== undefined) {
-                localVarFormParams.append('v', v);
+                localVarQueryParameter['v'] = v;
             }
             else {
-                localVarFormParams.append('v', '1');
+                localVarQueryParameter['v'] = '1';
             }
             if (language !== undefined) {
-                localVarFormParams.append('language', language);
+                localVarQueryParameter['language'] = language;
             }
             if (firstName !== undefined) {
                 localVarFormParams.append('first_name', firstName);

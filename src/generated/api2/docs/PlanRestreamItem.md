@@ -9,8 +9,9 @@ Name | Type | Description | Notes
 **channel_max** | **number** | Max channels | [default to undefined]
 **bitrate_max** | **number** | Max bitrate | [default to undefined]
 **support_custom_channel** | **boolean** | Support custom channel | [default to undefined]
-**date_end** | **string** | Date end tariff | [default to undefined]
+**date_end** | **string** | Date end tariff | [optional] [default to undefined]
 **custom_video** | **number** | Custom video | [default to undefined]
+**disconnect_protection_max_minutes** | **number** | Maximum disconnect protection time for this purchased period, in minutes | [default to undefined]
 **prolongation** | **boolean** | Prolongation status | [default to undefined]
 **title** | **string** | Title | [default to undefined]
 **type** | **string** | Tariff type | [default to undefined]
@@ -28,6 +29,7 @@ const instance: PlanRestreamItem = {
     support_custom_channel,
     date_end,
     custom_video,
+    disconnect_protection_max_minutes,
     prolongation,
     title,
     type,

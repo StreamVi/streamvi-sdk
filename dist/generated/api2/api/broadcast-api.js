@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BroadcastTokenChannelV1VEnum = exports.BroadcastTokenChannelV1LanguageEnum = exports.BroadcastStatusV1VEnum = exports.BroadcastStatusV1LanguageEnum = exports.BroadcastRestreamsV1VEnum = exports.BroadcastRestreamsV1LanguageEnum = exports.BroadcastRestreamChatV1VEnum = exports.BroadcastRestreamChatV1LanguageEnum = exports.BroadcastListV1VEnum = exports.BroadcastListV1OrderEnum = exports.BroadcastListV1LanguageEnum = exports.BroadcastGraphViewersV1VEnum = exports.BroadcastGraphViewersV1LanguageEnum = exports.BroadcastGraphBitrateV1VEnum = exports.BroadcastGraphBitrateV1LanguageEnum = exports.BroadcastFindV1VEnum = exports.BroadcastFindV1LanguageEnum = exports.BroadcastEventsV4VEnum = exports.BroadcastEventsV4SortByDateEnum = exports.BroadcastEventsV4LevelEnum = exports.BroadcastEventsV4LanguageEnum = exports.BroadcastEventItemV1VEnum = exports.BroadcastEventItemV1LanguageEnum = exports.BroadcastCredentialsV1VEnum = exports.BroadcastCredentialsV1LanguageEnum = exports.BroadcastApi = exports.BroadcastApiFactory = exports.BroadcastApiFp = exports.BroadcastApiAxiosParamCreator = void 0;
+exports.BroadcastTokenChannelV1VEnum = exports.BroadcastTokenChannelV1LanguageEnum = exports.BroadcastStatusV1VEnum = exports.BroadcastStatusV1LanguageEnum = exports.BroadcastRestreamsV1VEnum = exports.BroadcastRestreamsV1LanguageEnum = exports.BroadcastRestreamChatV1VEnum = exports.BroadcastRestreamChatV1LanguageEnum = exports.BroadcastListV1VEnum = exports.BroadcastListV1OrderEnum = exports.BroadcastListV1LanguageEnum = exports.BroadcastGraphViewersV1VEnum = exports.BroadcastGraphViewersV1LanguageEnum = exports.BroadcastGraphBitrateV1VEnum = exports.BroadcastGraphBitrateV1LanguageEnum = exports.BroadcastGetTemplateV1VEnum = exports.BroadcastGetTemplateV1LanguageEnum = exports.BroadcastFindV1VEnum = exports.BroadcastFindV1LanguageEnum = exports.BroadcastEventsV4VEnum = exports.BroadcastEventsV4SortByDateEnum = exports.BroadcastEventsV4LevelEnum = exports.BroadcastEventsV4LanguageEnum = exports.BroadcastEventItemV1VEnum = exports.BroadcastEventItemV1LanguageEnum = exports.BroadcastCredentialsV1VEnum = exports.BroadcastCredentialsV1LanguageEnum = exports.BroadcastApi = exports.BroadcastApiFactory = exports.BroadcastApiFp = exports.BroadcastApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -282,6 +282,53 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             }
             else {
                 localVarQueryParameter['v'] = '3';
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get broadcast title and description template
+         * @param {BroadcastGetTemplateV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {BroadcastGetTemplateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastGetTemplateV1: async (language, projectId, v, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastGetTemplateV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('broadcastGetTemplateV1', 'projectId', projectId);
+            const localVarPath = `/method/broadcast/template`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -852,6 +899,22 @@ const BroadcastApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get broadcast title and description template
+         * @param {BroadcastGetTemplateV1LanguageEnum} language Current language
+         * @param {number} projectId Project id
+         * @param {BroadcastGetTemplateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async broadcastGetTemplateV1(language, projectId, v, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastGetTemplateV1(language, projectId, v, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastGetTemplateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @summary Bitrate from broadcast
          * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
          * @param {number} projectId Project id
@@ -1063,6 +1126,16 @@ const BroadcastApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get broadcast title and description template
+         * @param {BroadcastApiBroadcastGetTemplateV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        broadcastGetTemplateV1(requestParameters, options) {
+            return localVarFp.broadcastGetTemplateV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Bitrate from broadcast
          * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1214,6 +1287,17 @@ class BroadcastApi extends base_1.BaseAPI {
      */
     broadcastFindV1(requestParameters, options) {
         return (0, exports.BroadcastApiFp)(this.configuration).broadcastFindV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get broadcast title and description template
+     * @param {BroadcastApiBroadcastGetTemplateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BroadcastApi
+     */
+    broadcastGetTemplateV1(requestParameters, options) {
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastGetTemplateV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1398,6 +1482,20 @@ exports.BroadcastFindV1LanguageEnum = {
  */
 exports.BroadcastFindV1VEnum = {
     _3: '3'
+};
+/**
+ * @export
+ */
+exports.BroadcastGetTemplateV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.BroadcastGetTemplateV1VEnum = {
+    _1: '1'
 };
 /**
  * @export

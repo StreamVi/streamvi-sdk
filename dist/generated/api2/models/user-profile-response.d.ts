@@ -50,7 +50,7 @@ export interface UserProfileResponse {
      * @type {string}
      * @memberof UserProfileResponse
      */
-    'refId': string;
+    'refId': string | null;
     /**
      * Count partners
      * @type {number}

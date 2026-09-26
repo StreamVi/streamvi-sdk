@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **date_end** | **string** | Date end tariff | [default to undefined]
 **support_custom_channel** | **boolean** | Support custom channel | [default to undefined]
 **custom_video** | **number** | Custom video | [default to undefined]
+**disconnect_protection_max_minutes** | **number** | Maximum disconnect protection time for this purchased period, in minutes | [default to undefined]
 
 ## Example
 
@@ -24,6 +25,7 @@ const instance: PlanRestreamBeforeItem = {
     date_end,
     support_custom_channel,
     custom_video,
+    disconnect_protection_max_minutes,
 };
 ```
 

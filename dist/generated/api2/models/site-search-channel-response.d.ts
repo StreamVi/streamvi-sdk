@@ -25,12 +25,6 @@ export interface SiteSearchChannelResponse {
     'results': Array<SearchChannelItem>;
     /**
      *
-     * @type {Array<SearchChannelPlatformsDto>}
-     * @memberof SiteSearchChannelResponse
-     */
-    'platforms': Array<SearchChannelPlatformsDto>;
-    /**
-     *
      * @type {number}
      * @memberof SiteSearchChannelResponse
      */
@@ -47,5 +41,11 @@ export interface SiteSearchChannelResponse {
      * @memberof SiteSearchChannelResponse
      */
     'total': number;
+    /**
+     *
+     * @type {Array<SearchChannelPlatformsDto>}
+     * @memberof SiteSearchChannelResponse
+     */
+    'platforms': Array<SearchChannelPlatformsDto>;
 }
 //# sourceMappingURL=site-search-channel-response.d.ts.map

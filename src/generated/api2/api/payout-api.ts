@@ -24,9 +24,9 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { ListOfPayoutSystemAccountListItemResponse } from '../models';
-// @ts-ignore
 import type { PayoutCreateRequestBodyDto } from '../models';
+// @ts-ignore
+import type { PayoutSystemAccountListResponse } from '../models';
 // @ts-ignore
 import type { SuccessResponse } from '../models';
 /**
@@ -179,7 +179,7 @@ export const PayoutApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async payoutPrepareV1(language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPayoutSystemAccountListItemResponse>> {
+        async payoutPrepareV1(language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutSystemAccountListResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.payoutPrepareV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PayoutApi.payoutPrepareV1']?.[localVarOperationServerIndex]?.url;
@@ -212,7 +212,7 @@ export const PayoutApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse> {
+        payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayoutSystemAccountListResponse> {
             return localVarFp.payoutPrepareV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
@@ -242,7 +242,7 @@ export interface PayoutApiInterface {
      * @throws {RequiredError}
      * @memberof PayoutApiInterface
      */
-    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse>;
+    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayoutSystemAccountListResponse>;
 
 }
 

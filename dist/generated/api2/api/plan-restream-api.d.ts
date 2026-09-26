@@ -626,7 +626,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamBuyV1(requestParameters: PlanRestreamApiPlanRestreamBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    planRestreamBuyV1(requestParameters: PlanRestreamApiPlanRestreamBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Load data for show card the tariffs v2
@@ -635,7 +635,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamCheck2V1(requestParameters: PlanRestreamApiPlanRestreamCheck2V1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamCheckV2Response, any, {}>>;
+    planRestreamCheck2V1(requestParameters: PlanRestreamApiPlanRestreamCheck2V1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamCheckV2Response, any, {}, any>>;
     /**
      *
      * @summary Get discount restream
@@ -644,7 +644,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamGetDiscountV1(requestParameters: PlanRestreamApiPlanRestreamGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamDiscountResponse, any, {}>>;
+    planRestreamGetDiscountV1(requestParameters: PlanRestreamApiPlanRestreamGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamDiscountResponse, any, {}, any>>;
     /**
      *
      * @summary Get list of restream tariffs for project
@@ -653,7 +653,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamListProjectV1(requestParameters: PlanRestreamApiPlanRestreamListProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamProjectResponseDto, any, {}>>;
+    planRestreamListProjectV1(requestParameters: PlanRestreamApiPlanRestreamListProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamProjectResponseDto, any, {}, any>>;
     /**
      *
      * @summary Get list of restream tariffs
@@ -662,7 +662,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamListV1(requestParameters: PlanRestreamApiPlanRestreamListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamResponseDto, any, {}>>;
+    planRestreamListV1(requestParameters: PlanRestreamApiPlanRestreamListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamResponseDto, any, {}, any>>;
     /**
      *
      * @summary Remove after tariff
@@ -671,7 +671,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamRemoveV1(requestParameters: PlanRestreamApiPlanRestreamRemoveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    planRestreamRemoveV1(requestParameters: PlanRestreamApiPlanRestreamRemoveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Set restream tariff auto prolongation
@@ -680,7 +680,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamSetProlongationV1(requestParameters: PlanRestreamApiPlanRestreamSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    planRestreamSetProlongationV1(requestParameters: PlanRestreamApiPlanRestreamSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get tariff for project
@@ -689,7 +689,7 @@ export declare class PlanRestreamApi extends BaseAPI implements PlanRestreamApiI
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
-    planRestreamTariffV1(requestParameters: PlanRestreamApiPlanRestreamTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamForProject, any, {}>>;
+    planRestreamTariffV1(requestParameters: PlanRestreamApiPlanRestreamTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanRestreamForProject, any, {}, any>>;
 }
 /**
  * @export

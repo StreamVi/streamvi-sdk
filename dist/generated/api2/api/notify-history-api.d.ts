@@ -12,7 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { NotifyHistorySiteResponse } from '../models';
+import type { NotifyHistory } from '../models';
 import type { NotifyHistoryStatusUserResponse } from '../models';
 import type { PaginatedResponseOfNotifyHistorySiteResponse } from '../models';
 import type { SiteMarkReadHistoryRequest } from '../models';
@@ -126,7 +126,7 @@ export declare const NotifyHistoryApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryGetV1(id: string, v?: NotifyHistoryGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistorySiteResponse>>;
+    notifyHistoryGetV1(id: string, v?: NotifyHistoryGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistory>>;
     /**
      *
      * @summary Set notification in cabinet as read
@@ -147,7 +147,7 @@ export declare const NotifyHistoryApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryRunActionV1(notifyHistoryId: string, actionName: string, groupId: string, v?: NotifyHistoryRunActionV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistorySiteResponse>>;
+    notifyHistoryRunActionV1(notifyHistoryId: string, actionName: string, groupId: string, v?: NotifyHistoryRunActionV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
     /**
      *
      * @summary Set all notification in cabinet as read
@@ -184,7 +184,7 @@ export declare const NotifyHistoryApiFactory: (configuration?: Configuration, ba
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse>;
+    notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistory>;
     /**
      *
      * @summary Set notification in cabinet as read
@@ -200,7 +200,7 @@ export declare const NotifyHistoryApiFactory: (configuration?: Configuration, ba
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse>;
+    notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
      *
      * @summary Set all notification in cabinet as read
@@ -241,7 +241,7 @@ export interface NotifyHistoryApiInterface {
      * @throws {RequiredError}
      * @memberof NotifyHistoryApiInterface
      */
-    notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse>;
+    notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistory>;
     /**
      *
      * @summary Set notification in cabinet as read
@@ -259,7 +259,7 @@ export interface NotifyHistoryApiInterface {
      * @throws {RequiredError}
      * @memberof NotifyHistoryApiInterface
      */
-    notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistorySiteResponse>;
+    notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
      *
      * @summary Set all notification in cabinet as read
@@ -307,7 +307,7 @@ export interface NotifyHistoryApiNotifyHistoryGetListMyV1Request {
     readonly project_id?: number;
     /**
      * Name
-     * @type {'high_bitrate' | 'request_access_channel' | 'request_access_project' | 'request_access_integration' | 'promocode_test' | 'stream_test' | 'plan_restream_expires' | 'plan_restream_expired' | 'plan_restream_renewed' | 'plan_transcoder_expires' | 'plan_transcoder_expired' | 'plan_transcoder_renewed' | 'plan_storage_expires' | 'plan_storage_expired' | 'plan_storage_renewed' | 'compensation_received' | 'broadcast_unsupported_codec' | 'broadcast_unsupported_codec_screen' | 'broadcast_bitrate_exceeded_screen' | 'rtmp_connect_old_server_screen' | 'broadcast_not_audio' | 'broadcast_bitrate_exceeded' | 'broadcast_started' | 'broadcast_stopped' | 'restream_check_twitch_bitrate_1' | 'api_pause_start' | 'api_pause_end' | 'api_wait_edit' | 'api_restream_start' | 'api_restream_stop' | 'api_drop_broadcast' | 'api_drop_broadcast_remove_company' | 'api_drop_broadcast_update_key' | 'publisher_disconnected' | 'publisher_connected' | 'publisher_initializing' | 'publisher_close' | 'broadcast_connected_start' | 'broadcast_connected_end' | 'broadcast_connecting_stream' | 'broadcast_started_new_stream' | 'broadcast_connecting_lost' | 'broadcast_video_lost_start' | 'broadcast_video_lost_end' | 'broadcast_video_pause_start' | 'broadcast_video_pause_end' | 'broadcast_init_restream' | 'start_stream' | 'create_reader' | 'start_channel' | 'stop_channel' | 'stop_stream_video_timeout' | 'stop_stream_no_start_video' | 'stop_stream' | 'delete_reader' | 'transcoder_start' | 'transcoder_stop' | 'start_channel_failed' | 'start_channel_success' | 'api_channel_initializing_start' | 'api_channel_initializing_failed' | 'api_channel_initializing_success' | 'channel_api_update_settings_success' | 'channel_api_update_settings_error' | 'channel_api_update_playlist_success' | 'channel_api_update_playlist_error' | 'channel_api_update_chat_error' | 'channel_api_stream_key_success' | 'channel_api_stream_key_error' | 'channel_api_auto_stop_disable_success' | 'channel_api_auto_stop_disable_error' | 'channel_api_unbinding_stream_key_error' | 'channel_api_create_broadcast_success' | 'channel_api_create_broadcast_error' | 'channel_api_set_planned_success' | 'channel_api_set_planned_error' | 'channel_api_set_thumbnail_success' | 'channel_api_set_thumbnail_error' | 'channel_token_error' | 'channel_api_group_failed' | 'no_audio_reader' | 'restream_check_twitch_bitrate_2' | 'transcoder_support_error_screen' | 'transcoder_tariff_end_screen' | 'transcoder_count_flow_screen' | 'transcoder_resolution_screen' | 'stream_key_banned' | 'broadcast_change_codec' | 'broadcast_change_region' | 'video_upload_error' | 'stop_channel_error' | 'broadcast_user_action_stop' | 'completed_api_channel_error' | 'transcoder_twitch_tracks' | 'plan_webinar_expired' | 'plan_webinar_renewed' | 'plan_webinar_expires' | 'payout_created' | 'payout_status_execution' | 'payout_status_success' | 'payout_status_canceled' | 'payout_status_error' | 'plan_trial_expires' | 'plan_trial_expired'}
+     * @type {'high_bitrate' | 'request_access_channel' | 'request_access_project' | 'request_access_integration' | 'promocode_test' | 'stream_test' | 'plan_restream_expires' | 'plan_restream_expired' | 'plan_restream_renewed' | 'plan_transcoder_expires' | 'plan_transcoder_expired' | 'plan_transcoder_renewed' | 'plan_storage_expires' | 'plan_storage_expired' | 'plan_storage_renewed' | 'compensation_received' | 'broadcast_unsupported_codec' | 'broadcast_unsupported_codec_screen' | 'broadcast_bitrate_exceeded_screen' | 'rtmp_connect_old_server_screen' | 'broadcast_not_audio' | 'broadcast_bitrate_exceeded' | 'broadcast_started' | 'broadcast_stopped' | 'restream_check_twitch_bitrate_1' | 'api_pause_start' | 'api_pause_end' | 'api_wait_edit' | 'api_restream_start' | 'api_restream_stop' | 'api_drop_broadcast' | 'api_drop_broadcast_remove_company' | 'api_drop_broadcast_update_key' | 'publisher_disconnected' | 'publisher_connected' | 'publisher_initializing' | 'publisher_close' | 'publisher_connection_interrupted' | 'publisher_connection_timeout' | 'publisher_protocol_error' | 'publisher_start_failed' | 'publisher_reconnect_failed' | 'broadcast_connected_start' | 'broadcast_connected_end' | 'broadcast_connecting_stream' | 'broadcast_started_new_stream' | 'broadcast_connecting_lost' | 'broadcast_video_lost_start' | 'broadcast_video_lost_end' | 'broadcast_video_pause_start' | 'broadcast_video_pause_end' | 'broadcast_init_restream' | 'broadcast_placeholder_ready' | 'broadcast_placeholder_failed' | 'broadcast_placeholder_fallback_used' | 'start_stream' | 'create_reader' | 'start_channel' | 'stop_channel' | 'stop_stream_video_timeout' | 'stop_stream_no_start_video' | 'stop_stream' | 'delete_reader' | 'transcoder_start' | 'transcoder_stop' | 'start_channel_failed' | 'start_channel_success' | 'api_channel_initializing_start' | 'api_channel_initializing_failed' | 'api_channel_initializing_success' | 'channel_api_update_settings_success' | 'channel_api_update_settings_error' | 'channel_api_update_playlist_success' | 'channel_api_update_playlist_error' | 'channel_api_update_chat_error' | 'channel_api_stream_key_success' | 'channel_api_stream_key_error' | 'channel_api_auto_stop_disable_success' | 'channel_api_auto_stop_disable_error' | 'channel_api_unbinding_stream_key_error' | 'channel_api_create_broadcast_success' | 'channel_api_create_broadcast_error' | 'channel_api_set_planned_success' | 'channel_api_set_planned_error' | 'channel_api_set_thumbnail_success' | 'channel_api_set_thumbnail_error' | 'channel_token_error' | 'channel_api_group_failed' | 'no_audio_reader' | 'restream_check_twitch_bitrate_2' | 'transcoder_support_error_screen' | 'transcoder_tariff_end_screen' | 'transcoder_count_flow_screen' | 'transcoder_resolution_screen' | 'stream_key_banned' | 'broadcast_change_codec' | 'broadcast_change_region' | 'video_upload_error' | 'stop_channel_error' | 'broadcast_user_action_stop' | 'completed_api_channel_error' | 'transcoder_twitch_tracks' | 'plan_webinar_expired' | 'plan_webinar_renewed' | 'plan_webinar_expires' | 'payout_created' | 'payout_status_execution' | 'payout_status_success' | 'payout_status_canceled' | 'payout_status_error' | 'plan_trial_expires' | 'plan_trial_expired'}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
     readonly name?: NotifyHistoryGetListMyV1NameEnum;
@@ -445,7 +445,7 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    notifyHistoryGetListMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetListMyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfNotifyHistorySiteResponse, any, {}>>;
+    notifyHistoryGetListMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetListMyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfNotifyHistorySiteResponse, any, {}, any>>;
     /**
      *
      * @summary Get my status unread message for user
@@ -454,7 +454,7 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    notifyHistoryGetStatusMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetStatusMyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistoryStatusUserResponse, any, {}>>;
+    notifyHistoryGetStatusMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetStatusMyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistoryStatusUserResponse, any, {}, any>>;
     /**
      *
      * @summary Get my NotifyHistory item by id
@@ -463,7 +463,7 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistorySiteResponse, any, {}>>;
+    notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistory, any, {}, any>>;
     /**
      *
      * @summary Set notification in cabinet as read
@@ -472,7 +472,7 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    notifyHistoryMarkOfReadV1(requestParameters: NotifyHistoryApiNotifyHistoryMarkOfReadV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteMarkReadHistoryResponse, any, {}>>;
+    notifyHistoryMarkOfReadV1(requestParameters: NotifyHistoryApiNotifyHistoryMarkOfReadV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteMarkReadHistoryResponse, any, {}, any>>;
     /**
      *
      * @summary Run action in my notify item
@@ -481,7 +481,7 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistorySiteResponse, any, {}>>;
+    notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
     /**
      *
      * @summary Set all notification in cabinet as read
@@ -489,7 +489,7 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    notifyHistorySetAllCabinetReadV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    notifyHistorySetAllCabinetReadV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export
@@ -548,6 +548,11 @@ export declare const NotifyHistoryGetListMyV1NameEnum: {
     readonly PublisherConnected: "publisher_connected";
     readonly PublisherInitializing: "publisher_initializing";
     readonly PublisherClose: "publisher_close";
+    readonly PublisherConnectionInterrupted: "publisher_connection_interrupted";
+    readonly PublisherConnectionTimeout: "publisher_connection_timeout";
+    readonly PublisherProtocolError: "publisher_protocol_error";
+    readonly PublisherStartFailed: "publisher_start_failed";
+    readonly PublisherReconnectFailed: "publisher_reconnect_failed";
     readonly BroadcastConnectedStart: "broadcast_connected_start";
     readonly BroadcastConnectedEnd: "broadcast_connected_end";
     readonly BroadcastConnectingStream: "broadcast_connecting_stream";
@@ -558,6 +563,9 @@ export declare const NotifyHistoryGetListMyV1NameEnum: {
     readonly BroadcastVideoPauseStart: "broadcast_video_pause_start";
     readonly BroadcastVideoPauseEnd: "broadcast_video_pause_end";
     readonly BroadcastInitRestream: "broadcast_init_restream";
+    readonly BroadcastPlaceholderReady: "broadcast_placeholder_ready";
+    readonly BroadcastPlaceholderFailed: "broadcast_placeholder_failed";
+    readonly BroadcastPlaceholderFallbackUsed: "broadcast_placeholder_fallback_used";
     readonly StartStream: "start_stream";
     readonly CreateReader: "create_reader";
     readonly StartChannel: "start_channel";

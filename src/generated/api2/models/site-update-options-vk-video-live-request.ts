@@ -62,6 +62,12 @@ export interface SiteUpdateOptionsVkVideoLiveRequest {
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */
     'category_name'?: string;
+    /**
+     * category type
+     * @type {string}
+     * @memberof SiteUpdateOptionsVkVideoLiveRequest
+     */
+    'category_type'?: SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum;
 }
 
 export const SiteUpdateOptionsVkVideoLiveRequestVEnum = {
@@ -76,5 +82,12 @@ export const SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = {
 } as const;
 
 export type SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = typeof SiteUpdateOptionsVkVideoLiveRequestLanguageEnum[keyof typeof SiteUpdateOptionsVkVideoLiveRequestLanguageEnum];
+export const SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum = {
+    Irl: 'irl',
+    Game: 'game',
+    Sport: 'sport'
+} as const;
+
+export type SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum = typeof SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum[keyof typeof SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum];
 
 

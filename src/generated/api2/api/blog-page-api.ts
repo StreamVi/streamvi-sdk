@@ -24,7 +24,9 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { PaginatedResponseOfBlogPageSiteResponse } from '../models';
+import type { GetBlogPageResponse } from '../models';
+// @ts-ignore
+import type { PaginatedBlogPageSiteResponse } from '../models';
 /**
  * BlogPageApi - axios parameter creator
  * @export
@@ -160,7 +162,7 @@ export const BlogPageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async blogPageGetV1(language: BlogPageGetV1LanguageEnum, url: string, v?: BlogPageGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>> {
+        async blogPageGetV1(language: BlogPageGetV1LanguageEnum, url: string, v?: BlogPageGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetBlogPageResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageGetV1(language, url, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BlogPageApi.blogPageGetV1']?.[localVarOperationServerIndex]?.url;
@@ -177,7 +179,7 @@ export const BlogPageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async blogPageListV1(language: BlogPageListV1LanguageEnum, v?: BlogPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>> {
+        async blogPageListV1(language: BlogPageListV1LanguageEnum, v?: BlogPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBlogPageSiteResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageListV1(language, v, s, limit, offset, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BlogPageApi.blogPageListV1']?.[localVarOperationServerIndex]?.url;
@@ -200,7 +202,7 @@ export const BlogPageApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfBlogPageSiteResponse> {
+        blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetBlogPageResponse> {
             return localVarFp.blogPageGetV1(requestParameters.language, requestParameters.url, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
@@ -210,7 +212,7 @@ export const BlogPageApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        blogPageListV1(requestParameters: BlogPageApiBlogPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfBlogPageSiteResponse> {
+        blogPageListV1(requestParameters: BlogPageApiBlogPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedBlogPageSiteResponse> {
             return localVarFp.blogPageListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
     };
@@ -230,7 +232,7 @@ export interface BlogPageApiInterface {
      * @throws {RequiredError}
      * @memberof BlogPageApiInterface
      */
-    blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>;
+    blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetBlogPageResponse>;
 
     /**
      * 
@@ -240,7 +242,7 @@ export interface BlogPageApiInterface {
      * @throws {RequiredError}
      * @memberof BlogPageApiInterface
      */
-    blogPageListV1(requestParameters: BlogPageApiBlogPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfBlogPageSiteResponse>;
+    blogPageListV1(requestParameters: BlogPageApiBlogPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedBlogPageSiteResponse>;
 
 }
 

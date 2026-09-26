@@ -8,7 +8,7 @@ All URIs are relative to *http://localhost*
 |[**blogPageListV1**](#blogpagelistv1) | **GET** /method/blog/page/list | Get list of blog pages|
 
 # **blogPageGetV1**
-> PaginatedResponseOfBlogPageSiteResponse blogPageGetV1()
+> GetBlogPageResponse blogPageGetV1()
 
 
 ### Example
@@ -44,7 +44,7 @@ const { status, data } = await apiInstance.blogPageGetV1(
 
 ### Return type
 
-**PaginatedResponseOfBlogPageSiteResponse**
+**GetBlogPageResponse**
 
 ### Authorization
 
@@ -65,7 +65,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **blogPageListV1**
-> PaginatedResponseOfBlogPageSiteResponse blogPageListV1()
+> PaginatedBlogPageSiteResponse blogPageListV1()
 
 
 ### Example
@@ -107,7 +107,7 @@ const { status, data } = await apiInstance.blogPageListV1(
 
 ### Return type
 
-**PaginatedResponseOfBlogPageSiteResponse**
+**PaginatedBlogPageSiteResponse**
 
 ### Authorization
 

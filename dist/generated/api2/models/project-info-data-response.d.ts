@@ -50,7 +50,7 @@ export interface ProjectInfoDataResponse {
      * @type {string}
      * @memberof ProjectInfoDataResponse
      */
-    'external_id': string;
+    'external_id': string | null;
     /**
      * Project type
      * @type {number}
@@ -77,10 +77,10 @@ export interface ProjectInfoDataResponse {
     'balance_profit': number;
     /**
      * Currency
-     * @type {number}
+     * @type {string}
      * @memberof ProjectInfoDataResponse
      */
-    'currency': ProjectInfoDataResponseCurrencyEnum | null;
+    'currency': ProjectInfoDataResponseCurrencyEnum;
     /**
      * Country id
      * @type {number}
@@ -93,6 +93,9 @@ export declare const ProjectInfoDataResponseTypeEnum: {
     readonly NUMBER_1: 1;
 };
 export type ProjectInfoDataResponseTypeEnum = typeof ProjectInfoDataResponseTypeEnum[keyof typeof ProjectInfoDataResponseTypeEnum];
-export declare const ProjectInfoDataResponseCurrencyEnum: {};
+export declare const ProjectInfoDataResponseCurrencyEnum: {
+    readonly Rub: "rub";
+    readonly Usd: "usd";
+};
 export type ProjectInfoDataResponseCurrencyEnum = typeof ProjectInfoDataResponseCurrencyEnum[keyof typeof ProjectInfoDataResponseCurrencyEnum];
 //# sourceMappingURL=project-info-data-response.d.ts.map

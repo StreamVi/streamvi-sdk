@@ -41,6 +41,7 @@ export declare const PlanRestreamFeatureItemNameEnum: {
     readonly DedicatedServer: "dedicated_server";
     readonly PersonalManager: "personal_manager";
     readonly SupportCustomChannel: "support_custom_channel";
+    readonly DisconnectProtectionMaxMinutes: "disconnect_protection_max_minutes";
 };
 export type PlanRestreamFeatureItemNameEnum = typeof PlanRestreamFeatureItemNameEnum[keyof typeof PlanRestreamFeatureItemNameEnum];
 //# sourceMappingURL=plan-restream-feature-item.d.ts.map

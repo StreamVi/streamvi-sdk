@@ -47,7 +47,7 @@ export interface PlanRestreamProjectResponse {
      * @type {number}
      * @memberof PlanRestreamProjectResponse
      */
-    'count_channel_max': number;
+    'count_channel_max': number | null;
     /**
      * Step channel
      * @type {number}
@@ -126,6 +126,12 @@ export interface PlanRestreamProjectResponse {
      * @memberof PlanRestreamProjectResponse
      */
     'custom_video': number;
+    /**
+     * Maximum disconnect protection time in minutes
+     * @type {number}
+     * @memberof PlanRestreamProjectResponse
+     */
+    'disconnect_protection_max_minutes': number;
     /**
      * Tariff project
      * @type {PlanRestreamForProjectV2}

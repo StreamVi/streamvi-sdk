@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **string** | message | [default to undefined]
+**message** | **string** | message | [optional] [default to undefined]
 
 ## Example
 

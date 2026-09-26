@@ -12,6 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
+import type { SiteChatKeyRequest } from '../models';
 import type { SiteChatKeyResponse } from '../models';
 /**
  * ChatApi - axios parameter creator
@@ -28,6 +29,14 @@ export declare const ChatApiAxiosParamCreator: (configuration?: Configuration) =
      * @throws {RequiredError}
      */
     chatGatewayKeyV1: (language: ChatGatewayKeyV1LanguageEnum, projectId: number, v?: ChatGatewayKeyV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Rotate chat key
+     * @param {SiteChatKeyRequest} siteChatKeyRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    chatGatewayRotateKeyV1: (siteChatKeyRequest: SiteChatKeyRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ChatApi - functional programming interface
@@ -44,6 +53,14 @@ export declare const ChatApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     chatGatewayKeyV1(language: ChatGatewayKeyV1LanguageEnum, projectId: number, v?: ChatGatewayKeyV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChatKeyResponse>>;
+    /**
+     *
+     * @summary Rotate chat key
+     * @param {SiteChatKeyRequest} siteChatKeyRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    chatGatewayRotateKeyV1(siteChatKeyRequest: SiteChatKeyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChatKeyResponse>>;
 };
 /**
  * ChatApi - factory interface
@@ -58,6 +75,14 @@ export declare const ChatApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     chatGatewayKeyV1(requestParameters: ChatApiChatGatewayKeyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteChatKeyResponse>;
+    /**
+     *
+     * @summary Rotate chat key
+     * @param {ChatApiChatGatewayRotateKeyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    chatGatewayRotateKeyV1(requestParameters: ChatApiChatGatewayRotateKeyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteChatKeyResponse>;
 };
 /**
  * ChatApi - interface
@@ -74,6 +99,15 @@ export interface ChatApiInterface {
      * @memberof ChatApiInterface
      */
     chatGatewayKeyV1(requestParameters: ChatApiChatGatewayKeyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteChatKeyResponse>;
+    /**
+     *
+     * @summary Rotate chat key
+     * @param {ChatApiChatGatewayRotateKeyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatApiInterface
+     */
+    chatGatewayRotateKeyV1(requestParameters: ChatApiChatGatewayRotateKeyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteChatKeyResponse>;
 }
 /**
  * Request parameters for chatGatewayKeyV1 operation in ChatApi.
@@ -101,6 +135,19 @@ export interface ChatApiChatGatewayKeyV1Request {
     readonly v?: ChatGatewayKeyV1VEnum;
 }
 /**
+ * Request parameters for chatGatewayRotateKeyV1 operation in ChatApi.
+ * @export
+ * @interface ChatApiChatGatewayRotateKeyV1Request
+ */
+export interface ChatApiChatGatewayRotateKeyV1Request {
+    /**
+     *
+     * @type {SiteChatKeyRequest}
+     * @memberof ChatApiChatGatewayRotateKeyV1
+     */
+    readonly SiteChatKeyRequest: SiteChatKeyRequest;
+}
+/**
  * ChatApi - object-oriented interface
  * @export
  * @class ChatApi
@@ -115,7 +162,16 @@ export declare class ChatApi extends BaseAPI implements ChatApiInterface {
      * @throws {RequiredError}
      * @memberof ChatApi
      */
-    chatGatewayKeyV1(requestParameters: ChatApiChatGatewayKeyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteChatKeyResponse, any, {}>>;
+    chatGatewayKeyV1(requestParameters: ChatApiChatGatewayKeyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteChatKeyResponse, any, {}, any>>;
+    /**
+     *
+     * @summary Rotate chat key
+     * @param {ChatApiChatGatewayRotateKeyV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChatApi
+     */
+    chatGatewayRotateKeyV1(requestParameters: ChatApiChatGatewayRotateKeyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteChatKeyResponse, any, {}, any>>;
 }
 /**
  * @export

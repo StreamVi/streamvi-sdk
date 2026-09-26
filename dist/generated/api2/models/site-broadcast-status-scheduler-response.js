@@ -13,12 +13,19 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SiteBroadcastStatusSchedulerResponseAppEnum = exports.SiteBroadcastStatusSchedulerResponseStatusEnum = void 0;
+exports.SiteBroadcastStatusSchedulerResponseAppEnum = exports.SiteBroadcastStatusSchedulerResponseKindEnum = exports.SiteBroadcastStatusSchedulerResponseActionEnum = exports.SiteBroadcastStatusSchedulerResponseStatusEnum = void 0;
 exports.SiteBroadcastStatusSchedulerResponseStatusEnum = {
     Active: 'active',
     Pause: 'pause',
     Lost: 'lost',
     Done: 'done'
+};
+exports.SiteBroadcastStatusSchedulerResponseActionEnum = {
+    Active: 'active',
+    Stopped: 'stopped'
+};
+exports.SiteBroadcastStatusSchedulerResponseKindEnum = {
+    Scheduler: 'scheduler'
 };
 exports.SiteBroadcastStatusSchedulerResponseAppEnum = {
     Scheduler: 'scheduler'

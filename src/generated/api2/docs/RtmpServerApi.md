@@ -13,7 +13,7 @@ All URIs are relative to *http://localhost*
 |[**rtmpServerUpV1**](#rtmpserverupv1) | **GET** /method/rtmp_server/up | State of rtmp servers|
 
 # **methodRtmpServerListLocationsUnauthorizedV1**
-> ListOfRtmpServerLocationResponse methodRtmpServerListLocationsUnauthorizedV1()
+> RtmpServerLocationsResponse methodRtmpServerListLocationsUnauthorizedV1()
 
 
 ### Example
@@ -46,7 +46,7 @@ const { status, data } = await apiInstance.methodRtmpServerListLocationsUnauthor
 
 ### Return type
 
-**ListOfRtmpServerLocationResponse**
+**RtmpServerLocationsResponse**
 
 ### Authorization
 

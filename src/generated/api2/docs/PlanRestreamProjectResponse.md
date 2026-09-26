@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **feature** | [**Array&lt;PlanRestreamFeatureItemV2&gt;**](PlanRestreamFeatureItemV2.md) | Features | [default to undefined]
 **support_custom_channel** | **boolean** | Support custom channel | [default to undefined]
 **custom_video** | **number** | Custom video | [default to undefined]
+**disconnect_protection_max_minutes** | **number** | Maximum disconnect protection time in minutes | [default to undefined]
 **own_tariff** | [**PlanRestreamForProjectV2**](PlanRestreamForProjectV2.md) | Tariff project | [default to undefined]
 
 ## Example
@@ -49,6 +50,7 @@ const instance: PlanRestreamProjectResponse = {
     feature,
     support_custom_channel,
     custom_video,
+    disconnect_protection_max_minutes,
     own_tariff,
 };
 ```

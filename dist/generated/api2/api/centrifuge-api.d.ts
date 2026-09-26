@@ -32,7 +32,7 @@ export declare const CentrifugeApiAxiosParamCreator: (configuration?: Configurat
      */
     centrifugeAuthV2: (projectId: number, v?: CentrifugeAuthV2VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
+     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
      * @summary Get token for connect to centrifuge for channel
      * @param {CentrifugeChannelTokenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
@@ -101,7 +101,7 @@ export declare const CentrifugeApiFp: (configuration?: Configuration) => {
      */
     centrifugeAuthV2(projectId: number, v?: CentrifugeAuthV2VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
+     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
      * @summary Get token for connect to centrifuge for channel
      * @param {CentrifugeChannelTokenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
@@ -169,7 +169,7 @@ export declare const CentrifugeApiFactory: (configuration?: Configuration, baseP
      */
     centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
+     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
      * @summary Get token for connect to centrifuge for channel
      * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -228,7 +228,7 @@ export interface CentrifugeApiInterface {
      */
     centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
+     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
      * @summary Get token for connect to centrifuge for channel
      * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -441,16 +441,16 @@ export declare class CentrifugeApi extends BaseAPI implements CentrifugeApiInter
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
-    centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any, {}>>;
+    centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any, {}, any>>;
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
+     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
      * @summary Get token for connect to centrifuge for channel
      * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
-    centrifugeChannelTokenV1(requestParameters: CentrifugeApiCentrifugeChannelTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthCentrifugoChannelResponse, any, {}>>;
+    centrifugeChannelTokenV1(requestParameters: CentrifugeApiCentrifugeChannelTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthCentrifugoChannelResponse, any, {}, any>>;
     /**
      * Returns supported channel_type values, required params, events, and response schema names.
      * @summary List available Method API Centrifuge channels
@@ -459,7 +459,7 @@ export declare class CentrifugeApi extends BaseAPI implements CentrifugeApiInter
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
-    centrifugeChannelsCatalogV1(requestParameters: CentrifugeApiCentrifugeChannelsCatalogV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CentrifugoChannelsCatalogResponse, any, {}>>;
+    centrifugeChannelsCatalogV1(requestParameters: CentrifugeApiCentrifugeChannelsCatalogV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CentrifugoChannelsCatalogResponse, any, {}, any>>;
     /**
      * Get token for connect to centrifuge for project
      * @summary Get token for connect to centrifuge for project
@@ -468,7 +468,7 @@ export declare class CentrifugeApi extends BaseAPI implements CentrifugeApiInter
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
-    centrifugeConnectionTokenV1(requestParameters: CentrifugeApiCentrifugeConnectionTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthCentrifugoConnectResponse, any, {}>>;
+    centrifugeConnectionTokenV1(requestParameters: CentrifugeApiCentrifugeConnectionTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthCentrifugoConnectResponse, any, {}, any>>;
     /**
      * Use /method/centrifuge/auth/channel instead.
      * @summary Auth token for project
@@ -478,7 +478,7 @@ export declare class CentrifugeApi extends BaseAPI implements CentrifugeApiInter
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
-    centrifugeProjectV1(requestParameters: CentrifugeApiCentrifugeProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any, {}>>;
+    centrifugeProjectV1(requestParameters: CentrifugeApiCentrifugeProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any, {}, any>>;
     /**
      * Use /method/centrifuge/auth/channel instead.
      * @summary Auth token for broadcast
@@ -488,7 +488,7 @@ export declare class CentrifugeApi extends BaseAPI implements CentrifugeApiInter
      * @throws {RequiredError}
      * @memberof CentrifugeApi
      */
-    getTokenBroadcastV1(requestParameters: CentrifugeApiGetTokenBroadcastV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any, {}>>;
+    getTokenBroadcastV1(requestParameters: CentrifugeApiGetTokenBroadcastV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any, {}, any>>;
 }
 /**
  * @export

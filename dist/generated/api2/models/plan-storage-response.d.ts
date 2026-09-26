@@ -51,7 +51,7 @@ export interface PlanStorageResponse {
      * @type {number}
      * @memberof PlanStorageResponse
      */
-    'price_usd': number;
+    'price_usd': number | null;
     /**
      * Step increase in gb
      * @type {number}

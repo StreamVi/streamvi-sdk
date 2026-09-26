@@ -116,17 +116,17 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth2", ["profile:write"], configuration)
 
-
             if (v !== undefined) {
-                localVarFormParams.append('v', v as any);
+                localVarQueryParameter['v'] = v;
             } else {
-                localVarFormParams.append('v', '1' as any);
+                localVarQueryParameter['v'] = '1';
             }
-    
-            if (language !== undefined) { 
-                localVarFormParams.append('language', language as any);
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
             }
-    
+
+
             if (firstName !== undefined) { 
                 localVarFormParams.append('first_name', firstName as any);
             }
@@ -283,7 +283,7 @@ export interface AccountApiAccountGetProfileV1Request {
 export interface AccountApiAccountUpdateProfileV1Request {
     /**
      * Current language
-     * @type {string}
+     * @type {'ru' | 'en' | 'cn'}
      * @memberof AccountApiAccountUpdateProfileV1
      */
     readonly language: AccountUpdateProfileV1LanguageEnum
@@ -304,7 +304,7 @@ export interface AccountApiAccountUpdateProfileV1Request {
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @type {string}
+     * @type {'1'}
      * @memberof AccountApiAccountUpdateProfileV1
      */
     readonly v?: AccountUpdateProfileV1VEnum

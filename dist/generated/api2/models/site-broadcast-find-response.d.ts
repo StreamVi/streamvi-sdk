@@ -27,25 +27,25 @@ export interface SiteBroadcastFindResponse {
      * @type {number}
      * @memberof SiteBroadcastFindResponse
      */
-    'bitrate': number;
+    'bitrate': number | null;
     /**
      * Fps
      * @type {number}
      * @memberof SiteBroadcastFindResponse
      */
-    'fps': number;
+    'fps': number | null;
     /**
      * width
      * @type {number}
      * @memberof SiteBroadcastFindResponse
      */
-    'width': number;
+    'width': number | null;
     /**
      * height
      * @type {number}
      * @memberof SiteBroadcastFindResponse
      */
-    'height': number;
+    'height': number | null;
     /**
      * Location
      * @type {string}
@@ -57,25 +57,25 @@ export interface SiteBroadcastFindResponse {
      * @type {string}
      * @memberof SiteBroadcastFindResponse
      */
-    'encoder': string;
+    'encoder': string | null;
     /**
      * IP address
      * @type {string}
      * @memberof SiteBroadcastFindResponse
      */
-    'ip': string;
+    'ip': string | null;
     /**
      * Create time
      * @type {string}
      * @memberof SiteBroadcastFindResponse
      */
-    'created_at': string;
+    'created_at': string | null;
     /**
      * Finish time
      * @type {string}
      * @memberof SiteBroadcastFindResponse
      */
-    'finish_at': string;
+    'finish_at': string | null;
     /**
      * Count viewers
      * @type {number}

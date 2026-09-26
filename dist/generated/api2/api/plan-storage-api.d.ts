@@ -507,7 +507,7 @@ export declare class PlanStorageApi extends BaseAPI implements PlanStorageApiInt
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Remove next tariff
@@ -516,7 +516,7 @@ export declare class PlanStorageApi extends BaseAPI implements PlanStorageApiInt
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Check storage tariff before buy
@@ -525,7 +525,7 @@ export declare class PlanStorageApi extends BaseAPI implements PlanStorageApiInt
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageCheckResponse, any, {}>>;
+    planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageCheckResponse, any, {}, any>>;
     /**
      *
      * @summary Get discount of storage
@@ -534,7 +534,7 @@ export declare class PlanStorageApi extends BaseAPI implements PlanStorageApiInt
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageDiscountResponse, any, {}>>;
+    planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageDiscountResponse, any, {}, any>>;
     /**
      *
      * @summary Get info for storage tariff
@@ -543,7 +543,7 @@ export declare class PlanStorageApi extends BaseAPI implements PlanStorageApiInt
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageResponseDto, any, {}>>;
+    planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageResponseDto, any, {}, any>>;
     /**
      *
      * @summary Set storage tariff auto prolongation
@@ -552,7 +552,7 @@ export declare class PlanStorageApi extends BaseAPI implements PlanStorageApiInt
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    planStorageSetProlongationV1(requestParameters: PlanStorageApiPlanStorageSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    planStorageSetProlongationV1(requestParameters: PlanStorageApiPlanStorageSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get tariff for project
@@ -561,7 +561,7 @@ export declare class PlanStorageApi extends BaseAPI implements PlanStorageApiInt
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
-    planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageForProject, any, {}>>;
+    planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanStorageForProject, any, {}, any>>;
 }
 /**
  * @export

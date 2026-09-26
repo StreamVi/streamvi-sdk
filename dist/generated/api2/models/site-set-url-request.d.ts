@@ -45,6 +45,12 @@ export interface SiteSetUrlRequest {
      * @memberof SiteSetUrlRequest
      */
     'url': string;
+    /**
+     * Stream key
+     * @type {string}
+     * @memberof SiteSetUrlRequest
+     */
+    'stream_key'?: string;
 }
 export declare const SiteSetUrlRequestVEnum: {
     readonly _1: "1";

@@ -524,6 +524,7 @@ let app: 'site' | 'admin' | 'mobile' | 'desktop'; //App oauth (optional) (defaul
 let redirect: string; //Redirect url (optional) (default to undefined)
 let refId: string; //Referal id (optional) (default to undefined)
 let country: string; //Country code (optional) (default to 'ru')
+let visitorId: string; //Anonymous landing visitor UUID v4 (optional) (default to undefined)
 
 const { status, data } = await apiInstance.authGetAuthUrlV1(
     language,
@@ -532,7 +533,8 @@ const { status, data } = await apiInstance.authGetAuthUrlV1(
     app,
     redirect,
     refId,
-    country
+    country,
+    visitorId
 );
 ```
 
@@ -547,6 +549,7 @@ const { status, data } = await apiInstance.authGetAuthUrlV1(
 | **redirect** | [**string**] | Redirect url | (optional) defaults to undefined|
 | **refId** | [**string**] | Referal id | (optional) defaults to undefined|
 | **country** | [**string**] | Country code | (optional) defaults to 'ru'|
+| **visitorId** | [**string**] | Anonymous landing visitor UUID v4 | (optional) defaults to undefined|
 
 
 ### Return type

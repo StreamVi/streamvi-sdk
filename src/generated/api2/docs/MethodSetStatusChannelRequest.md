@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **v** | **string** | Version (automatically defaults to 1 based on the API contract, can be overridden) | [optional] [default to VEnum__1]
 **language** | **string** | Current language | [optional] [default to LanguageEnum_En]
 **channel_id** | **number** | Channel id | [default to undefined]
-**status** | **boolean** | Status channel status | [default to undefined]
+**status** | **boolean** | Desired channel state. Use active in PUT /method/channel/status for new integrations. | [default to undefined]
 
 ## Example
 

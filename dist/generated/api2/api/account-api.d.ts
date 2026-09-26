@@ -142,7 +142,7 @@ export interface AccountApiAccountGetProfileV1Request {
 export interface AccountApiAccountUpdateProfileV1Request {
     /**
      * Current language
-     * @type {string}
+     * @type {'ru' | 'en' | 'cn'}
      * @memberof AccountApiAccountUpdateProfileV1
      */
     readonly language: AccountUpdateProfileV1LanguageEnum;
@@ -160,7 +160,7 @@ export interface AccountApiAccountUpdateProfileV1Request {
     readonly last_name: string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @type {string}
+     * @type {'1'}
      * @memberof AccountApiAccountUpdateProfileV1
      */
     readonly v?: AccountUpdateProfileV1VEnum;
@@ -186,7 +186,7 @@ export declare class AccountApi extends BaseAPI implements AccountApiInterface {
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    accountGetProfileV1(requestParameters: AccountApiAccountGetProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any, {}>>;
+    accountGetProfileV1(requestParameters: AccountApiAccountGetProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any, {}, any>>;
     /**
      *
      * @summary Update account profile
@@ -195,7 +195,7 @@ export declare class AccountApi extends BaseAPI implements AccountApiInterface {
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    accountUpdateProfileV1(requestParameters: AccountApiAccountUpdateProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    accountUpdateProfileV1(requestParameters: AccountApiAccountUpdateProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

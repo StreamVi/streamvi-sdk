@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { PlannedItemResponse } from './planned-item-response';
+import type { SelectedPlannedItemResponse } from './selected-planned-item-response';
 
 /**
  * 
@@ -25,9 +25,9 @@ import type { PlannedItemResponse } from './planned-item-response';
 export interface SitePlannedResponse {
     /**
      * Planned item
-     * @type {PlannedItemResponse}
+     * @type {SelectedPlannedItemResponse}
      * @memberof SitePlannedResponse
      */
-    'planned'?: PlannedItemResponse;
+    'planned'?: SelectedPlannedItemResponse;
 }
 

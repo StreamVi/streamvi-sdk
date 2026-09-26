@@ -26,7 +26,7 @@ export interface SiteWebinarRoomStreamLastResponse {
      * @type {string}
      * @memberof SiteWebinarRoomStreamLastResponse
      */
-    'status': SiteWebinarRoomStreamLastResponseStatusEnum;
+    'status'?: SiteWebinarRoomStreamLastResponseStatusEnum;
     /**
      * Start at
      * @type {string}

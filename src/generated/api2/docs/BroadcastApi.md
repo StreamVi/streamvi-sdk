@@ -8,6 +8,7 @@ All URIs are relative to *http://localhost*
 |[**broadcastEventItemV1**](#broadcasteventitemv1) | **GET** /method/broadcast/events/item | Broadcast event item|
 |[**broadcastEventsV4**](#broadcasteventsv4) | **GET** /method/broadcast/events | Events from broadcast v4|
 |[**broadcastFindV1**](#broadcastfindv1) | **GET** /method/broadcast | Get one broadcast|
+|[**broadcastGetTemplateV1**](#broadcastgettemplatev1) | **GET** /method/broadcast/template | Get broadcast title and description template|
 |[**broadcastGraphBitrateV1**](#broadcastgraphbitratev1) | **GET** /method/broadcast/graph/bitrate | Bitrate from broadcast|
 |[**broadcastGraphViewersV1**](#broadcastgraphviewersv1) | **GET** /method/broadcast/graph/viewers | Viewers from broadcast|
 |[**broadcastListV1**](#broadcastlistv1) | **GET** /method/broadcast/list | List broadcast|
@@ -273,6 +274,63 @@ const { status, data } = await apiInstance.broadcastFindV1(
 ### Return type
 
 **SiteBroadcastFindResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **broadcastGetTemplateV1**
+> SiteBroadcastTemplateResponse broadcastGetTemplateV1()
+
+
+### Example
+
+```typescript
+import {
+    BroadcastApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new BroadcastApi(configuration);
+
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let projectId: number; //Project id (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.broadcastGetTemplateV1(
+    language,
+    projectId,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **projectId** | [**number**] | Project id | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+**SiteBroadcastTemplateResponse**
 
 ### Authorization
 

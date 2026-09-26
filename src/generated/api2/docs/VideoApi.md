@@ -10,11 +10,11 @@ All URIs are relative to *http://localhost*
 |[**videoSiteGetV1**](#videositegetv1) | **GET** /method/video/get | Get video by id|
 |[**videoSiteLimitsV1**](#videositelimitsv1) | **GET** /method/video/limits | Get video limits|
 |[**videoSiteListV1**](#videositelistv1) | **GET** /method/video/list | List videos|
-|[**videoSiteProgressChannelV1**](#videositeprogresschannelv1) | **GET** /method/video/progress-channel | Get upload progress channel for centrifuge|
+|[**videoSiteProgressChannelV1**](#videositeprogresschannelv1) | **GET** /method/video/progress-channel | Get upload progress channels for centrifuge|
 |[**videoSiteUpdateV1**](#videositeupdatev1) | **POST** /method/video/update | Update video|
 
 # **videoSiteCreateV1**
-> VideoSiteCreateV1200Response videoSiteCreateV1()
+> VideoCreateSuccessResponse videoSiteCreateV1()
 
 
 ### Example
@@ -50,7 +50,7 @@ const { status, data } = await apiInstance.videoSiteCreateV1(
 
 ### Return type
 
-**VideoSiteCreateV1200Response**
+**VideoCreateSuccessResponse**
 
 ### Authorization
 
@@ -371,7 +371,7 @@ const { status, data } = await apiInstance.videoSiteListV1(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **videoSiteProgressChannelV1**
-> VideoProgressChannelResponse videoSiteProgressChannelV1()
+> Array<VideoProgressChannelResponse> videoSiteProgressChannelV1()
 
 
 ### Example
@@ -407,7 +407,7 @@ const { status, data } = await apiInstance.videoSiteProgressChannelV1(
 
 ### Return type
 
-**VideoProgressChannelResponse**
+**Array<VideoProgressChannelResponse>**
 
 ### Authorization
 

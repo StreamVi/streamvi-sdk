@@ -36,7 +36,8 @@ All URIs are relative to *http://localhost*
 |[**channelSetDelayV1**](#channelsetdelayv1) | **GET** /method/channel/set-delay | Set delay - test point|
 |[**channelShortChannelListV1**](#channelshortchannellistv1) | **GET** /method/channel/short | Minimal channel list|
 |[**methodSearchV1**](#methodsearchv1) | **GET** /method/channel/search | Search channel list|
-|[**methodSetStatusV1**](#methodsetstatusv1) | **POST** /method/channel/set-status | Get live status|
+|[**methodSetStatusLegacyV1**](#methodsetstatuslegacyv1) | **POST** /method/channel/set-status | Set desired channel state|
+|[**methodSetStatusV1**](#methodsetstatusv1) | **PUT** /method/channel/status | Set desired channel state|
 
 # **addChannelMethodAddBizonV1**
 > addChannelMethodAddBizonV1(bizonDto)
@@ -1737,9 +1738,10 @@ const { status, data } = await apiInstance.methodSearchV1(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **methodSetStatusV1**
-> SuccessResponse methodSetStatusV1(methodSetStatusChannelRequest)
+# **methodSetStatusLegacyV1**
+> SuccessResponse methodSetStatusLegacyV1(methodSetStatusChannelRequest)
 
+Deprecated. Use PUT /method/channel/status with the active field instead of status.
 
 ### Example
 
@@ -1755,7 +1757,7 @@ const apiInstance = new ChannelApi(configuration);
 
 let methodSetStatusChannelRequest: MethodSetStatusChannelRequest; //
 
-const { status, data } = await apiInstance.methodSetStatusV1(
+const { status, data } = await apiInstance.methodSetStatusLegacyV1(
     methodSetStatusChannelRequest
 );
 ```
@@ -1785,7 +1787,63 @@ const { status, data } = await apiInstance.methodSetStatusV1(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** |  |  -  |
-|**400** |  |  -  |
+|**400** | &#x60;tariff_limit_channels&#x60; when the active-channel limit is reached; &#x60;tariff_not_support_custom_channels&#x60; when the tariff does not support custom channels. |  -  |
+|**403** | &#x60;restream_tariff_required&#x60; when the project has no active restream tariff. |  -  |
+|**503** | &#x60;restream_tariff_check_unavailable&#x60; when the tariff service cannot complete the check. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **methodSetStatusV1**
+> SuccessResponse methodSetStatusV1(methodChannelStatusRequest)
+
+
+### Example
+
+```typescript
+import {
+    ChannelApi,
+    Configuration,
+    MethodChannelStatusRequest
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new ChannelApi(configuration);
+
+let methodChannelStatusRequest: MethodChannelStatusRequest; //
+
+const { status, data } = await apiInstance.methodSetStatusV1(
+    methodChannelStatusRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **methodChannelStatusRequest** | **MethodChannelStatusRequest**|  | |
+
+
+### Return type
+
+**SuccessResponse**
+
+### Authorization
+
+[X-API-KEY](../README.md#X-API-KEY), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** | &#x60;tariff_limit_channels&#x60; when the active-channel limit is reached; &#x60;tariff_not_support_custom_channels&#x60; when the tariff does not support custom channels. |  -  |
+|**403** | &#x60;restream_tariff_required&#x60; when the project has no active restream tariff. |  -  |
+|**503** | &#x60;restream_tariff_check_unavailable&#x60; when the tariff service cannot complete the check. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

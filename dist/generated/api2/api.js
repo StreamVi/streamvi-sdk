@@ -64,6 +64,7 @@ __exportStar(require("./api/pull-servers-api"), exports);
 __exportStar(require("./api/referrals-api"), exports);
 __exportStar(require("./api/release-api"), exports);
 __exportStar(require("./api/rtmp-server-api"), exports);
+__exportStar(require("./api/scheduler-api"), exports);
 __exportStar(require("./api/socials-api"), exports);
 __exportStar(require("./api/stream-key-api"), exports);
 __exportStar(require("./api/stream-pull-keys-api"), exports);

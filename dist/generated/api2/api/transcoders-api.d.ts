@@ -349,7 +349,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<number, any, {}>>;
+    transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<number, any, {}, any>>;
     /**
      *
      * @summary Transcoder delete
@@ -358,7 +358,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary List of transcoder
@@ -367,7 +367,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTranscoderListResponse, any, {}>>;
+    transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTranscoderListResponse, any, {}, any>>;
     /**
      *
      * @summary Reset delay
@@ -376,7 +376,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Transcoder stop
@@ -385,7 +385,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Transcoder update
@@ -394,7 +394,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      * @throws {RequiredError}
      * @memberof TranscodersApi
      */
-    transcodersUpdateV1(requestParameters: TranscodersApiTranscodersUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    transcodersUpdateV1(requestParameters: TranscodersApiTranscodersUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

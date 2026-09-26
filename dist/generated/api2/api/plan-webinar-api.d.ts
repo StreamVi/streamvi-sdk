@@ -523,7 +523,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      * @throws {RequiredError}
      * @memberof PlanWebinarApi
      */
-    siteBuyV1(requestParameters: PlanWebinarApiSiteBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    siteBuyV1(requestParameters: PlanWebinarApiSiteBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Remove after tariff
@@ -532,7 +532,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      * @throws {RequiredError}
      * @memberof PlanWebinarApi
      */
-    siteCancelV1(requestParameters: PlanWebinarApiSiteCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    siteCancelV1(requestParameters: PlanWebinarApiSiteCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Check webinar tariff before buy
@@ -541,7 +541,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      * @throws {RequiredError}
      * @memberof PlanWebinarApi
      */
-    siteCheckV1(requestParameters: PlanWebinarApiSiteCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarCheckV2Response, any, {}>>;
+    siteCheckV1(requestParameters: PlanWebinarApiSiteCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarCheckV2Response, any, {}, any>>;
     /**
      *
      * @summary Get discount webinar
@@ -550,7 +550,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      * @throws {RequiredError}
      * @memberof PlanWebinarApi
      */
-    siteGetDiscountV1(requestParameters: PlanWebinarApiSiteGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarDiscountResponse, any, {}>>;
+    siteGetDiscountV1(requestParameters: PlanWebinarApiSiteGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarDiscountResponse, any, {}, any>>;
     /**
      *
      * @summary Get list of webinar tariffs
@@ -559,7 +559,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      * @throws {RequiredError}
      * @memberof PlanWebinarApi
      */
-    siteListV1(requestParameters: PlanWebinarApiSiteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarResponseDto, any, {}>>;
+    siteListV1(requestParameters: PlanWebinarApiSiteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarResponseDto, any, {}, any>>;
     /**
      *
      * @summary Set webinar tariff auto prolongation
@@ -568,7 +568,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      * @throws {RequiredError}
      * @memberof PlanWebinarApi
      */
-    siteSetProlongationV1(requestParameters: PlanWebinarApiSiteSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    siteSetProlongationV1(requestParameters: PlanWebinarApiSiteSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get tariff for project
@@ -577,7 +577,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      * @throws {RequiredError}
      * @memberof PlanWebinarApi
      */
-    siteTariffV1(requestParameters: PlanWebinarApiSiteTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarForProject, any, {}>>;
+    siteTariffV1(requestParameters: PlanWebinarApiSiteTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarForProject, any, {}, any>>;
 }
 /**
  * @export

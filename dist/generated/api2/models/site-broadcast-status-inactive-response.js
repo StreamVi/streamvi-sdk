@@ -13,7 +13,10 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SiteBroadcastStatusInactiveResponseStatusEnum = void 0;
+exports.SiteBroadcastStatusInactiveResponseStatusEnum = exports.SiteBroadcastStatusInactiveResponseKindEnum = void 0;
+exports.SiteBroadcastStatusInactiveResponseKindEnum = {
+    Inactive: 'inactive'
+};
 exports.SiteBroadcastStatusInactiveResponseStatusEnum = {
     Offline: 'offline'
 };

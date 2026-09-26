@@ -44,13 +44,19 @@ export interface PlanRestreamItem {
      * @type {string}
      * @memberof PlanRestreamItem
      */
-    'date_end': string;
+    'date_end'?: string;
     /**
      * Custom video
      * @type {number}
      * @memberof PlanRestreamItem
      */
     'custom_video': number;
+    /**
+     * Maximum disconnect protection time for this purchased period, in minutes
+     * @type {number}
+     * @memberof PlanRestreamItem
+     */
+    'disconnect_protection_max_minutes': number;
     /**
      * Prolongation status
      * @type {boolean}
@@ -74,7 +80,7 @@ export interface PlanRestreamItem {
      * @type {string}
      * @memberof PlanRestreamItem
      */
-    'period': PlanRestreamItemPeriodEnum;
+    'period': PlanRestreamItemPeriodEnum | null;
 }
 export declare const PlanRestreamItemTypeEnum: {
     readonly Free: "free";

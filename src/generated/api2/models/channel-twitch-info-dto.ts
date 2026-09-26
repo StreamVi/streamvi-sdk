@@ -28,7 +28,7 @@ export interface ChannelTwitchInfoDto {
      * @type {string}
      * @memberof ChannelTwitchInfoDto
      */
-    'title': string;
+    'title'?: string;
     /**
      * 
      * @type {string}

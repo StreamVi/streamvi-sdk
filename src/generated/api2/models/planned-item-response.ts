@@ -37,7 +37,7 @@ export interface PlannedItemResponse {
      * @type {string}
      * @memberof PlannedItemResponse
      */
-    'description': string;
+    'description'?: string | null;
     /**
      * date
      * @type {string}

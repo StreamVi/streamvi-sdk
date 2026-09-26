@@ -921,7 +921,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarRoomSiteCreateV1(requestParameters: WebinarApiWebinarRoomSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomCreateResponse, any, {}>>;
+    webinarRoomSiteCreateV1(requestParameters: WebinarApiWebinarRoomSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomCreateResponse, any, {}, any>>;
     /**
      *
      * @summary Delete a webinar room
@@ -930,7 +930,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarRoomSiteDeleteV1(requestParameters: WebinarApiWebinarRoomSiteDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomDeleteResponse, any, {}>>;
+    webinarRoomSiteDeleteV1(requestParameters: WebinarApiWebinarRoomSiteDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomDeleteResponse, any, {}, any>>;
     /**
      *
      * @summary Get sync a webinar room
@@ -939,7 +939,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarRoomSiteGetSyncV1(requestParameters: WebinarApiWebinarRoomSiteGetSyncV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomSyncResponse, any, {}>>;
+    webinarRoomSiteGetSyncV1(requestParameters: WebinarApiWebinarRoomSiteGetSyncV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomSyncResponse, any, {}, any>>;
     /**
      *
      * @summary join in room anonymously
@@ -948,7 +948,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarRoomSiteJoinAnonymousV1(requestParameters: WebinarApiWebinarRoomSiteJoinAnonymousV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomJoinResponse, any, {}>>;
+    webinarRoomSiteJoinAnonymousV1(requestParameters: WebinarApiWebinarRoomSiteJoinAnonymousV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomJoinResponse, any, {}, any>>;
     /**
      *
      * @summary join in room
@@ -957,7 +957,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarRoomSiteJoinV1(requestParameters: WebinarApiWebinarRoomSiteJoinV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomJoinResponse, any, {}>>;
+    webinarRoomSiteJoinV1(requestParameters: WebinarApiWebinarRoomSiteJoinV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomJoinResponse, any, {}, any>>;
     /**
      *
      * @summary List of webinar rooms
@@ -966,7 +966,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarRoomSiteListV1(requestParameters: WebinarApiWebinarRoomSiteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomListResponse, any, {}>>;
+    webinarRoomSiteListV1(requestParameters: WebinarApiWebinarRoomSiteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomListResponse, any, {}, any>>;
     /**
      *
      * @summary Pre-join in room
@@ -975,7 +975,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarRoomSitePreJoinV1(requestParameters: WebinarApiWebinarRoomSitePreJoinV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomPreJoinResponse, any, {}>>;
+    webinarRoomSitePreJoinV1(requestParameters: WebinarApiWebinarRoomSitePreJoinV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomPreJoinResponse, any, {}, any>>;
     /**
      *
      * @summary Sync a webinar room
@@ -984,7 +984,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarRoomSiteSyncV1(requestParameters: WebinarApiWebinarRoomSiteSyncV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    webinarRoomSiteSyncV1(requestParameters: WebinarApiWebinarRoomSiteSyncV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Update a webinar room
@@ -993,7 +993,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarRoomSiteUpdateV1(requestParameters: WebinarApiWebinarRoomSiteUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomUpdateResponse, any, {}>>;
+    webinarRoomSiteUpdateV1(requestParameters: WebinarApiWebinarRoomSiteUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomUpdateResponse, any, {}, any>>;
     /**
      *
      * @summary Start a webinar stream
@@ -1002,7 +1002,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarStreamSiteCreateV1(requestParameters: WebinarApiWebinarStreamSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    webinarStreamSiteCreateV1(requestParameters: WebinarApiWebinarStreamSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get setting a webinar stream
@@ -1011,7 +1011,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarStreamSiteGetSettingStreamV1(requestParameters: WebinarApiWebinarStreamSiteGetSettingStreamV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarGetSettingsStreamResponse, any, {}>>;
+    webinarStreamSiteGetSettingStreamV1(requestParameters: WebinarApiWebinarStreamSiteGetSettingStreamV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarGetSettingsStreamResponse, any, {}, any>>;
     /**
      *
      * @summary Get last webinar stream
@@ -1020,7 +1020,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarStreamSiteLastV1(requestParameters: WebinarApiWebinarStreamSiteLastV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomStreamLastResponse, any, {}>>;
+    webinarStreamSiteLastV1(requestParameters: WebinarApiWebinarStreamSiteLastV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteWebinarRoomStreamLastResponse, any, {}, any>>;
     /**
      *
      * @summary Pause a webinar stream
@@ -1029,7 +1029,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarStreamSitePauseV1(requestParameters: WebinarApiWebinarStreamSitePauseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    webinarStreamSitePauseV1(requestParameters: WebinarApiWebinarStreamSitePauseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Play after pause
@@ -1038,7 +1038,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarStreamSitePlayV1(requestParameters: WebinarApiWebinarStreamSitePlayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    webinarStreamSitePlayV1(requestParameters: WebinarApiWebinarStreamSitePlayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Setting a webinar stream
@@ -1047,7 +1047,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarStreamSiteSettingStreamV1(requestParameters: WebinarApiWebinarStreamSiteSettingStreamV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    webinarStreamSiteSettingStreamV1(requestParameters: WebinarApiWebinarStreamSiteSettingStreamV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Stop a webinar stream
@@ -1056,7 +1056,7 @@ export declare class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
-    webinarStreamSiteUpdateV1(requestParameters: WebinarApiWebinarStreamSiteUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    webinarStreamSiteUpdateV1(requestParameters: WebinarApiWebinarStreamSiteUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

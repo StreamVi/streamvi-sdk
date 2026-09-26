@@ -12,6 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
+import type { SiteSocialListResponse } from '../models';
 /**
  * SocialsApi - axios parameter creator
  * @export
@@ -20,10 +21,12 @@ export declare const SocialsApiAxiosParamCreator: (configuration?: Configuration
     /**
      *
      * @summary Social list for user
+     * @param {SocialsGetListV1LanguageEnum} language Current language
+     * @param {SocialsGetListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    socialsGetListV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    socialsGetListV1: (language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * SocialsApi - functional programming interface
@@ -33,10 +36,12 @@ export declare const SocialsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Social list for user
+     * @param {SocialsGetListV1LanguageEnum} language Current language
+     * @param {SocialsGetListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    socialsGetListV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    socialsGetListV1(language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSocialListResponse>>;
 };
 /**
  * SocialsApi - factory interface
@@ -46,10 +51,11 @@ export declare const SocialsApiFactory: (configuration?: Configuration, basePath
     /**
      *
      * @summary Social list for user
+     * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    socialsGetListV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    socialsGetListV1(requestParameters: SocialsApiSocialsGetListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSocialListResponse>;
 };
 /**
  * SocialsApi - interface
@@ -60,11 +66,31 @@ export interface SocialsApiInterface {
     /**
      *
      * @summary Social list for user
+     * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SocialsApiInterface
      */
-    socialsGetListV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    socialsGetListV1(requestParameters: SocialsApiSocialsGetListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSocialListResponse>;
+}
+/**
+ * Request parameters for socialsGetListV1 operation in SocialsApi.
+ * @export
+ * @interface SocialsApiSocialsGetListV1Request
+ */
+export interface SocialsApiSocialsGetListV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof SocialsApiSocialsGetListV1
+     */
+    readonly language: SocialsGetListV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof SocialsApiSocialsGetListV1
+     */
+    readonly v?: SocialsGetListV1VEnum;
 }
 /**
  * SocialsApi - object-oriented interface
@@ -76,10 +102,27 @@ export declare class SocialsApi extends BaseAPI implements SocialsApiInterface {
     /**
      *
      * @summary Social list for user
+     * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SocialsApi
      */
-    socialsGetListV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    socialsGetListV1(requestParameters: SocialsApiSocialsGetListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteSocialListResponse, any, {}, any>>;
 }
+/**
+ * @export
+ */
+export declare const SocialsGetListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type SocialsGetListV1LanguageEnum = typeof SocialsGetListV1LanguageEnum[keyof typeof SocialsGetListV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const SocialsGetListV1VEnum: {
+    readonly _1: "1";
+};
+export type SocialsGetListV1VEnum = typeof SocialsGetListV1VEnum[keyof typeof SocialsGetListV1VEnum];
 //# sourceMappingURL=socials-api.d.ts.map

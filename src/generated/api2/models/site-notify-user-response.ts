@@ -43,6 +43,6 @@ export interface SiteNotifyUserResponse {
      * @type {NotifyUserRelation}
      * @memberof SiteNotifyUserResponse
      */
-    'relation': NotifyUserRelation;
+    'relation'?: NotifyUserRelation;
 }
 

@@ -69,7 +69,7 @@ const { status, data } = await apiInstance.centrifugeAuthV2(
 # **centrifugeChannelTokenV1**
 > AuthCentrifugoChannelResponse centrifugeChannelTokenV1()
 
-       Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+       Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
 
 ### Example
 

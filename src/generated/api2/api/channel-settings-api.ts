@@ -24,9 +24,9 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { ListOfPlaylistItemResponse } from '../models';
+import type { PlannedListResponse } from '../models';
 // @ts-ignore
-import type { ListOfSitePlannedResponse } from '../models';
+import type { PlaylistResponse } from '../models';
 // @ts-ignore
 import type { SiteBulkUpdateChannelRequest } from '../models';
 // @ts-ignore
@@ -1071,7 +1071,7 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
         },
         /**
          * 
-         * @summary Get status platform
+         * @summary Redirect to OAuth for updating a channel token
          * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
@@ -1300,7 +1300,7 @@ export const ChannelSettingsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelChatRemoveTelegramChatV1(language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+        async channelChatRemoveTelegramChatV1(language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatRemoveTelegramChatV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatRemoveTelegramChatV1']?.[localVarOperationServerIndex]?.url;
@@ -1362,7 +1362,7 @@ export const ChannelSettingsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsGetPlannedV1(language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfSitePlannedResponse>> {
+        async channelOptionsGetPlannedV1(language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlannedListResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsGetPlannedV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsGetPlannedV1']?.[localVarOperationServerIndex]?.url;
@@ -1378,7 +1378,7 @@ export const ChannelSettingsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsGetPlayListV1(language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPlaylistItemResponse>> {
+        async channelOptionsGetPlayListV1(language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlaylistResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsGetPlayListV1(language, projectId, channelId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsGetPlayListV1']?.[localVarOperationServerIndex]?.url;
@@ -1545,7 +1545,7 @@ export const ChannelSettingsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get status platform
+         * @summary Redirect to OAuth for updating a channel token
          * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
@@ -1627,7 +1627,7 @@ export const ChannelSettingsApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
+        channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1667,7 +1667,7 @@ export const ChannelSettingsApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfSitePlannedResponse> {
+        channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlannedListResponse> {
             return localVarFp.channelOptionsGetPlannedV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1677,7 +1677,7 @@ export const ChannelSettingsApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPlaylistItemResponse> {
+        channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlaylistResponse> {
             return localVarFp.channelOptionsGetPlayListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1802,7 +1802,7 @@ export const ChannelSettingsApiFactory = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get status platform
+         * @summary Redirect to OAuth for updating a channel token
          * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1867,7 +1867,7 @@ export interface ChannelSettingsApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelSettingsApiInterface
      */
-    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * 
@@ -1907,7 +1907,7 @@ export interface ChannelSettingsApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelSettingsApiInterface
      */
-    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfSitePlannedResponse>;
+    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlannedListResponse>;
 
     /**
      * 
@@ -1917,7 +1917,7 @@ export interface ChannelSettingsApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelSettingsApiInterface
      */
-    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPlaylistItemResponse>;
+    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlaylistResponse>;
 
     /**
      * 
@@ -2041,7 +2041,7 @@ export interface ChannelSettingsApiInterface {
 
     /**
      * 
-     * @summary Get status platform
+     * @summary Redirect to OAuth for updating a channel token
      * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2873,7 +2873,7 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
 
     /**
      * 
-     * @summary Get status platform
+     * @summary Redirect to OAuth for updating a channel token
      * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

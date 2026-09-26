@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Plan webinar id | [default to undefined]
-**date_end** | **string** | Date end tariff | [default to undefined]
+**date_end** | **string** | Date end tariff | [optional] [default to undefined]
 **title** | **string** | Plan title | [default to undefined]
 **type** | **string** | Tariff type | [optional] [default to undefined]
 **prolongation** | **boolean** | Prolongation status | [default to undefined]

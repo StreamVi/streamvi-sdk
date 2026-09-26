@@ -12,11 +12,11 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { ListOfUserProject2ProjectResponse } from '../models';
-import type { PaginatedResponseOfUserProjectResponse } from '../models';
+import type { PaginatedUserProjectResponse } from '../models';
 import type { ProjectInfoResponse } from '../models';
 import type { ProjectMeResponse } from '../models';
 import type { SuccessResponse } from '../models';
+import type { UserProject2ProjectListResponse } from '../models';
 import type { UserProjectGetResponse } from '../models';
 /**
  * ProjectApi - axios parameter creator
@@ -237,7 +237,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectListAccessV1(language: UserProjectListAccessV1LanguageEnum, projectId: number, v?: UserProjectListAccessV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfUserProject2ProjectResponse>>;
+    userProjectListAccessV1(language: UserProjectListAccessV1LanguageEnum, projectId: number, v?: UserProjectListAccessV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProject2ProjectListResponse>>;
     /**
      *
      * @summary List of project for current user
@@ -248,7 +248,7 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectListV1(language: UserProjectListV1LanguageEnum, v?: UserProjectListV1VEnum, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfUserProjectResponse>>;
+    userProjectListV1(language: UserProjectListV1LanguageEnum, v?: UserProjectListV1VEnum, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserProjectResponse>>;
     /**
      *
      * @summary Select user for project
@@ -337,7 +337,7 @@ export declare const ProjectApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfUserProject2ProjectResponse>;
+    userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProject2ProjectListResponse>;
     /**
      *
      * @summary List of project for current user
@@ -345,7 +345,7 @@ export declare const ProjectApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfUserProjectResponse>;
+    userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedUserProjectResponse>;
     /**
      *
      * @summary Select user for project
@@ -442,7 +442,7 @@ export interface ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApiInterface
      */
-    userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfUserProject2ProjectResponse>;
+    userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProject2ProjectListResponse>;
     /**
      *
      * @summary List of project for current user
@@ -451,7 +451,7 @@ export interface ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApiInterface
      */
-    userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfUserProjectResponse>;
+    userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedUserProjectResponse>;
     /**
      *
      * @summary Select user for project
@@ -776,7 +776,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    methodProjectMeMeV1(requestParameters?: ProjectApiMethodProjectMeMeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectMeResponse, any, {}>>;
+    methodProjectMeMeV1(requestParameters?: ProjectApiMethodProjectMeMeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectMeResponse, any, {}, any>>;
     /**
      *
      * @summary Change access user from project
@@ -785,7 +785,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    userProjectChangeAccessV1(requestParameters: ProjectApiUserProjectChangeAccessV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    userProjectChangeAccessV1(requestParameters: ProjectApiUserProjectChangeAccessV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      * Use /site/project/user/leave or /site/project/user/delete instead.
      * @summary Remove user from project
@@ -795,7 +795,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    userProjectDelV1(requestParameters: ProjectApiUserProjectDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    userProjectDelV1(requestParameters: ProjectApiUserProjectDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Remove member from project
@@ -804,7 +804,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    userProjectDeleteMemberV1(requestParameters: ProjectApiUserProjectDeleteMemberV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    userProjectDeleteMemberV1(requestParameters: ProjectApiUserProjectDeleteMemberV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get project full info
@@ -813,7 +813,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    userProjectGetProjectInfoV1(requestParameters: ProjectApiUserProjectGetProjectInfoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectInfoResponse, any, {}>>;
+    userProjectGetProjectInfoV1(requestParameters: ProjectApiUserProjectGetProjectInfoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectInfoResponse, any, {}, any>>;
     /**
      *
      * @summary Get project by number id
@@ -822,7 +822,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    userProjectGetProjectV1(requestParameters: ProjectApiUserProjectGetProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProjectGetResponse, any, {}>>;
+    userProjectGetProjectV1(requestParameters: ProjectApiUserProjectGetProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProjectGetResponse, any, {}, any>>;
     /**
      *
      * @summary Get user by number id
@@ -831,7 +831,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    userProjectGetUserV1(requestParameters: ProjectApiUserProjectGetUserV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProjectGetResponse, any, {}>>;
+    userProjectGetUserV1(requestParameters: ProjectApiUserProjectGetUserV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProjectGetResponse, any, {}, any>>;
     /**
      *
      * @summary Leave project
@@ -840,7 +840,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    userProjectLeaveV1(requestParameters: ProjectApiUserProjectLeaveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    userProjectLeaveV1(requestParameters: ProjectApiUserProjectLeaveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary List of user in project
@@ -849,7 +849,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListOfUserProject2ProjectResponse, any, {}>>;
+    userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProject2ProjectListResponse, any, {}, any>>;
     /**
      *
      * @summary List of project for current user
@@ -858,7 +858,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfUserProjectResponse, any, {}>>;
+    userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserProjectResponse, any, {}, any>>;
     /**
      *
      * @summary Select user for project
@@ -867,7 +867,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    userProjectSelectProjectV1(requestParameters: ProjectApiUserProjectSelectProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProjectGetResponse, any, {}>>;
+    userProjectSelectProjectV1(requestParameters: ProjectApiUserProjectSelectProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProjectGetResponse, any, {}, any>>;
 }
 /**
  * @export

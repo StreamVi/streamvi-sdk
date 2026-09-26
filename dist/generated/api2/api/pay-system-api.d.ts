@@ -12,8 +12,8 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { ListOfPaySystemListResponse } from '../models';
 import type { PayRedirectUrlDto } from '../models';
+import type { PaySystemsResponse } from '../models';
 import type { TonConnectPaymentIntentDto } from '../models';
 import type { TonConnectPaymentStatusDto } from '../models';
 import type { TonConnectPaymentSubmitBodyDto } from '../models';
@@ -191,7 +191,7 @@ export declare const PaySystemApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemListV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPaySystemListResponse>>;
+    paySystemListV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaySystemsResponse>>;
     /**
      *
      * @summary Create TonConnect payment intent
@@ -312,7 +312,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<ListOfPaySystemListResponse>;
+    paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<PaySystemsResponse>;
     /**
      *
      * @summary Create TonConnect payment intent
@@ -426,7 +426,7 @@ export interface PaySystemApiInterface {
      * @throws {RequiredError}
      * @memberof PaySystemApiInterface
      */
-    paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<ListOfPaySystemListResponse>;
+    paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<PaySystemsResponse>;
     /**
      *
      * @summary Create TonConnect payment intent
@@ -788,7 +788,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayRedirectUrlDto, any, {}>>;
+    paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayRedirectUrlDto, any, {}, any>>;
     /**
      *
      * @summary Create t-bank payment challenge redirect url
@@ -797,7 +797,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    paySystemCreateTBankV1(requestParameters: PaySystemApiPaySystemCreateTBankV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayRedirectUrlDto, any, {}>>;
+    paySystemCreateTBankV1(requestParameters: PaySystemApiPaySystemCreateTBankV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayRedirectUrlDto, any, {}, any>>;
     /**
      *
      * @summary Create unitpay payment challenge redirect url
@@ -806,7 +806,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayRedirectUrlDto, any, {}>>;
+    paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayRedirectUrlDto, any, {}, any>>;
     /**
      *
      * @summary Load available pay systems
@@ -814,7 +814,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    paySystemListV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListOfPaySystemListResponse, any, {}>>;
+    paySystemListV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaySystemsResponse, any, {}, any>>;
     /**
      *
      * @summary Create TonConnect payment intent
@@ -823,7 +823,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    tonConnectIntentV1(requestParameters: PaySystemApiTonConnectIntentV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TonConnectPaymentIntentDto, any, {}>>;
+    tonConnectIntentV1(requestParameters: PaySystemApiTonConnectIntentV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TonConnectPaymentIntentDto, any, {}, any>>;
     /**
      *
      * @summary Get TonConnect payment verification status
@@ -832,7 +832,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    tonConnectStatusV1(requestParameters: PaySystemApiTonConnectStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TonConnectPaymentStatusDto, any, {}>>;
+    tonConnectStatusV1(requestParameters: PaySystemApiTonConnectStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TonConnectPaymentStatusDto, any, {}, any>>;
     /**
      *
      * @summary Submit TonConnect payment transaction
@@ -841,7 +841,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    tonConnectSubmitV1(requestParameters: PaySystemApiTonConnectSubmitV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TonConnectPaymentStatusDto, any, {}>>;
+    tonConnectSubmitV1(requestParameters: PaySystemApiTonConnectSubmitV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TonConnectPaymentStatusDto, any, {}, any>>;
     /**
      *
      * @summary Create TRON USDT deposit payment intent
@@ -850,7 +850,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    tronPaymentIntentV1(requestParameters: PaySystemApiTronPaymentIntentV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TronPaymentIntentDto, any, {}>>;
+    tronPaymentIntentV1(requestParameters: PaySystemApiTronPaymentIntentV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TronPaymentIntentDto, any, {}, any>>;
     /**
      *
      * @summary Get TRON USDT payment status
@@ -859,7 +859,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    tronPaymentStatusV1(requestParameters: PaySystemApiTronPaymentStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TronPaymentStatusDto, any, {}>>;
+    tronPaymentStatusV1(requestParameters: PaySystemApiTronPaymentStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TronPaymentStatusDto, any, {}, any>>;
     /**
      *
      * @summary Submit TRON USDT transaction hash (disabled)
@@ -868,7 +868,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    tronPaymentSubmitV1(requestParameters: PaySystemApiTronPaymentSubmitV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    tronPaymentSubmitV1(requestParameters: PaySystemApiTronPaymentSubmitV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Create WalletConnect payment intent
@@ -877,7 +877,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    walletConnectIntentV1(requestParameters: PaySystemApiWalletConnectIntentV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WalletConnectPaymentIntentDto, any, {}>>;
+    walletConnectIntentV1(requestParameters: PaySystemApiWalletConnectIntentV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WalletConnectPaymentIntentDto, any, {}, any>>;
     /**
      *
      * @summary Get WalletConnect payment verification status
@@ -886,7 +886,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    walletConnectStatusV1(requestParameters: PaySystemApiWalletConnectStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WalletConnectPaymentStatusDto, any, {}>>;
+    walletConnectStatusV1(requestParameters: PaySystemApiWalletConnectStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WalletConnectPaymentStatusDto, any, {}, any>>;
     /**
      *
      * @summary Submit WalletConnect payment transaction hash
@@ -895,7 +895,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    walletConnectSubmitV1(requestParameters: PaySystemApiWalletConnectSubmitV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WalletConnectPaymentStatusDto, any, {}>>;
+    walletConnectSubmitV1(requestParameters: PaySystemApiWalletConnectSubmitV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WalletConnectPaymentStatusDto, any, {}, any>>;
 }
 /**
  * @export

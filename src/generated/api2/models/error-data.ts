@@ -15,6 +15,12 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
+import type { ErrorDataData } from './error-data-data';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { ErrorDataName } from './error-data-name';
+// May contain unused imports in some cases
+// @ts-ignore
 import type { ValidationErrorDto } from './validation-error-dto';
 
 /**
@@ -24,17 +30,17 @@ import type { ValidationErrorDto } from './validation-error-dto';
  */
 export interface ErrorData {
     /**
-     * Error name
-     * @type {string}
+     * 
+     * @type {ErrorDataName}
      * @memberof ErrorData
      */
-    'name': string;
+    'name': ErrorDataName;
     /**
      * Error message
      * @type {string}
      * @memberof ErrorData
      */
-    'msg': string;
+    'msg'?: string;
     /**
      * Validator error array if name=\"I18nValidationException\"
      * @type {Array<ValidationErrorDto>}
@@ -48,10 +54,10 @@ export interface ErrorData {
      */
     'options': object;
     /**
-     * Custom object for error
-     * @type {object}
+     * 
+     * @type {ErrorDataData}
      * @memberof ErrorData
      */
-    'data': object;
+    'data': ErrorDataData;
 }
 

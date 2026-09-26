@@ -26,8 +26,6 @@ import type { ErrorResponse } from '../models';
 // @ts-ignore
 import type { SiteNotifyUserResponse } from '../models';
 // @ts-ignore
-import type { SiteScreenNotifyUserResponse } from '../models';
-// @ts-ignore
 import type { SiteSetNotifyUserRequest } from '../models';
 // @ts-ignore
 import type { SuccessResponse } from '../models';
@@ -324,7 +322,7 @@ export const NotifyUserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyUserGetScreenV1(language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteScreenNotifyUserResponse>> {
+        async notifyUserGetScreenV1(language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserGetScreenV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['NotifyUserApi.notifyUserGetScreenV1']?.[localVarOperationServerIndex]?.url;
@@ -399,7 +397,7 @@ export const NotifyUserApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse> {
+        notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object> {
             return localVarFp.notifyUserGetScreenV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
@@ -459,7 +457,7 @@ export interface NotifyUserApiInterface {
      * @throws {RequiredError}
      * @memberof NotifyUserApiInterface
      */
-    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse>;
+    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
 
     /**
      * 

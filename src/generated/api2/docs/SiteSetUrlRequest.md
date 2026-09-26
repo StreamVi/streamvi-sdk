@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **project_id** | **number** | Project id | [default to undefined]
 **channel_id** | **number** | Channel id | [default to undefined]
 **url** | **string** | Stream link | [default to undefined]
+**stream_key** | **string** | Stream key | [optional] [default to undefined]
 
 ## Example
 
@@ -22,6 +23,7 @@ const instance: SiteSetUrlRequest = {
     project_id,
     channel_id,
     url,
+    stream_key,
 };
 ```
 

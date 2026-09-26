@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**kind** | **string** | Broadcast status response kind | [default to undefined]
 **status** | **string** | Stream status | [default to undefined]
 **broadcast_id** | **number** | Broadcast id | [default to undefined]
 **stream_id** | **number** | Stream id | [default to undefined]
@@ -14,14 +15,15 @@ Name | Type | Description | Notes
 **fps** | **number** | FPS | [default to undefined]
 **bitrate** | **number** | Bitrate | [default to undefined]
 **key_frame** | **number** | Key frame | [optional] [default to undefined]
+**action** | **string** | Restream action state | [default to undefined]
 **url** | **string** | Broadcast url | [default to undefined]
 **video_codec_name** | **string** | Video codec | [default to undefined]
 **restreams** | [**Array&lt;BroadcastLiveStatusRestream&gt;**](BroadcastLiveStatusRestream.md) | Restreams | [default to undefined]
 **app** | **string** | App name (scheduler) | [default to undefined]
-**schedulerId** | **number** | Scheduler id | [default to undefined]
-**video_id** | **number** | Video id | [default to undefined]
-**name** | **string** | Video name | [default to undefined]
-**duration** | **number** | Video duration | [default to undefined]
+**schedulerId** | **number** | Scheduler id | [optional] [default to undefined]
+**video_id** | **number** | Video id | [optional] [default to undefined]
+**name** | **string** | Video name | [optional] [default to undefined]
+**duration** | **number** | Video duration | [optional] [default to undefined]
 
 ## Example
 
@@ -29,6 +31,7 @@ Name | Type | Description | Notes
 import { BroadcastStatusV1200Response } from 'streamvi-api-client';
 
 const instance: BroadcastStatusV1200Response = {
+    kind,
     status,
     broadcast_id,
     stream_id,
@@ -38,6 +41,7 @@ const instance: BroadcastStatusV1200Response = {
     fps,
     bitrate,
     key_frame,
+    action,
     url,
     video_codec_name,
     restreams,

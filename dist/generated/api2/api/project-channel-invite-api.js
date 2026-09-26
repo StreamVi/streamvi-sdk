@@ -1130,9 +1130,7 @@ exports.ProjectChannelInviteAddByEmailV1LanguageEnum = {
  * @export
  */
 exports.ProjectChannelInviteAddByEmailV1AccessTypeEnum = {
-    NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_12: 1,
     NUMBER_2: 2
 };
 /**
@@ -1153,9 +1151,7 @@ exports.ProjectChannelInviteAddByIdV1LanguageEnum = {
  * @export
  */
 exports.ProjectChannelInviteAddByIdV1AccessTypeEnum = {
-    NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_12: 1,
     NUMBER_2: 2
 };
 /**

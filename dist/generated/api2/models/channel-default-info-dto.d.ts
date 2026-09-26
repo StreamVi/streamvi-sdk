@@ -20,6 +20,6 @@ export interface ChannelDefaultInfoDto {
      * @type {string}
      * @memberof ChannelDefaultInfoDto
      */
-    'title': string;
+    'title'?: string;
 }
 //# sourceMappingURL=channel-default-info-dto.d.ts.map

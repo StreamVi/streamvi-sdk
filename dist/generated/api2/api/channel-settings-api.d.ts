@@ -12,8 +12,8 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { ListOfPlaylistItemResponse } from '../models';
-import type { ListOfSitePlannedResponse } from '../models';
+import type { PlannedListResponse } from '../models';
+import type { PlaylistResponse } from '../models';
 import type { SiteBulkUpdateChannelRequest } from '../models';
 import type { SiteChannelStatusResponse } from '../models';
 import type { SitePlannedResponse } from '../models';
@@ -227,7 +227,7 @@ export declare const ChannelSettingsApiAxiosParamCreator: (configuration?: Confi
     channelSettingUpdateSrtUrlV1: (siteSetSrtUrlRequest: SiteSetSrtUrlRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get status platform
+     * @summary Redirect to OAuth for updating a channel token
      * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
@@ -295,7 +295,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelChatRemoveTelegramChatV1(language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelChatRemoveTelegramChatV1(language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Set telegram settings
@@ -337,7 +337,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelOptionsGetPlannedV1(language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfSitePlannedResponse>>;
+    channelOptionsGetPlannedV1(language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlannedListResponse>>;
     /**
      *
      * @summary Get playlists from the platform
@@ -348,7 +348,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelOptionsGetPlayListV1(language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPlaylistItemResponse>>;
+    channelOptionsGetPlayListV1(language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlaylistResponse>>;
     /**
      *
      * @summary Optional settings for ok. Depends on the tariff.
@@ -450,7 +450,7 @@ export declare const ChannelSettingsApiFp: (configuration?: Configuration) => {
     channelSettingUpdateSrtUrlV1(siteSetSrtUrlRequest: SiteSetSrtUrlRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      *
-     * @summary Get status platform
+     * @summary Redirect to OAuth for updating a channel token
      * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {number} channelId Channel id
@@ -509,7 +509,7 @@ export declare const ChannelSettingsApiFactory: (configuration?: Configuration, 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
      *
      * @summary Set telegram settings
@@ -541,7 +541,7 @@ export declare const ChannelSettingsApiFactory: (configuration?: Configuration, 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfSitePlannedResponse>;
+    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlannedListResponse>;
     /**
      *
      * @summary Get playlists from the platform
@@ -549,7 +549,7 @@ export declare const ChannelSettingsApiFactory: (configuration?: Configuration, 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPlaylistItemResponse>;
+    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlaylistResponse>;
     /**
      *
      * @summary Optional settings for ok. Depends on the tariff.
@@ -648,7 +648,7 @@ export declare const ChannelSettingsApiFactory: (configuration?: Configuration, 
     channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
-     * @summary Get status platform
+     * @summary Redirect to OAuth for updating a channel token
      * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -703,7 +703,7 @@ export interface ChannelSettingsApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelSettingsApiInterface
      */
-    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
      *
      * @summary Set telegram settings
@@ -739,7 +739,7 @@ export interface ChannelSettingsApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelSettingsApiInterface
      */
-    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfSitePlannedResponse>;
+    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlannedListResponse>;
     /**
      *
      * @summary Get playlists from the platform
@@ -748,7 +748,7 @@ export interface ChannelSettingsApiInterface {
      * @throws {RequiredError}
      * @memberof ChannelSettingsApiInterface
      */
-    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPlaylistItemResponse>;
+    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlaylistResponse>;
     /**
      *
      * @summary Optional settings for ok. Depends on the tariff.
@@ -859,7 +859,7 @@ export interface ChannelSettingsApiInterface {
     channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
-     * @summary Get status platform
+     * @summary Redirect to OAuth for updating a channel token
      * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1397,7 +1397,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramSettingsResponseDto, any, {}>>;
+    channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramSettingsResponseDto, any, {}, any>>;
     /**
      *
      * @summary Get code for connected chat
@@ -1406,7 +1406,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramInitConnectResponseDto, any, {}>>;
+    channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramInitConnectResponseDto, any, {}, any>>;
     /**
      *
      * @summary Disconnect telegram chat
@@ -1415,7 +1415,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Set telegram settings
@@ -1424,7 +1424,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get telegram post list
@@ -1433,7 +1433,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramChatPostsResponseDto, any, {}>>;
+    channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramChatPostsResponseDto, any, {}, any>>;
     /**
      *
      * @summary Optional settings for telegram
@@ -1442,7 +1442,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get planned list
@@ -1451,7 +1451,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListOfSitePlannedResponse, any, {}>>;
+    channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlannedListResponse, any, {}, any>>;
     /**
      *
      * @summary Get playlists from the platform
@@ -1460,7 +1460,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListOfPlaylistItemResponse, any, {}>>;
+    channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlaylistResponse, any, {}, any>>;
     /**
      *
      * @summary Optional settings for ok. Depends on the tariff.
@@ -1469,7 +1469,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Optional settings for trovo. Depends on the tariff.
@@ -1478,7 +1478,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Optional settings for twitch. Depends on the tariff.
@@ -1487,7 +1487,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Optional settings for vk. Depends on the tariff.
@@ -1496,7 +1496,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Optional settings for vk video live. Depends on the tariff.
@@ -1505,7 +1505,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Optional settings for youtube. Depends on the tariff.
@@ -1514,7 +1514,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Set planned id. Depends on the tariff.
@@ -1523,7 +1523,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePlannedResponse, any, {}>>;
+    channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePlannedResponse, any, {}, any>>;
     /**
      *
      * @summary Bulk update channel title and description. Global settings.
@@ -1532,7 +1532,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get status platform
@@ -1541,7 +1541,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteChannelStatusResponse, any, {}>>;
+    channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteChannelStatusResponse, any, {}, any>>;
     /**
      *
      * @summary Set name from custom channel. Global settings.
@@ -1550,7 +1550,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Set rtmp url from channel. Global settings.
@@ -1559,7 +1559,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Set srt url from channel. Global settings.
@@ -1568,16 +1568,16 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
-     * @summary Get status platform
+     * @summary Redirect to OAuth for updating a channel token
      * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Set transcoder from channel. Personal settings.
@@ -1586,7 +1586,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get telegram post by filter
@@ -1595,7 +1595,7 @@ export declare class ChannelSettingsApi extends BaseAPI implements ChannelSettin
      * @throws {RequiredError}
      * @memberof ChannelSettingsApi
      */
-    telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramChatPostsItem, any, {}>>;
+    telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TelegramChatPostsItem, any, {}, any>>;
 }
 /**
  * @export

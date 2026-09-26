@@ -113,10 +113,11 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @param {string} [redirect] Redirect url
      * @param {string} [refId] Referal id
      * @param {string} [country] Country code
+     * @param {string} [visitorId] Anonymous landing visitor UUID v4
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authGetAuthUrlV1: (language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authGetAuthUrlV1: (language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, visitorId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get client configuration
@@ -222,10 +223,11 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @param {string} [redirect] Redirect url
      * @param {string} [refId] Referal id
      * @param {string} [country] Country code
+     * @param {string} [visitorId] Anonymous landing visitor UUID v4
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authGetAuthUrlV1(language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    authGetAuthUrlV1(language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, visitorId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Get client configuration
@@ -648,6 +650,12 @@ export interface AuthApiAuthGetAuthUrlV1Request {
      * @memberof AuthApiAuthGetAuthUrlV1
      */
     readonly country?: string;
+    /**
+     * Anonymous landing visitor UUID v4
+     * @type {string}
+     * @memberof AuthApiAuthGetAuthUrlV1
+     */
+    readonly visitorId?: string;
 }
 /**
  * AuthApi - object-oriented interface
@@ -664,7 +672,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authCallbackGoogleV1(requestParameters: AuthApiAuthCallbackGoogleV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    authCallbackGoogleV1(requestParameters: AuthApiAuthCallbackGoogleV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Internal request of auth new vk
@@ -673,7 +681,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authCallbackVkIdV1(requestParameters: AuthApiAuthCallbackVkIdV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    authCallbackVkIdV1(requestParameters: AuthApiAuthCallbackVkIdV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Internal request of auth old vk
@@ -681,7 +689,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authCallbackVkV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    authCallbackVkV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Get code for auth
@@ -690,7 +698,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authCodeV1(requestParameters: AuthApiAuthCodeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CodeAppAuthResponse, any, {}>>;
+    authCodeV1(requestParameters: AuthApiAuthCodeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CodeAppAuthResponse, any, {}, any>>;
     /**
      *
      * @summary CallBack for connect social
@@ -699,7 +707,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authConnectResultV1(requestParameters: AuthApiAuthConnectResultV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    authConnectResultV1(requestParameters: AuthApiAuthConnectResultV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Connect telegram in account
@@ -708,7 +716,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authConnectTelegramV1(requestParameters: AuthApiAuthConnectTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    authConnectTelegramV1(requestParameters: AuthApiAuthConnectTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Connected social account
@@ -717,7 +725,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authConnectV1(requestParameters: AuthApiAuthConnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    authConnectV1(requestParameters: AuthApiAuthConnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Disconnected social account
@@ -726,7 +734,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authDisconnectV1(requestParameters: AuthApiAuthDisconnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    authDisconnectV1(requestParameters: AuthApiAuthDisconnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Code exchange
@@ -735,7 +743,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authExchangeV1(requestParameters: AuthApiAuthExchangeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RefreshAuthResponse, any, {}>>;
+    authExchangeV1(requestParameters: AuthApiAuthExchangeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RefreshAuthResponse, any, {}, any>>;
     /**
      *
      * @summary Get url for start oauth
@@ -744,7 +752,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @summary Get client configuration
@@ -752,7 +760,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authGetClientConfigurationV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    authGetClientConfigurationV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
 }
 /**
  * @export

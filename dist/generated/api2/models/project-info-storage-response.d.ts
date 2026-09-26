@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { PlanStorage2UserItemResponse } from './plan-storage2-user-item-response';
-import type { PlanTranscodingResponse } from './plan-transcoding-response';
+import type { PlanStorageResponse } from './plan-storage-response';
+import type { ProjectInfoStoragePeriodResponse } from './project-info-storage-period-response';
 /**
  *
  * @export
@@ -19,15 +19,15 @@ import type { PlanTranscodingResponse } from './plan-transcoding-response';
 export interface ProjectInfoStorageResponse {
     /**
      * Plan storage to user
-     * @type {PlanStorage2UserItemResponse}
+     * @type {ProjectInfoStoragePeriodResponse}
      * @memberof ProjectInfoStorageResponse
      */
-    'plan2user': PlanStorage2UserItemResponse;
+    'plan2user': ProjectInfoStoragePeriodResponse;
     /**
      * Plan storage data
-     * @type {PlanTranscodingResponse}
+     * @type {PlanStorageResponse}
      * @memberof ProjectInfoStorageResponse
      */
-    'data': PlanTranscodingResponse;
+    'data': PlanStorageResponse;
 }
 //# sourceMappingURL=project-info-storage-response.d.ts.map

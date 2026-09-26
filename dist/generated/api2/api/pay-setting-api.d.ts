@@ -234,7 +234,7 @@ export declare class PaySettingApi extends BaseAPI implements PaySettingApiInter
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayCheckCountryResponse, any, {}>>;
+    paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayCheckCountryResponse, any, {}, any>>;
     /**
      *
      * @summary Get pay settings for profile v3
@@ -243,7 +243,7 @@ export declare class PaySettingApi extends BaseAPI implements PaySettingApiInter
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPaySettingResponseV3, any, {}>>;
+    paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPaySettingResponseV3, any, {}, any>>;
     /**
      *
      * @summary Set pay settings for profile
@@ -252,7 +252,7 @@ export declare class PaySettingApi extends BaseAPI implements PaySettingApiInter
      * @throws {RequiredError}
      * @memberof PaySettingApi
      */
-    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    paySettingSetSettingV1(requestParameters: PaySettingApiPaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

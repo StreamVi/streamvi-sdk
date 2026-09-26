@@ -17,5 +17,13 @@ import type { SiteBroadcastStatusTranscodingResponse } from './site-broadcast-st
  * @type BroadcastStatusV1200Response
  * @export
  */
-export type BroadcastStatusV1200Response = SiteBroadcastStatusInactiveResponse | SiteBroadcastStatusLiveResponse | SiteBroadcastStatusSchedulerResponse | SiteBroadcastStatusTranscodingResponse;
+export type BroadcastStatusV1200Response = {
+    kind: 'inactive';
+} & SiteBroadcastStatusInactiveResponse | {
+    kind: 'live';
+} & SiteBroadcastStatusLiveResponse | {
+    kind: 'scheduler';
+} & SiteBroadcastStatusSchedulerResponse | {
+    kind: 'transcoding';
+} & SiteBroadcastStatusTranscodingResponse;
 //# sourceMappingURL=broadcast-status-v1200-response.d.ts.map

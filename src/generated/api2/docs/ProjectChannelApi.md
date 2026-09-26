@@ -28,7 +28,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
 let toProjectId: number; //Target project id (default to undefined)
-let accessType: 0 | 1 | 1 | 2; //Access type (default to undefined)
+let accessType: 1 | 2; //Access type (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.projectChannelChangeAccessV1(
@@ -49,7 +49,7 @@ const { status, data } = await apiInstance.projectChannelChangeAccessV1(
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
 | **toProjectId** | [**number**] | Target project id | defaults to undefined|
-| **accessType** | [**0 | 1 | 1 | 2**]**Array<0 &#124; 1 &#124; 1 &#124; 2>** | Access type | defaults to undefined|
+| **accessType** | [**1 | 2**]**Array<1 &#124; 2>** | Access type | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 

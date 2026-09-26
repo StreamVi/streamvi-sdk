@@ -27,7 +27,7 @@ export interface PlanTranscodingResponse {
      * @type {string}
      * @memberof PlanTranscodingResponse
      */
-    'title': string;
+    'title': string | null;
     /**
      * Type
      * @type {string}
@@ -39,25 +39,25 @@ export interface PlanTranscodingResponse {
      * @type {number}
      * @memberof PlanTranscodingResponse
      */
-    'price_rub': number;
+    'price_rub': number | null;
     /**
      * Price (USD)
      * @type {number}
      * @memberof PlanTranscodingResponse
      */
-    'price_usd': number;
+    'price_usd': number | null;
     /**
      * Maximum resolution
      * @type {string}
      * @memberof PlanTranscodingResponse
      */
-    'resolution': PlanTranscodingResponseResolutionEnum | null;
+    'resolution': PlanTranscodingResponseResolutionEnum;
     /**
      * Maximum fps
      * @type {string}
      * @memberof PlanTranscodingResponse
      */
-    'fps': PlanTranscodingResponseFpsEnum;
+    'fps': PlanTranscodingResponseFpsEnum | null;
     /**
      * Server load weight
      * @type {number}
@@ -75,7 +75,7 @@ export interface PlanTranscodingResponse {
      * @type {number}
      * @memberof PlanTranscodingResponse
      */
-    'index': number;
+    'index': number | null;
     /**
      * Free spaces slot
      * @type {number}

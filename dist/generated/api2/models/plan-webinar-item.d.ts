@@ -26,7 +26,7 @@ export interface PlanWebinarItem {
      * @type {string}
      * @memberof PlanWebinarItem
      */
-    'date_end': string;
+    'date_end'?: string;
     /**
      * Plan title
      * @type {string}
@@ -50,7 +50,7 @@ export interface PlanWebinarItem {
      * @type {string}
      * @memberof PlanWebinarItem
      */
-    'period': PlanWebinarItemPeriodEnum;
+    'period': PlanWebinarItemPeriodEnum | null;
 }
 export declare const PlanWebinarItemTypeEnum: {
     readonly WebinarIntro: "webinar_intro";

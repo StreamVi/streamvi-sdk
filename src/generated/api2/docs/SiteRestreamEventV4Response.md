@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **app** | **string** | App | [default to undefined]
 **server** | [**SiteRestreamEventServerResponse**](SiteRestreamEventServerResponse.md) | Server location info | [default to undefined]
 **platform** | **string** | Platform | [optional] [default to undefined]
+**channel** | [**SiteRestreamEventChannelResponse**](SiteRestreamEventChannelResponse.md) | Channel | [optional] [default to undefined]
 
 ## Example
 
@@ -26,6 +27,7 @@ const instance: SiteRestreamEventV4Response = {
     app,
     server,
     platform,
+    channel,
 };
 ```
 

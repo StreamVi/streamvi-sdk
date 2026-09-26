@@ -13,7 +13,6 @@ import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
 import type { SiteNotifyUserResponse } from '../models';
-import type { SiteScreenNotifyUserResponse } from '../models';
 import type { SiteSetNotifyUserRequest } from '../models';
 import type { SuccessResponse } from '../models';
 /**
@@ -93,7 +92,7 @@ export declare const NotifyUserApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserGetScreenV1(language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteScreenNotifyUserResponse>>;
+    notifyUserGetScreenV1(language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
     /**
      *
      * @summary Get user notify settings
@@ -142,7 +141,7 @@ export declare const NotifyUserApiFactory: (configuration?: Configuration, baseP
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse>;
+    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
      *
      * @summary Get user notify settings
@@ -191,7 +190,7 @@ export interface NotifyUserApiInterface {
      * @throws {RequiredError}
      * @memberof NotifyUserApiInterface
      */
-    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteScreenNotifyUserResponse>;
+    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
      *
      * @summary Get user notify settings
@@ -342,7 +341,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get user screen notify
@@ -351,7 +350,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteScreenNotifyUserResponse, any, {}>>;
+    notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
     /**
      *
      * @summary Get user notify settings
@@ -360,7 +359,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteNotifyUserResponse, any, {}>>;
+    notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteNotifyUserResponse, any, {}, any>>;
     /**
      *
      * @summary Remove user screen notify
@@ -369,7 +368,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Set user notify settings
@@ -378,7 +377,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      * @throws {RequiredError}
      * @memberof NotifyUserApi
      */
-    notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    notifyUserSetV1(requestParameters: NotifyUserApiNotifyUserSetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

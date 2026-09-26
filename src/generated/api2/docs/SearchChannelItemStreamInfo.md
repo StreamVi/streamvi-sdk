@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **description** | **string** |  | [default to undefined]
 **lang** | **string** |  | [optional] [default to undefined]
 **tags** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
-**category** | [**ChannelCategoryInfoDto**](ChannelCategoryInfoDto.md) |  | [optional] [default to undefined]
+**category** | [**ChannelVkVideoLiveCategoryInfoDto**](ChannelVkVideoLiveCategoryInfoDto.md) |  | [optional] [default to undefined]
 **playlist** | [**ChannelPlayListInfoDto**](ChannelPlayListInfoDto.md) |  | [optional] [default to undefined]
 **privacyVideo** | **string** |  | [optional] [default to undefined]
 **latency** | **string** |  | [optional] [default to undefined]

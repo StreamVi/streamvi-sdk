@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
 |[**chatGatewayKeyV1**](#chatgatewaykeyv1) | **GET** /method/chat/key | Get chat key|
+|[**chatGatewayRotateKeyV1**](#chatgatewayrotatekeyv1) | **PUT** /method/chat/key | Rotate chat key|
 
 # **chatGatewayKeyV1**
 > SiteChatKeyResponse chatGatewayKeyV1()
@@ -52,6 +53,58 @@ const { status, data } = await apiInstance.chatGatewayKeyV1(
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **chatGatewayRotateKeyV1**
+> SiteChatKeyResponse chatGatewayRotateKeyV1(siteChatKeyRequest)
+
+
+### Example
+
+```typescript
+import {
+    ChatApi,
+    Configuration,
+    SiteChatKeyRequest
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new ChatApi(configuration);
+
+let siteChatKeyRequest: SiteChatKeyRequest; //
+
+const { status, data } = await apiInstance.chatGatewayRotateKeyV1(
+    siteChatKeyRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **siteChatKeyRequest** | **SiteChatKeyRequest**|  | |
+
+
+### Return type
+
+**SiteChatKeyResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -235,7 +235,7 @@ export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
     readonly to_project_id: number;
     /**
      * Access type
-     * @type {0 | 1 | 1 | 2}
+     * @type {1 | 2}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
     readonly access_type: ProjectChannelChangeAccessV1AccessTypeEnum;
@@ -366,7 +366,7 @@ export declare class ProjectChannelApi extends BaseAPI implements ProjectChannel
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Remove access for project in channel
@@ -375,7 +375,7 @@ export declare class ProjectChannelApi extends BaseAPI implements ProjectChannel
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Project channel list
@@ -384,7 +384,7 @@ export declare class ProjectChannelApi extends BaseAPI implements ProjectChannel
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelListResponse, any, {}>>;
+    projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectChannelListResponse, any, {}, any>>;
     /**
      *
      * @summary Transfer owner for project in channel
@@ -393,7 +393,7 @@ export declare class ProjectChannelApi extends BaseAPI implements ProjectChannel
      * @throws {RequiredError}
      * @memberof ProjectChannelApi
      */
-    projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export
@@ -408,9 +408,7 @@ export type ProjectChannelChangeAccessV1LanguageEnum = typeof ProjectChannelChan
  * @export
  */
 export declare const ProjectChannelChangeAccessV1AccessTypeEnum: {
-    readonly NUMBER_0: 0;
     readonly NUMBER_1: 1;
-    readonly NUMBER_12: 1;
     readonly NUMBER_2: 2;
 };
 export type ProjectChannelChangeAccessV1AccessTypeEnum = typeof ProjectChannelChangeAccessV1AccessTypeEnum[keyof typeof ProjectChannelChangeAccessV1AccessTypeEnum];

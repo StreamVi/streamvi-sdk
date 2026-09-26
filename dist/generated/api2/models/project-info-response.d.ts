@@ -22,12 +22,6 @@ import type { ProjectInfoWebinarResponse } from './project-info-webinar-response
  */
 export interface ProjectInfoResponse {
     /**
-     * Version
-     * @type {string}
-     * @memberof ProjectInfoResponse
-     */
-    'v': ProjectInfoResponseVEnum;
-    /**
      * Current language
      * @type {string}
      * @memberof ProjectInfoResponse
@@ -50,19 +44,19 @@ export interface ProjectInfoResponse {
      * @type {ProjectInfoTranscodingResponse}
      * @memberof ProjectInfoResponse
      */
-    'transcoding'?: ProjectInfoTranscodingResponse | null;
+    'transcoding': ProjectInfoTranscodingResponse | null;
     /**
      * Storage tariff
      * @type {ProjectInfoStorageResponse}
      * @memberof ProjectInfoResponse
      */
-    'storage'?: ProjectInfoStorageResponse | null;
+    'storage': ProjectInfoStorageResponse | null;
     /**
      * Webinar tariff
      * @type {ProjectInfoWebinarResponse}
      * @memberof ProjectInfoResponse
      */
-    'webinar'?: ProjectInfoWebinarResponse | null;
+    'webinar': ProjectInfoWebinarResponse | null;
     /**
      * Project info access
      * @type {ProjectInfoAccessResponse}
@@ -70,10 +64,6 @@ export interface ProjectInfoResponse {
      */
     'access': ProjectInfoAccessResponse;
 }
-export declare const ProjectInfoResponseVEnum: {
-    readonly _1: "1";
-};
-export type ProjectInfoResponseVEnum = typeof ProjectInfoResponseVEnum[keyof typeof ProjectInfoResponseVEnum];
 export declare const ProjectInfoResponseLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";

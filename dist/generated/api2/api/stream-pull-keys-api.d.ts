@@ -352,7 +352,7 @@ export declare class StreamPullKeysApi extends BaseAPI implements StreamPullKeys
      * @throws {RequiredError}
      * @memberof StreamPullKeysApi
      */
-    streamPullKeysSiteCheckV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CheckPullKeyResponse, any, {}>>;
+    streamPullKeysSiteCheckV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CheckPullKeyResponse, any, {}, any>>;
     /**
      *
      * @summary Create key
@@ -361,7 +361,7 @@ export declare class StreamPullKeysApi extends BaseAPI implements StreamPullKeys
      * @throws {RequiredError}
      * @memberof StreamPullKeysApi
      */
-    streamPullKeysSiteCreateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreatePullKeyResponse, any, {}>>;
+    streamPullKeysSiteCreateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreatePullKeyResponse, any, {}, any>>;
     /**
      *
      * @summary List keys
@@ -370,7 +370,7 @@ export declare class StreamPullKeysApi extends BaseAPI implements StreamPullKeys
      * @throws {RequiredError}
      * @memberof StreamPullKeysApi
      */
-    streamPullKeysSiteGetV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PullKeyListResponse, any, {}>>;
+    streamPullKeysSiteGetV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PullKeyListResponse, any, {}, any>>;
     /**
      *
      * @summary Delete key
@@ -379,7 +379,7 @@ export declare class StreamPullKeysApi extends BaseAPI implements StreamPullKeys
      * @throws {RequiredError}
      * @memberof StreamPullKeysApi
      */
-    streamPullKeysSiteRemoveV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteRemoveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    streamPullKeysSiteRemoveV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteRemoveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Update key
@@ -388,7 +388,7 @@ export declare class StreamPullKeysApi extends BaseAPI implements StreamPullKeys
      * @throws {RequiredError}
      * @memberof StreamPullKeysApi
      */
-    streamPullKeysSiteUpdateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    streamPullKeysSiteUpdateV1(requestParameters: StreamPullKeysApiStreamPullKeysSiteUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

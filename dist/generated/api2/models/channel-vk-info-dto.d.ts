@@ -22,7 +22,7 @@ export interface ChannelVkInfoDto {
      * @type {string}
      * @memberof ChannelVkInfoDto
      */
-    'title': string;
+    'title'?: string;
     /**
      *
      * @type {string}

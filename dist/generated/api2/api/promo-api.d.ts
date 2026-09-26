@@ -194,7 +194,7 @@ export declare class PromoApi extends BaseAPI implements PromoApiInterface {
      * @throws {RequiredError}
      * @memberof PromoApi
      */
-    promoApplyV1(requestParameters: PromoApiPromoApplyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePromoApplyResponse, any, {}>>;
+    promoApplyV1(requestParameters: PromoApiPromoApplyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePromoApplyResponse, any, {}, any>>;
     /**
      *
      * @summary Check code
@@ -203,7 +203,7 @@ export declare class PromoApi extends BaseAPI implements PromoApiInterface {
      * @throws {RequiredError}
      * @memberof PromoApi
      */
-    promoCheckV1(requestParameters: PromoApiPromoCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePromoCheckResponse, any, {}>>;
+    promoCheckV1(requestParameters: PromoApiPromoCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SitePromoCheckResponse, any, {}, any>>;
 }
 /**
  * @export

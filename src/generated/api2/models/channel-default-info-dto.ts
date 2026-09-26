@@ -25,6 +25,6 @@ export interface ChannelDefaultInfoDto {
      * @type {string}
      * @memberof ChannelDefaultInfoDto
      */
-    'title': string;
+    'title'?: string;
 }
 

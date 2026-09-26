@@ -13,3 +13,31 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SearchChannelItemStreamInfoPrivacyCommentsEnum = exports.SearchChannelItemStreamInfoAudienceEnum = exports.SearchChannelItemStreamInfoLatencyEnum = exports.SearchChannelItemStreamInfoPrivacyVideoEnum = exports.SearchChannelItemStreamInfoLangEnum = void 0;
+exports.SearchChannelItemStreamInfoLangEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+exports.SearchChannelItemStreamInfoPrivacyVideoEnum = {
+    All: 'all',
+    Members: 'members',
+    Editors: 'editors',
+    ByLink: 'by_link',
+    Donut: 'donut'
+};
+exports.SearchChannelItemStreamInfoLatencyEnum = {
+    Normal: 'normal',
+    Low: 'low',
+    UltraLow: 'ultraLow'
+};
+exports.SearchChannelItemStreamInfoAudienceEnum = {
+    ChannelAudienceTypeFamilyfriendly: 'CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY',
+    ChannelAudienceTypeTeen: 'CHANNEL_AUDIENCE_TYPE_TEEN',
+    ChannelAudienceTypeEighteenplus: 'CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS'
+};
+exports.SearchChannelItemStreamInfoPrivacyCommentsEnum = {
+    All: 'all',
+    Members: 'members',
+    Editors: 'editors',
+    Nobody: 'nobody'
+};

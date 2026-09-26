@@ -14,9 +14,11 @@ Name | Type | Description | Notes
 **bitrate** | **number** | Bitrate | [default to undefined]
 **key_frame** | **number** | Key frame | [optional] [default to undefined]
 **status** | **string** | Stream status | [default to undefined]
+**action** | **string** | Restream action state | [default to undefined]
 **url** | **string** | Broadcast url | [default to undefined]
 **video_codec_name** | **string** | Video codec | [default to undefined]
 **restreams** | [**Array&lt;BroadcastLiveStatusRestream&gt;**](BroadcastLiveStatusRestream.md) | Restreams | [default to undefined]
+**kind** | **string** | Broadcast status response kind | [default to undefined]
 **app** | **string** | App name (live) | [default to undefined]
 
 ## Example
@@ -34,9 +36,11 @@ const instance: SiteBroadcastStatusLiveResponse = {
     bitrate,
     key_frame,
     status,
+    action,
     url,
     video_codec_name,
     restreams,
+    kind,
     app,
 };
 ```

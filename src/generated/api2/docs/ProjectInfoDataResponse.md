@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **balance_bonus** | **number** | Bonus balance | [default to undefined]
 **balance_payment** | **number** | Payment balance | [default to undefined]
 **balance_profit** | **number** | Profit balance | [default to undefined]
-**currency** | **number** | Currency | [default to undefined]
+**currency** | **string** | Currency | [default to undefined]
 **country_id** | **number** | Country id | [default to undefined]
 
 ## Example

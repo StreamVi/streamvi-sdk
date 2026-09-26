@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = exports.SiteUpdateOptionsVkVideoLiveRequestVEnum = void 0;
+exports.SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum = exports.SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = exports.SiteUpdateOptionsVkVideoLiveRequestVEnum = void 0;
 exports.SiteUpdateOptionsVkVideoLiveRequestVEnum = {
     _1: '1'
 };
@@ -21,4 +21,9 @@ exports.SiteUpdateOptionsVkVideoLiveRequestLanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'
+};
+exports.SiteUpdateOptionsVkVideoLiveRequestCategoryTypeEnum = {
+    Irl: 'irl',
+    Game: 'game',
+    Sport: 'sport'
 };

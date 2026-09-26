@@ -27,6 +27,12 @@ import type { PullServerTransports } from './pull-server-transports';
  */
 export interface PullServerListItem {
     /**
+     * Stable speed-test target key
+     * @type {string}
+     * @memberof PullServerListItem
+     */
+    'targetKey': string;
+    /**
      * City
      * @type {string}
      * @memberof PullServerListItem

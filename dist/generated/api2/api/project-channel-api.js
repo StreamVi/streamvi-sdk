@@ -465,9 +465,7 @@ exports.ProjectChannelChangeAccessV1LanguageEnum = {
  * @export
  */
 exports.ProjectChannelChangeAccessV1AccessTypeEnum = {
-    NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_12: 1,
     NUMBER_2: 2
 };
 /**

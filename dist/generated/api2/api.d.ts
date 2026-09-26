@@ -46,6 +46,7 @@ export * from './api/pull-servers-api';
 export * from './api/referrals-api';
 export * from './api/release-api';
 export * from './api/rtmp-server-api';
+export * from './api/scheduler-api';
 export * from './api/socials-api';
 export * from './api/stream-key-api';
 export * from './api/stream-pull-keys-api';

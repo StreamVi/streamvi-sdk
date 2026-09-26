@@ -39,7 +39,7 @@ export interface MethodSetStatusChannelRequest {
      */
     'channel_id': number;
     /**
-     * Status channel status
+     * Desired channel state. Use active in PUT /method/channel/status for new integrations.
      * @type {boolean}
      * @memberof MethodSetStatusChannelRequest
      */

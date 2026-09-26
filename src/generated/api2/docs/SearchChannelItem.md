@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | name | [default to undefined]
 **id** | **string** | name | [default to undefined]
-**transcoderId** | **number** | Transcoder id | [optional] [default to undefined]
+**transcoderId** | **number** | Transcoder id | [default to undefined]
 **group_id** | **number** | group_id | [default to undefined]
 **type** | **string** | type | [default to undefined]
 **photo_default** | **string** | photo_default | [default to undefined]
@@ -24,8 +24,9 @@ Name | Type | Description | Notes
 **threads** | **number** | threads | [default to undefined]
 **streamInfo** | [**SearchChannelItemStreamInfo**](SearchChannelItemStreamInfo.md) |  | [default to undefined]
 **rtmp** | [**SearchChannelRtmpDto**](SearchChannelRtmpDto.md) | rtmp | [default to undefined]
-**ingress_url** | **string** | ingress_url | [optional] [default to undefined]
+**ingress_url** | **string** | RTMP endpoint without stream key or complete ingress URI for protocols without a separate key | [optional] [default to undefined]
 **ingress_protocol** | **string** | ingress_protocol | [optional] [default to undefined]
+**stream_key** | **string** | RTMP stream key | [optional] [default to undefined]
 **credentials** | [**Array&lt;SearchChannelCredentialsDto&gt;**](SearchChannelCredentialsDto.md) | credentials | [default to undefined]
 **tokens** | [**SearchChannelCredentialDto**](SearchChannelCredentialDto.md) | Tokens | [default to undefined]
 **live_users** | [**Array&lt;SearchChannelLiveUserDto&gt;**](SearchChannelLiveUserDto.md) | live_users | [optional] [default to undefined]
@@ -60,6 +61,7 @@ const instance: SearchChannelItem = {
     rtmp,
     ingress_url,
     ingress_protocol,
+    stream_key,
     credentials,
     tokens,
     live_users,

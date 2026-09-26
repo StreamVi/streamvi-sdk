@@ -34,6 +34,6 @@ export interface SiteNotifyUserResponse {
      * @type {NotifyUserRelation}
      * @memberof SiteNotifyUserResponse
      */
-    'relation': NotifyUserRelation;
+    'relation'?: NotifyUserRelation;
 }
 //# sourceMappingURL=site-notify-user-response.d.ts.map

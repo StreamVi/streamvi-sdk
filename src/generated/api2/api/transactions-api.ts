@@ -24,7 +24,7 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { PaginatedResponseOfTransactionResponse } from '../models';
+import type { PaginatedTransactionResponse } from '../models';
 /**
  * TransactionsApi - axios parameter creator
  * @export
@@ -139,7 +139,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async transactionsListV1(language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfTransactionResponse>> {
+        async transactionsListV1(language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransactionResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.transactionsListV1(language, projectId, v, limit, offset, dateFrom, dateTo, code, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['TransactionsApi.transactionsListV1']?.[localVarOperationServerIndex]?.url;
@@ -162,7 +162,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfTransactionResponse> {
+        transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTransactionResponse> {
             return localVarFp.transactionsListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.code, options).then((request) => request(axios, basePath));
         },
     };
@@ -182,7 +182,7 @@ export interface TransactionsApiInterface {
      * @throws {RequiredError}
      * @memberof TransactionsApiInterface
      */
-    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfTransactionResponse>;
+    transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTransactionResponse>;
 
 }
 

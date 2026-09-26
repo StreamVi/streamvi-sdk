@@ -23,6 +23,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
 import type { ErrorResponse } from '../models';
+// @ts-ignore
+import type { SiteSocialListResponse } from '../models';
 /**
  * SocialsApi - axios parameter creator
  * @export
@@ -32,10 +34,14 @@ export const SocialsApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Social list for user
+         * @param {SocialsGetListV1LanguageEnum} language Current language
+         * @param {SocialsGetListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        socialsGetListV1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        socialsGetListV1: async (language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('socialsGetListV1', 'language', language)
             const localVarPath = `/method/socials/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -51,6 +57,16 @@ export const SocialsApiAxiosParamCreator = function (configuration?: Configurati
             // authentication oauth2 required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth2", ["profile:read"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
 
 
     
@@ -76,11 +92,13 @@ export const SocialsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Social list for user
+         * @param {SocialsGetListV1LanguageEnum} language Current language
+         * @param {SocialsGetListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async socialsGetListV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.socialsGetListV1(options);
+        async socialsGetListV1(language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSocialListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.socialsGetListV1(language, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SocialsApi.socialsGetListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -98,11 +116,12 @@ export const SocialsApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Social list for user
+         * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        socialsGetListV1(options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.socialsGetListV1(options).then((request) => request(axios, basePath));
+        socialsGetListV1(requestParameters: SocialsApiSocialsGetListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSocialListResponse> {
+            return localVarFp.socialsGetListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -116,12 +135,34 @@ export interface SocialsApiInterface {
     /**
      * 
      * @summary Social list for user
+     * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SocialsApiInterface
      */
-    socialsGetListV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    socialsGetListV1(requestParameters: SocialsApiSocialsGetListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSocialListResponse>;
 
+}
+
+/**
+ * Request parameters for socialsGetListV1 operation in SocialsApi.
+ * @export
+ * @interface SocialsApiSocialsGetListV1Request
+ */
+export interface SocialsApiSocialsGetListV1Request {
+    /**
+     * Current language
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof SocialsApiSocialsGetListV1
+     */
+    readonly language: SocialsGetListV1LanguageEnum
+
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof SocialsApiSocialsGetListV1
+     */
+    readonly v?: SocialsGetListV1VEnum
 }
 
 /**
@@ -134,12 +175,29 @@ export class SocialsApi extends BaseAPI implements SocialsApiInterface {
     /**
      * 
      * @summary Social list for user
+     * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SocialsApi
      */
-    public socialsGetListV1(options?: RawAxiosRequestConfig) {
-        return SocialsApiFp(this.configuration).socialsGetListV1(options).then((request) => request(this.axios, this.basePath));
+    public socialsGetListV1(requestParameters: SocialsApiSocialsGetListV1Request, options?: RawAxiosRequestConfig) {
+        return SocialsApiFp(this.configuration).socialsGetListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
+/**
+ * @export
+ */
+export const SocialsGetListV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type SocialsGetListV1LanguageEnum = typeof SocialsGetListV1LanguageEnum[keyof typeof SocialsGetListV1LanguageEnum];
+/**
+ * @export
+ */
+export const SocialsGetListV1VEnum = {
+    _1: '1'
+} as const;
+export type SocialsGetListV1VEnum = typeof SocialsGetListV1VEnum[keyof typeof SocialsGetListV1VEnum];

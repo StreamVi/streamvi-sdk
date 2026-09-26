@@ -5,6 +5,8 @@ All URIs are relative to *http://localhost*
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
 |[**streamKeysKeyV1**](#streamkeyskeyv1) | **GET** /method/stream-keys | Get stream credentials|
+|[**streamKeysRotateV1**](#streamkeysrotatev1) | **POST** /method/stream-keys/rotate | Rotate stream key|
+|[**streamKeysSetWaitV1**](#streamkeyssetwaitv1) | **PUT** /method/stream-keys/wait | Update disconnect protection wait|
 |[**streamKeysUpdateRecordV1**](#streamkeysupdaterecordv1) | **POST** /method/stream-keys/record | Update record|
 
 # **streamKeysKeyV1**
@@ -64,6 +66,111 @@ const { status, data } = await apiInstance.streamKeysKeyV1(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **streamKeysRotateV1**
+> RotateStreamKeyResponse streamKeysRotateV1(rotateStreamKeyRequest)
+
+
+### Example
+
+```typescript
+import {
+    StreamKeyApi,
+    Configuration,
+    RotateStreamKeyRequest
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new StreamKeyApi(configuration);
+
+let rotateStreamKeyRequest: RotateStreamKeyRequest; //
+
+const { status, data } = await apiInstance.streamKeysRotateV1(
+    rotateStreamKeyRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **rotateStreamKeyRequest** | **RotateStreamKeyRequest**|  | |
+
+
+### Return type
+
+**RotateStreamKeyResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**201** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **streamKeysSetWaitV1**
+> SuccessResponse streamKeysSetWaitV1(setWaitStreamKeyRequest)
+
+
+### Example
+
+```typescript
+import {
+    StreamKeyApi,
+    Configuration,
+    SetWaitStreamKeyRequest
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new StreamKeyApi(configuration);
+
+let setWaitStreamKeyRequest: SetWaitStreamKeyRequest; //
+
+const { status, data } = await apiInstance.streamKeysSetWaitV1(
+    setWaitStreamKeyRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **setWaitStreamKeyRequest** | **SetWaitStreamKeyRequest**|  | |
+
+
+### Return type
+
+**SuccessResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **streamKeysUpdateRecordV1**
 > SuccessResponse streamKeysUpdateRecordV1(setRecordStreamRequest)
 
@@ -111,6 +218,7 @@ const { status, data } = await apiInstance.streamKeysUpdateRecordV1(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** |  |  -  |
 |**201** |  |  -  |
 |**400** |  |  -  |
 

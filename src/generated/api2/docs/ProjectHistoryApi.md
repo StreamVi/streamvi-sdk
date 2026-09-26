@@ -7,7 +7,7 @@ All URIs are relative to *http://localhost*
 |[**projectHistoryListV1**](#projecthistorylistv1) | **GET** /method/project_history/list | Get project history of actions|
 
 # **projectHistoryListV1**
-> PaginatedResponseOfProjectHistoryResponse projectHistoryListV1()
+> PaginatedProjectHistoryResponse projectHistoryListV1()
 
 
 ### Example
@@ -61,7 +61,7 @@ const { status, data } = await apiInstance.projectHistoryListV1(
 
 ### Return type
 
-**PaginatedResponseOfProjectHistoryResponse**
+**PaginatedProjectHistoryResponse**
 
 ### Authorization
 

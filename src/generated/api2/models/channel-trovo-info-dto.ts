@@ -28,7 +28,7 @@ export interface ChannelTrovoInfoDto {
      * @type {string}
      * @memberof ChannelTrovoInfoDto
      */
-    'title': string;
+    'title'?: string;
     /**
      * 
      * @type {string}

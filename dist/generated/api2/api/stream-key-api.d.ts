@@ -13,7 +13,10 @@ import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
 import type { GetStreamKeyResponse } from '../models';
+import type { RotateStreamKeyRequest } from '../models';
+import type { RotateStreamKeyResponse } from '../models';
 import type { SetRecordStreamRequest } from '../models';
+import type { SetWaitStreamKeyRequest } from '../models';
 import type { SuccessResponse } from '../models';
 /**
  * StreamKeyApi - axios parameter creator
@@ -30,6 +33,22 @@ export declare const StreamKeyApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     streamKeysKeyV1: (language: StreamKeysKeyV1LanguageEnum, projectId: number, v?: StreamKeysKeyV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Rotate stream key
+     * @param {RotateStreamKeyRequest} rotateStreamKeyRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    streamKeysRotateV1: (rotateStreamKeyRequest: RotateStreamKeyRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Update disconnect protection wait
+     * @param {SetWaitStreamKeyRequest} setWaitStreamKeyRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    streamKeysSetWaitV1: (setWaitStreamKeyRequest: SetWaitStreamKeyRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update record
@@ -56,6 +75,22 @@ export declare const StreamKeyApiFp: (configuration?: Configuration) => {
     streamKeysKeyV1(language: StreamKeysKeyV1LanguageEnum, projectId: number, v?: StreamKeysKeyV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetStreamKeyResponse>>;
     /**
      *
+     * @summary Rotate stream key
+     * @param {RotateStreamKeyRequest} rotateStreamKeyRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    streamKeysRotateV1(rotateStreamKeyRequest: RotateStreamKeyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RotateStreamKeyResponse>>;
+    /**
+     *
+     * @summary Update disconnect protection wait
+     * @param {SetWaitStreamKeyRequest} setWaitStreamKeyRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    streamKeysSetWaitV1(setWaitStreamKeyRequest: SetWaitStreamKeyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     *
      * @summary Update record
      * @param {SetRecordStreamRequest} setRecordStreamRequest
      * @param {*} [options] Override http request option.
@@ -76,6 +111,22 @@ export declare const StreamKeyApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetStreamKeyResponse>;
+    /**
+     *
+     * @summary Rotate stream key
+     * @param {StreamKeyApiStreamKeysRotateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    streamKeysRotateV1(requestParameters: StreamKeyApiStreamKeysRotateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RotateStreamKeyResponse>;
+    /**
+     *
+     * @summary Update disconnect protection wait
+     * @param {StreamKeyApiStreamKeysSetWaitV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    streamKeysSetWaitV1(requestParameters: StreamKeyApiStreamKeysSetWaitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Update record
@@ -100,6 +151,24 @@ export interface StreamKeyApiInterface {
      * @memberof StreamKeyApiInterface
      */
     streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetStreamKeyResponse>;
+    /**
+     *
+     * @summary Rotate stream key
+     * @param {StreamKeyApiStreamKeysRotateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamKeyApiInterface
+     */
+    streamKeysRotateV1(requestParameters: StreamKeyApiStreamKeysRotateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RotateStreamKeyResponse>;
+    /**
+     *
+     * @summary Update disconnect protection wait
+     * @param {StreamKeyApiStreamKeysSetWaitV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamKeyApiInterface
+     */
+    streamKeysSetWaitV1(requestParameters: StreamKeyApiStreamKeysSetWaitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
      *
      * @summary Update record
@@ -136,6 +205,32 @@ export interface StreamKeyApiStreamKeysKeyV1Request {
     readonly v?: StreamKeysKeyV1VEnum;
 }
 /**
+ * Request parameters for streamKeysRotateV1 operation in StreamKeyApi.
+ * @export
+ * @interface StreamKeyApiStreamKeysRotateV1Request
+ */
+export interface StreamKeyApiStreamKeysRotateV1Request {
+    /**
+     *
+     * @type {RotateStreamKeyRequest}
+     * @memberof StreamKeyApiStreamKeysRotateV1
+     */
+    readonly RotateStreamKeyRequest: RotateStreamKeyRequest;
+}
+/**
+ * Request parameters for streamKeysSetWaitV1 operation in StreamKeyApi.
+ * @export
+ * @interface StreamKeyApiStreamKeysSetWaitV1Request
+ */
+export interface StreamKeyApiStreamKeysSetWaitV1Request {
+    /**
+     *
+     * @type {SetWaitStreamKeyRequest}
+     * @memberof StreamKeyApiStreamKeysSetWaitV1
+     */
+    readonly SetWaitStreamKeyRequest: SetWaitStreamKeyRequest;
+}
+/**
  * Request parameters for streamKeysUpdateRecordV1 operation in StreamKeyApi.
  * @export
  * @interface StreamKeyApiStreamKeysUpdateRecordV1Request
@@ -163,7 +258,25 @@ export declare class StreamKeyApi extends BaseAPI implements StreamKeyApiInterfa
      * @throws {RequiredError}
      * @memberof StreamKeyApi
      */
-    streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetStreamKeyResponse, any, {}>>;
+    streamKeysKeyV1(requestParameters: StreamKeyApiStreamKeysKeyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetStreamKeyResponse, any, {}, any>>;
+    /**
+     *
+     * @summary Rotate stream key
+     * @param {StreamKeyApiStreamKeysRotateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamKeyApi
+     */
+    streamKeysRotateV1(requestParameters: StreamKeyApiStreamKeysRotateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RotateStreamKeyResponse, any, {}, any>>;
+    /**
+     *
+     * @summary Update disconnect protection wait
+     * @param {StreamKeyApiStreamKeysSetWaitV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamKeyApi
+     */
+    streamKeysSetWaitV1(requestParameters: StreamKeyApiStreamKeysSetWaitV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Update record
@@ -172,7 +285,7 @@ export declare class StreamKeyApi extends BaseAPI implements StreamKeyApiInterfa
      * @throws {RequiredError}
      * @memberof StreamKeyApi
      */
-    streamKeysUpdateRecordV1(requestParameters: StreamKeyApiStreamKeysUpdateRecordV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    streamKeysUpdateRecordV1(requestParameters: StreamKeyApiStreamKeysUpdateRecordV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

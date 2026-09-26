@@ -24,7 +24,7 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { PaginatedResponseOfProjectHistoryResponse } from '../models';
+import type { PaginatedProjectHistoryResponse } from '../models';
 /**
  * ProjectHistoryApi - axios parameter creator
  * @export
@@ -145,7 +145,7 @@ export const ProjectHistoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async projectHistoryListV1(language: ProjectHistoryListV1LanguageEnum, projectId: number, v?: ProjectHistoryListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, action?: ProjectHistoryListV1ActionEnum, groupId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfProjectHistoryResponse>> {
+        async projectHistoryListV1(language: ProjectHistoryListV1LanguageEnum, projectId: number, v?: ProjectHistoryListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, action?: ProjectHistoryListV1ActionEnum, groupId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProjectHistoryResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.projectHistoryListV1(language, projectId, v, limit, offset, dateFrom, dateTo, action, groupId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProjectHistoryApi.projectHistoryListV1']?.[localVarOperationServerIndex]?.url;
@@ -168,7 +168,7 @@ export const ProjectHistoryApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfProjectHistoryResponse> {
+        projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedProjectHistoryResponse> {
             return localVarFp.projectHistoryListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.action, requestParameters.group_id, options).then((request) => request(axios, basePath));
         },
     };
@@ -188,7 +188,7 @@ export interface ProjectHistoryApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectHistoryApiInterface
      */
-    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfProjectHistoryResponse>;
+    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedProjectHistoryResponse>;
 
 }
 

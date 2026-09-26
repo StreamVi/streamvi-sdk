@@ -483,7 +483,7 @@ const { status, data } = await apiInstance.userProjectLeaveV1(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userProjectListAccessV1**
-> ListOfUserProject2ProjectResponse userProjectListAccessV1()
+> UserProject2ProjectListResponse userProjectListAccessV1()
 
 
 ### Example
@@ -519,7 +519,7 @@ const { status, data } = await apiInstance.userProjectListAccessV1(
 
 ### Return type
 
-**ListOfUserProject2ProjectResponse**
+**UserProject2ProjectListResponse**
 
 ### Authorization
 
@@ -540,7 +540,7 @@ const { status, data } = await apiInstance.userProjectListAccessV1(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userProjectListV1**
-> PaginatedResponseOfUserProjectResponse userProjectListV1()
+> PaginatedUserProjectResponse userProjectListV1()
 
 
 ### Example
@@ -579,7 +579,7 @@ const { status, data } = await apiInstance.userProjectListV1(
 
 ### Return type
 
-**PaginatedResponseOfUserProjectResponse**
+**PaginatedUserProjectResponse**
 
 ### Authorization
 

@@ -158,7 +158,7 @@ let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
 let email: string; //Email (default to undefined)
-let accessType: 0 | 1 | 1 | 2; //Access type (default to undefined)
+let accessType: 1 | 2; //Access type (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
 const { status, data } = await apiInstance.projectChannelInviteAddByEmailV1(
@@ -179,7 +179,7 @@ const { status, data } = await apiInstance.projectChannelInviteAddByEmailV1(
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
 | **email** | [**string**] | Email | defaults to undefined|
-| **accessType** | [**0 | 1 | 1 | 2**]**Array<0 &#124; 1 &#124; 1 &#124; 2>** | Access type | defaults to undefined|
+| **accessType** | [**1 | 2**]**Array<1 &#124; 2>** | Access type | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 
 
@@ -223,7 +223,7 @@ const apiInstance = new ProjectChannelInviteApi(configuration);
 let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let channelId: number; //Channel id (default to undefined)
-let accessType: 0 | 1 | 1 | 2; //Access type (default to undefined)
+let accessType: 1 | 2; //Access type (default to undefined)
 let toProjectExternalId: string; //Project for get access by external id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 
@@ -244,7 +244,7 @@ const { status, data } = await apiInstance.projectChannelInviteAddByIdV1(
 | **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **channelId** | [**number**] | Channel id | defaults to undefined|
-| **accessType** | [**0 | 1 | 1 | 2**]**Array<0 &#124; 1 &#124; 1 &#124; 2>** | Access type | defaults to undefined|
+| **accessType** | [**1 | 2**]**Array<1 &#124; 2>** | Access type | defaults to undefined|
 | **toProjectExternalId** | [**string**] | Project for get access by external id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 

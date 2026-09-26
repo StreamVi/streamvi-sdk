@@ -51,5 +51,11 @@ export interface PlanRestreamNextItem {
      * @memberof PlanRestreamNextItem
      */
     'custom_video': number;
+    /**
+     * Maximum disconnect protection time for this purchased period, in minutes
+     * @type {number}
+     * @memberof PlanRestreamNextItem
+     */
+    'disconnect_protection_max_minutes': number;
 }
 //# sourceMappingURL=plan-restream-next-item.d.ts.map

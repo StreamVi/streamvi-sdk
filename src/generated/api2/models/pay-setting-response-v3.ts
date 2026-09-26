@@ -55,49 +55,49 @@ export interface PaySettingResponseV3 {
      * @type {string}
      * @memberof PaySettingResponseV3
      */
-    'email': string;
+    'email': string | null;
     /**
      * Street
      * @type {string}
      * @memberof PaySettingResponseV3
      */
-    'street'?: string | null;
+    'street'?: string;
     /**
      * House number
      * @type {string}
      * @memberof PaySettingResponseV3
      */
-    'house_number'?: string | null;
+    'house_number'?: string;
     /**
      * Postal code
      * @type {string}
      * @memberof PaySettingResponseV3
      */
-    'zip'?: string | null;
+    'zip'?: string;
     /**
      * City
      * @type {string}
      * @memberof PaySettingResponseV3
      */
-    'city'?: string | null;
+    'city'?: string;
     /**
      * State ot region
      * @type {string}
      * @memberof PaySettingResponseV3
      */
-    'state'?: string | null;
+    'state'?: string;
     /**
      * Company name
      * @type {string}
      * @memberof PaySettingResponseV3
      */
-    'company_name'?: string | null;
+    'company_name'?: string;
     /**
      * Additional information about the payment
      * @type {string}
      * @memberof PaySettingResponseV3
      */
-    'description'?: string | null;
+    'description'?: string;
 }
 
 export const PaySettingResponseV3CurrencyEnum = {

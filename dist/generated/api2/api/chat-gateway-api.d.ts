@@ -360,7 +360,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get one message
@@ -369,7 +369,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any, {}>>;
+    methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any, {}, any>>;
     /**
      *
      * @summary List history message
@@ -378,7 +378,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodChatHistoryResponse, any, {}>>;
+    methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodChatHistoryResponse, any, {}, any>>;
     /**
      *
      * @summary Send message
@@ -387,7 +387,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      * @throws {RequiredError}
      * @memberof ChatGatewayApi
      */
-    methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any, {}>>;
+    methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any, {}, any>>;
 }
 /**
  * @export

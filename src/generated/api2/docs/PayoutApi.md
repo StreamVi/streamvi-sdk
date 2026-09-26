@@ -66,7 +66,7 @@ const { status, data } = await apiInstance.payoutCreateV1(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payoutPrepareV1**
-> ListOfPayoutSystemAccountListItemResponse payoutPrepareV1()
+> PayoutSystemAccountListResponse payoutPrepareV1()
 
 
 ### Example
@@ -102,7 +102,7 @@ const { status, data } = await apiInstance.payoutPrepareV1(
 
 ### Return type
 
-**ListOfPayoutSystemAccountListItemResponse**
+**PayoutSystemAccountListResponse**
 
 ### Authorization
 

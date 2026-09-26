@@ -507,7 +507,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingBuyV1(requestParameters: PlanTranscodingApiPlanTranscodingBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    planTranscodingBuyV1(requestParameters: PlanTranscodingApiPlanTranscodingBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Remove after tariff
@@ -516,7 +516,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingCancelV1(requestParameters: PlanTranscodingApiPlanTranscodingCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    planTranscodingCancelV1(requestParameters: PlanTranscodingApiPlanTranscodingCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Check transcoding tariff before buy
@@ -525,7 +525,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingCheckV1(requestParameters: PlanTranscodingApiPlanTranscodingCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingCheckResponse, any, {}>>;
+    planTranscodingCheckV1(requestParameters: PlanTranscodingApiPlanTranscodingCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingCheckResponse, any, {}, any>>;
     /**
      *
      * @summary Get discount transcoding
@@ -534,7 +534,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingGetDiscountV1(requestParameters: PlanTranscodingApiPlanTranscodingGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingDiscountResponse, any, {}>>;
+    planTranscodingGetDiscountV1(requestParameters: PlanTranscodingApiPlanTranscodingGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingDiscountResponse, any, {}, any>>;
     /**
      *
      * @summary Get list of transcoding tariffs
@@ -543,7 +543,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingResponseDto, any, {}>>;
+    planTranscodingListV1(requestParameters: PlanTranscodingApiPlanTranscodingListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingResponseDto, any, {}, any>>;
     /**
      *
      * @summary Set transcoding tariff auto prolongation
@@ -552,7 +552,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingSetProlongationV1(requestParameters: PlanTranscodingApiPlanTranscodingSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    planTranscodingSetProlongationV1(requestParameters: PlanTranscodingApiPlanTranscodingSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get tariff for project
@@ -561,7 +561,7 @@ export declare class PlanTranscodingApi extends BaseAPI implements PlanTranscodi
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
-    planTranscodingTariffV1(requestParameters: PlanTranscodingApiPlanTranscodingTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingForProject, any, {}>>;
+    planTranscodingTariffV1(requestParameters: PlanTranscodingApiPlanTranscodingTariffV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanTranscodingForProject, any, {}, any>>;
 }
 /**
  * @export

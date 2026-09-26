@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_type** | **number** | Access type | [default to undefined]
-**active** | **number** |  | [default to undefined]
+**active** | **boolean** |  | [default to undefined]
 **channel_id** | **number** | Channel id | [default to undefined]
 **id** | **number** | Primary key | [default to undefined]
 **owner_id** | **number** | Owner id | [default to undefined]
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **usageType** | **number** | usageType | [default to undefined]
 **project_id** | **number** | User id | [default to undefined]
 **project_** | [**ProjectChannelMemberInfoResponse**](ProjectChannelMemberInfoResponse.md) | User info | [optional] [default to undefined]
-**streamInfo** | [**ProjectChannelMemberStreamInfoResponse**](ProjectChannelMemberStreamInfoResponse.md) | Stream info | [default to undefined]
+**streamInfo** | [**ProjectChannelResponseStreamInfo**](ProjectChannelResponseStreamInfo.md) |  | [default to undefined]
 
 ## Example
 

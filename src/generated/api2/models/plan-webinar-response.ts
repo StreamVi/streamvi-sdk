@@ -52,25 +52,25 @@ export interface PlanWebinarResponse {
      * @type {number}
      * @memberof PlanWebinarResponse
      */
-    'price_rub': number;
+    'price_rub': number | null;
     /**
      * Price (USD)
      * @type {number}
      * @memberof PlanWebinarResponse
      */
-    'price_usd': number;
+    'price_usd': number | null;
     /**
      * Maximum resolution
      * @type {string}
      * @memberof PlanWebinarResponse
      */
-    'resolution': string | null;
+    'resolution': string;
     /**
      * Field for sort
      * @type {number}
      * @memberof PlanWebinarResponse
      */
-    'index': number;
+    'index': number | null;
     /**
      * Discount
      * @type {PlanWebinarDiscountResponse}

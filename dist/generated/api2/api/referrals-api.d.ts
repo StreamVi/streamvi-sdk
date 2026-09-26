@@ -115,7 +115,7 @@ export declare class ReferralsApi extends BaseAPI implements ReferralsApiInterfa
      * @throws {RequiredError}
      * @memberof ReferralsApi
      */
-    referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTotalInfoReferralsResponse, any, {}>>;
+    referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTotalInfoReferralsResponse, any, {}, any>>;
 }
 /**
  * @export

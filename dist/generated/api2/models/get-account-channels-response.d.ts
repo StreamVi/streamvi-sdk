@@ -45,6 +45,6 @@ export interface GetAccountChannelsResponse {
      * @type {number}
      * @memberof GetAccountChannelsResponse
      */
-    'nextPage': number;
+    'nextPage': number | null;
 }
 //# sourceMappingURL=get-account-channels-response.d.ts.map

@@ -52,6 +52,6 @@ export interface GetAccountChannelsResponse {
      * @type {number}
      * @memberof GetAccountChannelsResponse
      */
-    'nextPage': number;
+    'nextPage': number | null;
 }
 

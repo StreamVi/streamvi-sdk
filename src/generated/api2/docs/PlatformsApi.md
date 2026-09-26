@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
+|[**platformCategoryDetailsGetCategoryDetailsV1**](#platformcategorydetailsgetcategorydetailsv1) | **GET** /method/platforms/category/details | Get a saved platform category by its external identifier|
 |[**platformsAddAccountV1**](#platformsaddaccountv1) | **GET** /method/platforms/connect | Get url for start oauth|
 |[**platformsAddAccountVkCommunityV1**](#platformsaddaccountvkcommunityv1) | **GET** /method/platforms/connect/vk-community | Get url for start oauth|
 |[**platformsCallbackCommunityV1**](#platformscallbackcommunityv1) | **GET** /method/platforms/vk/callback-community | Internal request of auth|
@@ -15,6 +16,71 @@ All URIs are relative to *http://localhost*
 |[**platformsLogoutAccountV1**](#platformslogoutaccountv1) | **POST** /method/platforms/logout | Get category from the platform|
 |[**platformsPlatformListV1**](#platformsplatformlistv1) | **GET** /method/platforms/list | Supported platforms|
 |[**platformsRemoveAccountV1**](#platformsremoveaccountv1) | **POST** /method/platforms/account/remove | Remove account|
+|[**platformsVkVideoLiveCategoryV1**](#platformsvkvideolivecategoryv1) | **GET** /method/platforms/category/vkvideolive | Search VK Video Live categories in the saved catalog|
+
+# **platformCategoryDetailsGetCategoryDetailsV1**
+> PlatformCategoryDetailsResponse platformCategoryDetailsGetCategoryDetailsV1()
+
+
+### Example
+
+```typescript
+import {
+    PlatformsApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new PlatformsApi(configuration);
+
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let platform: 'vkvideolive'; // (default to undefined)
+let scope: 'game' | 'irl' | 'sport'; // (default to undefined)
+let id: string; //Opaque external category identifier; passed through unchanged (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+
+const { status, data } = await apiInstance.platformCategoryDetailsGetCategoryDetailsV1(
+    language,
+    platform,
+    scope,
+    id,
+    v
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **platform** | [**&#39;vkvideolive&#39;**]**Array<&#39;vkvideolive&#39;>** |  | defaults to undefined|
+| **scope** | [**&#39;game&#39; | &#39;irl&#39; | &#39;sport&#39;**]**Array<&#39;game&#39; &#124; &#39;irl&#39; &#124; &#39;sport&#39;>** |  | defaults to undefined|
+| **id** | [**string**] | Opaque external category identifier; passed through unchanged | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+
+
+### Return type
+
+**PlatformCategoryDetailsResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+|**400** |  |  -  |
+|**404** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **platformsAddAccountV1**
 > platformsAddAccountV1()
@@ -359,7 +425,7 @@ const { status, data } = await apiInstance.platformsGetAccountsV1(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **platformsGetCategoryV1**
-> ListOfCategoryItemResponse platformsGetCategoryV1()
+> CategoryListResponse platformsGetCategoryV1()
 
 
 ### Example
@@ -398,7 +464,7 @@ const { status, data } = await apiInstance.platformsGetCategoryV1(
 
 ### Return type
 
-**ListOfCategoryItemResponse**
+**CategoryListResponse**
 
 ### Authorization
 
@@ -659,6 +725,69 @@ const { status, data } = await apiInstance.platformsRemoveAccountV1(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**201** |  |  -  |
+|**400** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **platformsVkVideoLiveCategoryV1**
+> CategoryListResponse platformsVkVideoLiveCategoryV1()
+
+
+### Example
+
+```typescript
+import {
+    PlatformsApi,
+    Configuration
+} from 'streamvi-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new PlatformsApi(configuration);
+
+let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let type: 'irl' | 'game' | 'sport'; //Category type (default to undefined)
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let offset: number; //Category offset (for pagination) (optional) (default to undefined)
+let q: string; //Category name prefix (optional) (default to undefined)
+
+const { status, data } = await apiInstance.platformsVkVideoLiveCategoryV1(
+    language,
+    type,
+    v,
+    offset,
+    q
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **type** | [**&#39;irl&#39; | &#39;game&#39; | &#39;sport&#39;**]**Array<&#39;irl&#39; &#124; &#39;game&#39; &#124; &#39;sport&#39;>** | Category type | defaults to undefined|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **offset** | [**number**] | Category offset (for pagination) | (optional) defaults to undefined|
+| **q** | [**string**] | Category name prefix | (optional) defaults to undefined|
+
+
+### Return type
+
+**CategoryListResponse**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
 |**400** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

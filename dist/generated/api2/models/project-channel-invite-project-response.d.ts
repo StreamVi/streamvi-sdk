@@ -44,6 +44,6 @@ export interface ProjectChannelInviteProjectResponse {
      * @type {string}
      * @memberof ProjectChannelInviteProjectResponse
      */
-    'ref_id': string;
+    'ref_id': string | null;
 }
 //# sourceMappingURL=project-channel-invite-project-response.d.ts.map

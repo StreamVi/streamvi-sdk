@@ -78,6 +78,76 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Rotate stream key
+         * @param {RotateStreamKeyRequest} rotateStreamKeyRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        streamKeysRotateV1: async (rotateStreamKeyRequest, options = {}) => {
+            var _a;
+            // verify required parameter 'rotateStreamKeyRequest' is not null or undefined
+            (0, common_1.assertParamExists)('streamKeysRotateV1', 'rotateStreamKeyRequest', rotateStreamKeyRequest);
+            const localVarPath = `/method/stream-keys/rotate`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["stream-keys:write"], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            const localVarVersionedBody = { ...rotateStreamKeyRequest, v: (_a = rotateStreamKeyRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Update disconnect protection wait
+         * @param {SetWaitStreamKeyRequest} setWaitStreamKeyRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        streamKeysSetWaitV1: async (setWaitStreamKeyRequest, options = {}) => {
+            var _a;
+            // verify required parameter 'setWaitStreamKeyRequest' is not null or undefined
+            (0, common_1.assertParamExists)('streamKeysSetWaitV1', 'setWaitStreamKeyRequest', setWaitStreamKeyRequest);
+            const localVarPath = `/method/stream-keys/wait`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2 required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["stream-keys:write"], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            const localVarVersionedBody = { ...setWaitStreamKeyRequest, v: (_a = setWaitStreamKeyRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Update record
          * @param {SetRecordStreamRequest} setRecordStreamRequest
          * @param {*} [options] Override http request option.
@@ -139,6 +209,34 @@ const StreamKeyApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Rotate stream key
+         * @param {RotateStreamKeyRequest} rotateStreamKeyRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async streamKeysRotateV1(rotateStreamKeyRequest, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamKeysRotateV1(rotateStreamKeyRequest, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamKeyApi.streamKeysRotateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Update disconnect protection wait
+         * @param {SetWaitStreamKeyRequest} setWaitStreamKeyRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async streamKeysSetWaitV1(setWaitStreamKeyRequest, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamKeysSetWaitV1(setWaitStreamKeyRequest, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamKeyApi.streamKeysSetWaitV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @summary Update record
          * @param {SetRecordStreamRequest} setRecordStreamRequest
          * @param {*} [options] Override http request option.
@@ -173,6 +271,26 @@ const StreamKeyApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Rotate stream key
+         * @param {StreamKeyApiStreamKeysRotateV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        streamKeysRotateV1(requestParameters, options) {
+            return localVarFp.streamKeysRotateV1(requestParameters.RotateStreamKeyRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Update disconnect protection wait
+         * @param {StreamKeyApiStreamKeysSetWaitV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        streamKeysSetWaitV1(requestParameters, options) {
+            return localVarFp.streamKeysSetWaitV1(requestParameters.SetWaitStreamKeyRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Update record
          * @param {StreamKeyApiStreamKeysUpdateRecordV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -201,6 +319,28 @@ class StreamKeyApi extends base_1.BaseAPI {
      */
     streamKeysKeyV1(requestParameters, options) {
         return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Rotate stream key
+     * @param {StreamKeyApiStreamKeysRotateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamKeyApi
+     */
+    streamKeysRotateV1(requestParameters, options) {
+        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysRotateV1(requestParameters.RotateStreamKeyRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Update disconnect protection wait
+     * @param {StreamKeyApiStreamKeysSetWaitV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StreamKeyApi
+     */
+    streamKeysSetWaitV1(requestParameters, options) {
+        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysSetWaitV1(requestParameters.SetWaitStreamKeyRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

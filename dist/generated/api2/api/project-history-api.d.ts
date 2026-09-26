@@ -12,7 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { PaginatedResponseOfProjectHistoryResponse } from '../models';
+import type { PaginatedProjectHistoryResponse } from '../models';
 /**
  * ProjectHistoryApi - axios parameter creator
  * @export
@@ -55,7 +55,7 @@ export declare const ProjectHistoryApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    projectHistoryListV1(language: ProjectHistoryListV1LanguageEnum, projectId: number, v?: ProjectHistoryListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, action?: ProjectHistoryListV1ActionEnum, groupId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfProjectHistoryResponse>>;
+    projectHistoryListV1(language: ProjectHistoryListV1LanguageEnum, projectId: number, v?: ProjectHistoryListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, action?: ProjectHistoryListV1ActionEnum, groupId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProjectHistoryResponse>>;
 };
 /**
  * ProjectHistoryApi - factory interface
@@ -69,7 +69,7 @@ export declare const ProjectHistoryApiFactory: (configuration?: Configuration, b
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfProjectHistoryResponse>;
+    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedProjectHistoryResponse>;
 };
 /**
  * ProjectHistoryApi - interface
@@ -85,7 +85,7 @@ export interface ProjectHistoryApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectHistoryApiInterface
      */
-    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfProjectHistoryResponse>;
+    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedProjectHistoryResponse>;
 }
 /**
  * Request parameters for projectHistoryListV1 operation in ProjectHistoryApi.
@@ -163,7 +163,7 @@ export declare class ProjectHistoryApi extends BaseAPI implements ProjectHistory
      * @throws {RequiredError}
      * @memberof ProjectHistoryApi
      */
-    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfProjectHistoryResponse, any, {}>>;
+    projectHistoryListV1(requestParameters: ProjectHistoryApiProjectHistoryListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProjectHistoryResponse, any, {}, any>>;
 }
 /**
  * @export

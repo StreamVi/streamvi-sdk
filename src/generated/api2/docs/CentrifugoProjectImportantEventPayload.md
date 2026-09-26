@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **content_type** | **string** | Content | [default to undefined]
 **content_title** | **string** | Title | [default to undefined]
 **content_text** | **string** | Text | [default to undefined]
-**content_actions** | **Array&lt;Array&lt;InternalNotifyTypeAction&gt;&gt;** |  | [default to undefined]
+**content_actions** | [**Array&lt;InternalNotifyTypeAction&gt;**](InternalNotifyTypeAction.md) | Action | [optional] [default to undefined]
 
 ## Example
 

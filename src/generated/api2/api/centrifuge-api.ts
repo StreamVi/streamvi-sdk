@@ -87,7 +87,7 @@ export const CentrifugeApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+         *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
          * @summary Get token for connect to centrifuge for channel
          * @param {CentrifugeChannelTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
@@ -396,7 +396,7 @@ export const CentrifugeApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+         *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
          * @summary Get token for connect to centrifuge for channel
          * @param {CentrifugeChannelTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
@@ -495,7 +495,7 @@ export const CentrifugeApiFactory = function (configuration?: Configuration, bas
             return localVarFp.centrifugeAuthV2(requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
-         *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+         *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
          * @summary Get token for connect to centrifuge for channel
          * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -567,7 +567,7 @@ export interface CentrifugeApiInterface {
     centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
 
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
      * @summary Get token for connect to centrifuge for channel
      * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -809,7 +809,7 @@ export class CentrifugeApi extends BaseAPI implements CentrifugeApiInterface {
     }
 
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name              Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
+     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data     
      * @summary Get token for connect to centrifuge for channel
      * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

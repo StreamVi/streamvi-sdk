@@ -18,4 +18,7 @@ exports.ProjectInfoDataResponseTypeEnum = {
     NUMBER_0: 0,
     NUMBER_1: 1
 };
-exports.ProjectInfoDataResponseCurrencyEnum = {};
+exports.ProjectInfoDataResponseCurrencyEnum = {
+    Rub: 'rub',
+    Usd: 'usd'
+};

@@ -24,7 +24,7 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { PaginatedResponseOfSiteBlogPageTagResponse } from '../models';
+import type { PaginatedBlogPageTagResponse } from '../models';
 /**
  * BlogPageTagApi - axios parameter creator
  * @export
@@ -111,7 +111,7 @@ export const BlogPageTagApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async blogPageTagListV1(language: BlogPageTagListV1LanguageEnum, v?: BlogPageTagListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse>> {
+        async blogPageTagListV1(language: BlogPageTagListV1LanguageEnum, v?: BlogPageTagListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBlogPageTagResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageTagListV1(language, v, s, limit, offset, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BlogPageTagApi.blogPageTagListV1']?.[localVarOperationServerIndex]?.url;
@@ -134,7 +134,7 @@ export const BlogPageTagApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse> {
+        blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedBlogPageTagResponse> {
             return localVarFp.blogPageTagListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
     };
@@ -154,7 +154,7 @@ export interface BlogPageTagApiInterface {
      * @throws {RequiredError}
      * @memberof BlogPageTagApiInterface
      */
-    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfSiteBlogPageTagResponse>;
+    blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedBlogPageTagResponse>;
 
 }
 

@@ -32,7 +32,7 @@ export interface PlanStorageItem {
      * @type {string}
      * @memberof PlanStorageItem
      */
-    'period': PlanStorageItemPeriodEnum;
+    'period': PlanStorageItemPeriodEnum | null;
     /**
      * Prolongation status
      * @type {boolean}
@@ -50,7 +50,7 @@ export interface PlanStorageItem {
      * @type {string}
      * @memberof PlanStorageItem
      */
-    'date_end': string;
+    'date_end'?: string;
 }
 export declare const PlanStorageItemPeriodEnum: {
     readonly Month: "month";

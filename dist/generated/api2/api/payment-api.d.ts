@@ -183,7 +183,7 @@ export declare class PaymentApi extends BaseAPI implements PaymentApiInterface {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    paymentCreateV1(requestParameters: PaymentApiPaymentCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentCreateResponse, any, {}>>;
+    paymentCreateV1(requestParameters: PaymentApiPaymentCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentCreateResponse, any, {}, any>>;
     /**
      *
      * @param {PaymentApiPaymentGetStatusV1Request} requestParameters Request parameters.
@@ -191,7 +191,7 @@ export declare class PaymentApi extends BaseAPI implements PaymentApiInterface {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentStatusResponse, any, {}>>;
+    paymentGetStatusV1(requestParameters: PaymentApiPaymentGetStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentStatusResponse, any, {}, any>>;
 }
 /**
  * @export

@@ -462,10 +462,11 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [redirect] Redirect url
          * @param {string} [refId] Referal id
          * @param {string} [country] Country code
+         * @param {string} [visitorId] Anonymous landing visitor UUID v4
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authGetAuthUrlV1: async (language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        authGetAuthUrlV1: async (language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, visitorId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('authGetAuthUrlV1', 'language', language)
             // verify required parameter 'provider' is not null or undefined
@@ -510,6 +511,10 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (country !== undefined) {
                 localVarQueryParameter['country'] = country;
+            }
+
+            if (visitorId !== undefined) {
+                localVarQueryParameter['visitorId'] = visitorId;
             }
 
 
@@ -700,11 +705,12 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {string} [redirect] Redirect url
          * @param {string} [refId] Referal id
          * @param {string} [country] Country code
+         * @param {string} [visitorId] Anonymous landing visitor UUID v4
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authGetAuthUrlV1(language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authGetAuthUrlV1(language, provider, v, app, redirect, refId, country, options);
+        async authGetAuthUrlV1(language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, visitorId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authGetAuthUrlV1(language, provider, v, app, redirect, refId, country, visitorId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AuthApi.authGetAuthUrlV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -828,7 +834,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, options).then((request) => request(axios, basePath));
+            return localVarFp.authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, requestParameters.visitorId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1201,6 +1207,13 @@ export interface AuthApiAuthGetAuthUrlV1Request {
      * @memberof AuthApiAuthGetAuthUrlV1
      */
     readonly country?: string
+
+    /**
+     * Anonymous landing visitor UUID v4
+     * @type {string}
+     * @memberof AuthApiAuthGetAuthUrlV1
+     */
+    readonly visitorId?: string
 }
 
 /**
@@ -1326,7 +1339,7 @@ export class AuthApi extends BaseAPI implements AuthApiInterface {
      * @memberof AuthApi
      */
     public authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig) {
-        return AuthApiFp(this.configuration).authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, options).then((request) => request(this.axios, this.basePath));
+        return AuthApiFp(this.configuration).authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, requestParameters.visitorId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

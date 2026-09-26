@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ReleaseAppCabinetV1AppEnum = exports.ReleaseAppCabinetV1VEnum = exports.ReleaseAppCabinetV1LanguageEnum = exports.ReleaseApi = exports.ReleaseApiFactory = exports.ReleaseApiFp = exports.ReleaseApiAxiosParamCreator = void 0;
+exports.ReleaseAppCabinetV1VEnum = exports.ReleaseAppCabinetV1AppEnum = exports.ReleaseAppCabinetV1LanguageEnum = exports.ReleaseApi = exports.ReleaseApiFactory = exports.ReleaseApiFp = exports.ReleaseApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -33,14 +33,16 @@ const ReleaseApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get current version app
          * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
+         * @param {ReleaseAppCabinetV1AppEnum} app Apps
          * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        releaseAppCabinetV1: async (language, v, app, options = {}) => {
+        releaseAppCabinetV1: async (language, app, v, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('releaseAppCabinetV1', 'language', language);
+            // verify required parameter 'app' is not null or undefined
+            (0, common_1.assertParamExists)('releaseAppCabinetV1', 'app', app);
             const localVarPath = `/method/release-app`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -85,14 +87,14 @@ const ReleaseApiFp = function (configuration) {
          *
          * @summary Get current version app
          * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
+         * @param {ReleaseAppCabinetV1AppEnum} app Apps
          * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {ReleaseAppCabinetV1AppEnum} [app] Apps
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async releaseAppCabinetV1(language, v, app, options) {
+        async releaseAppCabinetV1(language, app, v, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.releaseAppCabinetV1(language, v, app, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.releaseAppCabinetV1(language, app, v, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ReleaseApi.releaseAppCabinetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -115,7 +117,7 @@ const ReleaseApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         releaseAppCabinetV1(requestParameters, options) {
-            return localVarFp.releaseAppCabinetV1(requestParameters.language, requestParameters.v, requestParameters.app, options).then((request) => request(axios, basePath));
+            return localVarFp.releaseAppCabinetV1(requestParameters.language, requestParameters.app, requestParameters.v, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -136,7 +138,7 @@ class ReleaseApi extends base_1.BaseAPI {
      * @memberof ReleaseApi
      */
     releaseAppCabinetV1(requestParameters, options) {
-        return (0, exports.ReleaseApiFp)(this.configuration).releaseAppCabinetV1(requestParameters.language, requestParameters.v, requestParameters.app, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ReleaseApiFp)(this.configuration).releaseAppCabinetV1(requestParameters.language, requestParameters.app, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ReleaseApi = ReleaseApi;
@@ -151,12 +153,12 @@ exports.ReleaseAppCabinetV1LanguageEnum = {
 /**
  * @export
  */
-exports.ReleaseAppCabinetV1VEnum = {
-    _1: '1'
+exports.ReleaseAppCabinetV1AppEnum = {
+    Cabinet: 'cabinet'
 };
 /**
  * @export
  */
-exports.ReleaseAppCabinetV1AppEnum = {
-    Cabinet: 'cabinet'
+exports.ReleaseAppCabinetV1VEnum = {
+    _1: '1'
 };

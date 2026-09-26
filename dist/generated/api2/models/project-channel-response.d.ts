@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { ProjectChannelMemberInfoResponse } from './project-channel-member-info-response';
-import type { ProjectChannelMemberStreamInfoResponse } from './project-channel-member-stream-info-response';
+import type { ProjectChannelResponseStreamInfo } from './project-channel-response-stream-info';
 /**
  *
  * @export
@@ -25,10 +25,10 @@ export interface ProjectChannelResponse {
     'access_type': ProjectChannelResponseAccessTypeEnum;
     /**
      *
-     * @type {number}
+     * @type {boolean}
      * @memberof ProjectChannelResponse
      */
-    'active': number;
+    'active': boolean;
     /**
      * Channel id
      * @type {number}
@@ -90,11 +90,11 @@ export interface ProjectChannelResponse {
      */
     'project_'?: ProjectChannelMemberInfoResponse;
     /**
-     * Stream info
-     * @type {ProjectChannelMemberStreamInfoResponse}
+     *
+     * @type {ProjectChannelResponseStreamInfo}
      * @memberof ProjectChannelResponse
      */
-    'streamInfo': ProjectChannelMemberStreamInfoResponse;
+    'streamInfo': ProjectChannelResponseStreamInfo | null;
 }
 export declare const ProjectChannelResponseAccessTypeEnum: {
     readonly NUMBER_0: 0;

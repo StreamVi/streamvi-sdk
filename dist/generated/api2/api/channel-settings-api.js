@@ -880,7 +880,7 @@ const ChannelSettingsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get status platform
+         * @summary Redirect to OAuth for updating a channel token
          * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
@@ -1348,7 +1348,7 @@ const ChannelSettingsApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get status platform
+         * @summary Redirect to OAuth for updating a channel token
          * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {number} channelId Channel id
@@ -1608,7 +1608,7 @@ const ChannelSettingsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get status platform
+         * @summary Redirect to OAuth for updating a channel token
          * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1868,7 +1868,7 @@ class ChannelSettingsApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Get status platform
+     * @summary Redirect to OAuth for updating a channel token
      * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

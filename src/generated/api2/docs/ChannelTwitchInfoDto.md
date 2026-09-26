@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**title** | **string** | Title of the channel | [default to undefined]
+**title** | **string** | Title of the channel | [optional] [default to undefined]
 **lang** | **string** |  | [optional] [default to undefined]
 **tags** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **category** | [**ChannelCategoryInfoDto**](ChannelCategoryInfoDto.md) |  | [optional] [default to undefined]

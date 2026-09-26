@@ -13,12 +13,19 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SiteBroadcastStatusLiveResponseAppEnum = exports.SiteBroadcastStatusLiveResponseStatusEnum = void 0;
+exports.SiteBroadcastStatusLiveResponseAppEnum = exports.SiteBroadcastStatusLiveResponseKindEnum = exports.SiteBroadcastStatusLiveResponseActionEnum = exports.SiteBroadcastStatusLiveResponseStatusEnum = void 0;
 exports.SiteBroadcastStatusLiveResponseStatusEnum = {
     Active: 'active',
     Pause: 'pause',
     Lost: 'lost',
     Done: 'done'
+};
+exports.SiteBroadcastStatusLiveResponseActionEnum = {
+    Active: 'active',
+    Stopped: 'stopped'
+};
+exports.SiteBroadcastStatusLiveResponseKindEnum = {
+    Live: 'live'
 };
 exports.SiteBroadcastStatusLiveResponseAppEnum = {
     Live: 'live'

@@ -41,6 +41,7 @@ export const ProjectMeResponseScopesEnum = {
     ChannelWrite: 'channel:write',
     ChannelDelete: 'channel:delete',
     ChannelAccessWrite: 'channel-access:write',
+    DiagnosticsRun: 'diagnostics:run',
     MediaFilesRead: 'media-files:read',
     MediaFilesWrite: 'media-files:write',
     NotificationRead: 'notification:read',

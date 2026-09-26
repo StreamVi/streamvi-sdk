@@ -508,7 +508,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      * @throws {RequiredError}
      * @memberof MediaServiceFilesApi
      */
-    mediaServiceFilesSiteCancelV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    mediaServiceFilesSiteCancelV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Create service video
@@ -517,7 +517,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      * @throws {RequiredError}
      * @memberof MediaServiceFilesApi
      */
-    mediaServiceFilesSiteCreateV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    mediaServiceFilesSiteCreateV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Delete service video
@@ -526,7 +526,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      * @throws {RequiredError}
      * @memberof MediaServiceFilesApi
      */
-    mediaServiceFilesSiteDeleteV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    mediaServiceFilesSiteDeleteV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get service video
@@ -535,7 +535,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      * @throws {RequiredError}
      * @memberof MediaServiceFilesApi
      */
-    mediaServiceFilesSiteGetV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetMediaServiceFileResponse, any, {}>>;
+    mediaServiceFilesSiteGetV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetMediaServiceFileResponse, any, {}, any>>;
     /**
      *
      * @summary Get service video list
@@ -544,7 +544,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      * @throws {RequiredError}
      * @memberof MediaServiceFilesApi
      */
-    mediaServiceFilesSiteListV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListMediaServiceFilesResponse, any, {}>>;
+    mediaServiceFilesSiteListV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListMediaServiceFilesResponse, any, {}, any>>;
     /**
      *
      * @summary Get session by media id
@@ -553,7 +553,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      * @throws {RequiredError}
      * @memberof MediaServiceFilesApi
      */
-    mediaServiceFilesSiteSessionV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SessionMediaServiceFileResponse, any, {}>>;
+    mediaServiceFilesSiteSessionV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SessionMediaServiceFileResponse, any, {}, any>>;
     /**
      *
      * @summary Set service video
@@ -562,7 +562,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      * @throws {RequiredError}
      * @memberof MediaServiceFilesApi
      */
-    mediaServiceFilesSiteSetV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    mediaServiceFilesSiteSetV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Update service video
@@ -571,7 +571,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      * @throws {RequiredError}
      * @memberof MediaServiceFilesApi
      */
-    mediaServiceFilesSiteUpdateV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    mediaServiceFilesSiteUpdateV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

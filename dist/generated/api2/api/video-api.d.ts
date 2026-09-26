@@ -15,11 +15,11 @@ import { type RequestArgs, BaseAPI } from '../base';
 import type { ListVideoResponse } from '../models';
 import type { SuccessResponse } from '../models';
 import type { UpdateVideoRequest } from '../models';
+import type { VideoCreateSuccessResponse } from '../models';
 import type { VideoDownloadResponse } from '../models';
 import type { VideoItemResponse } from '../models';
 import type { VideoLimitsResponse } from '../models';
 import type { VideoProgressChannelResponse } from '../models';
-import type { VideoSiteCreateV1200Response } from '../models';
 /**
  * VideoApi - axios parameter creator
  * @export
@@ -92,7 +92,7 @@ export declare const VideoApiAxiosParamCreator: (configuration?: Configuration) 
     videoSiteListV1: (language: VideoSiteListV1LanguageEnum, projectId: number, v?: VideoSiteListV1VEnum, offset?: number, limit?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get upload progress channel for centrifuge
+     * @summary Get upload progress channels for centrifuge
      * @param {VideoSiteProgressChannelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
@@ -123,7 +123,7 @@ export declare const VideoApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    videoSiteCreateV1(language: VideoSiteCreateV1LanguageEnum, projectId: number, v?: VideoSiteCreateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VideoSiteCreateV1200Response>>;
+    videoSiteCreateV1(language: VideoSiteCreateV1LanguageEnum, projectId: number, v?: VideoSiteCreateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VideoCreateSuccessResponse>>;
     /**
      *
      * @summary Delete video
@@ -181,14 +181,14 @@ export declare const VideoApiFp: (configuration?: Configuration) => {
     videoSiteListV1(language: VideoSiteListV1LanguageEnum, projectId: number, v?: VideoSiteListV1VEnum, offset?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListVideoResponse>>;
     /**
      *
-     * @summary Get upload progress channel for centrifuge
+     * @summary Get upload progress channels for centrifuge
      * @param {VideoSiteProgressChannelV1LanguageEnum} language Current language
      * @param {number} projectId Project id
      * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    videoSiteProgressChannelV1(language: VideoSiteProgressChannelV1LanguageEnum, projectId: number, v?: VideoSiteProgressChannelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VideoProgressChannelResponse>>;
+    videoSiteProgressChannelV1(language: VideoSiteProgressChannelV1LanguageEnum, projectId: number, v?: VideoSiteProgressChannelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<VideoProgressChannelResponse>>>;
     /**
      *
      * @summary Update video
@@ -210,7 +210,7 @@ export declare const VideoApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    videoSiteCreateV1(requestParameters: VideoApiVideoSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VideoSiteCreateV1200Response>;
+    videoSiteCreateV1(requestParameters: VideoApiVideoSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VideoCreateSuccessResponse>;
     /**
      *
      * @summary Delete video
@@ -253,12 +253,12 @@ export declare const VideoApiFactory: (configuration?: Configuration, basePath?:
     videoSiteListV1(requestParameters: VideoApiVideoSiteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListVideoResponse>;
     /**
      *
-     * @summary Get upload progress channel for centrifuge
+     * @summary Get upload progress channels for centrifuge
      * @param {VideoApiVideoSiteProgressChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    videoSiteProgressChannelV1(requestParameters: VideoApiVideoSiteProgressChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VideoProgressChannelResponse>;
+    videoSiteProgressChannelV1(requestParameters: VideoApiVideoSiteProgressChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<Array<VideoProgressChannelResponse>>;
     /**
      *
      * @summary Update video
@@ -282,7 +282,7 @@ export interface VideoApiInterface {
      * @throws {RequiredError}
      * @memberof VideoApiInterface
      */
-    videoSiteCreateV1(requestParameters: VideoApiVideoSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VideoSiteCreateV1200Response>;
+    videoSiteCreateV1(requestParameters: VideoApiVideoSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VideoCreateSuccessResponse>;
     /**
      *
      * @summary Delete video
@@ -330,13 +330,13 @@ export interface VideoApiInterface {
     videoSiteListV1(requestParameters: VideoApiVideoSiteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListVideoResponse>;
     /**
      *
-     * @summary Get upload progress channel for centrifuge
+     * @summary Get upload progress channels for centrifuge
      * @param {VideoApiVideoSiteProgressChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VideoApiInterface
      */
-    videoSiteProgressChannelV1(requestParameters: VideoApiVideoSiteProgressChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VideoProgressChannelResponse>;
+    videoSiteProgressChannelV1(requestParameters: VideoApiVideoSiteProgressChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<Array<VideoProgressChannelResponse>>;
     /**
      *
      * @summary Update video
@@ -580,7 +580,7 @@ export declare class VideoApi extends BaseAPI implements VideoApiInterface {
      * @throws {RequiredError}
      * @memberof VideoApi
      */
-    videoSiteCreateV1(requestParameters: VideoApiVideoSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VideoSiteCreateV1200Response, any, {}>>;
+    videoSiteCreateV1(requestParameters: VideoApiVideoSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VideoCreateSuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Delete video
@@ -589,7 +589,7 @@ export declare class VideoApi extends BaseAPI implements VideoApiInterface {
      * @throws {RequiredError}
      * @memberof VideoApi
      */
-    videoSiteDeleteV1(requestParameters: VideoApiVideoSiteDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    videoSiteDeleteV1(requestParameters: VideoApiVideoSiteDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get video download link
@@ -598,7 +598,7 @@ export declare class VideoApi extends BaseAPI implements VideoApiInterface {
      * @throws {RequiredError}
      * @memberof VideoApi
      */
-    videoSiteDownloadV1(requestParameters: VideoApiVideoSiteDownloadV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VideoDownloadResponse, any, {}>>;
+    videoSiteDownloadV1(requestParameters: VideoApiVideoSiteDownloadV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VideoDownloadResponse, any, {}, any>>;
     /**
      *
      * @summary Get video by id
@@ -607,7 +607,7 @@ export declare class VideoApi extends BaseAPI implements VideoApiInterface {
      * @throws {RequiredError}
      * @memberof VideoApi
      */
-    videoSiteGetV1(requestParameters: VideoApiVideoSiteGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VideoItemResponse, any, {}>>;
+    videoSiteGetV1(requestParameters: VideoApiVideoSiteGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VideoItemResponse, any, {}, any>>;
     /**
      *
      * @summary Get video limits
@@ -616,7 +616,7 @@ export declare class VideoApi extends BaseAPI implements VideoApiInterface {
      * @throws {RequiredError}
      * @memberof VideoApi
      */
-    videoSiteLimitsV1(requestParameters: VideoApiVideoSiteLimitsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VideoLimitsResponse, any, {}>>;
+    videoSiteLimitsV1(requestParameters: VideoApiVideoSiteLimitsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VideoLimitsResponse, any, {}, any>>;
     /**
      *
      * @summary List videos
@@ -625,16 +625,16 @@ export declare class VideoApi extends BaseAPI implements VideoApiInterface {
      * @throws {RequiredError}
      * @memberof VideoApi
      */
-    videoSiteListV1(requestParameters: VideoApiVideoSiteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListVideoResponse, any, {}>>;
+    videoSiteListV1(requestParameters: VideoApiVideoSiteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListVideoResponse, any, {}, any>>;
     /**
      *
-     * @summary Get upload progress channel for centrifuge
+     * @summary Get upload progress channels for centrifuge
      * @param {VideoApiVideoSiteProgressChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VideoApi
      */
-    videoSiteProgressChannelV1(requestParameters: VideoApiVideoSiteProgressChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VideoProgressChannelResponse, any, {}>>;
+    videoSiteProgressChannelV1(requestParameters: VideoApiVideoSiteProgressChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VideoProgressChannelResponse[], any, {}, any>>;
     /**
      *
      * @summary Update video
@@ -643,7 +643,7 @@ export declare class VideoApi extends BaseAPI implements VideoApiInterface {
      * @throws {RequiredError}
      * @memberof VideoApi
      */
-    videoSiteUpdateV1(requestParameters: VideoApiVideoSiteUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    videoSiteUpdateV1(requestParameters: VideoApiVideoSiteUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

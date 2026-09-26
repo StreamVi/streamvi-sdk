@@ -46,7 +46,8 @@ export const PlanRestreamFeatureItemNameEnum = {
     BackgroundChat: 'background_chat',
     DedicatedServer: 'dedicated_server',
     PersonalManager: 'personal_manager',
-    SupportCustomChannel: 'support_custom_channel'
+    SupportCustomChannel: 'support_custom_channel',
+    DisconnectProtectionMaxMinutes: 'disconnect_protection_max_minutes'
 } as const;
 
 export type PlanRestreamFeatureItemNameEnum = typeof PlanRestreamFeatureItemNameEnum[keyof typeof PlanRestreamFeatureItemNameEnum];

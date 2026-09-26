@@ -21,11 +21,17 @@
  */
 export interface GetStreamKeyResponse {
     /**
-     * Seconds the stream guard
+     * Disconnect protection wait time in minutes
      * @type {number}
      * @memberof GetStreamKeyResponse
      */
-    'wait': number;
+    'wait': number | null;
+    /**
+     * Maximum disconnect protection wait time for the active purchased tariff, in minutes
+     * @type {number}
+     * @memberof GetStreamKeyResponse
+     */
+    'wait_max_minutes': number;
     /**
      * Is recordable stream
      * @type {boolean}

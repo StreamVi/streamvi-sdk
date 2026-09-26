@@ -339,7 +339,7 @@ const VideoApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get upload progress channel for centrifuge
+         * @summary Get upload progress channels for centrifuge
          * @param {VideoSiteProgressChannelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
@@ -532,7 +532,7 @@ const VideoApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get upload progress channel for centrifuge
+         * @summary Get upload progress channels for centrifuge
          * @param {VideoSiteProgressChannelV1LanguageEnum} language Current language
          * @param {number} projectId Project id
          * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
@@ -632,7 +632,7 @@ const VideoApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get upload progress channel for centrifuge
+         * @summary Get upload progress channels for centrifuge
          * @param {VideoApiVideoSiteProgressChannelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -728,7 +728,7 @@ class VideoApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Get upload progress channel for centrifuge
+     * @summary Get upload progress channels for centrifuge
      * @param {VideoApiVideoSiteProgressChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

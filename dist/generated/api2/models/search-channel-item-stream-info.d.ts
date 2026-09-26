@@ -9,16 +9,129 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ChannelDefaultInfoDto } from './channel-default-info-dto';
-import type { ChannelOkInfoDto } from './channel-ok-info-dto';
-import type { ChannelTrovoInfoDto } from './channel-trovo-info-dto';
-import type { ChannelTwitchInfoDto } from './channel-twitch-info-dto';
-import type { ChannelVkInfoDto } from './channel-vk-info-dto';
-import type { ChannelYoutubeInfoDto } from './channel-youtube-info-dto';
+import type { ChannelPlayListInfoDto } from './channel-play-list-info-dto';
+import type { ChannelVkVideoLiveCategoryInfoDto } from './channel-vk-video-live-category-info-dto';
 /**
- * @type SearchChannelItemStreamInfo
  * streamInfo
  * @export
+ * @interface SearchChannelItemStreamInfo
  */
-export type SearchChannelItemStreamInfo = ChannelDefaultInfoDto | ChannelOkInfoDto | ChannelTrovoInfoDto | ChannelTwitchInfoDto | ChannelVkInfoDto | ChannelYoutubeInfoDto;
+export interface SearchChannelItemStreamInfo {
+    /**
+     * Title of the channel
+     * @type {string}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'title': string;
+    /**
+     *
+     * @type {string}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'description': string;
+    /**
+     *
+     * @type {string}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'lang'?: SearchChannelItemStreamInfoLangEnum;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'tags'?: Array<string>;
+    /**
+     *
+     * @type {ChannelVkVideoLiveCategoryInfoDto}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'category'?: ChannelVkVideoLiveCategoryInfoDto;
+    /**
+     *
+     * @type {ChannelPlayListInfoDto}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'playlist'?: ChannelPlayListInfoDto;
+    /**
+     *
+     * @type {string}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'privacyVideo'?: SearchChannelItemStreamInfoPrivacyVideoEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'latency'?: SearchChannelItemStreamInfoLatencyEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'audience'?: SearchChannelItemStreamInfoAudienceEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'image'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'disableAutoEnd'?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'wall'?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'privacyComments'?: SearchChannelItemStreamInfoPrivacyCommentsEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof SearchChannelItemStreamInfo
+     */
+    'domain'?: string;
+}
+export declare const SearchChannelItemStreamInfoLangEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SearchChannelItemStreamInfoLangEnum = typeof SearchChannelItemStreamInfoLangEnum[keyof typeof SearchChannelItemStreamInfoLangEnum];
+export declare const SearchChannelItemStreamInfoPrivacyVideoEnum: {
+    readonly All: "all";
+    readonly Members: "members";
+    readonly Editors: "editors";
+    readonly ByLink: "by_link";
+    readonly Donut: "donut";
+};
+export type SearchChannelItemStreamInfoPrivacyVideoEnum = typeof SearchChannelItemStreamInfoPrivacyVideoEnum[keyof typeof SearchChannelItemStreamInfoPrivacyVideoEnum];
+export declare const SearchChannelItemStreamInfoLatencyEnum: {
+    readonly Normal: "normal";
+    readonly Low: "low";
+    readonly UltraLow: "ultraLow";
+};
+export type SearchChannelItemStreamInfoLatencyEnum = typeof SearchChannelItemStreamInfoLatencyEnum[keyof typeof SearchChannelItemStreamInfoLatencyEnum];
+export declare const SearchChannelItemStreamInfoAudienceEnum: {
+    readonly ChannelAudienceTypeFamilyfriendly: "CHANNEL_AUDIENCE_TYPE_FAMILYFRIENDLY";
+    readonly ChannelAudienceTypeTeen: "CHANNEL_AUDIENCE_TYPE_TEEN";
+    readonly ChannelAudienceTypeEighteenplus: "CHANNEL_AUDIENCE_TYPE_EIGHTEENPLUS";
+};
+export type SearchChannelItemStreamInfoAudienceEnum = typeof SearchChannelItemStreamInfoAudienceEnum[keyof typeof SearchChannelItemStreamInfoAudienceEnum];
+export declare const SearchChannelItemStreamInfoPrivacyCommentsEnum: {
+    readonly All: "all";
+    readonly Members: "members";
+    readonly Editors: "editors";
+    readonly Nobody: "nobody";
+};
+export type SearchChannelItemStreamInfoPrivacyCommentsEnum = typeof SearchChannelItemStreamInfoPrivacyCommentsEnum[keyof typeof SearchChannelItemStreamInfoPrivacyCommentsEnum];
 //# sourceMappingURL=search-channel-item-stream-info.d.ts.map

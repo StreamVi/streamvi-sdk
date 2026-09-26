@@ -68,7 +68,7 @@ const { status, data } = await apiInstance.notifyUserDelMobileTokenV1(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **notifyUserGetScreenV1**
-> SiteScreenNotifyUserResponse notifyUserGetScreenV1()
+> object notifyUserGetScreenV1()
 
 
 ### Example
@@ -104,7 +104,7 @@ const { status, data } = await apiInstance.notifyUserGetScreenV1(
 
 ### Return type
 
-**SiteScreenNotifyUserResponse**
+**object**
 
 ### Authorization
 

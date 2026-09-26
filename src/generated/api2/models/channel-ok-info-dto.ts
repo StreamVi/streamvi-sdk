@@ -25,7 +25,7 @@ export interface ChannelOkInfoDto {
      * @type {string}
      * @memberof ChannelOkInfoDto
      */
-    'title': string;
+    'title'?: string;
     /**
      * 
      * @type {string}

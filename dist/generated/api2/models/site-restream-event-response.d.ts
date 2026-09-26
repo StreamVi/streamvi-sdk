@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { SiteRestreamEventChannelResponse } from './site-restream-event-channel-response';
 import type { SiteRestreamEventServerResponse } from './site-restream-event-server-response';
 /**
  *
@@ -58,6 +59,12 @@ export interface SiteRestreamEventResponse {
      * @memberof SiteRestreamEventResponse
      */
     'platform'?: string;
+    /**
+     * Channel
+     * @type {SiteRestreamEventChannelResponse}
+     * @memberof SiteRestreamEventResponse
+     */
+    'channel'?: SiteRestreamEventChannelResponse;
 }
 export declare const SiteRestreamEventResponseLevelEnum: {
     readonly Debug: "debug";

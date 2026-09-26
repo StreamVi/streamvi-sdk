@@ -56,5 +56,11 @@ export interface PlanRestreamCurrentItem {
      * @memberof PlanRestreamCurrentItem
      */
     'custom_video': number;
+    /**
+     * Maximum disconnect protection time for this purchased period, in minutes
+     * @type {number}
+     * @memberof PlanRestreamCurrentItem
+     */
+    'disconnect_protection_max_minutes': number;
 }
 

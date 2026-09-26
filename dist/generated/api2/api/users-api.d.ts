@@ -125,7 +125,7 @@ export interface UsersApiInterface {
 export interface UsersApiUserUpdateProfileV1Request {
     /**
      * Current language
-     * @type {string}
+     * @type {'ru' | 'en' | 'cn'}
      * @memberof UsersApiUserUpdateProfileV1
      */
     readonly language: UserUpdateProfileV1LanguageEnum;
@@ -143,7 +143,7 @@ export interface UsersApiUserUpdateProfileV1Request {
     readonly last_name: string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @type {string}
+     * @type {'1'}
      * @memberof UsersApiUserUpdateProfileV1
      */
     readonly v?: UserUpdateProfileV1VEnum;
@@ -169,7 +169,7 @@ export declare class UsersApi extends BaseAPI implements UsersApiInterface {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    userGetProfileV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any, {}>>;
+    userGetProfileV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any, {}, any>>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
@@ -179,7 +179,7 @@ export declare class UsersApi extends BaseAPI implements UsersApiInterface {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

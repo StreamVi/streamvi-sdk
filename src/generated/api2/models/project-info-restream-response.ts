@@ -15,10 +15,10 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { PlanRestream2UserItemResponse } from './plan-restream2-user-item-response';
+import type { ProjectInfoRestreamDataResponse } from './project-info-restream-data-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import type { PlanRestreamResponse } from './plan-restream-response';
+import type { ProjectInfoRestreamPeriodResponse } from './project-info-restream-period-response';
 
 /**
  * 
@@ -28,15 +28,15 @@ import type { PlanRestreamResponse } from './plan-restream-response';
 export interface ProjectInfoRestreamResponse {
     /**
      * Plan restream to user
-     * @type {PlanRestream2UserItemResponse}
+     * @type {ProjectInfoRestreamPeriodResponse}
      * @memberof ProjectInfoRestreamResponse
      */
-    'plan2user': PlanRestream2UserItemResponse;
+    'plan2user': ProjectInfoRestreamPeriodResponse;
     /**
      * Plan restream data
-     * @type {PlanRestreamResponse}
+     * @type {ProjectInfoRestreamDataResponse}
      * @memberof ProjectInfoRestreamResponse
      */
-    'data': PlanRestreamResponse;
+    'data': ProjectInfoRestreamDataResponse;
 }
 

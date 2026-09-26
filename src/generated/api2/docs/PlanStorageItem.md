@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **period** | **string** | Period | [default to undefined]
 **prolongation** | **boolean** | Prolongation status | [default to undefined]
 **title** | **string** | Title | [default to undefined]
-**date_end** | **string** | Date end tariff | [default to undefined]
+**date_end** | **string** | Date end tariff | [optional] [default to undefined]
 
 ## Example
 

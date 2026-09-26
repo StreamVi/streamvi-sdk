@@ -94,7 +94,7 @@ export interface GetMediaServiceFileResponse {
      * @type {string}
      * @memberof GetMediaServiceFileResponse
      */
-    'created_at': string;
+    'created_at': string | null;
     /**
      * Event channel for connect to centrifuge
      * @type {string}

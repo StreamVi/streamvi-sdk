@@ -24,15 +24,15 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { ListOfUserProject2ProjectResponse } from '../models';
-// @ts-ignore
-import type { PaginatedResponseOfUserProjectResponse } from '../models';
+import type { PaginatedUserProjectResponse } from '../models';
 // @ts-ignore
 import type { ProjectInfoResponse } from '../models';
 // @ts-ignore
 import type { ProjectMeResponse } from '../models';
 // @ts-ignore
 import type { SuccessResponse } from '../models';
+// @ts-ignore
+import type { UserProject2ProjectListResponse } from '../models';
 // @ts-ignore
 import type { UserProjectGetResponse } from '../models';
 /**
@@ -812,7 +812,7 @@ export const ProjectApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectListAccessV1(language: UserProjectListAccessV1LanguageEnum, projectId: number, v?: UserProjectListAccessV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfUserProject2ProjectResponse>> {
+        async userProjectListAccessV1(language: UserProjectListAccessV1LanguageEnum, projectId: number, v?: UserProjectListAccessV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProject2ProjectListResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectListAccessV1(language, projectId, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProjectApi.userProjectListAccessV1']?.[localVarOperationServerIndex]?.url;
@@ -828,7 +828,7 @@ export const ProjectApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectListV1(language: UserProjectListV1LanguageEnum, v?: UserProjectListV1VEnum, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfUserProjectResponse>> {
+        async userProjectListV1(language: UserProjectListV1LanguageEnum, v?: UserProjectListV1VEnum, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserProjectResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectListV1(language, v, limit, offset, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProjectApi.userProjectListV1']?.[localVarOperationServerIndex]?.url;
@@ -947,7 +947,7 @@ export const ProjectApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfUserProject2ProjectResponse> {
+        userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProject2ProjectListResponse> {
             return localVarFp.userProjectListAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
@@ -957,7 +957,7 @@ export const ProjectApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfUserProjectResponse> {
+        userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedUserProjectResponse> {
             return localVarFp.userProjectListV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1068,7 +1068,7 @@ export interface ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApiInterface
      */
-    userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfUserProject2ProjectResponse>;
+    userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProject2ProjectListResponse>;
 
     /**
      * 
@@ -1078,7 +1078,7 @@ export interface ProjectApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectApiInterface
      */
-    userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfUserProjectResponse>;
+    userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedUserProjectResponse>;
 
     /**
      * 

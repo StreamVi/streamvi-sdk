@@ -32,13 +32,13 @@ export interface PaymentStatusResponse {
      * @type {string}
      * @memberof PaymentStatusResponse
      */
-    'currency': PaymentStatusResponseCurrencyEnum;
+    'currency': PaymentStatusResponseCurrencyEnum | null;
     /**
      * Period
      * @type {string}
      * @memberof PaymentStatusResponse
      */
-    'plan_period': PaymentStatusResponsePlanPeriodEnum;
+    'plan_period': PaymentStatusResponsePlanPeriodEnum | null;
     /**
      * Status
      * @type {string}
@@ -56,7 +56,7 @@ export interface PaymentStatusResponse {
      * @type {string}
      * @memberof PaymentStatusResponse
      */
-    'title'?: string;
+    'title'?: string | null;
 }
 export declare const PaymentStatusResponseCurrencyEnum: {
     readonly Rub: "rub";

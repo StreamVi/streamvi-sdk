@@ -12,8 +12,8 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
-import type { ListOfPayoutSystemAccountListItemResponse } from '../models';
 import type { PayoutCreateRequestBodyDto } from '../models';
+import type { PayoutSystemAccountListResponse } from '../models';
 import type { SuccessResponse } from '../models';
 /**
  * PayoutApi - axios parameter creator
@@ -65,7 +65,7 @@ export declare const PayoutApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    payoutPrepareV1(language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfPayoutSystemAccountListItemResponse>>;
+    payoutPrepareV1(language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutSystemAccountListResponse>>;
 };
 /**
  * PayoutApi - factory interface
@@ -87,7 +87,7 @@ export declare const PayoutApiFactory: (configuration?: Configuration, basePath?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse>;
+    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayoutSystemAccountListResponse>;
 };
 /**
  * PayoutApi - interface
@@ -112,7 +112,7 @@ export interface PayoutApiInterface {
      * @throws {RequiredError}
      * @memberof PayoutApiInterface
      */
-    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfPayoutSystemAccountListItemResponse>;
+    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayoutSystemAccountListResponse>;
 }
 /**
  * Request parameters for payoutCreateV1 operation in PayoutApi.
@@ -179,7 +179,7 @@ export declare class PayoutApi extends BaseAPI implements PayoutApiInterface {
      * @throws {RequiredError}
      * @memberof PayoutApi
      */
-    payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}>>;
+    payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
      *
      * @summary Get payout data for create
@@ -188,7 +188,7 @@ export declare class PayoutApi extends BaseAPI implements PayoutApiInterface {
      * @throws {RequiredError}
      * @memberof PayoutApi
      */
-    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListOfPayoutSystemAccountListItemResponse, any, {}>>;
+    payoutPrepareV1(requestParameters: PayoutApiPayoutPrepareV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutSystemAccountListResponse, any, {}, any>>;
 }
 /**
  * @export

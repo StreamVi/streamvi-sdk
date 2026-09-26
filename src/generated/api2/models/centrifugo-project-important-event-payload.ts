@@ -48,11 +48,11 @@ export interface CentrifugoProjectImportantEventPayload {
      */
     'content_text': string;
     /**
-     * 
-     * @type {Array<Array<InternalNotifyTypeAction>>}
+     * Action
+     * @type {Array<InternalNotifyTypeAction>}
      * @memberof CentrifugoProjectImportantEventPayload
      */
-    'content_actions': Array<Array<InternalNotifyTypeAction>>;
+    'content_actions'?: Array<InternalNotifyTypeAction>;
 }
 
 export const CentrifugoProjectImportantEventPayloadTypeEnum = {

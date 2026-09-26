@@ -7,7 +7,7 @@ All URIs are relative to *http://localhost*
 |[**transactionsListV1**](#transactionslistv1) | **GET** /method/transactions/list | Transaction list for frontend|
 
 # **transactionsListV1**
-> PaginatedResponseOfTransactionResponse transactionsListV1()
+> PaginatedTransactionResponse transactionsListV1()
 
 
 ### Example
@@ -58,7 +58,7 @@ const { status, data } = await apiInstance.transactionsListV1(
 
 ### Return type
 
-**PaginatedResponseOfTransactionResponse**
+**PaginatedTransactionResponse**
 
 ### Authorization
 

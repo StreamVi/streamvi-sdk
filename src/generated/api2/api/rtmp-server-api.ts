@@ -24,13 +24,13 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
-import type { ListOfRtmpServerLocationResponse } from '../models';
-// @ts-ignore
 import type { RtmpServerGraphResponse } from '../models';
 // @ts-ignore
 import type { RtmpServerListResponseBase } from '../models';
 // @ts-ignore
 import type { RtmpServerListV3Response } from '../models';
+// @ts-ignore
+import type { RtmpServerLocationsResponse } from '../models';
 // @ts-ignore
 import type { RtmpServerSrtLatencyResponse } from '../models';
 // @ts-ignore
@@ -415,7 +415,7 @@ export const RtmpServerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodRtmpServerListLocationsUnauthorizedV1(language: MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum, v?: MethodRtmpServerListLocationsUnauthorizedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListOfRtmpServerLocationResponse>> {
+        async methodRtmpServerListLocationsUnauthorizedV1(language: MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum, v?: MethodRtmpServerListLocationsUnauthorizedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RtmpServerLocationsResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.methodRtmpServerListLocationsUnauthorizedV1(language, v, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RtmpServerApi.methodRtmpServerListLocationsUnauthorizedV1']?.[localVarOperationServerIndex]?.url;
@@ -528,7 +528,7 @@ export const RtmpServerApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfRtmpServerLocationResponse> {
+        methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerLocationsResponse> {
             return localVarFp.methodRtmpServerListLocationsUnauthorizedV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
         },
         /**
@@ -607,7 +607,7 @@ export interface RtmpServerApiInterface {
      * @throws {RequiredError}
      * @memberof RtmpServerApiInterface
      */
-    methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListOfRtmpServerLocationResponse>;
+    methodRtmpServerListLocationsUnauthorizedV1(requestParameters: RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RtmpServerLocationsResponse>;
 
     /**
      * 
