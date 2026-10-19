@@ -17,19 +17,19 @@ import type { SiteBlogPageTagResponse } from './site-blog-page-tag-response';
  */
 export interface PaginatedBlogPageTagResponse {
     /**
-     * Общее количество элементов вообще
+     * Total number of all items
      * @type {number}
      * @memberof PaginatedBlogPageTagResponse
      */
     'total': number;
     /**
-     * Размер запрашиваемой страницы
+     * Requested page size
      * @type {number}
      * @memberof PaginatedBlogPageTagResponse
      */
     'limit': number;
     /**
-     * С какого элемента включительно делать запрос
+     * Element to start the request from, inclusive
      * @type {number}
      * @memberof PaginatedBlogPageTagResponse
      */

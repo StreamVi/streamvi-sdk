@@ -30,13 +30,14 @@ const base_1 = require("../base");
 const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Mark processing of the project\'s own service file media_id in project_id as cancelled and mark it deleted in storage metadata. Only status=processing is allowed; otherwise media_service.status_not_available. Use delete for a completed video; a successful command response is not a file conversion result.
          * @summary Cancel service video
          * @param {CancelMediaServiceFileRequest} cancelMediaServiceFileRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaServiceFilesSiteCancelV1: async (cancelMediaServiceFileRequest, options = {}) => {
+        mediaServiceFilesSiteCancelV1: async (cancelMediaServiceFileRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'cancelMediaServiceFileRequest' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteCancelV1', 'cancelMediaServiceFileRequest', cancelMediaServiceFileRequest);
@@ -50,10 +51,16 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["media-files:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["media-files:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -65,15 +72,16 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Upload a multipart/form-data file (field file) to create a service video for project_id supplied in query. The current pipe limits the file to 300 MiB; the listed media formats are allowed. Access and custom file count are tariff-limited. Success confirms temporary storage upload and creation of a processing session, not video readiness; check list/session.
          * @summary Create service video
-         * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Current language
+         * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaServiceFilesSiteCreateV1: async (language, projectId, v, options = {}) => {
+        mediaServiceFilesSiteCreateV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteCreateV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -88,9 +96,12 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["media-files:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["media-files:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -103,6 +114,9 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -112,13 +126,14 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Delete an owned service file media_id from project_id. A processing file or a file used as the selected standby media cannot be deleted; this differs from cancelling processing with POST /method/media-service-files/cancel.
          * @summary Delete service video
          * @param {DeleteMediaServiceFileRequest} deleteMediaServiceFileRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaServiceFilesSiteDeleteV1: async (deleteMediaServiceFileRequest, options = {}) => {
+        mediaServiceFilesSiteDeleteV1: async (deleteMediaServiceFileRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'deleteMediaServiceFileRequest' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteDeleteV1', 'deleteMediaServiceFileRequest', deleteMediaServiceFileRequest);
@@ -132,10 +147,16 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["media-files:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["media-files:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -147,16 +168,17 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read completed service file media_id in project_id. The file must have status=success and belong to the project or be shared; otherwise returns media_service.status_not_available/forbidden_get. Returns metadata and preview/video links, not binary content.
          * @summary Get service video
-         * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Current language
+         * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
          * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaServiceFilesSiteGetV1: async (language, projectId, mediaId, v, options = {}) => {
+        mediaServiceFilesSiteGetV1: async (language, projectId, mediaId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteGetV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -173,9 +195,12 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["media-files:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["media-files:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["media-files:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -191,6 +216,9 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             if (mediaId !== undefined) {
                 localVarQueryParameter['media_id'] = mediaId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -200,15 +228,16 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read available media-service-files for project_id: status readiness, isEditable editability, and isDisabled plan restriction. media_id identifies a service file, not video.id. For processing files, event_channel allows tracking progress.
          * @summary Get service video list
-         * @param {MediaServiceFilesSiteListV1LanguageEnum} language Current language
+         * @param {MediaServiceFilesSiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaServiceFilesSiteListV1: async (language, projectId, v, options = {}) => {
+        mediaServiceFilesSiteListV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteListV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -223,9 +252,12 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["media-files:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["media-files:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["media-files:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -238,6 +270,9 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -247,16 +282,17 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the processing session of an owned media_id in project_id. Returns file_id, channel, and a secret Centrifugo subscription token. Available while the file is not success/cancel/error and not deleted; completed states produce media_service.not_ready.
          * @summary Get session by media id
-         * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Current language
+         * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
          * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaServiceFilesSiteSessionV1: async (language, projectId, mediaId, v, options = {}) => {
+        mediaServiceFilesSiteSessionV1: async (language, projectId, mediaId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteSessionV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -273,9 +309,12 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["media-files:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["media-files:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["media-files:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -291,6 +330,9 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             if (mediaId !== undefined) {
                 localVarQueryParameter['media_id'] = mediaId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -300,13 +342,14 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Select a prepared service file media_id for project_id: type=pause is a pause placeholder, type=lost is a signal-loss placeholder. Obtain media_id from GET /method/media-service-files/list. Custom files are tariff-limited; base/shared files follow access rules. Success means the selection was saved, not that broadcasting started.
          * @summary Set service video
          * @param {SetMediaServiceFileRequest} setMediaServiceFileRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaServiceFilesSiteSetV1: async (setMediaServiceFileRequest, options = {}) => {
+        mediaServiceFilesSiteSetV1: async (setMediaServiceFileRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'setMediaServiceFileRequest' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteSetV1', 'setMediaServiceFileRequest', setMediaServiceFileRequest);
@@ -320,10 +363,16 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["media-files:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["media-files:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -335,13 +384,14 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Rename completed service file media_id in project_id. Requires an owned file with status=success; another owner\'s shared file cannot be edited. Success confirms name was saved.
          * @summary Update service video
          * @param {UpdateMediaServiceFileRequest} updateMediaServiceFileRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaServiceFilesSiteUpdateV1: async (updateMediaServiceFileRequest, options = {}) => {
+        mediaServiceFilesSiteUpdateV1: async (updateMediaServiceFileRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'updateMediaServiceFileRequest' is not null or undefined
             (0, common_1.assertParamExists)('mediaServiceFilesSiteUpdateV1', 'updateMediaServiceFileRequest', updateMediaServiceFileRequest);
@@ -355,10 +405,16 @@ const MediaServiceFilesApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["media-files:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["media-files:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -380,123 +436,131 @@ const MediaServiceFilesApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.MediaServiceFilesApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Mark processing of the project\'s own service file media_id in project_id as cancelled and mark it deleted in storage metadata. Only status=processing is allowed; otherwise media_service.status_not_available. Use delete for a completed video; a successful command response is not a file conversion result.
          * @summary Cancel service video
          * @param {CancelMediaServiceFileRequest} cancelMediaServiceFileRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async mediaServiceFilesSiteCancelV1(cancelMediaServiceFileRequest, options) {
+        async mediaServiceFilesSiteCancelV1(cancelMediaServiceFileRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteCancelV1(cancelMediaServiceFileRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteCancelV1(cancelMediaServiceFileRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['MediaServiceFilesApi.mediaServiceFilesSiteCancelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Upload a multipart/form-data file (field file) to create a service video for project_id supplied in query. The current pipe limits the file to 300 MiB; the listed media formats are allowed. Access and custom file count are tariff-limited. Success confirms temporary storage upload and creation of a processing session, not video readiness; check list/session.
          * @summary Create service video
-         * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Current language
+         * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async mediaServiceFilesSiteCreateV1(language, projectId, v, options) {
+        async mediaServiceFilesSiteCreateV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteCreateV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteCreateV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['MediaServiceFilesApi.mediaServiceFilesSiteCreateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Delete an owned service file media_id from project_id. A processing file or a file used as the selected standby media cannot be deleted; this differs from cancelling processing with POST /method/media-service-files/cancel.
          * @summary Delete service video
          * @param {DeleteMediaServiceFileRequest} deleteMediaServiceFileRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async mediaServiceFilesSiteDeleteV1(deleteMediaServiceFileRequest, options) {
+        async mediaServiceFilesSiteDeleteV1(deleteMediaServiceFileRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteDeleteV1(deleteMediaServiceFileRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteDeleteV1(deleteMediaServiceFileRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['MediaServiceFilesApi.mediaServiceFilesSiteDeleteV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read completed service file media_id in project_id. The file must have status=success and belong to the project or be shared; otherwise returns media_service.status_not_available/forbidden_get. Returns metadata and preview/video links, not binary content.
          * @summary Get service video
-         * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Current language
+         * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
          * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async mediaServiceFilesSiteGetV1(language, projectId, mediaId, v, options) {
+        async mediaServiceFilesSiteGetV1(language, projectId, mediaId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteGetV1(language, projectId, mediaId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteGetV1(language, projectId, mediaId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['MediaServiceFilesApi.mediaServiceFilesSiteGetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read available media-service-files for project_id: status readiness, isEditable editability, and isDisabled plan restriction. media_id identifies a service file, not video.id. For processing files, event_channel allows tracking progress.
          * @summary Get service video list
-         * @param {MediaServiceFilesSiteListV1LanguageEnum} language Current language
+         * @param {MediaServiceFilesSiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async mediaServiceFilesSiteListV1(language, projectId, v, options) {
+        async mediaServiceFilesSiteListV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteListV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteListV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['MediaServiceFilesApi.mediaServiceFilesSiteListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the processing session of an owned media_id in project_id. Returns file_id, channel, and a secret Centrifugo subscription token. Available while the file is not success/cancel/error and not deleted; completed states produce media_service.not_ready.
          * @summary Get session by media id
-         * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Current language
+         * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} mediaId Media service file id
          * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async mediaServiceFilesSiteSessionV1(language, projectId, mediaId, v, options) {
+        async mediaServiceFilesSiteSessionV1(language, projectId, mediaId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteSessionV1(language, projectId, mediaId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteSessionV1(language, projectId, mediaId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['MediaServiceFilesApi.mediaServiceFilesSiteSessionV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Select a prepared service file media_id for project_id: type=pause is a pause placeholder, type=lost is a signal-loss placeholder. Obtain media_id from GET /method/media-service-files/list. Custom files are tariff-limited; base/shared files follow access rules. Success means the selection was saved, not that broadcasting started.
          * @summary Set service video
          * @param {SetMediaServiceFileRequest} setMediaServiceFileRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async mediaServiceFilesSiteSetV1(setMediaServiceFileRequest, options) {
+        async mediaServiceFilesSiteSetV1(setMediaServiceFileRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteSetV1(setMediaServiceFileRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteSetV1(setMediaServiceFileRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['MediaServiceFilesApi.mediaServiceFilesSiteSetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Rename completed service file media_id in project_id. Requires an owned file with status=success; another owner\'s shared file cannot be edited. Success confirms name was saved.
          * @summary Update service video
          * @param {UpdateMediaServiceFileRequest} updateMediaServiceFileRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async mediaServiceFilesSiteUpdateV1(updateMediaServiceFileRequest, options) {
+        async mediaServiceFilesSiteUpdateV1(updateMediaServiceFileRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteUpdateV1(updateMediaServiceFileRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.mediaServiceFilesSiteUpdateV1(updateMediaServiceFileRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['MediaServiceFilesApi.mediaServiceFilesSiteUpdateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -512,84 +576,84 @@ const MediaServiceFilesApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.MediaServiceFilesApiFp)(configuration);
     return {
         /**
-         *
+         * Mark processing of the project\'s own service file media_id in project_id as cancelled and mark it deleted in storage metadata. Only status=processing is allowed; otherwise media_service.status_not_available. Use delete for a completed video; a successful command response is not a file conversion result.
          * @summary Cancel service video
          * @param {MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteCancelV1(requestParameters, options) {
-            return localVarFp.mediaServiceFilesSiteCancelV1(requestParameters.CancelMediaServiceFileRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.mediaServiceFilesSiteCancelV1(requestParameters['CancelMediaServiceFileRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Upload a multipart/form-data file (field file) to create a service video for project_id supplied in query. The current pipe limits the file to 300 MiB; the listed media formats are allowed. Access and custom file count are tariff-limited. Success confirms temporary storage upload and creation of a processing session, not video readiness; check list/session.
          * @summary Create service video
          * @param {MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteCreateV1(requestParameters, options) {
-            return localVarFp.mediaServiceFilesSiteCreateV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.mediaServiceFilesSiteCreateV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Delete an owned service file media_id from project_id. A processing file or a file used as the selected standby media cannot be deleted; this differs from cancelling processing with POST /method/media-service-files/cancel.
          * @summary Delete service video
          * @param {MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteDeleteV1(requestParameters, options) {
-            return localVarFp.mediaServiceFilesSiteDeleteV1(requestParameters.DeleteMediaServiceFileRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.mediaServiceFilesSiteDeleteV1(requestParameters['DeleteMediaServiceFileRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read completed service file media_id in project_id. The file must have status=success and belong to the project or be shared; otherwise returns media_service.status_not_available/forbidden_get. Returns metadata and preview/video links, not binary content.
          * @summary Get service video
          * @param {MediaServiceFilesApiMediaServiceFilesSiteGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteGetV1(requestParameters, options) {
-            return localVarFp.mediaServiceFilesSiteGetV1(requestParameters.language, requestParameters.project_id, requestParameters.media_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.mediaServiceFilesSiteGetV1(requestParameters['language'], requestParameters['project_id'], requestParameters['media_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read available media-service-files for project_id: status readiness, isEditable editability, and isDisabled plan restriction. media_id identifies a service file, not video.id. For processing files, event_channel allows tracking progress.
          * @summary Get service video list
          * @param {MediaServiceFilesApiMediaServiceFilesSiteListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteListV1(requestParameters, options) {
-            return localVarFp.mediaServiceFilesSiteListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.mediaServiceFilesSiteListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the processing session of an owned media_id in project_id. Returns file_id, channel, and a secret Centrifugo subscription token. Available while the file is not success/cancel/error and not deleted; completed states produce media_service.not_ready.
          * @summary Get session by media id
          * @param {MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteSessionV1(requestParameters, options) {
-            return localVarFp.mediaServiceFilesSiteSessionV1(requestParameters.language, requestParameters.project_id, requestParameters.media_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.mediaServiceFilesSiteSessionV1(requestParameters['language'], requestParameters['project_id'], requestParameters['media_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Select a prepared service file media_id for project_id: type=pause is a pause placeholder, type=lost is a signal-loss placeholder. Obtain media_id from GET /method/media-service-files/list. Custom files are tariff-limited; base/shared files follow access rules. Success means the selection was saved, not that broadcasting started.
          * @summary Set service video
          * @param {MediaServiceFilesApiMediaServiceFilesSiteSetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteSetV1(requestParameters, options) {
-            return localVarFp.mediaServiceFilesSiteSetV1(requestParameters.SetMediaServiceFileRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.mediaServiceFilesSiteSetV1(requestParameters['SetMediaServiceFileRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Rename completed service file media_id in project_id. Requires an owned file with status=success; another owner\'s shared file cannot be edited. Success confirms name was saved.
          * @summary Update service video
          * @param {MediaServiceFilesApiMediaServiceFilesSiteUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         mediaServiceFilesSiteUpdateV1(requestParameters, options) {
-            return localVarFp.mediaServiceFilesSiteUpdateV1(requestParameters.UpdateMediaServiceFileRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.mediaServiceFilesSiteUpdateV1(requestParameters['UpdateMediaServiceFileRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -602,7 +666,7 @@ exports.MediaServiceFilesApiFactory = MediaServiceFilesApiFactory;
  */
 class MediaServiceFilesApi extends base_1.BaseAPI {
     /**
-     *
+     * Mark processing of the project\'s own service file media_id in project_id as cancelled and mark it deleted in storage metadata. Only status=processing is allowed; otherwise media_service.status_not_available. Use delete for a completed video; a successful command response is not a file conversion result.
      * @summary Cancel service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -610,10 +674,10 @@ class MediaServiceFilesApi extends base_1.BaseAPI {
      * @memberof MediaServiceFilesApi
      */
     mediaServiceFilesSiteCancelV1(requestParameters, options) {
-        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteCancelV1(requestParameters.CancelMediaServiceFileRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteCancelV1(requestParameters['CancelMediaServiceFileRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Upload a multipart/form-data file (field file) to create a service video for project_id supplied in query. The current pipe limits the file to 300 MiB; the listed media formats are allowed. Access and custom file count are tariff-limited. Success confirms temporary storage upload and creation of a processing session, not video readiness; check list/session.
      * @summary Create service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -621,10 +685,10 @@ class MediaServiceFilesApi extends base_1.BaseAPI {
      * @memberof MediaServiceFilesApi
      */
     mediaServiceFilesSiteCreateV1(requestParameters, options) {
-        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteCreateV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteCreateV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Delete an owned service file media_id from project_id. A processing file or a file used as the selected standby media cannot be deleted; this differs from cancelling processing with POST /method/media-service-files/cancel.
      * @summary Delete service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -632,10 +696,10 @@ class MediaServiceFilesApi extends base_1.BaseAPI {
      * @memberof MediaServiceFilesApi
      */
     mediaServiceFilesSiteDeleteV1(requestParameters, options) {
-        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteDeleteV1(requestParameters.DeleteMediaServiceFileRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteDeleteV1(requestParameters['DeleteMediaServiceFileRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read completed service file media_id in project_id. The file must have status=success and belong to the project or be shared; otherwise returns media_service.status_not_available/forbidden_get. Returns metadata and preview/video links, not binary content.
      * @summary Get service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -643,10 +707,10 @@ class MediaServiceFilesApi extends base_1.BaseAPI {
      * @memberof MediaServiceFilesApi
      */
     mediaServiceFilesSiteGetV1(requestParameters, options) {
-        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteGetV1(requestParameters.language, requestParameters.project_id, requestParameters.media_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteGetV1(requestParameters['language'], requestParameters['project_id'], requestParameters['media_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read available media-service-files for project_id: status readiness, isEditable editability, and isDisabled plan restriction. media_id identifies a service file, not video.id. For processing files, event_channel allows tracking progress.
      * @summary Get service video list
      * @param {MediaServiceFilesApiMediaServiceFilesSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -654,10 +718,10 @@ class MediaServiceFilesApi extends base_1.BaseAPI {
      * @memberof MediaServiceFilesApi
      */
     mediaServiceFilesSiteListV1(requestParameters, options) {
-        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the processing session of an owned media_id in project_id. Returns file_id, channel, and a secret Centrifugo subscription token. Available while the file is not success/cancel/error and not deleted; completed states produce media_service.not_ready.
      * @summary Get session by media id
      * @param {MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -665,10 +729,10 @@ class MediaServiceFilesApi extends base_1.BaseAPI {
      * @memberof MediaServiceFilesApi
      */
     mediaServiceFilesSiteSessionV1(requestParameters, options) {
-        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteSessionV1(requestParameters.language, requestParameters.project_id, requestParameters.media_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteSessionV1(requestParameters['language'], requestParameters['project_id'], requestParameters['media_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Select a prepared service file media_id for project_id: type=pause is a pause placeholder, type=lost is a signal-loss placeholder. Obtain media_id from GET /method/media-service-files/list. Custom files are tariff-limited; base/shared files follow access rules. Success means the selection was saved, not that broadcasting started.
      * @summary Set service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -676,10 +740,10 @@ class MediaServiceFilesApi extends base_1.BaseAPI {
      * @memberof MediaServiceFilesApi
      */
     mediaServiceFilesSiteSetV1(requestParameters, options) {
-        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteSetV1(requestParameters.SetMediaServiceFileRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteSetV1(requestParameters['SetMediaServiceFileRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Rename completed service file media_id in project_id. Requires an owned file with status=success; another owner\'s shared file cannot be edited. Success confirms name was saved.
      * @summary Update service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -687,7 +751,7 @@ class MediaServiceFilesApi extends base_1.BaseAPI {
      * @memberof MediaServiceFilesApi
      */
     mediaServiceFilesSiteUpdateV1(requestParameters, options) {
-        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteUpdateV1(requestParameters.UpdateMediaServiceFileRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MediaServiceFilesApiFp)(this.configuration).mediaServiceFilesSiteUpdateV1(requestParameters['UpdateMediaServiceFileRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.MediaServiceFilesApi = MediaServiceFilesApi;

@@ -21,7 +21,7 @@
  */
 export interface RotateStreamKeyResponse {
     /**
-     * New stream key
+     * New secret publishing key replacing the old one. Update the broadcast source; do not store the value in logs or examples.
      * @type {string}
      * @memberof RotateStreamKeyResponse
      */

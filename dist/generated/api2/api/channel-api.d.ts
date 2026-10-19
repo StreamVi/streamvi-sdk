@@ -12,6 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
+import type { AddChannelResponse } from '../models';
 import type { BizonDto } from '../models';
 import type { BoostyDto } from '../models';
 import type { CustomDto } from '../models';
@@ -52,291 +53,325 @@ import type { ZhanqitvDto } from '../models';
  */
 export declare const ChannelApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Add a bizon destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add bizon channel
      * @param {BizonDto} bizonDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddBizonV1: (bizonDto: BizonDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddBizonV1: (bizonDto: BizonDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a boosty destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add boosty channel
      * @param {BoostyDto} boostyDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddBoostyV1: (boostyDto: BoostyDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddBoostyV1: (boostyDto: BoostyDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a custom destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add custom channel
      * @param {CustomDto} customDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddCustomV1: (customDto: CustomDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddCustomV1: (customDto: CustomDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a douyu destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add douyu channel
      * @param {DouyuDto} douyuDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddDouyuV1: (douyuDto: DouyuDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddDouyuV1: (douyuDto: DouyuDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a fb destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add fb channel
      * @param {FbDto} fbDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddFbV1: (fbDto: FbDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddFbV1: (fbDto: FbDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a fc2live destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add fc2Live channel
      * @param {Fc2liveDto} fc2liveDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddFc2LiveV1: (fc2liveDto: Fc2liveDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddFc2LiveV1: (fc2liveDto: Fc2liveDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a getcourse destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add getcourse channel
      * @param {GetcourseDto} getcourseDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddGetcourseV1: (getcourseDto: GetcourseDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddGetcourseV1: (getcourseDto: GetcourseDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a goodgame destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add goodgame channel
      * @param {GoodgameDto} goodgameDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddGoodgameV1: (goodgameDto: GoodgameDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddGoodgameV1: (goodgameDto: GoodgameDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a huya destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add huya channel
      * @param {HuyaDto} huyaDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddHuyaV1: (huyaDto: HuyaDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddHuyaV1: (huyaDto: HuyaDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a instagram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add instagram channel
      * @param {InstagramDto} instagramDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddInstagramV1: (instagramDto: InstagramDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddInstagramV1: (instagramDto: InstagramDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a kick destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add kick channel
      * @param {KickDto} kickDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddKickV1: (kickDto: KickDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddKickV1: (kickDto: KickDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a kinescope destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add kinescope channel
      * @param {KinescopeDto} kinescopeDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddKinescopeV1: (kinescopeDto: KinescopeDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddKinescopeV1: (kinescopeDto: KinescopeDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a linkedin destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add linkedin channel
      * @param {LinkedinDto} linkedinDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddLinkedinV1: (linkedinDto: LinkedinDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddLinkedinV1: (linkedinDto: LinkedinDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a navertv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add navertv channel
      * @param {NavertvDto} navertvDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddNavertvV1: (navertvDto: NavertvDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddNavertvV1: (navertvDto: NavertvDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a nimotv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add nimotv channel
      * @param {NimotvDto} nimotvDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddNimotvV1: (nimotvDto: NimotvDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddNimotvV1: (nimotvDto: NimotvDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a nonolive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add nonolive channel
      * @param {NonoliveDto} nonoliveDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddNonoliveV1: (nonoliveDto: NonoliveDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddNonoliveV1: (nonoliveDto: NonoliveDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a ok destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add ok channel
      * @param {OkDto} okDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddOkV1: (okDto: OkDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddOkV1: (okDto: OkDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a plvideo destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add plvideo channel
      * @param {PlvideoDto} plvideoDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddPlvideoV1: (plvideoDto: PlvideoDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddPlvideoV1: (plvideoDto: PlvideoDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a rutube destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add rutube channel
      * @param {RutubeDto} rutubeDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddRutubeV1: (rutubeDto: RutubeDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddRutubeV1: (rutubeDto: RutubeDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a srt destination to project_id. ingress_url is the complete SRT URL with port and publishing parameters; name is the display name. The URL may contain secrets. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add srt channel
      * @param {MethodSrtDto} methodSrtDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddSrtV1: (methodSrtDto: MethodSrtDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddSrtV1: (methodSrtDto: MethodSrtDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a steam destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add steam channel
      * @param {SteamDto} steamDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddSteamV1: (steamDto: SteamDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddSteamV1: (steamDto: SteamDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a tachid destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add tach channel
      * @param {TachidDto} tachidDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddTachidV1: (tachidDto: TachidDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddTachidV1: (tachidDto: TachidDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a telegram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add telegram channel
      * @param {TelegramDto} telegramDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddTelegramV1: (telegramDto: TelegramDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddTelegramV1: (telegramDto: TelegramDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a tiktok destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add tiktok channel
      * @param {TiktokDto} tiktokDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddTiktokV1: (tiktokDto: TiktokDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddTiktokV1: (tiktokDto: TiktokDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a vk destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add vk channel
      * @param {VkDto} vkDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddVkV1: (vkDto: VkDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddVkV1: (vkDto: VkDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a vlive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add vlive channel
      * @param {VliveDto} vliveDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddVliveV1: (vliveDto: VliveDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddVliveV1: (vliveDto: VliveDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Add a zhanqitv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add zhanqitv channel
      * @param {ZhanqitvDto} zhanqitvDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddZhanqiTvV1: (zhanqitvDto: ZhanqitvDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    addChannelMethodAddZhanqiTvV1: (zhanqitvDto: ZhanqitvDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Delete a channel through the deletion use case for project_id and internal channel_id after checking user permissions. This deletes/revokes the relationship rather than temporarily disabling it. For \"disable the channel\", use PUT /method/channel/status with active=false; obtain the internal ID from search results[].group_id.
      * @summary Delete channel
      * @param {DeleteChannelDto} deleteChannelDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelDeleteChannelV1: (deleteChannelDto: DeleteChannelDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelDeleteChannelV1: (deleteChannelDto: DeleteChannelDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read the channel connected to project_id by internal numeric channel_id. Obtain it from results[].group_id in GET /method/channel/search; results[].id is the external platform identifier. Returns the channel object without changing active.
      * @summary Get channel by id
-     * @param {ChannelGetChannelV1LanguageEnum} language Current language
+     * @param {ChannelGetChannelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
-     * @param {number} channelId Channel id
+     * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelGetChannelV1: (language: ChannelGetChannelV1LanguageEnum, projectId: number, channelId: number, v?: ChannelGetChannelV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelGetChannelV1: (language: ChannelGetChannelV1LanguageEnum, projectId: number, channelId: number, v?: ChannelGetChannelV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary Set delay - test point
-     * @param {number} channelId
-     * @param {number} projectId
+     * Legacy manual-test endpoint. Emits simulated wait_transcoding, init, live and offline channel-status notifications through Centrifugo. Despite using GET, this triggers notifications; it does not configure a real broadcast delay or report the actual channel state. The response does not wait for the sequence to finish. Not intended for normal channel management or automated broadcast workflows.
+     * @summary Emit simulated channel statuses for manual testing
+     * @param {number} channelId Internal channel ID for simulated notifications; not an external platform id.
+     * @param {number} projectId Project for simulated notifications; this method does not configure actual latency.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelSetDelayV1: (channelId: number, projectId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelSetDelayV1: (channelId: number, projectId: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Get a short channel list for the selected project_id. Intended for channel selection; use GET /method/channel/search for filtering and a full result. Listing neither enables nor disables channels.
      * @summary Minimal channel list
-     * @param {ChannelShortChannelListV1LanguageEnum} language Current language
+     * @param {ChannelShortChannelListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelShortChannelListV1: (language: ChannelShortChannelListV1LanguageEnum, projectId: number, v?: ChannelShortChannelListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    channelShortChannelListV1: (language: ChannelShortChannelListV1LanguageEnum, projectId: number, v?: ChannelShortChannelListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary Search channel list
-     * @param {MethodSearchV1LanguageEnum} language Current language
-     * @param {number} projectId Project id
+     * Returns a paginated list of channels connected to project_id. Each result has group_id (internal numeric StreamVi channel ID, used as channel_id in management calls) and id (external/platform string ID, not for management). Keep the same project_id for later channel calls. The type, platform and name filters are combined. Results are ordered by channel ID; offset is the number of results to skip, not a page number. The active filter means enabled in the project, not necessarily broadcasting live.
+     * @summary Search channels connected to a project
+     * @param {MethodSearchV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} projectId ID of the project whose connected channels are searched.
      * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {MethodSearchV1TypeEnum} [type]
-     * @param {string} [platform] platform type
-     * @param {string} [name] name
-     * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
+     * @param {MethodSearchV1TypeEnum} [type] Channel selection within the project. all (also used when omitted): all connected channels; my: channels whose owner ID equals project_id; available: channels connected with guest usage; active: channels enabled in the project, regardless of whether they are currently broadcasting. Combined with the platform and name filters.
+     * @param {string} [platform] Comma-separated platform codes, for example youtube,vk,twitch, without spaces. Matches any listed platform; when omitted, does not filter by platform. Combined with the other filters.
+     * @param {string} [name] Channel name filter, up to 10 characters. Matches names using a contains pattern; percent (%) and underscore (_) act as SQL LIKE wildcards. When omitted or empty, does not filter by name.
+     * @param {number} [limit] Requested number of channels in the result page. Defaults to 30.
+     * @param {number} [offset] Number of matching channels to skip, not a page number. Defaults to 0. Results are ordered by channel ID.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodSearchV1: (language: MethodSearchV1LanguageEnum, projectId: number, v?: MethodSearchV1VEnum, type?: MethodSearchV1TypeEnum, platform?: string, name?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodSearchV1: (language: MethodSearchV1LanguageEnum, projectId: number, v?: MethodSearchV1VEnum, type?: MethodSearchV1TypeEnum, platform?: string, name?: string, limit?: number, offset?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Deprecated. Use PUT /method/channel/status with the active field instead of status.
      * @summary Set desired channel state
      * @param {MethodSetStatusChannelRequest} methodSetStatusChannelRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    methodSetStatusLegacyV1: (methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodSetStatusLegacyV1: (methodSetStatusChannelRequest: MethodSetStatusChannelRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Enable or disable an existing channel in the selected project. Use channel_id=group_id from channel search results, not the external/platform id. Keep the same project_id used for search. Send active=false to disable and active=true to enable. Both \'turn off the channel\' and \'disable the channel\' mean active=false; \'enable the channel\' means active=true. Success confirms the desired state; verify actual broadcasting separately.
      * @summary Set desired channel state
      * @param {MethodChannelStatusRequest} methodChannelStatusRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodSetStatusV1: (methodChannelStatusRequest: MethodChannelStatusRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodSetStatusV1: (methodChannelStatusRequest: MethodChannelStatusRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ChannelApi - functional programming interface
@@ -344,291 +379,325 @@ export declare const ChannelApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const ChannelApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Add a bizon destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add bizon channel
      * @param {BizonDto} bizonDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddBizonV1(bizonDto: BizonDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddBizonV1(bizonDto: BizonDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a boosty destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add boosty channel
      * @param {BoostyDto} boostyDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddBoostyV1(boostyDto: BoostyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddBoostyV1(boostyDto: BoostyDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a custom destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add custom channel
      * @param {CustomDto} customDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddCustomV1(customDto: CustomDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddCustomV1(customDto: CustomDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a douyu destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add douyu channel
      * @param {DouyuDto} douyuDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddDouyuV1(douyuDto: DouyuDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddDouyuV1(douyuDto: DouyuDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a fb destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add fb channel
      * @param {FbDto} fbDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddFbV1(fbDto: FbDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddFbV1(fbDto: FbDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a fc2live destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add fc2Live channel
      * @param {Fc2liveDto} fc2liveDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddFc2LiveV1(fc2liveDto: Fc2liveDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddFc2LiveV1(fc2liveDto: Fc2liveDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a getcourse destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add getcourse channel
      * @param {GetcourseDto} getcourseDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddGetcourseV1(getcourseDto: GetcourseDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddGetcourseV1(getcourseDto: GetcourseDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a goodgame destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add goodgame channel
      * @param {GoodgameDto} goodgameDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddGoodgameV1(goodgameDto: GoodgameDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddGoodgameV1(goodgameDto: GoodgameDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a huya destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add huya channel
      * @param {HuyaDto} huyaDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddHuyaV1(huyaDto: HuyaDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddHuyaV1(huyaDto: HuyaDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a instagram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add instagram channel
      * @param {InstagramDto} instagramDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddInstagramV1(instagramDto: InstagramDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddInstagramV1(instagramDto: InstagramDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a kick destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add kick channel
      * @param {KickDto} kickDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddKickV1(kickDto: KickDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddKickV1(kickDto: KickDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a kinescope destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add kinescope channel
      * @param {KinescopeDto} kinescopeDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddKinescopeV1(kinescopeDto: KinescopeDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddKinescopeV1(kinescopeDto: KinescopeDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a linkedin destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add linkedin channel
      * @param {LinkedinDto} linkedinDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddLinkedinV1(linkedinDto: LinkedinDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddLinkedinV1(linkedinDto: LinkedinDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a navertv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add navertv channel
      * @param {NavertvDto} navertvDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddNavertvV1(navertvDto: NavertvDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddNavertvV1(navertvDto: NavertvDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a nimotv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add nimotv channel
      * @param {NimotvDto} nimotvDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddNimotvV1(nimotvDto: NimotvDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddNimotvV1(nimotvDto: NimotvDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a nonolive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add nonolive channel
      * @param {NonoliveDto} nonoliveDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddNonoliveV1(nonoliveDto: NonoliveDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddNonoliveV1(nonoliveDto: NonoliveDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a ok destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add ok channel
      * @param {OkDto} okDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddOkV1(okDto: OkDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddOkV1(okDto: OkDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a plvideo destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add plvideo channel
      * @param {PlvideoDto} plvideoDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddPlvideoV1(plvideoDto: PlvideoDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddPlvideoV1(plvideoDto: PlvideoDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a rutube destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add rutube channel
      * @param {RutubeDto} rutubeDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddRutubeV1(rutubeDto: RutubeDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddRutubeV1(rutubeDto: RutubeDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a srt destination to project_id. ingress_url is the complete SRT URL with port and publishing parameters; name is the display name. The URL may contain secrets. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add srt channel
      * @param {MethodSrtDto} methodSrtDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddSrtV1(methodSrtDto: MethodSrtDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddSrtV1(methodSrtDto: MethodSrtDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a steam destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add steam channel
      * @param {SteamDto} steamDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddSteamV1(steamDto: SteamDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddSteamV1(steamDto: SteamDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a tachid destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add tach channel
      * @param {TachidDto} tachidDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddTachidV1(tachidDto: TachidDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddTachidV1(tachidDto: TachidDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a telegram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add telegram channel
      * @param {TelegramDto} telegramDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddTelegramV1(telegramDto: TelegramDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddTelegramV1(telegramDto: TelegramDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a tiktok destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add tiktok channel
      * @param {TiktokDto} tiktokDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddTiktokV1(tiktokDto: TiktokDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddTiktokV1(tiktokDto: TiktokDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a vk destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add vk channel
      * @param {VkDto} vkDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddVkV1(vkDto: VkDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddVkV1(vkDto: VkDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a vlive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add vlive channel
      * @param {VliveDto} vliveDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddVliveV1(vliveDto: VliveDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddVliveV1(vliveDto: VliveDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Add a zhanqitv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add zhanqitv channel
      * @param {ZhanqitvDto} zhanqitvDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddZhanqiTvV1(zhanqitvDto: ZhanqitvDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    addChannelMethodAddZhanqiTvV1(zhanqitvDto: ZhanqitvDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddChannelResponse>>;
     /**
-     *
+     * Delete a channel through the deletion use case for project_id and internal channel_id after checking user permissions. This deletes/revokes the relationship rather than temporarily disabling it. For \"disable the channel\", use PUT /method/channel/status with active=false; obtain the internal ID from search results[].group_id.
      * @summary Delete channel
      * @param {DeleteChannelDto} deleteChannelDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelDeleteChannelV1(deleteChannelDto: DeleteChannelDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelDeleteChannelV1(deleteChannelDto: DeleteChannelDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Read the channel connected to project_id by internal numeric channel_id. Obtain it from results[].group_id in GET /method/channel/search; results[].id is the external platform identifier. Returns the channel object without changing active.
      * @summary Get channel by id
-     * @param {ChannelGetChannelV1LanguageEnum} language Current language
+     * @param {ChannelGetChannelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
-     * @param {number} channelId Channel id
+     * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @param {ChannelGetChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelGetChannelV1(language: ChannelGetChannelV1LanguageEnum, projectId: number, channelId: number, v?: ChannelGetChannelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchChannelItem>>;
+    channelGetChannelV1(language: ChannelGetChannelV1LanguageEnum, projectId: number, channelId: number, v?: ChannelGetChannelV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchChannelItem>>;
     /**
-     *
-     * @summary Set delay - test point
-     * @param {number} channelId
-     * @param {number} projectId
+     * Legacy manual-test endpoint. Emits simulated wait_transcoding, init, live and offline channel-status notifications through Centrifugo. Despite using GET, this triggers notifications; it does not configure a real broadcast delay or report the actual channel state. The response does not wait for the sequence to finish. Not intended for normal channel management or automated broadcast workflows.
+     * @summary Emit simulated channel statuses for manual testing
+     * @param {number} channelId Internal channel ID for simulated notifications; not an external platform id.
+     * @param {number} projectId Project for simulated notifications; this method does not configure actual latency.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelSetDelayV1(channelId: number, projectId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    channelSetDelayV1(channelId: number, projectId: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Get a short channel list for the selected project_id. Intended for channel selection; use GET /method/channel/search for filtering and a full result. Listing neither enables nor disables channels.
      * @summary Minimal channel list
-     * @param {ChannelShortChannelListV1LanguageEnum} language Current language
+     * @param {ChannelShortChannelListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {ChannelShortChannelListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    channelShortChannelListV1(language: ChannelShortChannelListV1LanguageEnum, projectId: number, v?: ChannelShortChannelListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteGetShortChannelResponse>>;
+    channelShortChannelListV1(language: ChannelShortChannelListV1LanguageEnum, projectId: number, v?: ChannelShortChannelListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteGetShortChannelResponse>>;
     /**
-     *
-     * @summary Search channel list
-     * @param {MethodSearchV1LanguageEnum} language Current language
-     * @param {number} projectId Project id
+     * Returns a paginated list of channels connected to project_id. Each result has group_id (internal numeric StreamVi channel ID, used as channel_id in management calls) and id (external/platform string ID, not for management). Keep the same project_id for later channel calls. The type, platform and name filters are combined. Results are ordered by channel ID; offset is the number of results to skip, not a page number. The active filter means enabled in the project, not necessarily broadcasting live.
+     * @summary Search channels connected to a project
+     * @param {MethodSearchV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} projectId ID of the project whose connected channels are searched.
      * @param {MethodSearchV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {MethodSearchV1TypeEnum} [type]
-     * @param {string} [platform] platform type
-     * @param {string} [name] name
-     * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
+     * @param {MethodSearchV1TypeEnum} [type] Channel selection within the project. all (also used when omitted): all connected channels; my: channels whose owner ID equals project_id; available: channels connected with guest usage; active: channels enabled in the project, regardless of whether they are currently broadcasting. Combined with the platform and name filters.
+     * @param {string} [platform] Comma-separated platform codes, for example youtube,vk,twitch, without spaces. Matches any listed platform; when omitted, does not filter by platform. Combined with the other filters.
+     * @param {string} [name] Channel name filter, up to 10 characters. Matches names using a contains pattern; percent (%) and underscore (_) act as SQL LIKE wildcards. When omitted or empty, does not filter by name.
+     * @param {number} [limit] Requested number of channels in the result page. Defaults to 30.
+     * @param {number} [offset] Number of matching channels to skip, not a page number. Defaults to 0. Results are ordered by channel ID.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodSearchV1(language: MethodSearchV1LanguageEnum, projectId: number, v?: MethodSearchV1VEnum, type?: MethodSearchV1TypeEnum, platform?: string, name?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSearchChannelResponse>>;
+    methodSearchV1(language: MethodSearchV1LanguageEnum, projectId: number, v?: MethodSearchV1VEnum, type?: MethodSearchV1TypeEnum, platform?: string, name?: string, limit?: number, offset?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSearchChannelResponse>>;
     /**
      * Deprecated. Use PUT /method/channel/status with the active field instead of status.
      * @summary Set desired channel state
      * @param {MethodSetStatusChannelRequest} methodSetStatusChannelRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    methodSetStatusLegacyV1(methodSetStatusChannelRequest: MethodSetStatusChannelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    methodSetStatusLegacyV1(methodSetStatusChannelRequest: MethodSetStatusChannelRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Enable or disable an existing channel in the selected project. Use channel_id=group_id from channel search results, not the external/platform id. Keep the same project_id used for search. Send active=false to disable and active=true to enable. Both \'turn off the channel\' and \'disable the channel\' mean active=false; \'enable the channel\' means active=true. Success confirms the desired state; verify actual broadcasting separately.
      * @summary Set desired channel state
      * @param {MethodChannelStatusRequest} methodChannelStatusRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodSetStatusV1(methodChannelStatusRequest: MethodChannelStatusRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    methodSetStatusV1(methodChannelStatusRequest: MethodChannelStatusRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * ChannelApi - factory interface
@@ -636,223 +705,223 @@ export declare const ChannelApiFp: (configuration?: Configuration) => {
  */
 export declare const ChannelApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Add a bizon destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add bizon channel
      * @param {ChannelApiAddChannelMethodAddBizonV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a boosty destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add boosty channel
      * @param {ChannelApiAddChannelMethodAddBoostyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a custom destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add custom channel
      * @param {ChannelApiAddChannelMethodAddCustomV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a douyu destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add douyu channel
      * @param {ChannelApiAddChannelMethodAddDouyuV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a fb destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add fb channel
      * @param {ChannelApiAddChannelMethodAddFbV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a fc2live destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add fc2Live channel
      * @param {ChannelApiAddChannelMethodAddFc2LiveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a getcourse destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add getcourse channel
      * @param {ChannelApiAddChannelMethodAddGetcourseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a goodgame destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add goodgame channel
      * @param {ChannelApiAddChannelMethodAddGoodgameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a huya destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add huya channel
      * @param {ChannelApiAddChannelMethodAddHuyaV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a instagram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add instagram channel
      * @param {ChannelApiAddChannelMethodAddInstagramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a kick destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add kick channel
      * @param {ChannelApiAddChannelMethodAddKickV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a kinescope destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add kinescope channel
      * @param {ChannelApiAddChannelMethodAddKinescopeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a linkedin destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add linkedin channel
      * @param {ChannelApiAddChannelMethodAddLinkedinV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a navertv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add navertv channel
      * @param {ChannelApiAddChannelMethodAddNavertvV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a nimotv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add nimotv channel
      * @param {ChannelApiAddChannelMethodAddNimotvV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a nonolive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add nonolive channel
      * @param {ChannelApiAddChannelMethodAddNonoliveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a ok destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add ok channel
      * @param {ChannelApiAddChannelMethodAddOkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a plvideo destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add plvideo channel
      * @param {ChannelApiAddChannelMethodAddPlvideoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a rutube destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add rutube channel
      * @param {ChannelApiAddChannelMethodAddRutubeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a srt destination to project_id. ingress_url is the complete SRT URL with port and publishing parameters; name is the display name. The URL may contain secrets. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add srt channel
      * @param {ChannelApiAddChannelMethodAddSrtV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a steam destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add steam channel
      * @param {ChannelApiAddChannelMethodAddSteamV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a tachid destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add tach channel
      * @param {ChannelApiAddChannelMethodAddTachidV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a telegram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add telegram channel
      * @param {ChannelApiAddChannelMethodAddTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a tiktok destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add tiktok channel
      * @param {ChannelApiAddChannelMethodAddTiktokV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a vk destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add vk channel
      * @param {ChannelApiAddChannelMethodAddVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a vlive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add vlive channel
      * @param {ChannelApiAddChannelMethodAddVliveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a zhanqitv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add zhanqitv channel
      * @param {ChannelApiAddChannelMethodAddZhanqiTvV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Delete a channel through the deletion use case for project_id and internal channel_id after checking user permissions. This deletes/revokes the relationship rather than temporarily disabling it. For \"disable the channel\", use PUT /method/channel/status with active=false; obtain the internal ID from search results[].group_id.
      * @summary Delete channel
      * @param {ChannelApiChannelDeleteChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -860,7 +929,7 @@ export declare const ChannelApiFactory: (configuration?: Configuration, basePath
      */
     channelDeleteChannelV1(requestParameters: ChannelApiChannelDeleteChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read the channel connected to project_id by internal numeric channel_id. Obtain it from results[].group_id in GET /method/channel/search; results[].id is the external platform identifier. Returns the channel object without changing active.
      * @summary Get channel by id
      * @param {ChannelApiChannelGetChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -868,15 +937,15 @@ export declare const ChannelApiFactory: (configuration?: Configuration, basePath
      */
     channelGetChannelV1(requestParameters: ChannelApiChannelGetChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SearchChannelItem>;
     /**
-     *
-     * @summary Set delay - test point
+     * Legacy manual-test endpoint. Emits simulated wait_transcoding, init, live and offline channel-status notifications through Centrifugo. Despite using GET, this triggers notifications; it does not configure a real broadcast delay or report the actual channel state. The response does not wait for the sequence to finish. Not intended for normal channel management or automated broadcast workflows.
+     * @summary Emit simulated channel statuses for manual testing
      * @param {ChannelApiChannelSetDelayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     channelSetDelayV1(requestParameters: ChannelApiChannelSetDelayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Get a short channel list for the selected project_id. Intended for channel selection; use GET /method/channel/search for filtering and a full result. Listing neither enables nor disables channels.
      * @summary Minimal channel list
      * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -884,8 +953,8 @@ export declare const ChannelApiFactory: (configuration?: Configuration, basePath
      */
     channelShortChannelListV1(requestParameters: ChannelApiChannelShortChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteGetShortChannelResponse>;
     /**
-     *
-     * @summary Search channel list
+     * Returns a paginated list of channels connected to project_id. Each result has group_id (internal numeric StreamVi channel ID, used as channel_id in management calls) and id (external/platform string ID, not for management). Keep the same project_id for later channel calls. The type, platform and name filters are combined. Results are ordered by channel ID; offset is the number of results to skip, not a page number. The active filter means enabled in the project, not necessarily broadcasting live.
+     * @summary Search channels connected to a project
      * @param {ChannelApiMethodSearchV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -901,7 +970,7 @@ export declare const ChannelApiFactory: (configuration?: Configuration, basePath
      */
     methodSetStatusLegacyV1(requestParameters: ChannelApiMethodSetStatusLegacyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Enable or disable an existing channel in the selected project. Use channel_id=group_id from channel search results, not the external/platform id. Keep the same project_id used for search. Send active=false to disable and active=true to enable. Both \'turn off the channel\' and \'disable the channel\' mean active=false; \'enable the channel\' means active=true. Success confirms the desired state; verify actual broadcasting separately.
      * @summary Set desired channel state
      * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -916,250 +985,250 @@ export declare const ChannelApiFactory: (configuration?: Configuration, basePath
  */
 export interface ChannelApiInterface {
     /**
-     *
+     * Add a bizon destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add bizon channel
      * @param {ChannelApiAddChannelMethodAddBizonV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a boosty destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add boosty channel
      * @param {ChannelApiAddChannelMethodAddBoostyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a custom destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add custom channel
      * @param {ChannelApiAddChannelMethodAddCustomV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a douyu destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add douyu channel
      * @param {ChannelApiAddChannelMethodAddDouyuV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a fb destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add fb channel
      * @param {ChannelApiAddChannelMethodAddFbV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a fc2live destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add fc2Live channel
      * @param {ChannelApiAddChannelMethodAddFc2LiveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a getcourse destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add getcourse channel
      * @param {ChannelApiAddChannelMethodAddGetcourseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a goodgame destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add goodgame channel
      * @param {ChannelApiAddChannelMethodAddGoodgameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a huya destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add huya channel
      * @param {ChannelApiAddChannelMethodAddHuyaV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a instagram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add instagram channel
      * @param {ChannelApiAddChannelMethodAddInstagramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a kick destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add kick channel
      * @param {ChannelApiAddChannelMethodAddKickV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a kinescope destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add kinescope channel
      * @param {ChannelApiAddChannelMethodAddKinescopeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a linkedin destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add linkedin channel
      * @param {ChannelApiAddChannelMethodAddLinkedinV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a navertv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add navertv channel
      * @param {ChannelApiAddChannelMethodAddNavertvV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a nimotv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add nimotv channel
      * @param {ChannelApiAddChannelMethodAddNimotvV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a nonolive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add nonolive channel
      * @param {ChannelApiAddChannelMethodAddNonoliveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a ok destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add ok channel
      * @param {ChannelApiAddChannelMethodAddOkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a plvideo destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add plvideo channel
      * @param {ChannelApiAddChannelMethodAddPlvideoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a rutube destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add rutube channel
      * @param {ChannelApiAddChannelMethodAddRutubeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a srt destination to project_id. ingress_url is the complete SRT URL with port and publishing parameters; name is the display name. The URL may contain secrets. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add srt channel
      * @param {ChannelApiAddChannelMethodAddSrtV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a steam destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add steam channel
      * @param {ChannelApiAddChannelMethodAddSteamV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a tachid destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add tach channel
      * @param {ChannelApiAddChannelMethodAddTachidV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a telegram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add telegram channel
      * @param {ChannelApiAddChannelMethodAddTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a tiktok destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add tiktok channel
      * @param {ChannelApiAddChannelMethodAddTiktokV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a vk destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add vk channel
      * @param {ChannelApiAddChannelMethodAddVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a vlive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add vlive channel
      * @param {ChannelApiAddChannelMethodAddVliveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Add a zhanqitv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add zhanqitv channel
      * @param {ChannelApiAddChannelMethodAddZhanqiTvV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApiInterface
      */
-    addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AddChannelResponse>;
     /**
-     *
+     * Delete a channel through the deletion use case for project_id and internal channel_id after checking user permissions. This deletes/revokes the relationship rather than temporarily disabling it. For \"disable the channel\", use PUT /method/channel/status with active=false; obtain the internal ID from search results[].group_id.
      * @summary Delete channel
      * @param {ChannelApiChannelDeleteChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1168,7 +1237,7 @@ export interface ChannelApiInterface {
      */
     channelDeleteChannelV1(requestParameters: ChannelApiChannelDeleteChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read the channel connected to project_id by internal numeric channel_id. Obtain it from results[].group_id in GET /method/channel/search; results[].id is the external platform identifier. Returns the channel object without changing active.
      * @summary Get channel by id
      * @param {ChannelApiChannelGetChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1177,8 +1246,8 @@ export interface ChannelApiInterface {
      */
     channelGetChannelV1(requestParameters: ChannelApiChannelGetChannelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SearchChannelItem>;
     /**
-     *
-     * @summary Set delay - test point
+     * Legacy manual-test endpoint. Emits simulated wait_transcoding, init, live and offline channel-status notifications through Centrifugo. Despite using GET, this triggers notifications; it does not configure a real broadcast delay or report the actual channel state. The response does not wait for the sequence to finish. Not intended for normal channel management or automated broadcast workflows.
+     * @summary Emit simulated channel statuses for manual testing
      * @param {ChannelApiChannelSetDelayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1186,7 +1255,7 @@ export interface ChannelApiInterface {
      */
     channelSetDelayV1(requestParameters: ChannelApiChannelSetDelayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Get a short channel list for the selected project_id. Intended for channel selection; use GET /method/channel/search for filtering and a full result. Listing neither enables nor disables channels.
      * @summary Minimal channel list
      * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1195,8 +1264,8 @@ export interface ChannelApiInterface {
      */
     channelShortChannelListV1(requestParameters: ChannelApiChannelShortChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteGetShortChannelResponse>;
     /**
-     *
-     * @summary Search channel list
+     * Returns a paginated list of channels connected to project_id. Each result has group_id (internal numeric StreamVi channel ID, used as channel_id in management calls) and id (external/platform string ID, not for management). Keep the same project_id for later channel calls. The type, platform and name filters are combined. Results are ordered by channel ID; offset is the number of results to skip, not a page number. The active filter means enabled in the project, not necessarily broadcasting live.
+     * @summary Search channels connected to a project
      * @param {ChannelApiMethodSearchV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1214,7 +1283,7 @@ export interface ChannelApiInterface {
      */
     methodSetStatusLegacyV1(requestParameters: ChannelApiMethodSetStatusLegacyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Enable or disable an existing channel in the selected project. Use channel_id=group_id from channel search results, not the external/platform id. Keep the same project_id used for search. Send active=false to disable and active=true to enable. Both \'turn off the channel\' and \'disable the channel\' mean active=false; \'enable the channel\' means active=true. Success confirms the desired state; verify actual broadcasting separately.
      * @summary Set desired channel state
      * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1234,7 +1303,13 @@ export interface ChannelApiAddChannelMethodAddBizonV1Request {
      * @type {BizonDto}
      * @memberof ChannelApiAddChannelMethodAddBizonV1
      */
-    readonly BizonDto: BizonDto;
+    readonly 'BizonDto': BizonDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddBizonV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddBoostyV1 operation in ChannelApi.
@@ -1247,7 +1322,13 @@ export interface ChannelApiAddChannelMethodAddBoostyV1Request {
      * @type {BoostyDto}
      * @memberof ChannelApiAddChannelMethodAddBoostyV1
      */
-    readonly BoostyDto: BoostyDto;
+    readonly 'BoostyDto': BoostyDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddBoostyV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddCustomV1 operation in ChannelApi.
@@ -1260,7 +1341,13 @@ export interface ChannelApiAddChannelMethodAddCustomV1Request {
      * @type {CustomDto}
      * @memberof ChannelApiAddChannelMethodAddCustomV1
      */
-    readonly CustomDto: CustomDto;
+    readonly 'CustomDto': CustomDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddCustomV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddDouyuV1 operation in ChannelApi.
@@ -1273,7 +1360,13 @@ export interface ChannelApiAddChannelMethodAddDouyuV1Request {
      * @type {DouyuDto}
      * @memberof ChannelApiAddChannelMethodAddDouyuV1
      */
-    readonly DouyuDto: DouyuDto;
+    readonly 'DouyuDto': DouyuDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddDouyuV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddFbV1 operation in ChannelApi.
@@ -1286,7 +1379,13 @@ export interface ChannelApiAddChannelMethodAddFbV1Request {
      * @type {FbDto}
      * @memberof ChannelApiAddChannelMethodAddFbV1
      */
-    readonly FbDto: FbDto;
+    readonly 'FbDto': FbDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddFbV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddFc2LiveV1 operation in ChannelApi.
@@ -1299,7 +1398,13 @@ export interface ChannelApiAddChannelMethodAddFc2LiveV1Request {
      * @type {Fc2liveDto}
      * @memberof ChannelApiAddChannelMethodAddFc2LiveV1
      */
-    readonly Fc2liveDto: Fc2liveDto;
+    readonly 'Fc2liveDto': Fc2liveDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddFc2LiveV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddGetcourseV1 operation in ChannelApi.
@@ -1312,7 +1417,13 @@ export interface ChannelApiAddChannelMethodAddGetcourseV1Request {
      * @type {GetcourseDto}
      * @memberof ChannelApiAddChannelMethodAddGetcourseV1
      */
-    readonly GetcourseDto: GetcourseDto;
+    readonly 'GetcourseDto': GetcourseDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddGetcourseV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddGoodgameV1 operation in ChannelApi.
@@ -1325,7 +1436,13 @@ export interface ChannelApiAddChannelMethodAddGoodgameV1Request {
      * @type {GoodgameDto}
      * @memberof ChannelApiAddChannelMethodAddGoodgameV1
      */
-    readonly GoodgameDto: GoodgameDto;
+    readonly 'GoodgameDto': GoodgameDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddGoodgameV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddHuyaV1 operation in ChannelApi.
@@ -1338,7 +1455,13 @@ export interface ChannelApiAddChannelMethodAddHuyaV1Request {
      * @type {HuyaDto}
      * @memberof ChannelApiAddChannelMethodAddHuyaV1
      */
-    readonly HuyaDto: HuyaDto;
+    readonly 'HuyaDto': HuyaDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddHuyaV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddInstagramV1 operation in ChannelApi.
@@ -1351,7 +1474,13 @@ export interface ChannelApiAddChannelMethodAddInstagramV1Request {
      * @type {InstagramDto}
      * @memberof ChannelApiAddChannelMethodAddInstagramV1
      */
-    readonly InstagramDto: InstagramDto;
+    readonly 'InstagramDto': InstagramDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddInstagramV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddKickV1 operation in ChannelApi.
@@ -1364,7 +1493,13 @@ export interface ChannelApiAddChannelMethodAddKickV1Request {
      * @type {KickDto}
      * @memberof ChannelApiAddChannelMethodAddKickV1
      */
-    readonly KickDto: KickDto;
+    readonly 'KickDto': KickDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddKickV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddKinescopeV1 operation in ChannelApi.
@@ -1377,7 +1512,13 @@ export interface ChannelApiAddChannelMethodAddKinescopeV1Request {
      * @type {KinescopeDto}
      * @memberof ChannelApiAddChannelMethodAddKinescopeV1
      */
-    readonly KinescopeDto: KinescopeDto;
+    readonly 'KinescopeDto': KinescopeDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddKinescopeV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddLinkedinV1 operation in ChannelApi.
@@ -1390,7 +1531,13 @@ export interface ChannelApiAddChannelMethodAddLinkedinV1Request {
      * @type {LinkedinDto}
      * @memberof ChannelApiAddChannelMethodAddLinkedinV1
      */
-    readonly LinkedinDto: LinkedinDto;
+    readonly 'LinkedinDto': LinkedinDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddLinkedinV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddNavertvV1 operation in ChannelApi.
@@ -1403,7 +1550,13 @@ export interface ChannelApiAddChannelMethodAddNavertvV1Request {
      * @type {NavertvDto}
      * @memberof ChannelApiAddChannelMethodAddNavertvV1
      */
-    readonly NavertvDto: NavertvDto;
+    readonly 'NavertvDto': NavertvDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddNavertvV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddNimotvV1 operation in ChannelApi.
@@ -1416,7 +1569,13 @@ export interface ChannelApiAddChannelMethodAddNimotvV1Request {
      * @type {NimotvDto}
      * @memberof ChannelApiAddChannelMethodAddNimotvV1
      */
-    readonly NimotvDto: NimotvDto;
+    readonly 'NimotvDto': NimotvDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddNimotvV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddNonoliveV1 operation in ChannelApi.
@@ -1429,7 +1588,13 @@ export interface ChannelApiAddChannelMethodAddNonoliveV1Request {
      * @type {NonoliveDto}
      * @memberof ChannelApiAddChannelMethodAddNonoliveV1
      */
-    readonly NonoliveDto: NonoliveDto;
+    readonly 'NonoliveDto': NonoliveDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddNonoliveV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddOkV1 operation in ChannelApi.
@@ -1442,7 +1607,13 @@ export interface ChannelApiAddChannelMethodAddOkV1Request {
      * @type {OkDto}
      * @memberof ChannelApiAddChannelMethodAddOkV1
      */
-    readonly OkDto: OkDto;
+    readonly 'OkDto': OkDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddOkV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddPlvideoV1 operation in ChannelApi.
@@ -1455,7 +1626,13 @@ export interface ChannelApiAddChannelMethodAddPlvideoV1Request {
      * @type {PlvideoDto}
      * @memberof ChannelApiAddChannelMethodAddPlvideoV1
      */
-    readonly PlvideoDto: PlvideoDto;
+    readonly 'PlvideoDto': PlvideoDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddPlvideoV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddRutubeV1 operation in ChannelApi.
@@ -1468,7 +1645,13 @@ export interface ChannelApiAddChannelMethodAddRutubeV1Request {
      * @type {RutubeDto}
      * @memberof ChannelApiAddChannelMethodAddRutubeV1
      */
-    readonly RutubeDto: RutubeDto;
+    readonly 'RutubeDto': RutubeDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddRutubeV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddSrtV1 operation in ChannelApi.
@@ -1481,7 +1664,13 @@ export interface ChannelApiAddChannelMethodAddSrtV1Request {
      * @type {MethodSrtDto}
      * @memberof ChannelApiAddChannelMethodAddSrtV1
      */
-    readonly MethodSrtDto: MethodSrtDto;
+    readonly 'MethodSrtDto': MethodSrtDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddSrtV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddSteamV1 operation in ChannelApi.
@@ -1494,7 +1683,13 @@ export interface ChannelApiAddChannelMethodAddSteamV1Request {
      * @type {SteamDto}
      * @memberof ChannelApiAddChannelMethodAddSteamV1
      */
-    readonly SteamDto: SteamDto;
+    readonly 'SteamDto': SteamDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddSteamV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddTachidV1 operation in ChannelApi.
@@ -1507,7 +1702,13 @@ export interface ChannelApiAddChannelMethodAddTachidV1Request {
      * @type {TachidDto}
      * @memberof ChannelApiAddChannelMethodAddTachidV1
      */
-    readonly TachidDto: TachidDto;
+    readonly 'TachidDto': TachidDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddTachidV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddTelegramV1 operation in ChannelApi.
@@ -1520,7 +1721,13 @@ export interface ChannelApiAddChannelMethodAddTelegramV1Request {
      * @type {TelegramDto}
      * @memberof ChannelApiAddChannelMethodAddTelegramV1
      */
-    readonly TelegramDto: TelegramDto;
+    readonly 'TelegramDto': TelegramDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddTelegramV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddTiktokV1 operation in ChannelApi.
@@ -1533,7 +1740,13 @@ export interface ChannelApiAddChannelMethodAddTiktokV1Request {
      * @type {TiktokDto}
      * @memberof ChannelApiAddChannelMethodAddTiktokV1
      */
-    readonly TiktokDto: TiktokDto;
+    readonly 'TiktokDto': TiktokDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddTiktokV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddVkV1 operation in ChannelApi.
@@ -1546,7 +1759,13 @@ export interface ChannelApiAddChannelMethodAddVkV1Request {
      * @type {VkDto}
      * @memberof ChannelApiAddChannelMethodAddVkV1
      */
-    readonly VkDto: VkDto;
+    readonly 'VkDto': VkDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddVkV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddVliveV1 operation in ChannelApi.
@@ -1559,7 +1778,13 @@ export interface ChannelApiAddChannelMethodAddVliveV1Request {
      * @type {VliveDto}
      * @memberof ChannelApiAddChannelMethodAddVliveV1
      */
-    readonly VliveDto: VliveDto;
+    readonly 'VliveDto': VliveDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddVliveV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for addChannelMethodAddZhanqiTvV1 operation in ChannelApi.
@@ -1572,7 +1797,13 @@ export interface ChannelApiAddChannelMethodAddZhanqiTvV1Request {
      * @type {ZhanqitvDto}
      * @memberof ChannelApiAddChannelMethodAddZhanqiTvV1
      */
-    readonly ZhanqitvDto: ZhanqitvDto;
+    readonly 'ZhanqitvDto': ZhanqitvDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiAddChannelMethodAddZhanqiTvV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for channelDeleteChannelV1 operation in ChannelApi.
@@ -1585,7 +1816,13 @@ export interface ChannelApiChannelDeleteChannelV1Request {
      * @type {DeleteChannelDto}
      * @memberof ChannelApiChannelDeleteChannelV1
      */
-    readonly DeleteChannelDto: DeleteChannelDto;
+    readonly 'DeleteChannelDto': DeleteChannelDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiChannelDeleteChannelV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for channelGetChannelV1 operation in ChannelApi.
@@ -1594,29 +1831,35 @@ export interface ChannelApiChannelDeleteChannelV1Request {
  */
 export interface ChannelApiChannelGetChannelV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelApiChannelGetChannelV1
      */
-    readonly language: ChannelGetChannelV1LanguageEnum;
+    readonly 'language': ChannelGetChannelV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof ChannelApiChannelGetChannelV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelApiChannelGetChannelV1
      */
-    readonly channel_id: number;
+    readonly 'channel_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelApiChannelGetChannelV1
      */
-    readonly v?: ChannelGetChannelV1VEnum;
+    readonly 'v'?: ChannelGetChannelV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiChannelGetChannelV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for channelSetDelayV1 operation in ChannelApi.
@@ -1625,17 +1868,23 @@ export interface ChannelApiChannelGetChannelV1Request {
  */
 export interface ChannelApiChannelSetDelayV1Request {
     /**
-     *
+     * Internal channel ID for simulated notifications; not an external platform id.
      * @type {number}
      * @memberof ChannelApiChannelSetDelayV1
      */
-    readonly channel_id: number;
+    readonly 'channel_id': number;
     /**
-     *
+     * Project for simulated notifications; this method does not configure actual latency.
      * @type {number}
      * @memberof ChannelApiChannelSetDelayV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiChannelSetDelayV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for channelShortChannelListV1 operation in ChannelApi.
@@ -1644,23 +1893,29 @@ export interface ChannelApiChannelSetDelayV1Request {
  */
 export interface ChannelApiChannelShortChannelListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelApiChannelShortChannelListV1
      */
-    readonly language: ChannelShortChannelListV1LanguageEnum;
+    readonly 'language': ChannelShortChannelListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof ChannelApiChannelShortChannelListV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelApiChannelShortChannelListV1
      */
-    readonly v?: ChannelShortChannelListV1VEnum;
+    readonly 'v'?: ChannelShortChannelListV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiChannelShortChannelListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for methodSearchV1 operation in ChannelApi.
@@ -1669,53 +1924,59 @@ export interface ChannelApiChannelShortChannelListV1Request {
  */
 export interface ChannelApiMethodSearchV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelApiMethodSearchV1
      */
-    readonly language: MethodSearchV1LanguageEnum;
+    readonly 'language': MethodSearchV1LanguageEnum;
     /**
-     * Project id
+     * ID of the project whose connected channels are searched.
      * @type {number}
      * @memberof ChannelApiMethodSearchV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelApiMethodSearchV1
      */
-    readonly v?: MethodSearchV1VEnum;
+    readonly 'v'?: MethodSearchV1VEnum;
     /**
-     *
+     * Channel selection within the project. all (also used when omitted): all connected channels; my: channels whose owner ID equals project_id; available: channels connected with guest usage; active: channels enabled in the project, regardless of whether they are currently broadcasting. Combined with the platform and name filters.
      * @type {'all' | 'my' | 'available' | 'active'}
      * @memberof ChannelApiMethodSearchV1
      */
-    readonly type?: MethodSearchV1TypeEnum;
+    readonly 'type'?: MethodSearchV1TypeEnum;
     /**
-     * platform type
+     * Comma-separated platform codes, for example youtube,vk,twitch, without spaces. Matches any listed platform; when omitted, does not filter by platform. Combined with the other filters.
      * @type {string}
      * @memberof ChannelApiMethodSearchV1
      */
-    readonly platform?: string;
+    readonly 'platform'?: string;
     /**
-     * name
+     * Channel name filter, up to 10 characters. Matches names using a contains pattern; percent (%) and underscore (_) act as SQL LIKE wildcards. When omitted or empty, does not filter by name.
      * @type {string}
      * @memberof ChannelApiMethodSearchV1
      */
-    readonly name?: string;
+    readonly 'name'?: string;
     /**
-     * Number of results
+     * Requested number of channels in the result page. Defaults to 30.
      * @type {number}
      * @memberof ChannelApiMethodSearchV1
      */
-    readonly limit?: number;
+    readonly 'limit'?: number;
     /**
-     * Page offset number
+     * Number of matching channels to skip, not a page number. Defaults to 0. Results are ordered by channel ID.
      * @type {number}
      * @memberof ChannelApiMethodSearchV1
      */
-    readonly offset?: number;
+    readonly 'offset'?: number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiMethodSearchV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for methodSetStatusLegacyV1 operation in ChannelApi.
@@ -1728,7 +1989,13 @@ export interface ChannelApiMethodSetStatusLegacyV1Request {
      * @type {MethodSetStatusChannelRequest}
      * @memberof ChannelApiMethodSetStatusLegacyV1
      */
-    readonly MethodSetStatusChannelRequest: MethodSetStatusChannelRequest;
+    readonly 'MethodSetStatusChannelRequest': MethodSetStatusChannelRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiMethodSetStatusLegacyV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for methodSetStatusV1 operation in ChannelApi.
@@ -1741,7 +2008,13 @@ export interface ChannelApiMethodSetStatusV1Request {
      * @type {MethodChannelStatusRequest}
      * @memberof ChannelApiMethodSetStatusV1
      */
-    readonly MethodChannelStatusRequest: MethodChannelStatusRequest;
+    readonly 'MethodChannelStatusRequest': MethodChannelStatusRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelApiMethodSetStatusV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * ChannelApi - object-oriented interface
@@ -1751,250 +2024,250 @@ export interface ChannelApiMethodSetStatusV1Request {
  */
 export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
     /**
-     *
+     * Add a bizon destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add bizon channel
      * @param {ChannelApiAddChannelMethodAddBizonV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddBizonV1(requestParameters: ChannelApiAddChannelMethodAddBizonV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a boosty destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add boosty channel
      * @param {ChannelApiAddChannelMethodAddBoostyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddBoostyV1(requestParameters: ChannelApiAddChannelMethodAddBoostyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a custom destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add custom channel
      * @param {ChannelApiAddChannelMethodAddCustomV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddCustomV1(requestParameters: ChannelApiAddChannelMethodAddCustomV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a douyu destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add douyu channel
      * @param {ChannelApiAddChannelMethodAddDouyuV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddDouyuV1(requestParameters: ChannelApiAddChannelMethodAddDouyuV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a fb destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add fb channel
      * @param {ChannelApiAddChannelMethodAddFbV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddFbV1(requestParameters: ChannelApiAddChannelMethodAddFbV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a fc2live destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add fc2Live channel
      * @param {ChannelApiAddChannelMethodAddFc2LiveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddFc2LiveV1(requestParameters: ChannelApiAddChannelMethodAddFc2LiveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a getcourse destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add getcourse channel
      * @param {ChannelApiAddChannelMethodAddGetcourseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddGetcourseV1(requestParameters: ChannelApiAddChannelMethodAddGetcourseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a goodgame destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add goodgame channel
      * @param {ChannelApiAddChannelMethodAddGoodgameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddGoodgameV1(requestParameters: ChannelApiAddChannelMethodAddGoodgameV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a huya destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add huya channel
      * @param {ChannelApiAddChannelMethodAddHuyaV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddHuyaV1(requestParameters: ChannelApiAddChannelMethodAddHuyaV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a instagram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add instagram channel
      * @param {ChannelApiAddChannelMethodAddInstagramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddInstagramV1(requestParameters: ChannelApiAddChannelMethodAddInstagramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a kick destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add kick channel
      * @param {ChannelApiAddChannelMethodAddKickV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddKickV1(requestParameters: ChannelApiAddChannelMethodAddKickV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a kinescope destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add kinescope channel
      * @param {ChannelApiAddChannelMethodAddKinescopeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddKinescopeV1(requestParameters: ChannelApiAddChannelMethodAddKinescopeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a linkedin destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add linkedin channel
      * @param {ChannelApiAddChannelMethodAddLinkedinV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddLinkedinV1(requestParameters: ChannelApiAddChannelMethodAddLinkedinV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a navertv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add navertv channel
      * @param {ChannelApiAddChannelMethodAddNavertvV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddNavertvV1(requestParameters: ChannelApiAddChannelMethodAddNavertvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a nimotv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add nimotv channel
      * @param {ChannelApiAddChannelMethodAddNimotvV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddNimotvV1(requestParameters: ChannelApiAddChannelMethodAddNimotvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a nonolive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add nonolive channel
      * @param {ChannelApiAddChannelMethodAddNonoliveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddNonoliveV1(requestParameters: ChannelApiAddChannelMethodAddNonoliveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a ok destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add ok channel
      * @param {ChannelApiAddChannelMethodAddOkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddOkV1(requestParameters: ChannelApiAddChannelMethodAddOkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a plvideo destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add plvideo channel
      * @param {ChannelApiAddChannelMethodAddPlvideoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddPlvideoV1(requestParameters: ChannelApiAddChannelMethodAddPlvideoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a rutube destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add rutube channel
      * @param {ChannelApiAddChannelMethodAddRutubeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddRutubeV1(requestParameters: ChannelApiAddChannelMethodAddRutubeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a srt destination to project_id. ingress_url is the complete SRT URL with port and publishing parameters; name is the display name. The URL may contain secrets. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add srt channel
      * @param {ChannelApiAddChannelMethodAddSrtV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddSrtV1(requestParameters: ChannelApiAddChannelMethodAddSrtV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a steam destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add steam channel
      * @param {ChannelApiAddChannelMethodAddSteamV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddSteamV1(requestParameters: ChannelApiAddChannelMethodAddSteamV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a tachid destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add tach channel
      * @param {ChannelApiAddChannelMethodAddTachidV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddTachidV1(requestParameters: ChannelApiAddChannelMethodAddTachidV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a telegram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add telegram channel
      * @param {ChannelApiAddChannelMethodAddTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddTelegramV1(requestParameters: ChannelApiAddChannelMethodAddTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a tiktok destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add tiktok channel
      * @param {ChannelApiAddChannelMethodAddTiktokV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddTiktokV1(requestParameters: ChannelApiAddChannelMethodAddTiktokV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a vk destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add vk channel
      * @param {ChannelApiAddChannelMethodAddVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddVkV1(requestParameters: ChannelApiAddChannelMethodAddVkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a vlive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add vlive channel
      * @param {ChannelApiAddChannelMethodAddVliveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddVliveV1(requestParameters: ChannelApiAddChannelMethodAddVliveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Add a zhanqitv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
      * @summary Add zhanqitv channel
      * @param {ChannelApiAddChannelMethodAddZhanqiTvV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChannelApi
      */
-    addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    addChannelMethodAddZhanqiTvV1(requestParameters: ChannelApiAddChannelMethodAddZhanqiTvV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddChannelResponse, any, {}, any>>;
     /**
-     *
+     * Delete a channel through the deletion use case for project_id and internal channel_id after checking user permissions. This deletes/revokes the relationship rather than temporarily disabling it. For \"disable the channel\", use PUT /method/channel/status with active=false; obtain the internal ID from search results[].group_id.
      * @summary Delete channel
      * @param {ChannelApiChannelDeleteChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2003,7 +2276,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      */
     channelDeleteChannelV1(requestParameters: ChannelApiChannelDeleteChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Read the channel connected to project_id by internal numeric channel_id. Obtain it from results[].group_id in GET /method/channel/search; results[].id is the external platform identifier. Returns the channel object without changing active.
      * @summary Get channel by id
      * @param {ChannelApiChannelGetChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2012,8 +2285,8 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      */
     channelGetChannelV1(requestParameters: ChannelApiChannelGetChannelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SearchChannelItem, any, {}, any>>;
     /**
-     *
-     * @summary Set delay - test point
+     * Legacy manual-test endpoint. Emits simulated wait_transcoding, init, live and offline channel-status notifications through Centrifugo. Despite using GET, this triggers notifications; it does not configure a real broadcast delay or report the actual channel state. The response does not wait for the sequence to finish. Not intended for normal channel management or automated broadcast workflows.
+     * @summary Emit simulated channel statuses for manual testing
      * @param {ChannelApiChannelSetDelayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2021,7 +2294,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      */
     channelSetDelayV1(requestParameters: ChannelApiChannelSetDelayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Get a short channel list for the selected project_id. Intended for channel selection; use GET /method/channel/search for filtering and a full result. Listing neither enables nor disables channels.
      * @summary Minimal channel list
      * @param {ChannelApiChannelShortChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2030,8 +2303,8 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      */
     channelShortChannelListV1(requestParameters: ChannelApiChannelShortChannelListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteGetShortChannelResponse, any, {}, any>>;
     /**
-     *
-     * @summary Search channel list
+     * Returns a paginated list of channels connected to project_id. Each result has group_id (internal numeric StreamVi channel ID, used as channel_id in management calls) and id (external/platform string ID, not for management). Keep the same project_id for later channel calls. The type, platform and name filters are combined. Results are ordered by channel ID; offset is the number of results to skip, not a page number. The active filter means enabled in the project, not necessarily broadcasting live.
+     * @summary Search channels connected to a project
      * @param {ChannelApiMethodSearchV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2049,7 +2322,7 @@ export declare class ChannelApi extends BaseAPI implements ChannelApiInterface {
      */
     methodSetStatusLegacyV1(requestParameters: ChannelApiMethodSetStatusLegacyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Enable or disable an existing channel in the selected project. Use channel_id=group_id from channel search results, not the external/platform id. Keep the same project_id used for search. Send active=false to disable and active=true to enable. Both \'turn off the channel\' and \'disable the channel\' mean active=false; \'enable the channel\' means active=true. Success confirms the desired state; verify actual broadcasting separately.
      * @summary Set desired channel state
      * @param {ChannelApiMethodSetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

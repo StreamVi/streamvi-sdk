@@ -21,25 +21,27 @@ import type { SuccessResponse } from '../models';
  */
 export declare const PayoutApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Create a payout request for project_id to wallet_value through payout_system_account_id. amount uses minor units of the project currency, which must match the payout account currency (10000 = 100 major units). Success confirms the request, not a completed provider transfer; read available systems and restrictions with GET /method/payout/prepare.
      * @summary Create payout
-     * @param {PayoutCreateV1LanguageEnum} language Current language
+     * @param {PayoutCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto
      * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    payoutCreateV1: (language: PayoutCreateV1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, v?: PayoutCreateV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    payoutCreateV1: (language: PayoutCreateV1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, v?: PayoutCreateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read payout systems/accounts available to the current user for project_id and data needed to prepare a request. This is a preview without creating a payout or debiting funds. Use the returned payout_system_account_id in POST /method/payout/create.
      * @summary Get payout data for create
-     * @param {PayoutPrepareV1LanguageEnum} language Current language
+     * @param {PayoutPrepareV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    payoutPrepareV1: (language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    payoutPrepareV1: (language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PayoutApi - functional programming interface
@@ -47,25 +49,27 @@ export declare const PayoutApiAxiosParamCreator: (configuration?: Configuration)
  */
 export declare const PayoutApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Create a payout request for project_id to wallet_value through payout_system_account_id. amount uses minor units of the project currency, which must match the payout account currency (10000 = 100 major units). Success confirms the request, not a completed provider transfer; read available systems and restrictions with GET /method/payout/prepare.
      * @summary Create payout
-     * @param {PayoutCreateV1LanguageEnum} language Current language
+     * @param {PayoutCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto
      * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    payoutCreateV1(language: PayoutCreateV1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, v?: PayoutCreateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    payoutCreateV1(language: PayoutCreateV1LanguageEnum, payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto, v?: PayoutCreateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Read payout systems/accounts available to the current user for project_id and data needed to prepare a request. This is a preview without creating a payout or debiting funds. Use the returned payout_system_account_id in POST /method/payout/create.
      * @summary Get payout data for create
-     * @param {PayoutPrepareV1LanguageEnum} language Current language
+     * @param {PayoutPrepareV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    payoutPrepareV1(language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutSystemAccountListResponse>>;
+    payoutPrepareV1(language: PayoutPrepareV1LanguageEnum, projectId: number, v?: PayoutPrepareV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutSystemAccountListResponse>>;
 };
 /**
  * PayoutApi - factory interface
@@ -73,7 +77,7 @@ export declare const PayoutApiFp: (configuration?: Configuration) => {
  */
 export declare const PayoutApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Create a payout request for project_id to wallet_value through payout_system_account_id. amount uses minor units of the project currency, which must match the payout account currency (10000 = 100 major units). Success confirms the request, not a completed provider transfer; read available systems and restrictions with GET /method/payout/prepare.
      * @summary Create payout
      * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -81,7 +85,7 @@ export declare const PayoutApiFactory: (configuration?: Configuration, basePath?
      */
     payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read payout systems/accounts available to the current user for project_id and data needed to prepare a request. This is a preview without creating a payout or debiting funds. Use the returned payout_system_account_id in POST /method/payout/create.
      * @summary Get payout data for create
      * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -96,7 +100,7 @@ export declare const PayoutApiFactory: (configuration?: Configuration, basePath?
  */
 export interface PayoutApiInterface {
     /**
-     *
+     * Create a payout request for project_id to wallet_value through payout_system_account_id. amount uses minor units of the project currency, which must match the payout account currency (10000 = 100 major units). Success confirms the request, not a completed provider transfer; read available systems and restrictions with GET /method/payout/prepare.
      * @summary Create payout
      * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -105,7 +109,7 @@ export interface PayoutApiInterface {
      */
     payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read payout systems/accounts available to the current user for project_id and data needed to prepare a request. This is a preview without creating a payout or debiting funds. Use the returned payout_system_account_id in POST /method/payout/create.
      * @summary Get payout data for create
      * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -121,23 +125,29 @@ export interface PayoutApiInterface {
  */
 export interface PayoutApiPayoutCreateV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PayoutApiPayoutCreateV1
      */
-    readonly language: PayoutCreateV1LanguageEnum;
+    readonly 'language': PayoutCreateV1LanguageEnum;
     /**
      *
      * @type {PayoutCreateRequestBodyDto}
      * @memberof PayoutApiPayoutCreateV1
      */
-    readonly PayoutCreateRequestBodyDto: PayoutCreateRequestBodyDto;
+    readonly 'PayoutCreateRequestBodyDto': PayoutCreateRequestBodyDto;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PayoutApiPayoutCreateV1
      */
-    readonly v?: PayoutCreateV1VEnum;
+    readonly 'v'?: PayoutCreateV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PayoutApiPayoutCreateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for payoutPrepareV1 operation in PayoutApi.
@@ -146,23 +156,29 @@ export interface PayoutApiPayoutCreateV1Request {
  */
 export interface PayoutApiPayoutPrepareV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PayoutApiPayoutPrepareV1
      */
-    readonly language: PayoutPrepareV1LanguageEnum;
+    readonly 'language': PayoutPrepareV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof PayoutApiPayoutPrepareV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PayoutApiPayoutPrepareV1
      */
-    readonly v?: PayoutPrepareV1VEnum;
+    readonly 'v'?: PayoutPrepareV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PayoutApiPayoutPrepareV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * PayoutApi - object-oriented interface
@@ -172,7 +188,7 @@ export interface PayoutApiPayoutPrepareV1Request {
  */
 export declare class PayoutApi extends BaseAPI implements PayoutApiInterface {
     /**
-     *
+     * Create a payout request for project_id to wallet_value through payout_system_account_id. amount uses minor units of the project currency, which must match the payout account currency (10000 = 100 major units). Success confirms the request, not a completed provider transfer; read available systems and restrictions with GET /method/payout/prepare.
      * @summary Create payout
      * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -181,7 +197,7 @@ export declare class PayoutApi extends BaseAPI implements PayoutApiInterface {
      */
     payoutCreateV1(requestParameters: PayoutApiPayoutCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Read payout systems/accounts available to the current user for project_id and data needed to prepare a request. This is a preview without creating a payout or debiting funds. Use the returned payout_system_account_id in POST /method/payout/create.
      * @summary Get payout data for create
      * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

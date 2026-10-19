@@ -21,55 +21,55 @@
  */
 export interface PlanRestreamCheckV2Response {
     /**
-     * Tariff price
+     * Price for one month with monthly payment. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
      */
     'tariff_price_month': number;
     /**
-     * Tariff price
+     * Price for one month with the annual-payment discount; this is not the full annual charge. See sum for the selected period. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
      */
     'tariff_price_year': number;
     /**
-     * Balance for pay
+     * Balance for pay. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
      */
     'balance': number;
     /**
-     * Sum for pay
+     * Amount for the selected billing period before refunds. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
      */
     'sum'?: number;
     /**
-     * Refund current
+     * Refund current. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
      */
     'refund_current'?: number;
     /**
-     * Refund after
+     * Refund after. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
      */
     'refund_after'?: number;
     /**
-     * Refund balance
+     * Refund balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
      */
     'refund_balance'?: number;
     /**
-     * Decrease balance
+     * Decrease balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
      */
     'decrease_balance'?: number;
     /**
-     * Value for total
+     * Remaining external payment after refunds and any balance deduction. Omitted when no external payment is due; not the full tariff price. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRestreamCheckV2Response
      */

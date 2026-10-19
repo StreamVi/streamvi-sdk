@@ -13,3 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PaySettingSetSettingV1RequestLanguageEnum = exports.PaySettingSetSettingV1RequestVEnum = void 0;
+exports.PaySettingSetSettingV1RequestVEnum = {
+    _1: '1'
+};
+exports.PaySettingSetSettingV1RequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};

@@ -19,17 +19,18 @@ import type { PaginatedBlogPageTagResponse } from '../models';
  */
 export declare const BlogPageTagApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
-     * @summary Get list of blog pages
-     * @param {BlogPageTagListV1LanguageEnum} language Current language
+     * Read the public blog tag list using request filters and pagination. Returns tags for filtering pages, not blog pages themselves.
+     * @summary List blog tags
+     * @param {BlogPageTagListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} limit Number of results
+     * @param {number} offset Page offset number
      * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {string} [s] String for search
-     * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    blogPageTagListV1: (language: BlogPageTagListV1LanguageEnum, v?: BlogPageTagListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    blogPageTagListV1: (language: BlogPageTagListV1LanguageEnum, limit: number, offset: number, v?: BlogPageTagListV1VEnum, s?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BlogPageTagApi - functional programming interface
@@ -37,17 +38,18 @@ export declare const BlogPageTagApiAxiosParamCreator: (configuration?: Configura
  */
 export declare const BlogPageTagApiFp: (configuration?: Configuration) => {
     /**
-     *
-     * @summary Get list of blog pages
-     * @param {BlogPageTagListV1LanguageEnum} language Current language
+     * Read the public blog tag list using request filters and pagination. Returns tags for filtering pages, not blog pages themselves.
+     * @summary List blog tags
+     * @param {BlogPageTagListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} limit Number of results
+     * @param {number} offset Page offset number
      * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {string} [s] String for search
-     * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    blogPageTagListV1(language: BlogPageTagListV1LanguageEnum, v?: BlogPageTagListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBlogPageTagResponse>>;
+    blogPageTagListV1(language: BlogPageTagListV1LanguageEnum, limit: number, offset: number, v?: BlogPageTagListV1VEnum, s?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBlogPageTagResponse>>;
 };
 /**
  * BlogPageTagApi - factory interface
@@ -55,8 +57,8 @@ export declare const BlogPageTagApiFp: (configuration?: Configuration) => {
  */
 export declare const BlogPageTagApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
-     * @summary Get list of blog pages
+     * Read the public blog tag list using request filters and pagination. Returns tags for filtering pages, not blog pages themselves.
+     * @summary List blog tags
      * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -70,8 +72,8 @@ export declare const BlogPageTagApiFactory: (configuration?: Configuration, base
  */
 export interface BlogPageTagApiInterface {
     /**
-     *
-     * @summary Get list of blog pages
+     * Read the public blog tag list using request filters and pagination. Returns tags for filtering pages, not blog pages themselves.
+     * @summary List blog tags
      * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -86,35 +88,41 @@ export interface BlogPageTagApiInterface {
  */
 export interface BlogPageTagApiBlogPageTagListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BlogPageTagApiBlogPageTagListV1
      */
-    readonly language: BlogPageTagListV1LanguageEnum;
-    /**
-     * Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @type {'1'}
-     * @memberof BlogPageTagApiBlogPageTagListV1
-     */
-    readonly v?: BlogPageTagListV1VEnum;
-    /**
-     * String for search
-     * @type {string}
-     * @memberof BlogPageTagApiBlogPageTagListV1
-     */
-    readonly s?: string;
+    readonly 'language': BlogPageTagListV1LanguageEnum;
     /**
      * Number of results
      * @type {number}
      * @memberof BlogPageTagApiBlogPageTagListV1
      */
-    readonly limit?: number;
+    readonly 'limit': number;
     /**
      * Page offset number
      * @type {number}
      * @memberof BlogPageTagApiBlogPageTagListV1
      */
-    readonly offset?: number;
+    readonly 'offset': number;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof BlogPageTagApiBlogPageTagListV1
+     */
+    readonly 'v'?: BlogPageTagListV1VEnum;
+    /**
+     * String for search
+     * @type {string}
+     * @memberof BlogPageTagApiBlogPageTagListV1
+     */
+    readonly 's'?: string;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BlogPageTagApiBlogPageTagListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * BlogPageTagApi - object-oriented interface
@@ -124,8 +132,8 @@ export interface BlogPageTagApiBlogPageTagListV1Request {
  */
 export declare class BlogPageTagApi extends BaseAPI implements BlogPageTagApiInterface {
     /**
-     *
-     * @summary Get list of blog pages
+     * Read the public blog tag list using request filters and pagination. Returns tags for filtering pages, not blog pages themselves.
+     * @summary List blog tags
      * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

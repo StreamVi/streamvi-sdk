@@ -30,15 +30,16 @@ const base_1 = require("../base");
 const BroadcastApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Get ingress addresses and the secret publishing key for project_id. Missing credentials produces credentials.no_found. This reads source connection details without creating a broadcast. Do not save key in examples, logs, or the corpus.
          * @summary Get credentials
-         * @param {BroadcastCredentialsV1LanguageEnum} language Current language
+         * @param {BroadcastCredentialsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastCredentialsV1: async (language, projectId, v, options = {}) => {
+        broadcastCredentialsV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastCredentialsV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -53,9 +54,12 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -68,6 +72,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -77,16 +84,18 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read restream event details using id (event UUID) and date (event date). Obtain the event ID from broadcast events; the response is localized using language. Reading an event does not change stream state.
          * @summary Broadcast event item
-         * @param {BroadcastEventItemV1LanguageEnum} language Current language
+         * @param {BroadcastEventItemV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} id Event id
          * @param {string} date Event date
+         * @param {number} [projectId] Target project ID. Required for site requests; account tokens fall back to their personal project when omitted in every request source; project tokens determine the project automatically.
          * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastEventItemV1: async (language, id, date, v, options = {}) => {
+        broadcastEventItemV1: async (language, id, date, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastEventItemV1', 'language', language);
             // verify required parameter 'id' is not null or undefined
@@ -103,11 +112,17 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
             }
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
@@ -123,6 +138,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             else {
                 localVarQueryParameter['v'] = '1';
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -132,9 +150,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Get broadcast_id events in project_id with filters and v=4 pagination; the response contains total, limit, offset, sort_by_date; supply cursor_id and cursor_datetime together. This reads event history without starting or stopping a broadcast. For one event use GET /method/broadcast/events/item.
          * @summary Events from broadcast v4
-         * @param {BroadcastEventsV4LanguageEnum} language Current language
+         * @param {BroadcastEventsV4LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
          * @param {Array<number>} [channels] Channels id
@@ -150,10 +168,11 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
          * @param {string} [cursorId] Cursor event id
          * @param {string} [cursorDatetime] Cursor event datetime
          * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastEventsV4: async (language, projectId, broadcastId, channels, level, platform, app, server, dateFrom, dateTo, offset, limit, sortByDate, cursorId, cursorDatetime, v, options = {}) => {
+        broadcastEventsV4: async (language, projectId, broadcastId, channels, level, platform, app, server, dateFrom, dateTo, offset, limit, sortByDate, cursorId, cursorDatetime, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastEventsV4', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -170,9 +189,12 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -230,6 +252,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             else {
                 localVarQueryParameter['v'] = '4';
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -239,16 +264,17 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read a single broadcast by broadcast_id in project_id, including its saved parameters and statistics. broadcast_id comes from GET /method/broadcast/list or project state; it identifies a broadcast, not a channel. Use GET /method/broadcast/status for current state.
          * @summary Get one broadcast
-         * @param {BroadcastFindV1LanguageEnum} language Current language
+         * @param {BroadcastFindV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
          * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastFindV1: async (language, projectId, broadcastId, v, options = {}) => {
+        broadcastFindV1: async (language, projectId, broadcastId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastFindV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -265,9 +291,12 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -283,6 +312,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             else {
                 localVarQueryParameter['v'] = '3';
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -292,15 +324,16 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the saved default broadcast title and description for project_id. POST /method/channel_settings/bulkUpdate updates the template and supported channels; this method neither publishes anything nor starts a stream.
          * @summary Get broadcast title and description template
-         * @param {BroadcastGetTemplateV1LanguageEnum} language Current language
+         * @param {BroadcastGetTemplateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {BroadcastGetTemplateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastGetTemplateV1: async (language, projectId, v, options = {}) => {
+        broadcastGetTemplateV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastGetTemplateV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -315,9 +348,12 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -330,6 +366,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -339,16 +378,17 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Get the input bitrate chart for broadcast_id in project_id. Statistics points use the response schema; this method does not change bitrate or source settings.
          * @summary Bitrate from broadcast
-         * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
+         * @param {BroadcastGraphBitrateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
          * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastGraphBitrateV1: async (language, projectId, broadcastId, v, options = {}) => {
+        broadcastGraphBitrateV1: async (language, projectId, broadcastId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastGraphBitrateV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -365,9 +405,12 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -383,6 +426,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             else {
                 localVarQueryParameter['v'] = '3';
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -392,16 +438,17 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Get the viewer chart for broadcast_id in project_id. This is saved broadcast statistics; the method neither controls channels nor starts a stream.
          * @summary Viewers from broadcast
-         * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
+         * @param {BroadcastGraphViewersV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
          * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastGraphViewersV1: async (language, projectId, broadcastId, v, options = {}) => {
+        broadcastGraphViewersV1: async (language, projectId, broadcastId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastGraphViewersV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -418,9 +465,12 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -436,6 +486,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             else {
                 localVarQueryParameter['v'] = '3';
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -445,18 +498,19 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Get broadcast history for project_id with limit/offset and order. offset is the number of records to skip, not a page number. Returns results and pagination data; use broadcast_id from the list to read a specific broadcast, its events, and charts.
          * @summary List broadcast
-         * @param {BroadcastListV1LanguageEnum} language Current language
+         * @param {BroadcastListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
+         * @param {number} [offset] Number of records to skip; not a page number.
          * @param {BroadcastListV1OrderEnum} [order] order
          * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastListV1: async (language, projectId, limit, offset, order, v, options = {}) => {
+        broadcastListV1: async (language, projectId, limit, offset, order, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastListV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -471,9 +525,12 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -495,6 +552,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             else {
                 localVarQueryParameter['v'] = '3';
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -504,13 +564,14 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Pause stream
+         * Requests a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not create or finish a broadcast.
+         * @summary Pause an active live broadcast
          * @param {SiteBroadcastPauseRequest} siteBroadcastPauseRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastPauseV1: async (siteBroadcastPauseRequest, options = {}) => {
+        broadcastPauseV1: async (siteBroadcastPauseRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'siteBroadcastPauseRequest' is not null or undefined
             (0, common_1.assertParamExists)('broadcastPauseV1', 'siteBroadcastPauseRequest', siteBroadcastPauseRequest);
@@ -524,10 +585,16 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -539,13 +606,14 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Play stream
+         * Requests playback after a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not start a new broadcast or restart a finished one.
+         * @summary Resume an active live broadcast
          * @param {SiteBroadcastPlayRequest} siteBroadcastPlayRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastPlayV1: async (siteBroadcastPlayRequest, options = {}) => {
+        broadcastPlayV1: async (siteBroadcastPlayRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'siteBroadcastPlayRequest' is not null or undefined
             (0, common_1.assertParamExists)('broadcastPlayV1', 'siteBroadcastPlayRequest', siteBroadcastPlayRequest);
@@ -559,10 +627,16 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -574,16 +648,18 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Get restream_id, internal channel_id, platform, and viewer count for destinations of broadcast_id after checking project ownership. The response is intended for selecting chat destinations, not sending messages; unavailable viewers statistics may be null.
          * @summary Get restreams for chat
-         * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
+         * @param {BroadcastRestreamChatV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} broadcastId broadcast id
          * @param {string} key Chat token
          * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Required selected project for account integration credentials
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastRestreamChatV1: async (language, broadcastId, key, v, options = {}) => {
+        broadcastRestreamChatV1: async (language, broadcastId, key, v, projectId, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastRestreamChatV1', 'language', language);
             // verify required parameter 'broadcastId' is not null or undefined
@@ -600,9 +676,12 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -612,11 +691,17 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
             if (broadcastId !== undefined) {
                 localVarQueryParameter['broadcast_id'] = broadcastId;
             }
             if (key !== undefined) {
                 localVarQueryParameter['key'] = key;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -627,16 +712,17 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read restream destinations for broadcast_id in project_id and obtain Centrifugo subscription tokens for URL and statistics updates, version v=1. This reads destination state without starting a stream. Subscription tokens are credentials and must not be logged.
          * @summary View live info
-         * @param {BroadcastRestreamsV1LanguageEnum} language Current language
+         * @param {BroadcastRestreamsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
          * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastRestreamsV1: async (language, projectId, broadcastId, v, options = {}) => {
+        broadcastRestreamsV1: async (language, projectId, broadcastId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastRestreamsV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -653,9 +739,12 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -671,6 +760,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             else {
                 localVarQueryParameter['v'] = '1';
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -680,15 +772,16 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the current broadcast state of project_id: kind determines inactive, live, transcoding, or scheduler. Use this response to verify state after pause/play/stop commands; reading does not start a broadcast. Supply the target project explicitly in account API.
          * @summary Live status info by project id
-         * @param {BroadcastStatusV1LanguageEnum} language Current language
+         * @param {BroadcastStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastStatusV1: async (language, projectId, v, options = {}) => {
+        broadcastStatusV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastStatusV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -703,9 +796,12 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -718,6 +814,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -727,13 +826,14 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Stop stream
+         * Requests stopping the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. Clears its disconnect-protection wait and marks it as stopped. Check broadcast status to confirm completion; a successful response does not guarantee all shutdown work has finished.
+         * @summary Request stopping an active live broadcast
          * @param {SiteBroadcastStopRequest} siteBroadcastStopRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastStopV1: async (siteBroadcastStopRequest, options = {}) => {
+        broadcastStopV1: async (siteBroadcastStopRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'siteBroadcastStopRequest' is not null or undefined
             (0, common_1.assertParamExists)('broadcastStopV1', 'siteBroadcastStopRequest', siteBroadcastStopRequest);
@@ -747,10 +847,16 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -762,15 +868,16 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Wait for active broadcast information via HTTP long polling using a project token. Waits for an event for at most 30 seconds: returns active broadcast JSON or HTTP 204 on timeout. This is neither a WebSocket nor a start-broadcast command; the account profile excludes this method.
          * @summary Connect channel, long polling
-         * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
-         * @param {string} key
+         * @param {BroadcastTokenChannelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {string} key Project/chat connection key credential for legacy long polling. Sensitive value; do not include in logs or examples.
          * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        broadcastTokenChannelV1: async (language, key, v, options = {}) => {
+        broadcastTokenChannelV1: async (language, key, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('broadcastTokenChannelV1', 'language', language);
             // verify required parameter 'key' is not null or undefined
@@ -785,9 +892,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -799,6 +906,9 @@ const BroadcastApiAxiosParamCreator = function (configuration) {
             }
             if (key !== undefined) {
                 localVarQueryParameter['key'] = key;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -819,42 +929,45 @@ const BroadcastApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.BroadcastApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Get ingress addresses and the secret publishing key for project_id. Missing credentials produces credentials.no_found. This reads source connection details without creating a broadcast. Do not save key in examples, logs, or the corpus.
          * @summary Get credentials
-         * @param {BroadcastCredentialsV1LanguageEnum} language Current language
+         * @param {BroadcastCredentialsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastCredentialsV1(language, projectId, v, options) {
+        async broadcastCredentialsV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastCredentialsV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastCredentialsV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastCredentialsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read restream event details using id (event UUID) and date (event date). Obtain the event ID from broadcast events; the response is localized using language. Reading an event does not change stream state.
          * @summary Broadcast event item
-         * @param {BroadcastEventItemV1LanguageEnum} language Current language
+         * @param {BroadcastEventItemV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} id Event id
          * @param {string} date Event date
+         * @param {number} [projectId] Target project ID. Required for site requests; account tokens fall back to their personal project when omitted in every request source; project tokens determine the project automatically.
          * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastEventItemV1(language, id, date, v, options) {
+        async broadcastEventItemV1(language, id, date, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastEventItemV1(language, id, date, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastEventItemV1(language, id, date, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastEventItemV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Get broadcast_id events in project_id with filters and v=4 pagination; the response contains total, limit, offset, sort_by_date; supply cursor_id and cursor_datetime together. This reads event history without starting or stopping a broadcast. For one event use GET /method/broadcast/events/item.
          * @summary Events from broadcast v4
-         * @param {BroadcastEventsV4LanguageEnum} language Current language
+         * @param {BroadcastEventsV4LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
          * @param {Array<number>} [channels] Channels id
@@ -870,206 +983,220 @@ const BroadcastApiFp = function (configuration) {
          * @param {string} [cursorId] Cursor event id
          * @param {string} [cursorDatetime] Cursor event datetime
          * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastEventsV4(language, projectId, broadcastId, channels, level, platform, app, server, dateFrom, dateTo, offset, limit, sortByDate, cursorId, cursorDatetime, v, options) {
+        async broadcastEventsV4(language, projectId, broadcastId, channels, level, platform, app, server, dateFrom, dateTo, offset, limit, sortByDate, cursorId, cursorDatetime, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastEventsV4(language, projectId, broadcastId, channels, level, platform, app, server, dateFrom, dateTo, offset, limit, sortByDate, cursorId, cursorDatetime, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastEventsV4(language, projectId, broadcastId, channels, level, platform, app, server, dateFrom, dateTo, offset, limit, sortByDate, cursorId, cursorDatetime, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastEventsV4']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read a single broadcast by broadcast_id in project_id, including its saved parameters and statistics. broadcast_id comes from GET /method/broadcast/list or project state; it identifies a broadcast, not a channel. Use GET /method/broadcast/status for current state.
          * @summary Get one broadcast
-         * @param {BroadcastFindV1LanguageEnum} language Current language
+         * @param {BroadcastFindV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
          * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastFindV1(language, projectId, broadcastId, v, options) {
+        async broadcastFindV1(language, projectId, broadcastId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastFindV1(language, projectId, broadcastId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastFindV1(language, projectId, broadcastId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastFindV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the saved default broadcast title and description for project_id. POST /method/channel_settings/bulkUpdate updates the template and supported channels; this method neither publishes anything nor starts a stream.
          * @summary Get broadcast title and description template
-         * @param {BroadcastGetTemplateV1LanguageEnum} language Current language
+         * @param {BroadcastGetTemplateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {BroadcastGetTemplateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastGetTemplateV1(language, projectId, v, options) {
+        async broadcastGetTemplateV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastGetTemplateV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastGetTemplateV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastGetTemplateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Get the input bitrate chart for broadcast_id in project_id. Statistics points use the response schema; this method does not change bitrate or source settings.
          * @summary Bitrate from broadcast
-         * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
+         * @param {BroadcastGraphBitrateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
          * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastGraphBitrateV1(language, projectId, broadcastId, v, options) {
+        async broadcastGraphBitrateV1(language, projectId, broadcastId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastGraphBitrateV1(language, projectId, broadcastId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastGraphBitrateV1(language, projectId, broadcastId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastGraphBitrateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Get the viewer chart for broadcast_id in project_id. This is saved broadcast statistics; the method neither controls channels nor starts a stream.
          * @summary Viewers from broadcast
-         * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
+         * @param {BroadcastGraphViewersV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId broadcast id
          * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastGraphViewersV1(language, projectId, broadcastId, v, options) {
+        async broadcastGraphViewersV1(language, projectId, broadcastId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastGraphViewersV1(language, projectId, broadcastId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastGraphViewersV1(language, projectId, broadcastId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastGraphViewersV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Get broadcast history for project_id with limit/offset and order. offset is the number of records to skip, not a page number. Returns results and pagination data; use broadcast_id from the list to read a specific broadcast, its events, and charts.
          * @summary List broadcast
-         * @param {BroadcastListV1LanguageEnum} language Current language
+         * @param {BroadcastListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
+         * @param {number} [offset] Number of records to skip; not a page number.
          * @param {BroadcastListV1OrderEnum} [order] order
          * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastListV1(language, projectId, limit, offset, order, v, options) {
+        async broadcastListV1(language, projectId, limit, offset, order, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastListV1(language, projectId, limit, offset, order, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastListV1(language, projectId, limit, offset, order, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Pause stream
+         * Requests a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not create or finish a broadcast.
+         * @summary Pause an active live broadcast
          * @param {SiteBroadcastPauseRequest} siteBroadcastPauseRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastPauseV1(siteBroadcastPauseRequest, options) {
+        async broadcastPauseV1(siteBroadcastPauseRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastPauseV1(siteBroadcastPauseRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastPauseV1(siteBroadcastPauseRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastPauseV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Play stream
+         * Requests playback after a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not start a new broadcast or restart a finished one.
+         * @summary Resume an active live broadcast
          * @param {SiteBroadcastPlayRequest} siteBroadcastPlayRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastPlayV1(siteBroadcastPlayRequest, options) {
+        async broadcastPlayV1(siteBroadcastPlayRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastPlayV1(siteBroadcastPlayRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastPlayV1(siteBroadcastPlayRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastPlayV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Get restream_id, internal channel_id, platform, and viewer count for destinations of broadcast_id after checking project ownership. The response is intended for selecting chat destinations, not sending messages; unavailable viewers statistics may be null.
          * @summary Get restreams for chat
-         * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
+         * @param {BroadcastRestreamChatV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} broadcastId broadcast id
          * @param {string} key Chat token
          * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Required selected project for account integration credentials
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastRestreamChatV1(language, broadcastId, key, v, options) {
+        async broadcastRestreamChatV1(language, broadcastId, key, v, projectId, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastRestreamChatV1(language, broadcastId, key, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastRestreamChatV1(language, broadcastId, key, v, projectId, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastRestreamChatV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read restream destinations for broadcast_id in project_id and obtain Centrifugo subscription tokens for URL and statistics updates, version v=1. This reads destination state without starting a stream. Subscription tokens are credentials and must not be logged.
          * @summary View live info
-         * @param {BroadcastRestreamsV1LanguageEnum} language Current language
+         * @param {BroadcastRestreamsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
          * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastRestreamsV1(language, projectId, broadcastId, v, options) {
+        async broadcastRestreamsV1(language, projectId, broadcastId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastRestreamsV1(language, projectId, broadcastId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastRestreamsV1(language, projectId, broadcastId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastRestreamsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the current broadcast state of project_id: kind determines inactive, live, transcoding, or scheduler. Use this response to verify state after pause/play/stop commands; reading does not start a broadcast. Supply the target project explicitly in account API.
          * @summary Live status info by project id
-         * @param {BroadcastStatusV1LanguageEnum} language Current language
+         * @param {BroadcastStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastStatusV1(language, projectId, v, options) {
+        async broadcastStatusV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastStatusV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastStatusV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastStatusV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Stop stream
+         * Requests stopping the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. Clears its disconnect-protection wait and marks it as stopped. Check broadcast status to confirm completion; a successful response does not guarantee all shutdown work has finished.
+         * @summary Request stopping an active live broadcast
          * @param {SiteBroadcastStopRequest} siteBroadcastStopRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastStopV1(siteBroadcastStopRequest, options) {
+        async broadcastStopV1(siteBroadcastStopRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastStopV1(siteBroadcastStopRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastStopV1(siteBroadcastStopRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastStopV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Wait for active broadcast information via HTTP long polling using a project token. Waits for an event for at most 30 seconds: returns active broadcast JSON or HTTP 204 on timeout. This is neither a WebSocket nor a start-broadcast command; the account profile excludes this method.
          * @summary Connect channel, long polling
-         * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
-         * @param {string} key
+         * @param {BroadcastTokenChannelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {string} key Project/chat connection key credential for legacy long polling. Sensitive value; do not include in logs or examples.
          * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async broadcastTokenChannelV1(language, key, v, options) {
+        async broadcastTokenChannelV1(language, key, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastTokenChannelV1(language, key, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.broadcastTokenChannelV1(language, key, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BroadcastApi.broadcastTokenChannelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -1085,154 +1212,154 @@ const BroadcastApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.BroadcastApiFp)(configuration);
     return {
         /**
-         *
+         * Get ingress addresses and the secret publishing key for project_id. Missing credentials produces credentials.no_found. This reads source connection details without creating a broadcast. Do not save key in examples, logs, or the corpus.
          * @summary Get credentials
          * @param {BroadcastApiBroadcastCredentialsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastCredentialsV1(requestParameters, options) {
-            return localVarFp.broadcastCredentialsV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastCredentialsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read restream event details using id (event UUID) and date (event date). Obtain the event ID from broadcast events; the response is localized using language. Reading an event does not change stream state.
          * @summary Broadcast event item
          * @param {BroadcastApiBroadcastEventItemV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastEventItemV1(requestParameters, options) {
-            return localVarFp.broadcastEventItemV1(requestParameters.language, requestParameters.id, requestParameters.date, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastEventItemV1(requestParameters['language'], requestParameters['id'], requestParameters['date'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Get broadcast_id events in project_id with filters and v=4 pagination; the response contains total, limit, offset, sort_by_date; supply cursor_id and cursor_datetime together. This reads event history without starting or stopping a broadcast. For one event use GET /method/broadcast/events/item.
          * @summary Events from broadcast v4
          * @param {BroadcastApiBroadcastEventsV4Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastEventsV4(requestParameters, options) {
-            return localVarFp.broadcastEventsV4(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.channels, requestParameters.level, requestParameters.platform, requestParameters.app, requestParameters.server, requestParameters.date_from, requestParameters.date_to, requestParameters.offset, requestParameters.limit, requestParameters.sort_by_date, requestParameters.cursor_id, requestParameters.cursor_datetime, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastEventsV4(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['channels'], requestParameters['level'], requestParameters['platform'], requestParameters['app'], requestParameters['server'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['offset'], requestParameters['limit'], requestParameters['sort_by_date'], requestParameters['cursor_id'], requestParameters['cursor_datetime'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read a single broadcast by broadcast_id in project_id, including its saved parameters and statistics. broadcast_id comes from GET /method/broadcast/list or project state; it identifies a broadcast, not a channel. Use GET /method/broadcast/status for current state.
          * @summary Get one broadcast
          * @param {BroadcastApiBroadcastFindV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastFindV1(requestParameters, options) {
-            return localVarFp.broadcastFindV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastFindV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the saved default broadcast title and description for project_id. POST /method/channel_settings/bulkUpdate updates the template and supported channels; this method neither publishes anything nor starts a stream.
          * @summary Get broadcast title and description template
          * @param {BroadcastApiBroadcastGetTemplateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastGetTemplateV1(requestParameters, options) {
-            return localVarFp.broadcastGetTemplateV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastGetTemplateV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Get the input bitrate chart for broadcast_id in project_id. Statistics points use the response schema; this method does not change bitrate or source settings.
          * @summary Bitrate from broadcast
          * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastGraphBitrateV1(requestParameters, options) {
-            return localVarFp.broadcastGraphBitrateV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastGraphBitrateV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Get the viewer chart for broadcast_id in project_id. This is saved broadcast statistics; the method neither controls channels nor starts a stream.
          * @summary Viewers from broadcast
          * @param {BroadcastApiBroadcastGraphViewersV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastGraphViewersV1(requestParameters, options) {
-            return localVarFp.broadcastGraphViewersV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastGraphViewersV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Get broadcast history for project_id with limit/offset and order. offset is the number of records to skip, not a page number. Returns results and pagination data; use broadcast_id from the list to read a specific broadcast, its events, and charts.
          * @summary List broadcast
          * @param {BroadcastApiBroadcastListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastListV1(requestParameters, options) {
-            return localVarFp.broadcastListV1(requestParameters.language, requestParameters.project_id, requestParameters.limit, requestParameters.offset, requestParameters.order, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['limit'], requestParameters['offset'], requestParameters['order'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Pause stream
+         * Requests a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not create or finish a broadcast.
+         * @summary Pause an active live broadcast
          * @param {BroadcastApiBroadcastPauseV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastPauseV1(requestParameters, options) {
-            return localVarFp.broadcastPauseV1(requestParameters.SiteBroadcastPauseRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastPauseV1(requestParameters['SiteBroadcastPauseRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Play stream
+         * Requests playback after a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not start a new broadcast or restart a finished one.
+         * @summary Resume an active live broadcast
          * @param {BroadcastApiBroadcastPlayV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastPlayV1(requestParameters, options) {
-            return localVarFp.broadcastPlayV1(requestParameters.SiteBroadcastPlayRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastPlayV1(requestParameters['SiteBroadcastPlayRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Get restream_id, internal channel_id, platform, and viewer count for destinations of broadcast_id after checking project ownership. The response is intended for selecting chat destinations, not sending messages; unavailable viewers statistics may be null.
          * @summary Get restreams for chat
          * @param {BroadcastApiBroadcastRestreamChatV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastRestreamChatV1(requestParameters, options) {
-            return localVarFp.broadcastRestreamChatV1(requestParameters.language, requestParameters.broadcast_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastRestreamChatV1(requestParameters['language'], requestParameters['broadcast_id'], requestParameters['key'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read restream destinations for broadcast_id in project_id and obtain Centrifugo subscription tokens for URL and statistics updates, version v=1. This reads destination state without starting a stream. Subscription tokens are credentials and must not be logged.
          * @summary View live info
          * @param {BroadcastApiBroadcastRestreamsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastRestreamsV1(requestParameters, options) {
-            return localVarFp.broadcastRestreamsV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastRestreamsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the current broadcast state of project_id: kind determines inactive, live, transcoding, or scheduler. Use this response to verify state after pause/play/stop commands; reading does not start a broadcast. Supply the target project explicitly in account API.
          * @summary Live status info by project id
          * @param {BroadcastApiBroadcastStatusV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastStatusV1(requestParameters, options) {
-            return localVarFp.broadcastStatusV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastStatusV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Stop stream
+         * Requests stopping the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. Clears its disconnect-protection wait and marks it as stopped. Check broadcast status to confirm completion; a successful response does not guarantee all shutdown work has finished.
+         * @summary Request stopping an active live broadcast
          * @param {BroadcastApiBroadcastStopV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastStopV1(requestParameters, options) {
-            return localVarFp.broadcastStopV1(requestParameters.SiteBroadcastStopRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastStopV1(requestParameters['SiteBroadcastStopRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Wait for active broadcast information via HTTP long polling using a project token. Waits for an event for at most 30 seconds: returns active broadcast JSON or HTTP 204 on timeout. This is neither a WebSocket nor a start-broadcast command; the account profile excludes this method.
          * @summary Connect channel, long polling
          * @param {BroadcastApiBroadcastTokenChannelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         broadcastTokenChannelV1(requestParameters, options) {
-            return localVarFp.broadcastTokenChannelV1(requestParameters.language, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.broadcastTokenChannelV1(requestParameters['language'], requestParameters['key'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1245,7 +1372,7 @@ exports.BroadcastApiFactory = BroadcastApiFactory;
  */
 class BroadcastApi extends base_1.BaseAPI {
     /**
-     *
+     * Get ingress addresses and the secret publishing key for project_id. Missing credentials produces credentials.no_found. This reads source connection details without creating a broadcast. Do not save key in examples, logs, or the corpus.
      * @summary Get credentials
      * @param {BroadcastApiBroadcastCredentialsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1253,10 +1380,10 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastCredentialsV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastCredentialsV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastCredentialsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read restream event details using id (event UUID) and date (event date). Obtain the event ID from broadcast events; the response is localized using language. Reading an event does not change stream state.
      * @summary Broadcast event item
      * @param {BroadcastApiBroadcastEventItemV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1264,10 +1391,10 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastEventItemV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastEventItemV1(requestParameters.language, requestParameters.id, requestParameters.date, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastEventItemV1(requestParameters['language'], requestParameters['id'], requestParameters['date'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Get broadcast_id events in project_id with filters and v=4 pagination; the response contains total, limit, offset, sort_by_date; supply cursor_id and cursor_datetime together. This reads event history without starting or stopping a broadcast. For one event use GET /method/broadcast/events/item.
      * @summary Events from broadcast v4
      * @param {BroadcastApiBroadcastEventsV4Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1275,10 +1402,10 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastEventsV4(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastEventsV4(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.channels, requestParameters.level, requestParameters.platform, requestParameters.app, requestParameters.server, requestParameters.date_from, requestParameters.date_to, requestParameters.offset, requestParameters.limit, requestParameters.sort_by_date, requestParameters.cursor_id, requestParameters.cursor_datetime, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastEventsV4(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['channels'], requestParameters['level'], requestParameters['platform'], requestParameters['app'], requestParameters['server'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['offset'], requestParameters['limit'], requestParameters['sort_by_date'], requestParameters['cursor_id'], requestParameters['cursor_datetime'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read a single broadcast by broadcast_id in project_id, including its saved parameters and statistics. broadcast_id comes from GET /method/broadcast/list or project state; it identifies a broadcast, not a channel. Use GET /method/broadcast/status for current state.
      * @summary Get one broadcast
      * @param {BroadcastApiBroadcastFindV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1286,10 +1413,10 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastFindV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastFindV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastFindV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the saved default broadcast title and description for project_id. POST /method/channel_settings/bulkUpdate updates the template and supported channels; this method neither publishes anything nor starts a stream.
      * @summary Get broadcast title and description template
      * @param {BroadcastApiBroadcastGetTemplateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1297,10 +1424,10 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastGetTemplateV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastGetTemplateV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastGetTemplateV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Get the input bitrate chart for broadcast_id in project_id. Statistics points use the response schema; this method does not change bitrate or source settings.
      * @summary Bitrate from broadcast
      * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1308,10 +1435,10 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastGraphBitrateV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastGraphBitrateV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastGraphBitrateV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Get the viewer chart for broadcast_id in project_id. This is saved broadcast statistics; the method neither controls channels nor starts a stream.
      * @summary Viewers from broadcast
      * @param {BroadcastApiBroadcastGraphViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1319,10 +1446,10 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastGraphViewersV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastGraphViewersV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastGraphViewersV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Get broadcast history for project_id with limit/offset and order. offset is the number of records to skip, not a page number. Returns results and pagination data; use broadcast_id from the list to read a specific broadcast, its events, and charts.
      * @summary List broadcast
      * @param {BroadcastApiBroadcastListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1330,32 +1457,32 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastListV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastListV1(requestParameters.language, requestParameters.project_id, requestParameters.limit, requestParameters.offset, requestParameters.order, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['limit'], requestParameters['offset'], requestParameters['order'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Pause stream
+     * Requests a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not create or finish a broadcast.
+     * @summary Pause an active live broadcast
      * @param {BroadcastApiBroadcastPauseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
     broadcastPauseV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastPauseV1(requestParameters.SiteBroadcastPauseRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastPauseV1(requestParameters['SiteBroadcastPauseRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Play stream
+     * Requests playback after a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not start a new broadcast or restart a finished one.
+     * @summary Resume an active live broadcast
      * @param {BroadcastApiBroadcastPlayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
     broadcastPlayV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastPlayV1(requestParameters.SiteBroadcastPlayRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastPlayV1(requestParameters['SiteBroadcastPlayRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Get restream_id, internal channel_id, platform, and viewer count for destinations of broadcast_id after checking project ownership. The response is intended for selecting chat destinations, not sending messages; unavailable viewers statistics may be null.
      * @summary Get restreams for chat
      * @param {BroadcastApiBroadcastRestreamChatV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1363,10 +1490,10 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastRestreamChatV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastRestreamChatV1(requestParameters.language, requestParameters.broadcast_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastRestreamChatV1(requestParameters['language'], requestParameters['broadcast_id'], requestParameters['key'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read restream destinations for broadcast_id in project_id and obtain Centrifugo subscription tokens for URL and statistics updates, version v=1. This reads destination state without starting a stream. Subscription tokens are credentials and must not be logged.
      * @summary View live info
      * @param {BroadcastApiBroadcastRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1374,10 +1501,10 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastRestreamsV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastRestreamsV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastRestreamsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the current broadcast state of project_id: kind determines inactive, live, transcoding, or scheduler. Use this response to verify state after pause/play/stop commands; reading does not start a broadcast. Supply the target project explicitly in account API.
      * @summary Live status info by project id
      * @param {BroadcastApiBroadcastStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1385,21 +1512,21 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastStatusV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastStatusV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastStatusV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Stop stream
+     * Requests stopping the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. Clears its disconnect-protection wait and marks it as stopped. Check broadcast status to confirm completion; a successful response does not guarantee all shutdown work has finished.
+     * @summary Request stopping an active live broadcast
      * @param {BroadcastApiBroadcastStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BroadcastApi
      */
     broadcastStopV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastStopV1(requestParameters.SiteBroadcastStopRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastStopV1(requestParameters['SiteBroadcastStopRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Wait for active broadcast information via HTTP long polling using a project token. Waits for an event for at most 30 seconds: returns active broadcast JSON or HTTP 204 on timeout. This is neither a WebSocket nor a start-broadcast command; the account profile excludes this method.
      * @summary Connect channel, long polling
      * @param {BroadcastApiBroadcastTokenChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1407,7 +1534,7 @@ class BroadcastApi extends base_1.BaseAPI {
      * @memberof BroadcastApi
      */
     broadcastTokenChannelV1(requestParameters, options) {
-        return (0, exports.BroadcastApiFp)(this.configuration).broadcastTokenChannelV1(requestParameters.language, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BroadcastApiFp)(this.configuration).broadcastTokenChannelV1(requestParameters['language'], requestParameters['key'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.BroadcastApi = BroadcastApi;

@@ -25,67 +25,73 @@ import type { UpdateSchedulerRequest } from '../models';
  */
 export declare const SchedulerApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Create a video schedule for project_id: channel_ids are internal channel group_id values from search in the same project; video.id is an accessible video. start_at/end_at are integer Unix seconds, with end_at>start_at. When start_now=false, the start must be in the future; when true, the end must be in the future. Checks channel editing permissions, plan limits, and absence of overlaps. Returns an internal id after creating the external task and saving the schedule; does not promise immediate broadcast start.
      * @summary Create a project video schedule
      * @param {CreateSchedulerRequest} createSchedulerRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerCreateV1: (createSchedulerRequest: CreateSchedulerRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    schedulerCreateV1: (createSchedulerRequest: CreateSchedulerRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Delete unexpired schedule id in project_id and its associated external task. An expired schedule produces scheduler.expired. This deletes the schedule; stop the current active task separately with POST /method/scheduler/stop.
      * @summary Delete a non-expired project video schedule
-     * @param {SchedulerDeleteV1LanguageEnum} language Current language
+     * @param {SchedulerDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} id Backend scheduler id
      * @param {number} projectId Project id
      * @param {SchedulerDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerDeleteV1: (language: SchedulerDeleteV1LanguageEnum, id: number, projectId: number, v?: SchedulerDeleteV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    schedulerDeleteV1: (language: SchedulerDeleteV1LanguageEnum, id: number, projectId: number, v?: SchedulerDeleteV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read a schedule by internal id in project_id. Returns Unix seconds intervals, the complete internal channel_ids list, and video metadata or null. Obtain the ID from GET /method/scheduler; reading does not start the task.
      * @summary Get a project video schedule by id
-     * @param {SchedulerGetV1LanguageEnum} language Current language
+     * @param {SchedulerGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} id Scheduler item id
      * @param {SchedulerGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerGetV1: (language: SchedulerGetV1LanguageEnum, projectId: number, id: number, v?: SchedulerGetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    schedulerGetV1: (language: SchedulerGetV1LanguageEnum, projectId: number, id: number, v?: SchedulerGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read unexpired video schedules for project_id with channel_id/date_from/date_to filters, order, and limit/offset. Times are Unix seconds; offset is the number of records to skip. Returns results/total and may contain video=null. The schedule ID differs from the external scheduler taskId.
      * @summary List non-expired project video schedules
-     * @param {SchedulerListV1LanguageEnum} language Current language
+     * @param {SchedulerListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {SchedulerListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {number} [channelId] Filter by associated channel id
+     * @param {number} [channelId] Filter by internal numeric StreamVi channel ID (group_id from channel search), not an external/platform ID.
      * @param {number} [dateFrom] Filter interval start in Unix seconds
      * @param {number} [dateTo] Filter interval end in Unix seconds
      * @param {number} [offset] Result offset
      * @param {number} [limit] Page size
      * @param {SchedulerListV1OrderEnum} [order] Start-time order
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerListV1: (language: SchedulerListV1LanguageEnum, projectId: number, v?: SchedulerListV1VEnum, channelId?: number, dateFrom?: number, dateTo?: number, offset?: number, limit?: number, order?: SchedulerListV1OrderEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    schedulerListV1: (language: SchedulerListV1LanguageEnum, projectId: number, v?: SchedulerListV1VEnum, channelId?: number, dateFrom?: number, dateTo?: number, offset?: number, limit?: number, order?: SchedulerListV1OrderEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Send a stop request for the active video task in project_id. Requires an active scheduler/live stream and a task_id/video_id mapping consistent with the saved schedule; absence or mismatch produces scheduler.active_task_not_found/active_task_mismatch. Success means the external scheduler responded successfully, not that the schedule was deleted.
      * @summary Stop the active project video schedule
      * @param {StopSchedulerRequest} stopSchedulerRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerStopV1: (stopSchedulerRequest: StopSchedulerRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    schedulerStopV1: (stopSchedulerRequest: StopSchedulerRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Fully replace the video, time interval, and channel_ids list of future schedule id in project_id. All replacement fields are required; this is not a partial patch. A schedule that has already started produces scheduler.not_future; an overlap produces scheduler.time_overlap. Times are Unix seconds; end_at>start_at and start_at must be in the future. Success confirms the external task was updated if necessary and the schedule was saved.
      * @summary Replace a future project video schedule
      * @param {UpdateSchedulerRequest} updateSchedulerRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerUpdateV1: (updateSchedulerRequest: UpdateSchedulerRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    schedulerUpdateV1: (updateSchedulerRequest: UpdateSchedulerRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * SchedulerApi - functional programming interface
@@ -93,67 +99,73 @@ export declare const SchedulerApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const SchedulerApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Create a video schedule for project_id: channel_ids are internal channel group_id values from search in the same project; video.id is an accessible video. start_at/end_at are integer Unix seconds, with end_at>start_at. When start_now=false, the start must be in the future; when true, the end must be in the future. Checks channel editing permissions, plan limits, and absence of overlaps. Returns an internal id after creating the external task and saving the schedule; does not promise immediate broadcast start.
      * @summary Create a project video schedule
      * @param {CreateSchedulerRequest} createSchedulerRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerCreateV1(createSchedulerRequest: CreateSchedulerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateSchedulerResponse>>;
+    schedulerCreateV1(createSchedulerRequest: CreateSchedulerRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateSchedulerResponse>>;
     /**
-     *
+     * Delete unexpired schedule id in project_id and its associated external task. An expired schedule produces scheduler.expired. This deletes the schedule; stop the current active task separately with POST /method/scheduler/stop.
      * @summary Delete a non-expired project video schedule
-     * @param {SchedulerDeleteV1LanguageEnum} language Current language
+     * @param {SchedulerDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} id Backend scheduler id
      * @param {number} projectId Project id
      * @param {SchedulerDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerDeleteV1(language: SchedulerDeleteV1LanguageEnum, id: number, projectId: number, v?: SchedulerDeleteV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    schedulerDeleteV1(language: SchedulerDeleteV1LanguageEnum, id: number, projectId: number, v?: SchedulerDeleteV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Read a schedule by internal id in project_id. Returns Unix seconds intervals, the complete internal channel_ids list, and video metadata or null. Obtain the ID from GET /method/scheduler; reading does not start the task.
      * @summary Get a project video schedule by id
-     * @param {SchedulerGetV1LanguageEnum} language Current language
+     * @param {SchedulerGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} id Scheduler item id
      * @param {SchedulerGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerGetV1(language: SchedulerGetV1LanguageEnum, projectId: number, id: number, v?: SchedulerGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SchedulerItemResponse>>;
+    schedulerGetV1(language: SchedulerGetV1LanguageEnum, projectId: number, id: number, v?: SchedulerGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SchedulerItemResponse>>;
     /**
-     *
+     * Read unexpired video schedules for project_id with channel_id/date_from/date_to filters, order, and limit/offset. Times are Unix seconds; offset is the number of records to skip. Returns results/total and may contain video=null. The schedule ID differs from the external scheduler taskId.
      * @summary List non-expired project video schedules
-     * @param {SchedulerListV1LanguageEnum} language Current language
+     * @param {SchedulerListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {SchedulerListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {number} [channelId] Filter by associated channel id
+     * @param {number} [channelId] Filter by internal numeric StreamVi channel ID (group_id from channel search), not an external/platform ID.
      * @param {number} [dateFrom] Filter interval start in Unix seconds
      * @param {number} [dateTo] Filter interval end in Unix seconds
      * @param {number} [offset] Result offset
      * @param {number} [limit] Page size
      * @param {SchedulerListV1OrderEnum} [order] Start-time order
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerListV1(language: SchedulerListV1LanguageEnum, projectId: number, v?: SchedulerListV1VEnum, channelId?: number, dateFrom?: number, dateTo?: number, offset?: number, limit?: number, order?: SchedulerListV1OrderEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListSchedulerResponse>>;
+    schedulerListV1(language: SchedulerListV1LanguageEnum, projectId: number, v?: SchedulerListV1VEnum, channelId?: number, dateFrom?: number, dateTo?: number, offset?: number, limit?: number, order?: SchedulerListV1OrderEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListSchedulerResponse>>;
     /**
-     *
+     * Send a stop request for the active video task in project_id. Requires an active scheduler/live stream and a task_id/video_id mapping consistent with the saved schedule; absence or mismatch produces scheduler.active_task_not_found/active_task_mismatch. Success means the external scheduler responded successfully, not that the schedule was deleted.
      * @summary Stop the active project video schedule
      * @param {StopSchedulerRequest} stopSchedulerRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerStopV1(stopSchedulerRequest: StopSchedulerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    schedulerStopV1(stopSchedulerRequest: StopSchedulerRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Fully replace the video, time interval, and channel_ids list of future schedule id in project_id. All replacement fields are required; this is not a partial patch. A schedule that has already started produces scheduler.not_future; an overlap produces scheduler.time_overlap. Times are Unix seconds; end_at>start_at and start_at must be in the future. Success confirms the external task was updated if necessary and the schedule was saved.
      * @summary Replace a future project video schedule
      * @param {UpdateSchedulerRequest} updateSchedulerRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    schedulerUpdateV1(updateSchedulerRequest: UpdateSchedulerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    schedulerUpdateV1(updateSchedulerRequest: UpdateSchedulerRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * SchedulerApi - factory interface
@@ -161,7 +173,7 @@ export declare const SchedulerApiFp: (configuration?: Configuration) => {
  */
 export declare const SchedulerApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Create a video schedule for project_id: channel_ids are internal channel group_id values from search in the same project; video.id is an accessible video. start_at/end_at are integer Unix seconds, with end_at>start_at. When start_now=false, the start must be in the future; when true, the end must be in the future. Checks channel editing permissions, plan limits, and absence of overlaps. Returns an internal id after creating the external task and saving the schedule; does not promise immediate broadcast start.
      * @summary Create a project video schedule
      * @param {SchedulerApiSchedulerCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -169,7 +181,7 @@ export declare const SchedulerApiFactory: (configuration?: Configuration, basePa
      */
     schedulerCreateV1(requestParameters: SchedulerApiSchedulerCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CreateSchedulerResponse>;
     /**
-     *
+     * Delete unexpired schedule id in project_id and its associated external task. An expired schedule produces scheduler.expired. This deletes the schedule; stop the current active task separately with POST /method/scheduler/stop.
      * @summary Delete a non-expired project video schedule
      * @param {SchedulerApiSchedulerDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -177,7 +189,7 @@ export declare const SchedulerApiFactory: (configuration?: Configuration, basePa
      */
     schedulerDeleteV1(requestParameters: SchedulerApiSchedulerDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read a schedule by internal id in project_id. Returns Unix seconds intervals, the complete internal channel_ids list, and video metadata or null. Obtain the ID from GET /method/scheduler; reading does not start the task.
      * @summary Get a project video schedule by id
      * @param {SchedulerApiSchedulerGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -185,7 +197,7 @@ export declare const SchedulerApiFactory: (configuration?: Configuration, basePa
      */
     schedulerGetV1(requestParameters: SchedulerApiSchedulerGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SchedulerItemResponse>;
     /**
-     *
+     * Read unexpired video schedules for project_id with channel_id/date_from/date_to filters, order, and limit/offset. Times are Unix seconds; offset is the number of records to skip. Returns results/total and may contain video=null. The schedule ID differs from the external scheduler taskId.
      * @summary List non-expired project video schedules
      * @param {SchedulerApiSchedulerListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -193,7 +205,7 @@ export declare const SchedulerApiFactory: (configuration?: Configuration, basePa
      */
     schedulerListV1(requestParameters: SchedulerApiSchedulerListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListSchedulerResponse>;
     /**
-     *
+     * Send a stop request for the active video task in project_id. Requires an active scheduler/live stream and a task_id/video_id mapping consistent with the saved schedule; absence or mismatch produces scheduler.active_task_not_found/active_task_mismatch. Success means the external scheduler responded successfully, not that the schedule was deleted.
      * @summary Stop the active project video schedule
      * @param {SchedulerApiSchedulerStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -201,7 +213,7 @@ export declare const SchedulerApiFactory: (configuration?: Configuration, basePa
      */
     schedulerStopV1(requestParameters: SchedulerApiSchedulerStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Fully replace the video, time interval, and channel_ids list of future schedule id in project_id. All replacement fields are required; this is not a partial patch. A schedule that has already started produces scheduler.not_future; an overlap produces scheduler.time_overlap. Times are Unix seconds; end_at>start_at and start_at must be in the future. Success confirms the external task was updated if necessary and the schedule was saved.
      * @summary Replace a future project video schedule
      * @param {SchedulerApiSchedulerUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -216,7 +228,7 @@ export declare const SchedulerApiFactory: (configuration?: Configuration, basePa
  */
 export interface SchedulerApiInterface {
     /**
-     *
+     * Create a video schedule for project_id: channel_ids are internal channel group_id values from search in the same project; video.id is an accessible video. start_at/end_at are integer Unix seconds, with end_at>start_at. When start_now=false, the start must be in the future; when true, the end must be in the future. Checks channel editing permissions, plan limits, and absence of overlaps. Returns an internal id after creating the external task and saving the schedule; does not promise immediate broadcast start.
      * @summary Create a project video schedule
      * @param {SchedulerApiSchedulerCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -225,7 +237,7 @@ export interface SchedulerApiInterface {
      */
     schedulerCreateV1(requestParameters: SchedulerApiSchedulerCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CreateSchedulerResponse>;
     /**
-     *
+     * Delete unexpired schedule id in project_id and its associated external task. An expired schedule produces scheduler.expired. This deletes the schedule; stop the current active task separately with POST /method/scheduler/stop.
      * @summary Delete a non-expired project video schedule
      * @param {SchedulerApiSchedulerDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -234,7 +246,7 @@ export interface SchedulerApiInterface {
      */
     schedulerDeleteV1(requestParameters: SchedulerApiSchedulerDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read a schedule by internal id in project_id. Returns Unix seconds intervals, the complete internal channel_ids list, and video metadata or null. Obtain the ID from GET /method/scheduler; reading does not start the task.
      * @summary Get a project video schedule by id
      * @param {SchedulerApiSchedulerGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -243,7 +255,7 @@ export interface SchedulerApiInterface {
      */
     schedulerGetV1(requestParameters: SchedulerApiSchedulerGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SchedulerItemResponse>;
     /**
-     *
+     * Read unexpired video schedules for project_id with channel_id/date_from/date_to filters, order, and limit/offset. Times are Unix seconds; offset is the number of records to skip. Returns results/total and may contain video=null. The schedule ID differs from the external scheduler taskId.
      * @summary List non-expired project video schedules
      * @param {SchedulerApiSchedulerListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -252,7 +264,7 @@ export interface SchedulerApiInterface {
      */
     schedulerListV1(requestParameters: SchedulerApiSchedulerListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListSchedulerResponse>;
     /**
-     *
+     * Send a stop request for the active video task in project_id. Requires an active scheduler/live stream and a task_id/video_id mapping consistent with the saved schedule; absence or mismatch produces scheduler.active_task_not_found/active_task_mismatch. Success means the external scheduler responded successfully, not that the schedule was deleted.
      * @summary Stop the active project video schedule
      * @param {SchedulerApiSchedulerStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -261,7 +273,7 @@ export interface SchedulerApiInterface {
      */
     schedulerStopV1(requestParameters: SchedulerApiSchedulerStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Fully replace the video, time interval, and channel_ids list of future schedule id in project_id. All replacement fields are required; this is not a partial patch. A schedule that has already started produces scheduler.not_future; an overlap produces scheduler.time_overlap. Times are Unix seconds; end_at>start_at and start_at must be in the future. Success confirms the external task was updated if necessary and the schedule was saved.
      * @summary Replace a future project video schedule
      * @param {SchedulerApiSchedulerUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -281,7 +293,13 @@ export interface SchedulerApiSchedulerCreateV1Request {
      * @type {CreateSchedulerRequest}
      * @memberof SchedulerApiSchedulerCreateV1
      */
-    readonly CreateSchedulerRequest: CreateSchedulerRequest;
+    readonly 'CreateSchedulerRequest': CreateSchedulerRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof SchedulerApiSchedulerCreateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for schedulerDeleteV1 operation in SchedulerApi.
@@ -290,29 +308,35 @@ export interface SchedulerApiSchedulerCreateV1Request {
  */
 export interface SchedulerApiSchedulerDeleteV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof SchedulerApiSchedulerDeleteV1
      */
-    readonly language: SchedulerDeleteV1LanguageEnum;
+    readonly 'language': SchedulerDeleteV1LanguageEnum;
     /**
      * Backend scheduler id
      * @type {number}
      * @memberof SchedulerApiSchedulerDeleteV1
      */
-    readonly id: number;
+    readonly 'id': number;
     /**
      * Project id
      * @type {number}
      * @memberof SchedulerApiSchedulerDeleteV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof SchedulerApiSchedulerDeleteV1
      */
-    readonly v?: SchedulerDeleteV1VEnum;
+    readonly 'v'?: SchedulerDeleteV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof SchedulerApiSchedulerDeleteV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for schedulerGetV1 operation in SchedulerApi.
@@ -321,29 +345,35 @@ export interface SchedulerApiSchedulerDeleteV1Request {
  */
 export interface SchedulerApiSchedulerGetV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof SchedulerApiSchedulerGetV1
      */
-    readonly language: SchedulerGetV1LanguageEnum;
+    readonly 'language': SchedulerGetV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof SchedulerApiSchedulerGetV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Scheduler item id
      * @type {number}
      * @memberof SchedulerApiSchedulerGetV1
      */
-    readonly id: number;
+    readonly 'id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof SchedulerApiSchedulerGetV1
      */
-    readonly v?: SchedulerGetV1VEnum;
+    readonly 'v'?: SchedulerGetV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof SchedulerApiSchedulerGetV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for schedulerListV1 operation in SchedulerApi.
@@ -352,59 +382,65 @@ export interface SchedulerApiSchedulerGetV1Request {
  */
 export interface SchedulerApiSchedulerListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof SchedulerApiSchedulerListV1
      */
-    readonly language: SchedulerListV1LanguageEnum;
+    readonly 'language': SchedulerListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof SchedulerApiSchedulerListV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof SchedulerApiSchedulerListV1
      */
-    readonly v?: SchedulerListV1VEnum;
+    readonly 'v'?: SchedulerListV1VEnum;
     /**
-     * Filter by associated channel id
+     * Filter by internal numeric StreamVi channel ID (group_id from channel search), not an external/platform ID.
      * @type {number}
      * @memberof SchedulerApiSchedulerListV1
      */
-    readonly channel_id?: number;
+    readonly 'channel_id'?: number;
     /**
      * Filter interval start in Unix seconds
      * @type {number}
      * @memberof SchedulerApiSchedulerListV1
      */
-    readonly date_from?: number;
+    readonly 'date_from'?: number;
     /**
      * Filter interval end in Unix seconds
      * @type {number}
      * @memberof SchedulerApiSchedulerListV1
      */
-    readonly date_to?: number;
+    readonly 'date_to'?: number;
     /**
      * Result offset
      * @type {number}
      * @memberof SchedulerApiSchedulerListV1
      */
-    readonly offset?: number;
+    readonly 'offset'?: number;
     /**
      * Page size
      * @type {number}
      * @memberof SchedulerApiSchedulerListV1
      */
-    readonly limit?: number;
+    readonly 'limit'?: number;
     /**
      * Start-time order
      * @type {'asc' | 'desc'}
      * @memberof SchedulerApiSchedulerListV1
      */
-    readonly order?: SchedulerListV1OrderEnum;
+    readonly 'order'?: SchedulerListV1OrderEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof SchedulerApiSchedulerListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for schedulerStopV1 operation in SchedulerApi.
@@ -417,7 +453,13 @@ export interface SchedulerApiSchedulerStopV1Request {
      * @type {StopSchedulerRequest}
      * @memberof SchedulerApiSchedulerStopV1
      */
-    readonly StopSchedulerRequest: StopSchedulerRequest;
+    readonly 'StopSchedulerRequest': StopSchedulerRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof SchedulerApiSchedulerStopV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for schedulerUpdateV1 operation in SchedulerApi.
@@ -430,7 +472,13 @@ export interface SchedulerApiSchedulerUpdateV1Request {
      * @type {UpdateSchedulerRequest}
      * @memberof SchedulerApiSchedulerUpdateV1
      */
-    readonly UpdateSchedulerRequest: UpdateSchedulerRequest;
+    readonly 'UpdateSchedulerRequest': UpdateSchedulerRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof SchedulerApiSchedulerUpdateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * SchedulerApi - object-oriented interface
@@ -440,7 +488,7 @@ export interface SchedulerApiSchedulerUpdateV1Request {
  */
 export declare class SchedulerApi extends BaseAPI implements SchedulerApiInterface {
     /**
-     *
+     * Create a video schedule for project_id: channel_ids are internal channel group_id values from search in the same project; video.id is an accessible video. start_at/end_at are integer Unix seconds, with end_at>start_at. When start_now=false, the start must be in the future; when true, the end must be in the future. Checks channel editing permissions, plan limits, and absence of overlaps. Returns an internal id after creating the external task and saving the schedule; does not promise immediate broadcast start.
      * @summary Create a project video schedule
      * @param {SchedulerApiSchedulerCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -449,7 +497,7 @@ export declare class SchedulerApi extends BaseAPI implements SchedulerApiInterfa
      */
     schedulerCreateV1(requestParameters: SchedulerApiSchedulerCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateSchedulerResponse, any, {}, any>>;
     /**
-     *
+     * Delete unexpired schedule id in project_id and its associated external task. An expired schedule produces scheduler.expired. This deletes the schedule; stop the current active task separately with POST /method/scheduler/stop.
      * @summary Delete a non-expired project video schedule
      * @param {SchedulerApiSchedulerDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -458,7 +506,7 @@ export declare class SchedulerApi extends BaseAPI implements SchedulerApiInterfa
      */
     schedulerDeleteV1(requestParameters: SchedulerApiSchedulerDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Read a schedule by internal id in project_id. Returns Unix seconds intervals, the complete internal channel_ids list, and video metadata or null. Obtain the ID from GET /method/scheduler; reading does not start the task.
      * @summary Get a project video schedule by id
      * @param {SchedulerApiSchedulerGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -467,7 +515,7 @@ export declare class SchedulerApi extends BaseAPI implements SchedulerApiInterfa
      */
     schedulerGetV1(requestParameters: SchedulerApiSchedulerGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SchedulerItemResponse, any, {}, any>>;
     /**
-     *
+     * Read unexpired video schedules for project_id with channel_id/date_from/date_to filters, order, and limit/offset. Times are Unix seconds; offset is the number of records to skip. Returns results/total and may contain video=null. The schedule ID differs from the external scheduler taskId.
      * @summary List non-expired project video schedules
      * @param {SchedulerApiSchedulerListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -476,7 +524,7 @@ export declare class SchedulerApi extends BaseAPI implements SchedulerApiInterfa
      */
     schedulerListV1(requestParameters: SchedulerApiSchedulerListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListSchedulerResponse, any, {}, any>>;
     /**
-     *
+     * Send a stop request for the active video task in project_id. Requires an active scheduler/live stream and a task_id/video_id mapping consistent with the saved schedule; absence or mismatch produces scheduler.active_task_not_found/active_task_mismatch. Success means the external scheduler responded successfully, not that the schedule was deleted.
      * @summary Stop the active project video schedule
      * @param {SchedulerApiSchedulerStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -485,7 +533,7 @@ export declare class SchedulerApi extends BaseAPI implements SchedulerApiInterfa
      */
     schedulerStopV1(requestParameters: SchedulerApiSchedulerStopV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Fully replace the video, time interval, and channel_ids list of future schedule id in project_id. All replacement fields are required; this is not a partial patch. A schedule that has already started produces scheduler.not_future; an overlap produces scheduler.time_overlap. Times are Unix seconds; end_at>start_at and start_at must be in the future. Success confirms the external task was updated if necessary and the schedule was saved.
      * @summary Replace a future project video schedule
      * @param {SchedulerApiSchedulerUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

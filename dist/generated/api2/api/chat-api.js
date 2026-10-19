@@ -30,15 +30,16 @@ const base_1 = require("../base");
 const ChatApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Get the secret chat key for project_id. This is a connection credential, not a video publishing key or a widget actions list. The key is not intended for logs/examples; rotate it with PUT /method/chat/key.
          * @summary Get chat key
-         * @param {ChatGatewayKeyV1LanguageEnum} language Current language
+         * @param {ChatGatewayKeyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {ChatGatewayKeyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chatGatewayKeyV1: async (language, projectId, v, options = {}) => {
+        chatGatewayKeyV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('chatGatewayKeyV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -53,9 +54,12 @@ const ChatApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["chat:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["chat:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["chat:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -68,6 +72,9 @@ const ChatApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -77,13 +84,14 @@ const ChatApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Rotate the secret chat key of project_id and return a new credential. This changes chat access without changing the publishing stream key or sending messages. Consumers must use the new key after rotation.
          * @summary Rotate chat key
          * @param {SiteChatKeyRequest} siteChatKeyRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chatGatewayRotateKeyV1: async (siteChatKeyRequest, options = {}) => {
+        chatGatewayRotateKeyV1: async (siteChatKeyRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'siteChatKeyRequest' is not null or undefined
             (0, common_1.assertParamExists)('chatGatewayRotateKeyV1', 'siteChatKeyRequest', siteChatKeyRequest);
@@ -97,10 +105,16 @@ const ChatApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["chat:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["chat:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -122,31 +136,33 @@ const ChatApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.ChatApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Get the secret chat key for project_id. This is a connection credential, not a video publishing key or a widget actions list. The key is not intended for logs/examples; rotate it with PUT /method/chat/key.
          * @summary Get chat key
-         * @param {ChatGatewayKeyV1LanguageEnum} language Current language
+         * @param {ChatGatewayKeyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {ChatGatewayKeyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async chatGatewayKeyV1(language, projectId, v, options) {
+        async chatGatewayKeyV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.chatGatewayKeyV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.chatGatewayKeyV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChatApi.chatGatewayKeyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Rotate the secret chat key of project_id and return a new credential. This changes chat access without changing the publishing stream key or sending messages. Consumers must use the new key after rotation.
          * @summary Rotate chat key
          * @param {SiteChatKeyRequest} siteChatKeyRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async chatGatewayRotateKeyV1(siteChatKeyRequest, options) {
+        async chatGatewayRotateKeyV1(siteChatKeyRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.chatGatewayRotateKeyV1(siteChatKeyRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.chatGatewayRotateKeyV1(siteChatKeyRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ChatApi.chatGatewayRotateKeyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -162,24 +178,24 @@ const ChatApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.ChatApiFp)(configuration);
     return {
         /**
-         *
+         * Get the secret chat key for project_id. This is a connection credential, not a video publishing key or a widget actions list. The key is not intended for logs/examples; rotate it with PUT /method/chat/key.
          * @summary Get chat key
          * @param {ChatApiChatGatewayKeyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         chatGatewayKeyV1(requestParameters, options) {
-            return localVarFp.chatGatewayKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.chatGatewayKeyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Rotate the secret chat key of project_id and return a new credential. This changes chat access without changing the publishing stream key or sending messages. Consumers must use the new key after rotation.
          * @summary Rotate chat key
          * @param {ChatApiChatGatewayRotateKeyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         chatGatewayRotateKeyV1(requestParameters, options) {
-            return localVarFp.chatGatewayRotateKeyV1(requestParameters.SiteChatKeyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.chatGatewayRotateKeyV1(requestParameters['SiteChatKeyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -192,7 +208,7 @@ exports.ChatApiFactory = ChatApiFactory;
  */
 class ChatApi extends base_1.BaseAPI {
     /**
-     *
+     * Get the secret chat key for project_id. This is a connection credential, not a video publishing key or a widget actions list. The key is not intended for logs/examples; rotate it with PUT /method/chat/key.
      * @summary Get chat key
      * @param {ChatApiChatGatewayKeyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -200,10 +216,10 @@ class ChatApi extends base_1.BaseAPI {
      * @memberof ChatApi
      */
     chatGatewayKeyV1(requestParameters, options) {
-        return (0, exports.ChatApiFp)(this.configuration).chatGatewayKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChatApiFp)(this.configuration).chatGatewayKeyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Rotate the secret chat key of project_id and return a new credential. This changes chat access without changing the publishing stream key or sending messages. Consumers must use the new key after rotation.
      * @summary Rotate chat key
      * @param {ChatApiChatGatewayRotateKeyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -211,7 +227,7 @@ class ChatApi extends base_1.BaseAPI {
      * @memberof ChatApi
      */
     chatGatewayRotateKeyV1(requestParameters, options) {
-        return (0, exports.ChatApiFp)(this.configuration).chatGatewayRotateKeyV1(requestParameters.SiteChatKeyRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ChatApiFp)(this.configuration).chatGatewayRotateKeyV1(requestParameters['SiteChatKeyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ChatApi = ChatApi;

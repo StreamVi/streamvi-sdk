@@ -48,13 +48,13 @@ export interface PlanStorageResponse {
      */
     'max': number;
     /**
-     * Price per gb (RUB)
+     * Price per gb (RUB). Amount in kopecks (RUB): 12345 = 123.45 RUB. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanStorageResponse
      */
     'price_rub': number;
     /**
-     * Price per gb (USD)
+     * Price per gb (USD). Amount in cents (USD): 12345 = 123.45 USD. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanStorageResponse
      */

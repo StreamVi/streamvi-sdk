@@ -1,5 +1,9 @@
 # StreamVi SDK (Axios-based)
 
+## Version 3.0.0
+
+Regenerated from the production API schema: 354 operations, including 73 new operations. Before upgrading from 2.x, read the [changes and migration notes](CHANGELOG.md). Some method signatures have changed.
+
 Library for working with StreamVi API along with OAuth authorization example using [passport-streamvi](https://www.npmjs.com/package/passport-streamvi) library.
 
 API methods documentation is available at: [https://dev.streamvi.io](https://dev.streamvi.io)
@@ -28,7 +32,7 @@ npm install git+https://github.com/StreamVi/streamvi-sdk.git
 Or with specific version/tag:
 
 ```bash
-npm install git+https://github.com/StreamVi/streamvi-sdk.git#v1.0.2
+npm install git+https://github.com/StreamVi/streamvi-sdk.git#v3.0.0
 ```
 
 ### Local development install
@@ -98,47 +102,7 @@ async function getPaySettings(accessToken: string, projectId: number, language: 
 
 After generation, the following API clients are available:
 
-- [AccountApi](src/generated/api2/docs/AccountApi.md)
-- [AnalyticsApi](src/generated/api2/docs/AnalyticsApi.md)
-- [AuthApi](src/generated/api2/docs/AuthApi.md)
-- [BlogPageApi](src/generated/api2/docs/BlogPageApi.md)
-- [BlogPageTagApi](src/generated/api2/docs/BlogPageTagApi.md)
-- [BroadcastApi](src/generated/api2/docs/BroadcastApi.md)
-- [CentrifugeApi](src/generated/api2/docs/CentrifugeApi.md)
-- [ChannelApi](src/generated/api2/docs/ChannelApi.md)
-- [ChannelSettingsApi](src/generated/api2/docs/ChannelSettingsApi.md)
-- [ChatGatewayApi](src/generated/api2/docs/ChatGatewayApi.md)
-- [HelpPageApi](src/generated/api2/docs/HelpPageApi.md)
-- [LiveApi](src/generated/api2/docs/LiveApi.md)
-- [MoneyFlowApi](src/generated/api2/docs/MoneyFlowApi.md)
-- [NotifyHistoryApi](src/generated/api2/docs/NotifyHistoryApi.md)
-- [NotifyUserApi](src/generated/api2/docs/NotifyUserApi.md)
-- [PaySettingApi](src/generated/api2/docs/PaySettingApi.md)
-- [PaymentApi](src/generated/api2/docs/PaymentApi.md)
-- [PaySystemApi](src/generated/api2/docs/PaySystemApi.md)
-- [PayoutApi](src/generated/api2/docs/PayoutApi.md)
-- [PlanRestreamApi](src/generated/api2/docs/PlanRestreamApi.md)
-- [PlanStorageApi](src/generated/api2/docs/PlanStorageApi.md)
-- [PlanTranscodingApi](src/generated/api2/docs/PlanTranscodingApi.md)
-- [PlatformsApi](src/generated/api2/docs/PlatformsApi.md)
-- [PolicyPageApi](src/generated/api2/docs/PolicyPageApi.md)
-- [ProjectApi](src/generated/api2/docs/ProjectApi.md)
-- [ProjectChannelApi](src/generated/api2/docs/ProjectChannelApi.md)
-- [ProjectChannelInviteApi](src/generated/api2/docs/ProjectChannelInviteApi.md)
-- [ProjectHistoryApi](src/generated/api2/docs/ProjectHistoryApi.md)
-- [PromoApi](src/generated/api2/docs/PromoApi.md)
-- [PullServersApi](src/generated/api2/docs/PullServersApi.md)
-- [ReferralsApi](src/generated/api2/docs/ReferralsApi.md)
-- [ReleaseApi](src/generated/api2/docs/ReleaseApi.md)
-- [RtmpServerApi](src/generated/api2/docs/RtmpServerApi.md)
-- [SocialsApi](src/generated/api2/docs/SocialsApi.md)
-- [StreamKeyApi](src/generated/api2/docs/StreamKeyApi.md)
-- [StreamPullKeysApi](src/generated/api2/docs/StreamPullKeysApi.md)
-- [TranscodersApi](src/generated/api2/docs/TranscodersApi.md)
-- [TransactionsApi](src/generated/api2/docs/TransactionsApi.md)
-- [UserApi](src/generated/api2/docs/UserApi.md)
-
-The full list is available in `src/generated/api2/api.ts`
+The full class list is available in the [generated client exports](src/generated/api2/api.ts). Each class file contains method signatures, parameters and response types.
 
 ## Project Structure
 

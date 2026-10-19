@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **status** | **string** | Page status | [default to StatusEnum_Backlog]
 **date_update** | **string** | Date last update | [default to undefined]
 **date_create** | **string** | Date create | [default to undefined]
-**icon** | **object** | Page icon | [optional] [default to undefined]
+**icon** | **object** |  | [optional] [default to undefined]
 **title** | **string** | Subject | [default to undefined]
 **language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
 **language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]

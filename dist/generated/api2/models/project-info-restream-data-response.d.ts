@@ -53,13 +53,13 @@ export interface ProjectInfoRestreamDataResponse {
      */
     'type': ProjectInfoRestreamDataResponseTypeEnum;
     /**
-     *
+     * Tariff base price (RUB). Amount in kopecks (RUB): 12345 = 123.45 RUB. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof ProjectInfoRestreamDataResponse
      */
     'price_rub': number | null;
     /**
-     *
+     * Tariff base price (USD). Amount in cents (USD): 12345 = 123.45 USD. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof ProjectInfoRestreamDataResponse
      */

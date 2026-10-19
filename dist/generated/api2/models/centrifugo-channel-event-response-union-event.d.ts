@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { CentrifugoChannelConnectionsResponse } from './centrifugo-channel-connections-response';
 import type { CentrifugoChannelStartedResponse } from './centrifugo-channel-started-response';
 import type { CentrifugoChannelStatusResponse } from './centrifugo-channel-status-response';
 import type { CentrifugoChannelStoppedResponse } from './centrifugo-channel-stopped-response';
@@ -18,6 +19,8 @@ import type { CentrifugoChannelStoppedResponse } from './centrifugo-channel-stop
  * @export
  */
 export type CentrifugoChannelEventResponseUnionEvent = {
+    event: 'channel-connections-changed';
+} & CentrifugoChannelConnectionsResponse | {
     event: 'channel-started';
 } & CentrifugoChannelStartedResponse | {
     event: 'channel-status';

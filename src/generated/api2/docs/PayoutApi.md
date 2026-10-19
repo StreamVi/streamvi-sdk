@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost*
 # **payoutCreateV1**
 > SuccessResponse payoutCreateV1(payoutCreateRequestBodyDto)
 
+Create a payout request for project_id to wallet_value through payout_system_account_id. amount uses minor units of the project currency, which must match the payout account currency (10000 = 100 major units). Success confirms the request, not a completed provider transfer; read available systems and restrictions with GET /method/payout/prepare.
 
 ### Example
 
@@ -23,14 +24,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PayoutApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let payoutCreateRequestBodyDto: PayoutCreateRequestBodyDto; //
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.payoutCreateV1(
     language,
     payoutCreateRequestBodyDto,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -39,8 +42,9 @@ const { status, data } = await apiInstance.payoutCreateV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **payoutCreateRequestBodyDto** | **PayoutCreateRequestBodyDto**|  | |
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -49,7 +53,7 @@ const { status, data } = await apiInstance.payoutCreateV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -68,6 +72,7 @@ const { status, data } = await apiInstance.payoutCreateV1(
 # **payoutPrepareV1**
 > PayoutSystemAccountListResponse payoutPrepareV1()
 
+Read payout systems/accounts available to the current user for project_id and data needed to prepare a request. This is a preview without creating a payout or debiting funds. Use the returned payout_system_account_id in POST /method/payout/create.
 
 ### Example
 
@@ -80,14 +85,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PayoutApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.payoutPrepareV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -95,9 +102,10 @@ const { status, data } = await apiInstance.payoutPrepareV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -106,7 +114,7 @@ const { status, data } = await apiInstance.payoutPrepareV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 

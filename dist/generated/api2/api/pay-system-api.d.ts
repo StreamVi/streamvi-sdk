@@ -29,126 +29,141 @@ import type { WalletConnectPaymentSubmitBodyDto } from '../models';
  */
 export declare const PaySystemApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Create a Payoneer payment challenge for an existing payment_id and return JSON with a redirect link. Despite using GET, this creates an external payment session; an already successful payment is rejected. Success does not confirm payment: the user completes the process with the provider, and status is read separately.
      * @summary Create payoneer payment challenge redirect url
-     * @param {PaySystemCreateChallengeV1LanguageEnum} language Current language
+     * @param {PaySystemCreateChallengeV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {PaySystemCreateChallengeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemCreateChallengeV1: (language: PaySystemCreateChallengeV1LanguageEnum, paymentId: number, v?: PaySystemCreateChallengeV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySystemCreateChallengeV1: (language: PaySystemCreateChallengeV1LanguageEnum, paymentId: number, v?: PaySystemCreateChallengeV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Create a T-Bank payment challenge for an existing payment_id and return JSON with a redirect link. GET initiates an external payment session; an already successful payment is rejected. Payment completion and status checks happen separately.
      * @summary Create t-bank payment challenge redirect url
-     * @param {PaySystemCreateTBankV1LanguageEnum} language Current language
+     * @param {PaySystemCreateTBankV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {PaySystemCreateTBankV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemCreateTBankV1: (language: PaySystemCreateTBankV1LanguageEnum, paymentId: number, v?: PaySystemCreateTBankV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySystemCreateTBankV1: (language: PaySystemCreateTBankV1LanguageEnum, paymentId: number, v?: PaySystemCreateTBankV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Create a Unitpay payment challenge for an existing payment_id and return JSON with a redirect link. GET creates a payment session. An already successful payment is rejected. This is neither an HTTP redirect from the site nor payment confirmation.
      * @summary Create unitpay payment challenge redirect url
-     * @param {PaySystemCreateUnitpayV1LanguageEnum} language Current language
+     * @param {PaySystemCreateUnitpayV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {PaySystemCreateUnitpayV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemCreateUnitpayV1: (language: PaySystemCreateUnitpayV1LanguageEnum, paymentId: number, v?: PaySystemCreateUnitpayV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySystemCreateUnitpayV1: (language: PaySystemCreateUnitpayV1LanguageEnum, paymentId: number, v?: PaySystemCreateUnitpayV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read available payment systems for the current user. Returns results with provider parameters; this is a catalog, not payment creation or transaction signing.
      * @summary Load available pay systems
+     * @param {PaySystemListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {PaySystemListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemListV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySystemListV1: (language: PaySystemListV1LanguageEnum, v?: PaySystemListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create TonConnect payment intent
      * @param {number} paymentId Payment id
      * @param {string} payerAddress Connected TON wallet address / payer
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tonConnectIntentV1: (paymentId: number, payerAddress: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    tonConnectIntentV1: (paymentId: number, payerAddress: string, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get TonConnect payment verification status
-     * @param {TonConnectStatusV1LanguageEnum} language Current language
+     * @param {TonConnectStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {TonConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tonConnectStatusV1: (language: TonConnectStatusV1LanguageEnum, paymentId: number, v?: TonConnectStatusV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    tonConnectStatusV1: (language: TonConnectStatusV1LanguageEnum, paymentId: number, v?: TonConnectStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
      * @summary Submit TonConnect payment transaction
      * @param {TonConnectPaymentSubmitBodyDto} tonConnectPaymentSubmitBodyDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tonConnectSubmitV1: (tonConnectPaymentSubmitBodyDto: TonConnectPaymentSubmitBodyDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    tonConnectSubmitV1: (tonConnectPaymentSubmitBodyDto: TonConnectPaymentSubmitBodyDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create TRON USDT deposit payment intent
-     * @param {TronPaymentIntentV1LanguageEnum} language Current language
+     * @param {TronPaymentIntentV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {TronPaymentIntentV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tronPaymentIntentV1: (language: TronPaymentIntentV1LanguageEnum, paymentId: number, v?: TronPaymentIntentV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    tronPaymentIntentV1: (language: TronPaymentIntentV1LanguageEnum, paymentId: number, v?: TronPaymentIntentV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get TRON USDT payment status
-     * @param {TronPaymentStatusV1LanguageEnum} language Current language
+     * @param {TronPaymentStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {TronPaymentStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tronPaymentStatusV1: (language: TronPaymentStatusV1LanguageEnum, paymentId: number, v?: TronPaymentStatusV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    tronPaymentStatusV1: (language: TronPaymentStatusV1LanguageEnum, paymentId: number, v?: TronPaymentStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Disabled legacy endpoint for submitting a TRON tx_hash. The current implementation always returns HTTP 410 Gone with instructions to wait for the automatic deposit scanner. Available only to a project subject; do not use as a working payment tool.
      * @summary Submit TRON USDT transaction hash (disabled)
-     * @param {TronPaymentSubmitV1LanguageEnum} language Current language
+     * @param {TronPaymentSubmitV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {TronPaymentSubmitBodyDto} tronPaymentSubmitBodyDto
      * @param {TronPaymentSubmitV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tronPaymentSubmitV1: (language: TronPaymentSubmitV1LanguageEnum, tronPaymentSubmitBodyDto: TronPaymentSubmitBodyDto, v?: TronPaymentSubmitV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    tronPaymentSubmitV1: (language: TronPaymentSubmitV1LanguageEnum, tronPaymentSubmitBodyDto: TronPaymentSubmitBodyDto, v?: TronPaymentSubmitV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create WalletConnect payment intent
      * @param {number} paymentId Payment id
      * @param {string} payerAddress Connected wallet address / EVM payer
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    walletConnectIntentV1: (paymentId: number, payerAddress: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    walletConnectIntentV1: (paymentId: number, payerAddress: string, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get WalletConnect payment verification status
-     * @param {WalletConnectStatusV1LanguageEnum} language Current language
+     * @param {WalletConnectStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {WalletConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    walletConnectStatusV1: (language: WalletConnectStatusV1LanguageEnum, paymentId: number, v?: WalletConnectStatusV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    walletConnectStatusV1: (language: WalletConnectStatusV1LanguageEnum, paymentId: number, v?: WalletConnectStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
      * @summary Submit WalletConnect payment transaction hash
      * @param {WalletConnectPaymentSubmitBodyDto} walletConnectPaymentSubmitBodyDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    walletConnectSubmitV1: (walletConnectPaymentSubmitBodyDto: WalletConnectPaymentSubmitBodyDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    walletConnectSubmitV1: (walletConnectPaymentSubmitBodyDto: WalletConnectPaymentSubmitBodyDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PaySystemApi - functional programming interface
@@ -156,126 +171,141 @@ export declare const PaySystemApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const PaySystemApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Create a Payoneer payment challenge for an existing payment_id and return JSON with a redirect link. Despite using GET, this creates an external payment session; an already successful payment is rejected. Success does not confirm payment: the user completes the process with the provider, and status is read separately.
      * @summary Create payoneer payment challenge redirect url
-     * @param {PaySystemCreateChallengeV1LanguageEnum} language Current language
+     * @param {PaySystemCreateChallengeV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {PaySystemCreateChallengeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemCreateChallengeV1(language: PaySystemCreateChallengeV1LanguageEnum, paymentId: number, v?: PaySystemCreateChallengeV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayRedirectUrlDto>>;
+    paySystemCreateChallengeV1(language: PaySystemCreateChallengeV1LanguageEnum, paymentId: number, v?: PaySystemCreateChallengeV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayRedirectUrlDto>>;
     /**
-     *
+     * Create a T-Bank payment challenge for an existing payment_id and return JSON with a redirect link. GET initiates an external payment session; an already successful payment is rejected. Payment completion and status checks happen separately.
      * @summary Create t-bank payment challenge redirect url
-     * @param {PaySystemCreateTBankV1LanguageEnum} language Current language
+     * @param {PaySystemCreateTBankV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {PaySystemCreateTBankV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemCreateTBankV1(language: PaySystemCreateTBankV1LanguageEnum, paymentId: number, v?: PaySystemCreateTBankV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayRedirectUrlDto>>;
+    paySystemCreateTBankV1(language: PaySystemCreateTBankV1LanguageEnum, paymentId: number, v?: PaySystemCreateTBankV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayRedirectUrlDto>>;
     /**
-     *
+     * Create a Unitpay payment challenge for an existing payment_id and return JSON with a redirect link. GET creates a payment session. An already successful payment is rejected. This is neither an HTTP redirect from the site nor payment confirmation.
      * @summary Create unitpay payment challenge redirect url
-     * @param {PaySystemCreateUnitpayV1LanguageEnum} language Current language
+     * @param {PaySystemCreateUnitpayV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {PaySystemCreateUnitpayV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemCreateUnitpayV1(language: PaySystemCreateUnitpayV1LanguageEnum, paymentId: number, v?: PaySystemCreateUnitpayV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayRedirectUrlDto>>;
+    paySystemCreateUnitpayV1(language: PaySystemCreateUnitpayV1LanguageEnum, paymentId: number, v?: PaySystemCreateUnitpayV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayRedirectUrlDto>>;
     /**
-     *
+     * Read available payment systems for the current user. Returns results with provider parameters; this is a catalog, not payment creation or transaction signing.
      * @summary Load available pay systems
+     * @param {PaySystemListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {PaySystemListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemListV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaySystemsResponse>>;
+    paySystemListV1(language: PaySystemListV1LanguageEnum, v?: PaySystemListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaySystemsResponse>>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create TonConnect payment intent
      * @param {number} paymentId Payment id
      * @param {string} payerAddress Connected TON wallet address / payer
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tonConnectIntentV1(paymentId: number, payerAddress: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TonConnectPaymentIntentDto>>;
+    tonConnectIntentV1(paymentId: number, payerAddress: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TonConnectPaymentIntentDto>>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get TonConnect payment verification status
-     * @param {TonConnectStatusV1LanguageEnum} language Current language
+     * @param {TonConnectStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {TonConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tonConnectStatusV1(language: TonConnectStatusV1LanguageEnum, paymentId: number, v?: TonConnectStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TonConnectPaymentStatusDto>>;
+    tonConnectStatusV1(language: TonConnectStatusV1LanguageEnum, paymentId: number, v?: TonConnectStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TonConnectPaymentStatusDto>>;
     /**
-     *
+     * Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
      * @summary Submit TonConnect payment transaction
      * @param {TonConnectPaymentSubmitBodyDto} tonConnectPaymentSubmitBodyDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tonConnectSubmitV1(tonConnectPaymentSubmitBodyDto: TonConnectPaymentSubmitBodyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TonConnectPaymentStatusDto>>;
+    tonConnectSubmitV1(tonConnectPaymentSubmitBodyDto: TonConnectPaymentSubmitBodyDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TonConnectPaymentStatusDto>>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create TRON USDT deposit payment intent
-     * @param {TronPaymentIntentV1LanguageEnum} language Current language
+     * @param {TronPaymentIntentV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {TronPaymentIntentV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tronPaymentIntentV1(language: TronPaymentIntentV1LanguageEnum, paymentId: number, v?: TronPaymentIntentV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TronPaymentIntentDto>>;
+    tronPaymentIntentV1(language: TronPaymentIntentV1LanguageEnum, paymentId: number, v?: TronPaymentIntentV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TronPaymentIntentDto>>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get TRON USDT payment status
-     * @param {TronPaymentStatusV1LanguageEnum} language Current language
+     * @param {TronPaymentStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {TronPaymentStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tronPaymentStatusV1(language: TronPaymentStatusV1LanguageEnum, paymentId: number, v?: TronPaymentStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TronPaymentStatusDto>>;
+    tronPaymentStatusV1(language: TronPaymentStatusV1LanguageEnum, paymentId: number, v?: TronPaymentStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TronPaymentStatusDto>>;
     /**
-     *
+     * Disabled legacy endpoint for submitting a TRON tx_hash. The current implementation always returns HTTP 410 Gone with instructions to wait for the automatic deposit scanner. Available only to a project subject; do not use as a working payment tool.
      * @summary Submit TRON USDT transaction hash (disabled)
-     * @param {TronPaymentSubmitV1LanguageEnum} language Current language
+     * @param {TronPaymentSubmitV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {TronPaymentSubmitBodyDto} tronPaymentSubmitBodyDto
      * @param {TronPaymentSubmitV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    tronPaymentSubmitV1(language: TronPaymentSubmitV1LanguageEnum, tronPaymentSubmitBodyDto: TronPaymentSubmitBodyDto, v?: TronPaymentSubmitV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    tronPaymentSubmitV1(language: TronPaymentSubmitV1LanguageEnum, tronPaymentSubmitBodyDto: TronPaymentSubmitBodyDto, v?: TronPaymentSubmitV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create WalletConnect payment intent
      * @param {number} paymentId Payment id
      * @param {string} payerAddress Connected wallet address / EVM payer
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    walletConnectIntentV1(paymentId: number, payerAddress: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletConnectPaymentIntentDto>>;
+    walletConnectIntentV1(paymentId: number, payerAddress: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletConnectPaymentIntentDto>>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get WalletConnect payment verification status
-     * @param {WalletConnectStatusV1LanguageEnum} language Current language
+     * @param {WalletConnectStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} paymentId Payment id
      * @param {WalletConnectStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    walletConnectStatusV1(language: WalletConnectStatusV1LanguageEnum, paymentId: number, v?: WalletConnectStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletConnectPaymentStatusDto>>;
+    walletConnectStatusV1(language: WalletConnectStatusV1LanguageEnum, paymentId: number, v?: WalletConnectStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletConnectPaymentStatusDto>>;
     /**
-     *
+     * Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
      * @summary Submit WalletConnect payment transaction hash
      * @param {WalletConnectPaymentSubmitBodyDto} walletConnectPaymentSubmitBodyDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    walletConnectSubmitV1(walletConnectPaymentSubmitBodyDto: WalletConnectPaymentSubmitBodyDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletConnectPaymentStatusDto>>;
+    walletConnectSubmitV1(walletConnectPaymentSubmitBodyDto: WalletConnectPaymentSubmitBodyDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletConnectPaymentStatusDto>>;
 };
 /**
  * PaySystemApi - factory interface
@@ -283,7 +313,7 @@ export declare const PaySystemApiFp: (configuration?: Configuration) => {
  */
 export declare const PaySystemApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Create a Payoneer payment challenge for an existing payment_id and return JSON with a redirect link. Despite using GET, this creates an external payment session; an already successful payment is rejected. Success does not confirm payment: the user completes the process with the provider, and status is read separately.
      * @summary Create payoneer payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateChallengeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -291,7 +321,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto>;
     /**
-     *
+     * Create a T-Bank payment challenge for an existing payment_id and return JSON with a redirect link. GET initiates an external payment session; an already successful payment is rejected. Payment completion and status checks happen separately.
      * @summary Create t-bank payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateTBankV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -299,7 +329,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     paySystemCreateTBankV1(requestParameters: PaySystemApiPaySystemCreateTBankV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto>;
     /**
-     *
+     * Create a Unitpay payment challenge for an existing payment_id and return JSON with a redirect link. GET creates a payment session. An already successful payment is rejected. This is neither an HTTP redirect from the site nor payment confirmation.
      * @summary Create unitpay payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateUnitpayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -307,14 +337,15 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto>;
     /**
-     *
+     * Read available payment systems for the current user. Returns results with provider parameters; this is a catalog, not payment creation or transaction signing.
      * @summary Load available pay systems
+     * @param {PaySystemApiPaySystemListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<PaySystemsResponse>;
+    paySystemListV1(requestParameters: PaySystemApiPaySystemListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaySystemsResponse>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create TonConnect payment intent
      * @param {PaySystemApiTonConnectIntentV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -322,7 +353,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     tonConnectIntentV1(requestParameters: PaySystemApiTonConnectIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentIntentDto>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get TonConnect payment verification status
      * @param {PaySystemApiTonConnectStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -330,7 +361,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     tonConnectStatusV1(requestParameters: PaySystemApiTonConnectStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentStatusDto>;
     /**
-     *
+     * Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
      * @summary Submit TonConnect payment transaction
      * @param {PaySystemApiTonConnectSubmitV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -338,7 +369,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     tonConnectSubmitV1(requestParameters: PaySystemApiTonConnectSubmitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentStatusDto>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create TRON USDT deposit payment intent
      * @param {PaySystemApiTronPaymentIntentV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -346,7 +377,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     tronPaymentIntentV1(requestParameters: PaySystemApiTronPaymentIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TronPaymentIntentDto>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get TRON USDT payment status
      * @param {PaySystemApiTronPaymentStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -354,7 +385,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     tronPaymentStatusV1(requestParameters: PaySystemApiTronPaymentStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TronPaymentStatusDto>;
     /**
-     *
+     * Disabled legacy endpoint for submitting a TRON tx_hash. The current implementation always returns HTTP 410 Gone with instructions to wait for the automatic deposit scanner. Available only to a project subject; do not use as a working payment tool.
      * @summary Submit TRON USDT transaction hash (disabled)
      * @param {PaySystemApiTronPaymentSubmitV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -362,7 +393,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     tronPaymentSubmitV1(requestParameters: PaySystemApiTronPaymentSubmitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create WalletConnect payment intent
      * @param {PaySystemApiWalletConnectIntentV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -370,7 +401,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     walletConnectIntentV1(requestParameters: PaySystemApiWalletConnectIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<WalletConnectPaymentIntentDto>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get WalletConnect payment verification status
      * @param {PaySystemApiWalletConnectStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -378,7 +409,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
      */
     walletConnectStatusV1(requestParameters: PaySystemApiWalletConnectStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<WalletConnectPaymentStatusDto>;
     /**
-     *
+     * Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
      * @summary Submit WalletConnect payment transaction hash
      * @param {PaySystemApiWalletConnectSubmitV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -393,7 +424,7 @@ export declare const PaySystemApiFactory: (configuration?: Configuration, basePa
  */
 export interface PaySystemApiInterface {
     /**
-     *
+     * Create a Payoneer payment challenge for an existing payment_id and return JSON with a redirect link. Despite using GET, this creates an external payment session; an already successful payment is rejected. Success does not confirm payment: the user completes the process with the provider, and status is read separately.
      * @summary Create payoneer payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateChallengeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -402,7 +433,7 @@ export interface PaySystemApiInterface {
      */
     paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto>;
     /**
-     *
+     * Create a T-Bank payment challenge for an existing payment_id and return JSON with a redirect link. GET initiates an external payment session; an already successful payment is rejected. Payment completion and status checks happen separately.
      * @summary Create t-bank payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateTBankV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -411,7 +442,7 @@ export interface PaySystemApiInterface {
      */
     paySystemCreateTBankV1(requestParameters: PaySystemApiPaySystemCreateTBankV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto>;
     /**
-     *
+     * Create a Unitpay payment challenge for an existing payment_id and return JSON with a redirect link. GET creates a payment session. An already successful payment is rejected. This is neither an HTTP redirect from the site nor payment confirmation.
      * @summary Create unitpay payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateUnitpayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -420,15 +451,16 @@ export interface PaySystemApiInterface {
      */
     paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayRedirectUrlDto>;
     /**
-     *
+     * Read available payment systems for the current user. Returns results with provider parameters; this is a catalog, not payment creation or transaction signing.
      * @summary Load available pay systems
+     * @param {PaySystemApiPaySystemListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySystemApiInterface
      */
-    paySystemListV1(options?: RawAxiosRequestConfig): AxiosPromise<PaySystemsResponse>;
+    paySystemListV1(requestParameters: PaySystemApiPaySystemListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaySystemsResponse>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create TonConnect payment intent
      * @param {PaySystemApiTonConnectIntentV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -437,7 +469,7 @@ export interface PaySystemApiInterface {
      */
     tonConnectIntentV1(requestParameters: PaySystemApiTonConnectIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentIntentDto>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get TonConnect payment verification status
      * @param {PaySystemApiTonConnectStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -446,7 +478,7 @@ export interface PaySystemApiInterface {
      */
     tonConnectStatusV1(requestParameters: PaySystemApiTonConnectStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentStatusDto>;
     /**
-     *
+     * Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
      * @summary Submit TonConnect payment transaction
      * @param {PaySystemApiTonConnectSubmitV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -455,7 +487,7 @@ export interface PaySystemApiInterface {
      */
     tonConnectSubmitV1(requestParameters: PaySystemApiTonConnectSubmitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TonConnectPaymentStatusDto>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create TRON USDT deposit payment intent
      * @param {PaySystemApiTronPaymentIntentV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -464,7 +496,7 @@ export interface PaySystemApiInterface {
      */
     tronPaymentIntentV1(requestParameters: PaySystemApiTronPaymentIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TronPaymentIntentDto>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get TRON USDT payment status
      * @param {PaySystemApiTronPaymentStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -473,7 +505,7 @@ export interface PaySystemApiInterface {
      */
     tronPaymentStatusV1(requestParameters: PaySystemApiTronPaymentStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TronPaymentStatusDto>;
     /**
-     *
+     * Disabled legacy endpoint for submitting a TRON tx_hash. The current implementation always returns HTTP 410 Gone with instructions to wait for the automatic deposit scanner. Available only to a project subject; do not use as a working payment tool.
      * @summary Submit TRON USDT transaction hash (disabled)
      * @param {PaySystemApiTronPaymentSubmitV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -482,7 +514,7 @@ export interface PaySystemApiInterface {
      */
     tronPaymentSubmitV1(requestParameters: PaySystemApiTronPaymentSubmitV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create WalletConnect payment intent
      * @param {PaySystemApiWalletConnectIntentV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -491,7 +523,7 @@ export interface PaySystemApiInterface {
      */
     walletConnectIntentV1(requestParameters: PaySystemApiWalletConnectIntentV1Request, options?: RawAxiosRequestConfig): AxiosPromise<WalletConnectPaymentIntentDto>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get WalletConnect payment verification status
      * @param {PaySystemApiWalletConnectStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -500,7 +532,7 @@ export interface PaySystemApiInterface {
      */
     walletConnectStatusV1(requestParameters: PaySystemApiWalletConnectStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<WalletConnectPaymentStatusDto>;
     /**
-     *
+     * Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
      * @summary Submit WalletConnect payment transaction hash
      * @param {PaySystemApiWalletConnectSubmitV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -516,23 +548,29 @@ export interface PaySystemApiInterface {
  */
 export interface PaySystemApiPaySystemCreateChallengeV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaySystemApiPaySystemCreateChallengeV1
      */
-    readonly language: PaySystemCreateChallengeV1LanguageEnum;
+    readonly 'language': PaySystemCreateChallengeV1LanguageEnum;
     /**
      * Payment id
      * @type {number}
      * @memberof PaySystemApiPaySystemCreateChallengeV1
      */
-    readonly payment_id: number;
+    readonly 'payment_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiPaySystemCreateChallengeV1
      */
-    readonly v?: PaySystemCreateChallengeV1VEnum;
+    readonly 'v'?: PaySystemCreateChallengeV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiPaySystemCreateChallengeV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for paySystemCreateTBankV1 operation in PaySystemApi.
@@ -541,23 +579,29 @@ export interface PaySystemApiPaySystemCreateChallengeV1Request {
  */
 export interface PaySystemApiPaySystemCreateTBankV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaySystemApiPaySystemCreateTBankV1
      */
-    readonly language: PaySystemCreateTBankV1LanguageEnum;
+    readonly 'language': PaySystemCreateTBankV1LanguageEnum;
     /**
      * Payment id
      * @type {number}
      * @memberof PaySystemApiPaySystemCreateTBankV1
      */
-    readonly payment_id: number;
+    readonly 'payment_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiPaySystemCreateTBankV1
      */
-    readonly v?: PaySystemCreateTBankV1VEnum;
+    readonly 'v'?: PaySystemCreateTBankV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiPaySystemCreateTBankV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for paySystemCreateUnitpayV1 operation in PaySystemApi.
@@ -566,23 +610,54 @@ export interface PaySystemApiPaySystemCreateTBankV1Request {
  */
 export interface PaySystemApiPaySystemCreateUnitpayV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaySystemApiPaySystemCreateUnitpayV1
      */
-    readonly language: PaySystemCreateUnitpayV1LanguageEnum;
+    readonly 'language': PaySystemCreateUnitpayV1LanguageEnum;
     /**
      * Payment id
      * @type {number}
      * @memberof PaySystemApiPaySystemCreateUnitpayV1
      */
-    readonly payment_id: number;
+    readonly 'payment_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiPaySystemCreateUnitpayV1
      */
-    readonly v?: PaySystemCreateUnitpayV1VEnum;
+    readonly 'v'?: PaySystemCreateUnitpayV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiPaySystemCreateUnitpayV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+}
+/**
+ * Request parameters for paySystemListV1 operation in PaySystemApi.
+ * @export
+ * @interface PaySystemApiPaySystemListV1Request
+ */
+export interface PaySystemApiPaySystemListV1Request {
+    /**
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof PaySystemApiPaySystemListV1
+     */
+    readonly 'language': PaySystemListV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof PaySystemApiPaySystemListV1
+     */
+    readonly 'v'?: PaySystemListV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiPaySystemListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for tonConnectIntentV1 operation in PaySystemApi.
@@ -595,13 +670,19 @@ export interface PaySystemApiTonConnectIntentV1Request {
      * @type {number}
      * @memberof PaySystemApiTonConnectIntentV1
      */
-    readonly payment_id: number;
+    readonly 'payment_id': number;
     /**
      * Connected TON wallet address / payer
      * @type {string}
      * @memberof PaySystemApiTonConnectIntentV1
      */
-    readonly payer_address: string;
+    readonly 'payer_address': string;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiTonConnectIntentV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for tonConnectStatusV1 operation in PaySystemApi.
@@ -610,23 +691,29 @@ export interface PaySystemApiTonConnectIntentV1Request {
  */
 export interface PaySystemApiTonConnectStatusV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaySystemApiTonConnectStatusV1
      */
-    readonly language: TonConnectStatusV1LanguageEnum;
+    readonly 'language': TonConnectStatusV1LanguageEnum;
     /**
      * Payment id
      * @type {number}
      * @memberof PaySystemApiTonConnectStatusV1
      */
-    readonly payment_id: number;
+    readonly 'payment_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiTonConnectStatusV1
      */
-    readonly v?: TonConnectStatusV1VEnum;
+    readonly 'v'?: TonConnectStatusV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiTonConnectStatusV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for tonConnectSubmitV1 operation in PaySystemApi.
@@ -639,7 +726,13 @@ export interface PaySystemApiTonConnectSubmitV1Request {
      * @type {TonConnectPaymentSubmitBodyDto}
      * @memberof PaySystemApiTonConnectSubmitV1
      */
-    readonly TonConnectPaymentSubmitBodyDto: TonConnectPaymentSubmitBodyDto;
+    readonly 'TonConnectPaymentSubmitBodyDto': TonConnectPaymentSubmitBodyDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiTonConnectSubmitV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for tronPaymentIntentV1 operation in PaySystemApi.
@@ -648,23 +741,29 @@ export interface PaySystemApiTonConnectSubmitV1Request {
  */
 export interface PaySystemApiTronPaymentIntentV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaySystemApiTronPaymentIntentV1
      */
-    readonly language: TronPaymentIntentV1LanguageEnum;
+    readonly 'language': TronPaymentIntentV1LanguageEnum;
     /**
      * Payment id
      * @type {number}
      * @memberof PaySystemApiTronPaymentIntentV1
      */
-    readonly payment_id: number;
+    readonly 'payment_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiTronPaymentIntentV1
      */
-    readonly v?: TronPaymentIntentV1VEnum;
+    readonly 'v'?: TronPaymentIntentV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiTronPaymentIntentV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for tronPaymentStatusV1 operation in PaySystemApi.
@@ -673,23 +772,29 @@ export interface PaySystemApiTronPaymentIntentV1Request {
  */
 export interface PaySystemApiTronPaymentStatusV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaySystemApiTronPaymentStatusV1
      */
-    readonly language: TronPaymentStatusV1LanguageEnum;
+    readonly 'language': TronPaymentStatusV1LanguageEnum;
     /**
      * Payment id
      * @type {number}
      * @memberof PaySystemApiTronPaymentStatusV1
      */
-    readonly payment_id: number;
+    readonly 'payment_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiTronPaymentStatusV1
      */
-    readonly v?: TronPaymentStatusV1VEnum;
+    readonly 'v'?: TronPaymentStatusV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiTronPaymentStatusV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for tronPaymentSubmitV1 operation in PaySystemApi.
@@ -698,23 +803,29 @@ export interface PaySystemApiTronPaymentStatusV1Request {
  */
 export interface PaySystemApiTronPaymentSubmitV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaySystemApiTronPaymentSubmitV1
      */
-    readonly language: TronPaymentSubmitV1LanguageEnum;
+    readonly 'language': TronPaymentSubmitV1LanguageEnum;
     /**
      *
      * @type {TronPaymentSubmitBodyDto}
      * @memberof PaySystemApiTronPaymentSubmitV1
      */
-    readonly TronPaymentSubmitBodyDto: TronPaymentSubmitBodyDto;
+    readonly 'TronPaymentSubmitBodyDto': TronPaymentSubmitBodyDto;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiTronPaymentSubmitV1
      */
-    readonly v?: TronPaymentSubmitV1VEnum;
+    readonly 'v'?: TronPaymentSubmitV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiTronPaymentSubmitV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for walletConnectIntentV1 operation in PaySystemApi.
@@ -727,13 +838,19 @@ export interface PaySystemApiWalletConnectIntentV1Request {
      * @type {number}
      * @memberof PaySystemApiWalletConnectIntentV1
      */
-    readonly payment_id: number;
+    readonly 'payment_id': number;
     /**
      * Connected wallet address / EVM payer
      * @type {string}
      * @memberof PaySystemApiWalletConnectIntentV1
      */
-    readonly payer_address: string;
+    readonly 'payer_address': string;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiWalletConnectIntentV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for walletConnectStatusV1 operation in PaySystemApi.
@@ -742,23 +859,29 @@ export interface PaySystemApiWalletConnectIntentV1Request {
  */
 export interface PaySystemApiWalletConnectStatusV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaySystemApiWalletConnectStatusV1
      */
-    readonly language: WalletConnectStatusV1LanguageEnum;
+    readonly 'language': WalletConnectStatusV1LanguageEnum;
     /**
      * Payment id
      * @type {number}
      * @memberof PaySystemApiWalletConnectStatusV1
      */
-    readonly payment_id: number;
+    readonly 'payment_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySystemApiWalletConnectStatusV1
      */
-    readonly v?: WalletConnectStatusV1VEnum;
+    readonly 'v'?: WalletConnectStatusV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiWalletConnectStatusV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for walletConnectSubmitV1 operation in PaySystemApi.
@@ -771,7 +894,13 @@ export interface PaySystemApiWalletConnectSubmitV1Request {
      * @type {WalletConnectPaymentSubmitBodyDto}
      * @memberof PaySystemApiWalletConnectSubmitV1
      */
-    readonly WalletConnectPaymentSubmitBodyDto: WalletConnectPaymentSubmitBodyDto;
+    readonly 'WalletConnectPaymentSubmitBodyDto': WalletConnectPaymentSubmitBodyDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySystemApiWalletConnectSubmitV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * PaySystemApi - object-oriented interface
@@ -781,7 +910,7 @@ export interface PaySystemApiWalletConnectSubmitV1Request {
  */
 export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterface {
     /**
-     *
+     * Create a Payoneer payment challenge for an existing payment_id and return JSON with a redirect link. Despite using GET, this creates an external payment session; an already successful payment is rejected. Success does not confirm payment: the user completes the process with the provider, and status is read separately.
      * @summary Create payoneer payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateChallengeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -790,7 +919,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     paySystemCreateChallengeV1(requestParameters: PaySystemApiPaySystemCreateChallengeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayRedirectUrlDto, any, {}, any>>;
     /**
-     *
+     * Create a T-Bank payment challenge for an existing payment_id and return JSON with a redirect link. GET initiates an external payment session; an already successful payment is rejected. Payment completion and status checks happen separately.
      * @summary Create t-bank payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateTBankV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -799,7 +928,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     paySystemCreateTBankV1(requestParameters: PaySystemApiPaySystemCreateTBankV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayRedirectUrlDto, any, {}, any>>;
     /**
-     *
+     * Create a Unitpay payment challenge for an existing payment_id and return JSON with a redirect link. GET creates a payment session. An already successful payment is rejected. This is neither an HTTP redirect from the site nor payment confirmation.
      * @summary Create unitpay payment challenge redirect url
      * @param {PaySystemApiPaySystemCreateUnitpayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -808,15 +937,16 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     paySystemCreateUnitpayV1(requestParameters: PaySystemApiPaySystemCreateUnitpayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayRedirectUrlDto, any, {}, any>>;
     /**
-     *
+     * Read available payment systems for the current user. Returns results with provider parameters; this is a catalog, not payment creation or transaction signing.
      * @summary Load available pay systems
+     * @param {PaySystemApiPaySystemListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaySystemApi
      */
-    paySystemListV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaySystemsResponse, any, {}, any>>;
+    paySystemListV1(requestParameters: PaySystemApiPaySystemListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaySystemsResponse, any, {}, any>>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create TonConnect payment intent
      * @param {PaySystemApiTonConnectIntentV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -825,7 +955,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     tonConnectIntentV1(requestParameters: PaySystemApiTonConnectIntentV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TonConnectPaymentIntentDto, any, {}, any>>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get TonConnect payment verification status
      * @param {PaySystemApiTonConnectStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -834,7 +964,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     tonConnectStatusV1(requestParameters: PaySystemApiTonConnectStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TonConnectPaymentStatusDto, any, {}, any>>;
     /**
-     *
+     * Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
      * @summary Submit TonConnect payment transaction
      * @param {PaySystemApiTonConnectSubmitV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -843,7 +973,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     tonConnectSubmitV1(requestParameters: PaySystemApiTonConnectSubmitV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TonConnectPaymentStatusDto, any, {}, any>>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create TRON USDT deposit payment intent
      * @param {PaySystemApiTronPaymentIntentV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -852,7 +982,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     tronPaymentIntentV1(requestParameters: PaySystemApiTronPaymentIntentV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TronPaymentIntentDto, any, {}, any>>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get TRON USDT payment status
      * @param {PaySystemApiTronPaymentStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -861,7 +991,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     tronPaymentStatusV1(requestParameters: PaySystemApiTronPaymentStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TronPaymentStatusDto, any, {}, any>>;
     /**
-     *
+     * Disabled legacy endpoint for submitting a TRON tx_hash. The current implementation always returns HTTP 410 Gone with instructions to wait for the automatic deposit scanner. Available only to a project subject; do not use as a working payment tool.
      * @summary Submit TRON USDT transaction hash (disabled)
      * @param {PaySystemApiTronPaymentSubmitV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -870,7 +1000,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     tronPaymentSubmitV1(requestParameters: PaySystemApiTronPaymentSubmitV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
-     *
+     * This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
      * @summary Create WalletConnect payment intent
      * @param {PaySystemApiWalletConnectIntentV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -879,7 +1009,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     walletConnectIntentV1(requestParameters: PaySystemApiWalletConnectIntentV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WalletConnectPaymentIntentDto, any, {}, any>>;
     /**
-     *
+     * Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
      * @summary Get WalletConnect payment verification status
      * @param {PaySystemApiWalletConnectStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -888,7 +1018,7 @@ export declare class PaySystemApi extends BaseAPI implements PaySystemApiInterfa
      */
     walletConnectStatusV1(requestParameters: PaySystemApiWalletConnectStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WalletConnectPaymentStatusDto, any, {}, any>>;
     /**
-     *
+     * Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
      * @summary Submit WalletConnect payment transaction hash
      * @param {PaySystemApiWalletConnectSubmitV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -945,6 +1075,22 @@ export declare const PaySystemCreateUnitpayV1VEnum: {
     readonly _1: "1";
 };
 export type PaySystemCreateUnitpayV1VEnum = typeof PaySystemCreateUnitpayV1VEnum[keyof typeof PaySystemCreateUnitpayV1VEnum];
+/**
+ * @export
+ */
+export declare const PaySystemListV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type PaySystemListV1LanguageEnum = typeof PaySystemListV1LanguageEnum[keyof typeof PaySystemListV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const PaySystemListV1VEnum: {
+    readonly _1: "1";
+};
+export type PaySystemListV1VEnum = typeof PaySystemListV1VEnum[keyof typeof PaySystemListV1VEnum];
 /**
  * @export
  */

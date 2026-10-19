@@ -19,14 +19,15 @@ import type { SiteSocialListResponse } from '../models';
  */
 export declare const SocialsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Read the current user\'s social connections. Returns results of connected identities; these are personal account data, not selected project channels. Reading neither starts OAuth nor disconnects accounts.
      * @summary Social list for user
-     * @param {SocialsGetListV1LanguageEnum} language Current language
+     * @param {SocialsGetListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {SocialsGetListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    socialsGetListV1: (language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    socialsGetListV1: (language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * SocialsApi - functional programming interface
@@ -34,14 +35,15 @@ export declare const SocialsApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const SocialsApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Read the current user\'s social connections. Returns results of connected identities; these are personal account data, not selected project channels. Reading neither starts OAuth nor disconnects accounts.
      * @summary Social list for user
-     * @param {SocialsGetListV1LanguageEnum} language Current language
+     * @param {SocialsGetListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {SocialsGetListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    socialsGetListV1(language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSocialListResponse>>;
+    socialsGetListV1(language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSocialListResponse>>;
 };
 /**
  * SocialsApi - factory interface
@@ -49,7 +51,7 @@ export declare const SocialsApiFp: (configuration?: Configuration) => {
  */
 export declare const SocialsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Read the current user\'s social connections. Returns results of connected identities; these are personal account data, not selected project channels. Reading neither starts OAuth nor disconnects accounts.
      * @summary Social list for user
      * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -64,7 +66,7 @@ export declare const SocialsApiFactory: (configuration?: Configuration, basePath
  */
 export interface SocialsApiInterface {
     /**
-     *
+     * Read the current user\'s social connections. Returns results of connected identities; these are personal account data, not selected project channels. Reading neither starts OAuth nor disconnects accounts.
      * @summary Social list for user
      * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -80,17 +82,23 @@ export interface SocialsApiInterface {
  */
 export interface SocialsApiSocialsGetListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof SocialsApiSocialsGetListV1
      */
-    readonly language: SocialsGetListV1LanguageEnum;
+    readonly 'language': SocialsGetListV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof SocialsApiSocialsGetListV1
      */
-    readonly v?: SocialsGetListV1VEnum;
+    readonly 'v'?: SocialsGetListV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof SocialsApiSocialsGetListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * SocialsApi - object-oriented interface
@@ -100,7 +108,7 @@ export interface SocialsApiSocialsGetListV1Request {
  */
 export declare class SocialsApi extends BaseAPI implements SocialsApiInterface {
     /**
-     *
+     * Read the current user\'s social connections. Returns results of connected identities; these are personal account data, not selected project channels. Reading neither starts OAuth nor disconnects accounts.
      * @summary Social list for user
      * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

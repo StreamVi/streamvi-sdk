@@ -34,15 +34,16 @@ export const LiveApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * Use /site/broadcast/restreams instead.
          * @summary View live info
-         * @param {ControllersRestreamsV1LanguageEnum} language Current language
+         * @param {ControllersRestreamsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
          * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        controllersRestreamsV1: async (language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        controllersRestreamsV1: async (language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('controllersRestreamsV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -61,9 +62,13 @@ export const LiveApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration)
 
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
@@ -85,6 +90,9 @@ export const LiveApiAxiosParamCreator = function (configuration?: Configuration)
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -107,16 +115,17 @@ export const LiveApiFp = function(configuration?: Configuration) {
         /**
          * Use /site/broadcast/restreams instead.
          * @summary View live info
-         * @param {ControllersRestreamsV1LanguageEnum} language Current language
+         * @param {ControllersRestreamsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
          * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        async controllersRestreamsV1(language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteLiveRestreamsInfoResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.controllersRestreamsV1(language, projectId, broadcastId, v, options);
+        async controllersRestreamsV1(language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteLiveRestreamsInfoResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.controllersRestreamsV1(language, projectId, broadcastId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['LiveApi.controllersRestreamsV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -140,7 +149,7 @@ export const LiveApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteLiveRestreamsInfoResponse> {
-            return localVarFp.controllersRestreamsV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.controllersRestreamsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -171,32 +180,39 @@ export interface LiveApiInterface {
  */
 export interface LiveApiControllersRestreamsV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof LiveApiControllersRestreamsV1
      */
-    readonly language: ControllersRestreamsV1LanguageEnum
+    readonly 'language': ControllersRestreamsV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof LiveApiControllersRestreamsV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Broadcast id
      * @type {number}
      * @memberof LiveApiControllersRestreamsV1
      */
-    readonly broadcast_id: number
+    readonly 'broadcast_id': number
 
     /**
      * Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @type {'2'}
      * @memberof LiveApiControllersRestreamsV1
      */
-    readonly v?: ControllersRestreamsV1VEnum
+    readonly 'v'?: ControllersRestreamsV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof LiveApiControllersRestreamsV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -216,7 +232,7 @@ export class LiveApi extends BaseAPI implements LiveApiInterface {
      * @memberof LiveApi
      */
     public controllersRestreamsV1(requestParameters: LiveApiControllersRestreamsV1Request, options?: RawAxiosRequestConfig) {
-        return LiveApiFp(this.configuration).controllersRestreamsV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return LiveApiFp(this.configuration).controllersRestreamsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

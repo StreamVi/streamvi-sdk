@@ -11,6 +11,7 @@ All URIs are relative to *http://localhost*
 # **helpPageGetV1**
 > GetHelpPageResponse helpPageGetV1()
 
+Read public help page content using request parameters and language. Returns the page without executing the action it describes.
 
 ### Example
 
@@ -23,14 +24,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new HelpPageApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let url: string; //Url of page (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.helpPageGetV1(
     language,
     url,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -38,9 +41,10 @@ const { status, data } = await apiInstance.helpPageGetV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **url** | [**string**] | Url of page | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -68,6 +72,7 @@ No authorization required
 # **helpPageListV1**
 > PaginatedHelpPageResponse helpPageListV1()
 
+Search public help pages using request filters and pagination, including language. Returns search results; read the selected page using GET /method/help/page/get.
 
 ### Example
 
@@ -80,18 +85,20 @@ import {
 const configuration = new Configuration();
 const apiInstance = new HelpPageApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
+let limit: number; //Number of results (default to undefined)
+let offset: number; //Page offset number (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 let s: string; //String for search (optional) (default to '')
-let limit: number; //Number of results (optional) (default to 20)
-let offset: number; //Page offset number (optional) (default to 0)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.helpPageListV1(
     language,
+    limit,
+    offset,
     v,
     s,
-    limit,
-    offset
+    xClientRequestId
 );
 ```
 
@@ -99,11 +106,12 @@ const { status, data } = await apiInstance.helpPageListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
+| **limit** | [**number**] | Number of results | defaults to undefined|
+| **offset** | [**number**] | Page offset number | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 | **s** | [**string**] | String for search | (optional) defaults to ''|
-| **limit** | [**number**] | Number of results | (optional) defaults to 20|
-| **offset** | [**number**] | Page offset number | (optional) defaults to 0|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -131,6 +139,7 @@ No authorization required
 # **helpPageStructureV1**
 > StructureHelpPageResponse helpPageStructureV1()
 
+Read the public help section structure for language. Returns a navigation tree/sections; this method does not change the structure.
 
 ### Example
 
@@ -143,12 +152,14 @@ import {
 const configuration = new Configuration();
 const apiInstance = new HelpPageApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.helpPageStructureV1(
     language,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -156,8 +167,9 @@ const { status, data } = await apiInstance.helpPageStructureV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type

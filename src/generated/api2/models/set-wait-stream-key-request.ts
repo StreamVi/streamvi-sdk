@@ -27,7 +27,7 @@ export interface SetWaitStreamKeyRequest {
      */
     'v'?: SetWaitStreamKeyRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SetWaitStreamKeyRequest
      */
@@ -39,7 +39,7 @@ export interface SetWaitStreamKeyRequest {
      */
     'project_id': number;
     /**
-     * Disconnect protection wait time in minutes
+     * Integer disconnect protection duration in minutes. 0 disables protection; a positive value enables/changes the waiting time. The current plan determines the maximum: wait_max_minutes from GET /method/stream-keys. For example, 15 is valid only if the plan limit permits it.
      * @type {number}
      * @memberof SetWaitStreamKeyRequest
      */

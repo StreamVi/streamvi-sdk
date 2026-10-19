@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**group_id** | **number** |  | [default to undefined]
+**group_id** | **number** | Internal numeric StreamVi channel ID, also returned as group_id in channel search results. Do not use the external/platform id, even if it contains only digits. | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **type** | **string** |  | [default to undefined]
 **active** | **boolean** |  | [default to undefined]

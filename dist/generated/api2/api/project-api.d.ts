@@ -12,9 +12,12 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
+import type { MethodResolveProjectResponse } from '../models';
+import type { MethodResolveUserResponse } from '../models';
 import type { PaginatedUserProjectResponse } from '../models';
 import type { ProjectInfoResponse } from '../models';
 import type { ProjectMeResponse } from '../models';
+import type { ProjectMutationResponse } from '../models';
 import type { SuccessResponse } from '../models';
 import type { UserProject2ProjectListResponse } from '../models';
 import type { UserProjectGetResponse } from '../models';
@@ -24,120 +27,190 @@ import type { UserProjectGetResponse } from '../models';
  */
 export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
-     * @summary Get current user project
-     * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {MethodProjectMeMeV1LanguageEnum} [language] Current language
+     * Create a new project for the current account user with name and optional avatar using multipart/form-data. Supply name and avatar in body, v/language in query. Returns the created project; it differs from the personal project and is not automatically selected in the cabinet.
+     * @summary Create project
+     * @param {MethodProjectManagementCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {string} name Project name
+     * @param {MethodProjectManagementCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {File} [avatar] Project avatar file, max size 2 MiB, format: jpeg, jpg, png
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodProjectMeMeV1: (v?: MethodProjectMeMeV1VEnum, language?: MethodProjectMeMeV1LanguageEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodProjectManagementCreateV1: (language: MethodProjectManagementCreateV1LanguageEnum, name: string, v?: MethodProjectManagementCreateV1VEnum, xClientRequestId?: string, avatar?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Delete project_id after checking effective project owner permissions. Obtain the ID from the project list/resolve; this deletes the project resource rather than removing the current member or revoking another user\'s access. Returns success after the deletion use case.
+     * @summary Delete project
+     * @param {MethodProjectManagementDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} projectId Project id
+     * @param {MethodProjectManagementDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodProjectManagementDeleteV1: (language: MethodProjectManagementDeleteV1LanguageEnum, projectId: number, v?: MethodProjectManagementDeleteV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Change name and optional avatar of the selected project_id using multipart/form-data. Requires actual project administrator status; a scope alone does not replace it. If no target is supplied in any request source, the account user\'s personal project is used, so specify the target explicitly. Returns the project after saving; does not create a new project.
+     * @summary Update project
+     * @param {MethodProjectManagementUpdateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {string} name Project name
+     * @param {MethodProjectManagementUpdateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {number} [projectId] Target project ID. When omitted in every request source, the account personal project is used.
+     * @param {File} [avatar] Project avatar file, max size 2 MiB, format: jpeg, jpg, png
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodProjectManagementUpdateV1: (language: MethodProjectManagementUpdateV1LanguageEnum, name: string, v?: MethodProjectManagementUpdateV1VEnum, xClientRequestId?: string, projectId?: number, avatar?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Read data for the current target project_id and the authenticated user\'s access. A project-token selects its own project; an account-token uses the personal project when no target is provided by any source. The open cabinet tab does not automatically supply the target. Find an accessible ID using GET /method/project/list or /method/project/resolve.
+     * @summary Get current user project
+     * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {MethodProjectMeMeV1LanguageEnum} [language] Language of localized messages and results; en is used when omitted. Allowed values are defined by enum.
+     * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project tokens determine the project automatically.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodProjectMeMeV1: (v?: MethodProjectMeMeV1VEnum, language?: MethodProjectMeMeV1LanguageEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Find or resolve a project by the text ID / short code shown in the StreamVi cabinet (external_id, also called ref_id). Pass this code unchanged as project_external_id. Returns name and numeric internal_id; use internal_id as project_id in later API calls. Verifies authenticated account access before returning details. Does not select or switch the project displayed in the cabinet.
+     * @summary Find a project by its text ID or short code
+     * @param {MethodResolveProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {string} projectExternalId Text project ID / short code shown in the cabinet: external_id (ref_id), for example DJ84kgD. Pass unchanged, preserving letter case and leading zeros. This is not the numeric project_id. Returns the corresponding internal_id for later calls.
+     * @param {MethodResolveProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodResolveProjectV1: (language: MethodResolveProjectV1LanguageEnum, projectExternalId: string, v?: MethodResolveProjectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Returns only identity and display fields of a personal account. Financial fields are never returned.
+     * @summary Resolve an invitation recipient external ID
+     * @param {MethodResolveUserV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {string} userExternalId Recipient external reference ID, never its numeric internal ID
+     * @param {MethodResolveUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodResolveUserV1: (language: MethodResolveUserV1LanguageEnum, userExternalId: string, v?: MethodResolveUserV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Change access_type for member user_id in project_id. Requires an actual administrator role; the existing owner cannot be demoted. Only the current owner can assign owner, which turns the previous owner into admin. Changes roles/transfers ownership, not OAuth scopes.
      * @summary Change access user from project
-     * @param {UserProjectChangeAccessV1LanguageEnum} language Current language
+     * @param {UserProjectChangeAccessV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} userId User id
      * @param {UserProjectChangeAccessV1AccessTypeEnum} accessType Access type
      * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectChangeAccessV1: (language: UserProjectChangeAccessV1LanguageEnum, projectId: number, userId: number, accessType: UserProjectChangeAccessV1AccessTypeEnum, v?: UserProjectChangeAccessV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userProjectChangeAccessV1: (language: UserProjectChangeAccessV1LanguageEnum, projectId: number, userId: number, accessType: UserProjectChangeAccessV1AccessTypeEnum, v?: UserProjectChangeAccessV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Use /site/project/user/leave or /site/project/user/delete instead.
      * @summary Remove user from project
-     * @param {UserProjectDelV1LanguageEnum} language Current language
+     * @param {UserProjectDelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} userId User id
      * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userProjectDelV1: (language: UserProjectDelV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDelV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userProjectDelV1: (language: UserProjectDelV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDelV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Revoke user_id membership in project_id. Requires an effective project administrator role; this method cannot remove the caller or the owner. To leave yourself, use POST /method/project/user/leave; the project is preserved.
      * @summary Remove member from project
-     * @param {UserProjectDeleteMemberV1LanguageEnum} language Current language
+     * @param {UserProjectDeleteMemberV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} userId User id
      * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectDeleteMemberV1: (language: UserProjectDeleteMemberV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDeleteMemberV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userProjectDeleteMemberV1: (language: UserProjectDeleteMemberV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDeleteMemberV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read full details of project_id after checking the current user\'s access. This does not change project settings or members; use PUT /method/project to change name/avatar.
      * @summary Get project full info
-     * @param {UserProjectGetProjectInfoV1LanguageEnum} language Current language
+     * @param {UserProjectGetProjectInfoV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectGetProjectInfoV1: (language: UserProjectGetProjectInfoV1LanguageEnum, projectId: number, v?: UserProjectGetProjectInfoV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userProjectGetProjectInfoV1: (language: UserProjectGetProjectInfoV1LanguageEnum, projectId: number, v?: UserProjectGetProjectInfoV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary Get project by number id
-     * @param {UserProjectGetProjectV1LanguageEnum} language Current language
+     * Find a project by string project_external_id (short code/ref_id), not numeric project_id. This is a legacy project-subject method; for the account API use GET /method/project/resolve with an access check. Returns the found project details.
+     * @summary Get a project by its external text code
+     * @param {UserProjectGetProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} projectExternalId Project external id
      * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectGetProjectV1: (language: UserProjectGetProjectV1LanguageEnum, projectExternalId: string, v?: UserProjectGetProjectV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userProjectGetProjectV1: (language: UserProjectGetProjectV1LanguageEnum, projectExternalId: string, v?: UserProjectGetProjectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary Get user by number id
-     * @param {UserProjectGetUserV1LanguageEnum} language Current language
+     * Find a user by string user_external_id, not internal numeric user_id. This is a legacy project-subject method; for the account API use GET /method/account/resolve-user. Do not use this lookup to select target project_id without a separate access check.
+     * @summary Get a user by the external text code
+     * @param {UserProjectGetUserV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} userExternalId User external id
      * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectGetUserV1: (language: UserProjectGetUserV1LanguageEnum, userExternalId: string, v?: UserProjectGetUserV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userProjectGetUserV1: (language: UserProjectGetUserV1LanguageEnum, userExternalId: string, v?: UserProjectGetUserV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Revoke the current user\'s own membership in project_id. Requires project access; the owner cannot leave this way (user_project.owner_is_king). Returns success. This leaves the project without deleting it.
      * @summary Leave project
-     * @param {UserProjectLeaveV1LanguageEnum} language Current language
+     * @param {UserProjectLeaveV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectLeaveV1: (language: UserProjectLeaveV1LanguageEnum, projectId: number, v?: UserProjectLeaveV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userProjectLeaveV1: (language: UserProjectLeaveV1LanguageEnum, projectId: number, v?: UserProjectLeaveV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read members and their roles in project_id using request filters/pagination. user_id is the internal member ID for access management; project roles differ from application OAuth scopes. Reading does not change membership.
      * @summary List of user in project
-     * @param {UserProjectListAccessV1LanguageEnum} language Current language
+     * @param {UserProjectListAccessV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectListAccessV1: (language: UserProjectListAccessV1LanguageEnum, projectId: number, v?: UserProjectListAccessV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userProjectListAccessV1: (language: UserProjectListAccessV1LanguageEnum, projectId: number, v?: UserProjectListAccessV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read projects accessible to the current user using request filters and pagination. This is an account-context catalog: use the internal result ID as project_id in subsequent calls and the external code for resolve. This method does not select the open cabinet page.
      * @summary List of project for current user
-     * @param {UserProjectListV1LanguageEnum} language Current language
+     * @param {UserProjectListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectListV1: (language: UserProjectListV1LanguageEnum, v?: UserProjectListV1VEnum, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userProjectListV1: (language: UserProjectListV1LanguageEnum, v?: UserProjectListV1VEnum, limit?: number, offset?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Save the current user\'s selected cabinet project id after checking observer access and return project details. Despite using GET, this changes cabinet selection. Available only to a project subject; selection does not replace explicit project_id in subsequent account API requests.
      * @summary Select user for project
-     * @param {UserProjectSelectProjectV1LanguageEnum} language Current language
+     * @param {UserProjectSelectProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} id Project internal id
      * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectSelectProjectV1: (language: UserProjectSelectProjectV1LanguageEnum, id: number, v?: UserProjectSelectProjectV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userProjectSelectProjectV1: (language: UserProjectSelectProjectV1LanguageEnum, id: number, v?: UserProjectSelectProjectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ProjectApi - functional programming interface
@@ -145,120 +218,190 @@ export declare const ProjectApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const ProjectApiFp: (configuration?: Configuration) => {
     /**
-     *
-     * @summary Get current user project
-     * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {MethodProjectMeMeV1LanguageEnum} [language] Current language
+     * Create a new project for the current account user with name and optional avatar using multipart/form-data. Supply name and avatar in body, v/language in query. Returns the created project; it differs from the personal project and is not automatically selected in the cabinet.
+     * @summary Create project
+     * @param {MethodProjectManagementCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {string} name Project name
+     * @param {MethodProjectManagementCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {File} [avatar] Project avatar file, max size 2 MiB, format: jpeg, jpg, png
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodProjectMeMeV1(v?: MethodProjectMeMeV1VEnum, language?: MethodProjectMeMeV1LanguageEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectMeResponse>>;
+    methodProjectManagementCreateV1(language: MethodProjectManagementCreateV1LanguageEnum, name: string, v?: MethodProjectManagementCreateV1VEnum, xClientRequestId?: string, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectMutationResponse>>;
     /**
-     *
+     * Delete project_id after checking effective project owner permissions. Obtain the ID from the project list/resolve; this deletes the project resource rather than removing the current member or revoking another user\'s access. Returns success after the deletion use case.
+     * @summary Delete project
+     * @param {MethodProjectManagementDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} projectId Project id
+     * @param {MethodProjectManagementDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodProjectManagementDeleteV1(language: MethodProjectManagementDeleteV1LanguageEnum, projectId: number, v?: MethodProjectManagementDeleteV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     * Change name and optional avatar of the selected project_id using multipart/form-data. Requires actual project administrator status; a scope alone does not replace it. If no target is supplied in any request source, the account user\'s personal project is used, so specify the target explicitly. Returns the project after saving; does not create a new project.
+     * @summary Update project
+     * @param {MethodProjectManagementUpdateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {string} name Project name
+     * @param {MethodProjectManagementUpdateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {number} [projectId] Target project ID. When omitted in every request source, the account personal project is used.
+     * @param {File} [avatar] Project avatar file, max size 2 MiB, format: jpeg, jpg, png
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodProjectManagementUpdateV1(language: MethodProjectManagementUpdateV1LanguageEnum, name: string, v?: MethodProjectManagementUpdateV1VEnum, xClientRequestId?: string, projectId?: number, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectMutationResponse>>;
+    /**
+     * Read data for the current target project_id and the authenticated user\'s access. A project-token selects its own project; an account-token uses the personal project when no target is provided by any source. The open cabinet tab does not automatically supply the target. Find an accessible ID using GET /method/project/list or /method/project/resolve.
+     * @summary Get current user project
+     * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {MethodProjectMeMeV1LanguageEnum} [language] Language of localized messages and results; en is used when omitted. Allowed values are defined by enum.
+     * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project tokens determine the project automatically.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodProjectMeMeV1(v?: MethodProjectMeMeV1VEnum, language?: MethodProjectMeMeV1LanguageEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectMeResponse>>;
+    /**
+     * Find or resolve a project by the text ID / short code shown in the StreamVi cabinet (external_id, also called ref_id). Pass this code unchanged as project_external_id. Returns name and numeric internal_id; use internal_id as project_id in later API calls. Verifies authenticated account access before returning details. Does not select or switch the project displayed in the cabinet.
+     * @summary Find a project by its text ID or short code
+     * @param {MethodResolveProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {string} projectExternalId Text project ID / short code shown in the cabinet: external_id (ref_id), for example DJ84kgD. Pass unchanged, preserving letter case and leading zeros. This is not the numeric project_id. Returns the corresponding internal_id for later calls.
+     * @param {MethodResolveProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodResolveProjectV1(language: MethodResolveProjectV1LanguageEnum, projectExternalId: string, v?: MethodResolveProjectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodResolveProjectResponse>>;
+    /**
+     * Returns only identity and display fields of a personal account. Financial fields are never returned.
+     * @summary Resolve an invitation recipient external ID
+     * @param {MethodResolveUserV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {string} userExternalId Recipient external reference ID, never its numeric internal ID
+     * @param {MethodResolveUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodResolveUserV1(language: MethodResolveUserV1LanguageEnum, userExternalId: string, v?: MethodResolveUserV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodResolveUserResponse>>;
+    /**
+     * Change access_type for member user_id in project_id. Requires an actual administrator role; the existing owner cannot be demoted. Only the current owner can assign owner, which turns the previous owner into admin. Changes roles/transfers ownership, not OAuth scopes.
      * @summary Change access user from project
-     * @param {UserProjectChangeAccessV1LanguageEnum} language Current language
+     * @param {UserProjectChangeAccessV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} userId User id
      * @param {UserProjectChangeAccessV1AccessTypeEnum} accessType Access type
      * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectChangeAccessV1(language: UserProjectChangeAccessV1LanguageEnum, projectId: number, userId: number, accessType: UserProjectChangeAccessV1AccessTypeEnum, v?: UserProjectChangeAccessV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    userProjectChangeAccessV1(language: UserProjectChangeAccessV1LanguageEnum, projectId: number, userId: number, accessType: UserProjectChangeAccessV1AccessTypeEnum, v?: UserProjectChangeAccessV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
      * Use /site/project/user/leave or /site/project/user/delete instead.
      * @summary Remove user from project
-     * @param {UserProjectDelV1LanguageEnum} language Current language
+     * @param {UserProjectDelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} userId User id
      * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userProjectDelV1(language: UserProjectDelV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    userProjectDelV1(language: UserProjectDelV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDelV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Revoke user_id membership in project_id. Requires an effective project administrator role; this method cannot remove the caller or the owner. To leave yourself, use POST /method/project/user/leave; the project is preserved.
      * @summary Remove member from project
-     * @param {UserProjectDeleteMemberV1LanguageEnum} language Current language
+     * @param {UserProjectDeleteMemberV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} userId User id
      * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectDeleteMemberV1(language: UserProjectDeleteMemberV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDeleteMemberV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    userProjectDeleteMemberV1(language: UserProjectDeleteMemberV1LanguageEnum, projectId: number, userId: number, v?: UserProjectDeleteMemberV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Read full details of project_id after checking the current user\'s access. This does not change project settings or members; use PUT /method/project to change name/avatar.
      * @summary Get project full info
-     * @param {UserProjectGetProjectInfoV1LanguageEnum} language Current language
+     * @param {UserProjectGetProjectInfoV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectGetProjectInfoV1(language: UserProjectGetProjectInfoV1LanguageEnum, projectId: number, v?: UserProjectGetProjectInfoV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectInfoResponse>>;
+    userProjectGetProjectInfoV1(language: UserProjectGetProjectInfoV1LanguageEnum, projectId: number, v?: UserProjectGetProjectInfoV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectInfoResponse>>;
     /**
-     *
-     * @summary Get project by number id
-     * @param {UserProjectGetProjectV1LanguageEnum} language Current language
+     * Find a project by string project_external_id (short code/ref_id), not numeric project_id. This is a legacy project-subject method; for the account API use GET /method/project/resolve with an access check. Returns the found project details.
+     * @summary Get a project by its external text code
+     * @param {UserProjectGetProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} projectExternalId Project external id
      * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectGetProjectV1(language: UserProjectGetProjectV1LanguageEnum, projectExternalId: string, v?: UserProjectGetProjectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProjectGetResponse>>;
+    userProjectGetProjectV1(language: UserProjectGetProjectV1LanguageEnum, projectExternalId: string, v?: UserProjectGetProjectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProjectGetResponse>>;
     /**
-     *
-     * @summary Get user by number id
-     * @param {UserProjectGetUserV1LanguageEnum} language Current language
+     * Find a user by string user_external_id, not internal numeric user_id. This is a legacy project-subject method; for the account API use GET /method/account/resolve-user. Do not use this lookup to select target project_id without a separate access check.
+     * @summary Get a user by the external text code
+     * @param {UserProjectGetUserV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} userExternalId User external id
      * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectGetUserV1(language: UserProjectGetUserV1LanguageEnum, userExternalId: string, v?: UserProjectGetUserV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProjectGetResponse>>;
+    userProjectGetUserV1(language: UserProjectGetUserV1LanguageEnum, userExternalId: string, v?: UserProjectGetUserV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProjectGetResponse>>;
     /**
-     *
+     * Revoke the current user\'s own membership in project_id. Requires project access; the owner cannot leave this way (user_project.owner_is_king). Returns success. This leaves the project without deleting it.
      * @summary Leave project
-     * @param {UserProjectLeaveV1LanguageEnum} language Current language
+     * @param {UserProjectLeaveV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectLeaveV1(language: UserProjectLeaveV1LanguageEnum, projectId: number, v?: UserProjectLeaveV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    userProjectLeaveV1(language: UserProjectLeaveV1LanguageEnum, projectId: number, v?: UserProjectLeaveV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Read members and their roles in project_id using request filters/pagination. user_id is the internal member ID for access management; project roles differ from application OAuth scopes. Reading does not change membership.
      * @summary List of user in project
-     * @param {UserProjectListAccessV1LanguageEnum} language Current language
+     * @param {UserProjectListAccessV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectListAccessV1(language: UserProjectListAccessV1LanguageEnum, projectId: number, v?: UserProjectListAccessV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProject2ProjectListResponse>>;
+    userProjectListAccessV1(language: UserProjectListAccessV1LanguageEnum, projectId: number, v?: UserProjectListAccessV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProject2ProjectListResponse>>;
     /**
-     *
+     * Read projects accessible to the current user using request filters and pagination. This is an account-context catalog: use the internal result ID as project_id in subsequent calls and the external code for resolve. This method does not select the open cabinet page.
      * @summary List of project for current user
-     * @param {UserProjectListV1LanguageEnum} language Current language
+     * @param {UserProjectListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
      * @param {number} [offset] Page offset number
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectListV1(language: UserProjectListV1LanguageEnum, v?: UserProjectListV1VEnum, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserProjectResponse>>;
+    userProjectListV1(language: UserProjectListV1LanguageEnum, v?: UserProjectListV1VEnum, limit?: number, offset?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserProjectResponse>>;
     /**
-     *
+     * Save the current user\'s selected cabinet project id after checking observer access and return project details. Despite using GET, this changes cabinet selection. Available only to a project subject; selection does not replace explicit project_id in subsequent account API requests.
      * @summary Select user for project
-     * @param {UserProjectSelectProjectV1LanguageEnum} language Current language
+     * @param {UserProjectSelectProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} id Project internal id
      * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userProjectSelectProjectV1(language: UserProjectSelectProjectV1LanguageEnum, id: number, v?: UserProjectSelectProjectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProjectGetResponse>>;
+    userProjectSelectProjectV1(language: UserProjectSelectProjectV1LanguageEnum, id: number, v?: UserProjectSelectProjectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProjectGetResponse>>;
 };
 /**
  * ProjectApi - factory interface
@@ -266,7 +409,31 @@ export declare const ProjectApiFp: (configuration?: Configuration) => {
  */
 export declare const ProjectApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Create a new project for the current account user with name and optional avatar using multipart/form-data. Supply name and avatar in body, v/language in query. Returns the created project; it differs from the personal project and is not automatically selected in the cabinet.
+     * @summary Create project
+     * @param {ProjectApiMethodProjectManagementCreateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodProjectManagementCreateV1(requestParameters: ProjectApiMethodProjectManagementCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectMutationResponse>;
+    /**
+     * Delete project_id after checking effective project owner permissions. Obtain the ID from the project list/resolve; this deletes the project resource rather than removing the current member or revoking another user\'s access. Returns success after the deletion use case.
+     * @summary Delete project
+     * @param {ProjectApiMethodProjectManagementDeleteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodProjectManagementDeleteV1(requestParameters: ProjectApiMethodProjectManagementDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     * Change name and optional avatar of the selected project_id using multipart/form-data. Requires actual project administrator status; a scope alone does not replace it. If no target is supplied in any request source, the account user\'s personal project is used, so specify the target explicitly. Returns the project after saving; does not create a new project.
+     * @summary Update project
+     * @param {ProjectApiMethodProjectManagementUpdateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodProjectManagementUpdateV1(requestParameters: ProjectApiMethodProjectManagementUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectMutationResponse>;
+    /**
+     * Read data for the current target project_id and the authenticated user\'s access. A project-token selects its own project; an account-token uses the personal project when no target is provided by any source. The open cabinet tab does not automatically supply the target. Find an accessible ID using GET /method/project/list or /method/project/resolve.
      * @summary Get current user project
      * @param {ProjectApiMethodProjectMeMeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -274,7 +441,23 @@ export declare const ProjectApiFactory: (configuration?: Configuration, basePath
      */
     methodProjectMeMeV1(requestParameters?: ProjectApiMethodProjectMeMeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectMeResponse>;
     /**
-     *
+     * Find or resolve a project by the text ID / short code shown in the StreamVi cabinet (external_id, also called ref_id). Pass this code unchanged as project_external_id. Returns name and numeric internal_id; use internal_id as project_id in later API calls. Verifies authenticated account access before returning details. Does not select or switch the project displayed in the cabinet.
+     * @summary Find a project by its text ID or short code
+     * @param {ProjectApiMethodResolveProjectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodResolveProjectV1(requestParameters: ProjectApiMethodResolveProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodResolveProjectResponse>;
+    /**
+     * Returns only identity and display fields of a personal account. Financial fields are never returned.
+     * @summary Resolve an invitation recipient external ID
+     * @param {ProjectApiMethodResolveUserV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodResolveUserV1(requestParameters: ProjectApiMethodResolveUserV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodResolveUserResponse>;
+    /**
+     * Change access_type for member user_id in project_id. Requires an actual administrator role; the existing owner cannot be demoted. Only the current owner can assign owner, which turns the previous owner into admin. Changes roles/transfers ownership, not OAuth scopes.
      * @summary Change access user from project
      * @param {ProjectApiUserProjectChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -291,7 +474,7 @@ export declare const ProjectApiFactory: (configuration?: Configuration, basePath
      */
     userProjectDelV1(requestParameters: ProjectApiUserProjectDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Revoke user_id membership in project_id. Requires an effective project administrator role; this method cannot remove the caller or the owner. To leave yourself, use POST /method/project/user/leave; the project is preserved.
      * @summary Remove member from project
      * @param {ProjectApiUserProjectDeleteMemberV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -299,7 +482,7 @@ export declare const ProjectApiFactory: (configuration?: Configuration, basePath
      */
     userProjectDeleteMemberV1(requestParameters: ProjectApiUserProjectDeleteMemberV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read full details of project_id after checking the current user\'s access. This does not change project settings or members; use PUT /method/project to change name/avatar.
      * @summary Get project full info
      * @param {ProjectApiUserProjectGetProjectInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -307,23 +490,23 @@ export declare const ProjectApiFactory: (configuration?: Configuration, basePath
      */
     userProjectGetProjectInfoV1(requestParameters: ProjectApiUserProjectGetProjectInfoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectInfoResponse>;
     /**
-     *
-     * @summary Get project by number id
+     * Find a project by string project_external_id (short code/ref_id), not numeric project_id. This is a legacy project-subject method; for the account API use GET /method/project/resolve with an access check. Returns the found project details.
+     * @summary Get a project by its external text code
      * @param {ProjectApiUserProjectGetProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     userProjectGetProjectV1(requestParameters: ProjectApiUserProjectGetProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProjectGetResponse>;
     /**
-     *
-     * @summary Get user by number id
+     * Find a user by string user_external_id, not internal numeric user_id. This is a legacy project-subject method; for the account API use GET /method/account/resolve-user. Do not use this lookup to select target project_id without a separate access check.
+     * @summary Get a user by the external text code
      * @param {ProjectApiUserProjectGetUserV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     userProjectGetUserV1(requestParameters: ProjectApiUserProjectGetUserV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProjectGetResponse>;
     /**
-     *
+     * Revoke the current user\'s own membership in project_id. Requires project access; the owner cannot leave this way (user_project.owner_is_king). Returns success. This leaves the project without deleting it.
      * @summary Leave project
      * @param {ProjectApiUserProjectLeaveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -331,7 +514,7 @@ export declare const ProjectApiFactory: (configuration?: Configuration, basePath
      */
     userProjectLeaveV1(requestParameters: ProjectApiUserProjectLeaveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read members and their roles in project_id using request filters/pagination. user_id is the internal member ID for access management; project roles differ from application OAuth scopes. Reading does not change membership.
      * @summary List of user in project
      * @param {ProjectApiUserProjectListAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -339,7 +522,7 @@ export declare const ProjectApiFactory: (configuration?: Configuration, basePath
      */
     userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProject2ProjectListResponse>;
     /**
-     *
+     * Read projects accessible to the current user using request filters and pagination. This is an account-context catalog: use the internal result ID as project_id in subsequent calls and the external code for resolve. This method does not select the open cabinet page.
      * @summary List of project for current user
      * @param {ProjectApiUserProjectListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -347,7 +530,7 @@ export declare const ProjectApiFactory: (configuration?: Configuration, basePath
      */
     userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedUserProjectResponse>;
     /**
-     *
+     * Save the current user\'s selected cabinet project id after checking observer access and return project details. Despite using GET, this changes cabinet selection. Available only to a project subject; selection does not replace explicit project_id in subsequent account API requests.
      * @summary Select user for project
      * @param {ProjectApiUserProjectSelectProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -362,7 +545,34 @@ export declare const ProjectApiFactory: (configuration?: Configuration, basePath
  */
 export interface ProjectApiInterface {
     /**
-     *
+     * Create a new project for the current account user with name and optional avatar using multipart/form-data. Supply name and avatar in body, v/language in query. Returns the created project; it differs from the personal project and is not automatically selected in the cabinet.
+     * @summary Create project
+     * @param {ProjectApiMethodProjectManagementCreateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApiInterface
+     */
+    methodProjectManagementCreateV1(requestParameters: ProjectApiMethodProjectManagementCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectMutationResponse>;
+    /**
+     * Delete project_id after checking effective project owner permissions. Obtain the ID from the project list/resolve; this deletes the project resource rather than removing the current member or revoking another user\'s access. Returns success after the deletion use case.
+     * @summary Delete project
+     * @param {ProjectApiMethodProjectManagementDeleteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApiInterface
+     */
+    methodProjectManagementDeleteV1(requestParameters: ProjectApiMethodProjectManagementDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     * Change name and optional avatar of the selected project_id using multipart/form-data. Requires actual project administrator status; a scope alone does not replace it. If no target is supplied in any request source, the account user\'s personal project is used, so specify the target explicitly. Returns the project after saving; does not create a new project.
+     * @summary Update project
+     * @param {ProjectApiMethodProjectManagementUpdateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApiInterface
+     */
+    methodProjectManagementUpdateV1(requestParameters: ProjectApiMethodProjectManagementUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectMutationResponse>;
+    /**
+     * Read data for the current target project_id and the authenticated user\'s access. A project-token selects its own project; an account-token uses the personal project when no target is provided by any source. The open cabinet tab does not automatically supply the target. Find an accessible ID using GET /method/project/list or /method/project/resolve.
      * @summary Get current user project
      * @param {ProjectApiMethodProjectMeMeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -371,7 +581,25 @@ export interface ProjectApiInterface {
      */
     methodProjectMeMeV1(requestParameters?: ProjectApiMethodProjectMeMeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectMeResponse>;
     /**
-     *
+     * Find or resolve a project by the text ID / short code shown in the StreamVi cabinet (external_id, also called ref_id). Pass this code unchanged as project_external_id. Returns name and numeric internal_id; use internal_id as project_id in later API calls. Verifies authenticated account access before returning details. Does not select or switch the project displayed in the cabinet.
+     * @summary Find a project by its text ID or short code
+     * @param {ProjectApiMethodResolveProjectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApiInterface
+     */
+    methodResolveProjectV1(requestParameters: ProjectApiMethodResolveProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodResolveProjectResponse>;
+    /**
+     * Returns only identity and display fields of a personal account. Financial fields are never returned.
+     * @summary Resolve an invitation recipient external ID
+     * @param {ProjectApiMethodResolveUserV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApiInterface
+     */
+    methodResolveUserV1(requestParameters: ProjectApiMethodResolveUserV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodResolveUserResponse>;
+    /**
+     * Change access_type for member user_id in project_id. Requires an actual administrator role; the existing owner cannot be demoted. Only the current owner can assign owner, which turns the previous owner into admin. Changes roles/transfers ownership, not OAuth scopes.
      * @summary Change access user from project
      * @param {ProjectApiUserProjectChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -390,7 +618,7 @@ export interface ProjectApiInterface {
      */
     userProjectDelV1(requestParameters: ProjectApiUserProjectDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Revoke user_id membership in project_id. Requires an effective project administrator role; this method cannot remove the caller or the owner. To leave yourself, use POST /method/project/user/leave; the project is preserved.
      * @summary Remove member from project
      * @param {ProjectApiUserProjectDeleteMemberV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -399,7 +627,7 @@ export interface ProjectApiInterface {
      */
     userProjectDeleteMemberV1(requestParameters: ProjectApiUserProjectDeleteMemberV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read full details of project_id after checking the current user\'s access. This does not change project settings or members; use PUT /method/project to change name/avatar.
      * @summary Get project full info
      * @param {ProjectApiUserProjectGetProjectInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -408,8 +636,8 @@ export interface ProjectApiInterface {
      */
     userProjectGetProjectInfoV1(requestParameters: ProjectApiUserProjectGetProjectInfoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectInfoResponse>;
     /**
-     *
-     * @summary Get project by number id
+     * Find a project by string project_external_id (short code/ref_id), not numeric project_id. This is a legacy project-subject method; for the account API use GET /method/project/resolve with an access check. Returns the found project details.
+     * @summary Get a project by its external text code
      * @param {ProjectApiUserProjectGetProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -417,8 +645,8 @@ export interface ProjectApiInterface {
      */
     userProjectGetProjectV1(requestParameters: ProjectApiUserProjectGetProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProjectGetResponse>;
     /**
-     *
-     * @summary Get user by number id
+     * Find a user by string user_external_id, not internal numeric user_id. This is a legacy project-subject method; for the account API use GET /method/account/resolve-user. Do not use this lookup to select target project_id without a separate access check.
+     * @summary Get a user by the external text code
      * @param {ProjectApiUserProjectGetUserV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -426,7 +654,7 @@ export interface ProjectApiInterface {
      */
     userProjectGetUserV1(requestParameters: ProjectApiUserProjectGetUserV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProjectGetResponse>;
     /**
-     *
+     * Revoke the current user\'s own membership in project_id. Requires project access; the owner cannot leave this way (user_project.owner_is_king). Returns success. This leaves the project without deleting it.
      * @summary Leave project
      * @param {ProjectApiUserProjectLeaveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -435,7 +663,7 @@ export interface ProjectApiInterface {
      */
     userProjectLeaveV1(requestParameters: ProjectApiUserProjectLeaveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read members and their roles in project_id using request filters/pagination. user_id is the internal member ID for access management; project roles differ from application OAuth scopes. Reading does not change membership.
      * @summary List of user in project
      * @param {ProjectApiUserProjectListAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -444,7 +672,7 @@ export interface ProjectApiInterface {
      */
     userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProject2ProjectListResponse>;
     /**
-     *
+     * Read projects accessible to the current user using request filters and pagination. This is an account-context catalog: use the internal result ID as project_id in subsequent calls and the external code for resolve. This method does not select the open cabinet page.
      * @summary List of project for current user
      * @param {ProjectApiUserProjectListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -453,7 +681,7 @@ export interface ProjectApiInterface {
      */
     userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedUserProjectResponse>;
     /**
-     *
+     * Save the current user\'s selected cabinet project id after checking observer access and return project details. Despite using GET, this changes cabinet selection. Available only to a project subject; selection does not replace explicit project_id in subsequent account API requests.
      * @summary Select user for project
      * @param {ProjectApiUserProjectSelectProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -461,6 +689,117 @@ export interface ProjectApiInterface {
      * @memberof ProjectApiInterface
      */
     userProjectSelectProjectV1(requestParameters: ProjectApiUserProjectSelectProjectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProjectGetResponse>;
+}
+/**
+ * Request parameters for methodProjectManagementCreateV1 operation in ProjectApi.
+ * @export
+ * @interface ProjectApiMethodProjectManagementCreateV1Request
+ */
+export interface ProjectApiMethodProjectManagementCreateV1Request {
+    /**
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ProjectApiMethodProjectManagementCreateV1
+     */
+    readonly 'language': MethodProjectManagementCreateV1LanguageEnum;
+    /**
+     * Project name
+     * @type {string}
+     * @memberof ProjectApiMethodProjectManagementCreateV1
+     */
+    readonly 'name': string;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof ProjectApiMethodProjectManagementCreateV1
+     */
+    readonly 'v'?: MethodProjectManagementCreateV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiMethodProjectManagementCreateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+    /**
+     * Project avatar file, max size 2 MiB, format: jpeg, jpg, png
+     * @type {File}
+     * @memberof ProjectApiMethodProjectManagementCreateV1
+     */
+    readonly 'avatar'?: File;
+}
+/**
+ * Request parameters for methodProjectManagementDeleteV1 operation in ProjectApi.
+ * @export
+ * @interface ProjectApiMethodProjectManagementDeleteV1Request
+ */
+export interface ProjectApiMethodProjectManagementDeleteV1Request {
+    /**
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ProjectApiMethodProjectManagementDeleteV1
+     */
+    readonly 'language': MethodProjectManagementDeleteV1LanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ProjectApiMethodProjectManagementDeleteV1
+     */
+    readonly 'project_id': number;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof ProjectApiMethodProjectManagementDeleteV1
+     */
+    readonly 'v'?: MethodProjectManagementDeleteV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiMethodProjectManagementDeleteV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+}
+/**
+ * Request parameters for methodProjectManagementUpdateV1 operation in ProjectApi.
+ * @export
+ * @interface ProjectApiMethodProjectManagementUpdateV1Request
+ */
+export interface ProjectApiMethodProjectManagementUpdateV1Request {
+    /**
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ProjectApiMethodProjectManagementUpdateV1
+     */
+    readonly 'language': MethodProjectManagementUpdateV1LanguageEnum;
+    /**
+     * Project name
+     * @type {string}
+     * @memberof ProjectApiMethodProjectManagementUpdateV1
+     */
+    readonly 'name': string;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof ProjectApiMethodProjectManagementUpdateV1
+     */
+    readonly 'v'?: MethodProjectManagementUpdateV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiMethodProjectManagementUpdateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+    /**
+     * Target project ID. When omitted in every request source, the account personal project is used.
+     * @type {number}
+     * @memberof ProjectApiMethodProjectManagementUpdateV1
+     */
+    readonly 'project_id'?: number;
+    /**
+     * Project avatar file, max size 2 MiB, format: jpeg, jpg, png
+     * @type {File}
+     * @memberof ProjectApiMethodProjectManagementUpdateV1
+     */
+    readonly 'avatar'?: File;
 }
 /**
  * Request parameters for methodProjectMeMeV1 operation in ProjectApi.
@@ -473,13 +812,87 @@ export interface ProjectApiMethodProjectMeMeV1Request {
      * @type {'1'}
      * @memberof ProjectApiMethodProjectMeMeV1
      */
-    readonly v?: MethodProjectMeMeV1VEnum;
+    readonly 'v'?: MethodProjectMeMeV1VEnum;
     /**
-     * Current language
+     * Language of localized messages and results; en is used when omitted. Allowed values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiMethodProjectMeMeV1
      */
-    readonly language?: MethodProjectMeMeV1LanguageEnum;
+    readonly 'language'?: MethodProjectMeMeV1LanguageEnum;
+    /**
+     * Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project tokens determine the project automatically.
+     * @type {number}
+     * @memberof ProjectApiMethodProjectMeMeV1
+     */
+    readonly 'project_id'?: number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiMethodProjectMeMeV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+}
+/**
+ * Request parameters for methodResolveProjectV1 operation in ProjectApi.
+ * @export
+ * @interface ProjectApiMethodResolveProjectV1Request
+ */
+export interface ProjectApiMethodResolveProjectV1Request {
+    /**
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ProjectApiMethodResolveProjectV1
+     */
+    readonly 'language': MethodResolveProjectV1LanguageEnum;
+    /**
+     * Text project ID / short code shown in the cabinet: external_id (ref_id), for example DJ84kgD. Pass unchanged, preserving letter case and leading zeros. This is not the numeric project_id. Returns the corresponding internal_id for later calls.
+     * @type {string}
+     * @memberof ProjectApiMethodResolveProjectV1
+     */
+    readonly 'project_external_id': string;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof ProjectApiMethodResolveProjectV1
+     */
+    readonly 'v'?: MethodResolveProjectV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiMethodResolveProjectV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+}
+/**
+ * Request parameters for methodResolveUserV1 operation in ProjectApi.
+ * @export
+ * @interface ProjectApiMethodResolveUserV1Request
+ */
+export interface ProjectApiMethodResolveUserV1Request {
+    /**
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ProjectApiMethodResolveUserV1
+     */
+    readonly 'language': MethodResolveUserV1LanguageEnum;
+    /**
+     * Recipient external reference ID, never its numeric internal ID
+     * @type {string}
+     * @memberof ProjectApiMethodResolveUserV1
+     */
+    readonly 'user_external_id': string;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof ProjectApiMethodResolveUserV1
+     */
+    readonly 'v'?: MethodResolveUserV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiMethodResolveUserV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for userProjectChangeAccessV1 operation in ProjectApi.
@@ -488,35 +901,41 @@ export interface ProjectApiMethodProjectMeMeV1Request {
  */
 export interface ProjectApiUserProjectChangeAccessV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiUserProjectChangeAccessV1
      */
-    readonly language: UserProjectChangeAccessV1LanguageEnum;
+    readonly 'language': UserProjectChangeAccessV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof ProjectApiUserProjectChangeAccessV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * User id
      * @type {number}
      * @memberof ProjectApiUserProjectChangeAccessV1
      */
-    readonly user_id: number;
+    readonly 'user_id': number;
     /**
      * Access type
      * @type {0 | 1 | 2 | 3}
      * @memberof ProjectApiUserProjectChangeAccessV1
      */
-    readonly access_type: UserProjectChangeAccessV1AccessTypeEnum;
+    readonly 'access_type': UserProjectChangeAccessV1AccessTypeEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectChangeAccessV1
      */
-    readonly v?: UserProjectChangeAccessV1VEnum;
+    readonly 'v'?: UserProjectChangeAccessV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiUserProjectChangeAccessV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for userProjectDelV1 operation in ProjectApi.
@@ -525,29 +944,35 @@ export interface ProjectApiUserProjectChangeAccessV1Request {
  */
 export interface ProjectApiUserProjectDelV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiUserProjectDelV1
      */
-    readonly language: UserProjectDelV1LanguageEnum;
+    readonly 'language': UserProjectDelV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof ProjectApiUserProjectDelV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * User id
      * @type {number}
      * @memberof ProjectApiUserProjectDelV1
      */
-    readonly user_id: number;
+    readonly 'user_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectDelV1
      */
-    readonly v?: UserProjectDelV1VEnum;
+    readonly 'v'?: UserProjectDelV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiUserProjectDelV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for userProjectDeleteMemberV1 operation in ProjectApi.
@@ -556,29 +981,35 @@ export interface ProjectApiUserProjectDelV1Request {
  */
 export interface ProjectApiUserProjectDeleteMemberV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiUserProjectDeleteMemberV1
      */
-    readonly language: UserProjectDeleteMemberV1LanguageEnum;
+    readonly 'language': UserProjectDeleteMemberV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof ProjectApiUserProjectDeleteMemberV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * User id
      * @type {number}
      * @memberof ProjectApiUserProjectDeleteMemberV1
      */
-    readonly user_id: number;
+    readonly 'user_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectDeleteMemberV1
      */
-    readonly v?: UserProjectDeleteMemberV1VEnum;
+    readonly 'v'?: UserProjectDeleteMemberV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiUserProjectDeleteMemberV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for userProjectGetProjectInfoV1 operation in ProjectApi.
@@ -587,23 +1018,29 @@ export interface ProjectApiUserProjectDeleteMemberV1Request {
  */
 export interface ProjectApiUserProjectGetProjectInfoV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiUserProjectGetProjectInfoV1
      */
-    readonly language: UserProjectGetProjectInfoV1LanguageEnum;
+    readonly 'language': UserProjectGetProjectInfoV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof ProjectApiUserProjectGetProjectInfoV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectGetProjectInfoV1
      */
-    readonly v?: UserProjectGetProjectInfoV1VEnum;
+    readonly 'v'?: UserProjectGetProjectInfoV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiUserProjectGetProjectInfoV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for userProjectGetProjectV1 operation in ProjectApi.
@@ -612,23 +1049,29 @@ export interface ProjectApiUserProjectGetProjectInfoV1Request {
  */
 export interface ProjectApiUserProjectGetProjectV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiUserProjectGetProjectV1
      */
-    readonly language: UserProjectGetProjectV1LanguageEnum;
+    readonly 'language': UserProjectGetProjectV1LanguageEnum;
     /**
      * Project external id
      * @type {string}
      * @memberof ProjectApiUserProjectGetProjectV1
      */
-    readonly project_external_id: string;
+    readonly 'project_external_id': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectGetProjectV1
      */
-    readonly v?: UserProjectGetProjectV1VEnum;
+    readonly 'v'?: UserProjectGetProjectV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiUserProjectGetProjectV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for userProjectGetUserV1 operation in ProjectApi.
@@ -637,23 +1080,29 @@ export interface ProjectApiUserProjectGetProjectV1Request {
  */
 export interface ProjectApiUserProjectGetUserV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiUserProjectGetUserV1
      */
-    readonly language: UserProjectGetUserV1LanguageEnum;
+    readonly 'language': UserProjectGetUserV1LanguageEnum;
     /**
      * User external id
      * @type {string}
      * @memberof ProjectApiUserProjectGetUserV1
      */
-    readonly user_external_id: string;
+    readonly 'user_external_id': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectGetUserV1
      */
-    readonly v?: UserProjectGetUserV1VEnum;
+    readonly 'v'?: UserProjectGetUserV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiUserProjectGetUserV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for userProjectLeaveV1 operation in ProjectApi.
@@ -662,23 +1111,29 @@ export interface ProjectApiUserProjectGetUserV1Request {
  */
 export interface ProjectApiUserProjectLeaveV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiUserProjectLeaveV1
      */
-    readonly language: UserProjectLeaveV1LanguageEnum;
+    readonly 'language': UserProjectLeaveV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof ProjectApiUserProjectLeaveV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectLeaveV1
      */
-    readonly v?: UserProjectLeaveV1VEnum;
+    readonly 'v'?: UserProjectLeaveV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiUserProjectLeaveV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for userProjectListAccessV1 operation in ProjectApi.
@@ -687,23 +1142,29 @@ export interface ProjectApiUserProjectLeaveV1Request {
  */
 export interface ProjectApiUserProjectListAccessV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiUserProjectListAccessV1
      */
-    readonly language: UserProjectListAccessV1LanguageEnum;
+    readonly 'language': UserProjectListAccessV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof ProjectApiUserProjectListAccessV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectListAccessV1
      */
-    readonly v?: UserProjectListAccessV1VEnum;
+    readonly 'v'?: UserProjectListAccessV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiUserProjectListAccessV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for userProjectListV1 operation in ProjectApi.
@@ -712,29 +1173,35 @@ export interface ProjectApiUserProjectListAccessV1Request {
  */
 export interface ProjectApiUserProjectListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiUserProjectListV1
      */
-    readonly language: UserProjectListV1LanguageEnum;
+    readonly 'language': UserProjectListV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectListV1
      */
-    readonly v?: UserProjectListV1VEnum;
+    readonly 'v'?: UserProjectListV1VEnum;
     /**
      * Number of results
      * @type {number}
      * @memberof ProjectApiUserProjectListV1
      */
-    readonly limit?: number;
+    readonly 'limit'?: number;
     /**
      * Page offset number
      * @type {number}
      * @memberof ProjectApiUserProjectListV1
      */
-    readonly offset?: number;
+    readonly 'offset'?: number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiUserProjectListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for userProjectSelectProjectV1 operation in ProjectApi.
@@ -743,23 +1210,29 @@ export interface ProjectApiUserProjectListV1Request {
  */
 export interface ProjectApiUserProjectSelectProjectV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectApiUserProjectSelectProjectV1
      */
-    readonly language: UserProjectSelectProjectV1LanguageEnum;
+    readonly 'language': UserProjectSelectProjectV1LanguageEnum;
     /**
      * Project internal id
      * @type {number}
      * @memberof ProjectApiUserProjectSelectProjectV1
      */
-    readonly id: number;
+    readonly 'id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectApiUserProjectSelectProjectV1
      */
-    readonly v?: UserProjectSelectProjectV1VEnum;
+    readonly 'v'?: UserProjectSelectProjectV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectApiUserProjectSelectProjectV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * ProjectApi - object-oriented interface
@@ -769,7 +1242,34 @@ export interface ProjectApiUserProjectSelectProjectV1Request {
  */
 export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
     /**
-     *
+     * Create a new project for the current account user with name and optional avatar using multipart/form-data. Supply name and avatar in body, v/language in query. Returns the created project; it differs from the personal project and is not automatically selected in the cabinet.
+     * @summary Create project
+     * @param {ProjectApiMethodProjectManagementCreateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    methodProjectManagementCreateV1(requestParameters: ProjectApiMethodProjectManagementCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectMutationResponse, any, {}, any>>;
+    /**
+     * Delete project_id after checking effective project owner permissions. Obtain the ID from the project list/resolve; this deletes the project resource rather than removing the current member or revoking another user\'s access. Returns success after the deletion use case.
+     * @summary Delete project
+     * @param {ProjectApiMethodProjectManagementDeleteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    methodProjectManagementDeleteV1(requestParameters: ProjectApiMethodProjectManagementDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
+    /**
+     * Change name and optional avatar of the selected project_id using multipart/form-data. Requires actual project administrator status; a scope alone does not replace it. If no target is supplied in any request source, the account user\'s personal project is used, so specify the target explicitly. Returns the project after saving; does not create a new project.
+     * @summary Update project
+     * @param {ProjectApiMethodProjectManagementUpdateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    methodProjectManagementUpdateV1(requestParameters: ProjectApiMethodProjectManagementUpdateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectMutationResponse, any, {}, any>>;
+    /**
+     * Read data for the current target project_id and the authenticated user\'s access. A project-token selects its own project; an account-token uses the personal project when no target is provided by any source. The open cabinet tab does not automatically supply the target. Find an accessible ID using GET /method/project/list or /method/project/resolve.
      * @summary Get current user project
      * @param {ProjectApiMethodProjectMeMeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -778,7 +1278,25 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     methodProjectMeMeV1(requestParameters?: ProjectApiMethodProjectMeMeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectMeResponse, any, {}, any>>;
     /**
-     *
+     * Find or resolve a project by the text ID / short code shown in the StreamVi cabinet (external_id, also called ref_id). Pass this code unchanged as project_external_id. Returns name and numeric internal_id; use internal_id as project_id in later API calls. Verifies authenticated account access before returning details. Does not select or switch the project displayed in the cabinet.
+     * @summary Find a project by its text ID or short code
+     * @param {ProjectApiMethodResolveProjectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    methodResolveProjectV1(requestParameters: ProjectApiMethodResolveProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodResolveProjectResponse, any, {}, any>>;
+    /**
+     * Returns only identity and display fields of a personal account. Financial fields are never returned.
+     * @summary Resolve an invitation recipient external ID
+     * @param {ProjectApiMethodResolveUserV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    methodResolveUserV1(requestParameters: ProjectApiMethodResolveUserV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodResolveUserResponse, any, {}, any>>;
+    /**
+     * Change access_type for member user_id in project_id. Requires an actual administrator role; the existing owner cannot be demoted. Only the current owner can assign owner, which turns the previous owner into admin. Changes roles/transfers ownership, not OAuth scopes.
      * @summary Change access user from project
      * @param {ProjectApiUserProjectChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -797,7 +1315,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     userProjectDelV1(requestParameters: ProjectApiUserProjectDelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Revoke user_id membership in project_id. Requires an effective project administrator role; this method cannot remove the caller or the owner. To leave yourself, use POST /method/project/user/leave; the project is preserved.
      * @summary Remove member from project
      * @param {ProjectApiUserProjectDeleteMemberV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -806,7 +1324,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     userProjectDeleteMemberV1(requestParameters: ProjectApiUserProjectDeleteMemberV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Read full details of project_id after checking the current user\'s access. This does not change project settings or members; use PUT /method/project to change name/avatar.
      * @summary Get project full info
      * @param {ProjectApiUserProjectGetProjectInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -815,8 +1333,8 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     userProjectGetProjectInfoV1(requestParameters: ProjectApiUserProjectGetProjectInfoV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProjectInfoResponse, any, {}, any>>;
     /**
-     *
-     * @summary Get project by number id
+     * Find a project by string project_external_id (short code/ref_id), not numeric project_id. This is a legacy project-subject method; for the account API use GET /method/project/resolve with an access check. Returns the found project details.
+     * @summary Get a project by its external text code
      * @param {ProjectApiUserProjectGetProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -824,8 +1342,8 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     userProjectGetProjectV1(requestParameters: ProjectApiUserProjectGetProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProjectGetResponse, any, {}, any>>;
     /**
-     *
-     * @summary Get user by number id
+     * Find a user by string user_external_id, not internal numeric user_id. This is a legacy project-subject method; for the account API use GET /method/account/resolve-user. Do not use this lookup to select target project_id without a separate access check.
+     * @summary Get a user by the external text code
      * @param {ProjectApiUserProjectGetUserV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -833,7 +1351,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     userProjectGetUserV1(requestParameters: ProjectApiUserProjectGetUserV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProjectGetResponse, any, {}, any>>;
     /**
-     *
+     * Revoke the current user\'s own membership in project_id. Requires project access; the owner cannot leave this way (user_project.owner_is_king). Returns success. This leaves the project without deleting it.
      * @summary Leave project
      * @param {ProjectApiUserProjectLeaveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -842,7 +1360,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     userProjectLeaveV1(requestParameters: ProjectApiUserProjectLeaveV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Read members and their roles in project_id using request filters/pagination. user_id is the internal member ID for access management; project roles differ from application OAuth scopes. Reading does not change membership.
      * @summary List of user in project
      * @param {ProjectApiUserProjectListAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -851,7 +1369,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     userProjectListAccessV1(requestParameters: ProjectApiUserProjectListAccessV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProject2ProjectListResponse, any, {}, any>>;
     /**
-     *
+     * Read projects accessible to the current user using request filters and pagination. This is an account-context catalog: use the internal result ID as project_id in subsequent calls and the external code for resolve. This method does not select the open cabinet page.
      * @summary List of project for current user
      * @param {ProjectApiUserProjectListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -860,7 +1378,7 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     userProjectListV1(requestParameters: ProjectApiUserProjectListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserProjectResponse, any, {}, any>>;
     /**
-     *
+     * Save the current user\'s selected cabinet project id after checking observer access and return project details. Despite using GET, this changes cabinet selection. Available only to a project subject; selection does not replace explicit project_id in subsequent account API requests.
      * @summary Select user for project
      * @param {ProjectApiUserProjectSelectProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -869,6 +1387,54 @@ export declare class ProjectApi extends BaseAPI implements ProjectApiInterface {
      */
     userProjectSelectProjectV1(requestParameters: ProjectApiUserProjectSelectProjectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProjectGetResponse, any, {}, any>>;
 }
+/**
+ * @export
+ */
+export declare const MethodProjectManagementCreateV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodProjectManagementCreateV1LanguageEnum = typeof MethodProjectManagementCreateV1LanguageEnum[keyof typeof MethodProjectManagementCreateV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const MethodProjectManagementCreateV1VEnum: {
+    readonly _1: "1";
+};
+export type MethodProjectManagementCreateV1VEnum = typeof MethodProjectManagementCreateV1VEnum[keyof typeof MethodProjectManagementCreateV1VEnum];
+/**
+ * @export
+ */
+export declare const MethodProjectManagementDeleteV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodProjectManagementDeleteV1LanguageEnum = typeof MethodProjectManagementDeleteV1LanguageEnum[keyof typeof MethodProjectManagementDeleteV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const MethodProjectManagementDeleteV1VEnum: {
+    readonly _1: "1";
+};
+export type MethodProjectManagementDeleteV1VEnum = typeof MethodProjectManagementDeleteV1VEnum[keyof typeof MethodProjectManagementDeleteV1VEnum];
+/**
+ * @export
+ */
+export declare const MethodProjectManagementUpdateV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodProjectManagementUpdateV1LanguageEnum = typeof MethodProjectManagementUpdateV1LanguageEnum[keyof typeof MethodProjectManagementUpdateV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const MethodProjectManagementUpdateV1VEnum: {
+    readonly _1: "1";
+};
+export type MethodProjectManagementUpdateV1VEnum = typeof MethodProjectManagementUpdateV1VEnum[keyof typeof MethodProjectManagementUpdateV1VEnum];
 /**
  * @export
  */
@@ -885,6 +1451,38 @@ export declare const MethodProjectMeMeV1LanguageEnum: {
     readonly Cn: "cn";
 };
 export type MethodProjectMeMeV1LanguageEnum = typeof MethodProjectMeMeV1LanguageEnum[keyof typeof MethodProjectMeMeV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const MethodResolveProjectV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodResolveProjectV1LanguageEnum = typeof MethodResolveProjectV1LanguageEnum[keyof typeof MethodResolveProjectV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const MethodResolveProjectV1VEnum: {
+    readonly _1: "1";
+};
+export type MethodResolveProjectV1VEnum = typeof MethodResolveProjectV1VEnum[keyof typeof MethodResolveProjectV1VEnum];
+/**
+ * @export
+ */
+export declare const MethodResolveUserV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+    readonly Cn: "cn";
+};
+export type MethodResolveUserV1LanguageEnum = typeof MethodResolveUserV1LanguageEnum[keyof typeof MethodResolveUserV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const MethodResolveUserV1VEnum: {
+    readonly _1: "1";
+};
+export type MethodResolveUserV1VEnum = typeof MethodResolveUserV1VEnum[keyof typeof MethodResolveUserV1VEnum];
 /**
  * @export
  */

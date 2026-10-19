@@ -17,7 +17,6 @@ exports.ProjectChannelResponseUsageTypeEnum = exports.ProjectChannelResponseAcce
 exports.ProjectChannelResponseAccessTypeEnum = {
     NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_12: 1,
     NUMBER_2: 2
 };
 exports.ProjectChannelResponseUsageTypeEnum = {

@@ -30,12 +30,13 @@ const base_1 = require("../base");
 const PullServersApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Read the public pull server list localized using lang. This lists available regions/servers for pull links without creating a link or connection.
          * @summary Get pull servers
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pullServersGetPullServersV1: async (options = {}) => {
+        pullServersGetPullServersV1: async (xClientRequestId, options = {}) => {
             const localVarPath = `/method/pull-servers/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -46,6 +47,9 @@ const PullServersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -65,14 +69,15 @@ const PullServersApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.PullServersApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Read the public pull server list localized using lang. This lists available regions/servers for pull links without creating a link or connection.
          * @summary Get pull servers
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pullServersGetPullServersV1(options) {
+        async pullServersGetPullServersV1(xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.pullServersGetPullServersV1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.pullServersGetPullServersV1(xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PullServersApi.pullServersGetPullServersV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -88,13 +93,14 @@ const PullServersApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.PullServersApiFp)(configuration);
     return {
         /**
-         *
+         * Read the public pull server list localized using lang. This lists available regions/servers for pull links without creating a link or connection.
          * @summary Get pull servers
+         * @param {PullServersApiPullServersGetPullServersV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pullServersGetPullServersV1(options) {
-            return localVarFp.pullServersGetPullServersV1(options).then((request) => request(axios, basePath));
+        pullServersGetPullServersV1(requestParameters = {}, options) {
+            return localVarFp.pullServersGetPullServersV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -107,14 +113,15 @@ exports.PullServersApiFactory = PullServersApiFactory;
  */
 class PullServersApi extends base_1.BaseAPI {
     /**
-     *
+     * Read the public pull server list localized using lang. This lists available regions/servers for pull links without creating a link or connection.
      * @summary Get pull servers
+     * @param {PullServersApiPullServersGetPullServersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PullServersApi
      */
-    pullServersGetPullServersV1(options) {
-        return (0, exports.PullServersApiFp)(this.configuration).pullServersGetPullServersV1(options).then((request) => request(this.axios, this.basePath));
+    pullServersGetPullServersV1(requestParameters = {}, options) {
+        return (0, exports.PullServersApiFp)(this.configuration).pullServersGetPullServersV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PullServersApi = PullServersApi;

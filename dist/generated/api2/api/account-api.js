@@ -30,14 +30,15 @@ const base_1 = require("../base");
 const AccountApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Read the current user\'s personal profile: account data belongs to the authenticated subject, not the selected cabinet project. The token determines the user ID; project_id does not select another user. Update the profile with POST /method/account/profile.
          * @summary Get account profile
-         * @param {AccountGetProfileV1LanguageEnum} language Current language
+         * @param {AccountGetProfileV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountGetProfileV1: async (language, v, options = {}) => {
+        accountGetProfileV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('accountGetProfileV1', 'language', language);
             const localVarPath = `/method/account/profile`;
@@ -50,9 +51,12 @@ const AccountApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["profile:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["profile:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -61,6 +65,9 @@ const AccountApiAxiosParamCreator = function (configuration) {
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -71,17 +78,18 @@ const AccountApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Save first_name/last_name and optional avatar of the current user\'s personal profile. Uses multipart/form-data; avatar is limited to 2 MiB and JPEG/PNG. The token determines the user, not project_id. Success confirms the profile was saved without changing the project name.
          * @summary Update account profile
-         * @param {AccountUpdateProfileV1LanguageEnum} language Current language
+         * @param {AccountUpdateProfileV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} firstName First name
          * @param {string} lastName Last name
          * @param {AccountUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountUpdateProfileV1: async (language, firstName, lastName, v, avatar, options = {}) => {
+        accountUpdateProfileV1: async (language, firstName, lastName, v, xClientRequestId, avatar, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('accountUpdateProfileV1', 'language', language);
             // verify required parameter 'firstName' is not null or undefined
@@ -99,9 +107,12 @@ const AccountApiAxiosParamCreator = function (configuration) {
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["profile:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -121,6 +132,9 @@ const AccountApiAxiosParamCreator = function (configuration) {
                 localVarFormParams.append('avatar', avatar);
             }
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -141,34 +155,36 @@ const AccountApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.AccountApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Read the current user\'s personal profile: account data belongs to the authenticated subject, not the selected cabinet project. The token determines the user ID; project_id does not select another user. Update the profile with POST /method/account/profile.
          * @summary Get account profile
-         * @param {AccountGetProfileV1LanguageEnum} language Current language
+         * @param {AccountGetProfileV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {AccountGetProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async accountGetProfileV1(language, v, options) {
+        async accountGetProfileV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.accountGetProfileV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accountGetProfileV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AccountApi.accountGetProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Save first_name/last_name and optional avatar of the current user\'s personal profile. Uses multipart/form-data; avatar is limited to 2 MiB and JPEG/PNG. The token determines the user, not project_id. Success confirms the profile was saved without changing the project name.
          * @summary Update account profile
-         * @param {AccountUpdateProfileV1LanguageEnum} language Current language
+         * @param {AccountUpdateProfileV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} firstName First name
          * @param {string} lastName Last name
          * @param {AccountUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async accountUpdateProfileV1(language, firstName, lastName, v, avatar, options) {
+        async accountUpdateProfileV1(language, firstName, lastName, v, xClientRequestId, avatar, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.accountUpdateProfileV1(language, firstName, lastName, v, avatar, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accountUpdateProfileV1(language, firstName, lastName, v, xClientRequestId, avatar, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AccountApi.accountUpdateProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -184,24 +200,24 @@ const AccountApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.AccountApiFp)(configuration);
     return {
         /**
-         *
+         * Read the current user\'s personal profile: account data belongs to the authenticated subject, not the selected cabinet project. The token determines the user ID; project_id does not select another user. Update the profile with POST /method/account/profile.
          * @summary Get account profile
          * @param {AccountApiAccountGetProfileV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         accountGetProfileV1(requestParameters, options) {
-            return localVarFp.accountGetProfileV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.accountGetProfileV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Save first_name/last_name and optional avatar of the current user\'s personal profile. Uses multipart/form-data; avatar is limited to 2 MiB and JPEG/PNG. The token determines the user, not project_id. Success confirms the profile was saved without changing the project name.
          * @summary Update account profile
          * @param {AccountApiAccountUpdateProfileV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         accountUpdateProfileV1(requestParameters, options) {
-            return localVarFp.accountUpdateProfileV1(requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.v, requestParameters.avatar, options).then((request) => request(axios, basePath));
+            return localVarFp.accountUpdateProfileV1(requestParameters['language'], requestParameters['first_name'], requestParameters['last_name'], requestParameters['v'], requestParameters['X-Client-Request-Id'], requestParameters['avatar'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -214,7 +230,7 @@ exports.AccountApiFactory = AccountApiFactory;
  */
 class AccountApi extends base_1.BaseAPI {
     /**
-     *
+     * Read the current user\'s personal profile: account data belongs to the authenticated subject, not the selected cabinet project. The token determines the user ID; project_id does not select another user. Update the profile with POST /method/account/profile.
      * @summary Get account profile
      * @param {AccountApiAccountGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -222,10 +238,10 @@ class AccountApi extends base_1.BaseAPI {
      * @memberof AccountApi
      */
     accountGetProfileV1(requestParameters, options) {
-        return (0, exports.AccountApiFp)(this.configuration).accountGetProfileV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AccountApiFp)(this.configuration).accountGetProfileV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Save first_name/last_name and optional avatar of the current user\'s personal profile. Uses multipart/form-data; avatar is limited to 2 MiB and JPEG/PNG. The token determines the user, not project_id. Success confirms the profile was saved without changing the project name.
      * @summary Update account profile
      * @param {AccountApiAccountUpdateProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -233,7 +249,7 @@ class AccountApi extends base_1.BaseAPI {
      * @memberof AccountApi
      */
     accountUpdateProfileV1(requestParameters, options) {
-        return (0, exports.AccountApiFp)(this.configuration).accountUpdateProfileV1(requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.v, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AccountApiFp)(this.configuration).accountUpdateProfileV1(requestParameters['language'], requestParameters['first_name'], requestParameters['last_name'], requestParameters['v'], requestParameters['X-Client-Request-Id'], requestParameters['avatar'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.AccountApi = AccountApi;

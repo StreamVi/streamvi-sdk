@@ -6,8 +6,8 @@ Centrifugo channel event response
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**event** | **string** | Event type | [default to undefined]
-**payload** | [**CentrifugoChannelStatusPayload**](CentrifugoChannelStatusPayload.md) | Payload | [default to undefined]
+**event** | **string** |  | [default to undefined]
+**payload** | [**CentrifugoChannelConnectionsPayload**](CentrifugoChannelConnectionsPayload.md) |  | [default to undefined]
 
 ## Example
 

@@ -36,7 +36,7 @@ export interface SchedulerItemResponse {
      */
     'project_id': number;
     /**
-     * Legacy primary channel id
+     * Legacy primary channel: internal numeric StreamVi channel ID, not an external/platform ID. See channel_ids for the complete associated channel list.
      * @type {number}
      * @memberof SchedulerItemResponse
      */
@@ -66,7 +66,7 @@ export interface SchedulerItemResponse {
      */
     'active': boolean;
     /**
-     * Complete associated channel id list
+     * Complete list of associated internal numeric StreamVi channel IDs, equivalent to group_id values in channel search results.
      * @type {Array<number>}
      * @memberof SchedulerItemResponse
      */
@@ -84,7 +84,7 @@ export interface SchedulerItemResponse {
      */
     'type': SchedulerItemResponseTypeEnum;
     /**
-     * Referenced video details, or null if the video was removed
+     * 
      * @type {SchedulerVideoResponse}
      * @memberof SchedulerItemResponse
      */

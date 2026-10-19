@@ -22,34 +22,37 @@ import type { SuccessResponse } from '../models';
  */
 export declare const PaySettingApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Check whether the country of project_id can change to country_id and return the check result. This previews restrictions without saving a new country; POST /method/pay-setting performs the change.
      * @summary Check country after update user
-     * @param {PaySettingCheckCountryV1LanguageEnum} language Current language
+     * @param {PaySettingCheckCountryV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} countryId country id
      * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySettingCheckCountryV1: (language: PaySettingCheckCountryV1LanguageEnum, projectId: number, countryId: number, v?: PaySettingCheckCountryV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySettingCheckCountryV1: (language: PaySettingCheckCountryV1LanguageEnum, projectId: number, countryId: number, v?: PaySettingCheckCountryV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read payment settings of project_id for the current user, version v=3: country, payment system, and saved payment details according to the response schema. These are personal/billing data, unsuitable for the corpus. Update with POST /method/pay-setting.
      * @summary Get pay settings for profile v3
-     * @param {PaySettingGetSettingV3LanguageEnum} language Current language
+     * @param {PaySettingGetSettingV3LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySettingGetSettingV3: (language: PaySettingGetSettingV3LanguageEnum, projectId: number, v?: PaySettingGetSettingV3VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySettingGetSettingV3: (language: PaySettingGetSettingV3LanguageEnum, projectId: number, v?: PaySettingGetSettingV3VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Save payment details for project_id: countrie_id, pay_system_id, email, and selected form fields. Non-Russian forms use address fields; the DTO and service rules determine exact requirements. Success confirms details were saved without topping up balance or paying for a plan.
      * @summary Set pay settings for profile
      * @param {PaySettingSetSettingV1Request} paySettingSetSettingV1Request
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySettingSetSettingV1: (paySettingSetSettingV1Request: PaySettingSetSettingV1Request, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paySettingSetSettingV1: (paySettingSetSettingV1Request: PaySettingSetSettingV1Request, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PaySettingApi - functional programming interface
@@ -57,34 +60,37 @@ export declare const PaySettingApiAxiosParamCreator: (configuration?: Configurat
  */
 export declare const PaySettingApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Check whether the country of project_id can change to country_id and return the check result. This previews restrictions without saving a new country; POST /method/pay-setting performs the change.
      * @summary Check country after update user
-     * @param {PaySettingCheckCountryV1LanguageEnum} language Current language
+     * @param {PaySettingCheckCountryV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} countryId country id
      * @param {PaySettingCheckCountryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySettingCheckCountryV1(language: PaySettingCheckCountryV1LanguageEnum, projectId: number, countryId: number, v?: PaySettingCheckCountryV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayCheckCountryResponse>>;
+    paySettingCheckCountryV1(language: PaySettingCheckCountryV1LanguageEnum, projectId: number, countryId: number, v?: PaySettingCheckCountryV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayCheckCountryResponse>>;
     /**
-     *
+     * Read payment settings of project_id for the current user, version v=3: country, payment system, and saved payment details according to the response schema. These are personal/billing data, unsuitable for the corpus. Update with POST /method/pay-setting.
      * @summary Get pay settings for profile v3
-     * @param {PaySettingGetSettingV3LanguageEnum} language Current language
+     * @param {PaySettingGetSettingV3LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {PaySettingGetSettingV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySettingGetSettingV3(language: PaySettingGetSettingV3LanguageEnum, projectId: number, v?: PaySettingGetSettingV3VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPaySettingResponseV3>>;
+    paySettingGetSettingV3(language: PaySettingGetSettingV3LanguageEnum, projectId: number, v?: PaySettingGetSettingV3VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPaySettingResponseV3>>;
     /**
-     *
+     * Save payment details for project_id: countrie_id, pay_system_id, email, and selected form fields. Non-Russian forms use address fields; the DTO and service rules determine exact requirements. Success confirms details were saved without topping up balance or paying for a plan.
      * @summary Set pay settings for profile
      * @param {PaySettingSetSettingV1Request} paySettingSetSettingV1Request
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paySettingSetSettingV1(paySettingSetSettingV1Request: PaySettingSetSettingV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    paySettingSetSettingV1(paySettingSetSettingV1Request: PaySettingSetSettingV1Request, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * PaySettingApi - factory interface
@@ -92,7 +98,7 @@ export declare const PaySettingApiFp: (configuration?: Configuration) => {
  */
 export declare const PaySettingApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Check whether the country of project_id can change to country_id and return the check result. This previews restrictions without saving a new country; POST /method/pay-setting performs the change.
      * @summary Check country after update user
      * @param {PaySettingApiPaySettingCheckCountryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -100,7 +106,7 @@ export declare const PaySettingApiFactory: (configuration?: Configuration, baseP
      */
     paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayCheckCountryResponse>;
     /**
-     *
+     * Read payment settings of project_id for the current user, version v=3: country, payment system, and saved payment details according to the response schema. These are personal/billing data, unsuitable for the corpus. Update with POST /method/pay-setting.
      * @summary Get pay settings for profile v3
      * @param {PaySettingApiPaySettingGetSettingV3Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -108,7 +114,7 @@ export declare const PaySettingApiFactory: (configuration?: Configuration, baseP
      */
     paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): AxiosPromise<GetPaySettingResponseV3>;
     /**
-     *
+     * Save payment details for project_id: countrie_id, pay_system_id, email, and selected form fields. Non-Russian forms use address fields; the DTO and service rules determine exact requirements. Success confirms details were saved without topping up balance or paying for a plan.
      * @summary Set pay settings for profile
      * @param {PaySettingApiPaySettingSetSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -123,7 +129,7 @@ export declare const PaySettingApiFactory: (configuration?: Configuration, baseP
  */
 export interface PaySettingApiInterface {
     /**
-     *
+     * Check whether the country of project_id can change to country_id and return the check result. This previews restrictions without saving a new country; POST /method/pay-setting performs the change.
      * @summary Check country after update user
      * @param {PaySettingApiPaySettingCheckCountryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -132,7 +138,7 @@ export interface PaySettingApiInterface {
      */
     paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PayCheckCountryResponse>;
     /**
-     *
+     * Read payment settings of project_id for the current user, version v=3: country, payment system, and saved payment details according to the response schema. These are personal/billing data, unsuitable for the corpus. Update with POST /method/pay-setting.
      * @summary Get pay settings for profile v3
      * @param {PaySettingApiPaySettingGetSettingV3Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -141,7 +147,7 @@ export interface PaySettingApiInterface {
      */
     paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): AxiosPromise<GetPaySettingResponseV3>;
     /**
-     *
+     * Save payment details for project_id: countrie_id, pay_system_id, email, and selected form fields. Non-Russian forms use address fields; the DTO and service rules determine exact requirements. Success confirms details were saved without topping up balance or paying for a plan.
      * @summary Set pay settings for profile
      * @param {PaySettingApiPaySettingSetSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -157,29 +163,35 @@ export interface PaySettingApiInterface {
  */
 export interface PaySettingApiPaySettingCheckCountryV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
-    readonly language: PaySettingCheckCountryV1LanguageEnum;
+    readonly 'language': PaySettingCheckCountryV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * country id
      * @type {number}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
-    readonly country_id: number;
+    readonly 'country_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaySettingApiPaySettingCheckCountryV1
      */
-    readonly v?: PaySettingCheckCountryV1VEnum;
+    readonly 'v'?: PaySettingCheckCountryV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySettingApiPaySettingCheckCountryV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for paySettingGetSettingV3 operation in PaySettingApi.
@@ -188,23 +200,29 @@ export interface PaySettingApiPaySettingCheckCountryV1Request {
  */
 export interface PaySettingApiPaySettingGetSettingV3Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaySettingApiPaySettingGetSettingV3
      */
-    readonly language: PaySettingGetSettingV3LanguageEnum;
+    readonly 'language': PaySettingGetSettingV3LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof PaySettingApiPaySettingGetSettingV3
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof PaySettingApiPaySettingGetSettingV3
      */
-    readonly v?: PaySettingGetSettingV3VEnum;
+    readonly 'v'?: PaySettingGetSettingV3VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySettingApiPaySettingGetSettingV3
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for paySettingSetSettingV1 operation in PaySettingApi.
@@ -217,7 +235,13 @@ export interface PaySettingApiPaySettingSetSettingV1Request {
      * @type {PaySettingSetSettingV1Request}
      * @memberof PaySettingApiPaySettingSetSettingV1
      */
-    readonly PaySettingSetSettingV1Request: PaySettingSetSettingV1Request;
+    readonly 'PaySettingSetSettingV1Request': PaySettingSetSettingV1Request;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaySettingApiPaySettingSetSettingV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * PaySettingApi - object-oriented interface
@@ -227,7 +251,7 @@ export interface PaySettingApiPaySettingSetSettingV1Request {
  */
 export declare class PaySettingApi extends BaseAPI implements PaySettingApiInterface {
     /**
-     *
+     * Check whether the country of project_id can change to country_id and return the check result. This previews restrictions without saving a new country; POST /method/pay-setting performs the change.
      * @summary Check country after update user
      * @param {PaySettingApiPaySettingCheckCountryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -236,7 +260,7 @@ export declare class PaySettingApi extends BaseAPI implements PaySettingApiInter
      */
     paySettingCheckCountryV1(requestParameters: PaySettingApiPaySettingCheckCountryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayCheckCountryResponse, any, {}, any>>;
     /**
-     *
+     * Read payment settings of project_id for the current user, version v=3: country, payment system, and saved payment details according to the response schema. These are personal/billing data, unsuitable for the corpus. Update with POST /method/pay-setting.
      * @summary Get pay settings for profile v3
      * @param {PaySettingApiPaySettingGetSettingV3Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -245,7 +269,7 @@ export declare class PaySettingApi extends BaseAPI implements PaySettingApiInter
      */
     paySettingGetSettingV3(requestParameters: PaySettingApiPaySettingGetSettingV3Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPaySettingResponseV3, any, {}, any>>;
     /**
-     *
+     * Save payment details for project_id: countrie_id, pay_system_id, email, and selected form fields. Non-Russian forms use address fields; the DTO and service rules determine exact requirements. Success confirms details were saved without topping up balance or paying for a plan.
      * @summary Set pay settings for profile
      * @param {PaySettingApiPaySettingSetSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

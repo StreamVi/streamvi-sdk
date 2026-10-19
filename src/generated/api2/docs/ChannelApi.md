@@ -33,15 +33,16 @@ All URIs are relative to *http://localhost*
 |[**addChannelMethodAddZhanqiTvV1**](#addchannelmethodaddzhanqitvv1) | **POST** /method/channel/add/zhanqitv | Add zhanqitv channel|
 |[**channelDeleteChannelV1**](#channeldeletechannelv1) | **POST** /method/channel/delete | Delete channel|
 |[**channelGetChannelV1**](#channelgetchannelv1) | **GET** /method/channel/get | Get channel by id|
-|[**channelSetDelayV1**](#channelsetdelayv1) | **GET** /method/channel/set-delay | Set delay - test point|
+|[**channelSetDelayV1**](#channelsetdelayv1) | **GET** /method/channel/set-delay | Emit simulated channel statuses for manual testing|
 |[**channelShortChannelListV1**](#channelshortchannellistv1) | **GET** /method/channel/short | Minimal channel list|
-|[**methodSearchV1**](#methodsearchv1) | **GET** /method/channel/search | Search channel list|
+|[**methodSearchV1**](#methodsearchv1) | **GET** /method/channel/search | Search channels connected to a project|
 |[**methodSetStatusLegacyV1**](#methodsetstatuslegacyv1) | **POST** /method/channel/set-status | Set desired channel state|
 |[**methodSetStatusV1**](#methodsetstatusv1) | **PUT** /method/channel/status | Set desired channel state|
 
 # **addChannelMethodAddBizonV1**
-> addChannelMethodAddBizonV1(bizonDto)
+> AddChannelResponse addChannelMethodAddBizonV1(bizonDto)
 
+Add a bizon destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -56,9 +57,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let bizonDto: BizonDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddBizonV1(
-    bizonDto
+    bizonDto,
+    xClientRequestId
 );
 ```
 
@@ -67,15 +70,16 @@ const { status, data } = await apiInstance.addChannelMethodAddBizonV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **bizonDto** | **BizonDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -92,8 +96,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddBoostyV1**
-> addChannelMethodAddBoostyV1(boostyDto)
+> AddChannelResponse addChannelMethodAddBoostyV1(boostyDto)
 
+Add a boosty destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -108,9 +113,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let boostyDto: BoostyDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddBoostyV1(
-    boostyDto
+    boostyDto,
+    xClientRequestId
 );
 ```
 
@@ -119,15 +126,16 @@ const { status, data } = await apiInstance.addChannelMethodAddBoostyV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **boostyDto** | **BoostyDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -144,8 +152,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddCustomV1**
-> addChannelMethodAddCustomV1(customDto)
+> AddChannelResponse addChannelMethodAddCustomV1(customDto)
 
+Add a custom destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -160,9 +169,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let customDto: CustomDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddCustomV1(
-    customDto
+    customDto,
+    xClientRequestId
 );
 ```
 
@@ -171,15 +182,16 @@ const { status, data } = await apiInstance.addChannelMethodAddCustomV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **customDto** | **CustomDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -196,8 +208,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddDouyuV1**
-> addChannelMethodAddDouyuV1(douyuDto)
+> AddChannelResponse addChannelMethodAddDouyuV1(douyuDto)
 
+Add a douyu destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -212,9 +225,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let douyuDto: DouyuDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddDouyuV1(
-    douyuDto
+    douyuDto,
+    xClientRequestId
 );
 ```
 
@@ -223,15 +238,16 @@ const { status, data } = await apiInstance.addChannelMethodAddDouyuV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **douyuDto** | **DouyuDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -248,8 +264,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddFbV1**
-> addChannelMethodAddFbV1(fbDto)
+> AddChannelResponse addChannelMethodAddFbV1(fbDto)
 
+Add a fb destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -264,9 +281,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let fbDto: FbDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddFbV1(
-    fbDto
+    fbDto,
+    xClientRequestId
 );
 ```
 
@@ -275,15 +294,16 @@ const { status, data } = await apiInstance.addChannelMethodAddFbV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **fbDto** | **FbDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -300,8 +320,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddFc2LiveV1**
-> addChannelMethodAddFc2LiveV1(fc2liveDto)
+> AddChannelResponse addChannelMethodAddFc2LiveV1(fc2liveDto)
 
+Add a fc2live destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -316,9 +337,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let fc2liveDto: Fc2liveDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddFc2LiveV1(
-    fc2liveDto
+    fc2liveDto,
+    xClientRequestId
 );
 ```
 
@@ -327,15 +350,16 @@ const { status, data } = await apiInstance.addChannelMethodAddFc2LiveV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **fc2liveDto** | **Fc2liveDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -352,8 +376,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddGetcourseV1**
-> addChannelMethodAddGetcourseV1(getcourseDto)
+> AddChannelResponse addChannelMethodAddGetcourseV1(getcourseDto)
 
+Add a getcourse destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -368,9 +393,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let getcourseDto: GetcourseDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddGetcourseV1(
-    getcourseDto
+    getcourseDto,
+    xClientRequestId
 );
 ```
 
@@ -379,15 +406,16 @@ const { status, data } = await apiInstance.addChannelMethodAddGetcourseV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **getcourseDto** | **GetcourseDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -404,8 +432,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddGoodgameV1**
-> addChannelMethodAddGoodgameV1(goodgameDto)
+> AddChannelResponse addChannelMethodAddGoodgameV1(goodgameDto)
 
+Add a goodgame destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -420,9 +449,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let goodgameDto: GoodgameDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddGoodgameV1(
-    goodgameDto
+    goodgameDto,
+    xClientRequestId
 );
 ```
 
@@ -431,15 +462,16 @@ const { status, data } = await apiInstance.addChannelMethodAddGoodgameV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **goodgameDto** | **GoodgameDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -456,8 +488,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddHuyaV1**
-> addChannelMethodAddHuyaV1(huyaDto)
+> AddChannelResponse addChannelMethodAddHuyaV1(huyaDto)
 
+Add a huya destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -472,9 +505,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let huyaDto: HuyaDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddHuyaV1(
-    huyaDto
+    huyaDto,
+    xClientRequestId
 );
 ```
 
@@ -483,15 +518,16 @@ const { status, data } = await apiInstance.addChannelMethodAddHuyaV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **huyaDto** | **HuyaDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -508,8 +544,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddInstagramV1**
-> addChannelMethodAddInstagramV1(instagramDto)
+> AddChannelResponse addChannelMethodAddInstagramV1(instagramDto)
 
+Add a instagram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -524,9 +561,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let instagramDto: InstagramDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddInstagramV1(
-    instagramDto
+    instagramDto,
+    xClientRequestId
 );
 ```
 
@@ -535,15 +574,16 @@ const { status, data } = await apiInstance.addChannelMethodAddInstagramV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **instagramDto** | **InstagramDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -560,8 +600,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddKickV1**
-> addChannelMethodAddKickV1(kickDto)
+> AddChannelResponse addChannelMethodAddKickV1(kickDto)
 
+Add a kick destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -576,9 +617,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let kickDto: KickDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddKickV1(
-    kickDto
+    kickDto,
+    xClientRequestId
 );
 ```
 
@@ -587,15 +630,16 @@ const { status, data } = await apiInstance.addChannelMethodAddKickV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **kickDto** | **KickDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -612,8 +656,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddKinescopeV1**
-> addChannelMethodAddKinescopeV1(kinescopeDto)
+> AddChannelResponse addChannelMethodAddKinescopeV1(kinescopeDto)
 
+Add a kinescope destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -628,9 +673,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let kinescopeDto: KinescopeDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddKinescopeV1(
-    kinescopeDto
+    kinescopeDto,
+    xClientRequestId
 );
 ```
 
@@ -639,15 +686,16 @@ const { status, data } = await apiInstance.addChannelMethodAddKinescopeV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **kinescopeDto** | **KinescopeDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -664,8 +712,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddLinkedinV1**
-> addChannelMethodAddLinkedinV1(linkedinDto)
+> AddChannelResponse addChannelMethodAddLinkedinV1(linkedinDto)
 
+Add a linkedin destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -680,9 +729,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let linkedinDto: LinkedinDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddLinkedinV1(
-    linkedinDto
+    linkedinDto,
+    xClientRequestId
 );
 ```
 
@@ -691,15 +742,16 @@ const { status, data } = await apiInstance.addChannelMethodAddLinkedinV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **linkedinDto** | **LinkedinDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -716,8 +768,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddNavertvV1**
-> addChannelMethodAddNavertvV1(navertvDto)
+> AddChannelResponse addChannelMethodAddNavertvV1(navertvDto)
 
+Add a navertv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -732,9 +785,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let navertvDto: NavertvDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddNavertvV1(
-    navertvDto
+    navertvDto,
+    xClientRequestId
 );
 ```
 
@@ -743,15 +798,16 @@ const { status, data } = await apiInstance.addChannelMethodAddNavertvV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **navertvDto** | **NavertvDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -768,8 +824,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddNimotvV1**
-> addChannelMethodAddNimotvV1(nimotvDto)
+> AddChannelResponse addChannelMethodAddNimotvV1(nimotvDto)
 
+Add a nimotv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -784,9 +841,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let nimotvDto: NimotvDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddNimotvV1(
-    nimotvDto
+    nimotvDto,
+    xClientRequestId
 );
 ```
 
@@ -795,15 +854,16 @@ const { status, data } = await apiInstance.addChannelMethodAddNimotvV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **nimotvDto** | **NimotvDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -820,8 +880,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddNonoliveV1**
-> addChannelMethodAddNonoliveV1(nonoliveDto)
+> AddChannelResponse addChannelMethodAddNonoliveV1(nonoliveDto)
 
+Add a nonolive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -836,9 +897,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let nonoliveDto: NonoliveDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddNonoliveV1(
-    nonoliveDto
+    nonoliveDto,
+    xClientRequestId
 );
 ```
 
@@ -847,15 +910,16 @@ const { status, data } = await apiInstance.addChannelMethodAddNonoliveV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **nonoliveDto** | **NonoliveDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -872,8 +936,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddOkV1**
-> addChannelMethodAddOkV1(okDto)
+> AddChannelResponse addChannelMethodAddOkV1(okDto)
 
+Add a ok destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -888,9 +953,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let okDto: OkDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddOkV1(
-    okDto
+    okDto,
+    xClientRequestId
 );
 ```
 
@@ -899,15 +966,16 @@ const { status, data } = await apiInstance.addChannelMethodAddOkV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **okDto** | **OkDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -924,8 +992,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddPlvideoV1**
-> addChannelMethodAddPlvideoV1(plvideoDto)
+> AddChannelResponse addChannelMethodAddPlvideoV1(plvideoDto)
 
+Add a plvideo destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -940,9 +1009,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let plvideoDto: PlvideoDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddPlvideoV1(
-    plvideoDto
+    plvideoDto,
+    xClientRequestId
 );
 ```
 
@@ -951,15 +1022,16 @@ const { status, data } = await apiInstance.addChannelMethodAddPlvideoV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **plvideoDto** | **PlvideoDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -976,8 +1048,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddRutubeV1**
-> addChannelMethodAddRutubeV1(rutubeDto)
+> AddChannelResponse addChannelMethodAddRutubeV1(rutubeDto)
 
+Add a rutube destination to project_id. channel_url is the platform channel URL; rtmp_url and stream_key are publishing credentials. Channel details are checked on the platform. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -992,9 +1065,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let rutubeDto: RutubeDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddRutubeV1(
-    rutubeDto
+    rutubeDto,
+    xClientRequestId
 );
 ```
 
@@ -1003,15 +1078,16 @@ const { status, data } = await apiInstance.addChannelMethodAddRutubeV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **rutubeDto** | **RutubeDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1028,8 +1104,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddSrtV1**
-> addChannelMethodAddSrtV1(methodSrtDto)
+> AddChannelResponse addChannelMethodAddSrtV1(methodSrtDto)
 
+Add a srt destination to project_id. ingress_url is the complete SRT URL with port and publishing parameters; name is the display name. The URL may contain secrets. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -1044,9 +1121,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let methodSrtDto: MethodSrtDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddSrtV1(
-    methodSrtDto
+    methodSrtDto,
+    xClientRequestId
 );
 ```
 
@@ -1055,15 +1134,16 @@ const { status, data } = await apiInstance.addChannelMethodAddSrtV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **methodSrtDto** | **MethodSrtDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1080,8 +1160,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddSteamV1**
-> addChannelMethodAddSteamV1(steamDto)
+> AddChannelResponse addChannelMethodAddSteamV1(steamDto)
 
+Add a steam destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -1096,9 +1177,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let steamDto: SteamDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddSteamV1(
-    steamDto
+    steamDto,
+    xClientRequestId
 );
 ```
 
@@ -1107,15 +1190,16 @@ const { status, data } = await apiInstance.addChannelMethodAddSteamV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **steamDto** | **SteamDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1132,8 +1216,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddTachidV1**
-> addChannelMethodAddTachidV1(tachidDto)
+> AddChannelResponse addChannelMethodAddTachidV1(tachidDto)
 
+Add a tachid destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -1148,9 +1233,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let tachidDto: TachidDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddTachidV1(
-    tachidDto
+    tachidDto,
+    xClientRequestId
 );
 ```
 
@@ -1159,15 +1246,16 @@ const { status, data } = await apiInstance.addChannelMethodAddTachidV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **tachidDto** | **TachidDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1184,8 +1272,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddTelegramV1**
-> addChannelMethodAddTelegramV1(telegramDto)
+> AddChannelResponse addChannelMethodAddTelegramV1(telegramDto)
 
+Add a telegram destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -1200,9 +1289,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let telegramDto: TelegramDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddTelegramV1(
-    telegramDto
+    telegramDto,
+    xClientRequestId
 );
 ```
 
@@ -1211,15 +1302,16 @@ const { status, data } = await apiInstance.addChannelMethodAddTelegramV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **telegramDto** | **TelegramDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1236,8 +1328,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddTiktokV1**
-> addChannelMethodAddTiktokV1(tiktokDto)
+> AddChannelResponse addChannelMethodAddTiktokV1(tiktokDto)
 
+Add a tiktok destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -1252,9 +1345,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let tiktokDto: TiktokDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddTiktokV1(
-    tiktokDto
+    tiktokDto,
+    xClientRequestId
 );
 ```
 
@@ -1263,15 +1358,16 @@ const { status, data } = await apiInstance.addChannelMethodAddTiktokV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **tiktokDto** | **TiktokDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1288,8 +1384,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddVkV1**
-> addChannelMethodAddVkV1(vkDto)
+> AddChannelResponse addChannelMethodAddVkV1(vkDto)
 
+Add a vk destination to project_id. account_id is the connected platform account; channel_id is the external string ID from GET /method/platforms/account/channels, not the internal group_id. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -1304,9 +1401,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let vkDto: VkDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddVkV1(
-    vkDto
+    vkDto,
+    xClientRequestId
 );
 ```
 
@@ -1315,15 +1414,16 @@ const { status, data } = await apiInstance.addChannelMethodAddVkV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **vkDto** | **VkDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1340,8 +1440,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddVliveV1**
-> addChannelMethodAddVliveV1(vliveDto)
+> AddChannelResponse addChannelMethodAddVliveV1(vliveDto)
 
+Add a vlive destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -1356,9 +1457,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let vliveDto: VliveDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddVliveV1(
-    vliveDto
+    vliveDto,
+    xClientRequestId
 );
 ```
 
@@ -1367,15 +1470,16 @@ const { status, data } = await apiInstance.addChannelMethodAddVliveV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **vliveDto** | **VliveDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1392,8 +1496,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addChannelMethodAddZhanqiTvV1**
-> addChannelMethodAddZhanqiTvV1(zhanqitvDto)
+> AddChannelResponse addChannelMethodAddZhanqiTvV1(zhanqitvDto)
 
+Add a zhanqitv destination to project_id. name is the display name; rtmp_url and stream_key are platform publishing credentials, not the StreamVi input source key. Returns an internal numeric channel_id corresponding to results[].group_id in GET /method/channel/search. Creation depends on platform availability and project/tariff restrictions; it does not confirm a running broadcast. Credentials must not be included in logs or examples.
 
 ### Example
 
@@ -1408,9 +1513,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let zhanqitvDto: ZhanqitvDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.addChannelMethodAddZhanqiTvV1(
-    zhanqitvDto
+    zhanqitvDto,
+    xClientRequestId
 );
 ```
 
@@ -1419,15 +1526,16 @@ const { status, data } = await apiInstance.addChannelMethodAddZhanqiTvV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **zhanqitvDto** | **ZhanqitvDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**AddChannelResponse**
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1446,6 +1554,7 @@ void (empty response body)
 # **channelDeleteChannelV1**
 > SuccessResponse channelDeleteChannelV1(deleteChannelDto)
 
+Delete a channel through the deletion use case for project_id and internal channel_id after checking user permissions. This deletes/revokes the relationship rather than temporarily disabling it. For \"disable the channel\", use PUT /method/channel/status with active=false; obtain the internal ID from search results[].group_id.
 
 ### Example
 
@@ -1460,9 +1569,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let deleteChannelDto: DeleteChannelDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.channelDeleteChannelV1(
-    deleteChannelDto
+    deleteChannelDto,
+    xClientRequestId
 );
 ```
 
@@ -1471,6 +1582,7 @@ const { status, data } = await apiInstance.channelDeleteChannelV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **deleteChannelDto** | **DeleteChannelDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -1479,7 +1591,7 @@ const { status, data } = await apiInstance.channelDeleteChannelV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1498,6 +1610,7 @@ const { status, data } = await apiInstance.channelDeleteChannelV1(
 # **channelGetChannelV1**
 > SearchChannelItem channelGetChannelV1()
 
+Read the channel connected to project_id by internal numeric channel_id. Obtain it from results[].group_id in GET /method/channel/search; results[].id is the external platform identifier. Returns the channel object without changing active.
 
 ### Example
 
@@ -1510,16 +1623,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
-let channelId: number; //Channel id (default to undefined)
+let channelId: number; //Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits. (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.channelGetChannelV1(
     language,
     projectId,
     channelId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -1527,10 +1642,11 @@ const { status, data } = await apiInstance.channelGetChannelV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
-| **channelId** | [**number**] | Channel id | defaults to undefined|
+| **channelId** | [**number**] | Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits. | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -1539,7 +1655,7 @@ const { status, data } = await apiInstance.channelGetChannelV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1558,6 +1674,7 @@ const { status, data } = await apiInstance.channelGetChannelV1(
 # **channelSetDelayV1**
 > SuccessResponse channelSetDelayV1()
 
+Legacy manual-test endpoint. Emits simulated wait_transcoding, init, live and offline channel-status notifications through Centrifugo. Despite using GET, this triggers notifications; it does not configure a real broadcast delay or report the actual channel state. The response does not wait for the sequence to finish. Not intended for normal channel management or automated broadcast workflows.
 
 ### Example
 
@@ -1570,12 +1687,14 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
-let channelId: number; // (default to undefined)
-let projectId: number; // (default to undefined)
+let channelId: number; //Internal channel ID for simulated notifications; not an external platform id. (default to undefined)
+let projectId: number; //Project for simulated notifications; this method does not configure actual latency. (default to undefined)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.channelSetDelayV1(
     channelId,
-    projectId
+    projectId,
+    xClientRequestId
 );
 ```
 
@@ -1583,8 +1702,9 @@ const { status, data } = await apiInstance.channelSetDelayV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **channelId** | [**number**] |  | defaults to undefined|
-| **projectId** | [**number**] |  | defaults to undefined|
+| **channelId** | [**number**] | Internal channel ID for simulated notifications; not an external platform id. | defaults to undefined|
+| **projectId** | [**number**] | Project for simulated notifications; this method does not configure actual latency. | defaults to undefined|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -1593,7 +1713,7 @@ const { status, data } = await apiInstance.channelSetDelayV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1612,6 +1732,7 @@ const { status, data } = await apiInstance.channelSetDelayV1(
 # **channelShortChannelListV1**
 > SiteGetShortChannelResponse channelShortChannelListV1()
 
+Get a short channel list for the selected project_id. Intended for channel selection; use GET /method/channel/search for filtering and a full result. Listing neither enables nor disables channels.
 
 ### Example
 
@@ -1624,14 +1745,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.channelShortChannelListV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -1639,9 +1762,10 @@ const { status, data } = await apiInstance.channelShortChannelListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -1650,7 +1774,7 @@ const { status, data } = await apiInstance.channelShortChannelListV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1669,6 +1793,7 @@ const { status, data } = await apiInstance.channelShortChannelListV1(
 # **methodSearchV1**
 > SiteSearchChannelResponse methodSearchV1()
 
+Returns a paginated list of channels connected to project_id. Each result has group_id (internal numeric StreamVi channel ID, used as channel_id in management calls) and id (external/platform string ID, not for management). Keep the same project_id for later channel calls. The type, platform and name filters are combined. Results are ordered by channel ID; offset is the number of results to skip, not a page number. The active filter means enabled in the project, not necessarily broadcasting live.
 
 ### Example
 
@@ -1681,14 +1806,15 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let projectId: number; //Project id (default to undefined)
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
+let projectId: number; //ID of the project whose connected channels are searched. (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
-let type: 'all' | 'my' | 'available' | 'active'; // (optional) (default to undefined)
-let platform: string; //platform type (optional) (default to undefined)
-let name: string; //name (optional) (default to undefined)
-let limit: number; //Number of results (optional) (default to 30)
-let offset: number; //Page offset number (optional) (default to 0)
+let type: 'all' | 'my' | 'available' | 'active'; //Channel selection within the project. all (also used when omitted): all connected channels; my: channels whose owner ID equals project_id; available: channels connected with guest usage; active: channels enabled in the project, regardless of whether they are currently broadcasting. Combined with the platform and name filters. (optional) (default to undefined)
+let platform: string; //Comma-separated platform codes, for example youtube,vk,twitch, without spaces. Matches any listed platform; when omitted, does not filter by platform. Combined with the other filters. (optional) (default to undefined)
+let name: string; //Channel name filter, up to 10 characters. Matches names using a contains pattern; percent (%) and underscore (_) act as SQL LIKE wildcards. When omitted or empty, does not filter by name. (optional) (default to undefined)
+let limit: number; //Requested number of channels in the result page. Defaults to 30. (optional) (default to 30)
+let offset: number; //Number of matching channels to skip, not a page number. Defaults to 0. Results are ordered by channel ID. (optional) (default to 0)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.methodSearchV1(
     language,
@@ -1698,7 +1824,8 @@ const { status, data } = await apiInstance.methodSearchV1(
     platform,
     name,
     limit,
-    offset
+    offset,
+    xClientRequestId
 );
 ```
 
@@ -1706,14 +1833,15 @@ const { status, data } = await apiInstance.methodSearchV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **projectId** | [**number**] | Project id | defaults to undefined|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
+| **projectId** | [**number**] | ID of the project whose connected channels are searched. | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
-| **type** | [**&#39;all&#39; | &#39;my&#39; | &#39;available&#39; | &#39;active&#39;**]**Array<&#39;all&#39; &#124; &#39;my&#39; &#124; &#39;available&#39; &#124; &#39;active&#39;>** |  | (optional) defaults to undefined|
-| **platform** | [**string**] | platform type | (optional) defaults to undefined|
-| **name** | [**string**] | name | (optional) defaults to undefined|
-| **limit** | [**number**] | Number of results | (optional) defaults to 30|
-| **offset** | [**number**] | Page offset number | (optional) defaults to 0|
+| **type** | [**&#39;all&#39; | &#39;my&#39; | &#39;available&#39; | &#39;active&#39;**]**Array<&#39;all&#39; &#124; &#39;my&#39; &#124; &#39;available&#39; &#124; &#39;active&#39;>** | Channel selection within the project. all (also used when omitted): all connected channels; my: channels whose owner ID equals project_id; available: channels connected with guest usage; active: channels enabled in the project, regardless of whether they are currently broadcasting. Combined with the platform and name filters. | (optional) defaults to undefined|
+| **platform** | [**string**] | Comma-separated platform codes, for example youtube,vk,twitch, without spaces. Matches any listed platform; when omitted, does not filter by platform. Combined with the other filters. | (optional) defaults to undefined|
+| **name** | [**string**] | Channel name filter, up to 10 characters. Matches names using a contains pattern; percent (%) and underscore (_) act as SQL LIKE wildcards. When omitted or empty, does not filter by name. | (optional) defaults to undefined|
+| **limit** | [**number**] | Requested number of channels in the result page. Defaults to 30. | (optional) defaults to 30|
+| **offset** | [**number**] | Number of matching channels to skip, not a page number. Defaults to 0. Results are ordered by channel ID. | (optional) defaults to 0|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -1722,7 +1850,7 @@ const { status, data } = await apiInstance.methodSearchV1(
 
 ### Authorization
 
-[X-API-KEY](../README.md#X-API-KEY), [oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1756,9 +1884,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let methodSetStatusChannelRequest: MethodSetStatusChannelRequest; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.methodSetStatusLegacyV1(
-    methodSetStatusChannelRequest
+    methodSetStatusChannelRequest,
+    xClientRequestId
 );
 ```
 
@@ -1767,6 +1897,7 @@ const { status, data } = await apiInstance.methodSetStatusLegacyV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **methodSetStatusChannelRequest** | **MethodSetStatusChannelRequest**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -1775,7 +1906,7 @@ const { status, data } = await apiInstance.methodSetStatusLegacyV1(
 
 ### Authorization
 
-[X-API-KEY](../README.md#X-API-KEY), [oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -1796,6 +1927,7 @@ const { status, data } = await apiInstance.methodSetStatusLegacyV1(
 # **methodSetStatusV1**
 > SuccessResponse methodSetStatusV1(methodChannelStatusRequest)
 
+Enable or disable an existing channel in the selected project. Use channel_id=group_id from channel search results, not the external/platform id. Keep the same project_id used for search. Send active=false to disable and active=true to enable. Both \'turn off the channel\' and \'disable the channel\' mean active=false; \'enable the channel\' means active=true. Success confirms the desired state; verify actual broadcasting separately.
 
 ### Example
 
@@ -1810,9 +1942,11 @@ const configuration = new Configuration();
 const apiInstance = new ChannelApi(configuration);
 
 let methodChannelStatusRequest: MethodChannelStatusRequest; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.methodSetStatusV1(
-    methodChannelStatusRequest
+    methodChannelStatusRequest,
+    xClientRequestId
 );
 ```
 
@@ -1821,6 +1955,7 @@ const { status, data } = await apiInstance.methodSetStatusV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **methodChannelStatusRequest** | **MethodChannelStatusRequest**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -1829,7 +1964,7 @@ const { status, data } = await apiInstance.methodSetStatusV1(
 
 ### Authorization
 
-[X-API-KEY](../README.md#X-API-KEY), [oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 

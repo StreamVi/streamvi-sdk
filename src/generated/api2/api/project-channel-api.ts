@@ -34,18 +34,19 @@ import type { SuccessResponse } from '../models';
 export const ProjectChannelApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Change access_type for to_project_id on the internal channel_id from project_id. Actual project and channel administrator permissions are required; the owner is protected from changes. Uses the assignable-role enum; an OAuth scope does not replace the resource role.
          * @summary Change access for project in channel
-         * @param {ProjectChannelChangeAccessV1LanguageEnum} language Current language
+         * @param {ProjectChannelChangeAccessV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {number} toProjectId Target project id
          * @param {ProjectChannelChangeAccessV1AccessTypeEnum} accessType Access type
          * @param {ProjectChannelChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        projectChannelChangeAccessV1: async (language: ProjectChannelChangeAccessV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: ProjectChannelChangeAccessV1AccessTypeEnum, v?: ProjectChannelChangeAccessV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        projectChannelChangeAccessV1: async (language: ProjectChannelChangeAccessV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: ProjectChannelChangeAccessV1AccessTypeEnum, v?: ProjectChannelChangeAccessV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('projectChannelChangeAccessV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -68,9 +69,13 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel-access:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel-access:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -100,6 +105,9 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -110,17 +118,18 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * 
+         * Revoke target_project_id access to the internal channel_id from project_id. Requires effective administrator permissions for both the project and channel; the owner project\'s access cannot be revoked. Returns success. This removes another project\'s access link without deleting the channel or disabling active.
          * @summary Remove access for project in channel
-         * @param {ProjectChannelDelV1LanguageEnum} language Current language
+         * @param {ProjectChannelDelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {number} targetProjectId Target project id
          * @param {ProjectChannelDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        projectChannelDelV1: async (language: ProjectChannelDelV1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, v?: ProjectChannelDelV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        projectChannelDelV1: async (language: ProjectChannelDelV1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, v?: ProjectChannelDelV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('projectChannelDelV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -141,9 +150,13 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel-access:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel-access:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -169,6 +182,9 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -179,16 +195,17 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * 
+         * Read project access to internal channel_id from the project_id context. Requires read access to the channel and project; returns relationships and access_type. This lists channel permissions, not project members.
          * @summary Project channel list
-         * @param {ProjectChannelListV1LanguageEnum} language Current language
+         * @param {ProjectChannelListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ProjectChannelListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        projectChannelListV1: async (language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        projectChannelListV1: async (language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('projectChannelListV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -207,9 +224,13 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -231,6 +252,9 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -241,17 +265,18 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * 
+         * Transfer ownership of internal channel_id from project_id to to_project_id with existing access. Requires effective current owner permissions and administration checks; updates owner_id and relationship roles. This transfers the resource without creating an invitation or merely increasing access_type.
          * @summary Transfer owner for project in channel
-         * @param {ProjectChannelTransferOwnerV1LanguageEnum} language Current language
+         * @param {ProjectChannelTransferOwnerV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {number} toProjectId Target project id
          * @param {ProjectChannelTransferOwnerV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        projectChannelTransferOwnerV1: async (language: ProjectChannelTransferOwnerV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, v?: ProjectChannelTransferOwnerV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        projectChannelTransferOwnerV1: async (language: ProjectChannelTransferOwnerV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, v?: ProjectChannelTransferOwnerV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('projectChannelTransferOwnerV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -272,9 +297,13 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel-access:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel-access:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -300,6 +329,9 @@ export const ProjectChannelApiAxiosParamCreator = function (configuration?: Conf
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -320,69 +352,73 @@ export const ProjectChannelApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ProjectChannelApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Change access_type for to_project_id on the internal channel_id from project_id. Actual project and channel administrator permissions are required; the owner is protected from changes. Uses the assignable-role enum; an OAuth scope does not replace the resource role.
          * @summary Change access for project in channel
-         * @param {ProjectChannelChangeAccessV1LanguageEnum} language Current language
+         * @param {ProjectChannelChangeAccessV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {number} toProjectId Target project id
          * @param {ProjectChannelChangeAccessV1AccessTypeEnum} accessType Access type
          * @param {ProjectChannelChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async projectChannelChangeAccessV1(language: ProjectChannelChangeAccessV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: ProjectChannelChangeAccessV1AccessTypeEnum, v?: ProjectChannelChangeAccessV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelChangeAccessV1(language, projectId, channelId, toProjectId, accessType, v, options);
+        async projectChannelChangeAccessV1(language: ProjectChannelChangeAccessV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, accessType: ProjectChannelChangeAccessV1AccessTypeEnum, v?: ProjectChannelChangeAccessV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelChangeAccessV1(language, projectId, channelId, toProjectId, accessType, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.projectChannelChangeAccessV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Revoke target_project_id access to the internal channel_id from project_id. Requires effective administrator permissions for both the project and channel; the owner project\'s access cannot be revoked. Returns success. This removes another project\'s access link without deleting the channel or disabling active.
          * @summary Remove access for project in channel
-         * @param {ProjectChannelDelV1LanguageEnum} language Current language
+         * @param {ProjectChannelDelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {number} targetProjectId Target project id
          * @param {ProjectChannelDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async projectChannelDelV1(language: ProjectChannelDelV1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, v?: ProjectChannelDelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelDelV1(language, projectId, channelId, targetProjectId, v, options);
+        async projectChannelDelV1(language: ProjectChannelDelV1LanguageEnum, projectId: number, channelId: number, targetProjectId: number, v?: ProjectChannelDelV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelDelV1(language, projectId, channelId, targetProjectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.projectChannelDelV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read project access to internal channel_id from the project_id context. Requires read access to the channel and project; returns relationships and access_type. This lists channel permissions, not project members.
          * @summary Project channel list
-         * @param {ProjectChannelListV1LanguageEnum} language Current language
+         * @param {ProjectChannelListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ProjectChannelListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async projectChannelListV1(language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelListV1(language, projectId, channelId, v, options);
+        async projectChannelListV1(language: ProjectChannelListV1LanguageEnum, projectId: number, channelId: number, v?: ProjectChannelListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectChannelListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelListV1(language, projectId, channelId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.projectChannelListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Transfer ownership of internal channel_id from project_id to to_project_id with existing access. Requires effective current owner permissions and administration checks; updates owner_id and relationship roles. This transfers the resource without creating an invitation or merely increasing access_type.
          * @summary Transfer owner for project in channel
-         * @param {ProjectChannelTransferOwnerV1LanguageEnum} language Current language
+         * @param {ProjectChannelTransferOwnerV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {number} toProjectId Target project id
          * @param {ProjectChannelTransferOwnerV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async projectChannelTransferOwnerV1(language: ProjectChannelTransferOwnerV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, v?: ProjectChannelTransferOwnerV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelTransferOwnerV1(language, projectId, channelId, toProjectId, v, options);
+        async projectChannelTransferOwnerV1(language: ProjectChannelTransferOwnerV1LanguageEnum, projectId: number, channelId: number, toProjectId: number, v?: ProjectChannelTransferOwnerV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.projectChannelTransferOwnerV1(language, projectId, channelId, toProjectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProjectChannelApi.projectChannelTransferOwnerV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -398,44 +434,44 @@ export const ProjectChannelApiFactory = function (configuration?: Configuration,
     const localVarFp = ProjectChannelApiFp(configuration)
     return {
         /**
-         * 
+         * Change access_type for to_project_id on the internal channel_id from project_id. Actual project and channel administrator permissions are required; the owner is protected from changes. Uses the assignable-role enum; an OAuth scope does not replace the resource role.
          * @summary Change access for project in channel
          * @param {ProjectChannelApiProjectChannelChangeAccessV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.projectChannelChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelChangeAccessV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['to_project_id'], requestParameters['access_type'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Revoke target_project_id access to the internal channel_id from project_id. Requires effective administrator permissions for both the project and channel; the owner project\'s access cannot be revoked. Returns success. This removes another project\'s access link without deleting the channel or disabling active.
          * @summary Remove access for project in channel
          * @param {ProjectChannelApiProjectChannelDelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.projectChannelDelV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.target_project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelDelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['target_project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read project access to internal channel_id from the project_id context. Requires read access to the channel and project; returns relationships and access_type. This lists channel permissions, not project members.
          * @summary Project channel list
          * @param {ProjectChannelApiProjectChannelListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelListResponse> {
-            return localVarFp.projectChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Transfer ownership of internal channel_id from project_id to to_project_id with existing access. Requires effective current owner permissions and administration checks; updates owner_id and relationship roles. This transfers the resource without creating an invitation or merely increasing access_type.
          * @summary Transfer owner for project in channel
          * @param {ProjectChannelApiProjectChannelTransferOwnerV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.projectChannelTransferOwnerV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.projectChannelTransferOwnerV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['to_project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -447,7 +483,7 @@ export const ProjectChannelApiFactory = function (configuration?: Configuration,
  */
 export interface ProjectChannelApiInterface {
     /**
-     * 
+     * Change access_type for to_project_id on the internal channel_id from project_id. Actual project and channel administrator permissions are required; the owner is protected from changes. Uses the assignable-role enum; an OAuth scope does not replace the resource role.
      * @summary Change access for project in channel
      * @param {ProjectChannelApiProjectChannelChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -457,7 +493,7 @@ export interface ProjectChannelApiInterface {
     projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Revoke target_project_id access to the internal channel_id from project_id. Requires effective administrator permissions for both the project and channel; the owner project\'s access cannot be revoked. Returns success. This removes another project\'s access link without deleting the channel or disabling active.
      * @summary Remove access for project in channel
      * @param {ProjectChannelApiProjectChannelDelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -467,7 +503,7 @@ export interface ProjectChannelApiInterface {
     projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Read project access to internal channel_id from the project_id context. Requires read access to the channel and project; returns relationships and access_type. This lists channel permissions, not project members.
      * @summary Project channel list
      * @param {ProjectChannelApiProjectChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -477,7 +513,7 @@ export interface ProjectChannelApiInterface {
     projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ProjectChannelListResponse>;
 
     /**
-     * 
+     * Transfer ownership of internal channel_id from project_id to to_project_id with existing access. Requires effective current owner permissions and administration checks; updates owner_id and relationship roles. This transfers the resource without creating an invitation or merely increasing access_type.
      * @summary Transfer owner for project in channel
      * @param {ProjectChannelApiProjectChannelTransferOwnerV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -495,46 +531,53 @@ export interface ProjectChannelApiInterface {
  */
 export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly language: ProjectChannelChangeAccessV1LanguageEnum
+    readonly 'language': ProjectChannelChangeAccessV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Target project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly to_project_id: number
+    readonly 'to_project_id': number
 
     /**
      * Access type
      * @type {1 | 2}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly access_type: ProjectChannelChangeAccessV1AccessTypeEnum
+    readonly 'access_type': ProjectChannelChangeAccessV1AccessTypeEnum
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelChangeAccessV1
      */
-    readonly v?: ProjectChannelChangeAccessV1VEnum
+    readonly 'v'?: ProjectChannelChangeAccessV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectChannelApiProjectChannelChangeAccessV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -544,39 +587,46 @@ export interface ProjectChannelApiProjectChannelChangeAccessV1Request {
  */
 export interface ProjectChannelApiProjectChannelDelV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly language: ProjectChannelDelV1LanguageEnum
+    readonly 'language': ProjectChannelDelV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Target project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly target_project_id: number
+    readonly 'target_project_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelDelV1
      */
-    readonly v?: ProjectChannelDelV1VEnum
+    readonly 'v'?: ProjectChannelDelV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectChannelApiProjectChannelDelV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -586,32 +636,39 @@ export interface ProjectChannelApiProjectChannelDelV1Request {
  */
 export interface ProjectChannelApiProjectChannelListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
-    readonly language: ProjectChannelListV1LanguageEnum
+    readonly 'language': ProjectChannelListV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelListV1
      */
-    readonly v?: ProjectChannelListV1VEnum
+    readonly 'v'?: ProjectChannelListV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectChannelApiProjectChannelListV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -621,39 +678,46 @@ export interface ProjectChannelApiProjectChannelListV1Request {
  */
 export interface ProjectChannelApiProjectChannelTransferOwnerV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly language: ProjectChannelTransferOwnerV1LanguageEnum
+    readonly 'language': ProjectChannelTransferOwnerV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Target project id
      * @type {number}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly to_project_id: number
+    readonly 'to_project_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
      */
-    readonly v?: ProjectChannelTransferOwnerV1VEnum
+    readonly 'v'?: ProjectChannelTransferOwnerV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectChannelApiProjectChannelTransferOwnerV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -664,7 +728,7 @@ export interface ProjectChannelApiProjectChannelTransferOwnerV1Request {
  */
 export class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInterface {
     /**
-     * 
+     * Change access_type for to_project_id on the internal channel_id from project_id. Actual project and channel administrator permissions are required; the owner is protected from changes. Uses the assignable-role enum; an OAuth scope does not replace the resource role.
      * @summary Change access for project in channel
      * @param {ProjectChannelApiProjectChannelChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -672,11 +736,11 @@ export class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInter
      * @memberof ProjectChannelApi
      */
     public projectChannelChangeAccessV1(requestParameters: ProjectChannelApiProjectChannelChangeAccessV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelApiFp(this.configuration).projectChannelChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelApiFp(this.configuration).projectChannelChangeAccessV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['to_project_id'], requestParameters['access_type'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Revoke target_project_id access to the internal channel_id from project_id. Requires effective administrator permissions for both the project and channel; the owner project\'s access cannot be revoked. Returns success. This removes another project\'s access link without deleting the channel or disabling active.
      * @summary Remove access for project in channel
      * @param {ProjectChannelApiProjectChannelDelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -684,11 +748,11 @@ export class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInter
      * @memberof ProjectChannelApi
      */
     public projectChannelDelV1(requestParameters: ProjectChannelApiProjectChannelDelV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelApiFp(this.configuration).projectChannelDelV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.target_project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelApiFp(this.configuration).projectChannelDelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['target_project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read project access to internal channel_id from the project_id context. Requires read access to the channel and project; returns relationships and access_type. This lists channel permissions, not project members.
      * @summary Project channel list
      * @param {ProjectChannelApiProjectChannelListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -696,11 +760,11 @@ export class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInter
      * @memberof ProjectChannelApi
      */
     public projectChannelListV1(requestParameters: ProjectChannelApiProjectChannelListV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelApiFp(this.configuration).projectChannelListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelApiFp(this.configuration).projectChannelListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Transfer ownership of internal channel_id from project_id to to_project_id with existing access. Requires effective current owner permissions and administration checks; updates owner_id and relationship roles. This transfers the resource without creating an invitation or merely increasing access_type.
      * @summary Transfer owner for project in channel
      * @param {ProjectChannelApiProjectChannelTransferOwnerV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -708,7 +772,7 @@ export class ProjectChannelApi extends BaseAPI implements ProjectChannelApiInter
      * @memberof ProjectChannelApi
      */
     public projectChannelTransferOwnerV1(requestParameters: ProjectChannelApiProjectChannelTransferOwnerV1Request, options?: RawAxiosRequestConfig) {
-        return ProjectChannelApiFp(this.configuration).projectChannelTransferOwnerV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.to_project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ProjectChannelApiFp(this.configuration).projectChannelTransferOwnerV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['to_project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

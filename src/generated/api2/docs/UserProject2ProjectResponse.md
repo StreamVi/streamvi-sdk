@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_id** | **number** | User id | [default to undefined]
 **project_id** | **number** | Project id | [default to undefined]
-**name** | **string** | Имя | [default to undefined]
-**fename** | **string** | Фамилия | [default to undefined]
-**photo_50** | **string** | Аватарка | [default to undefined]
-**type** | **number** | Тип 0 - личный проект, 1 - командный проект | [default to undefined]
-**external_id** | **string** | External id | [default to undefined]
+**name** | **string** | First name | [default to undefined]
+**fename** | **string** | Last name | [default to undefined]
+**photo_50** | **string** | Avatar | [default to undefined]
+**type** | **number** | Type 0: personal project; 1: team project | [default to undefined]
+**external_id** | **string** | Text project ID / short code shown in the cabinet (ref_id). Match user-supplied codes to this field; pass the numeric project_id to other API methods. | [default to undefined]
 **access_type** | **number** | Access type | [default to undefined]
 
 ## Example

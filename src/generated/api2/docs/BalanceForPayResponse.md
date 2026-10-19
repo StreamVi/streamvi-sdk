@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**balance** | **number** | Balance | [default to undefined]
+**balance** | **number** | Balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
 **balances_allow** | **Array&lt;string&gt;** | Allowed balances | [default to undefined]
 **balances_values** | [**MoneyFlowBalanceTypeValuesResponse**](MoneyFlowBalanceTypeValuesResponse.md) | Balances values | [default to undefined]

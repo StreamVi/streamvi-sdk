@@ -12,6 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
+import type { MethodExecuteNotifyActionRequest } from '../models';
 import type { NotifyHistory } from '../models';
 import type { NotifyHistoryStatusUserResponse } from '../models';
 import type { PaginatedResponseOfNotifyHistorySiteResponse } from '../models';
@@ -24,68 +25,83 @@ import type { SuccessResponse } from '../models';
  */
 export declare const NotifyHistoryApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Requires notification:write and the actual operation scope: channel:write, project-invite:write, integration:write or billing:write. Invitation recipient and project roles are checked. Only supported invitation accept/decline and tariff renewal accept actions execute. Links and test actions fail; purchase errors propagate and do not mark the action done.
+     * @summary Execute an owned notification action
+     * @param {MethodExecuteNotifyActionRequest} methodExecuteNotifyActionRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodExecuteNotifyActionExecuteV1: (methodExecuteNotifyActionRequest: MethodExecuteNotifyActionRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Read the current user\'s notification history using request filters and pagination. Returns results and pagination metadata; notification actions are not executed. Use POST /method/notify_history/execute_action to execute a supported account API action.
      * @summary Get list of my notifications
-     * @param {NotifyHistoryGetListMyV1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetListMyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} limit Number of results
+     * @param {number} offset Page offset number
      * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
      * @param {number} [projectId] Project id
      * @param {NotifyHistoryGetListMyV1NameEnum} [name] Name
      * @param {NotifyHistoryGetListMyV1ChannelEnum} [channel] Channel
      * @param {string} [dateFrom] Date from
      * @param {string} [dateTo] Date to
      * @param {NotifyHistoryGetListMyV1StatusReadEnum} [statusRead] Status read
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryGetListMyV1: (language: NotifyHistoryGetListMyV1LanguageEnum, v?: NotifyHistoryGetListMyV1VEnum, limit?: number, offset?: number, projectId?: number, name?: NotifyHistoryGetListMyV1NameEnum, channel?: NotifyHistoryGetListMyV1ChannelEnum, dateFrom?: string, dateTo?: string, statusRead?: NotifyHistoryGetListMyV1StatusReadEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistoryGetListMyV1: (language: NotifyHistoryGetListMyV1LanguageEnum, limit: number, offset: number, v?: NotifyHistoryGetListMyV1VEnum, projectId?: number, name?: NotifyHistoryGetListMyV1NameEnum, channel?: NotifyHistoryGetListMyV1ChannelEnum, dateFrom?: string, dateTo?: string, statusRead?: NotifyHistoryGetListMyV1StatusReadEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read count_unread, the number of unread notifications for the current user. This does not mark them as read; use PUT /method/notify_history/read or POST /method/notify_history/set_all_cabinet_read for that.
      * @summary Get my status unread message for user
-     * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryGetStatusMyV1: (language: NotifyHistoryGetStatusMyV1LanguageEnum, v?: NotifyHistoryGetStatusMyV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistoryGetStatusMyV1: (language: NotifyHistoryGetStatusMyV1LanguageEnum, v?: NotifyHistoryGetStatusMyV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read notification _id of the current user. _id is the MongoDB ID from the notification list; the service checks ownership. Reading is distinct from marking as read or executing an action.
      * @summary Get my NotifyHistory item by id
      * @param {string} id Id of page in mongodb
      * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryGetV1: (id: string, v?: NotifyHistoryGetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistoryGetV1: (id: string, v?: NotifyHistoryGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Mark the listed notify_history_ids of the current user as read and return the actual update result. This neither executes an action nor deletes a notification; IDs come from notification history.
      * @summary Set notification in cabinet as read
-     * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Current language
+     * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
      * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryMarkOfReadV1: (language: NotifyHistoryMarkOfReadV1LanguageEnum, siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest, v?: NotifyHistoryMarkOfReadV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistoryMarkOfReadV1: (language: NotifyHistoryMarkOfReadV1LanguageEnum, siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest, v?: NotifyHistoryMarkOfReadV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Execute a legacy action_name on the current user\'s notify_history_id, with group_id in query. Only the project subject is supported; this can change invitations/tariffs and is not a safe read. For the account API, use POST /method/notify_history/execute_action with a separate scope check for the specific action.
      * @summary Run action in my notify item
      * @param {string} notifyHistoryId Id of page in mongodb
      * @param {string} actionName Action name
      * @param {string} groupId Group id
      * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryRunActionV1: (notifyHistoryId: string, actionName: string, groupId: string, v?: NotifyHistoryRunActionV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistoryRunActionV1: (notifyHistoryId: string, actionName: string, groupId: string, v?: NotifyHistoryRunActionV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Mark all cabinet notifications of the current user as read. This changes read state without executing an invitation/payment action or deleting history. Returns success.
      * @summary Set all notification in cabinet as read
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistorySetAllCabinetReadV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyHistorySetAllCabinetReadV1: (xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * NotifyHistoryApi - functional programming interface
@@ -93,68 +109,83 @@ export declare const NotifyHistoryApiAxiosParamCreator: (configuration?: Configu
  */
 export declare const NotifyHistoryApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Requires notification:write and the actual operation scope: channel:write, project-invite:write, integration:write or billing:write. Invitation recipient and project roles are checked. Only supported invitation accept/decline and tariff renewal accept actions execute. Links and test actions fail; purchase errors propagate and do not mark the action done.
+     * @summary Execute an owned notification action
+     * @param {MethodExecuteNotifyActionRequest} methodExecuteNotifyActionRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodExecuteNotifyActionExecuteV1(methodExecuteNotifyActionRequest: MethodExecuteNotifyActionRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    /**
+     * Read the current user\'s notification history using request filters and pagination. Returns results and pagination metadata; notification actions are not executed. Use POST /method/notify_history/execute_action to execute a supported account API action.
      * @summary Get list of my notifications
-     * @param {NotifyHistoryGetListMyV1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetListMyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} limit Number of results
+     * @param {number} offset Page offset number
      * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
      * @param {number} [projectId] Project id
      * @param {NotifyHistoryGetListMyV1NameEnum} [name] Name
      * @param {NotifyHistoryGetListMyV1ChannelEnum} [channel] Channel
      * @param {string} [dateFrom] Date from
      * @param {string} [dateTo] Date to
      * @param {NotifyHistoryGetListMyV1StatusReadEnum} [statusRead] Status read
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryGetListMyV1(language: NotifyHistoryGetListMyV1LanguageEnum, v?: NotifyHistoryGetListMyV1VEnum, limit?: number, offset?: number, projectId?: number, name?: NotifyHistoryGetListMyV1NameEnum, channel?: NotifyHistoryGetListMyV1ChannelEnum, dateFrom?: string, dateTo?: string, statusRead?: NotifyHistoryGetListMyV1StatusReadEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfNotifyHistorySiteResponse>>;
+    notifyHistoryGetListMyV1(language: NotifyHistoryGetListMyV1LanguageEnum, limit: number, offset: number, v?: NotifyHistoryGetListMyV1VEnum, projectId?: number, name?: NotifyHistoryGetListMyV1NameEnum, channel?: NotifyHistoryGetListMyV1ChannelEnum, dateFrom?: string, dateTo?: string, statusRead?: NotifyHistoryGetListMyV1StatusReadEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseOfNotifyHistorySiteResponse>>;
     /**
-     *
+     * Read count_unread, the number of unread notifications for the current user. This does not mark them as read; use PUT /method/notify_history/read or POST /method/notify_history/set_all_cabinet_read for that.
      * @summary Get my status unread message for user
-     * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Current language
+     * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryGetStatusMyV1(language: NotifyHistoryGetStatusMyV1LanguageEnum, v?: NotifyHistoryGetStatusMyV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistoryStatusUserResponse>>;
+    notifyHistoryGetStatusMyV1(language: NotifyHistoryGetStatusMyV1LanguageEnum, v?: NotifyHistoryGetStatusMyV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistoryStatusUserResponse>>;
     /**
-     *
+     * Read notification _id of the current user. _id is the MongoDB ID from the notification list; the service checks ownership. Reading is distinct from marking as read or executing an action.
      * @summary Get my NotifyHistory item by id
      * @param {string} id Id of page in mongodb
      * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryGetV1(id: string, v?: NotifyHistoryGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistory>>;
+    notifyHistoryGetV1(id: string, v?: NotifyHistoryGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotifyHistory>>;
     /**
-     *
+     * Mark the listed notify_history_ids of the current user as read and return the actual update result. This neither executes an action nor deletes a notification; IDs come from notification history.
      * @summary Set notification in cabinet as read
-     * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Current language
+     * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
      * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryMarkOfReadV1(language: NotifyHistoryMarkOfReadV1LanguageEnum, siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest, v?: NotifyHistoryMarkOfReadV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteMarkReadHistoryResponse>>;
+    notifyHistoryMarkOfReadV1(language: NotifyHistoryMarkOfReadV1LanguageEnum, siteMarkReadHistoryRequest: SiteMarkReadHistoryRequest, v?: NotifyHistoryMarkOfReadV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteMarkReadHistoryResponse>>;
     /**
-     *
+     * Execute a legacy action_name on the current user\'s notify_history_id, with group_id in query. Only the project subject is supported; this can change invitations/tariffs and is not a safe read. For the account API, use POST /method/notify_history/execute_action with a separate scope check for the specific action.
      * @summary Run action in my notify item
      * @param {string} notifyHistoryId Id of page in mongodb
      * @param {string} actionName Action name
      * @param {string} groupId Group id
      * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistoryRunActionV1(notifyHistoryId: string, actionName: string, groupId: string, v?: NotifyHistoryRunActionV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
+    notifyHistoryRunActionV1(notifyHistoryId: string, actionName: string, groupId: string, v?: NotifyHistoryRunActionV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
     /**
-     *
+     * Mark all cabinet notifications of the current user as read. This changes read state without executing an invitation/payment action or deleting history. Returns success.
      * @summary Set all notification in cabinet as read
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistorySetAllCabinetReadV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    notifyHistorySetAllCabinetReadV1(xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * NotifyHistoryApi - factory interface
@@ -162,7 +193,15 @@ export declare const NotifyHistoryApiFp: (configuration?: Configuration) => {
  */
 export declare const NotifyHistoryApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Requires notification:write and the actual operation scope: channel:write, project-invite:write, integration:write or billing:write. Invitation recipient and project roles are checked. Only supported invitation accept/decline and tariff renewal accept actions execute. Links and test actions fail; purchase errors propagate and do not mark the action done.
+     * @summary Execute an owned notification action
+     * @param {NotifyHistoryApiMethodExecuteNotifyActionExecuteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodExecuteNotifyActionExecuteV1(requestParameters: NotifyHistoryApiMethodExecuteNotifyActionExecuteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     * Read the current user\'s notification history using request filters and pagination. Returns results and pagination metadata; notification actions are not executed. Use POST /method/notify_history/execute_action to execute a supported account API action.
      * @summary Get list of my notifications
      * @param {NotifyHistoryApiNotifyHistoryGetListMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -170,7 +209,7 @@ export declare const NotifyHistoryApiFactory: (configuration?: Configuration, ba
      */
     notifyHistoryGetListMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetListMyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfNotifyHistorySiteResponse>;
     /**
-     *
+     * Read count_unread, the number of unread notifications for the current user. This does not mark them as read; use PUT /method/notify_history/read or POST /method/notify_history/set_all_cabinet_read for that.
      * @summary Get my status unread message for user
      * @param {NotifyHistoryApiNotifyHistoryGetStatusMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -178,7 +217,7 @@ export declare const NotifyHistoryApiFactory: (configuration?: Configuration, ba
      */
     notifyHistoryGetStatusMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetStatusMyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistoryStatusUserResponse>;
     /**
-     *
+     * Read notification _id of the current user. _id is the MongoDB ID from the notification list; the service checks ownership. Reading is distinct from marking as read or executing an action.
      * @summary Get my NotifyHistory item by id
      * @param {NotifyHistoryApiNotifyHistoryGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -186,7 +225,7 @@ export declare const NotifyHistoryApiFactory: (configuration?: Configuration, ba
      */
     notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistory>;
     /**
-     *
+     * Mark the listed notify_history_ids of the current user as read and return the actual update result. This neither executes an action nor deletes a notification; IDs come from notification history.
      * @summary Set notification in cabinet as read
      * @param {NotifyHistoryApiNotifyHistoryMarkOfReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -194,7 +233,7 @@ export declare const NotifyHistoryApiFactory: (configuration?: Configuration, ba
      */
     notifyHistoryMarkOfReadV1(requestParameters: NotifyHistoryApiNotifyHistoryMarkOfReadV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteMarkReadHistoryResponse>;
     /**
-     *
+     * Execute a legacy action_name on the current user\'s notify_history_id, with group_id in query. Only the project subject is supported; this can change invitations/tariffs and is not a safe read. For the account API, use POST /method/notify_history/execute_action with a separate scope check for the specific action.
      * @summary Run action in my notify item
      * @param {NotifyHistoryApiNotifyHistoryRunActionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -202,12 +241,13 @@ export declare const NotifyHistoryApiFactory: (configuration?: Configuration, ba
      */
     notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
-     *
+     * Mark all cabinet notifications of the current user as read. This changes read state without executing an invitation/payment action or deleting history. Returns success.
      * @summary Set all notification in cabinet as read
+     * @param {NotifyHistoryApiNotifyHistorySetAllCabinetReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyHistorySetAllCabinetReadV1(options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    notifyHistorySetAllCabinetReadV1(requestParameters?: NotifyHistoryApiNotifyHistorySetAllCabinetReadV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 };
 /**
  * NotifyHistoryApi - interface
@@ -216,7 +256,16 @@ export declare const NotifyHistoryApiFactory: (configuration?: Configuration, ba
  */
 export interface NotifyHistoryApiInterface {
     /**
-     *
+     * Requires notification:write and the actual operation scope: channel:write, project-invite:write, integration:write or billing:write. Invitation recipient and project roles are checked. Only supported invitation accept/decline and tariff renewal accept actions execute. Links and test actions fail; purchase errors propagate and do not mark the action done.
+     * @summary Execute an owned notification action
+     * @param {NotifyHistoryApiMethodExecuteNotifyActionExecuteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApiInterface
+     */
+    methodExecuteNotifyActionExecuteV1(requestParameters: NotifyHistoryApiMethodExecuteNotifyActionExecuteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    /**
+     * Read the current user\'s notification history using request filters and pagination. Returns results and pagination metadata; notification actions are not executed. Use POST /method/notify_history/execute_action to execute a supported account API action.
      * @summary Get list of my notifications
      * @param {NotifyHistoryApiNotifyHistoryGetListMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -225,7 +274,7 @@ export interface NotifyHistoryApiInterface {
      */
     notifyHistoryGetListMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetListMyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseOfNotifyHistorySiteResponse>;
     /**
-     *
+     * Read count_unread, the number of unread notifications for the current user. This does not mark them as read; use PUT /method/notify_history/read or POST /method/notify_history/set_all_cabinet_read for that.
      * @summary Get my status unread message for user
      * @param {NotifyHistoryApiNotifyHistoryGetStatusMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -234,7 +283,7 @@ export interface NotifyHistoryApiInterface {
      */
     notifyHistoryGetStatusMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetStatusMyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistoryStatusUserResponse>;
     /**
-     *
+     * Read notification _id of the current user. _id is the MongoDB ID from the notification list; the service checks ownership. Reading is distinct from marking as read or executing an action.
      * @summary Get my NotifyHistory item by id
      * @param {NotifyHistoryApiNotifyHistoryGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -243,7 +292,7 @@ export interface NotifyHistoryApiInterface {
      */
     notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NotifyHistory>;
     /**
-     *
+     * Mark the listed notify_history_ids of the current user as read and return the actual update result. This neither executes an action nor deletes a notification; IDs come from notification history.
      * @summary Set notification in cabinet as read
      * @param {NotifyHistoryApiNotifyHistoryMarkOfReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -252,7 +301,7 @@ export interface NotifyHistoryApiInterface {
      */
     notifyHistoryMarkOfReadV1(requestParameters: NotifyHistoryApiNotifyHistoryMarkOfReadV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteMarkReadHistoryResponse>;
     /**
-     *
+     * Execute a legacy action_name on the current user\'s notify_history_id, with group_id in query. Only the project subject is supported; this can change invitations/tariffs and is not a safe read. For the account API, use POST /method/notify_history/execute_action with a separate scope check for the specific action.
      * @summary Run action in my notify item
      * @param {NotifyHistoryApiNotifyHistoryRunActionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -261,13 +310,33 @@ export interface NotifyHistoryApiInterface {
      */
     notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
-     *
+     * Mark all cabinet notifications of the current user as read. This changes read state without executing an invitation/payment action or deleting history. Returns success.
      * @summary Set all notification in cabinet as read
+     * @param {NotifyHistoryApiNotifyHistorySetAllCabinetReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApiInterface
      */
-    notifyHistorySetAllCabinetReadV1(options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+    notifyHistorySetAllCabinetReadV1(requestParameters?: NotifyHistoryApiNotifyHistorySetAllCabinetReadV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
+}
+/**
+ * Request parameters for methodExecuteNotifyActionExecuteV1 operation in NotifyHistoryApi.
+ * @export
+ * @interface NotifyHistoryApiMethodExecuteNotifyActionExecuteV1Request
+ */
+export interface NotifyHistoryApiMethodExecuteNotifyActionExecuteV1Request {
+    /**
+     *
+     * @type {MethodExecuteNotifyActionRequest}
+     * @memberof NotifyHistoryApiMethodExecuteNotifyActionExecuteV1
+     */
+    readonly 'MethodExecuteNotifyActionRequest': MethodExecuteNotifyActionRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyHistoryApiMethodExecuteNotifyActionExecuteV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for notifyHistoryGetListMyV1 operation in NotifyHistoryApi.
@@ -276,65 +345,71 @@ export interface NotifyHistoryApiInterface {
  */
 export interface NotifyHistoryApiNotifyHistoryGetListMyV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly language: NotifyHistoryGetListMyV1LanguageEnum;
-    /**
-     * Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @type {'1'}
-     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
-     */
-    readonly v?: NotifyHistoryGetListMyV1VEnum;
+    readonly 'language': NotifyHistoryGetListMyV1LanguageEnum;
     /**
      * Number of results
      * @type {number}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly limit?: number;
+    readonly 'limit': number;
     /**
      * Page offset number
      * @type {number}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly offset?: number;
+    readonly 'offset': number;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
+     */
+    readonly 'v'?: NotifyHistoryGetListMyV1VEnum;
     /**
      * Project id
      * @type {number}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly project_id?: number;
+    readonly 'project_id'?: number;
     /**
      * Name
      * @type {'high_bitrate' | 'request_access_channel' | 'request_access_project' | 'request_access_integration' | 'promocode_test' | 'stream_test' | 'plan_restream_expires' | 'plan_restream_expired' | 'plan_restream_renewed' | 'plan_transcoder_expires' | 'plan_transcoder_expired' | 'plan_transcoder_renewed' | 'plan_storage_expires' | 'plan_storage_expired' | 'plan_storage_renewed' | 'compensation_received' | 'broadcast_unsupported_codec' | 'broadcast_unsupported_codec_screen' | 'broadcast_bitrate_exceeded_screen' | 'rtmp_connect_old_server_screen' | 'broadcast_not_audio' | 'broadcast_bitrate_exceeded' | 'broadcast_started' | 'broadcast_stopped' | 'restream_check_twitch_bitrate_1' | 'api_pause_start' | 'api_pause_end' | 'api_wait_edit' | 'api_restream_start' | 'api_restream_stop' | 'api_drop_broadcast' | 'api_drop_broadcast_remove_company' | 'api_drop_broadcast_update_key' | 'publisher_disconnected' | 'publisher_connected' | 'publisher_initializing' | 'publisher_close' | 'publisher_connection_interrupted' | 'publisher_connection_timeout' | 'publisher_protocol_error' | 'publisher_start_failed' | 'publisher_reconnect_failed' | 'broadcast_connected_start' | 'broadcast_connected_end' | 'broadcast_connecting_stream' | 'broadcast_started_new_stream' | 'broadcast_connecting_lost' | 'broadcast_video_lost_start' | 'broadcast_video_lost_end' | 'broadcast_video_pause_start' | 'broadcast_video_pause_end' | 'broadcast_init_restream' | 'broadcast_placeholder_ready' | 'broadcast_placeholder_failed' | 'broadcast_placeholder_fallback_used' | 'start_stream' | 'create_reader' | 'start_channel' | 'stop_channel' | 'stop_stream_video_timeout' | 'stop_stream_no_start_video' | 'stop_stream' | 'delete_reader' | 'transcoder_start' | 'transcoder_stop' | 'start_channel_failed' | 'start_channel_success' | 'api_channel_initializing_start' | 'api_channel_initializing_failed' | 'api_channel_initializing_success' | 'channel_api_update_settings_success' | 'channel_api_update_settings_error' | 'channel_api_update_playlist_success' | 'channel_api_update_playlist_error' | 'channel_api_update_chat_error' | 'channel_api_stream_key_success' | 'channel_api_stream_key_error' | 'channel_api_auto_stop_disable_success' | 'channel_api_auto_stop_disable_error' | 'channel_api_unbinding_stream_key_error' | 'channel_api_create_broadcast_success' | 'channel_api_create_broadcast_error' | 'channel_api_set_planned_success' | 'channel_api_set_planned_error' | 'channel_api_set_thumbnail_success' | 'channel_api_set_thumbnail_error' | 'channel_token_error' | 'channel_api_group_failed' | 'no_audio_reader' | 'restream_check_twitch_bitrate_2' | 'transcoder_support_error_screen' | 'transcoder_tariff_end_screen' | 'transcoder_count_flow_screen' | 'transcoder_resolution_screen' | 'stream_key_banned' | 'broadcast_change_codec' | 'broadcast_change_region' | 'video_upload_error' | 'stop_channel_error' | 'broadcast_user_action_stop' | 'completed_api_channel_error' | 'transcoder_twitch_tracks' | 'plan_webinar_expired' | 'plan_webinar_renewed' | 'plan_webinar_expires' | 'payout_created' | 'payout_status_execution' | 'payout_status_success' | 'payout_status_canceled' | 'payout_status_error' | 'plan_trial_expires' | 'plan_trial_expired'}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly name?: NotifyHistoryGetListMyV1NameEnum;
+    readonly 'name'?: NotifyHistoryGetListMyV1NameEnum;
     /**
      * Channel
      * @type {'telegram' | 'cabinet' | 'mobile'}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly channel?: NotifyHistoryGetListMyV1ChannelEnum;
+    readonly 'channel'?: NotifyHistoryGetListMyV1ChannelEnum;
     /**
      * Date from
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly date_from?: string;
+    readonly 'date_from'?: string;
     /**
      * Date to
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly date_to?: string;
+    readonly 'date_to'?: string;
     /**
      * Status read
      * @type {'unread' | 'read'}
      * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
      */
-    readonly status_read?: NotifyHistoryGetListMyV1StatusReadEnum;
+    readonly 'status_read'?: NotifyHistoryGetListMyV1StatusReadEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyHistoryApiNotifyHistoryGetListMyV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for notifyHistoryGetStatusMyV1 operation in NotifyHistoryApi.
@@ -343,17 +418,23 @@ export interface NotifyHistoryApiNotifyHistoryGetListMyV1Request {
  */
 export interface NotifyHistoryApiNotifyHistoryGetStatusMyV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof NotifyHistoryApiNotifyHistoryGetStatusMyV1
      */
-    readonly language: NotifyHistoryGetStatusMyV1LanguageEnum;
+    readonly 'language': NotifyHistoryGetStatusMyV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof NotifyHistoryApiNotifyHistoryGetStatusMyV1
      */
-    readonly v?: NotifyHistoryGetStatusMyV1VEnum;
+    readonly 'v'?: NotifyHistoryGetStatusMyV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyHistoryApiNotifyHistoryGetStatusMyV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for notifyHistoryGetV1 operation in NotifyHistoryApi.
@@ -366,13 +447,19 @@ export interface NotifyHistoryApiNotifyHistoryGetV1Request {
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryGetV1
      */
-    readonly _id: string;
+    readonly '_id': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof NotifyHistoryApiNotifyHistoryGetV1
      */
-    readonly v?: NotifyHistoryGetV1VEnum;
+    readonly 'v'?: NotifyHistoryGetV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyHistoryApiNotifyHistoryGetV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for notifyHistoryMarkOfReadV1 operation in NotifyHistoryApi.
@@ -381,23 +468,29 @@ export interface NotifyHistoryApiNotifyHistoryGetV1Request {
  */
 export interface NotifyHistoryApiNotifyHistoryMarkOfReadV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof NotifyHistoryApiNotifyHistoryMarkOfReadV1
      */
-    readonly language: NotifyHistoryMarkOfReadV1LanguageEnum;
+    readonly 'language': NotifyHistoryMarkOfReadV1LanguageEnum;
     /**
      *
      * @type {SiteMarkReadHistoryRequest}
      * @memberof NotifyHistoryApiNotifyHistoryMarkOfReadV1
      */
-    readonly SiteMarkReadHistoryRequest: SiteMarkReadHistoryRequest;
+    readonly 'SiteMarkReadHistoryRequest': SiteMarkReadHistoryRequest;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof NotifyHistoryApiNotifyHistoryMarkOfReadV1
      */
-    readonly v?: NotifyHistoryMarkOfReadV1VEnum;
+    readonly 'v'?: NotifyHistoryMarkOfReadV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyHistoryApiNotifyHistoryMarkOfReadV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for notifyHistoryRunActionV1 operation in NotifyHistoryApi.
@@ -410,25 +503,44 @@ export interface NotifyHistoryApiNotifyHistoryRunActionV1Request {
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
-    readonly notify_history_id: string;
+    readonly 'notify_history_id': string;
     /**
      * Action name
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
-    readonly action_name: string;
+    readonly 'action_name': string;
     /**
      * Group id
      * @type {string}
      * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
-    readonly group_id: string;
+    readonly 'group_id': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
      */
-    readonly v?: NotifyHistoryRunActionV1VEnum;
+    readonly 'v'?: NotifyHistoryRunActionV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyHistoryApiNotifyHistoryRunActionV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+}
+/**
+ * Request parameters for notifyHistorySetAllCabinetReadV1 operation in NotifyHistoryApi.
+ * @export
+ * @interface NotifyHistoryApiNotifyHistorySetAllCabinetReadV1Request
+ */
+export interface NotifyHistoryApiNotifyHistorySetAllCabinetReadV1Request {
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyHistoryApiNotifyHistorySetAllCabinetReadV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * NotifyHistoryApi - object-oriented interface
@@ -438,7 +550,16 @@ export interface NotifyHistoryApiNotifyHistoryRunActionV1Request {
  */
 export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryApiInterface {
     /**
-     *
+     * Requires notification:write and the actual operation scope: channel:write, project-invite:write, integration:write or billing:write. Invitation recipient and project roles are checked. Only supported invitation accept/decline and tariff renewal accept actions execute. Links and test actions fail; purchase errors propagate and do not mark the action done.
+     * @summary Execute an owned notification action
+     * @param {NotifyHistoryApiMethodExecuteNotifyActionExecuteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApi
+     */
+    methodExecuteNotifyActionExecuteV1(requestParameters: NotifyHistoryApiMethodExecuteNotifyActionExecuteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
+    /**
+     * Read the current user\'s notification history using request filters and pagination. Returns results and pagination metadata; notification actions are not executed. Use POST /method/notify_history/execute_action to execute a supported account API action.
      * @summary Get list of my notifications
      * @param {NotifyHistoryApiNotifyHistoryGetListMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -447,7 +568,7 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      */
     notifyHistoryGetListMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetListMyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedResponseOfNotifyHistorySiteResponse, any, {}, any>>;
     /**
-     *
+     * Read count_unread, the number of unread notifications for the current user. This does not mark them as read; use PUT /method/notify_history/read or POST /method/notify_history/set_all_cabinet_read for that.
      * @summary Get my status unread message for user
      * @param {NotifyHistoryApiNotifyHistoryGetStatusMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -456,7 +577,7 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      */
     notifyHistoryGetStatusMyV1(requestParameters: NotifyHistoryApiNotifyHistoryGetStatusMyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistoryStatusUserResponse, any, {}, any>>;
     /**
-     *
+     * Read notification _id of the current user. _id is the MongoDB ID from the notification list; the service checks ownership. Reading is distinct from marking as read or executing an action.
      * @summary Get my NotifyHistory item by id
      * @param {NotifyHistoryApiNotifyHistoryGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -465,7 +586,7 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      */
     notifyHistoryGetV1(requestParameters: NotifyHistoryApiNotifyHistoryGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NotifyHistory, any, {}, any>>;
     /**
-     *
+     * Mark the listed notify_history_ids of the current user as read and return the actual update result. This neither executes an action nor deletes a notification; IDs come from notification history.
      * @summary Set notification in cabinet as read
      * @param {NotifyHistoryApiNotifyHistoryMarkOfReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -474,7 +595,7 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      */
     notifyHistoryMarkOfReadV1(requestParameters: NotifyHistoryApiNotifyHistoryMarkOfReadV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteMarkReadHistoryResponse, any, {}, any>>;
     /**
-     *
+     * Execute a legacy action_name on the current user\'s notify_history_id, with group_id in query. Only the project subject is supported; this can change invitations/tariffs and is not a safe read. For the account API, use POST /method/notify_history/execute_action with a separate scope check for the specific action.
      * @summary Run action in my notify item
      * @param {NotifyHistoryApiNotifyHistoryRunActionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -483,13 +604,14 @@ export declare class NotifyHistoryApi extends BaseAPI implements NotifyHistoryAp
      */
     notifyHistoryRunActionV1(requestParameters: NotifyHistoryApiNotifyHistoryRunActionV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
     /**
-     *
+     * Mark all cabinet notifications of the current user as read. This changes read state without executing an invitation/payment action or deleting history. Returns success.
      * @summary Set all notification in cabinet as read
+     * @param {NotifyHistoryApiNotifyHistorySetAllCabinetReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    notifyHistorySetAllCabinetReadV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
+    notifyHistorySetAllCabinetReadV1(requestParameters?: NotifyHistoryApiNotifyHistorySetAllCabinetReadV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
 }
 /**
  * @export

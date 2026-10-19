@@ -1,6 +1,6 @@
 {
   "package": "streamvi-sdk",
-  "version": "2.0.0",
-  "openapiUrl": "https://napi.streamvi.io/method/apidoc-json",
-  "openapiSha256": "351932b036784590ca82b8a1c396f3d5c1d0bc8f454246bbf40423ff0515a398"
+  "version": "3.0.0",
+  "openapiUrl": "https://api-v2.streamvi.io/method/apidoc-json",
+  "openapiSha256": "e0093a800d7c3bbd24e7453deb3648fe4960621672ee2eb199c194ed4bfe94a0"
 }

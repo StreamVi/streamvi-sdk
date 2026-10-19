@@ -22,7 +22,7 @@ export interface SiteSetNameRequest {
      */
     'v'?: SiteSetNameRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteSetNameRequest
      */
@@ -34,13 +34,13 @@ export interface SiteSetNameRequest {
      */
     'project_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof SiteSetNameRequest
      */
     'channel_id': number;
     /**
-     *
+     * New display name of the shared channel entity. The validator allows letters, digits and spaces; this is not the broadcast title.
      * @type {string}
      * @memberof SiteSetNameRequest
      */

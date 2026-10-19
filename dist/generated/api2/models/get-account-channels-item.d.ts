@@ -41,6 +41,12 @@ export interface GetAccountChannelsItem {
      */
     'members': number;
     /**
+     * Main channel of the selected VK Video Live account
+     * @type {boolean}
+     * @memberof GetAccountChannelsItem
+     */
+    'isPrimary'?: boolean;
+    /**
      * Connected id
      * @type {number}
      * @memberof GetAccountChannelsItem

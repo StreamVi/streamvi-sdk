@@ -30,17 +30,18 @@ const base_1 = require("../base");
 const PlanWebinarApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Buy a webinar tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy webinar tariff
-         * @param {SiteBuyV1LanguageEnum} language Current language
+         * @param {SiteBuyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {SiteBuyV1PeriodEnum} period Period
          * @param {number} planWebinarId Webinar plan id
          * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        siteBuyV1: async (language, projectId, period, planWebinarId, v, options = {}) => {
+        siteBuyV1: async (language, projectId, period, planWebinarId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('siteBuyV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -59,9 +60,12 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -80,6 +84,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             if (planWebinarId !== undefined) {
                 localVarQueryParameter['plan_webinar_id'] = planWebinarId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -89,15 +96,16 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Remove after tariff
-         * @param {SiteCancelV1LanguageEnum} language Current language
+         * Cancel the next webinar plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+         * @summary Cancel the next project webinar tariff
+         * @param {SiteCancelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        siteCancelV1: async (language, projectId, v, options = {}) => {
+        siteCancelV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('siteCancelV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -112,9 +120,12 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -127,6 +138,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -136,18 +150,19 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Calculate a webinar plan card/preview for project_id using the selected configuration and period. Returns plan prices, sum, currency, and switching conditions; amounts are in minor units. This calculates a purchase preview without debiting funds or creating a room.
          * @summary Check webinar tariff before buy
-         * @param {SiteCheckV1LanguageEnum} language Current language
+         * @param {SiteCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {SiteCheckV1PeriodEnum} period Period
          * @param {number} planWebinarId Webinar plan id
          * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [useBalance] Is select balance
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        siteCheckV1: async (language, projectId, period, planWebinarId, v, useBalance, options = {}) => {
+        siteCheckV1: async (language, projectId, period, planWebinarId, v, useBalance, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('siteCheckV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -166,9 +181,12 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -190,6 +208,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             if (useBalance !== undefined) {
                 localVarQueryParameter['use_balance'] = useBalance;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -199,14 +220,15 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read annual discount rules for webinar plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount webinar
-         * @param {SiteGetDiscountV1LanguageEnum} language Current language
+         * @param {SiteGetDiscountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        siteGetDiscountV1: async (language, v, options = {}) => {
+        siteGetDiscountV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('siteGetDiscountV1', 'language', language);
             const localVarPath = `/method/plan_webinar/get_discount`;
@@ -219,9 +241,6 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
-            // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -230,6 +249,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -240,14 +262,15 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the public webinar plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get list of webinar tariffs
-         * @param {SiteListV1LanguageEnum} language Current language
+         * @param {SiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        siteListV1: async (language, v, options = {}) => {
+        siteListV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('siteListV1', 'language', language);
             const localVarPath = `/method/plan_webinar/list`;
@@ -260,9 +283,6 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
-            // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -271,6 +291,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -281,16 +304,17 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Save automatic webinar plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set webinar tariff auto prolongation
-         * @param {SiteSetProlongationV1LanguageEnum} language Current language
+         * @param {SiteSetProlongationV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
          * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        siteSetProlongationV1: async (language, projectId, enabled, v, options = {}) => {
+        siteSetProlongationV1: async (language, projectId, enabled, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('siteSetProlongationV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -307,9 +331,12 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -325,6 +352,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             if (enabled !== undefined) {
                 localVarQueryParameter['enabled'] = enabled;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -334,15 +364,16 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Get tariff for project
-         * @param {SiteTariffV1LanguageEnum} language Current language
+         * Read the current and next webinar plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project webinar tariff
+         * @param {SiteTariffV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        siteTariffV1: async (language, projectId, v, options = {}) => {
+        siteTariffV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('siteTariffV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -357,9 +388,12 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -371,6 +405,9 @@ const PlanWebinarApiAxiosParamCreator = function (configuration) {
             }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -391,117 +428,124 @@ const PlanWebinarApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.PlanWebinarApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Buy a webinar tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy webinar tariff
-         * @param {SiteBuyV1LanguageEnum} language Current language
+         * @param {SiteBuyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {SiteBuyV1PeriodEnum} period Period
          * @param {number} planWebinarId Webinar plan id
          * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async siteBuyV1(language, projectId, period, planWebinarId, v, options) {
+        async siteBuyV1(language, projectId, period, planWebinarId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.siteBuyV1(language, projectId, period, planWebinarId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.siteBuyV1(language, projectId, period, planWebinarId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanWebinarApi.siteBuyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Remove after tariff
-         * @param {SiteCancelV1LanguageEnum} language Current language
+         * Cancel the next webinar plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+         * @summary Cancel the next project webinar tariff
+         * @param {SiteCancelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async siteCancelV1(language, projectId, v, options) {
+        async siteCancelV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.siteCancelV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.siteCancelV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanWebinarApi.siteCancelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Calculate a webinar plan card/preview for project_id using the selected configuration and period. Returns plan prices, sum, currency, and switching conditions; amounts are in minor units. This calculates a purchase preview without debiting funds or creating a room.
          * @summary Check webinar tariff before buy
-         * @param {SiteCheckV1LanguageEnum} language Current language
+         * @param {SiteCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {SiteCheckV1PeriodEnum} period Period
          * @param {number} planWebinarId Webinar plan id
          * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [useBalance] Is select balance
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async siteCheckV1(language, projectId, period, planWebinarId, v, useBalance, options) {
+        async siteCheckV1(language, projectId, period, planWebinarId, v, useBalance, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.siteCheckV1(language, projectId, period, planWebinarId, v, useBalance, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.siteCheckV1(language, projectId, period, planWebinarId, v, useBalance, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanWebinarApi.siteCheckV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read annual discount rules for webinar plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount webinar
-         * @param {SiteGetDiscountV1LanguageEnum} language Current language
+         * @param {SiteGetDiscountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async siteGetDiscountV1(language, v, options) {
+        async siteGetDiscountV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.siteGetDiscountV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.siteGetDiscountV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanWebinarApi.siteGetDiscountV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the public webinar plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get list of webinar tariffs
-         * @param {SiteListV1LanguageEnum} language Current language
+         * @param {SiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async siteListV1(language, v, options) {
+        async siteListV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.siteListV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.siteListV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanWebinarApi.siteListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Save automatic webinar plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set webinar tariff auto prolongation
-         * @param {SiteSetProlongationV1LanguageEnum} language Current language
+         * @param {SiteSetProlongationV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
          * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async siteSetProlongationV1(language, projectId, enabled, v, options) {
+        async siteSetProlongationV1(language, projectId, enabled, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.siteSetProlongationV1(language, projectId, enabled, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.siteSetProlongationV1(language, projectId, enabled, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanWebinarApi.siteSetProlongationV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Get tariff for project
-         * @param {SiteTariffV1LanguageEnum} language Current language
+         * Read the current and next webinar plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project webinar tariff
+         * @param {SiteTariffV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async siteTariffV1(language, projectId, v, options) {
+        async siteTariffV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.siteTariffV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.siteTariffV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanWebinarApi.siteTariffV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -517,74 +561,74 @@ const PlanWebinarApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.PlanWebinarApiFp)(configuration);
     return {
         /**
-         *
+         * Buy a webinar tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy webinar tariff
          * @param {PlanWebinarApiSiteBuyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         siteBuyV1(requestParameters, options) {
-            return localVarFp.siteBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_webinar_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.siteBuyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_webinar_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Remove after tariff
+         * Cancel the next webinar plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+         * @summary Cancel the next project webinar tariff
          * @param {PlanWebinarApiSiteCancelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         siteCancelV1(requestParameters, options) {
-            return localVarFp.siteCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.siteCancelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Calculate a webinar plan card/preview for project_id using the selected configuration and period. Returns plan prices, sum, currency, and switching conditions; amounts are in minor units. This calculates a purchase preview without debiting funds or creating a room.
          * @summary Check webinar tariff before buy
          * @param {PlanWebinarApiSiteCheckV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         siteCheckV1(requestParameters, options) {
-            return localVarFp.siteCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_webinar_id, requestParameters.v, requestParameters.use_balance, options).then((request) => request(axios, basePath));
+            return localVarFp.siteCheckV1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_webinar_id'], requestParameters['v'], requestParameters['use_balance'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read annual discount rules for webinar plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount webinar
          * @param {PlanWebinarApiSiteGetDiscountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         siteGetDiscountV1(requestParameters, options) {
-            return localVarFp.siteGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.siteGetDiscountV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the public webinar plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get list of webinar tariffs
          * @param {PlanWebinarApiSiteListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         siteListV1(requestParameters, options) {
-            return localVarFp.siteListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.siteListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Save automatic webinar plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set webinar tariff auto prolongation
          * @param {PlanWebinarApiSiteSetProlongationV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         siteSetProlongationV1(requestParameters, options) {
-            return localVarFp.siteSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.siteSetProlongationV1(requestParameters['language'], requestParameters['project_id'], requestParameters['enabled'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Get tariff for project
+         * Read the current and next webinar plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project webinar tariff
          * @param {PlanWebinarApiSiteTariffV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         siteTariffV1(requestParameters, options) {
-            return localVarFp.siteTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.siteTariffV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -597,7 +641,7 @@ exports.PlanWebinarApiFactory = PlanWebinarApiFactory;
  */
 class PlanWebinarApi extends base_1.BaseAPI {
     /**
-     *
+     * Buy a webinar tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
      * @summary Buy webinar tariff
      * @param {PlanWebinarApiSiteBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -605,21 +649,21 @@ class PlanWebinarApi extends base_1.BaseAPI {
      * @memberof PlanWebinarApi
      */
     siteBuyV1(requestParameters, options) {
-        return (0, exports.PlanWebinarApiFp)(this.configuration).siteBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_webinar_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanWebinarApiFp)(this.configuration).siteBuyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_webinar_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Remove after tariff
+     * Cancel the next webinar plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+     * @summary Cancel the next project webinar tariff
      * @param {PlanWebinarApiSiteCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanWebinarApi
      */
     siteCancelV1(requestParameters, options) {
-        return (0, exports.PlanWebinarApiFp)(this.configuration).siteCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanWebinarApiFp)(this.configuration).siteCancelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Calculate a webinar plan card/preview for project_id using the selected configuration and period. Returns plan prices, sum, currency, and switching conditions; amounts are in minor units. This calculates a purchase preview without debiting funds or creating a room.
      * @summary Check webinar tariff before buy
      * @param {PlanWebinarApiSiteCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -627,10 +671,10 @@ class PlanWebinarApi extends base_1.BaseAPI {
      * @memberof PlanWebinarApi
      */
     siteCheckV1(requestParameters, options) {
-        return (0, exports.PlanWebinarApiFp)(this.configuration).siteCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_webinar_id, requestParameters.v, requestParameters.use_balance, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanWebinarApiFp)(this.configuration).siteCheckV1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_webinar_id'], requestParameters['v'], requestParameters['use_balance'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read annual discount rules for webinar plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
      * @summary Get discount webinar
      * @param {PlanWebinarApiSiteGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -638,10 +682,10 @@ class PlanWebinarApi extends base_1.BaseAPI {
      * @memberof PlanWebinarApi
      */
     siteGetDiscountV1(requestParameters, options) {
-        return (0, exports.PlanWebinarApiFp)(this.configuration).siteGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanWebinarApiFp)(this.configuration).siteGetDiscountV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the public webinar plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
      * @summary Get list of webinar tariffs
      * @param {PlanWebinarApiSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -649,10 +693,10 @@ class PlanWebinarApi extends base_1.BaseAPI {
      * @memberof PlanWebinarApi
      */
     siteListV1(requestParameters, options) {
-        return (0, exports.PlanWebinarApiFp)(this.configuration).siteListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanWebinarApiFp)(this.configuration).siteListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Save automatic webinar plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
      * @summary Set webinar tariff auto prolongation
      * @param {PlanWebinarApiSiteSetProlongationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -660,18 +704,18 @@ class PlanWebinarApi extends base_1.BaseAPI {
      * @memberof PlanWebinarApi
      */
     siteSetProlongationV1(requestParameters, options) {
-        return (0, exports.PlanWebinarApiFp)(this.configuration).siteSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanWebinarApiFp)(this.configuration).siteSetProlongationV1(requestParameters['language'], requestParameters['project_id'], requestParameters['enabled'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Get tariff for project
+     * Read the current and next webinar plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+     * @summary Get current and next project webinar tariff
      * @param {PlanWebinarApiSiteTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanWebinarApi
      */
     siteTariffV1(requestParameters, options) {
-        return (0, exports.PlanWebinarApiFp)(this.configuration).siteTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanWebinarApiFp)(this.configuration).siteTariffV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PlanWebinarApi = PlanWebinarApi;

@@ -17,6 +17,5 @@ exports.ProjectChannelInviteResponseAccessTypeEnum = void 0;
 exports.ProjectChannelInviteResponseAccessTypeEnum = {
     NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_12: 1,
     NUMBER_2: 2
 };

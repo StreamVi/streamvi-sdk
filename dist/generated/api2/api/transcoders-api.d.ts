@@ -23,55 +23,61 @@ import type { TranscoderUpdateDto } from '../models';
  */
 export declare const TranscodersApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Create a transcoder configuration for project_id from DTO parameters and return a numeric ID. Checks current plan and type restrictions. Creating settings does not confirm an external transcoding task has started; assign to a channel with POST /method/channel_settings/setTranscoder.
      * @summary Transcoder create
      * @param {TranscoderCreateDto} transcoderCreateDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersAddV1: (transcoderCreateDto: TranscoderCreateDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    transcodersAddV1: (transcoderCreateDto: TranscoderCreateDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Delete transcoder_id configuration in project_id. If absent, returns Transcoder not found. This deletes settings; stop active external processing separately with POST /method/transcoder/stop.
      * @summary Transcoder delete
      * @param {TranscoderItemDto} transcoderItemDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersDeleteV1: (transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    transcodersDeleteV1: (transcoderItemDto: TranscoderItemDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read transcoder settings for project_id, including ID, type, parameters, and actual state according to the response schema. This reads configurations without starting transcoding; use IDs in update/delete/stop/reset-delay and channel assignment.
      * @summary List of transcoder
-     * @param {TranscodersListV1LanguageEnum} language Current language
+     * @param {TranscodersListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersListV1: (language: TranscodersListV1LanguageEnum, projectId: number, v?: TranscodersListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    transcodersListV1: (language: TranscodersListV1LanguageEnum, projectId: number, v?: TranscodersListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Send a delay reset command for transcoder_id in project_id. This controls an existing transcoder without changing protection duration or simulated /method/channel/set-delay. Success does not guarantee immediate completion of the external operation.
      * @summary Reset delay
      * @param {TranscoderItemDto} transcoderItemDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersResetDelayV1: (transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    transcodersResetDelayV1: (transcoderItemDto: TranscoderItemDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Send a stop command for transcoder_id in project_id after checking access. Success confirms the management use case processed the command; check the actual state for completion of external processing. The configuration is not deleted.
      * @summary Transcoder stop
      * @param {TranscoderItemDto} transcoderItemDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersStopV1: (transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    transcodersStopV1: (transcoderItemDto: TranscoderItemDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Change the transcoder configuration for the selected project_id using its ID and DTO fields. Success confirms the configuration workflow was saved; it is not a resume-broadcast command. Parameter types and constraints are defined by the request schema.
      * @summary Transcoder update
      * @param {TranscoderUpdateDto} transcoderUpdateDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersUpdateV1: (transcoderUpdateDto: TranscoderUpdateDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    transcodersUpdateV1: (transcoderUpdateDto: TranscoderUpdateDto, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * TranscodersApi - functional programming interface
@@ -79,55 +85,61 @@ export declare const TranscodersApiAxiosParamCreator: (configuration?: Configura
  */
 export declare const TranscodersApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Create a transcoder configuration for project_id from DTO parameters and return a numeric ID. Checks current plan and type restrictions. Creating settings does not confirm an external transcoding task has started; assign to a channel with POST /method/channel_settings/setTranscoder.
      * @summary Transcoder create
      * @param {TranscoderCreateDto} transcoderCreateDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersAddV1(transcoderCreateDto: TranscoderCreateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>>;
+    transcodersAddV1(transcoderCreateDto: TranscoderCreateDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>>;
     /**
-     *
+     * Delete transcoder_id configuration in project_id. If absent, returns Transcoder not found. This deletes settings; stop active external processing separately with POST /method/transcoder/stop.
      * @summary Transcoder delete
      * @param {TranscoderItemDto} transcoderItemDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersDeleteV1(transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    transcodersDeleteV1(transcoderItemDto: TranscoderItemDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Read transcoder settings for project_id, including ID, type, parameters, and actual state according to the response schema. This reads configurations without starting transcoding; use IDs in update/delete/stop/reset-delay and channel assignment.
      * @summary List of transcoder
-     * @param {TranscodersListV1LanguageEnum} language Current language
+     * @param {TranscodersListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersListV1(language: TranscodersListV1LanguageEnum, projectId: number, v?: TranscodersListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTranscoderListResponse>>;
+    transcodersListV1(language: TranscodersListV1LanguageEnum, projectId: number, v?: TranscodersListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTranscoderListResponse>>;
     /**
-     *
+     * Send a delay reset command for transcoder_id in project_id. This controls an existing transcoder without changing protection duration or simulated /method/channel/set-delay. Success does not guarantee immediate completion of the external operation.
      * @summary Reset delay
      * @param {TranscoderItemDto} transcoderItemDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersResetDelayV1(transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    transcodersResetDelayV1(transcoderItemDto: TranscoderItemDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Send a stop command for transcoder_id in project_id after checking access. Success confirms the management use case processed the command; check the actual state for completion of external processing. The configuration is not deleted.
      * @summary Transcoder stop
      * @param {TranscoderItemDto} transcoderItemDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersStopV1(transcoderItemDto: TranscoderItemDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    transcodersStopV1(transcoderItemDto: TranscoderItemDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Change the transcoder configuration for the selected project_id using its ID and DTO fields. Success confirms the configuration workflow was saved; it is not a resume-broadcast command. Parameter types and constraints are defined by the request schema.
      * @summary Transcoder update
      * @param {TranscoderUpdateDto} transcoderUpdateDto
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transcodersUpdateV1(transcoderUpdateDto: TranscoderUpdateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    transcodersUpdateV1(transcoderUpdateDto: TranscoderUpdateDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * TranscodersApi - factory interface
@@ -135,7 +147,7 @@ export declare const TranscodersApiFp: (configuration?: Configuration) => {
  */
 export declare const TranscodersApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Create a transcoder configuration for project_id from DTO parameters and return a numeric ID. Checks current plan and type restrictions. Creating settings does not confirm an external transcoding task has started; assign to a channel with POST /method/channel_settings/setTranscoder.
      * @summary Transcoder create
      * @param {TranscodersApiTranscodersAddV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -143,7 +155,7 @@ export declare const TranscodersApiFactory: (configuration?: Configuration, base
      */
     transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig): AxiosPromise<number>;
     /**
-     *
+     * Delete transcoder_id configuration in project_id. If absent, returns Transcoder not found. This deletes settings; stop active external processing separately with POST /method/transcoder/stop.
      * @summary Transcoder delete
      * @param {TranscodersApiTranscodersDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -151,7 +163,7 @@ export declare const TranscodersApiFactory: (configuration?: Configuration, base
      */
     transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read transcoder settings for project_id, including ID, type, parameters, and actual state according to the response schema. This reads configurations without starting transcoding; use IDs in update/delete/stop/reset-delay and channel assignment.
      * @summary List of transcoder
      * @param {TranscodersApiTranscodersListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -159,7 +171,7 @@ export declare const TranscodersApiFactory: (configuration?: Configuration, base
      */
     transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTranscoderListResponse>;
     /**
-     *
+     * Send a delay reset command for transcoder_id in project_id. This controls an existing transcoder without changing protection duration or simulated /method/channel/set-delay. Success does not guarantee immediate completion of the external operation.
      * @summary Reset delay
      * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -167,7 +179,7 @@ export declare const TranscodersApiFactory: (configuration?: Configuration, base
      */
     transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Send a stop command for transcoder_id in project_id after checking access. Success confirms the management use case processed the command; check the actual state for completion of external processing. The configuration is not deleted.
      * @summary Transcoder stop
      * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -175,7 +187,7 @@ export declare const TranscodersApiFactory: (configuration?: Configuration, base
      */
     transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Change the transcoder configuration for the selected project_id using its ID and DTO fields. Success confirms the configuration workflow was saved; it is not a resume-broadcast command. Parameter types and constraints are defined by the request schema.
      * @summary Transcoder update
      * @param {TranscodersApiTranscodersUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -190,7 +202,7 @@ export declare const TranscodersApiFactory: (configuration?: Configuration, base
  */
 export interface TranscodersApiInterface {
     /**
-     *
+     * Create a transcoder configuration for project_id from DTO parameters and return a numeric ID. Checks current plan and type restrictions. Creating settings does not confirm an external transcoding task has started; assign to a channel with POST /method/channel_settings/setTranscoder.
      * @summary Transcoder create
      * @param {TranscodersApiTranscodersAddV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -199,7 +211,7 @@ export interface TranscodersApiInterface {
      */
     transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig): AxiosPromise<number>;
     /**
-     *
+     * Delete transcoder_id configuration in project_id. If absent, returns Transcoder not found. This deletes settings; stop active external processing separately with POST /method/transcoder/stop.
      * @summary Transcoder delete
      * @param {TranscodersApiTranscodersDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -208,7 +220,7 @@ export interface TranscodersApiInterface {
      */
     transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read transcoder settings for project_id, including ID, type, parameters, and actual state according to the response schema. This reads configurations without starting transcoding; use IDs in update/delete/stop/reset-delay and channel assignment.
      * @summary List of transcoder
      * @param {TranscodersApiTranscodersListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -217,7 +229,7 @@ export interface TranscodersApiInterface {
      */
     transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTranscoderListResponse>;
     /**
-     *
+     * Send a delay reset command for transcoder_id in project_id. This controls an existing transcoder without changing protection duration or simulated /method/channel/set-delay. Success does not guarantee immediate completion of the external operation.
      * @summary Reset delay
      * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -226,7 +238,7 @@ export interface TranscodersApiInterface {
      */
     transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Send a stop command for transcoder_id in project_id after checking access. Success confirms the management use case processed the command; check the actual state for completion of external processing. The configuration is not deleted.
      * @summary Transcoder stop
      * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -235,7 +247,7 @@ export interface TranscodersApiInterface {
      */
     transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Change the transcoder configuration for the selected project_id using its ID and DTO fields. Success confirms the configuration workflow was saved; it is not a resume-broadcast command. Parameter types and constraints are defined by the request schema.
      * @summary Transcoder update
      * @param {TranscodersApiTranscodersUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -255,7 +267,13 @@ export interface TranscodersApiTranscodersAddV1Request {
      * @type {TranscoderCreateDto}
      * @memberof TranscodersApiTranscodersAddV1
      */
-    readonly TranscoderCreateDto: TranscoderCreateDto;
+    readonly 'TranscoderCreateDto': TranscoderCreateDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof TranscodersApiTranscodersAddV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for transcodersDeleteV1 operation in TranscodersApi.
@@ -268,7 +286,13 @@ export interface TranscodersApiTranscodersDeleteV1Request {
      * @type {TranscoderItemDto}
      * @memberof TranscodersApiTranscodersDeleteV1
      */
-    readonly TranscoderItemDto: TranscoderItemDto;
+    readonly 'TranscoderItemDto': TranscoderItemDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof TranscodersApiTranscodersDeleteV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for transcodersListV1 operation in TranscodersApi.
@@ -277,23 +301,29 @@ export interface TranscodersApiTranscodersDeleteV1Request {
  */
 export interface TranscodersApiTranscodersListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof TranscodersApiTranscodersListV1
      */
-    readonly language: TranscodersListV1LanguageEnum;
+    readonly 'language': TranscodersListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof TranscodersApiTranscodersListV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof TranscodersApiTranscodersListV1
      */
-    readonly v?: TranscodersListV1VEnum;
+    readonly 'v'?: TranscodersListV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof TranscodersApiTranscodersListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for transcodersResetDelayV1 operation in TranscodersApi.
@@ -306,7 +336,13 @@ export interface TranscodersApiTranscodersResetDelayV1Request {
      * @type {TranscoderItemDto}
      * @memberof TranscodersApiTranscodersResetDelayV1
      */
-    readonly TranscoderItemDto: TranscoderItemDto;
+    readonly 'TranscoderItemDto': TranscoderItemDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof TranscodersApiTranscodersResetDelayV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for transcodersStopV1 operation in TranscodersApi.
@@ -319,7 +355,13 @@ export interface TranscodersApiTranscodersStopV1Request {
      * @type {TranscoderItemDto}
      * @memberof TranscodersApiTranscodersStopV1
      */
-    readonly TranscoderItemDto: TranscoderItemDto;
+    readonly 'TranscoderItemDto': TranscoderItemDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof TranscodersApiTranscodersStopV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for transcodersUpdateV1 operation in TranscodersApi.
@@ -332,7 +374,13 @@ export interface TranscodersApiTranscodersUpdateV1Request {
      * @type {TranscoderUpdateDto}
      * @memberof TranscodersApiTranscodersUpdateV1
      */
-    readonly TranscoderUpdateDto: TranscoderUpdateDto;
+    readonly 'TranscoderUpdateDto': TranscoderUpdateDto;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof TranscodersApiTranscodersUpdateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * TranscodersApi - object-oriented interface
@@ -342,7 +390,7 @@ export interface TranscodersApiTranscodersUpdateV1Request {
  */
 export declare class TranscodersApi extends BaseAPI implements TranscodersApiInterface {
     /**
-     *
+     * Create a transcoder configuration for project_id from DTO parameters and return a numeric ID. Checks current plan and type restrictions. Creating settings does not confirm an external transcoding task has started; assign to a channel with POST /method/channel_settings/setTranscoder.
      * @summary Transcoder create
      * @param {TranscodersApiTranscodersAddV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -351,7 +399,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      */
     transcodersAddV1(requestParameters: TranscodersApiTranscodersAddV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<number, any, {}, any>>;
     /**
-     *
+     * Delete transcoder_id configuration in project_id. If absent, returns Transcoder not found. This deletes settings; stop active external processing separately with POST /method/transcoder/stop.
      * @summary Transcoder delete
      * @param {TranscodersApiTranscodersDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -360,7 +408,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      */
     transcodersDeleteV1(requestParameters: TranscodersApiTranscodersDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Read transcoder settings for project_id, including ID, type, parameters, and actual state according to the response schema. This reads configurations without starting transcoding; use IDs in update/delete/stop/reset-delay and channel assignment.
      * @summary List of transcoder
      * @param {TranscodersApiTranscodersListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -369,7 +417,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      */
     transcodersListV1(requestParameters: TranscodersApiTranscodersListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteTranscoderListResponse, any, {}, any>>;
     /**
-     *
+     * Send a delay reset command for transcoder_id in project_id. This controls an existing transcoder without changing protection duration or simulated /method/channel/set-delay. Success does not guarantee immediate completion of the external operation.
      * @summary Reset delay
      * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -378,7 +426,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      */
     transcodersResetDelayV1(requestParameters: TranscodersApiTranscodersResetDelayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Send a stop command for transcoder_id in project_id after checking access. Success confirms the management use case processed the command; check the actual state for completion of external processing. The configuration is not deleted.
      * @summary Transcoder stop
      * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -387,7 +435,7 @@ export declare class TranscodersApi extends BaseAPI implements TranscodersApiInt
      */
     transcodersStopV1(requestParameters: TranscodersApiTranscodersStopV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Change the transcoder configuration for the selected project_id using its ID and DTO fields. Success confirms the configuration workflow was saved; it is not a resume-broadcast command. Parameter types and constraints are defined by the request schema.
      * @summary Transcoder update
      * @param {TranscodersApiTranscodersUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

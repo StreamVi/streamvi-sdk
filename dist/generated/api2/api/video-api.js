@@ -30,15 +30,16 @@ const base_1 = require("../base");
 const VideoApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Create an upload session for project_id. Despite using GET, this creates a session in the external video service. Returns the upload URL, progress subscription token/channel, and space in bytes; success does not mean the file has been uploaded or processed. Session credentials must not be logged. Storage limits: GET /method/video/limits.
          * @summary Create upload session
-         * @param {VideoSiteCreateV1LanguageEnum} language Current language
+         * @param {VideoSiteCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {VideoSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videoSiteCreateV1: async (language, projectId, v, options = {}) => {
+        videoSiteCreateV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('videoSiteCreateV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -53,9 +54,12 @@ const VideoApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["video:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["video:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["video:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -68,6 +72,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -77,16 +84,17 @@ const VideoApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Delete video id in project_id through the video service after reading its current details. Input is supplied in query for this POST. This deletes the video without cancelling an upload session or stopping a schedule.
          * @summary Delete video
-         * @param {VideoSiteDeleteV1LanguageEnum} language Current language
+         * @param {VideoSiteDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} id Video id
          * @param {VideoSiteDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videoSiteDeleteV1: async (language, projectId, id, v, options = {}) => {
+        videoSiteDeleteV1: async (language, projectId, id, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('videoSiteDeleteV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -103,9 +111,12 @@ const VideoApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["video:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["video:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["video:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -121,6 +132,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -130,16 +144,17 @@ const VideoApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Get the video download URL for id in project_id, with name/size in bytes. Returns JSON containing a link, not a file stream; a link does not confirm download completion.
          * @summary Get video download link
-         * @param {VideoSiteDownloadV1LanguageEnum} language Current language
+         * @param {VideoSiteDownloadV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {string} id Download link id
          * @param {VideoSiteDownloadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videoSiteDownloadV1: async (language, projectId, id, v, options = {}) => {
+        videoSiteDownloadV1: async (language, projectId, id, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('videoSiteDownloadV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -156,9 +171,12 @@ const VideoApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["video:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["video:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["video:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -174,6 +192,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -183,16 +204,17 @@ const VideoApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read a video by numeric id in project_id through the video service. Returns video properties and state; use GET /method/video/list to find IDs. Reading neither uploads a file nor starts a schedule.
          * @summary Get video by id
-         * @param {VideoSiteGetV1LanguageEnum} language Current language
+         * @param {VideoSiteGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} id Video id
          * @param {VideoSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videoSiteGetV1: async (language, projectId, id, v, options = {}) => {
+        videoSiteGetV1: async (language, projectId, id, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('videoSiteGetV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -209,9 +231,12 @@ const VideoApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["video:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["video:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["video:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -227,6 +252,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -236,15 +264,16 @@ const VideoApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read video storage limits for project_id: video_limit and video_current in bytes; removing_at may be absent. Limits are returned by the video service and depend on project/plan state; clients must not hardcode them.
          * @summary Get video limits
-         * @param {VideoSiteLimitsV1LanguageEnum} language Current language
+         * @param {VideoSiteLimitsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {VideoSiteLimitsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videoSiteLimitsV1: async (language, projectId, v, options = {}) => {
+        videoSiteLimitsV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('videoSiteLimitsV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -259,9 +288,12 @@ const VideoApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["video:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["video:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["video:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -274,6 +306,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -283,17 +318,18 @@ const VideoApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read videos of project_id with limit/offset (the number of records to skip). Returns results, total, and actual video service pagination. Use the video ID for get/update/delete and scheduler video.id; this method does not create an upload session.
          * @summary List videos
-         * @param {VideoSiteListV1LanguageEnum} language Current language
+         * @param {VideoSiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {VideoSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [offset] Offset for v2 list endpoint
          * @param {number} [limit] Limit for v2 list endpoint
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videoSiteListV1: async (language, projectId, v, offset, limit, options = {}) => {
+        videoSiteListV1: async (language, projectId, v, offset, limit, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('videoSiteListV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -308,9 +344,12 @@ const VideoApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["video:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["video:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["video:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -329,6 +368,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -338,15 +380,16 @@ const VideoApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Get the list of Centrifugo upload progress channels for project_id. These are subscription details, not an upload command; use GET /method/video/create to create an upload session.
          * @summary Get upload progress channels for centrifuge
-         * @param {VideoSiteProgressChannelV1LanguageEnum} language Current language
+         * @param {VideoSiteProgressChannelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videoSiteProgressChannelV1: async (language, projectId, v, options = {}) => {
+        videoSiteProgressChannelV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('videoSiteProgressChannelV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -361,9 +404,12 @@ const VideoApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["video:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["video:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["video:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -376,6 +422,9 @@ const VideoApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -385,13 +434,14 @@ const VideoApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Rename video id in project_id by saving name through the video service. Success confirms the name change; this method does not replace the file, content, or schedule.
          * @summary Update video
          * @param {UpdateVideoRequest} updateVideoRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videoSiteUpdateV1: async (updateVideoRequest, options = {}) => {
+        videoSiteUpdateV1: async (updateVideoRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'updateVideoRequest' is not null or undefined
             (0, common_1.assertParamExists)('videoSiteUpdateV1', 'updateVideoRequest', updateVideoRequest);
@@ -405,10 +455,16 @@ const VideoApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["video:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["video:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["video:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -430,132 +486,140 @@ const VideoApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.VideoApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Create an upload session for project_id. Despite using GET, this creates a session in the external video service. Returns the upload URL, progress subscription token/channel, and space in bytes; success does not mean the file has been uploaded or processed. Session credentials must not be logged. Storage limits: GET /method/video/limits.
          * @summary Create upload session
-         * @param {VideoSiteCreateV1LanguageEnum} language Current language
+         * @param {VideoSiteCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {VideoSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async videoSiteCreateV1(language, projectId, v, options) {
+        async videoSiteCreateV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteCreateV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteCreateV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VideoApi.videoSiteCreateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Delete video id in project_id through the video service after reading its current details. Input is supplied in query for this POST. This deletes the video without cancelling an upload session or stopping a schedule.
          * @summary Delete video
-         * @param {VideoSiteDeleteV1LanguageEnum} language Current language
+         * @param {VideoSiteDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} id Video id
          * @param {VideoSiteDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async videoSiteDeleteV1(language, projectId, id, v, options) {
+        async videoSiteDeleteV1(language, projectId, id, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteDeleteV1(language, projectId, id, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteDeleteV1(language, projectId, id, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VideoApi.videoSiteDeleteV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Get the video download URL for id in project_id, with name/size in bytes. Returns JSON containing a link, not a file stream; a link does not confirm download completion.
          * @summary Get video download link
-         * @param {VideoSiteDownloadV1LanguageEnum} language Current language
+         * @param {VideoSiteDownloadV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {string} id Download link id
          * @param {VideoSiteDownloadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async videoSiteDownloadV1(language, projectId, id, v, options) {
+        async videoSiteDownloadV1(language, projectId, id, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteDownloadV1(language, projectId, id, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteDownloadV1(language, projectId, id, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VideoApi.videoSiteDownloadV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read a video by numeric id in project_id through the video service. Returns video properties and state; use GET /method/video/list to find IDs. Reading neither uploads a file nor starts a schedule.
          * @summary Get video by id
-         * @param {VideoSiteGetV1LanguageEnum} language Current language
+         * @param {VideoSiteGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} id Video id
          * @param {VideoSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async videoSiteGetV1(language, projectId, id, v, options) {
+        async videoSiteGetV1(language, projectId, id, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteGetV1(language, projectId, id, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteGetV1(language, projectId, id, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VideoApi.videoSiteGetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read video storage limits for project_id: video_limit and video_current in bytes; removing_at may be absent. Limits are returned by the video service and depend on project/plan state; clients must not hardcode them.
          * @summary Get video limits
-         * @param {VideoSiteLimitsV1LanguageEnum} language Current language
+         * @param {VideoSiteLimitsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {VideoSiteLimitsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async videoSiteLimitsV1(language, projectId, v, options) {
+        async videoSiteLimitsV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteLimitsV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteLimitsV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VideoApi.videoSiteLimitsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read videos of project_id with limit/offset (the number of records to skip). Returns results, total, and actual video service pagination. Use the video ID for get/update/delete and scheduler video.id; this method does not create an upload session.
          * @summary List videos
-         * @param {VideoSiteListV1LanguageEnum} language Current language
+         * @param {VideoSiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {VideoSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [offset] Offset for v2 list endpoint
          * @param {number} [limit] Limit for v2 list endpoint
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async videoSiteListV1(language, projectId, v, offset, limit, options) {
+        async videoSiteListV1(language, projectId, v, offset, limit, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteListV1(language, projectId, v, offset, limit, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteListV1(language, projectId, v, offset, limit, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VideoApi.videoSiteListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Get the list of Centrifugo upload progress channels for project_id. These are subscription details, not an upload command; use GET /method/video/create to create an upload session.
          * @summary Get upload progress channels for centrifuge
-         * @param {VideoSiteProgressChannelV1LanguageEnum} language Current language
+         * @param {VideoSiteProgressChannelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {VideoSiteProgressChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async videoSiteProgressChannelV1(language, projectId, v, options) {
+        async videoSiteProgressChannelV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteProgressChannelV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteProgressChannelV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VideoApi.videoSiteProgressChannelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Rename video id in project_id by saving name through the video service. Success confirms the name change; this method does not replace the file, content, or schedule.
          * @summary Update video
          * @param {UpdateVideoRequest} updateVideoRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async videoSiteUpdateV1(updateVideoRequest, options) {
+        async videoSiteUpdateV1(updateVideoRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteUpdateV1(updateVideoRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videoSiteUpdateV1(updateVideoRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VideoApi.videoSiteUpdateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -571,84 +635,84 @@ const VideoApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.VideoApiFp)(configuration);
     return {
         /**
-         *
+         * Create an upload session for project_id. Despite using GET, this creates a session in the external video service. Returns the upload URL, progress subscription token/channel, and space in bytes; success does not mean the file has been uploaded or processed. Session credentials must not be logged. Storage limits: GET /method/video/limits.
          * @summary Create upload session
          * @param {VideoApiVideoSiteCreateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         videoSiteCreateV1(requestParameters, options) {
-            return localVarFp.videoSiteCreateV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.videoSiteCreateV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Delete video id in project_id through the video service after reading its current details. Input is supplied in query for this POST. This deletes the video without cancelling an upload session or stopping a schedule.
          * @summary Delete video
          * @param {VideoApiVideoSiteDeleteV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         videoSiteDeleteV1(requestParameters, options) {
-            return localVarFp.videoSiteDeleteV1(requestParameters.language, requestParameters.project_id, requestParameters.id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.videoSiteDeleteV1(requestParameters['language'], requestParameters['project_id'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Get the video download URL for id in project_id, with name/size in bytes. Returns JSON containing a link, not a file stream; a link does not confirm download completion.
          * @summary Get video download link
          * @param {VideoApiVideoSiteDownloadV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         videoSiteDownloadV1(requestParameters, options) {
-            return localVarFp.videoSiteDownloadV1(requestParameters.language, requestParameters.project_id, requestParameters.id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.videoSiteDownloadV1(requestParameters['language'], requestParameters['project_id'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read a video by numeric id in project_id through the video service. Returns video properties and state; use GET /method/video/list to find IDs. Reading neither uploads a file nor starts a schedule.
          * @summary Get video by id
          * @param {VideoApiVideoSiteGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         videoSiteGetV1(requestParameters, options) {
-            return localVarFp.videoSiteGetV1(requestParameters.language, requestParameters.project_id, requestParameters.id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.videoSiteGetV1(requestParameters['language'], requestParameters['project_id'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read video storage limits for project_id: video_limit and video_current in bytes; removing_at may be absent. Limits are returned by the video service and depend on project/plan state; clients must not hardcode them.
          * @summary Get video limits
          * @param {VideoApiVideoSiteLimitsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         videoSiteLimitsV1(requestParameters, options) {
-            return localVarFp.videoSiteLimitsV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.videoSiteLimitsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read videos of project_id with limit/offset (the number of records to skip). Returns results, total, and actual video service pagination. Use the video ID for get/update/delete and scheduler video.id; this method does not create an upload session.
          * @summary List videos
          * @param {VideoApiVideoSiteListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         videoSiteListV1(requestParameters, options) {
-            return localVarFp.videoSiteListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.offset, requestParameters.limit, options).then((request) => request(axios, basePath));
+            return localVarFp.videoSiteListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['offset'], requestParameters['limit'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Get the list of Centrifugo upload progress channels for project_id. These are subscription details, not an upload command; use GET /method/video/create to create an upload session.
          * @summary Get upload progress channels for centrifuge
          * @param {VideoApiVideoSiteProgressChannelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         videoSiteProgressChannelV1(requestParameters, options) {
-            return localVarFp.videoSiteProgressChannelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.videoSiteProgressChannelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Rename video id in project_id by saving name through the video service. Success confirms the name change; this method does not replace the file, content, or schedule.
          * @summary Update video
          * @param {VideoApiVideoSiteUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         videoSiteUpdateV1(requestParameters, options) {
-            return localVarFp.videoSiteUpdateV1(requestParameters.UpdateVideoRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.videoSiteUpdateV1(requestParameters['UpdateVideoRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -661,7 +725,7 @@ exports.VideoApiFactory = VideoApiFactory;
  */
 class VideoApi extends base_1.BaseAPI {
     /**
-     *
+     * Create an upload session for project_id. Despite using GET, this creates a session in the external video service. Returns the upload URL, progress subscription token/channel, and space in bytes; success does not mean the file has been uploaded or processed. Session credentials must not be logged. Storage limits: GET /method/video/limits.
      * @summary Create upload session
      * @param {VideoApiVideoSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -669,10 +733,10 @@ class VideoApi extends base_1.BaseAPI {
      * @memberof VideoApi
      */
     videoSiteCreateV1(requestParameters, options) {
-        return (0, exports.VideoApiFp)(this.configuration).videoSiteCreateV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.VideoApiFp)(this.configuration).videoSiteCreateV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Delete video id in project_id through the video service after reading its current details. Input is supplied in query for this POST. This deletes the video without cancelling an upload session or stopping a schedule.
      * @summary Delete video
      * @param {VideoApiVideoSiteDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -680,10 +744,10 @@ class VideoApi extends base_1.BaseAPI {
      * @memberof VideoApi
      */
     videoSiteDeleteV1(requestParameters, options) {
-        return (0, exports.VideoApiFp)(this.configuration).videoSiteDeleteV1(requestParameters.language, requestParameters.project_id, requestParameters.id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.VideoApiFp)(this.configuration).videoSiteDeleteV1(requestParameters['language'], requestParameters['project_id'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Get the video download URL for id in project_id, with name/size in bytes. Returns JSON containing a link, not a file stream; a link does not confirm download completion.
      * @summary Get video download link
      * @param {VideoApiVideoSiteDownloadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -691,10 +755,10 @@ class VideoApi extends base_1.BaseAPI {
      * @memberof VideoApi
      */
     videoSiteDownloadV1(requestParameters, options) {
-        return (0, exports.VideoApiFp)(this.configuration).videoSiteDownloadV1(requestParameters.language, requestParameters.project_id, requestParameters.id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.VideoApiFp)(this.configuration).videoSiteDownloadV1(requestParameters['language'], requestParameters['project_id'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read a video by numeric id in project_id through the video service. Returns video properties and state; use GET /method/video/list to find IDs. Reading neither uploads a file nor starts a schedule.
      * @summary Get video by id
      * @param {VideoApiVideoSiteGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -702,10 +766,10 @@ class VideoApi extends base_1.BaseAPI {
      * @memberof VideoApi
      */
     videoSiteGetV1(requestParameters, options) {
-        return (0, exports.VideoApiFp)(this.configuration).videoSiteGetV1(requestParameters.language, requestParameters.project_id, requestParameters.id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.VideoApiFp)(this.configuration).videoSiteGetV1(requestParameters['language'], requestParameters['project_id'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read video storage limits for project_id: video_limit and video_current in bytes; removing_at may be absent. Limits are returned by the video service and depend on project/plan state; clients must not hardcode them.
      * @summary Get video limits
      * @param {VideoApiVideoSiteLimitsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -713,10 +777,10 @@ class VideoApi extends base_1.BaseAPI {
      * @memberof VideoApi
      */
     videoSiteLimitsV1(requestParameters, options) {
-        return (0, exports.VideoApiFp)(this.configuration).videoSiteLimitsV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.VideoApiFp)(this.configuration).videoSiteLimitsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read videos of project_id with limit/offset (the number of records to skip). Returns results, total, and actual video service pagination. Use the video ID for get/update/delete and scheduler video.id; this method does not create an upload session.
      * @summary List videos
      * @param {VideoApiVideoSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -724,10 +788,10 @@ class VideoApi extends base_1.BaseAPI {
      * @memberof VideoApi
      */
     videoSiteListV1(requestParameters, options) {
-        return (0, exports.VideoApiFp)(this.configuration).videoSiteListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.offset, requestParameters.limit, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.VideoApiFp)(this.configuration).videoSiteListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['offset'], requestParameters['limit'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Get the list of Centrifugo upload progress channels for project_id. These are subscription details, not an upload command; use GET /method/video/create to create an upload session.
      * @summary Get upload progress channels for centrifuge
      * @param {VideoApiVideoSiteProgressChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -735,10 +799,10 @@ class VideoApi extends base_1.BaseAPI {
      * @memberof VideoApi
      */
     videoSiteProgressChannelV1(requestParameters, options) {
-        return (0, exports.VideoApiFp)(this.configuration).videoSiteProgressChannelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.VideoApiFp)(this.configuration).videoSiteProgressChannelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Rename video id in project_id by saving name through the video service. Success confirms the name change; this method does not replace the file, content, or schedule.
      * @summary Update video
      * @param {VideoApiVideoSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -746,7 +810,7 @@ class VideoApi extends base_1.BaseAPI {
      * @memberof VideoApi
      */
     videoSiteUpdateV1(requestParameters, options) {
-        return (0, exports.VideoApiFp)(this.configuration).videoSiteUpdateV1(requestParameters.UpdateVideoRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.VideoApiFp)(this.configuration).videoSiteUpdateV1(requestParameters['UpdateVideoRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.VideoApi = VideoApi;

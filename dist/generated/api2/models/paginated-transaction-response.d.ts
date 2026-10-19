@@ -17,19 +17,19 @@ import type { TransactionResponse } from './transaction-response';
  */
 export interface PaginatedTransactionResponse {
     /**
-     * Общее количество элементов вообще
+     * Total number of all items
      * @type {number}
      * @memberof PaginatedTransactionResponse
      */
     'total': number;
     /**
-     * Размер запрашиваемой страницы
+     * Requested page size
      * @type {number}
      * @memberof PaginatedTransactionResponse
      */
     'limit': number;
     /**
-     * С какого элемента включительно делать запрос
+     * Element to start the request from, inclusive
      * @type {number}
      * @memberof PaginatedTransactionResponse
      */

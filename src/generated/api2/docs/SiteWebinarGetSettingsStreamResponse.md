@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**width** | **number** | Width | [default to undefined]
-**height** | **number** | Height | [default to undefined]
-**fps** | **number** | Fps | [default to undefined]
-**bitrate** | **number** | Bitrate | [default to undefined]
+**width** | **number** | Video width in pixels | [default to undefined]
+**height** | **number** | Video height in pixels | [default to undefined]
+**fps** | **number** | Video frames per second | [default to undefined]
+**bitrate** | **number** | Video bitrate in kbps | [default to undefined]
 
 ## Example
 

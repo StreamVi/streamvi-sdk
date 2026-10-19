@@ -32,9 +32,9 @@ import type { PaginatedTransactionResponse } from '../models';
 export const TransactionsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Read financial transactions of project_id for the current user using limit/offset, date_from/date_to, and code. offset is the number of records to skip; code filters transaction types. Monetary amounts are minor currency units; divide by 100 for display. This reads transaction history without creating a payment, topping up, or issuing a refund.
          * @summary Transaction list for frontend
-         * @param {TransactionsListV1LanguageEnum} language Current language
+         * @param {TransactionsListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
@@ -42,10 +42,11 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
          * @param {string} [code] Filter code transaction. example 1 or 1,2,3
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transactionsListV1: async (language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        transactionsListV1: async (language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('transactionsListV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -62,9 +63,13 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -106,6 +111,9 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -126,9 +134,9 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = TransactionsApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Read financial transactions of project_id for the current user using limit/offset, date_from/date_to, and code. offset is the number of records to skip; code filters transaction types. Monetary amounts are minor currency units; divide by 100 for display. This reads transaction history without creating a payment, topping up, or issuing a refund.
          * @summary Transaction list for frontend
-         * @param {TransactionsListV1LanguageEnum} language Current language
+         * @param {TransactionsListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
@@ -136,11 +144,12 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
          * @param {string} [code] Filter code transaction. example 1 or 1,2,3
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async transactionsListV1(language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransactionResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.transactionsListV1(language, projectId, v, limit, offset, dateFrom, dateTo, code, options);
+        async transactionsListV1(language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransactionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transactionsListV1(language, projectId, v, limit, offset, dateFrom, dateTo, code, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['TransactionsApi.transactionsListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -156,14 +165,14 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
     const localVarFp = TransactionsApiFp(configuration)
     return {
         /**
-         * 
+         * Read financial transactions of project_id for the current user using limit/offset, date_from/date_to, and code. offset is the number of records to skip; code filters transaction types. Monetary amounts are minor currency units; divide by 100 for display. This reads transaction history without creating a payment, topping up, or issuing a refund.
          * @summary Transaction list for frontend
          * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTransactionResponse> {
-            return localVarFp.transactionsListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.code, options).then((request) => request(axios, basePath));
+            return localVarFp.transactionsListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['limit'], requestParameters['offset'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['code'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -175,7 +184,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
  */
 export interface TransactionsApiInterface {
     /**
-     * 
+     * Read financial transactions of project_id for the current user using limit/offset, date_from/date_to, and code. offset is the number of records to skip; code filters transaction types. Monetary amounts are minor currency units; divide by 100 for display. This reads transaction history without creating a payment, topping up, or issuing a refund.
      * @summary Transaction list for frontend
      * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -193,60 +202,67 @@ export interface TransactionsApiInterface {
  */
 export interface TransactionsApiTransactionsListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly language: TransactionsListV1LanguageEnum
+    readonly 'language': TransactionsListV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly v?: TransactionsListV1VEnum
+    readonly 'v'?: TransactionsListV1VEnum
 
     /**
      * Number of results
      * @type {number}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly limit?: number
+    readonly 'limit'?: number
 
     /**
      * Page offset number
      * @type {number}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly offset?: number
+    readonly 'offset'?: number
 
     /**
      * Date from
      * @type {string}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly date_from?: string
+    readonly 'date_from'?: string
 
     /**
      * Date to
      * @type {string}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly date_to?: string
+    readonly 'date_to'?: string
 
     /**
      * Filter code transaction. example 1 or 1,2,3
      * @type {string}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly code?: string
+    readonly 'code'?: string
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof TransactionsApiTransactionsListV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -257,7 +273,7 @@ export interface TransactionsApiTransactionsListV1Request {
  */
 export class TransactionsApi extends BaseAPI implements TransactionsApiInterface {
     /**
-     * 
+     * Read financial transactions of project_id for the current user using limit/offset, date_from/date_to, and code. offset is the number of records to skip; code filters transaction types. Monetary amounts are minor currency units; divide by 100 for display. This reads transaction history without creating a payment, topping up, or issuing a refund.
      * @summary Transaction list for frontend
      * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -265,7 +281,7 @@ export class TransactionsApi extends BaseAPI implements TransactionsApiInterface
      * @memberof TransactionsApi
      */
     public transactionsListV1(requestParameters: TransactionsApiTransactionsListV1Request, options?: RawAxiosRequestConfig) {
-        return TransactionsApiFp(this.configuration).transactionsListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.code, options).then((request) => request(this.axios, this.basePath));
+        return TransactionsApiFp(this.configuration).transactionsListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['limit'], requestParameters['offset'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['code'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

@@ -22,7 +22,7 @@ export interface TachidDto {
      */
     'v'?: TachidDtoVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof TachidDto
      */

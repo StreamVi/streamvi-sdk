@@ -30,23 +30,28 @@ const base_1 = require("../base");
 const ProjectHistoryApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Read legacy action history of project_id by action/group_id and date_from/date_to range with limit/offset. offset is the number of records to skip; ordering and results follow the current history service. This reads saved actions without executing them and differs from the new /method/project_activity/list feed.
          * @summary Get project history of actions
-         * @param {ProjectHistoryListV1LanguageEnum} language Current language
+         * @param {ProjectHistoryListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} limit Number of results
+         * @param {number} offset Page offset number
          * @param {number} projectId Project id
          * @param {ProjectHistoryListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
          * @param {ProjectHistoryListV1ActionEnum} [action] Action
          * @param {number} [groupId] Group id
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        projectHistoryListV1: async (language, projectId, v, limit, offset, dateFrom, dateTo, action, groupId, options = {}) => {
+        projectHistoryListV1: async (language, limit, offset, projectId, v, dateFrom, dateTo, action, groupId, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('projectHistoryListV1', 'language', language);
+            // verify required parameter 'limit' is not null or undefined
+            (0, common_1.assertParamExists)('projectHistoryListV1', 'limit', limit);
+            // verify required parameter 'offset' is not null or undefined
+            (0, common_1.assertParamExists)('projectHistoryListV1', 'offset', offset);
             // verify required parameter 'projectId' is not null or undefined
             (0, common_1.assertParamExists)('projectHistoryListV1', 'projectId', projectId);
             const localVarPath = `/method/project_history/list`;
@@ -59,9 +64,12 @@ const ProjectHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -96,6 +104,9 @@ const ProjectHistoryApiAxiosParamCreator = function (configuration) {
             if (groupId !== undefined) {
                 localVarQueryParameter['group_id'] = groupId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -115,23 +126,24 @@ const ProjectHistoryApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.ProjectHistoryApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Read legacy action history of project_id by action/group_id and date_from/date_to range with limit/offset. offset is the number of records to skip; ordering and results follow the current history service. This reads saved actions without executing them and differs from the new /method/project_activity/list feed.
          * @summary Get project history of actions
-         * @param {ProjectHistoryListV1LanguageEnum} language Current language
+         * @param {ProjectHistoryListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} limit Number of results
+         * @param {number} offset Page offset number
          * @param {number} projectId Project id
          * @param {ProjectHistoryListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
          * @param {ProjectHistoryListV1ActionEnum} [action] Action
          * @param {number} [groupId] Group id
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async projectHistoryListV1(language, projectId, v, limit, offset, dateFrom, dateTo, action, groupId, options) {
+        async projectHistoryListV1(language, limit, offset, projectId, v, dateFrom, dateTo, action, groupId, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.projectHistoryListV1(language, projectId, v, limit, offset, dateFrom, dateTo, action, groupId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.projectHistoryListV1(language, limit, offset, projectId, v, dateFrom, dateTo, action, groupId, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectHistoryApi.projectHistoryListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -147,14 +159,14 @@ const ProjectHistoryApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.ProjectHistoryApiFp)(configuration);
     return {
         /**
-         *
+         * Read legacy action history of project_id by action/group_id and date_from/date_to range with limit/offset. offset is the number of records to skip; ordering and results follow the current history service. This reads saved actions without executing them and differs from the new /method/project_activity/list feed.
          * @summary Get project history of actions
          * @param {ProjectHistoryApiProjectHistoryListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         projectHistoryListV1(requestParameters, options) {
-            return localVarFp.projectHistoryListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.action, requestParameters.group_id, options).then((request) => request(axios, basePath));
+            return localVarFp.projectHistoryListV1(requestParameters['language'], requestParameters['limit'], requestParameters['offset'], requestParameters['project_id'], requestParameters['v'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['action'], requestParameters['group_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -167,7 +179,7 @@ exports.ProjectHistoryApiFactory = ProjectHistoryApiFactory;
  */
 class ProjectHistoryApi extends base_1.BaseAPI {
     /**
-     *
+     * Read legacy action history of project_id by action/group_id and date_from/date_to range with limit/offset. offset is the number of records to skip; ordering and results follow the current history service. This reads saved actions without executing them and differs from the new /method/project_activity/list feed.
      * @summary Get project history of actions
      * @param {ProjectHistoryApiProjectHistoryListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -175,7 +187,7 @@ class ProjectHistoryApi extends base_1.BaseAPI {
      * @memberof ProjectHistoryApi
      */
     projectHistoryListV1(requestParameters, options) {
-        return (0, exports.ProjectHistoryApiFp)(this.configuration).projectHistoryListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.action, requestParameters.group_id, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectHistoryApiFp)(this.configuration).projectHistoryListV1(requestParameters['language'], requestParameters['limit'], requestParameters['offset'], requestParameters['project_id'], requestParameters['v'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['action'], requestParameters['group_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ProjectHistoryApi = ProjectHistoryApi;

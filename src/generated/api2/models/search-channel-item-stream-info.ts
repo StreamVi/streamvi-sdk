@@ -42,7 +42,7 @@ import type { ChannelVkVideoLiveInfoDto } from './channel-vk-video-live-info-dto
 import type { ChannelYoutubeInfoDto } from './channel-youtube-info-dto';
 
 /**
- * streamInfo
+ * 
  * @export
  * @interface SearchChannelItemStreamInfo
  */

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **name** | **string** | Name channel | [default to undefined]
 **photo** | **string** | Photo channel | [default to undefined]
 **members** | **number** | Members channel | [default to undefined]
+**isPrimary** | **boolean** | Main channel of the selected VK Video Live account | [optional] [default to undefined]
 **connectedId** | **number** | Connected id | [default to undefined]
 **accounts** | [**Array&lt;GetAccountChannelsAccountItem&gt;**](GetAccountChannelsAccountItem.md) | Accounts | [default to undefined]
 
@@ -22,6 +23,7 @@ const instance: GetAccountChannelsItem = {
     name,
     photo,
     members,
+    isPrimary,
     connectedId,
     accounts,
 };

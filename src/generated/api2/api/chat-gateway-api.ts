@@ -38,17 +38,19 @@ import type { SuccessResponse } from '../models';
 export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Send a request to delete message event_id for broadcast_id after checking access to the broadcast in the selected project. Input is supplied in query for this POST. Success confirms the chat gateway request completed; this neither deletes the broadcast nor the channel.
          * @summary Remove message
-         * @param {MethodChatGatewayDeleteV1LanguageEnum} language Current language
+         * @param {MethodChatGatewayDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
          * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodChatGatewayDeleteV1: async (language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        methodChatGatewayDeleteV1: async (language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, projectId?: number, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('methodChatGatewayDeleteV1', 'language', language)
             // verify required parameter 'key' is not null or undefined
@@ -69,9 +71,13 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -81,6 +87,10 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
 
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
             }
 
             if (key !== undefined) {
@@ -97,6 +107,9 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -107,17 +120,19 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
+         * Read a single message by event_id and broadcast_id after checking broadcast ownership by the selected project. event_id is a message event ID from history, not a platform channel ID. The response is forwarded from the chat gateway.
          * @summary Get one message
-         * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Current language
+         * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
          * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodChatGatewayGetMessageV1: async (language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        methodChatGatewayGetMessageV1: async (language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, projectId?: number, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('methodChatGatewayGetMessageV1', 'language', language)
             // verify required parameter 'key' is not null or undefined
@@ -138,9 +153,13 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["chat:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -150,6 +169,10 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
 
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
             }
 
             if (key !== undefined) {
@@ -166,6 +189,9 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -176,16 +202,18 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
+         * Read message history for broadcast_id in the project determined by the token/explicit project_id. Broadcast ownership is checked, then the response is forwarded from the chat gateway. This reads data without connecting to WebSocket or sending a message.
          * @summary List history message
-         * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
+         * @param {MethodChatGatewayHistoryV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodChatGatewayHistoryV1: async (language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        methodChatGatewayHistoryV1: async (language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, projectId?: number, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('methodChatGatewayHistoryV1', 'language', language)
             // verify required parameter 'key' is not null or undefined
@@ -204,9 +232,13 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["chat:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -216,6 +248,10 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
 
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
             }
 
             if (key !== undefined) {
@@ -228,6 +264,9 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -238,17 +277,19 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
+         * Send a chat message for broadcast_id in the selected project. broadcast_id is supplied in query, the message payload in body; project_id comes from the request context. Broadcast ownership is checked; no restream destinations produces broadcast.no_restreams. Returns the chat gateway response without guaranteeing message delivery by every platform.
          * @summary Send message
-         * @param {MethodChatGatewaySendV1LanguageEnum} language Current language
+         * @param {MethodChatGatewaySendV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} key Key
-         * @param {number} broadcastId 
+         * @param {number} broadcastId Internal project broadcast ID; not channel_id or a message event_id.
          * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto 
          * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodChatGatewaySendV1: async (language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        methodChatGatewaySendV1: async (language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, projectId?: number, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('methodChatGatewaySendV1', 'language', language)
             // verify required parameter 'key' is not null or undefined
@@ -269,9 +310,13 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -281,6 +326,10 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
 
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
             }
 
             if (key !== undefined) {
@@ -295,6 +344,9 @@ export const ChatGatewayApiAxiosParamCreator = function (configuration?: Configu
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -316,68 +368,76 @@ export const ChatGatewayApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ChatGatewayApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Send a request to delete message event_id for broadcast_id after checking access to the broadcast in the selected project. Input is supplied in query for this POST. Success confirms the chat gateway request completed; this neither deletes the broadcast nor the channel.
          * @summary Remove message
-         * @param {MethodChatGatewayDeleteV1LanguageEnum} language Current language
+         * @param {MethodChatGatewayDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
          * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodChatGatewayDeleteV1(language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewayDeleteV1(language, key, broadcastId, eventId, v, options);
+        async methodChatGatewayDeleteV1(language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewayDeleteV1(language, key, broadcastId, eventId, v, projectId, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.methodChatGatewayDeleteV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read a single message by event_id and broadcast_id after checking broadcast ownership by the selected project. event_id is a message event ID from history, not a platform channel ID. The response is forwarded from the chat gateway.
          * @summary Get one message
-         * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Current language
+         * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {string} eventId Event id
          * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodChatGatewayGetMessageV1(language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewayGetMessageV1(language, key, broadcastId, eventId, v, options);
+        async methodChatGatewayGetMessageV1(language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewayGetMessageV1(language, key, broadcastId, eventId, v, projectId, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.methodChatGatewayGetMessageV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read message history for broadcast_id in the project determined by the token/explicit project_id. Broadcast ownership is checked, then the response is forwarded from the chat gateway. This reads data without connecting to WebSocket or sending a message.
          * @summary List history message
-         * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
+         * @param {MethodChatGatewayHistoryV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} key Key
          * @param {number} broadcastId broadcast id
          * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodChatGatewayHistoryV1(language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodChatHistoryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewayHistoryV1(language, key, broadcastId, v, options);
+        async methodChatGatewayHistoryV1(language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodChatHistoryResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewayHistoryV1(language, key, broadcastId, v, projectId, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.methodChatGatewayHistoryV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Send a chat message for broadcast_id in the selected project. broadcast_id is supplied in query, the message payload in body; project_id comes from the request context. Broadcast ownership is checked; no restream destinations produces broadcast.no_restreams. Returns the chat gateway response without guaranteeing message delivery by every platform.
          * @summary Send message
-         * @param {MethodChatGatewaySendV1LanguageEnum} language Current language
+         * @param {MethodChatGatewaySendV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} key Key
-         * @param {number} broadcastId 
+         * @param {number} broadcastId Internal project broadcast ID; not channel_id or a message event_id.
          * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto 
          * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodChatGatewaySendV1(language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewaySendV1(language, key, broadcastId, methodChatSendMessageRequestDto, v, options);
+        async methodChatGatewaySendV1(language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodChatGatewaySendV1(language, key, broadcastId, methodChatSendMessageRequestDto, v, projectId, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChatGatewayApi.methodChatGatewaySendV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -393,44 +453,44 @@ export const ChatGatewayApiFactory = function (configuration?: Configuration, ba
     const localVarFp = ChatGatewayApiFp(configuration)
     return {
         /**
-         * 
+         * Send a request to delete message event_id for broadcast_id after checking access to the broadcast in the selected project. Input is supplied in query for this POST. Success confirms the chat gateway request completed; this neither deletes the broadcast nor the channel.
          * @summary Remove message
          * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewayDeleteV1(requestParameters['language'], requestParameters['key'], requestParameters['broadcast_id'], requestParameters['event_id'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read a single message by event_id and broadcast_id after checking broadcast ownership by the selected project. event_id is a message event ID from history, not a platform channel ID. The response is forwarded from the chat gateway.
          * @summary Get one message
          * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto> {
-            return localVarFp.methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewayGetMessageV1(requestParameters['language'], requestParameters['key'], requestParameters['broadcast_id'], requestParameters['event_id'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read message history for broadcast_id in the project determined by the token/explicit project_id. Broadcast ownership is checked, then the response is forwarded from the chat gateway. This reads data without connecting to WebSocket or sending a message.
          * @summary List history message
          * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse> {
-            return localVarFp.methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewayHistoryV1(requestParameters['language'], requestParameters['key'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Send a chat message for broadcast_id in the selected project. broadcast_id is supplied in query, the message payload in body; project_id comes from the request context. Broadcast ownership is checked; no restream destinations produces broadcast.no_restreams. Returns the chat gateway response without guaranteeing message delivery by every platform.
          * @summary Send message
          * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto> {
-            return localVarFp.methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.MethodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodChatGatewaySendV1(requestParameters['language'], requestParameters['key'], requestParameters['broadcast_id'], requestParameters['MethodChatSendMessageRequestDto'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -442,7 +502,7 @@ export const ChatGatewayApiFactory = function (configuration?: Configuration, ba
  */
 export interface ChatGatewayApiInterface {
     /**
-     * 
+     * Send a request to delete message event_id for broadcast_id after checking access to the broadcast in the selected project. Input is supplied in query for this POST. Success confirms the chat gateway request completed; this neither deletes the broadcast nor the channel.
      * @summary Remove message
      * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -452,7 +512,7 @@ export interface ChatGatewayApiInterface {
     methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Read a single message by event_id and broadcast_id after checking broadcast ownership by the selected project. event_id is a message event ID from history, not a platform channel ID. The response is forwarded from the chat gateway.
      * @summary Get one message
      * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -462,7 +522,7 @@ export interface ChatGatewayApiInterface {
     methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
 
     /**
-     * 
+     * Read message history for broadcast_id in the project determined by the token/explicit project_id. Broadcast ownership is checked, then the response is forwarded from the chat gateway. This reads data without connecting to WebSocket or sending a message.
      * @summary List history message
      * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -472,7 +532,7 @@ export interface ChatGatewayApiInterface {
     methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse>;
 
     /**
-     * 
+     * Send a chat message for broadcast_id in the selected project. broadcast_id is supplied in query, the message payload in body; project_id comes from the request context. Broadcast ownership is checked; no restream destinations produces broadcast.no_restreams. Returns the chat gateway response without guaranteeing message delivery by every platform.
      * @summary Send message
      * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -490,39 +550,53 @@ export interface ChatGatewayApiInterface {
  */
 export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly language: MethodChatGatewayDeleteV1LanguageEnum
+    readonly 'language': MethodChatGatewayDeleteV1LanguageEnum
 
     /**
      * Key
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly key: string
+    readonly 'key': string
 
     /**
      * broadcast id
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly broadcast_id: number
+    readonly 'broadcast_id': number
 
     /**
      * Event id
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly event_id: string
+    readonly 'event_id': string
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly v?: MethodChatGatewayDeleteV1VEnum
+    readonly 'v'?: MethodChatGatewayDeleteV1VEnum
+
+    /**
+     * Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @type {number}
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
+     */
+    readonly 'project_id'?: number
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -532,39 +606,53 @@ export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
  */
 export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly language: MethodChatGatewayGetMessageV1LanguageEnum
+    readonly 'language': MethodChatGatewayGetMessageV1LanguageEnum
 
     /**
      * Key
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly key: string
+    readonly 'key': string
 
     /**
      * broadcast id
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly broadcast_id: number
+    readonly 'broadcast_id': number
 
     /**
      * Event id
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly event_id: string
+    readonly 'event_id': string
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly v?: MethodChatGatewayGetMessageV1VEnum
+    readonly 'v'?: MethodChatGatewayGetMessageV1VEnum
+
+    /**
+     * Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @type {number}
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
+     */
+    readonly 'project_id'?: number
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -574,32 +662,46 @@ export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
  */
 export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly language: MethodChatGatewayHistoryV1LanguageEnum
+    readonly 'language': MethodChatGatewayHistoryV1LanguageEnum
 
     /**
      * Key
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly key: string
+    readonly 'key': string
 
     /**
      * broadcast id
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly broadcast_id: number
+    readonly 'broadcast_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly v?: MethodChatGatewayHistoryV1VEnum
+    readonly 'v'?: MethodChatGatewayHistoryV1VEnum
+
+    /**
+     * Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @type {number}
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
+     */
+    readonly 'project_id'?: number
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -609,39 +711,53 @@ export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
  */
 export interface ChatGatewayApiMethodChatGatewaySendV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly language: MethodChatGatewaySendV1LanguageEnum
+    readonly 'language': MethodChatGatewaySendV1LanguageEnum
 
     /**
      * Key
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly key: string
+    readonly 'key': string
 
     /**
-     * 
+     * Internal project broadcast ID; not channel_id or a message event_id.
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly broadcast_id: number
+    readonly 'broadcast_id': number
 
     /**
      * 
      * @type {MethodChatSendMessageRequestDto}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly MethodChatSendMessageRequestDto: MethodChatSendMessageRequestDto
+    readonly 'MethodChatSendMessageRequestDto': MethodChatSendMessageRequestDto
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly v?: MethodChatGatewaySendV1VEnum
+    readonly 'v'?: MethodChatGatewaySendV1VEnum
+
+    /**
+     * Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @type {number}
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
+     */
+    readonly 'project_id'?: number
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -652,7 +768,7 @@ export interface ChatGatewayApiMethodChatGatewaySendV1Request {
  */
 export class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
     /**
-     * 
+     * Send a request to delete message event_id for broadcast_id after checking access to the broadcast in the selected project. Input is supplied in query for this POST. Success confirms the chat gateway request completed; this neither deletes the broadcast nor the channel.
      * @summary Remove message
      * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -660,11 +776,11 @@ export class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
      * @memberof ChatGatewayApi
      */
     public methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig) {
-        return ChatGatewayApiFp(this.configuration).methodChatGatewayDeleteV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChatGatewayApiFp(this.configuration).methodChatGatewayDeleteV1(requestParameters['language'], requestParameters['key'], requestParameters['broadcast_id'], requestParameters['event_id'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read a single message by event_id and broadcast_id after checking broadcast ownership by the selected project. event_id is a message event ID from history, not a platform channel ID. The response is forwarded from the chat gateway.
      * @summary Get one message
      * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -672,11 +788,11 @@ export class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
      * @memberof ChatGatewayApi
      */
     public methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig) {
-        return ChatGatewayApiFp(this.configuration).methodChatGatewayGetMessageV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.event_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChatGatewayApiFp(this.configuration).methodChatGatewayGetMessageV1(requestParameters['language'], requestParameters['key'], requestParameters['broadcast_id'], requestParameters['event_id'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read message history for broadcast_id in the project determined by the token/explicit project_id. Broadcast ownership is checked, then the response is forwarded from the chat gateway. This reads data without connecting to WebSocket or sending a message.
      * @summary List history message
      * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -684,11 +800,11 @@ export class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
      * @memberof ChatGatewayApi
      */
     public methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig) {
-        return ChatGatewayApiFp(this.configuration).methodChatGatewayHistoryV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChatGatewayApiFp(this.configuration).methodChatGatewayHistoryV1(requestParameters['language'], requestParameters['key'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Send a chat message for broadcast_id in the selected project. broadcast_id is supplied in query, the message payload in body; project_id comes from the request context. Broadcast ownership is checked; no restream destinations produces broadcast.no_restreams. Returns the chat gateway response without guaranteeing message delivery by every platform.
      * @summary Send message
      * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -696,7 +812,7 @@ export class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
      * @memberof ChatGatewayApi
      */
     public methodChatGatewaySendV1(requestParameters: ChatGatewayApiMethodChatGatewaySendV1Request, options?: RawAxiosRequestConfig) {
-        return ChatGatewayApiFp(this.configuration).methodChatGatewaySendV1(requestParameters.language, requestParameters.key, requestParameters.broadcast_id, requestParameters.MethodChatSendMessageRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChatGatewayApiFp(this.configuration).methodChatGatewaySendV1(requestParameters['language'], requestParameters['key'], requestParameters['broadcast_id'], requestParameters['MethodChatSendMessageRequestDto'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

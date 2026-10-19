@@ -35,13 +35,13 @@ export interface PlanTranscodingResponse {
      */
     'type': PlanTranscodingResponseTypeEnum;
     /**
-     * Price (RUB)
+     * Price (RUB). Amount in kopecks (RUB): 12345 = 123.45 RUB. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanTranscodingResponse
      */
     'price_rub': number | null;
     /**
-     * Price (USD)
+     * Price (USD). Amount in cents (USD): 12345 = 123.45 USD. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanTranscodingResponse
      */

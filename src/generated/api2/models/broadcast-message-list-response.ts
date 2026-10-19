@@ -24,19 +24,19 @@ import type { BroadcastMessageItemResponse } from './broadcast-message-item-resp
  */
 export interface BroadcastMessageListResponse {
     /**
-     * Общее количество элементов вообще
+     * Total number of all items
      * @type {number}
      * @memberof BroadcastMessageListResponse
      */
     'total': number;
     /**
-     * Размер запрашиваемой страницы
+     * Requested page size
      * @type {number}
      * @memberof BroadcastMessageListResponse
      */
     'limit': number;
     /**
-     * С какого элемента включительно делать запрос
+     * Element to start the request from, inclusive
      * @type {number}
      * @memberof BroadcastMessageListResponse
      */

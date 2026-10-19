@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_type** | **number** | Access type | [default to undefined]
 **active** | **boolean** |  | [default to undefined]
-**channel_id** | **number** | Channel id | [default to undefined]
-**id** | **number** | Primary key | [default to undefined]
+**channel_id** | **number** | Internal numeric StreamVi channel ID, also returned as group_id in channel search results. Do not use the external/platform id, even if it contains only digits. | [default to undefined]
+**id** | **number** | Internal ID of the project-channel access record. This is not the channel_id or project_id. | [default to undefined]
 **owner_id** | **number** | Owner id | [default to undefined]
 **preview** | **string** | Preview | [optional] [default to undefined]
 **title** | **string** | Title | [optional] [default to undefined]

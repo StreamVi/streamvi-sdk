@@ -58,19 +58,19 @@ export interface ProjectInfoDataResponse {
      */
     'type': ProjectInfoDataResponseTypeEnum;
     /**
-     * Bonus balance
+     * Bonus balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof ProjectInfoDataResponse
      */
     'balance_bonus': number;
     /**
-     * Payment balance
+     * Payment balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof ProjectInfoDataResponse
      */
     'balance_payment': number;
     /**
-     * Profit balance
+     * Profit balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof ProjectInfoDataResponse
      */

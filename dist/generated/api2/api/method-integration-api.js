@@ -30,16 +30,17 @@ const base_1 = require("../base");
 const MethodIntegrationApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         * Rate limit: 10 requests per 1 second
+         * Read a template\'s JSON widget payload in the selected project_id after checking template/project installation ownership. This is widget data, not the full server tool catalog or a widget custom actions list. Write using POST /method/integration_project_template/widget/set. Rate limit: 10 requests per 1 second.
          * @summary Get template widget data
-         * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum} language Current language
+         * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} templateId Integration project template ID
          * @param {number} projectId Project ID
          * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodIntegrationTemplateGetTemplateWidgetDataV1: async (language, templateId, projectId, v, options = {}) => {
+        methodIntegrationTemplateGetTemplateWidgetDataV1: async (language, templateId, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('methodIntegrationTemplateGetTemplateWidgetDataV1', 'language', language);
             // verify required parameter 'templateId' is not null or undefined
@@ -56,9 +57,12 @@ const MethodIntegrationApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["integration:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["integration:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["integration:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -73,6 +77,9 @@ const MethodIntegrationApiAxiosParamCreator = function (configuration) {
             }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -93,18 +100,19 @@ const MethodIntegrationApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.MethodIntegrationApiAxiosParamCreator)(configuration);
     return {
         /**
-         * Rate limit: 10 requests per 1 second
+         * Read a template\'s JSON widget payload in the selected project_id after checking template/project installation ownership. This is widget data, not the full server tool catalog or a widget custom actions list. Write using POST /method/integration_project_template/widget/set. Rate limit: 10 requests per 1 second.
          * @summary Get template widget data
-         * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum} language Current language
+         * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} templateId Integration project template ID
          * @param {number} projectId Project ID
          * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodIntegrationTemplateGetTemplateWidgetDataV1(language, templateId, projectId, v, options) {
+        async methodIntegrationTemplateGetTemplateWidgetDataV1(language, templateId, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.methodIntegrationTemplateGetTemplateWidgetDataV1(language, templateId, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodIntegrationTemplateGetTemplateWidgetDataV1(language, templateId, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['MethodIntegrationApi.methodIntegrationTemplateGetTemplateWidgetDataV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -120,14 +128,14 @@ const MethodIntegrationApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.MethodIntegrationApiFp)(configuration);
     return {
         /**
-         * Rate limit: 10 requests per 1 second
+         * Read a template\'s JSON widget payload in the selected project_id after checking template/project installation ownership. This is widget data, not the full server tool catalog or a widget custom actions list. Write using POST /method/integration_project_template/widget/set. Rate limit: 10 requests per 1 second.
          * @summary Get template widget data
          * @param {MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         methodIntegrationTemplateGetTemplateWidgetDataV1(requestParameters, options) {
-            return localVarFp.methodIntegrationTemplateGetTemplateWidgetDataV1(requestParameters.language, requestParameters.template_id, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodIntegrationTemplateGetTemplateWidgetDataV1(requestParameters['language'], requestParameters['template_id'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -140,7 +148,7 @@ exports.MethodIntegrationApiFactory = MethodIntegrationApiFactory;
  */
 class MethodIntegrationApi extends base_1.BaseAPI {
     /**
-     * Rate limit: 10 requests per 1 second
+     * Read a template\'s JSON widget payload in the selected project_id after checking template/project installation ownership. This is widget data, not the full server tool catalog or a widget custom actions list. Write using POST /method/integration_project_template/widget/set. Rate limit: 10 requests per 1 second.
      * @summary Get template widget data
      * @param {MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -148,7 +156,7 @@ class MethodIntegrationApi extends base_1.BaseAPI {
      * @memberof MethodIntegrationApi
      */
     methodIntegrationTemplateGetTemplateWidgetDataV1(requestParameters, options) {
-        return (0, exports.MethodIntegrationApiFp)(this.configuration).methodIntegrationTemplateGetTemplateWidgetDataV1(requestParameters.language, requestParameters.template_id, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MethodIntegrationApiFp)(this.configuration).methodIntegrationTemplateGetTemplateWidgetDataV1(requestParameters['language'], requestParameters['template_id'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.MethodIntegrationApi = MethodIntegrationApi;

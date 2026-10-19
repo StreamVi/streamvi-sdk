@@ -33,30 +33,33 @@ import type { SuccessResponse } from '../models';
  */
 export declare const BroadcastApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Get ingress addresses and the secret publishing key for project_id. Missing credentials produces credentials.no_found. This reads source connection details without creating a broadcast. Do not save key in examples, logs, or the corpus.
      * @summary Get credentials
-     * @param {BroadcastCredentialsV1LanguageEnum} language Current language
+     * @param {BroadcastCredentialsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastCredentialsV1: (language: BroadcastCredentialsV1LanguageEnum, projectId: number, v?: BroadcastCredentialsV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastCredentialsV1: (language: BroadcastCredentialsV1LanguageEnum, projectId: number, v?: BroadcastCredentialsV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read restream event details using id (event UUID) and date (event date). Obtain the event ID from broadcast events; the response is localized using language. Reading an event does not change stream state.
      * @summary Broadcast event item
-     * @param {BroadcastEventItemV1LanguageEnum} language Current language
+     * @param {BroadcastEventItemV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} id Event id
      * @param {string} date Event date
+     * @param {number} [projectId] Target project ID. Required for site requests; account tokens fall back to their personal project when omitted in every request source; project tokens determine the project automatically.
      * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastEventItemV1: (language: BroadcastEventItemV1LanguageEnum, id: string, date: string, v?: BroadcastEventItemV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastEventItemV1: (language: BroadcastEventItemV1LanguageEnum, id: string, date: string, projectId?: number, v?: BroadcastEventItemV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Get broadcast_id events in project_id with filters and v=4 pagination; the response contains total, limit, offset, sort_by_date; supply cursor_id and cursor_datetime together. This reads event history without starting or stopping a broadcast. For one event use GET /method/broadcast/events/item.
      * @summary Events from broadcast v4
-     * @param {BroadcastEventsV4LanguageEnum} language Current language
+     * @param {BroadcastEventsV4LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
      * @param {Array<number>} [channels] Channels id
@@ -72,132 +75,146 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
      * @param {string} [cursorId] Cursor event id
      * @param {string} [cursorDatetime] Cursor event datetime
      * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastEventsV4: (language: BroadcastEventsV4LanguageEnum, projectId: number, broadcastId: number, channels?: Array<number>, level?: BroadcastEventsV4LevelEnum, platform?: string, app?: string, server?: string, dateFrom?: string, dateTo?: string, offset?: number, limit?: number, sortByDate?: BroadcastEventsV4SortByDateEnum, cursorId?: string, cursorDatetime?: string, v?: BroadcastEventsV4VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastEventsV4: (language: BroadcastEventsV4LanguageEnum, projectId: number, broadcastId: number, channels?: Array<number>, level?: BroadcastEventsV4LevelEnum, platform?: string, app?: string, server?: string, dateFrom?: string, dateTo?: string, offset?: number, limit?: number, sortByDate?: BroadcastEventsV4SortByDateEnum, cursorId?: string, cursorDatetime?: string, v?: BroadcastEventsV4VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read a single broadcast by broadcast_id in project_id, including its saved parameters and statistics. broadcast_id comes from GET /method/broadcast/list or project state; it identifies a broadcast, not a channel. Use GET /method/broadcast/status for current state.
      * @summary Get one broadcast
-     * @param {BroadcastFindV1LanguageEnum} language Current language
+     * @param {BroadcastFindV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
      * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastFindV1: (language: BroadcastFindV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastFindV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastFindV1: (language: BroadcastFindV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastFindV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read the saved default broadcast title and description for project_id. POST /method/channel_settings/bulkUpdate updates the template and supported channels; this method neither publishes anything nor starts a stream.
      * @summary Get broadcast title and description template
-     * @param {BroadcastGetTemplateV1LanguageEnum} language Current language
+     * @param {BroadcastGetTemplateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {BroadcastGetTemplateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastGetTemplateV1: (language: BroadcastGetTemplateV1LanguageEnum, projectId: number, v?: BroadcastGetTemplateV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastGetTemplateV1: (language: BroadcastGetTemplateV1LanguageEnum, projectId: number, v?: BroadcastGetTemplateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Get the input bitrate chart for broadcast_id in project_id. Statistics points use the response schema; this method does not change bitrate or source settings.
      * @summary Bitrate from broadcast
-     * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
+     * @param {BroadcastGraphBitrateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
      * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastGraphBitrateV1: (language: BroadcastGraphBitrateV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphBitrateV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastGraphBitrateV1: (language: BroadcastGraphBitrateV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphBitrateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Get the viewer chart for broadcast_id in project_id. This is saved broadcast statistics; the method neither controls channels nor starts a stream.
      * @summary Viewers from broadcast
-     * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
+     * @param {BroadcastGraphViewersV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
      * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastGraphViewersV1: (language: BroadcastGraphViewersV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphViewersV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastGraphViewersV1: (language: BroadcastGraphViewersV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphViewersV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Get broadcast history for project_id with limit/offset and order. offset is the number of records to skip, not a page number. Returns results and pagination data; use broadcast_id from the list to read a specific broadcast, its events, and charts.
      * @summary List broadcast
-     * @param {BroadcastListV1LanguageEnum} language Current language
+     * @param {BroadcastListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
+     * @param {number} [offset] Number of records to skip; not a page number.
      * @param {BroadcastListV1OrderEnum} [order] order
      * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastListV1: (language: BroadcastListV1LanguageEnum, projectId: number, limit?: number, offset?: number, order?: BroadcastListV1OrderEnum, v?: BroadcastListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastListV1: (language: BroadcastListV1LanguageEnum, projectId: number, limit?: number, offset?: number, order?: BroadcastListV1OrderEnum, v?: BroadcastListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary Pause stream
+     * Requests a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not create or finish a broadcast.
+     * @summary Pause an active live broadcast
      * @param {SiteBroadcastPauseRequest} siteBroadcastPauseRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastPauseV1: (siteBroadcastPauseRequest: SiteBroadcastPauseRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastPauseV1: (siteBroadcastPauseRequest: SiteBroadcastPauseRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary Play stream
+     * Requests playback after a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not start a new broadcast or restart a finished one.
+     * @summary Resume an active live broadcast
      * @param {SiteBroadcastPlayRequest} siteBroadcastPlayRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastPlayV1: (siteBroadcastPlayRequest: SiteBroadcastPlayRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastPlayV1: (siteBroadcastPlayRequest: SiteBroadcastPlayRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Get restream_id, internal channel_id, platform, and viewer count for destinations of broadcast_id after checking project ownership. The response is intended for selecting chat destinations, not sending messages; unavailable viewers statistics may be null.
      * @summary Get restreams for chat
-     * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
+     * @param {BroadcastRestreamChatV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} broadcastId broadcast id
      * @param {string} key Chat token
      * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {number} [projectId] Required selected project for account integration credentials
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastRestreamChatV1: (language: BroadcastRestreamChatV1LanguageEnum, broadcastId: number, key: string, v?: BroadcastRestreamChatV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastRestreamChatV1: (language: BroadcastRestreamChatV1LanguageEnum, broadcastId: number, key: string, v?: BroadcastRestreamChatV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read restream destinations for broadcast_id in project_id and obtain Centrifugo subscription tokens for URL and statistics updates, version v=1. This reads destination state without starting a stream. Subscription tokens are credentials and must not be logged.
      * @summary View live info
-     * @param {BroadcastRestreamsV1LanguageEnum} language Current language
+     * @param {BroadcastRestreamsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId Broadcast id
      * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastRestreamsV1: (language: BroadcastRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastRestreamsV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastRestreamsV1: (language: BroadcastRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastRestreamsV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read the current broadcast state of project_id: kind determines inactive, live, transcoding, or scheduler. Use this response to verify state after pause/play/stop commands; reading does not start a broadcast. Supply the target project explicitly in account API.
      * @summary Live status info by project id
-     * @param {BroadcastStatusV1LanguageEnum} language Current language
+     * @param {BroadcastStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastStatusV1: (language: BroadcastStatusV1LanguageEnum, projectId: number, v?: BroadcastStatusV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastStatusV1: (language: BroadcastStatusV1LanguageEnum, projectId: number, v?: BroadcastStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary Stop stream
+     * Requests stopping the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. Clears its disconnect-protection wait and marks it as stopped. Check broadcast status to confirm completion; a successful response does not guarantee all shutdown work has finished.
+     * @summary Request stopping an active live broadcast
      * @param {SiteBroadcastStopRequest} siteBroadcastStopRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastStopV1: (siteBroadcastStopRequest: SiteBroadcastStopRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastStopV1: (siteBroadcastStopRequest: SiteBroadcastStopRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Wait for active broadcast information via HTTP long polling using a project token. Waits for an event for at most 30 seconds: returns active broadcast JSON or HTTP 204 on timeout. This is neither a WebSocket nor a start-broadcast command; the account profile excludes this method.
      * @summary Connect channel, long polling
-     * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
-     * @param {string} key
+     * @param {BroadcastTokenChannelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {string} key Project/chat connection key credential for legacy long polling. Sensitive value; do not include in logs or examples.
      * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastTokenChannelV1: (language: BroadcastTokenChannelV1LanguageEnum, key: string, v?: BroadcastTokenChannelV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    broadcastTokenChannelV1: (language: BroadcastTokenChannelV1LanguageEnum, key: string, v?: BroadcastTokenChannelV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BroadcastApi - functional programming interface
@@ -205,30 +222,33 @@ export declare const BroadcastApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const BroadcastApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Get ingress addresses and the secret publishing key for project_id. Missing credentials produces credentials.no_found. This reads source connection details without creating a broadcast. Do not save key in examples, logs, or the corpus.
      * @summary Get credentials
-     * @param {BroadcastCredentialsV1LanguageEnum} language Current language
+     * @param {BroadcastCredentialsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {BroadcastCredentialsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastCredentialsV1(language: BroadcastCredentialsV1LanguageEnum, projectId: number, v?: BroadcastCredentialsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastCredentialsResponse>>;
+    broadcastCredentialsV1(language: BroadcastCredentialsV1LanguageEnum, projectId: number, v?: BroadcastCredentialsV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastCredentialsResponse>>;
     /**
-     *
+     * Read restream event details using id (event UUID) and date (event date). Obtain the event ID from broadcast events; the response is localized using language. Reading an event does not change stream state.
      * @summary Broadcast event item
-     * @param {BroadcastEventItemV1LanguageEnum} language Current language
+     * @param {BroadcastEventItemV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} id Event id
      * @param {string} date Event date
+     * @param {number} [projectId] Target project ID. Required for site requests; account tokens fall back to their personal project when omitted in every request source; project tokens determine the project automatically.
      * @param {BroadcastEventItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastEventItemV1(language: BroadcastEventItemV1LanguageEnum, id: string, date: string, v?: BroadcastEventItemV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteRestreamEventResponse>>;
+    broadcastEventItemV1(language: BroadcastEventItemV1LanguageEnum, id: string, date: string, projectId?: number, v?: BroadcastEventItemV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteRestreamEventResponse>>;
     /**
-     *
+     * Get broadcast_id events in project_id with filters and v=4 pagination; the response contains total, limit, offset, sort_by_date; supply cursor_id and cursor_datetime together. This reads event history without starting or stopping a broadcast. For one event use GET /method/broadcast/events/item.
      * @summary Events from broadcast v4
-     * @param {BroadcastEventsV4LanguageEnum} language Current language
+     * @param {BroadcastEventsV4LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
      * @param {Array<number>} [channels] Channels id
@@ -244,132 +264,146 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
      * @param {string} [cursorId] Cursor event id
      * @param {string} [cursorDatetime] Cursor event datetime
      * @param {BroadcastEventsV4VEnum} [v] Version (automatically defaults to 4 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastEventsV4(language: BroadcastEventsV4LanguageEnum, projectId: number, broadcastId: number, channels?: Array<number>, level?: BroadcastEventsV4LevelEnum, platform?: string, app?: string, server?: string, dateFrom?: string, dateTo?: string, offset?: number, limit?: number, sortByDate?: BroadcastEventsV4SortByDateEnum, cursorId?: string, cursorDatetime?: string, v?: BroadcastEventsV4VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastEventsV4Response>>;
+    broadcastEventsV4(language: BroadcastEventsV4LanguageEnum, projectId: number, broadcastId: number, channels?: Array<number>, level?: BroadcastEventsV4LevelEnum, platform?: string, app?: string, server?: string, dateFrom?: string, dateTo?: string, offset?: number, limit?: number, sortByDate?: BroadcastEventsV4SortByDateEnum, cursorId?: string, cursorDatetime?: string, v?: BroadcastEventsV4VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastEventsV4Response>>;
     /**
-     *
+     * Read a single broadcast by broadcast_id in project_id, including its saved parameters and statistics. broadcast_id comes from GET /method/broadcast/list or project state; it identifies a broadcast, not a channel. Use GET /method/broadcast/status for current state.
      * @summary Get one broadcast
-     * @param {BroadcastFindV1LanguageEnum} language Current language
+     * @param {BroadcastFindV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
      * @param {BroadcastFindV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastFindV1(language: BroadcastFindV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastFindV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastFindResponse>>;
+    broadcastFindV1(language: BroadcastFindV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastFindV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastFindResponse>>;
     /**
-     *
+     * Read the saved default broadcast title and description for project_id. POST /method/channel_settings/bulkUpdate updates the template and supported channels; this method neither publishes anything nor starts a stream.
      * @summary Get broadcast title and description template
-     * @param {BroadcastGetTemplateV1LanguageEnum} language Current language
+     * @param {BroadcastGetTemplateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {BroadcastGetTemplateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastGetTemplateV1(language: BroadcastGetTemplateV1LanguageEnum, projectId: number, v?: BroadcastGetTemplateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastTemplateResponse>>;
+    broadcastGetTemplateV1(language: BroadcastGetTemplateV1LanguageEnum, projectId: number, v?: BroadcastGetTemplateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastTemplateResponse>>;
     /**
-     *
+     * Get the input bitrate chart for broadcast_id in project_id. Statistics points use the response schema; this method does not change bitrate or source settings.
      * @summary Bitrate from broadcast
-     * @param {BroadcastGraphBitrateV1LanguageEnum} language Current language
+     * @param {BroadcastGraphBitrateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
      * @param {BroadcastGraphBitrateV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastGraphBitrateV1(language: BroadcastGraphBitrateV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphBitrateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastGraphResponse>>;
+    broadcastGraphBitrateV1(language: BroadcastGraphBitrateV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphBitrateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastGraphResponse>>;
     /**
-     *
+     * Get the viewer chart for broadcast_id in project_id. This is saved broadcast statistics; the method neither controls channels nor starts a stream.
      * @summary Viewers from broadcast
-     * @param {BroadcastGraphViewersV1LanguageEnum} language Current language
+     * @param {BroadcastGraphViewersV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId broadcast id
      * @param {BroadcastGraphViewersV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastGraphViewersV1(language: BroadcastGraphViewersV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphViewersV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastGraphResponse>>;
+    broadcastGraphViewersV1(language: BroadcastGraphViewersV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastGraphViewersV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastGraphResponse>>;
     /**
-     *
+     * Get broadcast history for project_id with limit/offset and order. offset is the number of records to skip, not a page number. Returns results and pagination data; use broadcast_id from the list to read a specific broadcast, its events, and charts.
      * @summary List broadcast
-     * @param {BroadcastListV1LanguageEnum} language Current language
+     * @param {BroadcastListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
+     * @param {number} [offset] Number of records to skip; not a page number.
      * @param {BroadcastListV1OrderEnum} [order] order
      * @param {BroadcastListV1VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastListV1(language: BroadcastListV1LanguageEnum, projectId: number, limit?: number, offset?: number, order?: BroadcastListV1OrderEnum, v?: BroadcastListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastListResponse>>;
+    broadcastListV1(language: BroadcastListV1LanguageEnum, projectId: number, limit?: number, offset?: number, order?: BroadcastListV1OrderEnum, v?: BroadcastListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastListResponse>>;
     /**
-     *
-     * @summary Pause stream
+     * Requests a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not create or finish a broadcast.
+     * @summary Pause an active live broadcast
      * @param {SiteBroadcastPauseRequest} siteBroadcastPauseRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastPauseV1(siteBroadcastPauseRequest: SiteBroadcastPauseRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    broadcastPauseV1(siteBroadcastPauseRequest: SiteBroadcastPauseRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
-     * @summary Play stream
+     * Requests playback after a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not start a new broadcast or restart a finished one.
+     * @summary Resume an active live broadcast
      * @param {SiteBroadcastPlayRequest} siteBroadcastPlayRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastPlayV1(siteBroadcastPlayRequest: SiteBroadcastPlayRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    broadcastPlayV1(siteBroadcastPlayRequest: SiteBroadcastPlayRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Get restream_id, internal channel_id, platform, and viewer count for destinations of broadcast_id after checking project ownership. The response is intended for selecting chat destinations, not sending messages; unavailable viewers statistics may be null.
      * @summary Get restreams for chat
-     * @param {BroadcastRestreamChatV1LanguageEnum} language Current language
+     * @param {BroadcastRestreamChatV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} broadcastId broadcast id
      * @param {string} key Chat token
      * @param {BroadcastRestreamChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {number} [projectId] Required selected project for account integration credentials
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastRestreamChatV1(language: BroadcastRestreamChatV1LanguageEnum, broadcastId: number, key: string, v?: BroadcastRestreamChatV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodBroadcastRestreamsResponse>>;
+    broadcastRestreamChatV1(language: BroadcastRestreamChatV1LanguageEnum, broadcastId: number, key: string, v?: BroadcastRestreamChatV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodBroadcastRestreamsResponse>>;
     /**
-     *
+     * Read restream destinations for broadcast_id in project_id and obtain Centrifugo subscription tokens for URL and statistics updates, version v=1. This reads destination state without starting a stream. Subscription tokens are credentials and must not be logged.
      * @summary View live info
-     * @param {BroadcastRestreamsV1LanguageEnum} language Current language
+     * @param {BroadcastRestreamsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId Broadcast id
      * @param {BroadcastRestreamsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastRestreamsV1(language: BroadcastRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastRestreamsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastRestreamsInfoResponse>>;
+    broadcastRestreamsV1(language: BroadcastRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: BroadcastRestreamsV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteBroadcastRestreamsInfoResponse>>;
     /**
-     *
+     * Read the current broadcast state of project_id: kind determines inactive, live, transcoding, or scheduler. Use this response to verify state after pause/play/stop commands; reading does not start a broadcast. Supply the target project explicitly in account API.
      * @summary Live status info by project id
-     * @param {BroadcastStatusV1LanguageEnum} language Current language
+     * @param {BroadcastStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {BroadcastStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastStatusV1(language: BroadcastStatusV1LanguageEnum, projectId: number, v?: BroadcastStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BroadcastStatusV1200Response>>;
+    broadcastStatusV1(language: BroadcastStatusV1LanguageEnum, projectId: number, v?: BroadcastStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BroadcastStatusV1200Response>>;
     /**
-     *
-     * @summary Stop stream
+     * Requests stopping the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. Clears its disconnect-protection wait and marks it as stopped. Check broadcast status to confirm completion; a successful response does not guarantee all shutdown work has finished.
+     * @summary Request stopping an active live broadcast
      * @param {SiteBroadcastStopRequest} siteBroadcastStopRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastStopV1(siteBroadcastStopRequest: SiteBroadcastStopRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    broadcastStopV1(siteBroadcastStopRequest: SiteBroadcastStopRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Wait for active broadcast information via HTTP long polling using a project token. Waits for an event for at most 30 seconds: returns active broadcast JSON or HTTP 204 on timeout. This is neither a WebSocket nor a start-broadcast command; the account profile excludes this method.
      * @summary Connect channel, long polling
-     * @param {BroadcastTokenChannelV1LanguageEnum} language Current language
-     * @param {string} key
+     * @param {BroadcastTokenChannelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {string} key Project/chat connection key credential for legacy long polling. Sensitive value; do not include in logs or examples.
      * @param {BroadcastTokenChannelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    broadcastTokenChannelV1(language: BroadcastTokenChannelV1LanguageEnum, key: string, v?: BroadcastTokenChannelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodCurrentBroadcastResponse>>;
+    broadcastTokenChannelV1(language: BroadcastTokenChannelV1LanguageEnum, key: string, v?: BroadcastTokenChannelV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodCurrentBroadcastResponse>>;
 };
 /**
  * BroadcastApi - factory interface
@@ -377,7 +411,7 @@ export declare const BroadcastApiFp: (configuration?: Configuration) => {
  */
 export declare const BroadcastApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Get ingress addresses and the secret publishing key for project_id. Missing credentials produces credentials.no_found. This reads source connection details without creating a broadcast. Do not save key in examples, logs, or the corpus.
      * @summary Get credentials
      * @param {BroadcastApiBroadcastCredentialsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -385,7 +419,7 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastCredentialsV1(requestParameters: BroadcastApiBroadcastCredentialsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastCredentialsResponse>;
     /**
-     *
+     * Read restream event details using id (event UUID) and date (event date). Obtain the event ID from broadcast events; the response is localized using language. Reading an event does not change stream state.
      * @summary Broadcast event item
      * @param {BroadcastApiBroadcastEventItemV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -393,7 +427,7 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastEventItemV1(requestParameters: BroadcastApiBroadcastEventItemV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteRestreamEventResponse>;
     /**
-     *
+     * Get broadcast_id events in project_id with filters and v=4 pagination; the response contains total, limit, offset, sort_by_date; supply cursor_id and cursor_datetime together. This reads event history without starting or stopping a broadcast. For one event use GET /method/broadcast/events/item.
      * @summary Events from broadcast v4
      * @param {BroadcastApiBroadcastEventsV4Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -401,7 +435,7 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastEventsV4(requestParameters: BroadcastApiBroadcastEventsV4Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastEventsV4Response>;
     /**
-     *
+     * Read a single broadcast by broadcast_id in project_id, including its saved parameters and statistics. broadcast_id comes from GET /method/broadcast/list or project state; it identifies a broadcast, not a channel. Use GET /method/broadcast/status for current state.
      * @summary Get one broadcast
      * @param {BroadcastApiBroadcastFindV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -409,7 +443,7 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastFindV1(requestParameters: BroadcastApiBroadcastFindV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastFindResponse>;
     /**
-     *
+     * Read the saved default broadcast title and description for project_id. POST /method/channel_settings/bulkUpdate updates the template and supported channels; this method neither publishes anything nor starts a stream.
      * @summary Get broadcast title and description template
      * @param {BroadcastApiBroadcastGetTemplateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -417,7 +451,7 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastGetTemplateV1(requestParameters: BroadcastApiBroadcastGetTemplateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastTemplateResponse>;
     /**
-     *
+     * Get the input bitrate chart for broadcast_id in project_id. Statistics points use the response schema; this method does not change bitrate or source settings.
      * @summary Bitrate from broadcast
      * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -425,7 +459,7 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastGraphBitrateV1(requestParameters: BroadcastApiBroadcastGraphBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastGraphResponse>;
     /**
-     *
+     * Get the viewer chart for broadcast_id in project_id. This is saved broadcast statistics; the method neither controls channels nor starts a stream.
      * @summary Viewers from broadcast
      * @param {BroadcastApiBroadcastGraphViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -433,7 +467,7 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastGraphViewersV1(requestParameters: BroadcastApiBroadcastGraphViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastGraphResponse>;
     /**
-     *
+     * Get broadcast history for project_id with limit/offset and order. offset is the number of records to skip, not a page number. Returns results and pagination data; use broadcast_id from the list to read a specific broadcast, its events, and charts.
      * @summary List broadcast
      * @param {BroadcastApiBroadcastListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -441,23 +475,23 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastListV1(requestParameters: BroadcastApiBroadcastListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastListResponse>;
     /**
-     *
-     * @summary Pause stream
+     * Requests a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not create or finish a broadcast.
+     * @summary Pause an active live broadcast
      * @param {BroadcastApiBroadcastPauseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     broadcastPauseV1(requestParameters: BroadcastApiBroadcastPauseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
-     * @summary Play stream
+     * Requests playback after a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not start a new broadcast or restart a finished one.
+     * @summary Resume an active live broadcast
      * @param {BroadcastApiBroadcastPlayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     broadcastPlayV1(requestParameters: BroadcastApiBroadcastPlayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Get restream_id, internal channel_id, platform, and viewer count for destinations of broadcast_id after checking project ownership. The response is intended for selecting chat destinations, not sending messages; unavailable viewers statistics may be null.
      * @summary Get restreams for chat
      * @param {BroadcastApiBroadcastRestreamChatV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -465,7 +499,7 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastRestreamChatV1(requestParameters: BroadcastApiBroadcastRestreamChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodBroadcastRestreamsResponse>;
     /**
-     *
+     * Read restream destinations for broadcast_id in project_id and obtain Centrifugo subscription tokens for URL and statistics updates, version v=1. This reads destination state without starting a stream. Subscription tokens are credentials and must not be logged.
      * @summary View live info
      * @param {BroadcastApiBroadcastRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -473,7 +507,7 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastRestreamsV1(requestParameters: BroadcastApiBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastRestreamsInfoResponse>;
     /**
-     *
+     * Read the current broadcast state of project_id: kind determines inactive, live, transcoding, or scheduler. Use this response to verify state after pause/play/stop commands; reading does not start a broadcast. Supply the target project explicitly in account API.
      * @summary Live status info by project id
      * @param {BroadcastApiBroadcastStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -481,15 +515,15 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
      */
     broadcastStatusV1(requestParameters: BroadcastApiBroadcastStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<BroadcastStatusV1200Response>;
     /**
-     *
-     * @summary Stop stream
+     * Requests stopping the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. Clears its disconnect-protection wait and marks it as stopped. Check broadcast status to confirm completion; a successful response does not guarantee all shutdown work has finished.
+     * @summary Request stopping an active live broadcast
      * @param {BroadcastApiBroadcastStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     broadcastStopV1(requestParameters: BroadcastApiBroadcastStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Wait for active broadcast information via HTTP long polling using a project token. Waits for an event for at most 30 seconds: returns active broadcast JSON or HTTP 204 on timeout. This is neither a WebSocket nor a start-broadcast command; the account profile excludes this method.
      * @summary Connect channel, long polling
      * @param {BroadcastApiBroadcastTokenChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -504,7 +538,7 @@ export declare const BroadcastApiFactory: (configuration?: Configuration, basePa
  */
 export interface BroadcastApiInterface {
     /**
-     *
+     * Get ingress addresses and the secret publishing key for project_id. Missing credentials produces credentials.no_found. This reads source connection details without creating a broadcast. Do not save key in examples, logs, or the corpus.
      * @summary Get credentials
      * @param {BroadcastApiBroadcastCredentialsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -513,7 +547,7 @@ export interface BroadcastApiInterface {
      */
     broadcastCredentialsV1(requestParameters: BroadcastApiBroadcastCredentialsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastCredentialsResponse>;
     /**
-     *
+     * Read restream event details using id (event UUID) and date (event date). Obtain the event ID from broadcast events; the response is localized using language. Reading an event does not change stream state.
      * @summary Broadcast event item
      * @param {BroadcastApiBroadcastEventItemV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -522,7 +556,7 @@ export interface BroadcastApiInterface {
      */
     broadcastEventItemV1(requestParameters: BroadcastApiBroadcastEventItemV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteRestreamEventResponse>;
     /**
-     *
+     * Get broadcast_id events in project_id with filters and v=4 pagination; the response contains total, limit, offset, sort_by_date; supply cursor_id and cursor_datetime together. This reads event history without starting or stopping a broadcast. For one event use GET /method/broadcast/events/item.
      * @summary Events from broadcast v4
      * @param {BroadcastApiBroadcastEventsV4Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -531,7 +565,7 @@ export interface BroadcastApiInterface {
      */
     broadcastEventsV4(requestParameters: BroadcastApiBroadcastEventsV4Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastEventsV4Response>;
     /**
-     *
+     * Read a single broadcast by broadcast_id in project_id, including its saved parameters and statistics. broadcast_id comes from GET /method/broadcast/list or project state; it identifies a broadcast, not a channel. Use GET /method/broadcast/status for current state.
      * @summary Get one broadcast
      * @param {BroadcastApiBroadcastFindV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -540,7 +574,7 @@ export interface BroadcastApiInterface {
      */
     broadcastFindV1(requestParameters: BroadcastApiBroadcastFindV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastFindResponse>;
     /**
-     *
+     * Read the saved default broadcast title and description for project_id. POST /method/channel_settings/bulkUpdate updates the template and supported channels; this method neither publishes anything nor starts a stream.
      * @summary Get broadcast title and description template
      * @param {BroadcastApiBroadcastGetTemplateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -549,7 +583,7 @@ export interface BroadcastApiInterface {
      */
     broadcastGetTemplateV1(requestParameters: BroadcastApiBroadcastGetTemplateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastTemplateResponse>;
     /**
-     *
+     * Get the input bitrate chart for broadcast_id in project_id. Statistics points use the response schema; this method does not change bitrate or source settings.
      * @summary Bitrate from broadcast
      * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -558,7 +592,7 @@ export interface BroadcastApiInterface {
      */
     broadcastGraphBitrateV1(requestParameters: BroadcastApiBroadcastGraphBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastGraphResponse>;
     /**
-     *
+     * Get the viewer chart for broadcast_id in project_id. This is saved broadcast statistics; the method neither controls channels nor starts a stream.
      * @summary Viewers from broadcast
      * @param {BroadcastApiBroadcastGraphViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -567,7 +601,7 @@ export interface BroadcastApiInterface {
      */
     broadcastGraphViewersV1(requestParameters: BroadcastApiBroadcastGraphViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastGraphResponse>;
     /**
-     *
+     * Get broadcast history for project_id with limit/offset and order. offset is the number of records to skip, not a page number. Returns results and pagination data; use broadcast_id from the list to read a specific broadcast, its events, and charts.
      * @summary List broadcast
      * @param {BroadcastApiBroadcastListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -576,8 +610,8 @@ export interface BroadcastApiInterface {
      */
     broadcastListV1(requestParameters: BroadcastApiBroadcastListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastListResponse>;
     /**
-     *
-     * @summary Pause stream
+     * Requests a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not create or finish a broadcast.
+     * @summary Pause an active live broadcast
      * @param {BroadcastApiBroadcastPauseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -585,8 +619,8 @@ export interface BroadcastApiInterface {
      */
     broadcastPauseV1(requestParameters: BroadcastApiBroadcastPauseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
-     * @summary Play stream
+     * Requests playback after a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not start a new broadcast or restart a finished one.
+     * @summary Resume an active live broadcast
      * @param {BroadcastApiBroadcastPlayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -594,7 +628,7 @@ export interface BroadcastApiInterface {
      */
     broadcastPlayV1(requestParameters: BroadcastApiBroadcastPlayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Get restream_id, internal channel_id, platform, and viewer count for destinations of broadcast_id after checking project ownership. The response is intended for selecting chat destinations, not sending messages; unavailable viewers statistics may be null.
      * @summary Get restreams for chat
      * @param {BroadcastApiBroadcastRestreamChatV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -603,7 +637,7 @@ export interface BroadcastApiInterface {
      */
     broadcastRestreamChatV1(requestParameters: BroadcastApiBroadcastRestreamChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodBroadcastRestreamsResponse>;
     /**
-     *
+     * Read restream destinations for broadcast_id in project_id and obtain Centrifugo subscription tokens for URL and statistics updates, version v=1. This reads destination state without starting a stream. Subscription tokens are credentials and must not be logged.
      * @summary View live info
      * @param {BroadcastApiBroadcastRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -612,7 +646,7 @@ export interface BroadcastApiInterface {
      */
     broadcastRestreamsV1(requestParameters: BroadcastApiBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteBroadcastRestreamsInfoResponse>;
     /**
-     *
+     * Read the current broadcast state of project_id: kind determines inactive, live, transcoding, or scheduler. Use this response to verify state after pause/play/stop commands; reading does not start a broadcast. Supply the target project explicitly in account API.
      * @summary Live status info by project id
      * @param {BroadcastApiBroadcastStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -621,8 +655,8 @@ export interface BroadcastApiInterface {
      */
     broadcastStatusV1(requestParameters: BroadcastApiBroadcastStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<BroadcastStatusV1200Response>;
     /**
-     *
-     * @summary Stop stream
+     * Requests stopping the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. Clears its disconnect-protection wait and marks it as stopped. Check broadcast status to confirm completion; a successful response does not guarantee all shutdown work has finished.
+     * @summary Request stopping an active live broadcast
      * @param {BroadcastApiBroadcastStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -630,7 +664,7 @@ export interface BroadcastApiInterface {
      */
     broadcastStopV1(requestParameters: BroadcastApiBroadcastStopV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Wait for active broadcast information via HTTP long polling using a project token. Waits for an event for at most 30 seconds: returns active broadcast JSON or HTTP 204 on timeout. This is neither a WebSocket nor a start-broadcast command; the account profile excludes this method.
      * @summary Connect channel, long polling
      * @param {BroadcastApiBroadcastTokenChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -646,23 +680,29 @@ export interface BroadcastApiInterface {
  */
 export interface BroadcastApiBroadcastCredentialsV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastCredentialsV1
      */
-    readonly language: BroadcastCredentialsV1LanguageEnum;
+    readonly 'language': BroadcastCredentialsV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof BroadcastApiBroadcastCredentialsV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastCredentialsV1
      */
-    readonly v?: BroadcastCredentialsV1VEnum;
+    readonly 'v'?: BroadcastCredentialsV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastCredentialsV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastEventItemV1 operation in BroadcastApi.
@@ -671,29 +711,41 @@ export interface BroadcastApiBroadcastCredentialsV1Request {
  */
 export interface BroadcastApiBroadcastEventItemV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastEventItemV1
      */
-    readonly language: BroadcastEventItemV1LanguageEnum;
+    readonly 'language': BroadcastEventItemV1LanguageEnum;
     /**
      * Event id
      * @type {string}
      * @memberof BroadcastApiBroadcastEventItemV1
      */
-    readonly id: string;
+    readonly 'id': string;
     /**
      * Event date
      * @type {string}
      * @memberof BroadcastApiBroadcastEventItemV1
      */
-    readonly date: string;
+    readonly 'date': string;
+    /**
+     * Target project ID. Required for site requests; account tokens fall back to their personal project when omitted in every request source; project tokens determine the project automatically.
+     * @type {number}
+     * @memberof BroadcastApiBroadcastEventItemV1
+     */
+    readonly 'project_id'?: number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastEventItemV1
      */
-    readonly v?: BroadcastEventItemV1VEnum;
+    readonly 'v'?: BroadcastEventItemV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventItemV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastEventsV4 operation in BroadcastApi.
@@ -702,101 +754,107 @@ export interface BroadcastApiBroadcastEventItemV1Request {
  */
 export interface BroadcastApiBroadcastEventsV4Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly language: BroadcastEventsV4LanguageEnum;
+    readonly 'language': BroadcastEventsV4LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * broadcast id
      * @type {number}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Channels id
      * @type {Array<number>}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly channels?: Array<number>;
+    readonly 'channels'?: Array<number>;
     /**
      * Level log
      * @type {'info' | 'warning' | 'error' | 'debug'}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly level?: BroadcastEventsV4LevelEnum;
+    readonly 'level'?: BroadcastEventsV4LevelEnum;
     /**
      * Platform
      * @type {string}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly platform?: string;
+    readonly 'platform'?: string;
     /**
      * App stream
      * @type {string}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly app?: string;
+    readonly 'app'?: string;
     /**
      * Server IP
      * @type {string}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly server?: string;
+    readonly 'server'?: string;
     /**
      * Date only after create date
      * @type {string}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly date_from?: string;
+    readonly 'date_from'?: string;
     /**
      * Date only after create date
      * @type {string}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly date_to?: string;
+    readonly 'date_to'?: string;
     /**
      * Page offset number
      * @type {number}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly offset?: number;
+    readonly 'offset'?: number;
     /**
      * Number of results
      * @type {number}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly limit?: number;
+    readonly 'limit'?: number;
     /**
      * Sort order by created_at
      * @type {'asc' | 'desc'}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly sort_by_date?: BroadcastEventsV4SortByDateEnum;
+    readonly 'sort_by_date'?: BroadcastEventsV4SortByDateEnum;
     /**
      * Cursor event id
      * @type {string}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly cursor_id?: string;
+    readonly 'cursor_id'?: string;
     /**
      * Cursor event datetime
      * @type {string}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly cursor_datetime?: string;
+    readonly 'cursor_datetime'?: string;
     /**
      * Version (automatically defaults to 4 based on the API contract, can be overridden)
      * @type {'4'}
      * @memberof BroadcastApiBroadcastEventsV4
      */
-    readonly v?: BroadcastEventsV4VEnum;
+    readonly 'v'?: BroadcastEventsV4VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastEventsV4
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastFindV1 operation in BroadcastApi.
@@ -805,29 +863,35 @@ export interface BroadcastApiBroadcastEventsV4Request {
  */
 export interface BroadcastApiBroadcastFindV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastFindV1
      */
-    readonly language: BroadcastFindV1LanguageEnum;
+    readonly 'language': BroadcastFindV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof BroadcastApiBroadcastFindV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * broadcast id
      * @type {number}
      * @memberof BroadcastApiBroadcastFindV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof BroadcastApiBroadcastFindV1
      */
-    readonly v?: BroadcastFindV1VEnum;
+    readonly 'v'?: BroadcastFindV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastFindV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastGetTemplateV1 operation in BroadcastApi.
@@ -836,23 +900,29 @@ export interface BroadcastApiBroadcastFindV1Request {
  */
 export interface BroadcastApiBroadcastGetTemplateV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastGetTemplateV1
      */
-    readonly language: BroadcastGetTemplateV1LanguageEnum;
+    readonly 'language': BroadcastGetTemplateV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof BroadcastApiBroadcastGetTemplateV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastGetTemplateV1
      */
-    readonly v?: BroadcastGetTemplateV1VEnum;
+    readonly 'v'?: BroadcastGetTemplateV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastGetTemplateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastGraphBitrateV1 operation in BroadcastApi.
@@ -861,29 +931,35 @@ export interface BroadcastApiBroadcastGetTemplateV1Request {
  */
 export interface BroadcastApiBroadcastGraphBitrateV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastGraphBitrateV1
      */
-    readonly language: BroadcastGraphBitrateV1LanguageEnum;
+    readonly 'language': BroadcastGraphBitrateV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof BroadcastApiBroadcastGraphBitrateV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * broadcast id
      * @type {number}
      * @memberof BroadcastApiBroadcastGraphBitrateV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof BroadcastApiBroadcastGraphBitrateV1
      */
-    readonly v?: BroadcastGraphBitrateV1VEnum;
+    readonly 'v'?: BroadcastGraphBitrateV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastGraphBitrateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastGraphViewersV1 operation in BroadcastApi.
@@ -892,29 +968,35 @@ export interface BroadcastApiBroadcastGraphBitrateV1Request {
  */
 export interface BroadcastApiBroadcastGraphViewersV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastGraphViewersV1
      */
-    readonly language: BroadcastGraphViewersV1LanguageEnum;
+    readonly 'language': BroadcastGraphViewersV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof BroadcastApiBroadcastGraphViewersV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * broadcast id
      * @type {number}
      * @memberof BroadcastApiBroadcastGraphViewersV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof BroadcastApiBroadcastGraphViewersV1
      */
-    readonly v?: BroadcastGraphViewersV1VEnum;
+    readonly 'v'?: BroadcastGraphViewersV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastGraphViewersV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastListV1 operation in BroadcastApi.
@@ -923,41 +1005,47 @@ export interface BroadcastApiBroadcastGraphViewersV1Request {
  */
 export interface BroadcastApiBroadcastListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastListV1
      */
-    readonly language: BroadcastListV1LanguageEnum;
+    readonly 'language': BroadcastListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof BroadcastApiBroadcastListV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Number of results
      * @type {number}
      * @memberof BroadcastApiBroadcastListV1
      */
-    readonly limit?: number;
+    readonly 'limit'?: number;
     /**
-     * Page offset number
+     * Number of records to skip; not a page number.
      * @type {number}
      * @memberof BroadcastApiBroadcastListV1
      */
-    readonly offset?: number;
+    readonly 'offset'?: number;
     /**
      * order
      * @type {'asc' | 'desc'}
      * @memberof BroadcastApiBroadcastListV1
      */
-    readonly order?: BroadcastListV1OrderEnum;
+    readonly 'order'?: BroadcastListV1OrderEnum;
     /**
      * Version (automatically defaults to 3 based on the API contract, can be overridden)
      * @type {'3'}
      * @memberof BroadcastApiBroadcastListV1
      */
-    readonly v?: BroadcastListV1VEnum;
+    readonly 'v'?: BroadcastListV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastPauseV1 operation in BroadcastApi.
@@ -970,7 +1058,13 @@ export interface BroadcastApiBroadcastPauseV1Request {
      * @type {SiteBroadcastPauseRequest}
      * @memberof BroadcastApiBroadcastPauseV1
      */
-    readonly SiteBroadcastPauseRequest: SiteBroadcastPauseRequest;
+    readonly 'SiteBroadcastPauseRequest': SiteBroadcastPauseRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastPauseV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastPlayV1 operation in BroadcastApi.
@@ -983,7 +1077,13 @@ export interface BroadcastApiBroadcastPlayV1Request {
      * @type {SiteBroadcastPlayRequest}
      * @memberof BroadcastApiBroadcastPlayV1
      */
-    readonly SiteBroadcastPlayRequest: SiteBroadcastPlayRequest;
+    readonly 'SiteBroadcastPlayRequest': SiteBroadcastPlayRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastPlayV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastRestreamChatV1 operation in BroadcastApi.
@@ -992,29 +1092,41 @@ export interface BroadcastApiBroadcastPlayV1Request {
  */
 export interface BroadcastApiBroadcastRestreamChatV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastRestreamChatV1
      */
-    readonly language: BroadcastRestreamChatV1LanguageEnum;
+    readonly 'language': BroadcastRestreamChatV1LanguageEnum;
     /**
      * broadcast id
      * @type {number}
      * @memberof BroadcastApiBroadcastRestreamChatV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Chat token
      * @type {string}
      * @memberof BroadcastApiBroadcastRestreamChatV1
      */
-    readonly key: string;
+    readonly 'key': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastRestreamChatV1
      */
-    readonly v?: BroadcastRestreamChatV1VEnum;
+    readonly 'v'?: BroadcastRestreamChatV1VEnum;
+    /**
+     * Required selected project for account integration credentials
+     * @type {number}
+     * @memberof BroadcastApiBroadcastRestreamChatV1
+     */
+    readonly 'project_id'?: number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastRestreamChatV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastRestreamsV1 operation in BroadcastApi.
@@ -1023,29 +1135,35 @@ export interface BroadcastApiBroadcastRestreamChatV1Request {
  */
 export interface BroadcastApiBroadcastRestreamsV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastRestreamsV1
      */
-    readonly language: BroadcastRestreamsV1LanguageEnum;
+    readonly 'language': BroadcastRestreamsV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof BroadcastApiBroadcastRestreamsV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Broadcast id
      * @type {number}
      * @memberof BroadcastApiBroadcastRestreamsV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastRestreamsV1
      */
-    readonly v?: BroadcastRestreamsV1VEnum;
+    readonly 'v'?: BroadcastRestreamsV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastRestreamsV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastStatusV1 operation in BroadcastApi.
@@ -1054,23 +1172,29 @@ export interface BroadcastApiBroadcastRestreamsV1Request {
  */
 export interface BroadcastApiBroadcastStatusV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastStatusV1
      */
-    readonly language: BroadcastStatusV1LanguageEnum;
+    readonly 'language': BroadcastStatusV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof BroadcastApiBroadcastStatusV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastStatusV1
      */
-    readonly v?: BroadcastStatusV1VEnum;
+    readonly 'v'?: BroadcastStatusV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastStatusV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastStopV1 operation in BroadcastApi.
@@ -1083,7 +1207,13 @@ export interface BroadcastApiBroadcastStopV1Request {
      * @type {SiteBroadcastStopRequest}
      * @memberof BroadcastApiBroadcastStopV1
      */
-    readonly SiteBroadcastStopRequest: SiteBroadcastStopRequest;
+    readonly 'SiteBroadcastStopRequest': SiteBroadcastStopRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastStopV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for broadcastTokenChannelV1 operation in BroadcastApi.
@@ -1092,23 +1222,29 @@ export interface BroadcastApiBroadcastStopV1Request {
  */
 export interface BroadcastApiBroadcastTokenChannelV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BroadcastApiBroadcastTokenChannelV1
      */
-    readonly language: BroadcastTokenChannelV1LanguageEnum;
+    readonly 'language': BroadcastTokenChannelV1LanguageEnum;
     /**
-     *
+     * Project/chat connection key credential for legacy long polling. Sensitive value; do not include in logs or examples.
      * @type {string}
      * @memberof BroadcastApiBroadcastTokenChannelV1
      */
-    readonly key: string;
+    readonly 'key': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BroadcastApiBroadcastTokenChannelV1
      */
-    readonly v?: BroadcastTokenChannelV1VEnum;
+    readonly 'v'?: BroadcastTokenChannelV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BroadcastApiBroadcastTokenChannelV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * BroadcastApi - object-oriented interface
@@ -1118,7 +1254,7 @@ export interface BroadcastApiBroadcastTokenChannelV1Request {
  */
 export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterface {
     /**
-     *
+     * Get ingress addresses and the secret publishing key for project_id. Missing credentials produces credentials.no_found. This reads source connection details without creating a broadcast. Do not save key in examples, logs, or the corpus.
      * @summary Get credentials
      * @param {BroadcastApiBroadcastCredentialsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1127,7 +1263,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastCredentialsV1(requestParameters: BroadcastApiBroadcastCredentialsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastCredentialsResponse, any, {}, any>>;
     /**
-     *
+     * Read restream event details using id (event UUID) and date (event date). Obtain the event ID from broadcast events; the response is localized using language. Reading an event does not change stream state.
      * @summary Broadcast event item
      * @param {BroadcastApiBroadcastEventItemV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1136,7 +1272,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastEventItemV1(requestParameters: BroadcastApiBroadcastEventItemV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteRestreamEventResponse, any, {}, any>>;
     /**
-     *
+     * Get broadcast_id events in project_id with filters and v=4 pagination; the response contains total, limit, offset, sort_by_date; supply cursor_id and cursor_datetime together. This reads event history without starting or stopping a broadcast. For one event use GET /method/broadcast/events/item.
      * @summary Events from broadcast v4
      * @param {BroadcastApiBroadcastEventsV4Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1145,7 +1281,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastEventsV4(requestParameters: BroadcastApiBroadcastEventsV4Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastEventsV4Response, any, {}, any>>;
     /**
-     *
+     * Read a single broadcast by broadcast_id in project_id, including its saved parameters and statistics. broadcast_id comes from GET /method/broadcast/list or project state; it identifies a broadcast, not a channel. Use GET /method/broadcast/status for current state.
      * @summary Get one broadcast
      * @param {BroadcastApiBroadcastFindV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1154,7 +1290,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastFindV1(requestParameters: BroadcastApiBroadcastFindV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastFindResponse, any, {}, any>>;
     /**
-     *
+     * Read the saved default broadcast title and description for project_id. POST /method/channel_settings/bulkUpdate updates the template and supported channels; this method neither publishes anything nor starts a stream.
      * @summary Get broadcast title and description template
      * @param {BroadcastApiBroadcastGetTemplateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1163,7 +1299,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastGetTemplateV1(requestParameters: BroadcastApiBroadcastGetTemplateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastTemplateResponse, any, {}, any>>;
     /**
-     *
+     * Get the input bitrate chart for broadcast_id in project_id. Statistics points use the response schema; this method does not change bitrate or source settings.
      * @summary Bitrate from broadcast
      * @param {BroadcastApiBroadcastGraphBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1172,7 +1308,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastGraphBitrateV1(requestParameters: BroadcastApiBroadcastGraphBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastGraphResponse, any, {}, any>>;
     /**
-     *
+     * Get the viewer chart for broadcast_id in project_id. This is saved broadcast statistics; the method neither controls channels nor starts a stream.
      * @summary Viewers from broadcast
      * @param {BroadcastApiBroadcastGraphViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1181,7 +1317,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastGraphViewersV1(requestParameters: BroadcastApiBroadcastGraphViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastGraphResponse, any, {}, any>>;
     /**
-     *
+     * Get broadcast history for project_id with limit/offset and order. offset is the number of records to skip, not a page number. Returns results and pagination data; use broadcast_id from the list to read a specific broadcast, its events, and charts.
      * @summary List broadcast
      * @param {BroadcastApiBroadcastListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1190,8 +1326,8 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastListV1(requestParameters: BroadcastApiBroadcastListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastListResponse, any, {}, any>>;
     /**
-     *
-     * @summary Pause stream
+     * Requests a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not create or finish a broadcast.
+     * @summary Pause an active live broadcast
      * @param {BroadcastApiBroadcastPauseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1199,8 +1335,8 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastPauseV1(requestParameters: BroadcastApiBroadcastPauseV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
-     * @summary Play stream
+     * Requests playback after a user pause for the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. This does not start a new broadcast or restart a finished one.
+     * @summary Resume an active live broadcast
      * @param {BroadcastApiBroadcastPlayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1208,7 +1344,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastPlayV1(requestParameters: BroadcastApiBroadcastPlayV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Get restream_id, internal channel_id, platform, and viewer count for destinations of broadcast_id after checking project ownership. The response is intended for selecting chat destinations, not sending messages; unavailable viewers statistics may be null.
      * @summary Get restreams for chat
      * @param {BroadcastApiBroadcastRestreamChatV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1217,7 +1353,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastRestreamChatV1(requestParameters: BroadcastApiBroadcastRestreamChatV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodBroadcastRestreamsResponse, any, {}, any>>;
     /**
-     *
+     * Read restream destinations for broadcast_id in project_id and obtain Centrifugo subscription tokens for URL and statistics updates, version v=1. This reads destination state without starting a stream. Subscription tokens are credentials and must not be logged.
      * @summary View live info
      * @param {BroadcastApiBroadcastRestreamsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1226,7 +1362,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastRestreamsV1(requestParameters: BroadcastApiBroadcastRestreamsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteBroadcastRestreamsInfoResponse, any, {}, any>>;
     /**
-     *
+     * Read the current broadcast state of project_id: kind determines inactive, live, transcoding, or scheduler. Use this response to verify state after pause/play/stop commands; reading does not start a broadcast. Supply the target project explicitly in account API.
      * @summary Live status info by project id
      * @param {BroadcastApiBroadcastStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1235,8 +1371,8 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastStatusV1(requestParameters: BroadcastApiBroadcastStatusV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BroadcastStatusV1200Response, any, {}, any>>;
     /**
-     *
-     * @summary Stop stream
+     * Requests stopping the active broadcast identified by broadcast_id in project_id. Only unfinished broadcasts with app=live are supported; scheduler and transcoder broadcasts are rejected. The broadcast must belong to the specified project. Clears its disconnect-protection wait and marks it as stopped. Check broadcast status to confirm completion; a successful response does not guarantee all shutdown work has finished.
+     * @summary Request stopping an active live broadcast
      * @param {BroadcastApiBroadcastStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1244,7 +1380,7 @@ export declare class BroadcastApi extends BaseAPI implements BroadcastApiInterfa
      */
     broadcastStopV1(requestParameters: BroadcastApiBroadcastStopV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Wait for active broadcast information via HTTP long polling using a project token. Waits for an event for at most 30 seconds: returns active broadcast JSON or HTTP 204 on timeout. This is neither a WebSocket nor a start-broadcast command; the account profile excludes this method.
      * @summary Connect channel, long polling
      * @param {BroadcastApiBroadcastTokenChannelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

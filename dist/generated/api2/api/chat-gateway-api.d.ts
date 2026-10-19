@@ -22,52 +22,60 @@ import type { SuccessResponse } from '../models';
  */
 export declare const ChatGatewayApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Send a request to delete message event_id for broadcast_id after checking access to the broadcast in the selected project. Input is supplied in query for this POST. Success confirms the chat gateway request completed; this neither deletes the broadcast nor the channel.
      * @summary Remove message
-     * @param {MethodChatGatewayDeleteV1LanguageEnum} language Current language
+     * @param {MethodChatGatewayDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
      * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodChatGatewayDeleteV1: (language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodChatGatewayDeleteV1: (language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read a single message by event_id and broadcast_id after checking broadcast ownership by the selected project. event_id is a message event ID from history, not a platform channel ID. The response is forwarded from the chat gateway.
      * @summary Get one message
-     * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Current language
+     * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
      * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodChatGatewayGetMessageV1: (language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodChatGatewayGetMessageV1: (language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read message history for broadcast_id in the project determined by the token/explicit project_id. Broadcast ownership is checked, then the response is forwarded from the chat gateway. This reads data without connecting to WebSocket or sending a message.
      * @summary List history message
-     * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
+     * @param {MethodChatGatewayHistoryV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodChatGatewayHistoryV1: (language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodChatGatewayHistoryV1: (language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Send a chat message for broadcast_id in the selected project. broadcast_id is supplied in query, the message payload in body; project_id comes from the request context. Broadcast ownership is checked; no restream destinations produces broadcast.no_restreams. Returns the chat gateway response without guaranteeing message delivery by every platform.
      * @summary Send message
-     * @param {MethodChatGatewaySendV1LanguageEnum} language Current language
+     * @param {MethodChatGatewaySendV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} key Key
-     * @param {number} broadcastId
+     * @param {number} broadcastId Internal project broadcast ID; not channel_id or a message event_id.
      * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto
      * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodChatGatewaySendV1: (language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodChatGatewaySendV1: (language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ChatGatewayApi - functional programming interface
@@ -75,52 +83,60 @@ export declare const ChatGatewayApiAxiosParamCreator: (configuration?: Configura
  */
 export declare const ChatGatewayApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Send a request to delete message event_id for broadcast_id after checking access to the broadcast in the selected project. Input is supplied in query for this POST. Success confirms the chat gateway request completed; this neither deletes the broadcast nor the channel.
      * @summary Remove message
-     * @param {MethodChatGatewayDeleteV1LanguageEnum} language Current language
+     * @param {MethodChatGatewayDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
      * @param {MethodChatGatewayDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodChatGatewayDeleteV1(language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    methodChatGatewayDeleteV1(language: MethodChatGatewayDeleteV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayDeleteV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Read a single message by event_id and broadcast_id after checking broadcast ownership by the selected project. event_id is a message event ID from history, not a platform channel ID. The response is forwarded from the chat gateway.
      * @summary Get one message
-     * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Current language
+     * @param {MethodChatGatewayGetMessageV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {string} eventId Event id
      * @param {MethodChatGatewayGetMessageV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodChatGatewayGetMessageV1(language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>>;
+    methodChatGatewayGetMessageV1(language: MethodChatGatewayGetMessageV1LanguageEnum, key: string, broadcastId: number, eventId: string, v?: MethodChatGatewayGetMessageV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>>;
     /**
-     *
+     * Read message history for broadcast_id in the project determined by the token/explicit project_id. Broadcast ownership is checked, then the response is forwarded from the chat gateway. This reads data without connecting to WebSocket or sending a message.
      * @summary List history message
-     * @param {MethodChatGatewayHistoryV1LanguageEnum} language Current language
+     * @param {MethodChatGatewayHistoryV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} key Key
      * @param {number} broadcastId broadcast id
      * @param {MethodChatGatewayHistoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodChatGatewayHistoryV1(language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodChatHistoryResponse>>;
+    methodChatGatewayHistoryV1(language: MethodChatGatewayHistoryV1LanguageEnum, key: string, broadcastId: number, v?: MethodChatGatewayHistoryV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MethodChatHistoryResponse>>;
     /**
-     *
+     * Send a chat message for broadcast_id in the selected project. broadcast_id is supplied in query, the message payload in body; project_id comes from the request context. Broadcast ownership is checked; no restream destinations produces broadcast.no_restreams. Returns the chat gateway response without guaranteeing message delivery by every platform.
      * @summary Send message
-     * @param {MethodChatGatewaySendV1LanguageEnum} language Current language
+     * @param {MethodChatGatewaySendV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} key Key
-     * @param {number} broadcastId
+     * @param {number} broadcastId Internal project broadcast ID; not channel_id or a message event_id.
      * @param {MethodChatSendMessageRequestDto} methodChatSendMessageRequestDto
      * @param {MethodChatGatewaySendV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodChatGatewaySendV1(language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>>;
+    methodChatGatewaySendV1(language: MethodChatGatewaySendV1LanguageEnum, key: string, broadcastId: number, methodChatSendMessageRequestDto: MethodChatSendMessageRequestDto, v?: MethodChatGatewaySendV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MessageResponseDto>>;
 };
 /**
  * ChatGatewayApi - factory interface
@@ -128,7 +144,7 @@ export declare const ChatGatewayApiFp: (configuration?: Configuration) => {
  */
 export declare const ChatGatewayApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Send a request to delete message event_id for broadcast_id after checking access to the broadcast in the selected project. Input is supplied in query for this POST. Success confirms the chat gateway request completed; this neither deletes the broadcast nor the channel.
      * @summary Remove message
      * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -136,7 +152,7 @@ export declare const ChatGatewayApiFactory: (configuration?: Configuration, base
      */
     methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read a single message by event_id and broadcast_id after checking broadcast ownership by the selected project. event_id is a message event ID from history, not a platform channel ID. The response is forwarded from the chat gateway.
      * @summary Get one message
      * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -144,7 +160,7 @@ export declare const ChatGatewayApiFactory: (configuration?: Configuration, base
      */
     methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
     /**
-     *
+     * Read message history for broadcast_id in the project determined by the token/explicit project_id. Broadcast ownership is checked, then the response is forwarded from the chat gateway. This reads data without connecting to WebSocket or sending a message.
      * @summary List history message
      * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -152,7 +168,7 @@ export declare const ChatGatewayApiFactory: (configuration?: Configuration, base
      */
     methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse>;
     /**
-     *
+     * Send a chat message for broadcast_id in the selected project. broadcast_id is supplied in query, the message payload in body; project_id comes from the request context. Broadcast ownership is checked; no restream destinations produces broadcast.no_restreams. Returns the chat gateway response without guaranteeing message delivery by every platform.
      * @summary Send message
      * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -167,7 +183,7 @@ export declare const ChatGatewayApiFactory: (configuration?: Configuration, base
  */
 export interface ChatGatewayApiInterface {
     /**
-     *
+     * Send a request to delete message event_id for broadcast_id after checking access to the broadcast in the selected project. Input is supplied in query for this POST. Success confirms the chat gateway request completed; this neither deletes the broadcast nor the channel.
      * @summary Remove message
      * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -176,7 +192,7 @@ export interface ChatGatewayApiInterface {
      */
     methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read a single message by event_id and broadcast_id after checking broadcast ownership by the selected project. event_id is a message event ID from history, not a platform channel ID. The response is forwarded from the chat gateway.
      * @summary Get one message
      * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -185,7 +201,7 @@ export interface ChatGatewayApiInterface {
      */
     methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MessageResponseDto>;
     /**
-     *
+     * Read message history for broadcast_id in the project determined by the token/explicit project_id. Broadcast ownership is checked, then the response is forwarded from the chat gateway. This reads data without connecting to WebSocket or sending a message.
      * @summary List history message
      * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -194,7 +210,7 @@ export interface ChatGatewayApiInterface {
      */
     methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MethodChatHistoryResponse>;
     /**
-     *
+     * Send a chat message for broadcast_id in the selected project. broadcast_id is supplied in query, the message payload in body; project_id comes from the request context. Broadcast ownership is checked; no restream destinations produces broadcast.no_restreams. Returns the chat gateway response without guaranteeing message delivery by every platform.
      * @summary Send message
      * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -210,35 +226,47 @@ export interface ChatGatewayApiInterface {
  */
 export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly language: MethodChatGatewayDeleteV1LanguageEnum;
+    readonly 'language': MethodChatGatewayDeleteV1LanguageEnum;
     /**
      * Key
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly key: string;
+    readonly 'key': string;
     /**
      * broadcast id
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Event id
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly event_id: string;
+    readonly 'event_id': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
      */
-    readonly v?: MethodChatGatewayDeleteV1VEnum;
+    readonly 'v'?: MethodChatGatewayDeleteV1VEnum;
+    /**
+     * Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @type {number}
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
+     */
+    readonly 'project_id'?: number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChatGatewayApiMethodChatGatewayDeleteV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for methodChatGatewayGetMessageV1 operation in ChatGatewayApi.
@@ -247,35 +275,47 @@ export interface ChatGatewayApiMethodChatGatewayDeleteV1Request {
  */
 export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly language: MethodChatGatewayGetMessageV1LanguageEnum;
+    readonly 'language': MethodChatGatewayGetMessageV1LanguageEnum;
     /**
      * Key
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly key: string;
+    readonly 'key': string;
     /**
      * broadcast id
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Event id
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly event_id: string;
+    readonly 'event_id': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
      */
-    readonly v?: MethodChatGatewayGetMessageV1VEnum;
+    readonly 'v'?: MethodChatGatewayGetMessageV1VEnum;
+    /**
+     * Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @type {number}
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
+     */
+    readonly 'project_id'?: number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChatGatewayApiMethodChatGatewayGetMessageV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for methodChatGatewayHistoryV1 operation in ChatGatewayApi.
@@ -284,29 +324,41 @@ export interface ChatGatewayApiMethodChatGatewayGetMessageV1Request {
  */
 export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly language: MethodChatGatewayHistoryV1LanguageEnum;
+    readonly 'language': MethodChatGatewayHistoryV1LanguageEnum;
     /**
      * Key
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly key: string;
+    readonly 'key': string;
     /**
      * broadcast id
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
      */
-    readonly v?: MethodChatGatewayHistoryV1VEnum;
+    readonly 'v'?: MethodChatGatewayHistoryV1VEnum;
+    /**
+     * Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @type {number}
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
+     */
+    readonly 'project_id'?: number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChatGatewayApiMethodChatGatewayHistoryV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for methodChatGatewaySendV1 operation in ChatGatewayApi.
@@ -315,35 +367,47 @@ export interface ChatGatewayApiMethodChatGatewayHistoryV1Request {
  */
 export interface ChatGatewayApiMethodChatGatewaySendV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly language: MethodChatGatewaySendV1LanguageEnum;
+    readonly 'language': MethodChatGatewaySendV1LanguageEnum;
     /**
      * Key
      * @type {string}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly key: string;
+    readonly 'key': string;
     /**
-     *
+     * Internal project broadcast ID; not channel_id or a message event_id.
      * @type {number}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      *
      * @type {MethodChatSendMessageRequestDto}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly MethodChatSendMessageRequestDto: MethodChatSendMessageRequestDto;
+    readonly 'MethodChatSendMessageRequestDto': MethodChatSendMessageRequestDto;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChatGatewayApiMethodChatGatewaySendV1
      */
-    readonly v?: MethodChatGatewaySendV1VEnum;
+    readonly 'v'?: MethodChatGatewaySendV1VEnum;
+    /**
+     * Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project and chat keys determine the project automatically.
+     * @type {number}
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
+     */
+    readonly 'project_id'?: number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChatGatewayApiMethodChatGatewaySendV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * ChatGatewayApi - object-oriented interface
@@ -353,7 +417,7 @@ export interface ChatGatewayApiMethodChatGatewaySendV1Request {
  */
 export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInterface {
     /**
-     *
+     * Send a request to delete message event_id for broadcast_id after checking access to the broadcast in the selected project. Input is supplied in query for this POST. Success confirms the chat gateway request completed; this neither deletes the broadcast nor the channel.
      * @summary Remove message
      * @param {ChatGatewayApiMethodChatGatewayDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -362,7 +426,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      */
     methodChatGatewayDeleteV1(requestParameters: ChatGatewayApiMethodChatGatewayDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Read a single message by event_id and broadcast_id after checking broadcast ownership by the selected project. event_id is a message event ID from history, not a platform channel ID. The response is forwarded from the chat gateway.
      * @summary Get one message
      * @param {ChatGatewayApiMethodChatGatewayGetMessageV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -371,7 +435,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      */
     methodChatGatewayGetMessageV1(requestParameters: ChatGatewayApiMethodChatGatewayGetMessageV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MessageResponseDto, any, {}, any>>;
     /**
-     *
+     * Read message history for broadcast_id in the project determined by the token/explicit project_id. Broadcast ownership is checked, then the response is forwarded from the chat gateway. This reads data without connecting to WebSocket or sending a message.
      * @summary List history message
      * @param {ChatGatewayApiMethodChatGatewayHistoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -380,7 +444,7 @@ export declare class ChatGatewayApi extends BaseAPI implements ChatGatewayApiInt
      */
     methodChatGatewayHistoryV1(requestParameters: ChatGatewayApiMethodChatGatewayHistoryV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MethodChatHistoryResponse, any, {}, any>>;
     /**
-     *
+     * Send a chat message for broadcast_id in the selected project. broadcast_id is supplied in query, the message payload in body; project_id comes from the request context. Broadcast ownership is checked; no restream destinations produces broadcast.no_restreams. Returns the chat gateway response without guaranteeing message delivery by every platform.
      * @summary Send message
      * @param {ChatGatewayApiMethodChatGatewaySendV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

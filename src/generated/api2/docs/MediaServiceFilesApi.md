@@ -16,6 +16,7 @@ All URIs are relative to *http://localhost*
 # **mediaServiceFilesSiteCancelV1**
 > SuccessResponse mediaServiceFilesSiteCancelV1(cancelMediaServiceFileRequest)
 
+Mark processing of the project\'s own service file media_id in project_id as cancelled and mark it deleted in storage metadata. Only status=processing is allowed; otherwise media_service.status_not_available. Use delete for a completed video; a successful command response is not a file conversion result.
 
 ### Example
 
@@ -30,9 +31,11 @@ const configuration = new Configuration();
 const apiInstance = new MediaServiceFilesApi(configuration);
 
 let cancelMediaServiceFileRequest: CancelMediaServiceFileRequest; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.mediaServiceFilesSiteCancelV1(
-    cancelMediaServiceFileRequest
+    cancelMediaServiceFileRequest,
+    xClientRequestId
 );
 ```
 
@@ -41,6 +44,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteCancelV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **cancelMediaServiceFileRequest** | **CancelMediaServiceFileRequest**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -49,7 +53,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteCancelV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -68,6 +72,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteCancelV1(
 # **mediaServiceFilesSiteCreateV1**
 > SuccessResponse mediaServiceFilesSiteCreateV1()
 
+Upload a multipart/form-data file (field file) to create a service video for project_id supplied in query. The current pipe limits the file to 300 MiB; the listed media formats are allowed. Access and custom file count are tariff-limited. Success confirms temporary storage upload and creation of a processing session, not video readiness; check list/session.
 
 ### Example
 
@@ -80,14 +85,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MediaServiceFilesApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.mediaServiceFilesSiteCreateV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -95,9 +102,10 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteCreateV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -106,7 +114,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteCreateV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -125,6 +133,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteCreateV1(
 # **mediaServiceFilesSiteDeleteV1**
 > SuccessResponse mediaServiceFilesSiteDeleteV1(deleteMediaServiceFileRequest)
 
+Delete an owned service file media_id from project_id. A processing file or a file used as the selected standby media cannot be deleted; this differs from cancelling processing with POST /method/media-service-files/cancel.
 
 ### Example
 
@@ -139,9 +148,11 @@ const configuration = new Configuration();
 const apiInstance = new MediaServiceFilesApi(configuration);
 
 let deleteMediaServiceFileRequest: DeleteMediaServiceFileRequest; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.mediaServiceFilesSiteDeleteV1(
-    deleteMediaServiceFileRequest
+    deleteMediaServiceFileRequest,
+    xClientRequestId
 );
 ```
 
@@ -150,6 +161,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteDeleteV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **deleteMediaServiceFileRequest** | **DeleteMediaServiceFileRequest**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -158,7 +170,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteDeleteV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -177,6 +189,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteDeleteV1(
 # **mediaServiceFilesSiteGetV1**
 > GetMediaServiceFileResponse mediaServiceFilesSiteGetV1()
 
+Read completed service file media_id in project_id. The file must have status=success and belong to the project or be shared; otherwise returns media_service.status_not_available/forbidden_get. Returns metadata and preview/video links, not binary content.
 
 ### Example
 
@@ -189,16 +202,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MediaServiceFilesApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let mediaId: number; //Media service file id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.mediaServiceFilesSiteGetV1(
     language,
     projectId,
     mediaId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -206,10 +221,11 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteGetV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **mediaId** | [**number**] | Media service file id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -218,7 +234,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteGetV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -237,6 +253,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteGetV1(
 # **mediaServiceFilesSiteListV1**
 > ListMediaServiceFilesResponse mediaServiceFilesSiteListV1()
 
+Read available media-service-files for project_id: status readiness, isEditable editability, and isDisabled plan restriction. media_id identifies a service file, not video.id. For processing files, event_channel allows tracking progress.
 
 ### Example
 
@@ -249,14 +266,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MediaServiceFilesApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.mediaServiceFilesSiteListV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -264,9 +283,10 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -275,7 +295,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteListV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -294,6 +314,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteListV1(
 # **mediaServiceFilesSiteSessionV1**
 > SessionMediaServiceFileResponse mediaServiceFilesSiteSessionV1()
 
+Read the processing session of an owned media_id in project_id. Returns file_id, channel, and a secret Centrifugo subscription token. Available while the file is not success/cancel/error and not deleted; completed states produce media_service.not_ready.
 
 ### Example
 
@@ -306,16 +327,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MediaServiceFilesApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let mediaId: number; //Media service file id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.mediaServiceFilesSiteSessionV1(
     language,
     projectId,
     mediaId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -323,10 +346,11 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteSessionV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **mediaId** | [**number**] | Media service file id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -335,7 +359,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteSessionV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -354,6 +378,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteSessionV1(
 # **mediaServiceFilesSiteSetV1**
 > SuccessResponse mediaServiceFilesSiteSetV1(setMediaServiceFileRequest)
 
+Select a prepared service file media_id for project_id: type=pause is a pause placeholder, type=lost is a signal-loss placeholder. Obtain media_id from GET /method/media-service-files/list. Custom files are tariff-limited; base/shared files follow access rules. Success means the selection was saved, not that broadcasting started.
 
 ### Example
 
@@ -368,9 +393,11 @@ const configuration = new Configuration();
 const apiInstance = new MediaServiceFilesApi(configuration);
 
 let setMediaServiceFileRequest: SetMediaServiceFileRequest; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.mediaServiceFilesSiteSetV1(
-    setMediaServiceFileRequest
+    setMediaServiceFileRequest,
+    xClientRequestId
 );
 ```
 
@@ -379,6 +406,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteSetV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **setMediaServiceFileRequest** | **SetMediaServiceFileRequest**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -387,7 +415,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteSetV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -406,6 +434,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteSetV1(
 # **mediaServiceFilesSiteUpdateV1**
 > SuccessResponse mediaServiceFilesSiteUpdateV1(updateMediaServiceFileRequest)
 
+Rename completed service file media_id in project_id. Requires an owned file with status=success; another owner\'s shared file cannot be edited. Success confirms name was saved.
 
 ### Example
 
@@ -420,9 +449,11 @@ const configuration = new Configuration();
 const apiInstance = new MediaServiceFilesApi(configuration);
 
 let updateMediaServiceFileRequest: UpdateMediaServiceFileRequest; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.mediaServiceFilesSiteUpdateV1(
-    updateMediaServiceFileRequest
+    updateMediaServiceFileRequest,
+    xClientRequestId
 );
 ```
 
@@ -431,6 +462,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteUpdateV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **updateMediaServiceFileRequest** | **UpdateMediaServiceFileRequest**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -439,7 +471,7 @@ const { status, data } = await apiInstance.mediaServiceFilesSiteUpdateV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 

@@ -30,15 +30,16 @@ const base_1 = require("../base");
 const BlogPageApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Read a public blog page by the request identifier and language. Returns page content; this endpoint does not edit posts.
          * @summary Get blog page
-         * @param {BlogPageGetV1LanguageEnum} language Current language
+         * @param {BlogPageGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} url Url of page
          * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        blogPageGetV1: async (language, url, v, options = {}) => {
+        blogPageGetV1: async (language, url, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('blogPageGetV1', 'language', language);
             // verify required parameter 'url' is not null or undefined
@@ -65,6 +66,9 @@ const BlogPageApiAxiosParamCreator = function (configuration) {
             if (url !== undefined) {
                 localVarQueryParameter['url'] = url;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -74,19 +78,24 @@ const BlogPageApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the public blog page list using request filters and pagination. Returns results and pagination data; use GET /method/blog/page/get for a single page\'s content.
          * @summary Get list of blog pages
-         * @param {BlogPageListV1LanguageEnum} language Current language
+         * @param {BlogPageListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} limit Number of results
+         * @param {number} offset Page offset number
          * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
-         * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        blogPageListV1: async (language, v, s, limit, offset, options = {}) => {
+        blogPageListV1: async (language, limit, offset, v, s, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('blogPageListV1', 'language', language);
+            // verify required parameter 'limit' is not null or undefined
+            (0, common_1.assertParamExists)('blogPageListV1', 'limit', limit);
+            // verify required parameter 'offset' is not null or undefined
+            (0, common_1.assertParamExists)('blogPageListV1', 'offset', offset);
             const localVarPath = `/method/blog/page/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -115,6 +124,9 @@ const BlogPageApiAxiosParamCreator = function (configuration) {
             if (offset !== undefined) {
                 localVarQueryParameter['offset'] = offset;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -134,35 +146,37 @@ const BlogPageApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.BlogPageApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Read a public blog page by the request identifier and language. Returns page content; this endpoint does not edit posts.
          * @summary Get blog page
-         * @param {BlogPageGetV1LanguageEnum} language Current language
+         * @param {BlogPageGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} url Url of page
          * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async blogPageGetV1(language, url, v, options) {
+        async blogPageGetV1(language, url, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageGetV1(language, url, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageGetV1(language, url, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BlogPageApi.blogPageGetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the public blog page list using request filters and pagination. Returns results and pagination data; use GET /method/blog/page/get for a single page\'s content.
          * @summary Get list of blog pages
-         * @param {BlogPageListV1LanguageEnum} language Current language
+         * @param {BlogPageListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} limit Number of results
+         * @param {number} offset Page offset number
          * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
-         * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async blogPageListV1(language, v, s, limit, offset, options) {
+        async blogPageListV1(language, limit, offset, v, s, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageListV1(language, v, s, limit, offset, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageListV1(language, limit, offset, v, s, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BlogPageApi.blogPageListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -178,24 +192,24 @@ const BlogPageApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.BlogPageApiFp)(configuration);
     return {
         /**
-         *
+         * Read a public blog page by the request identifier and language. Returns page content; this endpoint does not edit posts.
          * @summary Get blog page
          * @param {BlogPageApiBlogPageGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         blogPageGetV1(requestParameters, options) {
-            return localVarFp.blogPageGetV1(requestParameters.language, requestParameters.url, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.blogPageGetV1(requestParameters['language'], requestParameters['url'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the public blog page list using request filters and pagination. Returns results and pagination data; use GET /method/blog/page/get for a single page\'s content.
          * @summary Get list of blog pages
          * @param {BlogPageApiBlogPageListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         blogPageListV1(requestParameters, options) {
-            return localVarFp.blogPageListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+            return localVarFp.blogPageListV1(requestParameters['language'], requestParameters['limit'], requestParameters['offset'], requestParameters['v'], requestParameters['s'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -208,7 +222,7 @@ exports.BlogPageApiFactory = BlogPageApiFactory;
  */
 class BlogPageApi extends base_1.BaseAPI {
     /**
-     *
+     * Read a public blog page by the request identifier and language. Returns page content; this endpoint does not edit posts.
      * @summary Get blog page
      * @param {BlogPageApiBlogPageGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -216,10 +230,10 @@ class BlogPageApi extends base_1.BaseAPI {
      * @memberof BlogPageApi
      */
     blogPageGetV1(requestParameters, options) {
-        return (0, exports.BlogPageApiFp)(this.configuration).blogPageGetV1(requestParameters.language, requestParameters.url, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BlogPageApiFp)(this.configuration).blogPageGetV1(requestParameters['language'], requestParameters['url'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the public blog page list using request filters and pagination. Returns results and pagination data; use GET /method/blog/page/get for a single page\'s content.
      * @summary Get list of blog pages
      * @param {BlogPageApiBlogPageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -227,7 +241,7 @@ class BlogPageApi extends base_1.BaseAPI {
      * @memberof BlogPageApi
      */
     blogPageListV1(requestParameters, options) {
-        return (0, exports.BlogPageApiFp)(this.configuration).blogPageListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.BlogPageApiFp)(this.configuration).blogPageListV1(requestParameters['language'], requestParameters['limit'], requestParameters['offset'], requestParameters['v'], requestParameters['s'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.BlogPageApi = BlogPageApi;

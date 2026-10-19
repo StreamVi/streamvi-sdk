@@ -16,7 +16,7 @@
  */
 export interface GetStreamKeyResponse {
     /**
-     * Disconnect protection wait time in minutes
+     * Saved disconnect protection duration in minutes. 0 disables protection; null means no saved setting. Update with PUT /method/stream-keys/wait.
      * @type {number}
      * @memberof GetStreamKeyResponse
      */
@@ -28,25 +28,25 @@ export interface GetStreamKeyResponse {
      */
     'wait_max_minutes': number;
     /**
-     * Is recordable stream
+     * Saved recording preference. Recording is under development; true does not confirm recording or the existence of a recorded video.
      * @type {boolean}
      * @memberof GetStreamKeyResponse
      */
     'record': boolean;
     /**
-     * Key
+     * Secret publishing key of the selected project. Do not save in logs/examples; rotate with POST /method/stream-keys/rotate.
      * @type {string}
      * @memberof GetStreamKeyResponse
      */
     'key': string;
     /**
-     * Pause video id
+     * Pause media-service-file ID; the tariff determines whether a custom or base file is used. null means no file.
      * @type {number}
      * @memberof GetStreamKeyResponse
      */
     'pause_media_service_file_id': number | null;
     /**
-     * Protected video id
+     * Signal-loss media-service-file ID; the tariff determines whether a custom or base file is used. null means no file.
      * @type {number}
      * @memberof GetStreamKeyResponse
      */

@@ -40,19 +40,19 @@ export interface ProjectInfoResponse {
      */
     'restream'?: ProjectInfoRestreamResponse;
     /**
-     * Transcoding tariff
+     *
      * @type {ProjectInfoTranscodingResponse}
      * @memberof ProjectInfoResponse
      */
     'transcoding': ProjectInfoTranscodingResponse | null;
     /**
-     * Storage tariff
+     *
      * @type {ProjectInfoStorageResponse}
      * @memberof ProjectInfoResponse
      */
     'storage': ProjectInfoStorageResponse | null;
     /**
-     * Webinar tariff
+     *
      * @type {ProjectInfoWebinarResponse}
      * @memberof ProjectInfoResponse
      */

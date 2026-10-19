@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version (automatically defaults to 1 based on the API contract, can be overridden) | [optional] [default to VEnum__1]
-**language** | **string** | Current language | [default to LanguageEnum_En]
+**language** | **string** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | [default to LanguageEnum_En]
 **project_id** | **number** | Project id | [default to undefined]
 **transcoder_id** | **number** | Transcoder id | [default to undefined]
 **width** | **number** | Width | [optional] [default to undefined]
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **name** | **string** | Name | [optional] [default to undefined]
 **rotation** | **number** | Rotation | [optional] [default to undefined]
 **bFrames** | **number** | Rotation | [optional] [default to undefined]
-**channelIds** | **Array&lt;number&gt;** | ChannelIds | [optional] [default to undefined]
+**channelIds** | **Array&lt;number&gt;** | Internal numeric StreamVi channel IDs to assign to the transcoder. Use group_id values from channel search in the same project_id, not external/platform IDs. | [optional] [default to undefined]
 **videoCodec** | **string** | Video codec id | [default to undefined]
 **preset** | **string** | Preset | [optional] [default to undefined]
 **delay** | **number** | Delay | [optional] [default to undefined]

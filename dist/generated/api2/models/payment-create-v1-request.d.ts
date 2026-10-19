@@ -9,14 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { PaymentCreateRequestRestreamBodyDto } from './payment-create-request-restream-body-dto';
-import type { PaymentCreateRequestStorageBodyDto } from './payment-create-request-storage-body-dto';
-import type { PaymentCreateRequestTopUpBodyDto } from './payment-create-request-top-up-body-dto';
-import type { PaymentCreateRequestTranscoderBodyDto } from './payment-create-request-transcoder-body-dto';
-import type { PaymentCreateRequestWebinarBodyDto } from './payment-create-request-webinar-body-dto';
+import type { PaymentCreateV1RequestOneOf } from './payment-create-v1-request-one-of';
+import type { PaymentCreateV1RequestOneOf1 } from './payment-create-v1-request-one-of1';
+import type { PaymentCreateV1RequestOneOf2 } from './payment-create-v1-request-one-of2';
+import type { PaymentCreateV1RequestOneOf3 } from './payment-create-v1-request-one-of3';
+import type { PaymentCreateV1RequestOneOf4 } from './payment-create-v1-request-one-of4';
 /**
  * @type PaymentCreateV1Request
  * @export
  */
-export type PaymentCreateV1Request = PaymentCreateRequestRestreamBodyDto | PaymentCreateRequestStorageBodyDto | PaymentCreateRequestTopUpBodyDto | PaymentCreateRequestTranscoderBodyDto | PaymentCreateRequestWebinarBodyDto;
+export type PaymentCreateV1Request = PaymentCreateV1RequestOneOf | PaymentCreateV1RequestOneOf1 | PaymentCreateV1RequestOneOf2 | PaymentCreateV1RequestOneOf3 | PaymentCreateV1RequestOneOf4;
 //# sourceMappingURL=payment-create-v1-request.d.ts.map

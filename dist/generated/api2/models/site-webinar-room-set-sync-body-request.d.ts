@@ -22,11 +22,17 @@ export interface SiteWebinarRoomSetSyncBodyRequest {
      */
     'v'?: SiteWebinarRoomSetSyncBodyRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteWebinarRoomSetSyncBodyRequest
      */
     'language': SiteWebinarRoomSetSyncBodyRequestLanguageEnum;
+    /**
+     * Required selected project for account integration credentials; room prefix must match its external ID
+     * @type {number}
+     * @memberof SiteWebinarRoomSetSyncBodyRequest
+     */
+    'project_id'?: number;
     /**
      * Room name
      * @type {string}

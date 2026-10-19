@@ -30,15 +30,16 @@ const base_1 = require("../base");
 const NotifyUserApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Delete the current user\'s mobile notification token supplied in query. Returns success; available only to a project subject. Token is sensitive; this disables delivery to a device without deleting notification history.
          * @summary Delete mobile token from user
-         * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Current language
+         * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} token Token in mobile app
          * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyUserDelMobileTokenV1: async (language, token, v, options = {}) => {
+        notifyUserDelMobileTokenV1: async (language, token, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('notifyUserDelMobileTokenV1', 'language', language);
             // verify required parameter 'token' is not null or undefined
@@ -53,9 +54,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -68,6 +69,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             if (token !== undefined) {
                 localVarQueryParameter['token'] = token;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -77,15 +81,16 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Get the screen notification for project_id localized using language, or null if absent. Reads the current notification; hide it with POST /method/notify_user/screen.
          * @summary Get user screen notify
-         * @param {NotifyUserGetScreenV1LanguageEnum} language Current language
+         * @param {NotifyUserGetScreenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyUserGetScreenV1: async (language, projectId, v, options = {}) => {
+        notifyUserGetScreenV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('notifyUserGetScreenV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -100,9 +105,12 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["notification:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["notification:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -115,6 +123,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -124,14 +135,15 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the current user\'s notification delivery settings for project_id. The token determines the user; the project is selected separately. Change a delivery channel/category with POST /method/notify_user/setting.
          * @summary Get user notify settings
          * @param {number} projectId Project id
          * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyUserGetV1: async (projectId, v, options = {}) => {
+        notifyUserGetV1: async (projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'projectId' is not null or undefined
             (0, common_1.assertParamExists)('notifyUserGetV1', 'projectId', projectId);
             const localVarPath = `/method/notify_user/setting`;
@@ -144,9 +156,12 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["notification:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["notification:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -155,6 +170,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -165,14 +183,15 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Hide the screen notification for project_id. Input is supplied in query for this POST; returns success. This method neither deletes notification history nor executes related actions.
          * @summary Remove user screen notify
          * @param {number} projectId Project id
          * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyUserRemoveScreenV1: async (projectId, v, options = {}) => {
+        notifyUserRemoveScreenV1: async (projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'projectId' is not null or undefined
             (0, common_1.assertParamExists)('notifyUserRemoveScreenV1', 'projectId', projectId);
             const localVarPath = `/method/notify_user/screen`;
@@ -185,9 +204,12 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["notification:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -196,6 +218,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -206,14 +231,15 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Save status for the current user\'s notify_channel/notify_category pair in project_id. Returns success after saving; this changes delivery settings without sending a notification or marking history as read.
          * @summary Set user notify settings
          * @param {SiteSetNotifyUserRequest} siteSetNotifyUserRequest Set user notify settings
          * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyUserSetV1: async (siteSetNotifyUserRequest, v, options = {}) => {
+        notifyUserSetV1: async (siteSetNotifyUserRequest, v, xClientRequestId, options = {}) => {
             // verify required parameter 'siteSetNotifyUserRequest' is not null or undefined
             (0, common_1.assertParamExists)('notifyUserSetV1', 'siteSetNotifyUserRequest', siteSetNotifyUserRequest);
             const localVarPath = `/method/notify_user/setting`;
@@ -226,9 +252,12 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["notification:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -236,6 +265,9 @@ const NotifyUserApiAxiosParamCreator = function (configuration) {
                 localVarQueryParameter['v'] = '1';
             }
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -256,78 +288,83 @@ const NotifyUserApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.NotifyUserApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Delete the current user\'s mobile notification token supplied in query. Returns success; available only to a project subject. Token is sensitive; this disables delivery to a device without deleting notification history.
          * @summary Delete mobile token from user
-         * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Current language
+         * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} token Token in mobile app
          * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyUserDelMobileTokenV1(language, token, v, options) {
+        async notifyUserDelMobileTokenV1(language, token, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserDelMobileTokenV1(language, token, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserDelMobileTokenV1(language, token, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyUserApi.notifyUserDelMobileTokenV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Get the screen notification for project_id localized using language, or null if absent. Reads the current notification; hide it with POST /method/notify_user/screen.
          * @summary Get user screen notify
-         * @param {NotifyUserGetScreenV1LanguageEnum} language Current language
+         * @param {NotifyUserGetScreenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyUserGetScreenV1(language, projectId, v, options) {
+        async notifyUserGetScreenV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserGetScreenV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserGetScreenV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyUserApi.notifyUserGetScreenV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the current user\'s notification delivery settings for project_id. The token determines the user; the project is selected separately. Change a delivery channel/category with POST /method/notify_user/setting.
          * @summary Get user notify settings
          * @param {number} projectId Project id
          * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyUserGetV1(projectId, v, options) {
+        async notifyUserGetV1(projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserGetV1(projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserGetV1(projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyUserApi.notifyUserGetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Hide the screen notification for project_id. Input is supplied in query for this POST; returns success. This method neither deletes notification history nor executes related actions.
          * @summary Remove user screen notify
          * @param {number} projectId Project id
          * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyUserRemoveScreenV1(projectId, v, options) {
+        async notifyUserRemoveScreenV1(projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserRemoveScreenV1(projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserRemoveScreenV1(projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyUserApi.notifyUserRemoveScreenV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Save status for the current user\'s notify_channel/notify_category pair in project_id. Returns success after saving; this changes delivery settings without sending a notification or marking history as read.
          * @summary Set user notify settings
          * @param {SiteSetNotifyUserRequest} siteSetNotifyUserRequest Set user notify settings
          * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyUserSetV1(siteSetNotifyUserRequest, v, options) {
+        async notifyUserSetV1(siteSetNotifyUserRequest, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserSetV1(siteSetNotifyUserRequest, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyUserSetV1(siteSetNotifyUserRequest, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyUserApi.notifyUserSetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -343,54 +380,54 @@ const NotifyUserApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.NotifyUserApiFp)(configuration);
     return {
         /**
-         *
+         * Delete the current user\'s mobile notification token supplied in query. Returns success; available only to a project subject. Token is sensitive; this disables delivery to a device without deleting notification history.
          * @summary Delete mobile token from user
          * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         notifyUserDelMobileTokenV1(requestParameters, options) {
-            return localVarFp.notifyUserDelMobileTokenV1(requestParameters.language, requestParameters.token, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserDelMobileTokenV1(requestParameters['language'], requestParameters['token'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Get the screen notification for project_id localized using language, or null if absent. Reads the current notification; hide it with POST /method/notify_user/screen.
          * @summary Get user screen notify
          * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         notifyUserGetScreenV1(requestParameters, options) {
-            return localVarFp.notifyUserGetScreenV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserGetScreenV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the current user\'s notification delivery settings for project_id. The token determines the user; the project is selected separately. Change a delivery channel/category with POST /method/notify_user/setting.
          * @summary Get user notify settings
          * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         notifyUserGetV1(requestParameters, options) {
-            return localVarFp.notifyUserGetV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserGetV1(requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Hide the screen notification for project_id. Input is supplied in query for this POST; returns success. This method neither deletes notification history nor executes related actions.
          * @summary Remove user screen notify
          * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         notifyUserRemoveScreenV1(requestParameters, options) {
-            return localVarFp.notifyUserRemoveScreenV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserRemoveScreenV1(requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Save status for the current user\'s notify_channel/notify_category pair in project_id. Returns success after saving; this changes delivery settings without sending a notification or marking history as read.
          * @summary Set user notify settings
          * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         notifyUserSetV1(requestParameters, options) {
-            return localVarFp.notifyUserSetV1(requestParameters.SiteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyUserSetV1(requestParameters['SiteSetNotifyUserRequest'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -403,7 +440,7 @@ exports.NotifyUserApiFactory = NotifyUserApiFactory;
  */
 class NotifyUserApi extends base_1.BaseAPI {
     /**
-     *
+     * Delete the current user\'s mobile notification token supplied in query. Returns success; available only to a project subject. Token is sensitive; this disables delivery to a device without deleting notification history.
      * @summary Delete mobile token from user
      * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -411,10 +448,10 @@ class NotifyUserApi extends base_1.BaseAPI {
      * @memberof NotifyUserApi
      */
     notifyUserDelMobileTokenV1(requestParameters, options) {
-        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserDelMobileTokenV1(requestParameters.language, requestParameters.token, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserDelMobileTokenV1(requestParameters['language'], requestParameters['token'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Get the screen notification for project_id localized using language, or null if absent. Reads the current notification; hide it with POST /method/notify_user/screen.
      * @summary Get user screen notify
      * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -422,10 +459,10 @@ class NotifyUserApi extends base_1.BaseAPI {
      * @memberof NotifyUserApi
      */
     notifyUserGetScreenV1(requestParameters, options) {
-        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserGetScreenV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserGetScreenV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the current user\'s notification delivery settings for project_id. The token determines the user; the project is selected separately. Change a delivery channel/category with POST /method/notify_user/setting.
      * @summary Get user notify settings
      * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -433,10 +470,10 @@ class NotifyUserApi extends base_1.BaseAPI {
      * @memberof NotifyUserApi
      */
     notifyUserGetV1(requestParameters, options) {
-        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserGetV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserGetV1(requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Hide the screen notification for project_id. Input is supplied in query for this POST; returns success. This method neither deletes notification history nor executes related actions.
      * @summary Remove user screen notify
      * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -444,10 +481,10 @@ class NotifyUserApi extends base_1.BaseAPI {
      * @memberof NotifyUserApi
      */
     notifyUserRemoveScreenV1(requestParameters, options) {
-        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserRemoveScreenV1(requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserRemoveScreenV1(requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Save status for the current user\'s notify_channel/notify_category pair in project_id. Returns success after saving; this changes delivery settings without sending a notification or marking history as read.
      * @summary Set user notify settings
      * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -455,7 +492,7 @@ class NotifyUserApi extends base_1.BaseAPI {
      * @memberof NotifyUserApi
      */
     notifyUserSetV1(requestParameters, options) {
-        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserSetV1(requestParameters.SiteSetNotifyUserRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyUserApiFp)(this.configuration).notifyUserSetV1(requestParameters['SiteSetNotifyUserRequest'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.NotifyUserApi = NotifyUserApi;

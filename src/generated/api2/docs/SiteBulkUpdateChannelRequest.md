@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version (automatically defaults to 1 based on the API contract, can be overridden) | [optional] [default to VEnum__1]
-**language** | **string** | Current language | [default to LanguageEnum_En]
+**language** | **string** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | [default to LanguageEnum_En]
 **project_id** | **number** | Project id | [default to undefined]
-**title** | **string** |  | [default to 'title']
-**description** | **string** |  | [default to 'description']
+**title** | **string** | New shared default title and title for supported project channels; supplied explicitly. | [default to undefined]
+**description** | **string** | New shared default description and description for supported project channels; supplied explicitly. | [default to undefined]
 
 ## Example
 

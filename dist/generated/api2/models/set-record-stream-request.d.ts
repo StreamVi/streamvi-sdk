@@ -22,7 +22,7 @@ export interface SetRecordStreamRequest {
      */
     'v'?: SetRecordStreamRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SetRecordStreamRequest
      */
@@ -34,7 +34,7 @@ export interface SetRecordStreamRequest {
      */
     'project_id': number;
     /**
-     * Record status
+     * Requested recording preference: true to enable, false to disable. Recording is under development; this flag is saved but does not indicate that recording is running or that a recorded video is available.
      * @type {boolean}
      * @memberof SetRecordStreamRequest
      */

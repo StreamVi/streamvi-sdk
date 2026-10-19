@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 # **pullServersGetPullServersV1**
 > PullServerListResponse pullServersGetPullServersV1()
 
+Read the public pull server list localized using lang. This lists available regions/servers for pull links without creating a link or connection.
 
 ### Example
 
@@ -21,11 +22,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullServersApi(configuration);
 
-const { status, data } = await apiInstance.pullServersGetPullServersV1();
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
+
+const { status, data } = await apiInstance.pullServersGetPullServersV1(
+    xClientRequestId
+);
 ```
 
 ### Parameters
-This endpoint does not have any parameters.
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type

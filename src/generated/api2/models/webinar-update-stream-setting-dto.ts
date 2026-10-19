@@ -27,11 +27,17 @@ export interface WebinarUpdateStreamSettingDto {
      */
     'v'?: WebinarUpdateStreamSettingDtoVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof WebinarUpdateStreamSettingDto
      */
     'language': WebinarUpdateStreamSettingDtoLanguageEnum;
+    /**
+     * Required selected project for account integration credentials; room prefix must match its external ID
+     * @type {number}
+     * @memberof WebinarUpdateStreamSettingDto
+     */
+    'project_id'?: number;
     /**
      * Client ID
      * @type {string}
@@ -45,25 +51,25 @@ export interface WebinarUpdateStreamSettingDto {
      */
     'room_id': string;
     /**
-     * Width
+     * Video width in pixels
      * @type {number}
      * @memberof WebinarUpdateStreamSettingDto
      */
     'width': number;
     /**
-     * Height
+     * Video height in pixels
      * @type {number}
      * @memberof WebinarUpdateStreamSettingDto
      */
     'height': number;
     /**
-     * Fps
+     * Video frames per second
      * @type {number}
      * @memberof WebinarUpdateStreamSettingDto
      */
     'fps': WebinarUpdateStreamSettingDtoFpsEnum;
     /**
-     * Bitrate
+     * Video bitrate in kbps
      * @type {number}
      * @memberof WebinarUpdateStreamSettingDto
      */

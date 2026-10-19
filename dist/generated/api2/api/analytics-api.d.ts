@@ -19,14 +19,14 @@ import type { BroadcastMessageListResponse } from '../models';
  */
 export declare const AnalyticsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Read message history for broadcast_id in project_id using date/date_start/date_end time filters, platform/restream_id/text, sort_by_date, and limit/offset. offset is the number of records to skip. Returns results and total; reading history neither sends nor deletes messages.
      * @summary Messages for broadcast
-     * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
+     * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId Broadcast id
      * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {number} [offset] Offset
-     * @param {number} [limit] Limit
+     * @param {number} [offset] Number of messages to skip. When omitted, the backend forwards the parameter\&#39;s absence to the metrics service.
+     * @param {number} [limit] Message result size. When omitted, the backend does not supply a fixed limit.
      * @param {string} [date] Exact date filter
      * @param {string} [dateStart] Date range start
      * @param {string} [dateEnd] Date range end
@@ -34,43 +34,47 @@ export declare const AnalyticsApiAxiosParamCreator: (configuration?: Configurati
      * @param {string} [platform] Platform
      * @param {number} [restreamId] Restream id
      * @param {string} [text] Text search
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsBroadcastMessagesV1: (language: AnalyticsTsBroadcastMessagesV1LanguageEnum, projectId: number, broadcastId: number, v?: AnalyticsTsBroadcastMessagesV1VEnum, offset?: number, limit?: number, date?: string, dateStart?: string, dateEnd?: string, sortByDate?: AnalyticsTsBroadcastMessagesV1SortByDateEnum, platform?: string, restreamId?: number, text?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    analyticsTsBroadcastMessagesV1: (language: AnalyticsTsBroadcastMessagesV1LanguageEnum, projectId: number, broadcastId: number, v?: AnalyticsTsBroadcastMessagesV1VEnum, offset?: number, limit?: number, date?: string, dateStart?: string, dateEnd?: string, sortByDate?: AnalyticsTsBroadcastMessagesV1SortByDateEnum, platform?: string, restreamId?: number, text?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read the bitrate chart for stream_id after checking it belongs to project_id; another project\'s stream produces broadcast.no_found. The response is proxied from the metrics service; the local contract does not specify an unverified point structure. This method does not change bitrate settings.
      * @summary Bitrate for stream
-     * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} streamId stream id
      * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsStreamBitrateV1: (language: AnalyticsTsStreamBitrateV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamBitrateV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    analyticsTsStreamBitrateV1: (language: AnalyticsTsStreamBitrateV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamBitrateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read stream_id events in project_id after checking stream ownership. The response is forwarded from the metrics service; the external response structure is not extended with an invented DTO. This method does not send stream commands.
      * @summary Events for stream
-     * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} streamId stream id
      * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsStreamEventsV1: (language: AnalyticsTsStreamEventsV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamEventsV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    analyticsTsStreamEventsV1: (language: AnalyticsTsStreamEventsV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamEventsV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read viewer statistics for the broadcast linked to stream_id in project_id. Stream ownership is checked; the response is proxied from the metrics service. stream_id identifies a stream, not an internal channel_id; reading does not control the broadcast.
      * @summary Viewers for stream
-     * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} streamId stream id
      * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsStreamViewersV1: (language: AnalyticsTsStreamViewersV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamViewersV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    analyticsTsStreamViewersV1: (language: AnalyticsTsStreamViewersV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamViewersV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AnalyticsApi - functional programming interface
@@ -78,14 +82,14 @@ export declare const AnalyticsApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const AnalyticsApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Read message history for broadcast_id in project_id using date/date_start/date_end time filters, platform/restream_id/text, sort_by_date, and limit/offset. offset is the number of records to skip. Returns results and total; reading history neither sends nor deletes messages.
      * @summary Messages for broadcast
-     * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
+     * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId Broadcast id
      * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {number} [offset] Offset
-     * @param {number} [limit] Limit
+     * @param {number} [offset] Number of messages to skip. When omitted, the backend forwards the parameter\&#39;s absence to the metrics service.
+     * @param {number} [limit] Message result size. When omitted, the backend does not supply a fixed limit.
      * @param {string} [date] Exact date filter
      * @param {string} [dateStart] Date range start
      * @param {string} [dateEnd] Date range end
@@ -93,43 +97,47 @@ export declare const AnalyticsApiFp: (configuration?: Configuration) => {
      * @param {string} [platform] Platform
      * @param {number} [restreamId] Restream id
      * @param {string} [text] Text search
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsBroadcastMessagesV1(language: AnalyticsTsBroadcastMessagesV1LanguageEnum, projectId: number, broadcastId: number, v?: AnalyticsTsBroadcastMessagesV1VEnum, offset?: number, limit?: number, date?: string, dateStart?: string, dateEnd?: string, sortByDate?: AnalyticsTsBroadcastMessagesV1SortByDateEnum, platform?: string, restreamId?: number, text?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BroadcastMessageListResponse>>;
+    analyticsTsBroadcastMessagesV1(language: AnalyticsTsBroadcastMessagesV1LanguageEnum, projectId: number, broadcastId: number, v?: AnalyticsTsBroadcastMessagesV1VEnum, offset?: number, limit?: number, date?: string, dateStart?: string, dateEnd?: string, sortByDate?: AnalyticsTsBroadcastMessagesV1SortByDateEnum, platform?: string, restreamId?: number, text?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BroadcastMessageListResponse>>;
     /**
-     *
+     * Read the bitrate chart for stream_id after checking it belongs to project_id; another project\'s stream produces broadcast.no_found. The response is proxied from the metrics service; the local contract does not specify an unverified point structure. This method does not change bitrate settings.
      * @summary Bitrate for stream
-     * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} streamId stream id
      * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsStreamBitrateV1(language: AnalyticsTsStreamBitrateV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamBitrateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
+    analyticsTsStreamBitrateV1(language: AnalyticsTsStreamBitrateV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamBitrateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>>;
     /**
-     *
+     * Read stream_id events in project_id after checking stream ownership. The response is forwarded from the metrics service; the external response structure is not extended with an invented DTO. This method does not send stream commands.
      * @summary Events for stream
-     * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} streamId stream id
      * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsStreamEventsV1(language: AnalyticsTsStreamEventsV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamEventsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
+    analyticsTsStreamEventsV1(language: AnalyticsTsStreamEventsV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamEventsV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>>;
     /**
-     *
+     * Read viewer statistics for the broadcast linked to stream_id in project_id. Stream ownership is checked; the response is proxied from the metrics service. stream_id identifies a stream, not an internal channel_id; reading does not control the broadcast.
      * @summary Viewers for stream
-     * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
+     * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} streamId stream id
      * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsStreamViewersV1(language: AnalyticsTsStreamViewersV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamViewersV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
+    analyticsTsStreamViewersV1(language: AnalyticsTsStreamViewersV1LanguageEnum, projectId: number, streamId: number, v?: AnalyticsTsStreamViewersV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>>;
 };
 /**
  * AnalyticsApi - factory interface
@@ -137,7 +145,7 @@ export declare const AnalyticsApiFp: (configuration?: Configuration) => {
  */
 export declare const AnalyticsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Read message history for broadcast_id in project_id using date/date_start/date_end time filters, platform/restream_id/text, sort_by_date, and limit/offset. offset is the number of records to skip. Returns results and total; reading history neither sends nor deletes messages.
      * @summary Messages for broadcast
      * @param {AnalyticsApiAnalyticsTsBroadcastMessagesV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -145,29 +153,29 @@ export declare const AnalyticsApiFactory: (configuration?: Configuration, basePa
      */
     analyticsTsBroadcastMessagesV1(requestParameters: AnalyticsApiAnalyticsTsBroadcastMessagesV1Request, options?: RawAxiosRequestConfig): AxiosPromise<BroadcastMessageListResponse>;
     /**
-     *
+     * Read the bitrate chart for stream_id after checking it belongs to project_id; another project\'s stream produces broadcast.no_found. The response is proxied from the metrics service; the local contract does not specify an unverified point structure. This method does not change bitrate settings.
      * @summary Bitrate for stream
      * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
+    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<any>;
     /**
-     *
+     * Read stream_id events in project_id after checking stream ownership. The response is forwarded from the metrics service; the external response structure is not extended with an invented DTO. This method does not send stream commands.
      * @summary Events for stream
      * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
+    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<any>;
     /**
-     *
+     * Read viewer statistics for the broadcast linked to stream_id in project_id. Stream ownership is checked; the response is proxied from the metrics service. stream_id identifies a stream, not an internal channel_id; reading does not control the broadcast.
      * @summary Viewers for stream
      * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
+    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<any>;
 };
 /**
  * AnalyticsApi - interface
@@ -176,7 +184,7 @@ export declare const AnalyticsApiFactory: (configuration?: Configuration, basePa
  */
 export interface AnalyticsApiInterface {
     /**
-     *
+     * Read message history for broadcast_id in project_id using date/date_start/date_end time filters, platform/restream_id/text, sort_by_date, and limit/offset. offset is the number of records to skip. Returns results and total; reading history neither sends nor deletes messages.
      * @summary Messages for broadcast
      * @param {AnalyticsApiAnalyticsTsBroadcastMessagesV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -185,32 +193,32 @@ export interface AnalyticsApiInterface {
      */
     analyticsTsBroadcastMessagesV1(requestParameters: AnalyticsApiAnalyticsTsBroadcastMessagesV1Request, options?: RawAxiosRequestConfig): AxiosPromise<BroadcastMessageListResponse>;
     /**
-     *
+     * Read the bitrate chart for stream_id after checking it belongs to project_id; another project\'s stream produces broadcast.no_found. The response is proxied from the metrics service; the local contract does not specify an unverified point structure. This method does not change bitrate settings.
      * @summary Bitrate for stream
      * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApiInterface
      */
-    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
+    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<any>;
     /**
-     *
+     * Read stream_id events in project_id after checking stream ownership. The response is forwarded from the metrics service; the external response structure is not extended with an invented DTO. This method does not send stream commands.
      * @summary Events for stream
      * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApiInterface
      */
-    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
+    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<any>;
     /**
-     *
+     * Read viewer statistics for the broadcast linked to stream_id in project_id. Stream ownership is checked; the response is proxied from the metrics service. stream_id identifies a stream, not an internal channel_id; reading does not control the broadcast.
      * @summary Viewers for stream
      * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApiInterface
      */
-    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
+    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<any>;
 }
 /**
  * Request parameters for analyticsTsBroadcastMessagesV1 operation in AnalyticsApi.
@@ -219,83 +227,89 @@ export interface AnalyticsApiInterface {
  */
 export interface AnalyticsApiAnalyticsTsBroadcastMessagesV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly language: AnalyticsTsBroadcastMessagesV1LanguageEnum;
+    readonly 'language': AnalyticsTsBroadcastMessagesV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Broadcast id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly v?: AnalyticsTsBroadcastMessagesV1VEnum;
+    readonly 'v'?: AnalyticsTsBroadcastMessagesV1VEnum;
     /**
-     * Offset
+     * Number of messages to skip. When omitted, the backend forwards the parameter\&#39;s absence to the metrics service.
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly offset?: number;
+    readonly 'offset'?: number;
     /**
-     * Limit
+     * Message result size. When omitted, the backend does not supply a fixed limit.
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly limit?: number;
+    readonly 'limit'?: number;
     /**
      * Exact date filter
      * @type {string}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly date?: string;
+    readonly 'date'?: string;
     /**
      * Date range start
      * @type {string}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly date_start?: string;
+    readonly 'date_start'?: string;
     /**
      * Date range end
      * @type {string}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly date_end?: string;
+    readonly 'date_end'?: string;
     /**
      * Sort by date
      * @type {'asc' | 'desc'}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly sort_by_date?: AnalyticsTsBroadcastMessagesV1SortByDateEnum;
+    readonly 'sort_by_date'?: AnalyticsTsBroadcastMessagesV1SortByDateEnum;
     /**
      * Platform
      * @type {string}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly platform?: string;
+    readonly 'platform'?: string;
     /**
      * Restream id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly restream_id?: number;
+    readonly 'restream_id'?: number;
     /**
      * Text search
      * @type {string}
      * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
      */
-    readonly text?: string;
+    readonly 'text'?: string;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AnalyticsApiAnalyticsTsBroadcastMessagesV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for analyticsTsStreamBitrateV1 operation in AnalyticsApi.
@@ -304,29 +318,35 @@ export interface AnalyticsApiAnalyticsTsBroadcastMessagesV1Request {
  */
 export interface AnalyticsApiAnalyticsTsStreamBitrateV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
-    readonly language: AnalyticsTsStreamBitrateV1LanguageEnum;
+    readonly 'language': AnalyticsTsStreamBitrateV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * stream id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
-    readonly stream_id: number;
+    readonly 'stream_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
      */
-    readonly v?: AnalyticsTsStreamBitrateV1VEnum;
+    readonly 'v'?: AnalyticsTsStreamBitrateV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AnalyticsApiAnalyticsTsStreamBitrateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for analyticsTsStreamEventsV1 operation in AnalyticsApi.
@@ -335,29 +355,35 @@ export interface AnalyticsApiAnalyticsTsStreamBitrateV1Request {
  */
 export interface AnalyticsApiAnalyticsTsStreamEventsV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
-    readonly language: AnalyticsTsStreamEventsV1LanguageEnum;
+    readonly 'language': AnalyticsTsStreamEventsV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * stream id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
-    readonly stream_id: number;
+    readonly 'stream_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
      */
-    readonly v?: AnalyticsTsStreamEventsV1VEnum;
+    readonly 'v'?: AnalyticsTsStreamEventsV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AnalyticsApiAnalyticsTsStreamEventsV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for analyticsTsStreamViewersV1 operation in AnalyticsApi.
@@ -366,29 +392,35 @@ export interface AnalyticsApiAnalyticsTsStreamEventsV1Request {
  */
 export interface AnalyticsApiAnalyticsTsStreamViewersV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
      */
-    readonly language: AnalyticsTsStreamViewersV1LanguageEnum;
+    readonly 'language': AnalyticsTsStreamViewersV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * stream id
      * @type {number}
      * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
      */
-    readonly stream_id: number;
+    readonly 'stream_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
      */
-    readonly v?: AnalyticsTsStreamViewersV1VEnum;
+    readonly 'v'?: AnalyticsTsStreamViewersV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AnalyticsApiAnalyticsTsStreamViewersV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * AnalyticsApi - object-oriented interface
@@ -398,7 +430,7 @@ export interface AnalyticsApiAnalyticsTsStreamViewersV1Request {
  */
 export declare class AnalyticsApi extends BaseAPI implements AnalyticsApiInterface {
     /**
-     *
+     * Read message history for broadcast_id in project_id using date/date_start/date_end time filters, platform/restream_id/text, sort_by_date, and limit/offset. offset is the number of records to skip. Returns results and total; reading history neither sends nor deletes messages.
      * @summary Messages for broadcast
      * @param {AnalyticsApiAnalyticsTsBroadcastMessagesV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -407,32 +439,32 @@ export declare class AnalyticsApi extends BaseAPI implements AnalyticsApiInterfa
      */
     analyticsTsBroadcastMessagesV1(requestParameters: AnalyticsApiAnalyticsTsBroadcastMessagesV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BroadcastMessageListResponse, any, {}, any>>;
     /**
-     *
+     * Read the bitrate chart for stream_id after checking it belongs to project_id; another project\'s stream produces broadcast.no_found. The response is proxied from the metrics service; the local contract does not specify an unverified point structure. This method does not change bitrate settings.
      * @summary Bitrate for stream
      * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
+    analyticsTsStreamBitrateV1(requestParameters: AnalyticsApiAnalyticsTsStreamBitrateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<any, any, {}, any>>;
     /**
-     *
+     * Read stream_id events in project_id after checking stream ownership. The response is forwarded from the metrics service; the external response structure is not extended with an invented DTO. This method does not send stream commands.
      * @summary Events for stream
      * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
+    analyticsTsStreamEventsV1(requestParameters: AnalyticsApiAnalyticsTsStreamEventsV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<any, any, {}, any>>;
     /**
-     *
+     * Read viewer statistics for the broadcast linked to stream_id in project_id. Stream ownership is checked; the response is proxied from the metrics service. stream_id identifies a stream, not an internal channel_id; reading does not control the broadcast.
      * @summary Viewers for stream
      * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
+    analyticsTsStreamViewersV1(requestParameters: AnalyticsApiAnalyticsTsStreamViewersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<any, any, {}, any>>;
 }
 /**
  * @export

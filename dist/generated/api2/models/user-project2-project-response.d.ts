@@ -28,31 +28,31 @@ export interface UserProject2ProjectResponse {
      */
     'project_id': number;
     /**
-     * Имя
+     * First name
      * @type {string}
      * @memberof UserProject2ProjectResponse
      */
     'name': string;
     /**
-     * Фамилия
+     * Last name
      * @type {string}
      * @memberof UserProject2ProjectResponse
      */
     'fename': string;
     /**
-     * Аватарка
+     * Avatar
      * @type {string}
      * @memberof UserProject2ProjectResponse
      */
     'photo_50': string;
     /**
-     * Тип 0 - личный проект, 1 - командный проект
+     * Type 0: personal project; 1: team project
      * @type {number}
      * @memberof UserProject2ProjectResponse
      */
     'type': UserProject2ProjectResponseTypeEnum;
     /**
-     * External id
+     * Text project ID / short code shown in the cabinet (ref_id). Match user-supplied codes to this field; pass the numeric project_id to other API methods.
      * @type {string}
      * @memberof UserProject2ProjectResponse
      */

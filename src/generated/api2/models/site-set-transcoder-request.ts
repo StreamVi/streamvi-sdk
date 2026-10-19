@@ -27,7 +27,7 @@ export interface SiteSetTranscoderRequest {
      */
     'v'?: SiteSetTranscoderRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteSetTranscoderRequest
      */
@@ -39,7 +39,7 @@ export interface SiteSetTranscoderRequest {
      */
     'project_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof SiteSetTranscoderRequest
      */

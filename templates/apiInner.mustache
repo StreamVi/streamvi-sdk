@@ -303,7 +303,7 @@ export const {{classname}}Factory = function (configuration?: Configuration, bas
          */
         {{#useSingleRequestParameter}}
         {{nickname}}({{#allParams.0}}requestParameters: {{classname}}{{operationIdCamelCase}}Request{{^hasRequiredParams}} = {}{{/hasRequiredParams}}, {{/allParams.0}}options?: RawAxiosRequestConfig): AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}> {
-            return localVarFp.{{nickname}}({{#allParams.0}}{{#allParams}}requestParameters.{{baseName}}, {{/allParams}}{{/allParams.0}}options).then((request) => request(axios, basePath));
+            return localVarFp.{{nickname}}({{#allParams.0}}{{#allParams}}requestParameters['{{baseName}}'], {{/allParams}}{{/allParams.0}}options).then((request) => request(axios, basePath));
         },
         {{/useSingleRequestParameter}}
         {{^useSingleRequestParameter}}
@@ -370,7 +370,7 @@ export interface {{classname}}{{operationIdCamelCase}}Request {
      * @type {{=<% %>=}}{<%&dataType%>}<%={{ }}=%>
      * @memberof {{classname}}{{operationIdCamelCase}}
      */
-    readonly {{baseName}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{#isNullable}} | null{{/isNullable}}{{/isEnum}}
+    readonly '{{baseName}}'{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{#isNullable}} | null{{/isNullable}}{{/isEnum}}
     {{^-last}}
 
     {{/-last}}
@@ -416,7 +416,7 @@ export class {{classname}} extends BaseAPI {
      */
     {{#useSingleRequestParameter}}
     public {{nickname}}({{#allParams.0}}requestParameters: {{classname}}{{operationIdCamelCase}}Request{{^hasRequiredParams}} = {}{{/hasRequiredParams}}, {{/allParams.0}}options?: RawAxiosRequestConfig) {
-        return {{classname}}Fp(this.configuration).{{nickname}}({{#allParams.0}}{{#allParams}}requestParameters.{{baseName}}, {{/allParams}}{{/allParams.0}}options).then((request) => request(this.axios, this.basePath));
+        return {{classname}}Fp(this.configuration).{{nickname}}({{#allParams.0}}{{#allParams}}requestParameters['{{baseName}}'], {{/allParams}}{{/allParams.0}}options).then((request) => request(this.axios, this.basePath));
     }
     {{/useSingleRequestParameter}}
     {{^useSingleRequestParameter}}

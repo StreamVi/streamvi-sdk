@@ -72,13 +72,14 @@ import type { WebinarUpdateStreamSettingDto } from '../models';
 export const WebinarApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Create a webinar room for project_id with room_name and a room_id suffix. The full ID combines the lowercase external project code and suffix; returns invite_link. Requires a current webinar plan; maximum participants depend on the plan\'s participants_room and rooms. Success means the room was created, not that broadcasting started.
          * @summary Create a new webinar room
          * @param {WebinarRoomCreateDto} webinarRoomCreateDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarRoomSiteCreateV1: async (webinarRoomCreateDto: WebinarRoomCreateDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarRoomSiteCreateV1: async (webinarRoomCreateDto: WebinarRoomCreateDto, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webinarRoomCreateDto' is not null or undefined
             assertParamExists('webinarRoomSiteCreateV1', 'webinarRoomCreateDto', webinarRoomCreateDto)
             const localVarPath = `/method/webinar/room/create`;
@@ -93,14 +94,21 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -113,13 +121,14 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Delete room_id in project_id through the LiveKit service. This deletes the room, not merely its stream; to stop the stream use POST /method/webinar/stream/stop.
          * @summary Delete a webinar room
          * @param {WebinarRoomDeleteDto} webinarRoomDeleteDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarRoomSiteDeleteV1: async (webinarRoomDeleteDto: WebinarRoomDeleteDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarRoomSiteDeleteV1: async (webinarRoomDeleteDto: WebinarRoomDeleteDto, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webinarRoomDeleteDto' is not null or undefined
             assertParamExists('webinarRoomSiteDeleteV1', 'webinarRoomDeleteDto', webinarRoomDeleteDto)
             const localVarPath = `/method/webinar/room/delete`;
@@ -134,14 +143,21 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -154,16 +170,17 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Read synchronization for room_id and client_id: tracks and optional focus_track with participant_sid/publication_sid. Public transport; an existing room context is required. This method neither issues RTC credentials nor connects a participant.
          * @summary Get sync a webinar room
-         * @param {WebinarRoomSiteGetSyncV1LanguageEnum} language Current language
+         * @param {WebinarRoomSiteGetSyncV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} roomId Room name
          * @param {string} clientId Client ID
          * @param {WebinarRoomSiteGetSyncV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarRoomSiteGetSyncV1: async (language: WebinarRoomSiteGetSyncV1LanguageEnum, roomId: string, clientId: string, v?: WebinarRoomSiteGetSyncV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarRoomSiteGetSyncV1: async (language: WebinarRoomSiteGetSyncV1LanguageEnum, roomId: string, clientId: string, v?: WebinarRoomSiteGetSyncV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('webinarRoomSiteGetSyncV1', 'language', language)
             // verify required parameter 'roomId' is not null or undefined
@@ -182,10 +199,6 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["webinar:read"], configuration)
-
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             } else {
@@ -206,6 +219,9 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -216,13 +232,14 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Join room_id anonymously with client_id/participant_name/region. Public transport; returns a secret participant_token and RTC server_url, with is_stream=false. A full or missing room returns the corresponding webinar.join_room_error_* error; credentials are not stored in the corpus.
          * @summary join in room anonymously
          * @param {WebinarRoomJoinAnonymousDto} webinarRoomJoinAnonymousDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarRoomSiteJoinAnonymousV1: async (webinarRoomJoinAnonymousDto: WebinarRoomJoinAnonymousDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarRoomSiteJoinAnonymousV1: async (webinarRoomJoinAnonymousDto: WebinarRoomJoinAnonymousDto, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webinarRoomJoinAnonymousDto' is not null or undefined
             assertParamExists('webinarRoomSiteJoinAnonymousV1', 'webinarRoomJoinAnonymousDto', webinarRoomJoinAnonymousDto)
             const localVarPath = `/method/webinar/room/join-anonymous`;
@@ -237,14 +254,13 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["webinar:read"], configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -257,13 +273,14 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Join room_id as the current authenticated user: participant_name/photo come from their profile. Returns server_url, secret participant_token and chat_token, room details and is_stream according to access. Available only to the project subject; issues RTC credentials rather than starting a broadcast.
          * @summary join in room
          * @param {WebinarRoomJoinDto} webinarRoomJoinDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarRoomSiteJoinV1: async (webinarRoomJoinDto: WebinarRoomJoinDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarRoomSiteJoinV1: async (webinarRoomJoinDto: WebinarRoomJoinDto, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webinarRoomJoinDto' is not null or undefined
             assertParamExists('webinarRoomSiteJoinV1', 'webinarRoomJoinDto', webinarRoomJoinDto)
             const localVarPath = `/method/webinar/room/join`;
@@ -278,14 +295,17 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -298,15 +318,16 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Read webinar rooms of project_id with participants, limits, status/stream_status, and invite_link. Data comes from the LiveKit service; listing neither creates a room nor starts a stream.
          * @summary List of webinar rooms
-         * @param {WebinarRoomSiteListV1LanguageEnum} language Current language
+         * @param {WebinarRoomSiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {WebinarRoomSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarRoomSiteListV1: async (language: WebinarRoomSiteListV1LanguageEnum, projectId: number, v?: WebinarRoomSiteListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarRoomSiteListV1: async (language: WebinarRoomSiteListV1LanguageEnum, projectId: number, v?: WebinarRoomSiteListV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('webinarRoomSiteListV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -323,9 +344,13 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["webinar:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -343,6 +368,9 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -353,16 +381,17 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Get preliminary details for room_id: participants, owner, and client_id; if client_id is absent, a UUID is created. This prepares entry through the LiveKit service without obtaining participant_token. Do not treat this GET as an ordinary project catalog.
          * @summary Pre-join in room
-         * @param {WebinarRoomSitePreJoinV1LanguageEnum} language Current language
+         * @param {WebinarRoomSitePreJoinV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} roomId Room id
          * @param {string} clientId Client ID
          * @param {WebinarRoomSitePreJoinV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarRoomSitePreJoinV1: async (language: WebinarRoomSitePreJoinV1LanguageEnum, roomId: string, clientId: string, v?: WebinarRoomSitePreJoinV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarRoomSitePreJoinV1: async (language: WebinarRoomSitePreJoinV1LanguageEnum, roomId: string, clientId: string, v?: WebinarRoomSitePreJoinV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('webinarRoomSitePreJoinV1', 'language', language)
             // verify required parameter 'roomId' is not null or undefined
@@ -381,10 +410,6 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["webinar:read"], configuration)
-
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             } else {
@@ -405,6 +430,9 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -415,13 +443,14 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Updates synchronization for a room belonging to the selected project. Requires the existing room/client context; participant_sid and publication_sid must refer to actual media context. This operation does not join the room or issue RTC credentials.
          * @summary Sync a webinar room
          * @param {SiteWebinarRoomSetSyncBodyRequest} siteWebinarRoomSetSyncBodyRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarRoomSiteSyncV1: async (siteWebinarRoomSetSyncBodyRequest: SiteWebinarRoomSetSyncBodyRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarRoomSiteSyncV1: async (siteWebinarRoomSetSyncBodyRequest: SiteWebinarRoomSetSyncBodyRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteWebinarRoomSetSyncBodyRequest' is not null or undefined
             assertParamExists('webinarRoomSiteSyncV1', 'siteWebinarRoomSetSyncBodyRequest', siteWebinarRoomSetSyncBodyRequest)
             const localVarPath = `/method/webinar/room/sync`;
@@ -436,14 +465,21 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -456,13 +492,14 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Update the name/settings of the existing room_id in project_id via LiveKit. The participant limit comes from the current webinar tariff, or 0 if absent. Returns the update result, not new participant credentials.
          * @summary Update a webinar room
          * @param {WebinarRoomUpdateDto} webinarRoomUpdateDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarRoomSiteUpdateV1: async (webinarRoomUpdateDto: WebinarRoomUpdateDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarRoomSiteUpdateV1: async (webinarRoomUpdateDto: WebinarRoomUpdateDto, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webinarRoomUpdateDto' is not null or undefined
             assertParamExists('webinarRoomSiteUpdateV1', 'webinarRoomUpdateDto', webinarRoomUpdateDto)
             const localVarPath = `/method/webinar/room/update`;
@@ -477,14 +514,21 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -497,13 +541,14 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Start a stream for room_id through LiveKit egress using a source URL prepared for the room project. failed_to_start_stream becomes webinar.stream_start_error. Success confirms the start command response; verify actual status with GET /method/webinar/stream/last.
          * @summary Start a webinar stream
          * @param {WebinarStreamStartDto} webinarStreamStartDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarStreamSiteCreateV1: async (webinarStreamStartDto: WebinarStreamStartDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarStreamSiteCreateV1: async (webinarStreamStartDto: WebinarStreamStartDto, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webinarStreamStartDto' is not null or undefined
             assertParamExists('webinarStreamSiteCreateV1', 'webinarStreamStartDto', webinarStreamStartDto)
             const localVarPath = `/method/webinar/stream/start`;
@@ -518,14 +563,21 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -538,16 +590,18 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Read saved width/height/fps/bitrate for the stream of room_id. Missing settings produce stream.not_found. This is the configuration of future/current output, not a start command; save it with POST /method/webinar/stream/setting.
          * @summary Get setting a webinar stream
-         * @param {WebinarStreamSiteGetSettingStreamV1LanguageEnum} language Current language
+         * @param {WebinarStreamSiteGetSettingStreamV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} clientId Client ID
          * @param {string} roomId Room id
          * @param {WebinarStreamSiteGetSettingStreamV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Required selected project for account integration credentials; room prefix must match its external ID
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarStreamSiteGetSettingStreamV1: async (language: WebinarStreamSiteGetSettingStreamV1LanguageEnum, clientId: string, roomId: string, v?: WebinarStreamSiteGetSettingStreamV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarStreamSiteGetSettingStreamV1: async (language: WebinarStreamSiteGetSettingStreamV1LanguageEnum, clientId: string, roomId: string, v?: WebinarStreamSiteGetSettingStreamV1VEnum, projectId?: number, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('webinarStreamSiteGetSettingStreamV1', 'language', language)
             // verify required parameter 'clientId' is not null or undefined
@@ -566,9 +620,13 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["webinar:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -578,6 +636,10 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
 
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
             }
 
             if (clientId !== undefined) {
@@ -590,6 +652,9 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -600,16 +665,17 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Read the latest stream state for room_id, matched against the project\'s active stream and LiveKit data. is_current_room/is_webinar_room indicate ownership; start_at/end_at and status may be absent. Public reads neither start nor resume the stream.
          * @summary Get last webinar stream
-         * @param {WebinarStreamSiteLastV1LanguageEnum} language Current language
+         * @param {WebinarStreamSiteLastV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} roomId Room id
          * @param {string} clientId Client ID
          * @param {WebinarStreamSiteLastV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarStreamSiteLastV1: async (language: WebinarStreamSiteLastV1LanguageEnum, roomId: string, clientId: string, v?: WebinarStreamSiteLastV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarStreamSiteLastV1: async (language: WebinarStreamSiteLastV1LanguageEnum, roomId: string, clientId: string, v?: WebinarStreamSiteLastV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('webinarStreamSiteLastV1', 'language', language)
             // verify required parameter 'roomId' is not null or undefined
@@ -628,10 +694,6 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["webinar:read"], configuration)
-
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             } else {
@@ -652,6 +714,9 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -662,13 +727,14 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Send a pause command to the active live stream of room_id after checking the existing webinar stream. Errors in the current use case are reported as other.unknown. Success confirms the management command response, not completion of all external actions; read state using GET /method/webinar/stream/last.
          * @summary Pause a webinar stream
          * @param {WebinarStreamPauseDto} webinarStreamPauseDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarStreamSitePauseV1: async (webinarStreamPauseDto: WebinarStreamPauseDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarStreamSitePauseV1: async (webinarStreamPauseDto: WebinarStreamPauseDto, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webinarStreamPauseDto' is not null or undefined
             assertParamExists('webinarStreamSitePauseV1', 'webinarStreamPauseDto', webinarStreamPauseDto)
             const localVarPath = `/method/webinar/stream/pause`;
@@ -683,14 +749,21 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -703,13 +776,14 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
-         * @summary Play after pause
+         * Resume the active live stream of room_id after a pause. Commands an existing stream, rather than starting a new broadcast; to start one, use POST /method/webinar/stream/start. Current workflow errors are represented as other.unknown.
+         * @summary Resume an active webinar stream
          * @param {WebinarStreamPlayDto} webinarStreamPlayDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarStreamSitePlayV1: async (webinarStreamPlayDto: WebinarStreamPlayDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarStreamSitePlayV1: async (webinarStreamPlayDto: WebinarStreamPlayDto, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webinarStreamPlayDto' is not null or undefined
             assertParamExists('webinarStreamSitePlayV1', 'webinarStreamPlayDto', webinarStreamPlayDto)
             const localVarPath = `/method/webinar/stream/play`;
@@ -724,14 +798,21 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -744,13 +825,14 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Save stream width/height/fps/bitrate for room_id through the LiveKit service. Checks the current webinar plan, available resolution, and the restream plan\'s maximum bitrate; errors are webinar.stream_resolution_max_error/restream.bitrate_max_error. Supply all settings according to the DTO. Success confirms settings were saved, not that the stream started.
          * @summary Setting a webinar stream
          * @param {WebinarUpdateStreamSettingDto} webinarUpdateStreamSettingDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarStreamSiteSettingStreamV1: async (webinarUpdateStreamSettingDto: WebinarUpdateStreamSettingDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarStreamSiteSettingStreamV1: async (webinarUpdateStreamSettingDto: WebinarUpdateStreamSettingDto, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webinarUpdateStreamSettingDto' is not null or undefined
             assertParamExists('webinarStreamSiteSettingStreamV1', 'webinarUpdateStreamSettingDto', webinarUpdateStreamSettingDto)
             const localVarPath = `/method/webinar/stream/setting`;
@@ -765,14 +847,21 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -785,13 +874,14 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Stop the stream of room_id: the use case attempts to reset the active source wait to zero and stop LiveKit egress. Errors in the first stage are logged; success does not guarantee that stage completed. failed_to_stop_stream produces webinar.stream_stop_error. This stops the stream without deleting the room.
          * @summary Stop a webinar stream
          * @param {WebinarStreamStopDto} webinarStreamStopDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webinarStreamSiteUpdateV1: async (webinarStreamStopDto: WebinarStreamStopDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        webinarStreamSiteUpdateV1: async (webinarStreamStopDto: WebinarStreamStopDto, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webinarStreamStopDto' is not null or undefined
             assertParamExists('webinarStreamSiteUpdateV1', 'webinarStreamStopDto', webinarStreamStopDto)
             const localVarPath = `/method/webinar/stream/stop`;
@@ -806,14 +896,21 @@ export const WebinarApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["webinar:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["webinar:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -836,223 +933,240 @@ export const WebinarApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WebinarApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Create a webinar room for project_id with room_name and a room_id suffix. The full ID combines the lowercase external project code and suffix; returns invite_link. Requires a current webinar plan; maximum participants depend on the plan\'s participants_room and rooms. Success means the room was created, not that broadcasting started.
          * @summary Create a new webinar room
          * @param {WebinarRoomCreateDto} webinarRoomCreateDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarRoomSiteCreateV1(webinarRoomCreateDto: WebinarRoomCreateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomCreateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteCreateV1(webinarRoomCreateDto, options);
+        async webinarRoomSiteCreateV1(webinarRoomCreateDto: WebinarRoomCreateDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomCreateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteCreateV1(webinarRoomCreateDto, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarRoomSiteCreateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Delete room_id in project_id through the LiveKit service. This deletes the room, not merely its stream; to stop the stream use POST /method/webinar/stream/stop.
          * @summary Delete a webinar room
          * @param {WebinarRoomDeleteDto} webinarRoomDeleteDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarRoomSiteDeleteV1(webinarRoomDeleteDto: WebinarRoomDeleteDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomDeleteResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteDeleteV1(webinarRoomDeleteDto, options);
+        async webinarRoomSiteDeleteV1(webinarRoomDeleteDto: WebinarRoomDeleteDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomDeleteResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteDeleteV1(webinarRoomDeleteDto, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarRoomSiteDeleteV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read synchronization for room_id and client_id: tracks and optional focus_track with participant_sid/publication_sid. Public transport; an existing room context is required. This method neither issues RTC credentials nor connects a participant.
          * @summary Get sync a webinar room
-         * @param {WebinarRoomSiteGetSyncV1LanguageEnum} language Current language
+         * @param {WebinarRoomSiteGetSyncV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} roomId Room name
          * @param {string} clientId Client ID
          * @param {WebinarRoomSiteGetSyncV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarRoomSiteGetSyncV1(language: WebinarRoomSiteGetSyncV1LanguageEnum, roomId: string, clientId: string, v?: WebinarRoomSiteGetSyncV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomSyncResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteGetSyncV1(language, roomId, clientId, v, options);
+        async webinarRoomSiteGetSyncV1(language: WebinarRoomSiteGetSyncV1LanguageEnum, roomId: string, clientId: string, v?: WebinarRoomSiteGetSyncV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomSyncResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteGetSyncV1(language, roomId, clientId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarRoomSiteGetSyncV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Join room_id anonymously with client_id/participant_name/region. Public transport; returns a secret participant_token and RTC server_url, with is_stream=false. A full or missing room returns the corresponding webinar.join_room_error_* error; credentials are not stored in the corpus.
          * @summary join in room anonymously
          * @param {WebinarRoomJoinAnonymousDto} webinarRoomJoinAnonymousDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarRoomSiteJoinAnonymousV1(webinarRoomJoinAnonymousDto: WebinarRoomJoinAnonymousDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomJoinResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteJoinAnonymousV1(webinarRoomJoinAnonymousDto, options);
+        async webinarRoomSiteJoinAnonymousV1(webinarRoomJoinAnonymousDto: WebinarRoomJoinAnonymousDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomJoinResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteJoinAnonymousV1(webinarRoomJoinAnonymousDto, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarRoomSiteJoinAnonymousV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Join room_id as the current authenticated user: participant_name/photo come from their profile. Returns server_url, secret participant_token and chat_token, room details and is_stream according to access. Available only to the project subject; issues RTC credentials rather than starting a broadcast.
          * @summary join in room
          * @param {WebinarRoomJoinDto} webinarRoomJoinDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarRoomSiteJoinV1(webinarRoomJoinDto: WebinarRoomJoinDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomJoinResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteJoinV1(webinarRoomJoinDto, options);
+        async webinarRoomSiteJoinV1(webinarRoomJoinDto: WebinarRoomJoinDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomJoinResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteJoinV1(webinarRoomJoinDto, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarRoomSiteJoinV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read webinar rooms of project_id with participants, limits, status/stream_status, and invite_link. Data comes from the LiveKit service; listing neither creates a room nor starts a stream.
          * @summary List of webinar rooms
-         * @param {WebinarRoomSiteListV1LanguageEnum} language Current language
+         * @param {WebinarRoomSiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {WebinarRoomSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarRoomSiteListV1(language: WebinarRoomSiteListV1LanguageEnum, projectId: number, v?: WebinarRoomSiteListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteListV1(language, projectId, v, options);
+        async webinarRoomSiteListV1(language: WebinarRoomSiteListV1LanguageEnum, projectId: number, v?: WebinarRoomSiteListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteListV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarRoomSiteListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Get preliminary details for room_id: participants, owner, and client_id; if client_id is absent, a UUID is created. This prepares entry through the LiveKit service without obtaining participant_token. Do not treat this GET as an ordinary project catalog.
          * @summary Pre-join in room
-         * @param {WebinarRoomSitePreJoinV1LanguageEnum} language Current language
+         * @param {WebinarRoomSitePreJoinV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} roomId Room id
          * @param {string} clientId Client ID
          * @param {WebinarRoomSitePreJoinV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarRoomSitePreJoinV1(language: WebinarRoomSitePreJoinV1LanguageEnum, roomId: string, clientId: string, v?: WebinarRoomSitePreJoinV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomPreJoinResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSitePreJoinV1(language, roomId, clientId, v, options);
+        async webinarRoomSitePreJoinV1(language: WebinarRoomSitePreJoinV1LanguageEnum, roomId: string, clientId: string, v?: WebinarRoomSitePreJoinV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomPreJoinResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSitePreJoinV1(language, roomId, clientId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarRoomSitePreJoinV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Updates synchronization for a room belonging to the selected project. Requires the existing room/client context; participant_sid and publication_sid must refer to actual media context. This operation does not join the room or issue RTC credentials.
          * @summary Sync a webinar room
          * @param {SiteWebinarRoomSetSyncBodyRequest} siteWebinarRoomSetSyncBodyRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarRoomSiteSyncV1(siteWebinarRoomSetSyncBodyRequest: SiteWebinarRoomSetSyncBodyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteSyncV1(siteWebinarRoomSetSyncBodyRequest, options);
+        async webinarRoomSiteSyncV1(siteWebinarRoomSetSyncBodyRequest: SiteWebinarRoomSetSyncBodyRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteSyncV1(siteWebinarRoomSetSyncBodyRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarRoomSiteSyncV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Update the name/settings of the existing room_id in project_id via LiveKit. The participant limit comes from the current webinar tariff, or 0 if absent. Returns the update result, not new participant credentials.
          * @summary Update a webinar room
          * @param {WebinarRoomUpdateDto} webinarRoomUpdateDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarRoomSiteUpdateV1(webinarRoomUpdateDto: WebinarRoomUpdateDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomUpdateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteUpdateV1(webinarRoomUpdateDto, options);
+        async webinarRoomSiteUpdateV1(webinarRoomUpdateDto: WebinarRoomUpdateDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomUpdateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarRoomSiteUpdateV1(webinarRoomUpdateDto, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarRoomSiteUpdateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Start a stream for room_id through LiveKit egress using a source URL prepared for the room project. failed_to_start_stream becomes webinar.stream_start_error. Success confirms the start command response; verify actual status with GET /method/webinar/stream/last.
          * @summary Start a webinar stream
          * @param {WebinarStreamStartDto} webinarStreamStartDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarStreamSiteCreateV1(webinarStreamStartDto: WebinarStreamStartDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSiteCreateV1(webinarStreamStartDto, options);
+        async webinarStreamSiteCreateV1(webinarStreamStartDto: WebinarStreamStartDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSiteCreateV1(webinarStreamStartDto, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarStreamSiteCreateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read saved width/height/fps/bitrate for the stream of room_id. Missing settings produce stream.not_found. This is the configuration of future/current output, not a start command; save it with POST /method/webinar/stream/setting.
          * @summary Get setting a webinar stream
-         * @param {WebinarStreamSiteGetSettingStreamV1LanguageEnum} language Current language
+         * @param {WebinarStreamSiteGetSettingStreamV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} clientId Client ID
          * @param {string} roomId Room id
          * @param {WebinarStreamSiteGetSettingStreamV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [projectId] Required selected project for account integration credentials; room prefix must match its external ID
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarStreamSiteGetSettingStreamV1(language: WebinarStreamSiteGetSettingStreamV1LanguageEnum, clientId: string, roomId: string, v?: WebinarStreamSiteGetSettingStreamV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarGetSettingsStreamResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSiteGetSettingStreamV1(language, clientId, roomId, v, options);
+        async webinarStreamSiteGetSettingStreamV1(language: WebinarStreamSiteGetSettingStreamV1LanguageEnum, clientId: string, roomId: string, v?: WebinarStreamSiteGetSettingStreamV1VEnum, projectId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarGetSettingsStreamResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSiteGetSettingStreamV1(language, clientId, roomId, v, projectId, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarStreamSiteGetSettingStreamV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read the latest stream state for room_id, matched against the project\'s active stream and LiveKit data. is_current_room/is_webinar_room indicate ownership; start_at/end_at and status may be absent. Public reads neither start nor resume the stream.
          * @summary Get last webinar stream
-         * @param {WebinarStreamSiteLastV1LanguageEnum} language Current language
+         * @param {WebinarStreamSiteLastV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} roomId Room id
          * @param {string} clientId Client ID
          * @param {WebinarStreamSiteLastV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarStreamSiteLastV1(language: WebinarStreamSiteLastV1LanguageEnum, roomId: string, clientId: string, v?: WebinarStreamSiteLastV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomStreamLastResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSiteLastV1(language, roomId, clientId, v, options);
+        async webinarStreamSiteLastV1(language: WebinarStreamSiteLastV1LanguageEnum, roomId: string, clientId: string, v?: WebinarStreamSiteLastV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteWebinarRoomStreamLastResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSiteLastV1(language, roomId, clientId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarStreamSiteLastV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Send a pause command to the active live stream of room_id after checking the existing webinar stream. Errors in the current use case are reported as other.unknown. Success confirms the management command response, not completion of all external actions; read state using GET /method/webinar/stream/last.
          * @summary Pause a webinar stream
          * @param {WebinarStreamPauseDto} webinarStreamPauseDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarStreamSitePauseV1(webinarStreamPauseDto: WebinarStreamPauseDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSitePauseV1(webinarStreamPauseDto, options);
+        async webinarStreamSitePauseV1(webinarStreamPauseDto: WebinarStreamPauseDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSitePauseV1(webinarStreamPauseDto, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarStreamSitePauseV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @summary Play after pause
+         * Resume the active live stream of room_id after a pause. Commands an existing stream, rather than starting a new broadcast; to start one, use POST /method/webinar/stream/start. Current workflow errors are represented as other.unknown.
+         * @summary Resume an active webinar stream
          * @param {WebinarStreamPlayDto} webinarStreamPlayDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarStreamSitePlayV1(webinarStreamPlayDto: WebinarStreamPlayDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSitePlayV1(webinarStreamPlayDto, options);
+        async webinarStreamSitePlayV1(webinarStreamPlayDto: WebinarStreamPlayDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSitePlayV1(webinarStreamPlayDto, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarStreamSitePlayV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Save stream width/height/fps/bitrate for room_id through the LiveKit service. Checks the current webinar plan, available resolution, and the restream plan\'s maximum bitrate; errors are webinar.stream_resolution_max_error/restream.bitrate_max_error. Supply all settings according to the DTO. Success confirms settings were saved, not that the stream started.
          * @summary Setting a webinar stream
          * @param {WebinarUpdateStreamSettingDto} webinarUpdateStreamSettingDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarStreamSiteSettingStreamV1(webinarUpdateStreamSettingDto: WebinarUpdateStreamSettingDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSiteSettingStreamV1(webinarUpdateStreamSettingDto, options);
+        async webinarStreamSiteSettingStreamV1(webinarUpdateStreamSettingDto: WebinarUpdateStreamSettingDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSiteSettingStreamV1(webinarUpdateStreamSettingDto, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarStreamSiteSettingStreamV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Stop the stream of room_id: the use case attempts to reset the active source wait to zero and stop LiveKit egress. Errors in the first stage are logged; success does not guarantee that stage completed. failed_to_stop_stream produces webinar.stream_stop_error. This stops the stream without deleting the room.
          * @summary Stop a webinar stream
          * @param {WebinarStreamStopDto} webinarStreamStopDto 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async webinarStreamSiteUpdateV1(webinarStreamStopDto: WebinarStreamStopDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSiteUpdateV1(webinarStreamStopDto, options);
+        async webinarStreamSiteUpdateV1(webinarStreamStopDto: WebinarStreamStopDto, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webinarStreamSiteUpdateV1(webinarStreamStopDto, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebinarApi.webinarStreamSiteUpdateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -1068,164 +1182,164 @@ export const WebinarApiFactory = function (configuration?: Configuration, basePa
     const localVarFp = WebinarApiFp(configuration)
     return {
         /**
-         * 
+         * Create a webinar room for project_id with room_name and a room_id suffix. The full ID combines the lowercase external project code and suffix; returns invite_link. Requires a current webinar plan; maximum participants depend on the plan\'s participants_room and rooms. Success means the room was created, not that broadcasting started.
          * @summary Create a new webinar room
          * @param {WebinarApiWebinarRoomSiteCreateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarRoomSiteCreateV1(requestParameters: WebinarApiWebinarRoomSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomCreateResponse> {
-            return localVarFp.webinarRoomSiteCreateV1(requestParameters.WebinarRoomCreateDto, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarRoomSiteCreateV1(requestParameters['WebinarRoomCreateDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Delete room_id in project_id through the LiveKit service. This deletes the room, not merely its stream; to stop the stream use POST /method/webinar/stream/stop.
          * @summary Delete a webinar room
          * @param {WebinarApiWebinarRoomSiteDeleteV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarRoomSiteDeleteV1(requestParameters: WebinarApiWebinarRoomSiteDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomDeleteResponse> {
-            return localVarFp.webinarRoomSiteDeleteV1(requestParameters.WebinarRoomDeleteDto, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarRoomSiteDeleteV1(requestParameters['WebinarRoomDeleteDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read synchronization for room_id and client_id: tracks and optional focus_track with participant_sid/publication_sid. Public transport; an existing room context is required. This method neither issues RTC credentials nor connects a participant.
          * @summary Get sync a webinar room
          * @param {WebinarApiWebinarRoomSiteGetSyncV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarRoomSiteGetSyncV1(requestParameters: WebinarApiWebinarRoomSiteGetSyncV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomSyncResponse> {
-            return localVarFp.webinarRoomSiteGetSyncV1(requestParameters.language, requestParameters.room_id, requestParameters.client_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarRoomSiteGetSyncV1(requestParameters['language'], requestParameters['room_id'], requestParameters['client_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Join room_id anonymously with client_id/participant_name/region. Public transport; returns a secret participant_token and RTC server_url, with is_stream=false. A full or missing room returns the corresponding webinar.join_room_error_* error; credentials are not stored in the corpus.
          * @summary join in room anonymously
          * @param {WebinarApiWebinarRoomSiteJoinAnonymousV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarRoomSiteJoinAnonymousV1(requestParameters: WebinarApiWebinarRoomSiteJoinAnonymousV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomJoinResponse> {
-            return localVarFp.webinarRoomSiteJoinAnonymousV1(requestParameters.WebinarRoomJoinAnonymousDto, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarRoomSiteJoinAnonymousV1(requestParameters['WebinarRoomJoinAnonymousDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Join room_id as the current authenticated user: participant_name/photo come from their profile. Returns server_url, secret participant_token and chat_token, room details and is_stream according to access. Available only to the project subject; issues RTC credentials rather than starting a broadcast.
          * @summary join in room
          * @param {WebinarApiWebinarRoomSiteJoinV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarRoomSiteJoinV1(requestParameters: WebinarApiWebinarRoomSiteJoinV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomJoinResponse> {
-            return localVarFp.webinarRoomSiteJoinV1(requestParameters.WebinarRoomJoinDto, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarRoomSiteJoinV1(requestParameters['WebinarRoomJoinDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read webinar rooms of project_id with participants, limits, status/stream_status, and invite_link. Data comes from the LiveKit service; listing neither creates a room nor starts a stream.
          * @summary List of webinar rooms
          * @param {WebinarApiWebinarRoomSiteListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarRoomSiteListV1(requestParameters: WebinarApiWebinarRoomSiteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomListResponse> {
-            return localVarFp.webinarRoomSiteListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarRoomSiteListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Get preliminary details for room_id: participants, owner, and client_id; if client_id is absent, a UUID is created. This prepares entry through the LiveKit service without obtaining participant_token. Do not treat this GET as an ordinary project catalog.
          * @summary Pre-join in room
          * @param {WebinarApiWebinarRoomSitePreJoinV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarRoomSitePreJoinV1(requestParameters: WebinarApiWebinarRoomSitePreJoinV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomPreJoinResponse> {
-            return localVarFp.webinarRoomSitePreJoinV1(requestParameters.language, requestParameters.room_id, requestParameters.client_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarRoomSitePreJoinV1(requestParameters['language'], requestParameters['room_id'], requestParameters['client_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Updates synchronization for a room belonging to the selected project. Requires the existing room/client context; participant_sid and publication_sid must refer to actual media context. This operation does not join the room or issue RTC credentials.
          * @summary Sync a webinar room
          * @param {WebinarApiWebinarRoomSiteSyncV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarRoomSiteSyncV1(requestParameters: WebinarApiWebinarRoomSiteSyncV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.webinarRoomSiteSyncV1(requestParameters.SiteWebinarRoomSetSyncBodyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarRoomSiteSyncV1(requestParameters['SiteWebinarRoomSetSyncBodyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Update the name/settings of the existing room_id in project_id via LiveKit. The participant limit comes from the current webinar tariff, or 0 if absent. Returns the update result, not new participant credentials.
          * @summary Update a webinar room
          * @param {WebinarApiWebinarRoomSiteUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarRoomSiteUpdateV1(requestParameters: WebinarApiWebinarRoomSiteUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomUpdateResponse> {
-            return localVarFp.webinarRoomSiteUpdateV1(requestParameters.WebinarRoomUpdateDto, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarRoomSiteUpdateV1(requestParameters['WebinarRoomUpdateDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Start a stream for room_id through LiveKit egress using a source URL prepared for the room project. failed_to_start_stream becomes webinar.stream_start_error. Success confirms the start command response; verify actual status with GET /method/webinar/stream/last.
          * @summary Start a webinar stream
          * @param {WebinarApiWebinarStreamSiteCreateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarStreamSiteCreateV1(requestParameters: WebinarApiWebinarStreamSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.webinarStreamSiteCreateV1(requestParameters.WebinarStreamStartDto, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarStreamSiteCreateV1(requestParameters['WebinarStreamStartDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read saved width/height/fps/bitrate for the stream of room_id. Missing settings produce stream.not_found. This is the configuration of future/current output, not a start command; save it with POST /method/webinar/stream/setting.
          * @summary Get setting a webinar stream
          * @param {WebinarApiWebinarStreamSiteGetSettingStreamV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarStreamSiteGetSettingStreamV1(requestParameters: WebinarApiWebinarStreamSiteGetSettingStreamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarGetSettingsStreamResponse> {
-            return localVarFp.webinarStreamSiteGetSettingStreamV1(requestParameters.language, requestParameters.client_id, requestParameters.room_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarStreamSiteGetSettingStreamV1(requestParameters['language'], requestParameters['client_id'], requestParameters['room_id'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read the latest stream state for room_id, matched against the project\'s active stream and LiveKit data. is_current_room/is_webinar_room indicate ownership; start_at/end_at and status may be absent. Public reads neither start nor resume the stream.
          * @summary Get last webinar stream
          * @param {WebinarApiWebinarStreamSiteLastV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarStreamSiteLastV1(requestParameters: WebinarApiWebinarStreamSiteLastV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomStreamLastResponse> {
-            return localVarFp.webinarStreamSiteLastV1(requestParameters.language, requestParameters.room_id, requestParameters.client_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarStreamSiteLastV1(requestParameters['language'], requestParameters['room_id'], requestParameters['client_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Send a pause command to the active live stream of room_id after checking the existing webinar stream. Errors in the current use case are reported as other.unknown. Success confirms the management command response, not completion of all external actions; read state using GET /method/webinar/stream/last.
          * @summary Pause a webinar stream
          * @param {WebinarApiWebinarStreamSitePauseV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarStreamSitePauseV1(requestParameters: WebinarApiWebinarStreamSitePauseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.webinarStreamSitePauseV1(requestParameters.WebinarStreamPauseDto, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarStreamSitePauseV1(requestParameters['WebinarStreamPauseDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Play after pause
+         * Resume the active live stream of room_id after a pause. Commands an existing stream, rather than starting a new broadcast; to start one, use POST /method/webinar/stream/start. Current workflow errors are represented as other.unknown.
+         * @summary Resume an active webinar stream
          * @param {WebinarApiWebinarStreamSitePlayV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarStreamSitePlayV1(requestParameters: WebinarApiWebinarStreamSitePlayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.webinarStreamSitePlayV1(requestParameters.WebinarStreamPlayDto, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarStreamSitePlayV1(requestParameters['WebinarStreamPlayDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Save stream width/height/fps/bitrate for room_id through the LiveKit service. Checks the current webinar plan, available resolution, and the restream plan\'s maximum bitrate; errors are webinar.stream_resolution_max_error/restream.bitrate_max_error. Supply all settings according to the DTO. Success confirms settings were saved, not that the stream started.
          * @summary Setting a webinar stream
          * @param {WebinarApiWebinarStreamSiteSettingStreamV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarStreamSiteSettingStreamV1(requestParameters: WebinarApiWebinarStreamSiteSettingStreamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.webinarStreamSiteSettingStreamV1(requestParameters.WebinarUpdateStreamSettingDto, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarStreamSiteSettingStreamV1(requestParameters['WebinarUpdateStreamSettingDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Stop the stream of room_id: the use case attempts to reset the active source wait to zero and stop LiveKit egress. Errors in the first stage are logged; success does not guarantee that stage completed. failed_to_stop_stream produces webinar.stream_stop_error. This stops the stream without deleting the room.
          * @summary Stop a webinar stream
          * @param {WebinarApiWebinarStreamSiteUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         webinarStreamSiteUpdateV1(requestParameters: WebinarApiWebinarStreamSiteUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.webinarStreamSiteUpdateV1(requestParameters.WebinarStreamStopDto, options).then((request) => request(axios, basePath));
+            return localVarFp.webinarStreamSiteUpdateV1(requestParameters['WebinarStreamStopDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1237,7 +1351,7 @@ export const WebinarApiFactory = function (configuration?: Configuration, basePa
  */
 export interface WebinarApiInterface {
     /**
-     * 
+     * Create a webinar room for project_id with room_name and a room_id suffix. The full ID combines the lowercase external project code and suffix; returns invite_link. Requires a current webinar plan; maximum participants depend on the plan\'s participants_room and rooms. Success means the room was created, not that broadcasting started.
      * @summary Create a new webinar room
      * @param {WebinarApiWebinarRoomSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1247,7 +1361,7 @@ export interface WebinarApiInterface {
     webinarRoomSiteCreateV1(requestParameters: WebinarApiWebinarRoomSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomCreateResponse>;
 
     /**
-     * 
+     * Delete room_id in project_id through the LiveKit service. This deletes the room, not merely its stream; to stop the stream use POST /method/webinar/stream/stop.
      * @summary Delete a webinar room
      * @param {WebinarApiWebinarRoomSiteDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1257,7 +1371,7 @@ export interface WebinarApiInterface {
     webinarRoomSiteDeleteV1(requestParameters: WebinarApiWebinarRoomSiteDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomDeleteResponse>;
 
     /**
-     * 
+     * Read synchronization for room_id and client_id: tracks and optional focus_track with participant_sid/publication_sid. Public transport; an existing room context is required. This method neither issues RTC credentials nor connects a participant.
      * @summary Get sync a webinar room
      * @param {WebinarApiWebinarRoomSiteGetSyncV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1267,7 +1381,7 @@ export interface WebinarApiInterface {
     webinarRoomSiteGetSyncV1(requestParameters: WebinarApiWebinarRoomSiteGetSyncV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomSyncResponse>;
 
     /**
-     * 
+     * Join room_id anonymously with client_id/participant_name/region. Public transport; returns a secret participant_token and RTC server_url, with is_stream=false. A full or missing room returns the corresponding webinar.join_room_error_* error; credentials are not stored in the corpus.
      * @summary join in room anonymously
      * @param {WebinarApiWebinarRoomSiteJoinAnonymousV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1277,7 +1391,7 @@ export interface WebinarApiInterface {
     webinarRoomSiteJoinAnonymousV1(requestParameters: WebinarApiWebinarRoomSiteJoinAnonymousV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomJoinResponse>;
 
     /**
-     * 
+     * Join room_id as the current authenticated user: participant_name/photo come from their profile. Returns server_url, secret participant_token and chat_token, room details and is_stream according to access. Available only to the project subject; issues RTC credentials rather than starting a broadcast.
      * @summary join in room
      * @param {WebinarApiWebinarRoomSiteJoinV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1287,7 +1401,7 @@ export interface WebinarApiInterface {
     webinarRoomSiteJoinV1(requestParameters: WebinarApiWebinarRoomSiteJoinV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomJoinResponse>;
 
     /**
-     * 
+     * Read webinar rooms of project_id with participants, limits, status/stream_status, and invite_link. Data comes from the LiveKit service; listing neither creates a room nor starts a stream.
      * @summary List of webinar rooms
      * @param {WebinarApiWebinarRoomSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1297,7 +1411,7 @@ export interface WebinarApiInterface {
     webinarRoomSiteListV1(requestParameters: WebinarApiWebinarRoomSiteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomListResponse>;
 
     /**
-     * 
+     * Get preliminary details for room_id: participants, owner, and client_id; if client_id is absent, a UUID is created. This prepares entry through the LiveKit service without obtaining participant_token. Do not treat this GET as an ordinary project catalog.
      * @summary Pre-join in room
      * @param {WebinarApiWebinarRoomSitePreJoinV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1307,7 +1421,7 @@ export interface WebinarApiInterface {
     webinarRoomSitePreJoinV1(requestParameters: WebinarApiWebinarRoomSitePreJoinV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomPreJoinResponse>;
 
     /**
-     * 
+     * Updates synchronization for a room belonging to the selected project. Requires the existing room/client context; participant_sid and publication_sid must refer to actual media context. This operation does not join the room or issue RTC credentials.
      * @summary Sync a webinar room
      * @param {WebinarApiWebinarRoomSiteSyncV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1317,7 +1431,7 @@ export interface WebinarApiInterface {
     webinarRoomSiteSyncV1(requestParameters: WebinarApiWebinarRoomSiteSyncV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Update the name/settings of the existing room_id in project_id via LiveKit. The participant limit comes from the current webinar tariff, or 0 if absent. Returns the update result, not new participant credentials.
      * @summary Update a webinar room
      * @param {WebinarApiWebinarRoomSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1327,7 +1441,7 @@ export interface WebinarApiInterface {
     webinarRoomSiteUpdateV1(requestParameters: WebinarApiWebinarRoomSiteUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomUpdateResponse>;
 
     /**
-     * 
+     * Start a stream for room_id through LiveKit egress using a source URL prepared for the room project. failed_to_start_stream becomes webinar.stream_start_error. Success confirms the start command response; verify actual status with GET /method/webinar/stream/last.
      * @summary Start a webinar stream
      * @param {WebinarApiWebinarStreamSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1337,7 +1451,7 @@ export interface WebinarApiInterface {
     webinarStreamSiteCreateV1(requestParameters: WebinarApiWebinarStreamSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Read saved width/height/fps/bitrate for the stream of room_id. Missing settings produce stream.not_found. This is the configuration of future/current output, not a start command; save it with POST /method/webinar/stream/setting.
      * @summary Get setting a webinar stream
      * @param {WebinarApiWebinarStreamSiteGetSettingStreamV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1347,7 +1461,7 @@ export interface WebinarApiInterface {
     webinarStreamSiteGetSettingStreamV1(requestParameters: WebinarApiWebinarStreamSiteGetSettingStreamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarGetSettingsStreamResponse>;
 
     /**
-     * 
+     * Read the latest stream state for room_id, matched against the project\'s active stream and LiveKit data. is_current_room/is_webinar_room indicate ownership; start_at/end_at and status may be absent. Public reads neither start nor resume the stream.
      * @summary Get last webinar stream
      * @param {WebinarApiWebinarStreamSiteLastV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1357,7 +1471,7 @@ export interface WebinarApiInterface {
     webinarStreamSiteLastV1(requestParameters: WebinarApiWebinarStreamSiteLastV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteWebinarRoomStreamLastResponse>;
 
     /**
-     * 
+     * Send a pause command to the active live stream of room_id after checking the existing webinar stream. Errors in the current use case are reported as other.unknown. Success confirms the management command response, not completion of all external actions; read state using GET /method/webinar/stream/last.
      * @summary Pause a webinar stream
      * @param {WebinarApiWebinarStreamSitePauseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1367,8 +1481,8 @@ export interface WebinarApiInterface {
     webinarStreamSitePauseV1(requestParameters: WebinarApiWebinarStreamSitePauseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
-     * @summary Play after pause
+     * Resume the active live stream of room_id after a pause. Commands an existing stream, rather than starting a new broadcast; to start one, use POST /method/webinar/stream/start. Current workflow errors are represented as other.unknown.
+     * @summary Resume an active webinar stream
      * @param {WebinarApiWebinarStreamSitePlayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1377,7 +1491,7 @@ export interface WebinarApiInterface {
     webinarStreamSitePlayV1(requestParameters: WebinarApiWebinarStreamSitePlayV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Save stream width/height/fps/bitrate for room_id through the LiveKit service. Checks the current webinar plan, available resolution, and the restream plan\'s maximum bitrate; errors are webinar.stream_resolution_max_error/restream.bitrate_max_error. Supply all settings according to the DTO. Success confirms settings were saved, not that the stream started.
      * @summary Setting a webinar stream
      * @param {WebinarApiWebinarStreamSiteSettingStreamV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1387,7 +1501,7 @@ export interface WebinarApiInterface {
     webinarStreamSiteSettingStreamV1(requestParameters: WebinarApiWebinarStreamSiteSettingStreamV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Stop the stream of room_id: the use case attempts to reset the active source wait to zero and stop LiveKit egress. Errors in the first stage are logged; success does not guarantee that stage completed. failed_to_stop_stream produces webinar.stream_stop_error. This stops the stream without deleting the room.
      * @summary Stop a webinar stream
      * @param {WebinarApiWebinarStreamSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1409,7 +1523,14 @@ export interface WebinarApiWebinarRoomSiteCreateV1Request {
      * @type {WebinarRoomCreateDto}
      * @memberof WebinarApiWebinarRoomSiteCreateV1
      */
-    readonly WebinarRoomCreateDto: WebinarRoomCreateDto
+    readonly 'WebinarRoomCreateDto': WebinarRoomCreateDto
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarRoomSiteCreateV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1423,7 +1544,14 @@ export interface WebinarApiWebinarRoomSiteDeleteV1Request {
      * @type {WebinarRoomDeleteDto}
      * @memberof WebinarApiWebinarRoomSiteDeleteV1
      */
-    readonly WebinarRoomDeleteDto: WebinarRoomDeleteDto
+    readonly 'WebinarRoomDeleteDto': WebinarRoomDeleteDto
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarRoomSiteDeleteV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1433,32 +1561,39 @@ export interface WebinarApiWebinarRoomSiteDeleteV1Request {
  */
 export interface WebinarApiWebinarRoomSiteGetSyncV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof WebinarApiWebinarRoomSiteGetSyncV1
      */
-    readonly language: WebinarRoomSiteGetSyncV1LanguageEnum
+    readonly 'language': WebinarRoomSiteGetSyncV1LanguageEnum
 
     /**
      * Room name
      * @type {string}
      * @memberof WebinarApiWebinarRoomSiteGetSyncV1
      */
-    readonly room_id: string
+    readonly 'room_id': string
 
     /**
      * Client ID
      * @type {string}
      * @memberof WebinarApiWebinarRoomSiteGetSyncV1
      */
-    readonly client_id: string
+    readonly 'client_id': string
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof WebinarApiWebinarRoomSiteGetSyncV1
      */
-    readonly v?: WebinarRoomSiteGetSyncV1VEnum
+    readonly 'v'?: WebinarRoomSiteGetSyncV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarRoomSiteGetSyncV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1472,7 +1607,14 @@ export interface WebinarApiWebinarRoomSiteJoinAnonymousV1Request {
      * @type {WebinarRoomJoinAnonymousDto}
      * @memberof WebinarApiWebinarRoomSiteJoinAnonymousV1
      */
-    readonly WebinarRoomJoinAnonymousDto: WebinarRoomJoinAnonymousDto
+    readonly 'WebinarRoomJoinAnonymousDto': WebinarRoomJoinAnonymousDto
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarRoomSiteJoinAnonymousV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1486,7 +1628,14 @@ export interface WebinarApiWebinarRoomSiteJoinV1Request {
      * @type {WebinarRoomJoinDto}
      * @memberof WebinarApiWebinarRoomSiteJoinV1
      */
-    readonly WebinarRoomJoinDto: WebinarRoomJoinDto
+    readonly 'WebinarRoomJoinDto': WebinarRoomJoinDto
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarRoomSiteJoinV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1496,25 +1645,32 @@ export interface WebinarApiWebinarRoomSiteJoinV1Request {
  */
 export interface WebinarApiWebinarRoomSiteListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof WebinarApiWebinarRoomSiteListV1
      */
-    readonly language: WebinarRoomSiteListV1LanguageEnum
+    readonly 'language': WebinarRoomSiteListV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof WebinarApiWebinarRoomSiteListV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof WebinarApiWebinarRoomSiteListV1
      */
-    readonly v?: WebinarRoomSiteListV1VEnum
+    readonly 'v'?: WebinarRoomSiteListV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarRoomSiteListV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1524,32 +1680,39 @@ export interface WebinarApiWebinarRoomSiteListV1Request {
  */
 export interface WebinarApiWebinarRoomSitePreJoinV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof WebinarApiWebinarRoomSitePreJoinV1
      */
-    readonly language: WebinarRoomSitePreJoinV1LanguageEnum
+    readonly 'language': WebinarRoomSitePreJoinV1LanguageEnum
 
     /**
      * Room id
      * @type {string}
      * @memberof WebinarApiWebinarRoomSitePreJoinV1
      */
-    readonly room_id: string
+    readonly 'room_id': string
 
     /**
      * Client ID
      * @type {string}
      * @memberof WebinarApiWebinarRoomSitePreJoinV1
      */
-    readonly client_id: string
+    readonly 'client_id': string
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof WebinarApiWebinarRoomSitePreJoinV1
      */
-    readonly v?: WebinarRoomSitePreJoinV1VEnum
+    readonly 'v'?: WebinarRoomSitePreJoinV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarRoomSitePreJoinV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1563,7 +1726,14 @@ export interface WebinarApiWebinarRoomSiteSyncV1Request {
      * @type {SiteWebinarRoomSetSyncBodyRequest}
      * @memberof WebinarApiWebinarRoomSiteSyncV1
      */
-    readonly SiteWebinarRoomSetSyncBodyRequest: SiteWebinarRoomSetSyncBodyRequest
+    readonly 'SiteWebinarRoomSetSyncBodyRequest': SiteWebinarRoomSetSyncBodyRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarRoomSiteSyncV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1577,7 +1747,14 @@ export interface WebinarApiWebinarRoomSiteUpdateV1Request {
      * @type {WebinarRoomUpdateDto}
      * @memberof WebinarApiWebinarRoomSiteUpdateV1
      */
-    readonly WebinarRoomUpdateDto: WebinarRoomUpdateDto
+    readonly 'WebinarRoomUpdateDto': WebinarRoomUpdateDto
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarRoomSiteUpdateV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1591,7 +1768,14 @@ export interface WebinarApiWebinarStreamSiteCreateV1Request {
      * @type {WebinarStreamStartDto}
      * @memberof WebinarApiWebinarStreamSiteCreateV1
      */
-    readonly WebinarStreamStartDto: WebinarStreamStartDto
+    readonly 'WebinarStreamStartDto': WebinarStreamStartDto
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarStreamSiteCreateV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1601,32 +1785,46 @@ export interface WebinarApiWebinarStreamSiteCreateV1Request {
  */
 export interface WebinarApiWebinarStreamSiteGetSettingStreamV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof WebinarApiWebinarStreamSiteGetSettingStreamV1
      */
-    readonly language: WebinarStreamSiteGetSettingStreamV1LanguageEnum
+    readonly 'language': WebinarStreamSiteGetSettingStreamV1LanguageEnum
 
     /**
      * Client ID
      * @type {string}
      * @memberof WebinarApiWebinarStreamSiteGetSettingStreamV1
      */
-    readonly client_id: string
+    readonly 'client_id': string
 
     /**
      * Room id
      * @type {string}
      * @memberof WebinarApiWebinarStreamSiteGetSettingStreamV1
      */
-    readonly room_id: string
+    readonly 'room_id': string
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof WebinarApiWebinarStreamSiteGetSettingStreamV1
      */
-    readonly v?: WebinarStreamSiteGetSettingStreamV1VEnum
+    readonly 'v'?: WebinarStreamSiteGetSettingStreamV1VEnum
+
+    /**
+     * Required selected project for account integration credentials; room prefix must match its external ID
+     * @type {number}
+     * @memberof WebinarApiWebinarStreamSiteGetSettingStreamV1
+     */
+    readonly 'project_id'?: number
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarStreamSiteGetSettingStreamV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1636,32 +1834,39 @@ export interface WebinarApiWebinarStreamSiteGetSettingStreamV1Request {
  */
 export interface WebinarApiWebinarStreamSiteLastV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof WebinarApiWebinarStreamSiteLastV1
      */
-    readonly language: WebinarStreamSiteLastV1LanguageEnum
+    readonly 'language': WebinarStreamSiteLastV1LanguageEnum
 
     /**
      * Room id
      * @type {string}
      * @memberof WebinarApiWebinarStreamSiteLastV1
      */
-    readonly room_id: string
+    readonly 'room_id': string
 
     /**
      * Client ID
      * @type {string}
      * @memberof WebinarApiWebinarStreamSiteLastV1
      */
-    readonly client_id: string
+    readonly 'client_id': string
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof WebinarApiWebinarStreamSiteLastV1
      */
-    readonly v?: WebinarStreamSiteLastV1VEnum
+    readonly 'v'?: WebinarStreamSiteLastV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarStreamSiteLastV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1675,7 +1880,14 @@ export interface WebinarApiWebinarStreamSitePauseV1Request {
      * @type {WebinarStreamPauseDto}
      * @memberof WebinarApiWebinarStreamSitePauseV1
      */
-    readonly WebinarStreamPauseDto: WebinarStreamPauseDto
+    readonly 'WebinarStreamPauseDto': WebinarStreamPauseDto
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarStreamSitePauseV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1689,7 +1901,14 @@ export interface WebinarApiWebinarStreamSitePlayV1Request {
      * @type {WebinarStreamPlayDto}
      * @memberof WebinarApiWebinarStreamSitePlayV1
      */
-    readonly WebinarStreamPlayDto: WebinarStreamPlayDto
+    readonly 'WebinarStreamPlayDto': WebinarStreamPlayDto
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarStreamSitePlayV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1703,7 +1922,14 @@ export interface WebinarApiWebinarStreamSiteSettingStreamV1Request {
      * @type {WebinarUpdateStreamSettingDto}
      * @memberof WebinarApiWebinarStreamSiteSettingStreamV1
      */
-    readonly WebinarUpdateStreamSettingDto: WebinarUpdateStreamSettingDto
+    readonly 'WebinarUpdateStreamSettingDto': WebinarUpdateStreamSettingDto
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarStreamSiteSettingStreamV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1717,7 +1943,14 @@ export interface WebinarApiWebinarStreamSiteUpdateV1Request {
      * @type {WebinarStreamStopDto}
      * @memberof WebinarApiWebinarStreamSiteUpdateV1
      */
-    readonly WebinarStreamStopDto: WebinarStreamStopDto
+    readonly 'WebinarStreamStopDto': WebinarStreamStopDto
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof WebinarApiWebinarStreamSiteUpdateV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -1728,7 +1961,7 @@ export interface WebinarApiWebinarStreamSiteUpdateV1Request {
  */
 export class WebinarApi extends BaseAPI implements WebinarApiInterface {
     /**
-     * 
+     * Create a webinar room for project_id with room_name and a room_id suffix. The full ID combines the lowercase external project code and suffix; returns invite_link. Requires a current webinar plan; maximum participants depend on the plan\'s participants_room and rooms. Success means the room was created, not that broadcasting started.
      * @summary Create a new webinar room
      * @param {WebinarApiWebinarRoomSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1736,11 +1969,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarRoomSiteCreateV1(requestParameters: WebinarApiWebinarRoomSiteCreateV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarRoomSiteCreateV1(requestParameters.WebinarRoomCreateDto, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarRoomSiteCreateV1(requestParameters['WebinarRoomCreateDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Delete room_id in project_id through the LiveKit service. This deletes the room, not merely its stream; to stop the stream use POST /method/webinar/stream/stop.
      * @summary Delete a webinar room
      * @param {WebinarApiWebinarRoomSiteDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1748,11 +1981,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarRoomSiteDeleteV1(requestParameters: WebinarApiWebinarRoomSiteDeleteV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarRoomSiteDeleteV1(requestParameters.WebinarRoomDeleteDto, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarRoomSiteDeleteV1(requestParameters['WebinarRoomDeleteDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read synchronization for room_id and client_id: tracks and optional focus_track with participant_sid/publication_sid. Public transport; an existing room context is required. This method neither issues RTC credentials nor connects a participant.
      * @summary Get sync a webinar room
      * @param {WebinarApiWebinarRoomSiteGetSyncV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1760,11 +1993,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarRoomSiteGetSyncV1(requestParameters: WebinarApiWebinarRoomSiteGetSyncV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarRoomSiteGetSyncV1(requestParameters.language, requestParameters.room_id, requestParameters.client_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarRoomSiteGetSyncV1(requestParameters['language'], requestParameters['room_id'], requestParameters['client_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Join room_id anonymously with client_id/participant_name/region. Public transport; returns a secret participant_token and RTC server_url, with is_stream=false. A full or missing room returns the corresponding webinar.join_room_error_* error; credentials are not stored in the corpus.
      * @summary join in room anonymously
      * @param {WebinarApiWebinarRoomSiteJoinAnonymousV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1772,11 +2005,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarRoomSiteJoinAnonymousV1(requestParameters: WebinarApiWebinarRoomSiteJoinAnonymousV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarRoomSiteJoinAnonymousV1(requestParameters.WebinarRoomJoinAnonymousDto, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarRoomSiteJoinAnonymousV1(requestParameters['WebinarRoomJoinAnonymousDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Join room_id as the current authenticated user: participant_name/photo come from their profile. Returns server_url, secret participant_token and chat_token, room details and is_stream according to access. Available only to the project subject; issues RTC credentials rather than starting a broadcast.
      * @summary join in room
      * @param {WebinarApiWebinarRoomSiteJoinV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1784,11 +2017,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarRoomSiteJoinV1(requestParameters: WebinarApiWebinarRoomSiteJoinV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarRoomSiteJoinV1(requestParameters.WebinarRoomJoinDto, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarRoomSiteJoinV1(requestParameters['WebinarRoomJoinDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read webinar rooms of project_id with participants, limits, status/stream_status, and invite_link. Data comes from the LiveKit service; listing neither creates a room nor starts a stream.
      * @summary List of webinar rooms
      * @param {WebinarApiWebinarRoomSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1796,11 +2029,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarRoomSiteListV1(requestParameters: WebinarApiWebinarRoomSiteListV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarRoomSiteListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarRoomSiteListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Get preliminary details for room_id: participants, owner, and client_id; if client_id is absent, a UUID is created. This prepares entry through the LiveKit service without obtaining participant_token. Do not treat this GET as an ordinary project catalog.
      * @summary Pre-join in room
      * @param {WebinarApiWebinarRoomSitePreJoinV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1808,11 +2041,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarRoomSitePreJoinV1(requestParameters: WebinarApiWebinarRoomSitePreJoinV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarRoomSitePreJoinV1(requestParameters.language, requestParameters.room_id, requestParameters.client_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarRoomSitePreJoinV1(requestParameters['language'], requestParameters['room_id'], requestParameters['client_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Updates synchronization for a room belonging to the selected project. Requires the existing room/client context; participant_sid and publication_sid must refer to actual media context. This operation does not join the room or issue RTC credentials.
      * @summary Sync a webinar room
      * @param {WebinarApiWebinarRoomSiteSyncV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1820,11 +2053,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarRoomSiteSyncV1(requestParameters: WebinarApiWebinarRoomSiteSyncV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarRoomSiteSyncV1(requestParameters.SiteWebinarRoomSetSyncBodyRequest, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarRoomSiteSyncV1(requestParameters['SiteWebinarRoomSetSyncBodyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Update the name/settings of the existing room_id in project_id via LiveKit. The participant limit comes from the current webinar tariff, or 0 if absent. Returns the update result, not new participant credentials.
      * @summary Update a webinar room
      * @param {WebinarApiWebinarRoomSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1832,11 +2065,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarRoomSiteUpdateV1(requestParameters: WebinarApiWebinarRoomSiteUpdateV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarRoomSiteUpdateV1(requestParameters.WebinarRoomUpdateDto, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarRoomSiteUpdateV1(requestParameters['WebinarRoomUpdateDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Start a stream for room_id through LiveKit egress using a source URL prepared for the room project. failed_to_start_stream becomes webinar.stream_start_error. Success confirms the start command response; verify actual status with GET /method/webinar/stream/last.
      * @summary Start a webinar stream
      * @param {WebinarApiWebinarStreamSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1844,11 +2077,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarStreamSiteCreateV1(requestParameters: WebinarApiWebinarStreamSiteCreateV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarStreamSiteCreateV1(requestParameters.WebinarStreamStartDto, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarStreamSiteCreateV1(requestParameters['WebinarStreamStartDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read saved width/height/fps/bitrate for the stream of room_id. Missing settings produce stream.not_found. This is the configuration of future/current output, not a start command; save it with POST /method/webinar/stream/setting.
      * @summary Get setting a webinar stream
      * @param {WebinarApiWebinarStreamSiteGetSettingStreamV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1856,11 +2089,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarStreamSiteGetSettingStreamV1(requestParameters: WebinarApiWebinarStreamSiteGetSettingStreamV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarStreamSiteGetSettingStreamV1(requestParameters.language, requestParameters.client_id, requestParameters.room_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarStreamSiteGetSettingStreamV1(requestParameters['language'], requestParameters['client_id'], requestParameters['room_id'], requestParameters['v'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read the latest stream state for room_id, matched against the project\'s active stream and LiveKit data. is_current_room/is_webinar_room indicate ownership; start_at/end_at and status may be absent. Public reads neither start nor resume the stream.
      * @summary Get last webinar stream
      * @param {WebinarApiWebinarStreamSiteLastV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1868,11 +2101,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarStreamSiteLastV1(requestParameters: WebinarApiWebinarStreamSiteLastV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarStreamSiteLastV1(requestParameters.language, requestParameters.room_id, requestParameters.client_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarStreamSiteLastV1(requestParameters['language'], requestParameters['room_id'], requestParameters['client_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Send a pause command to the active live stream of room_id after checking the existing webinar stream. Errors in the current use case are reported as other.unknown. Success confirms the management command response, not completion of all external actions; read state using GET /method/webinar/stream/last.
      * @summary Pause a webinar stream
      * @param {WebinarApiWebinarStreamSitePauseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1880,23 +2113,23 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarStreamSitePauseV1(requestParameters: WebinarApiWebinarStreamSitePauseV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarStreamSitePauseV1(requestParameters.WebinarStreamPauseDto, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarStreamSitePauseV1(requestParameters['WebinarStreamPauseDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
-     * @summary Play after pause
+     * Resume the active live stream of room_id after a pause. Commands an existing stream, rather than starting a new broadcast; to start one, use POST /method/webinar/stream/start. Current workflow errors are represented as other.unknown.
+     * @summary Resume an active webinar stream
      * @param {WebinarApiWebinarStreamSitePlayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WebinarApi
      */
     public webinarStreamSitePlayV1(requestParameters: WebinarApiWebinarStreamSitePlayV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarStreamSitePlayV1(requestParameters.WebinarStreamPlayDto, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarStreamSitePlayV1(requestParameters['WebinarStreamPlayDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Save stream width/height/fps/bitrate for room_id through the LiveKit service. Checks the current webinar plan, available resolution, and the restream plan\'s maximum bitrate; errors are webinar.stream_resolution_max_error/restream.bitrate_max_error. Supply all settings according to the DTO. Success confirms settings were saved, not that the stream started.
      * @summary Setting a webinar stream
      * @param {WebinarApiWebinarStreamSiteSettingStreamV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1904,11 +2137,11 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarStreamSiteSettingStreamV1(requestParameters: WebinarApiWebinarStreamSiteSettingStreamV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarStreamSiteSettingStreamV1(requestParameters.WebinarUpdateStreamSettingDto, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarStreamSiteSettingStreamV1(requestParameters['WebinarUpdateStreamSettingDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Stop the stream of room_id: the use case attempts to reset the active source wait to zero and stop LiveKit egress. Errors in the first stage are logged; success does not guarantee that stage completed. failed_to_stop_stream produces webinar.stream_stop_error. This stops the stream without deleting the room.
      * @summary Stop a webinar stream
      * @param {WebinarApiWebinarStreamSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1916,7 +2149,7 @@ export class WebinarApi extends BaseAPI implements WebinarApiInterface {
      * @memberof WebinarApi
      */
     public webinarStreamSiteUpdateV1(requestParameters: WebinarApiWebinarStreamSiteUpdateV1Request, options?: RawAxiosRequestConfig) {
-        return WebinarApiFp(this.configuration).webinarStreamSiteUpdateV1(requestParameters.WebinarStreamStopDto, options).then((request) => request(this.axios, this.basePath));
+        return WebinarApiFp(this.configuration).webinarStreamSiteUpdateV1(requestParameters['WebinarStreamStopDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

@@ -17,13 +17,14 @@ All URIs are relative to *http://localhost*
 |[**webinarStreamSiteGetSettingStreamV1**](#webinarstreamsitegetsettingstreamv1) | **GET** /method/webinar/stream/setting | Get setting a webinar stream|
 |[**webinarStreamSiteLastV1**](#webinarstreamsitelastv1) | **GET** /method/webinar/stream/last | Get last webinar stream|
 |[**webinarStreamSitePauseV1**](#webinarstreamsitepausev1) | **POST** /method/webinar/stream/pause | Pause a webinar stream|
-|[**webinarStreamSitePlayV1**](#webinarstreamsiteplayv1) | **POST** /method/webinar/stream/play | Play after pause|
+|[**webinarStreamSitePlayV1**](#webinarstreamsiteplayv1) | **POST** /method/webinar/stream/play | Resume an active webinar stream|
 |[**webinarStreamSiteSettingStreamV1**](#webinarstreamsitesettingstreamv1) | **POST** /method/webinar/stream/setting | Setting a webinar stream|
 |[**webinarStreamSiteUpdateV1**](#webinarstreamsiteupdatev1) | **POST** /method/webinar/stream/stop | Stop a webinar stream|
 
 # **webinarRoomSiteCreateV1**
 > SiteWebinarRoomCreateResponse webinarRoomSiteCreateV1(webinarRoomCreateDto)
 
+Create a webinar room for project_id with room_name and a room_id suffix. The full ID combines the lowercase external project code and suffix; returns invite_link. Requires a current webinar plan; maximum participants depend on the plan\'s participants_room and rooms. Success means the room was created, not that broadcasting started.
 
 ### Example
 
@@ -38,9 +39,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let webinarRoomCreateDto: WebinarRoomCreateDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarRoomSiteCreateV1(
-    webinarRoomCreateDto
+    webinarRoomCreateDto,
+    xClientRequestId
 );
 ```
 
@@ -49,6 +52,7 @@ const { status, data } = await apiInstance.webinarRoomSiteCreateV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webinarRoomCreateDto** | **WebinarRoomCreateDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -57,7 +61,7 @@ const { status, data } = await apiInstance.webinarRoomSiteCreateV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -76,6 +80,7 @@ const { status, data } = await apiInstance.webinarRoomSiteCreateV1(
 # **webinarRoomSiteDeleteV1**
 > SiteWebinarRoomDeleteResponse webinarRoomSiteDeleteV1(webinarRoomDeleteDto)
 
+Delete room_id in project_id through the LiveKit service. This deletes the room, not merely its stream; to stop the stream use POST /method/webinar/stream/stop.
 
 ### Example
 
@@ -90,9 +95,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let webinarRoomDeleteDto: WebinarRoomDeleteDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarRoomSiteDeleteV1(
-    webinarRoomDeleteDto
+    webinarRoomDeleteDto,
+    xClientRequestId
 );
 ```
 
@@ -101,6 +108,7 @@ const { status, data } = await apiInstance.webinarRoomSiteDeleteV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webinarRoomDeleteDto** | **WebinarRoomDeleteDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -109,7 +117,7 @@ const { status, data } = await apiInstance.webinarRoomSiteDeleteV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -128,6 +136,7 @@ const { status, data } = await apiInstance.webinarRoomSiteDeleteV1(
 # **webinarRoomSiteGetSyncV1**
 > SiteWebinarRoomSyncResponse webinarRoomSiteGetSyncV1()
 
+Read synchronization for room_id and client_id: tracks and optional focus_track with participant_sid/publication_sid. Public transport; an existing room context is required. This method neither issues RTC credentials nor connects a participant.
 
 ### Example
 
@@ -140,16 +149,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let roomId: string; //Room name (default to undefined)
 let clientId: string; //Client ID (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarRoomSiteGetSyncV1(
     language,
     roomId,
     clientId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -157,10 +168,11 @@ const { status, data } = await apiInstance.webinarRoomSiteGetSyncV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **roomId** | [**string**] | Room name | defaults to undefined|
 | **clientId** | [**string**] | Client ID | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -169,7 +181,7 @@ const { status, data } = await apiInstance.webinarRoomSiteGetSyncV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -188,6 +200,7 @@ const { status, data } = await apiInstance.webinarRoomSiteGetSyncV1(
 # **webinarRoomSiteJoinAnonymousV1**
 > SiteWebinarRoomJoinResponse webinarRoomSiteJoinAnonymousV1(webinarRoomJoinAnonymousDto)
 
+Join room_id anonymously with client_id/participant_name/region. Public transport; returns a secret participant_token and RTC server_url, with is_stream=false. A full or missing room returns the corresponding webinar.join_room_error_* error; credentials are not stored in the corpus.
 
 ### Example
 
@@ -202,9 +215,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let webinarRoomJoinAnonymousDto: WebinarRoomJoinAnonymousDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarRoomSiteJoinAnonymousV1(
-    webinarRoomJoinAnonymousDto
+    webinarRoomJoinAnonymousDto,
+    xClientRequestId
 );
 ```
 
@@ -213,6 +228,7 @@ const { status, data } = await apiInstance.webinarRoomSiteJoinAnonymousV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webinarRoomJoinAnonymousDto** | **WebinarRoomJoinAnonymousDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -221,7 +237,7 @@ const { status, data } = await apiInstance.webinarRoomSiteJoinAnonymousV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -240,6 +256,7 @@ const { status, data } = await apiInstance.webinarRoomSiteJoinAnonymousV1(
 # **webinarRoomSiteJoinV1**
 > SiteWebinarRoomJoinResponse webinarRoomSiteJoinV1(webinarRoomJoinDto)
 
+Join room_id as the current authenticated user: participant_name/photo come from their profile. Returns server_url, secret participant_token and chat_token, room details and is_stream according to access. Available only to the project subject; issues RTC credentials rather than starting a broadcast.
 
 ### Example
 
@@ -254,9 +271,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let webinarRoomJoinDto: WebinarRoomJoinDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarRoomSiteJoinV1(
-    webinarRoomJoinDto
+    webinarRoomJoinDto,
+    xClientRequestId
 );
 ```
 
@@ -265,6 +284,7 @@ const { status, data } = await apiInstance.webinarRoomSiteJoinV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webinarRoomJoinDto** | **WebinarRoomJoinDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -273,7 +293,7 @@ const { status, data } = await apiInstance.webinarRoomSiteJoinV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -292,6 +312,7 @@ const { status, data } = await apiInstance.webinarRoomSiteJoinV1(
 # **webinarRoomSiteListV1**
 > SiteWebinarRoomListResponse webinarRoomSiteListV1()
 
+Read webinar rooms of project_id with participants, limits, status/stream_status, and invite_link. Data comes from the LiveKit service; listing neither creates a room nor starts a stream.
 
 ### Example
 
@@ -304,14 +325,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarRoomSiteListV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -319,9 +342,10 @@ const { status, data } = await apiInstance.webinarRoomSiteListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -330,7 +354,7 @@ const { status, data } = await apiInstance.webinarRoomSiteListV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -349,6 +373,7 @@ const { status, data } = await apiInstance.webinarRoomSiteListV1(
 # **webinarRoomSitePreJoinV1**
 > SiteWebinarRoomPreJoinResponse webinarRoomSitePreJoinV1()
 
+Get preliminary details for room_id: participants, owner, and client_id; if client_id is absent, a UUID is created. This prepares entry through the LiveKit service without obtaining participant_token. Do not treat this GET as an ordinary project catalog.
 
 ### Example
 
@@ -361,16 +386,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let roomId: string; //Room id (default to undefined)
 let clientId: string; //Client ID (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarRoomSitePreJoinV1(
     language,
     roomId,
     clientId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -378,10 +405,11 @@ const { status, data } = await apiInstance.webinarRoomSitePreJoinV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **roomId** | [**string**] | Room id | defaults to undefined|
 | **clientId** | [**string**] | Client ID | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -390,7 +418,7 @@ const { status, data } = await apiInstance.webinarRoomSitePreJoinV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -409,6 +437,7 @@ const { status, data } = await apiInstance.webinarRoomSitePreJoinV1(
 # **webinarRoomSiteSyncV1**
 > SuccessResponse webinarRoomSiteSyncV1(siteWebinarRoomSetSyncBodyRequest)
 
+Updates synchronization for a room belonging to the selected project. Requires the existing room/client context; participant_sid and publication_sid must refer to actual media context. This operation does not join the room or issue RTC credentials.
 
 ### Example
 
@@ -423,9 +452,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let siteWebinarRoomSetSyncBodyRequest: SiteWebinarRoomSetSyncBodyRequest; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarRoomSiteSyncV1(
-    siteWebinarRoomSetSyncBodyRequest
+    siteWebinarRoomSetSyncBodyRequest,
+    xClientRequestId
 );
 ```
 
@@ -434,6 +465,7 @@ const { status, data } = await apiInstance.webinarRoomSiteSyncV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **siteWebinarRoomSetSyncBodyRequest** | **SiteWebinarRoomSetSyncBodyRequest**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -442,7 +474,7 @@ const { status, data } = await apiInstance.webinarRoomSiteSyncV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -461,6 +493,7 @@ const { status, data } = await apiInstance.webinarRoomSiteSyncV1(
 # **webinarRoomSiteUpdateV1**
 > SiteWebinarRoomUpdateResponse webinarRoomSiteUpdateV1(webinarRoomUpdateDto)
 
+Update the name/settings of the existing room_id in project_id via LiveKit. The participant limit comes from the current webinar tariff, or 0 if absent. Returns the update result, not new participant credentials.
 
 ### Example
 
@@ -475,9 +508,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let webinarRoomUpdateDto: WebinarRoomUpdateDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarRoomSiteUpdateV1(
-    webinarRoomUpdateDto
+    webinarRoomUpdateDto,
+    xClientRequestId
 );
 ```
 
@@ -486,6 +521,7 @@ const { status, data } = await apiInstance.webinarRoomSiteUpdateV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webinarRoomUpdateDto** | **WebinarRoomUpdateDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -494,7 +530,7 @@ const { status, data } = await apiInstance.webinarRoomSiteUpdateV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -513,6 +549,7 @@ const { status, data } = await apiInstance.webinarRoomSiteUpdateV1(
 # **webinarStreamSiteCreateV1**
 > SuccessResponse webinarStreamSiteCreateV1(webinarStreamStartDto)
 
+Start a stream for room_id through LiveKit egress using a source URL prepared for the room project. failed_to_start_stream becomes webinar.stream_start_error. Success confirms the start command response; verify actual status with GET /method/webinar/stream/last.
 
 ### Example
 
@@ -527,9 +564,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let webinarStreamStartDto: WebinarStreamStartDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarStreamSiteCreateV1(
-    webinarStreamStartDto
+    webinarStreamStartDto,
+    xClientRequestId
 );
 ```
 
@@ -538,6 +577,7 @@ const { status, data } = await apiInstance.webinarStreamSiteCreateV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webinarStreamStartDto** | **WebinarStreamStartDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -546,7 +586,7 @@ const { status, data } = await apiInstance.webinarStreamSiteCreateV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -565,6 +605,7 @@ const { status, data } = await apiInstance.webinarStreamSiteCreateV1(
 # **webinarStreamSiteGetSettingStreamV1**
 > SiteWebinarGetSettingsStreamResponse webinarStreamSiteGetSettingStreamV1()
 
+Read saved width/height/fps/bitrate for the stream of room_id. Missing settings produce stream.not_found. This is the configuration of future/current output, not a start command; save it with POST /method/webinar/stream/setting.
 
 ### Example
 
@@ -577,16 +618,20 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let clientId: string; //Client ID (default to undefined)
 let roomId: string; //Room id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let projectId: number; //Required selected project for account integration credentials; room prefix must match its external ID (optional) (default to undefined)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarStreamSiteGetSettingStreamV1(
     language,
     clientId,
     roomId,
-    v
+    v,
+    projectId,
+    xClientRequestId
 );
 ```
 
@@ -594,10 +639,12 @@ const { status, data } = await apiInstance.webinarStreamSiteGetSettingStreamV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **clientId** | [**string**] | Client ID | defaults to undefined|
 | **roomId** | [**string**] | Room id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **projectId** | [**number**] | Required selected project for account integration credentials; room prefix must match its external ID | (optional) defaults to undefined|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -606,7 +653,7 @@ const { status, data } = await apiInstance.webinarStreamSiteGetSettingStreamV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -625,6 +672,7 @@ const { status, data } = await apiInstance.webinarStreamSiteGetSettingStreamV1(
 # **webinarStreamSiteLastV1**
 > SiteWebinarRoomStreamLastResponse webinarStreamSiteLastV1()
 
+Read the latest stream state for room_id, matched against the project\'s active stream and LiveKit data. is_current_room/is_webinar_room indicate ownership; start_at/end_at and status may be absent. Public reads neither start nor resume the stream.
 
 ### Example
 
@@ -637,16 +685,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let roomId: string; //Room id (default to undefined)
 let clientId: string; //Client ID (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarStreamSiteLastV1(
     language,
     roomId,
     clientId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -654,10 +704,11 @@ const { status, data } = await apiInstance.webinarStreamSiteLastV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **roomId** | [**string**] | Room id | defaults to undefined|
 | **clientId** | [**string**] | Client ID | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -666,7 +717,7 @@ const { status, data } = await apiInstance.webinarStreamSiteLastV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -685,6 +736,7 @@ const { status, data } = await apiInstance.webinarStreamSiteLastV1(
 # **webinarStreamSitePauseV1**
 > SuccessResponse webinarStreamSitePauseV1(webinarStreamPauseDto)
 
+Send a pause command to the active live stream of room_id after checking the existing webinar stream. Errors in the current use case are reported as other.unknown. Success confirms the management command response, not completion of all external actions; read state using GET /method/webinar/stream/last.
 
 ### Example
 
@@ -699,9 +751,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let webinarStreamPauseDto: WebinarStreamPauseDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarStreamSitePauseV1(
-    webinarStreamPauseDto
+    webinarStreamPauseDto,
+    xClientRequestId
 );
 ```
 
@@ -710,6 +764,7 @@ const { status, data } = await apiInstance.webinarStreamSitePauseV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webinarStreamPauseDto** | **WebinarStreamPauseDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -718,7 +773,7 @@ const { status, data } = await apiInstance.webinarStreamSitePauseV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -737,6 +792,7 @@ const { status, data } = await apiInstance.webinarStreamSitePauseV1(
 # **webinarStreamSitePlayV1**
 > SuccessResponse webinarStreamSitePlayV1(webinarStreamPlayDto)
 
+Resume the active live stream of room_id after a pause. Commands an existing stream, rather than starting a new broadcast; to start one, use POST /method/webinar/stream/start. Current workflow errors are represented as other.unknown.
 
 ### Example
 
@@ -751,9 +807,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let webinarStreamPlayDto: WebinarStreamPlayDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarStreamSitePlayV1(
-    webinarStreamPlayDto
+    webinarStreamPlayDto,
+    xClientRequestId
 );
 ```
 
@@ -762,6 +820,7 @@ const { status, data } = await apiInstance.webinarStreamSitePlayV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webinarStreamPlayDto** | **WebinarStreamPlayDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -770,7 +829,7 @@ const { status, data } = await apiInstance.webinarStreamSitePlayV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -789,6 +848,7 @@ const { status, data } = await apiInstance.webinarStreamSitePlayV1(
 # **webinarStreamSiteSettingStreamV1**
 > SuccessResponse webinarStreamSiteSettingStreamV1(webinarUpdateStreamSettingDto)
 
+Save stream width/height/fps/bitrate for room_id through the LiveKit service. Checks the current webinar plan, available resolution, and the restream plan\'s maximum bitrate; errors are webinar.stream_resolution_max_error/restream.bitrate_max_error. Supply all settings according to the DTO. Success confirms settings were saved, not that the stream started.
 
 ### Example
 
@@ -803,9 +863,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let webinarUpdateStreamSettingDto: WebinarUpdateStreamSettingDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarStreamSiteSettingStreamV1(
-    webinarUpdateStreamSettingDto
+    webinarUpdateStreamSettingDto,
+    xClientRequestId
 );
 ```
 
@@ -814,6 +876,7 @@ const { status, data } = await apiInstance.webinarStreamSiteSettingStreamV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webinarUpdateStreamSettingDto** | **WebinarUpdateStreamSettingDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -822,7 +885,7 @@ const { status, data } = await apiInstance.webinarStreamSiteSettingStreamV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -841,6 +904,7 @@ const { status, data } = await apiInstance.webinarStreamSiteSettingStreamV1(
 # **webinarStreamSiteUpdateV1**
 > SuccessResponse webinarStreamSiteUpdateV1(webinarStreamStopDto)
 
+Stop the stream of room_id: the use case attempts to reset the active source wait to zero and stop LiveKit egress. Errors in the first stage are logged; success does not guarantee that stage completed. failed_to_stop_stream produces webinar.stream_stop_error. This stops the stream without deleting the room.
 
 ### Example
 
@@ -855,9 +919,11 @@ const configuration = new Configuration();
 const apiInstance = new WebinarApi(configuration);
 
 let webinarStreamStopDto: WebinarStreamStopDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.webinarStreamSiteUpdateV1(
-    webinarStreamStopDto
+    webinarStreamStopDto,
+    xClientRequestId
 );
 ```
 
@@ -866,6 +932,7 @@ const { status, data } = await apiInstance.webinarStreamSiteUpdateV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webinarStreamStopDto** | **WebinarStreamStopDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -874,7 +941,7 @@ const { status, data } = await apiInstance.webinarStreamSiteUpdateV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 

@@ -19,6 +19,7 @@ All URIs are relative to *http://localhost*
 # **authCallbackGoogleV1**
 > authCallbackGoogleV1()
 
+Internal Google OAuth callback that completes login and returns an HTTP 301 redirect. The provider creates authorization data; callback transport excludes this endpoint from integration profiles.
 
 ### Example
 
@@ -31,10 +32,12 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
-let state: string; // (default to undefined)
+let state: string; //Opaque provider OAuth state; callback-only input. (default to undefined)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.authCallbackGoogleV1(
-    state
+    state,
+    xClientRequestId
 );
 ```
 
@@ -42,7 +45,8 @@ const { status, data } = await apiInstance.authCallbackGoogleV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **state** | [**string**] |  | defaults to undefined|
+| **state** | [**string**] | Opaque provider OAuth state; callback-only input. | defaults to undefined|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -70,6 +74,7 @@ No authorization required
 # **authCallbackVkIdV1**
 > authCallbackVkIdV1()
 
+Internal VK ID callback to complete OAuth login and issue an HTTP 301 redirect. The OAuth guard supplies req.user, not an integration request; callback transport excludes this endpoint.
 
 ### Example
 
@@ -82,10 +87,12 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
-let state: string; // (default to undefined)
+let state: string; //Opaque provider OAuth state; callback-only input. (default to undefined)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.authCallbackVkIdV1(
-    state
+    state,
+    xClientRequestId
 );
 ```
 
@@ -93,7 +100,8 @@ const { status, data } = await apiInstance.authCallbackVkIdV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **state** | [**string**] |  | defaults to undefined|
+| **state** | [**string**] | Opaque provider OAuth state; callback-only input. | defaults to undefined|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -121,6 +129,7 @@ No authorization required
 # **authCallbackVkV1**
 > authCallbackVkV1()
 
+Internal legacy VK OAuth callback that redirects the browser with HTTP 301. The provider creates input data; callback transport excludes this endpoint from integration profiles.
 
 ### Example
 
@@ -133,11 +142,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
-const { status, data } = await apiInstance.authCallbackVkV1();
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
+
+const { status, data } = await apiInstance.authCallbackVkV1(
+    xClientRequestId
+);
 ```
 
 ### Parameters
-This endpoint does not have any parameters.
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -165,6 +181,7 @@ No authorization required
 # **authCodeV1**
 > CodeAppAuthResponse authCodeV1()
 
+Get a one-time authorization code for app in the current cabinet session. Session transport is excluded from integration profiles. The code is sensitive and is used by /method/auth/app/exchange; it is not intended for logs or the corpus.
 
 ### Example
 
@@ -177,14 +194,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
-let app: 'site' | 'admin' | 'mobile' | 'desktop'; //Create auth code for app (default to 'site')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
+let app: 'site' | 'admin' | 'mobile' | 'desktop'; //Create auth code for app (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.authCodeV1(
     language,
     app,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -192,9 +211,10 @@ const { status, data } = await apiInstance.authCodeV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
-| **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | Create auth code for app | defaults to 'site'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
+| **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | Create auth code for app | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -203,7 +223,7 @@ const { status, data } = await apiInstance.authCodeV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -222,6 +242,7 @@ const { status, data } = await apiInstance.authCodeV1(
 # **authConnectResultV1**
 > authConnectResultV1()
 
+Internal social connection completion callback. Returns text/html with a script that sends message to the parent window and closes the window. Callback transport excludes it from integration profiles; this is neither JSON nor a server tool catalog.
 
 ### Example
 
@@ -234,14 +255,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let message: string; //Result message for connect (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.authConnectResultV1(
     language,
     message,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -249,9 +272,10 @@ const { status, data } = await apiInstance.authConnectResultV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **message** | [**string**] | Result message for connect | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -279,6 +303,7 @@ No authorization required
 # **authConnectTelegramV1**
 > SuccessResponse authConnectTelegramV1()
 
+Connect Telegram to the current user\'s account using signed Telegram data in body.data. The server verifies the signature. Available only to a project subject; does not extend account-token access. Success confirms the connection was processed.
 
 ### Example
 
@@ -291,12 +316,14 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.authConnectTelegramV1(
     language,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -304,8 +331,9 @@ const { status, data } = await apiInstance.authConnectTelegramV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -314,7 +342,7 @@ const { status, data } = await apiInstance.authConnectTelegramV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -333,6 +361,7 @@ const { status, data } = await apiInstance.authConnectTelegramV1(
 # **authConnectV1**
 > authConnectV1()
 
+Start connecting a social provider to the current user account and redirect the browser to OAuth. GET starts the flow; completion depends on authorization and a callback. Available only to the project subject; list connections with GET /method/socials/list.
 
 ### Example
 
@@ -345,18 +374,20 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let provider: 'google' | 'vk' | 'vk-id' | 'telegram'; //Provider oauth (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 let app: 'site' | 'admin' | 'mobile' | 'desktop'; //App oauth (optional) (default to 'site')
 let redirect: string; //Redirect url (optional) (default to undefined)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.authConnectV1(
     language,
     provider,
     v,
     app,
-    redirect
+    redirect,
+    xClientRequestId
 );
 ```
 
@@ -364,11 +395,12 @@ const { status, data } = await apiInstance.authConnectV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **provider** | [**&#39;google&#39; | &#39;vk&#39; | &#39;vk-id&#39; | &#39;telegram&#39;**]**Array<&#39;google&#39; &#124; &#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;telegram&#39;>** | Provider oauth | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 | **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | App oauth | (optional) defaults to 'site'|
 | **redirect** | [**string**] | Redirect url | (optional) defaults to undefined|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -377,7 +409,7 @@ void (empty response body)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -396,6 +428,7 @@ void (empty response body)
 # **authDisconnectV1**
 > SuccessResponse authDisconnectV1()
 
+Disconnect social connection social_id of the current user. Despite using GET, this changes the connection rather than reading a list. Available only to a project subject; use GET /method/socials/list to list connections.
 
 ### Example
 
@@ -408,14 +441,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let socialId: number; //Social id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.authDisconnectV1(
     language,
     socialId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -423,9 +458,10 @@ const { status, data } = await apiInstance.authDisconnectV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **socialId** | [**number**] | Social id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -434,7 +470,7 @@ const { status, data } = await apiInstance.authDisconnectV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -453,6 +489,7 @@ const { status, data } = await apiInstance.authDisconnectV1(
 # **authExchangeV1**
 > RefreshAuthResponse authExchangeV1(siteAuthExchangeRequest)
 
+Exchange a previously issued app authorization code for session data with userAgent/fingerprint. Callback transport is excluded from integration profiles. Returned credentials are sensitive; this endpoint is not for refreshing an external application\'s OAuth grant.
 
 ### Example
 
@@ -467,9 +504,11 @@ const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
 let siteAuthExchangeRequest: SiteAuthExchangeRequest; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.authExchangeV1(
-    siteAuthExchangeRequest
+    siteAuthExchangeRequest,
+    xClientRequestId
 );
 ```
 
@@ -478,6 +517,7 @@ const { status, data } = await apiInstance.authExchangeV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **siteAuthExchangeRequest** | **SiteAuthExchangeRequest**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -505,6 +545,7 @@ No authorization required
 # **authGetAuthUrlV1**
 > authGetAuthUrlV1()
 
+Start login through OAuth for the selected provider and redirect the browser to authorization. This callback transport is outside integration account/project profiles; the response is a redirect, not ready access-token JSON.
 
 ### Example
 
@@ -517,7 +558,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let provider: 'google' | 'vk' | 'vk-id' | 'telegram'; //Provider oauth (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 let app: 'site' | 'admin' | 'mobile' | 'desktop'; //App oauth (optional) (default to 'site')
@@ -525,6 +566,7 @@ let redirect: string; //Redirect url (optional) (default to undefined)
 let refId: string; //Referal id (optional) (default to undefined)
 let country: string; //Country code (optional) (default to 'ru')
 let visitorId: string; //Anonymous landing visitor UUID v4 (optional) (default to undefined)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.authGetAuthUrlV1(
     language,
@@ -534,7 +576,8 @@ const { status, data } = await apiInstance.authGetAuthUrlV1(
     redirect,
     refId,
     country,
-    visitorId
+    visitorId,
+    xClientRequestId
 );
 ```
 
@@ -542,7 +585,7 @@ const { status, data } = await apiInstance.authGetAuthUrlV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **provider** | [**&#39;google&#39; | &#39;vk&#39; | &#39;vk-id&#39; | &#39;telegram&#39;**]**Array<&#39;google&#39; &#124; &#39;vk&#39; &#124; &#39;vk-id&#39; &#124; &#39;telegram&#39;>** | Provider oauth | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 | **app** | [**&#39;site&#39; | &#39;admin&#39; | &#39;mobile&#39; | &#39;desktop&#39;**]**Array<&#39;site&#39; &#124; &#39;admin&#39; &#124; &#39;mobile&#39; &#124; &#39;desktop&#39;>** | App oauth | (optional) defaults to 'site'|
@@ -550,6 +593,7 @@ const { status, data } = await apiInstance.authGetAuthUrlV1(
 | **refId** | [**string**] | Referal id | (optional) defaults to undefined|
 | **country** | [**string**] | Country code | (optional) defaults to 'ru'|
 | **visitorId** | [**string**] | Anonymous landing visitor UUID v4 | (optional) defaults to undefined|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -577,6 +621,7 @@ No authorization required
 # **authGetClientConfigurationV1**
 > authGetClientConfigurationV1()
 
+Internal callback/debug endpoint for client configuration: the current implementation always throws test and does not return a working configuration. Callback transport excludes it from account/project profiles.
 
 ### Example
 
@@ -589,11 +634,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);
 
-const { status, data } = await apiInstance.authGetClientConfigurationV1();
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
+
+const { status, data } = await apiInstance.authGetClientConfigurationV1(
+    xClientRequestId
+);
 ```
 
 ### Parameters
-This endpoint does not have any parameters.
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type

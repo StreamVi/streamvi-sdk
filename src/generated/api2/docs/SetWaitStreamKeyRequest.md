@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version (automatically defaults to 1 based on the API contract, can be overridden) | [optional] [default to VEnum__1]
-**language** | **string** | Current language | [default to LanguageEnum_En]
+**language** | **string** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | [default to LanguageEnum_En]
 **project_id** | **number** | Project id | [default to undefined]
-**wait_minutes** | **number** | Disconnect protection wait time in minutes | [default to undefined]
+**wait_minutes** | **number** | Integer disconnect protection duration in minutes. 0 disables protection; a positive value enables/changes the waiting time. The current plan determines the maximum: wait_max_minutes from GET /method/stream-keys. For example, 15 is valid only if the plan limit permits it. | [default to undefined]
 
 ## Example
 

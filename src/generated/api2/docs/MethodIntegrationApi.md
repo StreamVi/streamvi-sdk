@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 # **methodIntegrationTemplateGetTemplateWidgetDataV1**
 > IntegrationTemplateWidgetGetResponse methodIntegrationTemplateGetTemplateWidgetDataV1()
 
-Rate limit: 10 requests per 1 second
+Read a template\'s JSON widget payload in the selected project_id after checking template/project installation ownership. This is widget data, not the full server tool catalog or a widget custom actions list. Write using POST /method/integration_project_template/widget/set. Rate limit: 10 requests per 1 second.
 
 ### Example
 
@@ -22,16 +22,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MethodIntegrationApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let templateId: string; //Integration project template ID (default to undefined)
 let projectId: number; //Project ID (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.methodIntegrationTemplateGetTemplateWidgetDataV1(
     language,
     templateId,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -39,10 +41,11 @@ const { status, data } = await apiInstance.methodIntegrationTemplateGetTemplateW
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **templateId** | [**string**] | Integration project template ID | defaults to undefined|
 | **projectId** | [**number**] | Project ID | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -51,7 +54,7 @@ const { status, data } = await apiInstance.methodIntegrationTemplateGetTemplateW
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 

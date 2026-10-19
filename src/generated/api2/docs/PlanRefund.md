@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**current** | **number** | Refund for the current rate | [default to 0]
-**after** | **number** | Refund for the next rate | [default to 0]
+**current** | **number** | Refund for the current rate. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to 0]
+**after** | **number** | Refund for the next rate. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to 0]
 
 ## Example
 

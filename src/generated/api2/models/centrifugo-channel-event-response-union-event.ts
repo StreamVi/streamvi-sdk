@@ -15,10 +15,13 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { CentrifugoChannelStartedResponse } from './centrifugo-channel-started-response';
+import type { CentrifugoChannelConnectionsPayload } from './centrifugo-channel-connections-payload';
 // May contain unused imports in some cases
 // @ts-ignore
-import type { CentrifugoChannelStatusPayload } from './centrifugo-channel-status-payload';
+import type { CentrifugoChannelConnectionsResponse } from './centrifugo-channel-connections-response';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { CentrifugoChannelStartedResponse } from './centrifugo-channel-started-response';
 // May contain unused imports in some cases
 // @ts-ignore
 import type { CentrifugoChannelStatusResponse } from './centrifugo-channel-status-response';
@@ -31,6 +34,6 @@ import type { CentrifugoChannelStoppedResponse } from './centrifugo-channel-stop
  * Centrifugo channel event response
  * @export
  */
-export type CentrifugoChannelEventResponseUnionEvent = { event: 'channel-started' } & CentrifugoChannelStartedResponse | { event: 'channel-status' } & CentrifugoChannelStatusResponse | { event: 'channel-stopped' } & CentrifugoChannelStoppedResponse;
+export type CentrifugoChannelEventResponseUnionEvent = { event: 'channel-connections-changed' } & CentrifugoChannelConnectionsResponse | { event: 'channel-started' } & CentrifugoChannelStartedResponse | { event: 'channel-status' } & CentrifugoChannelStatusResponse | { event: 'channel-stopped' } & CentrifugoChannelStoppedResponse;
 
 

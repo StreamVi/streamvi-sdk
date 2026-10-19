@@ -22,7 +22,7 @@ export interface SiteUpdateOptionsTwitchRequest {
      */
     'v'?: SiteUpdateOptionsTwitchRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
@@ -34,13 +34,13 @@ export interface SiteUpdateOptionsTwitchRequest {
      */
     'project_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
     'channel_id': number;
     /**
-     *
+     * Platform broadcast title; supplied explicitly, omission does not insert the example title.
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
@@ -58,13 +58,13 @@ export interface SiteUpdateOptionsTwitchRequest {
      */
     'category_name'?: string;
     /**
-     *
+     * Broadcast content language from the platform enum; differs from API localization language.
      * @type {string}
      * @memberof SiteUpdateOptionsTwitchRequest
      */
     'lang'?: SiteUpdateOptionsTwitchRequestLangEnum;
     /**
-     *
+     * Nonempty array of up to 10 tags, each 1–25 characters long; an empty array is rejected. Sets tags for a Twitch broadcast.
      * @type {Array<string>}
      * @memberof SiteUpdateOptionsTwitchRequest
      */

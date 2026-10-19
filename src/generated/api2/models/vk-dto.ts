@@ -27,7 +27,7 @@ export interface VkDto {
      */
     'v'?: VkDtoVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof VkDto
      */
@@ -39,7 +39,7 @@ export interface VkDto {
      */
     'project_id': number;
     /**
-     * VK channel id
+     * External VK channel/community identifier from the platform channel list for account_id. Pass the original string, preserving leading zeros. This add-channel method does not take an internal StreamVi channel_id/group_id.
      * @type {string}
      * @memberof VkDto
      */

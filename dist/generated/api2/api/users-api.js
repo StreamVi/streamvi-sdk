@@ -32,11 +32,12 @@ const UsersApiAxiosParamCreator = function (configuration) {
         /**
          * Use /method/account/profile instead.
          * @summary Get user profile
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        userGetProfileV1: async (options = {}) => {
+        userGetProfileV1: async (xClientRequestId, options = {}) => {
             const localVarPath = `/method/users/profile`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -47,9 +48,12 @@ const UsersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["profile:read"], configuration);
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -61,16 +65,17 @@ const UsersApiAxiosParamCreator = function (configuration) {
         /**
          * Use /method/account/profile instead.
          * @summary Update profile
-         * @param {UserUpdateProfileV1LanguageEnum} language Current language
+         * @param {UserUpdateProfileV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} firstName First name
          * @param {string} lastName Last name
          * @param {UserUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        userUpdateProfileV1: async (language, firstName, lastName, v, avatar, options = {}) => {
+        userUpdateProfileV1: async (language, firstName, lastName, v, xClientRequestId, avatar, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userUpdateProfileV1', 'language', language);
             // verify required parameter 'firstName' is not null or undefined
@@ -88,9 +93,9 @@ const UsersApiAxiosParamCreator = function (configuration) {
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -110,6 +115,9 @@ const UsersApiAxiosParamCreator = function (configuration) {
                 localVarFormParams.append('avatar', avatar);
             }
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -132,13 +140,14 @@ const UsersApiFp = function (configuration) {
         /**
          * Use /method/account/profile instead.
          * @summary Get user profile
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        async userGetProfileV1(options) {
+        async userGetProfileV1(xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userGetProfileV1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userGetProfileV1(xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.userGetProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -146,18 +155,19 @@ const UsersApiFp = function (configuration) {
         /**
          * Use /method/account/profile instead.
          * @summary Update profile
-         * @param {UserUpdateProfileV1LanguageEnum} language Current language
+         * @param {UserUpdateProfileV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} firstName First name
          * @param {string} lastName Last name
          * @param {UserUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        async userUpdateProfileV1(language, firstName, lastName, v, avatar, options) {
+        async userUpdateProfileV1(language, firstName, lastName, v, xClientRequestId, avatar, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userUpdateProfileV1(language, firstName, lastName, v, avatar, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userUpdateProfileV1(language, firstName, lastName, v, xClientRequestId, avatar, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.userUpdateProfileV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -175,12 +185,13 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         /**
          * Use /method/account/profile instead.
          * @summary Get user profile
+         * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        userGetProfileV1(options) {
-            return localVarFp.userGetProfileV1(options).then((request) => request(axios, basePath));
+        userGetProfileV1(requestParameters = {}, options) {
+            return localVarFp.userGetProfileV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
          * Use /method/account/profile instead.
@@ -191,7 +202,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         userUpdateProfileV1(requestParameters, options) {
-            return localVarFp.userUpdateProfileV1(requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.v, requestParameters.avatar, options).then((request) => request(axios, basePath));
+            return localVarFp.userUpdateProfileV1(requestParameters['language'], requestParameters['first_name'], requestParameters['last_name'], requestParameters['v'], requestParameters['X-Client-Request-Id'], requestParameters['avatar'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -206,13 +217,14 @@ class UsersApi extends base_1.BaseAPI {
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
+     * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    userGetProfileV1(options) {
-        return (0, exports.UsersApiFp)(this.configuration).userGetProfileV1(options).then((request) => request(this.axios, this.basePath));
+    userGetProfileV1(requestParameters = {}, options) {
+        return (0, exports.UsersApiFp)(this.configuration).userGetProfileV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Use /method/account/profile instead.
@@ -224,7 +236,7 @@ class UsersApi extends base_1.BaseAPI {
      * @memberof UsersApi
      */
     userUpdateProfileV1(requestParameters, options) {
-        return (0, exports.UsersApiFp)(this.configuration).userUpdateProfileV1(requestParameters.language, requestParameters.first_name, requestParameters.last_name, requestParameters.v, requestParameters.avatar, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.UsersApiFp)(this.configuration).userUpdateProfileV1(requestParameters['language'], requestParameters['first_name'], requestParameters['last_name'], requestParameters['v'], requestParameters['X-Client-Request-Id'], requestParameters['avatar'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.UsersApi = UsersApi;

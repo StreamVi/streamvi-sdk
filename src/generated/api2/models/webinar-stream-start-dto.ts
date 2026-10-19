@@ -27,11 +27,17 @@ export interface WebinarStreamStartDto {
      */
     'v'?: WebinarStreamStartDtoVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof WebinarStreamStartDto
      */
     'language': WebinarStreamStartDtoLanguageEnum;
+    /**
+     * Required selected project for account integration credentials; room prefix must match its external ID
+     * @type {number}
+     * @memberof WebinarStreamStartDto
+     */
+    'project_id'?: number;
     /**
      * Room id
      * @type {string}

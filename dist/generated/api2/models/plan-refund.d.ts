@@ -16,13 +16,13 @@
  */
 export interface PlanRefund {
     /**
-     * Refund for the current rate
+     * Refund for the current rate. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRefund
      */
     'current': number;
     /**
-     * Refund for the next rate
+     * Refund for the next rate. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PlanRefund
      */

@@ -16,6 +16,7 @@ All URIs are relative to *http://localhost*
 # **videoSiteCreateV1**
 > VideoCreateSuccessResponse videoSiteCreateV1()
 
+Create an upload session for project_id. Despite using GET, this creates a session in the external video service. Returns the upload URL, progress subscription token/channel, and space in bytes; success does not mean the file has been uploaded or processed. Session credentials must not be logged. Storage limits: GET /method/video/limits.
 
 ### Example
 
@@ -28,14 +29,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new VideoApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.videoSiteCreateV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -43,9 +46,10 @@ const { status, data } = await apiInstance.videoSiteCreateV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -54,7 +58,7 @@ const { status, data } = await apiInstance.videoSiteCreateV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -73,6 +77,7 @@ const { status, data } = await apiInstance.videoSiteCreateV1(
 # **videoSiteDeleteV1**
 > SuccessResponse videoSiteDeleteV1()
 
+Delete video id in project_id through the video service after reading its current details. Input is supplied in query for this POST. This deletes the video without cancelling an upload session or stopping a schedule.
 
 ### Example
 
@@ -85,16 +90,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new VideoApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let id: number; //Video id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.videoSiteDeleteV1(
     language,
     projectId,
     id,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -102,10 +109,11 @@ const { status, data } = await apiInstance.videoSiteDeleteV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **id** | [**number**] | Video id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -114,7 +122,7 @@ const { status, data } = await apiInstance.videoSiteDeleteV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -133,6 +141,7 @@ const { status, data } = await apiInstance.videoSiteDeleteV1(
 # **videoSiteDownloadV1**
 > VideoDownloadResponse videoSiteDownloadV1()
 
+Get the video download URL for id in project_id, with name/size in bytes. Returns JSON containing a link, not a file stream; a link does not confirm download completion.
 
 ### Example
 
@@ -145,16 +154,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new VideoApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let id: string; //Download link id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.videoSiteDownloadV1(
     language,
     projectId,
     id,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -162,10 +173,11 @@ const { status, data } = await apiInstance.videoSiteDownloadV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **id** | [**string**] | Download link id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -174,7 +186,7 @@ const { status, data } = await apiInstance.videoSiteDownloadV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -193,6 +205,7 @@ const { status, data } = await apiInstance.videoSiteDownloadV1(
 # **videoSiteGetV1**
 > VideoItemResponse videoSiteGetV1()
 
+Read a video by numeric id in project_id through the video service. Returns video properties and state; use GET /method/video/list to find IDs. Reading neither uploads a file nor starts a schedule.
 
 ### Example
 
@@ -205,16 +218,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new VideoApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let id: number; //Video id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.videoSiteGetV1(
     language,
     projectId,
     id,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -222,10 +237,11 @@ const { status, data } = await apiInstance.videoSiteGetV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **id** | [**number**] | Video id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -234,7 +250,7 @@ const { status, data } = await apiInstance.videoSiteGetV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -253,6 +269,7 @@ const { status, data } = await apiInstance.videoSiteGetV1(
 # **videoSiteLimitsV1**
 > VideoLimitsResponse videoSiteLimitsV1()
 
+Read video storage limits for project_id: video_limit and video_current in bytes; removing_at may be absent. Limits are returned by the video service and depend on project/plan state; clients must not hardcode them.
 
 ### Example
 
@@ -265,14 +282,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new VideoApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.videoSiteLimitsV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -280,9 +299,10 @@ const { status, data } = await apiInstance.videoSiteLimitsV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -291,7 +311,7 @@ const { status, data } = await apiInstance.videoSiteLimitsV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -310,6 +330,7 @@ const { status, data } = await apiInstance.videoSiteLimitsV1(
 # **videoSiteListV1**
 > ListVideoResponse videoSiteListV1()
 
+Read videos of project_id with limit/offset (the number of records to skip). Returns results, total, and actual video service pagination. Use the video ID for get/update/delete and scheduler video.id; this method does not create an upload session.
 
 ### Example
 
@@ -322,18 +343,20 @@ import {
 const configuration = new Configuration();
 const apiInstance = new VideoApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
 let offset: number; //Offset for v2 list endpoint (optional) (default to undefined)
 let limit: number; //Limit for v2 list endpoint (optional) (default to undefined)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.videoSiteListV1(
     language,
     projectId,
     v,
     offset,
-    limit
+    limit,
+    xClientRequestId
 );
 ```
 
@@ -341,11 +364,12 @@ const { status, data } = await apiInstance.videoSiteListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
 | **offset** | [**number**] | Offset for v2 list endpoint | (optional) defaults to undefined|
 | **limit** | [**number**] | Limit for v2 list endpoint | (optional) defaults to undefined|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -354,7 +378,7 @@ const { status, data } = await apiInstance.videoSiteListV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -373,6 +397,7 @@ const { status, data } = await apiInstance.videoSiteListV1(
 # **videoSiteProgressChannelV1**
 > Array<VideoProgressChannelResponse> videoSiteProgressChannelV1()
 
+Get the list of Centrifugo upload progress channels for project_id. These are subscription details, not an upload command; use GET /method/video/create to create an upload session.
 
 ### Example
 
@@ -385,14 +410,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new VideoApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.videoSiteProgressChannelV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -400,9 +427,10 @@ const { status, data } = await apiInstance.videoSiteProgressChannelV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -411,7 +439,7 @@ const { status, data } = await apiInstance.videoSiteProgressChannelV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -430,6 +458,7 @@ const { status, data } = await apiInstance.videoSiteProgressChannelV1(
 # **videoSiteUpdateV1**
 > SuccessResponse videoSiteUpdateV1(updateVideoRequest)
 
+Rename video id in project_id by saving name through the video service. Success confirms the name change; this method does not replace the file, content, or schedule.
 
 ### Example
 
@@ -444,9 +473,11 @@ const configuration = new Configuration();
 const apiInstance = new VideoApi(configuration);
 
 let updateVideoRequest: UpdateVideoRequest; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.videoSiteUpdateV1(
-    updateVideoRequest
+    updateVideoRequest,
+    xClientRequestId
 );
 ```
 
@@ -455,6 +486,7 @@ const { status, data } = await apiInstance.videoSiteUpdateV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **updateVideoRequest** | **UpdateVideoRequest**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -463,7 +495,7 @@ const { status, data } = await apiInstance.videoSiteUpdateV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 

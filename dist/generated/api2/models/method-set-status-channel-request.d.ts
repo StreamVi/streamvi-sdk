@@ -22,13 +22,19 @@ export interface MethodSetStatusChannelRequest {
      */
     'v'?: MethodSetStatusChannelRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results; en is used when omitted. Allowed values are defined by enum.
      * @type {string}
      * @memberof MethodSetStatusChannelRequest
      */
     'language'?: MethodSetStatusChannelRequestLanguageEnum;
     /**
-     * Channel id
+     * Target accessible project ID. Account tokens fall back to their personal project only when the target is omitted in every request source; pass the explicit project used for channel search. Project tokens determine their project automatically.
+     * @type {number}
+     * @memberof MethodSetStatusChannelRequest
+     */
+    'project_id'?: number;
+    /**
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof MethodSetStatusChannelRequest
      */

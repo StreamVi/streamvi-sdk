@@ -15,6 +15,9 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
+import type { ChannelProviderConnectionDto } from './channel-provider-connection-dto';
+// May contain unused imports in some cases
+// @ts-ignore
 import type { SearchChannelCredentialDto } from './search-channel-credential-dto';
 // May contain unused imports in some cases
 // @ts-ignore
@@ -45,7 +48,7 @@ export interface SearchChannelItem {
      */
     'name': string;
     /**
-     * name
+     * External/platform channel identifier or generated custom-channel code. Treat as an opaque string even when it contains only digits. For management use group_id as channel_id.
      * @type {string}
      * @memberof SearchChannelItem
      */
@@ -57,7 +60,7 @@ export interface SearchChannelItem {
      */
     'transcoderId': number | null;
     /**
-     * group_id
+     * Internal numeric StreamVi channel ID. Pass this value as channel_id to channel status, settings and access methods, with the same project_id used for search.
      * @type {number}
      * @memberof SearchChannelItem
      */
@@ -105,7 +108,7 @@ export interface SearchChannelItem {
      */
     'user_id': number | null;
     /**
-     * active
+     * Whether this channel is enabled in the project; distinct from broadcasting live. To disable, send active=false with channel_id=group_id and the same project_id.
      * @type {boolean}
      * @memberof SearchChannelItem
      */
@@ -147,7 +150,7 @@ export interface SearchChannelItem {
      */
     'streamInfo': SearchChannelItemStreamInfo | null;
     /**
-     * rtmp
+     * 
      * @type {SearchChannelRtmpDto}
      * @memberof SearchChannelItem
      */
@@ -176,6 +179,12 @@ export interface SearchChannelItem {
      * @memberof SearchChannelItem
      */
     'credentials': Array<SearchChannelCredentialsDto> | null;
+    /**
+     * 
+     * @type {Array<ChannelProviderConnectionDto>}
+     * @memberof SearchChannelItem
+     */
+    'connections'?: Array<ChannelProviderConnectionDto>;
     /**
      * Tokens
      * @type {SearchChannelCredentialDto}

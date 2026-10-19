@@ -30,13 +30,14 @@ const base_1 = require("../base");
 const TranscodersApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Create a transcoder configuration for project_id from DTO parameters and return a numeric ID. Checks current plan and type restrictions. Creating settings does not confirm an external transcoding task has started; assign to a channel with POST /method/channel_settings/setTranscoder.
          * @summary Transcoder create
          * @param {TranscoderCreateDto} transcoderCreateDto
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transcodersAddV1: async (transcoderCreateDto, options = {}) => {
+        transcodersAddV1: async (transcoderCreateDto, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'transcoderCreateDto' is not null or undefined
             (0, common_1.assertParamExists)('transcodersAddV1', 'transcoderCreateDto', transcoderCreateDto);
@@ -50,10 +51,16 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["transcoding:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["transcoding:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -65,13 +72,14 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Delete transcoder_id configuration in project_id. If absent, returns Transcoder not found. This deletes settings; stop active external processing separately with POST /method/transcoder/stop.
          * @summary Transcoder delete
          * @param {TranscoderItemDto} transcoderItemDto
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transcodersDeleteV1: async (transcoderItemDto, options = {}) => {
+        transcodersDeleteV1: async (transcoderItemDto, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'transcoderItemDto' is not null or undefined
             (0, common_1.assertParamExists)('transcodersDeleteV1', 'transcoderItemDto', transcoderItemDto);
@@ -85,10 +93,16 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["transcoding:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["transcoding:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -100,15 +114,16 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read transcoder settings for project_id, including ID, type, parameters, and actual state according to the response schema. This reads configurations without starting transcoding; use IDs in update/delete/stop/reset-delay and channel assignment.
          * @summary List of transcoder
-         * @param {TranscodersListV1LanguageEnum} language Current language
+         * @param {TranscodersListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transcodersListV1: async (language, projectId, v, options = {}) => {
+        transcodersListV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('transcodersListV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -123,9 +138,12 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["transcoding:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["transcoding:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["transcoding:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -138,6 +156,9 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -147,13 +168,14 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Send a delay reset command for transcoder_id in project_id. This controls an existing transcoder without changing protection duration or simulated /method/channel/set-delay. Success does not guarantee immediate completion of the external operation.
          * @summary Reset delay
          * @param {TranscoderItemDto} transcoderItemDto
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transcodersResetDelayV1: async (transcoderItemDto, options = {}) => {
+        transcodersResetDelayV1: async (transcoderItemDto, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'transcoderItemDto' is not null or undefined
             (0, common_1.assertParamExists)('transcodersResetDelayV1', 'transcoderItemDto', transcoderItemDto);
@@ -167,10 +189,16 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["transcoding:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["transcoding:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -182,13 +210,14 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Send a stop command for transcoder_id in project_id after checking access. Success confirms the management use case processed the command; check the actual state for completion of external processing. The configuration is not deleted.
          * @summary Transcoder stop
          * @param {TranscoderItemDto} transcoderItemDto
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transcodersStopV1: async (transcoderItemDto, options = {}) => {
+        transcodersStopV1: async (transcoderItemDto, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'transcoderItemDto' is not null or undefined
             (0, common_1.assertParamExists)('transcodersStopV1', 'transcoderItemDto', transcoderItemDto);
@@ -202,10 +231,16 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["transcoding:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["transcoding:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -217,13 +252,14 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Change the transcoder configuration for the selected project_id using its ID and DTO fields. Success confirms the configuration workflow was saved; it is not a resume-broadcast command. Parameter types and constraints are defined by the request schema.
          * @summary Transcoder update
          * @param {TranscoderUpdateDto} transcoderUpdateDto
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transcodersUpdateV1: async (transcoderUpdateDto, options = {}) => {
+        transcodersUpdateV1: async (transcoderUpdateDto, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'transcoderUpdateDto' is not null or undefined
             (0, common_1.assertParamExists)('transcodersUpdateV1', 'transcoderUpdateDto', transcoderUpdateDto);
@@ -237,10 +273,16 @@ const TranscodersApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["transcoding:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["transcoding:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -262,87 +304,93 @@ const TranscodersApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.TranscodersApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Create a transcoder configuration for project_id from DTO parameters and return a numeric ID. Checks current plan and type restrictions. Creating settings does not confirm an external transcoding task has started; assign to a channel with POST /method/channel_settings/setTranscoder.
          * @summary Transcoder create
          * @param {TranscoderCreateDto} transcoderCreateDto
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async transcodersAddV1(transcoderCreateDto, options) {
+        async transcodersAddV1(transcoderCreateDto, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersAddV1(transcoderCreateDto, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersAddV1(transcoderCreateDto, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TranscodersApi.transcodersAddV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Delete transcoder_id configuration in project_id. If absent, returns Transcoder not found. This deletes settings; stop active external processing separately with POST /method/transcoder/stop.
          * @summary Transcoder delete
          * @param {TranscoderItemDto} transcoderItemDto
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async transcodersDeleteV1(transcoderItemDto, options) {
+        async transcodersDeleteV1(transcoderItemDto, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersDeleteV1(transcoderItemDto, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersDeleteV1(transcoderItemDto, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TranscodersApi.transcodersDeleteV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read transcoder settings for project_id, including ID, type, parameters, and actual state according to the response schema. This reads configurations without starting transcoding; use IDs in update/delete/stop/reset-delay and channel assignment.
          * @summary List of transcoder
-         * @param {TranscodersListV1LanguageEnum} language Current language
+         * @param {TranscodersListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {TranscodersListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async transcodersListV1(language, projectId, v, options) {
+        async transcodersListV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersListV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersListV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TranscodersApi.transcodersListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Send a delay reset command for transcoder_id in project_id. This controls an existing transcoder without changing protection duration or simulated /method/channel/set-delay. Success does not guarantee immediate completion of the external operation.
          * @summary Reset delay
          * @param {TranscoderItemDto} transcoderItemDto
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async transcodersResetDelayV1(transcoderItemDto, options) {
+        async transcodersResetDelayV1(transcoderItemDto, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersResetDelayV1(transcoderItemDto, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersResetDelayV1(transcoderItemDto, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TranscodersApi.transcodersResetDelayV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Send a stop command for transcoder_id in project_id after checking access. Success confirms the management use case processed the command; check the actual state for completion of external processing. The configuration is not deleted.
          * @summary Transcoder stop
          * @param {TranscoderItemDto} transcoderItemDto
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async transcodersStopV1(transcoderItemDto, options) {
+        async transcodersStopV1(transcoderItemDto, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersStopV1(transcoderItemDto, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersStopV1(transcoderItemDto, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TranscodersApi.transcodersStopV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Change the transcoder configuration for the selected project_id using its ID and DTO fields. Success confirms the configuration workflow was saved; it is not a resume-broadcast command. Parameter types and constraints are defined by the request schema.
          * @summary Transcoder update
          * @param {TranscoderUpdateDto} transcoderUpdateDto
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async transcodersUpdateV1(transcoderUpdateDto, options) {
+        async transcodersUpdateV1(transcoderUpdateDto, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersUpdateV1(transcoderUpdateDto, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.transcodersUpdateV1(transcoderUpdateDto, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TranscodersApi.transcodersUpdateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -358,64 +406,64 @@ const TranscodersApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.TranscodersApiFp)(configuration);
     return {
         /**
-         *
+         * Create a transcoder configuration for project_id from DTO parameters and return a numeric ID. Checks current plan and type restrictions. Creating settings does not confirm an external transcoding task has started; assign to a channel with POST /method/channel_settings/setTranscoder.
          * @summary Transcoder create
          * @param {TranscodersApiTranscodersAddV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         transcodersAddV1(requestParameters, options) {
-            return localVarFp.transcodersAddV1(requestParameters.TranscoderCreateDto, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersAddV1(requestParameters['TranscoderCreateDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Delete transcoder_id configuration in project_id. If absent, returns Transcoder not found. This deletes settings; stop active external processing separately with POST /method/transcoder/stop.
          * @summary Transcoder delete
          * @param {TranscodersApiTranscodersDeleteV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         transcodersDeleteV1(requestParameters, options) {
-            return localVarFp.transcodersDeleteV1(requestParameters.TranscoderItemDto, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersDeleteV1(requestParameters['TranscoderItemDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read transcoder settings for project_id, including ID, type, parameters, and actual state according to the response schema. This reads configurations without starting transcoding; use IDs in update/delete/stop/reset-delay and channel assignment.
          * @summary List of transcoder
          * @param {TranscodersApiTranscodersListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         transcodersListV1(requestParameters, options) {
-            return localVarFp.transcodersListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Send a delay reset command for transcoder_id in project_id. This controls an existing transcoder without changing protection duration or simulated /method/channel/set-delay. Success does not guarantee immediate completion of the external operation.
          * @summary Reset delay
          * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         transcodersResetDelayV1(requestParameters, options) {
-            return localVarFp.transcodersResetDelayV1(requestParameters.TranscoderItemDto, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersResetDelayV1(requestParameters['TranscoderItemDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Send a stop command for transcoder_id in project_id after checking access. Success confirms the management use case processed the command; check the actual state for completion of external processing. The configuration is not deleted.
          * @summary Transcoder stop
          * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         transcodersStopV1(requestParameters, options) {
-            return localVarFp.transcodersStopV1(requestParameters.TranscoderItemDto, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersStopV1(requestParameters['TranscoderItemDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Change the transcoder configuration for the selected project_id using its ID and DTO fields. Success confirms the configuration workflow was saved; it is not a resume-broadcast command. Parameter types and constraints are defined by the request schema.
          * @summary Transcoder update
          * @param {TranscodersApiTranscodersUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         transcodersUpdateV1(requestParameters, options) {
-            return localVarFp.transcodersUpdateV1(requestParameters.TranscoderUpdateDto, options).then((request) => request(axios, basePath));
+            return localVarFp.transcodersUpdateV1(requestParameters['TranscoderUpdateDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -428,7 +476,7 @@ exports.TranscodersApiFactory = TranscodersApiFactory;
  */
 class TranscodersApi extends base_1.BaseAPI {
     /**
-     *
+     * Create a transcoder configuration for project_id from DTO parameters and return a numeric ID. Checks current plan and type restrictions. Creating settings does not confirm an external transcoding task has started; assign to a channel with POST /method/channel_settings/setTranscoder.
      * @summary Transcoder create
      * @param {TranscodersApiTranscodersAddV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -436,10 +484,10 @@ class TranscodersApi extends base_1.BaseAPI {
      * @memberof TranscodersApi
      */
     transcodersAddV1(requestParameters, options) {
-        return (0, exports.TranscodersApiFp)(this.configuration).transcodersAddV1(requestParameters.TranscoderCreateDto, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.TranscodersApiFp)(this.configuration).transcodersAddV1(requestParameters['TranscoderCreateDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Delete transcoder_id configuration in project_id. If absent, returns Transcoder not found. This deletes settings; stop active external processing separately with POST /method/transcoder/stop.
      * @summary Transcoder delete
      * @param {TranscodersApiTranscodersDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -447,10 +495,10 @@ class TranscodersApi extends base_1.BaseAPI {
      * @memberof TranscodersApi
      */
     transcodersDeleteV1(requestParameters, options) {
-        return (0, exports.TranscodersApiFp)(this.configuration).transcodersDeleteV1(requestParameters.TranscoderItemDto, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.TranscodersApiFp)(this.configuration).transcodersDeleteV1(requestParameters['TranscoderItemDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read transcoder settings for project_id, including ID, type, parameters, and actual state according to the response schema. This reads configurations without starting transcoding; use IDs in update/delete/stop/reset-delay and channel assignment.
      * @summary List of transcoder
      * @param {TranscodersApiTranscodersListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -458,10 +506,10 @@ class TranscodersApi extends base_1.BaseAPI {
      * @memberof TranscodersApi
      */
     transcodersListV1(requestParameters, options) {
-        return (0, exports.TranscodersApiFp)(this.configuration).transcodersListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.TranscodersApiFp)(this.configuration).transcodersListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Send a delay reset command for transcoder_id in project_id. This controls an existing transcoder without changing protection duration or simulated /method/channel/set-delay. Success does not guarantee immediate completion of the external operation.
      * @summary Reset delay
      * @param {TranscodersApiTranscodersResetDelayV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -469,10 +517,10 @@ class TranscodersApi extends base_1.BaseAPI {
      * @memberof TranscodersApi
      */
     transcodersResetDelayV1(requestParameters, options) {
-        return (0, exports.TranscodersApiFp)(this.configuration).transcodersResetDelayV1(requestParameters.TranscoderItemDto, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.TranscodersApiFp)(this.configuration).transcodersResetDelayV1(requestParameters['TranscoderItemDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Send a stop command for transcoder_id in project_id after checking access. Success confirms the management use case processed the command; check the actual state for completion of external processing. The configuration is not deleted.
      * @summary Transcoder stop
      * @param {TranscodersApiTranscodersStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -480,10 +528,10 @@ class TranscodersApi extends base_1.BaseAPI {
      * @memberof TranscodersApi
      */
     transcodersStopV1(requestParameters, options) {
-        return (0, exports.TranscodersApiFp)(this.configuration).transcodersStopV1(requestParameters.TranscoderItemDto, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.TranscodersApiFp)(this.configuration).transcodersStopV1(requestParameters['TranscoderItemDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Change the transcoder configuration for the selected project_id using its ID and DTO fields. Success confirms the configuration workflow was saved; it is not a resume-broadcast command. Parameter types and constraints are defined by the request schema.
      * @summary Transcoder update
      * @param {TranscodersApiTranscodersUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -491,7 +539,7 @@ class TranscodersApi extends base_1.BaseAPI {
      * @memberof TranscodersApi
      */
     transcodersUpdateV1(requestParameters, options) {
-        return (0, exports.TranscodersApiFp)(this.configuration).transcodersUpdateV1(requestParameters.TranscoderUpdateDto, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.TranscodersApiFp)(this.configuration).transcodersUpdateV1(requestParameters['TranscoderUpdateDto'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.TranscodersApi = TranscodersApi;

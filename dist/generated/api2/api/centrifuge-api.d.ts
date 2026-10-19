@@ -26,64 +26,70 @@ export declare const CentrifugeApiAxiosParamCreator: (configuration?: Configurat
      * @summary Auth centrifuge for project
      * @param {number} projectId Project id
      * @param {CentrifugeAuthV2VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    centrifugeAuthV2: (projectId: number, v?: CentrifugeAuthV2VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    centrifugeAuthV2: (projectId: number, v?: CentrifugeAuthV2VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
+     * Get a secret subscription token for an allowed channel_name in project_id. expires_in is the lifetime in seconds (currently 30 minutes); channel is the subscription name. Obtain a connection token separately from /method/centrifuge/auth/connect. Supported channels and access are checked; this is neither the OpenAPI tool catalog nor widget custom actions. channel_name is the requested channel name. Examples: $broadcast:123 — broadcast; $widget_template:507f1f77bcf86cd799439011 — integration template widget data.
      * @summary Get token for connect to centrifuge for channel
-     * @param {CentrifugeChannelTokenV1LanguageEnum} language Current language
+     * @param {CentrifugeChannelTokenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {string} channelName Channel name
      * @param {CentrifugeChannelTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    centrifugeChannelTokenV1: (language: CentrifugeChannelTokenV1LanguageEnum, projectId: number, channelName: string, v?: CentrifugeChannelTokenV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    centrifugeChannelTokenV1: (language: CentrifugeChannelTokenV1LanguageEnum, projectId: number, channelName: string, v?: CentrifugeChannelTokenV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Returns supported channel_type values, required params, events, and response schema names.
      * @summary List available Method API Centrifuge channels
-     * @param {CentrifugeChannelsCatalogV1LanguageEnum} language Current language
+     * @param {CentrifugeChannelsCatalogV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {CentrifugeChannelsCatalogV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    centrifugeChannelsCatalogV1: (language: CentrifugeChannelsCatalogV1LanguageEnum, v?: CentrifugeChannelsCatalogV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    centrifugeChannelsCatalogV1: (language: CentrifugeChannelsCatalogV1LanguageEnum, v?: CentrifugeChannelsCatalogV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Get token for connect to centrifuge for project
+     * Get the secret Centrifugo connection token for the selected project_id, with expires_in in seconds (currently 5 minutes). This is a connection credential, not permission to subscribe to any channel. Obtain a subscription token separately through /method/centrifuge/auth/channel; read channel types from /method/centrifuge/channels. Do not save the token in the corpus.
      * @summary Get token for connect to centrifuge for project
-     * @param {CentrifugeConnectionTokenV1LanguageEnum} language Current language
+     * @param {CentrifugeConnectionTokenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {CentrifugeConnectionTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    centrifugeConnectionTokenV1: (language: CentrifugeConnectionTokenV1LanguageEnum, projectId: number, v?: CentrifugeConnectionTokenV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    centrifugeConnectionTokenV1: (language: CentrifugeConnectionTokenV1LanguageEnum, projectId: number, v?: CentrifugeConnectionTokenV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Use /method/centrifuge/auth/channel instead.
      * @summary Auth token for project
-     * @param {CentrifugeProjectV1LanguageEnum} language Current language
+     * @param {CentrifugeProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    centrifugeProjectV1: (language: CentrifugeProjectV1LanguageEnum, projectId: number, v?: CentrifugeProjectV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    centrifugeProjectV1: (language: CentrifugeProjectV1LanguageEnum, projectId: number, v?: CentrifugeProjectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Use /method/centrifuge/auth/channel instead.
      * @summary Auth token for broadcast
-     * @param {number} broadcastId
-     * @param {GetTokenBroadcastV1LanguageEnum} language Current language
+     * @param {number} broadcastId Internal broadcast ID in project_id for a legacy subscription token.
+     * @param {GetTokenBroadcastV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    getTokenBroadcastV1: (broadcastId: number, language: GetTokenBroadcastV1LanguageEnum, projectId: number, v?: GetTokenBroadcastV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getTokenBroadcastV1: (broadcastId: number, language: GetTokenBroadcastV1LanguageEnum, projectId: number, v?: GetTokenBroadcastV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * CentrifugeApi - functional programming interface
@@ -95,64 +101,70 @@ export declare const CentrifugeApiFp: (configuration?: Configuration) => {
      * @summary Auth centrifuge for project
      * @param {number} projectId Project id
      * @param {CentrifugeAuthV2VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    centrifugeAuthV2(projectId: number, v?: CentrifugeAuthV2VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
+    centrifugeAuthV2(projectId: number, v?: CentrifugeAuthV2VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
+     * Get a secret subscription token for an allowed channel_name in project_id. expires_in is the lifetime in seconds (currently 30 minutes); channel is the subscription name. Obtain a connection token separately from /method/centrifuge/auth/connect. Supported channels and access are checked; this is neither the OpenAPI tool catalog nor widget custom actions. channel_name is the requested channel name. Examples: $broadcast:123 — broadcast; $widget_template:507f1f77bcf86cd799439011 — integration template widget data.
      * @summary Get token for connect to centrifuge for channel
-     * @param {CentrifugeChannelTokenV1LanguageEnum} language Current language
+     * @param {CentrifugeChannelTokenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {string} channelName Channel name
      * @param {CentrifugeChannelTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    centrifugeChannelTokenV1(language: CentrifugeChannelTokenV1LanguageEnum, projectId: number, channelName: string, v?: CentrifugeChannelTokenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthCentrifugoChannelResponse>>;
+    centrifugeChannelTokenV1(language: CentrifugeChannelTokenV1LanguageEnum, projectId: number, channelName: string, v?: CentrifugeChannelTokenV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthCentrifugoChannelResponse>>;
     /**
      * Returns supported channel_type values, required params, events, and response schema names.
      * @summary List available Method API Centrifuge channels
-     * @param {CentrifugeChannelsCatalogV1LanguageEnum} language Current language
+     * @param {CentrifugeChannelsCatalogV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {CentrifugeChannelsCatalogV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    centrifugeChannelsCatalogV1(language: CentrifugeChannelsCatalogV1LanguageEnum, v?: CentrifugeChannelsCatalogV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CentrifugoChannelsCatalogResponse>>;
+    centrifugeChannelsCatalogV1(language: CentrifugeChannelsCatalogV1LanguageEnum, v?: CentrifugeChannelsCatalogV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CentrifugoChannelsCatalogResponse>>;
     /**
-     * Get token for connect to centrifuge for project
+     * Get the secret Centrifugo connection token for the selected project_id, with expires_in in seconds (currently 5 minutes). This is a connection credential, not permission to subscribe to any channel. Obtain a subscription token separately through /method/centrifuge/auth/channel; read channel types from /method/centrifuge/channels. Do not save the token in the corpus.
      * @summary Get token for connect to centrifuge for project
-     * @param {CentrifugeConnectionTokenV1LanguageEnum} language Current language
+     * @param {CentrifugeConnectionTokenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {CentrifugeConnectionTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    centrifugeConnectionTokenV1(language: CentrifugeConnectionTokenV1LanguageEnum, projectId: number, v?: CentrifugeConnectionTokenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthCentrifugoConnectResponse>>;
+    centrifugeConnectionTokenV1(language: CentrifugeConnectionTokenV1LanguageEnum, projectId: number, v?: CentrifugeConnectionTokenV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthCentrifugoConnectResponse>>;
     /**
      * Use /method/centrifuge/auth/channel instead.
      * @summary Auth token for project
-     * @param {CentrifugeProjectV1LanguageEnum} language Current language
+     * @param {CentrifugeProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {CentrifugeProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    centrifugeProjectV1(language: CentrifugeProjectV1LanguageEnum, projectId: number, v?: CentrifugeProjectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
+    centrifugeProjectV1(language: CentrifugeProjectV1LanguageEnum, projectId: number, v?: CentrifugeProjectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
     /**
      * Use /method/centrifuge/auth/channel instead.
      * @summary Auth token for broadcast
-     * @param {number} broadcastId
-     * @param {GetTokenBroadcastV1LanguageEnum} language Current language
+     * @param {number} broadcastId Internal broadcast ID in project_id for a legacy subscription token.
+     * @param {GetTokenBroadcastV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {GetTokenBroadcastV1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    getTokenBroadcastV1(broadcastId: number, language: GetTokenBroadcastV1LanguageEnum, projectId: number, v?: GetTokenBroadcastV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
+    getTokenBroadcastV1(broadcastId: number, language: GetTokenBroadcastV1LanguageEnum, projectId: number, v?: GetTokenBroadcastV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteAuthCentrifugeResponse>>;
 };
 /**
  * CentrifugeApi - factory interface
@@ -169,7 +181,7 @@ export declare const CentrifugeApiFactory: (configuration?: Configuration, baseP
      */
     centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
+     * Get a secret subscription token for an allowed channel_name in project_id. expires_in is the lifetime in seconds (currently 30 minutes); channel is the subscription name. Obtain a connection token separately from /method/centrifuge/auth/connect. Supported channels and access are checked; this is neither the OpenAPI tool catalog nor widget custom actions. channel_name is the requested channel name. Examples: $broadcast:123 — broadcast; $widget_template:507f1f77bcf86cd799439011 — integration template widget data.
      * @summary Get token for connect to centrifuge for channel
      * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -185,7 +197,7 @@ export declare const CentrifugeApiFactory: (configuration?: Configuration, baseP
      */
     centrifugeChannelsCatalogV1(requestParameters: CentrifugeApiCentrifugeChannelsCatalogV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CentrifugoChannelsCatalogResponse>;
     /**
-     * Get token for connect to centrifuge for project
+     * Get the secret Centrifugo connection token for the selected project_id, with expires_in in seconds (currently 5 minutes). This is a connection credential, not permission to subscribe to any channel. Obtain a subscription token separately through /method/centrifuge/auth/channel; read channel types from /method/centrifuge/channels. Do not save the token in the corpus.
      * @summary Get token for connect to centrifuge for project
      * @param {CentrifugeApiCentrifugeConnectionTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -228,7 +240,7 @@ export interface CentrifugeApiInterface {
      */
     centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteAuthCentrifugeResponse>;
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
+     * Get a secret subscription token for an allowed channel_name in project_id. expires_in is the lifetime in seconds (currently 30 minutes); channel is the subscription name. Obtain a connection token separately from /method/centrifuge/auth/connect. Supported channels and access are checked; this is neither the OpenAPI tool catalog nor widget custom actions. channel_name is the requested channel name. Examples: $broadcast:123 — broadcast; $widget_template:507f1f77bcf86cd799439011 — integration template widget data.
      * @summary Get token for connect to centrifuge for channel
      * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -246,7 +258,7 @@ export interface CentrifugeApiInterface {
      */
     centrifugeChannelsCatalogV1(requestParameters: CentrifugeApiCentrifugeChannelsCatalogV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CentrifugoChannelsCatalogResponse>;
     /**
-     * Get token for connect to centrifuge for project
+     * Get the secret Centrifugo connection token for the selected project_id, with expires_in in seconds (currently 5 minutes). This is a connection credential, not permission to subscribe to any channel. Obtain a subscription token separately through /method/centrifuge/auth/channel; read channel types from /method/centrifuge/channels. Do not save the token in the corpus.
      * @summary Get token for connect to centrifuge for project
      * @param {CentrifugeApiCentrifugeConnectionTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -286,13 +298,19 @@ export interface CentrifugeApiCentrifugeAuthV2Request {
      * @type {number}
      * @memberof CentrifugeApiCentrifugeAuthV2
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @type {'2'}
      * @memberof CentrifugeApiCentrifugeAuthV2
      */
-    readonly v?: CentrifugeAuthV2VEnum;
+    readonly 'v'?: CentrifugeAuthV2VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof CentrifugeApiCentrifugeAuthV2
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for centrifugeChannelTokenV1 operation in CentrifugeApi.
@@ -301,29 +319,35 @@ export interface CentrifugeApiCentrifugeAuthV2Request {
  */
 export interface CentrifugeApiCentrifugeChannelTokenV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof CentrifugeApiCentrifugeChannelTokenV1
      */
-    readonly language: CentrifugeChannelTokenV1LanguageEnum;
+    readonly 'language': CentrifugeChannelTokenV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof CentrifugeApiCentrifugeChannelTokenV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Channel name
      * @type {string}
      * @memberof CentrifugeApiCentrifugeChannelTokenV1
      */
-    readonly channel_name: string;
+    readonly 'channel_name': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof CentrifugeApiCentrifugeChannelTokenV1
      */
-    readonly v?: CentrifugeChannelTokenV1VEnum;
+    readonly 'v'?: CentrifugeChannelTokenV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof CentrifugeApiCentrifugeChannelTokenV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for centrifugeChannelsCatalogV1 operation in CentrifugeApi.
@@ -332,17 +356,23 @@ export interface CentrifugeApiCentrifugeChannelTokenV1Request {
  */
 export interface CentrifugeApiCentrifugeChannelsCatalogV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof CentrifugeApiCentrifugeChannelsCatalogV1
      */
-    readonly language: CentrifugeChannelsCatalogV1LanguageEnum;
+    readonly 'language': CentrifugeChannelsCatalogV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof CentrifugeApiCentrifugeChannelsCatalogV1
      */
-    readonly v?: CentrifugeChannelsCatalogV1VEnum;
+    readonly 'v'?: CentrifugeChannelsCatalogV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof CentrifugeApiCentrifugeChannelsCatalogV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for centrifugeConnectionTokenV1 operation in CentrifugeApi.
@@ -351,23 +381,29 @@ export interface CentrifugeApiCentrifugeChannelsCatalogV1Request {
  */
 export interface CentrifugeApiCentrifugeConnectionTokenV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof CentrifugeApiCentrifugeConnectionTokenV1
      */
-    readonly language: CentrifugeConnectionTokenV1LanguageEnum;
+    readonly 'language': CentrifugeConnectionTokenV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof CentrifugeApiCentrifugeConnectionTokenV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof CentrifugeApiCentrifugeConnectionTokenV1
      */
-    readonly v?: CentrifugeConnectionTokenV1VEnum;
+    readonly 'v'?: CentrifugeConnectionTokenV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof CentrifugeApiCentrifugeConnectionTokenV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for centrifugeProjectV1 operation in CentrifugeApi.
@@ -376,23 +412,29 @@ export interface CentrifugeApiCentrifugeConnectionTokenV1Request {
  */
 export interface CentrifugeApiCentrifugeProjectV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof CentrifugeApiCentrifugeProjectV1
      */
-    readonly language: CentrifugeProjectV1LanguageEnum;
+    readonly 'language': CentrifugeProjectV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof CentrifugeApiCentrifugeProjectV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof CentrifugeApiCentrifugeProjectV1
      */
-    readonly v?: CentrifugeProjectV1VEnum;
+    readonly 'v'?: CentrifugeProjectV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof CentrifugeApiCentrifugeProjectV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for getTokenBroadcastV1 operation in CentrifugeApi.
@@ -401,29 +443,35 @@ export interface CentrifugeApiCentrifugeProjectV1Request {
  */
 export interface CentrifugeApiGetTokenBroadcastV1Request {
     /**
-     *
+     * Internal broadcast ID in project_id for a legacy subscription token.
      * @type {number}
      * @memberof CentrifugeApiGetTokenBroadcastV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof CentrifugeApiGetTokenBroadcastV1
      */
-    readonly language: GetTokenBroadcastV1LanguageEnum;
+    readonly 'language': GetTokenBroadcastV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof CentrifugeApiGetTokenBroadcastV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @type {'2'}
      * @memberof CentrifugeApiGetTokenBroadcastV1
      */
-    readonly v?: GetTokenBroadcastV1VEnum;
+    readonly 'v'?: GetTokenBroadcastV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof CentrifugeApiGetTokenBroadcastV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * CentrifugeApi - object-oriented interface
@@ -443,7 +491,7 @@ export declare class CentrifugeApi extends BaseAPI implements CentrifugeApiInter
      */
     centrifugeAuthV2(requestParameters: CentrifugeApiCentrifugeAuthV2Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteAuthCentrifugeResponse, any, {}, any>>;
     /**
-     *        Get token for specific channel name:       - channel_name: \"channel_name\" - channel name        Examples:       - $broadcast:123 - broadcast       - $widget_template:507f1f77bcf86cd799439011 - integration template widget data
+     * Get a secret subscription token for an allowed channel_name in project_id. expires_in is the lifetime in seconds (currently 30 minutes); channel is the subscription name. Obtain a connection token separately from /method/centrifuge/auth/connect. Supported channels and access are checked; this is neither the OpenAPI tool catalog nor widget custom actions. channel_name is the requested channel name. Examples: $broadcast:123 — broadcast; $widget_template:507f1f77bcf86cd799439011 — integration template widget data.
      * @summary Get token for connect to centrifuge for channel
      * @param {CentrifugeApiCentrifugeChannelTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -461,7 +509,7 @@ export declare class CentrifugeApi extends BaseAPI implements CentrifugeApiInter
      */
     centrifugeChannelsCatalogV1(requestParameters: CentrifugeApiCentrifugeChannelsCatalogV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CentrifugoChannelsCatalogResponse, any, {}, any>>;
     /**
-     * Get token for connect to centrifuge for project
+     * Get the secret Centrifugo connection token for the selected project_id, with expires_in in seconds (currently 5 minutes). This is a connection credential, not permission to subscribe to any channel. Obtain a subscription token separately through /method/centrifuge/auth/channel; read channel types from /method/centrifuge/channels. Do not save the token in the corpus.
      * @summary Get token for connect to centrifuge for project
      * @param {CentrifugeApiCentrifugeConnectionTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

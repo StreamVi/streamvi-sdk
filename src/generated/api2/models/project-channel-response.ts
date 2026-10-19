@@ -39,13 +39,13 @@ export interface ProjectChannelResponse {
      */
     'active': boolean;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID, also returned as group_id in channel search results. Do not use the external/platform id, even if it contains only digits.
      * @type {number}
      * @memberof ProjectChannelResponse
      */
     'channel_id': number;
     /**
-     * Primary key
+     * Internal ID of the project-channel access record. This is not the channel_id or project_id.
      * @type {number}
      * @memberof ProjectChannelResponse
      */
@@ -109,7 +109,6 @@ export interface ProjectChannelResponse {
 export const ProjectChannelResponseAccessTypeEnum = {
     NUMBER_0: 0,
     NUMBER_1: 1,
-    NUMBER_12: 1,
     NUMBER_2: 2
 } as const;
 

@@ -19,21 +19,22 @@ import type { PaginatedProjectHistoryResponse } from '../models';
  */
 export declare const ProjectHistoryApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Read legacy action history of project_id by action/group_id and date_from/date_to range with limit/offset. offset is the number of records to skip; ordering and results follow the current history service. This reads saved actions without executing them and differs from the new /method/project_activity/list feed.
      * @summary Get project history of actions
-     * @param {ProjectHistoryListV1LanguageEnum} language Current language
+     * @param {ProjectHistoryListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} limit Number of results
+     * @param {number} offset Page offset number
      * @param {number} projectId Project id
      * @param {ProjectHistoryListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
      * @param {string} [dateTo] Date to
      * @param {ProjectHistoryListV1ActionEnum} [action] Action
      * @param {number} [groupId] Group id
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    projectHistoryListV1: (language: ProjectHistoryListV1LanguageEnum, projectId: number, v?: ProjectHistoryListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, action?: ProjectHistoryListV1ActionEnum, groupId?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    projectHistoryListV1: (language: ProjectHistoryListV1LanguageEnum, limit: number, offset: number, projectId: number, v?: ProjectHistoryListV1VEnum, dateFrom?: string, dateTo?: string, action?: ProjectHistoryListV1ActionEnum, groupId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ProjectHistoryApi - functional programming interface
@@ -41,21 +42,22 @@ export declare const ProjectHistoryApiAxiosParamCreator: (configuration?: Config
  */
 export declare const ProjectHistoryApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Read legacy action history of project_id by action/group_id and date_from/date_to range with limit/offset. offset is the number of records to skip; ordering and results follow the current history service. This reads saved actions without executing them and differs from the new /method/project_activity/list feed.
      * @summary Get project history of actions
-     * @param {ProjectHistoryListV1LanguageEnum} language Current language
+     * @param {ProjectHistoryListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} limit Number of results
+     * @param {number} offset Page offset number
      * @param {number} projectId Project id
      * @param {ProjectHistoryListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
      * @param {string} [dateFrom] Date from
      * @param {string} [dateTo] Date to
      * @param {ProjectHistoryListV1ActionEnum} [action] Action
      * @param {number} [groupId] Group id
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    projectHistoryListV1(language: ProjectHistoryListV1LanguageEnum, projectId: number, v?: ProjectHistoryListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, action?: ProjectHistoryListV1ActionEnum, groupId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProjectHistoryResponse>>;
+    projectHistoryListV1(language: ProjectHistoryListV1LanguageEnum, limit: number, offset: number, projectId: number, v?: ProjectHistoryListV1VEnum, dateFrom?: string, dateTo?: string, action?: ProjectHistoryListV1ActionEnum, groupId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProjectHistoryResponse>>;
 };
 /**
  * ProjectHistoryApi - factory interface
@@ -63,7 +65,7 @@ export declare const ProjectHistoryApiFp: (configuration?: Configuration) => {
  */
 export declare const ProjectHistoryApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Read legacy action history of project_id by action/group_id and date_from/date_to range with limit/offset. offset is the number of records to skip; ordering and results follow the current history service. This reads saved actions without executing them and differs from the new /method/project_activity/list feed.
      * @summary Get project history of actions
      * @param {ProjectHistoryApiProjectHistoryListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -78,7 +80,7 @@ export declare const ProjectHistoryApiFactory: (configuration?: Configuration, b
  */
 export interface ProjectHistoryApiInterface {
     /**
-     *
+     * Read legacy action history of project_id by action/group_id and date_from/date_to range with limit/offset. offset is the number of records to skip; ordering and results follow the current history service. This reads saved actions without executing them and differs from the new /method/project_activity/list feed.
      * @summary Get project history of actions
      * @param {ProjectHistoryApiProjectHistoryListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -94,59 +96,65 @@ export interface ProjectHistoryApiInterface {
  */
 export interface ProjectHistoryApiProjectHistoryListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly language: ProjectHistoryListV1LanguageEnum;
-    /**
-     * Project id
-     * @type {number}
-     * @memberof ProjectHistoryApiProjectHistoryListV1
-     */
-    readonly project_id: number;
-    /**
-     * Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @type {'1'}
-     * @memberof ProjectHistoryApiProjectHistoryListV1
-     */
-    readonly v?: ProjectHistoryListV1VEnum;
+    readonly 'language': ProjectHistoryListV1LanguageEnum;
     /**
      * Number of results
      * @type {number}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly limit?: number;
+    readonly 'limit': number;
     /**
      * Page offset number
      * @type {number}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly offset?: number;
+    readonly 'offset': number;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ProjectHistoryApiProjectHistoryListV1
+     */
+    readonly 'project_id': number;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof ProjectHistoryApiProjectHistoryListV1
+     */
+    readonly 'v'?: ProjectHistoryListV1VEnum;
     /**
      * Date from
      * @type {string}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly date_from?: string;
+    readonly 'date_from'?: string;
     /**
      * Date to
      * @type {string}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly date_to?: string;
+    readonly 'date_to'?: string;
     /**
      * Action
      * @type {'project_channel_invite_add' | 'project_channel_invite_del' | 'project_channel_invite_accept' | 'project_channel_invite_decline' | 'user_project_invite_add' | 'user_project_invite_del' | 'user_project_invite_accept' | 'user_project_invite_decline' | 'user_project_add' | 'user_project_del' | 'user_project_change' | 'project_channel_add' | 'project_channel_del' | 'project_channel_change'}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly action?: ProjectHistoryListV1ActionEnum;
+    readonly 'action'?: ProjectHistoryListV1ActionEnum;
     /**
      * Group id
      * @type {number}
      * @memberof ProjectHistoryApiProjectHistoryListV1
      */
-    readonly group_id?: number;
+    readonly 'group_id'?: number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ProjectHistoryApiProjectHistoryListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * ProjectHistoryApi - object-oriented interface
@@ -156,7 +164,7 @@ export interface ProjectHistoryApiProjectHistoryListV1Request {
  */
 export declare class ProjectHistoryApi extends BaseAPI implements ProjectHistoryApiInterface {
     /**
-     *
+     * Read legacy action history of project_id by action/group_id and date_from/date_to range with limit/offset. offset is the number of records to skip; ordering and results follow the current history service. This reads saved actions without executing them and differs from the new /method/project_activity/list feed.
      * @summary Get project history of actions
      * @param {ProjectHistoryApiProjectHistoryListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

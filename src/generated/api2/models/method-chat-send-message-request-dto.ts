@@ -21,22 +21,22 @@
  */
 export interface MethodChatSendMessageRequestDto {
     /**
-     * 
+     * Client-assigned UUID v4 of the message to send. Not a stream/channel ID or X-Client-Request-Id.
      * @type {string}
      * @memberof MethodChatSendMessageRequestDto
      */
     'id': string;
     /**
-     * 
+     * Outgoing chat message text, 1–300 characters.
      * @type {string}
      * @memberof MethodChatSendMessageRequestDto
      */
     'text': string;
     /**
-     * 
+     * Optional list of internal broadcast destination restream_id values; obtain them from /method/broadcast/restreams-chat, not platform channel_id.
      * @type {Array<number>}
      * @memberof MethodChatSendMessageRequestDto
      */
-    'restreams': Array<number>;
+    'restreams'?: Array<number>;
 }
 

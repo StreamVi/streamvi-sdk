@@ -30,15 +30,16 @@ const base_1 = require("../base");
 const PolicyPageApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Read policy source text file_name in language. Returns a text/plain stream: .mdx content, not a JSON DTO. Available document names come from GET /method/policy/structure. Reading does not constitute accepting the terms.
          * @summary Get policy page
-         * @param {PolicyPageGetItemV1LanguageEnum} language Current language
+         * @param {PolicyPageGetItemV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PolicyPageGetItemV1FileNameEnum} fileName Policy file name
          * @param {PolicyPageGetItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        policyPageGetItemV1: async (language, fileName, v, options = {}) => {
+        policyPageGetItemV1: async (language, fileName, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('policyPageGetItemV1', 'language', language);
             // verify required parameter 'fileName' is not null or undefined
@@ -65,6 +66,9 @@ const PolicyPageApiAxiosParamCreator = function (configuration) {
             if (fileName !== undefined) {
                 localVarQueryParameter['file_name'] = fileName;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -74,14 +78,15 @@ const PolicyPageApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the public list of policy file_name values: acceptable-use, terms-of-use, refund, privacy-notice, using-cookie. Use GET /method/policy/get for a document\'s text; listing does not change user consent.
          * @summary Get policy structure
-         * @param {PolicyPageGetStructureV1LanguageEnum} language Current language
+         * @param {PolicyPageGetStructureV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PolicyPageGetStructureV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        policyPageGetStructureV1: async (language, v, options = {}) => {
+        policyPageGetStructureV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('policyPageGetStructureV1', 'language', language);
             const localVarPath = `/method/policy/structure`;
@@ -103,6 +108,9 @@ const PolicyPageApiAxiosParamCreator = function (configuration) {
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -122,32 +130,34 @@ const PolicyPageApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.PolicyPageApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Read policy source text file_name in language. Returns a text/plain stream: .mdx content, not a JSON DTO. Available document names come from GET /method/policy/structure. Reading does not constitute accepting the terms.
          * @summary Get policy page
-         * @param {PolicyPageGetItemV1LanguageEnum} language Current language
+         * @param {PolicyPageGetItemV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PolicyPageGetItemV1FileNameEnum} fileName Policy file name
          * @param {PolicyPageGetItemV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async policyPageGetItemV1(language, fileName, v, options) {
+        async policyPageGetItemV1(language, fileName, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.policyPageGetItemV1(language, fileName, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.policyPageGetItemV1(language, fileName, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PolicyPageApi.policyPageGetItemV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the public list of policy file_name values: acceptable-use, terms-of-use, refund, privacy-notice, using-cookie. Use GET /method/policy/get for a document\'s text; listing does not change user consent.
          * @summary Get policy structure
-         * @param {PolicyPageGetStructureV1LanguageEnum} language Current language
+         * @param {PolicyPageGetStructureV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PolicyPageGetStructureV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async policyPageGetStructureV1(language, v, options) {
+        async policyPageGetStructureV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.policyPageGetStructureV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.policyPageGetStructureV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PolicyPageApi.policyPageGetStructureV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -163,24 +173,24 @@ const PolicyPageApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.PolicyPageApiFp)(configuration);
     return {
         /**
-         *
+         * Read policy source text file_name in language. Returns a text/plain stream: .mdx content, not a JSON DTO. Available document names come from GET /method/policy/structure. Reading does not constitute accepting the terms.
          * @summary Get policy page
          * @param {PolicyPageApiPolicyPageGetItemV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         policyPageGetItemV1(requestParameters, options) {
-            return localVarFp.policyPageGetItemV1(requestParameters.language, requestParameters.file_name, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.policyPageGetItemV1(requestParameters['language'], requestParameters['file_name'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the public list of policy file_name values: acceptable-use, terms-of-use, refund, privacy-notice, using-cookie. Use GET /method/policy/get for a document\'s text; listing does not change user consent.
          * @summary Get policy structure
          * @param {PolicyPageApiPolicyPageGetStructureV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         policyPageGetStructureV1(requestParameters, options) {
-            return localVarFp.policyPageGetStructureV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.policyPageGetStructureV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -193,7 +203,7 @@ exports.PolicyPageApiFactory = PolicyPageApiFactory;
  */
 class PolicyPageApi extends base_1.BaseAPI {
     /**
-     *
+     * Read policy source text file_name in language. Returns a text/plain stream: .mdx content, not a JSON DTO. Available document names come from GET /method/policy/structure. Reading does not constitute accepting the terms.
      * @summary Get policy page
      * @param {PolicyPageApiPolicyPageGetItemV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -201,10 +211,10 @@ class PolicyPageApi extends base_1.BaseAPI {
      * @memberof PolicyPageApi
      */
     policyPageGetItemV1(requestParameters, options) {
-        return (0, exports.PolicyPageApiFp)(this.configuration).policyPageGetItemV1(requestParameters.language, requestParameters.file_name, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PolicyPageApiFp)(this.configuration).policyPageGetItemV1(requestParameters['language'], requestParameters['file_name'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the public list of policy file_name values: acceptable-use, terms-of-use, refund, privacy-notice, using-cookie. Use GET /method/policy/get for a document\'s text; listing does not change user consent.
      * @summary Get policy structure
      * @param {PolicyPageApiPolicyPageGetStructureV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -212,7 +222,7 @@ class PolicyPageApi extends base_1.BaseAPI {
      * @memberof PolicyPageApi
      */
     policyPageGetStructureV1(requestParameters, options) {
-        return (0, exports.PolicyPageApiFp)(this.configuration).policyPageGetStructureV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PolicyPageApiFp)(this.configuration).policyPageGetStructureV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PolicyPageApi = PolicyPageApi;

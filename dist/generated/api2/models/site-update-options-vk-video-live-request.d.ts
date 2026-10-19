@@ -22,7 +22,7 @@ export interface SiteUpdateOptionsVkVideoLiveRequest {
      */
     'v'?: SiteUpdateOptionsVkVideoLiveRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */
@@ -34,13 +34,13 @@ export interface SiteUpdateOptionsVkVideoLiveRequest {
      */
     'project_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */
     'channel_id': number;
     /**
-     *
+     * Platform broadcast title; supplied explicitly, omission does not insert the example title.
      * @type {string}
      * @memberof SiteUpdateOptionsVkVideoLiveRequest
      */

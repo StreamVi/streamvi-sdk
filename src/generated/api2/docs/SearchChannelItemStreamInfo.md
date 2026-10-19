@@ -1,6 +1,5 @@
 # SearchChannelItemStreamInfo
 
-streamInfo
 
 ## Properties
 

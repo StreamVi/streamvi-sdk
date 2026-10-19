@@ -19,12 +19,13 @@ import type { PullServerListResponse } from '../models';
  */
 export declare const PullServersApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Read the public pull server list localized using lang. This lists available regions/servers for pull links without creating a link or connection.
      * @summary Get pull servers
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pullServersGetPullServersV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    pullServersGetPullServersV1: (xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PullServersApi - functional programming interface
@@ -32,12 +33,13 @@ export declare const PullServersApiAxiosParamCreator: (configuration?: Configura
  */
 export declare const PullServersApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Read the public pull server list localized using lang. This lists available regions/servers for pull links without creating a link or connection.
      * @summary Get pull servers
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PullServerListResponse>>;
+    pullServersGetPullServersV1(xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PullServerListResponse>>;
 };
 /**
  * PullServersApi - factory interface
@@ -45,12 +47,13 @@ export declare const PullServersApiFp: (configuration?: Configuration) => {
  */
 export declare const PullServersApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Read the public pull server list localized using lang. This lists available regions/servers for pull links without creating a link or connection.
      * @summary Get pull servers
+     * @param {PullServersApiPullServersGetPullServersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): AxiosPromise<PullServerListResponse>;
+    pullServersGetPullServersV1(requestParameters?: PullServersApiPullServersGetPullServersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PullServerListResponse>;
 };
 /**
  * PullServersApi - interface
@@ -59,13 +62,27 @@ export declare const PullServersApiFactory: (configuration?: Configuration, base
  */
 export interface PullServersApiInterface {
     /**
-     *
+     * Read the public pull server list localized using lang. This lists available regions/servers for pull links without creating a link or connection.
      * @summary Get pull servers
+     * @param {PullServersApiPullServersGetPullServersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PullServersApiInterface
      */
-    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): AxiosPromise<PullServerListResponse>;
+    pullServersGetPullServersV1(requestParameters?: PullServersApiPullServersGetPullServersV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PullServerListResponse>;
+}
+/**
+ * Request parameters for pullServersGetPullServersV1 operation in PullServersApi.
+ * @export
+ * @interface PullServersApiPullServersGetPullServersV1Request
+ */
+export interface PullServersApiPullServersGetPullServersV1Request {
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PullServersApiPullServersGetPullServersV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * PullServersApi - object-oriented interface
@@ -75,12 +92,13 @@ export interface PullServersApiInterface {
  */
 export declare class PullServersApi extends BaseAPI implements PullServersApiInterface {
     /**
-     *
+     * Read the public pull server list localized using lang. This lists available regions/servers for pull links without creating a link or connection.
      * @summary Get pull servers
+     * @param {PullServersApiPullServersGetPullServersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PullServersApi
      */
-    pullServersGetPullServersV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PullServerListResponse, any, {}, any>>;
+    pullServersGetPullServersV1(requestParameters?: PullServersApiPullServersGetPullServersV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PullServerListResponse, any, {}, any>>;
 }
 //# sourceMappingURL=pull-servers-api.d.ts.map

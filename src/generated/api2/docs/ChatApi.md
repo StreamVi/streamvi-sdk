@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost*
 # **chatGatewayKeyV1**
 > SiteChatKeyResponse chatGatewayKeyV1()
 
+Get the secret chat key for project_id. This is a connection credential, not a video publishing key or a widget actions list. The key is not intended for logs/examples; rotate it with PUT /method/chat/key.
 
 ### Example
 
@@ -22,14 +23,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ChatApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.chatGatewayKeyV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -37,9 +40,10 @@ const { status, data } = await apiInstance.chatGatewayKeyV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -48,7 +52,7 @@ const { status, data } = await apiInstance.chatGatewayKeyV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -67,6 +71,7 @@ const { status, data } = await apiInstance.chatGatewayKeyV1(
 # **chatGatewayRotateKeyV1**
 > SiteChatKeyResponse chatGatewayRotateKeyV1(siteChatKeyRequest)
 
+Rotate the secret chat key of project_id and return a new credential. This changes chat access without changing the publishing stream key or sending messages. Consumers must use the new key after rotation.
 
 ### Example
 
@@ -81,9 +86,11 @@ const configuration = new Configuration();
 const apiInstance = new ChatApi(configuration);
 
 let siteChatKeyRequest: SiteChatKeyRequest; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.chatGatewayRotateKeyV1(
-    siteChatKeyRequest
+    siteChatKeyRequest,
+    xClientRequestId
 );
 ```
 
@@ -92,6 +99,7 @@ const { status, data } = await apiInstance.chatGatewayRotateKeyV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **siteChatKeyRequest** | **SiteChatKeyRequest**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -100,7 +108,7 @@ const { status, data } = await apiInstance.chatGatewayRotateKeyV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 

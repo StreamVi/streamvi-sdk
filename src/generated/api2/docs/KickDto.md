@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **v** | **string** | Version (automatically defaults to 1 based on the API contract, can be overridden) | [optional] [default to VEnum__1]
-**language** | **string** | Current language | [default to LanguageEnum_En]
+**language** | **string** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | [default to LanguageEnum_En]
 **project_id** | **number** | Project id | [default to undefined]
 **channel_url** | **string** | Channel url | [default to undefined]
 **rtmp_url** | **string** | Connect url | [default to undefined]

@@ -30,7 +30,7 @@ export interface UpdateSchedulerRequest {
      */
     'v'?: UpdateSchedulerRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof UpdateSchedulerRequest
      */
@@ -48,7 +48,7 @@ export interface UpdateSchedulerRequest {
      */
     'project_id': number;
     /**
-     * Complete replacement list of target channel ids
+     * Complete target list of internal numeric StreamVi channel IDs (group_id from channel search in the same project_id). Replaces the channel list; do not pass external/platform IDs.
      * @type {Array<number>}
      * @memberof UpdateSchedulerRequest
      */

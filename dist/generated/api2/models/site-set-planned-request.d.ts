@@ -22,7 +22,7 @@ export interface SiteSetPlannedRequest {
      */
     'v'?: SiteSetPlannedRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteSetPlannedRequest
      */
@@ -34,13 +34,13 @@ export interface SiteSetPlannedRequest {
      */
     'project_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof SiteSetPlannedRequest
      */
     'channel_id': number;
     /**
-     *
+     * External string ID of a scheduled platform broadcast from getPlanned; auto selects the automatic option, null/omission clears selection. Not a StreamVi schedule ID.
      * @type {string}
      * @memberof SiteSetPlannedRequest
      */

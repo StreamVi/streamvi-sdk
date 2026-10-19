@@ -17,25 +17,25 @@ import type { MoneyFlowResponse } from './money-flow-response';
  */
 export interface PaginatedMoneyFlowResponse {
     /**
-     * Общее количество элементов вообще
+     * Total number of all items
      * @type {number}
      * @memberof PaginatedMoneyFlowResponse
      */
     'total': number;
     /**
-     * Размер запрашиваемой страницы
+     * Requested page size
      * @type {number}
      * @memberof PaginatedMoneyFlowResponse
      */
     'limit': number;
     /**
-     * С какого элемента включительно делать запрос
+     * Element to start the request from, inclusive
      * @type {number}
      * @memberof PaginatedMoneyFlowResponse
      */
     'offset': number;
     /**
-     * Получение списка движения денег с пагинацией
+     * List money movements with pagination
      * @type {Array<MoneyFlowResponse>}
      * @memberof PaginatedMoneyFlowResponse
      */

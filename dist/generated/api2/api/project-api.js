@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserProjectSelectProjectV1VEnum = exports.UserProjectSelectProjectV1LanguageEnum = exports.UserProjectListV1VEnum = exports.UserProjectListV1LanguageEnum = exports.UserProjectListAccessV1VEnum = exports.UserProjectListAccessV1LanguageEnum = exports.UserProjectLeaveV1VEnum = exports.UserProjectLeaveV1LanguageEnum = exports.UserProjectGetUserV1VEnum = exports.UserProjectGetUserV1LanguageEnum = exports.UserProjectGetProjectV1VEnum = exports.UserProjectGetProjectV1LanguageEnum = exports.UserProjectGetProjectInfoV1VEnum = exports.UserProjectGetProjectInfoV1LanguageEnum = exports.UserProjectDeleteMemberV1VEnum = exports.UserProjectDeleteMemberV1LanguageEnum = exports.UserProjectDelV1VEnum = exports.UserProjectDelV1LanguageEnum = exports.UserProjectChangeAccessV1VEnum = exports.UserProjectChangeAccessV1AccessTypeEnum = exports.UserProjectChangeAccessV1LanguageEnum = exports.MethodProjectMeMeV1LanguageEnum = exports.MethodProjectMeMeV1VEnum = exports.ProjectApi = exports.ProjectApiFactory = exports.ProjectApiFp = exports.ProjectApiAxiosParamCreator = void 0;
+exports.UserProjectSelectProjectV1VEnum = exports.UserProjectSelectProjectV1LanguageEnum = exports.UserProjectListV1VEnum = exports.UserProjectListV1LanguageEnum = exports.UserProjectListAccessV1VEnum = exports.UserProjectListAccessV1LanguageEnum = exports.UserProjectLeaveV1VEnum = exports.UserProjectLeaveV1LanguageEnum = exports.UserProjectGetUserV1VEnum = exports.UserProjectGetUserV1LanguageEnum = exports.UserProjectGetProjectV1VEnum = exports.UserProjectGetProjectV1LanguageEnum = exports.UserProjectGetProjectInfoV1VEnum = exports.UserProjectGetProjectInfoV1LanguageEnum = exports.UserProjectDeleteMemberV1VEnum = exports.UserProjectDeleteMemberV1LanguageEnum = exports.UserProjectDelV1VEnum = exports.UserProjectDelV1LanguageEnum = exports.UserProjectChangeAccessV1VEnum = exports.UserProjectChangeAccessV1AccessTypeEnum = exports.UserProjectChangeAccessV1LanguageEnum = exports.MethodResolveUserV1VEnum = exports.MethodResolveUserV1LanguageEnum = exports.MethodResolveProjectV1VEnum = exports.MethodResolveProjectV1LanguageEnum = exports.MethodProjectMeMeV1LanguageEnum = exports.MethodProjectMeMeV1VEnum = exports.MethodProjectManagementUpdateV1VEnum = exports.MethodProjectManagementUpdateV1LanguageEnum = exports.MethodProjectManagementDeleteV1VEnum = exports.MethodProjectManagementDeleteV1LanguageEnum = exports.MethodProjectManagementCreateV1VEnum = exports.MethodProjectManagementCreateV1LanguageEnum = exports.ProjectApi = exports.ProjectApiFactory = exports.ProjectApiFp = exports.ProjectApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -30,27 +30,35 @@ const base_1 = require("../base");
 const ProjectApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
-         * @summary Get current user project
-         * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {MethodProjectMeMeV1LanguageEnum} [language] Current language
+         * Create a new project for the current account user with name and optional avatar using multipart/form-data. Supply name and avatar in body, v/language in query. Returns the created project; it differs from the personal project and is not automatically selected in the cabinet.
+         * @summary Create project
+         * @param {MethodProjectManagementCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {string} name Project name
+         * @param {MethodProjectManagementCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {File} [avatar] Project avatar file, max size 2 MiB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodProjectMeMeV1: async (v, language, options = {}) => {
-            const localVarPath = `/method/project/me`;
+        methodProjectManagementCreateV1: async (language, name, v, xClientRequestId, avatar, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('methodProjectManagementCreateV1', 'language', language);
+            // verify required parameter 'name' is not null or undefined
+            (0, common_1.assertParamExists)('methodProjectManagementCreateV1', 'name', name);
+            const localVarPath = `/method/project`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -59,6 +67,68 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (name !== undefined) {
+                localVarFormParams.append('name', name);
+            }
+            if (avatar !== undefined) {
+                localVarFormParams.append('avatar', avatar);
+            }
+            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = localVarFormParams;
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Delete project_id after checking effective project owner permissions. Obtain the ID from the project list/resolve; this deletes the project resource rather than removing the current member or revoking another user\'s access. Returns success after the deletion use case.
+         * @summary Delete project
+         * @param {MethodProjectManagementDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} projectId Project id
+         * @param {MethodProjectManagementDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodProjectManagementDeleteV1: async (language, projectId, v, xClientRequestId, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('methodProjectManagementDeleteV1', 'language', language);
+            // verify required parameter 'projectId' is not null or undefined
+            (0, common_1.assertParamExists)('methodProjectManagementDeleteV1', 'projectId', projectId);
+            const localVarPath = `/method/project`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2Account required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project:write"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -69,17 +139,232 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Change name and optional avatar of the selected project_id using multipart/form-data. Requires actual project administrator status; a scope alone does not replace it. If no target is supplied in any request source, the account user\'s personal project is used, so specify the target explicitly. Returns the project after saving; does not create a new project.
+         * @summary Update project
+         * @param {MethodProjectManagementUpdateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {string} name Project name
+         * @param {MethodProjectManagementUpdateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {number} [projectId] Target project ID. When omitted in every request source, the account personal project is used.
+         * @param {File} [avatar] Project avatar file, max size 2 MiB, format: jpeg, jpg, png
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodProjectManagementUpdateV1: async (language, name, v, xClientRequestId, projectId, avatar, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('methodProjectManagementUpdateV1', 'language', language);
+            // verify required parameter 'name' is not null or undefined
+            (0, common_1.assertParamExists)('methodProjectManagementUpdateV1', 'name', name);
+            const localVarPath = `/method/project`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+            // authentication oauth2Account required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project:write"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarFormParams.append('project_id', projectId);
+            }
+            if (name !== undefined) {
+                localVarFormParams.append('name', name);
+            }
+            if (avatar !== undefined) {
+                localVarFormParams.append('avatar', avatar);
+            }
+            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = localVarFormParams;
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Read data for the current target project_id and the authenticated user\'s access. A project-token selects its own project; an account-token uses the personal project when no target is provided by any source. The open cabinet tab does not automatically supply the target. Find an accessible ID using GET /method/project/list or /method/project/resolve.
+         * @summary Get current user project
+         * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {MethodProjectMeMeV1LanguageEnum} [language] Language of localized messages and results; en is used when omitted. Allowed values are defined by enum.
+         * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project tokens determine the project automatically.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodProjectMeMeV1: async (v, language, projectId, xClientRequestId, options = {}) => {
+            const localVarPath = `/method/project/me`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2Account required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Find or resolve a project by the text ID / short code shown in the StreamVi cabinet (external_id, also called ref_id). Pass this code unchanged as project_external_id. Returns name and numeric internal_id; use internal_id as project_id in later API calls. Verifies authenticated account access before returning details. Does not select or switch the project displayed in the cabinet.
+         * @summary Find a project by its text ID or short code
+         * @param {MethodResolveProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {string} projectExternalId Text project ID / short code shown in the cabinet: external_id (ref_id), for example DJ84kgD. Pass unchanged, preserving letter case and leading zeros. This is not the numeric project_id. Returns the corresponding internal_id for later calls.
+         * @param {MethodResolveProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodResolveProjectV1: async (language, projectExternalId, v, xClientRequestId, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('methodResolveProjectV1', 'language', language);
+            // verify required parameter 'projectExternalId' is not null or undefined
+            (0, common_1.assertParamExists)('methodResolveProjectV1', 'projectExternalId', projectExternalId);
+            const localVarPath = `/method/project/resolve`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2Account required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (projectExternalId !== undefined) {
+                localVarQueryParameter['project_external_id'] = projectExternalId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns only identity and display fields of a personal account. Financial fields are never returned.
+         * @summary Resolve an invitation recipient external ID
+         * @param {MethodResolveUserV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {string} userExternalId Recipient external reference ID, never its numeric internal ID
+         * @param {MethodResolveUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodResolveUserV1: async (language, userExternalId, v, xClientRequestId, options = {}) => {
+            // verify required parameter 'language' is not null or undefined
+            (0, common_1.assertParamExists)('methodResolveUserV1', 'language', language);
+            // verify required parameter 'userExternalId' is not null or undefined
+            (0, common_1.assertParamExists)('methodResolveUserV1', 'userExternalId', userExternalId);
+            const localVarPath = `/method/account/resolve-user`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2Account required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["profile:read"], configuration);
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            }
+            else {
+                localVarQueryParameter['v'] = '1';
+            }
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+            if (userExternalId !== undefined) {
+                localVarQueryParameter['user_external_id'] = userExternalId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Change access_type for member user_id in project_id. Requires an actual administrator role; the existing owner cannot be demoted. Only the current owner can assign owner, which turns the previous owner into admin. Changes roles/transfers ownership, not OAuth scopes.
          * @summary Change access user from project
-         * @param {UserProjectChangeAccessV1LanguageEnum} language Current language
+         * @param {UserProjectChangeAccessV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} userId User id
          * @param {UserProjectChangeAccessV1AccessTypeEnum} accessType Access type
          * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectChangeAccessV1: async (language, projectId, userId, accessType, v, options = {}) => {
+        userProjectChangeAccessV1: async (language, projectId, userId, accessType, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userProjectChangeAccessV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -98,9 +383,12 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project-access:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project-access:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -119,6 +407,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (accessType !== undefined) {
                 localVarQueryParameter['access_type'] = accessType;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -130,15 +421,16 @@ const ProjectApiAxiosParamCreator = function (configuration) {
         /**
          * Use /site/project/user/leave or /site/project/user/delete instead.
          * @summary Remove user from project
-         * @param {UserProjectDelV1LanguageEnum} language Current language
+         * @param {UserProjectDelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} userId User id
          * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        userProjectDelV1: async (language, projectId, userId, v, options = {}) => {
+        userProjectDelV1: async (language, projectId, userId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userProjectDelV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -155,9 +447,12 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project-access:delete"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project-access:delete"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -173,6 +468,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (userId !== undefined) {
                 localVarQueryParameter['user_id'] = userId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -182,16 +480,17 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Revoke user_id membership in project_id. Requires an effective project administrator role; this method cannot remove the caller or the owner. To leave yourself, use POST /method/project/user/leave; the project is preserved.
          * @summary Remove member from project
-         * @param {UserProjectDeleteMemberV1LanguageEnum} language Current language
+         * @param {UserProjectDeleteMemberV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} userId User id
          * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectDeleteMemberV1: async (language, projectId, userId, v, options = {}) => {
+        userProjectDeleteMemberV1: async (language, projectId, userId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userProjectDeleteMemberV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -208,9 +507,12 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project-access:delete"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project-access:delete"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -226,6 +528,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (userId !== undefined) {
                 localVarQueryParameter['user_id'] = userId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -235,15 +540,16 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read full details of project_id after checking the current user\'s access. This does not change project settings or members; use PUT /method/project to change name/avatar.
          * @summary Get project full info
-         * @param {UserProjectGetProjectInfoV1LanguageEnum} language Current language
+         * @param {UserProjectGetProjectInfoV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectGetProjectInfoV1: async (language, projectId, v, options = {}) => {
+        userProjectGetProjectInfoV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userProjectGetProjectInfoV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -258,9 +564,12 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -273,6 +582,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -282,15 +594,16 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Get project by number id
-         * @param {UserProjectGetProjectV1LanguageEnum} language Current language
+         * Find a project by string project_external_id (short code/ref_id), not numeric project_id. This is a legacy project-subject method; for the account API use GET /method/project/resolve with an access check. Returns the found project details.
+         * @summary Get a project by its external text code
+         * @param {UserProjectGetProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} projectExternalId Project external id
          * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectGetProjectV1: async (language, projectExternalId, v, options = {}) => {
+        userProjectGetProjectV1: async (language, projectExternalId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userProjectGetProjectV1', 'language', language);
             // verify required parameter 'projectExternalId' is not null or undefined
@@ -305,9 +618,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -320,6 +633,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (projectExternalId !== undefined) {
                 localVarQueryParameter['project_external_id'] = projectExternalId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -329,15 +645,16 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Get user by number id
-         * @param {UserProjectGetUserV1LanguageEnum} language Current language
+         * Find a user by string user_external_id, not internal numeric user_id. This is a legacy project-subject method; for the account API use GET /method/account/resolve-user. Do not use this lookup to select target project_id without a separate access check.
+         * @summary Get a user by the external text code
+         * @param {UserProjectGetUserV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} userExternalId User external id
          * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectGetUserV1: async (language, userExternalId, v, options = {}) => {
+        userProjectGetUserV1: async (language, userExternalId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userProjectGetUserV1', 'language', language);
             // verify required parameter 'userExternalId' is not null or undefined
@@ -352,9 +669,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -367,6 +684,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (userExternalId !== undefined) {
                 localVarQueryParameter['user_external_id'] = userExternalId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -376,15 +696,16 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Revoke the current user\'s own membership in project_id. Requires project access; the owner cannot leave this way (user_project.owner_is_king). Returns success. This leaves the project without deleting it.
          * @summary Leave project
-         * @param {UserProjectLeaveV1LanguageEnum} language Current language
+         * @param {UserProjectLeaveV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectLeaveV1: async (language, projectId, v, options = {}) => {
+        userProjectLeaveV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userProjectLeaveV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -399,9 +720,12 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project-access:leave"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project-access:leave"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -414,6 +738,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -423,15 +750,16 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read members and their roles in project_id using request filters/pagination. user_id is the internal member ID for access management; project roles differ from application OAuth scopes. Reading does not change membership.
          * @summary List of user in project
-         * @param {UserProjectListAccessV1LanguageEnum} language Current language
+         * @param {UserProjectListAccessV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectListAccessV1: async (language, projectId, v, options = {}) => {
+        userProjectListAccessV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userProjectListAccessV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -446,9 +774,12 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -461,6 +792,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -470,16 +804,17 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read projects accessible to the current user using request filters and pagination. This is an account-context catalog: use the internal result ID as project_id in subsequent calls and the external code for resolve. This method does not select the open cabinet page.
          * @summary List of project for current user
-         * @param {UserProjectListV1LanguageEnum} language Current language
+         * @param {UserProjectListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectListV1: async (language, v, limit, offset, options = {}) => {
+        userProjectListV1: async (language, v, limit, offset, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userProjectListV1', 'language', language);
             const localVarPath = `/method/project/list`;
@@ -492,9 +827,12 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -510,6 +848,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             if (offset !== undefined) {
                 localVarQueryParameter['offset'] = offset;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -519,15 +860,16 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Save the current user\'s selected cabinet project id after checking observer access and return project details. Despite using GET, this changes cabinet selection. Available only to a project subject; selection does not replace explicit project_id in subsequent account API requests.
          * @summary Select user for project
-         * @param {UserProjectSelectProjectV1LanguageEnum} language Current language
+         * @param {UserProjectSelectProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} id Project internal id
          * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userProjectSelectProjectV1: async (language, id, v, options = {}) => {
+        userProjectSelectProjectV1: async (language, id, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('userProjectSelectProjectV1', 'language', language);
             // verify required parameter 'id' is not null or undefined
@@ -542,9 +884,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -556,6 +898,9 @@ const ProjectApiAxiosParamCreator = function (configuration) {
             }
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -576,34 +921,125 @@ const ProjectApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.ProjectApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
-         * @summary Get current user project
-         * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {MethodProjectMeMeV1LanguageEnum} [language] Current language
+         * Create a new project for the current account user with name and optional avatar using multipart/form-data. Supply name and avatar in body, v/language in query. Returns the created project; it differs from the personal project and is not automatically selected in the cabinet.
+         * @summary Create project
+         * @param {MethodProjectManagementCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {string} name Project name
+         * @param {MethodProjectManagementCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {File} [avatar] Project avatar file, max size 2 MiB, format: jpeg, jpg, png
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodProjectMeMeV1(v, language, options) {
+        async methodProjectManagementCreateV1(language, name, v, xClientRequestId, avatar, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.methodProjectMeMeV1(v, language, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodProjectManagementCreateV1(language, name, v, xClientRequestId, avatar, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.methodProjectManagementCreateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Delete project_id after checking effective project owner permissions. Obtain the ID from the project list/resolve; this deletes the project resource rather than removing the current member or revoking another user\'s access. Returns success after the deletion use case.
+         * @summary Delete project
+         * @param {MethodProjectManagementDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} projectId Project id
+         * @param {MethodProjectManagementDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async methodProjectManagementDeleteV1(language, projectId, v, xClientRequestId, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodProjectManagementDeleteV1(language, projectId, v, xClientRequestId, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.methodProjectManagementDeleteV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Change name and optional avatar of the selected project_id using multipart/form-data. Requires actual project administrator status; a scope alone does not replace it. If no target is supplied in any request source, the account user\'s personal project is used, so specify the target explicitly. Returns the project after saving; does not create a new project.
+         * @summary Update project
+         * @param {MethodProjectManagementUpdateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {string} name Project name
+         * @param {MethodProjectManagementUpdateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {number} [projectId] Target project ID. When omitted in every request source, the account personal project is used.
+         * @param {File} [avatar] Project avatar file, max size 2 MiB, format: jpeg, jpg, png
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async methodProjectManagementUpdateV1(language, name, v, xClientRequestId, projectId, avatar, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodProjectManagementUpdateV1(language, name, v, xClientRequestId, projectId, avatar, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.methodProjectManagementUpdateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Read data for the current target project_id and the authenticated user\'s access. A project-token selects its own project; an account-token uses the personal project when no target is provided by any source. The open cabinet tab does not automatically supply the target. Find an accessible ID using GET /method/project/list or /method/project/resolve.
+         * @summary Get current user project
+         * @param {MethodProjectMeMeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {MethodProjectMeMeV1LanguageEnum} [language] Language of localized messages and results; en is used when omitted. Allowed values are defined by enum.
+         * @param {number} [projectId] Target project ID. Account tokens fall back to the personal project when omitted in every request source; pass the intended accessible project explicitly; project tokens determine the project automatically.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async methodProjectMeMeV1(v, language, projectId, xClientRequestId, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodProjectMeMeV1(v, language, projectId, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.methodProjectMeMeV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Find or resolve a project by the text ID / short code shown in the StreamVi cabinet (external_id, also called ref_id). Pass this code unchanged as project_external_id. Returns name and numeric internal_id; use internal_id as project_id in later API calls. Verifies authenticated account access before returning details. Does not select or switch the project displayed in the cabinet.
+         * @summary Find a project by its text ID or short code
+         * @param {MethodResolveProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {string} projectExternalId Text project ID / short code shown in the cabinet: external_id (ref_id), for example DJ84kgD. Pass unchanged, preserving letter case and leading zeros. This is not the numeric project_id. Returns the corresponding internal_id for later calls.
+         * @param {MethodResolveProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async methodResolveProjectV1(language, projectExternalId, v, xClientRequestId, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodResolveProjectV1(language, projectExternalId, v, xClientRequestId, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.methodResolveProjectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Returns only identity and display fields of a personal account. Financial fields are never returned.
+         * @summary Resolve an invitation recipient external ID
+         * @param {MethodResolveUserV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {string} userExternalId Recipient external reference ID, never its numeric internal ID
+         * @param {MethodResolveUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async methodResolveUserV1(language, userExternalId, v, xClientRequestId, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodResolveUserV1(language, userExternalId, v, xClientRequestId, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.methodResolveUserV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Change access_type for member user_id in project_id. Requires an actual administrator role; the existing owner cannot be demoted. Only the current owner can assign owner, which turns the previous owner into admin. Changes roles/transfers ownership, not OAuth scopes.
          * @summary Change access user from project
-         * @param {UserProjectChangeAccessV1LanguageEnum} language Current language
+         * @param {UserProjectChangeAccessV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} userId User id
          * @param {UserProjectChangeAccessV1AccessTypeEnum} accessType Access type
          * @param {UserProjectChangeAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectChangeAccessV1(language, projectId, userId, accessType, v, options) {
+        async userProjectChangeAccessV1(language, projectId, userId, accessType, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectChangeAccessV1(language, projectId, userId, accessType, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectChangeAccessV1(language, projectId, userId, accessType, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.userProjectChangeAccessV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -611,147 +1047,156 @@ const ProjectApiFp = function (configuration) {
         /**
          * Use /site/project/user/leave or /site/project/user/delete instead.
          * @summary Remove user from project
-         * @param {UserProjectDelV1LanguageEnum} language Current language
+         * @param {UserProjectDelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} userId User id
          * @param {UserProjectDelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        async userProjectDelV1(language, projectId, userId, v, options) {
+        async userProjectDelV1(language, projectId, userId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectDelV1(language, projectId, userId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectDelV1(language, projectId, userId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.userProjectDelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Revoke user_id membership in project_id. Requires an effective project administrator role; this method cannot remove the caller or the owner. To leave yourself, use POST /method/project/user/leave; the project is preserved.
          * @summary Remove member from project
-         * @param {UserProjectDeleteMemberV1LanguageEnum} language Current language
+         * @param {UserProjectDeleteMemberV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} userId User id
          * @param {UserProjectDeleteMemberV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectDeleteMemberV1(language, projectId, userId, v, options) {
+        async userProjectDeleteMemberV1(language, projectId, userId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectDeleteMemberV1(language, projectId, userId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectDeleteMemberV1(language, projectId, userId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.userProjectDeleteMemberV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read full details of project_id after checking the current user\'s access. This does not change project settings or members; use PUT /method/project to change name/avatar.
          * @summary Get project full info
-         * @param {UserProjectGetProjectInfoV1LanguageEnum} language Current language
+         * @param {UserProjectGetProjectInfoV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {UserProjectGetProjectInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectGetProjectInfoV1(language, projectId, v, options) {
+        async userProjectGetProjectInfoV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectGetProjectInfoV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectGetProjectInfoV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.userProjectGetProjectInfoV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Get project by number id
-         * @param {UserProjectGetProjectV1LanguageEnum} language Current language
+         * Find a project by string project_external_id (short code/ref_id), not numeric project_id. This is a legacy project-subject method; for the account API use GET /method/project/resolve with an access check. Returns the found project details.
+         * @summary Get a project by its external text code
+         * @param {UserProjectGetProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} projectExternalId Project external id
          * @param {UserProjectGetProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectGetProjectV1(language, projectExternalId, v, options) {
+        async userProjectGetProjectV1(language, projectExternalId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectGetProjectV1(language, projectExternalId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectGetProjectV1(language, projectExternalId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.userProjectGetProjectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Get user by number id
-         * @param {UserProjectGetUserV1LanguageEnum} language Current language
+         * Find a user by string user_external_id, not internal numeric user_id. This is a legacy project-subject method; for the account API use GET /method/account/resolve-user. Do not use this lookup to select target project_id without a separate access check.
+         * @summary Get a user by the external text code
+         * @param {UserProjectGetUserV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} userExternalId User external id
          * @param {UserProjectGetUserV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectGetUserV1(language, userExternalId, v, options) {
+        async userProjectGetUserV1(language, userExternalId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectGetUserV1(language, userExternalId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectGetUserV1(language, userExternalId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.userProjectGetUserV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Revoke the current user\'s own membership in project_id. Requires project access; the owner cannot leave this way (user_project.owner_is_king). Returns success. This leaves the project without deleting it.
          * @summary Leave project
-         * @param {UserProjectLeaveV1LanguageEnum} language Current language
+         * @param {UserProjectLeaveV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {UserProjectLeaveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectLeaveV1(language, projectId, v, options) {
+        async userProjectLeaveV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectLeaveV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectLeaveV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.userProjectLeaveV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read members and their roles in project_id using request filters/pagination. user_id is the internal member ID for access management; project roles differ from application OAuth scopes. Reading does not change membership.
          * @summary List of user in project
-         * @param {UserProjectListAccessV1LanguageEnum} language Current language
+         * @param {UserProjectListAccessV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {UserProjectListAccessV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectListAccessV1(language, projectId, v, options) {
+        async userProjectListAccessV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectListAccessV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectListAccessV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.userProjectListAccessV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read projects accessible to the current user using request filters and pagination. This is an account-context catalog: use the internal result ID as project_id in subsequent calls and the external code for resolve. This method does not select the open cabinet page.
          * @summary List of project for current user
-         * @param {UserProjectListV1LanguageEnum} language Current language
+         * @param {UserProjectListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {UserProjectListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
          * @param {number} [offset] Page offset number
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectListV1(language, v, limit, offset, options) {
+        async userProjectListV1(language, v, limit, offset, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectListV1(language, v, limit, offset, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectListV1(language, v, limit, offset, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.userProjectListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Save the current user\'s selected cabinet project id after checking observer access and return project details. Despite using GET, this changes cabinet selection. Available only to a project subject; selection does not replace explicit project_id in subsequent account API requests.
          * @summary Select user for project
-         * @param {UserProjectSelectProjectV1LanguageEnum} language Current language
+         * @param {UserProjectSelectProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} id Project internal id
          * @param {UserProjectSelectProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userProjectSelectProjectV1(language, id, v, options) {
+        async userProjectSelectProjectV1(language, id, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectSelectProjectV1(language, id, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userProjectSelectProjectV1(language, id, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ProjectApi.userProjectSelectProjectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -767,24 +1212,74 @@ const ProjectApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.ProjectApiFp)(configuration);
     return {
         /**
-         *
+         * Create a new project for the current account user with name and optional avatar using multipart/form-data. Supply name and avatar in body, v/language in query. Returns the created project; it differs from the personal project and is not automatically selected in the cabinet.
+         * @summary Create project
+         * @param {ProjectApiMethodProjectManagementCreateV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodProjectManagementCreateV1(requestParameters, options) {
+            return localVarFp.methodProjectManagementCreateV1(requestParameters['language'], requestParameters['name'], requestParameters['v'], requestParameters['X-Client-Request-Id'], requestParameters['avatar'], options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Delete project_id after checking effective project owner permissions. Obtain the ID from the project list/resolve; this deletes the project resource rather than removing the current member or revoking another user\'s access. Returns success after the deletion use case.
+         * @summary Delete project
+         * @param {ProjectApiMethodProjectManagementDeleteV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodProjectManagementDeleteV1(requestParameters, options) {
+            return localVarFp.methodProjectManagementDeleteV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Change name and optional avatar of the selected project_id using multipart/form-data. Requires actual project administrator status; a scope alone does not replace it. If no target is supplied in any request source, the account user\'s personal project is used, so specify the target explicitly. Returns the project after saving; does not create a new project.
+         * @summary Update project
+         * @param {ProjectApiMethodProjectManagementUpdateV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodProjectManagementUpdateV1(requestParameters, options) {
+            return localVarFp.methodProjectManagementUpdateV1(requestParameters['language'], requestParameters['name'], requestParameters['v'], requestParameters['X-Client-Request-Id'], requestParameters['project_id'], requestParameters['avatar'], options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Read data for the current target project_id and the authenticated user\'s access. A project-token selects its own project; an account-token uses the personal project when no target is provided by any source. The open cabinet tab does not automatically supply the target. Find an accessible ID using GET /method/project/list or /method/project/resolve.
          * @summary Get current user project
          * @param {ProjectApiMethodProjectMeMeV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         methodProjectMeMeV1(requestParameters = {}, options) {
-            return localVarFp.methodProjectMeMeV1(requestParameters.v, requestParameters.language, options).then((request) => request(axios, basePath));
+            return localVarFp.methodProjectMeMeV1(requestParameters['v'], requestParameters['language'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Find or resolve a project by the text ID / short code shown in the StreamVi cabinet (external_id, also called ref_id). Pass this code unchanged as project_external_id. Returns name and numeric internal_id; use internal_id as project_id in later API calls. Verifies authenticated account access before returning details. Does not select or switch the project displayed in the cabinet.
+         * @summary Find a project by its text ID or short code
+         * @param {ProjectApiMethodResolveProjectV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodResolveProjectV1(requestParameters, options) {
+            return localVarFp.methodResolveProjectV1(requestParameters['language'], requestParameters['project_external_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns only identity and display fields of a personal account. Financial fields are never returned.
+         * @summary Resolve an invitation recipient external ID
+         * @param {ProjectApiMethodResolveUserV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodResolveUserV1(requestParameters, options) {
+            return localVarFp.methodResolveUserV1(requestParameters['language'], requestParameters['user_external_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Change access_type for member user_id in project_id. Requires an actual administrator role; the existing owner cannot be demoted. Only the current owner can assign owner, which turns the previous owner into admin. Changes roles/transfers ownership, not OAuth scopes.
          * @summary Change access user from project
          * @param {ProjectApiUserProjectChangeAccessV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         userProjectChangeAccessV1(requestParameters, options) {
-            return localVarFp.userProjectChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectChangeAccessV1(requestParameters['language'], requestParameters['project_id'], requestParameters['user_id'], requestParameters['access_type'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
          * Use /site/project/user/leave or /site/project/user/delete instead.
@@ -795,87 +1290,87 @@ const ProjectApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         userProjectDelV1(requestParameters, options) {
-            return localVarFp.userProjectDelV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectDelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['user_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Revoke user_id membership in project_id. Requires an effective project administrator role; this method cannot remove the caller or the owner. To leave yourself, use POST /method/project/user/leave; the project is preserved.
          * @summary Remove member from project
          * @param {ProjectApiUserProjectDeleteMemberV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         userProjectDeleteMemberV1(requestParameters, options) {
-            return localVarFp.userProjectDeleteMemberV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectDeleteMemberV1(requestParameters['language'], requestParameters['project_id'], requestParameters['user_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read full details of project_id after checking the current user\'s access. This does not change project settings or members; use PUT /method/project to change name/avatar.
          * @summary Get project full info
          * @param {ProjectApiUserProjectGetProjectInfoV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         userProjectGetProjectInfoV1(requestParameters, options) {
-            return localVarFp.userProjectGetProjectInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectGetProjectInfoV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Get project by number id
+         * Find a project by string project_external_id (short code/ref_id), not numeric project_id. This is a legacy project-subject method; for the account API use GET /method/project/resolve with an access check. Returns the found project details.
+         * @summary Get a project by its external text code
          * @param {ProjectApiUserProjectGetProjectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         userProjectGetProjectV1(requestParameters, options) {
-            return localVarFp.userProjectGetProjectV1(requestParameters.language, requestParameters.project_external_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectGetProjectV1(requestParameters['language'], requestParameters['project_external_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Get user by number id
+         * Find a user by string user_external_id, not internal numeric user_id. This is a legacy project-subject method; for the account API use GET /method/account/resolve-user. Do not use this lookup to select target project_id without a separate access check.
+         * @summary Get a user by the external text code
          * @param {ProjectApiUserProjectGetUserV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         userProjectGetUserV1(requestParameters, options) {
-            return localVarFp.userProjectGetUserV1(requestParameters.language, requestParameters.user_external_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectGetUserV1(requestParameters['language'], requestParameters['user_external_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Revoke the current user\'s own membership in project_id. Requires project access; the owner cannot leave this way (user_project.owner_is_king). Returns success. This leaves the project without deleting it.
          * @summary Leave project
          * @param {ProjectApiUserProjectLeaveV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         userProjectLeaveV1(requestParameters, options) {
-            return localVarFp.userProjectLeaveV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectLeaveV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read members and their roles in project_id using request filters/pagination. user_id is the internal member ID for access management; project roles differ from application OAuth scopes. Reading does not change membership.
          * @summary List of user in project
          * @param {ProjectApiUserProjectListAccessV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         userProjectListAccessV1(requestParameters, options) {
-            return localVarFp.userProjectListAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectListAccessV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read projects accessible to the current user using request filters and pagination. This is an account-context catalog: use the internal result ID as project_id in subsequent calls and the external code for resolve. This method does not select the open cabinet page.
          * @summary List of project for current user
          * @param {ProjectApiUserProjectListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         userProjectListV1(requestParameters, options) {
-            return localVarFp.userProjectListV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectListV1(requestParameters['language'], requestParameters['v'], requestParameters['limit'], requestParameters['offset'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Save the current user\'s selected cabinet project id after checking observer access and return project details. Despite using GET, this changes cabinet selection. Available only to a project subject; selection does not replace explicit project_id in subsequent account API requests.
          * @summary Select user for project
          * @param {ProjectApiUserProjectSelectProjectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         userProjectSelectProjectV1(requestParameters, options) {
-            return localVarFp.userProjectSelectProjectV1(requestParameters.language, requestParameters.id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.userProjectSelectProjectV1(requestParameters['language'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -888,7 +1383,40 @@ exports.ProjectApiFactory = ProjectApiFactory;
  */
 class ProjectApi extends base_1.BaseAPI {
     /**
-     *
+     * Create a new project for the current account user with name and optional avatar using multipart/form-data. Supply name and avatar in body, v/language in query. Returns the created project; it differs from the personal project and is not automatically selected in the cabinet.
+     * @summary Create project
+     * @param {ProjectApiMethodProjectManagementCreateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    methodProjectManagementCreateV1(requestParameters, options) {
+        return (0, exports.ProjectApiFp)(this.configuration).methodProjectManagementCreateV1(requestParameters['language'], requestParameters['name'], requestParameters['v'], requestParameters['X-Client-Request-Id'], requestParameters['avatar'], options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Delete project_id after checking effective project owner permissions. Obtain the ID from the project list/resolve; this deletes the project resource rather than removing the current member or revoking another user\'s access. Returns success after the deletion use case.
+     * @summary Delete project
+     * @param {ProjectApiMethodProjectManagementDeleteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    methodProjectManagementDeleteV1(requestParameters, options) {
+        return (0, exports.ProjectApiFp)(this.configuration).methodProjectManagementDeleteV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Change name and optional avatar of the selected project_id using multipart/form-data. Requires actual project administrator status; a scope alone does not replace it. If no target is supplied in any request source, the account user\'s personal project is used, so specify the target explicitly. Returns the project after saving; does not create a new project.
+     * @summary Update project
+     * @param {ProjectApiMethodProjectManagementUpdateV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    methodProjectManagementUpdateV1(requestParameters, options) {
+        return (0, exports.ProjectApiFp)(this.configuration).methodProjectManagementUpdateV1(requestParameters['language'], requestParameters['name'], requestParameters['v'], requestParameters['X-Client-Request-Id'], requestParameters['project_id'], requestParameters['avatar'], options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Read data for the current target project_id and the authenticated user\'s access. A project-token selects its own project; an account-token uses the personal project when no target is provided by any source. The open cabinet tab does not automatically supply the target. Find an accessible ID using GET /method/project/list or /method/project/resolve.
      * @summary Get current user project
      * @param {ProjectApiMethodProjectMeMeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -896,10 +1424,32 @@ class ProjectApi extends base_1.BaseAPI {
      * @memberof ProjectApi
      */
     methodProjectMeMeV1(requestParameters = {}, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).methodProjectMeMeV1(requestParameters.v, requestParameters.language, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).methodProjectMeMeV1(requestParameters['v'], requestParameters['language'], requestParameters['project_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Find or resolve a project by the text ID / short code shown in the StreamVi cabinet (external_id, also called ref_id). Pass this code unchanged as project_external_id. Returns name and numeric internal_id; use internal_id as project_id in later API calls. Verifies authenticated account access before returning details. Does not select or switch the project displayed in the cabinet.
+     * @summary Find a project by its text ID or short code
+     * @param {ProjectApiMethodResolveProjectV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    methodResolveProjectV1(requestParameters, options) {
+        return (0, exports.ProjectApiFp)(this.configuration).methodResolveProjectV1(requestParameters['language'], requestParameters['project_external_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns only identity and display fields of a personal account. Financial fields are never returned.
+     * @summary Resolve an invitation recipient external ID
+     * @param {ProjectApiMethodResolveUserV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProjectApi
+     */
+    methodResolveUserV1(requestParameters, options) {
+        return (0, exports.ProjectApiFp)(this.configuration).methodResolveUserV1(requestParameters['language'], requestParameters['user_external_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Change access_type for member user_id in project_id. Requires an actual administrator role; the existing owner cannot be demoted. Only the current owner can assign owner, which turns the previous owner into admin. Changes roles/transfers ownership, not OAuth scopes.
      * @summary Change access user from project
      * @param {ProjectApiUserProjectChangeAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -907,7 +1457,7 @@ class ProjectApi extends base_1.BaseAPI {
      * @memberof ProjectApi
      */
     userProjectChangeAccessV1(requestParameters, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).userProjectChangeAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.access_type, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).userProjectChangeAccessV1(requestParameters['language'], requestParameters['project_id'], requestParameters['user_id'], requestParameters['access_type'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Use /site/project/user/leave or /site/project/user/delete instead.
@@ -919,10 +1469,10 @@ class ProjectApi extends base_1.BaseAPI {
      * @memberof ProjectApi
      */
     userProjectDelV1(requestParameters, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).userProjectDelV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).userProjectDelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['user_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Revoke user_id membership in project_id. Requires an effective project administrator role; this method cannot remove the caller or the owner. To leave yourself, use POST /method/project/user/leave; the project is preserved.
      * @summary Remove member from project
      * @param {ProjectApiUserProjectDeleteMemberV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -930,10 +1480,10 @@ class ProjectApi extends base_1.BaseAPI {
      * @memberof ProjectApi
      */
     userProjectDeleteMemberV1(requestParameters, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).userProjectDeleteMemberV1(requestParameters.language, requestParameters.project_id, requestParameters.user_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).userProjectDeleteMemberV1(requestParameters['language'], requestParameters['project_id'], requestParameters['user_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read full details of project_id after checking the current user\'s access. This does not change project settings or members; use PUT /method/project to change name/avatar.
      * @summary Get project full info
      * @param {ProjectApiUserProjectGetProjectInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -941,32 +1491,32 @@ class ProjectApi extends base_1.BaseAPI {
      * @memberof ProjectApi
      */
     userProjectGetProjectInfoV1(requestParameters, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).userProjectGetProjectInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).userProjectGetProjectInfoV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Get project by number id
+     * Find a project by string project_external_id (short code/ref_id), not numeric project_id. This is a legacy project-subject method; for the account API use GET /method/project/resolve with an access check. Returns the found project details.
+     * @summary Get a project by its external text code
      * @param {ProjectApiUserProjectGetProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
     userProjectGetProjectV1(requestParameters, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).userProjectGetProjectV1(requestParameters.language, requestParameters.project_external_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).userProjectGetProjectV1(requestParameters['language'], requestParameters['project_external_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Get user by number id
+     * Find a user by string user_external_id, not internal numeric user_id. This is a legacy project-subject method; for the account API use GET /method/account/resolve-user. Do not use this lookup to select target project_id without a separate access check.
+     * @summary Get a user by the external text code
      * @param {ProjectApiUserProjectGetUserV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
     userProjectGetUserV1(requestParameters, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).userProjectGetUserV1(requestParameters.language, requestParameters.user_external_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).userProjectGetUserV1(requestParameters['language'], requestParameters['user_external_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Revoke the current user\'s own membership in project_id. Requires project access; the owner cannot leave this way (user_project.owner_is_king). Returns success. This leaves the project without deleting it.
      * @summary Leave project
      * @param {ProjectApiUserProjectLeaveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -974,10 +1524,10 @@ class ProjectApi extends base_1.BaseAPI {
      * @memberof ProjectApi
      */
     userProjectLeaveV1(requestParameters, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).userProjectLeaveV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).userProjectLeaveV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read members and their roles in project_id using request filters/pagination. user_id is the internal member ID for access management; project roles differ from application OAuth scopes. Reading does not change membership.
      * @summary List of user in project
      * @param {ProjectApiUserProjectListAccessV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -985,10 +1535,10 @@ class ProjectApi extends base_1.BaseAPI {
      * @memberof ProjectApi
      */
     userProjectListAccessV1(requestParameters, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).userProjectListAccessV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).userProjectListAccessV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read projects accessible to the current user using request filters and pagination. This is an account-context catalog: use the internal result ID as project_id in subsequent calls and the external code for resolve. This method does not select the open cabinet page.
      * @summary List of project for current user
      * @param {ProjectApiUserProjectListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -996,10 +1546,10 @@ class ProjectApi extends base_1.BaseAPI {
      * @memberof ProjectApi
      */
     userProjectListV1(requestParameters, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).userProjectListV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).userProjectListV1(requestParameters['language'], requestParameters['v'], requestParameters['limit'], requestParameters['offset'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Save the current user\'s selected cabinet project id after checking observer access and return project details. Despite using GET, this changes cabinet selection. Available only to a project subject; selection does not replace explicit project_id in subsequent account API requests.
      * @summary Select user for project
      * @param {ProjectApiUserProjectSelectProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1007,10 +1557,52 @@ class ProjectApi extends base_1.BaseAPI {
      * @memberof ProjectApi
      */
     userProjectSelectProjectV1(requestParameters, options) {
-        return (0, exports.ProjectApiFp)(this.configuration).userProjectSelectProjectV1(requestParameters.language, requestParameters.id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ProjectApiFp)(this.configuration).userProjectSelectProjectV1(requestParameters['language'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ProjectApi = ProjectApi;
+/**
+ * @export
+ */
+exports.MethodProjectManagementCreateV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.MethodProjectManagementCreateV1VEnum = {
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.MethodProjectManagementDeleteV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.MethodProjectManagementDeleteV1VEnum = {
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.MethodProjectManagementUpdateV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.MethodProjectManagementUpdateV1VEnum = {
+    _1: '1'
+};
 /**
  * @export
  */
@@ -1024,6 +1616,34 @@ exports.MethodProjectMeMeV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
     Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.MethodResolveProjectV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.MethodResolveProjectV1VEnum = {
+    _1: '1'
+};
+/**
+ * @export
+ */
+exports.MethodResolveUserV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+};
+/**
+ * @export
+ */
+exports.MethodResolveUserV1VEnum = {
+    _1: '1'
 };
 /**
  * @export

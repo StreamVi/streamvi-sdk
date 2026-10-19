@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **project_channel_invite_id** | **number** | Unique id | [default to undefined]
-**channel_id** | **number** | Channel id | [default to undefined]
+**channel_id** | **number** | Internal numeric StreamVi channel ID, also returned as group_id in channel search results. Do not use the external/platform id, even if it contains only digits. | [default to undefined]
 **to_project_id** | **number** | Project id (in invite for project id) | [default to undefined]
 **access_type** | **number** | Access type | [default to undefined]
 **date** | **string** | Date create | [default to undefined]

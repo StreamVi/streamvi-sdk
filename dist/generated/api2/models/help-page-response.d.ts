@@ -58,7 +58,7 @@ export interface HelpPageResponse {
      */
     'date_create': string;
     /**
-     * Page icon
+     *
      * @type {object}
      * @memberof HelpPageResponse
      */

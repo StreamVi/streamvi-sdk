@@ -22,6 +22,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
+import type { DisconnectPlannedProviderRequest } from '../models';
+// @ts-ignore
 import type { ErrorResponse } from '../models';
 // @ts-ignore
 import type { PlannedListResponse } from '../models';
@@ -69,6 +71,10 @@ import type { TelegramInitConnectResponseDto } from '../models';
 import type { TelegramSetSettingsRequestDto } from '../models';
 // @ts-ignore
 import type { TelegramSettingsResponseDto } from '../models';
+// @ts-ignore
+import type { VerifyPlannedAccessRequest } from '../models';
+// @ts-ignore
+import type { VerifyPlannedAccessResponse } from '../models';
 /**
  * ChannelSettingsApi - axios parameter creator
  * @export
@@ -76,16 +82,17 @@ import type { TelegramSettingsResponseDto } from '../models';
 export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Read saved Telegram post/chat settings for the selected channel_id in project_id. This reads configuration; save filter_mode, message_id, and link using POST /method/channel_settings/chat/telegram/setting.
          * @summary Get telegram settings
-         * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Current language
+         * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelChatGetTelegramSettingV1: async (language: ChannelChatGetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatGetTelegramSettingV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelChatGetTelegramSettingV1: async (language: ChannelChatGetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatGetTelegramSettingV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('channelChatGetTelegramSettingV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -104,9 +111,13 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["chat:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -128,6 +139,9 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -138,16 +152,17 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Start Telegram chat connection for the selected internal channel_id in project_id and obtain code. Despite using GET, this creates a connection code; the response alone does not mean connection is complete.
          * @summary Get code for connected chat
-         * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Current language
+         * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelChatInitTelegramChatConnectV1: async (language: ChannelChatInitTelegramChatConnectV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatInitTelegramChatConnectV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelChatInitTelegramChatConnectV1: async (language: ChannelChatInitTelegramChatConnectV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatInitTelegramChatConnectV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('channelChatInitTelegramChatConnectV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -166,9 +181,13 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["chat:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -190,6 +209,9 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -200,16 +222,17 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Disconnect the Telegram chat of the selected internal channel_id in project_id. Despite using GET, this changes the connection. The successful response has no body; this neither deletes the channel nor disables the streaming destination.
          * @summary Disconnect telegram chat
-         * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Current language
+         * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelChatRemoveTelegramChatV1: async (language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelChatRemoveTelegramChatV1: async (language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('channelChatRemoveTelegramChatV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -228,9 +251,13 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -252,6 +279,9 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -262,17 +292,18 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Save filter_mode, message_id, and link for the Telegram chat of the selected internal channel_id in project_id. message_id identifies a Telegram message, not a StreamVi channel. Success confirms settings were saved, not that a message was sent.
          * @summary Set telegram settings
-         * @param {ChannelChatSetTelegramSettingV1LanguageEnum} language Current language
+         * @param {ChannelChatSetTelegramSettingV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {TelegramSetSettingsRequestDto} telegramSetSettingsRequestDto 
          * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelChatSetTelegramSettingV1: async (language: ChannelChatSetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto, v?: ChannelChatSetTelegramSettingV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelChatSetTelegramSettingV1: async (language: ChannelChatSetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto, v?: ChannelChatSetTelegramSettingV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('channelChatSetTelegramSettingV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -293,9 +324,13 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -319,6 +354,9 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -330,16 +368,17 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Get Telegram posts for the selected channel with internal channel_id in project_id. Returns results; the external chat_id is resolved from the connected channel and does not replace channel_id.
          * @summary Get telegram post list
-         * @param {ChannelChatTelegramPostsV1LanguageEnum} language Current language
+         * @param {ChannelChatTelegramPostsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelChatTelegramPostsV1: async (language: ChannelChatTelegramPostsV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatTelegramPostsV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelChatTelegramPostsV1: async (language: ChannelChatTelegramPostsV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatTelegramPostsV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('channelChatTelegramPostsV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -358,9 +397,13 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["chat:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -382,6 +425,9 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -392,13 +438,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Change Telegram chat settings for the selected internal channel_id in project_id. Checks the Telegram chat/channel association and connection type; configures the chat rather than changing the broadcast destination\'s active state.
          * @summary Optional settings for telegram
          * @param {SiteUpdateChatTelegramRequest} siteUpdateChatTelegramRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelChatUpdateOptionsTelegramV1: async (siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelChatUpdateOptionsTelegramV1: async (siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateChatTelegramRequest' is not null or undefined
             assertParamExists('channelChatUpdateOptionsTelegramV1', 'siteUpdateChatTelegramRequest', siteUpdateChatTelegramRequest)
             const localVarPath = `/method/channel_settings/chat/setTelegram`;
@@ -413,14 +460,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -433,16 +487,66 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
-         * @summary Get planned list
-         * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Current language
-         * @param {number} projectId Project id
-         * @param {number} channelId Channel id
-         * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * Disconnect the VK Video Live connection identified by token_id for channel_id in project_id. The account token and selected planned broadcast are preserved.
+         * @summary Disconnect a VK Video Live account from this project channel
+         * @param {DisconnectPlannedProviderRequest} disconnectPlannedProviderRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsGetPlannedV1: async (language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsDisconnectPlannedProviderV1: async (disconnectPlannedProviderRequest: DisconnectPlannedProviderRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'disconnectPlannedProviderRequest' is not null or undefined
+            assertParamExists('channelOptionsDisconnectPlannedProviderV1', 'disconnectPlannedProviderRequest', disconnectPlannedProviderRequest)
+            const localVarPath = `/method/channel_settings/options/disconnectPlannedProvider`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2Account required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const localVarVersionedBody = { ...disconnectPlannedProviderRequest, v: disconnectPlannedProviderRequest.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Read available platform scheduled broadcasts for the selected internal channel_id in project_id. Requires an active primary token. Pass a result ID to POST /method/channel_settings/options/setPlanned; this is not the /method/scheduler list.
+         * @summary Get planned list
+         * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} projectId Project id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
+         * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelOptionsGetPlannedV1: async (language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('channelOptionsGetPlannedV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -461,9 +565,13 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -485,6 +593,9 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -495,16 +606,17 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Read platform playlists of the connected internal channel_id in project_id. Requires an active primary token; otherwise token.no_found. Returns external playlist results, not StreamVi video schedules.
          * @summary Get playlists from the platform
-         * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Current language
+         * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsGetPlayListV1: async (language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsGetPlayListV1: async (language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('channelOptionsGetPlayListV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -523,9 +635,13 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -547,6 +663,9 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -557,13 +676,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Save OK broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; individual fields define optional/default values. Saving settings does not start a broadcast.
          * @summary Optional settings for ok. Depends on the tariff.
          * @param {SiteUpdateOptionsOkRequest} siteUpdateOptionsOkRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsUpdateOptionsOkV1: async (siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsOkV1: async (siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsOkRequest' is not null or undefined
             assertParamExists('channelOptionsUpdateOptionsOkV1', 'siteUpdateOptionsOkRequest', siteUpdateOptionsOkRequest)
             const localVarPath = `/method/channel_settings/options/setOk`;
@@ -578,14 +698,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -598,13 +725,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Save Trovo broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; read optional/default values from the request schema. Updating settings does not start a broadcast.
          * @summary Optional settings for trovo. Depends on the tariff.
          * @param {SiteUpdateOptionsTrovoRequest} siteUpdateOptionsTrovoRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsUpdateOptionsTrovoV1: async (siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsTrovoV1: async (siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsTrovoRequest' is not null or undefined
             assertParamExists('channelOptionsUpdateOptionsTrovoV1', 'siteUpdateOptionsTrovoRequest', siteUpdateOptionsTrovoRequest)
             const localVarPath = `/method/channel_settings/options/setTrovo`;
@@ -619,14 +747,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -639,13 +774,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Save Twitch broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; category ID is an external platform ID. Updating settings neither enables the destination nor starts a broadcast.
          * @summary Optional settings for twitch. Depends on the tariff.
          * @param {SiteUpdateOptionsTwitchRequest} siteUpdateOptionsTwitchRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsUpdateOptionsTwitchV1: async (siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsTwitchV1: async (siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsTwitchRequest' is not null or undefined
             assertParamExists('channelOptionsUpdateOptionsTwitchV1', 'siteUpdateOptionsTwitchRequest', siteUpdateOptionsTwitchRequest)
             const localVarPath = `/method/channel_settings/options/setTwitch`;
@@ -660,14 +796,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -680,13 +823,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Save VK broadcast settings for the channel with internal channel_id in project_id. Requires a plan with change_subject; parameters pass through toFormatted DTO and merge into current streamInfo, so each DTO field determines defaults/empty values. wall=true records consent to publish on VK wall. Updates an active broadcast; success does not mean a broadcast was started.
          * @summary Optional settings for vk. Depends on the tariff.
          * @param {SiteUpdateOptionsVkRequest} siteUpdateOptionsVkRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsUpdateOptionsVkV1: async (siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsVkV1: async (siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsVkRequest' is not null or undefined
             assertParamExists('channelOptionsUpdateOptionsVkV1', 'siteUpdateOptionsVkRequest', siteUpdateOptionsVkRequest)
             const localVarPath = `/method/channel_settings/options/setVk`;
@@ -701,14 +845,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -721,13 +872,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Save VK Video Live broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; category ID belongs to the platform catalog. Saving settings does not start a broadcast.
          * @summary Optional settings for vk video live. Depends on the tariff.
          * @param {SiteUpdateOptionsVkVideoLiveRequest} siteUpdateOptionsVkVideoLiveRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsUpdateOptionsVkVideoLiveV1: async (siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsVkVideoLiveV1: async (siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsVkVideoLiveRequest' is not null or undefined
             assertParamExists('channelOptionsUpdateOptionsVkVideoLiveV1', 'siteUpdateOptionsVkVideoLiveRequest', siteUpdateOptionsVkVideoLiveRequest)
             const localVarPath = `/method/channel_settings/options/setVkVideoLive`;
@@ -742,14 +894,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -762,13 +921,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Save YouTube broadcast settings for the channel with internal channel_id in project_id. Requires a plan with change_subject; parameters pass through toFormatted DTO and merge into current streamInfo. The DTO determines defaults, empty tags, and image. Attempts to update an active broadcast if present; this method does not start a broadcast.
          * @summary Optional settings for youtube. Depends on the tariff.
          * @param {SiteUpdateOptionsYoutubeRequest} siteUpdateOptionsYoutubeRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsUpdateOptionsYoutubeV1: async (siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdateOptionsYoutubeV1: async (siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteUpdateOptionsYoutubeRequest' is not null or undefined
             assertParamExists('channelOptionsUpdateOptionsYoutubeV1', 'siteUpdateOptionsYoutubeRequest', siteUpdateOptionsYoutubeRequest)
             const localVarPath = `/method/channel_settings/options/setYoutube`;
@@ -783,14 +943,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -803,13 +970,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Select a scheduled platform broadcast for the internal channel_id in project_id. id is the string ID from GET /method/channel_settings/options/getPlanned; auto selects the automatic option, null/omission clears selection. An active primary token is required. Returns the selected planned value; does not create a StreamVi video schedule.
          * @summary Set planned id. Depends on the tariff.
          * @param {SiteSetPlannedRequest} siteSetPlannedRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelOptionsUpdatePlannedV1: async (siteSetPlannedRequest: SiteSetPlannedRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsUpdatePlannedV1: async (siteSetPlannedRequest: SiteSetPlannedRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteSetPlannedRequest' is not null or undefined
             assertParamExists('channelOptionsUpdatePlannedV1', 'siteSetPlannedRequest', siteSetPlannedRequest)
             const localVarPath = `/method/channel_settings/options/setPlanned`;
@@ -824,14 +992,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -844,13 +1019,63 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
-         * @summary Bulk update channel title and description. Global settings.
-         * @param {SiteBulkUpdateChannelRequest} siteBulkUpdateChannelRequest 
+         * Read the VK Video Live connection state for channel_id in project_id. recheck repeats the check; connect explicitly links an accessible account. A regular read does not create a connection.
+         * @summary Confirm a VK channel connection using the first accessible planned broadcast
+         * @param {VerifyPlannedAccessRequest} verifyPlannedAccessRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingBulkUpdateV1: async (siteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelOptionsVerifyPlannedAccessV1: async (verifyPlannedAccessRequest: VerifyPlannedAccessRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'verifyPlannedAccessRequest' is not null or undefined
+            assertParamExists('channelOptionsVerifyPlannedAccessV1', 'verifyPlannedAccessRequest', verifyPlannedAccessRequest)
+            const localVarPath = `/method/channel_settings/options/verifyPlannedAccess`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2Account required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:write"], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const localVarVersionedBody = { ...verifyPlannedAccessRequest, v: verifyPlannedAccessRequest.v ?? '1' };
+            localVarRequestOptions.data = serializeDataIfNeeded(localVarVersionedBody, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Save shared default title/description for project_id and update these fields on supported project destinations. Requires a plan with change_subject; integration access checks channel editing permissions. Other streamInfo fields are preserved. Attempts to update active platform broadcasts; individual failures are logged, so success does not guarantee synchronous updates on every platform. Read the template with GET /method/broadcast/template.
+         * @summary Bulk update channel title and description. Global settings.
+         * @param {SiteBulkUpdateChannelRequest} siteBulkUpdateChannelRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingBulkUpdateV1: async (siteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteBulkUpdateChannelRequest' is not null or undefined
             assertParamExists('channelSettingBulkUpdateV1', 'siteBulkUpdateChannelRequest', siteBulkUpdateChannelRequest)
             const localVarPath = `/method/channel_settings/bulkUpdate`;
@@ -865,14 +1090,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read", "channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read", "channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -885,16 +1117,94 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
-         * @summary Get status platform
-         * @param {ChannelSettingGetStatusV1LanguageEnum} language Current language
+         * Start the VK Video Live OAuth connection to an existing channel_id in project_id using the current planned broadcast ids. Returns an HTTP 302 redirect to provider authorization rather than JSON.
+         * @summary Connect VK Video Live to an existing VK channel
+         * @param {ChannelSettingConnectProviderV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
-         * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
+         * @param {Set<string>} ids Planned VK video IDs of this channel
+         * @param {ChannelSettingConnectProviderV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingGetStatusV1: async (language: ChannelSettingGetStatusV1LanguageEnum, projectId: number, channelId: number, v?: ChannelSettingGetStatusV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingConnectProviderV1: async (language: ChannelSettingConnectProviderV1LanguageEnum, projectId: number, channelId: number, ids: Set<string>, v?: ChannelSettingConnectProviderV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('channelSettingConnectProviderV1', 'language', language)
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('channelSettingConnectProviderV1', 'projectId', projectId)
+            // verify required parameter 'channelId' is not null or undefined
+            assertParamExists('channelSettingConnectProviderV1', 'channelId', channelId)
+            // verify required parameter 'ids' is not null or undefined
+            assertParamExists('channelSettingConnectProviderV1', 'ids', ids)
+            const localVarPath = `/method/channel_settings/connect-provider`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2Account required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read", "channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read", "channel:write"], configuration)
+
+            if (v !== undefined) {
+                localVarQueryParameter['v'] = v;
+            } else {
+                localVarQueryParameter['v'] = '1';
+            }
+
+            if (language !== undefined) {
+                localVarQueryParameter['language'] = language;
+            }
+
+            if (projectId !== undefined) {
+                localVarQueryParameter['project_id'] = projectId;
+            }
+
+            if (channelId !== undefined) {
+                localVarQueryParameter['channel_id'] = channelId;
+            }
+
+            if (ids) {
+                localVarQueryParameter['ids'] = Array.from(ids);
+            }
+
+
+    
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Read platform channel status by internal channel_id in project_id. Requires an active primary platform token; otherwise token.no_found. This is platform status, not the project\'s desired active value; enable/disable with PUT /method/channel/status.
+         * @summary Get status platform
+         * @param {ChannelSettingGetStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} projectId Project id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
+         * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingGetStatusV1: async (language: ChannelSettingGetStatusV1LanguageEnum, projectId: number, channelId: number, v?: ChannelSettingGetStatusV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('channelSettingGetStatusV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -913,9 +1223,13 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -937,6 +1251,9 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -947,13 +1264,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Rename the channel with internal channel_id in project_id if the platform allows edit_name; otherwise channel.name_update. The name changes on the shared channel entity and is visible to projects using this channel. This is the channel display name, not the current broadcast title.
          * @summary Set name from custom channel. Global settings.
          * @param {SiteSetNameRequest} siteSetNameRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingSetNameV1: async (siteSetNameRequest: SiteSetNameRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingSetNameV1: async (siteSetNameRequest: SiteSetNameRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteSetNameRequest' is not null or undefined
             assertParamExists('channelSettingSetNameV1', 'siteSetNameRequest', siteSetNameRequest)
             const localVarPath = `/method/channel_settings/setName`;
@@ -968,14 +1286,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read", "channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read", "channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -988,13 +1313,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Save the shared RTMP/RTMPS publishing URL of the channel with internal channel_id in project_id. url with stream_key specifies credentials; without stream_key the URL must contain the stream path/name. Changes the shared channel entity, not only the project relationship. Success confirms ingress was saved, not that a connection was established. Do not log secret credentials.
          * @summary Set rtmp url from channel. Global settings.
          * @param {SiteSetUrlRequest} siteSetUrlRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingUpdateRtmpV1: async (siteSetUrlRequest: SiteSetUrlRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingUpdateRtmpV1: async (siteSetUrlRequest: SiteSetUrlRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteSetUrlRequest' is not null or undefined
             assertParamExists('channelSettingUpdateRtmpV1', 'siteSetUrlRequest', siteSetUrlRequest)
             const localVarPath = `/method/channel_settings/setRtmp`;
@@ -1009,14 +1335,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read", "channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read", "channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -1029,13 +1362,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Replace the complete SRT ingress_url of the internal channel_id in project_id. The URL includes port and streamid/latency parameters when needed and may contain secrets. Changes the shared channel entity and clears RTMP settings and the separate ingress_stream_key. Success does not confirm an active broadcast.
          * @summary Set srt url from channel. Global settings.
          * @param {SiteSetSrtUrlRequest} siteSetSrtUrlRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingUpdateSrtUrlV1: async (siteSetSrtUrlRequest: SiteSetSrtUrlRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingUpdateSrtUrlV1: async (siteSetSrtUrlRequest: SiteSetSrtUrlRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteSetSrtUrlRequest' is not null or undefined
             assertParamExists('channelSettingUpdateSrtUrlV1', 'siteSetSrtUrlRequest', siteSetSrtUrlRequest)
             const localVarPath = `/method/channel_settings/setSrt`;
@@ -1050,14 +1384,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read", "channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read", "channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -1070,17 +1411,19 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Start platform token OAuth refresh for the internal channel_id in project_id and the selected role. Returns an HTTP redirect to platform authorization, not new-token JSON. User authorization and a callback are required to finish; GET initiates an OAuth flow.
          * @summary Redirect to OAuth for updating a channel token
-         * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
+         * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelSettingUpdateTokenV1RoleEnum} role Token role
          * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [tokenId] Local ID of a linked account token
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingUpdateTokenV1: async (language: ChannelSettingUpdateTokenV1LanguageEnum, projectId: number, channelId: number, role: ChannelSettingUpdateTokenV1RoleEnum, v?: ChannelSettingUpdateTokenV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingUpdateTokenV1: async (language: ChannelSettingUpdateTokenV1LanguageEnum, projectId: number, channelId: number, role: ChannelSettingUpdateTokenV1RoleEnum, v?: ChannelSettingUpdateTokenV1VEnum, tokenId?: number, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('channelSettingUpdateTokenV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -1101,9 +1444,13 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read", "channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read", "channel:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -1123,12 +1470,19 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
                 localVarQueryParameter['channel_id'] = channelId;
             }
 
+            if (tokenId !== undefined) {
+                localVarQueryParameter['token_id'] = tokenId;
+            }
+
             if (role !== undefined) {
                 localVarQueryParameter['role'] = role;
             }
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -1139,13 +1493,14 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Assign transcoder_id to a channel in the selected project_id; omitting transcoder_id clears the assignment. Changes the project/channel link, not settings for all projects. Checks that the transcoder belongs to the project; Twitch mode allows only one Twitch channel. Create/change the transcoder itself through /method/transcoder/add and /method/transcoder/update.
          * @summary Set transcoder from channel. Personal settings.
          * @param {SiteSetTranscoderRequest} siteSetTranscoderRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        channelSettingUpdateTranscoderV1: async (siteSetTranscoderRequest: SiteSetTranscoderRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        channelSettingUpdateTranscoderV1: async (siteSetTranscoderRequest: SiteSetTranscoderRequest, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'siteSetTranscoderRequest' is not null or undefined
             assertParamExists('channelSettingUpdateTranscoderV1', 'siteSetTranscoderRequest', siteSetTranscoderRequest)
             const localVarPath = `/method/channel_settings/setTranscoder`;
@@ -1160,14 +1515,21 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["channel:read", "channel:write"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["channel:read", "channel:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["channel:read", "channel:write"], configuration)
 
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -1180,17 +1542,18 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Get a channel\'s Telegram post using filter_mode from the request enum. channel_id is the internal ID in the selected project_id; a Telegram message ID has a separate purpose. Returns a single post matching the selected filter, not a list.
          * @summary Get telegram post by filter
-         * @param {TelegramGetPostByFilterV1LanguageEnum} language Current language
+         * @param {TelegramGetPostByFilterV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
-         * @param {number} filterMode 
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
+         * @param {TelegramGetPostByFilterV1FilterModeEnum} filterMode Telegram post selection rule from enum; not an OAuth scope.
          * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegramGetPostByFilterV1: async (language: TelegramGetPostByFilterV1LanguageEnum, projectId: number, channelId: number, filterMode: number, v?: TelegramGetPostByFilterV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        telegramGetPostByFilterV1: async (language: TelegramGetPostByFilterV1LanguageEnum, projectId: number, channelId: number, filterMode: TelegramGetPostByFilterV1FilterModeEnum, v?: TelegramGetPostByFilterV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('telegramGetPostByFilterV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -1211,9 +1574,13 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["chat:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["chat:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["chat:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -1239,6 +1606,9 @@ export const ChannelSettingsApiAxiosParamCreator = function (configuration?: Con
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -1259,333 +1629,403 @@ export const ChannelSettingsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ChannelSettingsApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Read saved Telegram post/chat settings for the selected channel_id in project_id. This reads configuration; save filter_mode, message_id, and link using POST /method/channel_settings/chat/telegram/setting.
          * @summary Get telegram settings
-         * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Current language
+         * @param {ChannelChatGetTelegramSettingV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelChatGetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelChatGetTelegramSettingV1(language: ChannelChatGetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatGetTelegramSettingV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramSettingsResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatGetTelegramSettingV1(language, projectId, channelId, v, options);
+        async channelChatGetTelegramSettingV1(language: ChannelChatGetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatGetTelegramSettingV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramSettingsResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatGetTelegramSettingV1(language, projectId, channelId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatGetTelegramSettingV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Start Telegram chat connection for the selected internal channel_id in project_id and obtain code. Despite using GET, this creates a connection code; the response alone does not mean connection is complete.
          * @summary Get code for connected chat
-         * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Current language
+         * @param {ChannelChatInitTelegramChatConnectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelChatInitTelegramChatConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelChatInitTelegramChatConnectV1(language: ChannelChatInitTelegramChatConnectV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatInitTelegramChatConnectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramInitConnectResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatInitTelegramChatConnectV1(language, projectId, channelId, v, options);
+        async channelChatInitTelegramChatConnectV1(language: ChannelChatInitTelegramChatConnectV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatInitTelegramChatConnectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramInitConnectResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatInitTelegramChatConnectV1(language, projectId, channelId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatInitTelegramChatConnectV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Disconnect the Telegram chat of the selected internal channel_id in project_id. Despite using GET, this changes the connection. The successful response has no body; this neither deletes the channel nor disables the streaming destination.
          * @summary Disconnect telegram chat
-         * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Current language
+         * @param {ChannelChatRemoveTelegramChatV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelChatRemoveTelegramChatV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelChatRemoveTelegramChatV1(language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatRemoveTelegramChatV1(language, projectId, channelId, v, options);
+        async channelChatRemoveTelegramChatV1(language: ChannelChatRemoveTelegramChatV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatRemoveTelegramChatV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatRemoveTelegramChatV1(language, projectId, channelId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatRemoveTelegramChatV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Save filter_mode, message_id, and link for the Telegram chat of the selected internal channel_id in project_id. message_id identifies a Telegram message, not a StreamVi channel. Success confirms settings were saved, not that a message was sent.
          * @summary Set telegram settings
-         * @param {ChannelChatSetTelegramSettingV1LanguageEnum} language Current language
+         * @param {ChannelChatSetTelegramSettingV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {TelegramSetSettingsRequestDto} telegramSetSettingsRequestDto 
          * @param {ChannelChatSetTelegramSettingV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelChatSetTelegramSettingV1(language: ChannelChatSetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto, v?: ChannelChatSetTelegramSettingV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatSetTelegramSettingV1(language, projectId, channelId, telegramSetSettingsRequestDto, v, options);
+        async channelChatSetTelegramSettingV1(language: ChannelChatSetTelegramSettingV1LanguageEnum, projectId: number, channelId: number, telegramSetSettingsRequestDto: TelegramSetSettingsRequestDto, v?: ChannelChatSetTelegramSettingV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatSetTelegramSettingV1(language, projectId, channelId, telegramSetSettingsRequestDto, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatSetTelegramSettingV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Get Telegram posts for the selected channel with internal channel_id in project_id. Returns results; the external chat_id is resolved from the connected channel and does not replace channel_id.
          * @summary Get telegram post list
-         * @param {ChannelChatTelegramPostsV1LanguageEnum} language Current language
+         * @param {ChannelChatTelegramPostsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelChatTelegramPostsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelChatTelegramPostsV1(language: ChannelChatTelegramPostsV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatTelegramPostsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramChatPostsResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatTelegramPostsV1(language, projectId, channelId, v, options);
+        async channelChatTelegramPostsV1(language: ChannelChatTelegramPostsV1LanguageEnum, projectId: number, channelId: number, v?: ChannelChatTelegramPostsV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramChatPostsResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatTelegramPostsV1(language, projectId, channelId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatTelegramPostsV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Change Telegram chat settings for the selected internal channel_id in project_id. Checks the Telegram chat/channel association and connection type; configures the chat rather than changing the broadcast destination\'s active state.
          * @summary Optional settings for telegram
          * @param {SiteUpdateChatTelegramRequest} siteUpdateChatTelegramRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelChatUpdateOptionsTelegramV1(siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatUpdateOptionsTelegramV1(siteUpdateChatTelegramRequest, options);
+        async channelChatUpdateOptionsTelegramV1(siteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelChatUpdateOptionsTelegramV1(siteUpdateChatTelegramRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelChatUpdateOptionsTelegramV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @summary Get planned list
-         * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Current language
-         * @param {number} projectId Project id
-         * @param {number} channelId Channel id
-         * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * Disconnect the VK Video Live connection identified by token_id for channel_id in project_id. The account token and selected planned broadcast are preserved.
+         * @summary Disconnect a VK Video Live account from this project channel
+         * @param {DisconnectPlannedProviderRequest} disconnectPlannedProviderRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsGetPlannedV1(language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlannedListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsGetPlannedV1(language, projectId, channelId, v, options);
+        async channelOptionsDisconnectPlannedProviderV1(disconnectPlannedProviderRequest: DisconnectPlannedProviderRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VerifyPlannedAccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsDisconnectPlannedProviderV1(disconnectPlannedProviderRequest, xClientRequestId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsDisconnectPlannedProviderV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Read available platform scheduled broadcasts for the selected internal channel_id in project_id. Requires an active primary token. Pass a result ID to POST /method/channel_settings/options/setPlanned; this is not the /method/scheduler list.
+         * @summary Get planned list
+         * @param {ChannelOptionsGetPlannedV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} projectId Project id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
+         * @param {ChannelOptionsGetPlannedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelOptionsGetPlannedV1(language: ChannelOptionsGetPlannedV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlannedV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlannedListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsGetPlannedV1(language, projectId, channelId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsGetPlannedV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read platform playlists of the connected internal channel_id in project_id. Requires an active primary token; otherwise token.no_found. Returns external playlist results, not StreamVi video schedules.
          * @summary Get playlists from the platform
-         * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Current language
+         * @param {ChannelOptionsGetPlayListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelOptionsGetPlayListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsGetPlayListV1(language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlaylistResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsGetPlayListV1(language, projectId, channelId, v, options);
+        async channelOptionsGetPlayListV1(language: ChannelOptionsGetPlayListV1LanguageEnum, projectId: number, channelId: number, v?: ChannelOptionsGetPlayListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlaylistResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsGetPlayListV1(language, projectId, channelId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsGetPlayListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Save OK broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; individual fields define optional/default values. Saving settings does not start a broadcast.
          * @summary Optional settings for ok. Depends on the tariff.
          * @param {SiteUpdateOptionsOkRequest} siteUpdateOptionsOkRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsUpdateOptionsOkV1(siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsOkV1(siteUpdateOptionsOkRequest, options);
+        async channelOptionsUpdateOptionsOkV1(siteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsOkV1(siteUpdateOptionsOkRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsOkV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Save Trovo broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; read optional/default values from the request schema. Updating settings does not start a broadcast.
          * @summary Optional settings for trovo. Depends on the tariff.
          * @param {SiteUpdateOptionsTrovoRequest} siteUpdateOptionsTrovoRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsUpdateOptionsTrovoV1(siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsTrovoV1(siteUpdateOptionsTrovoRequest, options);
+        async channelOptionsUpdateOptionsTrovoV1(siteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsTrovoV1(siteUpdateOptionsTrovoRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsTrovoV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Save Twitch broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; category ID is an external platform ID. Updating settings neither enables the destination nor starts a broadcast.
          * @summary Optional settings for twitch. Depends on the tariff.
          * @param {SiteUpdateOptionsTwitchRequest} siteUpdateOptionsTwitchRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsUpdateOptionsTwitchV1(siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsTwitchV1(siteUpdateOptionsTwitchRequest, options);
+        async channelOptionsUpdateOptionsTwitchV1(siteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsTwitchV1(siteUpdateOptionsTwitchRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsTwitchV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Save VK broadcast settings for the channel with internal channel_id in project_id. Requires a plan with change_subject; parameters pass through toFormatted DTO and merge into current streamInfo, so each DTO field determines defaults/empty values. wall=true records consent to publish on VK wall. Updates an active broadcast; success does not mean a broadcast was started.
          * @summary Optional settings for vk. Depends on the tariff.
          * @param {SiteUpdateOptionsVkRequest} siteUpdateOptionsVkRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsUpdateOptionsVkV1(siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsVkV1(siteUpdateOptionsVkRequest, options);
+        async channelOptionsUpdateOptionsVkV1(siteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsVkV1(siteUpdateOptionsVkRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsVkV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Save VK Video Live broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; category ID belongs to the platform catalog. Saving settings does not start a broadcast.
          * @summary Optional settings for vk video live. Depends on the tariff.
          * @param {SiteUpdateOptionsVkVideoLiveRequest} siteUpdateOptionsVkVideoLiveRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsUpdateOptionsVkVideoLiveV1(siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsVkVideoLiveV1(siteUpdateOptionsVkVideoLiveRequest, options);
+        async channelOptionsUpdateOptionsVkVideoLiveV1(siteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsVkVideoLiveV1(siteUpdateOptionsVkVideoLiveRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsVkVideoLiveV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Save YouTube broadcast settings for the channel with internal channel_id in project_id. Requires a plan with change_subject; parameters pass through toFormatted DTO and merge into current streamInfo. The DTO determines defaults, empty tags, and image. Attempts to update an active broadcast if present; this method does not start a broadcast.
          * @summary Optional settings for youtube. Depends on the tariff.
          * @param {SiteUpdateOptionsYoutubeRequest} siteUpdateOptionsYoutubeRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsUpdateOptionsYoutubeV1(siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsYoutubeV1(siteUpdateOptionsYoutubeRequest, options);
+        async channelOptionsUpdateOptionsYoutubeV1(siteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdateOptionsYoutubeV1(siteUpdateOptionsYoutubeRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdateOptionsYoutubeV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Select a scheduled platform broadcast for the internal channel_id in project_id. id is the string ID from GET /method/channel_settings/options/getPlanned; auto selects the automatic option, null/omission clears selection. An active primary token is required. Returns the selected planned value; does not create a StreamVi video schedule.
          * @summary Set planned id. Depends on the tariff.
          * @param {SiteSetPlannedRequest} siteSetPlannedRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelOptionsUpdatePlannedV1(siteSetPlannedRequest: SiteSetPlannedRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlannedResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdatePlannedV1(siteSetPlannedRequest, options);
+        async channelOptionsUpdatePlannedV1(siteSetPlannedRequest: SiteSetPlannedRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePlannedResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsUpdatePlannedV1(siteSetPlannedRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsUpdatePlannedV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @summary Bulk update channel title and description. Global settings.
-         * @param {SiteBulkUpdateChannelRequest} siteBulkUpdateChannelRequest 
+         * Read the VK Video Live connection state for channel_id in project_id. recheck repeats the check; connect explicitly links an accessible account. A regular read does not create a connection.
+         * @summary Confirm a VK channel connection using the first accessible planned broadcast
+         * @param {VerifyPlannedAccessRequest} verifyPlannedAccessRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelSettingBulkUpdateV1(siteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingBulkUpdateV1(siteBulkUpdateChannelRequest, options);
+        async channelOptionsVerifyPlannedAccessV1(verifyPlannedAccessRequest: VerifyPlannedAccessRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VerifyPlannedAccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelOptionsVerifyPlannedAccessV1(verifyPlannedAccessRequest, xClientRequestId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelOptionsVerifyPlannedAccessV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Save shared default title/description for project_id and update these fields on supported project destinations. Requires a plan with change_subject; integration access checks channel editing permissions. Other streamInfo fields are preserved. Attempts to update active platform broadcasts; individual failures are logged, so success does not guarantee synchronous updates on every platform. Read the template with GET /method/broadcast/template.
+         * @summary Bulk update channel title and description. Global settings.
+         * @param {SiteBulkUpdateChannelRequest} siteBulkUpdateChannelRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelSettingBulkUpdateV1(siteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingBulkUpdateV1(siteBulkUpdateChannelRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingBulkUpdateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @summary Get status platform
-         * @param {ChannelSettingGetStatusV1LanguageEnum} language Current language
+         * Start the VK Video Live OAuth connection to an existing channel_id in project_id using the current planned broadcast ids. Returns an HTTP 302 redirect to provider authorization rather than JSON.
+         * @summary Connect VK Video Live to an existing VK channel
+         * @param {ChannelSettingConnectProviderV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
-         * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
+         * @param {Set<string>} ids Planned VK video IDs of this channel
+         * @param {ChannelSettingConnectProviderV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelSettingGetStatusV1(language: ChannelSettingGetStatusV1LanguageEnum, projectId: number, channelId: number, v?: ChannelSettingGetStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChannelStatusResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingGetStatusV1(language, projectId, channelId, v, options);
+        async channelSettingConnectProviderV1(language: ChannelSettingConnectProviderV1LanguageEnum, projectId: number, channelId: number, ids: Set<string>, v?: ChannelSettingConnectProviderV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingConnectProviderV1(language, projectId, channelId, ids, v, xClientRequestId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingConnectProviderV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Read platform channel status by internal channel_id in project_id. Requires an active primary platform token; otherwise token.no_found. This is platform status, not the project\'s desired active value; enable/disable with PUT /method/channel/status.
+         * @summary Get status platform
+         * @param {ChannelSettingGetStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} projectId Project id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
+         * @param {ChannelSettingGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async channelSettingGetStatusV1(language: ChannelSettingGetStatusV1LanguageEnum, projectId: number, channelId: number, v?: ChannelSettingGetStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteChannelStatusResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingGetStatusV1(language, projectId, channelId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingGetStatusV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Rename the channel with internal channel_id in project_id if the platform allows edit_name; otherwise channel.name_update. The name changes on the shared channel entity and is visible to projects using this channel. This is the channel display name, not the current broadcast title.
          * @summary Set name from custom channel. Global settings.
          * @param {SiteSetNameRequest} siteSetNameRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelSettingSetNameV1(siteSetNameRequest: SiteSetNameRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingSetNameV1(siteSetNameRequest, options);
+        async channelSettingSetNameV1(siteSetNameRequest: SiteSetNameRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingSetNameV1(siteSetNameRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingSetNameV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Save the shared RTMP/RTMPS publishing URL of the channel with internal channel_id in project_id. url with stream_key specifies credentials; without stream_key the URL must contain the stream path/name. Changes the shared channel entity, not only the project relationship. Success confirms ingress was saved, not that a connection was established. Do not log secret credentials.
          * @summary Set rtmp url from channel. Global settings.
          * @param {SiteSetUrlRequest} siteSetUrlRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelSettingUpdateRtmpV1(siteSetUrlRequest: SiteSetUrlRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateRtmpV1(siteSetUrlRequest, options);
+        async channelSettingUpdateRtmpV1(siteSetUrlRequest: SiteSetUrlRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateRtmpV1(siteSetUrlRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingUpdateRtmpV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Replace the complete SRT ingress_url of the internal channel_id in project_id. The URL includes port and streamid/latency parameters when needed and may contain secrets. Changes the shared channel entity and clears RTMP settings and the separate ingress_stream_key. Success does not confirm an active broadcast.
          * @summary Set srt url from channel. Global settings.
          * @param {SiteSetSrtUrlRequest} siteSetSrtUrlRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelSettingUpdateSrtUrlV1(siteSetSrtUrlRequest: SiteSetSrtUrlRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateSrtUrlV1(siteSetSrtUrlRequest, options);
+        async channelSettingUpdateSrtUrlV1(siteSetSrtUrlRequest: SiteSetSrtUrlRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateSrtUrlV1(siteSetSrtUrlRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingUpdateSrtUrlV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Start platform token OAuth refresh for the internal channel_id in project_id and the selected role. Returns an HTTP redirect to platform authorization, not new-token JSON. User authorization and a callback are required to finish; GET initiates an OAuth flow.
          * @summary Redirect to OAuth for updating a channel token
-         * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Current language
+         * @param {ChannelSettingUpdateTokenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
          * @param {ChannelSettingUpdateTokenV1RoleEnum} role Token role
          * @param {ChannelSettingUpdateTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {number} [tokenId] Local ID of a linked account token
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelSettingUpdateTokenV1(language: ChannelSettingUpdateTokenV1LanguageEnum, projectId: number, channelId: number, role: ChannelSettingUpdateTokenV1RoleEnum, v?: ChannelSettingUpdateTokenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateTokenV1(language, projectId, channelId, role, v, options);
+        async channelSettingUpdateTokenV1(language: ChannelSettingUpdateTokenV1LanguageEnum, projectId: number, channelId: number, role: ChannelSettingUpdateTokenV1RoleEnum, v?: ChannelSettingUpdateTokenV1VEnum, tokenId?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateTokenV1(language, projectId, channelId, role, v, tokenId, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingUpdateTokenV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Assign transcoder_id to a channel in the selected project_id; omitting transcoder_id clears the assignment. Changes the project/channel link, not settings for all projects. Checks that the transcoder belongs to the project; Twitch mode allows only one Twitch channel. Create/change the transcoder itself through /method/transcoder/add and /method/transcoder/update.
          * @summary Set transcoder from channel. Personal settings.
          * @param {SiteSetTranscoderRequest} siteSetTranscoderRequest 
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async channelSettingUpdateTranscoderV1(siteSetTranscoderRequest: SiteSetTranscoderRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateTranscoderV1(siteSetTranscoderRequest, options);
+        async channelSettingUpdateTranscoderV1(siteSetTranscoderRequest: SiteSetTranscoderRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.channelSettingUpdateTranscoderV1(siteSetTranscoderRequest, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.channelSettingUpdateTranscoderV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Get a channel\'s Telegram post using filter_mode from the request enum. channel_id is the internal ID in the selected project_id; a Telegram message ID has a separate purpose. Returns a single post matching the selected filter, not a list.
          * @summary Get telegram post by filter
-         * @param {TelegramGetPostByFilterV1LanguageEnum} language Current language
+         * @param {TelegramGetPostByFilterV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel id
-         * @param {number} filterMode 
+         * @param {number} channelId Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
+         * @param {TelegramGetPostByFilterV1FilterModeEnum} filterMode Telegram post selection rule from enum; not an OAuth scope.
          * @param {TelegramGetPostByFilterV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async telegramGetPostByFilterV1(language: TelegramGetPostByFilterV1LanguageEnum, projectId: number, channelId: number, filterMode: number, v?: TelegramGetPostByFilterV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramChatPostsItem>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.telegramGetPostByFilterV1(language, projectId, channelId, filterMode, v, options);
+        async telegramGetPostByFilterV1(language: TelegramGetPostByFilterV1LanguageEnum, projectId: number, channelId: number, filterMode: TelegramGetPostByFilterV1FilterModeEnum, v?: TelegramGetPostByFilterV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TelegramChatPostsItem>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.telegramGetPostByFilterV1(language, projectId, channelId, filterMode, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ChannelSettingsApi.telegramGetPostByFilterV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -1601,234 +2041,264 @@ export const ChannelSettingsApiFactory = function (configuration?: Configuration
     const localVarFp = ChannelSettingsApiFp(configuration)
     return {
         /**
-         * 
+         * Read saved Telegram post/chat settings for the selected channel_id in project_id. This reads configuration; save filter_mode, message_id, and link using POST /method/channel_settings/chat/telegram/setting.
          * @summary Get telegram settings
          * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramSettingsResponseDto> {
-            return localVarFp.channelChatGetTelegramSettingV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatGetTelegramSettingV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Start Telegram chat connection for the selected internal channel_id in project_id and obtain code. Despite using GET, this creates a connection code; the response alone does not mean connection is complete.
          * @summary Get code for connected chat
          * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramInitConnectResponseDto> {
-            return localVarFp.channelChatInitTelegramChatConnectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatInitTelegramChatConnectV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Disconnect the Telegram chat of the selected internal channel_id in project_id. Despite using GET, this changes the connection. The successful response has no body; this neither deletes the channel nor disables the streaming destination.
          * @summary Disconnect telegram chat
          * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatRemoveTelegramChatV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Save filter_mode, message_id, and link for the Telegram chat of the selected internal channel_id in project_id. message_id identifies a Telegram message, not a StreamVi channel. Success confirms settings were saved, not that a message was sent.
          * @summary Set telegram settings
          * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelChatSetTelegramSettingV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.TelegramSetSettingsRequestDto, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatSetTelegramSettingV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['TelegramSetSettingsRequestDto'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Get Telegram posts for the selected channel with internal channel_id in project_id. Returns results; the external chat_id is resolved from the connected channel and does not replace channel_id.
          * @summary Get telegram post list
          * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsResponseDto> {
-            return localVarFp.channelChatTelegramPostsV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatTelegramPostsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Change Telegram chat settings for the selected internal channel_id in project_id. Checks the Telegram chat/channel association and connection type; configures the chat rather than changing the broadcast destination\'s active state.
          * @summary Optional settings for telegram
          * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelChatUpdateOptionsTelegramV1(requestParameters.SiteUpdateChatTelegramRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelChatUpdateOptionsTelegramV1(requestParameters['SiteUpdateChatTelegramRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Disconnect the VK Video Live connection identified by token_id for channel_id in project_id. The account token and selected planned broadcast are preserved.
+         * @summary Disconnect a VK Video Live account from this project channel
+         * @param {ChannelSettingsApiChannelOptionsDisconnectPlannedProviderV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelOptionsDisconnectPlannedProviderV1(requestParameters: ChannelSettingsApiChannelOptionsDisconnectPlannedProviderV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VerifyPlannedAccessResponse> {
+            return localVarFp.channelOptionsDisconnectPlannedProviderV1(requestParameters['DisconnectPlannedProviderRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Read available platform scheduled broadcasts for the selected internal channel_id in project_id. Requires an active primary token. Pass a result ID to POST /method/channel_settings/options/setPlanned; this is not the /method/scheduler list.
          * @summary Get planned list
          * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlannedListResponse> {
-            return localVarFp.channelOptionsGetPlannedV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsGetPlannedV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read platform playlists of the connected internal channel_id in project_id. Requires an active primary token; otherwise token.no_found. Returns external playlist results, not StreamVi video schedules.
          * @summary Get playlists from the platform
          * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlaylistResponse> {
-            return localVarFp.channelOptionsGetPlayListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsGetPlayListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Save OK broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; individual fields define optional/default values. Saving settings does not start a broadcast.
          * @summary Optional settings for ok. Depends on the tariff.
          * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelOptionsUpdateOptionsOkV1(requestParameters.SiteUpdateOptionsOkRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsOkV1(requestParameters['SiteUpdateOptionsOkRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Save Trovo broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; read optional/default values from the request schema. Updating settings does not start a broadcast.
          * @summary Optional settings for trovo. Depends on the tariff.
          * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelOptionsUpdateOptionsTrovoV1(requestParameters.SiteUpdateOptionsTrovoRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsTrovoV1(requestParameters['SiteUpdateOptionsTrovoRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Save Twitch broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; category ID is an external platform ID. Updating settings neither enables the destination nor starts a broadcast.
          * @summary Optional settings for twitch. Depends on the tariff.
          * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelOptionsUpdateOptionsTwitchV1(requestParameters.SiteUpdateOptionsTwitchRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsTwitchV1(requestParameters['SiteUpdateOptionsTwitchRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Save VK broadcast settings for the channel with internal channel_id in project_id. Requires a plan with change_subject; parameters pass through toFormatted DTO and merge into current streamInfo, so each DTO field determines defaults/empty values. wall=true records consent to publish on VK wall. Updates an active broadcast; success does not mean a broadcast was started.
          * @summary Optional settings for vk. Depends on the tariff.
          * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelOptionsUpdateOptionsVkV1(requestParameters.SiteUpdateOptionsVkRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsVkV1(requestParameters['SiteUpdateOptionsVkRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Save VK Video Live broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; category ID belongs to the platform catalog. Saving settings does not start a broadcast.
          * @summary Optional settings for vk video live. Depends on the tariff.
          * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters.SiteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters['SiteUpdateOptionsVkVideoLiveRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Save YouTube broadcast settings for the channel with internal channel_id in project_id. Requires a plan with change_subject; parameters pass through toFormatted DTO and merge into current streamInfo. The DTO determines defaults, empty tags, and image. Attempts to update an active broadcast if present; this method does not start a broadcast.
          * @summary Optional settings for youtube. Depends on the tariff.
          * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelOptionsUpdateOptionsYoutubeV1(requestParameters.SiteUpdateOptionsYoutubeRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdateOptionsYoutubeV1(requestParameters['SiteUpdateOptionsYoutubeRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Select a scheduled platform broadcast for the internal channel_id in project_id. id is the string ID from GET /method/channel_settings/options/getPlanned; auto selects the automatic option, null/omission clears selection. An active primary token is required. Returns the selected planned value; does not create a StreamVi video schedule.
          * @summary Set planned id. Depends on the tariff.
          * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlannedResponse> {
-            return localVarFp.channelOptionsUpdatePlannedV1(requestParameters.SiteSetPlannedRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelOptionsUpdatePlannedV1(requestParameters['SiteSetPlannedRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read the VK Video Live connection state for channel_id in project_id. recheck repeats the check; connect explicitly links an accessible account. A regular read does not create a connection.
+         * @summary Confirm a VK channel connection using the first accessible planned broadcast
+         * @param {ChannelSettingsApiChannelOptionsVerifyPlannedAccessV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelOptionsVerifyPlannedAccessV1(requestParameters: ChannelSettingsApiChannelOptionsVerifyPlannedAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VerifyPlannedAccessResponse> {
+            return localVarFp.channelOptionsVerifyPlannedAccessV1(requestParameters['VerifyPlannedAccessRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Save shared default title/description for project_id and update these fields on supported project destinations. Requires a plan with change_subject; integration access checks channel editing permissions. Other streamInfo fields are preserved. Attempts to update active platform broadcasts; individual failures are logged, so success does not guarantee synchronous updates on every platform. Read the template with GET /method/broadcast/template.
          * @summary Bulk update channel title and description. Global settings.
          * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelSettingBulkUpdateV1(requestParameters.SiteBulkUpdateChannelRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingBulkUpdateV1(requestParameters['SiteBulkUpdateChannelRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Start the VK Video Live OAuth connection to an existing channel_id in project_id using the current planned broadcast ids. Returns an HTTP 302 redirect to provider authorization rather than JSON.
+         * @summary Connect VK Video Live to an existing VK channel
+         * @param {ChannelSettingsApiChannelSettingConnectProviderV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        channelSettingConnectProviderV1(requestParameters: ChannelSettingsApiChannelSettingConnectProviderV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.channelSettingConnectProviderV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['ids'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Read platform channel status by internal channel_id in project_id. Requires an active primary platform token; otherwise token.no_found. This is platform status, not the project\'s desired active value; enable/disable with PUT /method/channel/status.
          * @summary Get status platform
          * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse> {
-            return localVarFp.channelSettingGetStatusV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingGetStatusV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Rename the channel with internal channel_id in project_id if the platform allows edit_name; otherwise channel.name_update. The name changes on the shared channel entity and is visible to projects using this channel. This is the channel display name, not the current broadcast title.
          * @summary Set name from custom channel. Global settings.
          * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelSettingSetNameV1(requestParameters.SiteSetNameRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingSetNameV1(requestParameters['SiteSetNameRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Save the shared RTMP/RTMPS publishing URL of the channel with internal channel_id in project_id. url with stream_key specifies credentials; without stream_key the URL must contain the stream path/name. Changes the shared channel entity, not only the project relationship. Success confirms ingress was saved, not that a connection was established. Do not log secret credentials.
          * @summary Set rtmp url from channel. Global settings.
          * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelSettingUpdateRtmpV1(requestParameters.SiteSetUrlRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingUpdateRtmpV1(requestParameters['SiteSetUrlRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Replace the complete SRT ingress_url of the internal channel_id in project_id. The URL includes port and streamid/latency parameters when needed and may contain secrets. Changes the shared channel entity and clears RTMP settings and the separate ingress_stream_key. Success does not confirm an active broadcast.
          * @summary Set srt url from channel. Global settings.
          * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelSettingUpdateSrtUrlV1(requestParameters.SiteSetSrtUrlRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingUpdateSrtUrlV1(requestParameters['SiteSetSrtUrlRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Start platform token OAuth refresh for the internal channel_id in project_id and the selected role. Returns an HTTP redirect to platform authorization, not new-token JSON. User authorization and a callback are required to finish; GET initiates an OAuth flow.
          * @summary Redirect to OAuth for updating a channel token
          * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.channelSettingUpdateTokenV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.role, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingUpdateTokenV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['role'], requestParameters['v'], requestParameters['token_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Assign transcoder_id to a channel in the selected project_id; omitting transcoder_id clears the assignment. Changes the project/channel link, not settings for all projects. Checks that the transcoder belongs to the project; Twitch mode allows only one Twitch channel. Create/change the transcoder itself through /method/transcoder/add and /method/transcoder/update.
          * @summary Set transcoder from channel. Personal settings.
          * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.channelSettingUpdateTranscoderV1(requestParameters.SiteSetTranscoderRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.channelSettingUpdateTranscoderV1(requestParameters['SiteSetTranscoderRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Get a channel\'s Telegram post using filter_mode from the request enum. channel_id is the internal ID in the selected project_id; a Telegram message ID has a separate purpose. Returns a single post matching the selected filter, not a list.
          * @summary Get telegram post by filter
          * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsItem> {
-            return localVarFp.telegramGetPostByFilterV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.filter_mode, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.telegramGetPostByFilterV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['filter_mode'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1840,7 +2310,7 @@ export const ChannelSettingsApiFactory = function (configuration?: Configuration
  */
 export interface ChannelSettingsApiInterface {
     /**
-     * 
+     * Read saved Telegram post/chat settings for the selected channel_id in project_id. This reads configuration; save filter_mode, message_id, and link using POST /method/channel_settings/chat/telegram/setting.
      * @summary Get telegram settings
      * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1850,7 +2320,7 @@ export interface ChannelSettingsApiInterface {
     channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramSettingsResponseDto>;
 
     /**
-     * 
+     * Start Telegram chat connection for the selected internal channel_id in project_id and obtain code. Despite using GET, this creates a connection code; the response alone does not mean connection is complete.
      * @summary Get code for connected chat
      * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1860,7 +2330,7 @@ export interface ChannelSettingsApiInterface {
     channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramInitConnectResponseDto>;
 
     /**
-     * 
+     * Disconnect the Telegram chat of the selected internal channel_id in project_id. Despite using GET, this changes the connection. The successful response has no body; this neither deletes the channel nor disables the streaming destination.
      * @summary Disconnect telegram chat
      * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1870,7 +2340,7 @@ export interface ChannelSettingsApiInterface {
     channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 
     /**
-     * 
+     * Save filter_mode, message_id, and link for the Telegram chat of the selected internal channel_id in project_id. message_id identifies a Telegram message, not a StreamVi channel. Success confirms settings were saved, not that a message was sent.
      * @summary Set telegram settings
      * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1880,7 +2350,7 @@ export interface ChannelSettingsApiInterface {
     channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Get Telegram posts for the selected channel with internal channel_id in project_id. Returns results; the external chat_id is resolved from the connected channel and does not replace channel_id.
      * @summary Get telegram post list
      * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1890,7 +2360,7 @@ export interface ChannelSettingsApiInterface {
     channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TelegramChatPostsResponseDto>;
 
     /**
-     * 
+     * Change Telegram chat settings for the selected internal channel_id in project_id. Checks the Telegram chat/channel association and connection type; configures the chat rather than changing the broadcast destination\'s active state.
      * @summary Optional settings for telegram
      * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1900,7 +2370,17 @@ export interface ChannelSettingsApiInterface {
     channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Disconnect the VK Video Live connection identified by token_id for channel_id in project_id. The account token and selected planned broadcast are preserved.
+     * @summary Disconnect a VK Video Live account from this project channel
+     * @param {ChannelSettingsApiChannelOptionsDisconnectPlannedProviderV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsDisconnectPlannedProviderV1(requestParameters: ChannelSettingsApiChannelOptionsDisconnectPlannedProviderV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VerifyPlannedAccessResponse>;
+
+    /**
+     * Read available platform scheduled broadcasts for the selected internal channel_id in project_id. Requires an active primary token. Pass a result ID to POST /method/channel_settings/options/setPlanned; this is not the /method/scheduler list.
      * @summary Get planned list
      * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1910,7 +2390,7 @@ export interface ChannelSettingsApiInterface {
     channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlannedListResponse>;
 
     /**
-     * 
+     * Read platform playlists of the connected internal channel_id in project_id. Requires an active primary token; otherwise token.no_found. Returns external playlist results, not StreamVi video schedules.
      * @summary Get playlists from the platform
      * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1920,7 +2400,7 @@ export interface ChannelSettingsApiInterface {
     channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlaylistResponse>;
 
     /**
-     * 
+     * Save OK broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; individual fields define optional/default values. Saving settings does not start a broadcast.
      * @summary Optional settings for ok. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1930,7 +2410,7 @@ export interface ChannelSettingsApiInterface {
     channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Save Trovo broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; read optional/default values from the request schema. Updating settings does not start a broadcast.
      * @summary Optional settings for trovo. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1940,7 +2420,7 @@ export interface ChannelSettingsApiInterface {
     channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Save Twitch broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; category ID is an external platform ID. Updating settings neither enables the destination nor starts a broadcast.
      * @summary Optional settings for twitch. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1950,7 +2430,7 @@ export interface ChannelSettingsApiInterface {
     channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Save VK broadcast settings for the channel with internal channel_id in project_id. Requires a plan with change_subject; parameters pass through toFormatted DTO and merge into current streamInfo, so each DTO field determines defaults/empty values. wall=true records consent to publish on VK wall. Updates an active broadcast; success does not mean a broadcast was started.
      * @summary Optional settings for vk. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1960,7 +2440,7 @@ export interface ChannelSettingsApiInterface {
     channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Save VK Video Live broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; category ID belongs to the platform catalog. Saving settings does not start a broadcast.
      * @summary Optional settings for vk video live. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1970,7 +2450,7 @@ export interface ChannelSettingsApiInterface {
     channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Save YouTube broadcast settings for the channel with internal channel_id in project_id. Requires a plan with change_subject; parameters pass through toFormatted DTO and merge into current streamInfo. The DTO determines defaults, empty tags, and image. Attempts to update an active broadcast if present; this method does not start a broadcast.
      * @summary Optional settings for youtube. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1980,7 +2460,7 @@ export interface ChannelSettingsApiInterface {
     channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Select a scheduled platform broadcast for the internal channel_id in project_id. id is the string ID from GET /method/channel_settings/options/getPlanned; auto selects the automatic option, null/omission clears selection. An active primary token is required. Returns the selected planned value; does not create a StreamVi video schedule.
      * @summary Set planned id. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1990,7 +2470,17 @@ export interface ChannelSettingsApiInterface {
     channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePlannedResponse>;
 
     /**
-     * 
+     * Read the VK Video Live connection state for channel_id in project_id. recheck repeats the check; connect explicitly links an accessible account. A regular read does not create a connection.
+     * @summary Confirm a VK channel connection using the first accessible planned broadcast
+     * @param {ChannelSettingsApiChannelOptionsVerifyPlannedAccessV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelOptionsVerifyPlannedAccessV1(requestParameters: ChannelSettingsApiChannelOptionsVerifyPlannedAccessV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VerifyPlannedAccessResponse>;
+
+    /**
+     * Save shared default title/description for project_id and update these fields on supported project destinations. Requires a plan with change_subject; integration access checks channel editing permissions. Other streamInfo fields are preserved. Attempts to update active platform broadcasts; individual failures are logged, so success does not guarantee synchronous updates on every platform. Read the template with GET /method/broadcast/template.
      * @summary Bulk update channel title and description. Global settings.
      * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2000,7 +2490,17 @@ export interface ChannelSettingsApiInterface {
     channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Start the VK Video Live OAuth connection to an existing channel_id in project_id using the current planned broadcast ids. Returns an HTTP 302 redirect to provider authorization rather than JSON.
+     * @summary Connect VK Video Live to an existing VK channel
+     * @param {ChannelSettingsApiChannelSettingConnectProviderV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApiInterface
+     */
+    channelSettingConnectProviderV1(requestParameters: ChannelSettingsApiChannelSettingConnectProviderV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+
+    /**
+     * Read platform channel status by internal channel_id in project_id. Requires an active primary platform token; otherwise token.no_found. This is platform status, not the project\'s desired active value; enable/disable with PUT /method/channel/status.
      * @summary Get status platform
      * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2010,7 +2510,7 @@ export interface ChannelSettingsApiInterface {
     channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteChannelStatusResponse>;
 
     /**
-     * 
+     * Rename the channel with internal channel_id in project_id if the platform allows edit_name; otherwise channel.name_update. The name changes on the shared channel entity and is visible to projects using this channel. This is the channel display name, not the current broadcast title.
      * @summary Set name from custom channel. Global settings.
      * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2020,7 +2520,7 @@ export interface ChannelSettingsApiInterface {
     channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Save the shared RTMP/RTMPS publishing URL of the channel with internal channel_id in project_id. url with stream_key specifies credentials; without stream_key the URL must contain the stream path/name. Changes the shared channel entity, not only the project relationship. Success confirms ingress was saved, not that a connection was established. Do not log secret credentials.
      * @summary Set rtmp url from channel. Global settings.
      * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2030,7 +2530,7 @@ export interface ChannelSettingsApiInterface {
     channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Replace the complete SRT ingress_url of the internal channel_id in project_id. The URL includes port and streamid/latency parameters when needed and may contain secrets. Changes the shared channel entity and clears RTMP settings and the separate ingress_stream_key. Success does not confirm an active broadcast.
      * @summary Set srt url from channel. Global settings.
      * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2040,7 +2540,7 @@ export interface ChannelSettingsApiInterface {
     channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Start platform token OAuth refresh for the internal channel_id in project_id and the selected role. Returns an HTTP redirect to platform authorization, not new-token JSON. User authorization and a callback are required to finish; GET initiates an OAuth flow.
      * @summary Redirect to OAuth for updating a channel token
      * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2050,7 +2550,7 @@ export interface ChannelSettingsApiInterface {
     channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 
     /**
-     * 
+     * Assign transcoder_id to a channel in the selected project_id; omitting transcoder_id clears the assignment. Changes the project/channel link, not settings for all projects. Checks that the transcoder belongs to the project; Twitch mode allows only one Twitch channel. Create/change the transcoder itself through /method/transcoder/add and /method/transcoder/update.
      * @summary Set transcoder from channel. Personal settings.
      * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2060,7 +2560,7 @@ export interface ChannelSettingsApiInterface {
     channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Get a channel\'s Telegram post using filter_mode from the request enum. channel_id is the internal ID in the selected project_id; a Telegram message ID has a separate purpose. Returns a single post matching the selected filter, not a list.
      * @summary Get telegram post by filter
      * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2078,32 +2578,39 @@ export interface ChannelSettingsApiInterface {
  */
 export interface ChannelSettingsApiChannelChatGetTelegramSettingV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
-    readonly language: ChannelChatGetTelegramSettingV1LanguageEnum
+    readonly 'language': ChannelChatGetTelegramSettingV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
      */
-    readonly v?: ChannelChatGetTelegramSettingV1VEnum
+    readonly 'v'?: ChannelChatGetTelegramSettingV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelChatGetTelegramSettingV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2113,32 +2620,39 @@ export interface ChannelSettingsApiChannelChatGetTelegramSettingV1Request {
  */
 export interface ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
-    readonly language: ChannelChatInitTelegramChatConnectV1LanguageEnum
+    readonly 'language': ChannelChatInitTelegramChatConnectV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
      */
-    readonly v?: ChannelChatInitTelegramChatConnectV1VEnum
+    readonly 'v'?: ChannelChatInitTelegramChatConnectV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelChatInitTelegramChatConnectV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2148,32 +2662,39 @@ export interface ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request {
  */
 export interface ChannelSettingsApiChannelChatRemoveTelegramChatV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
-    readonly language: ChannelChatRemoveTelegramChatV1LanguageEnum
+    readonly 'language': ChannelChatRemoveTelegramChatV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
      */
-    readonly v?: ChannelChatRemoveTelegramChatV1VEnum
+    readonly 'v'?: ChannelChatRemoveTelegramChatV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelChatRemoveTelegramChatV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2183,39 +2704,46 @@ export interface ChannelSettingsApiChannelChatRemoveTelegramChatV1Request {
  */
 export interface ChannelSettingsApiChannelChatSetTelegramSettingV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
-    readonly language: ChannelChatSetTelegramSettingV1LanguageEnum
+    readonly 'language': ChannelChatSetTelegramSettingV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * 
      * @type {TelegramSetSettingsRequestDto}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
-    readonly TelegramSetSettingsRequestDto: TelegramSetSettingsRequestDto
+    readonly 'TelegramSetSettingsRequestDto': TelegramSetSettingsRequestDto
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
      */
-    readonly v?: ChannelChatSetTelegramSettingV1VEnum
+    readonly 'v'?: ChannelChatSetTelegramSettingV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelChatSetTelegramSettingV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2225,32 +2753,39 @@ export interface ChannelSettingsApiChannelChatSetTelegramSettingV1Request {
  */
 export interface ChannelSettingsApiChannelChatTelegramPostsV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
-    readonly language: ChannelChatTelegramPostsV1LanguageEnum
+    readonly 'language': ChannelChatTelegramPostsV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
      */
-    readonly v?: ChannelChatTelegramPostsV1VEnum
+    readonly 'v'?: ChannelChatTelegramPostsV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelChatTelegramPostsV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2264,7 +2799,35 @@ export interface ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request {
      * @type {SiteUpdateChatTelegramRequest}
      * @memberof ChannelSettingsApiChannelChatUpdateOptionsTelegramV1
      */
-    readonly SiteUpdateChatTelegramRequest: SiteUpdateChatTelegramRequest
+    readonly 'SiteUpdateChatTelegramRequest': SiteUpdateChatTelegramRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelChatUpdateOptionsTelegramV1
+     */
+    readonly 'X-Client-Request-Id'?: string
+}
+
+/**
+ * Request parameters for channelOptionsDisconnectPlannedProviderV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelOptionsDisconnectPlannedProviderV1Request
+ */
+export interface ChannelSettingsApiChannelOptionsDisconnectPlannedProviderV1Request {
+    /**
+     * 
+     * @type {DisconnectPlannedProviderRequest}
+     * @memberof ChannelSettingsApiChannelOptionsDisconnectPlannedProviderV1
+     */
+    readonly 'DisconnectPlannedProviderRequest': DisconnectPlannedProviderRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsDisconnectPlannedProviderV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2274,32 +2837,39 @@ export interface ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request {
  */
 export interface ChannelSettingsApiChannelOptionsGetPlannedV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
-    readonly language: ChannelOptionsGetPlannedV1LanguageEnum
+    readonly 'language': ChannelOptionsGetPlannedV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
      */
-    readonly v?: ChannelOptionsGetPlannedV1VEnum
+    readonly 'v'?: ChannelOptionsGetPlannedV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsGetPlannedV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2309,32 +2879,39 @@ export interface ChannelSettingsApiChannelOptionsGetPlannedV1Request {
  */
 export interface ChannelSettingsApiChannelOptionsGetPlayListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
-    readonly language: ChannelOptionsGetPlayListV1LanguageEnum
+    readonly 'language': ChannelOptionsGetPlayListV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
      */
-    readonly v?: ChannelOptionsGetPlayListV1VEnum
+    readonly 'v'?: ChannelOptionsGetPlayListV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsGetPlayListV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2348,7 +2925,14 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request {
      * @type {SiteUpdateOptionsOkRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsOkV1
      */
-    readonly SiteUpdateOptionsOkRequest: SiteUpdateOptionsOkRequest
+    readonly 'SiteUpdateOptionsOkRequest': SiteUpdateOptionsOkRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsOkV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2362,7 +2946,14 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request {
      * @type {SiteUpdateOptionsTrovoRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1
      */
-    readonly SiteUpdateOptionsTrovoRequest: SiteUpdateOptionsTrovoRequest
+    readonly 'SiteUpdateOptionsTrovoRequest': SiteUpdateOptionsTrovoRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2376,7 +2967,14 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request {
      * @type {SiteUpdateOptionsTwitchRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1
      */
-    readonly SiteUpdateOptionsTwitchRequest: SiteUpdateOptionsTwitchRequest
+    readonly 'SiteUpdateOptionsTwitchRequest': SiteUpdateOptionsTwitchRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2390,7 +2988,14 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request {
      * @type {SiteUpdateOptionsVkRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsVkV1
      */
-    readonly SiteUpdateOptionsVkRequest: SiteUpdateOptionsVkRequest
+    readonly 'SiteUpdateOptionsVkRequest': SiteUpdateOptionsVkRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsVkV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2404,7 +3009,14 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Reque
      * @type {SiteUpdateOptionsVkVideoLiveRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1
      */
-    readonly SiteUpdateOptionsVkVideoLiveRequest: SiteUpdateOptionsVkVideoLiveRequest
+    readonly 'SiteUpdateOptionsVkVideoLiveRequest': SiteUpdateOptionsVkVideoLiveRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2418,7 +3030,14 @@ export interface ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request {
      * @type {SiteUpdateOptionsYoutubeRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1
      */
-    readonly SiteUpdateOptionsYoutubeRequest: SiteUpdateOptionsYoutubeRequest
+    readonly 'SiteUpdateOptionsYoutubeRequest': SiteUpdateOptionsYoutubeRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2432,7 +3051,35 @@ export interface ChannelSettingsApiChannelOptionsUpdatePlannedV1Request {
      * @type {SiteSetPlannedRequest}
      * @memberof ChannelSettingsApiChannelOptionsUpdatePlannedV1
      */
-    readonly SiteSetPlannedRequest: SiteSetPlannedRequest
+    readonly 'SiteSetPlannedRequest': SiteSetPlannedRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsUpdatePlannedV1
+     */
+    readonly 'X-Client-Request-Id'?: string
+}
+
+/**
+ * Request parameters for channelOptionsVerifyPlannedAccessV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelOptionsVerifyPlannedAccessV1Request
+ */
+export interface ChannelSettingsApiChannelOptionsVerifyPlannedAccessV1Request {
+    /**
+     * 
+     * @type {VerifyPlannedAccessRequest}
+     * @memberof ChannelSettingsApiChannelOptionsVerifyPlannedAccessV1
+     */
+    readonly 'VerifyPlannedAccessRequest': VerifyPlannedAccessRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelOptionsVerifyPlannedAccessV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2446,7 +3093,63 @@ export interface ChannelSettingsApiChannelSettingBulkUpdateV1Request {
      * @type {SiteBulkUpdateChannelRequest}
      * @memberof ChannelSettingsApiChannelSettingBulkUpdateV1
      */
-    readonly SiteBulkUpdateChannelRequest: SiteBulkUpdateChannelRequest
+    readonly 'SiteBulkUpdateChannelRequest': SiteBulkUpdateChannelRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelSettingBulkUpdateV1
+     */
+    readonly 'X-Client-Request-Id'?: string
+}
+
+/**
+ * Request parameters for channelSettingConnectProviderV1 operation in ChannelSettingsApi.
+ * @export
+ * @interface ChannelSettingsApiChannelSettingConnectProviderV1Request
+ */
+export interface ChannelSettingsApiChannelSettingConnectProviderV1Request {
+    /**
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @type {'ru' | 'en' | 'cn'}
+     * @memberof ChannelSettingsApiChannelSettingConnectProviderV1
+     */
+    readonly 'language': ChannelSettingConnectProviderV1LanguageEnum
+
+    /**
+     * Project id
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelSettingConnectProviderV1
+     */
+    readonly 'project_id': number
+
+    /**
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelSettingConnectProviderV1
+     */
+    readonly 'channel_id': number
+
+    /**
+     * Planned VK video IDs of this channel
+     * @type {Set<string>}
+     * @memberof ChannelSettingsApiChannelSettingConnectProviderV1
+     */
+    readonly 'ids': Set<string>
+
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof ChannelSettingsApiChannelSettingConnectProviderV1
+     */
+    readonly 'v'?: ChannelSettingConnectProviderV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelSettingConnectProviderV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2456,32 +3159,39 @@ export interface ChannelSettingsApiChannelSettingBulkUpdateV1Request {
  */
 export interface ChannelSettingsApiChannelSettingGetStatusV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelSettingsApiChannelSettingGetStatusV1
      */
-    readonly language: ChannelSettingGetStatusV1LanguageEnum
+    readonly 'language': ChannelSettingGetStatusV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ChannelSettingsApiChannelSettingGetStatusV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelSettingsApiChannelSettingGetStatusV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelSettingGetStatusV1
      */
-    readonly v?: ChannelSettingGetStatusV1VEnum
+    readonly 'v'?: ChannelSettingGetStatusV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelSettingGetStatusV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2495,7 +3205,14 @@ export interface ChannelSettingsApiChannelSettingSetNameV1Request {
      * @type {SiteSetNameRequest}
      * @memberof ChannelSettingsApiChannelSettingSetNameV1
      */
-    readonly SiteSetNameRequest: SiteSetNameRequest
+    readonly 'SiteSetNameRequest': SiteSetNameRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelSettingSetNameV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2509,7 +3226,14 @@ export interface ChannelSettingsApiChannelSettingUpdateRtmpV1Request {
      * @type {SiteSetUrlRequest}
      * @memberof ChannelSettingsApiChannelSettingUpdateRtmpV1
      */
-    readonly SiteSetUrlRequest: SiteSetUrlRequest
+    readonly 'SiteSetUrlRequest': SiteSetUrlRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelSettingUpdateRtmpV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2523,7 +3247,14 @@ export interface ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request {
      * @type {SiteSetSrtUrlRequest}
      * @memberof ChannelSettingsApiChannelSettingUpdateSrtUrlV1
      */
-    readonly SiteSetSrtUrlRequest: SiteSetSrtUrlRequest
+    readonly 'SiteSetSrtUrlRequest': SiteSetSrtUrlRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelSettingUpdateSrtUrlV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2533,39 +3264,53 @@ export interface ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request {
  */
 export interface ChannelSettingsApiChannelSettingUpdateTokenV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly language: ChannelSettingUpdateTokenV1LanguageEnum
+    readonly 'language': ChannelSettingUpdateTokenV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
      * Token role
      * @type {'account' | 'group'}
      * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly role: ChannelSettingUpdateTokenV1RoleEnum
+    readonly 'role': ChannelSettingUpdateTokenV1RoleEnum
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
      */
-    readonly v?: ChannelSettingUpdateTokenV1VEnum
+    readonly 'v'?: ChannelSettingUpdateTokenV1VEnum
+
+    /**
+     * Local ID of a linked account token
+     * @type {number}
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
+     */
+    readonly 'token_id'?: number
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelSettingUpdateTokenV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2579,7 +3324,14 @@ export interface ChannelSettingsApiChannelSettingUpdateTranscoderV1Request {
      * @type {SiteSetTranscoderRequest}
      * @memberof ChannelSettingsApiChannelSettingUpdateTranscoderV1
      */
-    readonly SiteSetTranscoderRequest: SiteSetTranscoderRequest
+    readonly 'SiteSetTranscoderRequest': SiteSetTranscoderRequest
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiChannelSettingUpdateTranscoderV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2589,39 +3341,46 @@ export interface ChannelSettingsApiChannelSettingUpdateTranscoderV1Request {
  */
 export interface ChannelSettingsApiTelegramGetPostByFilterV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
-    readonly language: TelegramGetPostByFilterV1LanguageEnum
+    readonly 'language': TelegramGetPostByFilterV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
-    readonly channel_id: number
+    readonly 'channel_id': number
 
     /**
-     * 
-     * @type {number}
+     * Telegram post selection rule from enum; not an OAuth scope.
+     * @type {0 | 1 | 2 | 3}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
-    readonly filter_mode: number
+    readonly 'filter_mode': TelegramGetPostByFilterV1FilterModeEnum
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
      */
-    readonly v?: TelegramGetPostByFilterV1VEnum
+    readonly 'v'?: TelegramGetPostByFilterV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ChannelSettingsApiTelegramGetPostByFilterV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -2632,7 +3391,7 @@ export interface ChannelSettingsApiTelegramGetPostByFilterV1Request {
  */
 export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInterface {
     /**
-     * 
+     * Read saved Telegram post/chat settings for the selected channel_id in project_id. This reads configuration; save filter_mode, message_id, and link using POST /method/channel_settings/chat/telegram/setting.
      * @summary Get telegram settings
      * @param {ChannelSettingsApiChannelChatGetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2640,11 +3399,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelChatGetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatGetTelegramSettingV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelChatGetTelegramSettingV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelChatGetTelegramSettingV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Start Telegram chat connection for the selected internal channel_id in project_id and obtain code. Despite using GET, this creates a connection code; the response alone does not mean connection is complete.
      * @summary Get code for connected chat
      * @param {ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2652,11 +3411,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelChatInitTelegramChatConnectV1(requestParameters: ChannelSettingsApiChannelChatInitTelegramChatConnectV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelChatInitTelegramChatConnectV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelChatInitTelegramChatConnectV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Disconnect the Telegram chat of the selected internal channel_id in project_id. Despite using GET, this changes the connection. The successful response has no body; this neither deletes the channel nor disables the streaming destination.
      * @summary Disconnect telegram chat
      * @param {ChannelSettingsApiChannelChatRemoveTelegramChatV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2664,11 +3423,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelChatRemoveTelegramChatV1(requestParameters: ChannelSettingsApiChannelChatRemoveTelegramChatV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelChatRemoveTelegramChatV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelChatRemoveTelegramChatV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Save filter_mode, message_id, and link for the Telegram chat of the selected internal channel_id in project_id. message_id identifies a Telegram message, not a StreamVi channel. Success confirms settings were saved, not that a message was sent.
      * @summary Set telegram settings
      * @param {ChannelSettingsApiChannelChatSetTelegramSettingV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2676,11 +3435,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelChatSetTelegramSettingV1(requestParameters: ChannelSettingsApiChannelChatSetTelegramSettingV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelChatSetTelegramSettingV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.TelegramSetSettingsRequestDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelChatSetTelegramSettingV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['TelegramSetSettingsRequestDto'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Get Telegram posts for the selected channel with internal channel_id in project_id. Returns results; the external chat_id is resolved from the connected channel and does not replace channel_id.
      * @summary Get telegram post list
      * @param {ChannelSettingsApiChannelChatTelegramPostsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2688,11 +3447,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelChatTelegramPostsV1(requestParameters: ChannelSettingsApiChannelChatTelegramPostsV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelChatTelegramPostsV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelChatTelegramPostsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Change Telegram chat settings for the selected internal channel_id in project_id. Checks the Telegram chat/channel association and connection type; configures the chat rather than changing the broadcast destination\'s active state.
      * @summary Optional settings for telegram
      * @param {ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2700,11 +3459,23 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelChatUpdateOptionsTelegramV1(requestParameters: ChannelSettingsApiChannelChatUpdateOptionsTelegramV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelChatUpdateOptionsTelegramV1(requestParameters.SiteUpdateChatTelegramRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelChatUpdateOptionsTelegramV1(requestParameters['SiteUpdateChatTelegramRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Disconnect the VK Video Live connection identified by token_id for channel_id in project_id. The account token and selected planned broadcast are preserved.
+     * @summary Disconnect a VK Video Live account from this project channel
+     * @param {ChannelSettingsApiChannelOptionsDisconnectPlannedProviderV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApi
+     */
+    public channelOptionsDisconnectPlannedProviderV1(requestParameters: ChannelSettingsApiChannelOptionsDisconnectPlannedProviderV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsDisconnectPlannedProviderV1(requestParameters['DisconnectPlannedProviderRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Read available platform scheduled broadcasts for the selected internal channel_id in project_id. Requires an active primary token. Pass a result ID to POST /method/channel_settings/options/setPlanned; this is not the /method/scheduler list.
      * @summary Get planned list
      * @param {ChannelSettingsApiChannelOptionsGetPlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2712,11 +3483,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelOptionsGetPlannedV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlannedV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelOptionsGetPlannedV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelOptionsGetPlannedV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read platform playlists of the connected internal channel_id in project_id. Requires an active primary token; otherwise token.no_found. Returns external playlist results, not StreamVi video schedules.
      * @summary Get playlists from the platform
      * @param {ChannelSettingsApiChannelOptionsGetPlayListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2724,11 +3495,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelOptionsGetPlayListV1(requestParameters: ChannelSettingsApiChannelOptionsGetPlayListV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelOptionsGetPlayListV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelOptionsGetPlayListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Save OK broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; individual fields define optional/default values. Saving settings does not start a broadcast.
      * @summary Optional settings for ok. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2736,11 +3507,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelOptionsUpdateOptionsOkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsOkV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsOkV1(requestParameters.SiteUpdateOptionsOkRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsOkV1(requestParameters['SiteUpdateOptionsOkRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Save Trovo broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; read optional/default values from the request schema. Updating settings does not start a broadcast.
      * @summary Optional settings for trovo. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2748,11 +3519,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelOptionsUpdateOptionsTrovoV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTrovoV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsTrovoV1(requestParameters.SiteUpdateOptionsTrovoRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsTrovoV1(requestParameters['SiteUpdateOptionsTrovoRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Save Twitch broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; category ID is an external platform ID. Updating settings neither enables the destination nor starts a broadcast.
      * @summary Optional settings for twitch. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2760,11 +3531,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelOptionsUpdateOptionsTwitchV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsTwitchV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsTwitchV1(requestParameters.SiteUpdateOptionsTwitchRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsTwitchV1(requestParameters['SiteUpdateOptionsTwitchRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Save VK broadcast settings for the channel with internal channel_id in project_id. Requires a plan with change_subject; parameters pass through toFormatted DTO and merge into current streamInfo, so each DTO field determines defaults/empty values. wall=true records consent to publish on VK wall. Updates an active broadcast; success does not mean a broadcast was started.
      * @summary Optional settings for vk. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2772,11 +3543,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelOptionsUpdateOptionsVkV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsVkV1(requestParameters.SiteUpdateOptionsVkRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsVkV1(requestParameters['SiteUpdateOptionsVkRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Save VK Video Live broadcast settings for the selected internal channel_id in project_id. Requires a plan with change_subject. Transformed DTO fields are merged into current streamInfo; category ID belongs to the platform catalog. Saving settings does not start a broadcast.
      * @summary Optional settings for vk video live. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2784,11 +3555,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsVkVideoLiveV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters.SiteUpdateOptionsVkVideoLiveRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsVkVideoLiveV1(requestParameters['SiteUpdateOptionsVkVideoLiveRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Save YouTube broadcast settings for the channel with internal channel_id in project_id. Requires a plan with change_subject; parameters pass through toFormatted DTO and merge into current streamInfo. The DTO determines defaults, empty tags, and image. Attempts to update an active broadcast if present; this method does not start a broadcast.
      * @summary Optional settings for youtube. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2796,11 +3567,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelOptionsUpdateOptionsYoutubeV1(requestParameters: ChannelSettingsApiChannelOptionsUpdateOptionsYoutubeV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsYoutubeV1(requestParameters.SiteUpdateOptionsYoutubeRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdateOptionsYoutubeV1(requestParameters['SiteUpdateOptionsYoutubeRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Select a scheduled platform broadcast for the internal channel_id in project_id. id is the string ID from GET /method/channel_settings/options/getPlanned; auto selects the automatic option, null/omission clears selection. An active primary token is required. Returns the selected planned value; does not create a StreamVi video schedule.
      * @summary Set planned id. Depends on the tariff.
      * @param {ChannelSettingsApiChannelOptionsUpdatePlannedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2808,11 +3579,23 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelOptionsUpdatePlannedV1(requestParameters: ChannelSettingsApiChannelOptionsUpdatePlannedV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdatePlannedV1(requestParameters.SiteSetPlannedRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelOptionsUpdatePlannedV1(requestParameters['SiteSetPlannedRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read the VK Video Live connection state for channel_id in project_id. recheck repeats the check; connect explicitly links an accessible account. A regular read does not create a connection.
+     * @summary Confirm a VK channel connection using the first accessible planned broadcast
+     * @param {ChannelSettingsApiChannelOptionsVerifyPlannedAccessV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApi
+     */
+    public channelOptionsVerifyPlannedAccessV1(requestParameters: ChannelSettingsApiChannelOptionsVerifyPlannedAccessV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelOptionsVerifyPlannedAccessV1(requestParameters['VerifyPlannedAccessRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Save shared default title/description for project_id and update these fields on supported project destinations. Requires a plan with change_subject; integration access checks channel editing permissions. Other streamInfo fields are preserved. Attempts to update active platform broadcasts; individual failures are logged, so success does not guarantee synchronous updates on every platform. Read the template with GET /method/broadcast/template.
      * @summary Bulk update channel title and description. Global settings.
      * @param {ChannelSettingsApiChannelSettingBulkUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2820,11 +3603,23 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelSettingBulkUpdateV1(requestParameters: ChannelSettingsApiChannelSettingBulkUpdateV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelSettingBulkUpdateV1(requestParameters.SiteBulkUpdateChannelRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelSettingBulkUpdateV1(requestParameters['SiteBulkUpdateChannelRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Start the VK Video Live OAuth connection to an existing channel_id in project_id using the current planned broadcast ids. Returns an HTTP 302 redirect to provider authorization rather than JSON.
+     * @summary Connect VK Video Live to an existing VK channel
+     * @param {ChannelSettingsApiChannelSettingConnectProviderV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChannelSettingsApi
+     */
+    public channelSettingConnectProviderV1(requestParameters: ChannelSettingsApiChannelSettingConnectProviderV1Request, options?: RawAxiosRequestConfig) {
+        return ChannelSettingsApiFp(this.configuration).channelSettingConnectProviderV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['ids'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Read platform channel status by internal channel_id in project_id. Requires an active primary platform token; otherwise token.no_found. This is platform status, not the project\'s desired active value; enable/disable with PUT /method/channel/status.
      * @summary Get status platform
      * @param {ChannelSettingsApiChannelSettingGetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2832,11 +3627,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelSettingGetStatusV1(requestParameters: ChannelSettingsApiChannelSettingGetStatusV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelSettingGetStatusV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelSettingGetStatusV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Rename the channel with internal channel_id in project_id if the platform allows edit_name; otherwise channel.name_update. The name changes on the shared channel entity and is visible to projects using this channel. This is the channel display name, not the current broadcast title.
      * @summary Set name from custom channel. Global settings.
      * @param {ChannelSettingsApiChannelSettingSetNameV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2844,11 +3639,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelSettingSetNameV1(requestParameters: ChannelSettingsApiChannelSettingSetNameV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelSettingSetNameV1(requestParameters.SiteSetNameRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelSettingSetNameV1(requestParameters['SiteSetNameRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Save the shared RTMP/RTMPS publishing URL of the channel with internal channel_id in project_id. url with stream_key specifies credentials; without stream_key the URL must contain the stream path/name. Changes the shared channel entity, not only the project relationship. Success confirms ingress was saved, not that a connection was established. Do not log secret credentials.
      * @summary Set rtmp url from channel. Global settings.
      * @param {ChannelSettingsApiChannelSettingUpdateRtmpV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2856,11 +3651,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelSettingUpdateRtmpV1(requestParameters: ChannelSettingsApiChannelSettingUpdateRtmpV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateRtmpV1(requestParameters.SiteSetUrlRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateRtmpV1(requestParameters['SiteSetUrlRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Replace the complete SRT ingress_url of the internal channel_id in project_id. The URL includes port and streamid/latency parameters when needed and may contain secrets. Changes the shared channel entity and clears RTMP settings and the separate ingress_stream_key. Success does not confirm an active broadcast.
      * @summary Set srt url from channel. Global settings.
      * @param {ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2868,11 +3663,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelSettingUpdateSrtUrlV1(requestParameters: ChannelSettingsApiChannelSettingUpdateSrtUrlV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateSrtUrlV1(requestParameters.SiteSetSrtUrlRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateSrtUrlV1(requestParameters['SiteSetSrtUrlRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Start platform token OAuth refresh for the internal channel_id in project_id and the selected role. Returns an HTTP redirect to platform authorization, not new-token JSON. User authorization and a callback are required to finish; GET initiates an OAuth flow.
      * @summary Redirect to OAuth for updating a channel token
      * @param {ChannelSettingsApiChannelSettingUpdateTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2880,11 +3675,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelSettingUpdateTokenV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTokenV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateTokenV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.role, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateTokenV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['role'], requestParameters['v'], requestParameters['token_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Assign transcoder_id to a channel in the selected project_id; omitting transcoder_id clears the assignment. Changes the project/channel link, not settings for all projects. Checks that the transcoder belongs to the project; Twitch mode allows only one Twitch channel. Create/change the transcoder itself through /method/transcoder/add and /method/transcoder/update.
      * @summary Set transcoder from channel. Personal settings.
      * @param {ChannelSettingsApiChannelSettingUpdateTranscoderV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2892,11 +3687,11 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public channelSettingUpdateTranscoderV1(requestParameters: ChannelSettingsApiChannelSettingUpdateTranscoderV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateTranscoderV1(requestParameters.SiteSetTranscoderRequest, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).channelSettingUpdateTranscoderV1(requestParameters['SiteSetTranscoderRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Get a channel\'s Telegram post using filter_mode from the request enum. channel_id is the internal ID in the selected project_id; a Telegram message ID has a separate purpose. Returns a single post matching the selected filter, not a list.
      * @summary Get telegram post by filter
      * @param {ChannelSettingsApiTelegramGetPostByFilterV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2904,7 +3699,7 @@ export class ChannelSettingsApi extends BaseAPI implements ChannelSettingsApiInt
      * @memberof ChannelSettingsApi
      */
     public telegramGetPostByFilterV1(requestParameters: ChannelSettingsApiTelegramGetPostByFilterV1Request, options?: RawAxiosRequestConfig) {
-        return ChannelSettingsApiFp(this.configuration).telegramGetPostByFilterV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.filter_mode, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ChannelSettingsApiFp(this.configuration).telegramGetPostByFilterV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['filter_mode'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -3023,6 +3818,22 @@ export type ChannelOptionsGetPlayListV1VEnum = typeof ChannelOptionsGetPlayListV
 /**
  * @export
  */
+export const ChannelSettingConnectProviderV1LanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+export type ChannelSettingConnectProviderV1LanguageEnum = typeof ChannelSettingConnectProviderV1LanguageEnum[keyof typeof ChannelSettingConnectProviderV1LanguageEnum];
+/**
+ * @export
+ */
+export const ChannelSettingConnectProviderV1VEnum = {
+    _1: '1'
+} as const;
+export type ChannelSettingConnectProviderV1VEnum = typeof ChannelSettingConnectProviderV1VEnum[keyof typeof ChannelSettingConnectProviderV1VEnum];
+/**
+ * @export
+ */
 export const ChannelSettingGetStatusV1LanguageEnum = {
     Ru: 'ru',
     En: 'en',
@@ -3069,6 +3880,16 @@ export const TelegramGetPostByFilterV1LanguageEnum = {
     Cn: 'cn'
 } as const;
 export type TelegramGetPostByFilterV1LanguageEnum = typeof TelegramGetPostByFilterV1LanguageEnum[keyof typeof TelegramGetPostByFilterV1LanguageEnum];
+/**
+ * @export
+ */
+export const TelegramGetPostByFilterV1FilterModeEnum = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3
+} as const;
+export type TelegramGetPostByFilterV1FilterModeEnum = typeof TelegramGetPostByFilterV1FilterModeEnum[keyof typeof TelegramGetPostByFilterV1FilterModeEnum];
 /**
  * @export
  */

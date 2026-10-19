@@ -22,7 +22,7 @@ export interface TranscoderUpdateDto {
      */
     'v'?: TranscoderUpdateDtoVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof TranscoderUpdateDto
      */
@@ -88,7 +88,7 @@ export interface TranscoderUpdateDto {
      */
     'bFrames'?: number;
     /**
-     * ChannelIds
+     * Internal numeric StreamVi channel IDs to assign to the transcoder. Use group_id values from channel search in the same project_id, not external/platform IDs.
      * @type {Array<number>}
      * @memberof TranscoderUpdateDto
      */

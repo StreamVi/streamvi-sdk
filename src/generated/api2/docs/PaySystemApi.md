@@ -21,6 +21,7 @@ All URIs are relative to *http://localhost*
 # **paySystemCreateChallengeV1**
 > PayRedirectUrlDto paySystemCreateChallengeV1()
 
+Create a Payoneer payment challenge for an existing payment_id and return JSON with a redirect link. Despite using GET, this creates an external payment session; an already successful payment is rejected. Success does not confirm payment: the user completes the process with the provider, and status is read separately.
 
 ### Example
 
@@ -33,14 +34,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let paymentId: number; //Payment id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.paySystemCreateChallengeV1(
     language,
     paymentId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -48,9 +51,10 @@ const { status, data } = await apiInstance.paySystemCreateChallengeV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -77,6 +81,7 @@ No authorization required
 # **paySystemCreateTBankV1**
 > PayRedirectUrlDto paySystemCreateTBankV1()
 
+Create a T-Bank payment challenge for an existing payment_id and return JSON with a redirect link. GET initiates an external payment session; an already successful payment is rejected. Payment completion and status checks happen separately.
 
 ### Example
 
@@ -89,14 +94,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let paymentId: number; //Payment id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.paySystemCreateTBankV1(
     language,
     paymentId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -104,9 +111,10 @@ const { status, data } = await apiInstance.paySystemCreateTBankV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -133,6 +141,7 @@ No authorization required
 # **paySystemCreateUnitpayV1**
 > PayRedirectUrlDto paySystemCreateUnitpayV1()
 
+Create a Unitpay payment challenge for an existing payment_id and return JSON with a redirect link. GET creates a payment session. An already successful payment is rejected. This is neither an HTTP redirect from the site nor payment confirmation.
 
 ### Example
 
@@ -145,14 +154,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let paymentId: number; //Payment id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.paySystemCreateUnitpayV1(
     language,
     paymentId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -160,9 +171,10 @@ const { status, data } = await apiInstance.paySystemCreateUnitpayV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -189,6 +201,7 @@ No authorization required
 # **paySystemListV1**
 > PaySystemsResponse paySystemListV1()
 
+Read available payment systems for the current user. Returns results with provider parameters; this is a catalog, not payment creation or transaction signing.
 
 ### Example
 
@@ -201,11 +214,24 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
-const { status, data } = await apiInstance.paySystemListV1();
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
+let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
+
+const { status, data } = await apiInstance.paySystemListV1(
+    language,
+    v,
+    xClientRequestId
+);
 ```
 
 ### Parameters
-This endpoint does not have any parameters.
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
+| **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -214,7 +240,7 @@ This endpoint does not have any parameters.
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -232,6 +258,7 @@ This endpoint does not have any parameters.
 # **tonConnectIntentV1**
 > TonConnectPaymentIntentDto tonConnectIntentV1()
 
+This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
 
 ### Example
 
@@ -246,10 +273,12 @@ const apiInstance = new PaySystemApi(configuration);
 
 let paymentId: number; //Payment id (default to undefined)
 let payerAddress: string; //Connected TON wallet address / payer (default to undefined)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.tonConnectIntentV1(
     paymentId,
-    payerAddress
+    payerAddress,
+    xClientRequestId
 );
 ```
 
@@ -259,6 +288,7 @@ const { status, data } = await apiInstance.tonConnectIntentV1(
 |------------- | ------------- | ------------- | -------------|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 | **payerAddress** | [**string**] | Connected TON wallet address / payer | defaults to undefined|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -267,7 +297,7 @@ const { status, data } = await apiInstance.tonConnectIntentV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -285,6 +315,7 @@ const { status, data } = await apiInstance.tonConnectIntentV1(
 # **tonConnectStatusV1**
 > TonConnectPaymentStatusDto tonConnectStatusV1()
 
+Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
 
 ### Example
 
@@ -297,14 +328,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let paymentId: number; //Payment id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.tonConnectStatusV1(
     language,
     paymentId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -312,9 +345,10 @@ const { status, data } = await apiInstance.tonConnectStatusV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -323,7 +357,7 @@ const { status, data } = await apiInstance.tonConnectStatusV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -341,6 +375,7 @@ const { status, data } = await apiInstance.tonConnectStatusV1(
 # **tonConnectSubmitV1**
 > TonConnectPaymentStatusDto tonConnectSubmitV1(tonConnectPaymentSubmitBodyDto)
 
+Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
 
 ### Example
 
@@ -355,9 +390,11 @@ const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
 let tonConnectPaymentSubmitBodyDto: TonConnectPaymentSubmitBodyDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.tonConnectSubmitV1(
-    tonConnectPaymentSubmitBodyDto
+    tonConnectPaymentSubmitBodyDto,
+    xClientRequestId
 );
 ```
 
@@ -366,6 +403,7 @@ const { status, data } = await apiInstance.tonConnectSubmitV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **tonConnectPaymentSubmitBodyDto** | **TonConnectPaymentSubmitBodyDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -374,7 +412,7 @@ const { status, data } = await apiInstance.tonConnectSubmitV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -392,6 +430,7 @@ const { status, data } = await apiInstance.tonConnectSubmitV1(
 # **tronPaymentIntentV1**
 > TronPaymentIntentDto tronPaymentIntentV1()
 
+This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
 
 ### Example
 
@@ -404,14 +443,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let paymentId: number; //Payment id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.tronPaymentIntentV1(
     language,
     paymentId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -419,9 +460,10 @@ const { status, data } = await apiInstance.tronPaymentIntentV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -430,7 +472,7 @@ const { status, data } = await apiInstance.tronPaymentIntentV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -448,6 +490,7 @@ const { status, data } = await apiInstance.tronPaymentIntentV1(
 # **tronPaymentStatusV1**
 > TronPaymentStatusDto tronPaymentStatusV1()
 
+Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
 
 ### Example
 
@@ -460,14 +503,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let paymentId: number; //Payment id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.tronPaymentStatusV1(
     language,
     paymentId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -475,9 +520,10 @@ const { status, data } = await apiInstance.tronPaymentStatusV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -486,7 +532,7 @@ const { status, data } = await apiInstance.tronPaymentStatusV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -504,6 +550,7 @@ const { status, data } = await apiInstance.tronPaymentStatusV1(
 # **tronPaymentSubmitV1**
 > tronPaymentSubmitV1(tronPaymentSubmitBodyDto)
 
+Disabled legacy endpoint for submitting a TRON tx_hash. The current implementation always returns HTTP 410 Gone with instructions to wait for the automatic deposit scanner. Available only to a project subject; do not use as a working payment tool.
 
 ### Example
 
@@ -517,14 +564,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let tronPaymentSubmitBodyDto: TronPaymentSubmitBodyDto; //
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.tronPaymentSubmitV1(
     language,
     tronPaymentSubmitBodyDto,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -533,8 +582,9 @@ const { status, data } = await apiInstance.tronPaymentSubmitV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **tronPaymentSubmitBodyDto** | **TronPaymentSubmitBodyDto**|  | |
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -543,7 +593,7 @@ void (empty response body)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -555,12 +605,14 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**201** |  |  -  |
+|**410** | Submitting tx_hash is disabled. Wait for the automatic scanner. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **walletConnectIntentV1**
 > WalletConnectPaymentIntentDto walletConnectIntentV1()
 
+This GET creates or updates payment intent state for a challenge owned by the authenticated account. It is not read-only and does not confirm a payment. Wallet signing remains external.
 
 ### Example
 
@@ -575,10 +627,12 @@ const apiInstance = new PaySystemApi(configuration);
 
 let paymentId: number; //Payment id (default to undefined)
 let payerAddress: string; //Connected wallet address / EVM payer (default to undefined)
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.walletConnectIntentV1(
     paymentId,
-    payerAddress
+    payerAddress,
+    xClientRequestId
 );
 ```
 
@@ -588,6 +642,7 @@ const { status, data } = await apiInstance.walletConnectIntentV1(
 |------------- | ------------- | ------------- | -------------|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 | **payerAddress** | [**string**] | Connected wallet address / EVM payer | defaults to undefined|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -596,7 +651,7 @@ const { status, data } = await apiInstance.walletConnectIntentV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -614,6 +669,7 @@ const { status, data } = await apiInstance.walletConnectIntentV1(
 # **walletConnectStatusV1**
 > WalletConnectPaymentStatusDto walletConnectStatusV1()
 
+Reads the owned payment challenge and may perform provider verification, recover a transaction or complete payment state. Returns actual provider/domain status; a call does not guarantee payment success.
 
 ### Example
 
@@ -626,14 +682,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let paymentId: number; //Payment id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.walletConnectStatusV1(
     language,
     paymentId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -641,9 +699,10 @@ const { status, data } = await apiInstance.walletConnectStatusV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **paymentId** | [**number**] | Payment id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -652,7 +711,7 @@ const { status, data } = await apiInstance.walletConnectStatusV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -670,6 +729,7 @@ const { status, data } = await apiInstance.walletConnectStatusV1(
 # **walletConnectSubmitV1**
 > WalletConnectPaymentStatusDto walletConnectSubmitV1(walletConnectPaymentSubmitBodyDto)
 
+Accepts externally signed transaction evidence for an owned payment challenge; never generates wallet keys or bypasses a signature. Returns the actual pending, success or error verification state.
 
 ### Example
 
@@ -684,9 +744,11 @@ const configuration = new Configuration();
 const apiInstance = new PaySystemApi(configuration);
 
 let walletConnectPaymentSubmitBodyDto: WalletConnectPaymentSubmitBodyDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.walletConnectSubmitV1(
-    walletConnectPaymentSubmitBodyDto
+    walletConnectPaymentSubmitBodyDto,
+    xClientRequestId
 );
 ```
 
@@ -695,6 +757,7 @@ const { status, data } = await apiInstance.walletConnectSubmitV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **walletConnectPaymentSubmitBodyDto** | **WalletConnectPaymentSubmitBodyDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -703,7 +766,7 @@ const { status, data } = await apiInstance.walletConnectSubmitV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 

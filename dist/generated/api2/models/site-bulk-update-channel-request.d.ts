@@ -22,7 +22,7 @@ export interface SiteBulkUpdateChannelRequest {
      */
     'v'?: SiteBulkUpdateChannelRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteBulkUpdateChannelRequest
      */
@@ -34,13 +34,13 @@ export interface SiteBulkUpdateChannelRequest {
      */
     'project_id': number;
     /**
-     *
+     * New shared default title and title for supported project channels; supplied explicitly.
      * @type {string}
      * @memberof SiteBulkUpdateChannelRequest
      */
     'title': string;
     /**
-     *
+     * New shared default description and description for supported project channels; supplied explicitly.
      * @type {string}
      * @memberof SiteBulkUpdateChannelRequest
      */

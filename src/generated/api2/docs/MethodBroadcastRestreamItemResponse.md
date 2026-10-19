@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **restream_id** | **number** | Restream Id | [default to undefined]
-**channel_id** | **number** | Channel Id | [default to undefined]
+**channel_id** | **number** | Internal numeric StreamVi channel ID, also returned as group_id in channel search results. Do not use the external/platform id, even if it contains only digits. | [default to undefined]
 **name** | **string** | Platform name | [default to undefined]
 **image** | **string** | Platform image | [default to undefined]
 **platform** | **string** | Platform type | [default to undefined]

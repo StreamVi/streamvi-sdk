@@ -32,14 +32,15 @@ import type { SiteSocialListResponse } from '../models';
 export const SocialsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Read the current user\'s social connections. Returns results of connected identities; these are personal account data, not selected project channels. Reading neither starts OAuth nor disconnects accounts.
          * @summary Social list for user
-         * @param {SocialsGetListV1LanguageEnum} language Current language
+         * @param {SocialsGetListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {SocialsGetListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        socialsGetListV1: async (language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        socialsGetListV1: async (language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('socialsGetListV1', 'language', language)
             const localVarPath = `/method/socials/list`;
@@ -54,9 +55,13 @@ export const SocialsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["profile:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["profile:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["profile:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -70,6 +75,9 @@ export const SocialsApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -90,15 +98,16 @@ export const SocialsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SocialsApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Read the current user\'s social connections. Returns results of connected identities; these are personal account data, not selected project channels. Reading neither starts OAuth nor disconnects accounts.
          * @summary Social list for user
-         * @param {SocialsGetListV1LanguageEnum} language Current language
+         * @param {SocialsGetListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {SocialsGetListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async socialsGetListV1(language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSocialListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.socialsGetListV1(language, v, options);
+        async socialsGetListV1(language: SocialsGetListV1LanguageEnum, v?: SocialsGetListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteSocialListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.socialsGetListV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SocialsApi.socialsGetListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -114,14 +123,14 @@ export const SocialsApiFactory = function (configuration?: Configuration, basePa
     const localVarFp = SocialsApiFp(configuration)
     return {
         /**
-         * 
+         * Read the current user\'s social connections. Returns results of connected identities; these are personal account data, not selected project channels. Reading neither starts OAuth nor disconnects accounts.
          * @summary Social list for user
          * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         socialsGetListV1(requestParameters: SocialsApiSocialsGetListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteSocialListResponse> {
-            return localVarFp.socialsGetListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.socialsGetListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -133,7 +142,7 @@ export const SocialsApiFactory = function (configuration?: Configuration, basePa
  */
 export interface SocialsApiInterface {
     /**
-     * 
+     * Read the current user\'s social connections. Returns results of connected identities; these are personal account data, not selected project channels. Reading neither starts OAuth nor disconnects accounts.
      * @summary Social list for user
      * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -151,18 +160,25 @@ export interface SocialsApiInterface {
  */
 export interface SocialsApiSocialsGetListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof SocialsApiSocialsGetListV1
      */
-    readonly language: SocialsGetListV1LanguageEnum
+    readonly 'language': SocialsGetListV1LanguageEnum
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof SocialsApiSocialsGetListV1
      */
-    readonly v?: SocialsGetListV1VEnum
+    readonly 'v'?: SocialsGetListV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof SocialsApiSocialsGetListV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -173,7 +189,7 @@ export interface SocialsApiSocialsGetListV1Request {
  */
 export class SocialsApi extends BaseAPI implements SocialsApiInterface {
     /**
-     * 
+     * Read the current user\'s social connections. Returns results of connected identities; these are personal account data, not selected project channels. Reading neither starts OAuth nor disconnects accounts.
      * @summary Social list for user
      * @param {SocialsApiSocialsGetListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -181,7 +197,7 @@ export class SocialsApi extends BaseAPI implements SocialsApiInterface {
      * @memberof SocialsApi
      */
     public socialsGetListV1(requestParameters: SocialsApiSocialsGetListV1Request, options?: RawAxiosRequestConfig) {
-        return SocialsApiFp(this.configuration).socialsGetListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return SocialsApiFp(this.configuration).socialsGetListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

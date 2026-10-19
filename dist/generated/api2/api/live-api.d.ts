@@ -21,15 +21,16 @@ export declare const LiveApiAxiosParamCreator: (configuration?: Configuration) =
     /**
      * Use /site/broadcast/restreams instead.
      * @summary View live info
-     * @param {ControllersRestreamsV1LanguageEnum} language Current language
+     * @param {ControllersRestreamsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId Broadcast id
      * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    controllersRestreamsV1: (language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    controllersRestreamsV1: (language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * LiveApi - functional programming interface
@@ -39,15 +40,16 @@ export declare const LiveApiFp: (configuration?: Configuration) => {
     /**
      * Use /site/broadcast/restreams instead.
      * @summary View live info
-     * @param {ControllersRestreamsV1LanguageEnum} language Current language
+     * @param {ControllersRestreamsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} broadcastId Broadcast id
      * @param {ControllersRestreamsV1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    controllersRestreamsV1(language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteLiveRestreamsInfoResponse>>;
+    controllersRestreamsV1(language: ControllersRestreamsV1LanguageEnum, projectId: number, broadcastId: number, v?: ControllersRestreamsV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteLiveRestreamsInfoResponse>>;
 };
 /**
  * LiveApi - factory interface
@@ -88,29 +90,35 @@ export interface LiveApiInterface {
  */
 export interface LiveApiControllersRestreamsV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof LiveApiControllersRestreamsV1
      */
-    readonly language: ControllersRestreamsV1LanguageEnum;
+    readonly 'language': ControllersRestreamsV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof LiveApiControllersRestreamsV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Broadcast id
      * @type {number}
      * @memberof LiveApiControllersRestreamsV1
      */
-    readonly broadcast_id: number;
+    readonly 'broadcast_id': number;
     /**
      * Version (automatically defaults to 2 based on the API contract, can be overridden)
      * @type {'2'}
      * @memberof LiveApiControllersRestreamsV1
      */
-    readonly v?: ControllersRestreamsV1VEnum;
+    readonly 'v'?: ControllersRestreamsV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof LiveApiControllersRestreamsV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * LiveApi - object-oriented interface

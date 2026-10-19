@@ -30,15 +30,16 @@ const base_1 = require("../base");
 const ReferralsApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
-         * @summary Total info
-         * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
+         * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+         * @summary Get project referral statistics
+         * @param {ReferralsTotalInfoV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        referralsTotalInfoV1: async (language, projectId, v, options = {}) => {
+        referralsTotalInfoV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('referralsTotalInfoV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -53,9 +54,12 @@ const ReferralsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["project:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["project:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["project:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -67,6 +71,9 @@ const ReferralsApiAxiosParamCreator = function (configuration) {
             }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -87,17 +94,18 @@ const ReferralsApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.ReferralsApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
-         * @summary Total info
-         * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
+         * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+         * @summary Get project referral statistics
+         * @param {ReferralsTotalInfoV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async referralsTotalInfoV1(language, projectId, v, options) {
+        async referralsTotalInfoV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.referralsTotalInfoV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.referralsTotalInfoV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ReferralsApi.referralsTotalInfoV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -113,14 +121,14 @@ const ReferralsApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.ReferralsApiFp)(configuration);
     return {
         /**
-         *
-         * @summary Total info
+         * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+         * @summary Get project referral statistics
          * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         referralsTotalInfoV1(requestParameters, options) {
-            return localVarFp.referralsTotalInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.referralsTotalInfoV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -133,15 +141,15 @@ exports.ReferralsApiFactory = ReferralsApiFactory;
  */
 class ReferralsApi extends base_1.BaseAPI {
     /**
-     *
-     * @summary Total info
+     * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+     * @summary Get project referral statistics
      * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReferralsApi
      */
     referralsTotalInfoV1(requestParameters, options) {
-        return (0, exports.ReferralsApiFp)(this.configuration).referralsTotalInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.ReferralsApiFp)(this.configuration).referralsTotalInfoV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.ReferralsApi = ReferralsApi;

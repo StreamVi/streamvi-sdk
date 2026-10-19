@@ -22,7 +22,7 @@ export interface PaymentStatusResponse {
      */
     'payment_id': number;
     /**
-     * Amount
+     * Amount. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PaymentStatusResponse
      */

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **payment_ref** | **string** | Payment reference bytes32 | [default to undefined]
 **token_decimals** | **number** | Token decimals | [default to undefined]
 **amount_units** | **string** | Amount in asset base units | [default to undefined]
-**fiat_amount** | **number** | Fiat payment amount in cents | [default to undefined]
+**fiat_amount** | **number** | Fiat payment amount; not the crypto asset quantity. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to undefined]
 **fiat_currency** | **string** | Fiat payment currency | [default to undefined]
 **exchange_rate** | **string** | Exchange rate used for this intent | [default to undefined]
 **rate_base** | **string** | Exchange rate base asset | [default to undefined]

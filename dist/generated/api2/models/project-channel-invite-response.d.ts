@@ -23,7 +23,7 @@ export interface ProjectChannelInviteResponse {
      */
     'project_channel_invite_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID, also returned as group_id in channel search results. Do not use the external/platform id, even if it contains only digits.
      * @type {number}
      * @memberof ProjectChannelInviteResponse
      */
@@ -77,7 +77,7 @@ export interface ProjectChannelInviteResponse {
      */
     'from_project_id'?: number | null;
     /**
-     * User info
+     *
      * @type {ProjectChannelInviteProjectResponse}
      * @memberof ProjectChannelInviteResponse
      */
@@ -86,7 +86,6 @@ export interface ProjectChannelInviteResponse {
 export declare const ProjectChannelInviteResponseAccessTypeEnum: {
     readonly NUMBER_0: 0;
     readonly NUMBER_1: 1;
-    readonly NUMBER_12: 1;
     readonly NUMBER_2: 2;
 };
 export type ProjectChannelInviteResponseAccessTypeEnum = typeof ProjectChannelInviteResponseAccessTypeEnum[keyof typeof ProjectChannelInviteResponseAccessTypeEnum];

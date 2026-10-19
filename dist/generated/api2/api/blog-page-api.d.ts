@@ -20,27 +20,29 @@ import type { PaginatedBlogPageSiteResponse } from '../models';
  */
 export declare const BlogPageApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Read a public blog page by the request identifier and language. Returns page content; this endpoint does not edit posts.
      * @summary Get blog page
-     * @param {BlogPageGetV1LanguageEnum} language Current language
+     * @param {BlogPageGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} url Url of page
      * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    blogPageGetV1: (language: BlogPageGetV1LanguageEnum, url: string, v?: BlogPageGetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    blogPageGetV1: (language: BlogPageGetV1LanguageEnum, url: string, v?: BlogPageGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read the public blog page list using request filters and pagination. Returns results and pagination data; use GET /method/blog/page/get for a single page\'s content.
      * @summary Get list of blog pages
-     * @param {BlogPageListV1LanguageEnum} language Current language
+     * @param {BlogPageListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} limit Number of results
+     * @param {number} offset Page offset number
      * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {string} [s] String for search
-     * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    blogPageListV1: (language: BlogPageListV1LanguageEnum, v?: BlogPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    blogPageListV1: (language: BlogPageListV1LanguageEnum, limit: number, offset: number, v?: BlogPageListV1VEnum, s?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BlogPageApi - functional programming interface
@@ -48,27 +50,29 @@ export declare const BlogPageApiAxiosParamCreator: (configuration?: Configuratio
  */
 export declare const BlogPageApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Read a public blog page by the request identifier and language. Returns page content; this endpoint does not edit posts.
      * @summary Get blog page
-     * @param {BlogPageGetV1LanguageEnum} language Current language
+     * @param {BlogPageGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} url Url of page
      * @param {BlogPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    blogPageGetV1(language: BlogPageGetV1LanguageEnum, url: string, v?: BlogPageGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetBlogPageResponse>>;
+    blogPageGetV1(language: BlogPageGetV1LanguageEnum, url: string, v?: BlogPageGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetBlogPageResponse>>;
     /**
-     *
+     * Read the public blog page list using request filters and pagination. Returns results and pagination data; use GET /method/blog/page/get for a single page\'s content.
      * @summary Get list of blog pages
-     * @param {BlogPageListV1LanguageEnum} language Current language
+     * @param {BlogPageListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {number} limit Number of results
+     * @param {number} offset Page offset number
      * @param {BlogPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {string} [s] String for search
-     * @param {number} [limit] Number of results
-     * @param {number} [offset] Page offset number
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    blogPageListV1(language: BlogPageListV1LanguageEnum, v?: BlogPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBlogPageSiteResponse>>;
+    blogPageListV1(language: BlogPageListV1LanguageEnum, limit: number, offset: number, v?: BlogPageListV1VEnum, s?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBlogPageSiteResponse>>;
 };
 /**
  * BlogPageApi - factory interface
@@ -76,7 +80,7 @@ export declare const BlogPageApiFp: (configuration?: Configuration) => {
  */
 export declare const BlogPageApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Read a public blog page by the request identifier and language. Returns page content; this endpoint does not edit posts.
      * @summary Get blog page
      * @param {BlogPageApiBlogPageGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -84,7 +88,7 @@ export declare const BlogPageApiFactory: (configuration?: Configuration, basePat
      */
     blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetBlogPageResponse>;
     /**
-     *
+     * Read the public blog page list using request filters and pagination. Returns results and pagination data; use GET /method/blog/page/get for a single page\'s content.
      * @summary Get list of blog pages
      * @param {BlogPageApiBlogPageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -99,7 +103,7 @@ export declare const BlogPageApiFactory: (configuration?: Configuration, basePat
  */
 export interface BlogPageApiInterface {
     /**
-     *
+     * Read a public blog page by the request identifier and language. Returns page content; this endpoint does not edit posts.
      * @summary Get blog page
      * @param {BlogPageApiBlogPageGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -108,7 +112,7 @@ export interface BlogPageApiInterface {
      */
     blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetBlogPageResponse>;
     /**
-     *
+     * Read the public blog page list using request filters and pagination. Returns results and pagination data; use GET /method/blog/page/get for a single page\'s content.
      * @summary Get list of blog pages
      * @param {BlogPageApiBlogPageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -124,23 +128,29 @@ export interface BlogPageApiInterface {
  */
 export interface BlogPageApiBlogPageGetV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BlogPageApiBlogPageGetV1
      */
-    readonly language: BlogPageGetV1LanguageEnum;
+    readonly 'language': BlogPageGetV1LanguageEnum;
     /**
      * Url of page
      * @type {string}
      * @memberof BlogPageApiBlogPageGetV1
      */
-    readonly url: string;
+    readonly 'url': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof BlogPageApiBlogPageGetV1
      */
-    readonly v?: BlogPageGetV1VEnum;
+    readonly 'v'?: BlogPageGetV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BlogPageApiBlogPageGetV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for blogPageListV1 operation in BlogPageApi.
@@ -149,35 +159,41 @@ export interface BlogPageApiBlogPageGetV1Request {
  */
 export interface BlogPageApiBlogPageListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BlogPageApiBlogPageListV1
      */
-    readonly language: BlogPageListV1LanguageEnum;
-    /**
-     * Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @type {'1'}
-     * @memberof BlogPageApiBlogPageListV1
-     */
-    readonly v?: BlogPageListV1VEnum;
-    /**
-     * String for search
-     * @type {string}
-     * @memberof BlogPageApiBlogPageListV1
-     */
-    readonly s?: string;
+    readonly 'language': BlogPageListV1LanguageEnum;
     /**
      * Number of results
      * @type {number}
      * @memberof BlogPageApiBlogPageListV1
      */
-    readonly limit?: number;
+    readonly 'limit': number;
     /**
      * Page offset number
      * @type {number}
      * @memberof BlogPageApiBlogPageListV1
      */
-    readonly offset?: number;
+    readonly 'offset': number;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof BlogPageApiBlogPageListV1
+     */
+    readonly 'v'?: BlogPageListV1VEnum;
+    /**
+     * String for search
+     * @type {string}
+     * @memberof BlogPageApiBlogPageListV1
+     */
+    readonly 's'?: string;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BlogPageApiBlogPageListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * BlogPageApi - object-oriented interface
@@ -187,7 +203,7 @@ export interface BlogPageApiBlogPageListV1Request {
  */
 export declare class BlogPageApi extends BaseAPI implements BlogPageApiInterface {
     /**
-     *
+     * Read a public blog page by the request identifier and language. Returns page content; this endpoint does not edit posts.
      * @summary Get blog page
      * @param {BlogPageApiBlogPageGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -196,7 +212,7 @@ export declare class BlogPageApi extends BaseAPI implements BlogPageApiInterface
      */
     blogPageGetV1(requestParameters: BlogPageApiBlogPageGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetBlogPageResponse, any, {}, any>>;
     /**
-     *
+     * Read the public blog page list using request filters and pagination. Returns results and pagination data; use GET /method/blog/page/get for a single page\'s content.
      * @summary Get list of blog pages
      * @param {BlogPageApiBlogPageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

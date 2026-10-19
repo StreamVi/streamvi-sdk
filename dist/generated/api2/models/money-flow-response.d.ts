@@ -26,7 +26,7 @@ export interface MoneyFlowResponse {
      */
     'money_flow_id': number;
     /**
-     * Amount
+     * Amount. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof MoneyFlowResponse
      */
@@ -50,31 +50,31 @@ export interface MoneyFlowResponse {
      */
     'type': MoneyFlowResponseTypeEnum;
     /**
-     * Current balance before transaction
+     * Current balance before transaction. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof MoneyFlowResponse
      */
     'balance': number;
     /**
-     * Details
+     *
      * @type {MoneyFlowDetails}
      * @memberof MoneyFlowResponse
      */
     'details'?: MoneyFlowDetails | null;
     /**
-     * Payment details
+     *
      * @type {MoneyFlowPaymentDetails}
      * @memberof MoneyFlowResponse
      */
     'payment_details'?: MoneyFlowPaymentDetails | null;
     /**
-     * Payout details
+     *
      * @type {MoneyFlowPayoutDetails}
      * @memberof MoneyFlowResponse
      */
     'payout_details'?: MoneyFlowPayoutDetails | null;
     /**
-     * Refund details
+     *
      * @type {MoneyFlowRefundDetails}
      * @memberof MoneyFlowResponse
      */

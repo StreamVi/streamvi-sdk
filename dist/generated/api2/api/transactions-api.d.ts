@@ -19,9 +19,9 @@ import type { PaginatedTransactionResponse } from '../models';
  */
 export declare const TransactionsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Read financial transactions of project_id for the current user using limit/offset, date_from/date_to, and code. offset is the number of records to skip; code filters transaction types. Monetary amounts are minor currency units; divide by 100 for display. This reads transaction history without creating a payment, topping up, or issuing a refund.
      * @summary Transaction list for frontend
-     * @param {TransactionsListV1LanguageEnum} language Current language
+     * @param {TransactionsListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
@@ -29,10 +29,11 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @param {string} [dateFrom] Date from
      * @param {string} [dateTo] Date to
      * @param {string} [code] Filter code transaction. example 1 or 1,2,3
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transactionsListV1: (language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    transactionsListV1: (language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * TransactionsApi - functional programming interface
@@ -40,9 +41,9 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
  */
 export declare const TransactionsApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Read financial transactions of project_id for the current user using limit/offset, date_from/date_to, and code. offset is the number of records to skip; code filters transaction types. Monetary amounts are minor currency units; divide by 100 for display. This reads transaction history without creating a payment, topping up, or issuing a refund.
      * @summary Transaction list for frontend
-     * @param {TransactionsListV1LanguageEnum} language Current language
+     * @param {TransactionsListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {TransactionsListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [limit] Number of results
@@ -50,10 +51,11 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {string} [dateFrom] Date from
      * @param {string} [dateTo] Date to
      * @param {string} [code] Filter code transaction. example 1 or 1,2,3
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    transactionsListV1(language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransactionResponse>>;
+    transactionsListV1(language: TransactionsListV1LanguageEnum, projectId: number, v?: TransactionsListV1VEnum, limit?: number, offset?: number, dateFrom?: string, dateTo?: string, code?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransactionResponse>>;
 };
 /**
  * TransactionsApi - factory interface
@@ -61,7 +63,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
  */
 export declare const TransactionsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Read financial transactions of project_id for the current user using limit/offset, date_from/date_to, and code. offset is the number of records to skip; code filters transaction types. Monetary amounts are minor currency units; divide by 100 for display. This reads transaction history without creating a payment, topping up, or issuing a refund.
      * @summary Transaction list for frontend
      * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -76,7 +78,7 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
  */
 export interface TransactionsApiInterface {
     /**
-     *
+     * Read financial transactions of project_id for the current user using limit/offset, date_from/date_to, and code. offset is the number of records to skip; code filters transaction types. Monetary amounts are minor currency units; divide by 100 for display. This reads transaction history without creating a payment, topping up, or issuing a refund.
      * @summary Transaction list for frontend
      * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -92,53 +94,59 @@ export interface TransactionsApiInterface {
  */
 export interface TransactionsApiTransactionsListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly language: TransactionsListV1LanguageEnum;
+    readonly 'language': TransactionsListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly v?: TransactionsListV1VEnum;
+    readonly 'v'?: TransactionsListV1VEnum;
     /**
      * Number of results
      * @type {number}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly limit?: number;
+    readonly 'limit'?: number;
     /**
      * Page offset number
      * @type {number}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly offset?: number;
+    readonly 'offset'?: number;
     /**
      * Date from
      * @type {string}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly date_from?: string;
+    readonly 'date_from'?: string;
     /**
      * Date to
      * @type {string}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly date_to?: string;
+    readonly 'date_to'?: string;
     /**
      * Filter code transaction. example 1 or 1,2,3
      * @type {string}
      * @memberof TransactionsApiTransactionsListV1
      */
-    readonly code?: string;
+    readonly 'code'?: string;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof TransactionsApiTransactionsListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * TransactionsApi - object-oriented interface
@@ -148,7 +156,7 @@ export interface TransactionsApiTransactionsListV1Request {
  */
 export declare class TransactionsApi extends BaseAPI implements TransactionsApiInterface {
     /**
-     *
+     * Read financial transactions of project_id for the current user using limit/offset, date_from/date_to, and code. offset is the number of records to skip; code filters transaction types. Monetary amounts are minor currency units; divide by 100 for display. This reads transaction history without creating a payment, topping up, or issuing a refund.
      * @summary Transaction list for frontend
      * @param {TransactionsApiTransactionsListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

@@ -30,14 +30,14 @@ const base_1 = require("../base");
 const AnalyticsApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Read message history for broadcast_id in project_id using date/date_start/date_end time filters, platform/restream_id/text, sort_by_date, and limit/offset. offset is the number of records to skip. Returns results and total; reading history neither sends nor deletes messages.
          * @summary Messages for broadcast
-         * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
+         * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
          * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [offset] Offset
-         * @param {number} [limit] Limit
+         * @param {number} [offset] Number of messages to skip. When omitted, the backend forwards the parameter\&#39;s absence to the metrics service.
+         * @param {number} [limit] Message result size. When omitted, the backend does not supply a fixed limit.
          * @param {string} [date] Exact date filter
          * @param {string} [dateStart] Date range start
          * @param {string} [dateEnd] Date range end
@@ -45,10 +45,11 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
          * @param {string} [platform] Platform
          * @param {number} [restreamId] Restream id
          * @param {string} [text] Text search
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        analyticsTsBroadcastMessagesV1: async (language, projectId, broadcastId, v, offset, limit, date, dateStart, dateEnd, sortByDate, platform, restreamId, text, options = {}) => {
+        analyticsTsBroadcastMessagesV1: async (language, projectId, broadcastId, v, offset, limit, date, dateStart, dateEnd, sortByDate, platform, restreamId, text, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('analyticsTsBroadcastMessagesV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -65,9 +66,12 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["analytics:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["analytics:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["analytics:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -116,6 +120,9 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             if (text !== undefined) {
                 localVarQueryParameter['text'] = text;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -125,16 +132,17 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the bitrate chart for stream_id after checking it belongs to project_id; another project\'s stream produces broadcast.no_found. The response is proxied from the metrics service; the local contract does not specify an unverified point structure. This method does not change bitrate settings.
          * @summary Bitrate for stream
-         * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} streamId stream id
          * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        analyticsTsStreamBitrateV1: async (language, projectId, streamId, v, options = {}) => {
+        analyticsTsStreamBitrateV1: async (language, projectId, streamId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('analyticsTsStreamBitrateV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -151,9 +159,12 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["analytics:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["analytics:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["analytics:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -169,6 +180,9 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             if (streamId !== undefined) {
                 localVarQueryParameter['stream_id'] = streamId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -178,16 +192,17 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read stream_id events in project_id after checking stream ownership. The response is forwarded from the metrics service; the external response structure is not extended with an invented DTO. This method does not send stream commands.
          * @summary Events for stream
-         * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} streamId stream id
          * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        analyticsTsStreamEventsV1: async (language, projectId, streamId, v, options = {}) => {
+        analyticsTsStreamEventsV1: async (language, projectId, streamId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('analyticsTsStreamEventsV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -204,9 +219,12 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["analytics:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["analytics:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["analytics:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -222,6 +240,9 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             if (streamId !== undefined) {
                 localVarQueryParameter['stream_id'] = streamId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -231,16 +252,17 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read viewer statistics for the broadcast linked to stream_id in project_id. Stream ownership is checked; the response is proxied from the metrics service. stream_id identifies a stream, not an internal channel_id; reading does not control the broadcast.
          * @summary Viewers for stream
-         * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} streamId stream id
          * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        analyticsTsStreamViewersV1: async (language, projectId, streamId, v, options = {}) => {
+        analyticsTsStreamViewersV1: async (language, projectId, streamId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('analyticsTsStreamViewersV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -257,9 +279,12 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["analytics:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["analytics:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["analytics:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -274,6 +299,9 @@ const AnalyticsApiAxiosParamCreator = function (configuration) {
             }
             if (streamId !== undefined) {
                 localVarQueryParameter['stream_id'] = streamId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -294,14 +322,14 @@ const AnalyticsApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.AnalyticsApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Read message history for broadcast_id in project_id using date/date_start/date_end time filters, platform/restream_id/text, sort_by_date, and limit/offset. offset is the number of records to skip. Returns results and total; reading history neither sends nor deletes messages.
          * @summary Messages for broadcast
-         * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Current language
+         * @param {AnalyticsTsBroadcastMessagesV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} broadcastId Broadcast id
          * @param {AnalyticsTsBroadcastMessagesV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [offset] Offset
-         * @param {number} [limit] Limit
+         * @param {number} [offset] Number of messages to skip. When omitted, the backend forwards the parameter\&#39;s absence to the metrics service.
+         * @param {number} [limit] Message result size. When omitted, the backend does not supply a fixed limit.
          * @param {string} [date] Exact date filter
          * @param {string} [dateStart] Date range start
          * @param {string} [dateEnd] Date range end
@@ -309,63 +337,67 @@ const AnalyticsApiFp = function (configuration) {
          * @param {string} [platform] Platform
          * @param {number} [restreamId] Restream id
          * @param {string} [text] Text search
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async analyticsTsBroadcastMessagesV1(language, projectId, broadcastId, v, offset, limit, date, dateStart, dateEnd, sortByDate, platform, restreamId, text, options) {
+        async analyticsTsBroadcastMessagesV1(language, projectId, broadcastId, v, offset, limit, date, dateStart, dateEnd, sortByDate, platform, restreamId, text, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsBroadcastMessagesV1(language, projectId, broadcastId, v, offset, limit, date, dateStart, dateEnd, sortByDate, platform, restreamId, text, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsBroadcastMessagesV1(language, projectId, broadcastId, v, offset, limit, date, dateStart, dateEnd, sortByDate, platform, restreamId, text, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AnalyticsApi.analyticsTsBroadcastMessagesV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the bitrate chart for stream_id after checking it belongs to project_id; another project\'s stream produces broadcast.no_found. The response is proxied from the metrics service; the local contract does not specify an unverified point structure. This method does not change bitrate settings.
          * @summary Bitrate for stream
-         * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamBitrateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} streamId stream id
          * @param {AnalyticsTsStreamBitrateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async analyticsTsStreamBitrateV1(language, projectId, streamId, v, options) {
+        async analyticsTsStreamBitrateV1(language, projectId, streamId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsStreamBitrateV1(language, projectId, streamId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsStreamBitrateV1(language, projectId, streamId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AnalyticsApi.analyticsTsStreamBitrateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read stream_id events in project_id after checking stream ownership. The response is forwarded from the metrics service; the external response structure is not extended with an invented DTO. This method does not send stream commands.
          * @summary Events for stream
-         * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamEventsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} streamId stream id
          * @param {AnalyticsTsStreamEventsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async analyticsTsStreamEventsV1(language, projectId, streamId, v, options) {
+        async analyticsTsStreamEventsV1(language, projectId, streamId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsStreamEventsV1(language, projectId, streamId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsStreamEventsV1(language, projectId, streamId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AnalyticsApi.analyticsTsStreamEventsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read viewer statistics for the broadcast linked to stream_id in project_id. Stream ownership is checked; the response is proxied from the metrics service. stream_id identifies a stream, not an internal channel_id; reading does not control the broadcast.
          * @summary Viewers for stream
-         * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Current language
+         * @param {AnalyticsTsStreamViewersV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} streamId stream id
          * @param {AnalyticsTsStreamViewersV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async analyticsTsStreamViewersV1(language, projectId, streamId, v, options) {
+        async analyticsTsStreamViewersV1(language, projectId, streamId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsStreamViewersV1(language, projectId, streamId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.analyticsTsStreamViewersV1(language, projectId, streamId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AnalyticsApi.analyticsTsStreamViewersV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -381,44 +413,44 @@ const AnalyticsApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.AnalyticsApiFp)(configuration);
     return {
         /**
-         *
+         * Read message history for broadcast_id in project_id using date/date_start/date_end time filters, platform/restream_id/text, sort_by_date, and limit/offset. offset is the number of records to skip. Returns results and total; reading history neither sends nor deletes messages.
          * @summary Messages for broadcast
          * @param {AnalyticsApiAnalyticsTsBroadcastMessagesV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         analyticsTsBroadcastMessagesV1(requestParameters, options) {
-            return localVarFp.analyticsTsBroadcastMessagesV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, requestParameters.offset, requestParameters.limit, requestParameters.date, requestParameters.date_start, requestParameters.date_end, requestParameters.sort_by_date, requestParameters.platform, requestParameters.restream_id, requestParameters.text, options).then((request) => request(axios, basePath));
+            return localVarFp.analyticsTsBroadcastMessagesV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['offset'], requestParameters['limit'], requestParameters['date'], requestParameters['date_start'], requestParameters['date_end'], requestParameters['sort_by_date'], requestParameters['platform'], requestParameters['restream_id'], requestParameters['text'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the bitrate chart for stream_id after checking it belongs to project_id; another project\'s stream produces broadcast.no_found. The response is proxied from the metrics service; the local contract does not specify an unverified point structure. This method does not change bitrate settings.
          * @summary Bitrate for stream
          * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         analyticsTsStreamBitrateV1(requestParameters, options) {
-            return localVarFp.analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.analyticsTsStreamBitrateV1(requestParameters['language'], requestParameters['project_id'], requestParameters['stream_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read stream_id events in project_id after checking stream ownership. The response is forwarded from the metrics service; the external response structure is not extended with an invented DTO. This method does not send stream commands.
          * @summary Events for stream
          * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         analyticsTsStreamEventsV1(requestParameters, options) {
-            return localVarFp.analyticsTsStreamEventsV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.analyticsTsStreamEventsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['stream_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read viewer statistics for the broadcast linked to stream_id in project_id. Stream ownership is checked; the response is proxied from the metrics service. stream_id identifies a stream, not an internal channel_id; reading does not control the broadcast.
          * @summary Viewers for stream
          * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         analyticsTsStreamViewersV1(requestParameters, options) {
-            return localVarFp.analyticsTsStreamViewersV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.analyticsTsStreamViewersV1(requestParameters['language'], requestParameters['project_id'], requestParameters['stream_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -431,7 +463,7 @@ exports.AnalyticsApiFactory = AnalyticsApiFactory;
  */
 class AnalyticsApi extends base_1.BaseAPI {
     /**
-     *
+     * Read message history for broadcast_id in project_id using date/date_start/date_end time filters, platform/restream_id/text, sort_by_date, and limit/offset. offset is the number of records to skip. Returns results and total; reading history neither sends nor deletes messages.
      * @summary Messages for broadcast
      * @param {AnalyticsApiAnalyticsTsBroadcastMessagesV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -439,10 +471,10 @@ class AnalyticsApi extends base_1.BaseAPI {
      * @memberof AnalyticsApi
      */
     analyticsTsBroadcastMessagesV1(requestParameters, options) {
-        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsBroadcastMessagesV1(requestParameters.language, requestParameters.project_id, requestParameters.broadcast_id, requestParameters.v, requestParameters.offset, requestParameters.limit, requestParameters.date, requestParameters.date_start, requestParameters.date_end, requestParameters.sort_by_date, requestParameters.platform, requestParameters.restream_id, requestParameters.text, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsBroadcastMessagesV1(requestParameters['language'], requestParameters['project_id'], requestParameters['broadcast_id'], requestParameters['v'], requestParameters['offset'], requestParameters['limit'], requestParameters['date'], requestParameters['date_start'], requestParameters['date_end'], requestParameters['sort_by_date'], requestParameters['platform'], requestParameters['restream_id'], requestParameters['text'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the bitrate chart for stream_id after checking it belongs to project_id; another project\'s stream produces broadcast.no_found. The response is proxied from the metrics service; the local contract does not specify an unverified point structure. This method does not change bitrate settings.
      * @summary Bitrate for stream
      * @param {AnalyticsApiAnalyticsTsStreamBitrateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -450,10 +482,10 @@ class AnalyticsApi extends base_1.BaseAPI {
      * @memberof AnalyticsApi
      */
     analyticsTsStreamBitrateV1(requestParameters, options) {
-        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamBitrateV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamBitrateV1(requestParameters['language'], requestParameters['project_id'], requestParameters['stream_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read stream_id events in project_id after checking stream ownership. The response is forwarded from the metrics service; the external response structure is not extended with an invented DTO. This method does not send stream commands.
      * @summary Events for stream
      * @param {AnalyticsApiAnalyticsTsStreamEventsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -461,10 +493,10 @@ class AnalyticsApi extends base_1.BaseAPI {
      * @memberof AnalyticsApi
      */
     analyticsTsStreamEventsV1(requestParameters, options) {
-        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamEventsV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamEventsV1(requestParameters['language'], requestParameters['project_id'], requestParameters['stream_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read viewer statistics for the broadcast linked to stream_id in project_id. Stream ownership is checked; the response is proxied from the metrics service. stream_id identifies a stream, not an internal channel_id; reading does not control the broadcast.
      * @summary Viewers for stream
      * @param {AnalyticsApiAnalyticsTsStreamViewersV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -472,7 +504,7 @@ class AnalyticsApi extends base_1.BaseAPI {
      * @memberof AnalyticsApi
      */
     analyticsTsStreamViewersV1(requestParameters, options) {
-        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamViewersV1(requestParameters.language, requestParameters.project_id, requestParameters.stream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AnalyticsApiFp)(this.configuration).analyticsTsStreamViewersV1(requestParameters['language'], requestParameters['project_id'], requestParameters['stream_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.AnalyticsApi = AnalyticsApi;

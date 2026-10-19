@@ -30,18 +30,19 @@ const base_1 = require("../base");
 const PlanTranscodingApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Buy a transcoding tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy transcoder tariff
-         * @param {PlanTranscodingBuyV1LanguageEnum} language Current language
+         * @param {PlanTranscodingBuyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanTranscodingBuyV1PeriodEnum} period Period
          * @param {number} planTranscodingId Transcoding plan id
+         * @param {number} count Count flow
          * @param {PlanTranscodingBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [count] Count flow
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planTranscodingBuyV1: async (language, projectId, period, planTranscodingId, v, count, options = {}) => {
+        planTranscodingBuyV1: async (language, projectId, period, planTranscodingId, count, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planTranscodingBuyV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -50,6 +51,8 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             (0, common_1.assertParamExists)('planTranscodingBuyV1', 'period', period);
             // verify required parameter 'planTranscodingId' is not null or undefined
             (0, common_1.assertParamExists)('planTranscodingBuyV1', 'planTranscodingId', planTranscodingId);
+            // verify required parameter 'count' is not null or undefined
+            (0, common_1.assertParamExists)('planTranscodingBuyV1', 'count', count);
             const localVarPath = `/method/plan_transcoding`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -60,9 +63,12 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -84,6 +90,9 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             if (count !== undefined) {
                 localVarQueryParameter['count'] = count;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -93,15 +102,16 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Remove after tariff
-         * @param {PlanTranscodingCancelV1LanguageEnum} language Current language
+         * Cancel the next transcoding plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+         * @summary Cancel the next project transcoding tariff
+         * @param {PlanTranscodingCancelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanTranscodingCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planTranscodingCancelV1: async (language, projectId, v, options = {}) => {
+        planTranscodingCancelV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planTranscodingCancelV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -116,9 +126,12 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -131,6 +144,9 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -140,15 +156,16 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read preliminary data for purchasing a transcoding plan for project_id: subscription state, balance, and possible refund. This legacy check does not purchase a plan; the current implementation sets amount to 0, which is not a guaranteed price for the selected configuration. Monetary values are in minor units.
          * @summary Check transcoding tariff before buy
-         * @param {PlanTranscodingCheckV1LanguageEnum} language Current language
+         * @param {PlanTranscodingCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanTranscodingCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planTranscodingCheckV1: async (language, projectId, v, options = {}) => {
+        planTranscodingCheckV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planTranscodingCheckV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -163,9 +180,12 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -178,6 +198,9 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -187,14 +210,15 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read annual discount rules for transcoding plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount transcoding
-         * @param {PlanTranscodingGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanTranscodingGetDiscountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanTranscodingGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planTranscodingGetDiscountV1: async (language, v, options = {}) => {
+        planTranscodingGetDiscountV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planTranscodingGetDiscountV1', 'language', language);
             const localVarPath = `/method/plan_transcoding/get_discount`;
@@ -207,9 +231,6 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
-            // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -218,6 +239,9 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -228,14 +252,15 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the public transcoding plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get list of transcoding tariffs
-         * @param {PlanTranscodingListV1LanguageEnum} language Current language
+         * @param {PlanTranscodingListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanTranscodingListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planTranscodingListV1: async (language, v, options = {}) => {
+        planTranscodingListV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planTranscodingListV1', 'language', language);
             const localVarPath = `/method/plan_transcoding/list`;
@@ -248,9 +273,6 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
-            // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -259,6 +281,9 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -269,16 +294,17 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Save automatic transcoding plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set transcoding tariff auto prolongation
-         * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Current language
+         * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
          * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planTranscodingSetProlongationV1: async (language, projectId, enabled, v, options = {}) => {
+        planTranscodingSetProlongationV1: async (language, projectId, enabled, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planTranscodingSetProlongationV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -295,9 +321,12 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -313,6 +342,9 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             if (enabled !== undefined) {
                 localVarQueryParameter['enabled'] = enabled;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -322,15 +354,16 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Get tariff for project
-         * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
+         * Read the current and next transcoding plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project transcoding tariff
+         * @param {PlanTranscodingTariffV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanTranscodingTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planTranscodingTariffV1: async (language, projectId, v, options = {}) => {
+        planTranscodingTariffV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planTranscodingTariffV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -345,9 +378,12 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -359,6 +395,9 @@ const PlanTranscodingApiAxiosParamCreator = function (configuration) {
             }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -379,115 +418,122 @@ const PlanTranscodingApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.PlanTranscodingApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Buy a transcoding tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy transcoder tariff
-         * @param {PlanTranscodingBuyV1LanguageEnum} language Current language
+         * @param {PlanTranscodingBuyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanTranscodingBuyV1PeriodEnum} period Period
          * @param {number} planTranscodingId Transcoding plan id
+         * @param {number} count Count flow
          * @param {PlanTranscodingBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [count] Count flow
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planTranscodingBuyV1(language, projectId, period, planTranscodingId, v, count, options) {
+        async planTranscodingBuyV1(language, projectId, period, planTranscodingId, count, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingBuyV1(language, projectId, period, planTranscodingId, v, count, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingBuyV1(language, projectId, period, planTranscodingId, count, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingBuyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Remove after tariff
-         * @param {PlanTranscodingCancelV1LanguageEnum} language Current language
+         * Cancel the next transcoding plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+         * @summary Cancel the next project transcoding tariff
+         * @param {PlanTranscodingCancelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanTranscodingCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planTranscodingCancelV1(language, projectId, v, options) {
+        async planTranscodingCancelV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingCancelV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingCancelV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingCancelV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read preliminary data for purchasing a transcoding plan for project_id: subscription state, balance, and possible refund. This legacy check does not purchase a plan; the current implementation sets amount to 0, which is not a guaranteed price for the selected configuration. Monetary values are in minor units.
          * @summary Check transcoding tariff before buy
-         * @param {PlanTranscodingCheckV1LanguageEnum} language Current language
+         * @param {PlanTranscodingCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanTranscodingCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planTranscodingCheckV1(language, projectId, v, options) {
+        async planTranscodingCheckV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingCheckV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingCheckV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingCheckV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read annual discount rules for transcoding plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount transcoding
-         * @param {PlanTranscodingGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanTranscodingGetDiscountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanTranscodingGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planTranscodingGetDiscountV1(language, v, options) {
+        async planTranscodingGetDiscountV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingGetDiscountV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingGetDiscountV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingGetDiscountV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the public transcoding plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get list of transcoding tariffs
-         * @param {PlanTranscodingListV1LanguageEnum} language Current language
+         * @param {PlanTranscodingListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanTranscodingListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planTranscodingListV1(language, v, options) {
+        async planTranscodingListV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingListV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingListV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Save automatic transcoding plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set transcoding tariff auto prolongation
-         * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Current language
+         * @param {PlanTranscodingSetProlongationV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
          * @param {PlanTranscodingSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planTranscodingSetProlongationV1(language, projectId, enabled, v, options) {
+        async planTranscodingSetProlongationV1(language, projectId, enabled, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingSetProlongationV1(language, projectId, enabled, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingSetProlongationV1(language, projectId, enabled, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingSetProlongationV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Get tariff for project
-         * @param {PlanTranscodingTariffV1LanguageEnum} language Current language
+         * Read the current and next transcoding plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project transcoding tariff
+         * @param {PlanTranscodingTariffV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanTranscodingTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planTranscodingTariffV1(language, projectId, v, options) {
+        async planTranscodingTariffV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingTariffV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planTranscodingTariffV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanTranscodingApi.planTranscodingTariffV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -503,74 +549,74 @@ const PlanTranscodingApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.PlanTranscodingApiFp)(configuration);
     return {
         /**
-         *
+         * Buy a transcoding tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy transcoder tariff
          * @param {PlanTranscodingApiPlanTranscodingBuyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planTranscodingBuyV1(requestParameters, options) {
-            return localVarFp.planTranscodingBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_transcoding_id, requestParameters.v, requestParameters.count, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingBuyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_transcoding_id'], requestParameters['count'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Remove after tariff
+         * Cancel the next transcoding plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+         * @summary Cancel the next project transcoding tariff
          * @param {PlanTranscodingApiPlanTranscodingCancelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planTranscodingCancelV1(requestParameters, options) {
-            return localVarFp.planTranscodingCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingCancelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read preliminary data for purchasing a transcoding plan for project_id: subscription state, balance, and possible refund. This legacy check does not purchase a plan; the current implementation sets amount to 0, which is not a guaranteed price for the selected configuration. Monetary values are in minor units.
          * @summary Check transcoding tariff before buy
          * @param {PlanTranscodingApiPlanTranscodingCheckV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planTranscodingCheckV1(requestParameters, options) {
-            return localVarFp.planTranscodingCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingCheckV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read annual discount rules for transcoding plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount transcoding
          * @param {PlanTranscodingApiPlanTranscodingGetDiscountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planTranscodingGetDiscountV1(requestParameters, options) {
-            return localVarFp.planTranscodingGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingGetDiscountV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the public transcoding plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get list of transcoding tariffs
          * @param {PlanTranscodingApiPlanTranscodingListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planTranscodingListV1(requestParameters, options) {
-            return localVarFp.planTranscodingListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Save automatic transcoding plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set transcoding tariff auto prolongation
          * @param {PlanTranscodingApiPlanTranscodingSetProlongationV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planTranscodingSetProlongationV1(requestParameters, options) {
-            return localVarFp.planTranscodingSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingSetProlongationV1(requestParameters['language'], requestParameters['project_id'], requestParameters['enabled'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Get tariff for project
+         * Read the current and next transcoding plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project transcoding tariff
          * @param {PlanTranscodingApiPlanTranscodingTariffV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planTranscodingTariffV1(requestParameters, options) {
-            return localVarFp.planTranscodingTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planTranscodingTariffV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -583,7 +629,7 @@ exports.PlanTranscodingApiFactory = PlanTranscodingApiFactory;
  */
 class PlanTranscodingApi extends base_1.BaseAPI {
     /**
-     *
+     * Buy a transcoding tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
      * @summary Buy transcoder tariff
      * @param {PlanTranscodingApiPlanTranscodingBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -591,21 +637,21 @@ class PlanTranscodingApi extends base_1.BaseAPI {
      * @memberof PlanTranscodingApi
      */
     planTranscodingBuyV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_transcoding_id, requestParameters.v, requestParameters.count, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingBuyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_transcoding_id'], requestParameters['count'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Remove after tariff
+     * Cancel the next transcoding plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+     * @summary Cancel the next project transcoding tariff
      * @param {PlanTranscodingApiPlanTranscodingCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
     planTranscodingCancelV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingCancelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read preliminary data for purchasing a transcoding plan for project_id: subscription state, balance, and possible refund. This legacy check does not purchase a plan; the current implementation sets amount to 0, which is not a guaranteed price for the selected configuration. Monetary values are in minor units.
      * @summary Check transcoding tariff before buy
      * @param {PlanTranscodingApiPlanTranscodingCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -613,10 +659,10 @@ class PlanTranscodingApi extends base_1.BaseAPI {
      * @memberof PlanTranscodingApi
      */
     planTranscodingCheckV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingCheckV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read annual discount rules for transcoding plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
      * @summary Get discount transcoding
      * @param {PlanTranscodingApiPlanTranscodingGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -624,10 +670,10 @@ class PlanTranscodingApi extends base_1.BaseAPI {
      * @memberof PlanTranscodingApi
      */
     planTranscodingGetDiscountV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingGetDiscountV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the public transcoding plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
      * @summary Get list of transcoding tariffs
      * @param {PlanTranscodingApiPlanTranscodingListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -635,10 +681,10 @@ class PlanTranscodingApi extends base_1.BaseAPI {
      * @memberof PlanTranscodingApi
      */
     planTranscodingListV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Save automatic transcoding plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
      * @summary Set transcoding tariff auto prolongation
      * @param {PlanTranscodingApiPlanTranscodingSetProlongationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -646,18 +692,18 @@ class PlanTranscodingApi extends base_1.BaseAPI {
      * @memberof PlanTranscodingApi
      */
     planTranscodingSetProlongationV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingSetProlongationV1(requestParameters['language'], requestParameters['project_id'], requestParameters['enabled'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Get tariff for project
+     * Read the current and next transcoding plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+     * @summary Get current and next project transcoding tariff
      * @param {PlanTranscodingApiPlanTranscodingTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanTranscodingApi
      */
     planTranscodingTariffV1(requestParameters, options) {
-        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanTranscodingApiFp)(this.configuration).planTranscodingTariffV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PlanTranscodingApi = PlanTranscodingApi;

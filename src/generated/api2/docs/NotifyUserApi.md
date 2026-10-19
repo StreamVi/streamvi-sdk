@@ -13,6 +13,7 @@ All URIs are relative to *http://localhost*
 # **notifyUserDelMobileTokenV1**
 > SuccessResponse notifyUserDelMobileTokenV1()
 
+Delete the current user\'s mobile notification token supplied in query. Returns success; available only to a project subject. Token is sensitive; this disables delivery to a device without deleting notification history.
 
 ### Example
 
@@ -25,14 +26,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new NotifyUserApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let token: string; //Token in mobile app (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.notifyUserDelMobileTokenV1(
     language,
     token,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -40,9 +43,10 @@ const { status, data } = await apiInstance.notifyUserDelMobileTokenV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **token** | [**string**] | Token in mobile app | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -51,7 +55,7 @@ const { status, data } = await apiInstance.notifyUserDelMobileTokenV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -70,6 +74,7 @@ const { status, data } = await apiInstance.notifyUserDelMobileTokenV1(
 # **notifyUserGetScreenV1**
 > object notifyUserGetScreenV1()
 
+Get the screen notification for project_id localized using language, or null if absent. Reads the current notification; hide it with POST /method/notify_user/screen.
 
 ### Example
 
@@ -82,14 +87,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new NotifyUserApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.notifyUserGetScreenV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -97,9 +104,10 @@ const { status, data } = await apiInstance.notifyUserGetScreenV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -108,7 +116,7 @@ const { status, data } = await apiInstance.notifyUserGetScreenV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -127,6 +135,7 @@ const { status, data } = await apiInstance.notifyUserGetScreenV1(
 # **notifyUserGetV1**
 > SiteNotifyUserResponse notifyUserGetV1()
 
+Read the current user\'s notification delivery settings for project_id. The token determines the user; the project is selected separately. Change a delivery channel/category with POST /method/notify_user/setting.
 
 ### Example
 
@@ -141,10 +150,12 @@ const apiInstance = new NotifyUserApi(configuration);
 
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.notifyUserGetV1(
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -154,6 +165,7 @@ const { status, data } = await apiInstance.notifyUserGetV1(
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -162,7 +174,7 @@ const { status, data } = await apiInstance.notifyUserGetV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -181,6 +193,7 @@ const { status, data } = await apiInstance.notifyUserGetV1(
 # **notifyUserRemoveScreenV1**
 > SuccessResponse notifyUserRemoveScreenV1()
 
+Hide the screen notification for project_id. Input is supplied in query for this POST; returns success. This method neither deletes notification history nor executes related actions.
 
 ### Example
 
@@ -195,10 +208,12 @@ const apiInstance = new NotifyUserApi(configuration);
 
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.notifyUserRemoveScreenV1(
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -208,6 +223,7 @@ const { status, data } = await apiInstance.notifyUserRemoveScreenV1(
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -216,7 +232,7 @@ const { status, data } = await apiInstance.notifyUserRemoveScreenV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -235,6 +251,7 @@ const { status, data } = await apiInstance.notifyUserRemoveScreenV1(
 # **notifyUserSetV1**
 > SuccessResponse notifyUserSetV1(siteSetNotifyUserRequest)
 
+Save status for the current user\'s notify_channel/notify_category pair in project_id. Returns success after saving; this changes delivery settings without sending a notification or marking history as read.
 
 ### Example
 
@@ -250,10 +267,12 @@ const apiInstance = new NotifyUserApi(configuration);
 
 let siteSetNotifyUserRequest: SiteSetNotifyUserRequest; //Set user notify settings
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.notifyUserSetV1(
     siteSetNotifyUserRequest,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -263,6 +282,7 @@ const { status, data } = await apiInstance.notifyUserSetV1(
 |------------- | ------------- | ------------- | -------------|
 | **siteSetNotifyUserRequest** | **SiteSetNotifyUserRequest**| Set user notify settings | |
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -271,7 +291,7 @@ const { status, data } = await apiInstance.notifyUserSetV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 

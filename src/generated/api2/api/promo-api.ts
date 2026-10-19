@@ -34,16 +34,17 @@ import type { SitePromoCheckResponse } from '../models';
 export const PromoApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Apply promo code code to the selected project_id on behalf of the current user. Despite using GET, this changes promo code/project benefits state and is not a safe read. Returns the actual application result. Check first with GET /method/promo/check.
          * @summary Apply code
-         * @param {PromoApplyV1LanguageEnum} language Current language
+         * @param {PromoApplyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {string} code Code
          * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        promoApplyV1: async (language: PromoApplyV1LanguageEnum, projectId: number, code: string, v?: PromoApplyV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        promoApplyV1: async (language: PromoApplyV1LanguageEnum, projectId: number, code: string, v?: PromoApplyV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('promoApplyV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -62,9 +63,13 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -86,6 +91,9 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -96,16 +104,17 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
-         * 
+         * Check promo code code for the current user and return name/id/type. This checks eligibility without applying it to a project or crediting a bonus. To apply, use GET /method/promo/apply with an explicit project_id.
          * @summary Check code
-         * @param {PromoCheckV1LanguageEnum} language Current language
+         * @param {PromoCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {string} code Code
          * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        promoCheckV1: async (language: PromoCheckV1LanguageEnum, projectId: number, code: string, v?: PromoCheckV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        promoCheckV1: async (language: PromoCheckV1LanguageEnum, projectId: number, code: string, v?: PromoCheckV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('promoCheckV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -124,9 +133,13 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -148,6 +161,9 @@ export const PromoApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -168,33 +184,35 @@ export const PromoApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PromoApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Apply promo code code to the selected project_id on behalf of the current user. Despite using GET, this changes promo code/project benefits state and is not a safe read. Returns the actual application result. Check first with GET /method/promo/check.
          * @summary Apply code
-         * @param {PromoApplyV1LanguageEnum} language Current language
+         * @param {PromoApplyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {string} code Code
          * @param {PromoApplyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async promoApplyV1(language: PromoApplyV1LanguageEnum, projectId: number, code: string, v?: PromoApplyV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePromoApplyResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.promoApplyV1(language, projectId, code, v, options);
+        async promoApplyV1(language: PromoApplyV1LanguageEnum, projectId: number, code: string, v?: PromoApplyV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePromoApplyResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.promoApplyV1(language, projectId, code, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PromoApi.promoApplyV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Check promo code code for the current user and return name/id/type. This checks eligibility without applying it to a project or crediting a bonus. To apply, use GET /method/promo/apply with an explicit project_id.
          * @summary Check code
-         * @param {PromoCheckV1LanguageEnum} language Current language
+         * @param {PromoCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {string} code Code
          * @param {PromoCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async promoCheckV1(language: PromoCheckV1LanguageEnum, projectId: number, code: string, v?: PromoCheckV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePromoCheckResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.promoCheckV1(language, projectId, code, v, options);
+        async promoCheckV1(language: PromoCheckV1LanguageEnum, projectId: number, code: string, v?: PromoCheckV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SitePromoCheckResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.promoCheckV1(language, projectId, code, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PromoApi.promoCheckV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -210,24 +228,24 @@ export const PromoApiFactory = function (configuration?: Configuration, basePath
     const localVarFp = PromoApiFp(configuration)
     return {
         /**
-         * 
+         * Apply promo code code to the selected project_id on behalf of the current user. Despite using GET, this changes promo code/project benefits state and is not a safe read. Returns the actual application result. Check first with GET /method/promo/check.
          * @summary Apply code
          * @param {PromoApiPromoApplyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         promoApplyV1(requestParameters: PromoApiPromoApplyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoApplyResponse> {
-            return localVarFp.promoApplyV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.promoApplyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['code'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Check promo code code for the current user and return name/id/type. This checks eligibility without applying it to a project or crediting a bonus. To apply, use GET /method/promo/apply with an explicit project_id.
          * @summary Check code
          * @param {PromoApiPromoCheckV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         promoCheckV1(requestParameters: PromoApiPromoCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoCheckResponse> {
-            return localVarFp.promoCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.promoCheckV1(requestParameters['language'], requestParameters['project_id'], requestParameters['code'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -239,7 +257,7 @@ export const PromoApiFactory = function (configuration?: Configuration, basePath
  */
 export interface PromoApiInterface {
     /**
-     * 
+     * Apply promo code code to the selected project_id on behalf of the current user. Despite using GET, this changes promo code/project benefits state and is not a safe read. Returns the actual application result. Check first with GET /method/promo/check.
      * @summary Apply code
      * @param {PromoApiPromoApplyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -249,7 +267,7 @@ export interface PromoApiInterface {
     promoApplyV1(requestParameters: PromoApiPromoApplyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SitePromoApplyResponse>;
 
     /**
-     * 
+     * Check promo code code for the current user and return name/id/type. This checks eligibility without applying it to a project or crediting a bonus. To apply, use GET /method/promo/apply with an explicit project_id.
      * @summary Check code
      * @param {PromoApiPromoCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -267,32 +285,39 @@ export interface PromoApiInterface {
  */
 export interface PromoApiPromoApplyV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PromoApiPromoApplyV1
      */
-    readonly language: PromoApplyV1LanguageEnum
+    readonly 'language': PromoApplyV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof PromoApiPromoApplyV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Code
      * @type {string}
      * @memberof PromoApiPromoApplyV1
      */
-    readonly code: string
+    readonly 'code': string
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PromoApiPromoApplyV1
      */
-    readonly v?: PromoApplyV1VEnum
+    readonly 'v'?: PromoApplyV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PromoApiPromoApplyV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -302,32 +327,39 @@ export interface PromoApiPromoApplyV1Request {
  */
 export interface PromoApiPromoCheckV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PromoApiPromoCheckV1
      */
-    readonly language: PromoCheckV1LanguageEnum
+    readonly 'language': PromoCheckV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof PromoApiPromoCheckV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Code
      * @type {string}
      * @memberof PromoApiPromoCheckV1
      */
-    readonly code: string
+    readonly 'code': string
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PromoApiPromoCheckV1
      */
-    readonly v?: PromoCheckV1VEnum
+    readonly 'v'?: PromoCheckV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PromoApiPromoCheckV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -338,7 +370,7 @@ export interface PromoApiPromoCheckV1Request {
  */
 export class PromoApi extends BaseAPI implements PromoApiInterface {
     /**
-     * 
+     * Apply promo code code to the selected project_id on behalf of the current user. Despite using GET, this changes promo code/project benefits state and is not a safe read. Returns the actual application result. Check first with GET /method/promo/check.
      * @summary Apply code
      * @param {PromoApiPromoApplyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -346,11 +378,11 @@ export class PromoApi extends BaseAPI implements PromoApiInterface {
      * @memberof PromoApi
      */
     public promoApplyV1(requestParameters: PromoApiPromoApplyV1Request, options?: RawAxiosRequestConfig) {
-        return PromoApiFp(this.configuration).promoApplyV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PromoApiFp(this.configuration).promoApplyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['code'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Check promo code code for the current user and return name/id/type. This checks eligibility without applying it to a project or crediting a bonus. To apply, use GET /method/promo/apply with an explicit project_id.
      * @summary Check code
      * @param {PromoApiPromoCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -358,7 +390,7 @@ export class PromoApi extends BaseAPI implements PromoApiInterface {
      * @memberof PromoApi
      */
     public promoCheckV1(requestParameters: PromoApiPromoCheckV1Request, options?: RawAxiosRequestConfig) {
-        return PromoApiFp(this.configuration).promoCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.code, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PromoApiFp(this.configuration).promoCheckV1(requestParameters['language'], requestParameters['project_id'], requestParameters['code'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

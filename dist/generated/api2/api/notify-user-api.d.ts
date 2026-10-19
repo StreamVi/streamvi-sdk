@@ -21,52 +21,57 @@ import type { SuccessResponse } from '../models';
  */
 export declare const NotifyUserApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Delete the current user\'s mobile notification token supplied in query. Returns success; available only to a project subject. Token is sensitive; this disables delivery to a device without deleting notification history.
      * @summary Delete mobile token from user
-     * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Current language
+     * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} token Token in mobile app
      * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserDelMobileTokenV1: (language: NotifyUserDelMobileTokenV1LanguageEnum, token: string, v?: NotifyUserDelMobileTokenV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyUserDelMobileTokenV1: (language: NotifyUserDelMobileTokenV1LanguageEnum, token: string, v?: NotifyUserDelMobileTokenV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Get the screen notification for project_id localized using language, or null if absent. Reads the current notification; hide it with POST /method/notify_user/screen.
      * @summary Get user screen notify
-     * @param {NotifyUserGetScreenV1LanguageEnum} language Current language
+     * @param {NotifyUserGetScreenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserGetScreenV1: (language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyUserGetScreenV1: (language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read the current user\'s notification delivery settings for project_id. The token determines the user; the project is selected separately. Change a delivery channel/category with POST /method/notify_user/setting.
      * @summary Get user notify settings
      * @param {number} projectId Project id
      * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserGetV1: (projectId: number, v?: NotifyUserGetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyUserGetV1: (projectId: number, v?: NotifyUserGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Hide the screen notification for project_id. Input is supplied in query for this POST; returns success. This method neither deletes notification history nor executes related actions.
      * @summary Remove user screen notify
      * @param {number} projectId Project id
      * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserRemoveScreenV1: (projectId: number, v?: NotifyUserRemoveScreenV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyUserRemoveScreenV1: (projectId: number, v?: NotifyUserRemoveScreenV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Save status for the current user\'s notify_channel/notify_category pair in project_id. Returns success after saving; this changes delivery settings without sending a notification or marking history as read.
      * @summary Set user notify settings
      * @param {SiteSetNotifyUserRequest} siteSetNotifyUserRequest Set user notify settings
      * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserSetV1: (siteSetNotifyUserRequest: SiteSetNotifyUserRequest, v?: NotifyUserSetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    notifyUserSetV1: (siteSetNotifyUserRequest: SiteSetNotifyUserRequest, v?: NotifyUserSetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * NotifyUserApi - functional programming interface
@@ -74,52 +79,57 @@ export declare const NotifyUserApiAxiosParamCreator: (configuration?: Configurat
  */
 export declare const NotifyUserApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Delete the current user\'s mobile notification token supplied in query. Returns success; available only to a project subject. Token is sensitive; this disables delivery to a device without deleting notification history.
      * @summary Delete mobile token from user
-     * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Current language
+     * @param {NotifyUserDelMobileTokenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} token Token in mobile app
      * @param {NotifyUserDelMobileTokenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserDelMobileTokenV1(language: NotifyUserDelMobileTokenV1LanguageEnum, token: string, v?: NotifyUserDelMobileTokenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    notifyUserDelMobileTokenV1(language: NotifyUserDelMobileTokenV1LanguageEnum, token: string, v?: NotifyUserDelMobileTokenV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Get the screen notification for project_id localized using language, or null if absent. Reads the current notification; hide it with POST /method/notify_user/screen.
      * @summary Get user screen notify
-     * @param {NotifyUserGetScreenV1LanguageEnum} language Current language
+     * @param {NotifyUserGetScreenV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {NotifyUserGetScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserGetScreenV1(language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
+    notifyUserGetScreenV1(language: NotifyUserGetScreenV1LanguageEnum, projectId: number, v?: NotifyUserGetScreenV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
     /**
-     *
+     * Read the current user\'s notification delivery settings for project_id. The token determines the user; the project is selected separately. Change a delivery channel/category with POST /method/notify_user/setting.
      * @summary Get user notify settings
      * @param {number} projectId Project id
      * @param {NotifyUserGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserGetV1(projectId: number, v?: NotifyUserGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteNotifyUserResponse>>;
+    notifyUserGetV1(projectId: number, v?: NotifyUserGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteNotifyUserResponse>>;
     /**
-     *
+     * Hide the screen notification for project_id. Input is supplied in query for this POST; returns success. This method neither deletes notification history nor executes related actions.
      * @summary Remove user screen notify
      * @param {number} projectId Project id
      * @param {NotifyUserRemoveScreenV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserRemoveScreenV1(projectId: number, v?: NotifyUserRemoveScreenV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    notifyUserRemoveScreenV1(projectId: number, v?: NotifyUserRemoveScreenV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Save status for the current user\'s notify_channel/notify_category pair in project_id. Returns success after saving; this changes delivery settings without sending a notification or marking history as read.
      * @summary Set user notify settings
      * @param {SiteSetNotifyUserRequest} siteSetNotifyUserRequest Set user notify settings
      * @param {NotifyUserSetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyUserSetV1(siteSetNotifyUserRequest: SiteSetNotifyUserRequest, v?: NotifyUserSetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    notifyUserSetV1(siteSetNotifyUserRequest: SiteSetNotifyUserRequest, v?: NotifyUserSetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * NotifyUserApi - factory interface
@@ -127,7 +137,7 @@ export declare const NotifyUserApiFp: (configuration?: Configuration) => {
  */
 export declare const NotifyUserApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Delete the current user\'s mobile notification token supplied in query. Returns success; available only to a project subject. Token is sensitive; this disables delivery to a device without deleting notification history.
      * @summary Delete mobile token from user
      * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -135,7 +145,7 @@ export declare const NotifyUserApiFactory: (configuration?: Configuration, baseP
      */
     notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Get the screen notification for project_id localized using language, or null if absent. Reads the current notification; hide it with POST /method/notify_user/screen.
      * @summary Get user screen notify
      * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -143,7 +153,7 @@ export declare const NotifyUserApiFactory: (configuration?: Configuration, baseP
      */
     notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
-     *
+     * Read the current user\'s notification delivery settings for project_id. The token determines the user; the project is selected separately. Change a delivery channel/category with POST /method/notify_user/setting.
      * @summary Get user notify settings
      * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -151,7 +161,7 @@ export declare const NotifyUserApiFactory: (configuration?: Configuration, baseP
      */
     notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteNotifyUserResponse>;
     /**
-     *
+     * Hide the screen notification for project_id. Input is supplied in query for this POST; returns success. This method neither deletes notification history nor executes related actions.
      * @summary Remove user screen notify
      * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -159,7 +169,7 @@ export declare const NotifyUserApiFactory: (configuration?: Configuration, baseP
      */
     notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Save status for the current user\'s notify_channel/notify_category pair in project_id. Returns success after saving; this changes delivery settings without sending a notification or marking history as read.
      * @summary Set user notify settings
      * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -174,7 +184,7 @@ export declare const NotifyUserApiFactory: (configuration?: Configuration, baseP
  */
 export interface NotifyUserApiInterface {
     /**
-     *
+     * Delete the current user\'s mobile notification token supplied in query. Returns success; available only to a project subject. Token is sensitive; this disables delivery to a device without deleting notification history.
      * @summary Delete mobile token from user
      * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -183,7 +193,7 @@ export interface NotifyUserApiInterface {
      */
     notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Get the screen notification for project_id localized using language, or null if absent. Reads the current notification; hide it with POST /method/notify_user/screen.
      * @summary Get user screen notify
      * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -192,7 +202,7 @@ export interface NotifyUserApiInterface {
      */
     notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
-     *
+     * Read the current user\'s notification delivery settings for project_id. The token determines the user; the project is selected separately. Change a delivery channel/category with POST /method/notify_user/setting.
      * @summary Get user notify settings
      * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -201,7 +211,7 @@ export interface NotifyUserApiInterface {
      */
     notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteNotifyUserResponse>;
     /**
-     *
+     * Hide the screen notification for project_id. Input is supplied in query for this POST; returns success. This method neither deletes notification history nor executes related actions.
      * @summary Remove user screen notify
      * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -210,7 +220,7 @@ export interface NotifyUserApiInterface {
      */
     notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Save status for the current user\'s notify_channel/notify_category pair in project_id. Returns success after saving; this changes delivery settings without sending a notification or marking history as read.
      * @summary Set user notify settings
      * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -226,23 +236,29 @@ export interface NotifyUserApiInterface {
  */
 export interface NotifyUserApiNotifyUserDelMobileTokenV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
-    readonly language: NotifyUserDelMobileTokenV1LanguageEnum;
+    readonly 'language': NotifyUserDelMobileTokenV1LanguageEnum;
     /**
      * Token in mobile app
      * @type {string}
      * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
-    readonly token: string;
+    readonly 'token': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
      */
-    readonly v?: NotifyUserDelMobileTokenV1VEnum;
+    readonly 'v'?: NotifyUserDelMobileTokenV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyUserApiNotifyUserDelMobileTokenV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for notifyUserGetScreenV1 operation in NotifyUserApi.
@@ -251,23 +267,29 @@ export interface NotifyUserApiNotifyUserDelMobileTokenV1Request {
  */
 export interface NotifyUserApiNotifyUserGetScreenV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
-    readonly language: NotifyUserGetScreenV1LanguageEnum;
+    readonly 'language': NotifyUserGetScreenV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof NotifyUserApiNotifyUserGetScreenV1
      */
-    readonly v?: NotifyUserGetScreenV1VEnum;
+    readonly 'v'?: NotifyUserGetScreenV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyUserApiNotifyUserGetScreenV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for notifyUserGetV1 operation in NotifyUserApi.
@@ -280,13 +302,19 @@ export interface NotifyUserApiNotifyUserGetV1Request {
      * @type {number}
      * @memberof NotifyUserApiNotifyUserGetV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof NotifyUserApiNotifyUserGetV1
      */
-    readonly v?: NotifyUserGetV1VEnum;
+    readonly 'v'?: NotifyUserGetV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyUserApiNotifyUserGetV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for notifyUserRemoveScreenV1 operation in NotifyUserApi.
@@ -299,13 +327,19 @@ export interface NotifyUserApiNotifyUserRemoveScreenV1Request {
      * @type {number}
      * @memberof NotifyUserApiNotifyUserRemoveScreenV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof NotifyUserApiNotifyUserRemoveScreenV1
      */
-    readonly v?: NotifyUserRemoveScreenV1VEnum;
+    readonly 'v'?: NotifyUserRemoveScreenV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyUserApiNotifyUserRemoveScreenV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for notifyUserSetV1 operation in NotifyUserApi.
@@ -318,13 +352,19 @@ export interface NotifyUserApiNotifyUserSetV1Request {
      * @type {SiteSetNotifyUserRequest}
      * @memberof NotifyUserApiNotifyUserSetV1
      */
-    readonly SiteSetNotifyUserRequest: SiteSetNotifyUserRequest;
+    readonly 'SiteSetNotifyUserRequest': SiteSetNotifyUserRequest;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof NotifyUserApiNotifyUserSetV1
      */
-    readonly v?: NotifyUserSetV1VEnum;
+    readonly 'v'?: NotifyUserSetV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof NotifyUserApiNotifyUserSetV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * NotifyUserApi - object-oriented interface
@@ -334,7 +374,7 @@ export interface NotifyUserApiNotifyUserSetV1Request {
  */
 export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInterface {
     /**
-     *
+     * Delete the current user\'s mobile notification token supplied in query. Returns success; available only to a project subject. Token is sensitive; this disables delivery to a device without deleting notification history.
      * @summary Delete mobile token from user
      * @param {NotifyUserApiNotifyUserDelMobileTokenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -343,7 +383,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      */
     notifyUserDelMobileTokenV1(requestParameters: NotifyUserApiNotifyUserDelMobileTokenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Get the screen notification for project_id localized using language, or null if absent. Reads the current notification; hide it with POST /method/notify_user/screen.
      * @summary Get user screen notify
      * @param {NotifyUserApiNotifyUserGetScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -352,7 +392,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      */
     notifyUserGetScreenV1(requestParameters: NotifyUserApiNotifyUserGetScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}, any>>;
     /**
-     *
+     * Read the current user\'s notification delivery settings for project_id. The token determines the user; the project is selected separately. Change a delivery channel/category with POST /method/notify_user/setting.
      * @summary Get user notify settings
      * @param {NotifyUserApiNotifyUserGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -361,7 +401,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      */
     notifyUserGetV1(requestParameters: NotifyUserApiNotifyUserGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SiteNotifyUserResponse, any, {}, any>>;
     /**
-     *
+     * Hide the screen notification for project_id. Input is supplied in query for this POST; returns success. This method neither deletes notification history nor executes related actions.
      * @summary Remove user screen notify
      * @param {NotifyUserApiNotifyUserRemoveScreenV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -370,7 +410,7 @@ export declare class NotifyUserApi extends BaseAPI implements NotifyUserApiInter
      */
     notifyUserRemoveScreenV1(requestParameters: NotifyUserApiNotifyUserRemoveScreenV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Save status for the current user\'s notify_channel/notify_category pair in project_id. Returns success after saving; this changes delivery settings without sending a notification or marking history as read.
      * @summary Set user notify settings
      * @param {NotifyUserApiNotifyUserSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

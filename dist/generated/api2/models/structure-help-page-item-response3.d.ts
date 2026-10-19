@@ -60,7 +60,7 @@ export interface StructureHelpPageItemResponse3 {
      */
     'title': Array<StructureHelpPageConnectionsItemLang>;
     /**
-     * Page icon
+     *
      * @type {object}
      * @memberof StructureHelpPageItemResponse3
      */

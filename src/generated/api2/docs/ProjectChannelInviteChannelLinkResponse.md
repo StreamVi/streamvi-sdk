@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**channel_id** | **number** | Unique id | [default to undefined]
+**channel_id** | **number** | Internal numeric StreamVi channel ID, also returned as group_id in channel search results. Do not use the external/platform id, even if it contains only digits. | [default to undefined]
 **name** | **string** | First name | [default to undefined]
 **photo_50** | **string** | Link to avatar 50*50px | [default to undefined]
 

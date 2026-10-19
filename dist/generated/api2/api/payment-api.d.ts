@@ -21,25 +21,28 @@ import type { PaymentStatusResponse } from '../models';
  */
 export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Create a pending payment for project_id and type (topup/restream/transcoding/storage/webinar) without completing payment. amount uses minor currency units (10000 = 100 major units); the project\'s billing payment system determines currency. Plan purchases require the fields for the corresponding type and plan_period. Returns payment_id and provider details; use its challenge/intent next. Returned payment provider credentials must not be logged.
      * @summary Create payment item for pay system
-     * @param {PaymentCreateV1LanguageEnum} language Current language
+     * @param {PaymentCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {PaymentCreateV1Request} paymentCreateV1Request
      * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paymentCreateV1: (language: PaymentCreateV1LanguageEnum, paymentCreateV1Request: PaymentCreateV1Request, v?: PaymentCreateV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paymentCreateV1: (language: PaymentCreateV1LanguageEnum, paymentCreateV1Request: PaymentCreateV1Request, v?: PaymentCreateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @param {PaymentGetStatusV1LanguageEnum} language Current language
+     * Read the saved status of payment payId in project_id. payId is payment_id from payment creation; amount is in minor currency units of currency. Reading status neither creates a payment challenge nor confirms a new payment; returns the current pending/success/cancel/error state.
+     * @summary Get payment status for a project
+     * @param {PaymentGetStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} payId Pay order id
      * @param {number} projectId Project id
      * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paymentGetStatusV1: (language: PaymentGetStatusV1LanguageEnum, payId: number, projectId: number, v?: PaymentGetStatusV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    paymentGetStatusV1: (language: PaymentGetStatusV1LanguageEnum, payId: number, projectId: number, v?: PaymentGetStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PaymentApi - functional programming interface
@@ -47,25 +50,28 @@ export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const PaymentApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Create a pending payment for project_id and type (topup/restream/transcoding/storage/webinar) without completing payment. amount uses minor currency units (10000 = 100 major units); the project\'s billing payment system determines currency. Plan purchases require the fields for the corresponding type and plan_period. Returns payment_id and provider details; use its challenge/intent next. Returned payment provider credentials must not be logged.
      * @summary Create payment item for pay system
-     * @param {PaymentCreateV1LanguageEnum} language Current language
+     * @param {PaymentCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {PaymentCreateV1Request} paymentCreateV1Request
      * @param {PaymentCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paymentCreateV1(language: PaymentCreateV1LanguageEnum, paymentCreateV1Request: PaymentCreateV1Request, v?: PaymentCreateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCreateResponse>>;
+    paymentCreateV1(language: PaymentCreateV1LanguageEnum, paymentCreateV1Request: PaymentCreateV1Request, v?: PaymentCreateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCreateResponse>>;
     /**
-     *
-     * @param {PaymentGetStatusV1LanguageEnum} language Current language
+     * Read the saved status of payment payId in project_id. payId is payment_id from payment creation; amount is in minor currency units of currency. Reading status neither creates a payment challenge nor confirms a new payment; returns the current pending/success/cancel/error state.
+     * @summary Get payment status for a project
+     * @param {PaymentGetStatusV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} payId Pay order id
      * @param {number} projectId Project id
      * @param {PaymentGetStatusV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    paymentGetStatusV1(language: PaymentGetStatusV1LanguageEnum, payId: number, projectId: number, v?: PaymentGetStatusV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentStatusResponse>>;
+    paymentGetStatusV1(language: PaymentGetStatusV1LanguageEnum, payId: number, projectId: number, v?: PaymentGetStatusV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentStatusResponse>>;
 };
 /**
  * PaymentApi - factory interface
@@ -73,7 +79,7 @@ export declare const PaymentApiFp: (configuration?: Configuration) => {
  */
 export declare const PaymentApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Create a pending payment for project_id and type (topup/restream/transcoding/storage/webinar) without completing payment. amount uses minor currency units (10000 = 100 major units); the project\'s billing payment system determines currency. Plan purchases require the fields for the corresponding type and plan_period. Returns payment_id and provider details; use its challenge/intent next. Returned payment provider credentials must not be logged.
      * @summary Create payment item for pay system
      * @param {PaymentApiPaymentCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -81,7 +87,8 @@ export declare const PaymentApiFactory: (configuration?: Configuration, basePath
      */
     paymentCreateV1(requestParameters: PaymentApiPaymentCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCreateResponse>;
     /**
-     *
+     * Read the saved status of payment payId in project_id. payId is payment_id from payment creation; amount is in minor currency units of currency. Reading status neither creates a payment challenge nor confirms a new payment; returns the current pending/success/cancel/error state.
+     * @summary Get payment status for a project
      * @param {PaymentApiPaymentGetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -95,7 +102,7 @@ export declare const PaymentApiFactory: (configuration?: Configuration, basePath
  */
 export interface PaymentApiInterface {
     /**
-     *
+     * Create a pending payment for project_id and type (topup/restream/transcoding/storage/webinar) without completing payment. amount uses minor currency units (10000 = 100 major units); the project\'s billing payment system determines currency. Plan purchases require the fields for the corresponding type and plan_period. Returns payment_id and provider details; use its challenge/intent next. Returned payment provider credentials must not be logged.
      * @summary Create payment item for pay system
      * @param {PaymentApiPaymentCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -104,7 +111,8 @@ export interface PaymentApiInterface {
      */
     paymentCreateV1(requestParameters: PaymentApiPaymentCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCreateResponse>;
     /**
-     *
+     * Read the saved status of payment payId in project_id. payId is payment_id from payment creation; amount is in minor currency units of currency. Reading status neither creates a payment challenge nor confirms a new payment; returns the current pending/success/cancel/error state.
+     * @summary Get payment status for a project
      * @param {PaymentApiPaymentGetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -119,23 +127,29 @@ export interface PaymentApiInterface {
  */
 export interface PaymentApiPaymentCreateV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaymentApiPaymentCreateV1
      */
-    readonly language: PaymentCreateV1LanguageEnum;
+    readonly 'language': PaymentCreateV1LanguageEnum;
     /**
      *
      * @type {PaymentCreateV1Request}
      * @memberof PaymentApiPaymentCreateV1
      */
-    readonly PaymentCreateV1Request: PaymentCreateV1Request;
+    readonly 'PaymentCreateV1Request': PaymentCreateV1Request;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaymentApiPaymentCreateV1
      */
-    readonly v?: PaymentCreateV1VEnum;
+    readonly 'v'?: PaymentCreateV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaymentApiPaymentCreateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for paymentGetStatusV1 operation in PaymentApi.
@@ -144,29 +158,35 @@ export interface PaymentApiPaymentCreateV1Request {
  */
 export interface PaymentApiPaymentGetStatusV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PaymentApiPaymentGetStatusV1
      */
-    readonly language: PaymentGetStatusV1LanguageEnum;
+    readonly 'language': PaymentGetStatusV1LanguageEnum;
     /**
      * Pay order id
      * @type {number}
      * @memberof PaymentApiPaymentGetStatusV1
      */
-    readonly payId: number;
+    readonly 'payId': number;
     /**
      * Project id
      * @type {number}
      * @memberof PaymentApiPaymentGetStatusV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PaymentApiPaymentGetStatusV1
      */
-    readonly v?: PaymentGetStatusV1VEnum;
+    readonly 'v'?: PaymentGetStatusV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PaymentApiPaymentGetStatusV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * PaymentApi - object-oriented interface
@@ -176,7 +196,7 @@ export interface PaymentApiPaymentGetStatusV1Request {
  */
 export declare class PaymentApi extends BaseAPI implements PaymentApiInterface {
     /**
-     *
+     * Create a pending payment for project_id and type (topup/restream/transcoding/storage/webinar) without completing payment. amount uses minor currency units (10000 = 100 major units); the project\'s billing payment system determines currency. Plan purchases require the fields for the corresponding type and plan_period. Returns payment_id and provider details; use its challenge/intent next. Returned payment provider credentials must not be logged.
      * @summary Create payment item for pay system
      * @param {PaymentApiPaymentCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -185,7 +205,8 @@ export declare class PaymentApi extends BaseAPI implements PaymentApiInterface {
      */
     paymentCreateV1(requestParameters: PaymentApiPaymentCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentCreateResponse, any, {}, any>>;
     /**
-     *
+     * Read the saved status of payment payId in project_id. payId is payment_id from payment creation; amount is in minor currency units of currency. Reading status neither creates a payment challenge nor confirms a new payment; returns the current pending/success/cancel/error state.
+     * @summary Get payment status for a project
      * @param {PaymentApiPaymentGetStatusV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

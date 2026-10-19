@@ -30,13 +30,14 @@ const base_1 = require("../base");
 const SchedulerApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Create a video schedule for project_id: channel_ids are internal channel group_id values from search in the same project; video.id is an accessible video. start_at/end_at are integer Unix seconds, with end_at>start_at. When start_now=false, the start must be in the future; when true, the end must be in the future. Checks channel editing permissions, plan limits, and absence of overlaps. Returns an internal id after creating the external task and saving the schedule; does not promise immediate broadcast start.
          * @summary Create a project video schedule
          * @param {CreateSchedulerRequest} createSchedulerRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schedulerCreateV1: async (createSchedulerRequest, options = {}) => {
+        schedulerCreateV1: async (createSchedulerRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'createSchedulerRequest' is not null or undefined
             (0, common_1.assertParamExists)('schedulerCreateV1', 'createSchedulerRequest', createSchedulerRequest);
@@ -50,10 +51,16 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -65,16 +72,17 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Delete unexpired schedule id in project_id and its associated external task. An expired schedule produces scheduler.expired. This deletes the schedule; stop the current active task separately with POST /method/scheduler/stop.
          * @summary Delete a non-expired project video schedule
-         * @param {SchedulerDeleteV1LanguageEnum} language Current language
+         * @param {SchedulerDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} id Backend scheduler id
          * @param {number} projectId Project id
          * @param {SchedulerDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schedulerDeleteV1: async (language, id, projectId, v, options = {}) => {
+        schedulerDeleteV1: async (language, id, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('schedulerDeleteV1', 'language', language);
             // verify required parameter 'id' is not null or undefined
@@ -91,9 +99,12 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -109,6 +120,9 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -118,16 +132,17 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read a schedule by internal id in project_id. Returns Unix seconds intervals, the complete internal channel_ids list, and video metadata or null. Obtain the ID from GET /method/scheduler; reading does not start the task.
          * @summary Get a project video schedule by id
-         * @param {SchedulerGetV1LanguageEnum} language Current language
+         * @param {SchedulerGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} id Scheduler item id
          * @param {SchedulerGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schedulerGetV1: async (language, projectId, id, v, options = {}) => {
+        schedulerGetV1: async (language, projectId, id, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('schedulerGetV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -144,9 +159,12 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -162,6 +180,9 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -171,21 +192,22 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read unexpired video schedules for project_id with channel_id/date_from/date_to filters, order, and limit/offset. Times are Unix seconds; offset is the number of records to skip. Returns results/total and may contain video=null. The schedule ID differs from the external scheduler taskId.
          * @summary List non-expired project video schedules
-         * @param {SchedulerListV1LanguageEnum} language Current language
+         * @param {SchedulerListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {SchedulerListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [channelId] Filter by associated channel id
+         * @param {number} [channelId] Filter by internal numeric StreamVi channel ID (group_id from channel search), not an external/platform ID.
          * @param {number} [dateFrom] Filter interval start in Unix seconds
          * @param {number} [dateTo] Filter interval end in Unix seconds
          * @param {number} [offset] Result offset
          * @param {number} [limit] Page size
          * @param {SchedulerListV1OrderEnum} [order] Start-time order
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schedulerListV1: async (language, projectId, v, channelId, dateFrom, dateTo, offset, limit, order, options = {}) => {
+        schedulerListV1: async (language, projectId, v, channelId, dateFrom, dateTo, offset, limit, order, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('schedulerListV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -200,9 +222,12 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["broadcast:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -233,6 +258,9 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             if (order !== undefined) {
                 localVarQueryParameter['order'] = order;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -242,13 +270,14 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Send a stop request for the active video task in project_id. Requires an active scheduler/live stream and a task_id/video_id mapping consistent with the saved schedule; absence or mismatch produces scheduler.active_task_not_found/active_task_mismatch. Success means the external scheduler responded successfully, not that the schedule was deleted.
          * @summary Stop the active project video schedule
          * @param {StopSchedulerRequest} stopSchedulerRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schedulerStopV1: async (stopSchedulerRequest, options = {}) => {
+        schedulerStopV1: async (stopSchedulerRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'stopSchedulerRequest' is not null or undefined
             (0, common_1.assertParamExists)('schedulerStopV1', 'stopSchedulerRequest', stopSchedulerRequest);
@@ -262,10 +291,16 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -277,13 +312,14 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Fully replace the video, time interval, and channel_ids list of future schedule id in project_id. All replacement fields are required; this is not a partial patch. A schedule that has already started produces scheduler.not_future; an overlap produces scheduler.time_overlap. Times are Unix seconds; end_at>start_at and start_at must be in the future. Success confirms the external task was updated if necessary and the schedule was saved.
          * @summary Replace a future project video schedule
          * @param {UpdateSchedulerRequest} updateSchedulerRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schedulerUpdateV1: async (updateSchedulerRequest, options = {}) => {
+        schedulerUpdateV1: async (updateSchedulerRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'updateSchedulerRequest' is not null or undefined
             (0, common_1.assertParamExists)('schedulerUpdateV1', 'updateSchedulerRequest', updateSchedulerRequest);
@@ -297,10 +333,16 @@ const SchedulerApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["broadcast:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["broadcast:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -322,99 +364,105 @@ const SchedulerApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.SchedulerApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Create a video schedule for project_id: channel_ids are internal channel group_id values from search in the same project; video.id is an accessible video. start_at/end_at are integer Unix seconds, with end_at>start_at. When start_now=false, the start must be in the future; when true, the end must be in the future. Checks channel editing permissions, plan limits, and absence of overlaps. Returns an internal id after creating the external task and saving the schedule; does not promise immediate broadcast start.
          * @summary Create a project video schedule
          * @param {CreateSchedulerRequest} createSchedulerRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schedulerCreateV1(createSchedulerRequest, options) {
+        async schedulerCreateV1(createSchedulerRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerCreateV1(createSchedulerRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerCreateV1(createSchedulerRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['SchedulerApi.schedulerCreateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Delete unexpired schedule id in project_id and its associated external task. An expired schedule produces scheduler.expired. This deletes the schedule; stop the current active task separately with POST /method/scheduler/stop.
          * @summary Delete a non-expired project video schedule
-         * @param {SchedulerDeleteV1LanguageEnum} language Current language
+         * @param {SchedulerDeleteV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} id Backend scheduler id
          * @param {number} projectId Project id
          * @param {SchedulerDeleteV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schedulerDeleteV1(language, id, projectId, v, options) {
+        async schedulerDeleteV1(language, id, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerDeleteV1(language, id, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerDeleteV1(language, id, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['SchedulerApi.schedulerDeleteV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read a schedule by internal id in project_id. Returns Unix seconds intervals, the complete internal channel_ids list, and video metadata or null. Obtain the ID from GET /method/scheduler; reading does not start the task.
          * @summary Get a project video schedule by id
-         * @param {SchedulerGetV1LanguageEnum} language Current language
+         * @param {SchedulerGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} id Scheduler item id
          * @param {SchedulerGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schedulerGetV1(language, projectId, id, v, options) {
+        async schedulerGetV1(language, projectId, id, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerGetV1(language, projectId, id, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerGetV1(language, projectId, id, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['SchedulerApi.schedulerGetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read unexpired video schedules for project_id with channel_id/date_from/date_to filters, order, and limit/offset. Times are Unix seconds; offset is the number of records to skip. Returns results/total and may contain video=null. The schedule ID differs from the external scheduler taskId.
          * @summary List non-expired project video schedules
-         * @param {SchedulerListV1LanguageEnum} language Current language
+         * @param {SchedulerListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {SchedulerListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [channelId] Filter by associated channel id
+         * @param {number} [channelId] Filter by internal numeric StreamVi channel ID (group_id from channel search), not an external/platform ID.
          * @param {number} [dateFrom] Filter interval start in Unix seconds
          * @param {number} [dateTo] Filter interval end in Unix seconds
          * @param {number} [offset] Result offset
          * @param {number} [limit] Page size
          * @param {SchedulerListV1OrderEnum} [order] Start-time order
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schedulerListV1(language, projectId, v, channelId, dateFrom, dateTo, offset, limit, order, options) {
+        async schedulerListV1(language, projectId, v, channelId, dateFrom, dateTo, offset, limit, order, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerListV1(language, projectId, v, channelId, dateFrom, dateTo, offset, limit, order, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerListV1(language, projectId, v, channelId, dateFrom, dateTo, offset, limit, order, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['SchedulerApi.schedulerListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Send a stop request for the active video task in project_id. Requires an active scheduler/live stream and a task_id/video_id mapping consistent with the saved schedule; absence or mismatch produces scheduler.active_task_not_found/active_task_mismatch. Success means the external scheduler responded successfully, not that the schedule was deleted.
          * @summary Stop the active project video schedule
          * @param {StopSchedulerRequest} stopSchedulerRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schedulerStopV1(stopSchedulerRequest, options) {
+        async schedulerStopV1(stopSchedulerRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerStopV1(stopSchedulerRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerStopV1(stopSchedulerRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['SchedulerApi.schedulerStopV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Fully replace the video, time interval, and channel_ids list of future schedule id in project_id. All replacement fields are required; this is not a partial patch. A schedule that has already started produces scheduler.not_future; an overlap produces scheduler.time_overlap. Times are Unix seconds; end_at>start_at and start_at must be in the future. Success confirms the external task was updated if necessary and the schedule was saved.
          * @summary Replace a future project video schedule
          * @param {UpdateSchedulerRequest} updateSchedulerRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schedulerUpdateV1(updateSchedulerRequest, options) {
+        async schedulerUpdateV1(updateSchedulerRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerUpdateV1(updateSchedulerRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.schedulerUpdateV1(updateSchedulerRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['SchedulerApi.schedulerUpdateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -430,64 +478,64 @@ const SchedulerApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.SchedulerApiFp)(configuration);
     return {
         /**
-         *
+         * Create a video schedule for project_id: channel_ids are internal channel group_id values from search in the same project; video.id is an accessible video. start_at/end_at are integer Unix seconds, with end_at>start_at. When start_now=false, the start must be in the future; when true, the end must be in the future. Checks channel editing permissions, plan limits, and absence of overlaps. Returns an internal id after creating the external task and saving the schedule; does not promise immediate broadcast start.
          * @summary Create a project video schedule
          * @param {SchedulerApiSchedulerCreateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         schedulerCreateV1(requestParameters, options) {
-            return localVarFp.schedulerCreateV1(requestParameters.CreateSchedulerRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.schedulerCreateV1(requestParameters['CreateSchedulerRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Delete unexpired schedule id in project_id and its associated external task. An expired schedule produces scheduler.expired. This deletes the schedule; stop the current active task separately with POST /method/scheduler/stop.
          * @summary Delete a non-expired project video schedule
          * @param {SchedulerApiSchedulerDeleteV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         schedulerDeleteV1(requestParameters, options) {
-            return localVarFp.schedulerDeleteV1(requestParameters.language, requestParameters.id, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.schedulerDeleteV1(requestParameters['language'], requestParameters['id'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read a schedule by internal id in project_id. Returns Unix seconds intervals, the complete internal channel_ids list, and video metadata or null. Obtain the ID from GET /method/scheduler; reading does not start the task.
          * @summary Get a project video schedule by id
          * @param {SchedulerApiSchedulerGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         schedulerGetV1(requestParameters, options) {
-            return localVarFp.schedulerGetV1(requestParameters.language, requestParameters.project_id, requestParameters.id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.schedulerGetV1(requestParameters['language'], requestParameters['project_id'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read unexpired video schedules for project_id with channel_id/date_from/date_to filters, order, and limit/offset. Times are Unix seconds; offset is the number of records to skip. Returns results/total and may contain video=null. The schedule ID differs from the external scheduler taskId.
          * @summary List non-expired project video schedules
          * @param {SchedulerApiSchedulerListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         schedulerListV1(requestParameters, options) {
-            return localVarFp.schedulerListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.channel_id, requestParameters.date_from, requestParameters.date_to, requestParameters.offset, requestParameters.limit, requestParameters.order, options).then((request) => request(axios, basePath));
+            return localVarFp.schedulerListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['channel_id'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['offset'], requestParameters['limit'], requestParameters['order'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Send a stop request for the active video task in project_id. Requires an active scheduler/live stream and a task_id/video_id mapping consistent with the saved schedule; absence or mismatch produces scheduler.active_task_not_found/active_task_mismatch. Success means the external scheduler responded successfully, not that the schedule was deleted.
          * @summary Stop the active project video schedule
          * @param {SchedulerApiSchedulerStopV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         schedulerStopV1(requestParameters, options) {
-            return localVarFp.schedulerStopV1(requestParameters.StopSchedulerRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.schedulerStopV1(requestParameters['StopSchedulerRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Fully replace the video, time interval, and channel_ids list of future schedule id in project_id. All replacement fields are required; this is not a partial patch. A schedule that has already started produces scheduler.not_future; an overlap produces scheduler.time_overlap. Times are Unix seconds; end_at>start_at and start_at must be in the future. Success confirms the external task was updated if necessary and the schedule was saved.
          * @summary Replace a future project video schedule
          * @param {SchedulerApiSchedulerUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         schedulerUpdateV1(requestParameters, options) {
-            return localVarFp.schedulerUpdateV1(requestParameters.UpdateSchedulerRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.schedulerUpdateV1(requestParameters['UpdateSchedulerRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -500,7 +548,7 @@ exports.SchedulerApiFactory = SchedulerApiFactory;
  */
 class SchedulerApi extends base_1.BaseAPI {
     /**
-     *
+     * Create a video schedule for project_id: channel_ids are internal channel group_id values from search in the same project; video.id is an accessible video. start_at/end_at are integer Unix seconds, with end_at>start_at. When start_now=false, the start must be in the future; when true, the end must be in the future. Checks channel editing permissions, plan limits, and absence of overlaps. Returns an internal id after creating the external task and saving the schedule; does not promise immediate broadcast start.
      * @summary Create a project video schedule
      * @param {SchedulerApiSchedulerCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -508,10 +556,10 @@ class SchedulerApi extends base_1.BaseAPI {
      * @memberof SchedulerApi
      */
     schedulerCreateV1(requestParameters, options) {
-        return (0, exports.SchedulerApiFp)(this.configuration).schedulerCreateV1(requestParameters.CreateSchedulerRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.SchedulerApiFp)(this.configuration).schedulerCreateV1(requestParameters['CreateSchedulerRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Delete unexpired schedule id in project_id and its associated external task. An expired schedule produces scheduler.expired. This deletes the schedule; stop the current active task separately with POST /method/scheduler/stop.
      * @summary Delete a non-expired project video schedule
      * @param {SchedulerApiSchedulerDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -519,10 +567,10 @@ class SchedulerApi extends base_1.BaseAPI {
      * @memberof SchedulerApi
      */
     schedulerDeleteV1(requestParameters, options) {
-        return (0, exports.SchedulerApiFp)(this.configuration).schedulerDeleteV1(requestParameters.language, requestParameters.id, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.SchedulerApiFp)(this.configuration).schedulerDeleteV1(requestParameters['language'], requestParameters['id'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read a schedule by internal id in project_id. Returns Unix seconds intervals, the complete internal channel_ids list, and video metadata or null. Obtain the ID from GET /method/scheduler; reading does not start the task.
      * @summary Get a project video schedule by id
      * @param {SchedulerApiSchedulerGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -530,10 +578,10 @@ class SchedulerApi extends base_1.BaseAPI {
      * @memberof SchedulerApi
      */
     schedulerGetV1(requestParameters, options) {
-        return (0, exports.SchedulerApiFp)(this.configuration).schedulerGetV1(requestParameters.language, requestParameters.project_id, requestParameters.id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.SchedulerApiFp)(this.configuration).schedulerGetV1(requestParameters['language'], requestParameters['project_id'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read unexpired video schedules for project_id with channel_id/date_from/date_to filters, order, and limit/offset. Times are Unix seconds; offset is the number of records to skip. Returns results/total and may contain video=null. The schedule ID differs from the external scheduler taskId.
      * @summary List non-expired project video schedules
      * @param {SchedulerApiSchedulerListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -541,10 +589,10 @@ class SchedulerApi extends base_1.BaseAPI {
      * @memberof SchedulerApi
      */
     schedulerListV1(requestParameters, options) {
-        return (0, exports.SchedulerApiFp)(this.configuration).schedulerListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.channel_id, requestParameters.date_from, requestParameters.date_to, requestParameters.offset, requestParameters.limit, requestParameters.order, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.SchedulerApiFp)(this.configuration).schedulerListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['channel_id'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['offset'], requestParameters['limit'], requestParameters['order'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Send a stop request for the active video task in project_id. Requires an active scheduler/live stream and a task_id/video_id mapping consistent with the saved schedule; absence or mismatch produces scheduler.active_task_not_found/active_task_mismatch. Success means the external scheduler responded successfully, not that the schedule was deleted.
      * @summary Stop the active project video schedule
      * @param {SchedulerApiSchedulerStopV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -552,10 +600,10 @@ class SchedulerApi extends base_1.BaseAPI {
      * @memberof SchedulerApi
      */
     schedulerStopV1(requestParameters, options) {
-        return (0, exports.SchedulerApiFp)(this.configuration).schedulerStopV1(requestParameters.StopSchedulerRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.SchedulerApiFp)(this.configuration).schedulerStopV1(requestParameters['StopSchedulerRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Fully replace the video, time interval, and channel_ids list of future schedule id in project_id. All replacement fields are required; this is not a partial patch. A schedule that has already started produces scheduler.not_future; an overlap produces scheduler.time_overlap. Times are Unix seconds; end_at>start_at and start_at must be in the future. Success confirms the external task was updated if necessary and the schedule was saved.
      * @summary Replace a future project video schedule
      * @param {SchedulerApiSchedulerUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -563,7 +611,7 @@ class SchedulerApi extends base_1.BaseAPI {
      * @memberof SchedulerApi
      */
     schedulerUpdateV1(requestParameters, options) {
-        return (0, exports.SchedulerApiFp)(this.configuration).schedulerUpdateV1(requestParameters.UpdateSchedulerRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.SchedulerApiFp)(this.configuration).schedulerUpdateV1(requestParameters['UpdateSchedulerRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.SchedulerApi = SchedulerApi;

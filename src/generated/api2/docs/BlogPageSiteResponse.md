@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **date_publish** | **string** | Date of publish for sort | [default to undefined]
 **tags** | **Array&lt;object&gt;** | Tags | [default to undefined]
 **language** | **string** | Language for indexing | [default to LanguageEnum_Russian]
-**language_iso** | **string** | Language ISO | [default to 'russian']
+**language_iso** | **string** | Language ISO | [default to LanguageIsoEnum_Ru]
 **title** | **string** | Subject | [default to undefined]
 **image** | **string** | Url of main image | [default to undefined]
 **short_text** | **string** | Short text | [default to undefined]

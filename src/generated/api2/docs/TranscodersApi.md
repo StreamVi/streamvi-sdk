@@ -14,6 +14,7 @@ All URIs are relative to *http://localhost*
 # **transcodersAddV1**
 > number transcodersAddV1(transcoderCreateDto)
 
+Create a transcoder configuration for project_id from DTO parameters and return a numeric ID. Checks current plan and type restrictions. Creating settings does not confirm an external transcoding task has started; assign to a channel with POST /method/channel_settings/setTranscoder.
 
 ### Example
 
@@ -28,9 +29,11 @@ const configuration = new Configuration();
 const apiInstance = new TranscodersApi(configuration);
 
 let transcoderCreateDto: TranscoderCreateDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.transcodersAddV1(
-    transcoderCreateDto
+    transcoderCreateDto,
+    xClientRequestId
 );
 ```
 
@@ -39,6 +42,7 @@ const { status, data } = await apiInstance.transcodersAddV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **transcoderCreateDto** | **TranscoderCreateDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -47,7 +51,7 @@ const { status, data } = await apiInstance.transcodersAddV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -66,6 +70,7 @@ const { status, data } = await apiInstance.transcodersAddV1(
 # **transcodersDeleteV1**
 > SuccessResponse transcodersDeleteV1(transcoderItemDto)
 
+Delete transcoder_id configuration in project_id. If absent, returns Transcoder not found. This deletes settings; stop active external processing separately with POST /method/transcoder/stop.
 
 ### Example
 
@@ -80,9 +85,11 @@ const configuration = new Configuration();
 const apiInstance = new TranscodersApi(configuration);
 
 let transcoderItemDto: TranscoderItemDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.transcodersDeleteV1(
-    transcoderItemDto
+    transcoderItemDto,
+    xClientRequestId
 );
 ```
 
@@ -91,6 +98,7 @@ const { status, data } = await apiInstance.transcodersDeleteV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **transcoderItemDto** | **TranscoderItemDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -99,7 +107,7 @@ const { status, data } = await apiInstance.transcodersDeleteV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -118,6 +126,7 @@ const { status, data } = await apiInstance.transcodersDeleteV1(
 # **transcodersListV1**
 > SiteTranscoderListResponse transcodersListV1()
 
+Read transcoder settings for project_id, including ID, type, parameters, and actual state according to the response schema. This reads configurations without starting transcoding; use IDs in update/delete/stop/reset-delay and channel assignment.
 
 ### Example
 
@@ -130,14 +139,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new TranscodersApi(configuration);
 
-let language: 'ru' | 'en' | 'cn'; //Current language (default to 'en')
+let language: 'ru' | 'en' | 'cn'; //Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. (default to 'en')
 let projectId: number; //Project id (default to undefined)
 let v: '1'; //Version (automatically defaults to 1 based on the API contract, can be overridden) (optional) (default to '1')
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.transcodersListV1(
     language,
     projectId,
-    v
+    v,
+    xClientRequestId
 );
 ```
 
@@ -145,9 +156,10 @@ const { status, data } = await apiInstance.transcodersListV1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Current language | defaults to 'en'|
+| **language** | [**&#39;ru&#39; | &#39;en&#39; | &#39;cn&#39;**]**Array<&#39;ru&#39; &#124; &#39;en&#39; &#124; &#39;cn&#39;>** | Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum. | defaults to 'en'|
 | **projectId** | [**number**] | Project id | defaults to undefined|
 | **v** | [**&#39;1&#39;**]**Array<&#39;1&#39;>** | Version (automatically defaults to 1 based on the API contract, can be overridden) | (optional) defaults to '1'|
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -156,7 +168,7 @@ const { status, data } = await apiInstance.transcodersListV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -175,6 +187,7 @@ const { status, data } = await apiInstance.transcodersListV1(
 # **transcodersResetDelayV1**
 > SuccessResponse transcodersResetDelayV1(transcoderItemDto)
 
+Send a delay reset command for transcoder_id in project_id. This controls an existing transcoder without changing protection duration or simulated /method/channel/set-delay. Success does not guarantee immediate completion of the external operation.
 
 ### Example
 
@@ -189,9 +202,11 @@ const configuration = new Configuration();
 const apiInstance = new TranscodersApi(configuration);
 
 let transcoderItemDto: TranscoderItemDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.transcodersResetDelayV1(
-    transcoderItemDto
+    transcoderItemDto,
+    xClientRequestId
 );
 ```
 
@@ -200,6 +215,7 @@ const { status, data } = await apiInstance.transcodersResetDelayV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **transcoderItemDto** | **TranscoderItemDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -208,7 +224,7 @@ const { status, data } = await apiInstance.transcodersResetDelayV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -227,6 +243,7 @@ const { status, data } = await apiInstance.transcodersResetDelayV1(
 # **transcodersStopV1**
 > SuccessResponse transcodersStopV1(transcoderItemDto)
 
+Send a stop command for transcoder_id in project_id after checking access. Success confirms the management use case processed the command; check the actual state for completion of external processing. The configuration is not deleted.
 
 ### Example
 
@@ -241,9 +258,11 @@ const configuration = new Configuration();
 const apiInstance = new TranscodersApi(configuration);
 
 let transcoderItemDto: TranscoderItemDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.transcodersStopV1(
-    transcoderItemDto
+    transcoderItemDto,
+    xClientRequestId
 );
 ```
 
@@ -252,6 +271,7 @@ const { status, data } = await apiInstance.transcodersStopV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **transcoderItemDto** | **TranscoderItemDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -260,7 +280,7 @@ const { status, data } = await apiInstance.transcodersStopV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 
@@ -279,6 +299,7 @@ const { status, data } = await apiInstance.transcodersStopV1(
 # **transcodersUpdateV1**
 > SuccessResponse transcodersUpdateV1(transcoderUpdateDto)
 
+Change the transcoder configuration for the selected project_id using its ID and DTO fields. Success confirms the configuration workflow was saved; it is not a resume-broadcast command. Parameter types and constraints are defined by the request schema.
 
 ### Example
 
@@ -293,9 +314,11 @@ const configuration = new Configuration();
 const apiInstance = new TranscodersApi(configuration);
 
 let transcoderUpdateDto: TranscoderUpdateDto; //
+let xClientRequestId: string; //UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.transcodersUpdateV1(
-    transcoderUpdateDto
+    transcoderUpdateDto,
+    xClientRequestId
 );
 ```
 
@@ -304,6 +327,7 @@ const { status, data } = await apiInstance.transcodersUpdateV1(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **transcoderUpdateDto** | **TranscoderUpdateDto**|  | |
+| **xClientRequestId** | [**string**] | UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -312,7 +336,7 @@ const { status, data } = await apiInstance.transcodersUpdateV1(
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[oauth2Account](../README.md#oauth2Account), [oauth2Project](../README.md#oauth2Project)
 
 ### HTTP request headers
 

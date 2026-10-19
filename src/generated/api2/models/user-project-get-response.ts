@@ -21,25 +21,25 @@
  */
 export interface UserProjectGetResponse {
     /**
-     * Имя
+     * First name
      * @type {string}
      * @memberof UserProjectGetResponse
      */
     'name': string;
     /**
-     * Фамилия
+     * Last name
      * @type {string}
      * @memberof UserProjectGetResponse
      */
     'fename': string;
     /**
-     * Аватарка
+     * Avatar
      * @type {string}
      * @memberof UserProjectGetResponse
      */
     'photo_50': string;
     /**
-     * Тип 0 - личный проект, 1 - командный проект
+     * Type 0: personal project; 1: team project
      * @type {number}
      * @memberof UserProjectGetResponse
      */
@@ -63,19 +63,19 @@ export interface UserProjectGetResponse {
      */
     'countrie_id': number;
     /**
-     * Balance bonus
+     * Balance bonus. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof UserProjectGetResponse
      */
     'balance_bonus': number;
     /**
-     * Balance payment
+     * Balance payment. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof UserProjectGetResponse
      */
     'balance_payment': number;
     /**
-     * Balance profit
+     * Balance profit. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof UserProjectGetResponse
      */

@@ -1,6 +1,5 @@
 # ProjectChannelResponseStreamInfo
 
-Stream info
 
 ## Properties
 

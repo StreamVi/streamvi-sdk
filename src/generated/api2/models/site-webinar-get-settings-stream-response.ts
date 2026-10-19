@@ -21,25 +21,25 @@
  */
 export interface SiteWebinarGetSettingsStreamResponse {
     /**
-     * Width
+     * Video width in pixels
      * @type {number}
      * @memberof SiteWebinarGetSettingsStreamResponse
      */
     'width': number;
     /**
-     * Height
+     * Video height in pixels
      * @type {number}
      * @memberof SiteWebinarGetSettingsStreamResponse
      */
     'height': number;
     /**
-     * Fps
+     * Video frames per second
      * @type {number}
      * @memberof SiteWebinarGetSettingsStreamResponse
      */
     'fps': number;
     /**
-     * Bitrate
+     * Video bitrate in kbps
      * @type {number}
      * @memberof SiteWebinarGetSettingsStreamResponse
      */

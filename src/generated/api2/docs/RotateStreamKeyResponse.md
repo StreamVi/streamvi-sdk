@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **string** | New stream key | [default to undefined]
+**key** | **string** | New secret publishing key replacing the old one. Update the broadcast source; do not store the value in logs or examples. | [default to undefined]
 
 ## Example
 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **number** | Amount | [default to 0]
+**amount** | **number** | Not calculated: tariff price calculation is not implemented. Always 0 (placeholder), not a free tariff or amount due. Do not use this field to create payments. | [default to 0]
 **balance** | [**BalanceForPayResponse**](BalanceForPayResponse.md) | Balance for pay object | [default to undefined]
 **refund** | [**PlanRefund**](PlanRefund.md) | Refund for rate | [default to undefined]
 

@@ -23,79 +23,86 @@ import type { SuccessResponse } from '../models';
  */
 export declare const PlanWebinarApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Buy a webinar tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
      * @summary Buy webinar tariff
-     * @param {SiteBuyV1LanguageEnum} language Current language
+     * @param {SiteBuyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {SiteBuyV1PeriodEnum} period Period
      * @param {number} planWebinarId Webinar plan id
      * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteBuyV1: (language: SiteBuyV1LanguageEnum, projectId: number, period: SiteBuyV1PeriodEnum, planWebinarId: number, v?: SiteBuyV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    siteBuyV1: (language: SiteBuyV1LanguageEnum, projectId: number, period: SiteBuyV1PeriodEnum, planWebinarId: number, v?: SiteBuyV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary Remove after tariff
-     * @param {SiteCancelV1LanguageEnum} language Current language
+     * Cancel the next webinar plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+     * @summary Cancel the next project webinar tariff
+     * @param {SiteCancelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteCancelV1: (language: SiteCancelV1LanguageEnum, projectId: number, v?: SiteCancelV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    siteCancelV1: (language: SiteCancelV1LanguageEnum, projectId: number, v?: SiteCancelV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Calculate a webinar plan card/preview for project_id using the selected configuration and period. Returns plan prices, sum, currency, and switching conditions; amounts are in minor units. This calculates a purchase preview without debiting funds or creating a room.
      * @summary Check webinar tariff before buy
-     * @param {SiteCheckV1LanguageEnum} language Current language
+     * @param {SiteCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {SiteCheckV1PeriodEnum} period Period
      * @param {number} planWebinarId Webinar plan id
      * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [useBalance] Is select balance
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteCheckV1: (language: SiteCheckV1LanguageEnum, projectId: number, period: SiteCheckV1PeriodEnum, planWebinarId: number, v?: SiteCheckV1VEnum, useBalance?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    siteCheckV1: (language: SiteCheckV1LanguageEnum, projectId: number, period: SiteCheckV1PeriodEnum, planWebinarId: number, v?: SiteCheckV1VEnum, useBalance?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read annual discount rules for webinar plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
      * @summary Get discount webinar
-     * @param {SiteGetDiscountV1LanguageEnum} language Current language
+     * @param {SiteGetDiscountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteGetDiscountV1: (language: SiteGetDiscountV1LanguageEnum, v?: SiteGetDiscountV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    siteGetDiscountV1: (language: SiteGetDiscountV1LanguageEnum, v?: SiteGetDiscountV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read the public webinar plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
      * @summary Get list of webinar tariffs
-     * @param {SiteListV1LanguageEnum} language Current language
+     * @param {SiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteListV1: (language: SiteListV1LanguageEnum, v?: SiteListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    siteListV1: (language: SiteListV1LanguageEnum, v?: SiteListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Save automatic webinar plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
      * @summary Set webinar tariff auto prolongation
-     * @param {SiteSetProlongationV1LanguageEnum} language Current language
+     * @param {SiteSetProlongationV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {boolean} enabled Auto prolongation enabled
      * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteSetProlongationV1: (language: SiteSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: SiteSetProlongationV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    siteSetProlongationV1: (language: SiteSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: SiteSetProlongationV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary Get tariff for project
-     * @param {SiteTariffV1LanguageEnum} language Current language
+     * Read the current and next webinar plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+     * @summary Get current and next project webinar tariff
+     * @param {SiteTariffV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteTariffV1: (language: SiteTariffV1LanguageEnum, projectId: number, v?: SiteTariffV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    siteTariffV1: (language: SiteTariffV1LanguageEnum, projectId: number, v?: SiteTariffV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PlanWebinarApi - functional programming interface
@@ -103,79 +110,86 @@ export declare const PlanWebinarApiAxiosParamCreator: (configuration?: Configura
  */
 export declare const PlanWebinarApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Buy a webinar tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
      * @summary Buy webinar tariff
-     * @param {SiteBuyV1LanguageEnum} language Current language
+     * @param {SiteBuyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {SiteBuyV1PeriodEnum} period Period
      * @param {number} planWebinarId Webinar plan id
      * @param {SiteBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteBuyV1(language: SiteBuyV1LanguageEnum, projectId: number, period: SiteBuyV1PeriodEnum, planWebinarId: number, v?: SiteBuyV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    siteBuyV1(language: SiteBuyV1LanguageEnum, projectId: number, period: SiteBuyV1PeriodEnum, planWebinarId: number, v?: SiteBuyV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
-     * @summary Remove after tariff
-     * @param {SiteCancelV1LanguageEnum} language Current language
+     * Cancel the next webinar plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+     * @summary Cancel the next project webinar tariff
+     * @param {SiteCancelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {SiteCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteCancelV1(language: SiteCancelV1LanguageEnum, projectId: number, v?: SiteCancelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    siteCancelV1(language: SiteCancelV1LanguageEnum, projectId: number, v?: SiteCancelV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Calculate a webinar plan card/preview for project_id using the selected configuration and period. Returns plan prices, sum, currency, and switching conditions; amounts are in minor units. This calculates a purchase preview without debiting funds or creating a room.
      * @summary Check webinar tariff before buy
-     * @param {SiteCheckV1LanguageEnum} language Current language
+     * @param {SiteCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {SiteCheckV1PeriodEnum} period Period
      * @param {number} planWebinarId Webinar plan id
      * @param {SiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {number} [useBalance] Is select balance
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteCheckV1(language: SiteCheckV1LanguageEnum, projectId: number, period: SiteCheckV1PeriodEnum, planWebinarId: number, v?: SiteCheckV1VEnum, useBalance?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanWebinarCheckV2Response>>;
+    siteCheckV1(language: SiteCheckV1LanguageEnum, projectId: number, period: SiteCheckV1PeriodEnum, planWebinarId: number, v?: SiteCheckV1VEnum, useBalance?: number, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanWebinarCheckV2Response>>;
     /**
-     *
+     * Read annual discount rules for webinar plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
      * @summary Get discount webinar
-     * @param {SiteGetDiscountV1LanguageEnum} language Current language
+     * @param {SiteGetDiscountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {SiteGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteGetDiscountV1(language: SiteGetDiscountV1LanguageEnum, v?: SiteGetDiscountV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanWebinarDiscountResponse>>;
+    siteGetDiscountV1(language: SiteGetDiscountV1LanguageEnum, v?: SiteGetDiscountV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanWebinarDiscountResponse>>;
     /**
-     *
+     * Read the public webinar plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
      * @summary Get list of webinar tariffs
-     * @param {SiteListV1LanguageEnum} language Current language
+     * @param {SiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {SiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteListV1(language: SiteListV1LanguageEnum, v?: SiteListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanWebinarResponseDto>>;
+    siteListV1(language: SiteListV1LanguageEnum, v?: SiteListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanWebinarResponseDto>>;
     /**
-     *
+     * Save automatic webinar plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
      * @summary Set webinar tariff auto prolongation
-     * @param {SiteSetProlongationV1LanguageEnum} language Current language
+     * @param {SiteSetProlongationV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {boolean} enabled Auto prolongation enabled
      * @param {SiteSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteSetProlongationV1(language: SiteSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: SiteSetProlongationV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    siteSetProlongationV1(language: SiteSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: SiteSetProlongationV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
-     * @summary Get tariff for project
-     * @param {SiteTariffV1LanguageEnum} language Current language
+     * Read the current and next webinar plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+     * @summary Get current and next project webinar tariff
+     * @param {SiteTariffV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {SiteTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    siteTariffV1(language: SiteTariffV1LanguageEnum, projectId: number, v?: SiteTariffV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanWebinarForProject>>;
+    siteTariffV1(language: SiteTariffV1LanguageEnum, projectId: number, v?: SiteTariffV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanWebinarForProject>>;
 };
 /**
  * PlanWebinarApi - factory interface
@@ -183,7 +197,7 @@ export declare const PlanWebinarApiFp: (configuration?: Configuration) => {
  */
 export declare const PlanWebinarApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Buy a webinar tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
      * @summary Buy webinar tariff
      * @param {PlanWebinarApiSiteBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -191,15 +205,15 @@ export declare const PlanWebinarApiFactory: (configuration?: Configuration, base
      */
     siteBuyV1(requestParameters: PlanWebinarApiSiteBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
-     * @summary Remove after tariff
+     * Cancel the next webinar plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+     * @summary Cancel the next project webinar tariff
      * @param {PlanWebinarApiSiteCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     siteCancelV1(requestParameters: PlanWebinarApiSiteCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Calculate a webinar plan card/preview for project_id using the selected configuration and period. Returns plan prices, sum, currency, and switching conditions; amounts are in minor units. This calculates a purchase preview without debiting funds or creating a room.
      * @summary Check webinar tariff before buy
      * @param {PlanWebinarApiSiteCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -207,7 +221,7 @@ export declare const PlanWebinarApiFactory: (configuration?: Configuration, base
      */
     siteCheckV1(requestParameters: PlanWebinarApiSiteCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanWebinarCheckV2Response>;
     /**
-     *
+     * Read annual discount rules for webinar plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
      * @summary Get discount webinar
      * @param {PlanWebinarApiSiteGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -215,7 +229,7 @@ export declare const PlanWebinarApiFactory: (configuration?: Configuration, base
      */
     siteGetDiscountV1(requestParameters: PlanWebinarApiSiteGetDiscountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanWebinarDiscountResponse>;
     /**
-     *
+     * Read the public webinar plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
      * @summary Get list of webinar tariffs
      * @param {PlanWebinarApiSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -223,7 +237,7 @@ export declare const PlanWebinarApiFactory: (configuration?: Configuration, base
      */
     siteListV1(requestParameters: PlanWebinarApiSiteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanWebinarResponseDto>;
     /**
-     *
+     * Save automatic webinar plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
      * @summary Set webinar tariff auto prolongation
      * @param {PlanWebinarApiSiteSetProlongationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -231,8 +245,8 @@ export declare const PlanWebinarApiFactory: (configuration?: Configuration, base
      */
     siteSetProlongationV1(requestParameters: PlanWebinarApiSiteSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
-     * @summary Get tariff for project
+     * Read the current and next webinar plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+     * @summary Get current and next project webinar tariff
      * @param {PlanWebinarApiSiteTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -246,7 +260,7 @@ export declare const PlanWebinarApiFactory: (configuration?: Configuration, base
  */
 export interface PlanWebinarApiInterface {
     /**
-     *
+     * Buy a webinar tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
      * @summary Buy webinar tariff
      * @param {PlanWebinarApiSiteBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -255,8 +269,8 @@ export interface PlanWebinarApiInterface {
      */
     siteBuyV1(requestParameters: PlanWebinarApiSiteBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
-     * @summary Remove after tariff
+     * Cancel the next webinar plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+     * @summary Cancel the next project webinar tariff
      * @param {PlanWebinarApiSiteCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -264,7 +278,7 @@ export interface PlanWebinarApiInterface {
      */
     siteCancelV1(requestParameters: PlanWebinarApiSiteCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Calculate a webinar plan card/preview for project_id using the selected configuration and period. Returns plan prices, sum, currency, and switching conditions; amounts are in minor units. This calculates a purchase preview without debiting funds or creating a room.
      * @summary Check webinar tariff before buy
      * @param {PlanWebinarApiSiteCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -273,7 +287,7 @@ export interface PlanWebinarApiInterface {
      */
     siteCheckV1(requestParameters: PlanWebinarApiSiteCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanWebinarCheckV2Response>;
     /**
-     *
+     * Read annual discount rules for webinar plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
      * @summary Get discount webinar
      * @param {PlanWebinarApiSiteGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -282,7 +296,7 @@ export interface PlanWebinarApiInterface {
      */
     siteGetDiscountV1(requestParameters: PlanWebinarApiSiteGetDiscountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanWebinarDiscountResponse>;
     /**
-     *
+     * Read the public webinar plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
      * @summary Get list of webinar tariffs
      * @param {PlanWebinarApiSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -291,7 +305,7 @@ export interface PlanWebinarApiInterface {
      */
     siteListV1(requestParameters: PlanWebinarApiSiteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanWebinarResponseDto>;
     /**
-     *
+     * Save automatic webinar plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
      * @summary Set webinar tariff auto prolongation
      * @param {PlanWebinarApiSiteSetProlongationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -300,8 +314,8 @@ export interface PlanWebinarApiInterface {
      */
     siteSetProlongationV1(requestParameters: PlanWebinarApiSiteSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
-     * @summary Get tariff for project
+     * Read the current and next webinar plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+     * @summary Get current and next project webinar tariff
      * @param {PlanWebinarApiSiteTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -316,35 +330,41 @@ export interface PlanWebinarApiInterface {
  */
 export interface PlanWebinarApiSiteBuyV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanWebinarApiSiteBuyV1
      */
-    readonly language: SiteBuyV1LanguageEnum;
+    readonly 'language': SiteBuyV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof PlanWebinarApiSiteBuyV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Period
      * @type {'month' | 'year'}
      * @memberof PlanWebinarApiSiteBuyV1
      */
-    readonly period: SiteBuyV1PeriodEnum;
+    readonly 'period': SiteBuyV1PeriodEnum;
     /**
      * Webinar plan id
      * @type {number}
      * @memberof PlanWebinarApiSiteBuyV1
      */
-    readonly plan_webinar_id: number;
+    readonly 'plan_webinar_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteBuyV1
      */
-    readonly v?: SiteBuyV1VEnum;
+    readonly 'v'?: SiteBuyV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanWebinarApiSiteBuyV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for siteCancelV1 operation in PlanWebinarApi.
@@ -353,23 +373,29 @@ export interface PlanWebinarApiSiteBuyV1Request {
  */
 export interface PlanWebinarApiSiteCancelV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanWebinarApiSiteCancelV1
      */
-    readonly language: SiteCancelV1LanguageEnum;
+    readonly 'language': SiteCancelV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof PlanWebinarApiSiteCancelV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteCancelV1
      */
-    readonly v?: SiteCancelV1VEnum;
+    readonly 'v'?: SiteCancelV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanWebinarApiSiteCancelV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for siteCheckV1 operation in PlanWebinarApi.
@@ -378,41 +404,47 @@ export interface PlanWebinarApiSiteCancelV1Request {
  */
 export interface PlanWebinarApiSiteCheckV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanWebinarApiSiteCheckV1
      */
-    readonly language: SiteCheckV1LanguageEnum;
+    readonly 'language': SiteCheckV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof PlanWebinarApiSiteCheckV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Period
      * @type {'month' | 'year'}
      * @memberof PlanWebinarApiSiteCheckV1
      */
-    readonly period: SiteCheckV1PeriodEnum;
+    readonly 'period': SiteCheckV1PeriodEnum;
     /**
      * Webinar plan id
      * @type {number}
      * @memberof PlanWebinarApiSiteCheckV1
      */
-    readonly plan_webinar_id: number;
+    readonly 'plan_webinar_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteCheckV1
      */
-    readonly v?: SiteCheckV1VEnum;
+    readonly 'v'?: SiteCheckV1VEnum;
     /**
      * Is select balance
      * @type {number}
      * @memberof PlanWebinarApiSiteCheckV1
      */
-    readonly use_balance?: number;
+    readonly 'use_balance'?: number;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanWebinarApiSiteCheckV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for siteGetDiscountV1 operation in PlanWebinarApi.
@@ -421,17 +453,23 @@ export interface PlanWebinarApiSiteCheckV1Request {
  */
 export interface PlanWebinarApiSiteGetDiscountV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanWebinarApiSiteGetDiscountV1
      */
-    readonly language: SiteGetDiscountV1LanguageEnum;
+    readonly 'language': SiteGetDiscountV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteGetDiscountV1
      */
-    readonly v?: SiteGetDiscountV1VEnum;
+    readonly 'v'?: SiteGetDiscountV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanWebinarApiSiteGetDiscountV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for siteListV1 operation in PlanWebinarApi.
@@ -440,17 +478,23 @@ export interface PlanWebinarApiSiteGetDiscountV1Request {
  */
 export interface PlanWebinarApiSiteListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanWebinarApiSiteListV1
      */
-    readonly language: SiteListV1LanguageEnum;
+    readonly 'language': SiteListV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteListV1
      */
-    readonly v?: SiteListV1VEnum;
+    readonly 'v'?: SiteListV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanWebinarApiSiteListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for siteSetProlongationV1 operation in PlanWebinarApi.
@@ -459,29 +503,35 @@ export interface PlanWebinarApiSiteListV1Request {
  */
 export interface PlanWebinarApiSiteSetProlongationV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanWebinarApiSiteSetProlongationV1
      */
-    readonly language: SiteSetProlongationV1LanguageEnum;
+    readonly 'language': SiteSetProlongationV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof PlanWebinarApiSiteSetProlongationV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Auto prolongation enabled
      * @type {boolean}
      * @memberof PlanWebinarApiSiteSetProlongationV1
      */
-    readonly enabled: boolean;
+    readonly 'enabled': boolean;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteSetProlongationV1
      */
-    readonly v?: SiteSetProlongationV1VEnum;
+    readonly 'v'?: SiteSetProlongationV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanWebinarApiSiteSetProlongationV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for siteTariffV1 operation in PlanWebinarApi.
@@ -490,23 +540,29 @@ export interface PlanWebinarApiSiteSetProlongationV1Request {
  */
 export interface PlanWebinarApiSiteTariffV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanWebinarApiSiteTariffV1
      */
-    readonly language: SiteTariffV1LanguageEnum;
+    readonly 'language': SiteTariffV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof PlanWebinarApiSiteTariffV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanWebinarApiSiteTariffV1
      */
-    readonly v?: SiteTariffV1VEnum;
+    readonly 'v'?: SiteTariffV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanWebinarApiSiteTariffV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * PlanWebinarApi - object-oriented interface
@@ -516,7 +572,7 @@ export interface PlanWebinarApiSiteTariffV1Request {
  */
 export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInterface {
     /**
-     *
+     * Buy a webinar tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
      * @summary Buy webinar tariff
      * @param {PlanWebinarApiSiteBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -525,8 +581,8 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      */
     siteBuyV1(requestParameters: PlanWebinarApiSiteBuyV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
-     * @summary Remove after tariff
+     * Cancel the next webinar plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+     * @summary Cancel the next project webinar tariff
      * @param {PlanWebinarApiSiteCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -534,7 +590,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      */
     siteCancelV1(requestParameters: PlanWebinarApiSiteCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Calculate a webinar plan card/preview for project_id using the selected configuration and period. Returns plan prices, sum, currency, and switching conditions; amounts are in minor units. This calculates a purchase preview without debiting funds or creating a room.
      * @summary Check webinar tariff before buy
      * @param {PlanWebinarApiSiteCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -543,7 +599,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      */
     siteCheckV1(requestParameters: PlanWebinarApiSiteCheckV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarCheckV2Response, any, {}, any>>;
     /**
-     *
+     * Read annual discount rules for webinar plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
      * @summary Get discount webinar
      * @param {PlanWebinarApiSiteGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -552,7 +608,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      */
     siteGetDiscountV1(requestParameters: PlanWebinarApiSiteGetDiscountV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarDiscountResponse, any, {}, any>>;
     /**
-     *
+     * Read the public webinar plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
      * @summary Get list of webinar tariffs
      * @param {PlanWebinarApiSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -561,7 +617,7 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      */
     siteListV1(requestParameters: PlanWebinarApiSiteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PlanWebinarResponseDto, any, {}, any>>;
     /**
-     *
+     * Save automatic webinar plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
      * @summary Set webinar tariff auto prolongation
      * @param {PlanWebinarApiSiteSetProlongationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -570,8 +626,8 @@ export declare class PlanWebinarApi extends BaseAPI implements PlanWebinarApiInt
      */
     siteSetProlongationV1(requestParameters: PlanWebinarApiSiteSetProlongationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
-     * @summary Get tariff for project
+     * Read the current and next webinar plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+     * @summary Get current and next project webinar tariff
      * @param {PlanWebinarApiSiteTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

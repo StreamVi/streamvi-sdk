@@ -22,91 +22,100 @@ import type { SuccessResponse } from '../models';
  */
 export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Internal Google OAuth callback that completes login and returns an HTTP 301 redirect. The provider creates authorization data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth google
-     * @param {string} state
+     * @param {string} state Opaque provider OAuth state; callback-only input.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authCallbackGoogleV1: (state: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authCallbackGoogleV1: (state: string, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Internal VK ID callback to complete OAuth login and issue an HTTP 301 redirect. The OAuth guard supplies req.user, not an integration request; callback transport excludes this endpoint.
      * @summary Internal request of auth new vk
-     * @param {string} state
+     * @param {string} state Opaque provider OAuth state; callback-only input.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authCallbackVkIdV1: (state: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authCallbackVkIdV1: (state: string, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Internal legacy VK OAuth callback that redirects the browser with HTTP 301. The provider creates input data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth old vk
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authCallbackVkV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authCallbackVkV1: (xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Get a one-time authorization code for app in the current cabinet session. Session transport is excluded from integration profiles. The code is sensitive and is used by /method/auth/app/exchange; it is not intended for logs or the corpus.
      * @summary Get code for auth
-     * @param {AuthCodeV1LanguageEnum} language Current language
+     * @param {AuthCodeV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {AuthCodeV1AppEnum} app Create auth code for app
      * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authCodeV1: (language: AuthCodeV1LanguageEnum, app: AuthCodeV1AppEnum, v?: AuthCodeV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authCodeV1: (language: AuthCodeV1LanguageEnum, app: AuthCodeV1AppEnum, v?: AuthCodeV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Internal social connection completion callback. Returns text/html with a script that sends message to the parent window and closes the window. Callback transport excludes it from integration profiles; this is neither JSON nor a server tool catalog.
      * @summary CallBack for connect social
-     * @param {AuthConnectResultV1LanguageEnum} language Current language
+     * @param {AuthConnectResultV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} message Result message for connect
      * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authConnectResultV1: (language: AuthConnectResultV1LanguageEnum, message: string, v?: AuthConnectResultV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authConnectResultV1: (language: AuthConnectResultV1LanguageEnum, message: string, v?: AuthConnectResultV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Connect Telegram to the current user\'s account using signed Telegram data in body.data. The server verifies the signature. Available only to a project subject; does not extend account-token access. Success confirms the connection was processed.
      * @summary Connect telegram in account
-     * @param {AuthConnectTelegramV1LanguageEnum} language Current language
+     * @param {AuthConnectTelegramV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authConnectTelegramV1: (language: AuthConnectTelegramV1LanguageEnum, v?: AuthConnectTelegramV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authConnectTelegramV1: (language: AuthConnectTelegramV1LanguageEnum, v?: AuthConnectTelegramV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Start connecting a social provider to the current user account and redirect the browser to OAuth. GET starts the flow; completion depends on authorization and a callback. Available only to the project subject; list connections with GET /method/socials/list.
      * @summary Connected social account
-     * @param {AuthConnectV1LanguageEnum} language Current language
+     * @param {AuthConnectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {AuthConnectV1ProviderEnum} provider Provider oauth
      * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {AuthConnectV1AppEnum} [app] App oauth
      * @param {string} [redirect] Redirect url
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authConnectV1: (language: AuthConnectV1LanguageEnum, provider: AuthConnectV1ProviderEnum, v?: AuthConnectV1VEnum, app?: AuthConnectV1AppEnum, redirect?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authConnectV1: (language: AuthConnectV1LanguageEnum, provider: AuthConnectV1ProviderEnum, v?: AuthConnectV1VEnum, app?: AuthConnectV1AppEnum, redirect?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Disconnect social connection social_id of the current user. Despite using GET, this changes the connection rather than reading a list. Available only to a project subject; use GET /method/socials/list to list connections.
      * @summary Disconnected social account
-     * @param {AuthDisconnectV1LanguageEnum} language Current language
+     * @param {AuthDisconnectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} socialId Social id
      * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authDisconnectV1: (language: AuthDisconnectV1LanguageEnum, socialId: number, v?: AuthDisconnectV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authDisconnectV1: (language: AuthDisconnectV1LanguageEnum, socialId: number, v?: AuthDisconnectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Exchange a previously issued app authorization code for session data with userAgent/fingerprint. Callback transport is excluded from integration profiles. Returned credentials are sensitive; this endpoint is not for refreshing an external application\'s OAuth grant.
      * @summary Code exchange
      * @param {SiteAuthExchangeRequest} siteAuthExchangeRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authExchangeV1: (siteAuthExchangeRequest: SiteAuthExchangeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authExchangeV1: (siteAuthExchangeRequest: SiteAuthExchangeRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Start login through OAuth for the selected provider and redirect the browser to authorization. This callback transport is outside integration account/project profiles; the response is a redirect, not ready access-token JSON.
      * @summary Get url for start oauth
-     * @param {AuthGetAuthUrlV1LanguageEnum} language Current language
+     * @param {AuthGetAuthUrlV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {AuthGetAuthUrlV1ProviderEnum} provider Provider oauth
      * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {AuthGetAuthUrlV1AppEnum} [app] App oauth
@@ -114,17 +123,19 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @param {string} [refId] Referal id
      * @param {string} [country] Country code
      * @param {string} [visitorId] Anonymous landing visitor UUID v4
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authGetAuthUrlV1: (language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, visitorId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authGetAuthUrlV1: (language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, visitorId?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Internal callback/debug endpoint for client configuration: the current implementation always throws test and does not return a working configuration. Callback transport excludes it from account/project profiles.
      * @summary Get client configuration
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authGetClientConfigurationV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    authGetClientConfigurationV1: (xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AuthApi - functional programming interface
@@ -132,91 +143,100 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
  */
 export declare const AuthApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Internal Google OAuth callback that completes login and returns an HTTP 301 redirect. The provider creates authorization data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth google
-     * @param {string} state
+     * @param {string} state Opaque provider OAuth state; callback-only input.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authCallbackGoogleV1(state: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    authCallbackGoogleV1(state: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
-     *
+     * Internal VK ID callback to complete OAuth login and issue an HTTP 301 redirect. The OAuth guard supplies req.user, not an integration request; callback transport excludes this endpoint.
      * @summary Internal request of auth new vk
-     * @param {string} state
+     * @param {string} state Opaque provider OAuth state; callback-only input.
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authCallbackVkIdV1(state: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    authCallbackVkIdV1(state: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
-     *
+     * Internal legacy VK OAuth callback that redirects the browser with HTTP 301. The provider creates input data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth old vk
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authCallbackVkV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    authCallbackVkV1(xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
-     *
+     * Get a one-time authorization code for app in the current cabinet session. Session transport is excluded from integration profiles. The code is sensitive and is used by /method/auth/app/exchange; it is not intended for logs or the corpus.
      * @summary Get code for auth
-     * @param {AuthCodeV1LanguageEnum} language Current language
+     * @param {AuthCodeV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {AuthCodeV1AppEnum} app Create auth code for app
      * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authCodeV1(language: AuthCodeV1LanguageEnum, app: AuthCodeV1AppEnum, v?: AuthCodeV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CodeAppAuthResponse>>;
+    authCodeV1(language: AuthCodeV1LanguageEnum, app: AuthCodeV1AppEnum, v?: AuthCodeV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CodeAppAuthResponse>>;
     /**
-     *
+     * Internal social connection completion callback. Returns text/html with a script that sends message to the parent window and closes the window. Callback transport excludes it from integration profiles; this is neither JSON nor a server tool catalog.
      * @summary CallBack for connect social
-     * @param {AuthConnectResultV1LanguageEnum} language Current language
+     * @param {AuthConnectResultV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} message Result message for connect
      * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authConnectResultV1(language: AuthConnectResultV1LanguageEnum, message: string, v?: AuthConnectResultV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    authConnectResultV1(language: AuthConnectResultV1LanguageEnum, message: string, v?: AuthConnectResultV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
-     *
+     * Connect Telegram to the current user\'s account using signed Telegram data in body.data. The server verifies the signature. Available only to a project subject; does not extend account-token access. Success confirms the connection was processed.
      * @summary Connect telegram in account
-     * @param {AuthConnectTelegramV1LanguageEnum} language Current language
+     * @param {AuthConnectTelegramV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authConnectTelegramV1(language: AuthConnectTelegramV1LanguageEnum, v?: AuthConnectTelegramV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    authConnectTelegramV1(language: AuthConnectTelegramV1LanguageEnum, v?: AuthConnectTelegramV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Start connecting a social provider to the current user account and redirect the browser to OAuth. GET starts the flow; completion depends on authorization and a callback. Available only to the project subject; list connections with GET /method/socials/list.
      * @summary Connected social account
-     * @param {AuthConnectV1LanguageEnum} language Current language
+     * @param {AuthConnectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {AuthConnectV1ProviderEnum} provider Provider oauth
      * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {AuthConnectV1AppEnum} [app] App oauth
      * @param {string} [redirect] Redirect url
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authConnectV1(language: AuthConnectV1LanguageEnum, provider: AuthConnectV1ProviderEnum, v?: AuthConnectV1VEnum, app?: AuthConnectV1AppEnum, redirect?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    authConnectV1(language: AuthConnectV1LanguageEnum, provider: AuthConnectV1ProviderEnum, v?: AuthConnectV1VEnum, app?: AuthConnectV1AppEnum, redirect?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
-     *
+     * Disconnect social connection social_id of the current user. Despite using GET, this changes the connection rather than reading a list. Available only to a project subject; use GET /method/socials/list to list connections.
      * @summary Disconnected social account
-     * @param {AuthDisconnectV1LanguageEnum} language Current language
+     * @param {AuthDisconnectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} socialId Social id
      * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authDisconnectV1(language: AuthDisconnectV1LanguageEnum, socialId: number, v?: AuthDisconnectV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    authDisconnectV1(language: AuthDisconnectV1LanguageEnum, socialId: number, v?: AuthDisconnectV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Exchange a previously issued app authorization code for session data with userAgent/fingerprint. Callback transport is excluded from integration profiles. Returned credentials are sensitive; this endpoint is not for refreshing an external application\'s OAuth grant.
      * @summary Code exchange
      * @param {SiteAuthExchangeRequest} siteAuthExchangeRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authExchangeV1(siteAuthExchangeRequest: SiteAuthExchangeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RefreshAuthResponse>>;
+    authExchangeV1(siteAuthExchangeRequest: SiteAuthExchangeRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RefreshAuthResponse>>;
     /**
-     *
+     * Start login through OAuth for the selected provider and redirect the browser to authorization. This callback transport is outside integration account/project profiles; the response is a redirect, not ready access-token JSON.
      * @summary Get url for start oauth
-     * @param {AuthGetAuthUrlV1LanguageEnum} language Current language
+     * @param {AuthGetAuthUrlV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {AuthGetAuthUrlV1ProviderEnum} provider Provider oauth
      * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @param {AuthGetAuthUrlV1AppEnum} [app] App oauth
@@ -224,17 +244,19 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @param {string} [refId] Referal id
      * @param {string} [country] Country code
      * @param {string} [visitorId] Anonymous landing visitor UUID v4
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authGetAuthUrlV1(language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, visitorId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    authGetAuthUrlV1(language: AuthGetAuthUrlV1LanguageEnum, provider: AuthGetAuthUrlV1ProviderEnum, v?: AuthGetAuthUrlV1VEnum, app?: AuthGetAuthUrlV1AppEnum, redirect?: string, refId?: string, country?: string, visitorId?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
-     *
+     * Internal callback/debug endpoint for client configuration: the current implementation always throws test and does not return a working configuration. Callback transport excludes it from account/project profiles.
      * @summary Get client configuration
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authGetClientConfigurationV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    authGetClientConfigurationV1(xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * AuthApi - factory interface
@@ -242,7 +264,7 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
  */
 export declare const AuthApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Internal Google OAuth callback that completes login and returns an HTTP 301 redirect. The provider creates authorization data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth google
      * @param {AuthApiAuthCallbackGoogleV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -250,7 +272,7 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      */
     authCallbackGoogleV1(requestParameters: AuthApiAuthCallbackGoogleV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Internal VK ID callback to complete OAuth login and issue an HTTP 301 redirect. The OAuth guard supplies req.user, not an integration request; callback transport excludes this endpoint.
      * @summary Internal request of auth new vk
      * @param {AuthApiAuthCallbackVkIdV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -258,14 +280,15 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      */
     authCallbackVkIdV1(requestParameters: AuthApiAuthCallbackVkIdV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Internal legacy VK OAuth callback that redirects the browser with HTTP 301. The provider creates input data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth old vk
+     * @param {AuthApiAuthCallbackVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authCallbackVkV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    authCallbackVkV1(requestParameters?: AuthApiAuthCallbackVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Get a one-time authorization code for app in the current cabinet session. Session transport is excluded from integration profiles. The code is sensitive and is used by /method/auth/app/exchange; it is not intended for logs or the corpus.
      * @summary Get code for auth
      * @param {AuthApiAuthCodeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -273,7 +296,7 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      */
     authCodeV1(requestParameters: AuthApiAuthCodeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CodeAppAuthResponse>;
     /**
-     *
+     * Internal social connection completion callback. Returns text/html with a script that sends message to the parent window and closes the window. Callback transport excludes it from integration profiles; this is neither JSON nor a server tool catalog.
      * @summary CallBack for connect social
      * @param {AuthApiAuthConnectResultV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -281,7 +304,7 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      */
     authConnectResultV1(requestParameters: AuthApiAuthConnectResultV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Connect Telegram to the current user\'s account using signed Telegram data in body.data. The server verifies the signature. Available only to a project subject; does not extend account-token access. Success confirms the connection was processed.
      * @summary Connect telegram in account
      * @param {AuthApiAuthConnectTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -289,7 +312,7 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      */
     authConnectTelegramV1(requestParameters: AuthApiAuthConnectTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Start connecting a social provider to the current user account and redirect the browser to OAuth. GET starts the flow; completion depends on authorization and a callback. Available only to the project subject; list connections with GET /method/socials/list.
      * @summary Connected social account
      * @param {AuthApiAuthConnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -297,7 +320,7 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      */
     authConnectV1(requestParameters: AuthApiAuthConnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Disconnect social connection social_id of the current user. Despite using GET, this changes the connection rather than reading a list. Available only to a project subject; use GET /method/socials/list to list connections.
      * @summary Disconnected social account
      * @param {AuthApiAuthDisconnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -305,7 +328,7 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      */
     authDisconnectV1(requestParameters: AuthApiAuthDisconnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Exchange a previously issued app authorization code for session data with userAgent/fingerprint. Callback transport is excluded from integration profiles. Returned credentials are sensitive; this endpoint is not for refreshing an external application\'s OAuth grant.
      * @summary Code exchange
      * @param {AuthApiAuthExchangeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -313,7 +336,7 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      */
     authExchangeV1(requestParameters: AuthApiAuthExchangeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RefreshAuthResponse>;
     /**
-     *
+     * Start login through OAuth for the selected provider and redirect the browser to authorization. This callback transport is outside integration account/project profiles; the response is a redirect, not ready access-token JSON.
      * @summary Get url for start oauth
      * @param {AuthApiAuthGetAuthUrlV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -321,12 +344,13 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      */
     authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Internal callback/debug endpoint for client configuration: the current implementation always throws test and does not return a working configuration. Callback transport excludes it from account/project profiles.
      * @summary Get client configuration
+     * @param {AuthApiAuthGetClientConfigurationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authGetClientConfigurationV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    authGetClientConfigurationV1(requestParameters?: AuthApiAuthGetClientConfigurationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 };
 /**
  * AuthApi - interface
@@ -335,7 +359,7 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
  */
 export interface AuthApiInterface {
     /**
-     *
+     * Internal Google OAuth callback that completes login and returns an HTTP 301 redirect. The provider creates authorization data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth google
      * @param {AuthApiAuthCallbackGoogleV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -344,7 +368,7 @@ export interface AuthApiInterface {
      */
     authCallbackGoogleV1(requestParameters: AuthApiAuthCallbackGoogleV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Internal VK ID callback to complete OAuth login and issue an HTTP 301 redirect. The OAuth guard supplies req.user, not an integration request; callback transport excludes this endpoint.
      * @summary Internal request of auth new vk
      * @param {AuthApiAuthCallbackVkIdV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -353,15 +377,16 @@ export interface AuthApiInterface {
      */
     authCallbackVkIdV1(requestParameters: AuthApiAuthCallbackVkIdV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Internal legacy VK OAuth callback that redirects the browser with HTTP 301. The provider creates input data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth old vk
+     * @param {AuthApiAuthCallbackVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApiInterface
      */
-    authCallbackVkV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    authCallbackVkV1(requestParameters?: AuthApiAuthCallbackVkV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Get a one-time authorization code for app in the current cabinet session. Session transport is excluded from integration profiles. The code is sensitive and is used by /method/auth/app/exchange; it is not intended for logs or the corpus.
      * @summary Get code for auth
      * @param {AuthApiAuthCodeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -370,7 +395,7 @@ export interface AuthApiInterface {
      */
     authCodeV1(requestParameters: AuthApiAuthCodeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CodeAppAuthResponse>;
     /**
-     *
+     * Internal social connection completion callback. Returns text/html with a script that sends message to the parent window and closes the window. Callback transport excludes it from integration profiles; this is neither JSON nor a server tool catalog.
      * @summary CallBack for connect social
      * @param {AuthApiAuthConnectResultV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -379,7 +404,7 @@ export interface AuthApiInterface {
      */
     authConnectResultV1(requestParameters: AuthApiAuthConnectResultV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Connect Telegram to the current user\'s account using signed Telegram data in body.data. The server verifies the signature. Available only to a project subject; does not extend account-token access. Success confirms the connection was processed.
      * @summary Connect telegram in account
      * @param {AuthApiAuthConnectTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -388,7 +413,7 @@ export interface AuthApiInterface {
      */
     authConnectTelegramV1(requestParameters: AuthApiAuthConnectTelegramV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Start connecting a social provider to the current user account and redirect the browser to OAuth. GET starts the flow; completion depends on authorization and a callback. Available only to the project subject; list connections with GET /method/socials/list.
      * @summary Connected social account
      * @param {AuthApiAuthConnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -397,7 +422,7 @@ export interface AuthApiInterface {
      */
     authConnectV1(requestParameters: AuthApiAuthConnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Disconnect social connection social_id of the current user. Despite using GET, this changes the connection rather than reading a list. Available only to a project subject; use GET /method/socials/list to list connections.
      * @summary Disconnected social account
      * @param {AuthApiAuthDisconnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -406,7 +431,7 @@ export interface AuthApiInterface {
      */
     authDisconnectV1(requestParameters: AuthApiAuthDisconnectV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Exchange a previously issued app authorization code for session data with userAgent/fingerprint. Callback transport is excluded from integration profiles. Returned credentials are sensitive; this endpoint is not for refreshing an external application\'s OAuth grant.
      * @summary Code exchange
      * @param {AuthApiAuthExchangeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -415,7 +440,7 @@ export interface AuthApiInterface {
      */
     authExchangeV1(requestParameters: AuthApiAuthExchangeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<RefreshAuthResponse>;
     /**
-     *
+     * Start login through OAuth for the selected provider and redirect the browser to authorization. This callback transport is outside integration account/project profiles; the response is a redirect, not ready access-token JSON.
      * @summary Get url for start oauth
      * @param {AuthApiAuthGetAuthUrlV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -424,13 +449,14 @@ export interface AuthApiInterface {
      */
     authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
-     *
+     * Internal callback/debug endpoint for client configuration: the current implementation always throws test and does not return a working configuration. Callback transport excludes it from account/project profiles.
      * @summary Get client configuration
+     * @param {AuthApiAuthGetClientConfigurationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApiInterface
      */
-    authGetClientConfigurationV1(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    authGetClientConfigurationV1(requestParameters?: AuthApiAuthGetClientConfigurationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<void>;
 }
 /**
  * Request parameters for authCallbackGoogleV1 operation in AuthApi.
@@ -439,11 +465,17 @@ export interface AuthApiInterface {
  */
 export interface AuthApiAuthCallbackGoogleV1Request {
     /**
-     *
+     * Opaque provider OAuth state; callback-only input.
      * @type {string}
      * @memberof AuthApiAuthCallbackGoogleV1
      */
-    readonly state: string;
+    readonly 'state': string;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthCallbackGoogleV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for authCallbackVkIdV1 operation in AuthApi.
@@ -452,11 +484,30 @@ export interface AuthApiAuthCallbackGoogleV1Request {
  */
 export interface AuthApiAuthCallbackVkIdV1Request {
     /**
-     *
+     * Opaque provider OAuth state; callback-only input.
      * @type {string}
      * @memberof AuthApiAuthCallbackVkIdV1
      */
-    readonly state: string;
+    readonly 'state': string;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthCallbackVkIdV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+}
+/**
+ * Request parameters for authCallbackVkV1 operation in AuthApi.
+ * @export
+ * @interface AuthApiAuthCallbackVkV1Request
+ */
+export interface AuthApiAuthCallbackVkV1Request {
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthCallbackVkV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for authCodeV1 operation in AuthApi.
@@ -465,23 +516,29 @@ export interface AuthApiAuthCallbackVkIdV1Request {
  */
 export interface AuthApiAuthCodeV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof AuthApiAuthCodeV1
      */
-    readonly language: AuthCodeV1LanguageEnum;
+    readonly 'language': AuthCodeV1LanguageEnum;
     /**
      * Create auth code for app
      * @type {'site' | 'admin' | 'mobile' | 'desktop'}
      * @memberof AuthApiAuthCodeV1
      */
-    readonly app: AuthCodeV1AppEnum;
+    readonly 'app': AuthCodeV1AppEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthCodeV1
      */
-    readonly v?: AuthCodeV1VEnum;
+    readonly 'v'?: AuthCodeV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthCodeV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for authConnectResultV1 operation in AuthApi.
@@ -490,23 +547,29 @@ export interface AuthApiAuthCodeV1Request {
  */
 export interface AuthApiAuthConnectResultV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof AuthApiAuthConnectResultV1
      */
-    readonly language: AuthConnectResultV1LanguageEnum;
+    readonly 'language': AuthConnectResultV1LanguageEnum;
     /**
      * Result message for connect
      * @type {string}
      * @memberof AuthApiAuthConnectResultV1
      */
-    readonly message: string;
+    readonly 'message': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthConnectResultV1
      */
-    readonly v?: AuthConnectResultV1VEnum;
+    readonly 'v'?: AuthConnectResultV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthConnectResultV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for authConnectTelegramV1 operation in AuthApi.
@@ -515,17 +578,23 @@ export interface AuthApiAuthConnectResultV1Request {
  */
 export interface AuthApiAuthConnectTelegramV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof AuthApiAuthConnectTelegramV1
      */
-    readonly language: AuthConnectTelegramV1LanguageEnum;
+    readonly 'language': AuthConnectTelegramV1LanguageEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthConnectTelegramV1
      */
-    readonly v?: AuthConnectTelegramV1VEnum;
+    readonly 'v'?: AuthConnectTelegramV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthConnectTelegramV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for authConnectV1 operation in AuthApi.
@@ -534,35 +603,41 @@ export interface AuthApiAuthConnectTelegramV1Request {
  */
 export interface AuthApiAuthConnectV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof AuthApiAuthConnectV1
      */
-    readonly language: AuthConnectV1LanguageEnum;
+    readonly 'language': AuthConnectV1LanguageEnum;
     /**
      * Provider oauth
      * @type {'google' | 'vk' | 'vk-id' | 'telegram'}
      * @memberof AuthApiAuthConnectV1
      */
-    readonly provider: AuthConnectV1ProviderEnum;
+    readonly 'provider': AuthConnectV1ProviderEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthConnectV1
      */
-    readonly v?: AuthConnectV1VEnum;
+    readonly 'v'?: AuthConnectV1VEnum;
     /**
      * App oauth
      * @type {'site' | 'admin' | 'mobile' | 'desktop'}
      * @memberof AuthApiAuthConnectV1
      */
-    readonly app?: AuthConnectV1AppEnum;
+    readonly 'app'?: AuthConnectV1AppEnum;
     /**
      * Redirect url
      * @type {string}
      * @memberof AuthApiAuthConnectV1
      */
-    readonly redirect?: string;
+    readonly 'redirect'?: string;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthConnectV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for authDisconnectV1 operation in AuthApi.
@@ -571,23 +646,29 @@ export interface AuthApiAuthConnectV1Request {
  */
 export interface AuthApiAuthDisconnectV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof AuthApiAuthDisconnectV1
      */
-    readonly language: AuthDisconnectV1LanguageEnum;
+    readonly 'language': AuthDisconnectV1LanguageEnum;
     /**
      * Social id
      * @type {number}
      * @memberof AuthApiAuthDisconnectV1
      */
-    readonly social_id: number;
+    readonly 'social_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthDisconnectV1
      */
-    readonly v?: AuthDisconnectV1VEnum;
+    readonly 'v'?: AuthDisconnectV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthDisconnectV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for authExchangeV1 operation in AuthApi.
@@ -600,7 +681,13 @@ export interface AuthApiAuthExchangeV1Request {
      * @type {SiteAuthExchangeRequest}
      * @memberof AuthApiAuthExchangeV1
      */
-    readonly SiteAuthExchangeRequest: SiteAuthExchangeRequest;
+    readonly 'SiteAuthExchangeRequest': SiteAuthExchangeRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthExchangeV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for authGetAuthUrlV1 operation in AuthApi.
@@ -609,53 +696,72 @@ export interface AuthApiAuthExchangeV1Request {
  */
 export interface AuthApiAuthGetAuthUrlV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof AuthApiAuthGetAuthUrlV1
      */
-    readonly language: AuthGetAuthUrlV1LanguageEnum;
+    readonly 'language': AuthGetAuthUrlV1LanguageEnum;
     /**
      * Provider oauth
      * @type {'google' | 'vk' | 'vk-id' | 'telegram'}
      * @memberof AuthApiAuthGetAuthUrlV1
      */
-    readonly provider: AuthGetAuthUrlV1ProviderEnum;
+    readonly 'provider': AuthGetAuthUrlV1ProviderEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof AuthApiAuthGetAuthUrlV1
      */
-    readonly v?: AuthGetAuthUrlV1VEnum;
+    readonly 'v'?: AuthGetAuthUrlV1VEnum;
     /**
      * App oauth
      * @type {'site' | 'admin' | 'mobile' | 'desktop'}
      * @memberof AuthApiAuthGetAuthUrlV1
      */
-    readonly app?: AuthGetAuthUrlV1AppEnum;
+    readonly 'app'?: AuthGetAuthUrlV1AppEnum;
     /**
      * Redirect url
      * @type {string}
      * @memberof AuthApiAuthGetAuthUrlV1
      */
-    readonly redirect?: string;
+    readonly 'redirect'?: string;
     /**
      * Referal id
      * @type {string}
      * @memberof AuthApiAuthGetAuthUrlV1
      */
-    readonly refId?: string;
+    readonly 'refId'?: string;
     /**
      * Country code
      * @type {string}
      * @memberof AuthApiAuthGetAuthUrlV1
      */
-    readonly country?: string;
+    readonly 'country'?: string;
     /**
      * Anonymous landing visitor UUID v4
      * @type {string}
      * @memberof AuthApiAuthGetAuthUrlV1
      */
-    readonly visitorId?: string;
+    readonly 'visitorId'?: string;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthGetAuthUrlV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+}
+/**
+ * Request parameters for authGetClientConfigurationV1 operation in AuthApi.
+ * @export
+ * @interface AuthApiAuthGetClientConfigurationV1Request
+ */
+export interface AuthApiAuthGetClientConfigurationV1Request {
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof AuthApiAuthGetClientConfigurationV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * AuthApi - object-oriented interface
@@ -665,7 +771,7 @@ export interface AuthApiAuthGetAuthUrlV1Request {
  */
 export declare class AuthApi extends BaseAPI implements AuthApiInterface {
     /**
-     *
+     * Internal Google OAuth callback that completes login and returns an HTTP 301 redirect. The provider creates authorization data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth google
      * @param {AuthApiAuthCallbackGoogleV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -674,7 +780,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      */
     authCallbackGoogleV1(requestParameters: AuthApiAuthCallbackGoogleV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
-     *
+     * Internal VK ID callback to complete OAuth login and issue an HTTP 301 redirect. The OAuth guard supplies req.user, not an integration request; callback transport excludes this endpoint.
      * @summary Internal request of auth new vk
      * @param {AuthApiAuthCallbackVkIdV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -683,15 +789,16 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      */
     authCallbackVkIdV1(requestParameters: AuthApiAuthCallbackVkIdV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
-     *
+     * Internal legacy VK OAuth callback that redirects the browser with HTTP 301. The provider creates input data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth old vk
+     * @param {AuthApiAuthCallbackVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authCallbackVkV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    authCallbackVkV1(requestParameters?: AuthApiAuthCallbackVkV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
-     *
+     * Get a one-time authorization code for app in the current cabinet session. Session transport is excluded from integration profiles. The code is sensitive and is used by /method/auth/app/exchange; it is not intended for logs or the corpus.
      * @summary Get code for auth
      * @param {AuthApiAuthCodeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -700,7 +807,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      */
     authCodeV1(requestParameters: AuthApiAuthCodeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CodeAppAuthResponse, any, {}, any>>;
     /**
-     *
+     * Internal social connection completion callback. Returns text/html with a script that sends message to the parent window and closes the window. Callback transport excludes it from integration profiles; this is neither JSON nor a server tool catalog.
      * @summary CallBack for connect social
      * @param {AuthApiAuthConnectResultV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -709,7 +816,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      */
     authConnectResultV1(requestParameters: AuthApiAuthConnectResultV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
-     *
+     * Connect Telegram to the current user\'s account using signed Telegram data in body.data. The server verifies the signature. Available only to a project subject; does not extend account-token access. Success confirms the connection was processed.
      * @summary Connect telegram in account
      * @param {AuthApiAuthConnectTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -718,7 +825,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      */
     authConnectTelegramV1(requestParameters: AuthApiAuthConnectTelegramV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Start connecting a social provider to the current user account and redirect the browser to OAuth. GET starts the flow; completion depends on authorization and a callback. Available only to the project subject; list connections with GET /method/socials/list.
      * @summary Connected social account
      * @param {AuthApiAuthConnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -727,7 +834,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      */
     authConnectV1(requestParameters: AuthApiAuthConnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
-     *
+     * Disconnect social connection social_id of the current user. Despite using GET, this changes the connection rather than reading a list. Available only to a project subject; use GET /method/socials/list to list connections.
      * @summary Disconnected social account
      * @param {AuthApiAuthDisconnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -736,7 +843,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      */
     authDisconnectV1(requestParameters: AuthApiAuthDisconnectV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Exchange a previously issued app authorization code for session data with userAgent/fingerprint. Callback transport is excluded from integration profiles. Returned credentials are sensitive; this endpoint is not for refreshing an external application\'s OAuth grant.
      * @summary Code exchange
      * @param {AuthApiAuthExchangeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -745,7 +852,7 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      */
     authExchangeV1(requestParameters: AuthApiAuthExchangeV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RefreshAuthResponse, any, {}, any>>;
     /**
-     *
+     * Start login through OAuth for the selected provider and redirect the browser to authorization. This callback transport is outside integration account/project profiles; the response is a redirect, not ready access-token JSON.
      * @summary Get url for start oauth
      * @param {AuthApiAuthGetAuthUrlV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -754,13 +861,14 @@ export declare class AuthApi extends BaseAPI implements AuthApiInterface {
      */
     authGetAuthUrlV1(requestParameters: AuthApiAuthGetAuthUrlV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
-     *
+     * Internal callback/debug endpoint for client configuration: the current implementation always throws test and does not return a working configuration. Callback transport excludes it from account/project profiles.
      * @summary Get client configuration
+     * @param {AuthApiAuthGetClientConfigurationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authGetClientConfigurationV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    authGetClientConfigurationV1(requestParameters?: AuthApiAuthGetClientConfigurationV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
 }
 /**
  * @export

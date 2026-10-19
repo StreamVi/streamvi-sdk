@@ -32,15 +32,16 @@ import type { SiteTotalInfoReferralsResponse } from '../models';
 export const ReferralsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
-         * @summary Total info
-         * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
+         * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+         * @summary Get project referral statistics
+         * @param {ReferralsTotalInfoV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        referralsTotalInfoV1: async (language: ReferralsTotalInfoV1LanguageEnum, projectId: number, v?: ReferralsTotalInfoV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        referralsTotalInfoV1: async (language: ReferralsTotalInfoV1LanguageEnum, projectId: number, v?: ReferralsTotalInfoV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('referralsTotalInfoV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -57,9 +58,13 @@ export const ReferralsApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["project:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["project:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["project:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -77,6 +82,9 @@ export const ReferralsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -97,16 +105,17 @@ export const ReferralsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ReferralsApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
-         * @summary Total info
-         * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
+         * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+         * @summary Get project referral statistics
+         * @param {ReferralsTotalInfoV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async referralsTotalInfoV1(language: ReferralsTotalInfoV1LanguageEnum, projectId: number, v?: ReferralsTotalInfoV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTotalInfoReferralsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.referralsTotalInfoV1(language, projectId, v, options);
+        async referralsTotalInfoV1(language: ReferralsTotalInfoV1LanguageEnum, projectId: number, v?: ReferralsTotalInfoV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTotalInfoReferralsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.referralsTotalInfoV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ReferralsApi.referralsTotalInfoV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -122,14 +131,14 @@ export const ReferralsApiFactory = function (configuration?: Configuration, base
     const localVarFp = ReferralsApiFp(configuration)
     return {
         /**
-         * 
-         * @summary Total info
+         * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+         * @summary Get project referral statistics
          * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SiteTotalInfoReferralsResponse> {
-            return localVarFp.referralsTotalInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.referralsTotalInfoV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -141,8 +150,8 @@ export const ReferralsApiFactory = function (configuration?: Configuration, base
  */
 export interface ReferralsApiInterface {
     /**
-     * 
-     * @summary Total info
+     * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+     * @summary Get project referral statistics
      * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -159,25 +168,32 @@ export interface ReferralsApiInterface {
  */
 export interface ReferralsApiReferralsTotalInfoV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */
-    readonly language: ReferralsTotalInfoV1LanguageEnum
+    readonly 'language': ReferralsTotalInfoV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */
-    readonly v?: ReferralsTotalInfoV1VEnum
+    readonly 'v'?: ReferralsTotalInfoV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ReferralsApiReferralsTotalInfoV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -188,15 +204,15 @@ export interface ReferralsApiReferralsTotalInfoV1Request {
  */
 export class ReferralsApi extends BaseAPI implements ReferralsApiInterface {
     /**
-     * 
-     * @summary Total info
+     * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+     * @summary Get project referral statistics
      * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReferralsApi
      */
     public referralsTotalInfoV1(requestParameters: ReferralsApiReferralsTotalInfoV1Request, options?: RawAxiosRequestConfig) {
-        return ReferralsApiFp(this.configuration).referralsTotalInfoV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return ReferralsApiFp(this.configuration).referralsTotalInfoV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **currency** | **string** | Currency | [default to undefined]
 **countrie_id** | **number** | Country | [default to undefined]
 **language** | **string** | Language | [default to undefined]
-**balance** | **number** | Balance | [default to undefined]
+**balance** | **number** | Balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to undefined]
 **lastProjectId** | **number** | Last select project | [default to undefined]
 
 ## Example

@@ -27,7 +27,7 @@ export interface SiteUpdateOptionsYoutubeRequest {
      */
     'v'?: SiteUpdateOptionsYoutubeRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
@@ -39,19 +39,19 @@ export interface SiteUpdateOptionsYoutubeRequest {
      */
     'project_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
     'channel_id': number;
     /**
-     * 
+     * Platform broadcast title; supplied explicitly, omission does not insert the example title.
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
     'title': string;
     /**
-     * 
+     * Broadcast description on the platform; supplied explicitly. Do not confuse it with the channel configuration description or API documentation.
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
@@ -75,43 +75,43 @@ export interface SiteUpdateOptionsYoutubeRequest {
      */
     'playlist_id'?: string;
     /**
-     * 
+     * Age/children audience category from the platform enum; when omitted, the transformed parameter remains undefined.
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
     'audience'?: SiteUpdateOptionsYoutubeRequestAudienceEnum;
     /**
-     * 
+     * YouTube latency mode from enum; not an integer number of protection minutes.
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
     'latency'?: SiteUpdateOptionsYoutubeRequestLatencyEnum;
     /**
-     * 
+     * Platform broadcast visibility from its enum; omission does not insert demonstration text.
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
     'privacy_video'?: SiteUpdateOptionsYoutubeRequestPrivacyVideoEnum;
     /**
-     * 
+     * HTTPS URL on preview.streamvi.net or data:image/png|jpeg|jpg|gif;base64. Omitting image when a preview exists initiates preview removal in the save workflow.
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
     'image'?: string;
     /**
-     * 
+     * Broadcast content language from the platform enum; differs from API localization language.
      * @type {string}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
     'lang'?: SiteUpdateOptionsYoutubeRequestLangEnum;
     /**
-     * 
+     * Nonempty tag array when supplied; total length including commas and quotes must not exceed 500 characters. An empty array is rejected by the validator.
      * @type {Array<string>}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */
     'tags'?: Array<string>;
     /**
-     * 
+     * Disable automatic termination of the platform broadcast when true is provided; false sets the opposite value. An omitted value is transformed to undefined.
      * @type {boolean}
      * @memberof SiteUpdateOptionsYoutubeRequest
      */

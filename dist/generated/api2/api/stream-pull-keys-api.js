@@ -30,16 +30,17 @@ const base_1 = require("../base");
 const StreamPullKeysApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Check an existing secret pull key and get transport/status. Missing keys produce stream_pull_keys.not_found; status shows the registered key state. This method does not create a pull link; key is sensitive and must not be logged.
          * @summary Check key
-         * @param {StreamPullKeysSiteCheckV1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {string} key Key
          * @param {StreamPullKeysSiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamPullKeysSiteCheckV1: async (language, projectId, key, v, options = {}) => {
+        streamPullKeysSiteCheckV1: async (language, projectId, key, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('streamPullKeysSiteCheckV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -56,9 +57,12 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["stream-keys:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["stream-keys:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["stream-keys:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -74,6 +78,9 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             if (key !== undefined) {
                 localVarQueryParameter['key'] = key;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -83,13 +90,14 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Create a pull link for project_id and transport with name (Link by default). Checks the plan\'s pull_link_limit and pull server availability. Returns the new record\'s internal id, not a ready video stream; read uuid/shareUrl credentials from GET /method/stream-pull-keys.
          * @summary Create key
          * @param {CreatePullKeyRequest} createPullKeyRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamPullKeysSiteCreateV1: async (createPullKeyRequest, options = {}) => {
+        streamPullKeysSiteCreateV1: async (createPullKeyRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'createPullKeyRequest' is not null or undefined
             (0, common_1.assertParamExists)('streamPullKeysSiteCreateV1', 'createPullKeyRequest', createPullKeyRequest);
@@ -103,10 +111,16 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["stream-keys:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["stream-keys:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -118,15 +132,16 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read pull links for project_id: internal id, secret uuid, transport/status/name, and shareUrl. Use uuid as key in update/delete/check; the record id does not replace key. Do not include live links or keys in the corpus or logs.
          * @summary List keys
-         * @param {StreamPullKeysSiteGetV1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {StreamPullKeysSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamPullKeysSiteGetV1: async (language, projectId, v, options = {}) => {
+        streamPullKeysSiteGetV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('streamPullKeysSiteGetV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -141,9 +156,12 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["stream-keys:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["stream-keys:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["stream-keys:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -156,6 +174,9 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -165,16 +186,17 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Delete a pull key of the selected project_id. key is the secret uuid from the list. This revokes a pull link without deleting an RTMP channel or stopping the entire broadcast; returns success.
          * @summary Delete key
-         * @param {StreamPullKeysSiteRemoveV1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteRemoveV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {string} key Key
          * @param {StreamPullKeysSiteRemoveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamPullKeysSiteRemoveV1: async (language, projectId, key, v, options = {}) => {
+        streamPullKeysSiteRemoveV1: async (language, projectId, key, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('streamPullKeysSiteRemoveV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -191,9 +213,12 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["stream-keys:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["stream-keys:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -209,6 +234,9 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             if (key !== undefined) {
                 localVarQueryParameter['key'] = key;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -218,13 +246,14 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Change region for an existing pull key in project_id. key is the secret uuid from the list, not the internal record id. Success confirms the configuration workflow; does not create a new link or change the source stream key.
          * @summary Update key
          * @param {UpdatePullKeyRequest} updatePullKeyRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamPullKeysSiteUpdateV1: async (updatePullKeyRequest, options = {}) => {
+        streamPullKeysSiteUpdateV1: async (updatePullKeyRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'updatePullKeyRequest' is not null or undefined
             (0, common_1.assertParamExists)('streamPullKeysSiteUpdateV1', 'updatePullKeyRequest', updatePullKeyRequest);
@@ -238,10 +267,16 @@ const StreamPullKeysApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["stream-keys:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["stream-keys:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -263,79 +298,84 @@ const StreamPullKeysApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.StreamPullKeysApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Check an existing secret pull key and get transport/status. Missing keys produce stream_pull_keys.not_found; status shows the registered key state. This method does not create a pull link; key is sensitive and must not be logged.
          * @summary Check key
-         * @param {StreamPullKeysSiteCheckV1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {string} key Key
          * @param {StreamPullKeysSiteCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamPullKeysSiteCheckV1(language, projectId, key, v, options) {
+        async streamPullKeysSiteCheckV1(language, projectId, key, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteCheckV1(language, projectId, key, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteCheckV1(language, projectId, key, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamPullKeysApi.streamPullKeysSiteCheckV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Create a pull link for project_id and transport with name (Link by default). Checks the plan\'s pull_link_limit and pull server availability. Returns the new record\'s internal id, not a ready video stream; read uuid/shareUrl credentials from GET /method/stream-pull-keys.
          * @summary Create key
          * @param {CreatePullKeyRequest} createPullKeyRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamPullKeysSiteCreateV1(createPullKeyRequest, options) {
+        async streamPullKeysSiteCreateV1(createPullKeyRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteCreateV1(createPullKeyRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteCreateV1(createPullKeyRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamPullKeysApi.streamPullKeysSiteCreateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read pull links for project_id: internal id, secret uuid, transport/status/name, and shareUrl. Use uuid as key in update/delete/check; the record id does not replace key. Do not include live links or keys in the corpus or logs.
          * @summary List keys
-         * @param {StreamPullKeysSiteGetV1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {StreamPullKeysSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamPullKeysSiteGetV1(language, projectId, v, options) {
+        async streamPullKeysSiteGetV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteGetV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteGetV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamPullKeysApi.streamPullKeysSiteGetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Delete a pull key of the selected project_id. key is the secret uuid from the list. This revokes a pull link without deleting an RTMP channel or stopping the entire broadcast; returns success.
          * @summary Delete key
-         * @param {StreamPullKeysSiteRemoveV1LanguageEnum} language Current language
+         * @param {StreamPullKeysSiteRemoveV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {string} key Key
          * @param {StreamPullKeysSiteRemoveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamPullKeysSiteRemoveV1(language, projectId, key, v, options) {
+        async streamPullKeysSiteRemoveV1(language, projectId, key, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteRemoveV1(language, projectId, key, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteRemoveV1(language, projectId, key, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamPullKeysApi.streamPullKeysSiteRemoveV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Change region for an existing pull key in project_id. key is the secret uuid from the list, not the internal record id. Success confirms the configuration workflow; does not create a new link or change the source stream key.
          * @summary Update key
          * @param {UpdatePullKeyRequest} updatePullKeyRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamPullKeysSiteUpdateV1(updatePullKeyRequest, options) {
+        async streamPullKeysSiteUpdateV1(updatePullKeyRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteUpdateV1(updatePullKeyRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamPullKeysSiteUpdateV1(updatePullKeyRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamPullKeysApi.streamPullKeysSiteUpdateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -351,54 +391,54 @@ const StreamPullKeysApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.StreamPullKeysApiFp)(configuration);
     return {
         /**
-         *
+         * Check an existing secret pull key and get transport/status. Missing keys produce stream_pull_keys.not_found; status shows the registered key state. This method does not create a pull link; key is sensitive and must not be logged.
          * @summary Check key
          * @param {StreamPullKeysApiStreamPullKeysSiteCheckV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         streamPullKeysSiteCheckV1(requestParameters, options) {
-            return localVarFp.streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteCheckV1(requestParameters['language'], requestParameters['project_id'], requestParameters['key'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Create a pull link for project_id and transport with name (Link by default). Checks the plan\'s pull_link_limit and pull server availability. Returns the new record\'s internal id, not a ready video stream; read uuid/shareUrl credentials from GET /method/stream-pull-keys.
          * @summary Create key
          * @param {StreamPullKeysApiStreamPullKeysSiteCreateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         streamPullKeysSiteCreateV1(requestParameters, options) {
-            return localVarFp.streamPullKeysSiteCreateV1(requestParameters.CreatePullKeyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteCreateV1(requestParameters['CreatePullKeyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read pull links for project_id: internal id, secret uuid, transport/status/name, and shareUrl. Use uuid as key in update/delete/check; the record id does not replace key. Do not include live links or keys in the corpus or logs.
          * @summary List keys
          * @param {StreamPullKeysApiStreamPullKeysSiteGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         streamPullKeysSiteGetV1(requestParameters, options) {
-            return localVarFp.streamPullKeysSiteGetV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteGetV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Delete a pull key of the selected project_id. key is the secret uuid from the list. This revokes a pull link without deleting an RTMP channel or stopping the entire broadcast; returns success.
          * @summary Delete key
          * @param {StreamPullKeysApiStreamPullKeysSiteRemoveV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         streamPullKeysSiteRemoveV1(requestParameters, options) {
-            return localVarFp.streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteRemoveV1(requestParameters['language'], requestParameters['project_id'], requestParameters['key'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Change region for an existing pull key in project_id. key is the secret uuid from the list, not the internal record id. Success confirms the configuration workflow; does not create a new link or change the source stream key.
          * @summary Update key
          * @param {StreamPullKeysApiStreamPullKeysSiteUpdateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         streamPullKeysSiteUpdateV1(requestParameters, options) {
-            return localVarFp.streamPullKeysSiteUpdateV1(requestParameters.UpdatePullKeyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamPullKeysSiteUpdateV1(requestParameters['UpdatePullKeyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -411,7 +451,7 @@ exports.StreamPullKeysApiFactory = StreamPullKeysApiFactory;
  */
 class StreamPullKeysApi extends base_1.BaseAPI {
     /**
-     *
+     * Check an existing secret pull key and get transport/status. Missing keys produce stream_pull_keys.not_found; status shows the registered key state. This method does not create a pull link; key is sensitive and must not be logged.
      * @summary Check key
      * @param {StreamPullKeysApiStreamPullKeysSiteCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -419,10 +459,10 @@ class StreamPullKeysApi extends base_1.BaseAPI {
      * @memberof StreamPullKeysApi
      */
     streamPullKeysSiteCheckV1(requestParameters, options) {
-        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteCheckV1(requestParameters['language'], requestParameters['project_id'], requestParameters['key'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Create a pull link for project_id and transport with name (Link by default). Checks the plan\'s pull_link_limit and pull server availability. Returns the new record\'s internal id, not a ready video stream; read uuid/shareUrl credentials from GET /method/stream-pull-keys.
      * @summary Create key
      * @param {StreamPullKeysApiStreamPullKeysSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -430,10 +470,10 @@ class StreamPullKeysApi extends base_1.BaseAPI {
      * @memberof StreamPullKeysApi
      */
     streamPullKeysSiteCreateV1(requestParameters, options) {
-        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteCreateV1(requestParameters.CreatePullKeyRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteCreateV1(requestParameters['CreatePullKeyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read pull links for project_id: internal id, secret uuid, transport/status/name, and shareUrl. Use uuid as key in update/delete/check; the record id does not replace key. Do not include live links or keys in the corpus or logs.
      * @summary List keys
      * @param {StreamPullKeysApiStreamPullKeysSiteGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -441,10 +481,10 @@ class StreamPullKeysApi extends base_1.BaseAPI {
      * @memberof StreamPullKeysApi
      */
     streamPullKeysSiteGetV1(requestParameters, options) {
-        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteGetV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteGetV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Delete a pull key of the selected project_id. key is the secret uuid from the list. This revokes a pull link without deleting an RTMP channel or stopping the entire broadcast; returns success.
      * @summary Delete key
      * @param {StreamPullKeysApiStreamPullKeysSiteRemoveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -452,10 +492,10 @@ class StreamPullKeysApi extends base_1.BaseAPI {
      * @memberof StreamPullKeysApi
      */
     streamPullKeysSiteRemoveV1(requestParameters, options) {
-        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.key, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteRemoveV1(requestParameters['language'], requestParameters['project_id'], requestParameters['key'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Change region for an existing pull key in project_id. key is the secret uuid from the list, not the internal record id. Success confirms the configuration workflow; does not create a new link or change the source stream key.
      * @summary Update key
      * @param {StreamPullKeysApiStreamPullKeysSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -463,7 +503,7 @@ class StreamPullKeysApi extends base_1.BaseAPI {
      * @memberof StreamPullKeysApi
      */
     streamPullKeysSiteUpdateV1(requestParameters, options) {
-        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteUpdateV1(requestParameters.UpdatePullKeyRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamPullKeysApiFp)(this.configuration).streamPullKeysSiteUpdateV1(requestParameters['UpdatePullKeyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.StreamPullKeysApi = StreamPullKeysApi;

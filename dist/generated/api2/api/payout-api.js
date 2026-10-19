@@ -30,15 +30,16 @@ const base_1 = require("../base");
 const PayoutApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Create a payout request for project_id to wallet_value through payout_system_account_id. amount uses minor units of the project currency, which must match the payout account currency (10000 = 100 major units). Success confirms the request, not a completed provider transfer; read available systems and restrictions with GET /method/payout/prepare.
          * @summary Create payout
-         * @param {PayoutCreateV1LanguageEnum} language Current language
+         * @param {PayoutCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto
          * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        payoutCreateV1: async (language, payoutCreateRequestBodyDto, v, options = {}) => {
+        payoutCreateV1: async (language, payoutCreateRequestBodyDto, v, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('payoutCreateV1', 'language', language);
@@ -54,9 +55,12 @@ const PayoutApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["payout:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["payout:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -67,6 +71,9 @@ const PayoutApiAxiosParamCreator = function (configuration) {
                 localVarQueryParameter['language'] = language;
             }
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -78,15 +85,16 @@ const PayoutApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read payout systems/accounts available to the current user for project_id and data needed to prepare a request. This is a preview without creating a payout or debiting funds. Use the returned payout_system_account_id in POST /method/payout/create.
          * @summary Get payout data for create
-         * @param {PayoutPrepareV1LanguageEnum} language Current language
+         * @param {PayoutPrepareV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        payoutPrepareV1: async (language, projectId, v, options = {}) => {
+        payoutPrepareV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('payoutPrepareV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -101,9 +109,12 @@ const PayoutApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["payout:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["payout:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["payout:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -115,6 +126,9 @@ const PayoutApiAxiosParamCreator = function (configuration) {
             }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -135,33 +149,35 @@ const PayoutApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.PayoutApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Create a payout request for project_id to wallet_value through payout_system_account_id. amount uses minor units of the project currency, which must match the payout account currency (10000 = 100 major units). Success confirms the request, not a completed provider transfer; read available systems and restrictions with GET /method/payout/prepare.
          * @summary Create payout
-         * @param {PayoutCreateV1LanguageEnum} language Current language
+         * @param {PayoutCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PayoutCreateRequestBodyDto} payoutCreateRequestBodyDto
          * @param {PayoutCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async payoutCreateV1(language, payoutCreateRequestBodyDto, v, options) {
+        async payoutCreateV1(language, payoutCreateRequestBodyDto, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.payoutCreateV1(language, payoutCreateRequestBodyDto, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.payoutCreateV1(language, payoutCreateRequestBodyDto, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PayoutApi.payoutCreateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read payout systems/accounts available to the current user for project_id and data needed to prepare a request. This is a preview without creating a payout or debiting funds. Use the returned payout_system_account_id in POST /method/payout/create.
          * @summary Get payout data for create
-         * @param {PayoutPrepareV1LanguageEnum} language Current language
+         * @param {PayoutPrepareV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PayoutPrepareV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async payoutPrepareV1(language, projectId, v, options) {
+        async payoutPrepareV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.payoutPrepareV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.payoutPrepareV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PayoutApi.payoutPrepareV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -177,24 +193,24 @@ const PayoutApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.PayoutApiFp)(configuration);
     return {
         /**
-         *
+         * Create a payout request for project_id to wallet_value through payout_system_account_id. amount uses minor units of the project currency, which must match the payout account currency (10000 = 100 major units). Success confirms the request, not a completed provider transfer; read available systems and restrictions with GET /method/payout/prepare.
          * @summary Create payout
          * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         payoutCreateV1(requestParameters, options) {
-            return localVarFp.payoutCreateV1(requestParameters.language, requestParameters.PayoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.payoutCreateV1(requestParameters['language'], requestParameters['PayoutCreateRequestBodyDto'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read payout systems/accounts available to the current user for project_id and data needed to prepare a request. This is a preview without creating a payout or debiting funds. Use the returned payout_system_account_id in POST /method/payout/create.
          * @summary Get payout data for create
          * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         payoutPrepareV1(requestParameters, options) {
-            return localVarFp.payoutPrepareV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.payoutPrepareV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -207,7 +223,7 @@ exports.PayoutApiFactory = PayoutApiFactory;
  */
 class PayoutApi extends base_1.BaseAPI {
     /**
-     *
+     * Create a payout request for project_id to wallet_value through payout_system_account_id. amount uses minor units of the project currency, which must match the payout account currency (10000 = 100 major units). Success confirms the request, not a completed provider transfer; read available systems and restrictions with GET /method/payout/prepare.
      * @summary Create payout
      * @param {PayoutApiPayoutCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -215,10 +231,10 @@ class PayoutApi extends base_1.BaseAPI {
      * @memberof PayoutApi
      */
     payoutCreateV1(requestParameters, options) {
-        return (0, exports.PayoutApiFp)(this.configuration).payoutCreateV1(requestParameters.language, requestParameters.PayoutCreateRequestBodyDto, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PayoutApiFp)(this.configuration).payoutCreateV1(requestParameters['language'], requestParameters['PayoutCreateRequestBodyDto'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read payout systems/accounts available to the current user for project_id and data needed to prepare a request. This is a preview without creating a payout or debiting funds. Use the returned payout_system_account_id in POST /method/payout/create.
      * @summary Get payout data for create
      * @param {PayoutApiPayoutPrepareV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -226,7 +242,7 @@ class PayoutApi extends base_1.BaseAPI {
      * @memberof PayoutApi
      */
     payoutPrepareV1(requestParameters, options) {
-        return (0, exports.PayoutApiFp)(this.configuration).payoutPrepareV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PayoutApiFp)(this.configuration).payoutPrepareV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PayoutApi = PayoutApi;

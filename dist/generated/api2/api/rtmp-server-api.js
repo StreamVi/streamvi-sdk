@@ -30,14 +30,15 @@ const base_1 = require("../base");
 const RtmpServerApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Read the public RTMP server location list to choose a connection in advance. The response contains no project credentials and neither creates a dedicated server nor starts a broadcast.
          * @summary Rtmp locations server list example for unauthorized
-         * @param {MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum} language Current language
+         * @param {MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        methodRtmpServerListLocationsUnauthorizedV1: async (language, v, options = {}) => {
+        methodRtmpServerListLocationsUnauthorizedV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('methodRtmpServerListLocationsUnauthorizedV1', 'language', language);
             const localVarPath = `/method/rtmp_server/list_locations_unauthorized`;
@@ -59,6 +60,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -68,16 +72,17 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read a public RTMP server state chart by interval/type/language. This reads statistics history without changing server parameters; the request type field selects the chart type.
          * @summary Graph of rtmp servers
-         * @param {RtmpServerGraphV1LanguageEnum} language Current language
+         * @param {RtmpServerGraphV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {RtmpServerGraphV1IntervalEnum} interval Interval state in hours
          * @param {RtmpServerGraphV1TypeEnum} type Type graph
          * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rtmpServerGraphV1: async (language, interval, type, v, options = {}) => {
+        rtmpServerGraphV1: async (language, interval, type, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('rtmpServerGraphV1', 'language', language);
             // verify required parameter 'interval' is not null or undefined
@@ -109,6 +114,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             if (type !== undefined) {
                 localVarQueryParameter['type'] = type;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -118,15 +126,16 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read basic details of available RTMP servers for project_id. This lists source connection options without changing the current server or starting a broadcast. Detailed data is available through GET /method/rtmp_server/list.
          * @summary List rtmp servers (base info)
-         * @param {RtmpServerListBaseV1LanguageEnum} language Current language
+         * @param {RtmpServerListBaseV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rtmpServerListBaseV1: async (language, projectId, v, options = {}) => {
+        rtmpServerListBaseV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('rtmpServerListBaseV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -141,9 +150,12 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["transcoding:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["transcoding:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["transcoding:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -156,6 +168,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -165,15 +180,16 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the RTMP server catalog for project_id localized using language, version v=3. Returns ingress selection data; read source credentials separately with GET /method/broadcast/credentials. This method does not start a broadcast.
          * @summary List rtmp servers v3
-         * @param {RtmpServerListV3LanguageEnum} language Current language
+         * @param {RtmpServerListV3LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rtmpServerListV3: async (language, projectId, v, options = {}) => {
+        rtmpServerListV3: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('rtmpServerListV3', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -188,9 +204,12 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["transcoding:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["transcoding:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["transcoding:read"], configuration);
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -203,6 +222,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -212,17 +234,18 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Get recommended SRT latency in milliseconds for the src_ip/dst_ip IPv4 pair and profile (balanced by default). found/stale/generated_at indicate availability and freshness. This method does not change the SRT URL or current connection latency.
          * @summary Get recommended SRT latency by source and destination ip
-         * @param {RtmpServerSrtLatencyV1LanguageEnum} language Current language
+         * @param {RtmpServerSrtLatencyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} srcIp Source IPv4 address
          * @param {string} dstIp Destination IPv4 address
          * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [profile] Recommendation profile
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rtmpServerSrtLatencyV1: async (language, srcIp, dstIp, v, profile, options = {}) => {
+        rtmpServerSrtLatencyV1: async (language, srcIp, dstIp, v, profile, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('rtmpServerSrtLatencyV1', 'language', language);
             // verify required parameter 'srcIp' is not null or undefined
@@ -257,6 +280,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             if (profile !== undefined) {
                 localVarQueryParameter['profile'] = profile;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -266,15 +292,16 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read public RTMP server state by interval and language. This is a monitoring read; this endpoint does not enable servers.
          * @summary State of rtmp servers
-         * @param {RtmpServerStateV1LanguageEnum} language Current language
+         * @param {RtmpServerStateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {RtmpServerStateV1IntervalEnum} interval Interval state in hours
          * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rtmpServerStateV1: async (language, interval, v, options = {}) => {
+        rtmpServerStateV1: async (language, interval, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('rtmpServerStateV1', 'language', language);
             // verify required parameter 'interval' is not null or undefined
@@ -301,6 +328,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             if (interval !== undefined) {
                 localVarQueryParameter['interval'] = interval;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -310,12 +340,13 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read public RTMP server availability data. Despite the name up, this method neither starts servers nor creates an environment; it returns the actual monitoring service response.
          * @summary State of rtmp servers
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rtmpServerUpV1: async (options = {}) => {
+        rtmpServerUpV1: async (xClientRequestId, options = {}) => {
             const localVarPath = `/method/rtmp_server/up`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -326,6 +357,9 @@ const RtmpServerApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -345,112 +379,119 @@ const RtmpServerApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.RtmpServerApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Read the public RTMP server location list to choose a connection in advance. The response contains no project credentials and neither creates a dedicated server nor starts a broadcast.
          * @summary Rtmp locations server list example for unauthorized
-         * @param {MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum} language Current language
+         * @param {MethodRtmpServerListLocationsUnauthorizedV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {MethodRtmpServerListLocationsUnauthorizedV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async methodRtmpServerListLocationsUnauthorizedV1(language, v, options) {
+        async methodRtmpServerListLocationsUnauthorizedV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.methodRtmpServerListLocationsUnauthorizedV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodRtmpServerListLocationsUnauthorizedV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.methodRtmpServerListLocationsUnauthorizedV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read a public RTMP server state chart by interval/type/language. This reads statistics history without changing server parameters; the request type field selects the chart type.
          * @summary Graph of rtmp servers
-         * @param {RtmpServerGraphV1LanguageEnum} language Current language
+         * @param {RtmpServerGraphV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {RtmpServerGraphV1IntervalEnum} interval Interval state in hours
          * @param {RtmpServerGraphV1TypeEnum} type Type graph
          * @param {RtmpServerGraphV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rtmpServerGraphV1(language, interval, type, v, options) {
+        async rtmpServerGraphV1(language, interval, type, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerGraphV1(language, interval, type, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerGraphV1(language, interval, type, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.rtmpServerGraphV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read basic details of available RTMP servers for project_id. This lists source connection options without changing the current server or starting a broadcast. Detailed data is available through GET /method/rtmp_server/list.
          * @summary List rtmp servers (base info)
-         * @param {RtmpServerListBaseV1LanguageEnum} language Current language
+         * @param {RtmpServerListBaseV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {RtmpServerListBaseV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rtmpServerListBaseV1(language, projectId, v, options) {
+        async rtmpServerListBaseV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerListBaseV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerListBaseV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.rtmpServerListBaseV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the RTMP server catalog for project_id localized using language, version v=3. Returns ingress selection data; read source credentials separately with GET /method/broadcast/credentials. This method does not start a broadcast.
          * @summary List rtmp servers v3
-         * @param {RtmpServerListV3LanguageEnum} language Current language
+         * @param {RtmpServerListV3LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {RtmpServerListV3VEnum} [v] Version (automatically defaults to 3 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rtmpServerListV3(language, projectId, v, options) {
+        async rtmpServerListV3(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerListV3(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerListV3(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.rtmpServerListV3']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Get recommended SRT latency in milliseconds for the src_ip/dst_ip IPv4 pair and profile (balanced by default). found/stale/generated_at indicate availability and freshness. This method does not change the SRT URL or current connection latency.
          * @summary Get recommended SRT latency by source and destination ip
-         * @param {RtmpServerSrtLatencyV1LanguageEnum} language Current language
+         * @param {RtmpServerSrtLatencyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} srcIp Source IPv4 address
          * @param {string} dstIp Destination IPv4 address
          * @param {RtmpServerSrtLatencyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [profile] Recommendation profile
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rtmpServerSrtLatencyV1(language, srcIp, dstIp, v, profile, options) {
+        async rtmpServerSrtLatencyV1(language, srcIp, dstIp, v, profile, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerSrtLatencyV1(language, srcIp, dstIp, v, profile, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerSrtLatencyV1(language, srcIp, dstIp, v, profile, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.rtmpServerSrtLatencyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read public RTMP server state by interval and language. This is a monitoring read; this endpoint does not enable servers.
          * @summary State of rtmp servers
-         * @param {RtmpServerStateV1LanguageEnum} language Current language
+         * @param {RtmpServerStateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {RtmpServerStateV1IntervalEnum} interval Interval state in hours
          * @param {RtmpServerStateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rtmpServerStateV1(language, interval, v, options) {
+        async rtmpServerStateV1(language, interval, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerStateV1(language, interval, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerStateV1(language, interval, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.rtmpServerStateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read public RTMP server availability data. Despite the name up, this method neither starts servers nor creates an environment; it returns the actual monitoring service response.
          * @summary State of rtmp servers
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rtmpServerUpV1(options) {
+        async rtmpServerUpV1(xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerUpV1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rtmpServerUpV1(xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RtmpServerApi.rtmpServerUpV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -466,73 +507,74 @@ const RtmpServerApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.RtmpServerApiFp)(configuration);
     return {
         /**
-         *
+         * Read the public RTMP server location list to choose a connection in advance. The response contains no project credentials and neither creates a dedicated server nor starts a broadcast.
          * @summary Rtmp locations server list example for unauthorized
          * @param {RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         methodRtmpServerListLocationsUnauthorizedV1(requestParameters, options) {
-            return localVarFp.methodRtmpServerListLocationsUnauthorizedV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.methodRtmpServerListLocationsUnauthorizedV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read a public RTMP server state chart by interval/type/language. This reads statistics history without changing server parameters; the request type field selects the chart type.
          * @summary Graph of rtmp servers
          * @param {RtmpServerApiRtmpServerGraphV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         rtmpServerGraphV1(requestParameters, options) {
-            return localVarFp.rtmpServerGraphV1(requestParameters.language, requestParameters.interval, requestParameters.type, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.rtmpServerGraphV1(requestParameters['language'], requestParameters['interval'], requestParameters['type'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read basic details of available RTMP servers for project_id. This lists source connection options without changing the current server or starting a broadcast. Detailed data is available through GET /method/rtmp_server/list.
          * @summary List rtmp servers (base info)
          * @param {RtmpServerApiRtmpServerListBaseV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         rtmpServerListBaseV1(requestParameters, options) {
-            return localVarFp.rtmpServerListBaseV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.rtmpServerListBaseV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the RTMP server catalog for project_id localized using language, version v=3. Returns ingress selection data; read source credentials separately with GET /method/broadcast/credentials. This method does not start a broadcast.
          * @summary List rtmp servers v3
          * @param {RtmpServerApiRtmpServerListV3Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         rtmpServerListV3(requestParameters, options) {
-            return localVarFp.rtmpServerListV3(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.rtmpServerListV3(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Get recommended SRT latency in milliseconds for the src_ip/dst_ip IPv4 pair and profile (balanced by default). found/stale/generated_at indicate availability and freshness. This method does not change the SRT URL or current connection latency.
          * @summary Get recommended SRT latency by source and destination ip
          * @param {RtmpServerApiRtmpServerSrtLatencyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         rtmpServerSrtLatencyV1(requestParameters, options) {
-            return localVarFp.rtmpServerSrtLatencyV1(requestParameters.language, requestParameters.src_ip, requestParameters.dst_ip, requestParameters.v, requestParameters.profile, options).then((request) => request(axios, basePath));
+            return localVarFp.rtmpServerSrtLatencyV1(requestParameters['language'], requestParameters['src_ip'], requestParameters['dst_ip'], requestParameters['v'], requestParameters['profile'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read public RTMP server state by interval and language. This is a monitoring read; this endpoint does not enable servers.
          * @summary State of rtmp servers
          * @param {RtmpServerApiRtmpServerStateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         rtmpServerStateV1(requestParameters, options) {
-            return localVarFp.rtmpServerStateV1(requestParameters.language, requestParameters.interval, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.rtmpServerStateV1(requestParameters['language'], requestParameters['interval'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read public RTMP server availability data. Despite the name up, this method neither starts servers nor creates an environment; it returns the actual monitoring service response.
          * @summary State of rtmp servers
+         * @param {RtmpServerApiRtmpServerUpV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rtmpServerUpV1(options) {
-            return localVarFp.rtmpServerUpV1(options).then((request) => request(axios, basePath));
+        rtmpServerUpV1(requestParameters = {}, options) {
+            return localVarFp.rtmpServerUpV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -545,7 +587,7 @@ exports.RtmpServerApiFactory = RtmpServerApiFactory;
  */
 class RtmpServerApi extends base_1.BaseAPI {
     /**
-     *
+     * Read the public RTMP server location list to choose a connection in advance. The response contains no project credentials and neither creates a dedicated server nor starts a broadcast.
      * @summary Rtmp locations server list example for unauthorized
      * @param {RtmpServerApiMethodRtmpServerListLocationsUnauthorizedV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -553,10 +595,10 @@ class RtmpServerApi extends base_1.BaseAPI {
      * @memberof RtmpServerApi
      */
     methodRtmpServerListLocationsUnauthorizedV1(requestParameters, options) {
-        return (0, exports.RtmpServerApiFp)(this.configuration).methodRtmpServerListLocationsUnauthorizedV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.RtmpServerApiFp)(this.configuration).methodRtmpServerListLocationsUnauthorizedV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read a public RTMP server state chart by interval/type/language. This reads statistics history without changing server parameters; the request type field selects the chart type.
      * @summary Graph of rtmp servers
      * @param {RtmpServerApiRtmpServerGraphV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -564,10 +606,10 @@ class RtmpServerApi extends base_1.BaseAPI {
      * @memberof RtmpServerApi
      */
     rtmpServerGraphV1(requestParameters, options) {
-        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerGraphV1(requestParameters.language, requestParameters.interval, requestParameters.type, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerGraphV1(requestParameters['language'], requestParameters['interval'], requestParameters['type'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read basic details of available RTMP servers for project_id. This lists source connection options without changing the current server or starting a broadcast. Detailed data is available through GET /method/rtmp_server/list.
      * @summary List rtmp servers (base info)
      * @param {RtmpServerApiRtmpServerListBaseV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -575,10 +617,10 @@ class RtmpServerApi extends base_1.BaseAPI {
      * @memberof RtmpServerApi
      */
     rtmpServerListBaseV1(requestParameters, options) {
-        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerListBaseV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerListBaseV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the RTMP server catalog for project_id localized using language, version v=3. Returns ingress selection data; read source credentials separately with GET /method/broadcast/credentials. This method does not start a broadcast.
      * @summary List rtmp servers v3
      * @param {RtmpServerApiRtmpServerListV3Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -586,10 +628,10 @@ class RtmpServerApi extends base_1.BaseAPI {
      * @memberof RtmpServerApi
      */
     rtmpServerListV3(requestParameters, options) {
-        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerListV3(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerListV3(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Get recommended SRT latency in milliseconds for the src_ip/dst_ip IPv4 pair and profile (balanced by default). found/stale/generated_at indicate availability and freshness. This method does not change the SRT URL or current connection latency.
      * @summary Get recommended SRT latency by source and destination ip
      * @param {RtmpServerApiRtmpServerSrtLatencyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -597,10 +639,10 @@ class RtmpServerApi extends base_1.BaseAPI {
      * @memberof RtmpServerApi
      */
     rtmpServerSrtLatencyV1(requestParameters, options) {
-        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerSrtLatencyV1(requestParameters.language, requestParameters.src_ip, requestParameters.dst_ip, requestParameters.v, requestParameters.profile, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerSrtLatencyV1(requestParameters['language'], requestParameters['src_ip'], requestParameters['dst_ip'], requestParameters['v'], requestParameters['profile'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read public RTMP server state by interval and language. This is a monitoring read; this endpoint does not enable servers.
      * @summary State of rtmp servers
      * @param {RtmpServerApiRtmpServerStateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -608,17 +650,18 @@ class RtmpServerApi extends base_1.BaseAPI {
      * @memberof RtmpServerApi
      */
     rtmpServerStateV1(requestParameters, options) {
-        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerStateV1(requestParameters.language, requestParameters.interval, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerStateV1(requestParameters['language'], requestParameters['interval'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read public RTMP server availability data. Despite the name up, this method neither starts servers nor creates an environment; it returns the actual monitoring service response.
      * @summary State of rtmp servers
+     * @param {RtmpServerApiRtmpServerUpV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RtmpServerApi
      */
-    rtmpServerUpV1(options) {
-        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerUpV1(options).then((request) => request(this.axios, this.basePath));
+    rtmpServerUpV1(requestParameters = {}, options) {
+        return (0, exports.RtmpServerApiFp)(this.configuration).rtmpServerUpV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.RtmpServerApi = RtmpServerApi;

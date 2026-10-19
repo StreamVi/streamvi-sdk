@@ -30,9 +30,9 @@ const base_1 = require("../base");
 const MoneyFlowApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Read fund movements for project_id with limit/offset, date_from/date_to, and type/balance_type filters. offset is the number of records to skip; filters are comma-separated strings transformed according to allowed codes. Monetary values are minor currency units: divide by 100 for display in the response currency. This reads history without topping up or making a payment.
          * @summary Transaction list for frontend
-         * @param {MoneyFlowListV1LanguageEnum} language Current language
+         * @param {MoneyFlowListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
@@ -41,10 +41,11 @@ const MoneyFlowApiAxiosParamCreator = function (configuration) {
          * @param {string} [dateTo] Date to
          * @param {string} [type] Filter code transaction. example: referral_profit or payment,referral_profit
          * @param {string} [balanceType] Filter code transaction. example 1 or 1,2,3
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        moneyFlowListV1: async (language, projectId, v, limit, offset, dateFrom, dateTo, type, balanceType, options = {}) => {
+        moneyFlowListV1: async (language, projectId, v, limit, offset, dateFrom, dateTo, type, balanceType, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('moneyFlowListV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -59,9 +60,12 @@ const MoneyFlowApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -92,6 +96,9 @@ const MoneyFlowApiAxiosParamCreator = function (configuration) {
             if (balanceType !== undefined) {
                 localVarQueryParameter['balance_type'] = balanceType;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -111,9 +118,9 @@ const MoneyFlowApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.MoneyFlowApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Read fund movements for project_id with limit/offset, date_from/date_to, and type/balance_type filters. offset is the number of records to skip; filters are comma-separated strings transformed according to allowed codes. Monetary values are minor currency units: divide by 100 for display in the response currency. This reads history without topping up or making a payment.
          * @summary Transaction list for frontend
-         * @param {MoneyFlowListV1LanguageEnum} language Current language
+         * @param {MoneyFlowListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {MoneyFlowListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [limit] Number of results
@@ -122,12 +129,13 @@ const MoneyFlowApiFp = function (configuration) {
          * @param {string} [dateTo] Date to
          * @param {string} [type] Filter code transaction. example: referral_profit or payment,referral_profit
          * @param {string} [balanceType] Filter code transaction. example 1 or 1,2,3
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async moneyFlowListV1(language, projectId, v, limit, offset, dateFrom, dateTo, type, balanceType, options) {
+        async moneyFlowListV1(language, projectId, v, limit, offset, dateFrom, dateTo, type, balanceType, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.moneyFlowListV1(language, projectId, v, limit, offset, dateFrom, dateTo, type, balanceType, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.moneyFlowListV1(language, projectId, v, limit, offset, dateFrom, dateTo, type, balanceType, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['MoneyFlowApi.moneyFlowListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -143,14 +151,14 @@ const MoneyFlowApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.MoneyFlowApiFp)(configuration);
     return {
         /**
-         *
+         * Read fund movements for project_id with limit/offset, date_from/date_to, and type/balance_type filters. offset is the number of records to skip; filters are comma-separated strings transformed according to allowed codes. Monetary values are minor currency units: divide by 100 for display in the response currency. This reads history without topping up or making a payment.
          * @summary Transaction list for frontend
          * @param {MoneyFlowApiMoneyFlowListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         moneyFlowListV1(requestParameters, options) {
-            return localVarFp.moneyFlowListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.type, requestParameters.balance_type, options).then((request) => request(axios, basePath));
+            return localVarFp.moneyFlowListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['limit'], requestParameters['offset'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['type'], requestParameters['balance_type'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -163,7 +171,7 @@ exports.MoneyFlowApiFactory = MoneyFlowApiFactory;
  */
 class MoneyFlowApi extends base_1.BaseAPI {
     /**
-     *
+     * Read fund movements for project_id with limit/offset, date_from/date_to, and type/balance_type filters. offset is the number of records to skip; filters are comma-separated strings transformed according to allowed codes. Monetary values are minor currency units: divide by 100 for display in the response currency. This reads history without topping up or making a payment.
      * @summary Transaction list for frontend
      * @param {MoneyFlowApiMoneyFlowListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -171,7 +179,7 @@ class MoneyFlowApi extends base_1.BaseAPI {
      * @memberof MoneyFlowApi
      */
     moneyFlowListV1(requestParameters, options) {
-        return (0, exports.MoneyFlowApiFp)(this.configuration).moneyFlowListV1(requestParameters.language, requestParameters.project_id, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.date_from, requestParameters.date_to, requestParameters.type, requestParameters.balance_type, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MoneyFlowApiFp)(this.configuration).moneyFlowListV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['limit'], requestParameters['offset'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['type'], requestParameters['balance_type'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.MoneyFlowApi = MoneyFlowApi;

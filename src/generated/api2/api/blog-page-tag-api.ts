@@ -32,19 +32,24 @@ import type { PaginatedBlogPageTagResponse } from '../models';
 export const BlogPageTagApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
-         * @summary Get list of blog pages
-         * @param {BlogPageTagListV1LanguageEnum} language Current language
+         * Read the public blog tag list using request filters and pagination. Returns tags for filtering pages, not blog pages themselves.
+         * @summary List blog tags
+         * @param {BlogPageTagListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} limit Number of results
+         * @param {number} offset Page offset number
          * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
-         * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        blogPageTagListV1: async (language: BlogPageTagListV1LanguageEnum, v?: BlogPageTagListV1VEnum, s?: string, limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        blogPageTagListV1: async (language: BlogPageTagListV1LanguageEnum, limit: number, offset: number, v?: BlogPageTagListV1VEnum, s?: string, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('blogPageTagListV1', 'language', language)
+            // verify required parameter 'limit' is not null or undefined
+            assertParamExists('blogPageTagListV1', 'limit', limit)
+            // verify required parameter 'offset' is not null or undefined
+            assertParamExists('blogPageTagListV1', 'offset', offset)
             const localVarPath = `/method/blog/tag/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -81,6 +86,9 @@ export const BlogPageTagApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -101,18 +109,19 @@ export const BlogPageTagApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = BlogPageTagApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
-         * @summary Get list of blog pages
-         * @param {BlogPageTagListV1LanguageEnum} language Current language
+         * Read the public blog tag list using request filters and pagination. Returns tags for filtering pages, not blog pages themselves.
+         * @summary List blog tags
+         * @param {BlogPageTagListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} limit Number of results
+         * @param {number} offset Page offset number
          * @param {BlogPageTagListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
-         * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async blogPageTagListV1(language: BlogPageTagListV1LanguageEnum, v?: BlogPageTagListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBlogPageTagResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageTagListV1(language, v, s, limit, offset, options);
+        async blogPageTagListV1(language: BlogPageTagListV1LanguageEnum, limit: number, offset: number, v?: BlogPageTagListV1VEnum, s?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBlogPageTagResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.blogPageTagListV1(language, limit, offset, v, s, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BlogPageTagApi.blogPageTagListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -128,14 +137,14 @@ export const BlogPageTagApiFactory = function (configuration?: Configuration, ba
     const localVarFp = BlogPageTagApiFp(configuration)
     return {
         /**
-         * 
-         * @summary Get list of blog pages
+         * Read the public blog tag list using request filters and pagination. Returns tags for filtering pages, not blog pages themselves.
+         * @summary List blog tags
          * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedBlogPageTagResponse> {
-            return localVarFp.blogPageTagListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+            return localVarFp.blogPageTagListV1(requestParameters['language'], requestParameters['limit'], requestParameters['offset'], requestParameters['v'], requestParameters['s'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -147,8 +156,8 @@ export const BlogPageTagApiFactory = function (configuration?: Configuration, ba
  */
 export interface BlogPageTagApiInterface {
     /**
-     * 
-     * @summary Get list of blog pages
+     * Read the public blog tag list using request filters and pagination. Returns tags for filtering pages, not blog pages themselves.
+     * @summary List blog tags
      * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -165,39 +174,46 @@ export interface BlogPageTagApiInterface {
  */
 export interface BlogPageTagApiBlogPageTagListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof BlogPageTagApiBlogPageTagListV1
      */
-    readonly language: BlogPageTagListV1LanguageEnum
-
-    /**
-     * Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @type {'1'}
-     * @memberof BlogPageTagApiBlogPageTagListV1
-     */
-    readonly v?: BlogPageTagListV1VEnum
-
-    /**
-     * String for search
-     * @type {string}
-     * @memberof BlogPageTagApiBlogPageTagListV1
-     */
-    readonly s?: string
+    readonly 'language': BlogPageTagListV1LanguageEnum
 
     /**
      * Number of results
      * @type {number}
      * @memberof BlogPageTagApiBlogPageTagListV1
      */
-    readonly limit?: number
+    readonly 'limit': number
 
     /**
      * Page offset number
      * @type {number}
      * @memberof BlogPageTagApiBlogPageTagListV1
      */
-    readonly offset?: number
+    readonly 'offset': number
+
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof BlogPageTagApiBlogPageTagListV1
+     */
+    readonly 'v'?: BlogPageTagListV1VEnum
+
+    /**
+     * String for search
+     * @type {string}
+     * @memberof BlogPageTagApiBlogPageTagListV1
+     */
+    readonly 's'?: string
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof BlogPageTagApiBlogPageTagListV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -208,15 +224,15 @@ export interface BlogPageTagApiBlogPageTagListV1Request {
  */
 export class BlogPageTagApi extends BaseAPI implements BlogPageTagApiInterface {
     /**
-     * 
-     * @summary Get list of blog pages
+     * Read the public blog tag list using request filters and pagination. Returns tags for filtering pages, not blog pages themselves.
+     * @summary List blog tags
      * @param {BlogPageTagApiBlogPageTagListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BlogPageTagApi
      */
     public blogPageTagListV1(requestParameters: BlogPageTagApiBlogPageTagListV1Request, options?: RawAxiosRequestConfig) {
-        return BlogPageTagApiFp(this.configuration).blogPageTagListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+        return BlogPageTagApiFp(this.configuration).blogPageTagListV1(requestParameters['language'], requestParameters['limit'], requestParameters['offset'], requestParameters['v'], requestParameters['s'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

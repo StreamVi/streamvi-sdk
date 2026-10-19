@@ -22,24 +22,26 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userGetProfileV1: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userGetProfileV1: (xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
-     * @param {UserUpdateProfileV1LanguageEnum} language Current language
+     * @param {UserUpdateProfileV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} firstName First name
      * @param {string} lastName Last name
      * @param {UserUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userUpdateProfileV1: (language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: UserUpdateProfileV1VEnum, avatar?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    userUpdateProfileV1: (language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: UserUpdateProfileV1VEnum, xClientRequestId?: string, avatar?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UsersApi - functional programming interface
@@ -49,24 +51,26 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userGetProfileV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>>;
+    userGetProfileV1(xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserProfileResponse>>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
-     * @param {UserUpdateProfileV1LanguageEnum} language Current language
+     * @param {UserUpdateProfileV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} firstName First name
      * @param {string} lastName Last name
      * @param {UserUpdateProfileV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {File} [avatar] File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userUpdateProfileV1(language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: UserUpdateProfileV1VEnum, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    userUpdateProfileV1(language: UserUpdateProfileV1LanguageEnum, firstName: string, lastName: string, v?: UserUpdateProfileV1VEnum, xClientRequestId?: string, avatar?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * UsersApi - factory interface
@@ -76,11 +80,12 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
+     * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      */
-    userGetProfileV1(options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
+    userGetProfileV1(requestParameters?: UsersApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
@@ -100,12 +105,13 @@ export interface UsersApiInterface {
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
+     * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      * @memberof UsersApiInterface
      */
-    userGetProfileV1(options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
+    userGetProfileV1(requestParameters?: UsersApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UserProfileResponse>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile
@@ -118,41 +124,60 @@ export interface UsersApiInterface {
     userUpdateProfileV1(requestParameters: UsersApiUserUpdateProfileV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 }
 /**
+ * Request parameters for userGetProfileV1 operation in UsersApi.
+ * @export
+ * @interface UsersApiUserGetProfileV1Request
+ */
+export interface UsersApiUserGetProfileV1Request {
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof UsersApiUserGetProfileV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+}
+/**
  * Request parameters for userUpdateProfileV1 operation in UsersApi.
  * @export
  * @interface UsersApiUserUpdateProfileV1Request
  */
 export interface UsersApiUserUpdateProfileV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof UsersApiUserUpdateProfileV1
      */
-    readonly language: UserUpdateProfileV1LanguageEnum;
+    readonly 'language': UserUpdateProfileV1LanguageEnum;
     /**
      * First name
      * @type {string}
      * @memberof UsersApiUserUpdateProfileV1
      */
-    readonly first_name: string;
+    readonly 'first_name': string;
     /**
      * Last name
      * @type {string}
      * @memberof UsersApiUserUpdateProfileV1
      */
-    readonly last_name: string;
+    readonly 'last_name': string;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof UsersApiUserUpdateProfileV1
      */
-    readonly v?: UserUpdateProfileV1VEnum;
+    readonly 'v'?: UserUpdateProfileV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof UsersApiUserUpdateProfileV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
     /**
      * File for avatar upload max size 2MB, format: jpeg, jpg, png
      * @type {File}
      * @memberof UsersApiUserUpdateProfileV1
      */
-    readonly avatar?: File;
+    readonly 'avatar'?: File;
 }
 /**
  * UsersApi - object-oriented interface
@@ -164,12 +189,13 @@ export declare class UsersApi extends BaseAPI implements UsersApiInterface {
     /**
      * Use /method/account/profile instead.
      * @summary Get user profile
+     * @param {UsersApiUserGetProfileV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    userGetProfileV1(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any, {}, any>>;
+    userGetProfileV1(requestParameters?: UsersApiUserGetProfileV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserProfileResponse, any, {}, any>>;
     /**
      * Use /method/account/profile instead.
      * @summary Update profile

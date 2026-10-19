@@ -24,19 +24,19 @@ import type { ProjectHistoryResponse } from './project-history-response';
  */
 export interface PaginatedProjectHistoryResponse {
     /**
-     * Общее количество элементов вообще
+     * Total number of all items
      * @type {number}
      * @memberof PaginatedProjectHistoryResponse
      */
     'total': number;
     /**
-     * Размер запрашиваемой страницы
+     * Requested page size
      * @type {number}
      * @memberof PaginatedProjectHistoryResponse
      */
     'limit': number;
     /**
-     * С какого элемента включительно делать запрос
+     * Element to start the request from, inclusive
      * @type {number}
      * @memberof PaginatedProjectHistoryResponse
      */

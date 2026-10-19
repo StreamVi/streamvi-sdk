@@ -19,16 +19,17 @@ import type { IntegrationTemplateWidgetGetResponse } from '../models';
  */
 export declare const MethodIntegrationApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Rate limit: 10 requests per 1 second
+     * Read a template\'s JSON widget payload in the selected project_id after checking template/project installation ownership. This is widget data, not the full server tool catalog or a widget custom actions list. Write using POST /method/integration_project_template/widget/set. Rate limit: 10 requests per 1 second.
      * @summary Get template widget data
-     * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum} language Current language
+     * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} templateId Integration project template ID
      * @param {number} projectId Project ID
      * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodIntegrationTemplateGetTemplateWidgetDataV1: (language: MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum, templateId: string, projectId: number, v?: MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodIntegrationTemplateGetTemplateWidgetDataV1: (language: MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum, templateId: string, projectId: number, v?: MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * MethodIntegrationApi - functional programming interface
@@ -36,16 +37,17 @@ export declare const MethodIntegrationApiAxiosParamCreator: (configuration?: Con
  */
 export declare const MethodIntegrationApiFp: (configuration?: Configuration) => {
     /**
-     * Rate limit: 10 requests per 1 second
+     * Read a template\'s JSON widget payload in the selected project_id after checking template/project installation ownership. This is widget data, not the full server tool catalog or a widget custom actions list. Write using POST /method/integration_project_template/widget/set. Rate limit: 10 requests per 1 second.
      * @summary Get template widget data
-     * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum} language Current language
+     * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {string} templateId Integration project template ID
      * @param {number} projectId Project ID
      * @param {MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    methodIntegrationTemplateGetTemplateWidgetDataV1(language: MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum, templateId: string, projectId: number, v?: MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IntegrationTemplateWidgetGetResponse>>;
+    methodIntegrationTemplateGetTemplateWidgetDataV1(language: MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum, templateId: string, projectId: number, v?: MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IntegrationTemplateWidgetGetResponse>>;
 };
 /**
  * MethodIntegrationApi - factory interface
@@ -53,7 +55,7 @@ export declare const MethodIntegrationApiFp: (configuration?: Configuration) => 
  */
 export declare const MethodIntegrationApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Rate limit: 10 requests per 1 second
+     * Read a template\'s JSON widget payload in the selected project_id after checking template/project installation ownership. This is widget data, not the full server tool catalog or a widget custom actions list. Write using POST /method/integration_project_template/widget/set. Rate limit: 10 requests per 1 second.
      * @summary Get template widget data
      * @param {MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -68,7 +70,7 @@ export declare const MethodIntegrationApiFactory: (configuration?: Configuration
  */
 export interface MethodIntegrationApiInterface {
     /**
-     * Rate limit: 10 requests per 1 second
+     * Read a template\'s JSON widget payload in the selected project_id after checking template/project installation ownership. This is widget data, not the full server tool catalog or a widget custom actions list. Write using POST /method/integration_project_template/widget/set. Rate limit: 10 requests per 1 second.
      * @summary Get template widget data
      * @param {MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -84,29 +86,35 @@ export interface MethodIntegrationApiInterface {
  */
 export interface MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1
      */
-    readonly language: MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum;
+    readonly 'language': MethodIntegrationTemplateGetTemplateWidgetDataV1LanguageEnum;
     /**
      * Integration project template ID
      * @type {string}
      * @memberof MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1
      */
-    readonly template_id: string;
+    readonly 'template_id': string;
     /**
      * Project ID
      * @type {number}
      * @memberof MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1
      */
-    readonly v?: MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum;
+    readonly 'v'?: MethodIntegrationTemplateGetTemplateWidgetDataV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * MethodIntegrationApi - object-oriented interface
@@ -116,7 +124,7 @@ export interface MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetD
  */
 export declare class MethodIntegrationApi extends BaseAPI implements MethodIntegrationApiInterface {
     /**
-     * Rate limit: 10 requests per 1 second
+     * Read a template\'s JSON widget payload in the selected project_id after checking template/project installation ownership. This is widget data, not the full server tool catalog or a widget custom actions list. Write using POST /method/integration_project_template/widget/set. Rate limit: 10 requests per 1 second.
      * @summary Get template widget data
      * @param {MethodIntegrationApiMethodIntegrationTemplateGetTemplateWidgetDataV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

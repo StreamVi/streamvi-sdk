@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bonus** | **number** | Bonus balance | [optional] [default to undefined]
-**payment** | **number** | Payment balance | [optional] [default to undefined]
-**profit** | **number** | Profit balance | [optional] [default to undefined]
+**bonus** | **number** | Bonus balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [optional] [default to undefined]
+**payment** | **number** | Payment balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [optional] [default to undefined]
+**profit** | **number** | Profit balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [optional] [default to undefined]
 
 ## Example
 

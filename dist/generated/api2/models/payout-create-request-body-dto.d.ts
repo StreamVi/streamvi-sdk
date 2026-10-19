@@ -22,7 +22,7 @@ export interface PayoutCreateRequestBodyDto {
      */
     'v'?: PayoutCreateRequestBodyDtoVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof PayoutCreateRequestBodyDto
      */
@@ -40,7 +40,7 @@ export interface PayoutCreateRequestBodyDto {
      */
     'project_id': number;
     /**
-     * Amount
+     * Payout amount in the project currency, which must match the selected payout system account currency. For example, send 10000 for 100 RUB or 100 USD; do not send 100. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PayoutCreateRequestBodyDto
      */

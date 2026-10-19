@@ -27,7 +27,7 @@ export interface SiteUpdateOptionsOkRequest {
      */
     'v'?: SiteUpdateOptionsOkRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteUpdateOptionsOkRequest
      */
@@ -39,19 +39,19 @@ export interface SiteUpdateOptionsOkRequest {
      */
     'project_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof SiteUpdateOptionsOkRequest
      */
     'channel_id': number;
     /**
-     * 
+     * Platform broadcast title; supplied explicitly, omission does not insert the example title.
      * @type {string}
      * @memberof SiteUpdateOptionsOkRequest
      */
     'title': string;
     /**
-     * 
+     * Broadcast description on the platform; supplied explicitly. Do not confuse it with the channel configuration description or API documentation.
      * @type {string}
      * @memberof SiteUpdateOptionsOkRequest
      */

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payment_id** | **number** | Payment Id | [default to undefined]
-**amount** | **number** | Amount | [default to undefined]
+**amount** | **number** | Amount. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
 **plan_period** | **string** | Period | [default to undefined]
 **status** | **string** | Status | [default to undefined]

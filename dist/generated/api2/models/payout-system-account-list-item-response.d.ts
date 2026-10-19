@@ -34,13 +34,13 @@ export interface PayoutSystemAccountListItemResponse {
      */
     'description': string;
     /**
-     * Payout system id
+     * Commission: commission_type=fix means minor units of currency (kopecks for rub, cents for usd); commission_type=percent means a percentage (5 means 5%). Do not divide percentage values by 100 for display.
      * @type {number}
      * @memberof PayoutSystemAccountListItemResponse
      */
     'commission': number;
     /**
-     * Payout system account unique id
+     * Commission unit selector: fix means a monetary amount in minor units; percent means a percentage.
      * @type {string}
      * @memberof PayoutSystemAccountListItemResponse
      */
@@ -64,13 +64,13 @@ export interface PayoutSystemAccountListItemResponse {
      */
     'currency': PayoutSystemAccountListItemResponseCurrencyEnum;
     /**
-     * Minimum amount
+     * Minimum amount. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PayoutSystemAccountListItemResponse
      */
     'min_amount': number;
     /**
-     * Maximum amount
+     * Maximum amount. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PayoutSystemAccountListItemResponse
      */

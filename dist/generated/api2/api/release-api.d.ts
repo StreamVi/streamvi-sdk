@@ -12,6 +12,7 @@
 import type { Configuration } from '../configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { type RequestArgs, BaseAPI } from '../base';
+import type { DesktopAppReleasesResponse } from '../models';
 import type { GetVersionAppResponse } from '../models';
 /**
  * ReleaseApi - axios parameter creator
@@ -19,15 +20,26 @@ import type { GetVersionAppResponse } from '../models';
  */
 export declare const ReleaseApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
-     * @summary Get current version app
-     * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
-     * @param {ReleaseAppCabinetV1AppEnum} app Apps
-     * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * Read the public catalog of stable desktop app installers by platform. Returns versions and links; an unavailable source produces the documented 503 response. This method neither downloads nor installs updates.
+     * @summary Get stable desktop installers by platform
+     * @param {MethodDesktopAppReleasesV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {MethodDesktopAppReleasesV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    releaseAppCabinetV1: (language: ReleaseAppCabinetV1LanguageEnum, app: ReleaseAppCabinetV1AppEnum, v?: ReleaseAppCabinetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    methodDesktopAppReleasesV1: (language: MethodDesktopAppReleasesV1LanguageEnum, v?: MethodDesktopAppReleasesV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Read the currently published version and release details for app. This is a public version check without installing an update; the request\'s app enum/field selects the application.
+     * @summary Get current version app
+     * @param {ReleaseAppCabinetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {ReleaseAppCabinetV1AppEnum} app Apps
+     * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    releaseAppCabinetV1: (language: ReleaseAppCabinetV1LanguageEnum, app: ReleaseAppCabinetV1AppEnum, v?: ReleaseAppCabinetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ReleaseApi - functional programming interface
@@ -35,15 +47,26 @@ export declare const ReleaseApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const ReleaseApiFp: (configuration?: Configuration) => {
     /**
-     *
-     * @summary Get current version app
-     * @param {ReleaseAppCabinetV1LanguageEnum} language Current language
-     * @param {ReleaseAppCabinetV1AppEnum} app Apps
-     * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * Read the public catalog of stable desktop app installers by platform. Returns versions and links; an unavailable source produces the documented 503 response. This method neither downloads nor installs updates.
+     * @summary Get stable desktop installers by platform
+     * @param {MethodDesktopAppReleasesV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {MethodDesktopAppReleasesV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    releaseAppCabinetV1(language: ReleaseAppCabinetV1LanguageEnum, app: ReleaseAppCabinetV1AppEnum, v?: ReleaseAppCabinetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVersionAppResponse>>;
+    methodDesktopAppReleasesV1(language: MethodDesktopAppReleasesV1LanguageEnum, v?: MethodDesktopAppReleasesV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DesktopAppReleasesResponse>>;
+    /**
+     * Read the currently published version and release details for app. This is a public version check without installing an update; the request\'s app enum/field selects the application.
+     * @summary Get current version app
+     * @param {ReleaseAppCabinetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @param {ReleaseAppCabinetV1AppEnum} app Apps
+     * @param {ReleaseAppCabinetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    releaseAppCabinetV1(language: ReleaseAppCabinetV1LanguageEnum, app: ReleaseAppCabinetV1AppEnum, v?: ReleaseAppCabinetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVersionAppResponse>>;
 };
 /**
  * ReleaseApi - factory interface
@@ -51,7 +74,15 @@ export declare const ReleaseApiFp: (configuration?: Configuration) => {
  */
 export declare const ReleaseApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Read the public catalog of stable desktop app installers by platform. Returns versions and links; an unavailable source produces the documented 503 response. This method neither downloads nor installs updates.
+     * @summary Get stable desktop installers by platform
+     * @param {ReleaseApiMethodDesktopAppReleasesV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    methodDesktopAppReleasesV1(requestParameters: ReleaseApiMethodDesktopAppReleasesV1Request, options?: RawAxiosRequestConfig): AxiosPromise<DesktopAppReleasesResponse>;
+    /**
+     * Read the currently published version and release details for app. This is a public version check without installing an update; the request\'s app enum/field selects the application.
      * @summary Get current version app
      * @param {ReleaseApiReleaseAppCabinetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -66,7 +97,16 @@ export declare const ReleaseApiFactory: (configuration?: Configuration, basePath
  */
 export interface ReleaseApiInterface {
     /**
-     *
+     * Read the public catalog of stable desktop app installers by platform. Returns versions and links; an unavailable source produces the documented 503 response. This method neither downloads nor installs updates.
+     * @summary Get stable desktop installers by platform
+     * @param {ReleaseApiMethodDesktopAppReleasesV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ReleaseApiInterface
+     */
+    methodDesktopAppReleasesV1(requestParameters: ReleaseApiMethodDesktopAppReleasesV1Request, options?: RawAxiosRequestConfig): AxiosPromise<DesktopAppReleasesResponse>;
+    /**
+     * Read the currently published version and release details for app. This is a public version check without installing an update; the request\'s app enum/field selects the application.
      * @summary Get current version app
      * @param {ReleaseApiReleaseAppCabinetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -76,29 +116,60 @@ export interface ReleaseApiInterface {
     releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetVersionAppResponse>;
 }
 /**
+ * Request parameters for methodDesktopAppReleasesV1 operation in ReleaseApi.
+ * @export
+ * @interface ReleaseApiMethodDesktopAppReleasesV1Request
+ */
+export interface ReleaseApiMethodDesktopAppReleasesV1Request {
+    /**
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @type {'ru' | 'en'}
+     * @memberof ReleaseApiMethodDesktopAppReleasesV1
+     */
+    readonly 'language': MethodDesktopAppReleasesV1LanguageEnum;
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof ReleaseApiMethodDesktopAppReleasesV1
+     */
+    readonly 'v'?: MethodDesktopAppReleasesV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ReleaseApiMethodDesktopAppReleasesV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
+}
+/**
  * Request parameters for releaseAppCabinetV1 operation in ReleaseApi.
  * @export
  * @interface ReleaseApiReleaseAppCabinetV1Request
  */
 export interface ReleaseApiReleaseAppCabinetV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ReleaseApiReleaseAppCabinetV1
      */
-    readonly language: ReleaseAppCabinetV1LanguageEnum;
+    readonly 'language': ReleaseAppCabinetV1LanguageEnum;
     /**
      * Apps
      * @type {'cabinet'}
      * @memberof ReleaseApiReleaseAppCabinetV1
      */
-    readonly app: ReleaseAppCabinetV1AppEnum;
+    readonly 'app': ReleaseAppCabinetV1AppEnum;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ReleaseApiReleaseAppCabinetV1
      */
-    readonly v?: ReleaseAppCabinetV1VEnum;
+    readonly 'v'?: ReleaseAppCabinetV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ReleaseApiReleaseAppCabinetV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * ReleaseApi - object-oriented interface
@@ -108,7 +179,16 @@ export interface ReleaseApiReleaseAppCabinetV1Request {
  */
 export declare class ReleaseApi extends BaseAPI implements ReleaseApiInterface {
     /**
-     *
+     * Read the public catalog of stable desktop app installers by platform. Returns versions and links; an unavailable source produces the documented 503 response. This method neither downloads nor installs updates.
+     * @summary Get stable desktop installers by platform
+     * @param {ReleaseApiMethodDesktopAppReleasesV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ReleaseApi
+     */
+    methodDesktopAppReleasesV1(requestParameters: ReleaseApiMethodDesktopAppReleasesV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DesktopAppReleasesResponse, any, {}, any>>;
+    /**
+     * Read the currently published version and release details for app. This is a public version check without installing an update; the request\'s app enum/field selects the application.
      * @summary Get current version app
      * @param {ReleaseApiReleaseAppCabinetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -117,6 +197,21 @@ export declare class ReleaseApi extends BaseAPI implements ReleaseApiInterface {
      */
     releaseAppCabinetV1(requestParameters: ReleaseApiReleaseAppCabinetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetVersionAppResponse, any, {}, any>>;
 }
+/**
+ * @export
+ */
+export declare const MethodDesktopAppReleasesV1LanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type MethodDesktopAppReleasesV1LanguageEnum = typeof MethodDesktopAppReleasesV1LanguageEnum[keyof typeof MethodDesktopAppReleasesV1LanguageEnum];
+/**
+ * @export
+ */
+export declare const MethodDesktopAppReleasesV1VEnum: {
+    readonly _1: "1";
+};
+export type MethodDesktopAppReleasesV1VEnum = typeof MethodDesktopAppReleasesV1VEnum[keyof typeof MethodDesktopAppReleasesV1VEnum];
 /**
  * @export
  */

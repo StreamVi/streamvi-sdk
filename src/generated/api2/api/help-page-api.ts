@@ -36,15 +36,16 @@ import type { StructureHelpPageResponse } from '../models';
 export const HelpPageApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Read public help page content using request parameters and language. Returns the page without executing the action it describes.
          * @summary Get help page
-         * @param {HelpPageGetV1LanguageEnum} language Current language
+         * @param {HelpPageGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} url Url of page
          * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        helpPageGetV1: async (language: HelpPageGetV1LanguageEnum, url: string, v?: HelpPageGetV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        helpPageGetV1: async (language: HelpPageGetV1LanguageEnum, url: string, v?: HelpPageGetV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('helpPageGetV1', 'language', language)
             // verify required parameter 'url' is not null or undefined
@@ -77,6 +78,9 @@ export const HelpPageApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -87,19 +91,24 @@ export const HelpPageApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * 
+         * Search public help pages using request filters and pagination, including language. Returns search results; read the selected page using GET /method/help/page/get.
          * @summary Get list of help pages
-         * @param {HelpPageListV1LanguageEnum} language Current language
+         * @param {HelpPageListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} limit Number of results
+         * @param {number} offset Page offset number
          * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
-         * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        helpPageListV1: async (language: HelpPageListV1LanguageEnum, v?: HelpPageListV1VEnum, s?: string, limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        helpPageListV1: async (language: HelpPageListV1LanguageEnum, limit: number, offset: number, v?: HelpPageListV1VEnum, s?: string, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('helpPageListV1', 'language', language)
+            // verify required parameter 'limit' is not null or undefined
+            assertParamExists('helpPageListV1', 'limit', limit)
+            // verify required parameter 'offset' is not null or undefined
+            assertParamExists('helpPageListV1', 'offset', offset)
             const localVarPath = `/method/help/page/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -136,6 +145,9 @@ export const HelpPageApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -146,14 +158,15 @@ export const HelpPageApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * 
+         * Read the public help section structure for language. Returns a navigation tree/sections; this method does not change the structure.
          * @summary Get structure of help pages
-         * @param {HelpPageStructureV1LanguageEnum} language Current language
+         * @param {HelpPageStructureV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        helpPageStructureV1: async (language: HelpPageStructureV1LanguageEnum, v?: HelpPageStructureV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        helpPageStructureV1: async (language: HelpPageStructureV1LanguageEnum, v?: HelpPageStructureV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('helpPageStructureV1', 'language', language)
             const localVarPath = `/method/help/page/structure`;
@@ -180,6 +193,9 @@ export const HelpPageApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -200,47 +216,50 @@ export const HelpPageApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = HelpPageApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Read public help page content using request parameters and language. Returns the page without executing the action it describes.
          * @summary Get help page
-         * @param {HelpPageGetV1LanguageEnum} language Current language
+         * @param {HelpPageGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} url Url of page
          * @param {HelpPageGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async helpPageGetV1(language: HelpPageGetV1LanguageEnum, url: string, v?: HelpPageGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetHelpPageResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.helpPageGetV1(language, url, v, options);
+        async helpPageGetV1(language: HelpPageGetV1LanguageEnum, url: string, v?: HelpPageGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetHelpPageResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.helpPageGetV1(language, url, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['HelpPageApi.helpPageGetV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Search public help pages using request filters and pagination, including language. Returns search results; read the selected page using GET /method/help/page/get.
          * @summary Get list of help pages
-         * @param {HelpPageListV1LanguageEnum} language Current language
+         * @param {HelpPageListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} limit Number of results
+         * @param {number} offset Page offset number
          * @param {HelpPageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [s] String for search
-         * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async helpPageListV1(language: HelpPageListV1LanguageEnum, v?: HelpPageListV1VEnum, s?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHelpPageResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.helpPageListV1(language, v, s, limit, offset, options);
+        async helpPageListV1(language: HelpPageListV1LanguageEnum, limit: number, offset: number, v?: HelpPageListV1VEnum, s?: string, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHelpPageResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.helpPageListV1(language, limit, offset, v, s, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['HelpPageApi.helpPageListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read the public help section structure for language. Returns a navigation tree/sections; this method does not change the structure.
          * @summary Get structure of help pages
-         * @param {HelpPageStructureV1LanguageEnum} language Current language
+         * @param {HelpPageStructureV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {HelpPageStructureV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async helpPageStructureV1(language: HelpPageStructureV1LanguageEnum, v?: HelpPageStructureV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StructureHelpPageResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.helpPageStructureV1(language, v, options);
+        async helpPageStructureV1(language: HelpPageStructureV1LanguageEnum, v?: HelpPageStructureV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StructureHelpPageResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.helpPageStructureV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['HelpPageApi.helpPageStructureV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -256,34 +275,34 @@ export const HelpPageApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = HelpPageApiFp(configuration)
     return {
         /**
-         * 
+         * Read public help page content using request parameters and language. Returns the page without executing the action it describes.
          * @summary Get help page
          * @param {HelpPageApiHelpPageGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         helpPageGetV1(requestParameters: HelpPageApiHelpPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetHelpPageResponse> {
-            return localVarFp.helpPageGetV1(requestParameters.language, requestParameters.url, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.helpPageGetV1(requestParameters['language'], requestParameters['url'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Search public help pages using request filters and pagination, including language. Returns search results; read the selected page using GET /method/help/page/get.
          * @summary Get list of help pages
          * @param {HelpPageApiHelpPageListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHelpPageResponse> {
-            return localVarFp.helpPageListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+            return localVarFp.helpPageListV1(requestParameters['language'], requestParameters['limit'], requestParameters['offset'], requestParameters['v'], requestParameters['s'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read the public help section structure for language. Returns a navigation tree/sections; this method does not change the structure.
          * @summary Get structure of help pages
          * @param {HelpPageApiHelpPageStructureV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         helpPageStructureV1(requestParameters: HelpPageApiHelpPageStructureV1Request, options?: RawAxiosRequestConfig): AxiosPromise<StructureHelpPageResponse> {
-            return localVarFp.helpPageStructureV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.helpPageStructureV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -295,7 +314,7 @@ export const HelpPageApiFactory = function (configuration?: Configuration, baseP
  */
 export interface HelpPageApiInterface {
     /**
-     * 
+     * Read public help page content using request parameters and language. Returns the page without executing the action it describes.
      * @summary Get help page
      * @param {HelpPageApiHelpPageGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -305,7 +324,7 @@ export interface HelpPageApiInterface {
     helpPageGetV1(requestParameters: HelpPageApiHelpPageGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetHelpPageResponse>;
 
     /**
-     * 
+     * Search public help pages using request filters and pagination, including language. Returns search results; read the selected page using GET /method/help/page/get.
      * @summary Get list of help pages
      * @param {HelpPageApiHelpPageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -315,7 +334,7 @@ export interface HelpPageApiInterface {
     helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHelpPageResponse>;
 
     /**
-     * 
+     * Read the public help section structure for language. Returns a navigation tree/sections; this method does not change the structure.
      * @summary Get structure of help pages
      * @param {HelpPageApiHelpPageStructureV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -333,25 +352,32 @@ export interface HelpPageApiInterface {
  */
 export interface HelpPageApiHelpPageGetV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof HelpPageApiHelpPageGetV1
      */
-    readonly language: HelpPageGetV1LanguageEnum
+    readonly 'language': HelpPageGetV1LanguageEnum
 
     /**
      * Url of page
      * @type {string}
      * @memberof HelpPageApiHelpPageGetV1
      */
-    readonly url: string
+    readonly 'url': string
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof HelpPageApiHelpPageGetV1
      */
-    readonly v?: HelpPageGetV1VEnum
+    readonly 'v'?: HelpPageGetV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof HelpPageApiHelpPageGetV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -361,39 +387,46 @@ export interface HelpPageApiHelpPageGetV1Request {
  */
 export interface HelpPageApiHelpPageListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof HelpPageApiHelpPageListV1
      */
-    readonly language: HelpPageListV1LanguageEnum
-
-    /**
-     * Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @type {'1'}
-     * @memberof HelpPageApiHelpPageListV1
-     */
-    readonly v?: HelpPageListV1VEnum
-
-    /**
-     * String for search
-     * @type {string}
-     * @memberof HelpPageApiHelpPageListV1
-     */
-    readonly s?: string
+    readonly 'language': HelpPageListV1LanguageEnum
 
     /**
      * Number of results
      * @type {number}
      * @memberof HelpPageApiHelpPageListV1
      */
-    readonly limit?: number
+    readonly 'limit': number
 
     /**
      * Page offset number
      * @type {number}
      * @memberof HelpPageApiHelpPageListV1
      */
-    readonly offset?: number
+    readonly 'offset': number
+
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof HelpPageApiHelpPageListV1
+     */
+    readonly 'v'?: HelpPageListV1VEnum
+
+    /**
+     * String for search
+     * @type {string}
+     * @memberof HelpPageApiHelpPageListV1
+     */
+    readonly 's'?: string
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof HelpPageApiHelpPageListV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -403,18 +436,25 @@ export interface HelpPageApiHelpPageListV1Request {
  */
 export interface HelpPageApiHelpPageStructureV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof HelpPageApiHelpPageStructureV1
      */
-    readonly language: HelpPageStructureV1LanguageEnum
+    readonly 'language': HelpPageStructureV1LanguageEnum
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof HelpPageApiHelpPageStructureV1
      */
-    readonly v?: HelpPageStructureV1VEnum
+    readonly 'v'?: HelpPageStructureV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof HelpPageApiHelpPageStructureV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -425,7 +465,7 @@ export interface HelpPageApiHelpPageStructureV1Request {
  */
 export class HelpPageApi extends BaseAPI implements HelpPageApiInterface {
     /**
-     * 
+     * Read public help page content using request parameters and language. Returns the page without executing the action it describes.
      * @summary Get help page
      * @param {HelpPageApiHelpPageGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -433,11 +473,11 @@ export class HelpPageApi extends BaseAPI implements HelpPageApiInterface {
      * @memberof HelpPageApi
      */
     public helpPageGetV1(requestParameters: HelpPageApiHelpPageGetV1Request, options?: RawAxiosRequestConfig) {
-        return HelpPageApiFp(this.configuration).helpPageGetV1(requestParameters.language, requestParameters.url, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return HelpPageApiFp(this.configuration).helpPageGetV1(requestParameters['language'], requestParameters['url'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Search public help pages using request filters and pagination, including language. Returns search results; read the selected page using GET /method/help/page/get.
      * @summary Get list of help pages
      * @param {HelpPageApiHelpPageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -445,11 +485,11 @@ export class HelpPageApi extends BaseAPI implements HelpPageApiInterface {
      * @memberof HelpPageApi
      */
     public helpPageListV1(requestParameters: HelpPageApiHelpPageListV1Request, options?: RawAxiosRequestConfig) {
-        return HelpPageApiFp(this.configuration).helpPageListV1(requestParameters.language, requestParameters.v, requestParameters.s, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+        return HelpPageApiFp(this.configuration).helpPageListV1(requestParameters['language'], requestParameters['limit'], requestParameters['offset'], requestParameters['v'], requestParameters['s'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read the public help section structure for language. Returns a navigation tree/sections; this method does not change the structure.
      * @summary Get structure of help pages
      * @param {HelpPageApiHelpPageStructureV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -457,7 +497,7 @@ export class HelpPageApi extends BaseAPI implements HelpPageApiInterface {
      * @memberof HelpPageApi
      */
     public helpPageStructureV1(requestParameters: HelpPageApiHelpPageStructureV1Request, options?: RawAxiosRequestConfig) {
-        return HelpPageApiFp(this.configuration).helpPageStructureV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return HelpPageApiFp(this.configuration).helpPageStructureV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

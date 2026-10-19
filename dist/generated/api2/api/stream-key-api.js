@@ -30,15 +30,16 @@ const base_1 = require("../base");
 const StreamKeyApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Read disconnect protection settings and credentials for the selected project_id. wait is the saved waiting time in minutes; wait_max_minutes is the current plan maximum for PUT /method/stream-keys/wait. The response contains secret publishing key: do not include it in logs or examples. record is a saved preference, not confirmation that recording is available. Supply the account request target explicitly; the selected cabinet tab does not change project_id.
          * @summary Get stream credentials
-         * @param {StreamKeysKeyV1LanguageEnum} language Current language
+         * @param {StreamKeysKeyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamKeysKeyV1: async (language, projectId, v, options = {}) => {
+        streamKeysKeyV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('streamKeysKeyV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -53,9 +54,12 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["stream-keys:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["stream-keys:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["stream-keys:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -68,6 +72,9 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -77,13 +84,14 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Rotate the secret publishing key of the selected project_id. Returns a new key and sends disconnect commands to active publishers using the old key. Success confirms the key was saved; individual server disconnect errors are logged without rolling back. Update the key in the streaming source. This does not change protection duration; use PUT /method/stream-keys/wait for that.
          * @summary Rotate stream key
          * @param {RotateStreamKeyRequest} rotateStreamKeyRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamKeysRotateV1: async (rotateStreamKeyRequest, options = {}) => {
+        streamKeysRotateV1: async (rotateStreamKeyRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'rotateStreamKeyRequest' is not null or undefined
             (0, common_1.assertParamExists)('streamKeysRotateV1', 'rotateStreamKeyRequest', rotateStreamKeyRequest);
@@ -97,10 +105,16 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["stream-keys:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["stream-keys:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["stream-keys:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -112,13 +126,14 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Enable broadcast disconnect protection, change the wait time, or disable protection for the selected project_id. For example, \'enable protection for 15 minutes\' means wait_minutes=15; \'disable protection\' means wait_minutes=0. Accepts an integer number of minutes >= 0. Positive values are limited by the current tariff: first read wait_max_minutes via GET /method/stream-keys. Exceeding the limit returns error.name=stream_key.wait_exceeds_tariff_limit and error.data.max_minutes. Success confirms saving the setting and attempting to update active streams; completion of all external actions is not guaranteed. Pass an explicit project_id: the account fallback is the personal project, not the open tab. X-Client-Request-Id coordinates realtime refresh and is not an idempotency key.
          * @summary Update disconnect protection wait
          * @param {SetWaitStreamKeyRequest} setWaitStreamKeyRequest
+         * @param {string} [xClientRequestId] Optional UUID v4 for realtime refresh coordination. Invalid values are ignored; not an idempotency key.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamKeysSetWaitV1: async (setWaitStreamKeyRequest, options = {}) => {
+        streamKeysSetWaitV1: async (setWaitStreamKeyRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'setWaitStreamKeyRequest' is not null or undefined
             (0, common_1.assertParamExists)('streamKeysSetWaitV1', 'setWaitStreamKeyRequest', setWaitStreamKeyRequest);
@@ -132,10 +147,16 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["stream-keys:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["stream-keys:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["stream-keys:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -147,13 +168,14 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Update record
+         * Recording is under development and is not implemented as an available recording feature. This endpoint only saves the requested project recording flag: true to enable, false to disable. The current implementation requires a tariff with recording enabled. A successful response confirms that the preference was saved; it does not mean recording has started or a video was created.
+         * @summary Update the stream recording preference (under development)
          * @param {SetRecordStreamRequest} setRecordStreamRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        streamKeysUpdateRecordV1: async (setRecordStreamRequest, options = {}) => {
+        streamKeysUpdateRecordV1: async (setRecordStreamRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'setRecordStreamRequest' is not null or undefined
             (0, common_1.assertParamExists)('streamKeysUpdateRecordV1', 'setRecordStreamRequest', setRecordStreamRequest);
@@ -167,10 +189,16 @@ const StreamKeyApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["stream-keys:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["stream-keys:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["stream-keys:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -192,59 +220,63 @@ const StreamKeyApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.StreamKeyApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Read disconnect protection settings and credentials for the selected project_id. wait is the saved waiting time in minutes; wait_max_minutes is the current plan maximum for PUT /method/stream-keys/wait. The response contains secret publishing key: do not include it in logs or examples. record is a saved preference, not confirmation that recording is available. Supply the account request target explicitly; the selected cabinet tab does not change project_id.
          * @summary Get stream credentials
-         * @param {StreamKeysKeyV1LanguageEnum} language Current language
+         * @param {StreamKeysKeyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {StreamKeysKeyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamKeysKeyV1(language, projectId, v, options) {
+        async streamKeysKeyV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamKeysKeyV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamKeysKeyV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamKeyApi.streamKeysKeyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Rotate the secret publishing key of the selected project_id. Returns a new key and sends disconnect commands to active publishers using the old key. Success confirms the key was saved; individual server disconnect errors are logged without rolling back. Update the key in the streaming source. This does not change protection duration; use PUT /method/stream-keys/wait for that.
          * @summary Rotate stream key
          * @param {RotateStreamKeyRequest} rotateStreamKeyRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamKeysRotateV1(rotateStreamKeyRequest, options) {
+        async streamKeysRotateV1(rotateStreamKeyRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamKeysRotateV1(rotateStreamKeyRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamKeysRotateV1(rotateStreamKeyRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamKeyApi.streamKeysRotateV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Enable broadcast disconnect protection, change the wait time, or disable protection for the selected project_id. For example, \'enable protection for 15 minutes\' means wait_minutes=15; \'disable protection\' means wait_minutes=0. Accepts an integer number of minutes >= 0. Positive values are limited by the current tariff: first read wait_max_minutes via GET /method/stream-keys. Exceeding the limit returns error.name=stream_key.wait_exceeds_tariff_limit and error.data.max_minutes. Success confirms saving the setting and attempting to update active streams; completion of all external actions is not guaranteed. Pass an explicit project_id: the account fallback is the personal project, not the open tab. X-Client-Request-Id coordinates realtime refresh and is not an idempotency key.
          * @summary Update disconnect protection wait
          * @param {SetWaitStreamKeyRequest} setWaitStreamKeyRequest
+         * @param {string} [xClientRequestId] Optional UUID v4 for realtime refresh coordination. Invalid values are ignored; not an idempotency key.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamKeysSetWaitV1(setWaitStreamKeyRequest, options) {
+        async streamKeysSetWaitV1(setWaitStreamKeyRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamKeysSetWaitV1(setWaitStreamKeyRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamKeysSetWaitV1(setWaitStreamKeyRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamKeyApi.streamKeysSetWaitV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Update record
+         * Recording is under development and is not implemented as an available recording feature. This endpoint only saves the requested project recording flag: true to enable, false to disable. The current implementation requires a tariff with recording enabled. A successful response confirms that the preference was saved; it does not mean recording has started or a video was created.
+         * @summary Update the stream recording preference (under development)
          * @param {SetRecordStreamRequest} setRecordStreamRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async streamKeysUpdateRecordV1(setRecordStreamRequest, options) {
+        async streamKeysUpdateRecordV1(setRecordStreamRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.streamKeysUpdateRecordV1(setRecordStreamRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamKeysUpdateRecordV1(setRecordStreamRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['StreamKeyApi.streamKeysUpdateRecordV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -260,44 +292,44 @@ const StreamKeyApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.StreamKeyApiFp)(configuration);
     return {
         /**
-         *
+         * Read disconnect protection settings and credentials for the selected project_id. wait is the saved waiting time in minutes; wait_max_minutes is the current plan maximum for PUT /method/stream-keys/wait. The response contains secret publishing key: do not include it in logs or examples. record is a saved preference, not confirmation that recording is available. Supply the account request target explicitly; the selected cabinet tab does not change project_id.
          * @summary Get stream credentials
          * @param {StreamKeyApiStreamKeysKeyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         streamKeysKeyV1(requestParameters, options) {
-            return localVarFp.streamKeysKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.streamKeysKeyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Rotate the secret publishing key of the selected project_id. Returns a new key and sends disconnect commands to active publishers using the old key. Success confirms the key was saved; individual server disconnect errors are logged without rolling back. Update the key in the streaming source. This does not change protection duration; use PUT /method/stream-keys/wait for that.
          * @summary Rotate stream key
          * @param {StreamKeyApiStreamKeysRotateV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         streamKeysRotateV1(requestParameters, options) {
-            return localVarFp.streamKeysRotateV1(requestParameters.RotateStreamKeyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamKeysRotateV1(requestParameters['RotateStreamKeyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Enable broadcast disconnect protection, change the wait time, or disable protection for the selected project_id. For example, \'enable protection for 15 minutes\' means wait_minutes=15; \'disable protection\' means wait_minutes=0. Accepts an integer number of minutes >= 0. Positive values are limited by the current tariff: first read wait_max_minutes via GET /method/stream-keys. Exceeding the limit returns error.name=stream_key.wait_exceeds_tariff_limit and error.data.max_minutes. Success confirms saving the setting and attempting to update active streams; completion of all external actions is not guaranteed. Pass an explicit project_id: the account fallback is the personal project, not the open tab. X-Client-Request-Id coordinates realtime refresh and is not an idempotency key.
          * @summary Update disconnect protection wait
          * @param {StreamKeyApiStreamKeysSetWaitV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         streamKeysSetWaitV1(requestParameters, options) {
-            return localVarFp.streamKeysSetWaitV1(requestParameters.SetWaitStreamKeyRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamKeysSetWaitV1(requestParameters['SetWaitStreamKeyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Update record
+         * Recording is under development and is not implemented as an available recording feature. This endpoint only saves the requested project recording flag: true to enable, false to disable. The current implementation requires a tariff with recording enabled. A successful response confirms that the preference was saved; it does not mean recording has started or a video was created.
+         * @summary Update the stream recording preference (under development)
          * @param {StreamKeyApiStreamKeysUpdateRecordV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         streamKeysUpdateRecordV1(requestParameters, options) {
-            return localVarFp.streamKeysUpdateRecordV1(requestParameters.SetRecordStreamRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.streamKeysUpdateRecordV1(requestParameters['SetRecordStreamRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -310,7 +342,7 @@ exports.StreamKeyApiFactory = StreamKeyApiFactory;
  */
 class StreamKeyApi extends base_1.BaseAPI {
     /**
-     *
+     * Read disconnect protection settings and credentials for the selected project_id. wait is the saved waiting time in minutes; wait_max_minutes is the current plan maximum for PUT /method/stream-keys/wait. The response contains secret publishing key: do not include it in logs or examples. record is a saved preference, not confirmation that recording is available. Supply the account request target explicitly; the selected cabinet tab does not change project_id.
      * @summary Get stream credentials
      * @param {StreamKeyApiStreamKeysKeyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -318,10 +350,10 @@ class StreamKeyApi extends base_1.BaseAPI {
      * @memberof StreamKeyApi
      */
     streamKeysKeyV1(requestParameters, options) {
-        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysKeyV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysKeyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Rotate the secret publishing key of the selected project_id. Returns a new key and sends disconnect commands to active publishers using the old key. Success confirms the key was saved; individual server disconnect errors are logged without rolling back. Update the key in the streaming source. This does not change protection duration; use PUT /method/stream-keys/wait for that.
      * @summary Rotate stream key
      * @param {StreamKeyApiStreamKeysRotateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -329,10 +361,10 @@ class StreamKeyApi extends base_1.BaseAPI {
      * @memberof StreamKeyApi
      */
     streamKeysRotateV1(requestParameters, options) {
-        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysRotateV1(requestParameters.RotateStreamKeyRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysRotateV1(requestParameters['RotateStreamKeyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Enable broadcast disconnect protection, change the wait time, or disable protection for the selected project_id. For example, \'enable protection for 15 minutes\' means wait_minutes=15; \'disable protection\' means wait_minutes=0. Accepts an integer number of minutes >= 0. Positive values are limited by the current tariff: first read wait_max_minutes via GET /method/stream-keys. Exceeding the limit returns error.name=stream_key.wait_exceeds_tariff_limit and error.data.max_minutes. Success confirms saving the setting and attempting to update active streams; completion of all external actions is not guaranteed. Pass an explicit project_id: the account fallback is the personal project, not the open tab. X-Client-Request-Id coordinates realtime refresh and is not an idempotency key.
      * @summary Update disconnect protection wait
      * @param {StreamKeyApiStreamKeysSetWaitV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -340,18 +372,18 @@ class StreamKeyApi extends base_1.BaseAPI {
      * @memberof StreamKeyApi
      */
     streamKeysSetWaitV1(requestParameters, options) {
-        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysSetWaitV1(requestParameters.SetWaitStreamKeyRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysSetWaitV1(requestParameters['SetWaitStreamKeyRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Update record
+     * Recording is under development and is not implemented as an available recording feature. This endpoint only saves the requested project recording flag: true to enable, false to disable. The current implementation requires a tariff with recording enabled. A successful response confirms that the preference was saved; it does not mean recording has started or a video was created.
+     * @summary Update the stream recording preference (under development)
      * @param {StreamKeyApiStreamKeysUpdateRecordV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StreamKeyApi
      */
     streamKeysUpdateRecordV1(requestParameters, options) {
-        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysUpdateRecordV1(requestParameters.SetRecordStreamRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.StreamKeyApiFp)(this.configuration).streamKeysUpdateRecordV1(requestParameters['SetRecordStreamRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.StreamKeyApi = StreamKeyApi;

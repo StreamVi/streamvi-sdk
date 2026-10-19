@@ -22,7 +22,7 @@ export interface SiteUpdateOptionsVkRequest {
      */
     'v'?: SiteUpdateOptionsVkRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
@@ -34,19 +34,19 @@ export interface SiteUpdateOptionsVkRequest {
      */
     'project_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof SiteUpdateOptionsVkRequest
      */
     'channel_id': number;
     /**
-     *
+     * Platform broadcast title; supplied explicitly, omission does not insert the example title.
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
     'title': string;
     /**
-     *
+     * Broadcast description on the platform; supplied explicitly. Do not confuse it with the channel configuration description or API documentation.
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
@@ -82,13 +82,13 @@ export interface SiteUpdateOptionsVkRequest {
      */
     'playlist_id'?: string;
     /**
-     *
+     * Availability of VK broadcast comments from the platform enum; not project permissions.
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
     'privacy_comments'?: SiteUpdateOptionsVkRequestPrivacyCommentsEnum;
     /**
-     *
+     * Platform broadcast visibility from its enum; omission does not insert demonstration text.
      * @type {string}
      * @memberof SiteUpdateOptionsVkRequest
      */
@@ -100,7 +100,7 @@ export interface SiteUpdateOptionsVkRequest {
      */
     'wall'?: boolean;
     /**
-     *
+     * Disable automatic termination of the platform broadcast when true is provided; false sets the opposite value. An omitted value is transformed to undefined.
      * @type {boolean}
      * @memberof SiteUpdateOptionsVkRequest
      */

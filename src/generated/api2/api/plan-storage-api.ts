@@ -40,18 +40,19 @@ import type { SuccessResponse } from '../models';
 export const PlanStorageApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
+         * Buy a video storage tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy storage tariff
-         * @param {PlanStorageBuyV1LanguageEnum} language Current language
+         * @param {PlanStorageBuyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanStorageBuyV1PeriodEnum} period Period
          * @param {number} planStorageId Storage plan id
+         * @param {number} size Size
          * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [size] Size
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planStorageBuyV1: async (language: PlanStorageBuyV1LanguageEnum, projectId: number, period: PlanStorageBuyV1PeriodEnum, planStorageId: number, v?: PlanStorageBuyV1VEnum, size?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        planStorageBuyV1: async (language: PlanStorageBuyV1LanguageEnum, projectId: number, period: PlanStorageBuyV1PeriodEnum, planStorageId: number, size: number, v?: PlanStorageBuyV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('planStorageBuyV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -60,6 +61,8 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             assertParamExists('planStorageBuyV1', 'period', period)
             // verify required parameter 'planStorageId' is not null or undefined
             assertParamExists('planStorageBuyV1', 'planStorageId', planStorageId)
+            // verify required parameter 'size' is not null or undefined
+            assertParamExists('planStorageBuyV1', 'size', size)
             const localVarPath = `/method/plan_storage`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -72,9 +75,13 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -104,6 +111,9 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -114,15 +124,16 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
+         * Cancel the next video storage plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
          * @summary Remove next tariff
-         * @param {PlanStorageCancelV1LanguageEnum} language Current language
+         * @param {PlanStorageCancelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planStorageCancelV1: async (language: PlanStorageCancelV1LanguageEnum, projectId: number, v?: PlanStorageCancelV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        planStorageCancelV1: async (language: PlanStorageCancelV1LanguageEnum, projectId: number, v?: PlanStorageCancelV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('planStorageCancelV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -139,9 +150,13 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -159,6 +174,9 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -169,15 +187,16 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
+         * Read preliminary data for purchasing a video storage plan for project_id: subscription state, balance, and possible refund. This legacy check does not purchase a plan; the current implementation sets amount to 0, which is not a guaranteed price for the selected configuration. Monetary values are in minor units.
          * @summary Check storage tariff before buy
-         * @param {PlanStorageCheckV1LanguageEnum} language Current language
+         * @param {PlanStorageCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planStorageCheckV1: async (language: PlanStorageCheckV1LanguageEnum, projectId: number, v?: PlanStorageCheckV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        planStorageCheckV1: async (language: PlanStorageCheckV1LanguageEnum, projectId: number, v?: PlanStorageCheckV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('planStorageCheckV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -194,9 +213,13 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -214,6 +237,9 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -224,14 +250,15 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
+         * Read annual discount rules for video storage plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount of storage
-         * @param {PlanStorageGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanStorageGetDiscountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planStorageGetDiscountV1: async (language: PlanStorageGetDiscountV1LanguageEnum, v?: PlanStorageGetDiscountV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        planStorageGetDiscountV1: async (language: PlanStorageGetDiscountV1LanguageEnum, v?: PlanStorageGetDiscountV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('planStorageGetDiscountV1', 'language', language)
             const localVarPath = `/method/plan_storage/get_discount`;
@@ -246,10 +273,6 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
-
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             } else {
@@ -262,6 +285,9 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -272,14 +298,15 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
+         * Read the public video storage plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get info for storage tariff
-         * @param {PlanStorageListV1LanguageEnum} language Current language
+         * @param {PlanStorageListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planStorageListV1: async (language: PlanStorageListV1LanguageEnum, v?: PlanStorageListV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        planStorageListV1: async (language: PlanStorageListV1LanguageEnum, v?: PlanStorageListV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('planStorageListV1', 'language', language)
             const localVarPath = `/method/plan_storage/list`;
@@ -294,10 +321,6 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
-
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             } else {
@@ -310,6 +333,9 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -320,16 +346,17 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
+         * Save automatic video storage plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set storage tariff auto prolongation
-         * @param {PlanStorageSetProlongationV1LanguageEnum} language Current language
+         * @param {PlanStorageSetProlongationV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
          * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planStorageSetProlongationV1: async (language: PlanStorageSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanStorageSetProlongationV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        planStorageSetProlongationV1: async (language: PlanStorageSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanStorageSetProlongationV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('planStorageSetProlongationV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -348,9 +375,13 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", [], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -372,6 +403,9 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -382,15 +416,16 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
-         * @summary Get tariff for project
-         * @param {PlanStorageTariffV1LanguageEnum} language Current language
+         * Read the current and next video storage plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project storage tariff
+         * @param {PlanStorageTariffV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planStorageTariffV1: async (language: PlanStorageTariffV1LanguageEnum, projectId: number, v?: PlanStorageTariffV1VEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        planStorageTariffV1: async (language: PlanStorageTariffV1LanguageEnum, projectId: number, v?: PlanStorageTariffV1VEnum, xClientRequestId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'language' is not null or undefined
             assertParamExists('planStorageTariffV1', 'language', language)
             // verify required parameter 'projectId' is not null or undefined
@@ -407,9 +442,13 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["billing:read"], configuration)
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration)
+
+            // authentication oauth2Project required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration)
 
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
@@ -427,6 +466,9 @@ export const PlanStorageApiAxiosParamCreator = function (configuration?: Configu
 
 
     
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -447,108 +489,115 @@ export const PlanStorageApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PlanStorageApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
+         * Buy a video storage tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy storage tariff
-         * @param {PlanStorageBuyV1LanguageEnum} language Current language
+         * @param {PlanStorageBuyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanStorageBuyV1PeriodEnum} period Period
          * @param {number} planStorageId Storage plan id
+         * @param {number} size Size
          * @param {PlanStorageBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [size] Size
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planStorageBuyV1(language: PlanStorageBuyV1LanguageEnum, projectId: number, period: PlanStorageBuyV1PeriodEnum, planStorageId: number, v?: PlanStorageBuyV1VEnum, size?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageBuyV1(language, projectId, period, planStorageId, v, size, options);
+        async planStorageBuyV1(language: PlanStorageBuyV1LanguageEnum, projectId: number, period: PlanStorageBuyV1PeriodEnum, planStorageId: number, size: number, v?: PlanStorageBuyV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageBuyV1(language, projectId, period, planStorageId, size, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageBuyV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Cancel the next video storage plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
          * @summary Remove next tariff
-         * @param {PlanStorageCancelV1LanguageEnum} language Current language
+         * @param {PlanStorageCancelV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanStorageCancelV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planStorageCancelV1(language: PlanStorageCancelV1LanguageEnum, projectId: number, v?: PlanStorageCancelV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageCancelV1(language, projectId, v, options);
+        async planStorageCancelV1(language: PlanStorageCancelV1LanguageEnum, projectId: number, v?: PlanStorageCancelV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageCancelV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageCancelV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read preliminary data for purchasing a video storage plan for project_id: subscription state, balance, and possible refund. This legacy check does not purchase a plan; the current implementation sets amount to 0, which is not a guaranteed price for the selected configuration. Monetary values are in minor units.
          * @summary Check storage tariff before buy
-         * @param {PlanStorageCheckV1LanguageEnum} language Current language
+         * @param {PlanStorageCheckV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanStorageCheckV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planStorageCheckV1(language: PlanStorageCheckV1LanguageEnum, projectId: number, v?: PlanStorageCheckV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageCheckResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageCheckV1(language, projectId, v, options);
+        async planStorageCheckV1(language: PlanStorageCheckV1LanguageEnum, projectId: number, v?: PlanStorageCheckV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageCheckResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageCheckV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageCheckV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read annual discount rules for video storage plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount of storage
-         * @param {PlanStorageGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanStorageGetDiscountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanStorageGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planStorageGetDiscountV1(language: PlanStorageGetDiscountV1LanguageEnum, v?: PlanStorageGetDiscountV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageDiscountResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageGetDiscountV1(language, v, options);
+        async planStorageGetDiscountV1(language: PlanStorageGetDiscountV1LanguageEnum, v?: PlanStorageGetDiscountV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageDiscountResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageGetDiscountV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageGetDiscountV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Read the public video storage plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get info for storage tariff
-         * @param {PlanStorageListV1LanguageEnum} language Current language
+         * @param {PlanStorageListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanStorageListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planStorageListV1(language: PlanStorageListV1LanguageEnum, v?: PlanStorageListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageListV1(language, v, options);
+        async planStorageListV1(language: PlanStorageListV1LanguageEnum, v?: PlanStorageListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageListV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Save automatic video storage plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set storage tariff auto prolongation
-         * @param {PlanStorageSetProlongationV1LanguageEnum} language Current language
+         * @param {PlanStorageSetProlongationV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
          * @param {PlanStorageSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planStorageSetProlongationV1(language: PlanStorageSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanStorageSetProlongationV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageSetProlongationV1(language, projectId, enabled, v, options);
+        async planStorageSetProlongationV1(language: PlanStorageSetProlongationV1LanguageEnum, projectId: number, enabled: boolean, v?: PlanStorageSetProlongationV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageSetProlongationV1(language, projectId, enabled, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageSetProlongationV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @summary Get tariff for project
-         * @param {PlanStorageTariffV1LanguageEnum} language Current language
+         * Read the current and next video storage plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project storage tariff
+         * @param {PlanStorageTariffV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanStorageTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planStorageTariffV1(language: PlanStorageTariffV1LanguageEnum, projectId: number, v?: PlanStorageTariffV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageForProject>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageTariffV1(language, projectId, v, options);
+        async planStorageTariffV1(language: PlanStorageTariffV1LanguageEnum, projectId: number, v?: PlanStorageTariffV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlanStorageForProject>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planStorageTariffV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlanStorageApi.planStorageTariffV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -564,74 +613,74 @@ export const PlanStorageApiFactory = function (configuration?: Configuration, ba
     const localVarFp = PlanStorageApiFp(configuration)
     return {
         /**
-         * 
+         * Buy a video storage tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy storage tariff
          * @param {PlanStorageApiPlanStorageBuyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.planStorageBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_storage_id, requestParameters.v, requestParameters.size, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageBuyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_storage_id'], requestParameters['size'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Cancel the next video storage plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
          * @summary Remove next tariff
          * @param {PlanStorageApiPlanStorageCancelV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.planStorageCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageCancelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read preliminary data for purchasing a video storage plan for project_id: subscription state, balance, and possible refund. This legacy check does not purchase a plan; the current implementation sets amount to 0, which is not a guaranteed price for the selected configuration. Monetary values are in minor units.
          * @summary Check storage tariff before buy
          * @param {PlanStorageApiPlanStorageCheckV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageCheckResponse> {
-            return localVarFp.planStorageCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageCheckV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read annual discount rules for video storage plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount of storage
          * @param {PlanStorageApiPlanStorageGetDiscountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageDiscountResponse> {
-            return localVarFp.planStorageGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageGetDiscountV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Read the public video storage plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get info for storage tariff
          * @param {PlanStorageApiPlanStorageListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageResponseDto> {
-            return localVarFp.planStorageListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Save automatic video storage plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set storage tariff auto prolongation
          * @param {PlanStorageApiPlanStorageSetProlongationV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planStorageSetProlongationV1(requestParameters: PlanStorageApiPlanStorageSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse> {
-            return localVarFp.planStorageSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageSetProlongationV1(requestParameters['language'], requestParameters['project_id'], requestParameters['enabled'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Get tariff for project
+         * Read the current and next video storage plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project storage tariff
          * @param {PlanStorageApiPlanStorageTariffV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageForProject> {
-            return localVarFp.planStorageTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planStorageTariffV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -643,7 +692,7 @@ export const PlanStorageApiFactory = function (configuration?: Configuration, ba
  */
 export interface PlanStorageApiInterface {
     /**
-     * 
+     * Buy a video storage tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
      * @summary Buy storage tariff
      * @param {PlanStorageApiPlanStorageBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -653,7 +702,7 @@ export interface PlanStorageApiInterface {
     planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Cancel the next video storage plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
      * @summary Remove next tariff
      * @param {PlanStorageApiPlanStorageCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -663,7 +712,7 @@ export interface PlanStorageApiInterface {
     planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
+     * Read preliminary data for purchasing a video storage plan for project_id: subscription state, balance, and possible refund. This legacy check does not purchase a plan; the current implementation sets amount to 0, which is not a guaranteed price for the selected configuration. Monetary values are in minor units.
      * @summary Check storage tariff before buy
      * @param {PlanStorageApiPlanStorageCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -673,7 +722,7 @@ export interface PlanStorageApiInterface {
     planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageCheckResponse>;
 
     /**
-     * 
+     * Read annual discount rules for video storage plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
      * @summary Get discount of storage
      * @param {PlanStorageApiPlanStorageGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -683,7 +732,7 @@ export interface PlanStorageApiInterface {
     planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageDiscountResponse>;
 
     /**
-     * 
+     * Read the public video storage plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
      * @summary Get info for storage tariff
      * @param {PlanStorageApiPlanStorageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -693,7 +742,7 @@ export interface PlanStorageApiInterface {
     planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PlanStorageResponseDto>;
 
     /**
-     * 
+     * Save automatic video storage plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
      * @summary Set storage tariff auto prolongation
      * @param {PlanStorageApiPlanStorageSetProlongationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -703,8 +752,8 @@ export interface PlanStorageApiInterface {
     planStorageSetProlongationV1(requestParameters: PlanStorageApiPlanStorageSetProlongationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
 
     /**
-     * 
-     * @summary Get tariff for project
+     * Read the current and next video storage plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+     * @summary Get current and next project storage tariff
      * @param {PlanStorageApiPlanStorageTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -721,46 +770,53 @@ export interface PlanStorageApiInterface {
  */
 export interface PlanStorageApiPlanStorageBuyV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly language: PlanStorageBuyV1LanguageEnum
+    readonly 'language': PlanStorageBuyV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Period
      * @type {'month' | 'year'}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly period: PlanStorageBuyV1PeriodEnum
+    readonly 'period': PlanStorageBuyV1PeriodEnum
 
     /**
      * Storage plan id
      * @type {number}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly plan_storage_id: number
-
-    /**
-     * Version (automatically defaults to 1 based on the API contract, can be overridden)
-     * @type {'1'}
-     * @memberof PlanStorageApiPlanStorageBuyV1
-     */
-    readonly v?: PlanStorageBuyV1VEnum
+    readonly 'plan_storage_id': number
 
     /**
      * Size
      * @type {number}
      * @memberof PlanStorageApiPlanStorageBuyV1
      */
-    readonly size?: number
+    readonly 'size': number
+
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {'1'}
+     * @memberof PlanStorageApiPlanStorageBuyV1
+     */
+    readonly 'v'?: PlanStorageBuyV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanStorageApiPlanStorageBuyV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -770,25 +826,32 @@ export interface PlanStorageApiPlanStorageBuyV1Request {
  */
 export interface PlanStorageApiPlanStorageCancelV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanStorageApiPlanStorageCancelV1
      */
-    readonly language: PlanStorageCancelV1LanguageEnum
+    readonly 'language': PlanStorageCancelV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof PlanStorageApiPlanStorageCancelV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageCancelV1
      */
-    readonly v?: PlanStorageCancelV1VEnum
+    readonly 'v'?: PlanStorageCancelV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanStorageApiPlanStorageCancelV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -798,25 +861,32 @@ export interface PlanStorageApiPlanStorageCancelV1Request {
  */
 export interface PlanStorageApiPlanStorageCheckV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanStorageApiPlanStorageCheckV1
      */
-    readonly language: PlanStorageCheckV1LanguageEnum
+    readonly 'language': PlanStorageCheckV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof PlanStorageApiPlanStorageCheckV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageCheckV1
      */
-    readonly v?: PlanStorageCheckV1VEnum
+    readonly 'v'?: PlanStorageCheckV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanStorageApiPlanStorageCheckV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -826,18 +896,25 @@ export interface PlanStorageApiPlanStorageCheckV1Request {
  */
 export interface PlanStorageApiPlanStorageGetDiscountV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanStorageApiPlanStorageGetDiscountV1
      */
-    readonly language: PlanStorageGetDiscountV1LanguageEnum
+    readonly 'language': PlanStorageGetDiscountV1LanguageEnum
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageGetDiscountV1
      */
-    readonly v?: PlanStorageGetDiscountV1VEnum
+    readonly 'v'?: PlanStorageGetDiscountV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanStorageApiPlanStorageGetDiscountV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -847,18 +924,25 @@ export interface PlanStorageApiPlanStorageGetDiscountV1Request {
  */
 export interface PlanStorageApiPlanStorageListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanStorageApiPlanStorageListV1
      */
-    readonly language: PlanStorageListV1LanguageEnum
+    readonly 'language': PlanStorageListV1LanguageEnum
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageListV1
      */
-    readonly v?: PlanStorageListV1VEnum
+    readonly 'v'?: PlanStorageListV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanStorageApiPlanStorageListV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -868,32 +952,39 @@ export interface PlanStorageApiPlanStorageListV1Request {
  */
 export interface PlanStorageApiPlanStorageSetProlongationV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanStorageApiPlanStorageSetProlongationV1
      */
-    readonly language: PlanStorageSetProlongationV1LanguageEnum
+    readonly 'language': PlanStorageSetProlongationV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof PlanStorageApiPlanStorageSetProlongationV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Auto prolongation enabled
      * @type {boolean}
      * @memberof PlanStorageApiPlanStorageSetProlongationV1
      */
-    readonly enabled: boolean
+    readonly 'enabled': boolean
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageSetProlongationV1
      */
-    readonly v?: PlanStorageSetProlongationV1VEnum
+    readonly 'v'?: PlanStorageSetProlongationV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanStorageApiPlanStorageSetProlongationV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -903,25 +994,32 @@ export interface PlanStorageApiPlanStorageSetProlongationV1Request {
  */
 export interface PlanStorageApiPlanStorageTariffV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof PlanStorageApiPlanStorageTariffV1
      */
-    readonly language: PlanStorageTariffV1LanguageEnum
+    readonly 'language': PlanStorageTariffV1LanguageEnum
 
     /**
      * Project id
      * @type {number}
      * @memberof PlanStorageApiPlanStorageTariffV1
      */
-    readonly project_id: number
+    readonly 'project_id': number
 
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof PlanStorageApiPlanStorageTariffV1
      */
-    readonly v?: PlanStorageTariffV1VEnum
+    readonly 'v'?: PlanStorageTariffV1VEnum
+
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof PlanStorageApiPlanStorageTariffV1
+     */
+    readonly 'X-Client-Request-Id'?: string
 }
 
 /**
@@ -932,7 +1030,7 @@ export interface PlanStorageApiPlanStorageTariffV1Request {
  */
 export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
     /**
-     * 
+     * Buy a video storage tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
      * @summary Buy storage tariff
      * @param {PlanStorageApiPlanStorageBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -940,11 +1038,11 @@ export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
      * @memberof PlanStorageApi
      */
     public planStorageBuyV1(requestParameters: PlanStorageApiPlanStorageBuyV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_storage_id, requestParameters.v, requestParameters.size, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageBuyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_storage_id'], requestParameters['size'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Cancel the next video storage plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
      * @summary Remove next tariff
      * @param {PlanStorageApiPlanStorageCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -952,11 +1050,11 @@ export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
      * @memberof PlanStorageApi
      */
     public planStorageCancelV1(requestParameters: PlanStorageApiPlanStorageCancelV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageCancelV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageCancelV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read preliminary data for purchasing a video storage plan for project_id: subscription state, balance, and possible refund. This legacy check does not purchase a plan; the current implementation sets amount to 0, which is not a guaranteed price for the selected configuration. Monetary values are in minor units.
      * @summary Check storage tariff before buy
      * @param {PlanStorageApiPlanStorageCheckV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -964,11 +1062,11 @@ export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
      * @memberof PlanStorageApi
      */
     public planStorageCheckV1(requestParameters: PlanStorageApiPlanStorageCheckV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageCheckV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageCheckV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read annual discount rules for video storage plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
      * @summary Get discount of storage
      * @param {PlanStorageApiPlanStorageGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -976,11 +1074,11 @@ export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
      * @memberof PlanStorageApi
      */
     public planStorageGetDiscountV1(requestParameters: PlanStorageApiPlanStorageGetDiscountV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageGetDiscountV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Read the public video storage plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
      * @summary Get info for storage tariff
      * @param {PlanStorageApiPlanStorageListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -988,11 +1086,11 @@ export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
      * @memberof PlanStorageApi
      */
     public planStorageListV1(requestParameters: PlanStorageApiPlanStorageListV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
+     * Save automatic video storage plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
      * @summary Set storage tariff auto prolongation
      * @param {PlanStorageApiPlanStorageSetProlongationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1000,19 +1098,19 @@ export class PlanStorageApi extends BaseAPI implements PlanStorageApiInterface {
      * @memberof PlanStorageApi
      */
     public planStorageSetProlongationV1(requestParameters: PlanStorageApiPlanStorageSetProlongationV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageSetProlongationV1(requestParameters['language'], requestParameters['project_id'], requestParameters['enabled'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
-     * @summary Get tariff for project
+     * Read the current and next video storage plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+     * @summary Get current and next project storage tariff
      * @param {PlanStorageApiPlanStorageTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanStorageApi
      */
     public planStorageTariffV1(requestParameters: PlanStorageApiPlanStorageTariffV1Request, options?: RawAxiosRequestConfig) {
-        return PlanStorageApiFp(this.configuration).planStorageTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return PlanStorageApiFp(this.configuration).planStorageTariffV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 

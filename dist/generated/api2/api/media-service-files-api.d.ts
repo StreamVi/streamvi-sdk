@@ -26,79 +26,87 @@ import type { UpdateMediaServiceFileRequest } from '../models';
  */
 export declare const MediaServiceFilesApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Mark processing of the project\'s own service file media_id in project_id as cancelled and mark it deleted in storage metadata. Only status=processing is allowed; otherwise media_service.status_not_available. Use delete for a completed video; a successful command response is not a file conversion result.
      * @summary Cancel service video
      * @param {CancelMediaServiceFileRequest} cancelMediaServiceFileRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteCancelV1: (cancelMediaServiceFileRequest: CancelMediaServiceFileRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    mediaServiceFilesSiteCancelV1: (cancelMediaServiceFileRequest: CancelMediaServiceFileRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Upload a multipart/form-data file (field file) to create a service video for project_id supplied in query. The current pipe limits the file to 300 MiB; the listed media formats are allowed. Access and custom file count are tariff-limited. Success confirms temporary storage upload and creation of a processing session, not video readiness; check list/session.
      * @summary Create service video
-     * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Current language
+     * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteCreateV1: (language: MediaServiceFilesSiteCreateV1LanguageEnum, projectId: number, v?: MediaServiceFilesSiteCreateV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    mediaServiceFilesSiteCreateV1: (language: MediaServiceFilesSiteCreateV1LanguageEnum, projectId: number, v?: MediaServiceFilesSiteCreateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Delete an owned service file media_id from project_id. A processing file or a file used as the selected standby media cannot be deleted; this differs from cancelling processing with POST /method/media-service-files/cancel.
      * @summary Delete service video
      * @param {DeleteMediaServiceFileRequest} deleteMediaServiceFileRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteDeleteV1: (deleteMediaServiceFileRequest: DeleteMediaServiceFileRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    mediaServiceFilesSiteDeleteV1: (deleteMediaServiceFileRequest: DeleteMediaServiceFileRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read completed service file media_id in project_id. The file must have status=success and belong to the project or be shared; otherwise returns media_service.status_not_available/forbidden_get. Returns metadata and preview/video links, not binary content.
      * @summary Get service video
-     * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Current language
+     * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} mediaId Media service file id
      * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteGetV1: (language: MediaServiceFilesSiteGetV1LanguageEnum, projectId: number, mediaId: number, v?: MediaServiceFilesSiteGetV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    mediaServiceFilesSiteGetV1: (language: MediaServiceFilesSiteGetV1LanguageEnum, projectId: number, mediaId: number, v?: MediaServiceFilesSiteGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read available media-service-files for project_id: status readiness, isEditable editability, and isDisabled plan restriction. media_id identifies a service file, not video.id. For processing files, event_channel allows tracking progress.
      * @summary Get service video list
-     * @param {MediaServiceFilesSiteListV1LanguageEnum} language Current language
+     * @param {MediaServiceFilesSiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteListV1: (language: MediaServiceFilesSiteListV1LanguageEnum, projectId: number, v?: MediaServiceFilesSiteListV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    mediaServiceFilesSiteListV1: (language: MediaServiceFilesSiteListV1LanguageEnum, projectId: number, v?: MediaServiceFilesSiteListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Read the processing session of an owned media_id in project_id. Returns file_id, channel, and a secret Centrifugo subscription token. Available while the file is not success/cancel/error and not deleted; completed states produce media_service.not_ready.
      * @summary Get session by media id
-     * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Current language
+     * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} mediaId Media service file id
      * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteSessionV1: (language: MediaServiceFilesSiteSessionV1LanguageEnum, projectId: number, mediaId: number, v?: MediaServiceFilesSiteSessionV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    mediaServiceFilesSiteSessionV1: (language: MediaServiceFilesSiteSessionV1LanguageEnum, projectId: number, mediaId: number, v?: MediaServiceFilesSiteSessionV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Select a prepared service file media_id for project_id: type=pause is a pause placeholder, type=lost is a signal-loss placeholder. Obtain media_id from GET /method/media-service-files/list. Custom files are tariff-limited; base/shared files follow access rules. Success means the selection was saved, not that broadcasting started.
      * @summary Set service video
      * @param {SetMediaServiceFileRequest} setMediaServiceFileRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteSetV1: (setMediaServiceFileRequest: SetMediaServiceFileRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    mediaServiceFilesSiteSetV1: (setMediaServiceFileRequest: SetMediaServiceFileRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Rename completed service file media_id in project_id. Requires an owned file with status=success; another owner\'s shared file cannot be edited. Success confirms name was saved.
      * @summary Update service video
      * @param {UpdateMediaServiceFileRequest} updateMediaServiceFileRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteUpdateV1: (updateMediaServiceFileRequest: UpdateMediaServiceFileRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    mediaServiceFilesSiteUpdateV1: (updateMediaServiceFileRequest: UpdateMediaServiceFileRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * MediaServiceFilesApi - functional programming interface
@@ -106,79 +114,87 @@ export declare const MediaServiceFilesApiAxiosParamCreator: (configuration?: Con
  */
 export declare const MediaServiceFilesApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Mark processing of the project\'s own service file media_id in project_id as cancelled and mark it deleted in storage metadata. Only status=processing is allowed; otherwise media_service.status_not_available. Use delete for a completed video; a successful command response is not a file conversion result.
      * @summary Cancel service video
      * @param {CancelMediaServiceFileRequest} cancelMediaServiceFileRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteCancelV1(cancelMediaServiceFileRequest: CancelMediaServiceFileRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    mediaServiceFilesSiteCancelV1(cancelMediaServiceFileRequest: CancelMediaServiceFileRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Upload a multipart/form-data file (field file) to create a service video for project_id supplied in query. The current pipe limits the file to 300 MiB; the listed media formats are allowed. Access and custom file count are tariff-limited. Success confirms temporary storage upload and creation of a processing session, not video readiness; check list/session.
      * @summary Create service video
-     * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Current language
+     * @param {MediaServiceFilesSiteCreateV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {MediaServiceFilesSiteCreateV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteCreateV1(language: MediaServiceFilesSiteCreateV1LanguageEnum, projectId: number, v?: MediaServiceFilesSiteCreateV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    mediaServiceFilesSiteCreateV1(language: MediaServiceFilesSiteCreateV1LanguageEnum, projectId: number, v?: MediaServiceFilesSiteCreateV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Delete an owned service file media_id from project_id. A processing file or a file used as the selected standby media cannot be deleted; this differs from cancelling processing with POST /method/media-service-files/cancel.
      * @summary Delete service video
      * @param {DeleteMediaServiceFileRequest} deleteMediaServiceFileRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteDeleteV1(deleteMediaServiceFileRequest: DeleteMediaServiceFileRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    mediaServiceFilesSiteDeleteV1(deleteMediaServiceFileRequest: DeleteMediaServiceFileRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Read completed service file media_id in project_id. The file must have status=success and belong to the project or be shared; otherwise returns media_service.status_not_available/forbidden_get. Returns metadata and preview/video links, not binary content.
      * @summary Get service video
-     * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Current language
+     * @param {MediaServiceFilesSiteGetV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} mediaId Media service file id
      * @param {MediaServiceFilesSiteGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteGetV1(language: MediaServiceFilesSiteGetV1LanguageEnum, projectId: number, mediaId: number, v?: MediaServiceFilesSiteGetV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetMediaServiceFileResponse>>;
+    mediaServiceFilesSiteGetV1(language: MediaServiceFilesSiteGetV1LanguageEnum, projectId: number, mediaId: number, v?: MediaServiceFilesSiteGetV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetMediaServiceFileResponse>>;
     /**
-     *
+     * Read available media-service-files for project_id: status readiness, isEditable editability, and isDisabled plan restriction. media_id identifies a service file, not video.id. For processing files, event_channel allows tracking progress.
      * @summary Get service video list
-     * @param {MediaServiceFilesSiteListV1LanguageEnum} language Current language
+     * @param {MediaServiceFilesSiteListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {MediaServiceFilesSiteListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteListV1(language: MediaServiceFilesSiteListV1LanguageEnum, projectId: number, v?: MediaServiceFilesSiteListV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListMediaServiceFilesResponse>>;
+    mediaServiceFilesSiteListV1(language: MediaServiceFilesSiteListV1LanguageEnum, projectId: number, v?: MediaServiceFilesSiteListV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListMediaServiceFilesResponse>>;
     /**
-     *
+     * Read the processing session of an owned media_id in project_id. Returns file_id, channel, and a secret Centrifugo subscription token. Available while the file is not success/cancel/error and not deleted; completed states produce media_service.not_ready.
      * @summary Get session by media id
-     * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Current language
+     * @param {MediaServiceFilesSiteSessionV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {number} mediaId Media service file id
      * @param {MediaServiceFilesSiteSessionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteSessionV1(language: MediaServiceFilesSiteSessionV1LanguageEnum, projectId: number, mediaId: number, v?: MediaServiceFilesSiteSessionV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SessionMediaServiceFileResponse>>;
+    mediaServiceFilesSiteSessionV1(language: MediaServiceFilesSiteSessionV1LanguageEnum, projectId: number, mediaId: number, v?: MediaServiceFilesSiteSessionV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SessionMediaServiceFileResponse>>;
     /**
-     *
+     * Select a prepared service file media_id for project_id: type=pause is a pause placeholder, type=lost is a signal-loss placeholder. Obtain media_id from GET /method/media-service-files/list. Custom files are tariff-limited; base/shared files follow access rules. Success means the selection was saved, not that broadcasting started.
      * @summary Set service video
      * @param {SetMediaServiceFileRequest} setMediaServiceFileRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteSetV1(setMediaServiceFileRequest: SetMediaServiceFileRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    mediaServiceFilesSiteSetV1(setMediaServiceFileRequest: SetMediaServiceFileRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
     /**
-     *
+     * Rename completed service file media_id in project_id. Requires an owned file with status=success; another owner\'s shared file cannot be edited. Success confirms name was saved.
      * @summary Update service video
      * @param {UpdateMediaServiceFileRequest} updateMediaServiceFileRequest
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mediaServiceFilesSiteUpdateV1(updateMediaServiceFileRequest: UpdateMediaServiceFileRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
+    mediaServiceFilesSiteUpdateV1(updateMediaServiceFileRequest: UpdateMediaServiceFileRequest, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessResponse>>;
 };
 /**
  * MediaServiceFilesApi - factory interface
@@ -186,7 +202,7 @@ export declare const MediaServiceFilesApiFp: (configuration?: Configuration) => 
  */
 export declare const MediaServiceFilesApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Mark processing of the project\'s own service file media_id in project_id as cancelled and mark it deleted in storage metadata. Only status=processing is allowed; otherwise media_service.status_not_available. Use delete for a completed video; a successful command response is not a file conversion result.
      * @summary Cancel service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -194,7 +210,7 @@ export declare const MediaServiceFilesApiFactory: (configuration?: Configuration
      */
     mediaServiceFilesSiteCancelV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Upload a multipart/form-data file (field file) to create a service video for project_id supplied in query. The current pipe limits the file to 300 MiB; the listed media formats are allowed. Access and custom file count are tariff-limited. Success confirms temporary storage upload and creation of a processing session, not video readiness; check list/session.
      * @summary Create service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -202,7 +218,7 @@ export declare const MediaServiceFilesApiFactory: (configuration?: Configuration
      */
     mediaServiceFilesSiteCreateV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Delete an owned service file media_id from project_id. A processing file or a file used as the selected standby media cannot be deleted; this differs from cancelling processing with POST /method/media-service-files/cancel.
      * @summary Delete service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -210,7 +226,7 @@ export declare const MediaServiceFilesApiFactory: (configuration?: Configuration
      */
     mediaServiceFilesSiteDeleteV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read completed service file media_id in project_id. The file must have status=success and belong to the project or be shared; otherwise returns media_service.status_not_available/forbidden_get. Returns metadata and preview/video links, not binary content.
      * @summary Get service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -218,7 +234,7 @@ export declare const MediaServiceFilesApiFactory: (configuration?: Configuration
      */
     mediaServiceFilesSiteGetV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetMediaServiceFileResponse>;
     /**
-     *
+     * Read available media-service-files for project_id: status readiness, isEditable editability, and isDisabled plan restriction. media_id identifies a service file, not video.id. For processing files, event_channel allows tracking progress.
      * @summary Get service video list
      * @param {MediaServiceFilesApiMediaServiceFilesSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -226,7 +242,7 @@ export declare const MediaServiceFilesApiFactory: (configuration?: Configuration
      */
     mediaServiceFilesSiteListV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListMediaServiceFilesResponse>;
     /**
-     *
+     * Read the processing session of an owned media_id in project_id. Returns file_id, channel, and a secret Centrifugo subscription token. Available while the file is not success/cancel/error and not deleted; completed states produce media_service.not_ready.
      * @summary Get session by media id
      * @param {MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -234,7 +250,7 @@ export declare const MediaServiceFilesApiFactory: (configuration?: Configuration
      */
     mediaServiceFilesSiteSessionV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SessionMediaServiceFileResponse>;
     /**
-     *
+     * Select a prepared service file media_id for project_id: type=pause is a pause placeholder, type=lost is a signal-loss placeholder. Obtain media_id from GET /method/media-service-files/list. Custom files are tariff-limited; base/shared files follow access rules. Success means the selection was saved, not that broadcasting started.
      * @summary Set service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -242,7 +258,7 @@ export declare const MediaServiceFilesApiFactory: (configuration?: Configuration
      */
     mediaServiceFilesSiteSetV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Rename completed service file media_id in project_id. Requires an owned file with status=success; another owner\'s shared file cannot be edited. Success confirms name was saved.
      * @summary Update service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -257,7 +273,7 @@ export declare const MediaServiceFilesApiFactory: (configuration?: Configuration
  */
 export interface MediaServiceFilesApiInterface {
     /**
-     *
+     * Mark processing of the project\'s own service file media_id in project_id as cancelled and mark it deleted in storage metadata. Only status=processing is allowed; otherwise media_service.status_not_available. Use delete for a completed video; a successful command response is not a file conversion result.
      * @summary Cancel service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -266,7 +282,7 @@ export interface MediaServiceFilesApiInterface {
      */
     mediaServiceFilesSiteCancelV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Upload a multipart/form-data file (field file) to create a service video for project_id supplied in query. The current pipe limits the file to 300 MiB; the listed media formats are allowed. Access and custom file count are tariff-limited. Success confirms temporary storage upload and creation of a processing session, not video readiness; check list/session.
      * @summary Create service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -275,7 +291,7 @@ export interface MediaServiceFilesApiInterface {
      */
     mediaServiceFilesSiteCreateV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Delete an owned service file media_id from project_id. A processing file or a file used as the selected standby media cannot be deleted; this differs from cancelling processing with POST /method/media-service-files/cancel.
      * @summary Delete service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -284,7 +300,7 @@ export interface MediaServiceFilesApiInterface {
      */
     mediaServiceFilesSiteDeleteV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Read completed service file media_id in project_id. The file must have status=success and belong to the project or be shared; otherwise returns media_service.status_not_available/forbidden_get. Returns metadata and preview/video links, not binary content.
      * @summary Get service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -293,7 +309,7 @@ export interface MediaServiceFilesApiInterface {
      */
     mediaServiceFilesSiteGetV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteGetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GetMediaServiceFileResponse>;
     /**
-     *
+     * Read available media-service-files for project_id: status readiness, isEditable editability, and isDisabled plan restriction. media_id identifies a service file, not video.id. For processing files, event_channel allows tracking progress.
      * @summary Get service video list
      * @param {MediaServiceFilesApiMediaServiceFilesSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -302,7 +318,7 @@ export interface MediaServiceFilesApiInterface {
      */
     mediaServiceFilesSiteListV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteListV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ListMediaServiceFilesResponse>;
     /**
-     *
+     * Read the processing session of an owned media_id in project_id. Returns file_id, channel, and a secret Centrifugo subscription token. Available while the file is not success/cancel/error and not deleted; completed states produce media_service.not_ready.
      * @summary Get session by media id
      * @param {MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -311,7 +327,7 @@ export interface MediaServiceFilesApiInterface {
      */
     mediaServiceFilesSiteSessionV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SessionMediaServiceFileResponse>;
     /**
-     *
+     * Select a prepared service file media_id for project_id: type=pause is a pause placeholder, type=lost is a signal-loss placeholder. Obtain media_id from GET /method/media-service-files/list. Custom files are tariff-limited; base/shared files follow access rules. Success means the selection was saved, not that broadcasting started.
      * @summary Set service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -320,7 +336,7 @@ export interface MediaServiceFilesApiInterface {
      */
     mediaServiceFilesSiteSetV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSetV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SuccessResponse>;
     /**
-     *
+     * Rename completed service file media_id in project_id. Requires an owned file with status=success; another owner\'s shared file cannot be edited. Success confirms name was saved.
      * @summary Update service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -340,7 +356,13 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request {
      * @type {CancelMediaServiceFileRequest}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteCancelV1
      */
-    readonly CancelMediaServiceFileRequest: CancelMediaServiceFileRequest;
+    readonly 'CancelMediaServiceFileRequest': CancelMediaServiceFileRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof MediaServiceFilesApiMediaServiceFilesSiteCancelV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for mediaServiceFilesSiteCreateV1 operation in MediaServiceFilesApi.
@@ -349,23 +371,29 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request {
  */
 export interface MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteCreateV1
      */
-    readonly language: MediaServiceFilesSiteCreateV1LanguageEnum;
+    readonly 'language': MediaServiceFilesSiteCreateV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteCreateV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteCreateV1
      */
-    readonly v?: MediaServiceFilesSiteCreateV1VEnum;
+    readonly 'v'?: MediaServiceFilesSiteCreateV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof MediaServiceFilesApiMediaServiceFilesSiteCreateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for mediaServiceFilesSiteDeleteV1 operation in MediaServiceFilesApi.
@@ -378,7 +406,13 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request {
      * @type {DeleteMediaServiceFileRequest}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteDeleteV1
      */
-    readonly DeleteMediaServiceFileRequest: DeleteMediaServiceFileRequest;
+    readonly 'DeleteMediaServiceFileRequest': DeleteMediaServiceFileRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof MediaServiceFilesApiMediaServiceFilesSiteDeleteV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for mediaServiceFilesSiteGetV1 operation in MediaServiceFilesApi.
@@ -387,29 +421,35 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request {
  */
 export interface MediaServiceFilesApiMediaServiceFilesSiteGetV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteGetV1
      */
-    readonly language: MediaServiceFilesSiteGetV1LanguageEnum;
+    readonly 'language': MediaServiceFilesSiteGetV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteGetV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Media service file id
      * @type {number}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteGetV1
      */
-    readonly media_id: number;
+    readonly 'media_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteGetV1
      */
-    readonly v?: MediaServiceFilesSiteGetV1VEnum;
+    readonly 'v'?: MediaServiceFilesSiteGetV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof MediaServiceFilesApiMediaServiceFilesSiteGetV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for mediaServiceFilesSiteListV1 operation in MediaServiceFilesApi.
@@ -418,23 +458,29 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteGetV1Request {
  */
 export interface MediaServiceFilesApiMediaServiceFilesSiteListV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteListV1
      */
-    readonly language: MediaServiceFilesSiteListV1LanguageEnum;
+    readonly 'language': MediaServiceFilesSiteListV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteListV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteListV1
      */
-    readonly v?: MediaServiceFilesSiteListV1VEnum;
+    readonly 'v'?: MediaServiceFilesSiteListV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof MediaServiceFilesApiMediaServiceFilesSiteListV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for mediaServiceFilesSiteSessionV1 operation in MediaServiceFilesApi.
@@ -443,29 +489,35 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteListV1Request {
  */
 export interface MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteSessionV1
      */
-    readonly language: MediaServiceFilesSiteSessionV1LanguageEnum;
+    readonly 'language': MediaServiceFilesSiteSessionV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteSessionV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Media service file id
      * @type {number}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteSessionV1
      */
-    readonly media_id: number;
+    readonly 'media_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteSessionV1
      */
-    readonly v?: MediaServiceFilesSiteSessionV1VEnum;
+    readonly 'v'?: MediaServiceFilesSiteSessionV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof MediaServiceFilesApiMediaServiceFilesSiteSessionV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for mediaServiceFilesSiteSetV1 operation in MediaServiceFilesApi.
@@ -478,7 +530,13 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteSetV1Request {
      * @type {SetMediaServiceFileRequest}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteSetV1
      */
-    readonly SetMediaServiceFileRequest: SetMediaServiceFileRequest;
+    readonly 'SetMediaServiceFileRequest': SetMediaServiceFileRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof MediaServiceFilesApiMediaServiceFilesSiteSetV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * Request parameters for mediaServiceFilesSiteUpdateV1 operation in MediaServiceFilesApi.
@@ -491,7 +549,13 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteUpdateV1Request {
      * @type {UpdateMediaServiceFileRequest}
      * @memberof MediaServiceFilesApiMediaServiceFilesSiteUpdateV1
      */
-    readonly UpdateMediaServiceFileRequest: UpdateMediaServiceFileRequest;
+    readonly 'UpdateMediaServiceFileRequest': UpdateMediaServiceFileRequest;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof MediaServiceFilesApiMediaServiceFilesSiteUpdateV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * MediaServiceFilesApi - object-oriented interface
@@ -501,7 +565,7 @@ export interface MediaServiceFilesApiMediaServiceFilesSiteUpdateV1Request {
  */
 export declare class MediaServiceFilesApi extends BaseAPI implements MediaServiceFilesApiInterface {
     /**
-     *
+     * Mark processing of the project\'s own service file media_id in project_id as cancelled and mark it deleted in storage metadata. Only status=processing is allowed; otherwise media_service.status_not_available. Use delete for a completed video; a successful command response is not a file conversion result.
      * @summary Cancel service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -510,7 +574,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      */
     mediaServiceFilesSiteCancelV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteCancelV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Upload a multipart/form-data file (field file) to create a service video for project_id supplied in query. The current pipe limits the file to 300 MiB; the listed media formats are allowed. Access and custom file count are tariff-limited. Success confirms temporary storage upload and creation of a processing session, not video readiness; check list/session.
      * @summary Create service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -519,7 +583,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      */
     mediaServiceFilesSiteCreateV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteCreateV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Delete an owned service file media_id from project_id. A processing file or a file used as the selected standby media cannot be deleted; this differs from cancelling processing with POST /method/media-service-files/cancel.
      * @summary Delete service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -528,7 +592,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      */
     mediaServiceFilesSiteDeleteV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteDeleteV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Read completed service file media_id in project_id. The file must have status=success and belong to the project or be shared; otherwise returns media_service.status_not_available/forbidden_get. Returns metadata and preview/video links, not binary content.
      * @summary Get service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -537,7 +601,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      */
     mediaServiceFilesSiteGetV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteGetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetMediaServiceFileResponse, any, {}, any>>;
     /**
-     *
+     * Read available media-service-files for project_id: status readiness, isEditable editability, and isDisabled plan restriction. media_id identifies a service file, not video.id. For processing files, event_channel allows tracking progress.
      * @summary Get service video list
      * @param {MediaServiceFilesApiMediaServiceFilesSiteListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -546,7 +610,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      */
     mediaServiceFilesSiteListV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteListV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ListMediaServiceFilesResponse, any, {}, any>>;
     /**
-     *
+     * Read the processing session of an owned media_id in project_id. Returns file_id, channel, and a secret Centrifugo subscription token. Available while the file is not success/cancel/error and not deleted; completed states produce media_service.not_ready.
      * @summary Get session by media id
      * @param {MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -555,7 +619,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      */
     mediaServiceFilesSiteSessionV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSessionV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SessionMediaServiceFileResponse, any, {}, any>>;
     /**
-     *
+     * Select a prepared service file media_id for project_id: type=pause is a pause placeholder, type=lost is a signal-loss placeholder. Obtain media_id from GET /method/media-service-files/list. Custom files are tariff-limited; base/shared files follow access rules. Success means the selection was saved, not that broadcasting started.
      * @summary Set service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteSetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -564,7 +628,7 @@ export declare class MediaServiceFilesApi extends BaseAPI implements MediaServic
      */
     mediaServiceFilesSiteSetV1(requestParameters: MediaServiceFilesApiMediaServiceFilesSiteSetV1Request, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SuccessResponse, any, {}, any>>;
     /**
-     *
+     * Rename completed service file media_id in project_id. Requires an owned file with status=success; another owner\'s shared file cannot be edited. Success confirms name was saved.
      * @summary Update service video
      * @param {MediaServiceFilesApiMediaServiceFilesSiteUpdateV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

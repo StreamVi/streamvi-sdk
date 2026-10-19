@@ -15,6 +15,18 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
+import type { AccessChangedResponse } from './access-changed-response';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { ActivityChangedResponse } from './activity-changed-response';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { ActivityRecordedResponse } from './activity-recorded-response';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { ActivityScopeResponse } from './activity-scope-response';
+// May contain unused imports in some cases
+// @ts-ignore
 import type { CentrifugoPaymentUpdatePayload } from './centrifugo-payment-update-payload';
 // May contain unused imports in some cases
 // @ts-ignore
@@ -40,6 +52,6 @@ import type { CentrifugoStreamStopResponse } from './centrifugo-stream-stop-resp
  * Centrifugo project event response
  * @export
  */
-export type CentrifugoProjectEventResponseUnionEvent = { event: 'important-event' } & CentrifugoProjectImportantEventResponse | { event: 'notification' } & CentrifugoProjectNotificationResponse | { event: 'payment-update' } & CentrifugoPaymentUpdateResponse | { event: 'project-update' } & CentrifugoProjectUpdateResponse | { event: 'stream-end' } & CentrifugoStreamStopResponse | { event: 'stream-start' } & CentrifugoStreamStartResponse;
+export type CentrifugoProjectEventResponseUnionEvent = { event: 'access.changed' } & AccessChangedResponse | { event: 'activity.changed' } & ActivityChangedResponse | { event: 'activity.recorded' } & ActivityRecordedResponse | { event: 'important-event' } & CentrifugoProjectImportantEventResponse | { event: 'notification' } & CentrifugoProjectNotificationResponse | { event: 'payment-update' } & CentrifugoPaymentUpdateResponse | { event: 'project-update' } & CentrifugoProjectUpdateResponse | { event: 'stream-end' } & CentrifugoStreamStopResponse | { event: 'stream-start' } & CentrifugoStreamStartResponse;
 
 

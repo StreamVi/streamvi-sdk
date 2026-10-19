@@ -45,7 +45,7 @@ export interface PayCheckCountryResponse {
      */
     'country': object;
     /**
-     * Balance
+     * Balances after conversion to the target currency: balance_bonus, balance_payment and balance_profit are amounts in minor units (kopecks for rub, cents for usd). Use the currency field of this response. Divide each amount by 100 for display; 12345 means 123.45 major units.
      * @type {object}
      * @memberof PayCheckCountryResponse
      */

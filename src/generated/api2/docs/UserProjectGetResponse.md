@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | Имя | [default to undefined]
-**fename** | **string** | Фамилия | [default to undefined]
-**photo_50** | **string** | Аватарка | [default to undefined]
-**type** | **number** | Тип 0 - личный проект, 1 - командный проект | [default to undefined]
+**name** | **string** | First name | [default to undefined]
+**fename** | **string** | Last name | [default to undefined]
+**photo_50** | **string** | Avatar | [default to undefined]
+**type** | **number** | Type 0: personal project; 1: team project | [default to undefined]
 **external_id** | **string** | External id | [default to undefined]
 **internal_id** | **number** | Internal id | [default to undefined]
 **countrie_id** | **number** | Countrie id | [default to undefined]
-**balance_bonus** | **number** | Balance bonus | [default to undefined]
-**balance_payment** | **number** | Balance payment | [default to undefined]
-**balance_profit** | **number** | Balance profit | [default to undefined]
+**balance_bonus** | **number** | Balance bonus. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to undefined]
+**balance_payment** | **number** | Balance payment. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to undefined]
+**balance_profit** | **number** | Balance profit. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
 
 ## Example

@@ -21,9 +21,108 @@ import type { PaySettingEnBodyDto } from './pay-setting-en-body-dto';
 import type { PaySettingRuBodyDto } from './pay-setting-ru-body-dto';
 
 /**
- * @type PaySettingSetSettingV1Request
+ * 
  * @export
+ * @interface PaySettingSetSettingV1Request
  */
-export type PaySettingSetSettingV1Request = PaySettingEnBodyDto | PaySettingRuBodyDto;
+export interface PaySettingSetSettingV1Request {
+    /**
+     * Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @type {string}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'v'?: PaySettingSetSettingV1RequestVEnum;
+    /**
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+     * @type {string}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'language': PaySettingSetSettingV1RequestLanguageEnum;
+    /**
+     * Project id
+     * @type {number}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'project_id': number;
+    /**
+     * Countrie id
+     * @type {number}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'countrie_id': number;
+    /**
+     * Organization
+     * @type {number}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'organization_id'?: number;
+    /**
+     * Pay system id
+     * @type {number}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'pay_system_id': number;
+    /**
+     * E-mail
+     * @type {string}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'email': string;
+    /**
+     * Additional information about the payment
+     * @type {string}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'description'?: string;
+    /**
+     * Street
+     * @type {string}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'street': string;
+    /**
+     * House number
+     * @type {string}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'house_number': string;
+    /**
+     * Postal code
+     * @type {string}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'zip': string;
+    /**
+     * City
+     * @type {string}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'city': string;
+    /**
+     * State ot region
+     * @type {string}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'state': string;
+    /**
+     * Company name
+     * @type {string}
+     * @memberof PaySettingSetSettingV1Request
+     */
+    'company_name'?: string;
+}
+
+export const PaySettingSetSettingV1RequestVEnum = {
+    _1: '1'
+} as const;
+
+export type PaySettingSetSettingV1RequestVEnum = typeof PaySettingSetSettingV1RequestVEnum[keyof typeof PaySettingSetSettingV1RequestVEnum];
+export const PaySettingSetSettingV1RequestLanguageEnum = {
+    Ru: 'ru',
+    En: 'en',
+    Cn: 'cn'
+} as const;
+
+export type PaySettingSetSettingV1RequestLanguageEnum = typeof PaySettingSetSettingV1RequestLanguageEnum[keyof typeof PaySettingSetSettingV1RequestLanguageEnum];
 
 

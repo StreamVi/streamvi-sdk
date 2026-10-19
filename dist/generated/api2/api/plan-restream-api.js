@@ -30,19 +30,20 @@ const base_1 = require("../base");
 const PlanRestreamApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Buy a restream tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy restream tariff
-         * @param {PlanRestreamBuyV1LanguageEnum} language Current language
+         * @param {PlanRestreamBuyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanRestreamBuyV1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
+         * @param {number} countChannel Channel count
+         * @param {number} bitrate Bitrate, kbps
          * @param {PlanRestreamBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [countChannel] Channel count
-         * @param {number} [bitrate] Bitrate, kbps
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planRestreamBuyV1: async (language, projectId, period, planRestreamId, v, countChannel, bitrate, options = {}) => {
+        planRestreamBuyV1: async (language, projectId, period, planRestreamId, countChannel, bitrate, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planRestreamBuyV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -51,6 +52,10 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             (0, common_1.assertParamExists)('planRestreamBuyV1', 'period', period);
             // verify required parameter 'planRestreamId' is not null or undefined
             (0, common_1.assertParamExists)('planRestreamBuyV1', 'planRestreamId', planRestreamId);
+            // verify required parameter 'countChannel' is not null or undefined
+            (0, common_1.assertParamExists)('planRestreamBuyV1', 'countChannel', countChannel);
+            // verify required parameter 'bitrate' is not null or undefined
+            (0, common_1.assertParamExists)('planRestreamBuyV1', 'bitrate', bitrate);
             const localVarPath = `/method/plan_restream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -61,9 +66,12 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -88,6 +96,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (bitrate !== undefined) {
                 localVarQueryParameter['bitrate'] = bitrate;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -97,20 +108,21 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Load data for show card the tariffs v2
-         * @param {PlanRestreamCheck2V1LanguageEnum} language Current language
+         * Calculate a restream plan card/preview for project_id using selected query parameters and period. Returns monthly/annual prices, sum, currency, and switching conditions; monetary values are in minor units. This calculates a purchase preview without debiting funds. Maximum channels/bitrate/protection depend on the selected plan.
+         * @summary Preview project restream tariff purchase
+         * @param {PlanRestreamCheck2V1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanRestreamCheck2V1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
+         * @param {number} useBalance Is select balance
          * @param {PlanRestreamCheck2V1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
-         * @param {number} [useBalance] Is select balance
          * @param {number} [channels] Channels count
          * @param {number} [bitrate] Bitrate, kbps
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planRestreamCheck2V1: async (language, projectId, period, planRestreamId, v, useBalance, channels, bitrate, options = {}) => {
+        planRestreamCheck2V1: async (language, projectId, period, planRestreamId, useBalance, v, channels, bitrate, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planRestreamCheck2V1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -119,6 +131,8 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             (0, common_1.assertParamExists)('planRestreamCheck2V1', 'period', period);
             // verify required parameter 'planRestreamId' is not null or undefined
             (0, common_1.assertParamExists)('planRestreamCheck2V1', 'planRestreamId', planRestreamId);
+            // verify required parameter 'useBalance' is not null or undefined
+            (0, common_1.assertParamExists)('planRestreamCheck2V1', 'useBalance', useBalance);
             const localVarPath = `/method/plan_restream/check`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -129,9 +143,12 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration);
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
@@ -159,6 +176,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (bitrate !== undefined) {
                 localVarQueryParameter['bitrate'] = bitrate;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -168,14 +188,15 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read annual discount rules for restream plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount restream
-         * @param {PlanRestreamGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanRestreamGetDiscountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanRestreamGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planRestreamGetDiscountV1: async (language, v, options = {}) => {
+        planRestreamGetDiscountV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planRestreamGetDiscountV1', 'language', language);
             const localVarPath = `/method/plan_restream/get_discount`;
@@ -188,9 +209,6 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
-            // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -199,6 +217,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -209,15 +230,16 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the restream plan catalog for project_id with parameters/prices and purchase availability. This is project-specific catalog data, not the current subscription or a stream start command. Read dynamic restrictions from the result; prices are in minor units of the project currency.
          * @summary Get list of restream tariffs for project
-         * @param {PlanRestreamListProjectV1LanguageEnum} language Current language
+         * @param {PlanRestreamListProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanRestreamListProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planRestreamListProjectV1: async (language, projectId, v, options = {}) => {
+        planRestreamListProjectV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planRestreamListProjectV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -232,9 +254,12 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -247,6 +272,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -256,14 +284,15 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the public restream plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get list of restream tariffs
-         * @param {PlanRestreamListV1LanguageEnum} language Current language
+         * @param {PlanRestreamListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanRestreamListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planRestreamListV1: async (language, v, options = {}) => {
+        planRestreamListV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planRestreamListV1', 'language', language);
             const localVarPath = `/method/plan_restream/list`;
@@ -276,9 +305,6 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
-            // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -287,6 +313,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -297,16 +326,17 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Remove after tariff
-         * @param {PlanRestreamRemoveV1LanguageEnum} language Current language
+         * Cancel the next restream plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+         * @summary Cancel the next project restream tariff
+         * @param {PlanRestreamRemoveV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} planRestreamId Restream plan id
          * @param {PlanRestreamRemoveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planRestreamRemoveV1: async (language, projectId, planRestreamId, v, options = {}) => {
+        planRestreamRemoveV1: async (language, projectId, planRestreamId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planRestreamRemoveV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -323,9 +353,12 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -341,6 +374,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (planRestreamId !== undefined) {
                 localVarQueryParameter['plan_restream_id'] = planRestreamId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -350,16 +386,17 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Save automatic restream plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set restream tariff auto prolongation
-         * @param {PlanRestreamSetProlongationV1LanguageEnum} language Current language
+         * @param {PlanRestreamSetProlongationV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
          * @param {PlanRestreamSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planRestreamSetProlongationV1: async (language, projectId, enabled, v, options = {}) => {
+        planRestreamSetProlongationV1: async (language, projectId, enabled, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planRestreamSetProlongationV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -376,9 +413,12 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -394,6 +434,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             if (enabled !== undefined) {
                 localVarQueryParameter['enabled'] = enabled;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -403,15 +446,16 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Get tariff for project
-         * @param {PlanRestreamTariffV1LanguageEnum} language Current language
+         * Read the current and next restream plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project restream tariff
+         * @param {PlanRestreamTariffV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanRestreamTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        planRestreamTariffV1: async (language, projectId, v, options = {}) => {
+        planRestreamTariffV1: async (language, projectId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('planRestreamTariffV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -426,9 +470,12 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["billing:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["billing:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["billing:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -440,6 +487,9 @@ const PlanRestreamApiAxiosParamCreator = function (configuration) {
             }
             if (projectId !== undefined) {
                 localVarQueryParameter['project_id'] = projectId;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -460,138 +510,146 @@ const PlanRestreamApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.PlanRestreamApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Buy a restream tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy restream tariff
-         * @param {PlanRestreamBuyV1LanguageEnum} language Current language
+         * @param {PlanRestreamBuyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanRestreamBuyV1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
+         * @param {number} countChannel Channel count
+         * @param {number} bitrate Bitrate, kbps
          * @param {PlanRestreamBuyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [countChannel] Channel count
-         * @param {number} [bitrate] Bitrate, kbps
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planRestreamBuyV1(language, projectId, period, planRestreamId, v, countChannel, bitrate, options) {
+        async planRestreamBuyV1(language, projectId, period, planRestreamId, countChannel, bitrate, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamBuyV1(language, projectId, period, planRestreamId, v, countChannel, bitrate, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamBuyV1(language, projectId, period, planRestreamId, countChannel, bitrate, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamBuyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Load data for show card the tariffs v2
-         * @param {PlanRestreamCheck2V1LanguageEnum} language Current language
+         * Calculate a restream plan card/preview for project_id using selected query parameters and period. Returns monthly/annual prices, sum, currency, and switching conditions; monetary values are in minor units. This calculates a purchase preview without debiting funds. Maximum channels/bitrate/protection depend on the selected plan.
+         * @summary Preview project restream tariff purchase
+         * @param {PlanRestreamCheck2V1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanRestreamCheck2V1PeriodEnum} period Period
          * @param {number} planRestreamId Restream plan id
+         * @param {number} useBalance Is select balance
          * @param {PlanRestreamCheck2V1VEnum} [v] Version (automatically defaults to 2 based on the API contract, can be overridden)
-         * @param {number} [useBalance] Is select balance
          * @param {number} [channels] Channels count
          * @param {number} [bitrate] Bitrate, kbps
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planRestreamCheck2V1(language, projectId, period, planRestreamId, v, useBalance, channels, bitrate, options) {
+        async planRestreamCheck2V1(language, projectId, period, planRestreamId, useBalance, v, channels, bitrate, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamCheck2V1(language, projectId, period, planRestreamId, v, useBalance, channels, bitrate, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamCheck2V1(language, projectId, period, planRestreamId, useBalance, v, channels, bitrate, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamCheck2V1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read annual discount rules for restream plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount restream
-         * @param {PlanRestreamGetDiscountV1LanguageEnum} language Current language
+         * @param {PlanRestreamGetDiscountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanRestreamGetDiscountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planRestreamGetDiscountV1(language, v, options) {
+        async planRestreamGetDiscountV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamGetDiscountV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamGetDiscountV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamGetDiscountV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the restream plan catalog for project_id with parameters/prices and purchase availability. This is project-specific catalog data, not the current subscription or a stream start command. Read dynamic restrictions from the result; prices are in minor units of the project currency.
          * @summary Get list of restream tariffs for project
-         * @param {PlanRestreamListProjectV1LanguageEnum} language Current language
+         * @param {PlanRestreamListProjectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanRestreamListProjectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planRestreamListProjectV1(language, projectId, v, options) {
+        async planRestreamListProjectV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamListProjectV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamListProjectV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamListProjectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the public restream plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get list of restream tariffs
-         * @param {PlanRestreamListV1LanguageEnum} language Current language
+         * @param {PlanRestreamListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlanRestreamListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planRestreamListV1(language, v, options) {
+        async planRestreamListV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamListV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamListV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Remove after tariff
-         * @param {PlanRestreamRemoveV1LanguageEnum} language Current language
+         * Cancel the next restream plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+         * @summary Cancel the next project restream tariff
+         * @param {PlanRestreamRemoveV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {number} planRestreamId Restream plan id
          * @param {PlanRestreamRemoveV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planRestreamRemoveV1(language, projectId, planRestreamId, v, options) {
+        async planRestreamRemoveV1(language, projectId, planRestreamId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamRemoveV1(language, projectId, planRestreamId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamRemoveV1(language, projectId, planRestreamId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamRemoveV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Save automatic restream plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set restream tariff auto prolongation
-         * @param {PlanRestreamSetProlongationV1LanguageEnum} language Current language
+         * @param {PlanRestreamSetProlongationV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {boolean} enabled Auto prolongation enabled
          * @param {PlanRestreamSetProlongationV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planRestreamSetProlongationV1(language, projectId, enabled, v, options) {
+        async planRestreamSetProlongationV1(language, projectId, enabled, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamSetProlongationV1(language, projectId, enabled, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamSetProlongationV1(language, projectId, enabled, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamSetProlongationV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Get tariff for project
-         * @param {PlanRestreamTariffV1LanguageEnum} language Current language
+         * Read the current and next restream plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project restream tariff
+         * @param {PlanRestreamTariffV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlanRestreamTariffV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async planRestreamTariffV1(language, projectId, v, options) {
+        async planRestreamTariffV1(language, projectId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamTariffV1(language, projectId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.planRestreamTariffV1(language, projectId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlanRestreamApi.planRestreamTariffV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -607,84 +665,84 @@ const PlanRestreamApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.PlanRestreamApiFp)(configuration);
     return {
         /**
-         *
+         * Buy a restream tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
          * @summary Buy restream tariff
          * @param {PlanRestreamApiPlanRestreamBuyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planRestreamBuyV1(requestParameters, options) {
-            return localVarFp.planRestreamBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.count_channel, requestParameters.bitrate, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamBuyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_restream_id'], requestParameters['count_channel'], requestParameters['bitrate'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Load data for show card the tariffs v2
+         * Calculate a restream plan card/preview for project_id using selected query parameters and period. Returns monthly/annual prices, sum, currency, and switching conditions; monetary values are in minor units. This calculates a purchase preview without debiting funds. Maximum channels/bitrate/protection depend on the selected plan.
+         * @summary Preview project restream tariff purchase
          * @param {PlanRestreamApiPlanRestreamCheck2V1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planRestreamCheck2V1(requestParameters, options) {
-            return localVarFp.planRestreamCheck2V1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.use_balance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamCheck2V1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_restream_id'], requestParameters['use_balance'], requestParameters['v'], requestParameters['channels'], requestParameters['bitrate'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read annual discount rules for restream plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
          * @summary Get discount restream
          * @param {PlanRestreamApiPlanRestreamGetDiscountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planRestreamGetDiscountV1(requestParameters, options) {
-            return localVarFp.planRestreamGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamGetDiscountV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the restream plan catalog for project_id with parameters/prices and purchase availability. This is project-specific catalog data, not the current subscription or a stream start command. Read dynamic restrictions from the result; prices are in minor units of the project currency.
          * @summary Get list of restream tariffs for project
          * @param {PlanRestreamApiPlanRestreamListProjectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planRestreamListProjectV1(requestParameters, options) {
-            return localVarFp.planRestreamListProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamListProjectV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the public restream plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
          * @summary Get list of restream tariffs
          * @param {PlanRestreamApiPlanRestreamListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planRestreamListV1(requestParameters, options) {
-            return localVarFp.planRestreamListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Remove after tariff
+         * Cancel the next restream plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+         * @summary Cancel the next project restream tariff
          * @param {PlanRestreamApiPlanRestreamRemoveV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planRestreamRemoveV1(requestParameters, options) {
-            return localVarFp.planRestreamRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.plan_restream_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamRemoveV1(requestParameters['language'], requestParameters['project_id'], requestParameters['plan_restream_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Save automatic restream plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
          * @summary Set restream tariff auto prolongation
          * @param {PlanRestreamApiPlanRestreamSetProlongationV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planRestreamSetProlongationV1(requestParameters, options) {
-            return localVarFp.planRestreamSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamSetProlongationV1(requestParameters['language'], requestParameters['project_id'], requestParameters['enabled'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Get tariff for project
+         * Read the current and next restream plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+         * @summary Get current and next project restream tariff
          * @param {PlanRestreamApiPlanRestreamTariffV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         planRestreamTariffV1(requestParameters, options) {
-            return localVarFp.planRestreamTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.planRestreamTariffV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -697,7 +755,7 @@ exports.PlanRestreamApiFactory = PlanRestreamApiFactory;
  */
 class PlanRestreamApi extends base_1.BaseAPI {
     /**
-     *
+     * Buy a restream tariff for project_id using configuration and period from query. Performs tariff/financial checks and purchase from balance; changes the subscription rather than previewing the price. Success confirms the purchase workflow, not an external card payment. Use check before purchasing.
      * @summary Buy restream tariff
      * @param {PlanRestreamApiPlanRestreamBuyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -705,21 +763,21 @@ class PlanRestreamApi extends base_1.BaseAPI {
      * @memberof PlanRestreamApi
      */
     planRestreamBuyV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamBuyV1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.count_channel, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamBuyV1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_restream_id'], requestParameters['count_channel'], requestParameters['bitrate'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Load data for show card the tariffs v2
+     * Calculate a restream plan card/preview for project_id using selected query parameters and period. Returns monthly/annual prices, sum, currency, and switching conditions; monetary values are in minor units. This calculates a purchase preview without debiting funds. Maximum channels/bitrate/protection depend on the selected plan.
+     * @summary Preview project restream tariff purchase
      * @param {PlanRestreamApiPlanRestreamCheck2V1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
     planRestreamCheck2V1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamCheck2V1(requestParameters.language, requestParameters.project_id, requestParameters.period, requestParameters.plan_restream_id, requestParameters.v, requestParameters.use_balance, requestParameters.channels, requestParameters.bitrate, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamCheck2V1(requestParameters['language'], requestParameters['project_id'], requestParameters['period'], requestParameters['plan_restream_id'], requestParameters['use_balance'], requestParameters['v'], requestParameters['channels'], requestParameters['bitrate'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read annual discount rules for restream plans. These are calculation reference data, not promo code application or a purchase; check the final amount for the selected project using check.
      * @summary Get discount restream
      * @param {PlanRestreamApiPlanRestreamGetDiscountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -727,10 +785,10 @@ class PlanRestreamApi extends base_1.BaseAPI {
      * @memberof PlanRestreamApi
      */
     planRestreamGetDiscountV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamGetDiscountV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamGetDiscountV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the restream plan catalog for project_id with parameters/prices and purchase availability. This is project-specific catalog data, not the current subscription or a stream start command. Read dynamic restrictions from the result; prices are in minor units of the project currency.
      * @summary Get list of restream tariffs for project
      * @param {PlanRestreamApiPlanRestreamListProjectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -738,10 +796,10 @@ class PlanRestreamApi extends base_1.BaseAPI {
      * @memberof PlanRestreamApi
      */
     planRestreamListProjectV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamListProjectV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamListProjectV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the public restream plan catalog with parameters and prices by currency. Amounts are minor currency units (kopecks/cents), not major units; the purchase period uses the month/year enum. The catalog does not confirm that every configuration is available to a specific project.
      * @summary Get list of restream tariffs
      * @param {PlanRestreamApiPlanRestreamListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -749,21 +807,21 @@ class PlanRestreamApi extends base_1.BaseAPI {
      * @memberof PlanRestreamApi
      */
     planRestreamListV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Remove after tariff
+     * Cancel the next restream plan for project_id according to current service rules. Returns success after cancellation; the current period is not described as stopping immediately. This cancels a scheduled subscription without stopping the broadcast.
+     * @summary Cancel the next project restream tariff
      * @param {PlanRestreamApiPlanRestreamRemoveV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
     planRestreamRemoveV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamRemoveV1(requestParameters.language, requestParameters.project_id, requestParameters.plan_restream_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamRemoveV1(requestParameters['language'], requestParameters['project_id'], requestParameters['plan_restream_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Save automatic restream plan renewal enabled for project_id. true enables and false disables future renewals according to service rules. Parameters are supplied in query for this POST. Success confirms the setting, not a current purchase or cancellation of the active period.
      * @summary Set restream tariff auto prolongation
      * @param {PlanRestreamApiPlanRestreamSetProlongationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -771,18 +829,18 @@ class PlanRestreamApi extends base_1.BaseAPI {
      * @memberof PlanRestreamApi
      */
     planRestreamSetProlongationV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamSetProlongationV1(requestParameters.language, requestParameters.project_id, requestParameters.enabled, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamSetProlongationV1(requestParameters['language'], requestParameters['project_id'], requestParameters['enabled'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Get tariff for project
+     * Read the current and next restream plans of project_id with period and renewal parameters. This is subscription state, not the available purchase catalog. Prices/amounts use minor units of the response currency; obtain dynamic limits from the current plan.
+     * @summary Get current and next project restream tariff
      * @param {PlanRestreamApiPlanRestreamTariffV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlanRestreamApi
      */
     planRestreamTariffV1(requestParameters, options) {
-        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamTariffV1(requestParameters.language, requestParameters.project_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlanRestreamApiFp)(this.configuration).planRestreamTariffV1(requestParameters['language'], requestParameters['project_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PlanRestreamApi = PlanRestreamApi;

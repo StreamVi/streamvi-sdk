@@ -30,24 +30,68 @@ const base_1 = require("../base");
 const NotifyHistoryApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Requires notification:write and the actual operation scope: channel:write, project-invite:write, integration:write or billing:write. Invitation recipient and project roles are checked. Only supported invitation accept/decline and tariff renewal accept actions execute. Links and test actions fail; purchase errors propagate and do not mark the action done.
+         * @summary Execute an owned notification action
+         * @param {MethodExecuteNotifyActionRequest} methodExecuteNotifyActionRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodExecuteNotifyActionExecuteV1: async (methodExecuteNotifyActionRequest, xClientRequestId, options = {}) => {
+            var _a;
+            // verify required parameter 'methodExecuteNotifyActionRequest' is not null or undefined
+            (0, common_1.assertParamExists)('methodExecuteNotifyActionExecuteV1', 'methodExecuteNotifyActionRequest', methodExecuteNotifyActionRequest);
+            const localVarPath = `/method/notify_history/execute_action`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication oauth2Account required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["notification:write"], configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            const localVarVersionedBody = { ...methodExecuteNotifyActionRequest, v: (_a = methodExecuteNotifyActionRequest.v) !== null && _a !== void 0 ? _a : '1' };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(localVarVersionedBody, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Read the current user\'s notification history using request filters and pagination. Returns results and pagination metadata; notification actions are not executed. Use POST /method/notify_history/execute_action to execute a supported account API action.
          * @summary Get list of my notifications
-         * @param {NotifyHistoryGetListMyV1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetListMyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} limit Number of results
+         * @param {number} offset Page offset number
          * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
          * @param {number} [projectId] Project id
          * @param {NotifyHistoryGetListMyV1NameEnum} [name] Name
          * @param {NotifyHistoryGetListMyV1ChannelEnum} [channel] Channel
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
          * @param {NotifyHistoryGetListMyV1StatusReadEnum} [statusRead] Status read
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyHistoryGetListMyV1: async (language, v, limit, offset, projectId, name, channel, dateFrom, dateTo, statusRead, options = {}) => {
+        notifyHistoryGetListMyV1: async (language, limit, offset, v, projectId, name, channel, dateFrom, dateTo, statusRead, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('notifyHistoryGetListMyV1', 'language', language);
+            // verify required parameter 'limit' is not null or undefined
+            (0, common_1.assertParamExists)('notifyHistoryGetListMyV1', 'limit', limit);
+            // verify required parameter 'offset' is not null or undefined
+            (0, common_1.assertParamExists)('notifyHistoryGetListMyV1', 'offset', offset);
             const localVarPath = `/method/notify_history/list`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -58,9 +102,12 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["notification:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["notification:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -98,6 +145,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             if (statusRead !== undefined) {
                 localVarQueryParameter['status_read'] = statusRead;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -107,14 +157,15 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read count_unread, the number of unread notifications for the current user. This does not mark them as read; use PUT /method/notify_history/read or POST /method/notify_history/set_all_cabinet_read for that.
          * @summary Get my status unread message for user
-         * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyHistoryGetStatusMyV1: async (language, v, options = {}) => {
+        notifyHistoryGetStatusMyV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('notifyHistoryGetStatusMyV1', 'language', language);
             const localVarPath = `/method/notify_history/get_status`;
@@ -127,9 +178,12 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["notification:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["notification:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -138,6 +192,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -148,14 +205,15 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read notification _id of the current user. _id is the MongoDB ID from the notification list; the service checks ownership. Reading is distinct from marking as read or executing an action.
          * @summary Get my NotifyHistory item by id
          * @param {string} id Id of page in mongodb
          * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyHistoryGetV1: async (id, v, options = {}) => {
+        notifyHistoryGetV1: async (id, v, xClientRequestId, options = {}) => {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('notifyHistoryGetV1', 'id', id);
             const localVarPath = `/method/notify_history/get`;
@@ -168,9 +226,12 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["notification:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["notification:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -179,6 +240,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             }
             if (id !== undefined) {
                 localVarQueryParameter['_id'] = id;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -189,15 +253,16 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Mark the listed notify_history_ids of the current user as read and return the actual update result. This neither executes an action nor deletes a notification; IDs come from notification history.
          * @summary Set notification in cabinet as read
-         * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Current language
+         * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
          * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyHistoryMarkOfReadV1: async (language, siteMarkReadHistoryRequest, v, options = {}) => {
+        notifyHistoryMarkOfReadV1: async (language, siteMarkReadHistoryRequest, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('notifyHistoryMarkOfReadV1', 'language', language);
             // verify required parameter 'siteMarkReadHistoryRequest' is not null or undefined
@@ -212,9 +277,12 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["notification:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -225,6 +293,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
                 localVarQueryParameter['language'] = language;
             }
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -235,16 +306,17 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Execute a legacy action_name on the current user\'s notify_history_id, with group_id in query. Only the project subject is supported; this can change invitations/tariffs and is not a safe read. For the account API, use POST /method/notify_history/execute_action with a separate scope check for the specific action.
          * @summary Run action in my notify item
          * @param {string} notifyHistoryId Id of page in mongodb
          * @param {string} actionName Action name
          * @param {string} groupId Group id
          * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyHistoryRunActionV1: async (notifyHistoryId, actionName, groupId, v, options = {}) => {
+        notifyHistoryRunActionV1: async (notifyHistoryId, actionName, groupId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'notifyHistoryId' is not null or undefined
             (0, common_1.assertParamExists)('notifyHistoryRunActionV1', 'notifyHistoryId', notifyHistoryId);
             // verify required parameter 'actionName' is not null or undefined
@@ -261,9 +333,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -279,6 +351,9 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             if (groupId !== undefined) {
                 localVarQueryParameter['group_id'] = groupId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -288,12 +363,13 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Mark all cabinet notifications of the current user as read. This changes read state without executing an invitation/payment action or deleting history. Returns success.
          * @summary Set all notification in cabinet as read
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyHistorySetAllCabinetReadV1: async (options = {}) => {
+        notifyHistorySetAllCabinetReadV1: async (xClientRequestId, options = {}) => {
             const localVarPath = `/method/notify_history/set_all_cabinet_read`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -304,9 +380,15 @@ const NotifyHistoryApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", [], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["notification:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["notification:write"], configuration);
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -326,100 +408,121 @@ const NotifyHistoryApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.NotifyHistoryApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Requires notification:write and the actual operation scope: channel:write, project-invite:write, integration:write or billing:write. Invitation recipient and project roles are checked. Only supported invitation accept/decline and tariff renewal accept actions execute. Links and test actions fail; purchase errors propagate and do not mark the action done.
+         * @summary Execute an owned notification action
+         * @param {MethodExecuteNotifyActionRequest} methodExecuteNotifyActionRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async methodExecuteNotifyActionExecuteV1(methodExecuteNotifyActionRequest, xClientRequestId, options) {
+            var _a, _b, _c;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.methodExecuteNotifyActionExecuteV1(methodExecuteNotifyActionRequest, xClientRequestId, options);
+            const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+            const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.methodExecuteNotifyActionExecuteV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Read the current user\'s notification history using request filters and pagination. Returns results and pagination metadata; notification actions are not executed. Use POST /method/notify_history/execute_action to execute a supported account API action.
          * @summary Get list of my notifications
-         * @param {NotifyHistoryGetListMyV1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetListMyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {number} limit Number of results
+         * @param {number} offset Page offset number
          * @param {NotifyHistoryGetListMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
-         * @param {number} [limit] Number of results
-         * @param {number} [offset] Page offset number
          * @param {number} [projectId] Project id
          * @param {NotifyHistoryGetListMyV1NameEnum} [name] Name
          * @param {NotifyHistoryGetListMyV1ChannelEnum} [channel] Channel
          * @param {string} [dateFrom] Date from
          * @param {string} [dateTo] Date to
          * @param {NotifyHistoryGetListMyV1StatusReadEnum} [statusRead] Status read
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyHistoryGetListMyV1(language, v, limit, offset, projectId, name, channel, dateFrom, dateTo, statusRead, options) {
+        async notifyHistoryGetListMyV1(language, limit, offset, v, projectId, name, channel, dateFrom, dateTo, statusRead, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryGetListMyV1(language, v, limit, offset, projectId, name, channel, dateFrom, dateTo, statusRead, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryGetListMyV1(language, limit, offset, v, projectId, name, channel, dateFrom, dateTo, statusRead, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistoryGetListMyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read count_unread, the number of unread notifications for the current user. This does not mark them as read; use PUT /method/notify_history/read or POST /method/notify_history/set_all_cabinet_read for that.
          * @summary Get my status unread message for user
-         * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Current language
+         * @param {NotifyHistoryGetStatusMyV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {NotifyHistoryGetStatusMyV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyHistoryGetStatusMyV1(language, v, options) {
+        async notifyHistoryGetStatusMyV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryGetStatusMyV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryGetStatusMyV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistoryGetStatusMyV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read notification _id of the current user. _id is the MongoDB ID from the notification list; the service checks ownership. Reading is distinct from marking as read or executing an action.
          * @summary Get my NotifyHistory item by id
          * @param {string} id Id of page in mongodb
          * @param {NotifyHistoryGetV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyHistoryGetV1(id, v, options) {
+        async notifyHistoryGetV1(id, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryGetV1(id, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryGetV1(id, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistoryGetV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Mark the listed notify_history_ids of the current user as read and return the actual update result. This neither executes an action nor deletes a notification; IDs come from notification history.
          * @summary Set notification in cabinet as read
-         * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Current language
+         * @param {NotifyHistoryMarkOfReadV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {SiteMarkReadHistoryRequest} siteMarkReadHistoryRequest
          * @param {NotifyHistoryMarkOfReadV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyHistoryMarkOfReadV1(language, siteMarkReadHistoryRequest, v, options) {
+        async notifyHistoryMarkOfReadV1(language, siteMarkReadHistoryRequest, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryMarkOfReadV1(language, siteMarkReadHistoryRequest, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryMarkOfReadV1(language, siteMarkReadHistoryRequest, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistoryMarkOfReadV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Execute a legacy action_name on the current user\'s notify_history_id, with group_id in query. Only the project subject is supported; this can change invitations/tariffs and is not a safe read. For the account API, use POST /method/notify_history/execute_action with a separate scope check for the specific action.
          * @summary Run action in my notify item
          * @param {string} notifyHistoryId Id of page in mongodb
          * @param {string} actionName Action name
          * @param {string} groupId Group id
          * @param {NotifyHistoryRunActionV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyHistoryRunActionV1(notifyHistoryId, actionName, groupId, v, options) {
+        async notifyHistoryRunActionV1(notifyHistoryId, actionName, groupId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryRunActionV1(notifyHistoryId, actionName, groupId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistoryRunActionV1(notifyHistoryId, actionName, groupId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistoryRunActionV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Mark all cabinet notifications of the current user as read. This changes read state without executing an invitation/payment action or deleting history. Returns success.
          * @summary Set all notification in cabinet as read
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyHistorySetAllCabinetReadV1(options) {
+        async notifyHistorySetAllCabinetReadV1(xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistorySetAllCabinetReadV1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyHistorySetAllCabinetReadV1(xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['NotifyHistoryApi.notifyHistorySetAllCabinetReadV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -435,63 +538,74 @@ const NotifyHistoryApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.NotifyHistoryApiFp)(configuration);
     return {
         /**
-         *
+         * Requires notification:write and the actual operation scope: channel:write, project-invite:write, integration:write or billing:write. Invitation recipient and project roles are checked. Only supported invitation accept/decline and tariff renewal accept actions execute. Links and test actions fail; purchase errors propagate and do not mark the action done.
+         * @summary Execute an owned notification action
+         * @param {NotifyHistoryApiMethodExecuteNotifyActionExecuteV1Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        methodExecuteNotifyActionExecuteV1(requestParameters, options) {
+            return localVarFp.methodExecuteNotifyActionExecuteV1(requestParameters['MethodExecuteNotifyActionRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Read the current user\'s notification history using request filters and pagination. Returns results and pagination metadata; notification actions are not executed. Use POST /method/notify_history/execute_action to execute a supported account API action.
          * @summary Get list of my notifications
          * @param {NotifyHistoryApiNotifyHistoryGetListMyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         notifyHistoryGetListMyV1(requestParameters, options) {
-            return localVarFp.notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.project_id, requestParameters.name, requestParameters.channel, requestParameters.date_from, requestParameters.date_to, requestParameters.status_read, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryGetListMyV1(requestParameters['language'], requestParameters['limit'], requestParameters['offset'], requestParameters['v'], requestParameters['project_id'], requestParameters['name'], requestParameters['channel'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['status_read'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read count_unread, the number of unread notifications for the current user. This does not mark them as read; use PUT /method/notify_history/read or POST /method/notify_history/set_all_cabinet_read for that.
          * @summary Get my status unread message for user
          * @param {NotifyHistoryApiNotifyHistoryGetStatusMyV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         notifyHistoryGetStatusMyV1(requestParameters, options) {
-            return localVarFp.notifyHistoryGetStatusMyV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryGetStatusMyV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read notification _id of the current user. _id is the MongoDB ID from the notification list; the service checks ownership. Reading is distinct from marking as read or executing an action.
          * @summary Get my NotifyHistory item by id
          * @param {NotifyHistoryApiNotifyHistoryGetV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         notifyHistoryGetV1(requestParameters, options) {
-            return localVarFp.notifyHistoryGetV1(requestParameters._id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryGetV1(requestParameters['_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Mark the listed notify_history_ids of the current user as read and return the actual update result. This neither executes an action nor deletes a notification; IDs come from notification history.
          * @summary Set notification in cabinet as read
          * @param {NotifyHistoryApiNotifyHistoryMarkOfReadV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         notifyHistoryMarkOfReadV1(requestParameters, options) {
-            return localVarFp.notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.SiteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryMarkOfReadV1(requestParameters['language'], requestParameters['SiteMarkReadHistoryRequest'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Execute a legacy action_name on the current user\'s notify_history_id, with group_id in query. Only the project subject is supported; this can change invitations/tariffs and is not a safe read. For the account API, use POST /method/notify_history/execute_action with a separate scope check for the specific action.
          * @summary Run action in my notify item
          * @param {NotifyHistoryApiNotifyHistoryRunActionV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         notifyHistoryRunActionV1(requestParameters, options) {
-            return localVarFp.notifyHistoryRunActionV1(requestParameters.notify_history_id, requestParameters.action_name, requestParameters.group_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.notifyHistoryRunActionV1(requestParameters['notify_history_id'], requestParameters['action_name'], requestParameters['group_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Mark all cabinet notifications of the current user as read. This changes read state without executing an invitation/payment action or deleting history. Returns success.
          * @summary Set all notification in cabinet as read
+         * @param {NotifyHistoryApiNotifyHistorySetAllCabinetReadV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyHistorySetAllCabinetReadV1(options) {
-            return localVarFp.notifyHistorySetAllCabinetReadV1(options).then((request) => request(axios, basePath));
+        notifyHistorySetAllCabinetReadV1(requestParameters = {}, options) {
+            return localVarFp.notifyHistorySetAllCabinetReadV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -504,7 +618,18 @@ exports.NotifyHistoryApiFactory = NotifyHistoryApiFactory;
  */
 class NotifyHistoryApi extends base_1.BaseAPI {
     /**
-     *
+     * Requires notification:write and the actual operation scope: channel:write, project-invite:write, integration:write or billing:write. Invitation recipient and project roles are checked. Only supported invitation accept/decline and tariff renewal accept actions execute. Links and test actions fail; purchase errors propagate and do not mark the action done.
+     * @summary Execute an owned notification action
+     * @param {NotifyHistoryApiMethodExecuteNotifyActionExecuteV1Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotifyHistoryApi
+     */
+    methodExecuteNotifyActionExecuteV1(requestParameters, options) {
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).methodExecuteNotifyActionExecuteV1(requestParameters['MethodExecuteNotifyActionRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Read the current user\'s notification history using request filters and pagination. Returns results and pagination metadata; notification actions are not executed. Use POST /method/notify_history/execute_action to execute a supported account API action.
      * @summary Get list of my notifications
      * @param {NotifyHistoryApiNotifyHistoryGetListMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -512,10 +637,10 @@ class NotifyHistoryApi extends base_1.BaseAPI {
      * @memberof NotifyHistoryApi
      */
     notifyHistoryGetListMyV1(requestParameters, options) {
-        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetListMyV1(requestParameters.language, requestParameters.v, requestParameters.limit, requestParameters.offset, requestParameters.project_id, requestParameters.name, requestParameters.channel, requestParameters.date_from, requestParameters.date_to, requestParameters.status_read, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetListMyV1(requestParameters['language'], requestParameters['limit'], requestParameters['offset'], requestParameters['v'], requestParameters['project_id'], requestParameters['name'], requestParameters['channel'], requestParameters['date_from'], requestParameters['date_to'], requestParameters['status_read'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read count_unread, the number of unread notifications for the current user. This does not mark them as read; use PUT /method/notify_history/read or POST /method/notify_history/set_all_cabinet_read for that.
      * @summary Get my status unread message for user
      * @param {NotifyHistoryApiNotifyHistoryGetStatusMyV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -523,10 +648,10 @@ class NotifyHistoryApi extends base_1.BaseAPI {
      * @memberof NotifyHistoryApi
      */
     notifyHistoryGetStatusMyV1(requestParameters, options) {
-        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetStatusMyV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetStatusMyV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read notification _id of the current user. _id is the MongoDB ID from the notification list; the service checks ownership. Reading is distinct from marking as read or executing an action.
      * @summary Get my NotifyHistory item by id
      * @param {NotifyHistoryApiNotifyHistoryGetV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -534,10 +659,10 @@ class NotifyHistoryApi extends base_1.BaseAPI {
      * @memberof NotifyHistoryApi
      */
     notifyHistoryGetV1(requestParameters, options) {
-        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetV1(requestParameters._id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryGetV1(requestParameters['_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Mark the listed notify_history_ids of the current user as read and return the actual update result. This neither executes an action nor deletes a notification; IDs come from notification history.
      * @summary Set notification in cabinet as read
      * @param {NotifyHistoryApiNotifyHistoryMarkOfReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -545,10 +670,10 @@ class NotifyHistoryApi extends base_1.BaseAPI {
      * @memberof NotifyHistoryApi
      */
     notifyHistoryMarkOfReadV1(requestParameters, options) {
-        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryMarkOfReadV1(requestParameters.language, requestParameters.SiteMarkReadHistoryRequest, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryMarkOfReadV1(requestParameters['language'], requestParameters['SiteMarkReadHistoryRequest'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Execute a legacy action_name on the current user\'s notify_history_id, with group_id in query. Only the project subject is supported; this can change invitations/tariffs and is not a safe read. For the account API, use POST /method/notify_history/execute_action with a separate scope check for the specific action.
      * @summary Run action in my notify item
      * @param {NotifyHistoryApiNotifyHistoryRunActionV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -556,17 +681,18 @@ class NotifyHistoryApi extends base_1.BaseAPI {
      * @memberof NotifyHistoryApi
      */
     notifyHistoryRunActionV1(requestParameters, options) {
-        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryRunActionV1(requestParameters.notify_history_id, requestParameters.action_name, requestParameters.group_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistoryRunActionV1(requestParameters['notify_history_id'], requestParameters['action_name'], requestParameters['group_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Mark all cabinet notifications of the current user as read. This changes read state without executing an invitation/payment action or deleting history. Returns success.
      * @summary Set all notification in cabinet as read
+     * @param {NotifyHistoryApiNotifyHistorySetAllCabinetReadV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotifyHistoryApi
      */
-    notifyHistorySetAllCabinetReadV1(options) {
-        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistorySetAllCabinetReadV1(options).then((request) => request(this.axios, this.basePath));
+    notifyHistorySetAllCabinetReadV1(requestParameters = {}, options) {
+        return (0, exports.NotifyHistoryApiFp)(this.configuration).notifyHistorySetAllCabinetReadV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.NotifyHistoryApi = NotifyHistoryApi;

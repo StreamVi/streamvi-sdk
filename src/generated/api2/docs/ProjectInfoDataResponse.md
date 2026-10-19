@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **photo_100** | **string** | Project photo in 100px size | [default to undefined]
 **external_id** | **string** | External project id | [default to undefined]
 **type** | **number** | Project type | [default to undefined]
-**balance_bonus** | **number** | Bonus balance | [default to undefined]
-**balance_payment** | **number** | Payment balance | [default to undefined]
-**balance_profit** | **number** | Profit balance | [default to undefined]
+**balance_bonus** | **number** | Bonus balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to undefined]
+**balance_payment** | **number** | Payment balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to undefined]
+**balance_profit** | **number** | Profit balance. Amount in minor currency units: kopecks for rub, cents for usd; 12345 &#x3D; 123.45 major units. Divide by 100 for display; send API amounts in minor units. | [default to undefined]
 **currency** | **string** | Currency | [default to undefined]
 **country_id** | **number** | Country id | [default to undefined]
 

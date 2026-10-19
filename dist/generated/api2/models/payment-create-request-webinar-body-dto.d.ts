@@ -22,7 +22,7 @@ export interface PaymentCreateRequestWebinarBodyDto {
      */
     'v'?: PaymentCreateRequestWebinarBodyDtoVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof PaymentCreateRequestWebinarBodyDto
      */
@@ -40,7 +40,7 @@ export interface PaymentCreateRequestWebinarBodyDto {
      */
     'type': PaymentCreateRequestWebinarBodyDtoTypeEnum;
     /**
-     * Amount
+     * Payment amount in the currency of the payment system selected in the project billing settings. For example, send 10000 for 100 RUB or 100 USD; do not send 100. Amount in minor currency units: kopecks for rub, cents for usd; 12345 = 123.45 major units. Divide by 100 for display; send API amounts in minor units.
      * @type {number}
      * @memberof PaymentCreateRequestWebinarBodyDto
      */

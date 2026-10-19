@@ -12,7 +12,6 @@
 import type { ProjectChannelMemberStreamInfoResponse } from './project-channel-member-stream-info-response';
 /**
  * @type ProjectChannelResponseStreamInfo
- * Stream info
  * @export
  */
 export type ProjectChannelResponseStreamInfo = Array<any> | ProjectChannelMemberStreamInfoResponse;

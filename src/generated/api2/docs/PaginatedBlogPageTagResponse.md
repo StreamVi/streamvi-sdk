@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | **number** | Общее количество элементов вообще | [default to undefined]
-**limit** | **number** | Размер запрашиваемой страницы | [default to undefined]
-**offset** | **number** | С какого элемента включительно делать запрос | [default to undefined]
+**total** | **number** | Total number of all items | [default to undefined]
+**limit** | **number** | Requested page size | [default to undefined]
+**offset** | **number** | Element to start the request from, inclusive | [default to undefined]
 **results** | [**Array&lt;SiteBlogPageTagResponse&gt;**](SiteBlogPageTagResponse.md) |  | [default to undefined]
 
 ## Example

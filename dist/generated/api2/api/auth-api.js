@@ -30,13 +30,14 @@ const base_1 = require("../base");
 const AuthApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Internal Google OAuth callback that completes login and returns an HTTP 301 redirect. The provider creates authorization data; callback transport excludes this endpoint from integration profiles.
          * @summary Internal request of auth google
-         * @param {string} state
+         * @param {string} state Opaque provider OAuth state; callback-only input.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authCallbackGoogleV1: async (state, options = {}) => {
+        authCallbackGoogleV1: async (state, xClientRequestId, options = {}) => {
             // verify required parameter 'state' is not null or undefined
             (0, common_1.assertParamExists)('authCallbackGoogleV1', 'state', state);
             const localVarPath = `/method/auth/callback/google`;
@@ -52,6 +53,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (state !== undefined) {
                 localVarQueryParameter['state'] = state;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -61,13 +65,14 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Internal VK ID callback to complete OAuth login and issue an HTTP 301 redirect. The OAuth guard supplies req.user, not an integration request; callback transport excludes this endpoint.
          * @summary Internal request of auth new vk
-         * @param {string} state
+         * @param {string} state Opaque provider OAuth state; callback-only input.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authCallbackVkIdV1: async (state, options = {}) => {
+        authCallbackVkIdV1: async (state, xClientRequestId, options = {}) => {
             // verify required parameter 'state' is not null or undefined
             (0, common_1.assertParamExists)('authCallbackVkIdV1', 'state', state);
             const localVarPath = `/method/auth/callback/vk-id`;
@@ -83,6 +88,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (state !== undefined) {
                 localVarQueryParameter['state'] = state;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -92,12 +100,13 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Internal legacy VK OAuth callback that redirects the browser with HTTP 301. The provider creates input data; callback transport excludes this endpoint from integration profiles.
          * @summary Internal request of auth old vk
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authCallbackVkV1: async (options = {}) => {
+        authCallbackVkV1: async (xClientRequestId, options = {}) => {
             const localVarPath = `/method/auth/callback/vk`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -108,6 +117,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -117,15 +129,16 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Get a one-time authorization code for app in the current cabinet session. Session transport is excluded from integration profiles. The code is sensitive and is used by /method/auth/app/exchange; it is not intended for logs or the corpus.
          * @summary Get code for auth
-         * @param {AuthCodeV1LanguageEnum} language Current language
+         * @param {AuthCodeV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {AuthCodeV1AppEnum} app Create auth code for app
          * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authCodeV1: async (language, app, v, options = {}) => {
+        authCodeV1: async (language, app, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('authCodeV1', 'language', language);
             // verify required parameter 'app' is not null or undefined
@@ -140,9 +153,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
-            // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:read"], configuration);
+            // authentication bearer required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -155,6 +168,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (app !== undefined) {
                 localVarQueryParameter['app'] = app;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -164,15 +180,16 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Internal social connection completion callback. Returns text/html with a script that sends message to the parent window and closes the window. Callback transport excludes it from integration profiles; this is neither JSON nor a server tool catalog.
          * @summary CallBack for connect social
-         * @param {AuthConnectResultV1LanguageEnum} language Current language
+         * @param {AuthConnectResultV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} message Result message for connect
          * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authConnectResultV1: async (language, message, v, options = {}) => {
+        authConnectResultV1: async (language, message, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('authConnectResultV1', 'language', language);
             // verify required parameter 'message' is not null or undefined
@@ -199,6 +216,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (message !== undefined) {
                 localVarQueryParameter['message'] = message;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -208,14 +228,15 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Connect Telegram to the current user\'s account using signed Telegram data in body.data. The server verifies the signature. Available only to a project subject; does not extend account-token access. Success confirms the connection was processed.
          * @summary Connect telegram in account
-         * @param {AuthConnectTelegramV1LanguageEnum} language Current language
+         * @param {AuthConnectTelegramV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authConnectTelegramV1: async (language, v, options = {}) => {
+        authConnectTelegramV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('authConnectTelegramV1', 'language', language);
             const localVarPath = `/method/auth/connect-telegram`;
@@ -228,9 +249,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -239,6 +260,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             }
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -249,17 +273,18 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Start connecting a social provider to the current user account and redirect the browser to OAuth. GET starts the flow; completion depends on authorization and a callback. Available only to the project subject; list connections with GET /method/socials/list.
          * @summary Connected social account
-         * @param {AuthConnectV1LanguageEnum} language Current language
+         * @param {AuthConnectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {AuthConnectV1ProviderEnum} provider Provider oauth
          * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {AuthConnectV1AppEnum} [app] App oauth
          * @param {string} [redirect] Redirect url
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authConnectV1: async (language, provider, v, app, redirect, options = {}) => {
+        authConnectV1: async (language, provider, v, app, redirect, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('authConnectV1', 'language', language);
             // verify required parameter 'provider' is not null or undefined
@@ -274,9 +299,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -295,6 +320,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (redirect !== undefined) {
                 localVarQueryParameter['redirect'] = redirect;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -304,15 +332,16 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Disconnect social connection social_id of the current user. Despite using GET, this changes the connection rather than reading a list. Available only to a project subject; use GET /method/socials/list to list connections.
          * @summary Disconnected social account
-         * @param {AuthDisconnectV1LanguageEnum} language Current language
+         * @param {AuthDisconnectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} socialId Social id
          * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authDisconnectV1: async (language, socialId, v, options = {}) => {
+        authDisconnectV1: async (language, socialId, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('authDisconnectV1', 'language', language);
             // verify required parameter 'socialId' is not null or undefined
@@ -327,9 +356,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["profile:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["profile:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -342,6 +371,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (socialId !== undefined) {
                 localVarQueryParameter['social_id'] = socialId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -351,13 +383,14 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Exchange a previously issued app authorization code for session data with userAgent/fingerprint. Callback transport is excluded from integration profiles. Returned credentials are sensitive; this endpoint is not for refreshing an external application\'s OAuth grant.
          * @summary Code exchange
          * @param {SiteAuthExchangeRequest} siteAuthExchangeRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authExchangeV1: async (siteAuthExchangeRequest, options = {}) => {
+        authExchangeV1: async (siteAuthExchangeRequest, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'siteAuthExchangeRequest' is not null or undefined
             (0, common_1.assertParamExists)('authExchangeV1', 'siteAuthExchangeRequest', siteAuthExchangeRequest);
@@ -372,6 +405,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -383,9 +419,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Start login through OAuth for the selected provider and redirect the browser to authorization. This callback transport is outside integration account/project profiles; the response is a redirect, not ready access-token JSON.
          * @summary Get url for start oauth
-         * @param {AuthGetAuthUrlV1LanguageEnum} language Current language
+         * @param {AuthGetAuthUrlV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {AuthGetAuthUrlV1ProviderEnum} provider Provider oauth
          * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {AuthGetAuthUrlV1AppEnum} [app] App oauth
@@ -393,10 +429,11 @@ const AuthApiAxiosParamCreator = function (configuration) {
          * @param {string} [refId] Referal id
          * @param {string} [country] Country code
          * @param {string} [visitorId] Anonymous landing visitor UUID v4
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authGetAuthUrlV1: async (language, provider, v, app, redirect, refId, country, visitorId, options = {}) => {
+        authGetAuthUrlV1: async (language, provider, v, app, redirect, refId, country, visitorId, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('authGetAuthUrlV1', 'language', language);
             // verify required parameter 'provider' is not null or undefined
@@ -438,6 +475,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             if (visitorId !== undefined) {
                 localVarQueryParameter['visitorId'] = visitorId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -447,12 +487,13 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Internal callback/debug endpoint for client configuration: the current implementation always throws test and does not return a working configuration. Callback transport excludes it from account/project profiles.
          * @summary Get client configuration
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authGetClientConfigurationV1: async (options = {}) => {
+        authGetClientConfigurationV1: async (xClientRequestId, options = {}) => {
             const localVarPath = `/method/auth/GetClientConfiguration`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -463,6 +504,9 @@ const AuthApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -482,145 +526,154 @@ const AuthApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.AuthApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Internal Google OAuth callback that completes login and returns an HTTP 301 redirect. The provider creates authorization data; callback transport excludes this endpoint from integration profiles.
          * @summary Internal request of auth google
-         * @param {string} state
+         * @param {string} state Opaque provider OAuth state; callback-only input.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authCallbackGoogleV1(state, options) {
+        async authCallbackGoogleV1(state, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authCallbackGoogleV1(state, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authCallbackGoogleV1(state, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authCallbackGoogleV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Internal VK ID callback to complete OAuth login and issue an HTTP 301 redirect. The OAuth guard supplies req.user, not an integration request; callback transport excludes this endpoint.
          * @summary Internal request of auth new vk
-         * @param {string} state
+         * @param {string} state Opaque provider OAuth state; callback-only input.
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authCallbackVkIdV1(state, options) {
+        async authCallbackVkIdV1(state, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authCallbackVkIdV1(state, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authCallbackVkIdV1(state, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authCallbackVkIdV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Internal legacy VK OAuth callback that redirects the browser with HTTP 301. The provider creates input data; callback transport excludes this endpoint from integration profiles.
          * @summary Internal request of auth old vk
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authCallbackVkV1(options) {
+        async authCallbackVkV1(xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authCallbackVkV1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authCallbackVkV1(xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authCallbackVkV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Get a one-time authorization code for app in the current cabinet session. Session transport is excluded from integration profiles. The code is sensitive and is used by /method/auth/app/exchange; it is not intended for logs or the corpus.
          * @summary Get code for auth
-         * @param {AuthCodeV1LanguageEnum} language Current language
+         * @param {AuthCodeV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {AuthCodeV1AppEnum} app Create auth code for app
          * @param {AuthCodeV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authCodeV1(language, app, v, options) {
+        async authCodeV1(language, app, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authCodeV1(language, app, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authCodeV1(language, app, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authCodeV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Internal social connection completion callback. Returns text/html with a script that sends message to the parent window and closes the window. Callback transport excludes it from integration profiles; this is neither JSON nor a server tool catalog.
          * @summary CallBack for connect social
-         * @param {AuthConnectResultV1LanguageEnum} language Current language
+         * @param {AuthConnectResultV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} message Result message for connect
          * @param {AuthConnectResultV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authConnectResultV1(language, message, v, options) {
+        async authConnectResultV1(language, message, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authConnectResultV1(language, message, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authConnectResultV1(language, message, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authConnectResultV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Connect Telegram to the current user\'s account using signed Telegram data in body.data. The server verifies the signature. Available only to a project subject; does not extend account-token access. Success confirms the connection was processed.
          * @summary Connect telegram in account
-         * @param {AuthConnectTelegramV1LanguageEnum} language Current language
+         * @param {AuthConnectTelegramV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {AuthConnectTelegramV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authConnectTelegramV1(language, v, options) {
+        async authConnectTelegramV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authConnectTelegramV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authConnectTelegramV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authConnectTelegramV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Start connecting a social provider to the current user account and redirect the browser to OAuth. GET starts the flow; completion depends on authorization and a callback. Available only to the project subject; list connections with GET /method/socials/list.
          * @summary Connected social account
-         * @param {AuthConnectV1LanguageEnum} language Current language
+         * @param {AuthConnectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {AuthConnectV1ProviderEnum} provider Provider oauth
          * @param {AuthConnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {AuthConnectV1AppEnum} [app] App oauth
          * @param {string} [redirect] Redirect url
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authConnectV1(language, provider, v, app, redirect, options) {
+        async authConnectV1(language, provider, v, app, redirect, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authConnectV1(language, provider, v, app, redirect, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authConnectV1(language, provider, v, app, redirect, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authConnectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Disconnect social connection social_id of the current user. Despite using GET, this changes the connection rather than reading a list. Available only to a project subject; use GET /method/socials/list to list connections.
          * @summary Disconnected social account
-         * @param {AuthDisconnectV1LanguageEnum} language Current language
+         * @param {AuthDisconnectV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} socialId Social id
          * @param {AuthDisconnectV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authDisconnectV1(language, socialId, v, options) {
+        async authDisconnectV1(language, socialId, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authDisconnectV1(language, socialId, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authDisconnectV1(language, socialId, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authDisconnectV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Exchange a previously issued app authorization code for session data with userAgent/fingerprint. Callback transport is excluded from integration profiles. Returned credentials are sensitive; this endpoint is not for refreshing an external application\'s OAuth grant.
          * @summary Code exchange
          * @param {SiteAuthExchangeRequest} siteAuthExchangeRequest
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authExchangeV1(siteAuthExchangeRequest, options) {
+        async authExchangeV1(siteAuthExchangeRequest, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authExchangeV1(siteAuthExchangeRequest, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authExchangeV1(siteAuthExchangeRequest, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authExchangeV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Start login through OAuth for the selected provider and redirect the browser to authorization. This callback transport is outside integration account/project profiles; the response is a redirect, not ready access-token JSON.
          * @summary Get url for start oauth
-         * @param {AuthGetAuthUrlV1LanguageEnum} language Current language
+         * @param {AuthGetAuthUrlV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {AuthGetAuthUrlV1ProviderEnum} provider Provider oauth
          * @param {AuthGetAuthUrlV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {AuthGetAuthUrlV1AppEnum} [app] App oauth
@@ -628,25 +681,27 @@ const AuthApiFp = function (configuration) {
          * @param {string} [refId] Referal id
          * @param {string} [country] Country code
          * @param {string} [visitorId] Anonymous landing visitor UUID v4
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authGetAuthUrlV1(language, provider, v, app, redirect, refId, country, visitorId, options) {
+        async authGetAuthUrlV1(language, provider, v, app, redirect, refId, country, visitorId, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authGetAuthUrlV1(language, provider, v, app, redirect, refId, country, visitorId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authGetAuthUrlV1(language, provider, v, app, redirect, refId, country, visitorId, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authGetAuthUrlV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Internal callback/debug endpoint for client configuration: the current implementation always throws test and does not return a working configuration. Callback transport excludes it from account/project profiles.
          * @summary Get client configuration
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authGetClientConfigurationV1(options) {
+        async authGetClientConfigurationV1(xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authGetClientConfigurationV1(options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authGetClientConfigurationV1(xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authGetClientConfigurationV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -662,112 +717,114 @@ const AuthApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.AuthApiFp)(configuration);
     return {
         /**
-         *
+         * Internal Google OAuth callback that completes login and returns an HTTP 301 redirect. The provider creates authorization data; callback transport excludes this endpoint from integration profiles.
          * @summary Internal request of auth google
          * @param {AuthApiAuthCallbackGoogleV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         authCallbackGoogleV1(requestParameters, options) {
-            return localVarFp.authCallbackGoogleV1(requestParameters.state, options).then((request) => request(axios, basePath));
+            return localVarFp.authCallbackGoogleV1(requestParameters['state'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Internal VK ID callback to complete OAuth login and issue an HTTP 301 redirect. The OAuth guard supplies req.user, not an integration request; callback transport excludes this endpoint.
          * @summary Internal request of auth new vk
          * @param {AuthApiAuthCallbackVkIdV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         authCallbackVkIdV1(requestParameters, options) {
-            return localVarFp.authCallbackVkIdV1(requestParameters.state, options).then((request) => request(axios, basePath));
+            return localVarFp.authCallbackVkIdV1(requestParameters['state'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Internal legacy VK OAuth callback that redirects the browser with HTTP 301. The provider creates input data; callback transport excludes this endpoint from integration profiles.
          * @summary Internal request of auth old vk
+         * @param {AuthApiAuthCallbackVkV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authCallbackVkV1(options) {
-            return localVarFp.authCallbackVkV1(options).then((request) => request(axios, basePath));
+        authCallbackVkV1(requestParameters = {}, options) {
+            return localVarFp.authCallbackVkV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Get a one-time authorization code for app in the current cabinet session. Session transport is excluded from integration profiles. The code is sensitive and is used by /method/auth/app/exchange; it is not intended for logs or the corpus.
          * @summary Get code for auth
          * @param {AuthApiAuthCodeV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         authCodeV1(requestParameters, options) {
-            return localVarFp.authCodeV1(requestParameters.language, requestParameters.app, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.authCodeV1(requestParameters['language'], requestParameters['app'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Internal social connection completion callback. Returns text/html with a script that sends message to the parent window and closes the window. Callback transport excludes it from integration profiles; this is neither JSON nor a server tool catalog.
          * @summary CallBack for connect social
          * @param {AuthApiAuthConnectResultV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         authConnectResultV1(requestParameters, options) {
-            return localVarFp.authConnectResultV1(requestParameters.language, requestParameters.message, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.authConnectResultV1(requestParameters['language'], requestParameters['message'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Connect Telegram to the current user\'s account using signed Telegram data in body.data. The server verifies the signature. Available only to a project subject; does not extend account-token access. Success confirms the connection was processed.
          * @summary Connect telegram in account
          * @param {AuthApiAuthConnectTelegramV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         authConnectTelegramV1(requestParameters, options) {
-            return localVarFp.authConnectTelegramV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.authConnectTelegramV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Start connecting a social provider to the current user account and redirect the browser to OAuth. GET starts the flow; completion depends on authorization and a callback. Available only to the project subject; list connections with GET /method/socials/list.
          * @summary Connected social account
          * @param {AuthApiAuthConnectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         authConnectV1(requestParameters, options) {
-            return localVarFp.authConnectV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, options).then((request) => request(axios, basePath));
+            return localVarFp.authConnectV1(requestParameters['language'], requestParameters['provider'], requestParameters['v'], requestParameters['app'], requestParameters['redirect'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Disconnect social connection social_id of the current user. Despite using GET, this changes the connection rather than reading a list. Available only to a project subject; use GET /method/socials/list to list connections.
          * @summary Disconnected social account
          * @param {AuthApiAuthDisconnectV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         authDisconnectV1(requestParameters, options) {
-            return localVarFp.authDisconnectV1(requestParameters.language, requestParameters.social_id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.authDisconnectV1(requestParameters['language'], requestParameters['social_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Exchange a previously issued app authorization code for session data with userAgent/fingerprint. Callback transport is excluded from integration profiles. Returned credentials are sensitive; this endpoint is not for refreshing an external application\'s OAuth grant.
          * @summary Code exchange
          * @param {AuthApiAuthExchangeV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         authExchangeV1(requestParameters, options) {
-            return localVarFp.authExchangeV1(requestParameters.SiteAuthExchangeRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.authExchangeV1(requestParameters['SiteAuthExchangeRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Start login through OAuth for the selected provider and redirect the browser to authorization. This callback transport is outside integration account/project profiles; the response is a redirect, not ready access-token JSON.
          * @summary Get url for start oauth
          * @param {AuthApiAuthGetAuthUrlV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         authGetAuthUrlV1(requestParameters, options) {
-            return localVarFp.authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, requestParameters.visitorId, options).then((request) => request(axios, basePath));
+            return localVarFp.authGetAuthUrlV1(requestParameters['language'], requestParameters['provider'], requestParameters['v'], requestParameters['app'], requestParameters['redirect'], requestParameters['refId'], requestParameters['country'], requestParameters['visitorId'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Internal callback/debug endpoint for client configuration: the current implementation always throws test and does not return a working configuration. Callback transport excludes it from account/project profiles.
          * @summary Get client configuration
+         * @param {AuthApiAuthGetClientConfigurationV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authGetClientConfigurationV1(options) {
-            return localVarFp.authGetClientConfigurationV1(options).then((request) => request(axios, basePath));
+        authGetClientConfigurationV1(requestParameters = {}, options) {
+            return localVarFp.authGetClientConfigurationV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -780,7 +837,7 @@ exports.AuthApiFactory = AuthApiFactory;
  */
 class AuthApi extends base_1.BaseAPI {
     /**
-     *
+     * Internal Google OAuth callback that completes login and returns an HTTP 301 redirect. The provider creates authorization data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth google
      * @param {AuthApiAuthCallbackGoogleV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -788,10 +845,10 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authCallbackGoogleV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authCallbackGoogleV1(requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authCallbackGoogleV1(requestParameters['state'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Internal VK ID callback to complete OAuth login and issue an HTTP 301 redirect. The OAuth guard supplies req.user, not an integration request; callback transport excludes this endpoint.
      * @summary Internal request of auth new vk
      * @param {AuthApiAuthCallbackVkIdV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -799,20 +856,21 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authCallbackVkIdV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authCallbackVkIdV1(requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authCallbackVkIdV1(requestParameters['state'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Internal legacy VK OAuth callback that redirects the browser with HTTP 301. The provider creates input data; callback transport excludes this endpoint from integration profiles.
      * @summary Internal request of auth old vk
+     * @param {AuthApiAuthCallbackVkV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authCallbackVkV1(options) {
-        return (0, exports.AuthApiFp)(this.configuration).authCallbackVkV1(options).then((request) => request(this.axios, this.basePath));
+    authCallbackVkV1(requestParameters = {}, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authCallbackVkV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Get a one-time authorization code for app in the current cabinet session. Session transport is excluded from integration profiles. The code is sensitive and is used by /method/auth/app/exchange; it is not intended for logs or the corpus.
      * @summary Get code for auth
      * @param {AuthApiAuthCodeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -820,10 +878,10 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authCodeV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authCodeV1(requestParameters.language, requestParameters.app, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authCodeV1(requestParameters['language'], requestParameters['app'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Internal social connection completion callback. Returns text/html with a script that sends message to the parent window and closes the window. Callback transport excludes it from integration profiles; this is neither JSON nor a server tool catalog.
      * @summary CallBack for connect social
      * @param {AuthApiAuthConnectResultV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -831,10 +889,10 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authConnectResultV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authConnectResultV1(requestParameters.language, requestParameters.message, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authConnectResultV1(requestParameters['language'], requestParameters['message'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Connect Telegram to the current user\'s account using signed Telegram data in body.data. The server verifies the signature. Available only to a project subject; does not extend account-token access. Success confirms the connection was processed.
      * @summary Connect telegram in account
      * @param {AuthApiAuthConnectTelegramV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -842,10 +900,10 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authConnectTelegramV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authConnectTelegramV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authConnectTelegramV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Start connecting a social provider to the current user account and redirect the browser to OAuth. GET starts the flow; completion depends on authorization and a callback. Available only to the project subject; list connections with GET /method/socials/list.
      * @summary Connected social account
      * @param {AuthApiAuthConnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -853,10 +911,10 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authConnectV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authConnectV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authConnectV1(requestParameters['language'], requestParameters['provider'], requestParameters['v'], requestParameters['app'], requestParameters['redirect'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Disconnect social connection social_id of the current user. Despite using GET, this changes the connection rather than reading a list. Available only to a project subject; use GET /method/socials/list to list connections.
      * @summary Disconnected social account
      * @param {AuthApiAuthDisconnectV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -864,10 +922,10 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authDisconnectV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authDisconnectV1(requestParameters.language, requestParameters.social_id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authDisconnectV1(requestParameters['language'], requestParameters['social_id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Exchange a previously issued app authorization code for session data with userAgent/fingerprint. Callback transport is excluded from integration profiles. Returned credentials are sensitive; this endpoint is not for refreshing an external application\'s OAuth grant.
      * @summary Code exchange
      * @param {AuthApiAuthExchangeV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -875,10 +933,10 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authExchangeV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authExchangeV1(requestParameters.SiteAuthExchangeRequest, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authExchangeV1(requestParameters['SiteAuthExchangeRequest'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Start login through OAuth for the selected provider and redirect the browser to authorization. This callback transport is outside integration account/project profiles; the response is a redirect, not ready access-token JSON.
      * @summary Get url for start oauth
      * @param {AuthApiAuthGetAuthUrlV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -886,17 +944,18 @@ class AuthApi extends base_1.BaseAPI {
      * @memberof AuthApi
      */
     authGetAuthUrlV1(requestParameters, options) {
-        return (0, exports.AuthApiFp)(this.configuration).authGetAuthUrlV1(requestParameters.language, requestParameters.provider, requestParameters.v, requestParameters.app, requestParameters.redirect, requestParameters.refId, requestParameters.country, requestParameters.visitorId, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.AuthApiFp)(this.configuration).authGetAuthUrlV1(requestParameters['language'], requestParameters['provider'], requestParameters['v'], requestParameters['app'], requestParameters['redirect'], requestParameters['refId'], requestParameters['country'], requestParameters['visitorId'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Internal callback/debug endpoint for client configuration: the current implementation always throws test and does not return a working configuration. Callback transport excludes it from account/project profiles.
      * @summary Get client configuration
+     * @param {AuthApiAuthGetClientConfigurationV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    authGetClientConfigurationV1(options) {
-        return (0, exports.AuthApiFp)(this.configuration).authGetClientConfigurationV1(options).then((request) => request(this.axios, this.basePath));
+    authGetClientConfigurationV1(requestParameters = {}, options) {
+        return (0, exports.AuthApiFp)(this.configuration).authGetClientConfigurationV1(requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.AuthApi = AuthApi;

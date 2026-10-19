@@ -22,7 +22,7 @@ export interface WebinarRoomCreateDto {
      */
     'v'?: WebinarRoomCreateDtoVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof WebinarRoomCreateDto
      */
@@ -40,7 +40,7 @@ export interface WebinarRoomCreateDto {
      */
     'room_name': string;
     /**
-     * Room link
+     * Room link suffix; only Latin letters and digits, 1–100 characters.
      * @type {string}
      * @memberof WebinarRoomCreateDto
      */

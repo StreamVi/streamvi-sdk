@@ -27,7 +27,7 @@ export interface SiteUpdateOptionsTrovoRequest {
      */
     'v'?: SiteUpdateOptionsTrovoRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
@@ -39,13 +39,13 @@ export interface SiteUpdateOptionsTrovoRequest {
      */
     'project_id': number;
     /**
-     * Channel id
+     * Internal numeric StreamVi channel ID. Use results[].group_id from channel search in the same project_id; do not use results[].id (external/platform ID), even if it contains only digits.
      * @type {number}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
     'channel_id': number;
     /**
-     * 
+     * Platform broadcast title; supplied explicitly, omission does not insert the example title.
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
@@ -63,13 +63,13 @@ export interface SiteUpdateOptionsTrovoRequest {
      */
     'category_name'?: string;
     /**
-     * 
+     * Age/children audience category from the platform enum; when omitted, the transformed parameter remains undefined.
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */
     'audience'?: SiteUpdateOptionsTrovoRequestAudienceEnum;
     /**
-     * 
+     * Broadcast content language from the platform enum; differs from API localization language.
      * @type {string}
      * @memberof SiteUpdateOptionsTrovoRequest
      */

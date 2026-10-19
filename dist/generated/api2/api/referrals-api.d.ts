@@ -19,15 +19,16 @@ import type { SiteTotalInfoReferralsResponse } from '../models';
  */
 export declare const ReferralsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
-     * @summary Total info
-     * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
+     * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+     * @summary Get project referral statistics
+     * @param {ReferralsTotalInfoV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    referralsTotalInfoV1: (language: ReferralsTotalInfoV1LanguageEnum, projectId: number, v?: ReferralsTotalInfoV1VEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    referralsTotalInfoV1: (language: ReferralsTotalInfoV1LanguageEnum, projectId: number, v?: ReferralsTotalInfoV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ReferralsApi - functional programming interface
@@ -35,15 +36,16 @@ export declare const ReferralsApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const ReferralsApiFp: (configuration?: Configuration) => {
     /**
-     *
-     * @summary Total info
-     * @param {ReferralsTotalInfoV1LanguageEnum} language Current language
+     * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+     * @summary Get project referral statistics
+     * @param {ReferralsTotalInfoV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @param {number} projectId Project id
      * @param {ReferralsTotalInfoV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+     * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    referralsTotalInfoV1(language: ReferralsTotalInfoV1LanguageEnum, projectId: number, v?: ReferralsTotalInfoV1VEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTotalInfoReferralsResponse>>;
+    referralsTotalInfoV1(language: ReferralsTotalInfoV1LanguageEnum, projectId: number, v?: ReferralsTotalInfoV1VEnum, xClientRequestId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SiteTotalInfoReferralsResponse>>;
 };
 /**
  * ReferralsApi - factory interface
@@ -51,8 +53,8 @@ export declare const ReferralsApiFp: (configuration?: Configuration) => {
  */
 export declare const ReferralsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
-     * @summary Total info
+     * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+     * @summary Get project referral statistics
      * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -66,8 +68,8 @@ export declare const ReferralsApiFactory: (configuration?: Configuration, basePa
  */
 export interface ReferralsApiInterface {
     /**
-     *
-     * @summary Total info
+     * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+     * @summary Get project referral statistics
      * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -82,23 +84,29 @@ export interface ReferralsApiInterface {
  */
 export interface ReferralsApiReferralsTotalInfoV1Request {
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {'ru' | 'en' | 'cn'}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */
-    readonly language: ReferralsTotalInfoV1LanguageEnum;
+    readonly 'language': ReferralsTotalInfoV1LanguageEnum;
     /**
      * Project id
      * @type {number}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */
-    readonly project_id: number;
+    readonly 'project_id': number;
     /**
      * Version (automatically defaults to 1 based on the API contract, can be overridden)
      * @type {'1'}
      * @memberof ReferralsApiReferralsTotalInfoV1
      */
-    readonly v?: ReferralsTotalInfoV1VEnum;
+    readonly 'v'?: ReferralsTotalInfoV1VEnum;
+    /**
+     * UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
+     * @type {string}
+     * @memberof ReferralsApiReferralsTotalInfoV1
+     */
+    readonly 'X-Client-Request-Id'?: string;
 }
 /**
  * ReferralsApi - object-oriented interface
@@ -108,8 +116,8 @@ export interface ReferralsApiReferralsTotalInfoV1Request {
  */
 export declare class ReferralsApi extends BaseAPI implements ReferralsApiInterface {
     /**
-     *
-     * @summary Total info
+     * Read aggregate referral data for project_id according to the response schema. Financial amounts use minor currency units of the response currency. This reads referral statistics without creating a project invitation, crediting a reward, or withdrawing funds.
+     * @summary Get project referral statistics
      * @param {ReferralsApiReferralsTotalInfoV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

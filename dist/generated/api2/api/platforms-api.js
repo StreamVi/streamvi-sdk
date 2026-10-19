@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PlatformsVkVideoLiveCategoryV1VEnum = exports.PlatformsVkVideoLiveCategoryV1TypeEnum = exports.PlatformsVkVideoLiveCategoryV1LanguageEnum = exports.PlatformsPlatformListV1VEnum = exports.PlatformsPlatformListV1LanguageEnum = exports.PlatformsLogoutAccountV1VEnum = exports.PlatformsLogoutAccountV1PlatformEnum = exports.PlatformsLogoutAccountV1LanguageEnum = exports.PlatformsGetChannelsV1SortEnum = exports.PlatformsGetChannelsV1VEnum = exports.PlatformsGetChannelsV1PlatformEnum = exports.PlatformsGetChannelsV1LanguageEnum = exports.PlatformsGetCategoryV1VEnum = exports.PlatformsGetCategoryV1TypeEnum = exports.PlatformsGetCategoryV1LanguageEnum = exports.PlatformsGetAccountsV1VEnum = exports.PlatformsGetAccountsV1PlatformEnum = exports.PlatformsGetAccountsV1LanguageEnum = exports.PlatformsCallbackV1ProviderEnum = exports.PlatformsAddAccountVkCommunityV1VEnum = exports.PlatformsAddAccountVkCommunityV1LanguageEnum = exports.PlatformsAddAccountV1VEnum = exports.PlatformsAddAccountV1PlatformEnum = exports.PlatformsAddAccountV1LanguageEnum = exports.PlatformCategoryDetailsGetCategoryDetailsV1VEnum = exports.PlatformCategoryDetailsGetCategoryDetailsV1ScopeEnum = exports.PlatformCategoryDetailsGetCategoryDetailsV1PlatformEnum = exports.PlatformCategoryDetailsGetCategoryDetailsV1LanguageEnum = exports.PlatformsApi = exports.PlatformsApiFactory = exports.PlatformsApiFp = exports.PlatformsApiAxiosParamCreator = void 0;
+exports.PlatformsVkVideoLiveCategoryV1VEnum = exports.PlatformsVkVideoLiveCategoryV1TypeEnum = exports.PlatformsVkVideoLiveCategoryV1LanguageEnum = exports.PlatformsPlatformListV1VEnum = exports.PlatformsPlatformListV1LanguageEnum = exports.PlatformsLogoutAccountV1VEnum = exports.PlatformsLogoutAccountV1PlatformEnum = exports.PlatformsLogoutAccountV1LanguageEnum = exports.PlatformsGetChannelsV1SortEnum = exports.PlatformsGetChannelsV1VEnum = exports.PlatformsGetChannelsV1PlatformEnum = exports.PlatformsGetChannelsV1LanguageEnum = exports.PlatformsGetCategoryV1VEnum = exports.PlatformsGetCategoryV1TypeEnum = exports.PlatformsGetCategoryV1LanguageEnum = exports.PlatformsGetAccountsV1VEnum = exports.PlatformsGetAccountsV1PlatformEnum = exports.PlatformsGetAccountsV1LanguageEnum = exports.PlatformsCallbackV1ProviderEnum = exports.PlatformsAddAccountVkCommunityV1VEnum = exports.PlatformsAddAccountVkCommunityV1LanguageEnum = exports.PlatformsAddAccountV1ConnectionModeEnum = exports.PlatformsAddAccountV1VEnum = exports.PlatformsAddAccountV1PlatformEnum = exports.PlatformsAddAccountV1LanguageEnum = exports.PlatformCategoryDetailsGetCategoryDetailsV1VEnum = exports.PlatformCategoryDetailsGetCategoryDetailsV1ScopeEnum = exports.PlatformCategoryDetailsGetCategoryDetailsV1PlatformEnum = exports.PlatformCategoryDetailsGetCategoryDetailsV1LanguageEnum = exports.PlatformsApi = exports.PlatformsApiFactory = exports.PlatformsApiFp = exports.PlatformsApiAxiosParamCreator = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -30,17 +30,18 @@ const base_1 = require("../base");
 const PlatformsApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *
+         * Read a saved platform category by its external id, platform, and catalog scope. Returns category metadata; missing categories produce the documented 404. This is a platform catalog ID for broadcast settings, not an internal StreamVi channel_id.
          * @summary Get a saved platform category by its external identifier
-         * @param {PlatformCategoryDetailsGetCategoryDetailsV1LanguageEnum} language Current language
-         * @param {PlatformCategoryDetailsGetCategoryDetailsV1PlatformEnum} platform
-         * @param {PlatformCategoryDetailsGetCategoryDetailsV1ScopeEnum} scope
+         * @param {PlatformCategoryDetailsGetCategoryDetailsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {PlatformCategoryDetailsGetCategoryDetailsV1PlatformEnum} platform Platform of the saved category catalog; allowed values are defined by enum.
+         * @param {PlatformCategoryDetailsGetCategoryDetailsV1ScopeEnum} scope Platform category catalog section; allowed values are defined by enum, not the token\&#39;s OAuth scope.
          * @param {string} id Opaque external category identifier; passed through unchanged
          * @param {PlatformCategoryDetailsGetCategoryDetailsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformCategoryDetailsGetCategoryDetailsV1: async (language, platform, scope, id, v, options = {}) => {
+        platformCategoryDetailsGetCategoryDetailsV1: async (language, platform, scope, id, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('platformCategoryDetailsGetCategoryDetailsV1', 'language', language);
             // verify required parameter 'platform' is not null or undefined
@@ -59,9 +60,12 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["platform:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["platform:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -80,6 +84,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -89,17 +96,19 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Start connecting a platform account for project_id with connection_mode and sub_id from the request. Redirects to the platform page; user authorization and a callback must finish. GET starts a connection flow, not a ready account list or new token.
          * @summary Get url for start oauth
-         * @param {PlatformsAddAccountV1LanguageEnum} language Current language
+         * @param {PlatformsAddAccountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlatformsAddAccountV1PlatformEnum} platform Provider oauth
          * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [subId] Sub id
+         * @param {PlatformsAddAccountV1ConnectionModeEnum} [connectionMode] Channel selection after OAuth (VK Video Live only)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsAddAccountV1: async (language, projectId, platform, v, subId, options = {}) => {
+        platformsAddAccountV1: async (language, projectId, platform, v, subId, connectionMode, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('platformsAddAccountV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -116,9 +125,12 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["platform:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["platform:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -137,6 +149,12 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (subId !== undefined) {
                 localVarQueryParameter['sub_id'] = subId;
             }
+            if (connectionMode !== undefined) {
+                localVarQueryParameter['connection_mode'] = connectionMode;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -146,18 +164,19 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Start VK community OAuth connection for project_id, account_id and external channel_id. Returns an authorization redirect; user completion and a callback are required. These input platform identifiers differ from the internal group_id of an already added channel.
          * @summary Get url for start oauth
-         * @param {PlatformsAddAccountVkCommunityV1LanguageEnum} language Current language
+         * @param {PlatformsAddAccountVkCommunityV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel external id
+         * @param {number} channelId External numeric VK community ID from the platform channel list. This connect method does not take the internal StreamVi channel_id/group_id.
          * @param {string} accountId Id account on platform
          * @param {PlatformsAddAccountVkCommunityV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [subId] Sub id
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsAddAccountVkCommunityV1: async (language, projectId, channelId, accountId, v, subId, options = {}) => {
+        platformsAddAccountVkCommunityV1: async (language, projectId, channelId, accountId, v, subId, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('platformsAddAccountVkCommunityV1', 'language', language);
             // verify required parameter 'projectId' is not null or undefined
@@ -176,9 +195,12 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["platform:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["platform:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -200,6 +222,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (subId !== undefined) {
                 localVarQueryParameter['sub_id'] = subId;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -209,13 +234,14 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Internal VK-community OAuth callback. Processes the platform authorization result and builds the UI callback response. Callback transport excludes it from account/project integration profiles; do not call it manually as an add-channel tool.
          * @summary Internal request of auth
          * @param {string} state State
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsCallbackCommunityV1: async (state, options = {}) => {
+        platformsCallbackCommunityV1: async (state, xClientRequestId, options = {}) => {
             // verify required parameter 'state' is not null or undefined
             (0, common_1.assertParamExists)('platformsCallbackCommunityV1', 'state', state);
             const localVarPath = `/method/platforms/vk/callback-community`;
@@ -231,6 +257,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (state !== undefined) {
                 localVarQueryParameter['state'] = state;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -240,14 +269,15 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Internal OAuth callback for the selected provider to finish connecting a platform. Returns a UI result; callback transport excludes it from integration profiles. The platform creates authorization data, not the assistant.
          * @summary Internal request of auth
          * @param {PlatformsCallbackV1ProviderEnum} provider Provider oauth
          * @param {string} state State
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsCallbackV1: async (provider, state, options = {}) => {
+        platformsCallbackV1: async (provider, state, xClientRequestId, options = {}) => {
             // verify required parameter 'provider' is not null or undefined
             (0, common_1.assertParamExists)('platformsCallbackV1', 'provider', provider);
             // verify required parameter 'state' is not null or undefined
@@ -266,6 +296,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (state !== undefined) {
                 localVarQueryParameter['state'] = state;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -275,13 +308,14 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Internal VK ID OAuth callback to finish connecting an account. Returns a UI callback response; callback transport excludes it from integration profiles. This is not an ordinary data read.
          * @summary Internal request of auth vk-id
          * @param {string} state State
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsCallbackVkIdV1: async (state, options = {}) => {
+        platformsCallbackVkIdV1: async (state, xClientRequestId, options = {}) => {
             // verify required parameter 'state' is not null or undefined
             (0, common_1.assertParamExists)('platformsCallbackVkIdV1', 'state', state);
             const localVarPath = `/method/platforms/vk-id/callback`;
@@ -297,6 +331,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (state !== undefined) {
                 localVarQueryParameter['state'] = state;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -306,15 +343,16 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the current user\'s connected accounts for platform. These are personal platform accounts, not StreamVi projects. Use result IDs for /method/platforms/account/channels and the corresponding add-channel operation.
          * @summary Get accounts
-         * @param {PlatformsGetAccountsV1LanguageEnum} language Current language
+         * @param {PlatformsGetAccountsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlatformsGetAccountsV1PlatformEnum} platform Provider oauth
          * @param {PlatformsGetAccountsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsGetAccountsV1: async (language, platform, v, options = {}) => {
+        platformsGetAccountsV1: async (language, platform, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('platformsGetAccountsV1', 'language', language);
             // verify required parameter 'platform' is not null or undefined
@@ -329,9 +367,12 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["platform:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["platform:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -344,6 +385,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (platform !== undefined) {
                 localVarQueryParameter['platform'] = platform;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -353,16 +397,17 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Find broadcast categories for platform type using q and language. Returns category results for channel settings; their external IDs are not StreamVi channel_id. Reads the account-context catalog without changing the project.
          * @summary Get category from the platform
-         * @param {PlatformsGetCategoryV1LanguageEnum} language Current language
+         * @param {PlatformsGetCategoryV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlatformsGetCategoryV1TypeEnum} type Category search bar
          * @param {PlatformsGetCategoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [q] Category search bar
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsGetCategoryV1: async (language, type, v, q, options = {}) => {
+        platformsGetCategoryV1: async (language, type, v, q, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('platformsGetCategoryV1', 'language', language);
             // verify required parameter 'type' is not null or undefined
@@ -377,9 +422,12 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["platform:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["platform:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -395,6 +443,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (type !== undefined) {
                 localVarQueryParameter['type'] = type;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -404,10 +455,10 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read external channels of the selected platform account ids in project_id. request_id is a UUID for caching this result; page is a page number, and q/sort/limit configure search. Returns results and page metadata; external string IDs are used when adding a channel and do not replace results[].group_id from StreamVi search.
          * @summary Get channels with accounts
-         * @param {PlatformsGetChannelsV1LanguageEnum} language Current language
-         * @param {PlatformsGetChannelsV1PlatformEnum} platform Platform (vk, ok)
+         * @param {PlatformsGetChannelsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {PlatformsGetChannelsV1PlatformEnum} platform Platform (vk, ok, vkvideolive)
          * @param {Array<number>} ids Id accounts
          * @param {number} projectId Project id
          * @param {string} requestId Request id (for cache)
@@ -416,10 +467,11 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
          * @param {PlatformsGetChannelsV1SortEnum} [sort] Sort by asc or desc (default asc)
          * @param {number} [limit] Limit
          * @param {number} [page] Page
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsGetChannelsV1: async (language, platform, ids, projectId, requestId, v, q, sort, limit, page, options = {}) => {
+        platformsGetChannelsV1: async (language, platform, ids, projectId, requestId, v, q, sort, limit, page, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('platformsGetChannelsV1', 'language', language);
             // verify required parameter 'platform' is not null or undefined
@@ -440,9 +492,12 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["platform:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["platform:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -476,6 +531,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (page !== undefined) {
                 localVarQueryParameter['page'] = page;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -485,16 +543,17 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
-         * @summary Get category from the platform
-         * @param {PlatformsLogoutAccountV1LanguageEnum} language Current language
+         * Incomplete internal platform logout method: the current implementation always throws Not implemented. Do not use for category search or as an available account disconnection; use POST /method/platforms/account/remove to remove a connection.
+         * @summary Unavailable platform logout (not implemented)
+         * @param {PlatformsLogoutAccountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} id Category search bar
          * @param {PlatformsLogoutAccountV1PlatformEnum} platform Provider oauth
          * @param {PlatformsLogoutAccountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsLogoutAccountV1: async (language, id, platform, v, options = {}) => {
+        platformsLogoutAccountV1: async (language, id, platform, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('platformsLogoutAccountV1', 'language', language);
             // verify required parameter 'id' is not null or undefined
@@ -511,9 +570,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Project required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["platform:write"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -529,6 +588,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (platform !== undefined) {
                 localVarQueryParameter['platform'] = platform;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -538,14 +600,15 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Read the public catalog of supported platforms and their capabilities. Describes available connection methods without confirming that a specific account or project channel is connected.
          * @summary Supported platforms
-         * @param {PlatformsPlatformListV1LanguageEnum} language Current language
+         * @param {PlatformsPlatformListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlatformsPlatformListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsPlatformListV1: async (language, v, options = {}) => {
+        platformsPlatformListV1: async (language, v, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('platformsPlatformListV1', 'language', language);
             const localVarPath = `/method/platforms/list`;
@@ -567,6 +630,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             if (language !== undefined) {
                 localVarQueryParameter['language'] = language;
             }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -576,13 +642,14 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Delete the current user\'s platform account connection id/platform. Returns success after the deletion use case. This disconnects a platform account rather than disabling one project destination using active=false.
          * @summary Remove account
          * @param {RemoveAccountQuery} removeAccountQuery
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsRemoveAccountV1: async (removeAccountQuery, options = {}) => {
+        platformsRemoveAccountV1: async (removeAccountQuery, xClientRequestId, options = {}) => {
             var _a;
             // verify required parameter 'removeAccountQuery' is not null or undefined
             (0, common_1.assertParamExists)('platformsRemoveAccountV1', 'removeAccountQuery', removeAccountQuery);
@@ -596,10 +663,16 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:write"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["platform:write"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["platform:write"], configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -611,17 +684,18 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             };
         },
         /**
-         *
+         * Search the saved VK Video Live category catalog using the search parameters. Returns category results whose identifiers are used in platform settings, not StreamVi channel management. No live OAuth connection is required for searching.
          * @summary Search VK Video Live categories in the saved catalog
-         * @param {PlatformsVkVideoLiveCategoryV1LanguageEnum} language Current language
+         * @param {PlatformsVkVideoLiveCategoryV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlatformsVkVideoLiveCategoryV1TypeEnum} type Category type
          * @param {PlatformsVkVideoLiveCategoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [offset] Category offset (for pagination)
          * @param {string} [q] Category name prefix
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        platformsVkVideoLiveCategoryV1: async (language, type, v, offset, q, options = {}) => {
+        platformsVkVideoLiveCategoryV1: async (language, type, v, offset, q, xClientRequestId, options = {}) => {
             // verify required parameter 'language' is not null or undefined
             (0, common_1.assertParamExists)('platformsVkVideoLiveCategoryV1', 'language', language);
             // verify required parameter 'type' is not null or undefined
@@ -636,9 +710,12 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
-            // authentication oauth2 required
+            // authentication oauth2Account required
             // oauth required
-            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2", ["platform:read"], configuration);
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Account", ["platform:read"], configuration);
+            // authentication oauth2Project required
+            // oauth required
+            await (0, common_1.setOAuthToObject)(localVarHeaderParameter, "oauth2Project", ["platform:read"], configuration);
             if (v !== undefined) {
                 localVarQueryParameter['v'] = v;
             }
@@ -656,6 +733,9 @@ const PlatformsApiAxiosParamCreator = function (configuration) {
             }
             if (q !== undefined) {
                 localVarQueryParameter['q'] = q;
+            }
+            if (xClientRequestId != null) {
+                localVarHeaderParameter['X-Client-Request-Id'] = String(xClientRequestId);
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -676,141 +756,150 @@ const PlatformsApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.PlatformsApiAxiosParamCreator)(configuration);
     return {
         /**
-         *
+         * Read a saved platform category by its external id, platform, and catalog scope. Returns category metadata; missing categories produce the documented 404. This is a platform catalog ID for broadcast settings, not an internal StreamVi channel_id.
          * @summary Get a saved platform category by its external identifier
-         * @param {PlatformCategoryDetailsGetCategoryDetailsV1LanguageEnum} language Current language
-         * @param {PlatformCategoryDetailsGetCategoryDetailsV1PlatformEnum} platform
-         * @param {PlatformCategoryDetailsGetCategoryDetailsV1ScopeEnum} scope
+         * @param {PlatformCategoryDetailsGetCategoryDetailsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {PlatformCategoryDetailsGetCategoryDetailsV1PlatformEnum} platform Platform of the saved category catalog; allowed values are defined by enum.
+         * @param {PlatformCategoryDetailsGetCategoryDetailsV1ScopeEnum} scope Platform category catalog section; allowed values are defined by enum, not the token\&#39;s OAuth scope.
          * @param {string} id Opaque external category identifier; passed through unchanged
          * @param {PlatformCategoryDetailsGetCategoryDetailsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformCategoryDetailsGetCategoryDetailsV1(language, platform, scope, id, v, options) {
+        async platformCategoryDetailsGetCategoryDetailsV1(language, platform, scope, id, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformCategoryDetailsGetCategoryDetailsV1(language, platform, scope, id, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformCategoryDetailsGetCategoryDetailsV1(language, platform, scope, id, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformCategoryDetailsGetCategoryDetailsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Start connecting a platform account for project_id with connection_mode and sub_id from the request. Redirects to the platform page; user authorization and a callback must finish. GET starts a connection flow, not a ready account list or new token.
          * @summary Get url for start oauth
-         * @param {PlatformsAddAccountV1LanguageEnum} language Current language
+         * @param {PlatformsAddAccountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
          * @param {PlatformsAddAccountV1PlatformEnum} platform Provider oauth
          * @param {PlatformsAddAccountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [subId] Sub id
+         * @param {PlatformsAddAccountV1ConnectionModeEnum} [connectionMode] Channel selection after OAuth (VK Video Live only)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsAddAccountV1(language, projectId, platform, v, subId, options) {
+        async platformsAddAccountV1(language, projectId, platform, v, subId, connectionMode, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsAddAccountV1(language, projectId, platform, v, subId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsAddAccountV1(language, projectId, platform, v, subId, connectionMode, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsAddAccountV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Start VK community OAuth connection for project_id, account_id and external channel_id. Returns an authorization redirect; user completion and a callback are required. These input platform identifiers differ from the internal group_id of an already added channel.
          * @summary Get url for start oauth
-         * @param {PlatformsAddAccountVkCommunityV1LanguageEnum} language Current language
+         * @param {PlatformsAddAccountVkCommunityV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {number} projectId Project id
-         * @param {number} channelId Channel external id
+         * @param {number} channelId External numeric VK community ID from the platform channel list. This connect method does not take the internal StreamVi channel_id/group_id.
          * @param {string} accountId Id account on platform
          * @param {PlatformsAddAccountVkCommunityV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [subId] Sub id
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsAddAccountVkCommunityV1(language, projectId, channelId, accountId, v, subId, options) {
+        async platformsAddAccountVkCommunityV1(language, projectId, channelId, accountId, v, subId, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsAddAccountVkCommunityV1(language, projectId, channelId, accountId, v, subId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsAddAccountVkCommunityV1(language, projectId, channelId, accountId, v, subId, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsAddAccountVkCommunityV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Internal VK-community OAuth callback. Processes the platform authorization result and builds the UI callback response. Callback transport excludes it from account/project integration profiles; do not call it manually as an add-channel tool.
          * @summary Internal request of auth
          * @param {string} state State
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsCallbackCommunityV1(state, options) {
+        async platformsCallbackCommunityV1(state, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsCallbackCommunityV1(state, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsCallbackCommunityV1(state, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsCallbackCommunityV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Internal OAuth callback for the selected provider to finish connecting a platform. Returns a UI result; callback transport excludes it from integration profiles. The platform creates authorization data, not the assistant.
          * @summary Internal request of auth
          * @param {PlatformsCallbackV1ProviderEnum} provider Provider oauth
          * @param {string} state State
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsCallbackV1(provider, state, options) {
+        async platformsCallbackV1(provider, state, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsCallbackV1(provider, state, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsCallbackV1(provider, state, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsCallbackV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Internal VK ID OAuth callback to finish connecting an account. Returns a UI callback response; callback transport excludes it from integration profiles. This is not an ordinary data read.
          * @summary Internal request of auth vk-id
          * @param {string} state State
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsCallbackVkIdV1(state, options) {
+        async platformsCallbackVkIdV1(state, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsCallbackVkIdV1(state, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsCallbackVkIdV1(state, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsCallbackVkIdV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the current user\'s connected accounts for platform. These are personal platform accounts, not StreamVi projects. Use result IDs for /method/platforms/account/channels and the corresponding add-channel operation.
          * @summary Get accounts
-         * @param {PlatformsGetAccountsV1LanguageEnum} language Current language
+         * @param {PlatformsGetAccountsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlatformsGetAccountsV1PlatformEnum} platform Provider oauth
          * @param {PlatformsGetAccountsV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsGetAccountsV1(language, platform, v, options) {
+        async platformsGetAccountsV1(language, platform, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsGetAccountsV1(language, platform, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsGetAccountsV1(language, platform, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsGetAccountsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Find broadcast categories for platform type using q and language. Returns category results for channel settings; their external IDs are not StreamVi channel_id. Reads the account-context catalog without changing the project.
          * @summary Get category from the platform
-         * @param {PlatformsGetCategoryV1LanguageEnum} language Current language
+         * @param {PlatformsGetCategoryV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlatformsGetCategoryV1TypeEnum} type Category search bar
          * @param {PlatformsGetCategoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {string} [q] Category search bar
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsGetCategoryV1(language, type, v, q, options) {
+        async platformsGetCategoryV1(language, type, v, q, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsGetCategoryV1(language, type, v, q, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsGetCategoryV1(language, type, v, q, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsGetCategoryV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read external channels of the selected platform account ids in project_id. request_id is a UUID for caching this result; page is a page number, and q/sort/limit configure search. Returns results and page metadata; external string IDs are used when adding a channel and do not replace results[].group_id from StreamVi search.
          * @summary Get channels with accounts
-         * @param {PlatformsGetChannelsV1LanguageEnum} language Current language
-         * @param {PlatformsGetChannelsV1PlatformEnum} platform Platform (vk, ok)
+         * @param {PlatformsGetChannelsV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
+         * @param {PlatformsGetChannelsV1PlatformEnum} platform Platform (vk, ok, vkvideolive)
          * @param {Array<number>} ids Id accounts
          * @param {number} projectId Project id
          * @param {string} requestId Request id (for cache)
@@ -819,76 +908,81 @@ const PlatformsApiFp = function (configuration) {
          * @param {PlatformsGetChannelsV1SortEnum} [sort] Sort by asc or desc (default asc)
          * @param {number} [limit] Limit
          * @param {number} [page] Page
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsGetChannelsV1(language, platform, ids, projectId, requestId, v, q, sort, limit, page, options) {
+        async platformsGetChannelsV1(language, platform, ids, projectId, requestId, v, q, sort, limit, page, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsGetChannelsV1(language, platform, ids, projectId, requestId, v, q, sort, limit, page, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsGetChannelsV1(language, platform, ids, projectId, requestId, v, q, sort, limit, page, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsGetChannelsV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
-         * @summary Get category from the platform
-         * @param {PlatformsLogoutAccountV1LanguageEnum} language Current language
+         * Incomplete internal platform logout method: the current implementation always throws Not implemented. Do not use for category search or as an available account disconnection; use POST /method/platforms/account/remove to remove a connection.
+         * @summary Unavailable platform logout (not implemented)
+         * @param {PlatformsLogoutAccountV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {string} id Category search bar
          * @param {PlatformsLogoutAccountV1PlatformEnum} platform Provider oauth
          * @param {PlatformsLogoutAccountV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsLogoutAccountV1(language, id, platform, v, options) {
+        async platformsLogoutAccountV1(language, id, platform, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsLogoutAccountV1(language, id, platform, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsLogoutAccountV1(language, id, platform, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsLogoutAccountV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Read the public catalog of supported platforms and their capabilities. Describes available connection methods without confirming that a specific account or project channel is connected.
          * @summary Supported platforms
-         * @param {PlatformsPlatformListV1LanguageEnum} language Current language
+         * @param {PlatformsPlatformListV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlatformsPlatformListV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsPlatformListV1(language, v, options) {
+        async platformsPlatformListV1(language, v, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsPlatformListV1(language, v, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsPlatformListV1(language, v, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsPlatformListV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Delete the current user\'s platform account connection id/platform. Returns success after the deletion use case. This disconnects a platform account rather than disabling one project destination using active=false.
          * @summary Remove account
          * @param {RemoveAccountQuery} removeAccountQuery
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsRemoveAccountV1(removeAccountQuery, options) {
+        async platformsRemoveAccountV1(removeAccountQuery, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsRemoveAccountV1(removeAccountQuery, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsRemoveAccountV1(removeAccountQuery, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsRemoveAccountV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         *
+         * Search the saved VK Video Live category catalog using the search parameters. Returns category results whose identifiers are used in platform settings, not StreamVi channel management. No live OAuth connection is required for searching.
          * @summary Search VK Video Live categories in the saved catalog
-         * @param {PlatformsVkVideoLiveCategoryV1LanguageEnum} language Current language
+         * @param {PlatformsVkVideoLiveCategoryV1LanguageEnum} language Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
          * @param {PlatformsVkVideoLiveCategoryV1TypeEnum} type Category type
          * @param {PlatformsVkVideoLiveCategoryV1VEnum} [v] Version (automatically defaults to 1 based on the API contract, can be overridden)
          * @param {number} [offset] Category offset (for pagination)
          * @param {string} [q] Category name prefix
+         * @param {string} [xClientRequestId] UUID v4 correlating the request, logs, and events. If absent or invalid, the server generates an ID and returns it in the response header with the same name.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async platformsVkVideoLiveCategoryV1(language, type, v, offset, q, options) {
+        async platformsVkVideoLiveCategoryV1(language, type, v, offset, q, xClientRequestId, options) {
             var _a, _b, _c;
-            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsVkVideoLiveCategoryV1(language, type, v, offset, q, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.platformsVkVideoLiveCategoryV1(language, type, v, offset, q, xClientRequestId, options);
             const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
             const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['PlatformsApi.platformsVkVideoLiveCategoryV1']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -904,134 +998,134 @@ const PlatformsApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.PlatformsApiFp)(configuration);
     return {
         /**
-         *
+         * Read a saved platform category by its external id, platform, and catalog scope. Returns category metadata; missing categories produce the documented 404. This is a platform catalog ID for broadcast settings, not an internal StreamVi channel_id.
          * @summary Get a saved platform category by its external identifier
          * @param {PlatformsApiPlatformCategoryDetailsGetCategoryDetailsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformCategoryDetailsGetCategoryDetailsV1(requestParameters, options) {
-            return localVarFp.platformCategoryDetailsGetCategoryDetailsV1(requestParameters.language, requestParameters.platform, requestParameters.scope, requestParameters.id, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.platformCategoryDetailsGetCategoryDetailsV1(requestParameters['language'], requestParameters['platform'], requestParameters['scope'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Start connecting a platform account for project_id with connection_mode and sub_id from the request. Redirects to the platform page; user authorization and a callback must finish. GET starts a connection flow, not a ready account list or new token.
          * @summary Get url for start oauth
          * @param {PlatformsApiPlatformsAddAccountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsAddAccountV1(requestParameters, options) {
-            return localVarFp.platformsAddAccountV1(requestParameters.language, requestParameters.project_id, requestParameters.platform, requestParameters.v, requestParameters.sub_id, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsAddAccountV1(requestParameters['language'], requestParameters['project_id'], requestParameters['platform'], requestParameters['v'], requestParameters['sub_id'], requestParameters['connection_mode'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Start VK community OAuth connection for project_id, account_id and external channel_id. Returns an authorization redirect; user completion and a callback are required. These input platform identifiers differ from the internal group_id of an already added channel.
          * @summary Get url for start oauth
          * @param {PlatformsApiPlatformsAddAccountVkCommunityV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsAddAccountVkCommunityV1(requestParameters, options) {
-            return localVarFp.platformsAddAccountVkCommunityV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.account_id, requestParameters.v, requestParameters.sub_id, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsAddAccountVkCommunityV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['account_id'], requestParameters['v'], requestParameters['sub_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Internal VK-community OAuth callback. Processes the platform authorization result and builds the UI callback response. Callback transport excludes it from account/project integration profiles; do not call it manually as an add-channel tool.
          * @summary Internal request of auth
          * @param {PlatformsApiPlatformsCallbackCommunityV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsCallbackCommunityV1(requestParameters, options) {
-            return localVarFp.platformsCallbackCommunityV1(requestParameters.state, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsCallbackCommunityV1(requestParameters['state'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Internal OAuth callback for the selected provider to finish connecting a platform. Returns a UI result; callback transport excludes it from integration profiles. The platform creates authorization data, not the assistant.
          * @summary Internal request of auth
          * @param {PlatformsApiPlatformsCallbackV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsCallbackV1(requestParameters, options) {
-            return localVarFp.platformsCallbackV1(requestParameters.provider, requestParameters.state, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsCallbackV1(requestParameters['provider'], requestParameters['state'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Internal VK ID OAuth callback to finish connecting an account. Returns a UI callback response; callback transport excludes it from integration profiles. This is not an ordinary data read.
          * @summary Internal request of auth vk-id
          * @param {PlatformsApiPlatformsCallbackVkIdV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsCallbackVkIdV1(requestParameters, options) {
-            return localVarFp.platformsCallbackVkIdV1(requestParameters.state, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsCallbackVkIdV1(requestParameters['state'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the current user\'s connected accounts for platform. These are personal platform accounts, not StreamVi projects. Use result IDs for /method/platforms/account/channels and the corresponding add-channel operation.
          * @summary Get accounts
          * @param {PlatformsApiPlatformsGetAccountsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsGetAccountsV1(requestParameters, options) {
-            return localVarFp.platformsGetAccountsV1(requestParameters.language, requestParameters.platform, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsGetAccountsV1(requestParameters['language'], requestParameters['platform'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Find broadcast categories for platform type using q and language. Returns category results for channel settings; their external IDs are not StreamVi channel_id. Reads the account-context catalog without changing the project.
          * @summary Get category from the platform
          * @param {PlatformsApiPlatformsGetCategoryV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsGetCategoryV1(requestParameters, options) {
-            return localVarFp.platformsGetCategoryV1(requestParameters.language, requestParameters.type, requestParameters.v, requestParameters.q, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsGetCategoryV1(requestParameters['language'], requestParameters['type'], requestParameters['v'], requestParameters['q'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read external channels of the selected platform account ids in project_id. request_id is a UUID for caching this result; page is a page number, and q/sort/limit configure search. Returns results and page metadata; external string IDs are used when adding a channel and do not replace results[].group_id from StreamVi search.
          * @summary Get channels with accounts
          * @param {PlatformsApiPlatformsGetChannelsV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsGetChannelsV1(requestParameters, options) {
-            return localVarFp.platformsGetChannelsV1(requestParameters.language, requestParameters.platform, requestParameters.ids, requestParameters.project_id, requestParameters.request_id, requestParameters.v, requestParameters.q, requestParameters.sort, requestParameters.limit, requestParameters.page, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsGetChannelsV1(requestParameters['language'], requestParameters['platform'], requestParameters['ids'], requestParameters['project_id'], requestParameters['request_id'], requestParameters['v'], requestParameters['q'], requestParameters['sort'], requestParameters['limit'], requestParameters['page'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
-         * @summary Get category from the platform
+         * Incomplete internal platform logout method: the current implementation always throws Not implemented. Do not use for category search or as an available account disconnection; use POST /method/platforms/account/remove to remove a connection.
+         * @summary Unavailable platform logout (not implemented)
          * @param {PlatformsApiPlatformsLogoutAccountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsLogoutAccountV1(requestParameters, options) {
-            return localVarFp.platformsLogoutAccountV1(requestParameters.language, requestParameters.id, requestParameters.platform, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsLogoutAccountV1(requestParameters['language'], requestParameters['id'], requestParameters['platform'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Read the public catalog of supported platforms and their capabilities. Describes available connection methods without confirming that a specific account or project channel is connected.
          * @summary Supported platforms
          * @param {PlatformsApiPlatformsPlatformListV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsPlatformListV1(requestParameters, options) {
-            return localVarFp.platformsPlatformListV1(requestParameters.language, requestParameters.v, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsPlatformListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Delete the current user\'s platform account connection id/platform. Returns success after the deletion use case. This disconnects a platform account rather than disabling one project destination using active=false.
          * @summary Remove account
          * @param {PlatformsApiPlatformsRemoveAccountV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsRemoveAccountV1(requestParameters, options) {
-            return localVarFp.platformsRemoveAccountV1(requestParameters.RemoveAccountQuery, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsRemoveAccountV1(requestParameters['RemoveAccountQuery'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
         /**
-         *
+         * Search the saved VK Video Live category catalog using the search parameters. Returns category results whose identifiers are used in platform settings, not StreamVi channel management. No live OAuth connection is required for searching.
          * @summary Search VK Video Live categories in the saved catalog
          * @param {PlatformsApiPlatformsVkVideoLiveCategoryV1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         platformsVkVideoLiveCategoryV1(requestParameters, options) {
-            return localVarFp.platformsVkVideoLiveCategoryV1(requestParameters.language, requestParameters.type, requestParameters.v, requestParameters.offset, requestParameters.q, options).then((request) => request(axios, basePath));
+            return localVarFp.platformsVkVideoLiveCategoryV1(requestParameters['language'], requestParameters['type'], requestParameters['v'], requestParameters['offset'], requestParameters['q'], requestParameters['X-Client-Request-Id'], options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1044,7 +1138,7 @@ exports.PlatformsApiFactory = PlatformsApiFactory;
  */
 class PlatformsApi extends base_1.BaseAPI {
     /**
-     *
+     * Read a saved platform category by its external id, platform, and catalog scope. Returns category metadata; missing categories produce the documented 404. This is a platform catalog ID for broadcast settings, not an internal StreamVi channel_id.
      * @summary Get a saved platform category by its external identifier
      * @param {PlatformsApiPlatformCategoryDetailsGetCategoryDetailsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1052,10 +1146,10 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformCategoryDetailsGetCategoryDetailsV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformCategoryDetailsGetCategoryDetailsV1(requestParameters.language, requestParameters.platform, requestParameters.scope, requestParameters.id, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformCategoryDetailsGetCategoryDetailsV1(requestParameters['language'], requestParameters['platform'], requestParameters['scope'], requestParameters['id'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Start connecting a platform account for project_id with connection_mode and sub_id from the request. Redirects to the platform page; user authorization and a callback must finish. GET starts a connection flow, not a ready account list or new token.
      * @summary Get url for start oauth
      * @param {PlatformsApiPlatformsAddAccountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1063,10 +1157,10 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsAddAccountV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsAddAccountV1(requestParameters.language, requestParameters.project_id, requestParameters.platform, requestParameters.v, requestParameters.sub_id, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsAddAccountV1(requestParameters['language'], requestParameters['project_id'], requestParameters['platform'], requestParameters['v'], requestParameters['sub_id'], requestParameters['connection_mode'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Start VK community OAuth connection for project_id, account_id and external channel_id. Returns an authorization redirect; user completion and a callback are required. These input platform identifiers differ from the internal group_id of an already added channel.
      * @summary Get url for start oauth
      * @param {PlatformsApiPlatformsAddAccountVkCommunityV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1074,10 +1168,10 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsAddAccountVkCommunityV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsAddAccountVkCommunityV1(requestParameters.language, requestParameters.project_id, requestParameters.channel_id, requestParameters.account_id, requestParameters.v, requestParameters.sub_id, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsAddAccountVkCommunityV1(requestParameters['language'], requestParameters['project_id'], requestParameters['channel_id'], requestParameters['account_id'], requestParameters['v'], requestParameters['sub_id'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Internal VK-community OAuth callback. Processes the platform authorization result and builds the UI callback response. Callback transport excludes it from account/project integration profiles; do not call it manually as an add-channel tool.
      * @summary Internal request of auth
      * @param {PlatformsApiPlatformsCallbackCommunityV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1085,10 +1179,10 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsCallbackCommunityV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsCallbackCommunityV1(requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsCallbackCommunityV1(requestParameters['state'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Internal OAuth callback for the selected provider to finish connecting a platform. Returns a UI result; callback transport excludes it from integration profiles. The platform creates authorization data, not the assistant.
      * @summary Internal request of auth
      * @param {PlatformsApiPlatformsCallbackV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1096,10 +1190,10 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsCallbackV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsCallbackV1(requestParameters.provider, requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsCallbackV1(requestParameters['provider'], requestParameters['state'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Internal VK ID OAuth callback to finish connecting an account. Returns a UI callback response; callback transport excludes it from integration profiles. This is not an ordinary data read.
      * @summary Internal request of auth vk-id
      * @param {PlatformsApiPlatformsCallbackVkIdV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1107,10 +1201,10 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsCallbackVkIdV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsCallbackVkIdV1(requestParameters.state, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsCallbackVkIdV1(requestParameters['state'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the current user\'s connected accounts for platform. These are personal platform accounts, not StreamVi projects. Use result IDs for /method/platforms/account/channels and the corresponding add-channel operation.
      * @summary Get accounts
      * @param {PlatformsApiPlatformsGetAccountsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1118,10 +1212,10 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsGetAccountsV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsGetAccountsV1(requestParameters.language, requestParameters.platform, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsGetAccountsV1(requestParameters['language'], requestParameters['platform'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Find broadcast categories for platform type using q and language. Returns category results for channel settings; their external IDs are not StreamVi channel_id. Reads the account-context catalog without changing the project.
      * @summary Get category from the platform
      * @param {PlatformsApiPlatformsGetCategoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1129,10 +1223,10 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsGetCategoryV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsGetCategoryV1(requestParameters.language, requestParameters.type, requestParameters.v, requestParameters.q, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsGetCategoryV1(requestParameters['language'], requestParameters['type'], requestParameters['v'], requestParameters['q'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read external channels of the selected platform account ids in project_id. request_id is a UUID for caching this result; page is a page number, and q/sort/limit configure search. Returns results and page metadata; external string IDs are used when adding a channel and do not replace results[].group_id from StreamVi search.
      * @summary Get channels with accounts
      * @param {PlatformsApiPlatformsGetChannelsV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1140,21 +1234,21 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsGetChannelsV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsGetChannelsV1(requestParameters.language, requestParameters.platform, requestParameters.ids, requestParameters.project_id, requestParameters.request_id, requestParameters.v, requestParameters.q, requestParameters.sort, requestParameters.limit, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsGetChannelsV1(requestParameters['language'], requestParameters['platform'], requestParameters['ids'], requestParameters['project_id'], requestParameters['request_id'], requestParameters['v'], requestParameters['q'], requestParameters['sort'], requestParameters['limit'], requestParameters['page'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
-     * @summary Get category from the platform
+     * Incomplete internal platform logout method: the current implementation always throws Not implemented. Do not use for category search or as an available account disconnection; use POST /method/platforms/account/remove to remove a connection.
+     * @summary Unavailable platform logout (not implemented)
      * @param {PlatformsApiPlatformsLogoutAccountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlatformsApi
      */
     platformsLogoutAccountV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsLogoutAccountV1(requestParameters.language, requestParameters.id, requestParameters.platform, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsLogoutAccountV1(requestParameters['language'], requestParameters['id'], requestParameters['platform'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Read the public catalog of supported platforms and their capabilities. Describes available connection methods without confirming that a specific account or project channel is connected.
      * @summary Supported platforms
      * @param {PlatformsApiPlatformsPlatformListV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1162,10 +1256,10 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsPlatformListV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsPlatformListV1(requestParameters.language, requestParameters.v, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsPlatformListV1(requestParameters['language'], requestParameters['v'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Delete the current user\'s platform account connection id/platform. Returns success after the deletion use case. This disconnects a platform account rather than disabling one project destination using active=false.
      * @summary Remove account
      * @param {PlatformsApiPlatformsRemoveAccountV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1173,10 +1267,10 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsRemoveAccountV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsRemoveAccountV1(requestParameters.RemoveAccountQuery, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsRemoveAccountV1(requestParameters['RemoveAccountQuery'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *
+     * Search the saved VK Video Live category catalog using the search parameters. Returns category results whose identifiers are used in platform settings, not StreamVi channel management. No live OAuth connection is required for searching.
      * @summary Search VK Video Live categories in the saved catalog
      * @param {PlatformsApiPlatformsVkVideoLiveCategoryV1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1184,7 +1278,7 @@ class PlatformsApi extends base_1.BaseAPI {
      * @memberof PlatformsApi
      */
     platformsVkVideoLiveCategoryV1(requestParameters, options) {
-        return (0, exports.PlatformsApiFp)(this.configuration).platformsVkVideoLiveCategoryV1(requestParameters.language, requestParameters.type, requestParameters.v, requestParameters.offset, requestParameters.q, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.PlatformsApiFp)(this.configuration).platformsVkVideoLiveCategoryV1(requestParameters['language'], requestParameters['type'], requestParameters['v'], requestParameters['offset'], requestParameters['q'], requestParameters['X-Client-Request-Id'], options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PlatformsApi = PlatformsApi;
@@ -1241,6 +1335,12 @@ exports.PlatformsAddAccountV1PlatformEnum = {
  */
 exports.PlatformsAddAccountV1VEnum = {
     _1: '1'
+};
+/**
+ * @export
+ */
+exports.PlatformsAddAccountV1ConnectionModeEnum = {
+    SelectChannels: 'select_channels'
 };
 /**
  * @export
@@ -1331,7 +1431,8 @@ exports.PlatformsGetChannelsV1LanguageEnum = {
  */
 exports.PlatformsGetChannelsV1PlatformEnum = {
     Vk: 'vk',
-    Ok: 'ok'
+    Ok: 'ok',
+    Vkvideolive: 'vkvideolive'
 };
 /**
  * @export

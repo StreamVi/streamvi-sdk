@@ -23,7 +23,7 @@ export interface CreateSchedulerRequest {
      */
     'v'?: CreateSchedulerRequestVEnum;
     /**
-     * Current language
+     * Language of localized messages and results. When omitted, the DTO uses en; supported values are defined by enum.
      * @type {string}
      * @memberof CreateSchedulerRequest
      */
@@ -35,7 +35,7 @@ export interface CreateSchedulerRequest {
      */
     'project_id': number;
     /**
-     * Complete list of target channel ids
+     * Complete target list of internal numeric StreamVi channel IDs (group_id from channel search in the same project_id). Do not pass external/platform IDs.
      * @type {Array<number>}
      * @memberof CreateSchedulerRequest
      */
