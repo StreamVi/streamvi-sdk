@@ -1,222 +1,63 @@
-# StreamVi SDK (Axios-based)
+# StreamVi SDK Axios
 
-## Version 3.0.0
+Typed JavaScript/TypeScript client for the [StreamVi API](https://dev.streamvi.io/). Choose either the [Axios client](https://github.com/StreamVi/streamvi-sdk) or the [Fetch client](https://github.com/StreamVi/streamvi-sdk-fetch).
 
-Regenerated from the production API schema: 354 operations, including 73 new operations. Before upgrading from 2.x, read the [changes and migration notes](CHANGELOG.md). Some method signatures have changed.
+## Install the client
 
-Library for working with StreamVi API along with OAuth authorization example using [passport-streamvi](https://www.npmjs.com/package/passport-streamvi) library.
-
-API methods documentation is available at: [https://dev.streamvi.io](https://dev.streamvi.io)
-
-## Features
-
-- ✅ StreamVi SDK library for TypeScript/JavaScript
-- ✅ Ready-to-use examples with OAuth2 authorization
-
-## Alternative Version
-
-An alternative version of the library is available that uses native `fetch` API instead of axios: [streamvi-sdk-fetch](https://github.com/StreamVi/streamvi-sdk-fetch)
-
-This version may be preferable for projects where bundle size matters or native fetch API usage is required.
-
-## Installation
-
-### Install from GitHub repository
-
-Install directly from GitHub repository:
+Use a supported Node.js release compatible with `engines` in [package.json](package.json), and Git:
 
 ```bash
 npm install git+https://github.com/StreamVi/streamvi-sdk.git
 ```
 
-Or with specific version/tag:
+Git installation builds the package. Keep the generated lockfile in your application. Changes and migration notes are in [CHANGELOG](CHANGELOG.md).
 
-```bash
-npm install git+https://github.com/StreamVi/streamvi-sdk.git#v3.0.0
+The client accepts an existing access token. OAuth client secrets, callback URLs and the demonstration server are not required to make each API request.
+
+## Make a request
+
+Obtain an OAuth token for the selected project and the `project:read` permission, then pass the raw token and internal numeric project ID to the client:
+
+```ts
+import { ProjectApi, StreamViSdkConfig } from 'streamvi-sdk';
+
+const config = new StreamViSdkConfig({
+  accessToken,
+  basePath: 'https://api-v2.streamvi.io',
+});
+const api = new ProjectApi(config.configuration);
+const response = await api.userProjectGetProjectInfoV1({ language: 'ru', project_id: projectId });
+const project = response.data;
 ```
 
-### Local development install
+`accessToken` and `projectId` are values supplied by your server-side integration. The SDK adds the authorization header and the method version. Do not pass `v` for this call. Specify the production `basePath` as shown; the configuration's existing default is `https://napi.streamvi.io`.
+
+Axios returns an HTTP response object. Its `data` is the StreamVi response body. Catch Axios errors and inspect `error.response?.status`; a network error may have no response. Do not log complete error/request objects containing credentials.
+
+The generated API includes endpoints with different authorization requirements. Project integration tokens are intended for `/method/`; `/site/` methods require Cabinet authorization. A method in the SDK does not grant access to it. Check its token type and scopes in the API reference.
+
+## Replace an access token
+
+Keep a configuration for each connection. After the user reconnects, update that configuration:
+
+```ts
+config.accessToken = replacementAccessToken;
+```
+
+Subsequent requests through API clients already created from `config.configuration` use the new token. Other configurations are unaffected. This does not perform OAuth or refresh the token automatically.
+
+## Run the OAuth example
+
+The example is a separate development server in this repository. Installing the SDK into another application does not add an `example` script to that application. Follow [the example instructions](example/README.md) to clone the repository, configure OAuth and start it.
+
+## Development
 
 ```bash
 npm install
-```
-
-## Configuration
-
-Create a `.env` file in the project root:
-
-```bash
-STREAMVI_CLIENT_ID=your_client_id
-STREAMVI_CLIENT_SECRET=your_client_secret
-CALLBACK_URL=http://localhost:3000/auth/streamvi/callback
-PORT=3000
-```
-
-## Usage
-
-### Running example server for StreamVi authorization
-
-```bash
-npm run example
-```
-
-Open http://localhost:3000 and login via StreamVi.
-
-### Example of getting project information via SDK
-
-```typescript
-import { StreamViSdkConfig } from 'streamvi-sdk';
-import { ProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from 'streamvi-sdk';
-
-async function getProjectInfo(accessToken: string, projectId: number, language: UserProjectGetProjectInfoV1LanguageEnum = UserProjectGetProjectInfoV1LanguageEnum.Ru) {
-  const sdkConfig = new StreamViSdkConfig({ accessToken });
-  const projectApi = new ProjectApi(sdkConfig.configuration);
-
-  const response = await projectApi.userProjectGetProjectInfoV1({
-    language: language,
-    project_id: projectId
-  });
-  return response.data;
-}
-```
-
-### Example of using PaySetting API with version 3
-
-```typescript
-import { StreamViSdkConfig } from 'streamvi-sdk';
-import { PaySettingApi, PaySettingGetSettingV3LanguageEnum } from 'streamvi-sdk';
-
-async function getPaySettings(accessToken: string, projectId: number, language: PaySettingGetSettingV3LanguageEnum = PaySettingGetSettingV3LanguageEnum.Ru) {
-  const sdkConfig = new StreamViSdkConfig({ accessToken });
-  const paySettingApi = new PaySettingApi(sdkConfig.configuration);
-
-  const response = await paySettingApi.paySettingGetSettingV3({
-    language: language,
-    projectId: projectId
-  });
-  return response.data;
-}
-```
-
-## Available APIs
-
-After generation, the following API clients are available:
-
-The full class list is available in the [generated client exports](src/generated/api2/api.ts). Each class file contains method signatures, parameters and response types.
-
-## Project Structure
-
-```
-src/
-├── generated/
-│   └── api2/           # Generated API client
-├── scripts/            # API generation scripts
-└── streamvi-sdk-config.ts      # SDK configuration
-
-example/
-├── server.ts           # Main server file
-├── config/
-│   ├── passport.ts     # Passport.js configuration
-│   └── session.ts      # Session configuration
-├── routes/
-│   └── index.ts        # Application routes
-└── helpers/            # Helper functions
-```
-
-## Example Application
-
-The `example/` folder contains a complete Express application demonstrating:
-
-- Authorization via StreamVi OAuth2
-- Getting project information
-- Authorization error handling
-- User session management
-- Proper error display and user feedback
-
-### Example Structure
-
-- **server.ts** - main server file with middleware setup and environment validation
-- **config/passport.ts** - StreamVi authorization strategy configuration with proper error handling
-- **config/session.ts** - Express session settings with security considerations
-- **routes/index.ts** - routes for authorization, data display, and comprehensive error handling
-
-### Example Functionality
-
-1. **Home page** (`/`) - displays project information with avatar and details, or offers authorization
-2. **Authorization** (`/auth/streamvi`) - redirects to StreamVi for authorization
-3. **Callback** (`/auth/streamvi/callback`) - handles authorization result with detailed error processing
-4. **Logout** (`/logout`) - clears user session and redirects to home
-5. **Error handling** (`/login`) - displays authorization errors with detailed information
-6. **Session management** - stores access tokens and project IDs securely
-
-### Authorization Flow
-
-The example demonstrates a complete OAuth2 flow:
-
-1. User visits the home page
-2. If not authorized, they see a login button
-3. Clicking login redirects to StreamVi OAuth2 endpoint
-4. After authorization, StreamVi redirects back with authorization code
-5. The callback handler exchanges the code for access token
-6. Access token and project ID are stored in session
-7. User is redirected to home page showing project information
-
-### Error Handling
-
-The example includes comprehensive error handling:
-
-- **Environment validation** - checks for required environment variables on startup
-- **Authorization errors** - displays detailed error messages from StreamVi
-- **API errors** - shows API response errors with full context
-- **Session errors** - handles session destruction and recreation
-- **Network errors** - graceful handling of network issues
-
-## API Client Generation
-
-The API client is automatically generated from the StreamVi OpenAPI specification with built-in error correction and optimization.
-
-### Update API client
-
-To update the API client after server changes:
-
-```bash
-npm run gen:api-prod
 npm run build
+npm run lint
+npm run example:check
+npm test -- --runInBand tests/token-update.test.ts tests/example-oauth.test.ts
 ```
 
-This command downloads the latest API specification and generates an optimized TypeScript client.
-
-> **For library developers**: See [README_DEVELOPMENT_EN.md](README_DEVELOPMENT_EN.md) for detailed information about the generation process, error correction, and development workflows.
-
-## Scripts
-
-- `npm run example` - run example server with authorization
-- `npm run build` - build the project
-- `npm run gen:api-prod` - generate API from production server
-- `npm run lint` - code check
-
-## License
-
-MIT
-
-## Documentation Generation
-
-To generate documentation, use:
-
-```
-npm run build:docs
-```
-
-## Code Formatting
-
-To check formatting:
-
-```
-npm run prettier
-```
-
-To auto-format:
-
-```
-npm run format
-```
+Generated clients are under `src/generated/api2`. The generation process is described in [scripts/README.md](scripts/README.md); the source schema hash is recorded in `openapi-source.json`. Apply connection behavior in `StreamViSdkConfig`, so regeneration does not overwrite it.

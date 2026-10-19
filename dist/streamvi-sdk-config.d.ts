@@ -12,7 +12,7 @@ import { Configuration } from './generated/api2/configuration';
  */
 export declare class StreamViSdkConfig {
     private _accessToken;
-    private _basePath;
+    private readonly _configuration;
     /**
      * Создает новый экземпляр конфигурации SDK
      *

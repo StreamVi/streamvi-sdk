@@ -1,137 +1,72 @@
 import { Router } from 'express';
-import passport from 'passport';
 import type { Request } from 'express';
-import session from 'express-session';
-import { StreamViSdkConfig } from '../../src/streamvi-sdk-config';
-import { ProjectApi, UserProjectGetProjectInfoV1LanguageEnum } from '../../src/generated/api2/api/project-api';
+import type { Session } from 'express-session';
+import { beginOAuth, finishOAuth, OAuthTransaction } from '../config/oauth';
+import { ProjectApi, StreamViSdkConfig } from '../../src';
 
-interface SessionData {
-  accessToken?: string;
-  projectId?: number;
-}
 interface SessionRequest extends Request {
-  session: SessionData & session.Session;
+  session: Session & { accessToken?: string; projectId?: number; oauth?: OAuthTransaction };
 }
 
-async function getProjectInfo(accessToken: string, projectId: number, language: UserProjectGetProjectInfoV1LanguageEnum = UserProjectGetProjectInfoV1LanguageEnum.Ru) {
-  const sdkConfig = new StreamViSdkConfig({ accessToken });
-  const projectApi = new ProjectApi(sdkConfig.configuration);
-
-  const response = await projectApi.userProjectGetProjectInfoV1({
-    language: language,
-    project_id: projectId
-  });
+async function getProjectInfo(accessToken: string, projectId: number) {
+  const config = new StreamViSdkConfig({ accessToken, basePath: 'https://api-v2.streamvi.io' });
+  const api = new ProjectApi(config.configuration);
+  const response = await api.userProjectGetProjectInfoV1({ language: 'ru', project_id: projectId });
   return response.data;
 }
 
-const router = Router();
+function escapeHtml(value: unknown): string {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+  }[char]!));
+}
 
+const router = Router();
 router.get('/', async (req, res) => {
   const sess = (req as SessionRequest).session;
-  if (!sess.accessToken) {
-    res.send(`
-      <h2>StreamVi SDK</h2>
-      <a href="/auth/streamvi"><button>Login with StreamVi</button></a>
-    `);
-    return;
-  }
-  if (!sess.projectId) {
-    res.send(`
-      <b>project_id not found in session!</b><br>
-      <a href="/auth/streamvi"><button>Login with StreamVi</button></a>
-    `);
+  if (!sess.accessToken || !sess.projectId) {
+    res.send('<h2>StreamVi SDK</h2><a href="/auth/streamvi">Connect a project</a>');
     return;
   }
   try {
     const project = await getProjectInfo(sess.accessToken, sess.projectId);
-    res.send(`
-      <h2>StreamVi SDK</h2>
-      <form method="POST" action="/logout" style="display:inline;"><button type="submit">Logout from project</button></form>
-      <hr>
-      <div style="margin-top:16px;">
-        <b>Current accessToken:</b>
-        <pre style="max-width:600px;white-space:pre-wrap;word-break:break-all;background:#f8f8f8;padding:8px;border-radius:4px;">${sess.accessToken}</pre>
-      </div>
-      <hr>
-      <h3>Project information:</h3>
-      <div style="display:flex;align-items:center;gap:16px;">
-        <img src="${project.data.photo_100 || project.data.photo_50 || ''}" alt="avatar" style="width:64px;height:64px;border-radius:50%;border:1px solid #ccc;object-fit:cover;">
-        <div>
-          <div><b>${project.data.name}</b></div>
-          <div>ID: ${project.data.project_id}</div>
-          <div>External ID: ${project.data.external_id}</div>
-        </div>
-      </div>
-      <pre style="margin-top:8px;background:#f8f8f8;padding:8px;border-radius:4px;">${JSON.stringify(project, null, 2)}</pre>
-    `);
-  } catch (e) {
-    res.send(`
-      <b>Error:</b> <pre>${e instanceof Error ? e.message : JSON.stringify(e)}</pre>
-      ${(() => {
-        if (e !== null && typeof e === 'object') {
-          const err: any = e;
-          if ('response' in err && err.response && 'data' in err.response) {
-            return `<pre>${JSON.stringify(err.response.data, null, 2)}</pre>`;
-          }
-        }
-        return '';
-      })()}
-      <p>Try to logout and authorize again.</p>
-      <form method="POST" action="/logout" style="display:inline;"><button type="submit">Logout</button></form>
-    `);
+    res.send(`<h2>Connected project</h2>
+      <p>${escapeHtml(project.data.name)}</p><p>ID: ${escapeHtml(project.data.project_id)}</p>
+      <form method="POST" action="/logout"><button>Disconnect</button></form>`);
+  } catch {
+    res.status(502).send('<p>Could not read the project. Check its access and permissions.</p><a href="/auth/streamvi">Connect again</a>');
   }
 });
 
 router.post('/logout', (req, res) => {
-  (req as SessionRequest).session.destroy(() => {
+  (req as SessionRequest).session.destroy(() => res.redirect('/'));
+});
+router.get('/login', (_req, res) => {
+  res.status(400).send('<p>Connection failed.</p><a href="/auth/streamvi">Try again</a>');
+});
+router.get('/auth/streamvi', (req, res) => {
+  const { url, transaction } = beginOAuth(process.env.STREAMVI_CLIENT_ID!, process.env.CALLBACK_URL!);
+  const sess = (req as SessionRequest).session;
+  sess.oauth = transaction;
+  sess.save(error => res.redirect(error ? '/login' : url));
+});
+router.get('/auth/streamvi/callback', async (req, res) => {
+  const sess = (req as SessionRequest).session;
+  const transaction = sess.oauth;
+  delete sess.oauth;
+  try {
+    // Consume the transaction even when validation or code exchange fails.
+    await new Promise<void>((resolve, reject) => sess.save(error => error ? reject(error) : resolve()));
+    const params = new URL(req.originalUrl, 'http://localhost').searchParams;
+    const connection = await finishOAuth(params, transaction);
+    await new Promise<void>((resolve, reject) => sess.regenerate(error => error ? reject(error) : resolve()));
+    const nextSession = (req as SessionRequest).session;
+    Object.assign(nextSession, connection);
+    await new Promise<void>((resolve, reject) => nextSession.save(error => error ? reject(error) : resolve()));
     res.redirect('/');
-  });
-});
-
-router.get('/login', (req, res) => {
-  const errorMessage = req.query.error ? decodeURIComponent(req.query.error as string) : 'Authentication Error';
-  res.send(`
-    <h2>Authentication Error</h2>
-    <p style="color: red">${errorMessage}</p>
-    <p><strong>Request details:</strong> ${JSON.stringify(req.query)}</p>
-    <a href="/auth/streamvi">Try again</a>
-  `);
-});
-
-router.get('/auth/streamvi', passport.authenticate('streamvi'));
-
-router.get('/auth/streamvi/callback', 
-  (req, res, next) => {
-    if (req.query.error) {
-      const errorMessage = req.query.error_description 
-        ? decodeURIComponent(req.query.error_description as string) 
-        : (req.query.error as string);
-      return res.redirect(`/login?error=${encodeURIComponent(errorMessage)}`);
-    }
-    passport.authenticate('streamvi', (err: any, user: any, info: any) => {
-      if (err) {
-        return res.redirect(`/login?error=${encodeURIComponent(err.message || 'Server error')}`);
-      }
-      if (!user) {
-        let errorMessage = 'Authentication error';
-        if (info) {
-          if (typeof info === 'string') {
-            errorMessage = info;
-          } else if (info.message) {
-            errorMessage = info.message;
-          } else if (info.toString && info.toString() !== '[object Object]') {
-            errorMessage = info.toString();
-          }
-        }
-        return res.redirect(`/login?error=${encodeURIComponent(errorMessage)}`);
-      }
-      // Сохраняем токены и project_id в сессию пользователя
-      const sess = (req as SessionRequest).session;
-      sess.accessToken = user.accessToken;
-      sess.projectId = user.projectId;
-      return res.redirect('/');
-    })(req, res, next);
+  } catch {
+    res.redirect('/login');
   }
-);
+});
 
-export default router; 
+export default router;

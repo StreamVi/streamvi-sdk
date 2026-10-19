@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.1 (2026-10-20)
+
+- The local OAuth example uses single-use state and PKCE directly, keeps tokens server-side, and no longer requires Passport.
+- Updating `StreamViSdkConfig.accessToken` now affects subsequent requests from clients already created with its configuration. Other connection instances and custom headers are preserved.
+- Keep demonstration server packages in development dependencies; the Axios client only depends on Axios at runtime.
+- Separate SDK installation from the OAuth server example in the README.
+
 ## 3.0.0 (2026-10-20)
 
 Generated with OpenAPI Generator 7.13.0 from the production schema at

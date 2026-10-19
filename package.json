@@ -1,6 +1,6 @@
 {
   "name": "streamvi-sdk",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Library for working with the StreamVi API (https://dev.streamvi.io)",
   "keywords": [
     "streamvi",
@@ -47,15 +47,11 @@
     "prepublishOnly": "npm run lint",
     "type-check": "tsc --noEmit",
     "prettier": "prettier --check \"src/**/*.ts\"",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\"",
+    "example:check": "tsc --project example/tsconfig.json"
   },
   "dependencies": {
-    "axios": "^1.6.0",
-    "dotenv": "^16.3.1",
-    "express": "^4.21.2",
-    "express-session": "^1.18.1",
-    "passport": "^0.7.0",
-    "passport-streamvi": "^1.0.6"
+    "axios": "^1.6.0"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "2.20.2",
@@ -64,7 +60,6 @@
     "@types/express-session": "^1.18.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^20.10.0",
-    "@types/passport": "^1.0.17",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "cross-env": "^7.0.3",
@@ -79,6 +74,9 @@
     "ts-jest": "^29.3.4",
     "ts-node": "^10.9.1",
     "typedoc": "^0.25.13",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1"
   }
 }

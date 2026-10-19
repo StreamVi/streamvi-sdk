@@ -23,7 +23,11 @@ class StreamViSdkConfig {
      */
     constructor({ accessToken, basePath = 'https://napi.streamvi.io' }) {
         this._accessToken = accessToken;
-        this._basePath = basePath;
+        this._configuration = new configuration_1.Configuration({
+            basePath,
+            accessToken,
+            baseOptions: { headers: { Authorization: `oauth ${accessToken}` } },
+        });
     }
     /**
      * Возвращает объект конфигурации для API клиентов
@@ -31,15 +35,7 @@ class StreamViSdkConfig {
      * @returns Конфигурация с настроенной авторизацией и базовым путем
      */
     get configuration() {
-        return new configuration_1.Configuration({
-            basePath: this._basePath,
-            accessToken: this._accessToken,
-            baseOptions: {
-                headers: {
-                    Authorization: `oauth ${this._accessToken}`
-                }
-            }
-        });
+        return this._configuration;
     }
     /**
      * Устанавливает новый токен доступа
@@ -47,7 +43,16 @@ class StreamViSdkConfig {
      * @param token - Новый токен доступа
      */
     set accessToken(token) {
+        var _a;
         this._accessToken = token;
+        this._configuration.accessToken = token;
+        this._configuration.baseOptions = {
+            ...this._configuration.baseOptions,
+            headers: {
+                ...(_a = this._configuration.baseOptions) === null || _a === void 0 ? void 0 : _a.headers,
+                Authorization: `oauth ${token}`,
+            },
+        };
     }
     /**
      * Возвращает текущий токен доступа
